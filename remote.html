@@ -3,10 +3,10 @@ layout: viai-doc
 helpname: 'remote'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="remote.html" name="remote.txt">remote.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">Vim バージョン 9.2.</span>&nbsp;&nbsp;Last change: 2026 Jun 05<br>
+<a class="Constant" href="remote.html" name="remote.txt">remote.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Jun 05<br>
 <br>
 <br>
-<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIM リファレンスマニュアル&nbsp;&nbsp;&nbsp;&nbsp;by Bram Moolenaar</span><br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
 Vimクライアントサーバー通信&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="remote.html#client-server" name="client-server">client-server</a><br>
@@ -97,18 +97,18 @@ Vimクライアントサーバー通信&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
 <br>
 <span class="PreProc">使用例</span><br>
 <br>
-既に起動しているgvimサーバーで &quot;file.txt&quot; を編集する:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;gvim --remote file.txt</div>
+既に起動しているgviaiサーバーで &quot;file.txt&quot; を編集する:<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;gviai --remote file.txt</div>
 <br>
 既に起動しているFOOBARという名のサーバーで &quot;file.txt&quot; を編集する:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;gvim --servername FOOBAR --remote file.txt</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;gviai --servername FOOBAR --remote file.txt</div>
 <br>
 既に起動しているFILESという名のサーバーがあれば、FILESで &quot;file.txt&quot; を編集する<br>
 が、無ければ自分がFILESになる:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;gvim --servername FILES --remote-silent file.txt</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;gviai --servername FILES --remote-silent file.txt</div>
 <br>
 --remoteの後の全ての引数がファイル名として解釈されるので動作しない:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;gvim --remote --servername FOOBAR file.txt</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;gviai --remote --servername FOOBAR file.txt</div>
 <br>
 リモートサーバーで &quot;+foo&quot; という名のファイルを編集する(&quot;./&quot; により先頭の &quot;+&quot;<br>
 の特別な意味が無効化されていることに注目):<br>
@@ -119,13 +119,14 @@ Vimクライアントサーバー通信&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
 <br>
 <span class="Statement">サーバー名</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="remote.html#client-server-name" name="client-server-name">client-server-name</a><br>
 <br>
-デフォルトではVimは自分が起動された時の名前(gvim, egvim ...)のサーバーになろう<br>
-とする。これは引数 --servername で変更できる。指定した名前が利用できない場合に<br>
-は、利用できる名前になるように後置名が付加される。例えば、1つのX-Serverで2つ目<br>
-のgvimを起動したときには &quot;gvim1&quot; というようになる。その時のサーバー名へは組み<br>
-込み変数<a class="Identifier" href="eval.html#v:servername">v:servername</a>によりアクセスできる。サーバー名の大文字小文字は区別され<br>
-ないので、&quot;gvim&quot; と &quot;GVIM&quot; は同じとみなされる。<span class="Todo">Note</span>&nbsp;ソケットサーバーが使用され<br>
-ている場合、いくつかの違いがあることに注意。<a class="Identifier" href="remote.html#socketserver-differences">socketserver-differences</a>&nbsp;を参照。<br>
+デフォルトではVimは自分が起動された時の名前 (gviai, egviai ...) のサーバーにな<br>
+ろうとする。これは引数 --servername で変更できる。指定した名前が利用できない場<br>
+合には、利用できる名前になるように後置名が付加される。例えば、1つのX-Serverで2<br>
+つ目のgviaiを起動したときには &quot;gviai1&quot; というようになる。その時のサーバー名へ<br>
+は組み込み変数<a class="Identifier" href="eval.html#v:servername">v:servername</a>によりアクセスできる。サーバー名の大文字小文字は区<br>
+別されないので、&quot;gviai&quot; と &quot;GVIAI&quot; は同じとみなされる。<span class="Todo">Note</span>&nbsp;ソケットサーバーが<br>
+使用されている場合、いくつかの違いがあることに注意。<a class="Identifier" href="remote.html#socketserver-differences">socketserver-differences</a><br>
+を参照。<br>
 <br>
 Vimが引数 --remote や --remote-wait または --remote-send で起動された時には、<br>
 上記のようにその名前で起動されたサーバーを探そうと試みる。正確に一致するサー<br>
@@ -135,8 +136,8 @@ Vimが引数 --remote や --remote-wait または --remote-send で起動され�
 <br>
 サーバーが見つからなく、--remote か --remote-wait が使われた時には、Vimは残り<br>
 のコマンドラインに従い起動し、そのファイルの編集セッションを自分自身で取り持<br>
-つ。この方法ならgvimはコマンドを送信する時に、既に別のgvimが起動しているかどう<br>
-かを知る必要は無い。<br>
+つ。この方法ならgviaiはコマンドを送信する時に、既に別のgviaiが起動しているかど<br>
+うかを知る必要は無い。<br>
 <br>
 引数 --serverlist はVimに登録(実行)されている全てのコマンドサーバーを、標準出<br>
 力(stdout)に印刷して終了する。ソケットサーバーが使用されている場合は注意点があ<br>
@@ -144,7 +145,7 @@ Vimが引数 --remote や --remote-wait または --remote-send で起動され�
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="remote.html#{server}" name="{server}">{server}</a><br>
 引数&nbsp;<span class="Special">{server}</span>&nbsp;はいくつかの関数で使われる。これが空文字列の場合、Unix ではデフォ<br>
-ルトのサーバー名として &quot;GVIM&quot; が使用される。MS-Windows では空文字列は動作しな<br>
+ルトのサーバー名として &quot;GVIAI&quot; が使用される。MS-Windows では空文字列は動作しな<br>
 い。<br>
 <br>
 Win32&nbsp;<span class="Todo">NOTE</span>: Vimサーバーをアクティブアプリケーション(トップウィンドウ)にするこ<br>
@@ -196,8 +197,8 @@ server2client()で使用するサーバーIDはexpand(&quot;<span class="Special
 きるように備える。Vim はクライアントとしても振舞い、同じ X11 ディスプレイで動<br>
 作する別の Vim インスタンスに文字列を送ることができる。<br>
 <br>
-X11のGUI Vim(gvim)が起動すると、ルートウィンドウの 'VimRegistry' プロパティに<br>
-送信サーバー名を登録しようと試みる。<br>
+X11のGUI Vim (gviai) が起動すると、ルートウィンドウの 'VimRegistry' プロパティ<br>
+に送信サーバー名を登録しようと試みる。<br>
 <br>
 X11ディスプレイにアクセスできる非GUIのVim(<a class="Identifier" href="term.html#xterm-clipboard">xterm-clipboard</a>が有効になっている)<br>
 も、サーバー名が引数 --servername で明示的に与えられるか、Vim が<br>
@@ -219,9 +220,9 @@ X11ディスプレイにアクセスできる非GUIのVim(<a class="Identifier" 
 MS-Windowsメッセージを使っているから、どのようなアプリケーションでもVimサーバー<br>
 と通信することができる。加えてOLEの機能を使うこともできる<a class="Identifier" href="if_ole.html#ole-interface">ole-interface</a>。<br>
 <br>
-gvimを使っている時には、--remote-wait は以下のようにしないと正しく動作しない:<br>
-<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start /w gvim --remote-wait file.txt</div>
+gviaiを使っている時には、--remote-wait は以下のようにしないと正しく動作し<br>
+ない:<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start /w gviai --remote-wait file.txt</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 4. ソケットサーバー固有の項目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="remote.html#socketserver-clientserver" name="socketserver-clientserver">socketserver-clientserver</a><br>

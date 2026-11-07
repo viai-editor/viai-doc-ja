@@ -3,10 +3,10 @@ layout: viai-doc
 helpname: 'if_ole'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="if_ole.html" name="if_ole.txt">if_ole.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">Vim バージョン 9.2.</span>&nbsp;&nbsp;Last change: 2026 Feb 14<br>
+<a class="Constant" href="if_ole.html" name="if_ole.txt">if_ole.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Feb 14<br>
 <br>
 <br>
-<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIM リファレンスマニュアル&nbsp;&nbsp;&nbsp;&nbsp;by Paul Moore</span><br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
 VimへのOLEインターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#ole-interface" name="ole-interface">ole-interface</a><br>
@@ -25,9 +25,9 @@ VimへのOLEインターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 <span class="PreProc">==============================================================================</span><br>
 1. アクティブにする&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#ole-activation" name="ole-activation">ole-activation</a><br>
 <br>
-Vimは、あらゆるオートメーションクライアント、例えばVisual Basic、Python、<br>
-Perlなどからアクセス可能な、OLEオートメーションサーバーとして振舞う。Vimアプリ<br>
-ケーションの &quot;名前&quot; (これはOLE用語で言うところの &quot;ProgID&quot;)は、&quot;Vim.Application&quot;<br>
+Vimは、あらゆるオートメーションクライアント、例えばVisual Basic、Python、Perl<br>
+などからアクセス可能な、OLEオートメーションサーバーとして振舞う。Vimアプリケー<br>
+ションの &quot;名前&quot; (これはOLE用語で言うところの &quot;ProgID&quot;) は、&quot;ViAI.Application&quot;<br>
 である。<br>
 <br>
 したがって、Vimのインスタンスを起動する(あるいはすでに起動しているインスタンス<br>
@@ -35,21 +35,21 @@ Perlなどからアクセス可能な、OLEオートメーションサーバー�
 <br>
 [Visual Basic]<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim Vim As Object<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set Vim = CreateObject(&quot;Vim.Application&quot;)</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set Vim = CreateObject(&quot;ViAI.Application&quot;)</div>
 <br>
 [Python]<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from win32com.client.dynamic import Dispatch<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim = Dispatch('Vim.Application')</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim = Dispatch('ViAI.Application')</div>
 <br>
 [Perl]<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use Win32::OLE;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$vim = new Win32::OLE 'Vim.Application';</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$vim = new Win32::OLE 'ViAI.Application';</div>
 <br>
 [C#]<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// プロジェクトに Vim への参照を追加する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// COM タブを選択する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// &quot;Vim Ole Interface 1.1 Type Library&quot; を選択する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim.Vim vimobj = new Vim.Vim();</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// &quot;ViAI OLE Interface 1.1 Type Library&quot; を選択する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ViAI.ViAI vimobj = new ViAI.ViAI();</div>
 <br>
 Vimは、他の一部のOLEサーバーがサポートしているような、&quot;hidden&quot; なOLEサーバーと<br>
 しての機能をサポートしていない。クライアントがVimのインスタンスを起動する場合、<br>
@@ -130,31 +130,31 @@ VimがOLEオートメーションコマンドを処理する方法は、exコマ
 VimをOLEサーバーとして動作させる前に、システムレジストリに登録する必要がある。<br>
 これを行うには、Vimをひとつの引数 &quot;-register&quot; で実行すればよい。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#-register" name="-register">-register</a>&nbsp;<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gvim -register</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gviai -register</div>
 <br>
 <br>
-OLEサーバーが登録されていないとき、OLEをサポートしたgvimを起動すると警告ダイア<br>
-ログが出る。&quot;Yes&quot; を選択するとレジストリに登録できる。<br>
+OLEサーバーが登録されていないとき、OLEをサポートしたgviaiを起動すると警告ダイ<br>
+アログが出る。&quot;Yes&quot; を選択するとレジストリに登録できる。<br>
 <br>
 レジストリが書き込み可能でないときには登録はできない。もし登録できないときは<br>
-&quot;Administrator&quot; 権限でgvimを起動すること。<br>
+&quot;Administrator&quot; 権限でgviaiを起動すること。<br>
 <br>
 いったんVimが登録されると、アプリケーションへのパスはレジストリに保存される。<br>
 Vimを移動、削除、更新する前に、レジストリの項目を &quot;-unregister&quot; スイッチを使っ<br>
 て削除する必要がある。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#-unregister" name="-unregister">-unregister</a>&nbsp;<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gvim -unregister</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gviai -unregister</div>
 <br>
 OLEメカニズムは、登録されたVimの内、最初に見つけたものを使用する。Vimがすでに<br>
 実行されている場合は、そのVimが使用される。OLEコマンドに影響されないで、(いく<br>
 つかの)Vimセッションを張ろうとする場合は、非OLEバージョンを違うディレクトリに<br>
 置いて使用するとよい。そして、OLEバージョンをパスに含まれないディレクトリに置<br>
-けば、&quot;gvim&quot; とタイプしたとき非OLEバージョンが起動するようになる。<br>
+けば、&quot;gviai&quot; とタイプしたとき非OLEバージョンが起動するようになる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#-silent" name="-silent">-silent</a><br>
 結果を表示するメッセージボックスを表示したくないなら &quot;-silent&quot; を付けること。<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gvim -silent -register<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gvim -silent -unregister</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gviai -silent -register<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gviai -silent -unregister</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 5. MS Visual Studio との統合&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#MSVisualStudio" name="MSVisualStudio">MSVisualStudio</a><br>
@@ -169,7 +169,7 @@ OLEメカニズムは、登録されたVimの内、最初に見つけたもの�
 .Net Studio でメニューから[ツール]→[外部ツール]を選択する。<br>
 次を追加する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;タイトル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Vim<br>
-&nbsp;&nbsp;&nbsp;&nbsp;コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - c:\vim\vim63\gvim.exe<br>
+&nbsp;&nbsp;&nbsp;&nbsp;コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - c:\viai\viai10\gviai.exe<br>
 &nbsp;&nbsp;&nbsp;&nbsp;引数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - --servername VS_NET --remote-silent &quot;+call cursor($(CurLine), $(CurCol))&quot; $(ItemPath)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;初期ディレクトリ - 空<br>
 <br>
