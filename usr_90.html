@@ -3,18 +3,18 @@ layout: viai-doc
 helpname: 'usr_90'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="usr_90.html" name="usr_90.txt">usr_90.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">Vim バージョン 9.2.</span>&nbsp;&nbsp;Last change: 2026 Feb 14<br>
+<a class="Constant" href="usr_90.html" name="usr_90.txt">usr_90.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Oct 27<br>
 <br>
 <br>
-<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIM ユーザーマニュアル&nbsp;&nbsp;&nbsp;&nbsp; by Bram Moolenaar</span><br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim のインストール<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ViAI のインストール<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_90.html#install" name="install">install</a><br>
-Vim を使うにはまずインストールする必要があります。システムにも依りますが、とて<br>
-も簡単な作業です。本章では、若干のヒントと、新しいバージョンへのアップグレード<br>
-手順を説明します。<br>
+ViAI を使うにはまずインストールする必要があります。システムにも依りますが、と<br>
+ても簡単な作業です。本章では、若干のヒントと、新しいバージョンへのアップグレー<br>
+ド手順を説明します。<br>
 <br>
 <a class="Identifier" href="usr_90.html#90.1">90.1</a>&nbsp;&nbsp;Unix<br>
 <a class="Identifier" href="usr_90.html#90.2">90.2</a>&nbsp;&nbsp;MS-Windows<br>
@@ -28,65 +28,55 @@ Vim を使うにはまずインストールする必要があります。シス�
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_90.html#90.1" name="90.1">90.1</a>&nbsp;&nbsp;Unix<br>
 <br>
-最初に、Vim をシステム全体で使うのか、自分一人で使うのかを決めてください。イン<br>
-ストール方法はほぼ同じですが、インストールするディレクトリが異なります。<br>
+最初に、ViAI をシステム全体で使うのか、自分一人で使うのかを決めてください。イ<br>
+ンストール方法はほぼ同じですが、インストールするディレクトリが異なります。<br>
 システムにインストールするときは、ベースディレクトリとして大抵は &quot;/usr/local&quot;<br>
 が使われます。ただし、これはシステムによって異なります。インストールされている<br>
 他のパッケージを参考にするなどして調べてください。<br>
 自分一人で使う場合は、例えばホームディレクトリをベースディレクトリにします。<br>
-ファイルはその下の &quot;bin&quot; や &quot;share/vim&quot; などに置かれます。<br>
+ファイルはその下の &quot;bin&quot; や &quot;share/viai&quot; などに置かれます。<br>
 <br>
 <br>
 <span class="Statement">パッケージからインストール</span><br>
 <br>
-使用する Unix/Linux システムによっては、コンパイル済みのバイナリパッケージが存<br>
-在する場合があります。これについては検索する必要があります。以前はさまざまな<br>
-UNIX システムのリストを保持していましたが、そのリストは古くなったため削除され<br>
-ました。<br>
-<br>
-ソースから独自の UNIX バージョンをコンパイルすることをお勧めします。また、ソー<br>
-スからエディタを作成すると、コンパイルする機能を制御できます。ただし、これには<br>
-コンパイラが必要です。<br>
-<br>
-Linux を使っている場合、&quot;vi&quot; はおそらく最小構成の Vim です。それには例えば構文<br>
-強調表示などの機能はありません。そのディストリビューションから別の Vim パッ<br>
-ケージが配布されていないか、あるいは Web サイトで公開されていないか調べてみて<br>
-ください。<br>
+Unix 用の ViAI のコンパイル済みバイナリパッケージはないので、ソースからコンパ<br>
+イルしてください。ソースからエディタを作成すると、コンパイルする機能を制御でき<br>
+ます。ただし、これにはコンパイラが必要です。<br>
 <br>
 <br>
 <span class="Statement">ソースからインストール</span><br>
 <br>
-Vim をコンパイルしてインストールするには、次のものが必要です:<br>
+ViAI をコンパイルしてインストールするには、次のものが必要です:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;C コンパイラ (GCC または Clang が望ましい)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;git (オプション、github からクローンする場合のみ)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;zip/unzip (アーカイブを解凍する)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;Vim のソースアーカイブ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;ViAI のソースアーカイブ<br>
 <br>
-Vim のソースをダウンロードするには、Github プロジェクトページからクローンを作<br>
+ViAI のソースをダウンロードするには、Github プロジェクトページからクローンを作<br>
 成するか:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;git clone <a href="https://github.com/vim/vim.git">https://github.com/vim/vim.git</a></div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;git clone <a href="https://github.com/viai-editor/viai.git">https://github.com/viai-editor/viai.git</a></div>
 <br>
 または、以下を使用してアーカイブを直接ダウンロードします:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/vim/vim/archive/refs/heads/master.zip">https://github.com/vim/vim/archive/refs/heads/master.zip</a></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/viai-editor/viai/archive/refs/heads/master.zip">https://github.com/viai-editor/viai/archive/refs/heads/master.zip</a></span><br>
 <br>
 <br>
 <span class="Statement">コンパイル</span><br>
 <br>
 まず作業用のディレクトリを作成します。例:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mkdir ~/vim<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd ~/vim</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mkdir ~/viai<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd ~/viai</div>
 <br>
 この場所でアーカイブを展開します。次のようにして展開できます:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unzip vim-master.zip</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unzip viai-master.zip</div>
 <br>
 欲しいのがデフォルトの機能だけで、環境が適切に設定されているのであれば、次のコ<br>
 マンドを実行するだけでコンパイルできます:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd vim-master/src<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd viai-master/src<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make</div>
 <br>
 make プログラムによって configure とコンパイルが実行されます。設定を変更してコ<br>
@@ -103,19 +93,18 @@ make プログラムによって configure とコンパイルが実行されま�
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make test</div>
 <br>
-Vim が期待した動作をするかどうかをテストスクリプトを使って検査します。Vim が何<br>
-度も実行され、様々なテキストやメッセージが表示されます。最後に次のように表示さ<br>
-れたら検査は合格です:<br>
+ViAI が期待した動作をするかどうかをテストスクリプトを使って検査します。ViAI が<br>
+何度も実行され、様々なテキストやメッセージが表示されます。最後に次のように表示<br>
+されたら検査は合格です:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">test results:</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">ALL DONE</span><br>
 <br>
 テストが失敗すると &quot;TEST FAILURE&quot; と表示されます。失敗メッセージが一つか二つ表<br>
-示された場合は、Vim はとりあえず動作していますが完全ではありません。エラーメッ<br>
+示された場合は、ViAI はとりあえず動作していますが完全ではありません。エラーメッ<br>
 セージがたくさん表示されたり、テストが最後まで完了しなかった場合は、何か問題が<br>
-あります。自分で解決するか、誰かに聞いてください。メーリングリストの過去ログ<br>
-(<a class="Identifier" href="intro.html#maillist-archive">maillist-archive</a>) に答えがあるかもしれません。どうしても解決できない場合は<br>
-Vim のメーリングリスト (<a class="Identifier" href="intro.html#maillist">maillist</a>) で質問してみてください。<br>
+あります。自分で解決するか、誰かに聞いてください。どうしても解決できない場合<br>
+は、バグとして報告することもできます。<a class="Identifier" href="intro.html#viai-bugs">viai-bugs</a>&nbsp;を参照してください。<br>
 <br>
 <br>
 <span class="Statement">インストール</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_90.html#install-home" name="install-home">install-home</a><br>
@@ -130,30 +119,32 @@ Vim のメーリングリスト (<a class="Identifier" href="intro.html#maillist
 分でディレクトリを指定する方法は後述します。以下の作業は root で実行する必要が<br>
 あります。<br>
 <br>
-次のコマンドで Vim をインストールします:<br>
+次のコマンドで ViAI をインストールします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make install</div>
 <br>
-必要なファイルが適切な場所にコピーされます。Vim を起動してみて正しくインストー<br>
-ルできたかどうかを確認してください。二つの簡単なテストで、Vim がランタイムファ<br>
-イルを検出できているかどうかを確認します:<br>
+必要なファイルが適切な場所にコピーされます。プログラムとディレクトリには ViAI<br>
+にちなんだ名前が付いているので、Vim をその隣にインストールできます。<br>
+<a class="Identifier" href="viai.html#viai-programs">viai-programs</a>&nbsp;を参照してください。ViAI を起動してみて正しくインストールでき<br>
+たかどうかを確認してください。二つの簡単なテストで、ViAI がランタイムファイル<br>
+を検出できているかどうかを確認します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:help<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:syntax enable</div>
 <br>
-うまく動作しない場合は、次のコマンドで、Vim がどこからランタイムファイルを探し<br>
-ているのか確認してください:<br>
+うまく動作しない場合は、次のコマンドで、ViAI がどこからランタイムファイルを探<br>
+しているのか確認してください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:echo $VIMRUNTIME</div>
 <br>
-また、Vim の起動時に &quot;-V&quot; 引数を付けることで、起動中に起きていることを見ること<br>
-ができます:<br>
+また、ViAI の起動時に &quot;-V&quot; 引数を付けることで、起動中に起きていることを見るこ<br>
+とができます:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim -V</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;viai -V</div>
 <br>
-ユーザーマニュアルは Vim が適切に動作することを前提に書かれています。Vim のイ<br>
-ンストールが終ったら、<a class="Identifier" href="usr_01.html#not-compatible">not-compatible</a>&nbsp;の説明に従って、Vim を適切に設定してく<br>
-ださい。<br>
+ユーザーマニュアルは ViAI が適切に動作することを前提に書かれています。ViAI の<br>
+インストールが終ったら、<a class="Identifier" href="usr_01.html#not-compatible">not-compatible</a>&nbsp;の説明に従って、ViAI を適切に設定して<br>
+ください。<br>
 <br>
 <br>
 <span class="Statement">機能を選択する</span><br>
@@ -166,7 +157,7 @@ make とは別に &quot;configure&quot; を実行する方法もあります。�
 す。<br>
 よく使われる引数を次に示します。これらは Makefile からでも有効にできます。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--prefix=<span class="Special">{directory}</span>&nbsp;&nbsp;&nbsp;&nbsp;Vim をインストールするトップディレクトリ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--prefix=<span class="Special">{directory}</span>&nbsp;&nbsp;&nbsp;&nbsp;ViAI をインストールするトップディレクトリ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--with-features=tiny&nbsp;&nbsp;&nbsp;&nbsp;一部の機能を無効にしてコンパイル<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--with-features=normal&nbsp;&nbsp;多くの機能を有効にしてコンパイル<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--with-features=huge&nbsp;&nbsp;&nbsp;&nbsp;ほとんどの機能を有効にしてコンパイル<br>
@@ -178,7 +169,7 @@ make とは別に &quot;configure&quot; を実行する方法もあります。�
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--disable-gui&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GUI インターフェイスをコンパイルしない。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--without-x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X-windows の機能をコンパイルしない。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これら二つが指定された場合、Vim は X サーバー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これら二つが指定された場合、ViAI は X サーバー<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に接続しません。起動が早くなります。<br>
 <br>
 オプションの一覧を見るには次のようにします:<br>
@@ -192,35 +183,29 @@ make とは別に &quot;configure&quot; を実行する方法もあります。�
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_90.html#90.2" name="90.2">90.2</a>&nbsp;&nbsp;MS-Windows<br>
 <br>
-Microsoft Windows に Vim プログラムをインストールするには、いくつかの方法があ<br>
+Microsoft Windows に ViAI プログラムをインストールするには、いくつかの方法があ<br>
 ります:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">1. 公式サイトダウンロード (安定版)</span><br>
-<br>
-Vim の公式ウェブサイト&nbsp;<span class="Constant"><a href="https://www.vim.org">https://www.vim.org</a></span>&nbsp;にアクセスして、最新の安定版をダウ<br>
-ンロードしてください。このサイトには、ほとんどのユーザーがすぐに使用できる<br>
-Windows インストーラへのリンクがあります。<br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">2. winget (Windows パッケージマネージャー) の使用</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">1. winget (Windows パッケージマネージャー) の使用</span><br>
 <br>
 コマンドラインの使用を好む場合、Windows の組み込みパッケージマネージャーを使っ<br>
-て安定版の Vim を素早くインストールできます:<br>
+て安定版の ViAI を素早くインストールできます:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;winget install vim.vim</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;winget install viai.viai</div>
 <br>
 または、最新のナイトリーバージョンをダウンロードするには、以下のコマンドを使用<br>
 します:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;winget install vim.vim.nightly</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;winget install viai.viai.nightly</div>
 <br>
 この方法によって、最小限の手間で最新バージョンを入手できます。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">3. GitHub インストーラ (すべてのアーキテクチャ)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">2. GitHub インストーラ (すべてのアーキテクチャ)</span><br>
 <br>
 インストールをさらに制御するには (または ARM などの特定の CPU アーキテクチャを<br>
 使用している場合)、公式 GitHub リポジトリにアクセスしてください:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/vim/vim-win32-installer/">https://github.com/vim/vim-win32-installer/</a></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/viai-editor/viai-win32-installer/">https://github.com/viai-editor/viai-win32-installer/</a></span><br>
 <br>
 このリポジトリは、以下の毎日のインストーラとポータブル zip アーカイブを提供し<br>
 ます:<br>
@@ -231,19 +216,19 @@ Windows インストーラへのリンクがあります。<br>
 <br>
 ナイトリービルドや特定の設定が必要な場合に最適なオプションです<br>
 <br>
-提供されているバイナリに、必要な機能が不足している場合は、自分で Vim をコンパ<br>
-イルしてみてください。ソースのアーカイブはバイナリと同じ場所にあります。対応す<br>
-る Makefile が用意されているコンパイラも必要です。Microsoft Visual C, MinGW と<br>
-Cygwin のコンパイラが使えます。詳しくは &quot;src/INSTALLpc.txt&quot; を見てください。<br>
+提供されているバイナリに、必要な機能が不足している場合は、自分で ViAI をコンパ<br>
+イルしてみてください。対応する Makefile が用意されているコンパイラも必要です。<br>
+Microsoft Visual C, MinGW と Cygwin のコンパイラが使えます。詳しくは<br>
+&quot;src/INSTALLpc.txt&quot; を見てください。<br>
 ソースは以下から入手できます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/vim/vim">https://github.com/vim/vim</a></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/viai-editor/viai">https://github.com/viai-editor/viai</a></span><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_90.html#90.3" name="90.3">90.3</a>&nbsp;&nbsp;アップグレード<br>
 <br>
-既に Vim がインストールされているところに新たに Vim をインストールする方法を説<br>
-明します。<br>
+既に ViAI がインストールされているところに新たに ViAI をインストールする方法を<br>
+説明します。<br>
 <br>
 <br>
 <span class="Statement">Unix</span><br>
@@ -251,11 +236,11 @@ Cygwin のコンパイラが使えます。詳しくは &quot;src/INSTALLpc.txt&
 &quot;make install&quot; を実行すると、ランタイムファイルはバージョンごとのディレクトリ<br>
 にコピーされます。つまり以前のバージョンは上書きされません。複数のバージョンを<br>
 同時に使うことができます。<br>
-古いバージョンの &quot;vim&quot; 実行可能ファイルは上書きされます。古い実行可能ファイル<br>
+古いバージョンの &quot;viai&quot; 実行可能ファイルは上書きされます。古い実行可能ファイル<br>
 が必要ない場合は単に &quot;make install&quot; を実行してください。ランタイムファイルは手<br>
 動で削除します。古いバージョンのランタイムディレクトリを削除するだけです。例:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm -rf /usr/local/share/vim/vim74</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm -rf /usr/local/share/viai/viai10</div>
 <br>
 普通はこのディレクトリ以下のファイルが変更されることはありません。しかし、例え<br>
 ば &quot;filetype.vim&quot; などを変更した場合は、削除する前にその変更を新バージョンの方<br>
@@ -265,21 +250,21 @@ Cygwin のコンパイラが使えます。詳しくは &quot;src/INSTALLpc.txt&
 う名前でインストールしてください。configure に引数を設定する必要があります。<br>
 例:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;./configure --with-vim-name=vim8</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;./configure --with-vim-name=viai11</div>
 <br>
 &quot;make install&quot; を実行する前に &quot;make -n install&quot; を実行し、大事なファイルが上書<br>
 きされないか確認してください。<br>
 評価の結果、新しいバージョンに切り替えると決めたら、実行可能ファイルの名前を変<br>
 更します。例:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mv /usr/local/bin/vim8 /usr/local/bin/vim</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mv /usr/local/bin/viai11 /usr/local/bin/viai</div>
 <br>
 <br>
 <span class="Statement">MS-Windows</span><br>
 <br>
 アップグレードは新しいバージョンをインストールするのとほぼ同じです。古いバー<br>
 ジョンと同じ場所にファイルを展開してください。新しいディレクトリ (例えば<br>
-&quot;vim82&quot;) が作成され、その下に新しいバージョンがコピーされます。ランタイムファ<br>
+&quot;viai11&quot;) が作成され、その下に新しいバージョンがコピーされます。ランタイムファ<br>
 イル、vimrc、viminfo などはそのまま残ります。<br>
 古いものをそのままにして新しいバージョンを実行したい場合は、多少の手作業が必要<br>
 です。install プログラムを実行すると、古いバージョンのためのファイルがいくつか<br>
@@ -292,19 +277,19 @@ Cygwin のコンパイラが使えます。詳しくは &quot;src/INSTALLpc.txt&
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_90.html#90.4" name="90.4">90.4</a>&nbsp;&nbsp;よくある問題<br>
 <br>
-Vim のインストール時に起こる問題と、その解決方法を説明します。インストールに関<br>
-する質問にも答えます。<br>
+ViAI のインストール時に起こる問題と、その解決方法を説明します。インストールに<br>
+関する質問にも答えます。<br>
 <br>
 <br>
-Q: 私には root 権限がありません。Vim をインストールできますか？ (Unix)<br>
+Q: 私には root 権限がありません。ViAI をインストールできますか？ (Unix)<br>
 <br>
-次のような引数を付けて configure を実行してください。この例では $HOME/vim に<br>
-Vim がインストールされます:<br>
+次のような引数を付けて configure を実行してください。この例ではホームディレク<br>
+トリに ViAI がインストールされます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;./configure --prefix=$HOME</div>
 <br>
-自分のディレクトリに Vim がコピーされます。エディタを実行するには $HOME/bin に<br>
-パスを通す必要があります。<a class="Identifier" href="usr_90.html#install-home">install-home</a>&nbsp;も参照。<br>
+自分のディレクトリに ViAI がコピーされます。エディタを実行するには $HOME/bin<br>
+にパスを通す必要があります。<a class="Identifier" href="usr_90.html#install-home">install-home</a>&nbsp;も参照。<br>
 <br>
 <br>
 Q: 私の画面では表示される色が正しくありません (Unix)<br>
@@ -314,8 +299,8 @@ Q: 私の画面では表示される色が正しくありません (Unix)<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo $TERM</div>
 <br>
 表示された端末タイプが正しくない場合はそれを修正します。詳しくは&nbsp;<a class="Identifier" href="usr_06.html#06.2">06.2</a>&nbsp;を参照<br>
-してください。あるいは、gvim と呼ばれる GUI 版の Vim を使ってください。GUI な<br>
-ら端末を正しく設定する必要はありません。<br>
+してください。あるいは、gviai と呼ばれる GUI 版の ViAI を使ってください。GUI<br>
+なら端末を正しく設定する必要はありません。<br>
 <br>
 <br>
 Q: Backspace キーと Delete キーが正しく動いていないようです<br>
@@ -331,13 +316,6 @@ Q: Backspace キーと Delete キーが正しく動いていないようです<b
 ^V<span class="Special">&lt;Del&gt;</span>&nbsp;は&nbsp;<span class="Special">CTRL-V</span>&nbsp;を押してから Delete キーを押します。この二行を vimrc ファイ<br>
 ルに書いておくこともできます (<a class="Identifier" href="usr_05.html#05.1">05.1</a>参照)。ただし、この方法は端末を変更すると<br>
 機能しなくなります。これ以外の解決方法は&nbsp;<a class="Identifier" href="options.html#:fixdel">:fixdel</a>&nbsp;を参照してください。<br>
-<br>
-<br>
-Q: 私は RedHat Linux を使っています。システム付属の Vim は使えますか？<br>
-<br>
-RedHat にはデフォルトで最小構成の Vim がインストールされます。<br>
-&quot;Vim-enhanced-version.rpm&quot; のような名前の RPM パッケージを探して、それをインス<br>
-トールしてください。<br>
 <br>
 <br>
 Q: テキストを色付きで表示するには？ プラグインを動かすには？<br>
@@ -368,14 +346,13 @@ Vim-online サイト (<span class="Constant"><a href="http://vim.sf.net">http://
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_90.html#90.5" name="90.5">90.5</a>&nbsp;&nbsp;アンインストール<br>
 <br>
-Vim をアンインストールする機会はあまりないと思いますが、その方法を説明します。<br>
+ViAI をアンインストールする機会はあまりないと思いますが、その方法を説明します。<br>
 <br>
 <br>
 <span class="Statement">Unix</span><br>
 <br>
-Vim をパッケージからインストールした場合は、パッケージマネージャーを確認し、<br>
-パッケージの除去方法を調べてください。<br>
-ソースからインストールした場合は、次のコマンドでアンインストールできます:<br>
+ViAI をソースからインストールした場合は、次のコマンドでアンインストールできま<br>
+す:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make uninstall</div>
 <br>
@@ -383,60 +360,48 @@ Vim をパッケージからインストールした場合は、パッケージ�
 た場合は、この方法は使えません。手作業でファイルを削除してください。例えば<br>
 &quot;/usr/local&quot; にインストールした場合は以下のファイルを root 権限で削除します:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm -rf /usr/local/share/vim/vim82<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/eview<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/evim<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/ex<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/gview<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/gvim<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/gvim<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/gvimdiff<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/rgview<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/rgvim<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/rview<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/rvim<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/rvim<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/view<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/vim<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/vimdiff<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/vimtutor<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/xxd<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/man/man1/eview.1<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/man/man1/evim.1<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/man/man1/ex.1<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/man/man1/gview.1<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/man/man1/gvim.1<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/man/man1/gvimdiff.1<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/man/man1/rgview.1<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/man/man1/rgvim.1<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/man/man1/rview.1<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/man/man1/rvim.1<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/man/man1/view.1<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/man/man1/vim.1<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/man/man1/vimdiff.1<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/man/man1/vimtutor.1<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/man/man1/xxd.1</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm -rf /usr/local/share/viai/viai10<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/eviai<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/gviai<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/gviaidiff<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/rgviai<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/rviai<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/viai<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/viaidiff<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/share/man/man1/eviai.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/share/man/man1/gviai.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/share/man/man1/gviaidiff.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/share/man/man1/rgviai.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/share/man/man1/rviai.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/share/man/man1/viai.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/share/man/man1/viaidiff.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/share/applications/gviai.desktop<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/share/applications/viai.desktop<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/share/icons/hicolor/48x48/apps/gviai.png<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/share/icons/hicolor/scalable/apps/gviai.svg<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/share/icons/locolor/16x16/apps/gviai.png<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/share/icons/locolor/32x32/apps/gviai.png</div>
 <br>
 <br>
 <span class="Statement">MS-Windows</span><br>
 <br>
-インストーラを使ってインストールした場合は、Vim の実行可能ファイルと同じディレ<br>
-クトリ (例: &quot;c:\vim\vim82&quot;) にある &quot;uninstall-gui&quot; プログラムを実行してくださ<br>
-い。スタートメニューに登録した場合は、そこから起動しても構いません。それによっ<br>
-て、ほとんどのファイルと、メニューと、デスクトップのショートカットが削除されま<br>
-す。いくつかのファイルは削除されずに残るかもしれませんが、それらを削除するには<br>
-Windows の再起動が必要です。<br>
-&quot;vim&quot; ディレクトリをまるごと削除するという方法もあります。あなたが作成した<br>
-vimrc ファイルやランタイムファイルがそこに保存されている場合は慎重に実行してく<br>
-ださい。<br>
+インストーラを使ってインストールした場合は、ViAI の実行可能ファイルと同じディ<br>
+レクトリにある &quot;uninstall-gui&quot; プログラムを実行してください。スタートメニュー<br>
+に登録した場合は、そこから起動しても構いません。それによって、ほとんどのファイ<br>
+ルと、メニューと、デスクトップのショートカットが削除されます。いくつかのファイ<br>
+ルは削除されずに残るかもしれませんが、それらを削除するには Windows の再起動が<br>
+必要です。<br>
+ViAI のルートディレクトリをまるごと削除するという方法もあります。あなたが作成<br>
+した vimrc ファイルやランタイムファイルがそこに保存されている場合は慎重に実行<br>
+してください。<br>
 <br>
 zip アーカイブからインストールした場合は、&quot;uninstall&quot; プログラムを使ってくださ<br>
-い。&quot;install&quot; プログラムと同じディレクトリにあります (例: &quot;c:\vim\vim82&quot;)。コ<br>
-ントロールパネルの「アプリケーションの追加と削除」からも削除できます。<br>
+い。&quot;install&quot; プログラムと同じディレクトリにあります (例: &quot;c:\viai\viai10&quot;)。<br>
+コントロールパネルの「アプリケーションの追加と削除」からも削除できます。<br>
 ただし、これはレジストリの登録を削除するだけです。ファイルの削除は自分でやる必<br>
-要があります。単に &quot;vim\vim82&quot; をまるごと削除します。そこにあなたが変更を加え<br>
-たファイルは保存されていないと思いますが、念のため確認してください。<br>
-&quot;vim&quot; ディレクトリにあなたが作成した vimrc ファイルやランタイムファイルが入っ<br>
+要があります。単に &quot;viai\viai10&quot; をまるごと削除します。そこにあなたが変更を加<br>
+えたファイルは保存されていないと思いますが、念のため確認してください。<br>
+&quot;viai&quot; ディレクトリにあなたが作成した vimrc ファイルやランタイムファイルが入っ<br>
 ているなら、それらは残しておいた方がいいかもしれません。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>

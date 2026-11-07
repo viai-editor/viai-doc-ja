@@ -3,10 +3,10 @@ layout: viai-doc
 helpname: 'gui_w32'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="gui_w32.html" name="gui_w32.txt">gui_w32.txt</a>&nbsp;&nbsp; For&nbsp;<span class="Identifier">Vim バージョン 9.2.</span>&nbsp;&nbsp;Last change: 2026 May 25<br>
+<a class="Constant" href="gui_w32.html" name="gui_w32.txt">gui_w32.txt</a>&nbsp;&nbsp; For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 May 25<br>
 <br>
 <br>
-<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIM リファレンスマニュアル&nbsp;&nbsp;&nbsp;&nbsp;by Bram Moolenaar</span><br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
 Win32でのVimのグラフィカルユーザーインターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#gui-w32" name="gui-w32">gui-w32</a>&nbsp;<a class="Constant" href="gui_w32.html#win32-gui" name="win32-gui">win32-gui</a><br>
@@ -34,13 +34,13 @@ GUIでスタートする。<br>
 GUIは常にWindowsのサブシステムとして実行される。ほとんどのシェルはVimを起動し<br>
 た直後にコマンドプロンプトへ自動的に復帰する。そうでなかったら、&quot;start&quot; コマン<br>
 ドを使うと良い:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start gvim [options] file ..</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start gviai [options] file ..</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#E988" name="E988">E988</a><br>
-コンソールバージョンに&nbsp;<a class="Identifier" href="starting.html#-g">-g</a>&nbsp;オプションを付けても gvim.exe が実行されて GUI を<br>
+コンソールバージョンに&nbsp;<a class="Identifier" href="starting.html#-g">-g</a>&nbsp;オプションを付けても gviai.exe が実行されて GUI を<br>
 スタートできる:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim -g [options] file ..</div>
-この機能を動作させるには、gvim.exe が vim.exe と同一のディレクトリに存在し、か<br>
-つこの機能を有効にしてコンパイルされていなければならない。<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;viai -g [options] file ..</div>
+この機能を動作させるには、gviai.exe が viai.exe と同一のディレクトリに存在し、<br>
+かつこの機能を有効にしてコンパイルされていなければならない。<br>
 <br>
 コンソールバージョンから&nbsp;<a class="Comment" href="gui_x11.html#:gui">:gui</a>&nbsp;を使うこともできる。しかし、これは実験的な機能<br>
 で、かつこの機能を有効にしてコンパイルされていなければならない。<br>
@@ -119,39 +119,40 @@ Vimにファイルを送ると、Vimはファイルのあるディレクトリ�
 まうことに注意。これはWindowsの &quot;送る&quot; の仕組みによる制限である。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#notepad" name="notepad">notepad</a><br>
-notepad.exe(メモ帳)をgvim.exeに置き換えてしまうこともできるが、これには副作用<br>
-もある。いくつかのプログラムはnotepad.exeに依存していて、例えばファイルを印刷<br>
-するために &quot;notepad -p&quot; を使っているからである。メモ帳(notepad)はそのままにし<br>
-ておいて、Vimを起動するためのほかの方法を使ったほうが良い。<br>
+notepad.exe(メモ帳) をgviai.exeに置き換えてしまうこともできるが、これには副作<br>
+用もある。いくつかのプログラムはnotepad.exeに依存していて、例えばファイルを印<br>
+刷するために &quot;notepad -p&quot; を使っているからである。メモ帳 (notepad) はそのまま<br>
+にしておいて、Vimを起動するためのほかの方法を使ったほうが良い。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#win32-popup-menu" name="win32-popup-menu">win32-popup-menu</a><br>
-もっと抜本的なアプローチは、右マウスボタンメニューに &quot;Edit with Vim&quot; という項<br>
+もっと抜本的なアプローチは、右マウスボタンメニューに &quot;Edit with ViAI&quot; という項<br>
 目を追加するものである。これを使うとあらゆるファイルをVimで編集できるようにな<br>
 る。<br>
 <br>
 これは上述のファイルの関連付けと共存することができる。ファイルの関連付けは、<br>
 Vimで開始することを「デフォルトのアクション」にしてしまう点が違う。&quot;Edit with<br>
-Vim&quot; メニュー項目を使うと、ダブルクリックで開ける既に存在するファイルの関連付<br>
+ViAI&quot; メニュー項目を使うと、ダブルクリックで開ける既に存在するファイルの関連付<br>
 けはそのままにして、したい時にはいつでもVimでファイルを編集することができる。<br>
 例えば、&quot;*.mak&quot; はmakeプログラムに関連付けることができる。この場合、そのファイ<br>
-ルをダブルクリックすればmakefileが実行されるし、&quot;Edit with Vim&quot; を選べば<br>
+ルをダブルクリックすればmakefileが実行されるし、&quot;Edit with ViAI&quot; を選べば<br>
 makefileを編集することができる。<br>
 <br>
-どんなファイルでも選択し、右クリックで &quot;Edit with gvim&quot; と呼ばれるメニューオプ<br>
+どんなファイルでも選択し、右クリックで &quot;Edit with ViAI&quot; と呼ばれるメニューオプ<br>
 ションを表示させることができる。このメニューオプションを選択すると、選択した<br>
-ファイルがgvimによって開かれる。複数のファイルを選択した場合には、二つのメ<br>
-ニューオプションが提示されるだろう:<br>
-&quot;Edit with multiple gvims&quot;&nbsp;&nbsp;-- 1つのファイルにつき1つのgvimが起動される<br>
-&quot;Edit with single gvim&quot;&nbsp;&nbsp;&nbsp;&nbsp; -- 選んだ全てのファイルが1つのgvimで開かれる<br>
-さらに、もしもすでにgvimが起動しているなら:<br>
-&quot;Edit with existing gvim&nbsp;&nbsp;&nbsp;&nbsp;-- すでに起動しているgvimでそのファイルの編集を開<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 始する。<br>
+ファイルがgviaiによって開かれる。複数のファイルを選択した場合には、代わりに以<br>
+下のメニューオプションが提示されるだろう:<br>
+&quot;Edit with ViAI using tabpages&quot; -- ファイルごとにタブページを持つ1つのgviai<br>
+&quot;Edit with single ViAI&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -- 選んだ全てのファイルが1つのgviaiで開かれる<br>
+&quot;Diff with ViAI&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- 差分モードの1つのgviai (最大4ファイル)<br>
+さらに、もしもすでにgviaiが起動しているなら:<br>
+&quot;Edit with existing ViAI&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -- すでに起動しているgviaiでそのファイルの編<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 集を開始する。<br>
 <br>
-&quot;edit with existing Vim&quot; メニューはレジストリを設定することで無効化できる。<br>
-HKLM\Software\Vim\Gvim に DisableEditWithExisting という名前のエントリを追加す<br>
-ればよい。値は何でもよい。<br>
+&quot;Edit with existing ViAI&quot; メニューはレジストリを設定することで無効化できる。<br>
+HKLM\Software\ViAI\Gviai に DisableEditWithExisting という名前のエントリを追加<br>
+すればよい。値は何でもよい。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#install-registry" name="install-registry">install-registry</a><br>
-&quot;install.exe&quot; プログラムを使用すれば、簡単に &quot;Edit with Vim&quot; メニュー項目を追<br>
+&quot;install.exe&quot; プログラムを使用すれば、簡単に &quot;Edit with ViAI&quot; メニュー項目を追<br>
 加することができる。これはレジストリに幾つかの項目を書き加える。<br>
 <br>
 同じことを手動で行うこともできる。これは非常に複雑である! できればinstall.exe<br>
@@ -160,28 +161,28 @@ HKLM\Software\Vim\Gvim に DisableEditWithExisting という名前のエント�
 1. &quot;regedit&quot; でレジストリエディタを起動する。<br>
 2. 次のキーを追加する:<br>
 &nbsp;&nbsp;&nbsp;<span class="PreProc">キー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; キーの名前&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;値</span><br>
-&nbsp;&nbsp; HKEY_CLASSES_ROOT\CLSID\<span class="Special">{51EEE242-AD87-11d3-9C1E-0090278BBD99}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{default}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vim Shell Extension<br>
-&nbsp;&nbsp; HKEY_CLASSES_ROOT\CLSID\<span class="Special">{51EEE242-AD87-11d3-9C1E-0090278BBD99}</span>\InProcServer32<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{default}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{path}</span>\gvimext.dll<br>
+&nbsp;&nbsp; HKEY_CLASSES_ROOT\CLSID\<span class="Special">{F191A2A2-D786-484E-A3F4-8A75FDD9AC00}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{default}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ViAI Shell Extension<br>
+&nbsp;&nbsp; HKEY_CLASSES_ROOT\CLSID\<span class="Special">{F191A2A2-D786-484E-A3F4-8A75FDD9AC00}</span>\InProcServer32<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{default}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{path}</span>\gviaiext.dll<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ThreadingModel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apartment<br>
-&nbsp;&nbsp; HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\gvim<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{default}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{51EEE242-AD87-11d3-9C1E-0090278BBD99}</span><br>
+&nbsp;&nbsp; HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\gviai<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{default}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{F191A2A2-D786-484E-A3F4-8A75FDD9AC00}</span><br>
 &nbsp;&nbsp; HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Approved<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{51EEE242-AD87-11d3-9C1E-0090278BBD99}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim Shell Extension<br>
-&nbsp;&nbsp; HKEY_LOCAL_MACHINE\Software\Vim\Gvim<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{path}</span>\gvim.exe<br>
-&nbsp;&nbsp; HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\vim 8.2<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DisplayName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vim 8.2: Edit with Vim popup menu entry<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{F191A2A2-D786-484E-A3F4-8A75FDD9AC00}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ViAI Shell Extension<br>
+&nbsp;&nbsp; HKEY_LOCAL_MACHINE\Software\ViAI\Gviai<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{path}</span>\gviai.exe<br>
+&nbsp;&nbsp; HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\ViAI 1.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DisplayName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ViAI 1.0<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UninstallString&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{path}</span>\uninstall.exe<br>
 <br>
 &nbsp;&nbsp;&nbsp;<span class="Special">{path}</span>は実行可能ファイルのあるディレクトリパスに置き換える。<br>
 &nbsp;&nbsp;&nbsp;<span class="Special">{default}</span>はキー自身の値なので、タイプしない。<br>
 <br>
-ポップアップメニューから &quot;Edit with Vim&quot; を削除するには、上記のレジストリ項目<br>
-を削除すればよい。uninstall.exeプログラムは同じことをしてくれる。Windows標準<br>
-の &quot;アプリケーションの追加と削除&quot; のリストの、エントリを使うこともできる。<br>
+ポップアップメニューから &quot;Edit with ViAI&quot; を削除するには、上記のレジストリ項目<br>
+を削除すればよい。uninstall.exeプログラムは同じことをしてくれる。Windows標準の<br>
+&quot;アプリケーションの追加と削除&quot; のリストの、エントリを使うこともできる。<br>
 <br>
 このエントリがファイルタイプの関連付けを抑制してしまうことに気がついたら、手動<br>
 で関連付けをやり直す(上記を参考に、Windowsのエクスプローラーを使って)。これは<br>
@@ -198,8 +199,8 @@ Windows NTの幾つかのバージョンでだけ起こるらしい(Windowsの�
 <br>
 Vimのインストーラを使うならエクスプローラーのメニューの &quot;アプリケーションから<br>
 開く&quot; にVimを加えるか選択することができる。これはVimでいろんなファイルを編集す<br>
-るなら重要である。(不明瞭な理由で)全てのファイルには使えない。したがって &quot;Edit<br>
-with Vim&quot; メニューの方が使いやすい。<br>
+るなら重要である。(不明瞭な理由で) 全てのファイルには使えない。したがって<br>
+&quot;Edit with ViAI&quot; メニューの方が使いやすい。<br>
 <br>
 これを追加する理由の一つがインターネットエクスプローラーから直接ファイルを編集<br>
 できるようにするためである。これを有効にするには &quot;Tools&quot; メニューから<br>
@@ -212,22 +213,22 @@ with Vim&quot; メニューの方が使いやすい。<br>
 <span class="PreProc">----------------------------------------------------------</span><br>
 REGEDIT4<br>
 <br>
-[HKEY_CLASSES_ROOT\Applications\gvim.exe]<br>
+[HKEY_CLASSES_ROOT\Applications\gviai.exe]<br>
 <br>
-[HKEY_CLASSES_ROOT\Applications\gvim.exe\shell]<br>
+[HKEY_CLASSES_ROOT\Applications\gviai.exe\shell]<br>
 <br>
-[HKEY_CLASSES_ROOT\Applications\gvim.exe\shell\edit]<br>
+[HKEY_CLASSES_ROOT\Applications\gviai.exe\shell\edit]<br>
 <br>
-[HKEY_CLASSES_ROOT\Applications\gvim.exe\shell\edit\command]<br>
-@=&quot;c:\\vim\\vim82\\gvim.exe \&quot;%1\&quot;&quot;<br>
+[HKEY_CLASSES_ROOT\Applications\gviai.exe\shell\edit\command]<br>
+@=&quot;c:\\viai\\viai10\\gviai.exe \&quot;%1\&quot;&quot;<br>
 <br>
-[HKEY_CLASSES_ROOT\.htm\OpenWithList\gvim.exe]<br>
+[HKEY_CLASSES_ROOT\.htm\OpenWithList\gviai.exe]<br>
 <br>
-[HKEY_CLASSES_ROOT\*\OpenWithList\gvim.exe]<br>
+[HKEY_CLASSES_ROOT\*\OpenWithList\gviai.exe]<br>
 <br>
 <span class="PreProc">----------------------------------------------------------</span><br>
 <br>
-&quot;c:\\vim\\vim82&quot; をgvim.exeが実際にある場所に変更すること。<br>
+&quot;c:\\viai\\viai10&quot; をgviai.exeが実際にある場所に変更すること。<br>
 <br>
 これをアンインストールするにはVimのアンインストーラを使うか &quot;regedit&quot; を使って<br>
 手作業でレジストリエントリを削除する。<br>
@@ -280,11 +281,11 @@ Vimとは別個のウィンドウを使用する。外部コマンドはちょ�
 されるように、独自の実行環境を獲得する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#win32-vimrun" name="win32-vimrun">win32-vimrun</a><br>
-外部コマンドの実行は &quot;vimrun&quot; コマンドを用いて間接的に行われる。これが働くため<br>
-には &quot;vimrun.exe&quot; コマンドが実行パスになければならない。そうでなければVimの実<br>
-行可能ファイルと同じディレクトリになければならない。&quot;vimrun&quot; を見つけることが<br>
-できなければ、コマンドは直接実行され、そのため外部コマンドの実行が終了するとす<br>
-ぐにDOSウィンドウが閉じられる。<br>
+外部コマンドの実行は &quot;viairun&quot; コマンドを用いて間接的に行われる。これが働くた<br>
+めには &quot;viairun.exe&quot; コマンドが実行パスになければならない。そうでなければVimの<br>
+実行可能ファイルと同じディレクトリになければならない。&quot;viairun&quot; を見つけること<br>
+ができなければ、コマンドは直接実行され、そのため外部コマンドの実行が終了すると<br>
+すぐにDOSウィンドウが閉じられる。<br>
 <span class="Todo">警告:</span>&nbsp;もしも &quot;X&quot; ボタンでこのウィンドウを閉じてしまい、強制終了することを確認<br>
 するウィンドウでアプリケーションを本当に終了してしまうと、Vimも一緒に強制終了<br>
 してしまう!&nbsp;&nbsp;(&quot;:!start&quot; で非同期的に起動されたアプリケーションには、これは当て<br>
@@ -453,11 +454,11 @@ GVim は、MS-Windows で XPM ファイルのサポート付きでビルドす�
 XPM サポートが動作するか試すには、以下を行うこと:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:help<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let runtime = escape($VIMRUNTIME, ' \')<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:exe 'sign define vimxpm icon=' .. runtime .. '\\vim16x16.xpm'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:exe 'sign define vimxpm icon=' .. runtime .. '\\viai16x16.xpm'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:exe 'sign place 1 line=1 name=vimxpm file=' .. expand('%:p')</div>
 <br>
-github から vim16x16.xpm ファイルを入手する必要があるかもしれない:<br>
-<span class="Constant"><a href="https://github.com/vim/vim/blob/master/runtime/vim16x16.xpm">https://github.com/vim/vim/blob/master/runtime/vim16x16.xpm</a></span><br>
+github から viai16x16.xpm ファイルを入手する必要があるかもしれない:<br>
+<span class="Constant"><a href="https://github.com/viai-editor/viai/blob/master/runtime/viai16x16.xpm">https://github.com/viai-editor/viai/blob/master/runtime/viai16x16.xpm</a></span><br>
 <br>
 <br>
 キーコード変換戦略&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#w32-experimental-keycode-trans-strategy" name="w32-experimental-keycode-trans-strategy">w32-experimental-keycode-trans-strategy</a><br>
@@ -490,7 +491,7 @@ ToUnicode() Win API 呼び出しに切り替えられた。このアプローチ
 もできる。例えば、dos プロンプトに以下のように入力する:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set VIM_KEYCODE_TRANS_STRATEGY=experimental<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gvim.exe</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gviai.exe</div>
 <br>
 <br>
 タイトルバー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#gui-w32-title-bar" name="gui-w32-title-bar">gui-w32-title-bar</a><br>
