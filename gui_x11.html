@@ -3,10 +3,10 @@ layout: viai-doc
 helpname: 'gui_x11'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="gui_x11.html" name="gui_x11.txt">gui_x11.txt</a>&nbsp;&nbsp; For&nbsp;<span class="Identifier">Vim バージョン 9.2.</span>&nbsp;&nbsp;Last change: 2026 Aug 10<br>
+<a class="Constant" href="gui_x11.html" name="gui_x11.txt">gui_x11.txt</a>&nbsp;&nbsp; For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Aug 10<br>
 <br>
 <br>
-<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIM リファレンスマニュアル&nbsp;&nbsp;&nbsp;&nbsp;by Bram Moolenaar</span><br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
 Vimのグラフィカルユーザーインターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_x11.html#gui-x11" name="gui-x11">gui-x11</a>&nbsp;<a class="Constant" href="gui_x11.html#GUI-X11" name="GUI-X11">GUI-X11</a><br>
@@ -261,8 +261,8 @@ geometry引数の例:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_x11.html#X11-icon" name="X11-icon">X11-icon</a><br>
 Motifでコンパイルされたときには、Vimはデフォルトで白黒のアイコンを用いる。色付<br>
-きのVimアイコンは$VIMRUNTIME/vim32x32.xpmとして含まれる。GTK+については、組み<br>
-込みのアイコンが用いられる。不幸にも、どのようにしてそれをインストールするか<br>
+きのViAIアイコンは$VIMRUNTIME/viai32x32.xpmとして含まれる。GTK+については、組<br>
+み込みのアイコンが用いられる。不幸にも、どのようにしてそれをインストールするか<br>
 は、あなたのウィンドウマネージャーに依存する。これを使用するときには、白黒のア<br>
 イコンを取り除くために、<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;から 'i' フラグを取り除くとよい:<br>
 <div class="helpExample">&nbsp;&nbsp;:set guioptions-=i</div>
@@ -270,7 +270,7 @@ Motifでコンパイルされたときには、Vimはデフォルトで白黒の
 fvwm*ファミリのウィンドウマネージャーの 1 つを使用するならば、単にあなたの<br>
 .fvwm2rc 構成ファイルにこの行を追加するとよい:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;Style &quot;vim&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Icon vim32x32.xpm</div>
+<div class="helpExample">&nbsp;&nbsp;Style &quot;vim&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Icon viai32x32.xpm</div>
 <br>
 アイコンファイルの場所がウィンドウマネージャーのImagePath文と一致することを確<br>
 かめなくてはならない。あなたの.fvwm2rcを修正するか、あるいは事前に定義された<br>
@@ -281,10 +281,10 @@ fvwm*ファミリのウィンドウマネージャーの 1 つを使用するな
 <span class="Todo">Note</span>: 古いバージョンのfvwmでは &quot;ImagePath&quot; ではなく &quot;IconPath&quot; を使う。<br>
 <br>
 CDE &quot;dtwm&quot; (Motifから派生)については、.Xdefaultsにこの行を追加するとよい:<br>
-<div class="helpExample">&nbsp;&nbsp; Dtwm*Vim*iconImage: /usr/local/share/vim/vim32x32.xpm</div>
+<div class="helpExample">&nbsp;&nbsp; Dtwm*Vim*iconImage: /usr/local/share/viai/viai32x32.xpm</div>
 <br>
 &quot;mwm&quot; (Motifウィンドウマネージャー)については、その行はこうなるだろう:<br>
-<div class="helpExample">&nbsp;&nbsp; Mwm*Vim*iconImage: /usr/local/share/vim/vim32x32.xpm</div>
+<div class="helpExample">&nbsp;&nbsp; Mwm*Vim*iconImage: /usr/local/share/viai/viai32x32.xpm</div>
 <br>
 <br>
 <span class="PreProc">X11で利用できるマウスポインタ</span><br>
@@ -339,9 +339,9 @@ GTK4 GUI を使用する場合、以下のもののみがサポートされる:<
 GTK4 固有のコマンドライン引数:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">コマンドライン引数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;意味</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;--prg-name&nbsp;<span class="Special">{name}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; g_set_prgname() に渡される引数である。指定されない<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;場合は &quot;gvim&quot; が使用される。Wayland 上では、これに<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;よりアプリケーション ID (X11 の WM_CLASS に相当す<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;るもの) が設定される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;場合は &quot;gviai&quot; が使用される。Wayland 上では、これ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;によりアプリケーション ID (X11 の WM_CLASS に相当<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;するもの) が設定される。<br>
 <br>
 フォントを設定するには、<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;を参照。GTK については、これをするメニューオ<br>
 プションもある。<br>
