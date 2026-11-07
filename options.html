@@ -3,10 +3,10 @@ layout: viai-doc
 helpname: 'options'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="options.html" name="options.txt">options.txt</a>&nbsp;&nbsp;For&nbsp;<span class="Identifier">Vim バージョン 9.2.</span>&nbsp;&nbsp;Last change: 2026 Oct 25<br>
+<a class="Constant" href="options.html" name="options.txt">options.txt</a>&nbsp;&nbsp; For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Oct 25<br>
 <br>
 <br>
-<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIM リファレンスマニュアル&nbsp;&nbsp;&nbsp;&nbsp;by Bram Moolenaar</span><br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
 オプション&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="options.html#options" name="options">options</a><br>
@@ -7568,11 +7568,15 @@ Vim 7.2より新しいバージョンでのみモードラインを使うには�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;印刷用のファイル&nbsp;<a class="Identifier" href="print.html#postscript-print-encoding">postscript-print-encoding</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spell/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スペルチェック用のファイル&nbsp;<a class="Identifier" href="spell.html#spell">spell</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;syntax/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 文法ファイル&nbsp;<a class="Identifier" href="syntax.html#mysyntaxfile">mysyntaxfile</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tutor/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vimtutor用ファイル&nbsp;<a class="Identifier" href="usr_01.html#tutor">tutor</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tutor/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim チュートリアル用ファイル&nbsp;<a class="Identifier" href="usr_01.html#tutor">tutor</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;および、コマンド&nbsp;<a class="Identifier" href="repeat.html#:runtime">:runtime</a>&nbsp;で検索される全てのファイル。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$XDG_CONFIG_HOME については、<a class="Identifier" href="starting.html#xdg-base-dir">xdg-base-dir</a>&nbsp;を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ViAI 自身のユーザー設定が存在する場合 (<a class="Identifier" href="viai.html#viai-config">viai-config</a>&nbsp;を参照)、デフォル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;トは Vim の個人ディレクトリの代わりに、Unix では &quot;$HOME/.viai&quot; または<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$XDG_CONFIG_HOME/viai&quot;、MS-Windows では &quot;$HOME/viaifiles&quot; を使う。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;after&quot; ディレクトリについても同様である。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ほとんどのシステムのデフォルトでは、以下の 5 つの場所を検索するように<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;設定されている:<br>
@@ -10124,6 +10128,9 @@ Vim 7.2より新しいバージョンでのみモードラインを使うには�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{</span><a class="Identifier" href="various.html#+mksession">+mksession</a><span class="Special">&nbsp;機能付きでコンパイルされたときのみ有効}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンド&nbsp;<a class="Identifier" href="starting.html#:mkview">:mkview</a>&nbsp;によるファイルを格納するディレクトリの名前。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$XDG_CONFIG_HOME については、<a class="Identifier" href="starting.html#xdg-base-dir">xdg-base-dir</a>&nbsp;を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ViAI 自身のユーザー設定が存在する場合 (<a class="Identifier" href="viai.html#viai-config">viai-config</a>&nbsp;を参照)、デフォル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;トは Unix では &quot;$HOME/.viai/view&quot; または &quot;$XDG_CONFIG_HOME/viai/view&quot;、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Win32 では &quot;$HOME/viaifiles/view&quot; である。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;環境変数は&nbsp;<a class="Identifier" href="options.html#:set_env">:set_env</a>&nbsp;によって展開される。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;セキュリティ上の理由から、このオプションを&nbsp;<a class="Identifier" href="options.html#modeline">modeline</a>&nbsp;または&nbsp;<a class="Identifier" href="eval.html#sandbox">sandbox</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内で設定することはできない。<br>
@@ -10277,6 +10284,7 @@ Vim 7.2より新しいバージョンでのみモードラインを使うには�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;グローバル<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{</span><a class="Identifier" href="various.html#+viminfo">+viminfo</a><span class="Special">&nbsp;機能付きでコンパイルされたときのみ有効}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;値が空でないとき、viminfo で使われているファイル名を上書きする。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルトのファイル名については&nbsp;<a class="Identifier" href="starting.html#viminfo-file-name">viminfo-file-name</a>&nbsp;を参照。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;NONE&quot; のとき、viminfo の読み込みも書き込みもされない。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このオプションはコマンドラインの&nbsp;<a class="Identifier" href="starting.html#-i">-i</a>&nbsp;フラグで設定することができる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンドラインからの&nbsp;<a class="Identifier" href="starting.html#--clean">--clean</a>&nbsp;フラグはこれを &quot;NONE&quot; に設定する。<br>
