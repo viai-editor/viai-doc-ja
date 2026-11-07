@@ -1,7 +1,7 @@
-*if_ole.txt*	For Vim バージョン 9.2.  Last change: 2026 Feb 14
+*if_ole.txt*	For ViAI バージョン 1.0.  Last change: 2026 Feb 14
 
 
-		  VIM リファレンスマニュアル	by Paul Moore
+		  VIAI リファレンスマニュアル
 
 
 VimへのOLEインターフェイス				*ole-interface*
@@ -20,9 +20,9 @@ src/if_ole.INSTALLを参照}
 ==============================================================================
 1. アクティブにする					*ole-activation*
 
-Vimは、あらゆるオートメーションクライアント、例えばVisual Basic、Python、
-Perlなどからアクセス可能な、OLEオートメーションサーバーとして振舞う。Vimアプリ
-ケーションの "名前" (これはOLE用語で言うところの "ProgID")は、"Vim.Application"
+Vimは、あらゆるオートメーションクライアント、例えばVisual Basic、Python、Perl
+などからアクセス可能な、OLEオートメーションサーバーとして振舞う。Vimアプリケー
+ションの "名前" (これはOLE用語で言うところの "ProgID") は、"ViAI.Application"
 である。
 
 したがって、Vimのインスタンスを起動する(あるいはすでに起動しているインスタンス
@@ -30,21 +30,21 @@ Perlなどからアクセス可能な、OLEオートメーションサーバー�
 
 [Visual Basic] >
 	Dim Vim As Object
-	Set Vim = CreateObject("Vim.Application")
+	Set Vim = CreateObject("ViAI.Application")
 
 [Python] >
 	from win32com.client.dynamic import Dispatch
-	vim = Dispatch('Vim.Application')
+	vim = Dispatch('ViAI.Application')
 
 [Perl] >
 	use Win32::OLE;
-	$vim = new Win32::OLE 'Vim.Application';
+	$vim = new Win32::OLE 'ViAI.Application';
 
 [C#] >
 	// プロジェクトに Vim への参照を追加する。
 	// COM タブを選択する。
-	// "Vim Ole Interface 1.1 Type Library" を選択する。
-	Vim.Vim vimobj = new Vim.Vim();
+	// "ViAI OLE Interface 1.1 Type Library" を選択する。
+	ViAI.ViAI vimobj = new ViAI.ViAI();
 
 Vimは、他の一部のOLEサーバーがサポートしているような、"hidden" なOLEサーバーと
 しての機能をサポートしていない。クライアントがVimのインスタンスを起動する場合、
@@ -125,31 +125,31 @@ VimがOLEオートメーションコマンドを処理する方法は、exコマ
 VimをOLEサーバーとして動作させる前に、システムレジストリに登録する必要がある。
 これを行うには、Vimをひとつの引数 "-register" で実行すればよい。
 							*-register*  >
-	gvim -register
+	gviai -register
 
 
-OLEサーバーが登録されていないとき、OLEをサポートしたgvimを起動すると警告ダイア
-ログが出る。"Yes" を選択するとレジストリに登録できる。
+OLEサーバーが登録されていないとき、OLEをサポートしたgviaiを起動すると警告ダイ
+アログが出る。"Yes" を選択するとレジストリに登録できる。
 
 レジストリが書き込み可能でないときには登録はできない。もし登録できないときは
-"Administrator" 権限でgvimを起動すること。
+"Administrator" 権限でgviaiを起動すること。
 
 いったんVimが登録されると、アプリケーションへのパスはレジストリに保存される。
 Vimを移動、削除、更新する前に、レジストリの項目を "-unregister" スイッチを使っ
 て削除する必要がある。
 							*-unregister*  >
-	gvim -unregister
+	gviai -unregister
 
 OLEメカニズムは、登録されたVimの内、最初に見つけたものを使用する。Vimがすでに
 実行されている場合は、そのVimが使用される。OLEコマンドに影響されないで、(いく
 つかの)Vimセッションを張ろうとする場合は、非OLEバージョンを違うディレクトリに
 置いて使用するとよい。そして、OLEバージョンをパスに含まれないディレクトリに置
-けば、"gvim" とタイプしたとき非OLEバージョンが起動するようになる。
+けば、"gviai" とタイプしたとき非OLEバージョンが起動するようになる。
 
 							*-silent*
 結果を表示するメッセージボックスを表示したくないなら "-silent" を付けること。 >
-	gvim -silent -register
-	gvim -silent -unregister
+	gviai -silent -register
+	gviai -silent -unregister
 
 ==============================================================================
 5. MS Visual Studio との統合				*MSVisualStudio*
@@ -164,7 +164,7 @@ Vim と Visual Studio.Net を連携させる~
 .Net Studio でメニューから[ツール]→[外部ツール]を選択する。
 次を追加する
     タイトル	     - Vim
-    コマンド	     - c:\vim\vim63\gvim.exe
+    コマンド	     - c:\viai\viai10\gviai.exe
     引数	     - --servername VS_NET --remote-silent "+call cursor($(CurLine), $(CurCol))" $(ItemPath)
     初期ディレクトリ - 空
 
