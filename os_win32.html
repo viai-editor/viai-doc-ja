@@ -3,10 +3,10 @@ layout: viai-doc
 helpname: 'os_win32'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="os_win32.html" name="os_win32.txt">os_win32.txt</a>&nbsp;&nbsp;For&nbsp;<span class="Identifier">Vim バージョン 9.2.</span>&nbsp;&nbsp;Last change: 2026 Jul 22<br>
+<a class="Constant" href="os_win32.html" name="os_win32.txt">os_win32.txt</a>&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Jul 22<br>
 <br>
 <br>
-<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIM リファレンスマニュアル&nbsp;&nbsp;&nbsp;&nbsp;by George Reilly</span><br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32" name="win32">win32</a>&nbsp;<a class="Constant" href="os_win32.html#Win32" name="Win32">Win32</a>&nbsp;<a class="Constant" href="os_win32.html#MS-Windows" name="MS-Windows">MS-Windows</a><br>
@@ -206,21 +206,20 @@ Windows 95/98/ME のサポートはパッチ 8.0.0029 にて削除された。�
 <span class="PreProc">==============================================================================</span><br>
 7. インストールパッケージ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-installer" name="win32-installer">win32-installer</a><br>
 <br>
-Windows版のシンプルなインストーラは&nbsp;<span class="Constant"><a href="http://www.vim.org/download.php">http://www.vim.org/download.php</a></span>&nbsp;(安定バー<br>
-ジョン)にあり、ナイトリービルドも<br>
-<span class="Constant"><a href="https://github.com/vim/vim-win32-installer/releases/">https://github.com/vim/vim-win32-installer/releases/</a></span>&nbsp;にある。<br>
+Windows版のインストーラのナイトリービルドは<br>
+<span class="Constant"><a href="https://github.com/viai-editor/viai-win32-installer/releases/">https://github.com/viai-editor/viai-win32-installer/releases/</a></span>&nbsp;にある。<br>
 <br>
 ナイトリービルドには32bitと64bitのビルドが含まれ、ほとんどの機能が有効になって<br>
 おり通常は追加の暗号化署名されたインストーラなので、Windowsから問題報告される<br>
 ことはない。<br>
 <br>
-インストーラを利用するには、単純にexeファイルを実行する。以下のスイッチもサポー<br>
-トされる:<br>
+インストーラを利用するには、単純にexeファイルを実行する。例えば<br>
+&quot;gviai_1.0.0033_x64.exe&quot;。以下のスイッチもサポートされる:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;gvim_&lt;version&gt;.exe /S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; ダイアログなしのサイレントインストール<br>
-&nbsp;&nbsp;&nbsp;&nbsp;gvim_&lt;version&gt;.exe /D=C:\vim&nbsp;&nbsp;&nbsp;&nbsp;-&gt; c:\vim ディレクトリへのインストール<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt; /D は最後の引数でなくてはいけない<br>
-&nbsp;&nbsp;&nbsp;&nbsp;gvim_&lt;version&gt;.exe /S /D=c:\vim -&gt; c:\vim へのサイレントインストール</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;{installer} /S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt; ダイアログなしのサイレントインストール<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{installer} /D=C:\viai&nbsp;&nbsp;&nbsp;&nbsp;-&gt; c:\viai ディレクトリへのインストール<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt; /D は最後の引数でなくてはいけない<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{installer} /S /D=c:\viai -&gt; c:\viai へのサイレントインストール</div>
 <br>
 $VIM 環境変数を設定することでもデフォルトのインストールディレクトリを指定する<br>
 ことができる。<br>
@@ -353,9 +352,9 @@ A. あなたの実際の目的に応じて 3 つの解決方法がある:<br>
 &nbsp;&nbsp; 普通に実行する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#windows-icon" name="windows-icon">windows-icon</a><br>
-Q. Vimのアイコンが好きではないのだが、変えられるだろうか？<br>
-A. はい、<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;のディレクトリの中の bitmaps/vim.ico に好きなアイコンを<br>
-&nbsp;&nbsp; 置くとよい。例: ~/vimfiles/bitmaps/vim.ico<br>
+Q. ViAIのアイコンが好きではないのだが、変えられるだろうか？<br>
+A. はい、<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;のディレクトリの中の bitmaps/viai.ico に好きなアイコン<br>
+&nbsp;&nbsp; を置くとよい。例: ~/vimfiles/bitmaps/viai.ico<br>
 <br>
 <br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
