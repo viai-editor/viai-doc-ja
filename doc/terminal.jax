@@ -1,7 +1,7 @@
-*terminal.txt*	For Vim バージョン 9.2.  Last change: 2026 Aug 30
+*terminal.txt*	For ViAI バージョン 1.0.  Last change: 2026 Aug 30
 
 
-		  VIM リファレンスマニュアル    by Bram Moolenaar
+		  VIAI リファレンスマニュアル
 
 
 端末ウィンドウサポート				*terminal* *terminal-window*
@@ -459,6 +459,8 @@ UNIX ではすべての種類のコマンドを実行可能とするために pt
     COLORS		色数 't_Co' (GUIでは 256*256*256)
     VIM_SERVERNAME	v:servername
     VIM_TERMINAL	v:version
+ViAI は、自身で設定した $VIM と $VIMRUNTIME は渡さない。|viai-vimruntime| を参
+照。
 
 
 MS-Windows ~
@@ -492,6 +494,8 @@ ConPTY のサポートは、Windows 11 の最初のリリースでは安定し�
 
 環境変数は実行中のジョブに情報を渡すために使用される:
     VIM_SERVERNAME	v:servername
+ViAI は、自身で設定した $VIM と $VIMRUNTIME は渡さない。|viai-vimruntime| を参
+照。
 
 							*git-vimdumps*
 `git-vimdumps` という git-difftool 拡張機能があり、これを使用するとスクリーン
@@ -1224,8 +1228,8 @@ Vimの画面ダンプテストを書く ~
 - コマンド送信と状態の確認を繰り返す。
 - 最後に StopVimInTerminal() を呼び出してVimを停止する。
 
-初めてこれを行うときにはスクリーンダンプはまだありません。空のファイルを作成す
-る。例: >
+初めてこれを行うときにはスクリーンダンプはまだない。空のファイルを作成する。
+例: >
 	touch src/testdir/dumps/Test_function_name_01.dump
 
 テストが失敗したら、参照ダンプと失敗したダンプを比較するコマンドを提供する。

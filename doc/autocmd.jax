@@ -1,7 +1,7 @@
-*autocmd.txt*	For Vim バージョン 9.2.  Last change: 2026 Sep 01
+*autocmd.txt*	For ViAI バージョン 1.0.  Last change: 2026 Nov 01
 
 
-		  VIM リファレンスマニュアル	by Bram Moolenaar
+		  VIAI リファレンスマニュアル
 
 
 自動コマンド					*autocommand* *autocommands*
@@ -536,11 +536,11 @@ BufRead or BufReadPost		新しいバッファの編集を始めたときの、�
 				る前。モードラインを実行した後に何かするには
 				|BufWinEnter|を参照すること。
 				発行される場合:
-				- 無名バッファを保存してバッファに名前がついた
-				  とき
 				- ファイルのリカバリーが成功した後
 				- filetypedetect グループを対象として
-				  ":filetype detect" を実行したとき
+				  ":filetype detect" を実行したとき、または無
+				  名バッファを保存してバッファに名前がついたと
+				  き
 				発行されない場合:
 				- `:read file` コマンド
 				- ファイルが存在しないとき
@@ -565,7 +565,7 @@ BufUnload			バッファを解放する前。これは、バッファ内のテ�
 				他のバッファやウィンドウに切り替えないこと。問
 				題が発生するだろう。
 				終了時に v:dying が 2 以上のときはこのイベント
-				は発生しません。
+				は発生しない。
 							*BufWinEnter*
 BufWinEnter			バッファがウィンドウ内に表示された後。これはバッ
 				ファが読み込まれたとき (モードラインの処理後)
@@ -594,7 +594,7 @@ BufWinLeave			バッファがウィンドウから取り除かれる前。その
 				他のバッファに切り替えないこと。もしすると問題
 				が発生するだろう。
 				終了時に v:dying が 2 以上のときはこのイベント
-				は発生しません。
+				は発生しない。
 							*BufWipeout*
 BufWipeout			バッファを完全に削除する前。イベント BufUnload
 				と BufDelete が先に発生するかもしれない (バッ
