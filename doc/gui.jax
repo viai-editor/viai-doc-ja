@@ -1,7 +1,7 @@
-*gui.txt*	For Vim バージョン 9.2.  Last change: 2026 Oct 17
+*gui.txt*	For ViAI バージョン 1.0.  Last change: 2026 Oct 17
 
 
-		  VIM リファレンスマニュアル	by Bram Moolenaar
+		  VIAI リファレンスマニュアル
 
 
 Vimのグラフィカルユーザーインターフェイス		*gui* *GUI*
@@ -73,6 +73,10 @@ GUIの初期化は次の順序で行われる:
     同様である。
   - Unix では、"~/.config/vim/gvimrc" あるいは "$XDG_CONFIG_HOME/vim/gvimrc"
     が存在する場合、それが読み込まれる。":version" でこれを確認できる。
+  - ViAI 自身のユーザー設定が存在する場合 (|viai-config| を参照)、Vim のファイ
+    ルの代わりに ViAI のファイルが使われる: Unix では "$HOME/.gviairc"、
+    "$HOME/.viai/gvimrc" と "$XDG_CONFIG_HOME/viai/gvimrc"、Win32 では
+    "$HOME/_gviairc" と "$HOME/viaifiles/gvimrc"。
   $MYGVIMRC が設定されていないならば、$MYGVIMRC に最初に見つかったファイルの名
   前が代入される。
 - 'exrc' オプションが設定されていて(これは標準設定ではない)、./.gvimrcファイル
@@ -102,6 +106,10 @@ GUIウィンドウを開いた直後にいくつかのコマンドを実行し�
 	Amiga		    s:.gvimrc、home:.gvimrc、home:vimfiles:gvimrc
 			    または $VIM/.gvimrc
 	Haiku		    $HOME/config/settings/vim/gvimrc
+ViAI 自身のユーザー設定が存在する場合は、代わりに以下が使われる:
+	Unix		    $HOME/.gviairc、$HOME/.viai/gvimrc
+	Win32		    $HOME/_gviairc、$HOME/viaifiles/gvimrc
+			    または $VIM/_gvimrc
 
 個人的な初期化ファイルは上記の順に検索され、最初に見つかったものだけが読み込ま
 れる。
@@ -477,7 +485,7 @@ X11でこのレジスタを使うには、|x11-selection|も参照。これは�
 ==============================================================================
 5. メニュー						*menus*
 
-まずはユーザーマニュアルの|usr_42.txt|を御覧ください。
+まずはユーザーマニュアルの|usr_42.txt|を参照すること。
 
 5.1 メニューの使用					*using-menus*
 
