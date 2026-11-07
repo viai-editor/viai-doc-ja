@@ -3,19 +3,19 @@ layout: viai-doc
 helpname: 'os_haiku'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="os_haiku.html" name="os_haiku.txt">os_haiku.txt</a>&nbsp;&nbsp;For&nbsp;<span class="Identifier">Vim バージョン 9.2.</span>&nbsp;&nbsp;Last change: 2026 Feb 14<br>
+<a class="Constant" href="os_haiku.html" name="os_haiku.txt">os_haiku.txt</a>&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Feb 14<br>
 <br>
 <br>
-<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIM リファレンスマニュアル&nbsp;&nbsp;&nbsp;&nbsp;by Bram Moolenaar</span><br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_haiku.html#Haiku" name="Haiku">Haiku</a><br>
-このファイルは Haiku 版の Vim 特有の事柄に関して記述されています。このファイル<br>
-で説明されていない事項について、Vim の挙動は Unix&nbsp;<a class="Identifier" href="os_unix.html">os_unix.txt</a>&nbsp;版と非常に良く<br>
-似ています。<br>
+このファイルは Haiku 版の Vim 特有の事柄に関して記述されている。このファイルで<br>
+説明されていない事項について、Vim の挙動は Unix&nbsp;<a class="Identifier" href="os_unix.html">os_unix.txt</a>&nbsp;版と非常に良く似<br>
+ている。<br>
 <br>
 Haiku は BeOS に触発されたオープンソースのオペレーティングシステムで、明確に<br>
-パーソナルコンピューターをターゲットとしています。<br>
+パーソナルコンピューターをターゲットとしている。<br>
 <br>
 &nbsp;1. 全般&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_haiku.html#haiku-general">haiku-general</a><br>
 &nbsp;2. Vim のコンパイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_haiku.html#haiku-compiling">haiku-compiling</a><br>
@@ -38,26 +38,26 @@ Haiku は BeOS に触発されたオープンソースのオペレーティン�
 1. 全般&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_haiku.html#haiku-general" name="haiku-general">haiku-general</a><br>
 <br>
 デフォルトのシンタックスハイライトは異なる前景色のハイライトアイテムについて多<br>
-くの場合動作します。もっとも良く動作させるには暗めの背景色と明るい文字をターミ<br>
-ナルウィンドウに設定します。いくつかの中間的なグレーの背景色 (例えば<br>
-(r,g,b)=(168,168,168)) と黒の文字でもまた良く動くでしょう。<br>
+くの場合動作する。もっとも良く動作させるには暗めの背景色と明るい文字をターミナ<br>
+ルウィンドウに設定する。いくつかの中間的なグレーの背景色 (例えば<br>
+(r,g,b)=(168,168,168)) と黒の文字でもまた良く動くだろう。<br>
 <br>
 <br>
 2. Vim のコンパイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_haiku.html#haiku-compiling" name="haiku-compiling">haiku-compiling</a><br>
 <br>
-Vim は標準的な configure/make 手法を用いてコンパイルすることができます。<br>
+Vim は標準的な configure/make 手法を用いてコンパイルすることができる。<br>
 ./configure を引数無しか --enable-gui=haiku で Haiku の GUI をサポートしてコン<br>
-パイルできます。./configure --help を走らせることで、あなたが他に有効/無効にで<br>
-きる機能を見付けることができるでしょう。<br>
+パイルできる。./configure --help を走らせることで、あなたが他に有効/無効にでき<br>
+る機能を見付けることができるだろう。<br>
 <br>
 Haiku は端末ライブラリとして &quot;ncurses6&quot; を利用しており、そのため Haiku でビル<br>
 ドにあたってのコンフィグのために &quot;ncurses6_devel&quot; を HaikuDepot からインストー<br>
-ルする必要があります。それには ./configure コマンドに &quot;--with-tlib=ncurses&quot; を<br>
-追加するだけです。<br>
+ルする必要がある。それには ./configure コマンドに &quot;--with-tlib=ncurses&quot; を追加<br>
+するだけである。<br>
 <br>
 &quot;make&quot; で Vim をコンパイルでき、次いで &quot;install&quot; でインストールすることができ<br>
-ます。GUI 版で追加的に GUI レスの vim バイナリもインストールされ、Haiku にシー<br>
-ムレスに統合されます。典型的なコマンドは以下:<br>
+る。GUI 版で追加的に GUI レスの vim バイナリもインストールされ、Haiku にシーム<br>
+レスに統合される。典型的なコマンドは以下:<br>
 <br>
 &nbsp;&nbsp;./configure --prefix=<span class="Comment">finddir B_SYSTEM_NONPACKAGED_DIRECTORY</span>&nbsp;\<br>
 &nbsp;&nbsp;&nbsp;&nbsp;--datarootdir=<span class="Comment">finddir B_SYSTEM_NONPACKAGED_DATA_DIRECTORY</span>&nbsp;\<br>
@@ -77,10 +77,10 @@ Haiku は端末ライブラリとして &quot;ncurses6&quot; を利用してお�
 <br>
 3. Haiku の GUI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_haiku.html#haiku-gui" name="haiku-gui">haiku-gui</a><br>
 <br>
-通常、起動を gvim か vim -g で行うと GUI の Vim が起動します。GUI 付き版の vim<br>
-はターミナルからではなくトラッカーからの起動であるかどうかを判定しようとしま<br>
-す、そしてそうだった場合 GUI を使います。しかしながら、現在の判定スキームでは<br>
-&quot;vim - &lt;/dev/null&quot; を使うと失敗します。<br>
+通常、起動を gvim か vim -g で行うと GUI の Vim が起動する。GUI 付き版の vim<br>
+はターミナルからではなくトラッカーからの起動であるかどうかを判定しようとする、<br>
+そしてそうだった場合 GUI を使う。しかしながら、現在の判定スキームでは &quot;vim -<br>
+&lt;/dev/null&quot; を使うと失敗する。<br>
 <br>
 通常の管理ウィンドウとフルスクリーンモードを切り替えるには、<span class="Special">&lt;Alt-Enter&gt;</span>&nbsp;キーを<br>
 押す。<br>
@@ -100,16 +100,15 @@ Haiku は端末ライブラリとして &quot;ncurses6&quot; を利用してお�
 <br>
 4. $VIM ディレクトリ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_haiku.html#haiku-vimdir" name="haiku-vimdir">haiku-vimdir</a><br>
 <br>
-$VIM は Vim のサポートファイルを保存している場所へのシンボル名です。<br>
+$VIM は Vim のサポートファイルを保存している場所へのシンボル名である。<br>
 $VIM のデフォルト値はコンパイル時にセットされ、次のコマンドで確認でき:<br>
 <br>
 &nbsp;&nbsp;:version<br>
 <br>
 通常は /boot/common/data/vim の Haiku 移植のバージョン、<br>
-/boot/system/non-packaged/data/vim の手動ビルドの値になっています。 この値が好<br>
-ましくなく変更したいなら、環境変数 VIM に値を設定することで上書きでき、あるい<br>
-は&nbsp;<span class="Special">{訳注:ヘルプファイルなら}</span>&nbsp;あなたの .vimrc で&nbsp;<a class="Type" href="options.html#'helpfile'">'helpfile'</a>&nbsp;を設定してもできま<br>
-す:<br>
+/boot/system/non-packaged/data/vim の手動ビルドの値になっている。 この値が好ま<br>
+しくなく変更したいなら、環境変数 VIM に値を設定することで上書きでき、あるいは<br>
+<span class="Special">{訳注:ヘルプファイルなら}</span>&nbsp;あなたの .vimrc で&nbsp;<a class="Type" href="options.html#'helpfile'">'helpfile'</a>&nbsp;を設定してもできる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;:if version &gt;= 500<br>
 &nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;set helpfile=~/vim/runtime/doc/help.txt<br>
@@ -120,42 +119,42 @@ $VIM のデフォルト値はコンパイル時にセットされ、次のコマ
 5. $USER_SETTINGS_DIR ディレクトリ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_haiku.html#haiku-user-settings-dir" name="haiku-user-settings-dir">haiku-user-settings-dir</a><br>
 <br>
 $USER_SETTINGS_DIR は Haiku の設定とコンフィグファイルを保存している場所へのシ<br>
-ンボル名です。<br>
+ンボル名である。<br>
 <br>
-通常は /boot/home/config/settings になっています。<br>
+通常は /boot/home/config/settings になっている。<br>
 <br>
 <br>
 6. ドラッグ&amp;ドロップ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_haiku.html#haiku-dragndrop" name="haiku-dragndrop">haiku-dragndrop</a><br>
 <br>
-Vim のアイコン(ドロップするファイルのアプリケーションが Vim の&quot;複数同時起動不<br>
-可&quot;に設定されていなければ新しい Vim のセッションを開始します)、もしくは Vim の<br>
-ウィンドウ(ファイルの編集を始めます)にファイル(複数)もしくはディレクトリ(複数)<br>
-をドロップすることができます。フォルダをドロップした場合は Vim のカレントワー<br>
-キングディレクトリに設定します&nbsp;<a class="Identifier" href="editing.html#:cd">:cd</a>&nbsp;<a class="Identifier" href="editing.html#:pwd">:pwd</a>。もし SHIFT キーを押しながら、ファ<br>
-イルもしくはフォルダをドロップしたなら、 Vim は最初にドロップされたアイテムが<br>
-含まれるディレクトリに&nbsp;<span class="Special">{訳注:カレントワーキングディレクトリを}</span>&nbsp;変更します。Vim<br>
-を起動するときはShiftキーを押す必要はなく: Vim は、(Shift キーを押したときと)<br>
-同じように動作します。<br>
+Vim のアイコン (ドロップするファイルのアプリケーションが Vim の&quot;複数同時起動不<br>
+可&quot;に設定されていなければ新しい Vim のセッションを開始する)、もしくは Vim の<br>
+ウィンドウ (ファイルの編集を始める) にファイル (複数) もしくはディレクトリ (複<br>
+数) をドロップすることができる。フォルダをドロップした場合は Vim のカレントワー<br>
+キングディレクトリに設定する&nbsp;<a class="Identifier" href="editing.html#:cd">:cd</a>&nbsp;<a class="Identifier" href="editing.html#:pwd">:pwd</a>。もし SHIFT キーを押しながら、ファイ<br>
+ルもしくはフォルダをドロップしたなら、 Vim は最初にドロップされたアイテムが含<br>
+まれるディレクトリに&nbsp;<span class="Special">{訳注:カレントワーキングディレクトリを}</span>&nbsp;変更する。Vim を<br>
+起動するときはShiftキーを押す必要はなく: Vim は、(Shift キーを押したときと) 同<br>
+じように動作する。<br>
 <br>
-ファイルのドロップは引数リストを設定します。&nbsp;<a class="Identifier" href="editing.html#argument-list">argument-list</a><br>
+ファイルのドロップは引数リストを設定する。&nbsp;<a class="Identifier" href="editing.html#argument-list">argument-list</a><br>
 <br>
 <br>
 7. 複数同時起動不可と複数起動可能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_haiku.html#haiku-launch" name="haiku-launch">haiku-launch</a><br>
 <br>
-配布されている Vim のアプリケーションフラグ(ファイルタイプの設定で確認できる)<br>
-は複数起動可能に設定されています。もし望むなら代わりに複数同時起動不可をセット<br>
-することもできます。2つめの Vim のコピーが起動するとき最初の Vim でファイルを<br>
-代わりに開くよう試みます。これはトラッカーから開いたときにコマンドラインから開<br>
-くのと同じように働きます。後者のケースでは、ノンファイルな(オプション)引数はサ<br>
-ポートされません。別の複数同時起動不可での後退点は、Vim のインスタンスが GUI<br>
-サポートでコンパイルされていても非 GUI アプリケーションとして動作するとき、<br>
-&quot;Open With ...&quot; での要求を無言で無視してしまうことです。Vim インスタンスが GUI<br>
-ありで動作するときはこの問題はありません。<br>
+配布されている Vim のアプリケーションフラグ (ファイルタイプの設定で確認できる)<br>
+は複数起動可能に設定されている。もし望むなら代わりに複数同時起動不可をセットす<br>
+ることもできる。2つめの Vim のコピーが起動するとき最初の Vim でファイルを代わ<br>
+りに開くよう試みる。これはトラッカーから開いたときにコマンドラインから開くのと<br>
+同じように働く。後者のケースでは、ノンファイルな (オプション) 引数はサポートさ<br>
+れない。別の複数同時起動不可での後退点は、Vim のインスタンスが GUI サポートで<br>
+コンパイルされていても非 GUI アプリケーションとして動作するとき、&quot;Open With<br>
+...&quot; での要求を無言で無視してしまうことである。Vim インスタンスが GUI ありで動<br>
+作するときはこの問題はない。<br>
 <br>
-注意: GUI バージョンだけが BApplication です (そしてその為にアプリケーションフ<br>
-ラグがある)。<br>
+注意: GUI バージョンだけが BApplication である (そしてその為にアプリケーション<br>
+フラグがある)。<br>
 この章は GUI レスバージョンについては適用されず、そのようにコンパイルする必要<br>
-があります。<br>
+がある。<br>
 <br>
 <br>
 8. フォント&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_haiku.html#haiku-fonts" name="haiku-fonts">haiku-fonts</a><br>
@@ -164,85 +163,84 @@ Vim のアイコン(ドロップするファイルのアプリケーションが
 <br>
 <div class="helpExample">&nbsp;&nbsp;:set guifont=DejaVu_Sans_Mono/Book/12</div>
 <br>
-最初の部分はフォントファミリー、次の部分はスタイル、三番目はサイズです。(フォ<br>
-ント)ファミリーとスタイルのスペースはアンダースコアに置き換えられます。<br>
+最初の部分はフォントファミリー、次の部分はスタイル、三番目はサイズである。(フォ<br>
+ント) ファミリーとスタイルのスペースはアンダースコアに置き換えられる。<br>
 <br>
-等幅フォントで最良の結果が得られます。Vim は全てのフォントについて、<br>
-B_FIXED_SPACING モードを適用しようとしますが、どうやらプロポーショナルフォント<br>
-については働かないようです(BeBook と呼ばれているにもかかわらずです)。<br>
+等幅フォントで最良の結果が得られる。Vim は全てのフォントについて、<br>
+B_FIXED_SPACING モードを適用しようとするが、どうやらプロポーショナルフォントに<br>
+ついては働かないようである (BeBook と呼ばれているにもかかわらずである)。<br>
 <br>
 現在のフォントでどのエンコーディングをサポートしているか検証したいなら<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;:digraphs</div>
 <br>
-コマンドを与えて、ISO Latin 1 エンコーディングでのたくさんの文字を一覧表示しま<br>
-す。もし、例えば、その中に&quot;ボックス&quot;文字&nbsp;<span class="Special">{訳注: 俗に言う表示できない時の豆腐文</span><br>
+コマンドを与えて、ISO Latin 1 エンコーディングでのたくさんの文字を一覧表示す<br>
+る。もし、例えば、その中に&quot;ボックス&quot;文字&nbsp;<span class="Special">{訳注: 俗に言う表示できない時の豆腐文</span><br>
 <span class="Special">字}</span>&nbsp;があったり、もしくは最後がドット付きyではない場合は、そのエンコーディング<br>
-でこのフォントは動きません。<br>
+でこのフォントは動かない。<br>
 <br>
-もし指定したフォントが無いなら、システムの固定フォントが得られます。<br>
+もし指定したフォントが無いなら、システムの固定フォントが得られる。<br>
 <br>
 GUI でのフォント選択ダイアログは、次のようにして:<br>
 <br>
 &nbsp;&nbsp;:set guifont=*<br>
 <br>
-コマンドを与えることで利用できます。<br>
+コマンドを与えることで利用できる。<br>
 <br>
 <br>
 9. Meta キー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_haiku.html#haiku-meta" name="haiku-meta">haiku-meta</a><br>
 <br>
-META 修飾キーは左もしくは右の OPTION キーによって得られます。これは ALT(もしく<br>
-は COMMAND)キーがアプリケーションに通知されないことを意味します。<br>
+META 修飾キーは左もしくは右の OPTION キーによって得られる。これは ALT(もしくは<br>
+COMMAND) キーがアプリケーションに通知されないことを意味する。<br>
 <br>
 <br>
 10. マウスのキーマッピング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_haiku.html#haiku-mouse" name="haiku-mouse">haiku-mouse</a><br>
 <br>
 Vim は様々なマウスのボタンを LeftMouse、MiddleMouse そして RightMouse と呼んで<br>
-います。デフォルトのマウスの設定を使用するなら、これらの名前が実際のボタンに対<br>
-応します。Vim は次のマッピングを使用します:<br>
+いる。デフォルトのマウスの設定を使用するなら、これらの名前が実際のボタンに対応<br>
+する。Vim は次のマッピングを使用する:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;Button 1 -&gt; LeftMouse,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Button 2 -&gt; RightMouse,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Button 3 -&gt; MiddleMouse.<br>
 <br>
 もし、あなたのマウスが3ボタンより少ないなら、修飾キーとマウスの他のボタンを組<br>
-み合せてマウスクリックをマッピングすることができます。例として<br>
-$VIM/macros/swapmous.vim ファイルを見てください。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="gui.html#gui-mouse-mapping">gui-mouse-mapping</a><br>
+み合せてマウスクリックをマッピングすることができる。例として<br>
+$VIM/macros/swapmous.vim ファイルを見ること。&nbsp;&nbsp;&nbsp;<a class="Identifier" href="gui.html#gui-mouse-mapping">gui-mouse-mapping</a><br>
 <br>
 <br>
 11. 色名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_haiku.html#haiku-colors" name="haiku-colors">haiku-colors</a><br>
 <br>
-Vim は多数の色名を内蔵しています。追加の名前については&nbsp;<a class="Identifier" href="eval.html#v:colornames">v:colornames</a>&nbsp;に定義さ<br>
-れています。詳細は&nbsp;<a class="Identifier" href="syntax.html#:colorscheme">:colorscheme</a>&nbsp;を参照してください。<br>
+Vim は多数の色名を内蔵している。追加の名前については&nbsp;<a class="Identifier" href="eval.html#v:colornames">v:colornames</a>&nbsp;に定義され<br>
+ている。詳細は&nbsp;<a class="Identifier" href="syntax.html#:colorscheme">:colorscheme</a>&nbsp;を参照すること。<br>
 <br>
 12. GUI ツールバーイメージ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_haiku.html#haiku-toolbar-images" name="haiku-toolbar-images">haiku-toolbar-images</a><br>
 <br>
-ツールバー画像の代替セットは任意の高さのPNG画像でなくてなはなりません。画像幅<br>
-は1行のセルに最低32個のボタンが入るように計算されます。画像は<br>
+ツールバー画像の代替セットは任意の高さのPNG画像でなくてはならない。画像幅は1行<br>
+のセルに最低32個のボタンが入るように計算される。画像は<br>
 &nbsp;$VIRUNTIME/bitmaps/builtin-tools.png という名前で保存すること。ボタンの割り当<br>
 てについての情報は&nbsp;<a class="Identifier" href="gui.html#builtin-tools">builtin-tools</a>&nbsp;を参照のこと。<br>
 <br>
 <br>
 13. クレジット&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_haiku.html#haiku-support-credits" name="haiku-support-credits">haiku-support-credits</a><br>
 <br>
-多数の人の手により Haiku 版は BeOS 版をベースとして移植されました<br>
+多数の人の手により Haiku 版は BeOS 版をベースとして移植された<br>
 &nbsp;- BeBox GUI サポート Copyright 1998 by Olaf Seibert;<br>
 &nbsp;- R4 への移植 by Richard Offer &lt;richard@whitequeen.com&gt; Jul 99;<br>
 &nbsp;- 上記に含まれないが忘れられたわけではない多数の人の提供;<br>
 &nbsp;- Haiku サポート by Siarzhuk Zharski &lt;imker@gmx.li&gt; Apr-Mai 2009.<br>
 <br>
-すべての変更とパッチは vim-license 下で提供されます。<br>
+すべての変更とパッチは vim-license 下で提供される。<br>
 <br>
 みんなありがとう!<br>
 <br>
 <br>
 14. バグと ToDo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_haiku.html#haiku-bugs" name="haiku-bugs">haiku-bugs</a><br>
 <br>
-この移植は開発中で完全な状態から遠く離れています。バグレポート、パッチ、そして<br>
-要望について、Vim のメーリングリストか Vim GitHub リポジトリを利用してください。<br>
+この移植は開発中で完全な状態から遠く離れている。バグレポートと要望については、<br>
+ViAI のリポジトリで issue を作成すること。<span class="MissingTag">viai-bugs</span>&nbsp;を参照:<br>
 <br>
-メーリングリスト:&nbsp;<span class="Constant"><a href="https://www.vim.org/maillist.php">https://www.vim.org/maillist.php</a></span><br>
-Vim Github リポジトリ:&nbsp;<span class="Constant"><a href="https://github.com/vim/vim">https://github.com/vim/vim</a></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/viai-editor/viai/issues">https://github.com/viai-editor/viai/issues</a></span><br>
 <br>
 <br>
 &nbsp;vim:tw=78:ts=8:ft=help:norl:<br>
