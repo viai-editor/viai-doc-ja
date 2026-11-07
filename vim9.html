@@ -3530,7 +3530,7 @@ Ex コマンドの範囲指定には、多くの場合コロンを前置する�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call LegacyFunc()<br>
 &lt; &gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def F1117<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def F1117()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def! InnerFunc()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# E1117: Cannot use ! with nested :def<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enddef<br>
@@ -3550,8 +3550,9 @@ Ex コマンドの範囲指定には、多くの場合コロンを前置する�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 一般的なエラー&nbsp;<a class="Constant" href="vim9.html#E1028" name="E1028">E1028</a>&nbsp;(&quot;Compiling :def function<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;failed&quot;) は、コンパイル中に発生した原因不明のエラーを<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;示す。再現可能な場合は、Vim のエラー報告に欠陥がある可<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;能性があるため、<span class="Constant"><a href="https://github.com/vim/vim/issues">https://github.com/vim/vim/issues</a></span>&nbsp;に報<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;告してほしい。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;能性があるため、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/viai-editor/viai/issues">https://github.com/viai-editor/viai/issues</a></span>&nbsp;に報告して<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ほしい。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#:enddef" name=":enddef">:enddef</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1057" name="E1057">E1057</a>&nbsp;<a class="Constant" href="vim9.html#E1152" name="E1152">E1152</a>&nbsp;<a class="Constant" href="vim9.html#E1173" name="E1173">E1173</a><br>
@@ -4029,6 +4030,11 @@ Warning: このスクリプトは、この vim9.txt ヘルプバッファの &qu
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd var l_1010: list<span class="Special">&lt;invalidtype&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd var l_1012: list<span class="Special">&lt;number&gt;</span>&nbsp;= ['42']<br>
 &lt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1439" name="E1439">E1439</a><br>
+型を深く入れ子にしすぎることはできない。例えば、1000 回を超えて入れ子にした<br>
+&quot;list&lt;list&lt;...&gt;&gt;&quot; 型はエラーになる。これには型エイリアスを使用した入れ子も含ま<br>
+れる。<br>
+<br>
 配列型はない。代わりに、リストまたは tuple を使用する。これらの型はリテラル<br>
 (定数) にもなり得る。次の例では、[5, 6] はリストのリテラル、(7, ) は tuple の<br>
 リテラルである。エコーされたリストもリストのリテラルである:<br>
@@ -4381,33 +4387,33 @@ Vimは &quot;b:two&quot; の型を知らないため、式は list<span class="S
 違いは以下の例で示されている。funcref 変数 &quot;NTC&quot; の場合、Vim は式型<br>
 &quot;[1, b:two]&quot; を list<span class="Special">&lt;any&gt;</span>&nbsp;と推論し、次にそれが list<span class="Special">&lt;number&gt;</span>&nbsp;の戻り値型に代入可<br>
 能かどうかを検証する。funcref 変数 &quot;TC&quot; の場合、型キャストによって Vim はま<br>
-ず &quot;b:two&quot; が&nbsp;<span class="Special">&lt;number&gt;</span>&nbsp;型であるかどうかを確認する: &gt;vim9<br>
-<br>
+ず &quot;b:two&quot; が&nbsp;<span class="Special">&lt;number&gt;</span>&nbsp;型であるかどうかを確認する:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b:two = '2'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const NTC: func = (): list<span class="Special">&lt;number&gt;</span>&nbsp;=&gt; {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return [1, b:two]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return [1, b:two]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disassemble NTC&nbsp;&nbsp;# 3 CHECKTYPE list<span class="Special">&lt;number&gt;</span>&nbsp;stack&nbsp;<span class="Special">[-1]</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NTC()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NTC()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catch<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo v:exception .. &quot;\n\n&quot;&nbsp;&nbsp;# expected list<span class="Special">&lt;number&gt;</span>&nbsp;but...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo v:exception .. &quot;\n\n&quot;&nbsp;&nbsp;# E1012: Type mismatch; Expected list...<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endtry<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const TC: func = (): list<span class="Special">&lt;number&gt;</span>&nbsp;=&gt; {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return [1,&nbsp;<span class="Special">&lt;number&gt;</span>b:two]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return [1,&nbsp;<span class="Special">&lt;number&gt;</span>b:two]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disassemble TC&nbsp;&nbsp;# 2 CHECKTYPE number stack&nbsp;<span class="Special">[-1]</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TC()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TC()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catch<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo v:exception&nbsp;&nbsp;# expected number but got string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo v:exception&nbsp;&nbsp;# E1012: Type mismatch; Expected number but got...<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endtry<br>
 &lt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 型チェックがいつ行われるかを示すエラーメッセージがどのように異<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;なるかに注意。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 型チェックがいつ行われるかを示すエラーメッセージがどのように異な<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;るかに注意。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1104" name="E1104">E1104</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1104" name="E1104">E1104</a><br>
 型キャストの構文は &quot;&lt;<span class="Special">{type}</span>&gt;&quot; である。開始 &quot;&lt;&quot; (<a class="Identifier" href="eval.html#E121">E121</a>) または終了 &quot;&gt;&quot; (E1104)<br>
 のいずれかが省略された場合、エラーが発生する。また、&quot;&lt;&quot; の後 (<a class="Identifier" href="eval.html#E15">E15</a>) と &quot;&gt;&quot; の<br>
 前 (<a class="Identifier" href="vim9.html#E1068">E1068</a>) には空白文字を入れることはできない。これは、小なり および 大なり<br>
@@ -4417,8 +4423,8 @@ Vimは &quot;b:two&quot; の型を知らないため、式は list<span class="S
 更する必要がある場合、文字列に変換するには&nbsp;<a class="Identifier" href="builtin.html#string()">string()</a>&nbsp;を、文字列を数値に変換す<br>
 るには&nbsp;<a class="Identifier" href="builtin.html#str2nr()">str2nr()</a>&nbsp;などの関数を使用する。<br>
 <br>
-連鎖式に型キャストを適用する場合、最終結果と互換性がある必要がある。例: &gt;vim9<br>
-<br>
+連鎖式に型キャストを適用する場合、最終結果と互換性がある必要がある。例:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# これらの型キャストは動作する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo &lt;list<span class="Special">&lt;any&gt;</span>&gt;[3, 2, 1]-&gt;extend(['Go!'])<br>
@@ -4427,24 +4433,31 @@ Vimは &quot;b:two&quot; の型を知らないため、式は list<span class="S
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# この型キャストは失敗する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="Special">&lt;number&gt;</span>[3, 2, 1]-&gt;extend(['Go!'])-&gt;string()<br>
 &lt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1272" name="E1272">E1272</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1272" name="E1272">E1272</a><br>
 型が予期されないコンテキストにて型が使用されると、E1272 が発生する可能性がああ<br>
 る。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:vim9cmd echo islocked('x: string')</div>
-&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: これは読み込むのではなく、Vim のコマンドラインから実行する必要がある。<br>
+&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: エラーを見るには、このコマンドは読み込むのではなく、Vim のコマンドラ<br>
+&nbsp;&nbsp;インから実行する必要がある。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1363" name="E1363">E1363</a><br>
-オブジェクトのクラスが不明な場合など、型が不完全な場合は、E1363 が発生する。例:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1363" name="E1363">E1363</a>&nbsp;<a class="Constant" href="vim9.html#E1395" name="E1395">E1395</a><br>
+オブジェクトのクラスが不明な場合など、型が不完全な場合は、E1363 または E1395<br>
+が発生する。例:<br>
 &gt;vim9<br>
-<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var E1363 = null_class.member&nbsp;&nbsp;# E1363: Incomplete type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var E1363 = null_class.member&nbsp;&nbsp; # E1363: Incomplete type<br>
+&lt; &gt;vim9<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def F1395(): void<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo null_class.member<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enddef<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F1395()&nbsp;&nbsp;# E1395: Using a null class<br>
 &lt;<br>
-もう 1 つの null オブジェクト関連のエラーは&nbsp;<a class="Identifier" href="vim9class.html#E1360">E1360</a>&nbsp;である: &gt;vim9<br>
-<br>
+もう 1 つの null オブジェクト関連のエラーは&nbsp;<a class="Identifier" href="vim9class.html#E1360">E1360</a>&nbsp;である:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var obj = null_object<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var E1360 = obj.MyMethod()&nbsp;&nbsp;# E1360: Using a null object<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var E1360 = obj.MyMethod()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# E1360: Using a null object<br>
 &lt;<br>
 <br>
 <span class="PreProc">型推論</span><br>
@@ -4452,32 +4465,32 @@ Vimは &quot;b:two&quot; の型を知らないため、式は list<span class="S
 型を明示的に宣言すると、対象を絞った型チェックやエラーメッセージの明確化など、<br>
 多くの利点がある。しかし、Vim は型が省略された場合でも、多くの場合自動的に型を<br>
 推論する。例えば、以下の変数の型は推論されており、<a class="Identifier" href="builtin.html#type()">type()</a>&nbsp;と&nbsp;<a class="Identifier" href="builtin.html#typename()">typename()</a>&nbsp;は<br>
-推論された型を示している: &gt;vim9<br>
-<br>
+推論された型を示している:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo &quot;\t type()\t typename()&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var b = true&nbsp;&nbsp;&nbsp;&nbsp;| echo $&quot;<span class="Special">{b}</span>&nbsp;\t {b-&gt;type()} \t {b-&gt;typename()}&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var f = 4.2&nbsp;&nbsp;&nbsp;&nbsp; | echo $&quot;<span class="Special">{f}</span>&nbsp;\t {f-&gt;type()} \t {f-&gt;typename()}&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var l = [1, 2]&nbsp;&nbsp;| echo $&quot;<span class="Special">{l}</span>&nbsp;\t {l-&gt;type()} \t {l-&gt;typename()}&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var n = 42&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| echo $&quot;<span class="Special">{n}</span>&nbsp;\t {n-&gt;type()} \t {n-&gt;typename()}&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var s =&nbsp;<span class="MissingTag">'yes'</span>&nbsp;&nbsp; | echo $&quot;<span class="Special">{s}</span>&nbsp;\t {s-&gt;type()} \t {s-&gt;typename()}&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var t = (42, )&nbsp;&nbsp;| echo $&quot;<span class="Special">{t}</span>&nbsp;\t {t-&gt;type()} \t {t-&gt;typename()}&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var b = true&nbsp;&nbsp; | echo $&quot;<span class="Special">{b}</span>&nbsp;\t {b-&gt;type()} \t {b-&gt;typename()}&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var f = 4.2&nbsp;&nbsp;&nbsp;&nbsp;| echo $&quot;<span class="Special">{f}</span>&nbsp;\t {f-&gt;type()} \t {f-&gt;typename()}&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var l = [1, 2] | echo $&quot;<span class="Special">{l}</span>&nbsp;\t {l-&gt;type()} \t {l-&gt;typename()}&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var n = 42&nbsp;&nbsp;&nbsp;&nbsp; | echo $&quot;<span class="Special">{n}</span>&nbsp;\t {n-&gt;type()} \t {n-&gt;typename()}&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var s =&nbsp;<span class="MissingTag">'yes'</span>&nbsp;&nbsp;| echo $&quot;<span class="Special">{s}</span>&nbsp;\t {s-&gt;type()} \t {s-&gt;typename()}&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var t = (42, ) | echo $&quot;<span class="Special">{t}</span>&nbsp;\t {t-&gt;type()} \t {t-&gt;typename()}&quot;<br>
 &lt;<br>
 リスト、Tuple、または辞書の型は、その値の共通の型から推論される。値がすべて同<br>
 じ型の場合、その型が使用される。<br>
 複数の型が混在する場合は、&quot;any&quot; 型が使用される。以下の例では、各リテラルに対し<br>
-て表示された&nbsp;<a class="Identifier" href="builtin.html#typename()">typename()</a>&nbsp;がこれらのポイントを示している: &gt;vim9<br>
-<br>
+て表示された&nbsp;<a class="Identifier" href="builtin.html#typename()">typename()</a>&nbsp;がこれらのポイントを示している:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo [1, 2]-&gt;typename()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# list<span class="Special">&lt;number&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo [1, 'x']-&gt;typename()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# list<span class="Special">&lt;any&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo {ints: [1, 2], bools:&nbsp;<span class="Special">[false]</span>}-&gt;typename()&nbsp;&nbsp;# dict&lt;list<span class="Special">&lt;any&gt;</span>&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo (true, false)-&gt;typename()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # tuple&lt;bool, bool&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo [1, 2]-&gt;typename()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # list<span class="Special">&lt;number&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo [1, 'x']-&gt;typename()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # list<span class="Special">&lt;any&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo {ints: [1, 2], bools:&nbsp;<span class="Special">[false]</span>}-&gt;typename() # dict&lt;list<span class="Special">&lt;any&gt;</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo (true, false)-&gt;typename()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# tuple&lt;bool, bool&gt;<br>
 &lt;<br>
 関数参照の一般的な型では、引数の数が異なる場合、&quot;(...)&quot; で示される。これは引数<br>
 の数が不揃いであることを意味する。このスクリプトは &quot;list&lt;func(...): void&gt;&quot; の<br>
-例である: &gt;vim9<br>
-<br>
+例である:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def Foo(x: bool): void<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enddef<br>
@@ -4487,12 +4500,12 @@ Vimは &quot;b:two&quot; の型を知らないため、式は list<span class="S
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo funclist-&gt;typename()<br>
 &lt;<br>
 Vim9 script 内のスクリプトローカル変数は型チェックされる。また、旧来の関数内で<br>
-宣言された変数についても型チェックが行われる。例: &gt;vim9<br>
-<br>
+宣言された変数についても型チェックが行われる。例:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var my_local = (1, 2)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function Legacy()<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let b:legacy = [1, 2]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let b:legacy = [1, 2]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfunction<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Legacy()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo $&quot;{my_local} is type {my_local-&gt;type()} ({my_local-&gt;typename()})&quot;<br>
@@ -4502,193 +4515,198 @@ Vim9 script 内のスクリプトローカル変数は型チェックされる�
 リスト、Tuple、または辞書の型が宣言されると、その型が関連付けられる。同様に、<br>
 型が宣言されていない場合は、Vim が推論した型が関連付けられる。どちらの場合も、<br>
 式によって型が変更されると、E1013 が発生する。以下の例では、型が推論され、<br>
-E1013 が発生する: &gt;vim9<br>
-<br>
+E1013 が発生する:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var lb = [true, true]&nbsp;&nbsp; # 2 つの bool なので Vim は list<span class="Special">&lt;bool&gt;</span>&nbsp;型と推測<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo lb-&gt;typename()&nbsp;&nbsp;&nbsp;&nbsp; # list<span class="Special">&lt;bool&gt;</span>&nbsp;を表示<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo lb-&gt;typename()&nbsp;&nbsp;&nbsp;&nbsp; # list<span class="Special">&lt;bool&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lb-&gt;extend([0])&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # E1013 Argument 2: type mismatch, ...<br>
 &lt;<br>
 許容的なリストが必要な場合は、<span class="Special">&lt;any&gt;</span>&nbsp;を明示的に使用するか、最初に空のリストを宣<br>
-言する (または両方、つまり&nbsp;<span class="Comment">list&lt;any&gt; = []</span>)。例: &gt;vim9<br>
-<br>
+言する (または両方、つまり&nbsp;<span class="Comment">list&lt;any&gt; = []</span>)。例:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final la: list<span class="Special">&lt;any&gt;</span>&nbsp;= []<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo la-&gt;extend([<span class="MissingTag">'two'</span>, 1])<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final le = []<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo le-&gt;extend(la)<br>
 &lt;<br>
-許容的な辞書の場合も同様: &gt;vim9<br>
-<br>
+許容的な辞書の場合も同様:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final da: dict<span class="Special">&lt;any&gt;</span>&nbsp;= {}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo da-&gt;extend({2: 2, 1: 'One'})<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final de = {}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo de-&gt;extend(da)-&gt;string()<br>
 &lt;<br>
-また、Tuple 自体は不変だが、&quot;any&quot; または空の Tuple のいずれかを使用して、許容<br>
-的な Tuple の連結を実現できる: &gt;vim9<br>
-<br>
+また、Tuple 自体は不変だが、空の Tuple を使用して、許容的な Tuple の連結を実現<br>
+できる (可変長の Tuple は同じ型の Tuple とのみ連結できる。<a class="Identifier" href="eval.html#E1540">E1540</a>&nbsp;を参照):<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var t_any: tuple&lt;...list<span class="Special">&lt;any&gt;</span>&gt; = (3, '2')<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_any = t_any + (true, )<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo t_any<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var t_dec_empty = ()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_dec_empty = t_dec_empty + (3, '2', true)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo t_dec_empty<br>
 &lt;<br>
 リストリテラルまたは辞書リテラルが変数にバインドされていない場合、以下の例に示<br>
-すように、その型が変更される場合がある: &gt;vim9<br>
-<br>
+すように、その型が変更される場合がある:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo [3, 2, 1]-&gt;typename()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # list<span class="Special">&lt;number&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo [3, 2, 1]-&gt;extend(['Zero'])-&gt;typename()&nbsp;&nbsp;&nbsp;&nbsp; # list<span class="Special">&lt;any&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo {1: ['One']}-&gt;typename()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# dict&lt;list<span class="Special">&lt;string&gt;</span>&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo {1: ['One']}-&gt;extend({2: [2]})-&gt;typename()&nbsp;&nbsp;# dict&lt;list<span class="Special">&lt;any&gt;</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo [3, 2, 1]-&gt;typename()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# list<span class="Special">&lt;number&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo [3, 2, 1]-&gt;extend(['Zero'])-&gt;typename()&nbsp;&nbsp;&nbsp;&nbsp;# list<span class="Special">&lt;any&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo {1: ['One']}-&gt;typename()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # dict&lt;list<span class="Special">&lt;string&gt;</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo {1: ['One']}-&gt;extend({2: [2]})-&gt;typename() # dict&lt;list<span class="Special">&lt;any&gt;</span>&gt;<br>
 &lt;<br>
 <br>
 <span class="PreProc">より厳密な型チェック</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#type-checking" name="type-checking">type-checking</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#type-checking" name="type-checking">type-checking</a><br>
 旧来の Vim script では、数値が期待される文字列は自動的に数値に変換されていた。<br>
 これは &quot;123&quot; のような実際の数値であれば便利だったが、文字列が数値で始まってい<br>
 ない場合、予期せぬ問題が発生する (エラーメッセージも表示されない)。これは多く<br>
 の場合、見つけにくいバグにつながる。例えば、旧来の Vim script では、これは &quot;1&quot;<br>
-と表示される: &gt;vim<br>
-<br>
+と表示される:<br>
+&gt;vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo 123 == '123'<br>
 &lt;<br>
-ただし、意図しないスペースが含まれている場合は、&quot;0&quot; が表示される: &gt;vim<br>
-<br>
+ただし、意図しないスペースが含まれている場合は、&quot;0&quot; が表示される:<br>
+&gt;vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo 123 == ' 123'<br>
 &lt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1206" name="E1206">E1206</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1206" name="E1206">E1206</a><br>
 Vim9 script では、この制限がより厳格になった。ほとんどの箇所では、使用される値<br>
 が期待される型と一致する場合、以前と同じように動作する。例えば、旧来の Vim<br>
 script と Vim9 script の両方で、辞書以外の値が必要なときに、辞書以外の値を使用<br>
-しようとすると、以下のようになる: &gt;vim<br>
-<br>
+しようとすると、以下のようになる:<br>
+&gt;vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo [8, 9]-&gt;keys()<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo [8, 9]-&gt;keys()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# E1206: Dictionary required<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo [8, 9]-&gt;keys()&nbsp;&nbsp;&nbsp;&nbsp; # E1206: Dictionary required<br>
 &lt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1023" name="E1023">E1023</a>&nbsp;<a class="Constant" href="vim9.html#E1024" name="E1024">E1024</a>&nbsp;<a class="Constant" href="vim9.html#E1029" name="E1029">E1029</a>&nbsp;<a class="Constant" href="vim9.html#E1030" name="E1030">E1030</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1174" name="E1174">E1174</a>&nbsp;<a class="Constant" href="vim9.html#E1175" name="E1175">E1175</a>&nbsp;<a class="Constant" href="vim9.html#E1210" name="E1210">E1210</a>&nbsp;<a class="Constant" href="vim9.html#E1212" name="E1212">E1212</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1023" name="E1023">E1023</a>&nbsp;<a class="Constant" href="vim9.html#E1024" name="E1024">E1024</a>&nbsp;<a class="Constant" href="vim9.html#E1029" name="E1029">E1029</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1030" name="E1030">E1030</a>&nbsp;<a class="Constant" href="vim9.html#E1174" name="E1174">E1174</a>&nbsp;<a class="Constant" href="vim9.html#E1175" name="E1175">E1175</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1210" name="E1210">E1210</a>&nbsp;<a class="Constant" href="vim9.html#E1212" name="E1212">E1212</a><br>
 しかし、Vim9 script ではエラーが発生し、後方互換性が損なわれることがある。以下<br>
 の例は、この問題が発生する様々な場所を示している。まず、旧来の Vim script の動<br>
 作 (エラーは発生しない) を示す。次に同じコマンドを Vim9 script で使用した場合<br>
 に発生するエラーを示す。<br>
 <br>
-&nbsp;&nbsp;- bool が期待される場所で数値 (0 または 1 以外) を使用する: &gt;vim<br>
-<br>
+- bool が期待される場所で数値 (0 または 1 以外) を使用する:<br>
+&gt;vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo v:version ? v:true : v:false<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo v:version ? true : false&nbsp;&nbsp;# E1023: Using a Number as a...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo v:version ? true : false&nbsp;&nbsp; # E1023: Using a Number as ...<br>
 &lt;<br>
-&nbsp;&nbsp;- 文字列が期待される場所で数値を使用する: &gt;vim<br>
-<br>
+- 文字列が期待される場所で数値を使用する:<br>
+&gt;vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo filter([1, 2], 0)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo filter([1, 2], 0)&nbsp;&nbsp;# E1024: Using a Number as a String<br>
 &lt;<br>
-&nbsp;&nbsp;- 数字が期待されるところで数字を使用していない: &gt;vim<br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; この例では、Vim script は v:false を 0 として扱う<br>
+- 環境変数、レジスタまたは文字列型の v: 変数に数値を代入する:<br>
+&gt;vim<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let $FOO = 123<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd $FOO = 123&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# E1012: Type mismatch; expected string but ...<br>
+&lt;<br>
+- 数字が期待されるところで数字を使用していない:<br>
+&gt;vim<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; この例では、旧来の Vim script は v:false を 0 として扱う<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function Not1029()<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let b:l =&nbsp;<span class="Special">[42]</span>&nbsp;| unlet b:l[v:false]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let b:l =&nbsp;<span class="Special">[42]</span>&nbsp;| unlet b:l[v:false]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfunction<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call Not1029() | echo b:l<br>
 &lt; &gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def E1029(): void<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b:l =&nbsp;<span class="Special">[42]</span>&nbsp;| unlet b:l[false]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b:l =&nbsp;<span class="Special">[42]</span>&nbsp;| unlet b:l[false]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enddef<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E1029()&nbsp;&nbsp;# E1029: Expected number but got bool<br>
 &lt;<br>
-&nbsp;&nbsp;- 文字列を数値として使用する: &gt;vim<br>
-<br>
+- 文字列を数値として使用する:<br>
+&gt;vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let b:l =&nbsp;<span class="Special">[42]</span>&nbsp;| unlet b:l['#'] | echo b:l<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd b:l =&nbsp;<span class="Special">[42]</span>&nbsp;| vim9cmd unlet b:l['#']&nbsp;&nbsp;# E1030: Using a string...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd b:l =&nbsp;<span class="Special">[42]</span>&nbsp;| vim9cmd unlet b:l['#']&nbsp;&nbsp;# E1030: Using a string<br>
 &lt;<br>
-&nbsp;&nbsp;- 引数に文字列が必要な場合に文字列を使用しない: &gt;vim9<br>
-<br>
+- 引数に文字列が必要な場合に文字列を使用しない:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo substitute('Hallo', 'a', 'e', v:true)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo substitute('Hallo', 'a', 'e', true)&nbsp;&nbsp;# E1174: String...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo substitute('Hallo', 'a', 'e', true)&nbsp;&nbsp;# E1174: String ...<br>
 &lt;<br>
-&nbsp;&nbsp;- 空でない文字列を必要とする引数で空の文字列を使用する: &gt;vim9<br>
-<br>
+- 空でない文字列を必要とする引数で空の文字列を使用する:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo exepath('')<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo exepath('') # E1175: Non-empty string required for arg...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo exepath('')&nbsp;&nbsp;# E1175: Non-empty string required for ar...<br>
 &lt;<br>
-&nbsp;&nbsp;- 必要なときに数字を使用しない: &gt;vim<br>
-<br>
+- 必要なときに数字を使用しない:<br>
+&gt;vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo gettabinfo('a')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo gettabinfo('a')&nbsp;&nbsp;# E1210: Number required for argument 1<br>
 &lt;<br>
-&nbsp;&nbsp;- 必要なときに真偽値を使用しない: &gt;vim<br>
-<br>
+- 必要なときに真偽値を使用しない:<br>
+&gt;vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo char2nr('¡', 2)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo char2nr('¡', 2)&nbsp;&nbsp;# E1212: Bool required for argument 2<br>
 &lt;<br>
-&nbsp;&nbsp;- 数字が必要なときに数字を使用しない (<a class="Identifier" href="options.html#E521">E521</a>): &gt;vim<br>
-<br>
+- 数字が必要なときに数字を使用しない (<a class="Identifier" href="options.html#E521">E521</a>):<br>
+&gt;vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let &amp;laststatus='2'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd &amp;laststatus = '2'<br>
 &lt;<br>
-&nbsp;&nbsp;- 文字列が必要なときに文字列を使用しない (<a class="Identifier" href="message.html#E928">E928</a>): &gt;vim<br>
-<br>
+- 文字列が必要なときに文字列を使用しない (<a class="Identifier" href="message.html#E928">E928</a>):<br>
+&gt;vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let &amp;langmenu = 42<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd &amp;langmenu = 42&nbsp;&nbsp;# E928: String required<br>
 &lt;<br>
-&nbsp;&nbsp;-&nbsp;<a class="Identifier" href="eval.html#Special">Special</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'is'">'is'</a>&nbsp;の比較は、場合によっては失敗する (<a class="Identifier" href="eval.html#E1037">E1037</a>,&nbsp;<a class="Identifier" href="eval.html#E1072">E1072</a>): &gt;vim<br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 両方とも真なので 1 が表示される<br>
+-&nbsp;<a class="Identifier" href="eval.html#Special">Special</a>&nbsp;と &quot;is&quot; の比較はしばしば失敗する (<a class="Identifier" href="eval.html#E1037">E1037</a>,&nbsp;<a class="Identifier" href="eval.html#E1072">E1072</a>):<br>
+&gt;vim<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 旧来の Vim script では両方とも真なので 1 が表示される<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo v:null is v:null &amp;&amp; v:none is v:none<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; これらの式はすべて偽なので、0 が表示される<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 同様に、これらでは 0 が表示される (旧来の Vim script では偽)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo v:none is v:null || v:none is 8 || v:true is v:none<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; All these are errors in Vim9 script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; これらはすべて Vim9 script のエラー<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo v:null is v:null # E1037: Cannot use&nbsp;<a class="Type" href="options.html#'is'">'is'</a>&nbsp;with special<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo v:none is v:none # E1037: Cannot use&nbsp;<a class="Type" href="options.html#'is'">'is'</a>&nbsp;with special<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo v:none is v:null # E1037: Cannot use&nbsp;<a class="Type" href="options.html#'is'">'is'</a>&nbsp;with special<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo v:none is 8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# E1072: Cannot compare special with numb<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo v:true is v:none # E1072: Cannot compare bool with special<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo v:null is v:null&nbsp;&nbsp; # E1037: Cannot use&nbsp;<a class="Type" href="options.html#'is'">'is'</a>&nbsp;with special<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo v:none is v:none&nbsp;&nbsp; # E1037: Cannot use&nbsp;<a class="Type" href="options.html#'is'">'is'</a>&nbsp;with special<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo v:none is v:null&nbsp;&nbsp; # E1037: Cannot use&nbsp;<a class="Type" href="options.html#'is'">'is'</a>&nbsp;with special<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo v:none is 8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# E1072: Cannot compare special wit...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo v:true is v:none&nbsp;&nbsp; # E1072: Cannot compare bool with s...<br>
 &lt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 上記の最後の 2 つの Vim9 script の例では、<a class="Comment" href="eval.html#v:none">v:none</a>&nbsp;を使用する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;とエラーが発生するが、<a class="Comment" href="vim9.html#null">null</a>&nbsp;を使用すると&nbsp;<a class="Comment" href="vim9.html#false">false</a>&nbsp;が返される<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(これは&nbsp;<a class="Comment" href="eval.html#v:null">v:null</a>&nbsp;と同じである -&nbsp;<a class="Identifier" href="eval.html#v:null">v:null</a>&nbsp;を参照): &gt;vim9<br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo null is 8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# false<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo true is null&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # false<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 上記の最後の 2 つの Vim9 script の例では、<a class="Comment" href="eval.html#v:none">v:none</a>&nbsp;ではエラーが<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;発生するが、<a class="Comment" href="eval.html#v:null">v:null</a>&nbsp;では&nbsp;<a class="Comment" href="vim9.html#false">false</a>&nbsp;が返される (これは&nbsp;<a class="Comment" href="vim9.html#null">null</a>&nbsp;と同じであ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る -&nbsp;<a class="Identifier" href="eval.html#v:null">v:null</a>&nbsp;を参照):<br>
+&gt;vim9<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo v:null is 8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# false<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo true is v:null&nbsp;&nbsp;&nbsp;&nbsp; # false<br>
 &lt;<br>
-&nbsp;&nbsp;- 真偽値が必要な場所で文字列を使用する (<a class="Identifier" href="eval.html#E1135">E1135</a>): &gt;vim<br>
-<br>
+- 真偽値が必要な場所で文字列を使用する (<a class="Identifier" href="eval.html#E1135">E1135</a>):<br>
+&gt;vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo '42' ? v:true : v:false<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo '42' ? true : false&nbsp;&nbsp;# E1135: Using a String as a Bool<br>
 &lt;<br>
-&nbsp;&nbsp;- 真偽値を数値として使用する (<a class="Identifier" href="eval.html#E1138">E1138</a>): &gt;vim<br>
-<br>
+- 真偽値を数値として使用する (<a class="Identifier" href="eval.html#E1138">E1138</a>):<br>
+&gt;vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let &amp;laststatus=v:true<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd &amp;laststatus = true<br>
 &lt;<br>
 結果として、<a class="Identifier" href="builtin.html#map()">map()</a>&nbsp;に渡されるリストまたは辞書の項目の型は、その型が宣言または<br>
-推論された場合でも変更してはいけない。例えば、これは Vim9 script ではエラーに<br>
-なるが、旧来の Vim script では許可される: &gt;vim<br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 旧来の Vim script は s:mylist を ['item 0', 'item 1'] に変更する<br>
+推論された場合でも変更してはいけない。例えば、このリストの型は旧来の Vim<br>
+script では問題なく変更される:<br>
+&gt;vim<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 旧来の Vim script でリスト [0, 1] を ['item 0', 'item 1'] に変更する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let s:mylist = [0, 1]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call map(s:mylist, {i -&gt; $&quot;item&nbsp;<span class="Special">{i}</span>&quot;})<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo s:mylist<br>
-&lt; &gt;vim9<br>
+&lt;<br>
+一方、Vim9 script では&nbsp;<a class="Identifier" href="vim9.html#E1012">E1012</a>&nbsp;が発生する:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var mylist = [0, 1]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Vim は mylist が list<span class="Special">&lt;number&gt;</span>&nbsp;で<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # あると推測する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map(mylist, (i, _) =&gt; $&quot;item&nbsp;<span class="Special">{i}</span>&quot;) # E1012: type mismatch...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map(mylist, (i, _) =&gt; $&quot;item&nbsp;<span class="Special">{i}</span>&quot;) # E1012: Type mismatch; expected...<br>
 &lt;<br>
 このエラーは、<a class="Comment" href="builtin.html#map()">map()</a>&nbsp;がリスト要素を文字列に変更しようとし、宣言された型と衝突<br>
 するために発生する。<br>
 <br>
 代わりに&nbsp;<a class="Identifier" href="builtin.html#mapnew()">mapnew()</a>&nbsp;を使用する。これは新しいリストを作成し、型が指定されていな<br>
 い場合は Vim がその型を推測する。推測された型と宣言された型は以下の例のとおり<br>
-である: &gt;vim9<br>
-<br>
+である:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var mylist = [0, 1]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var infer = mylist-&gt;mapnew((i, _) =&gt; $&quot;item&nbsp;<span class="Special">{i}</span>&quot;)<br>
@@ -4699,10 +4717,10 @@ script と Vim9 script の両方で、辞書以外の値が必要なときに、
 ここで重要な概念は、宣言型または推論型を持つ変数では、コンテナ内の要素の型は変<br>
 更できないということである。ただし、以下のいずれかの場合は型の &quot;変更&quot; が許容さ<br>
 れる:<br>
-&nbsp;&nbsp;- コンテナリテラル (変数に束縛されていない)、または<br>
-&nbsp;&nbsp;- メソッドチェーンで&nbsp;<a class="Identifier" href="builtin.html#copy()">copy()</a>&nbsp;または&nbsp;<a class="Identifier" href="builtin.html#deepcopy()">deepcopy()</a>&nbsp;が使用されているコンテナ。<br>
-この例では、どちらも示されている: &gt;vim9<br>
-<br>
+- コンテナリテラル (変数に束縛されていない)、または<br>
+- メソッドチェーンで&nbsp;<a class="Identifier" href="builtin.html#copy()">copy()</a>&nbsp;または&nbsp;<a class="Identifier" href="builtin.html#deepcopy()">deepcopy()</a>&nbsp;が使用されているコンテナ。<br>
+この例では、どちらも示されている:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 文字列のリスト<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo [1, 2]-&gt;map((_, v) =&gt; $&quot;#<span class="Special">{v}</span>&quot;)<br>
@@ -4722,8 +4740,8 @@ script と Vim9 script の両方で、辞書以外の値が必要なときに、
 項目の型が &quot;<span class="Special">&lt;any&gt;</span>&quot; と宣言または決定されていない場合、後ですべての項目が同じ型<br>
 になったとしても、項目の型は変更されない。ただし、<a class="Comment" href="builtin.html#mapnew()">mapnew()</a>&nbsp;を使用する場合、<br>
 推論とは、新しいリストが既存の型を反映することを意味する。例えば、以下のように<br>
-なる: &gt;vim9<br>
-<br>
+なる:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# list<span class="Special">&lt;any&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var mylist = [1, '2']&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 混合型、つまり list<span class="Special">&lt;any&gt;</span><br>
@@ -4736,85 +4754,84 @@ script と Vim9 script の両方で、辞書以外の値が必要なときに、
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo (newlist, newlist-&gt;typename())&nbsp;&nbsp;&nbsp;&nbsp; # newlist は list<span class="Special">&lt;string&gt;</span><br>
 &lt;<br>
 <a class="Identifier" href="builtin.html#extend()">extend()</a>&nbsp;と&nbsp;<a class="Identifier" href="builtin.html#extendnew()">extendnew()</a>&nbsp;の使い方は似ている。つまり、文字列のリストでは前者<br>
-を使用できるので、以下のようにして問題ない: &gt;vim9<br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo [1, 2]-&gt;extend(['3'])&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# [1, 2, 3]<br>
+を使用できるので、以下のようにして問題ない:<br>
+&gt;vim9<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo [1, 2]-&gt;extend(['3'])&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# [1, 2, '3']<br>
 &lt;<br>
-一方、これはそうではない: &gt;vim9<br>
-<br>
+一方、これはそうではない:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var mylist: list<span class="Special">&lt;number&gt;</span>&nbsp;= [1, 2]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo mylist-&gt;extend(['3'])&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # E1013: Argument 2: type mismatch<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo mylist-&gt;extend(['3'])&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# E1013: Argument 2: type mismatch<br>
 &lt;<br>
 既存の型付きリストを拡張するには、<a class="Identifier" href="builtin.html#extendnew()">extendnew()</a>&nbsp;を使用する必要がある。ただし、<br>
 拡張がリストの型と一致する場合 (または &quot;any&quot; の場合) は除く。例えば、最初に同<br>
-じ型の要素で拡張し、次に異なる型で拡張する場合である: &gt;vim9<br>
-<br>
+じ型の要素で拡張し、次に異なる型で拡張する場合である:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var mylist: list<span class="Special">&lt;number&gt;</span>&nbsp;= [1, 2]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mylist-&gt;extend([3])<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo mylist-&gt;extendnew(['4'])&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# [1, 2, 3, '4']<br>
-<br>
-&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1158" name="E1158">E1158</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo mylist-&gt;extendnew(['4'])&nbsp;&nbsp; # [1, 2, 3, '4']<br>
+&lt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1158" name="E1158">E1158</a><br>
 Vim9 script では&nbsp;<a class="Identifier" href="builtin.html#flatten()">flatten()</a>&nbsp;の使用は許可されていない。これは常に型を変更する<br>
 ことを意図しているためである。これは文字列のリストにも適用される (<a class="Identifier" href="builtin.html#map()">map()</a>&nbsp;や<br>
-<a class="Identifier" href="builtin.html#extend()">extend()</a>&nbsp;とは異なる)。代わりに&nbsp;<a class="Identifier" href="builtin.html#flattennew()">flattennew()</a>&nbsp;を使用すること: &gt;vim9<br>
-<br>
+<a class="Identifier" href="builtin.html#extend()">extend()</a>&nbsp;とは異なる)。代わりに&nbsp;<a class="Identifier" href="builtin.html#flattennew()">flattennew()</a>&nbsp;を使用すること:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd [1, [2, 3]]-&gt;flatten()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# E1158: Cannot use flatten<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo [1, [2, 3]]-&gt;flattennew()&nbsp;&nbsp;# [1, 2, 3]<br>
 &lt;<br>
 指定された引数 (<a class="Identifier" href="vim9.html#vim9-func-declaration">vim9-func-declaration</a>&nbsp;参照) を持つ関数参照への代入は、引数の<br>
-厳密な型チェックを伴う。例えば、以下のように記述する: &gt;vim9<br>
-<br>
+厳密な型チェックを伴う。例えば、以下のように記述する:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var F_name_age: func(string, number): string<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F_name_age = (n: string, a: number): string =&gt; $&quot;Name:&nbsp;<span class="Special">{n}</span>, Age:&nbsp;<span class="Special">{a}</span>&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo F_name_age('Bob', 42)<br>
 &lt;<br>
-一方、これはエラー&nbsp;<a class="Identifier" href="vim9.html#E1012">E1012</a>&nbsp;(型の不一致) で失敗する: &gt;vim9<br>
-<br>
+一方、これはエラー&nbsp;<a class="Identifier" href="vim9.html#E1012">E1012</a>&nbsp;(型の不一致) で失敗する:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var F_name_age: func(string, number): string<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F_name_age = (n: string, a: string): string =&gt; $&quot;Name:&nbsp;<span class="Special">{n}</span>, Age:&nbsp;<span class="Special">{a}</span>&quot;<br>
 &lt;<br>
-引数の数が可変である場合、以下の例のように、引数は同じ型である必要がある: &gt;vim9<br>
-<br>
+引数の数が可変である場合、以下の例のように、引数は同じ型である必要がある:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var Fproduct: func(...list<span class="Special">&lt;number&gt;</span>): number<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fproduct = (...v: list<span class="Special">&lt;number&gt;</span>): number =&gt; reduce(v, (a, b) =&gt; a * b)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo Fproduct(3, 2, 4)&nbsp;&nbsp;# 24 を表示<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo Fproduct(3, 2, 4)&nbsp;&nbsp;# 24<br>
 &lt;<br>
-また、混合型に対応するために&nbsp;<span class="Special">&lt;any&gt;</span>&nbsp;を使用することもできる: &gt;vim9<br>
-<br>
+また、混合型に対応するために&nbsp;<span class="Special">&lt;any&gt;</span>&nbsp;を使用することもできる:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var FlatSort: func(...list<span class="Special">&lt;any&gt;</span>): any<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FlatSort = (...v: list<span class="Special">&lt;any&gt;</span>) =&gt; flattennew(v)-&gt;sort('n')<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo FlatSort(true, [[[5, 3], 2], 4])&nbsp;&nbsp;# [true, 2, 3, 4, 5] を表示<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo FlatSort(true, [[[5, 3], 2], 4])&nbsp;&nbsp; # [true, 2, 3, 4, 5]<br>
 &lt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: lambda 式で&nbsp;<span class="Special">&lt;any&gt;</span>&nbsp;を使用しても、funcref の型チェックは回避され<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ない。宣言された funcref の型によって制約され、以下の例に示す<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ように、型が一致しない場合は実行時エラーまたはコンパイルエラー<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が発生する: &gt;vim9<br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var FuncSN: func(string): number<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FuncSN = (v: any): number =&gt; v-&gt;str2nr()<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo FuncSN('162')-&gt;nr2char()&nbsp;&nbsp;# ¢ を表示<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo FuncSN(162)-&gt;nr2char())&nbsp;&nbsp; # E1013 (runtime error)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: lambda 式で&nbsp;<span class="Special">&lt;any&gt;</span>&nbsp;を使用しても、funcref の型チェックは回避されな<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い。宣言された funcref の型によって制約され、以下の例に示すように、型<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が一致しない場合は実行時エラーまたはコンパイルエラーが発生する:<br>
+&gt;vim9<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var FuncSN: func(string): number<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FuncSN = (v: any): number =&gt; v-&gt;str2nr()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo FuncSN('162')-&gt;nr2char()&nbsp;&nbsp; # ¢<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo FuncSN(162)-&gt;nr2char()&nbsp;&nbsp;&nbsp;&nbsp; # E1013 (実行時エラー)<br>
 &lt; &gt;vim9<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var FuncSN: func(string): number<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FuncSN = (v: any): number =&gt; v-&gt;str2nr()<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def FuncSNfail(): void<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo FuncSN('162')-&gt;nr2char()&nbsp;&nbsp;# 表示されないのは...<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo FuncSN(162)-&gt;nr2char()&nbsp;&nbsp;&nbsp;&nbsp;# コンパイルエラーの為<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enddef<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FuncSNfail()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var FuncSN: func(string): number<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FuncSN = (v: any): number =&gt; v-&gt;str2nr()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def FuncSNfail(): void<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo FuncSN('162')-&gt;nr2char() # 表示されないのは...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo FuncSN(162)-&gt;nr2char()&nbsp;&nbsp; # E1013 (今度はコンパイルエラー)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enddef<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FuncSNfail()<br>
 &lt;<br>
 funcref に引数が指定されていない場合、型チェックは行われない。この例では、<br>
 FlexArgs が最初に文字列引数を受け取り、次にリスト引数を受け取ることを示してい<br>
-る: &gt;vim9<br>
-<br>
+る:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var FlexArgs: func: string<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FlexArgs = (s: string): string =&gt; $&quot;It's countdown time&nbsp;<span class="Special">{s}</span>...&quot;<br>
@@ -4822,15 +4839,15 @@ FlexArgs が最初に文字列引数を受け取り、次にリスト引数を�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FlexArgs = (...values: list<span class="Special">&lt;string&gt;</span>): string =&gt; join(values, ', ')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo FlexArgs('3', '2', '1', 'GO!')<br>
 &lt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1211" name="E1211">E1211</a>&nbsp;<a class="Constant" href="vim9.html#E1217" name="E1217">E1217</a>&nbsp;<a class="Constant" href="vim9.html#E1218" name="E1218">E1218</a>&nbsp;<a class="Constant" href="vim9.html#E1219" name="E1219">E1219</a>&nbsp;<a class="Constant" href="vim9.html#E1220" name="E1220">E1220</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1221" name="E1221">E1221</a>&nbsp;<a class="Constant" href="vim9.html#E1222" name="E1222">E1222</a>&nbsp;<a class="Constant" href="vim9.html#E1223" name="E1223">E1223</a>&nbsp;<a class="Constant" href="vim9.html#E1224" name="E1224">E1224</a>&nbsp;<a class="Constant" href="vim9.html#E1225" name="E1225">E1225</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1226" name="E1226">E1226</a>&nbsp;<a class="Constant" href="vim9.html#E1228" name="E1228">E1228</a>&nbsp;<a class="Constant" href="vim9.html#E1235" name="E1235">E1235</a>&nbsp;<a class="Constant" href="vim9.html#E1238" name="E1238">E1238</a>&nbsp;<a class="Constant" href="vim9.html#E1251" name="E1251">E1251</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1253" name="E1253">E1253</a>&nbsp;<a class="Constant" href="vim9.html#E1256" name="E1256">E1256</a>&nbsp;<a class="Constant" href="vim9.html#E1297" name="E1297">E1297</a>&nbsp;<a class="Constant" href="vim9.html#E1298" name="E1298">E1298</a>&nbsp;<a class="Constant" href="vim9.html#E1301" name="E1301">E1301</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1528" name="E1528">E1528</a>&nbsp;<a class="Constant" href="vim9.html#E1529" name="E1529">E1529</a>&nbsp;<a class="Constant" href="vim9.html#E1530" name="E1530">E1530</a>&nbsp;<a class="Constant" href="vim9.html#E1531" name="E1531">E1531</a>&nbsp;<a class="Constant" href="vim9.html#E1534" name="E1534">E1534</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1211" name="E1211">E1211</a>&nbsp;<a class="Constant" href="vim9.html#E1217" name="E1217">E1217</a>&nbsp;<a class="Constant" href="vim9.html#E1218" name="E1218">E1218</a>&nbsp;<a class="Constant" href="vim9.html#E1219" name="E1219">E1219</a>&nbsp;<a class="Constant" href="vim9.html#E1220" name="E1220">E1220</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1221" name="E1221">E1221</a>&nbsp;<a class="Constant" href="vim9.html#E1222" name="E1222">E1222</a>&nbsp;<a class="Constant" href="vim9.html#E1223" name="E1223">E1223</a>&nbsp;<a class="Constant" href="vim9.html#E1224" name="E1224">E1224</a>&nbsp;<a class="Constant" href="vim9.html#E1225" name="E1225">E1225</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1226" name="E1226">E1226</a>&nbsp;<a class="Constant" href="vim9.html#E1228" name="E1228">E1228</a>&nbsp;<a class="Constant" href="vim9.html#E1235" name="E1235">E1235</a>&nbsp;<a class="Constant" href="vim9.html#E1238" name="E1238">E1238</a>&nbsp;<a class="Constant" href="vim9.html#E1251" name="E1251">E1251</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1253" name="E1253">E1253</a>&nbsp;<a class="Constant" href="vim9.html#E1256" name="E1256">E1256</a>&nbsp;<a class="Constant" href="vim9.html#E1297" name="E1297">E1297</a>&nbsp;<a class="Constant" href="vim9.html#E1298" name="E1298">E1298</a>&nbsp;<a class="Constant" href="vim9.html#E1301" name="E1301">E1301</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1528" name="E1528">E1528</a>&nbsp;<a class="Constant" href="vim9.html#E1529" name="E1529">E1529</a>&nbsp;<a class="Constant" href="vim9.html#E1530" name="E1530">E1530</a>&nbsp;<a class="Constant" href="vim9.html#E1531" name="E1531">E1531</a>&nbsp;<a class="Constant" href="vim9.html#E1534" name="E1534">E1534</a><br>
 ほとんどの組み込み関数では、型チェックが行われており、間違いを見つけやすくなっ<br>
 ている。以下の&nbsp;<a class="Identifier" href="vim9.html#:vim9">:vim9</a>&nbsp;という 1 行のコマンドは、組み込み関数を呼び出すもので、<br>
-型チェックエラーの多くを示している: &gt;vim9<br>
-<br>
+型チェックエラーの多くを示している:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9 9-&gt;list2blob()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # E1211: List required for argume...<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9 9-&gt;ch_close()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# E1217: Channel or Job required ...<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9 9-&gt;job_info()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# E1218: Job required for argumen...<br>
@@ -4874,55 +4891,57 @@ FlexArgs が最初に文字列引数を受け取り、次にリスト引数を�
 には異なるデフォルトの初期化セマンティクスがある。<br>
 <br>
 プリミティブ型は、デフォルトで型固有の値になります。すべてのプリミティブ型は空<br>
-ですが、<a class="Comment" href="vim9.html#null">null</a>&nbsp;と等しくはない: &gt;vim9<br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
-&nbsp;&nbsp;&nbsp;&nbsp;var n: number | echo [n, n-&gt;empty(), n == null]&nbsp;&nbsp;# [0, 1, false]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;var f: float&nbsp;&nbsp;| echo [f, f-&gt;empty(), f == null]&nbsp;&nbsp;# [0.0, 1, false]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;var b: bool&nbsp;&nbsp; | echo [b, b-&gt;empty(), b == null]&nbsp;&nbsp;# [false, 1, false]<br>
+ですが、<a class="Comment" href="vim9.html#null">null</a>&nbsp;と等しくはない:<br>
+&gt;vim9<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var n: number | echo [n, n-&gt;empty(), n == null]&nbsp;&nbsp;# [0, 1, false]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var f: float&nbsp;&nbsp;| echo [f, f-&gt;empty(), f == null]&nbsp;&nbsp;# [0.0, 1, false]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var b: bool&nbsp;&nbsp; | echo [b, b-&gt;empty(), b == null]&nbsp;&nbsp;# [false, 1, false]<br>
 &lt;<br>
 コンテナ型はデフォルトで空のコンテナになる。空の文字列のみが&nbsp;<a class="Comment" href="vim9.html#null">null</a>&nbsp;と等しくな<br>
-る: &gt;vim9<br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
-&nbsp;&nbsp;&nbsp;&nbsp;var s: string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | echo [s, s-&gt;empty(), s == null]&nbsp;&nbsp;# ['', 1, true]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;var z: blob&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | echo [z, z-&gt;empty(), z == null]&nbsp;&nbsp;# [0z, 1, false]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;var l: list<span class="Special">&lt;string&gt;</span>&nbsp;| echo [l, l-&gt;empty(), l == null]&nbsp;&nbsp;# [[], 1, false]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;var t: tuple<span class="Special">&lt;any&gt;</span>&nbsp;&nbsp; | echo [t, t-&gt;empty(), t == null]&nbsp;&nbsp;# [(), 1, false]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;var d: dict<span class="Special">&lt;number&gt;</span>&nbsp;| echo [d, d-&gt;empty(), d == null]&nbsp;&nbsp;# [{}, 1, false]<br>
+る:<br>
+&gt;vim9<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var s: string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | echo [s, s-&gt;empty(), s == null] # ['', 1, true]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var z: blob&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | echo [z, z-&gt;empty(), z == null] # [0z, 1, false]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var l: list<span class="Special">&lt;string&gt;</span>&nbsp;| echo [l, l-&gt;empty(), l == null] # [[], 1, false]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var t: tuple<span class="Special">&lt;any&gt;</span>&nbsp;&nbsp; | echo [t, t-&gt;empty(), t == null] # [(), 1, false]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var d: dict<span class="Special">&lt;number&gt;</span>&nbsp;| echo [d, d-&gt;empty(), d == null] # [{}, 1, false]<br>
 &lt;<br>
-特殊型はデフォルトで&nbsp;<a class="Comment" href="vim9.html#null">null</a>&nbsp;になる: &gt;vim9<br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
-&nbsp;&nbsp;&nbsp;&nbsp;var F: func&nbsp;&nbsp;&nbsp;&nbsp;| echo [F, F == null]&nbsp;&nbsp;# [function(''), true]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;var j: job&nbsp;&nbsp;&nbsp;&nbsp; | echo [j, j == null]&nbsp;&nbsp;# ['no process', true]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;var c: channel | echo [c, c == null]&nbsp;&nbsp;# ['channel fail', true]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;class Class<br>
-&nbsp;&nbsp;&nbsp;&nbsp;endclass<br>
-&nbsp;&nbsp;&nbsp;&nbsp;var o: Class&nbsp;&nbsp; | echo [o, o == null]&nbsp;&nbsp;# [object of&nbsp;<span class="Special">[unknown]</span>, true]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;enum Enum<br>
-&nbsp;&nbsp;&nbsp;&nbsp;endenum<br>
-&nbsp;&nbsp;&nbsp;&nbsp;var e: Enum&nbsp;&nbsp;&nbsp;&nbsp;| echo [e, e == null]&nbsp;&nbsp;# [object of&nbsp;<span class="Special">[unknown]</span>, true]<br>
+特殊型はデフォルトで&nbsp;<a class="Comment" href="vim9.html#null">null</a>&nbsp;になる:<br>
+&gt;vim9<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var F: func&nbsp;&nbsp;&nbsp;&nbsp;| echo [F, F == null]&nbsp;&nbsp;# [function(''), true]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var j: job&nbsp;&nbsp;&nbsp;&nbsp; | echo [j, j == null]&nbsp;&nbsp;# ['no process', true]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var c: channel | echo [c, c == null]&nbsp;&nbsp;# ['channel fail', true]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class Class<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endclass<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var o: Class&nbsp;&nbsp; | echo [o, o == null]&nbsp;&nbsp;# [object of&nbsp;<span class="Special">[unknown]</span>, true]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum Enum<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endenum<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var e: Enum&nbsp;&nbsp;&nbsp;&nbsp;| echo [e, e == null]&nbsp;&nbsp;# [object of&nbsp;<span class="Special">[unknown]</span>, true]<br>
 &lt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 空のジョブ、空のチャネル、空のオブジェクト型の説明について<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、<a class="Identifier" href="builtin.html#empty()">empty()</a>&nbsp;を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Notes</span>: (1) 空のジョブ、空のチャネル、空のオブジェクト型の説明について<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、<a class="Identifier" href="builtin.html#empty()">empty()</a>&nbsp;を参照。(2)&nbsp;<a class="Comment" href="vim9class.html#class">class</a>、<a class="Comment" href="vim9class.html#enum">enum</a>、<a class="Comment" href="vim9class.html#typealias">typealias</a>&nbsp;型は値として使<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用できないため、<a class="Comment" href="vim9.html#null">null</a>&nbsp;と比較できない (それぞれ&nbsp;<a class="Identifier" href="vim9class.html#E1405">E1405</a>、<a class="Identifier" href="vim9class.html#E1421">E1421</a>、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="vim9class.html#E1403">E1403</a>&nbsp;を参照)。<br>
 <br>
 Vim にはお馴染みの null 値はない。代わりに、<a class="Identifier" href="vim9.html#null_string">null_string</a>、<a class="Identifier" href="vim9.html#null_list">null_list</a>、<br>
 <a class="Identifier" href="vim9.html#null_job">null_job</a>&nbsp;など、様々な null_<span class="Special">&lt;type&gt;</span>&nbsp;型の定義済み値がある。プリミティブ型には<br>
 null_<span class="Special">&lt;type&gt;</span>&nbsp;型はない。null_<span class="Special">&lt;type&gt;</span>&nbsp;型の典型的な使用例は以下のとおりである:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;- 変数をクリアしてリソースを解放する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;- 関数定義のパラメータのデフォルトとして使用する (例については&nbsp;<a class="Identifier" href="vim9.html#null_blob">null_blob</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を参照)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;- コンテナ型または特殊型に割り当てて、後の比較のために null に設定する (例<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;については&nbsp;<a class="Identifier" href="vim9.html#null-compare">null-compare</a>&nbsp;を参照)。<br>
+- 変数をクリアしてリソースを解放する。<br>
+- 関数定義のパラメータのデフォルトとして使用する (例については&nbsp;<a class="Identifier" href="vim9.html#null_blob">null_blob</a>&nbsp;を<br>
+&nbsp;&nbsp;参照)。<br>
+- コンテナ型または特殊型に割り当てて、後の比較のために null に設定する (例につ<br>
+&nbsp;&nbsp;いては&nbsp;<a class="Identifier" href="vim9.html#null-compare">null-compare</a>&nbsp;を参照)。<br>
 <br>
 <a class="Comment" href="channel.html#job">job</a>&nbsp;のような特殊な変数の場合、リソースをクリアするために null_<span class="Special">&lt;type&gt;</span>&nbsp;が使用<br>
-される。例: &gt;vim9<br>
-<br>
+される。例:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var mydate: list<span class="Special">&lt;string&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def Date(channel: channel, msg: string): void<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mydate-&gt;add(msg)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mydate-&gt;add(msg)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enddef<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var myjob = job_start([&amp;shell, &amp;shellcmdflag,&nbsp;<span class="MissingTag">'date'</span>], {out_cb: Date})<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo [myjob, myjob-&gt;job_status()]<br>
@@ -4933,29 +4952,29 @@ null_<span class="Special">&lt;type&gt;</span>&nbsp;型はない。null_<span cl
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo myjob<br>
 &lt;<br>
 コンテナ変数の場合、変数に空のコンテナを割り当てることによってリソースをクリア<br>
-することもできる。例: &gt;vim9<br>
-<br>
+することもできる。例:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var perfect: list<span class="Special">&lt;number&gt;</span>&nbsp;= [1, 4]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;perfect-&gt;extend([9, 16, 25])<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;perfect = []<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo perfect<br>
-<br>
+&lt;<br>
 null_<span class="Special">&lt;type&gt;</span>&nbsp;ではなく空のコンテナを使用してコンテナ変数をクリアすると、null の<br>
 複雑さを回避できる場合がある -&nbsp;<a class="Identifier" href="vim9.html#null-anomalies">null-anomalies</a>&nbsp;を参照。<br>
 <br>
 コンテナ変数と特殊変数の初期化セマンティクスは異なる。コンテナの場合:<br>
-&nbsp;&nbsp;- 初期化されていないコンテナはデフォルトで空になるが、<a class="Comment" href="vim9.html#null">null</a>&nbsp;と等しくない<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(初期化されていない文字列を除く)。<br>
-&nbsp;&nbsp;- []、()、{}、&quot;&quot;、または 0z に初期化されたコンテナは空だが、<a class="Comment" href="vim9.html#null">null</a>&nbsp;と等しく<br>
-&nbsp;&nbsp;&nbsp;&nbsp;ない。<br>
-&nbsp;&nbsp;- null_<span class="Special">&lt;type&gt;</span>&nbsp;として初期化されたコンテナはデフォルトで空になり、<a class="Comment" href="vim9.html#null">null</a>&nbsp;と等<br>
-&nbsp;&nbsp;&nbsp;&nbsp;しくなる。<br>
+- 初期化されていないコンテナはデフォルトで空になるが、<a class="Comment" href="vim9.html#null">null</a>&nbsp;と等しくない (初<br>
+&nbsp;&nbsp;期化されていない文字列を除く)。<br>
+- []、()、{}、&quot;&quot;、または 0z に初期化されたコンテナは空だが、<a class="Comment" href="vim9.html#null">null</a>&nbsp;と等しくな<br>
+&nbsp;&nbsp;い。<br>
+- null_<span class="Special">&lt;type&gt;</span>&nbsp;として初期化されたコンテナはデフォルトで空になり、<a class="Comment" href="vim9.html#null">null</a>&nbsp;とも等<br>
+&nbsp;&nbsp;しくなる。<br>
 <br>
 以下の例では、初期化されていないリスト (&quot;lu&quot;) と [] 初期化されたリスト (&quot;li&quot;)<br>
 は同等であり区別できないが、&quot;ln&quot; は null コンテナであり、空のコンテナに似てい<br>
-るが同等ではない (<a class="Identifier" href="vim9.html#null-anomalies">null-anomalies</a>&nbsp;を参照)。 &gt;vim9<br>
-<br>
+るが同等ではない (<a class="Identifier" href="vim9.html#null-anomalies">null-anomalies</a>&nbsp;を参照)。<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 初期化されていない: 空のコンテナ、null ではない<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var lu: list<span class="Special">&lt;any&gt;</span><br>
@@ -4968,8 +4987,8 @@ null_<span class="Special">&lt;type&gt;</span>&nbsp;ではなく空のコンテ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo [<span class="MissingTag">'ln'</span>, $&quot;empty={ln-&gt;empty()}&quot;, $&quot;null={ln == null}&quot;]<br>
 &lt;<br>
 特殊変数はデフォルトで null になる。以下のジョブ初期化は同等であり、区別できな<br>
-い: &gt;vim9<br>
-<br>
+い:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var j1: job<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var j2: job = null_job<br>
@@ -4977,8 +4996,8 @@ null_<span class="Special">&lt;type&gt;</span>&nbsp;ではなく空のコンテ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo (j1 == j2) == (j2 == j3)&nbsp;&nbsp;# true (同等、区別不能)<br>
 &lt;<br>
 リスト、tuple、または辞書を宣言する際に、項目の型が指定されていない場合は推論<br>
-できない。したがって、項目の型はデフォルトで &quot;any&quot; になる: &gt;vim9<br>
-<br>
+できない。したがって、項目の型はデフォルトで &quot;any&quot; になる:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var [t1, t2] = [(), null_tuple]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo $'t1 is {t1-&gt;typename()} and t2 is {t2-&gt;typename()} too'<br>
@@ -4986,40 +5005,38 @@ null_<span class="Special">&lt;type&gt;</span>&nbsp;ではなく空のコンテ�
 Tuple と関数 (または部分関数) は様々な方法で宣言できる。<a class="Identifier" href="vim9.html#tuple-type">tuple-type</a>、<br>
 <a class="Identifier" href="vim9.html#variadic-tuple">variadic-tuple</a>、および&nbsp;<a class="Identifier" href="vim9.html#vim9-func-declaration">vim9-func-declaration</a>&nbsp;を参照。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#null-compare" name="null-compare">null-compare</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#null-compare" name="null-compare">null-compare</a><br>
 空のコンテナと null コンテナが等しくないという、おなじみの null 比較セマンティ<br>
 クスでは、比較に null_<span class="Special">&lt;type&gt;</span>&nbsp;を使用してはならない。これは、Vim9 script では<br>
 null_<span class="Special">&lt;type&gt;</span>&nbsp;==&nbsp;<a class="Comment" href="vim9.html#null">null</a>&nbsp;であっても、以下の比較が成立するからである:<br>
+- 空のコンテナを&nbsp;<a class="Comment" href="vim9.html#null">null</a>&nbsp;にすると&nbsp;<a class="Comment" href="vim9.html#false">false</a>&nbsp;だが、<br>
+- 空のコンテナを null_<span class="Special">&lt;type&gt;</span>&nbsp;にすると&nbsp;<a class="Comment" href="vim9.html#true">true</a>&nbsp;になる。<br>
 <br>
-&nbsp;&nbsp;- 空のコンテナを&nbsp;<a class="Comment" href="vim9.html#null">null</a>&nbsp;にすると&nbsp;<a class="Comment" href="vim9.html#false">false</a>&nbsp;だが、<br>
-&nbsp;&nbsp;- 空のコンテナを null_<span class="Special">&lt;type&gt;</span>&nbsp;にすると&nbsp;<a class="Comment" href="vim9.html#true">true</a>&nbsp;になる。<br>
-<br>
-したがって、null_<span class="Special">&lt;type&gt;</span>&nbsp;ではなく&nbsp;<a class="Comment" href="vim9.html#null">null</a>&nbsp;と比較すること。例: &gt;vim9<br>
-<br>
+したがって、null_<span class="Special">&lt;type&gt;</span>&nbsp;ではなく&nbsp;<a class="Comment" href="vim9.html#null">null</a>&nbsp;と比較すること。例:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var bonds: dict&lt;list<span class="Special">&lt;string&gt;</span>&gt; = {g: ['007', '008'], o: ['007', '009']}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def Search(query: string): list<span class="Special">&lt;string&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return query == &quot;\r&quot; ? null_list : bonds-&gt;get(query, [])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return query == &quot;\r&quot; ? null_list : bonds-&gt;get(query, [])<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enddef<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo &quot;Goldfinger (g) or Octopussy (o)?: &quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const C: string = getcharstr()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var result: list<span class="Special">&lt;string&gt;</span>&nbsp;= C-&gt;Search()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if result == null&nbsp;&nbsp;# &lt;&lt;&lt; DO NOT USE null_list HERE!<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo &quot;Error: Nothing was entered&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo &quot;Error: Nothing was entered&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo result-&gt;empty() ? $&quot;No matches for '<span class="Special">{C}</span>'&quot; : $&quot;<span class="Special">{result}</span>&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo result-&gt;empty() ? $&quot;No matches for '<span class="Special">{C}</span>'&quot; : $&quot;<span class="Special">{result}</span>&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif<br>
 &lt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE</span>: &quot;result == null&quot; の代わりに &quot;result == null_list&quot; を使用する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と、[] != null であるのに対し [] == null_list であるため、エ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ラー (何も入力されていない) と有効な結果 (何も一致していない)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を区別できなくなる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: &quot;result == null&quot; の代わりに &quot;result == null_list&quot; を使用すると、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[] != null であるのに対し [] == null_list であるため、エラー (何も入力<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;されていない) と有効な結果 (何も一致していない) を区別できなくなる。<br>
 <br>
 概念的には、null_<span class="Special">&lt;type&gt;</span>&nbsp;構文は、汎用的な&nbsp;<a class="Comment" href="vim9.html#null">null</a>&nbsp;と型付きの&nbsp;<span class="Comment">empty</span>&nbsp;コンテナと<br>
 の中間に位置するハイブリッド/ブリッジのようなものと考えるとよく、両者の性質を<br>
 併せ持っている。比較結果の詳細については、以下の節で説明する。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#null-details" name="null-details">null-details</a>&nbsp;<a class="Constant" href="vim9.html#null-anomalies" name="null-anomalies">null-anomalies</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#null-details" name="null-details">null-details</a>&nbsp;<a class="Constant" href="vim9.html#null-anomalies" name="null-anomalies">null-anomalies</a><br>
 このセクションでは、null と null_<span class="Special">&lt;type&gt;</span>&nbsp;の使用に関する問題について説明する。以<br>
 下に、null 比較の列挙結果を示す。場合によっては、vim9 の null のセマンティクス<br>
 に精通しているプログラマは、比較やその他の状況で null_<span class="Special">&lt;type&gt;</span>&nbsp;を使用することを<br>
@@ -5027,8 +5044,8 @@ null_<span class="Special">&lt;type&gt;</span>&nbsp;==&nbsp;<a class="Comment" h
 <br>
 ドキュメントの別の箇所では、&quot;多くの場合、null 値は空の値と同じように扱われる<br>
 が、常にそうとは限らない」と書かれている。例えば、null コンテナにデータを追加<br>
-することはできない: &gt;vim9<br>
-<br>
+することはできない:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var le: list<span class="Special">&lt;any&gt;</span>&nbsp;= []<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;le-&gt;add('Okay')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # le は ['Okay']<br>
@@ -5036,98 +5053,98 @@ null_<span class="Special">&lt;type&gt;</span>&nbsp;==&nbsp;<a class="Comment" h
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ln-&gt;add(&quot;E1130&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# E1130: Cannot add to null list<br>
 &lt;<br>
 <a class="Identifier" href="vim9.html#null-compare">null-compare</a>&nbsp;で説明したように、<a class="Comment" href="vim9.html#null">null</a>、null_<span class="Special">&lt;type&gt;</span>&nbsp;コンテナ、<span class="Comment">empty</span>&nbsp;の間に<br>
-は非推移的な関係がある。まとめると、例えば以下のようになる: &gt;vim9<br>
-<br>
+は非推移的な関係がある。まとめると、例えば以下のようになる:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9cmd echo (null_dict == {}, null_dict == null, {} != null)<br>
 &lt;<br>
 例外は未初期化の文字列である。これは&nbsp;<a class="Comment" href="vim9.html#null">null</a>&nbsp;と等しく (<a class="Comment" href="vim9.html#null_string">null_string</a>&nbsp;と同じイン<br>
-スタンスである)。文字列が未初期化かどうかを判断するには、<a class="Type" href="options.html#'is'">'is'</a>&nbsp;演算子<br>
-(<a class="Identifier" href="eval.html#expr-is">expr-is</a>) を使用できる: &gt;vim9<br>
-<br>
+スタンスである)。文字列が未初期化かどうかを判断するには、&quot;is&quot; 演算子<br>
+(<a class="Identifier" href="eval.html#expr-is">expr-is</a>) を使用できる:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var s: string<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo s == null_string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # true<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo s is null_string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # true (同じインスタンス)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo s == null&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# true (意外かもしれない)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo s is null&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# false (同じインスタンスではない)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo s == null_string&nbsp;&nbsp; # true<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo s is null_string&nbsp;&nbsp; # true (同じインスタンス)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo s == null&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# true (意外かもしれない)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo s is null&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# false (同じインスタンスではない)<br>
 &lt;<br>
 ただし、他のコンテナについては同じことを行ってはならない。対応する null_<span class="Special">&lt;type&gt;</span><br>
-に対して&nbsp;<a class="Type" href="options.html#'is'">'is'</a>&nbsp;で評価すると、<a class="Comment" href="vim9.html#false">false</a>&nbsp;が返されるためである: &gt;vim9<br>
-<br>
+に対して &quot;is&quot; で評価すると、<a class="Comment" href="vim9.html#false">false</a>&nbsp;が返されるためである:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var d: dict<span class="Special">&lt;any&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo d == null_dict&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # true<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo d is null_dict&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # false (同じインスタンスではない)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo d == null&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# false (期待通り)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo d is null&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# false (同じインスタンスではない)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo d == null_dict&nbsp;&nbsp;&nbsp;&nbsp; # true<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo d is null_dict&nbsp;&nbsp;&nbsp;&nbsp; # false (同じインスタンスではない)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo d == null&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# false (期待通り)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo d is null&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# false (同じインスタンスではない)<br>
 &lt;<br>
 ここでの重要な違いは、初期化されていない文字列は&nbsp;<a class="Comment" href="vim9.html#null_string">null_string</a>&nbsp;として実装され<br>
 るのに対し、初期化されていないリスト、辞書、tuple、または blob は空のコンテナ<br>
 (それぞれ []、{}、()、および 0z) として実装されることである。<br>
 したがって、これらの初期化されていない型は、以下の例に示すように、対応する<br>
-null_<span class="Special">&lt;type&gt;</span>&nbsp;と同等であるが、同じインスタンスではない: &gt;vim9<br>
-<br>
+null_<span class="Special">&lt;type&gt;</span>&nbsp;と同等であるが、同じインスタンスではない:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var t: tuple<span class="Special">&lt;any&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo t == null_tuple&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# true<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo t is null_tuple&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# false<br>
-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo t == null_tuple&nbsp;&nbsp;&nbsp;&nbsp;# true<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo t is null_tuple&nbsp;&nbsp;&nbsp;&nbsp;# false<br>
+&lt;<br>
 ただし、null_<span class="Special">&lt;type&gt;</span>&nbsp;に初期化された変数は、null_<span class="Special">&lt;type&gt;</span>&nbsp;と等しいだけでなく、null<br>
-とも等しくなる。例: &gt;vim9<br>
-<br>
+とも等しくなる。例:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var t: tuple<span class="Special">&lt;any&gt;</span>&nbsp;= null_tuple<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo t == null_tuple&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# true<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo t is null_tuple&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# true<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo t == null&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# true<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo t == null_tuple&nbsp;&nbsp;&nbsp;&nbsp;# true<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo t is null_tuple&nbsp;&nbsp;&nbsp;&nbsp;# true<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo t == null&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# true<br>
 &lt;<br>
 初期化されていないコンテナ変数は、上記の例で説明したように、初期化されていない<br>
 文字列を除き、null と等しくない。したがって、以下の式はすべて&nbsp;<a class="Comment" href="vim9.html#true">true</a>&nbsp;を表示す<br>
-る: &gt;vim9<br>
-<br>
+る:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var b: blob&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | echo b != null<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var d: dict<span class="Special">&lt;any&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| echo d != null<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var l: list<span class="Special">&lt;any&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| echo l != null<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var t: tuple<span class="Special">&lt;any&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | echo t != null<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var s: string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | echo s == null<br>
-<br>
-初期化されていない特殊変数は null に等しいため、これらはすべて&nbsp;<a class="Comment" href="vim9.html#true">true</a>&nbsp;を表示す<br>
-る: &gt;vim9<br>
-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var b: blob&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | echo b != null<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var d: dict<span class="Special">&lt;any&gt;</span>&nbsp;&nbsp;| echo d != null<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var l: list<span class="Special">&lt;any&gt;</span>&nbsp;&nbsp;| echo l != null<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var t: tuple<span class="Special">&lt;any&gt;</span>&nbsp;| echo t != null<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var s: string&nbsp;&nbsp;&nbsp;&nbsp; | echo s == null<br>
+&lt;<br>
+初期化されていない特殊変数は null に等しい。したがって、これらはすべて&nbsp;<a class="Comment" href="vim9.html#true">true</a><br>
+を表示する:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var c: channel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| echo c == null<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var F: func&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | echo F == null<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var j: job&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| echo j == null<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var c: channel&nbsp;&nbsp;| echo c == null<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var F: func&nbsp;&nbsp;&nbsp;&nbsp; | echo F == null<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var j: job&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| echo j == null<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class Class<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endclass<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var nc: Class&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | echo nc == null<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var nc: Class&nbsp;&nbsp; | echo nc == null<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum Enum<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endenum<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var ne: Enum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| echo ne == null<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var ne: Enum&nbsp;&nbsp;&nbsp;&nbsp;| echo ne == null<br>
 &lt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: job のような特殊な変数はデフォルトで null に設定され、対応する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;空の値を持つ特殊な変数はない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: job のような特殊な変数はデフォルトで null に設定され、対応する空<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の値を持つ特殊な変数はない。<br>
 <br>
 空に初期化されたコンテナ変数は null_<span class="Special">&lt;type&gt;</span>&nbsp;に等しいため、これらはすべて&nbsp;<a class="Comment" href="vim9.html#true">true</a><br>
-になる: &gt;vim9<br>
-<br>
+になる:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var s: string = &quot;&quot;&nbsp;&nbsp;&nbsp;&nbsp; | echo s == null_string<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var b: blob = 0z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | echo b == null_blob<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var l: list<span class="Special">&lt;any&gt;</span>&nbsp;= []&nbsp;&nbsp;| echo l == null_list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var t: tuple<span class="Special">&lt;any&gt;</span>&nbsp;= () | echo t == null_tuple<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var d: dict<span class="Special">&lt;any&gt;</span>&nbsp;= {}&nbsp;&nbsp;| echo d == null_dict<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var s: string = &quot;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| echo s == null_string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var b: blob = 0z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| echo b == null_blob<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var l: list<span class="Special">&lt;any&gt;</span>&nbsp;= []&nbsp;&nbsp; | echo l == null_list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var t: tuple<span class="Special">&lt;any&gt;</span>&nbsp;= ()&nbsp;&nbsp;| echo t == null_tuple<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var d: dict<span class="Special">&lt;any&gt;</span>&nbsp;= {}&nbsp;&nbsp; | echo d == null_dict<br>
 &lt;<br>
 ただし、空に初期化されたコンテナ変数は null と等しくないため、これらはすべて<br>
-<a class="Comment" href="vim9.html#true">true</a>&nbsp;になる: &gt;vim9<br>
-<br>
+<a class="Comment" href="vim9.html#true">true</a>&nbsp;になる:<br>
+&gt;vim9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var s: string = &quot;&quot;&nbsp;&nbsp;&nbsp;&nbsp; | echo s != null<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var b: blob = 0z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | echo b != null<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var l: list<span class="Special">&lt;any&gt;</span>&nbsp;= []&nbsp;&nbsp;| echo l != null<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var t: tuple<span class="Special">&lt;any&gt;</span>&nbsp;= () | echo t != null<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var d: dict<span class="Special">&lt;any&gt;</span>&nbsp;= {}&nbsp;&nbsp;| echo d != null<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var s: string = &quot;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| echo s != null<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var b: blob = 0z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| echo b != null<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var l: list<span class="Special">&lt;any&gt;</span>&nbsp;= []&nbsp;&nbsp; | echo l != null<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var t: tuple<span class="Special">&lt;any&gt;</span>&nbsp;= ()&nbsp;&nbsp;| echo t != null<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var d: dict<span class="Special">&lt;any&gt;</span>&nbsp;= {}&nbsp;&nbsp; | echo d != null<br>
 &lt;<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
