@@ -1,7 +1,7 @@
-*eval.txt*	For Vim バージョン 9.2.  Last change: 2026 Nov 04
+*eval.txt*	For ViAI バージョン 1.0.  Last change: 2026 Nov 04
 
 
-		  VIM リファレンスマニュアル	by Bram Moolenaar
+		  VIAI リファレンスマニュアル
 
 
 式の評価				*expression* *expr* *E15* *eval*
@@ -1611,7 +1611,7 @@ expr10 が |Blob| ならば、インデックス expr1a と expr1b のバイト�
 |Funcref| に対して expr10[expr1] や expr10[expr1a : expr1b] を使うとエラーにな
 る。
 
-部分リストでスコープと変数に続くコロンとの混乱に注意してください: >
+部分リストでスコープと変数に続くコロンとの混乱に注意すること: >
 	mylist[n:]     " 変数nは使える
 	mylist[s:]     " スコープs:を使うとエラー！
 
@@ -2742,8 +2742,8 @@ v:progpath	Vim を起動したときのコマンド (パスを含む)。|--remot
 		Linuxおよびその他のシステムでは、常にフルパスになる。Macでは単
 		に "vim" であり、前述の exepath() を使用してフルパスを取得する
 		必要がある。
-		MS-Windows では実行可能ファイルが "vim.exe" として呼び出される
-		かもしれないが、".exe" は v:progpath には追加されない。
+		MS-Windows では実行可能ファイルが "viai.exe" として呼び出され
+		るかもしれないが、".exe" は v:progpath には追加されない。
 		読出し専用。
 
 				*v:python3_version* *python3-version-variable*
@@ -3015,6 +3015,16 @@ v:versionlong	v:versionと同じだが、最後の4桁にパッチレベルも�
 		に起こる。例えば、セキュリティ修正のため。
 		パッチが実際に含まれていることを確認するためには has() 関数を
 		使用すること。
+
+				*v:viai_version* *viai_version-variable*
+v:viai_version	ViAI のバージョン番号で、Vim の |v:version| と同様のもの。バー
+		ジョン 1.0 は 100。読出し専用。
+
+			*v:viai_versionlong* *viai_versionlong-variable*
+v:viai_versionlong
+		v:viai_version と同じだが、最後の4桁にパッチレベルも含む。パッ
+		チ 40 を適用したバージョン 1.0 の値は 1000040 である。読出し専
+		用。
 
 				*v:vim_did_enter* *vim_did_enter-variable*
 v:vim_did_enter	ほとんどのスタートアップが完了するまでの間 0。|VimEnter| 自動

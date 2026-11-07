@@ -1,7 +1,7 @@
-*options.txt*  For Vim バージョン 9.2.  Last change: 2026 Oct 25
+*options.txt*	For ViAI バージョン 1.0.  Last change: 2026 Oct 25
 
 
-		  VIM リファレンスマニュアル	by Bram Moolenaar
+		  VIAI リファレンスマニュアル
 
 
 オプション						*options*
@@ -7563,11 +7563,15 @@ Note 1番目の形式では、行全体がオプション指定に使われる�
 	  print/	印刷用のファイル |postscript-print-encoding|
 	  spell/	スペルチェック用のファイル |spell|
 	  syntax/	文法ファイル |mysyntaxfile|
-	  tutor/	Vimtutor用ファイル |tutor|
+	  tutor/	Vim チュートリアル用ファイル |tutor|
 
 	および、コマンド |:runtime| で検索される全てのファイル。
 
 	$XDG_CONFIG_HOME については、|xdg-base-dir| を参照。
+	ViAI 自身のユーザー設定が存在する場合 (|viai-config| を参照)、デフォル
+	トは Vim の個人ディレクトリの代わりに、Unix では "$HOME/.viai" または
+	"$XDG_CONFIG_HOME/viai"、MS-Windows では "$HOME/viaifiles" を使う。
+	"after" ディレクトリについても同様である。
 
 	ほとんどのシステムのデフォルトでは、以下の 5 つの場所を検索するように
 	設定されている:
@@ -10119,6 +10123,9 @@ Note 1番目の形式では、行全体がオプション指定に使われる�
 			{|+mksession| 機能付きでコンパイルされたときのみ有効}
 	コマンド |:mkview| によるファイルを格納するディレクトリの名前。
 	$XDG_CONFIG_HOME については、|xdg-base-dir| を参照。
+	ViAI 自身のユーザー設定が存在する場合 (|viai-config| を参照)、デフォル
+	トは Unix では "$HOME/.viai/view" または "$XDG_CONFIG_HOME/viai/view"、
+	Win32 では "$HOME/viaifiles/view" である。
 	環境変数は |:set_env| によって展開される。
 	セキュリティ上の理由から、このオプションを |modeline| または |sandbox|
 	内で設定することはできない。
@@ -10272,6 +10279,7 @@ Note 1番目の形式では、行全体がオプション指定に使われる�
 			グローバル
 			{|+viminfo| 機能付きでコンパイルされたときのみ有効}
 	値が空でないとき、viminfo で使われているファイル名を上書きする。
+	デフォルトのファイル名については |viminfo-file-name| を参照。
 	"NONE" のとき、viminfo の読み込みも書き込みもされない。
 	このオプションはコマンドラインの |-i| フラグで設定することができる。
 	コマンドラインからの |--clean| フラグはこれを "NONE" に設定する。
