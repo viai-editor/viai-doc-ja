@@ -1,7 +1,7 @@
-*usr_05.txt*	For Vim バージョン 9.2.  Last change: 2026 Aug 30
+*usr_05.txt*	For ViAI バージョン 1.0.  Last change: 2026 Aug 30
 
 
-		     VIM ユーザーマニュアル	by Bram Moolenaar
+		     VIAI ユーザーマニュアル
 
 
 				  設定の変更
@@ -442,17 +442,17 @@ Vim script の if/else/endif やその他のものにマッチするようにし
 うなステップでインストールできます:
 	1. パッケージディレクトリを作成する: >
 		mkdir -p ~/.vim/pack/fancy
-<	   "fancy" はあなたの好きな名前に変更できます。パッケージを表すのに良
-	   いものを使いましょう。
-	2. そのディレクトリにアーカイブを解凍しましょう。以下はアーカイブ内の
-	   トップディレクトリは "start" であると仮定しています: >
+<	   "fancy" はあなたの好きな名前に変更できる。パッケージを表すのに良
+	   いものを使おう。
+	2. そのディレクトリにアーカイブを解凍しよう。以下はアーカイブ内のトッ
+	   プディレクトリは "start" であると仮定している: >
 		cd ~/.vim/pack/fancy
 		unzip /tmp/fancy.zip
 <	   アーカイブ展開後のレイアウトが、以下のようなパスになっていなけれ
-	   ば、適宜修正してください:
+	   ば、適宜修正すること:
 		~/.vim/pack/fancy/start/fancytext/plugin/fancy.vim ~
-	   ここの "fancytext" はパッケージ名なので、実際には別の名前になるで
-	   しょう。
+	   ここの "fancytext" はパッケージ名なので、実際には別の名前になるだろ
+	   う。
 
 ------------------------------------------------------------------------------
 editorconfig パッケージの追加	*editorconfig-install* *package-editorconfig*
@@ -546,6 +546,29 @@ osc52.vim パッケージは、OSC 52 ターミナル コマンドのサポー�
 パッケージの読み込みが完了したら、こちらで詳細をご覧ください: >
 	:h osc52.txt
 
+------------------------------------------------------------------------------
+lsp.vim と vim9ls パッケージの追加	*lsp.vim-install* *package-lsp.vim*
+					*vim9ls-install* *package-vim9ls*
+------------------------------------------------------------------------------
+
+lsp.vim は Language Server Protocol のクライアントで、vim9ls は Vim script の
+ための言語サーバーです。これらで Vim script をチェックするには、vimrc ファイル
+に以下の行を追加してください: >
+	if has('viai')
+	  packadd! lsp.vim
+	  packadd! vim9ls
+	  let g:lsp_server_list = [#{filetypes: ['vim'], name: 'vim9ls',
+		  \ cmd: function('vim9ls#Command')}]
+	endif
+<
+ViAI のチェックにより、Vim でのエラーを回避します。ViAI が独自の vimrc ファイ
+ルを持たない限り、Vim は同じ vimrc ファイルを読み込むからです。|viai-config|
+を参照。
+
+パッケージの読み込みが完了したら、こちらで詳細をご覧ください: >
+	:h lsp.txt
+	:h vim9ls.txt
+
 パッケージについてのより詳しい情報は次の項目を参照してください: |packages|
 
 ==============================================================================
@@ -588,14 +611,14 @@ Vim を起動すると、自動的にいくつものグローバルプラグイ�
 ☆グローバルプラグインを入手する
 
 プラグインはどこにありますか？
-- いくつかは常に読み込まれます。それらは $VIMRUNTIME/plugin ディレクトリの中で
-  見ることができます。
-- Vim の配布物にいくつか含まれています。$VIMRUNTIME/macros ディレクトリおよび
-  そのサブディレクトリおよび $VIM/vimfiles/pack/dist/opt/ 以下をご覧ください。
+- いくつかは常に読み込まれる。それらは $VIMRUNTIME/plugin ディレクトリの中で見
+  ることができる。
+- Vim の配布物にいくつか含まれている。$VIMRUNTIME/macros ディレクトリおよびそ
+  のサブディレクトリおよび $VIM/vimfiles/pack/dist/opt/ 以下を見ること。
 - インターネットからダウンロードする。たくさんのプラグインが
-  http://www.vim.org にあります。
-- Vim のメーリングリスト|maillist|に投稿されることもあります。
-- あなたが自作することもできます。プラグインの書き方|write-plugin|をどうぞ。
+  http://www.vim.org にある。
+- Vim のメーリングリスト|maillist|に投稿されることもある。
+- あなたが自作することもできる。プラグインの書き方|write-plugin|をどうぞ。
 
 いくつかのプラグインは vimball アーカイブで配布されています。|vimball|参照。
 いくつかのプラグインは自動更新可能です。|getscript|参照。
