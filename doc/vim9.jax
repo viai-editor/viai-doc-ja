@@ -1,4 +1,4 @@
-*vim9.txt*	For ViAI バージョン 1.0.  Last change: 2026 Aug 16
+*vim9.txt*	For ViAI バージョン 1.0.  Last change: 2026 Nov 01
 
 
 		  VIAI リファレンスマニュアル
@@ -4885,8 +4885,8 @@ FlexArgs が最初に文字列引数を受け取り、次にリスト引数を�
 初期化子なしで変数を宣言する場合は、明示的に型を指定する必要がある。各カテゴリ
 には異なるデフォルトの初期化セマンティクスがある。
 
-プリミティブ型は、デフォルトで型固有の値になります。すべてのプリミティブ型は空
-ですが、`null` と等しくはない:
+プリミティブ型は、デフォルトで型固有の値になる。すべてのプリミティブ型は空だ
+が、`null` と等しくはない:
 >vim9
 	vim9script
 	var n: number | echo [n, n->empty(), n == null]  # [0, 1, false]
@@ -5144,8 +5144,7 @@ null_<type> と同等であるが、同じインスタンスではない:
 
 ==============================================================================
 
-						*generic-functions*
-5. ジェネリック関数
+5. ジェネリック関数					*generic-functions*
 
 ジェネリック関数は、引数と戻り値の型チェックを維持しながら、同じ関数を異なる型
 の引数で使用できる。これにより、型安全性とコードの再利用性が確保される。
@@ -5154,24 +5153,24 @@ null_<type> と同等であるが、同じインスタンスではない:
 宣言~
 						*generic-function-declaration*
 						*E1553* *E1554*
-ジェネリック関数の型変数は、関数名の直後に山括弧 ("<"i と ">") で囲まれた型パ
-ラメータとして宣言される。複数の型パラメータはコンマで区切られる: >
-
+ジェネリック関数の型変数は、関数名の直後に山括弧 ("<" と ">") で囲まれた型パ
+ラメータとして宣言される。複数の型パラメータはコンマで区切られる:
+>
 	def[!] {funcname}<{type} [, {types}]>([arguments])[: {return-type}]
-	    {function body}
+	  {function body}
 	enddef
 <						*generic-function-example*
 これらの型パラメータは、他の型と同様に、関数シグネチャとその本体内で使用でき
-る。以下の例では、2 つのリストを tuple のリストに結合している: >vim9
-
+る。以下の例では、2 つのリストを tuple のリストに結合している:
+>vim9
 	vim9script
 	def Zip<T, U>(first: list<T>, second: list<U>): list<tuple<T, U>>
-	    const LEN: number = ([first->len(), second->len()])->min()
-	    final result: list<tuple<T, U>> = []
-	    for i in range(LEN)
-	        result->add((first[i], second[i]))
-	    endfor
-	    return result
+	  const LEN: number = ([first->len(), second->len()])->min()
+	  final result: list<tuple<T, U>> = []
+	  for i in range(LEN)
+	    result->add((first[i], second[i]))
+	  endfor
+	  return result
 	enddef
 	var n: list<number> = [61, 62, 63]
 	var s: list<string> = ['a', 'b', 'c']
@@ -5182,18 +5181,18 @@ null_<type> と同等であるが、同じインスタンスではない:
 						*type-parameter-naming*
 前の例と同様に、名前には大文字を 1 文字だけ使用するのが慣例である (例えば、T、
 U、Aなど)。複数の文字で構成されている場合もあるが、名前は必ず大文字で始まる必
-要がある。この例では、"Ok" は有効だが、"n" は無効である: >vim9
-
+要がある。この例では、"Ok" は有効だが、"n" は無効である:
+>vim9
 	vim9script
 	def MyFail<Ok, n>(): void
 	enddef
-	# E1552: Type variable name must start with an uppercase letter: n...
+	# E1552: Type variable name must start with an uppercase letter: n>...
 <
-						*E1558* *E1560*
+							*E1558* *E1560*
 関数は、ジェネリック関数または通常の関数のいずれかとして宣言および使用する必要
 がある。両方を同時に使用することはできない。以下の Vim9 script は、これらのエ
-ラーを示している: >vim9
-
+ラーを示している:
+>vim9
 	vim9script
 	My1558<number>()
 	# E1558: Unknown generic function: My1558
@@ -5204,9 +5203,9 @@ U、Aなど)。複数の文字で構成されている場合もあるが、名�
 	My1560<string>()
 	# E1560: Not a generic function: My1560
 <
-						*E1561*
-型パラメータ名は他の識別子と競合してはならない: >vim9
-
+							*E1561*
+型パラメータ名は他の識別子と競合してはならない:
+>vim9
 	vim9script
 	def My1561<D, E, D>(): D
 	enddef
@@ -5218,45 +5217,41 @@ U、Aなど)。複数の文字で構成されている場合もあるが、名�
 	endenum
 	def My1041<E>(): E
 	enddef
-	# E0141: Redefining script item "E"
+	# E1041: Redefining script item: "E"
 <
 
 ジェネリック関数の呼び出し~
-						*generic-function-call*
+							*generic-function-call*
 ジェネリック関数を呼び出すには、関数名と引数リストの間に "<" と ">" で具体的な
-型を指定する: >
-
+型を指定する:
+>
 	MyFunc<number, string, list<number>>()
 <
-	NOTE: このセクションには、|generic-function-example| など、ソースとし
-	      て参照できる実用的な例がいくつかある。
+	Note: このセクションには、|generic-function-example| など、読み込むこ
+	とができる実用的な例がいくつかある。
 
-					*E1555* *E1556* *E1557* *E1559*
+						*E1555* *E1556* *E1557* *E1559*
 関数に渡される型引数の数は、宣言された型パラメータの数と一致している必要があ
-る。空の型リストは許可されない。例: >vim9
-
+る。空の型リストは許可されない。例:
+>vim9
 	vim9script
 	def My1555<>(): void
-	enddef
-	# E1555: Empty type list specified for generic function ...
+	enddef	# E1555: Empty type list specified for generic function '<S...
 < >vim9
 	vim9script
 	def My1556<T>(): void
 	enddef
-	My1556<bool, bool>()
-	# E1556: Too many types specified for generic function ...
+	My1556<bool, bool>()  # E1556: Too many types specified for generic...
 < >vim9
 	vim9script
 	def My1557<T, U>(): void
 	enddef
-	My1557<bool>()
-	# E1557: Not enough types specified for generic function ...
+	My1557<bool>()	# E1557: Not enough types specified for generic fun...
 < >vim9
 	vim9script
 	def My1559<T>(): T
 	enddef
-	My1559()
-	# Vim(eval):E1559: Type arguments missing for generic function ...
+	My1559()  # E1559: Type arguments missing for generic function '<SN...
 <
 任意の Vim9 型 (|vim9-types|) は、ジェネリック関数内の具体的な型として使用でき
 る。
@@ -5270,47 +5265,50 @@ U、Aなど)。複数の文字で構成されている場合もあるが、名�
 よび |:import| を参照。
 
 ジェネリック関数は、別の通常関数またはジェネリック関数内で定義できる。
-例: >vim9
+例:
+>vim9
 	vim9script
 	def Outer(): void
 	  # Returns either the first item of a list or a default value
 	  def FirstOrDefault<T, U>(lst: list<T>, default: U): any
 	    return lst->len() > 0 ? lst[0] : default
 	  enddef
-	  echo FirstOrDefault<string, bool>(['B', 'C'], false)	# echos B
-	  echo FirstOrDefault<number, number>([], 42)		# echos 42
+	  echo FirstOrDefault<string, bool>(['B', 'C'], false)	# B
+	  echo FirstOrDefault<number, number>([], 42)		# 42
 	enddef
 	Outer()
 <
+入れ子にしたジェネリック関数は、再帰的に呼び出すことや、ラムダや別の入れ子の関
+数などのクロージャ内で使用することもできる。
 
 型変数を型引数として使用する~
 
-型変数は型引数として渡すこともできる。例: >vim9
-
+型変数は型引数として渡すこともできる。例:
+>vim9
 	vim9script
 	# T は型パラメータとして宣言されている
 	# これは 'value' パラメータと戻り値の型に使用される
 	def Id<T>(value: T): T
-	    return value
+	  return value
 	enddef
 	# U は型パラメータとして宣言されている
 	# これは 'value' パラメータと戻り値の型に使用される
 	def CallId<U>(value: U): U
-	    # U は型引数として渡される/使用される型変数である
-	    return Id<U>(value)
+	  # U は型引数として渡される/使用される型変数である
+	  return Id<U>(value)
 	enddef
 	echo CallId<string>('I am') .. ' ' .. CallId<number>(42)
-
+<
 これは、リストの辞書や、以下の例のように辞書のリストのような複雑なデータ構造に
-役立つ: >vim9
-
+役立つ:
+>vim9
 	vim9script
 	def Flatten<T>(x: list<list<T>>): list<T>
-	    final result: list<T> = []
-	    for inner in x
-	        result->extend(inner)
-	    endfor
-	    return result
+	  final result: list<T> = []
+	  for inner in x
+	    result->extend(inner)
+	  endfor
+	  return result
 	enddef
 	const ENGLISH: list<dict<string>> = [{1: 'one'}, {2: 'two'}]
 	const MANDARIN: list<dict<string>> = [{1: '壹'}, {2: '贰'}]
@@ -5324,56 +5322,61 @@ U、Aなど)。複数の文字で構成されている場合もあるが、名�
 
 ジェネリッククラスメソッド~
 
-Vim9 クラスのメソッドはジェネリック関数になることができる: >vim9
-
+Vim9 クラスのメソッドはジェネリック関数になることができる:
+>vim9
 	vim9script
 	class Config
-	    var settings: dict<any>
-	    def Get<T>(key: string): T
-	        return this.settings[key]
-	    enddef
+	  var settings: dict<any>
+	  def Get<T>(key: string): T
+	    return this.settings[key]
+	  enddef
 	endclass
 	var c: Config = Config.new({timeout: 30, debug: true})
 	echo c.Get<number>('timeout')
 	echo c.Get<bool>('debug')
 <
-						*E1432* *E1433* *E1434*
+							*E1432* *E1433* *E1434*
 基底クラスのジェネリッククラスメソッドは、子クラスのジェネリックメソッドでオー
 バーライドできる。型変数の数は両方のメソッド間で一致している必要がある。具象ク
 ラスメソッドをジェネリックメソッドでオーバーライドすることはできない。逆もまた
 同様である。
+							*E1438*
+インターフェイスメソッドを実装するメソッドは、インターフェイスメソッドと同じ数
+の型変数を持たなければならない。ジェネリックメソッドは通常のメソッドを実装でき
+ない。逆もまた同様である。
+
 
 ジェネリック関数参照~
 
 関数参照 (|Funcref|) はジェネリック関数として使用できる。これにより、特定の型
-を操作する関数のファクトリーを作成できる: >vim9
-
+を操作する関数のファクトリーを作成できる:
+>vim9
 	vim9script
 	# 文字列内の指定された文字、またはリスト内の文字の 10 進数値と一致す
 	# る。Note: '*' は 10 進数の 42 (U+002A)
 	var c: string = "*"
 	var char_dec: tuple<string, string> = (c, c->char2nr()->string())
 	def Matcher<T>(pattern: string): func(T): bool
-	    return (value: T): bool => match(value, pattern) >= 0
+	  return (value: T): bool => match(value, pattern) >= 0
 	enddef
 	var StringMatch = Matcher<string>(char_dec[0])
-	echo "*+"->StringMatch()			    # true (has *)
-	echo ",-"->StringMatch()			    # false
+	echo "*+"->StringMatch()	# true (has *)
+	echo ",-"->StringMatch()	# false
 	var ListMatch = Matcher<list<number>>(char_dec[1])
-	echo [42, 43]->ListMatch()			    # true (has 42)
-	echo [44, 45]->ListMatch()			    # false
+	echo [42, 43]->ListMatch()	# true (has 42)
+	echo [44, 45]->ListMatch()	# false
 <
 
 ジェネリック関数のコンパイルと逆アセンブル~
 
 |:defcompile| コマンドは、具体的な型の特定のリストを持つジェネリック関数をコン
-パイルするために使用できる: >
-
+パイルするために使用できる:
+>
 	defcompile MyFunc<number, list<number>, dict<string>>
 <
 |:disassemble| コマンドを使用すると、ジェネリック関数に対して生成された命令を
-一覧表示できる: >
-
+一覧表示できる:
+>
 	disassemble MyFunc<string, dict<string>>
 	disassemble MyFunc<number, list<blob>>
 <
@@ -5381,87 +5384,99 @@ Vim9 クラスのメソッドはジェネリック関数になることができ
 制限事項と今後の課題~
 
 現在、Vim は以下をサポートしていない:
-   - 型変数の型推論: ジェネリック関数を呼び出す際は、すべての型を明示的に指定
-     する必要がある。
-   - 型制約: 型変数を特定のクラスまたはインターフェイスに制限することはできな
-     い (例: `T extends SomeInterface`)。
-   - デフォルト型引数: 型パラメータが明示的に指定されていない場合に、デフォル
-     トの型を提供する。
+- 型変数の型推論: ジェネリック関数を呼び出す際は、すべての型を明示的に指定する
+  必要がある。
+- 型制約: 型変数を特定のクラスまたはインターフェイスに制限することはできない
+  (例: `T extends SomeInterface`)。
+- デフォルト型引数: 型パラメータが明示的に指定されていない場合に、デフォルトの
+  型を提供する。
 
 ==============================================================================
 
-6. 名前空間、Import と Export
-				*vim9script* *vim9-export* *vim9-import*
-
-Vim9 script は、import されるように書くことができます。これは、いくつかの項目
-が意図的に export され、他のスクリプトで利用できるようになることを意味します。
+6. 名前空間、Import と Export				*vim9script*
+						*vim9-export* *vim9-import*
+Vim9 script は、import されるように書くことができる。これは、いくつかの項目が
+意図的に export され、他のスクリプトで利用できるようになることを意味する。
 export したスクリプトが他のスクリプトで import されると、これらの export され
-た項目はそのスクリプトで使用することができます。その他の項目は、export したス
-クリプトのスクリプトローカルのままであり、import スクリプトからアクセスするこ
-とはできません。
+た項目はそのスクリプトで使用することができる。その他の項目は、export したスク
+リプトのスクリプトローカルのままであり、import スクリプトからアクセスすること
+はできない。
 
 この機構は、他のスクリプトがソース (import される) されうるスクリプトを書くた
-めに存在し、他のスクリプトがあなたが望むものだけにアクセスできるようにします。
-また、名前衝突の危険性があるグローバル名前空間を使用することも避けられます。例
-えば、似たような機能を持つ2つのプラグインがある場合です。
+めに存在し、他のスクリプトがあなたが望むものだけにアクセスできるようにする。ま
+た、名前衝突の危険性があるグローバル名前空間を使用することも避けられる。例え
+ば、似たような機能を持つ2つのプラグインがある場合である。
 
-グローバル名前空間を明示的に使用することで、ごまかすことができます。これは、本
-当にグローバルなものだけに行うべきことです。
+グローバル名前空間を明示的に使用することで、ごまかすことができる。これは、本当
+にグローバルなものだけに行うべきことである。
 
 
 名前空間 ~
 							*vim9-namespace*
-import 可能なファイルを認識するためには、`vim9script` ステートメントがファイル
-の最初のステートメントとして現れる必要があります (例外については |vim9-mix| を
-参照)。これは Vim に、グローバルな名前空間ではなく、独自の名前空間でスクリプト
-を解釈するように指示します。ファイルが次で始まる場合: >
+import 可能なファイルを認識するためには、`vim9script` コマンドがファイルの最初
+のコマンドとして現れる必要がある (ただし、例外については |vim9-mix| を参照)。
+これは Vim に、グローバルな名前空間ではなく、独自の名前空間でスクリプトを解釈
+するように指示する。次のスクリプトを考えてみる:
+>vim9
 	vim9script
 	var myvar = 'yes'
-"myvar" はこのファイルの中にしか存在しないことになります。一方、`vim9script`
-がなければ、他のスクリプトや関数から `g:myvar` として利用できます。
+<
+変数 "myvar" はこのスクリプトのスコープの中にしか存在しないことになる。これは、
+"let myvar" によって "myvar" が他のスクリプトや関数から (`g:myvar` として) 利
+用できるようになる旧来の Vim script とは異なる。
 							*E1101*
 ファイルレベルの変数は、旧来のVim script のスクリプトローカル変数 "s:" と非常
-によく似ていますが、"s:" は省略されています。そして、それらは削除することがで
-きません。
-
-Vim9 script では、グローバルな "g:" 名前空間は従来通り使用可能です。また、
-"w:"、"b:"、"t: " 名前空間も使用できます。これらの共通点は、変数が宣言されてい
-ないこと、特定の型を持っていないこと、削除できることです。 *E1304*
-
-`vim9script` の副作用として、'cpoptions' オプションが Vim のデフォルト値に設定
-されることが挙げられます: >
+によく似ているが、"s:" は省略されている。そして、それらは削除することができな
+い。
+							*E1304*
+Vim9 script では、グローバル (`g:`)、バッファ (`b:`)、ウィンドウ (`w:`)、タブ
+(`t:`) の名前空間を旧来の Vim script と同じように使用できる。Vim9 script では、
+名前空間がプリフィックスとして付いた変数は:
+- 宣言されない
+- 特定の型を持たない、そして
+- 削除できる。
+名前空間がプリフィックスとして付いた変数を宣言すると、|E1016| が発生する。ま
+た、型を指定すると E1304 が発生する:
+>vim9
+	vim9cmd var b:fails: bool	# E1016: Cannot declare a buffer va...
+	vim9cmd b:fails: bool = false	# E1304: Cannot use type with this ...
+<
+`:vim9script` の副作用として、'cpoptions' オプションが Vim のデフォルト値に設
+定されることが挙げられる:
+>
 	:set cpo&vim
-効果の1つは、|line-continuation| が常に有効であることです。'cpoptions' の元の
-値はスクリプトの最後に復元され、スクリプトで追加または削除されたフラグも元の値
-に追加または削除されて同じ効果を得ることができます。フラグの順序は変更されるこ
-とがあります。起動時に読み込まれる |vimrc| ファイルでは、このようなことは起こ
-りません。
+<
+効果の1つは、|line-continuation| が常に有効であることである。'cpoptions' の元
+の値はスクリプトの最後に復元され、スクリプトで追加または削除されたフラグも元の
+値に追加または削除されて同じ効果を得ることができる。フラグの順序は変更されるこ
+とがある。起動時に読み込まれる |vimrc| ファイルでは、このようなことは起こらな
+い。
 
 							*vim9-mix*
-1 つのスクリプトファイルで、旧来と Vim9 の両方の構文を使用する方法がある: >vim9
-
-	" _legacy Vim script_ comments here
+1 つのスクリプトファイルで、旧来と Vim9 の両方の構文を使用する方法がある:
+>vim9mix
+	" _legacy Vim script_ comments are placed here
 	if !has('vim9script')
-	   " _legacy Vim script_ comments/commands here
-	   finish
+	  " _legacy Vim script_ comments and commands are placed here
+	  finish
 	endif
 	vim9script
 	# _Vim9 script_ commands/commands from here onwards
 	echowindow $"has('vim9script') == {has('vim9script')}"
 <
 これにより、可能であれば Vim9 script 構文を活用するスクリプトを作成できるよう
-になり、'vim9script' のないバージョンの Vim で vim9script コマンドを使用した場
-合にエラーが発生するのを防ぐことができる。
+になり、Vim9 script のないバージョンの Vim で `vim9script` コマンドを使用した
+場合にエラーが発生するのを防ぐことができる。
 
 Note Vim9 の構文は Vim 9 より前に変更されたため、現在の構文 ("import" ではなく
-"import from" など) を使用するスクリプトはエラーをスローする可能性がある。
+"import from" など) を使用するスクリプトはエラーが発生する可能性がある。
 これを防ぐには、代わりに |v:version| >= 900 というチェックを行う方が安全である
 ("has('vim9script')" はパッチ 3965 を適用した Vim 8.2 では `v:true` を返すた
 め)。
 場合によっては、さらに後で切り捨てるのが賢明なこともある。Vim9 script の機能
 セットは増え続けているため、例えば tuple が使用される場合 (Vim 9.1 パッチ 1232
-で導入)、より適切な条件は以下のとおりである: >vim9
-
+で導入)、より適切な条件は以下のとおりである:
+>vim9mix
 	if !has('patch-9.1.1232')
 	  echowindow $"Fail: Vim does not have patch 9.1.1232"
 	  finish
@@ -5471,76 +5486,131 @@ Note Vim9 の構文は Vim 9 より前に変更されたため、現在の構文
 <
 どちらの vim-mix 条件が使用されても、以下の 2 つの方法のいずれかでのみ機能す
 る:
-    1. "if" ステートメントが false と評価されると、`endif` までのコマンドはス
-       キップされ、`vim9script` が実際に実行される最初のコマンドになる。
-    2. "if" ステートメントは true と評価され、`endif` までのコマンドが実行され、
-       `finish` は `vim9script` に到達する前に終了する。
+  1. "if" ステートメントが false と評価されると、`endif` までのコマンドはス
+     キップされ、`vim9script` が実際に実行される最初のコマンドになる。
+  2. "if" ステートメントは true と評価され、`endif` までのコマンドが実行され、
+     `finish` は `vim9script` に到達する前に終了する。
+
 
 Export ~
-							*:export* *:exp*
-項目の export は次のように記述できます: >
-	export const EXPORTED_CONST = 1234
-	export var someValue = ...
-	export final someValue = ...
-	export const someValue = ...
-	export def MyFunc() ...
+							*:export*
+項目の export は次のように記述できる: >
+	export var myvar ...
+	export const MYCONST ...
+	export final myvar ...
+	export def MyDef() ...
+	export function MyFunc() ...
 	export class MyClass ...
-	export interface MyClass ...
+	export abstract class MyAbstractClass ...
+	export interface MyInterface ...
 	export enum MyEnum ...
-<							*E1043* *E1044*
-このことからわかるように、定数、変数、`:def` 関数、クラス、インターフェイス、
-列挙型のみが export 可能です。
-
+	export type MyType ...
+<							*E1043*
+このことからわかるように、変数、定数、関数、クラス (抽象クラスを含む)、インター
+フェイス、列挙型、型を export できる。それ以外のものを export しようとすると
+E1043 が発生する:
+>vim9
+	vim9cmd export echo 0  # E1043: Invalid command after :export
+<
 							*E1042*
-`:export` はスクリプトレベルで、Vim9 script でのみ使用できます。
-
+`:export` は Vim9 script のスコープでのみ使用できる。そのため、例えば
+`:function` を export することは問題ないが、そのような関数内で項目を export し
+ようとすると E1042 が発生する:
+>vim9
+	vim9script
+	export function F1042()
+	  export var b: bool
+	endfunction
+	F1042()	# E1042: Export can only be used in vim9script
+<
+							*E1044*
+無効な引数で E1044 が発生することがある:
+>vim9
+	vim9script
+	export def /a1044(): void
+	enddef	# E1044: Export with invalid argument: ...
+<
 
 Import ~
-				*:import* *:imp* *E1094* *E1047* *E1262*
-				*E1048* *E1049* *E1053* *E1071* *E1088* *E1236*
-export された項目は、別のスクリプトで import することができます。import 構文に
-は、2つの形式があります。単純な形式は: >
+							*:import*
+export された項目は、別のスクリプトで import することができる。import 構文に
+は、2つの形式がある。より単純な形式は: >
 	import {filename}
 <
-ここで {filename} は文字列として評価される式でなければなりません。この形式では、
+ここで {filename} は文字列として評価される式でなければならない。この形式では、
 ファイル名は ".vim" で終わる必要があり、".vim" より前の部分が名前空間のスクリ
-プトローカル名となります。例: >
+プトローカル名となる。例: >
 	import "myscript.vim"
 <
 これにより、"myscript.vim" に export された各項目は、"myscript.item" 等として
-利用可能になります。
-						*:import-as* *E1257* *E1261*
-名前が長い場合や曖昧な場合は、この形式を使用して別の名前を指定することができま
-す: >
+利用可能になる。
+
+							*E1094*
+import はスクリプトローカルのスコープでのみ許可されている。それ以外の場所、例
+えば `:function` や `:def` のスコープから import しようとすると E1094 が発生す
+る:
+>vim9
+	vim9script
+	def F1094(): void
+	  import 'nah.vim'  # E1094: Import can only be used in a script
+	enddef
+	F1094()
+<
+							*E1053* *E1071*
+{filename} が見つからないか、無効な場合はエラーが発生する:
+>vim9
+	vim9cmd import 'e1053.vim'  # E1053: Could not import "e1053.vim"
+	vim9cmd import false  # E1071: Invalid string for :import: false
+<
+							*:import-as*
+ファイル名が長い場合、曖昧な場合 (別のディレクトリにある同じファイル名など)、
+または単に名前に別の構造を使いたい場合は、この形式を使用できる: >
 	import {longfilename} as {name}
 <
-この形式では、{name} が import された名前空間の特定のスクリプトローカル名とな
-ります。したがって、{name} は |internal-variables| のように、文字、数字、'_'
-で構成されなければなりません。{longfilename} 式は、任意のファイル名で評価する
-必要があります。例: >
-	import "thatscript.vim.v2" as that
-<						*E1060* *E1258* *E1259* *E1260*
-"that.item" 等として使えます。"that" という名称は自由です。import したスクリプ
-トを指していると認識されるようなものを使ってください。コマンド名、コマンド修飾
-語、組み込み関数名などは避けてください。名前がそれらと被るからです。名前を大文
-字で始めないほうがいいです。大文字で始めると、グローバルなユーザーコマンドや関
-数と被る可能性があります。また、その名前を関数や変数名など、スクリプト内の他の
-何かに使用することはできません。
+この長い形式では、{name} が import された名前空間の特定のスクリプトローカル名
+となる。したがって、{name} は |internal-variables| のように、文字、数字または
+'_' で構成されなければならず、数字で始めることはできない。{longfilename} 式は、
+存在するファイル名に評価されなければならない。
 
-名前のドットが望ましくない場合は、関数のローカル参照を作成できます: >
-	var LongFunc = that.LongFuncName
+以下のスクリプトは `:import-as` の使用例である。これは:
+- import する一時的な Vim9 script ファイルの {longfilename} として、定数 "TMP"
+  を作成する
+- 2 行の Vim9 script を TMP に書き込む
+- その Vim9 script ファイルを {name} "that" として ("as") import する、そして
+- import した Vim9 script ファイルの {longfilename} と、別の行に "that.myvar"
+  の内容 ("myvar" は import したスクリプトで export された変数) を示す結果を表
+  示する。
+>vim9
+	vim9script
+	const TMP: string = tempname()
+	['vim9script', 'export var myvar: string = "YES!"']->writefile(TMP)
+	import TMP as that
+	echo $"Exported var 'myvar' in 'that' ({TMP}):\n" .. that.myvar
+<
+この例は、"that.myvar" などを使用できることを示している。"that" という名前、ま
+たは import したスクリプトを指していると認識されるようなものを自由に選んでよ
+い。コマンド名、コマンド修飾子、組み込み関数名は避けるのが最善である。{name}
+がそれらのいずれも隠してしまうからである。また、名前は小文字で始める方がよい。
+そうすれば、グローバルなユーザーコマンドや関数を隠してしまう可能性を避けられる
+からである。{name} は、関数名や変数名など、スクリプト内の他の何かに使用するこ
+とはできず (|E1213| を参照)、他の何かを代入することもできない (|E1258| を参
+照)。
 
-これは定数に対しても機能します: >
-	const MAXLEN = that.MAX_LEN_OF_NAME
+名前の "." が望ましくない場合は、関数のローカル参照を作成できる: >
+	var LongDef = that.LongDefName
 
-これは変数には使えません。なぜなら、値は一度コピーされ、変数を変更するときは元
-の変数ではなく、コピーが変更されるからです。ドットを含む完全な名前を使用する必
-要があります。
+これは定数に対しても機能する: >
+	const MAXLEN = that.MAXIMUM_LENGTH_OF_NAME
 
-関数内で `:import` を使用することはできません。import された項目はスクリプトレ
-ベルに存在し、一度だけ import されることを意図しています。
+これは変数には使えない。なぜなら、値は一度コピーされ、変数を変更するときは元の
+変数ではなく、コピーが変更されるからである。完全な名前 (つまり '.' を含む) を
+使用する必要がある。
 
-`import` の後のスクリプト名は次のようになります:
+import された項目はスクリプトレベルに存在し、一度だけ import されることを意図
+している。また、`:import` は `:function` や `:def` の中では使用できない -
+|E1094| を参照。
+
+`:import` の後のスクリプト名は次のようになる:
 - "." または ".." で始まる相対パス。スクリプトファイル自体の位置から相対的に
   ファイルを検索する。大きなプラグインを複数のファイルに分割して使用する場合に
   便利である。
@@ -5551,78 +5621,196 @@ export された項目は、別のスクリプトで import することがで�
   常、名前は長く、一意であるべきである。
   Note "after/import" は使われない。
 
-名前が ".vim" で終わらない場合は、"as name" を使用する必要があります。
+Vim9 script ファイルを一度 import すると、その結果はキャッシュされ、再度読み込
+まれることはない。
 
-Vim9 script ファイルを一度 import すると、その結果はキャッシュされ、次に同じス
-クリプトを import するときに使用されます。再度読み込まれることはありません。
+import 時には、多くの構文エラーやその他のエラーが発生する可能性がある。例:
 
-2 つの異なる "as" 名を使用する場合も同様に、同じスクリプトを 2 回 import する
-ことはできません。
-
-import 名を使用する場合、ドットと項目名は同じ行になければならず、改行すること
-はできません: >
-	echo that.
-		name   # エラー!
-	echo that
-		.name  # エラー!
-<						*import-map*
+							*E1047*
+- 無効な "as" {name} を使用する:
+>vim9
+	vim9script
+	import $'{$VIMRUNTIME}/autoload/ccomplete.vim' as i-cc
+	# E1047: Syntax error in import: i-cc
+<
+							*E1048*
+- import したスクリプト内の存在しない項目を使おうとする:
+>vim9
+	vim9script
+	import $'{$VIMRUNTIME}/autoload/ccomplete.vim' as i_cc
+	echo i_cc.absent_item  # E1048: Item not found in script: absent_item
+<
+							*E1049*
+- import したスクリプト内の、宣言されているが export されていない項目を使おう
+  とする:
+>vim9
+	vim9script
+	import $'{$VIMRUNTIME}/autoload/ccomplete.vim' as i_cc
+	echo i_cc.prepended  # E1049: Item not exported in script: prepended
+<
+							*E1060*
+import した名前を使用する場合、'.' と項目名は連続していなければならない。その
+ため、空白も改行も入れることはできない:
+- '.' の後 (|E1074| を参照)、または
+- '.' の前。例:
+>vim9
+	vim9script
+	import $'{$VIMRUNTIME}/autoload/ccomplete.vim' as i_cc
+	echo i_cc .GetPath()	# E1060: Expected dot after name: i_cc .Get...
+<
+							*E1088*
+- import したスクリプトに自分自身を import させようとする:
+>vim9
+	vim9script
+	const TMP: string = $'{tempname()}.vim'->substitute('\\', '/', 'g')
+	var lines: list<string> = ['vim9script', $'import "{TMP}" as e1088']
+	lines->writefile(TMP)
+	import TMP  # E1088: Script cannot import itself
+<
+							*E1236*
+- スクリプトそのものを使おうとする:
+>vim9
+	vim9script
+	import $'{$VIMRUNTIME}/autoload/ccomplete.vim' as cc
+	cc()  # E1236: Cannot use cc itself, it is imported
+<
+							*E1257*
+- import するファイル名が ".vim" で終わらないときに "as {name}" を使用しない:
+>vim9
+	vim9script
+	const TMP: string = tempname()
+	['vim9script']->writefile(TMP)
+	import TMP  # E1257: Imported script must use "as" or end in .vim: ...
+<
+							*E1258*
+- import した名前の後の '.' を省略する:
+>vim9
+	vim9script
+	import $'{$VIMRUNTIME}/autoload/ccomplete.vim' as i_cc
+	def F1258(): void
+	  i_cc =
+	enddef
+	defcompile  # E1258: No '.' after imported name: i_cc =
+<
+							*E1259*
+- import した名前の後の名前を省略する:
+>vim9
+	vim9script
+	import $'{$VIMRUNTIME}/autoload/ccomplete.vim' as i_cc
+	def F1259(): void
+	  i_cc.8 = 0
+	enddef
+	defcompile  # E1259: Missing name after imported name: i_cc.8 = 0
+<
+							*E1260*
+- import した項目を `:unlet` しようとする:
+>vim9
+	vim9script
+	const TMP: string = tempname()
+	['vim9script', 'export var b: bool']->writefile(TMP)
+	import TMP as e_unlet
+	unlet e_unlet.b  # E1260: Cannot unlet an imported item: b
+<
+							*E1261*
+- "as" を使用せずにファイル名 ".vim" を import しようとする。このスクリプトは、
+  オペレーティングシステムの該当する一時ディレクトリに一時ファイル '.vim' を書
+  き込み、それを import しようとする:
+>vim9
+	vim9script
+	const TMPDIR: string = tempname()
+	  ->substitute('\\', '/', 'g')		# Windows の \ 文字を確実に
+						# / にする
+	  ->substitute('/[^/]\+$', '/', '')	# ファイル名を取り除く
+	['vim9script']->writefile($'{TMPDIR}.vim')
+	echo $"Temporary import file name is: {TMPDIR}.vim"
+	import $'{TMPDIR}.vim'	# E1261: Cannot import .vim without using "as"
+<
+							*E1262*
+- 同じスクリプトを複数回 import しようとする (異なる "as" 名を使用する場合も含
+  む):
+>vim9
+	vim9script
+	import $'{$VIMRUNTIME}/autoload/ccomplete.vim' as i_cc1
+	import $'{$VIMRUNTIME}/autoload/ccomplete.vim' as i_cc2
+	# E1262: Cannot import the same script twice: .../ccomplete.vim
+<
+							*import-map*
 あるスクリプトから Vim9 script に関数を import した場合、import した関数の前に
-|<SID>| を付けることで、マッピングで参照することができます: >
+|<SID>| を付けることで、マッピングで参照することができる: >
 	noremap <silent> ,a :call <SID>name.Function()<CR>
 
 マッピングが定義されると、"<SID>name." は <SNR> とimport されたスクリプトのス
-クリプトIDに置き換えられます。
-さらに簡単な方法として、|<ScriptCmd>| を使用することができます: >
+クリプトIDに置き換えられる。
 
+さらに簡単な方法として、|<ScriptCmd>| を使用することができる: >
 	noremap ,a <ScriptCmd>name.Function()<CR>
 
-Note これは変数には効かず、関数にしか効かないということです。
-
-					    *import-legacy* *legacy-import*
-`:import` は旧来の Vim script でも使用することができます。"s:" というプリフィ
-ックスがない場合でも、import された名前空間はスクリプトローカルとなります。
-例: >
+Note これは変数には効かず、関数にしか効かないということである。
+この自己完結した例は、<ScriptCmd> を使用し、一時的なスクリプトを作成して書き込
+み、それを import して関数 "exported.MyDef()" を <leader>a にマップする様子を
+示している:
+>vim9
+	vim9script
+	const TMP: string = tempname()
+	['vim9script',
+	'export def MyDef(): void',
+	'  popup_notification("exported.MyDef() was called", {time: 4000})',
+	'enddef']->writefile(TMP)
+	import TMP as exported
+	nnoremap <leader>a <ScriptCmd>exported.MyDef()<CR>
+	# これで、<leader>a を押すと exported.MyDef() が呼ばれ、
+	# ポップアップが生成される
+<
+					*import-legacy* *legacy-import* *:imp*
+`:import` は、短縮形の `:imp` を含め、旧来の Vim script でも使用することができ
+る。"s:" というプリフィックスがない場合でも、import された名前空間はスクリプト
+ローカルとなる。例: >
 	import "myfile.vim"
 	call s:myfile.MyFunc()
 
-そして "as name" 形式を使用する: >
-	import "otherfile.vim9script" as that
-	call s:that.OtherFunc()
-
-ただし、名前空間を単独で解決することはできません: >
-	import "that.vim"
-	echo s:that
-	" ERROR: E1060: Expected dot after name: s:that
+"as name" 形式を使用する場合、名前空間を単独で解決することはできない (|E1060|
+も参照)。この例は、`as` を付けた `:imp` をうまく使い、その後エラーになることを
+示している:
+>vim
+	let s:tmp = $'{tempname()}.vim'->substitute('\\', '/', 'g')
+	call writefile(['vim9script',
+		\ 'export function L()',
+		\ '  return "Vim9 script exporting a :function"',
+		\ 'endfunction'], s:tmp)
+	imp s:tmp as iLegacy
+	echo s:iLegacy.L()	|" 'Vim9 script exporting a :function'
+				 " を表示する
+	echo s:iLegacy		|" E1060: Expected dot after name: s:iLegacy
 <
-これは、旧来のマッピングコンテキストにおける |<SID>| の使用にも影響します。
+これは、旧来のマッピングコンテキストにおける |<SID>| の使用にも影響する。
 |<SID>| は関数に対してのみ有効なプリフィックスであり、名前空間に対しては有効で
-はありません、スクリプトローカルな名前空間内の関数をスコープするために使用する
-ことはできません。関数の前に |<SID>| を付ける代わりに、|<ScriptCmd>| を使用す
-る必要があります。例: >
-
+はない、スクリプトローカルな名前空間内の関数をスコープするために使用することは
+できない。関数の前に |<SID>| を付ける代わりに、|<ScriptCmd>| を使用する必要が
+ある。例:
+>
 	noremap ,a <ScriptCmd>:call s:that.OtherFunc()<CR>
 <
 							*:import-cycle*
-`import` コマンドは、遭遇したときに実行されます。スクリプト A がスクリプト B
-を import し、B が (直接または間接的に) A を import した場合、これはスキップさ
-れます。この時点では、"import B" 以降の A 内の項目はまだ処理されておらず、定義
-されていません。したがって、循環的な import が存在しても、直接的にはエラーにな
-りませんが、"import B" 以降の A 内の項目が定義されていないためにエラーになる可
-能性があります。これはオートロード import には適用されません。次項参照。
+`import` コマンドは、遭遇したときに実行される。スクリプト A がスクリプト B を
+import し、B が (直接または間接的に) A を import した場合、これはスキップされ
+る。この時点では、"import B" 以降の A 内の項目はまだ処理されておらず、定義され
+ていない。したがって、循環的な import が存在しても、直接的にはエラーにならない
+が、"import B" 以降の A 内の項目が定義されていないためにエラーになる可能性があ
+る。これはオートロード import には適用されない。次項参照。
 
 
 オートロードスクリプトを import する ~
 					*vim9-autoload* *import-autoload*
 起動速度を最適化するために、スクリプトの読み込みは実際に必要になるまで延期する
-必要があります。オートロード機構を使用することをお勧めします:
+必要がある。オートロード機構を使用することを推奨する:
 							*E1264*
      1. プラグインでは、オートロードスクリプトから import された項目を参照する
-	ユーザーコマンド、関数、マッピングを定義する。 >
-
+	ユーザーコマンド、関数、マッピングを定義する。
+>
 	import autoload 'for/search.vim'
 	command -nargs=1 SearchForStuff search.Stuff(<f-args>)
-
-<        これは、.../plugin/anyname.vim に入る。"anyname.vim" は自由に選ぶこと
+<
+	これは、.../plugin/anyname.vim に入る。"anyname.vim" は自由に選ぶこと
 	ができる。"SearchForStuff" コマンドが利用できるようになった。
 
 	`import` の引数 "autoload" は、項目の1つが実際に使用されるまでスクリプ
@@ -5631,59 +5819,59 @@ Note これは変数には効かず、関数にしか効かないということ
 	あるいは、相対名または絶対名のいずれかを使用することもできる。以下を参
 	照。
 
-     2. オートロードスクリプトに、コードの大部分を置きます。 >
+     2. オートロードスクリプトに、コードの大部分を置く。
+>
 	vim9script
 	export def Stuff(arg: string): void
 	  ...
-
-<	これは、.../autoload/for/search.vim に入ります。
+<
+	これは、.../autoload/for/search.vim に入る。
 
 	"search.vim" スクリプトを "/autoload/for/" ディレクトリに置くと、
-	export された項目に "for#search#" というプリフィックスが付くようになり
-	ます。プリフィックスは、旧来のオートロードスクリプトで手動で追加するの
-	と同じように、ファイル名から取得される。したがって、export された関数
-	は"for#search#Stuff" で見つけることができますが、通常は
-	`import autoload` を使用し、プリフィックスを使用しません (この名前に遭
-	遇した関数をコンパイルするときにオートロードスクリプトをロードするとい
-	う副作用が発生します)。
+	export された項目に "for#search#" というプリフィックスが付くようにな
+	る。プリフィックスは、旧来のオートロードスクリプトで手動で追加するのと
+	同じように、ファイル名から取得される。したがって、export された関数は
+	"for#search#Stuff" で見つけることができるが、通常は `import autoload`
+	を使用し、プリフィックスを使用しない (この名前に遭遇した関数をコンパイ
+	ルするときにオートロードスクリプトをロードするという副作用が発生する)。
 
 	機能を分割して、オートロードスクリプトから他のスクリプトを好きなように
-	import することができます。こうすることで、プラグイン間でコードを共有
-	することができます。
+	import することができる。こうすることで、プラグイン間でコードを共有す
+	ることができる。
 
-'runtimepath' のすべてのエントリからオートロードスクリプトを検索するのは、少し時
-間がかかることがあります。プラグインがスクリプトの場所を知っている場合、多くの
-場合、相対パスが使用されます。これにより、検索が回避され、かなり速くなるはずで
-す。また、スクリプト名が一意である必要がないことも利点です。絶対パスも可能です。
-例: >
+'runtimepath' のすべてのエントリからオートロードスクリプトを検索するのは、少し
+時間がかかることがある。プラグインがスクリプトの場所を知っている場合、多くの場
+合、相対パスが使用される。これにより、検索が回避され、かなり速くなるはずであ
+る。また、スクリプト名が一意である必要がないことも利点である。絶対パスも可能で
+ある。例: >
 	import autoload '../lib/implement.vim'
 	import autoload MyScriptsDir .. '/lib/implement.vim'
 
 import したオートロードスクリプトを使用するマッピングを定義するには、特殊キー
-|<ScriptCmd>| が便利です。これは、マッピングのコマンドで、マッピングが定義され
-た場所のスクリプトコンテキストを使用することを可能にします。
+|<ScriptCmd>| が便利である。これは、マッピングのコマンドで、マッピングが定義さ
+れた場所のスクリプトコンテキストを使用することを可能にする。
 
 `:def` 関数をコンパイルしているときに、オートロードスクリプトの関数に遭遇する
-と、`:def` 関数が呼び出されるまでスクリプトはロードされません。これは、引数や
-戻り値の型がまだ分かっていないため、実行時にのみエラーが発生することも意味しま
-す。もし、'#' 文字を含む名前を使用するのであれば、そのオートロードスクリプトは
-ロードされます。
+と、`:def` 関数が呼び出されるまでスクリプトはロードされない。これは、引数や戻
+り値の型がまだ分かっていないため、実行時にのみエラーが発生することも意味する。
+もし、'#' 文字を含む名前を使用するのであれば、そのオートロードスクリプトはロー
+ドされる。
 
 オートロードスクリプトの中で、意図せずロードのきっかけとなる項目を参照しないよ
-うに注意してください。例えば、関数名を取るオプションを設定する場合、関数参照で
-はなく、必ず文字列を使用してください: >
+うに注意すること。例えば、関数名を取るオプションを設定する場合、関数参照ではな
+く、必ず文字列を使用すること: >
 	import autoload 'qftf.vim'
 	&quickfixtextfunc = 'qftf.Func'  # オートロードスクリプトはロードされ
 					 # ない
 	&quickfixtextfunc = qftf.Func    # オートロードスクリプトはロードされる
 一方で、スクリプトを早めに読み込むことで、エラーが発生した場合に、その旨を伝え
-ることができるようになり便利です。
+ることができるようになり便利である。
 
 |test_override()| のテスト用関数を使用して、`import autoload` にスクリプトをす
-ぐにロードさせることができます。これにより、項目と型が実際に使用されるのを待た
-ずにチェックできるようになります: >
+ぐにロードさせることができる。これにより、項目と型が実際に使用されるのを待たず
+にチェックできるようになる: >
 	test_override('autoload', 1)
-後でリセットします: >
+後でリセットする: >
 	test_override('autoload', 0)
 または: >
 	test_override('ALL', 0)
@@ -5694,13 +5882,15 @@ import したオートロードスクリプトを使用するマッピングを�
 7. クラスとインターフェイス				*vim9-classes*
 
 旧来の Vim script では、関数であるメンバーを追加することで、辞書を一種のオブ
-ジェクトとして使用することができます。しかし、これは非常に非効率的で、すべての
-オブジェクトが正しいメンバーを持っていることを確認する作業を作成者が行う必要が
-あります。|Dictionary-function| を参照。
+ジェクトとして使用することができる。しかし、これは非常に非効率的で、すべてのオ
+ブジェクトが正しいメンバーを持っていることを確認する作業を作成者が行う必要があ
+る。|Dictionary-function| を参照。
 
-|Vim9| script では、一般的なオブジェクト指向プログラミング言語のように、クラス、
-オブジェクト、インターフェイス、および列挙型を持つことができます。これは多くの
-機能を含んでいるため、別のヘルプファイルに記載されています: |vim9class.txt|
+|Vim9| script では、一般的なオブジェクト指向プログラミング言語のように、クラ
+ス、オブジェクト、インターフェイス、および列挙型を持つことができる。これは多く
+の機能を含んでいるため、別のヘルプファイル |vim9class.txt| に記載されているが、
+このヘルプファイル内にも読み込むことができる例がいくつかある
+(|vim9-class-type|、|vim9-enum-type|、およびその他の場所)。
 
 
 ==============================================================================
@@ -5709,194 +5899,202 @@ import したオートロードスクリプトを使用するマッピングを�
 
 :def コマンド ~
 
-プラグインの作者から、Vim script をもっと速くしたいとの要望がありました。関数
-呼び出しの既存のセマンティクスを維持することは、関数の呼び出し、ローカル関数ス
-コープの設定、行の実行に伴うオーバーヘッドのため、不可能に近いことが調査により
-判明しました。エラーメッセージや例外など、処理しなければならない細部はたくさん
-あります。a: および l: スコープ用の辞書を作成する必要性、a:000 のリスト、その
-他いくつかの回避できないオーバーヘッドを追加しすぎています。
+プラグインの作者から、Vim script をもっと速くしたいとの要望があった。関数呼び
+出しの既存のセマンティクスを維持することは、関数の呼び出し、ローカル関数スコー
+プの設定、行の実行に伴うオーバーヘッドのため、不可能に近いことが調査により判明
+した。エラーメッセージや例外など、処理しなければならない細部はたくさんある。a:
+および l: スコープ用の辞書を作成する必要性、a:000 のリスト、その他いくつかの回
+避できないオーバーヘッドを追加しすぎている。
 
 したがって、新しいスタイルの関数を定義するための `:def` メソッドを追加する必要
-があり、これにより異なるセマンティクスを持つ関数を定義することができるようにな
-りました。ほとんどのことは以前と同じように動作しますが、そうでない部分もありま
-す。関数を定義する新しい方法は、旧来のスタイルのコードとVim9スタイルのコードを
-分離するための最良の方法であると考えられていました。
+があり、これにより異なるセマンティクスを持つ関数を定義することができるように
+なった。ほとんどのことは以前と同じように動作するが、そうでない部分もある。関数
+を定義する新しい方法は、旧来のスタイルのコードとVim9スタイルのコードを分離する
+ための最良の方法であると考えられていた。
 
-"def" を使用して関数を定義するのは、Python に由来します。他の言語は、従来の
-Vim script と競合する "function" を使用します。
+"def" を使用して関数を定義するのは、Python に由来する。他の言語は、従来の Vim
+script と競合する "function" を使用する。
 
 
 型チェック ~
 
 Vim コマンドの行を命令にコンパイルする場合、可能な限りコンパイル時に行うべきで
-す。これを実行時に先送りすると、実行速度が遅くなり間違いに気づくのが遅くなりま
-す。例えば、"+" 文字に遭遇し、これを一般的な加算命令にコンパイルする場合、実行
-時に引数の型を検査し、どのような加算を行うかを決定する必要があります。そして、
-その型が辞書であった場合には、エラーを投げます。もし、型が数値であることが分か
-っていれば、「数値の加算」命令を使うことができ、その方が高速です。エラーはコン
-パイル時に発生し、2 つの数値の加算が失敗することはほとんどないため、実行時にエ
-ラー処理は必要ない。
+ある。これを実行時に先送りすると、実行速度が遅くなり間違いに気づくのが遅くな
+る。例えば、"+" 文字に遭遇し、これを一般的な加算命令にコンパイルする場合、実行
+時に引数の型を検査し、どのような加算を行うかを決定する必要がある。そして、その
+型が辞書であった場合には、エラーを出す。もし、型が数値であることが分かっていれ
+ば、「数値の加算」命令を使うことができ、その方が高速である。エラーはコンパイル
+時に発生し、2 つの数値の加算が失敗することはほとんどないため、実行時にエラー処
+理は必要ない。
 
-    NOTE: 余談だが、例外として整数オーバーフローがある。これは、結果が整数の最
-    大値を超える場合である。例えば、64 ビット符号付き整数に加算した結果が 2^63
-    を超える場合を考える: >vim9
-
+Note: 余談だが、例外として整数オーバーフローがある。これは、結果が整数の最大値
+を超える場合である。例えば、64 ビット符号付き整数に加算した結果が 2^63 を超え
+る場合を考える:
+>vim9
 	vim9script
 	echo 9223372036854775807 + 1     # -9223372036854775808
 	echo 2->pow(63)->float2nr() + 1  # -9223372036854775808
 <
-複合型に <type> を使った型の構文は、Javaと似ています。理解しやすく、広く使われ
-ています。型名は、以前 Vim で使われていたものに、"void" や "bool" などが追加さ
-れています。
+複合型に <type> を使った型の構文は、Javaと似ている。理解しやすく、広く使われて
+いる。型名は、以前 Vim で使われていたものに、"void" や "bool" などが追加されて
+いる。
 
 
 乱雑と奇妙さを取り除く ~
 
 `:def` 関数が旧来の関数と異なる構文であることが決まれば、一般的なプログラミン
 グ言語を知っているユーザーにとってより馴染みやすいコードにするための改良を加え
-ることは自由です。言い換えれば、Vim でしかしないような奇妙なことは削除します。
+ることは自由である。言い換えれば、Vim でしかしないような奇妙なことは削除する。
 
 また、Vim script に古き良きViコマンドと後方互換性を持たせるために行われたもの
-を中心に、雑多なものを取り除くことができます。
+を中心に、雑多なものを取り除くことができる。
 
 
 例:
-- 関数を呼び出すための `:call` と式を評価するための `:eval` を削除します。
+- 関数を呼び出すための `:call` と式を評価するための `:eval` を削除する。
 - 行の継続のための先頭のバックスラッシュを使用しない。式がどこで終わるかを自動
-  的に把握します。
+  的に把握する。
 
-しかし、そのためには、いくつかのことを変える必要があります:
-- コメントは、文字列と混同しないように、" の代わりに # で始まるようにしました。
-  これはとにかく良いことで、いくつかの人気のある言語でも使用されています。
-- Ex コマンドの範囲は、式との混同を避けるため、先頭にコロンを付ける必要があり
-  ます (シングルクォートは文字列またはマーク、"/" は割り算または検索コマンド、
-  等)。
+しかし、そのためには、いくつかのことを変える必要がある:
+- コメントは、文字列と混同しないように、" の代わりに # で始まるようにした。こ
+  れはとにかく良いことで、いくつかの人気のある言語でも使用されている。
+- Ex コマンドの範囲は、式との混同を避けるため、先頭にコロンを付ける必要がある
+  (シングルクォートは文字列またはマーク、"/" は割り算または検索コマンド、等)。
 
 
-目標は、違いを制限することです。良い基準は、古い構文を誤って使用した場合に、
-エラーメッセージが表示される可能性が非常に高いことです。
+目標は、違いを制限することである。良い基準は、古い構文を誤って使用した場合に、
+エラーメッセージが表示される可能性が非常に高いことである。
 
 
 人気のある言語から構文とセマンティクスを学ぶ ~
 
 スクリプトの作成者は、Vim script の構文が慣れ親しんでいるものとは予想外に異な
-ると不満を漏らしています。この不満を軽減するために、人気のある言語を例として使
-用します。同時に、旧来の Vim script のよく知られた部分を放棄することは避けたい
-です。
+ると不満を漏らしている。この不満を軽減するために、人気のある言語を例として使用
+する。同時に、旧来の Vim script のよく知られた部分を放棄することは避けたい。
 
-いろいろなことで TypeScript が踏襲されています。これは最近人気が出てきた言語で、
-Vim script に似ています。また、静的型付け (変数は常に既知の値型を持つ) と動的
-型付け (変数は異なる型を持つことができ、これは実行時に変更される) が混在してい
-ます。旧来の Vim script は動的型付けされており、既存の多くの機能 (特に組み込み
-関数) は動的型付けに依存していますが、静的型付けはより高速に実行できるため、
-Vim9 script でもこの混ぜ合わせが必要です。
+いろいろなことで TypeScript が踏襲されている。これは最近人気が出てきた言語で、
+Vim script に似ている。また、静的型付け (変数は常に既知の値型を持つ) と動的型
+付け (変数は異なる型を持つことができ、これは実行時に変更される) が混在してい
+る。旧来の Vim script は動的型付けされており、既存の多くの機能 (特に組み込み関
+数) は動的型付けに依存しているが、静的型付けはより高速に実行できるため、Vim9
+script でもこの混ぜ合わせが必要である。
 
-TypeScript の構文やセマンティクスに完全に合わせるつもりはありません。私たちは
-ただ、Vim に使える部分、Vim ユーザーが喜ぶと予想される部分を取り出したいだけで
-す。TypeScript は、独自の歴史、利点と欠点を持つ複雑な言語です。デメリットを知
-るには、この本を読んでください: "JavaScript: The Good Parts"。または、
-"TypeScript: the good parts" という記事を見つけて、"Things to avoid" セクショ
-ンを読んでください。
+TypeScript の構文やセマンティクスに完全に合わせるつもりはない。私たちはただ、
+Vim に使える部分、Vim ユーザーが喜ぶと予想される部分を取り出したいだけである。
+TypeScript は、独自の歴史、利点と欠点を持つ複雑な言語である。デメリットを知る
+には、この本を読むこと: "JavaScript: The Good Parts"。または、"TypeScript: the
+good parts" という記事を見つけて、"Things to avoid" セクションを読むこと。
 
 他の言語 (Java、Pythonなど) に慣れている人も、TypeScript の中で気に入らないこ
-とや理解できないことを見つけるでしょう。そういったものを避けるようにします。
+とや理解できないことを見つけるだろう。そういったものを避けるようにする。
 
 TypeScript から避ける特定の項目:
-- "+" をオーバーロードして、加算と文字列連結の両方に使用します。これは旧来の
-  Vim script に反しており、しばしば間違いにつながります。そのため、文字列の連
-  結には ".." を使い続けることにします。Lua もこの方法で ".." を使っています。
-  そして、より多くの値のために文字列に変換することができます。
-- TypeScript では、"99 || 'yes'" のような式を条件として使うことができますが、
-  その値を真偽値に代入することができません。これは一貫性がなく、迷惑なことで
-  す。Vim は && や || を使った式を認識し、その結果を bool として使うことができ
-  ます。デフォルト値を使う仕組みとして、|falsy-operator| が追加されました。
-- TypeScript では、空の文字列を Falsy と見なしますが、空のリストや辞書を
-  Truthy と見なしています。これは矛盾しています。Vimでは、空のリストや辞書も
-  Falsy となります。
-- TypeScript にはさまざまな "読み出し専用" 型がありますが、型キャストによって
-  不変な性質を取り除くことができるため、有用性は限定的です。Vim は値をロックす
-  るので、より柔軟性がありますが、実行時にしかチェックされません。
-- TypeScript には複雑な "import" 文があり、Vim の import の仕組みとマッチしま
-  せん。代わりに、import されたスクリプトが一度だけ読み込まれることにマッチす
-  る、よりシンプルなメカニズムが使用されています。
+- "+" をオーバーロードして、加算と文字列連結の両方に使用する。これは旧来の Vim
+  script に反しており、しばしば間違いにつながる。そのため、文字列の連結には
+  ".." を使い続けることにする。Lua もこの方法で ".." を使っている。そして、よ
+  り多くの値のために文字列に変換することができる。
+- TypeScript では、'99 || "yes"' のような式を条件として使うことができるが、そ
+  の値を真偽値に代入することができない。これは一貫性がなく、迷惑なことである。
+  Vim は && や || を使った式を認識し、その結果を bool として使うことができる。
+  デフォルト値を使う仕組みとして、|falsy-operator| が追加された - |vim9-falsy|
+  を参照。
+- TypeScript では、空の文字列を Falsy と見なすが、空のリストや辞書を Truthy と
+  見なしている。これは矛盾している。Vimでは、空のリストや辞書も Falsy となる。
+- TypeScript にはさまざまな "読み出し専用" 型があるが、型キャストによって不変
+  な性質を取り除くことができるため、有用性は限定的である。Vim は値をロックする
+  ので、より柔軟性があるが、実行時にしかチェックされない。
+- TypeScript には複雑な "import" 文があり、Vim の import の仕組みとマッチしな
+  い。代わりに、import されたスクリプトが一度だけ読み込まれることにマッチする、
+  よりシンプルなメカニズムが使用されている。
 
 
 宣言 ~
 
-旧来の Vim script では、すべての代入に `:let` を使用しますが、Vim9 では宣言が
-使用されます。これは異なるので、別のコマンドを使うのがよいでしょう。`var` で
-す。これは多くの言語で使用されています。セマンティクスは若干異なるかもしれませ
-んが、宣言として簡単に認識することができます。
+旧来の Vim script では、すべての代入に `:let` を使用するが、Vim9 では宣言が使
+用される。これは異なるので、別のコマンドを使うのがよいだろう。`var` である。こ
+れは多くの言語で使用されている。セマンティクスは若干異なるかもしれないが、宣言
+として簡単に認識することができる。
 
-定数に `:const` を使うのは一般的ですが、そのセマンティクスは様々です。変数だけ
-を不変にする言語もあれば、値も不変にする言語もあります。Java では "final" が変
-数だけを不変にするためによく知られているので、これを使うことにしました。そし
-て、`:const` を使うことで、両方を不変にすることができます。これは旧来の Vim
-script でも使われていたもので、意味はほぼ同じです。
+定数に `:const` を使うのは一般的だが、そのセマンティクスは様々である。変数だけ
+を不変にする言語もあれば、値も不変にする言語もある。Java では "final" が変数だ
+けを不変にするためによく知られているので、これを使うことにした。そして、
+`:const` を使うことで、両方を不変にすることができる。これは旧来の Vim script
+でも使われていたもので、意味はほぼ同じである。
 
-最終的に得られるものは、Dart と非常によく似ています: >
+最終的に得られるものは、Dart と非常によく似ている: >
 	:var name	# 可変な変数と値
 	:final name	# 不変な変数、可変な値
 	:const name	# 不変な変数と値
 
 旧来と Vim9 script が混在し、グローバル変数が共有されるため、オプションで型
-チェックを行うことが望ましいです。また、型推論により、多くの場合、型を指定する
-必要がなくなります。宣言に型を追加するには、TypeScript の構文が最も適していま
-す: >
-	var name: string	  # 文字列型が指定される
-	...
+チェックを行うことが望ましい。また、型推論により、多くの場合、型を指定する必要
+がなくなる。宣言に型を追加するには、TypeScript の構文が最も適している:
+>vim9
+	vim9script
+	var name: string		# 文字列型が指定される
 	name = 'John'
-	const greeting = 'hello'  # 文字列型が推測される
+	const GREETING = 'Hello'	# 文字列型が推測される
+	echo $'{GREETING} {name}'
+<
+これは、型を宣言に入れる方法である:
+>vim9
+	vim9script
+	var vlist: list<number>
+	final flist: list<string> = ['Vim']
+	def Func(arg1: string, arg2: number): string
+	    return $'{arg1}{arg2}'
+	enddef
+	vlist[0] = 9
+	echo Func(flist[0], vlist[0])	# Vim9
+<
+これらの選択肢を検討した:
 
-これは、型を宣言に入れる方法です: >
-	var mylist: list<string>
-	final mylist: list<string> = ['foo']
-	def Func(arg1: number, arg2: string): bool
-
-2つの選択肢を検討しました:
-    1. Dart のように名前の前に型を置く: >
+  1. Dart のように名前の前に型を置く:
+>
 	var list<string> mylist
 	final list<string> mylist = ['foo']
 	def Func(number arg1, string arg2) bool
-<    2. 変数名の後に型を入れるが、Go のようにコロンを使わない: >
+<
+  2. 変数名の後に型を入れるが、Go のようにコロンを使わない:
+>
 	var mylist list<string>
 	final mylist list<string> = ['foo']
 	def Func(arg1 number, arg2 string) bool
+<
+C や Java に慣れている人には1つ目の方が馴染みやすいと思う。2つ目は1つ目に対し
+ての優位性があまりないので、2つ目は捨ててしまおう。
 
-C や Java に慣れている人には1つ目の方が馴染みやすいと思います。2つ目は1つ目に
-対しての優位性があまりないので、2つ目は捨ててしまいましょう。
+型推論を使うので、値から推論できる場合は型は省くことができる。つまり、`var` の
+後に型が続くのか名前が続くのかが分からないのである。そのため、Vim だけでなく人
+間にとっても構文解析が難しくなる。また、型名になりうる変数名を使うことは許され
+ないだろう。`var string string` を使うのはあまりにも紛らわしい。
 
-型推論を使うので、値から推論できる場合は型は省くことができます。つまり、`var`
-の後に型が続くのか名前が続くのかが分からないのです。そのため、Vim だけでなく人
-間にとっても構文解析が難しくなります。また、型名になりうる変数名を使うことは許
-されないでしょう。`var string string` を使うのはあまりにも紛らわしいです。
-
-コロンを使用して名前と型を区切る選ばれた構文は、句読点を追加しますが、実際に
-は、宣言の部分を認識しやすくします。
+コロンを使用して名前と型を区切る選ばれた構文は、句読点を追加するが、実際には、
+宣言の部分を認識しやすくする。
 
 
 式 ~
 
-式の評価は、すでに他の言語が行っているものに近いものでした。いくつかの細部は予
-期せぬものであり、改善することができます。例えば、真偽値条件では、文字列を受け
-取り、それを数値に変換して、その数値が0でないかどうかをチェックします。これは
-予想外のことで、しばしば間違いにつながります。なぜなら、数字で始まらないテキス
-トはゼロに変換され、これは偽とみなされるからです。このように、条件に文字列を使
-うと、エラーが出ず、偽とみなされることが多いのです。これは紛らわしいです。
+式の評価は、すでに他の言語が行っているものに近いものだった。いくつかの細部は予
+期せぬものであり、改善することができる。例えば、真偽値条件では、文字列を受け取
+り、それを数値に変換して、その数値が0でないかどうかをチェックする。これは予想
+外のことで、しばしば間違いにつながる。なぜなら、数字で始まらないテキストはゼロ
+に変換され、これは偽とみなされるからである。このように、条件に文字列を使うと、
+エラーが出ず、偽とみなされることが多いのである。これは紛らわしい。
 
-Vim9 では、間違いを避けるために型チェックがより厳しくなっています。例えば
-`:if` コマンドや `||` 演算子など、条件が使われる場所では、真偽値のような値しか
-受け付けません:
+Vim9 では、間違いを避けるために型チェックがより厳しくなっている。例えば `:if`
+コマンドや `||` 演算子など、条件が使われる場所では、真偽値のような値しか受け付
+けない:
 	true:  `true`, `v:true`, `1`, `0 < 9`
 	false: `false`, `v:false`, `0`, `0 > 9`
-Note 数字の 0 は偽で、数字の 1 は真です。これは、他の多くの言語よりも寛容です。
-これは、多くの組み込み関数がこれらの値を返すため、それを変更すると、解決するよ
-りも多くの問題を引き起こすからです。これをしばらく使ってみると、うまくいくこと
-が分かりました。
+Note 数字の 0 は偽で、数字の 1 は真である。これは、他の多くの言語よりも寛容で
+ある。これは、多くの組み込み関数がこれらの値を返すため、それを変更すると、解決
+するよりも多くの問題を引き起こすからである。これをしばらく使ってみると、うまく
+いくことが分かった。
 
-任意の型を持つ値について、それを真偽値として使いたい場合は、`!!` 演算子を使い
-ます (|expr-!| を参照): >vim9
-
+任意の型を持つ値について、それを真偽値として使いたい場合は、`!!` 演算子を使う
+(|vim9-!!| も参照):
+>vim9
 	vim9script
 	# 以下はすべて true:
 	echo [!!'text', !![1], !!{'x': 1}, !!1, !!1.1]
@@ -5906,25 +6104,25 @@ Note 数字の 0 は偽で、数字の 1 は真です。これは、他の多く
 	true: `!!'text'`   `!![99]`   `!!{'x': 1}`   `!!99`
 	false: `!!''`   `!![]`   `!!{}`
 
-JavaScript のような言語には、このような便利な構文があります: >
+JavaScript のような言語には、このような便利な構文がある: >
 	GetName() || 'unknown'
-ただし、これは、条件に真偽値のみを許可することと競合します。したがって、"??"
-演算子が追加されました: >
+ただし、これは、条件に真偽値のみを許可することと競合する。したがって、"??" 演
+算子が追加された: >
 	GetName() ?? 'unknown'
-ここでは、値をそのまま使用し、真偽値にしないという意図を明示的に表すことがで
-きます。これは |falsy-operator| と呼ばれます。
+ここでは、値をそのまま使用し、真偽値にしないという意図を明示的に表すことができ
+る。これは |falsy-operator| と呼ばれる - |vim9-falsy| を参照。
 
 
 Import と Export ~
 
 旧来の Vim script の問題点は、デフォルトですべての関数と変数がグローバルである
-ことです。スクリプトローカルにすることは可能ですが、そうすると他のスクリプトで
-利用できなくなります。これは、選択された項目のみをエクスポートし、残りをローカ
-ルに保つパッケージの概念に反しています。
+ことである。スクリプトローカルにすることは可能だが、そうすると他のスクリプトで
+利用できなくなる。これは、選択された項目のみをエクスポートし、残りをローカルに
+保つパッケージの概念に反している。
 
 Vim9 script では、JavaScript の import および export 機構に非常によく似た機構
-がサポートされています。これは既存の `:source` コマンドの亜種で、期待通りに動
-作します:
+がサポートされている。これは既存の `:source` コマンドの亜種で、期待通りに動作
+する:
 - デフォルトですべてをグローバルにするのではなく、すべてをスクリプトローカルに
   することで、その一部をエクスポートすることができる。
 - スクリプトの import 時には、import されるシンボルが明示的にリストされるため、
@@ -5938,8 +6136,8 @@ Vim9 script では、JavaScript の import および export 機構に非常に�
 - スクリプトローカルにするための Vim 特有の "s:" の使用をやめることができる。
 
 (Vim9 script または旧来の Vim script から) Vim9 script を読み込む場合、グロー
-バルに定義された項目のみが使用可能で、export された項目は使用できません。代替
-案を検討しました:
+バルに定義された項目のみが使用可能で、export された項目は使用できない。代替案
+を検討した:
 - export された項目は、すべてスクリプトローカル項目として利用できるようにする。
   これにより、どの項目が定義されるかは制御できず、すぐにトラブルに発展する可能
   性がある。
@@ -5948,47 +6146,47 @@ Vim9 script では、JavaScript の import および export 機構に非常に�
 - Vim9 script を読み込むことを完全に禁止し、`:import` を使うことを要求する。こ
   れにより、スクリプトをテストに使用したり、コマンドラインからスクリプトを取得
   して試したりすることが難しくなる。
-Note 上記の通り、旧来の Vim script でも `:import` を使用することができます。
+Note 上記の通り、旧来の Vim script でも `:import` を使用することができる。
 
 
 関数を早期にコンパイルする ~
 
 関数は、呼び出されたとき、または `:defcompile` が使用されたときにコンパイルさ
-れます。なぜ、早期にコンパイルして、構文エラーや型エラーが早期に報告されるよう
-にしないのでしょうか？
+れる。なぜ、早期にコンパイルして、構文エラーや型エラーが早期に報告されるように
+しないのだろうか？
 
-なぜなら、後に定義される関数への前方参照が存在する可能性があるからです。例え
+なぜなら、後に定義される関数への前方参照が存在する可能性があるからである。例え
 ば、A、B、C という関数を定義し、A が B を呼び出し、B が C を呼び出し、C がまた
-A を呼び出すとします。前方参照を避けるために関数を並べ替えることは不可能です。
+A を呼び出すとする。前方参照を避けるために関数を並べ替えることは不可能である。
 
 別の方法としては、まずファイルをスキャンして項目を見つけ、そのタイプを把握し、
 前方参照が見つかるようにしてから、スクリプトを実行し、関数をコンパイルする方法
-があります。この場合、スクリプトを2回解析する必要があり、遅いです。また、機能
-がサポートされているかどうかのチェックなど、スクリプトレベルでの条件もあるた
-め、使いにくいです。うまくいくかどうか試行錯誤しましたが、うまく動作させること
-は不可能であることが判明しました。
+がある。この場合、スクリプトを2回解析する必要があり、遅い。また、機能がサポー
+トされているかどうかのチェックなど、スクリプトレベルでの条件もあるため、使いに
+くい。うまくいくかどうか試行錯誤したが、うまく動作させることは不可能であること
+が判明した。
 
-スクリプトの最後にすべての関数をコンパイルすることは可能でしょう。しかし、ある
-関数が一度も呼び出されない場合、その関数をコンパイルするためのオーバーヘッド
-が、いずれにせよカウントされてしまうという欠点があります。起動速度は非常に重要
-なので、ほとんどの場合、コンパイルは後回しにした方がよく、構文や型のエラーはそ
-の時にしか報告されないことを受け入れることができます。例えばテスト時など、これ
-らのエラーを早期に発見する必要がある場合は、スクリプトの最後の `:defcompile`
-コマンドが効果的です。
+スクリプトの最後にすべての関数をコンパイルすることは可能だろう。しかし、ある関
+数が一度も呼び出されない場合、その関数をコンパイルするためのオーバーヘッドが、
+いずれにせよカウントされてしまうという欠点がある。起動速度は非常に重要なので、
+ほとんどの場合、コンパイルは後回しにした方がよく、構文や型のエラーはその時にし
+か報告されないことを受け入れることができる。例えばテスト時など、これらのエラー
+を早期に発見する必要がある場合は、スクリプトの最後の `:defcompile` コマンドが
+効果的である。
 
 
 なぜ既存の組み込み言語を使わないのか? ~
 
 Vim は Perl、Python、Lua、Tcl、その他いくつかへのインターフェイスをサポートし
-ています。しかし、これらのインターフェイスは様々な理由で広く使われるようになる
-ことはありませんでした。Vim9 が設計されたとき、これらのインターフェイスの優先
-順位を下げ、Vim script に集中させることが決定されました。
+ている。しかし、これらのインターフェイスは様々な理由で広く使われるようになるこ
+とはなかった。Vim9 が設計されたとき、これらのインターフェイスの優先順位を下げ、
+Vim script に集中させることが決定された。
 
 それでも、プラグイン作成者は他の馴染みのある言語を探したり、既存のライブラリを
-使用したり、性能の恩恵を確認したりするかもしれません。我々は、プラグインの作者
-が任意の言語でコードを書き、ジョブやチャネルを使って外部プロセスとして実行する
-ことを推奨します。我々は、これをどうにかして簡単にできるように努力することがで
-きます。
+使用したり、性能の恩恵を確認したりするかもしれない。我々は、プラグインの作者が
+任意の言語でコードを書き、ジョブやチャネルを使って外部プロセスとして実行するこ
+とを推奨する。我々は、これをどうにかして簡単にできるように努力することができ
+る。
 
 外部ツールの使用にもデメリットがある。代替案として、ツールを Vim Script に変換
 する方法がある。これを実現するには、余分な翻訳作業を避けつつコードの高速性を維
