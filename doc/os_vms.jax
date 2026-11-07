@@ -1,7 +1,7 @@
-*os_vms.txt*	For Vim バージョン 9.2.  Last change: 2026 Oct 17
+*os_vms.txt*	For ViAI バージョン 1.0.  Last change: 2026 Oct 17
 
 
-		  VIM リファレンスマニュアル
+		  VIAI リファレンスマニュアル
 
 
 							*VMS* *vms*
@@ -33,41 +33,10 @@ Vimと完全な互換性がある。
 
 2. ファイルのダウンロード				*vms-download*
 
-Vim のソースコードは Vim の公式サイトからダウンロードすることができる:
-	https://github.com/vim/vim/archive/refs/heads/master.zip
+ViAI のソースコードは ViAI のリポジトリからダウンロードすることができる:
+	https://github.com/viai-editor/viai/archive/refs/heads/master.zip
 または git を使用する: >
-	git clone https://github.com/vim/vim.git
-
-以前のリリースアーカイブも以下の場所から入手できる:
-	https://ftp.nluug.nl/pub/vim/
-またはミラーサイトを利用しても良い:
-	https://ftp.nluug.nl/pub/vim/MIRRORS
-
-Note: ftp サーバーは廃止されており、更新されなくなった。
-
-コンパイル済み実行可能ファイルは以下のところで入手可能:
-	http://www.polarfox.com/vim/
-
-コンパイル済みバイナリを利用するには、以下のどれか1つのアーカイブが必要:
-
-  vim-XX-exe-x86-gui.zip	X86_64 GUI/Motif用実行可能ファイル
-  vim-XX-exe-x86-term.zip	X86_64 console用実行可能ファイル
-  vim-XX-exe-ia64-gui.zip	IA64 GUI/Motif用実行可能ファイル
-  vim-XX-exe-ia64-gtk.zip	IA64 GUI/GTK用実行可能ファイル
-  vim-XX-exe-ia64-term.zip	IA64 console用実行可能ファイル
-  vim-XX-exe-axp-gui.zip	Alpha GUI/Motif用実行可能ファイル
-  vim-XX-exe-axp-gtk.zip	Alpha GUI/GTK用実行可能ファイル
-  vim-XX-exe-axp-term.zip	Alpha console用実行可能ファイル
-  vim-XX-exe-vax-gui.zip	VAX GUI用実行可能ファイル
-  vim-XX-exe-vax-term.zip	VAX console用実行可能ファイル
-
-そしてもちろん(これはなくてもよい)
-  vim-XX-runtime.zip		Vim用ランタイムファイル
-
-アーカイブには次のファイルが含まれる: vim.exe, ctags.exe, xxd.exe, mms_vim.exe
-
-GTK 用実行可能ファイルでは Alpha と IA64 プラットフォームで利用可能な GTKLIB
-が必要。
+	git clone https://github.com/viai-editor/viai.git
 
 ==============================================================================
 
@@ -115,10 +84,9 @@ GUIでGTKアイコンを使いたい場合には、OpenVMS用のGTKをダウン�
 OpenVMS上の最後のGTKが 1.2.10 である傍ら、7.2以降のVimはGTK2+を使用する。その
 ため、GTKビルドはもう利用できない。
 
-これ以上に高度な質問は、Vim on VMSのメーリングリストに送って欲しい。アドレスは
-	<vim-vms@polarhome.com>
-メーリングリストについての詳しいことは以下を参照すること:
-	http://www.polarhome.com/mailman/listinfo/vim-vms
+これ以上に高度な質問は、ViAI のリポジトリで issue を作成すること。|viai-bugs|
+を参照:
+	https://github.com/viai-editor/viai/issues
 
 ==============================================================================
 
@@ -141,7 +109,7 @@ Vimはドキュメントとランタイムファイルを保持するのに特�
     vimrc    (システム設定ファイル)
     gvimrc
 
-vim.exeがドキュメントやファイル形式や構文等のファイルを見つけ、どこに一時ファ
+viai.exeがドキュメントやファイル形式や構文等のファイルを見つけ、どこに一時ファ
 イルを作成すべきか知るためには: >
 
 	define/nolog VIM	device:[path.vim]
@@ -179,10 +147,10 @@ $TMPが設定されていない時は、CTAGSやXXDや印刷などの一時デ�
 幾つかシンボルを定義: >
 
 	$ ! viはvimをキャラクタモードで起動する
-	$ vi*m  :== mcr device:<path>VIM.EXE
+	$ vi*m  :== mcr device:<path>VIAI.EXE
 
 	$ ! gviはvimをGUIモードで起動する
-	$ gv*im :== spawn/nowait mcr device:<path>VIM.EXE -g
+	$ gv*im :== spawn/nowait mcr device:<path>VIAI.EXE -g
 
 シンボルのカスタマイズとコンフィギュレーションについては以下で述べる NOTE も
 チェックすること。
@@ -212,8 +180,8 @@ NOTE: システム設定ファイル(全てのユーザーにとってのデフ�
 LOGIN.COMの例: >
 
 	$ define/nolog VIM DKA0:[UTIL.VIM81]
-	$ vi*m :== mcr VIM:VIM.EXE
-	$ gv*im:== spawn/nowait/input=NLA0 mcr VIM:VIM.EXE -g -GEOMETRY 80x40
+	$ vi*m :== mcr VIM:VIAI.EXE
+	$ gv*im:== spawn/nowait/input=NLA0 mcr VIM:VIAI.EXE -g -GEOMETRY 80x40
 	$ set term/inq/ins ! 端末の機能を問い合わせる
 	$ set disp/create/node=192.168.10.202/trans=tcpip
 
@@ -222,7 +190,7 @@ NOTE: 独立サーバーやクラスタ環境で使用しているならばこ�
 いだろう。ただ "完全な" パスを指定する必要がある: >
 
 	$ define VIM "<server_name>[""user password""]::device:<path>"
-	$ vi*m :== "mcr VIM:VIM.EXE"
+	$ vi*m :== "mcr VIM:VIAI.EXE"
 
 例: >
 
@@ -243,8 +211,8 @@ NOTE: 独立サーバーやクラスタ環境で使用しているならばこ�
 
 SYS$STARTUP:SYLOGIN.COM にも追加する >
 
-	$ vi*m :== mcr VIM:VIM.EXE
-	$ gv*im:== spawn/nowait/input=NLA0 mcr VIM:VIM.EXE -g -GEOMETRY 80x40
+	$ vi*m :== mcr VIM:VIAI.EXE
+	$ gv*im:== spawn/nowait/input=NLA0 mcr VIM:VIAI.EXE -g -GEOMETRY 80x40
 
 
 これによりシステム全てのユーザーから通常のVimが利用可能になるだろう。
@@ -282,7 +250,7 @@ LIBGTK は http://www.polarhome.com/vim/ からダウンロードできる。
 1) VMS X/Motifコンソールを利用しているならば:
    このコマンドでVimを起動する: >
 
-	$ mc device:<path>VIM.EXE -g
+	$ mc device:<path>VIAI.EXE -g
 <
    もしくはVimコマンドプロンプトで :gui をキー入力する。詳細は :help gui。
 
@@ -417,8 +385,8 @@ NOTE: 構文が非常に重要で、間違えるとVMSは複数パラメータ�
 	$ if (p1 .eqs. "") .OR. (p2 .eqs. "") then goto usage
 	$ set disp/create/node=<your_IP_here>/trans=tcpip
 	$ define "VIM "<vim_server>""''p1' ''p2'""::<device>:<vim_path>"
-	$  vi*m :== "mcr VIM:VIM.EXE"
-	$ gv*im :== "spawn/nowait mcr VIM:VIM.EXE -g"
+	$  vi*m :== "mcr VIM:VIAI.EXE"
+	$ gv*im :== "spawn/nowait mcr VIM:VIAI.EXE -g"
 	$ goto end
 	$ usage:
 	$ write sys$output " Please enter username and password as a parameter."
@@ -553,7 +521,7 @@ VMSで(GUIモードの)Vimからの印刷を可能にするには論理名$TMP�
 終了してしまう問題がある。この問題は異なるシンボルを定義することで回避できるよ
 うだ。それは: >
 
-	$ GV*IM:==SPAWN/NOWAIT/INPUT=NLA0: MCR VIM:VIM.EXE -G -GEOMETRY 80X40
+	$ GV*IM:==SPAWN/NOWAIT/INPUT=NLA0: MCR VIM:VIAI.EXE -G -GEOMETRY 80X40
 
 /INPUT=NLA0: が親ウィンドウからの停止信号をブロックするために、親の端末とgvim
 のプロセスの標準入力を切り離す。
@@ -663,13 +631,8 @@ DEC C では識別子に '$' を使用できる。ANSI C では使用できな�
 
 8.14 初心者のための VIMTUTOR
 
-OpenVMS 上で Vim 初心者の最初の一歩を手助けするために DCL スクリプトの
-VIMTUTOR.COM が用意されている。バイナリ配布物によっては次のようにして開始でき
-るだろう: >
-
-	@vim:vimtutor
-
-(Thomas.R.Wyant III, Vim 6.1)
+ViAI には Vim の DCL スクリプト VIMTUTOR.COM はない。Vim の最初の一歩を学ぶに
+は |:Tutor| コマンドを使うこと。
 
 8.16 コンソールモードでの起動が遅い問題について
 
@@ -687,16 +650,16 @@ GUI/GTK 版の Vim はコンソールモードでも同じように動作する�
     |----- syntax
        vimrc    (system rc files)
        gvimrc
-       gvim.exe (GUI/GTK 版の vim.exe をリネームしたもの)
-       vim.exe  (コンソール版の実行可能ファイル)
+       gviai.exe (GUI/GTK 版の viai.exe をリネームしたもの)
+       viai.exe  (コンソール版の実行可能ファイル)
 
 以下のようなシステムシンボルを LOGIN.COM または SYLOGIN.COM で定義する: >
 
 	$ define/nolog VIM RF10:[UTIL.VIM73] ! where you VIM directory is
-	$ vi*m  :== mcr VIM:VIM.EXE
-	$ gvi*m :== mcr VIM:GVIM.EXE
+	$ vi*m  :== mcr VIM:VIAI.EXE
+	$ gvi*m :== mcr VIM:GVIAI.EXE
 	$ ! or you can try to spawn with
-	$ gv*im :== spawn/nowait/input=NLA0 mcr VIM:GVIM.EXE -g -GEOMETRY 80x40
+	$ gv*im :== spawn/nowait/input=NLA0 mcr VIM:GVIAI.EXE -g -GEOMETRY 80x40
 
 
 このようにすれば、X 環境を持たずコンソールモードで使用したいユーザーも速度の問
@@ -730,17 +693,17 @@ VIM ディレクトリは共通にし、実行可能ファイルだけ異なる�
 	$ if f$getsyi("NODE_HWTYPE") .eqs. "VAX"
 	$ then
 	$       say "VAX platform"
-	$       vi*m:== mcr vim:VIM.EXE_VAX
+	$       vi*m:== mcr vim:VIAI.EXE_VAX
 	$ endif
 	$ if f$getsyi("NODE_HWTYPE") .eqs. "ALPH"
 	$ then
 	$       say "ALPHA platform"
-	$       vi*m :== mcr vim:VIM.EXE_AXP
+	$       vi*m :== mcr vim:VIAI.EXE_AXP
 	$ endif
 	$ if f$getsyi("ARCH_NAME") .eqs. "IA64"
 	$ then
 	$      say "IA64 platform"
-	$      vi*m :== mcr vim:VIM.EXE_IA64
+	$      vi*m :== mcr vim:VIAI.EXE_IA64
 	$ endif
 
 解決法 2. 別々のディレクトリにする: >
@@ -986,7 +949,7 @@ Version 4.5 (1996 Dec 16)
 
 10. 著者						*vms-authors*
 
-OpenVMSの文章とコンパイル済みバイナリは以下がメンテナンスしている:
+Vim の OpenVMSの文章とコンパイル済みバイナリは以下がメンテナンスしている:
 Zoltan Arpadffy <zoltan.arpadffy@gmail.com>
 OpenVMS Vim page: http://www.polarhome.com/vim/
 

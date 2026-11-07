@@ -1,7 +1,7 @@
-*gui_w32.txt*	For Vim バージョン 9.2.  Last change: 2026 May 25
+*gui_w32.txt*	For ViAI バージョン 1.0.  Last change: 2026 May 25
 
 
-		  VIM リファレンスマニュアル	by Bram Moolenaar
+		  VIAI リファレンスマニュアル
 
 
 Win32でのVimのグラフィカルユーザーインターフェイス	*gui-w32* *win32-gui*
@@ -29,13 +29,13 @@ GUIでスタートする。
 GUIは常にWindowsのサブシステムとして実行される。ほとんどのシェルはVimを起動し
 た直後にコマンドプロンプトへ自動的に復帰する。そうでなかったら、"start" コマン
 ドを使うと良い: >
-	start gvim [options] file ..
+	start gviai [options] file ..
 <							*E988*
-コンソールバージョンに |-g| オプションを付けても gvim.exe が実行されて GUI を
+コンソールバージョンに |-g| オプションを付けても gviai.exe が実行されて GUI を
 スタートできる: >
-	vim -g [options] file ..
-この機能を動作させるには、gvim.exe が vim.exe と同一のディレクトリに存在し、か
-つこの機能を有効にしてコンパイルされていなければならない。
+	viai -g [options] file ..
+この機能を動作させるには、gviai.exe が viai.exe と同一のディレクトリに存在し、
+かつこの機能を有効にしてコンパイルされていなければならない。
 
 コンソールバージョンから `:gui` を使うこともできる。しかし、これは実験的な機能
 で、かつこの機能を有効にしてコンパイルされていなければならない。
@@ -114,39 +114,40 @@ Vimにファイルを送ると、Vimはファイルのあるディレクトリ�
 まうことに注意。これはWindowsの "送る" の仕組みによる制限である。
 
 						*notepad*
-notepad.exe(メモ帳)をgvim.exeに置き換えてしまうこともできるが、これには副作用
-もある。いくつかのプログラムはnotepad.exeに依存していて、例えばファイルを印刷
-するために "notepad -p" を使っているからである。メモ帳(notepad)はそのままにし
-ておいて、Vimを起動するためのほかの方法を使ったほうが良い。
+notepad.exe(メモ帳) をgviai.exeに置き換えてしまうこともできるが、これには副作
+用もある。いくつかのプログラムはnotepad.exeに依存していて、例えばファイルを印
+刷するために "notepad -p" を使っているからである。メモ帳 (notepad) はそのまま
+にしておいて、Vimを起動するためのほかの方法を使ったほうが良い。
 
 						*win32-popup-menu*
-もっと抜本的なアプローチは、右マウスボタンメニューに "Edit with Vim" という項
+もっと抜本的なアプローチは、右マウスボタンメニューに "Edit with ViAI" という項
 目を追加するものである。これを使うとあらゆるファイルをVimで編集できるようにな
 る。
 
 これは上述のファイルの関連付けと共存することができる。ファイルの関連付けは、
 Vimで開始することを「デフォルトのアクション」にしてしまう点が違う。"Edit with
-Vim" メニュー項目を使うと、ダブルクリックで開ける既に存在するファイルの関連付
+ViAI" メニュー項目を使うと、ダブルクリックで開ける既に存在するファイルの関連付
 けはそのままにして、したい時にはいつでもVimでファイルを編集することができる。
 例えば、"*.mak" はmakeプログラムに関連付けることができる。この場合、そのファイ
-ルをダブルクリックすればmakefileが実行されるし、"Edit with Vim" を選べば
+ルをダブルクリックすればmakefileが実行されるし、"Edit with ViAI" を選べば
 makefileを編集することができる。
 
-どんなファイルでも選択し、右クリックで "Edit with gvim" と呼ばれるメニューオプ
+どんなファイルでも選択し、右クリックで "Edit with ViAI" と呼ばれるメニューオプ
 ションを表示させることができる。このメニューオプションを選択すると、選択した
-ファイルがgvimによって開かれる。複数のファイルを選択した場合には、二つのメ
-ニューオプションが提示されるだろう:
-"Edit with multiple gvims"  -- 1つのファイルにつき1つのgvimが起動される
-"Edit with single gvim"     -- 選んだ全てのファイルが1つのgvimで開かれる
-さらに、もしもすでにgvimが起動しているなら:
-"Edit with existing gvim    -- すでに起動しているgvimでそのファイルの編集を開
-                               始する。
+ファイルがgviaiによって開かれる。複数のファイルを選択した場合には、代わりに以
+下のメニューオプションが提示されるだろう:
+"Edit with ViAI using tabpages" -- ファイルごとにタブページを持つ1つのgviai
+"Edit with single ViAI"		-- 選んだ全てのファイルが1つのgviaiで開かれる
+"Diff with ViAI"		-- 差分モードの1つのgviai (最大4ファイル)
+さらに、もしもすでにgviaiが起動しているなら:
+"Edit with existing ViAI"	-- すでに起動しているgviaiでそのファイルの編
+				   集を開始する。
 
-"edit with existing Vim" メニューはレジストリを設定することで無効化できる。
-HKLM\Software\Vim\Gvim に DisableEditWithExisting という名前のエントリを追加す
-ればよい。値は何でもよい。
+"Edit with existing ViAI" メニューはレジストリを設定することで無効化できる。
+HKLM\Software\ViAI\Gviai に DisableEditWithExisting という名前のエントリを追加
+すればよい。値は何でもよい。
 						*install-registry*
-"install.exe" プログラムを使用すれば、簡単に "Edit with Vim" メニュー項目を追
+"install.exe" プログラムを使用すれば、簡単に "Edit with ViAI" メニュー項目を追
 加することができる。これはレジストリに幾つかの項目を書き加える。
 
 同じことを手動で行うこともできる。これは非常に複雑である! できればinstall.exe
@@ -155,28 +156,28 @@ HKLM\Software\Vim\Gvim に DisableEditWithExisting という名前のエント�
 1. "regedit" でレジストリエディタを起動する。
 2. 次のキーを追加する:
    キー		キーの名前		    値 ~
-   HKEY_CLASSES_ROOT\CLSID\{51EEE242-AD87-11d3-9C1E-0090278BBD99}
-		{default}		    Vim Shell Extension
-   HKEY_CLASSES_ROOT\CLSID\{51EEE242-AD87-11d3-9C1E-0090278BBD99}\InProcServer32
-		{default}		    {path}\gvimext.dll
+   HKEY_CLASSES_ROOT\CLSID\{F191A2A2-D786-484E-A3F4-8A75FDD9AC00}
+		{default}		    ViAI Shell Extension
+   HKEY_CLASSES_ROOT\CLSID\{F191A2A2-D786-484E-A3F4-8A75FDD9AC00}\InProcServer32
+		{default}		    {path}\gviaiext.dll
 		ThreadingModel		    Apartment
-   HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\gvim
-		{default}		    {51EEE242-AD87-11d3-9C1E-0090278BBD99}
+   HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\gviai
+		{default}		    {F191A2A2-D786-484E-A3F4-8A75FDD9AC00}
    HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Approved
-		{51EEE242-AD87-11d3-9C1E-0090278BBD99}
-					    Vim Shell Extension
-   HKEY_LOCAL_MACHINE\Software\Vim\Gvim
-		path			    {path}\gvim.exe
-   HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\vim 8.2
-		DisplayName		    Vim 8.2: Edit with Vim popup menu entry
+		{F191A2A2-D786-484E-A3F4-8A75FDD9AC00}
+					    ViAI Shell Extension
+   HKEY_LOCAL_MACHINE\Software\ViAI\Gviai
+		path			    {path}\gviai.exe
+   HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\ViAI 1.0
+		DisplayName		    ViAI 1.0
 		UninstallString		    {path}\uninstall.exe
 
    {path}は実行可能ファイルのあるディレクトリパスに置き換える。
    {default}はキー自身の値なので、タイプしない。
 
-ポップアップメニューから "Edit with Vim" を削除するには、上記のレジストリ項目
-を削除すればよい。uninstall.exeプログラムは同じことをしてくれる。Windows標準
-の "アプリケーションの追加と削除" のリストの、エントリを使うこともできる。
+ポップアップメニューから "Edit with ViAI" を削除するには、上記のレジストリ項目
+を削除すればよい。uninstall.exeプログラムは同じことをしてくれる。Windows標準の
+"アプリケーションの追加と削除" のリストの、エントリを使うこともできる。
 
 このエントリがファイルタイプの関連付けを抑制してしまうことに気がついたら、手動
 で関連付けをやり直す(上記を参考に、Windowsのエクスプローラーを使って)。これは
@@ -193,8 +194,8 @@ Windows NTの幾つかのバージョンでだけ起こるらしい(Windowsの�
 
 Vimのインストーラを使うならエクスプローラーのメニューの "アプリケーションから
 開く" にVimを加えるか選択することができる。これはVimでいろんなファイルを編集す
-るなら重要である。(不明瞭な理由で)全てのファイルには使えない。したがって "Edit
-with Vim" メニューの方が使いやすい。
+るなら重要である。(不明瞭な理由で) 全てのファイルには使えない。したがって
+"Edit with ViAI" メニューの方が使いやすい。
 
 これを追加する理由の一つがインターネットエクスプローラーから直接ファイルを編集
 できるようにするためである。これを有効にするには "Tools" メニューから
@@ -207,22 +208,22 @@ with Vim" メニューの方が使いやすい。
 ----------------------------------------------------------
 REGEDIT4
 
-[HKEY_CLASSES_ROOT\Applications\gvim.exe]
+[HKEY_CLASSES_ROOT\Applications\gviai.exe]
 
-[HKEY_CLASSES_ROOT\Applications\gvim.exe\shell]
+[HKEY_CLASSES_ROOT\Applications\gviai.exe\shell]
 
-[HKEY_CLASSES_ROOT\Applications\gvim.exe\shell\edit]
+[HKEY_CLASSES_ROOT\Applications\gviai.exe\shell\edit]
 
-[HKEY_CLASSES_ROOT\Applications\gvim.exe\shell\edit\command]
-@="c:\\vim\\vim82\\gvim.exe \"%1\""
+[HKEY_CLASSES_ROOT\Applications\gviai.exe\shell\edit\command]
+@="c:\\viai\\viai10\\gviai.exe \"%1\""
 
-[HKEY_CLASSES_ROOT\.htm\OpenWithList\gvim.exe]
+[HKEY_CLASSES_ROOT\.htm\OpenWithList\gviai.exe]
 
-[HKEY_CLASSES_ROOT\*\OpenWithList\gvim.exe]
+[HKEY_CLASSES_ROOT\*\OpenWithList\gviai.exe]
 
 ----------------------------------------------------------
 
-"c:\\vim\\vim82" をgvim.exeが実際にある場所に変更すること。
+"c:\\viai\\viai10" をgviai.exeが実際にある場所に変更すること。
 
 これをアンインストールするにはVimのアンインストーラを使うか "regedit" を使って
 手作業でレジストリエントリを削除する。
@@ -275,11 +276,11 @@ Vimとは別個のウィンドウを使用する。外部コマンドはちょ�
 されるように、独自の実行環境を獲得する。
 
 							*win32-vimrun*
-外部コマンドの実行は "vimrun" コマンドを用いて間接的に行われる。これが働くため
-には "vimrun.exe" コマンドが実行パスになければならない。そうでなければVimの実
-行可能ファイルと同じディレクトリになければならない。"vimrun" を見つけることが
-できなければ、コマンドは直接実行され、そのため外部コマンドの実行が終了するとす
-ぐにDOSウィンドウが閉じられる。
+外部コマンドの実行は "viairun" コマンドを用いて間接的に行われる。これが働くた
+めには "viairun.exe" コマンドが実行パスになければならない。そうでなければVimの
+実行可能ファイルと同じディレクトリになければならない。"viairun" を見つけること
+ができなければ、コマンドは直接実行され、そのため外部コマンドの実行が終了すると
+すぐにDOSウィンドウが閉じられる。
 警告: もしも "X" ボタンでこのウィンドウを閉じてしまい、強制終了することを確認
 するウィンドウでアプリケーションを本当に終了してしまうと、Vimも一緒に強制終了
 してしまう!  (":!start" で非同期的に起動されたアプリケーションには、これは当て
@@ -448,11 +449,11 @@ GVim は、MS-Windows で XPM ファイルのサポート付きでビルドす�
 XPM サポートが動作するか試すには、以下を行うこと: >
 	:help
 	:let runtime = escape($VIMRUNTIME, ' \')
-	:exe 'sign define vimxpm icon=' .. runtime .. '\\vim16x16.xpm'
+	:exe 'sign define vimxpm icon=' .. runtime .. '\\viai16x16.xpm'
 	:exe 'sign place 1 line=1 name=vimxpm file=' .. expand('%:p')
 <
-github から vim16x16.xpm ファイルを入手する必要があるかもしれない:
-https://github.com/vim/vim/blob/master/runtime/vim16x16.xpm
+github から viai16x16.xpm ファイルを入手する必要があるかもしれない:
+https://github.com/viai-editor/viai/blob/master/runtime/viai16x16.xpm
 
 
 キーコード変換戦略		*w32-experimental-keycode-trans-strategy*
@@ -485,7 +486,7 @@ ToUnicode() Win API 呼び出しに切り替えられた。このアプローチ
 もできる。例えば、dos プロンプトに以下のように入力する:
 >
         set VIM_KEYCODE_TRANS_STRATEGY=experimental
-        gvim.exe
+        gviai.exe
 <
 
 タイトルバー						*gui-w32-title-bar*
