@@ -483,13 +483,13 @@ ftp はセキュアなプロトコルではなく、ユーザー名とパスワ�
 Netrw は同じ Vim セッション中で同じホスト名が使われている間はユーザーIDとパス<br>
 ワードを使いまわします。<br>
 <br>
-Jan は netrw における ftp の処理を多少誤解しているようです。通常、1 つの &quot;ftp<br>
-セッション&quot; では複数のコマンドが実行されます。彼は uid/password は 1 つの ftp<br>
-セッションの間だけ保持されるべきだと考えているようです。しかし、netrw は ftp<br>
-操作をするために複数の &quot;ftp セッション&quot; を使います。そのため、uid/password を<br>
-1 つの &quot;ftp セッション&quot; の間だけ保持しておくというのは、uid/password を保持し<br>
-ないのと変わりません。そうなれば、例えばリモートディレクトリをブラウズするよう<br>
-な操作はすぐに嫌気が差してしまうでしょう。<br>
+Jan は netrw における ftp の処理を多少誤解しているようです。通常、1 つの<br>
+&quot;ftp セッション&quot; では複数のコマンドが実行されます。彼は uid/password は 1 つの<br>
+ftp セッションの間だけ保持されるべきだと考えているようです。しかし、netrw は<br>
+ftp 操作をするために複数の &quot;ftp セッション&quot; を使います。そのため、uid/password<br>
+を 1 つの &quot;ftp セッション&quot; の間だけ保持しておくというのは、uid/password を保持<br>
+しないのと変わりません。そうなれば、例えばリモートディレクトリをブラウズするよ<br>
+うな操作はすぐに嫌気が差してしまうでしょう。<br>
 <br>
 他方、Jan M 氏には感謝を捧げたいと思います。&quot;細工された(crafted)&quot; ファイル名の<br>
 処理における netrw (と vim 自身) の多くの脆弱性を指摘してくれました。その問題<br>
@@ -2033,12 +2033,12 @@ Quickfix エラーリストは&nbsp;<a class="Identifier" href="quickfix.html#:v
 <span class="Statement">正規表現を使ってファイルをマークする</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#netrw-mr" name="netrw-mr">netrw-mr</a>&nbsp;{{ "{{{" }}2<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="Identifier" href="pi_netrw.html#netrw-mf">netrw-mf</a>も参照)<br>
 <br>
-正規表現を使ってファイルをマークするには &quot;mr&quot; を使います。&quot;mr&quot; を押すと &quot;Enter<br>
-regexp: &quot; というプロンプトが表示されるので、例えば *.c$ のようなシェル形式の正<br>
-規表現 (<a class="Identifier" href="builtin.html#glob()">glob()</a>&nbsp;参照) を入力します。リモートシステムに対しては glob() は使え<br>
-ないので、netrw は &quot;*&quot; を &quot;.*&quot; に変換し (<a class="Identifier" href="pattern.html#regexp">regexp</a>&nbsp;参照)、それを使ってファイル<br>
-をマークします。将来的には glob() スタイルではなく&nbsp;<a class="Identifier" href="pattern.html#regexp">regexp</a>&nbsp;スタイルの正規表現<br>
-を使えるようにする予定です (また別のオプションで)。<br>
+正規表現を使ってファイルをマークするには &quot;mr&quot; を使います。&quot;mr&quot; を押すと<br>
+&quot;Enter regexp: &quot; というプロンプトが表示されるので、例えば *.c$ のようなシェル<br>
+形式の正規表現 (<a class="Identifier" href="builtin.html#glob()">glob()</a>&nbsp;参照) を入力します。リモートシステムに対しては glob()<br>
+は使えないので、netrw は &quot;*&quot; を &quot;.*&quot; に変換し (<a class="Identifier" href="pattern.html#regexp">regexp</a>&nbsp;参照)、それを使って<br>
+ファイルをマークします。将来的には glob() スタイルではなく&nbsp;<a class="Identifier" href="pattern.html#regexp">regexp</a>&nbsp;スタイルの<br>
+正規表現を使えるようにする予定です (また別のオプションで)。<br>
 <br>
 指示のための正規表現の編集の仕方の更なる情報については&nbsp;<a class="Identifier" href="cmdline.html#cmdline-window">cmdline-window</a>&nbsp;を参照<br>
 してください。<br>

@@ -4142,10 +4142,10 @@ try条件文が外側の条件文のtryブロックの中にある場合はcatch
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:call Foo(0x1267)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:call Foo('string')</div>
 <br>
-最初のFoo()の呼び出しは &quot;Number thrown&quot; を表示し、2番目の呼び出しは &quot;String<br>
-thrown&quot; を表示する。例外は、順番に &quot;:catch&quot; コマンドに照合される。最初にマッチ<br>
-したcatch節だけが実行される。そのため、より限定的な &quot;:catch&quot; を先に書くべきで<br>
-ある。次の順序で書くと無意味になってしまう:<br>
+最初のFoo()の呼び出しは &quot;Number thrown&quot; を表示し、2番目の呼び出しは<br>
+&quot;String thrown&quot; を表示する。例外は、順番に &quot;:catch&quot; コマンドに照合される。最初<br>
+にマッチしたcatch節だけが実行される。そのため、より限定的な &quot;:catch&quot; を先に書<br>
+くべきである。次の順序で書くと無意味になってしまう:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;catch /.*/<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;echo &quot;String thrown&quot;<br>
@@ -4898,8 +4898,8 @@ Vim script言語では、エラーの後もスクリプトや関数が処理を�
 &nbsp;&nbsp; 例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:try | unlet! foo # | catch | endtry</div>
 この例は &quot;:unlet!&quot; の後に余計な文字があるためエラー例外を発生させる。そして<br>
-&quot;:catch&quot; と &quot;:endtry&quot; が認識されないため、この例外は破棄され、&quot;E488: Trailing<br>
-characters&quot; のメッセージが表示される。<br>
+&quot;:catch&quot; と &quot;:endtry&quot; が認識されないため、この例外は破棄され、<br>
+&quot;E488: Trailing characters&quot; のメッセージが表示される。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="eval.html#except-several-errors" name="except-several-errors">except-several-errors</a><br>
 1つのコマンドにより複数のエラーが発生した場合、普通は最初のエラーメッセージが<br>

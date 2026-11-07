@@ -1486,10 +1486,11 @@ Vim コマンドは&nbsp;<a class="Type" href="options.html#'makeprg'">'makeprg'
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfunction<br>
 <br>
 補足として、利用可能な &quot;Pre*Action&quot; (または &quot;*Pre*Command&quot;) の一部またはすべて<br>
-は&nbsp;<a class="Identifier" href="quickfix.html#:make">:make</a>&nbsp;(または同等のもの) の前に実装内で `:doautocmd java_spotbugs_post<br>
-User` を実行して、一度だけ実行される&nbsp;<a class="Identifier" href="autocmd.html#ShellCmdPost">ShellCmdPost</a>&nbsp;<a class="Comment" href="autocmd.html#:autocmd">:autocmd</a>&nbsp;を定義し、<br>
-&quot;PostCompilerActionExecutor&quot; が呼び出されるように手配する。その後、このイベン<br>
-トを使用するために&nbsp;<span class="Comment">:doautocmd java_spotbugs_post ShellCmdPost</span>&nbsp;を実行する:<br>
+は&nbsp;<a class="Identifier" href="quickfix.html#:make">:make</a>&nbsp;(または同等のもの) の前に実装内で<br>
+<span class="Comment">:doautocmd java_spotbugs_post User</span>&nbsp;を実行して、一度だけ実行される<br>
+<a class="Identifier" href="autocmd.html#ShellCmdPost">ShellCmdPost</a>&nbsp;<a class="Comment" href="autocmd.html#:autocmd">:autocmd</a>&nbsp;を定義し、&quot;PostCompilerActionExecutor&quot; が呼び出され<br>
+るように手配する。その後、このイベントを使用するために<br>
+<span class="Comment">:doautocmd java_spotbugs_post ShellCmdPost</span>&nbsp;を実行する:<br>
 &gt;vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function! GenericPreCompilerCommand(arguments) abort<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if !exists('g:spotbugs_compilation_done')<br>
@@ -1902,10 +1903,10 @@ MS-Windowsでは、&quot;C:&quot; で始まる部分は &quot;%f&quot; に含ま
 <br>
 &quot;%s&quot; はエラー行の位置を探すためのテキストを指定する。そのテキストは文字列リテ<br>
 ラルして使われる。検索テキストに正確にマッチするエラー行を探すために、&quot;^&quot; と<br>
-&quot;$&quot; がテキストに加えられる。また、テキストの先頭に &quot;\V&quot; が追加され、&quot;very<br>
-nomagic&quot; とされる。&quot;%s&quot; はエラー出力中の行番号がない行を探すために使うことがで<br>
-きる。シェルコマンド &quot;grep&quot; の出力のように。<br>
-パターンがある場合は行番号は使われない。<br>
+&quot;$&quot; がテキストに加えられる。また、テキストの先頭に &quot;\V&quot; が追加され、<br>
+&quot;very nomagic&quot; とされる。&quot;%s&quot; はエラー出力中の行番号がない行を探すために使うこ<br>
+とができる。シェルコマンド &quot;grep&quot; の出力のように。パターンがある場合は行番号は<br>
+使われない。<br>
 <br>
 &quot;%o&quot; はQuickfix項目の中のモジュール名を指定する。もし指定があればそれがファイ<br>
 ル名の代わりにQuickfixエラーウィンドウの中で使われる。モジュール名は結果を表示<br>
@@ -2186,9 +2187,9 @@ GNU-Makeに強制的に処理の前後にワーキングディレクトリを表
 <br>
 GNU-makeを使用しない場合、正しいディレクトリを管理する事はもっと複雑になる。<br>
 例えばAIX-makeはワーキングディレクトリに関してなんの情報も表示しない。<br>
-よってmakefileに細工が必要となる。LessTifのmakefileには &quot;Making&nbsp;<span class="Special">{target}</span>&nbsp;in<br>
-<span class="Special">{dir}</span>&quot; と表示するコマンドがある。ここにはディレクトリを出る時の情報とその相対<br>
-パスが表示されないという重要な問題もある。<br>
+よってmakefileに細工が必要となる。LessTifのmakefileには<br>
+&quot;Making&nbsp;<span class="Special">{target}</span>&nbsp;in&nbsp;<span class="Special">{dir}</span>&quot; と表示するコマンドがある。ここにはディレクトリを出<br>
+る時の情報とその相対パスが表示されないという重要な問題もある。<br>
 <br>
 パスの関係とメッセージ &quot;leave directory&quot; が現れない問題のためにVimでは次の<br>
 アルゴリズムで対処している:<br>
