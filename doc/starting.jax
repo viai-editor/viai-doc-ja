@@ -1,7 +1,7 @@
-*starting.txt*	For Vim バージョン 9.2.  Last change: 2026 Sep 08
+*starting.txt*	For ViAI バージョン 1.0.  Last change: 2026 Sep 08
 
 
-		  VIM リファレンスマニュアル	by Bram Moolenaar
+		  VIAI リファレンスマニュアル
 
 
 Vimの起動						*starting*
@@ -90,34 +90,38 @@ filename	1つ以上のファイル名が与えられた場合。まずは最初�
 		ファが用意される。それは名前のない空のバッファである。
 
 
-起動時のモードはプログラム名を "vim" とは別の名前にすることで指定できる。それ
+起動時のモードはプログラム名を "viai" とは別の名前にすることで指定できる。それ
 は次のようにオプションを与えたのと同じである:
-ex	 vim -e	    Exモードで起動 (|Ex-mode| を参照)。		   *ex*
-exim	 vim -E	    改良版Exモードで起動 (|Ex-mode| を参照)。	   *exim*
+ex	 viai -e    Exモードで起動 (|Ex-mode| を参照)。		   *ex*
+exim	 viai -E    改良版Exモードで起動 (|Ex-mode| を参照)。	   *exim*
 		    (通常はインストールされない)
-view	 vim -R	    読み込み専用モードで起動 (|-R| を参照)。	   *view*
-gvim	 vim -g	    GUIで起動 (|gui| を参照)。			   *gvim*
-gex	 vim -eg    GUIのEXモードで起動。			   *gex*
-gview	 vim -Rg    GUIの読み込み専用モードで起動。		   *gview*
-rvim	 vim -Z	    "vim" の制限モードで起動 (|-Z| を参照)。	   *rvim*
-rview	 vim -RZ    "view" の制限モード。			   *rview*
-rgvim	 vim -gZ    "gvim" の制限モード。			   *rgvim*
-rgview	 vim -RgZ   "gview" の制限モード。			   *rgview*
-evim	 vim -y     簡易操作のVim: set 'insertmode' (|-y| を参照)    *evim*
-eview	 vim -yR    "evim" と同じ。読み込み専用モード。		   *eview*
-vimdiff	 vim -d	    差分モードで起動 |diff-mode|
-gvimdiff vim -gd    差分モードで起動 |diff-mode|
+view	 viai -R    読み込み専用モードで起動 (|-R| を参照)。	   *view*
+gviai	 viai -g    GUIで起動 (|gui| を参照)。			   *gvim*
+gex	 viai -eg   GUIのEXモードで起動。			   *gex*
+gview	 viai -Rg   GUIの読み込み専用モードで起動。		   *gview*
+rviai	 viai -Z    "viai" の制限モードで起動 (|-Z| を参照)。	   *rvim*
+rview	 viai -RZ   "view" の制限モード。			   *rview*
+rgviai	 viai -gZ   "gviai" の制限モード。			   *rgvim*
+rgview	 viai -RgZ  "gview" の制限モード。			   *rgview*
+eviai	 viai -y    簡易操作のVim: set 'insertmode' (|-y| を参照)    *evim*
+eview	 viai -yR   "eviai" と同じ。読み込み専用モード。	   *eview*
+viaidiff viai -d    差分モードで起動 |diff-mode|
+gviaidiff viai -gd  差分モードで起動 |diff-mode|
+
+"viai"、"gviai"、"rviai"、"rgviai"、"eviai"、"viaidiff"、"gviaidiff" だけがイ
+ンストールされる。|viai-programs| を参照。他の名前や Vim の名前 ("vim"、"gvim"
+など) も同様に動作する。
 
 これらの別名の後ろに付けられる文字は無視される。例えばGUIで起動するのに
-"gvim-8" という名前を付けることができる。もちろんその名前で実行可能なファイル
+"gviai-1" という名前を付けることができる。もちろんその名前で実行可能なファイル
 がなければならない。
 
-Unixでは通常、"vim" という名前の実行可能ファイルが一つあり、それに対して違う名
-前のリンクが用意される。使用しているシステムがリンクをサポートせず、実行可能
+Unixでは通常、"viai" という名前の実行可能ファイルが一つあり、それに対して違う
+名前のリンクが用意される。使用しているシステムがリンクをサポートせず、実行可能
 ファイルのコピーを幾つも作りたくないのならば、リンクの代わりにエイリアスを使う
 こともできる。例えば、C シェル系の場合: >
-	alias view   vim -R
-	alias gvim   vim -g
+	alias view    viai -R
+	alias gviai   viai -g
 <
 							*startup-options*
 オプション引数はどんな順番で与えても良い。一文字のオプションは一つのダッシュ
@@ -317,8 +321,8 @@ VMSでは全てのオプション引数は小文字であるとみなされる�
 		る}
 
 							*-F*
--F		これはFarsi(ペルシア語モード)で使用されていましたが、削除され
-		た。|farsi.txt| を参照。
+-F		これはFarsi(ペルシア語モード) で使用されていたが、削除された。
+		|farsi.txt| を参照。
 
 							*-H*
 -H		Hebrew(ヘブライ語)モード。オプション 'hkmap' と 'rightleft' を
@@ -442,9 +446,10 @@ VMSでは全てのオプション引数は小文字であるとみなされる�
 							*--stdio-channel*
 --stdio-channel	Vim の標準入力と標準出力を、端末用ではなくチャネル用として使用
 		する。これは "-es" を指定したことと同義であり、何も表示されず、
-		Ex コマンドの読み込みも行われず、GUI も起動しない。スクリプト
-		からは、アドレスに "stdio" を指定し |ch_open()| でチャネルを開
-		く。
+		Ex コマンドの読み込みも行われず、GUI も起動しない。
+		|clientserver| の引数は無視され、サーバーも起動しない。スクリ
+		プトからは、アドレスに "stdio" を指定し |ch_open()| でチャネル
+		を開く。
 		|channel-stdio| を参照。
 		起動コマンドやスクリプトの実行後、Vim はチャネル経由のメッセー
 		ジを待ち受け、チャネルが閉じられると終了する。
@@ -477,8 +482,8 @@ VMSでは全てのオプション引数は小文字であるとみなされる�
 		待つプログラム(メールソフトやニュースリーダー)によって Vimが起
 		動される時に、このオプションは使用される。|amiga-window|を参照。
 
-		MS-Windows: このオプションはサポートされない。vim.bat や
-		gvim.bat 経由で起動した場合は機能する。
+		MS-Windows: このオプションはサポートされない。viai.bat や
+		gviai.bat 経由で起動した場合は機能する。
 
 							*--nofork*
 --nofork	GUI: forkしない。|-f|と同じ。
@@ -526,8 +531,7 @@ VMSでは全てのオプション引数は小文字であるとみなされる�
 --clean		"-u DEFAULTS -U NONE -i NONE" に類似している:
 		- ファイルや環境変数からの初期化はスキップされる。
 		- 'runtimepath' および 'packpath' は、ホームディレクトリのエン
-		  トリを除外するように設定されます (-u DEFAULTS では発生しませ
-		  ん)。
+		  トリを除外するように設定される (-u DEFAULTS では発生しない)。
 		- |defaults.vim| スクリプトが読み込まれる。これは
 		  'nocompatible' を含む: Vim のデフォルトを使う。
 		- |gvimrc| スクリプトは読み込まれない。
@@ -822,13 +826,20 @@ Evimでは以下のオプションが標準設定から変更される:
 		Amiga		s:.vimrc、home:.vimrc、home:vimfiles:vimrc、
 				$VIM/.vimrc
 		Haiku		$HOME/config/settings/vim/vimrc
+	ViAI 自身のユーザー設定が存在する場合 (|viai-config| を参照)、Vim の
+	ファイルの代わりに以下が使われる:
+		Unix		$HOME/.viairc、$HOME/.viai/vimrc
+				または $XDG_CONFIG_HOME/viai/vimrc
+		MS-Windows	$HOME/_viairc、$HOME/viaifiles/vimrc、
+				$VIM/_vimrc
 
 	初期化ファイルは上記の順に検索され、最初に見つかったものだけが読み込ま
 	れる。
 
-	推奨: Vimの設定ファイルは全て $HOME/.vim/ ディレクトリ(MS-Windowsでは
-	$HOME/vimfiles/)に置くこと。そうすれば設定ファイルを別のシステムにコ
-	ピーするのが容易になる。
+	推奨: Vimの設定ファイルは全て $HOME/.vim/ ディレクトリ (MS-Windowsでは
+	$HOME/vimfiles/) に置くこと。そうすれば設定ファイルを別のシステムにコ
+	ピーするのが容易になる。ViAI 自身のユーザー設定では $HOME/.viai/
+	(MS-Windowsでは $HOME/viaifiles/) を使うこと。
 
 	Vimが "-u filename" で起動された場合、デフォルトのvimrcの代わりに
 	"filename" が使われる。続く初期化処理の 4. までがスキップされる。
@@ -885,6 +896,14 @@ Evimでは以下のオプションが標準設定から変更される:
 		Note: Win32では "$HOME" がまず検査される。"_vimrc" と ".vimrc"
 		のどちらもない場合には、"$VIM" が調べられる。$VIMが設定されて
 		いない場合については|$VIM|参照。
+		Note: ViAI 自身のユーザー設定が存在する場合 (|viai-config| を
+		参照)、Vim のファイルの代わりに以下が使われる:
+			    "$HOME/.viairc"		  (for Unix) (*)
+			    "$HOME/.viai/vimrc"		  (for Unix) (*)
+			    "$XDG_CONFIG_HOME/viai/vimrc" (for Unix) (*)
+			    "$HOME/_viairc"		  (for Win32) (*)
+			    "$HOME/viaifiles/vimrc"	  (for Win32) (*)
+			    "$VIM/_vimrc"		  (for Win32) (*)
 	III 環境変数EXINIT。
 	    その内容はExコマンドとして解釈される。
 	IV  ユーザーのexrcファイル。vimrcと同じだが、vimrcがexrcによって置き換
@@ -1124,7 +1143,9 @@ Unix システムの Vim は、その構成について `$XDG_CONFIG_HOME/vim/vi
 る (|vimrc| を参照) が、他の初期化ファイルが `$HOME` または `$HOME/.vim` に見
 つからない場合にのみそれを取得する (したがって、この機能は後方互換性がある)。
 但し、`$XDG_CONFIG_HOME/vim/` ディレクトリを使用するように移行する場合は、
-`~/.vimrc` および `~/.vim/vimrc` ファイルを移動する必要がある。
+`~/.vimrc` および `~/.vim/vimrc` ファイルを移動する必要がある。ViAI 自身のユー
+ザー設定 (|viai-config| を参照) では、`$XDG_CONFIG_HOME/viai/vimrc`、
+`~/.viairc`、`~/.viai/vimrc` についても同様である。
 
 							*xdg-runtime*
 |xdg-vimrc| が使用される場合、'runtimepath' および 'packpath' オプションはそれ
@@ -1133,6 +1154,8 @@ Unix システムの Vim は、その構成について `$XDG_CONFIG_HOME/vim/vi
   "$XDG_CONFIG_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,
    $XDG_CONFIG_HOME/vim/after"
 <
+ViAI 自身のユーザー設定では、"$XDG_CONFIG_HOME/vim" の代わりに
+"$XDG_CONFIG_HOME/viai" が使われる。
 
 トロイの木馬を回避する ~
 							*trojan-horse*
@@ -1218,13 +1241,13 @@ gvimは標準出力と標準エラー出力が端末に繋がってないとき�
 2. 'helpfile' が問題のある環境変数を含んでいなければその値を使う(標準設定は
    "$VIMRUNTIME/doc/help.txt" であり、これはニワトリと卵の問題を含んでいる)。
    ファイル名("help.txt" など)の部分は取り除かれる。そしてディレクトリ名の最後
-   が "doc"、"runtime"、"vim{version}" (例えば "vim82")、のどれかならそれも取
-   り除かれる。
+   が "doc"、"runtime"、"viai{version}" (例えば "viai10")、のどれかならそれも
+   取り除かれる。
 3. Win32ではVimの実行可能ファイルがあるディレクトリを使用する。ディレクトリ名
    の最後が "/src" ならそれは取り除かれる。配布されているVim一式の.zipファイル
    をあるディレクトリに展開し、検索パスを調整して使っているようなら便利である。
-   ディレクトリ名の最後が "runtime" か "vim{version}" (例えば "vim82")ならそれ
-   は取り除かれる。
+   ディレクトリ名の最後が "runtime" か "viai{version}" (例えば "viai10") なら
+   それは取り除かれる。
 4. Unixではコンパイル時に指定したインストール先のディレクトリを使用する
    (":version" の出力を見て確認できる)。
 
@@ -1240,23 +1263,23 @@ gvimは標準出力と標準エラー出力が端末に繋がってないとき�
 で$VIMRUNTIMEの値を探す:
 1. 環境変数$VIMRUNTIMEが設定されていればそれを使う。ランタイムファイルを特殊な
    場所に置くときに設定する。
-2. "$VIM/vim{version}" ディレクトリがあればそれを使う。{version}はVimのバージョ
-   ン番号から '-' や '.' を除いた物である。例えば "$VIM/vim82"。これは
+2. "$VIM/viai{version}" ディレクトリがあればそれを使う。{version}はViAIのバー
+   ジョン番号から '-' や '.' を除いた物である。例えば "$VIM/viai10"。これは
    $VIMRUNTIME として一般的な値である。
 3. "$VIM/runtime" ディレクトリがあればそれを使う。
 4. $VIMの値を使う。これは古いバージョンとの互換性のためである。
 5. オプション 'helpfile' が設定されていて '$' を含んでいないとき、その値を使用
    する。最後の "doc/help.txt" は取り除かれる。
 
-Unixでコンパイル時に$VIMRUNTIMEの初期値を設定した場合(":version" の出力をみて
+Unixでコンパイル時に$VIMRUNTIMEの初期値を設定した場合 (":version" の出力をみて
 確認できる)、2から4は無視される。そして5を試したあとにコンパイル時に設定した値
 が使用される。つまり$VIMの値を使わずにコンパイル時に設定した値を使用するという
-ことである。これは$VIMが "/etc" でランタイムファイルが "/usr/share/vim/vim82"
-にあるような場合に便利である。
+ことである。これは$VIMが "/etc" でランタイムファイルが
+"/usr/share/viai/viai10" にあるような場合に便利である。
 
 このうちのどれかが使用できるならVimは環境変数$VIMRUNTIMEを設定する。あとからそ
 の値を変更するには ":let" コマンドを次のように使う: >
-	:let $VIMRUNTIME = "/home/piet/vim/vim82"
+	:let $VIMRUNTIME = "/home/piet/viai/viai10"
 
 シェル内で $VIMRUNTIME の値が必要な場合(例えば、ヘルプファイルを grep するスク
 リプトなど)は、次のようにすれば得られる: >
@@ -1680,6 +1703,12 @@ Bash ライクなシェルでは: >
   Amigaでは "s:.viminfo" に、Win32では "$HOME\_viminfo" になる。Win32で、$HOME
   が設定されていない時には、"$VIM\_viminfo" になる。$VIM も設定されていない時
   には "c:\_viminfo" が使われる。
+- ViAI は代わりに、Unix では "$HOME/.viaiinfo"、Win32 では "$HOME\_viaiinfo"
+  を使い、$HOME が設定されていない時には "$VIM\_viaiinfo" と "c:\_viaiinfo" を
+  使う。|viai-viminfo| を参照。このファイルがまだ存在しない時は、代わりに
+  $HOME にある Vim の viminfo ファイルが読み込まれ、書き込む時にこのファイルに
+  マージされる。Vim の viminfo ファイルが書き込まれることはない。これはデフォ
+  ルトのファイル名にだけ当てはまる。
 - 'viminfo' オプションの 'n' フラグは、別の名前のviminfoファイルを使うために、
   そのファイル名を指定するのに使用される 'viminfo'。
 - Vimの起動引数 "-i" も、viminfoとして別のファイルを指定するのに使用できる|-i|。
