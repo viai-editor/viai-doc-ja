@@ -4137,10 +4137,10 @@ try条件文が外側の条件文のtryブロックの中にある場合はcatch
 	:call Foo(0x1267)
 	:call Foo('string')
 
-最初のFoo()の呼び出しは "Number thrown" を表示し、2番目の呼び出しは "String
-thrown" を表示する。例外は、順番に ":catch" コマンドに照合される。最初にマッチ
-したcatch節だけが実行される。そのため、より限定的な ":catch" を先に書くべきで
-ある。次の順序で書くと無意味になってしまう: >
+最初のFoo()の呼び出しは "Number thrown" を表示し、2番目の呼び出しは
+"String thrown" を表示する。例外は、順番に ":catch" コマンドに照合される。最初
+にマッチしたcatch節だけが実行される。そのため、より限定的な ":catch" を先に書
+くべきである。次の順序で書くと無意味になってしまう: >
 
 	:  catch /.*/
 	:    echo "String thrown"
@@ -4893,8 +4893,8 @@ Vim script言語では、エラーの後もスクリプトや関数が処理を�
    例: >
 	:try | unlet! foo # | catch | endtry
 この例は ":unlet!" の後に余計な文字があるためエラー例外を発生させる。そして
-":catch" と ":endtry" が認識されないため、この例外は破棄され、"E488: Trailing
-characters" のメッセージが表示される。
+":catch" と ":endtry" が認識されないため、この例外は破棄され、
+"E488: Trailing characters" のメッセージが表示される。
 
 							*except-several-errors*
 1つのコマンドにより複数のエラーが発生した場合、普通は最初のエラーメッセージが

@@ -1481,10 +1481,11 @@ Vim コマンドは 'makeprg' [0] に習熟していると、デフォルトア�
 	endfunction
 
 補足として、利用可能な "Pre*Action" (または "*Pre*Command") の一部またはすべて
-は |:make| (または同等のもの) の前に実装内で `:doautocmd java_spotbugs_post
-User` を実行して、一度だけ実行される |ShellCmdPost| `:autocmd` を定義し、
-"PostCompilerActionExecutor" が呼び出されるように手配する。その後、このイベン
-トを使用するために `:doautocmd java_spotbugs_post ShellCmdPost` を実行する:
+は |:make| (または同等のもの) の前に実装内で
+`:doautocmd java_spotbugs_post User` を実行して、一度だけ実行される
+|ShellCmdPost| `:autocmd` を定義し、"PostCompilerActionExecutor" が呼び出され
+るように手配する。その後、このイベントを使用するために
+`:doautocmd java_spotbugs_post ShellCmdPost` を実行する:
 >vim
 	function! GenericPreCompilerCommand(arguments) abort
 		if !exists('g:spotbugs_compilation_done')
@@ -1897,10 +1898,10 @@ MS-Windowsでは、"C:" で始まる部分は "%f" に含まれる。"%f:" と�
 
 "%s" はエラー行の位置を探すためのテキストを指定する。そのテキストは文字列リテ
 ラルして使われる。検索テキストに正確にマッチするエラー行を探すために、"^" と
-"$" がテキストに加えられる。また、テキストの先頭に "\V" が追加され、"very
-nomagic" とされる。"%s" はエラー出力中の行番号がない行を探すために使うことがで
-きる。シェルコマンド "grep" の出力のように。
-パターンがある場合は行番号は使われない。
+"$" がテキストに加えられる。また、テキストの先頭に "\V" が追加され、
+"very nomagic" とされる。"%s" はエラー出力中の行番号がない行を探すために使うこ
+とができる。シェルコマンド "grep" の出力のように。パターンがある場合は行番号は
+使われない。
 
 "%o" はQuickfix項目の中のモジュール名を指定する。もし指定があればそれがファイ
 ル名の代わりにQuickfixエラーウィンドウの中で使われる。モジュール名は結果を表示
@@ -2181,9 +2182,9 @@ GNU-Makeに強制的に処理の前後にワーキングディレクトリを表
 
 GNU-makeを使用しない場合、正しいディレクトリを管理する事はもっと複雑になる。
 例えばAIX-makeはワーキングディレクトリに関してなんの情報も表示しない。
-よってmakefileに細工が必要となる。LessTifのmakefileには "Making {target} in
-{dir}" と表示するコマンドがある。ここにはディレクトリを出る時の情報とその相対
-パスが表示されないという重要な問題もある。
+よってmakefileに細工が必要となる。LessTifのmakefileには
+"Making {target} in {dir}" と表示するコマンドがある。ここにはディレクトリを出
+る時の情報とその相対パスが表示されないという重要な問題もある。
 
 パスの関係とメッセージ "leave directory" が現れない問題のためにVimでは次の
 アルゴリズムで対処している:
