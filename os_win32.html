@@ -3,10 +3,10 @@ layout: viai-doc
 helpname: 'os_win32'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="os_win32.html" name="os_win32.txt">os_win32.txt</a>&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Jul 22<br>
+<a class="Constant" href="os_win32.html" name="os_win32.txt">os_win32.txt</a>&nbsp;&nbsp;For&nbsp;ViAI バージョン 1.0.&nbsp;&nbsp;Last change: 2026 Jul 22<br>
 <br>
 <br>
-<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル<br>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32" name="win32">win32</a>&nbsp;<a class="Constant" href="os_win32.html#Win32" name="Win32">Win32</a>&nbsp;<a class="Constant" href="os_win32.html#MS-Windows" name="MS-Windows">MS-Windows</a><br>
@@ -55,7 +55,7 @@ WSL(Windows Subsystem for Linux) 上で Vim を使用する場合、ここでの
 れず、<span class="Comment">has('win32')</span>&nbsp;は偽を返す。WSL 上で Vim が 実行されているかどうかを知る<br>
 必要がある場合は、<span class="Comment">exists('$WSL_DISTRO_NAME')</span>&nbsp;を使用する。<br>
 <br>
-<span class="PreProc">==============================================================================</span><br>
+==============================================================================<br>
 1. 知られている問題点&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-problems" name="win32-problems">win32-problems</a><br>
 <br>
 ファイル名補完を行っているとき、Vimは短いファイル名への一致も見つける。しかし、<br>
@@ -63,7 +63,7 @@ WSL(Windows Subsystem for Linux) 上で Vim を使用する場合、ここでの
 いファイル名 &quot;this_i~1&quot; を持つ、長いファイル名のファイル &quot;this_is_a_test&quot; を<br>
 持っているなら、コマンド &quot;:e *1&quot; は &quot;this_is_a_test&quot; の編集を始める。<br>
 <br>
-<span class="PreProc">==============================================================================</span><br>
+==============================================================================<br>
 2. Vimの起動&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-startup" name="win32-startup">win32-startup</a><br>
 <br>
 カレントディレクトリ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-curdir" name="win32-curdir">win32-curdir</a><br>
@@ -144,7 +144,7 @@ Vim と gvim はかつては(7.4.432以前)、それをパースするために�
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set ignorecase; /&quot;foo\ and /bar\&quot;</div>
 <br>
 これらのルールは CommandLineToArgvW API のリファレンスにも記載されている:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/bb776391.aspx">https://msdn.microsoft.com/en-us/library/windows/desktop/bb776391.aspx</a></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://msdn.microsoft.com/en-us/library/windows/desktop/bb776391.aspx">https://msdn.microsoft.com/en-us/library/windows/desktop/bb776391.aspx</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-quotes" name="win32-quotes">win32-quotes</a><br>
 クォートには追加のルールがある(これらはちゃんとドキュメント化されていない)。<br>
@@ -162,23 +162,23 @@ Vim と gvim はかつては(7.4.432以前)、それをパースするために�
 &nbsp;&nbsp; クォートされた文字列の終わりに&nbsp;<span class="Comment">&quot;</span>&nbsp;が生成される。<br>
 <br>
 例えば、引数を1つずつ [] で囲った場合:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;foo&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt;&nbsp;<span class="Special">[foo]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;foo&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt;&nbsp;[foo]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;foo&quot;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt; [foo&quot;]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;foo&quot;bar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;<span class="Special">[foobar]</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;foo&quot; bar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt;&nbsp;<span class="Special">[foo]</span>,&nbsp;<span class="Special">[bar]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;foo&quot;bar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;[foobar]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;foo&quot; bar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt;&nbsp;[foo],&nbsp;[bar]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;foo&quot;&quot;bar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; [foo&quot;bar]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;foo&quot;&quot; bar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt; [foo&quot;],&nbsp;<span class="Special">[bar]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;foo&quot;&quot; bar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt; [foo&quot;],&nbsp;[bar]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;foo&quot;&quot;&quot;bar&quot;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; [foo&quot;bar]<br>
 <br>
 <br>
-<span class="PreProc">==============================================================================</span><br>
+==============================================================================<br>
 3. スクリーン内容の復帰&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-restore" name="win32-restore">win32-restore</a><br>
 <br>
 <a class="Type" href="options.html#'restorescreen'">'restorescreen'</a>&nbsp;がセットされているとき(これはデフォルト)、終了時、または外部コ<br>
 マンド実行時、Vimはコンソールの元の内容を復帰する。これを行いたくない場合は、<br>
 &quot;:set nors&quot; を使うとよい。<a class="Type" href="options.html#'restorescreen'">'restorescreen'</a><br>
 <br>
-<span class="PreProc">==============================================================================</span><br>
+==============================================================================<br>
 4. マウスの使用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-mouse" name="win32-mouse">win32-mouse</a><br>
 <br>
 Win32バージョンのVimはマウスの使用をサポートする。2ボタンマウスを使用している<br>
@@ -190,24 +190,24 @@ Win32バージョンのVimはマウスの使用をサポートする。2ボタ�
 マウスが機能しない場合には、コンソールの &quot;簡易編集モード&quot; プロパティを無効にし<br>
 てみよ。<br>
 <br>
-<span class="PreProc">==============================================================================</span><br>
+==============================================================================<br>
 5. Windows 95での使用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-win95" name="win32-win95">win32-win95</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#windows95" name="windows95">windows95</a>&nbsp;<a class="Constant" href="os_win32.html#windows98" name="windows98">windows98</a>&nbsp;<a class="Constant" href="os_win32.html#windowsme" name="windowsme">windowsme</a><br>
 Windows 95/98/ME のサポートはパッチ 8.0.0029 にて削除された。これを使いたいと<br>
 きは、これよりも古いバージョンを入手する必要がある。<br>
 <br>
-<span class="PreProc">==============================================================================</span><br>
+==============================================================================<br>
 6. Windows 3.1での使用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-win3.1" name="win32-win3.1">win32-win3.1</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32s" name="win32s">win32s</a>&nbsp;<a class="Constant" href="os_win32.html#windows-3.1" name="windows-3.1">windows-3.1</a>&nbsp;<a class="Constant" href="os_win32.html#gui-w32s" name="gui-w32s">gui-w32s</a>&nbsp;<a class="Constant" href="os_win32.html#win16" name="win16">win16</a><br>
 かつて Windows 3.1 や 3.11 上で動作する gvim の特別なバージョンがあった。<br>
 パッチ 7.4.1364 にてサポートは削除された。<br>
 <br>
-<span class="PreProc">==============================================================================</span><br>
+==============================================================================<br>
 7. インストールパッケージ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-installer" name="win32-installer">win32-installer</a><br>
 <br>
 Windows版のインストーラのナイトリービルドは<br>
-<span class="Constant"><a href="https://github.com/viai-editor/viai-win32-installer/releases/">https://github.com/viai-editor/viai-win32-installer/releases/</a></span>&nbsp;にある。<br>
+<a href="https://github.com/viai-editor/viai-win32-installer/releases/&nbsp;にある。">https://github.com/viai-editor/viai-win32-installer/releases/&nbsp;にある。</a><br>
 <br>
 ナイトリービルドには32bitと64bitのビルドが含まれ、ほとんどの機能が有効になって<br>
 おり通常は追加の暗号化署名されたインストーラなので、Windowsから問題報告される<br>
@@ -224,7 +224,7 @@ Windows版のインストーラのナイトリービルドは<br>
 $VIM 環境変数を設定することでもデフォルトのインストールディレクトリを指定する<br>
 ことができる。<br>
 <br>
-<span class="PreProc">==============================================================================</span><br>
+==============================================================================<br>
 8. Win32 ミニ FAQ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-faq" name="win32-faq">win32-faq</a><br>
 <br>
 Q. フォントを変える方法は？<br>
@@ -268,9 +268,9 @@ A. ファイルを書き込むとき、Vim は元のファイルをリネーム�
 Q. &quot;:make&quot; の出力を実行中に見たい場合は？<br>
 A. 基本的には、入力(この場合はmakeの出力)を標準出力とエラーファイルの両方にコ<br>
 &nbsp;&nbsp; ピーする、teeプログラムを使えばよい。tee(とその他多くのGNUツール)は、<br>
-&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://gnuwin32.sourceforge.net">http://gnuwin32.sourceforge.net</a></span>&nbsp;か&nbsp;<span class="Constant"><a href="http://unxutils.sourceforge.net">http://unxutils.sourceforge.net</a></span><br>
+&nbsp;&nbsp;&nbsp;<a href="http://gnuwin32.sourceforge.net&nbsp;か&nbsp;http://unxutils.sourceforge.net">http://gnuwin32.sourceforge.net&nbsp;か&nbsp;http://unxutils.sourceforge.net</a><br>
 &nbsp;&nbsp; から得られる。もしくは、最新のGNUツールのCygnusバージョン<br>
-&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://www.cygwin.com">http://www.cygwin.com</a></span>&nbsp;を使ってみてもよい。<br>
+&nbsp;&nbsp;&nbsp;<a href="http://www.cygwin.com&nbsp;を使ってみてもよい。">http://www.cygwin.com&nbsp;を使ってみてもよい。</a><br>
 &nbsp;&nbsp; teeを手に入れたら、_vimrcに、以下のように設定する<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set shellpipe=\|\ tee</div>
 <br>
