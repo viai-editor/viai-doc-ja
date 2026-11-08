@@ -3,10 +3,10 @@ layout: viai-doc
 helpname: 'usr_30'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="usr_30.html" name="usr_30.txt">usr_30.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;ViAI バージョン 1.0.&nbsp;&nbsp;Last change: 2026 May 23<br>
+<a class="Constant" href="usr_30.html" name="usr_30.txt">usr_30.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 May 23<br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル<br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; プログラムの編集<br>
@@ -27,7 +27,7 @@ helpname: 'usr_30'
 前章:&nbsp;<a class="Identifier" href="usr_29.html">usr_29.txt</a>&nbsp;&nbsp;プログラムの中を移動する<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_30.html#30.1" name="30.1">30.1</a>&nbsp;&nbsp;コンパイル<br>
 <br>
 Vim にはquickfix機能があります。これは、Vim の中でプログラムをコンパイルして、<br>
@@ -44,20 +44,20 @@ Vim にはquickfix機能があります。これは、Vim の中でプログラ�
 のエラーあるいは少しのゴミを出力しますが) &quot;:make&quot; を実行すると次のような出力が<br>
 画面に表示されます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!make | &amp;tee /tmp/vim215953.err<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gcc -g -Wall -o prog main.c sub.c<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;main.c: In function 'main':<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;main.c:6: too many arguments to function 'do_sub'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;main.c: At top level:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;main.c:10: parse error before '}'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make: *** [prog] Error 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">:!make | &amp;tee /tmp/vim215953.err</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">gcc -g -Wall -o prog main.c sub.c</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">main.c: In function 'main':</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">main.c:6: too many arguments to function 'do_sub'</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">main.c: At top level:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">main.c:10: parse error before '}'</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">make: *** [prog] Error 1</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 returned<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;main.c&quot; 11L, 111C<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3 of 6): too many arguments to function 'do_sub'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hit ENTER or type command to continue<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">2 returned</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;main.c&quot; 11L, 111C</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">(3 of 6): too many arguments to function 'do_sub'</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Hit ENTER or type command to continue</span><br>
 <br>
-&quot;main.c&quot; の中でエラーが発生していることが確認できると思います。&lt;Enter&gt;&nbsp;を押す<br>
+&quot;main.c&quot; の中でエラーが発生していることが確認できると思います。<span class="Special">&lt;Enter&gt;</span>&nbsp;を押す<br>
 と &quot;main.c&quot; ファイルが開き、6 行目 (最初のエラー) にカーソルが移動します。自分<br>
 でファイルを開く必要はありません。Vim はエラーメッセージを認識できます。<br>
 <br>
@@ -88,8 +88,8 @@ Vim にはquickfix機能があります。これは、Vim の中でプログラ�
 出力が表示されます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:clist</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 main.c: 6:too many arguments to function 'do_sub'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 main.c: 10:parse error before '}'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">3 main.c: 6:too many arguments to function 'do_sub'</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">5 main.c: 10:parse error before '}'</span><br>
 <br>
 ファイル名と行番号が認識された行だけが表示されますが、それは、重要なのはそのよ<br>
 うな行だけで、他の行は無駄なメッセージであると判断されるからです。しかし時に<br>
@@ -98,12 +98,12 @@ Vim にはquickfix機能があります。これは、Vim の中でプログラ�
 ドに &quot;!&quot; を付けます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:clist!</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 gcc -g -Wall -o prog main.c sub.c<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 main.c: In function 'main':<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 main.c:6: too many arguments to function 'do_sub'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 main.c: At top level:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 main.c:10: parse error before '}'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6 make: *** [prog] Error 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">1 gcc -g -Wall -o prog main.c sub.c</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">2 main.c: In function 'main':</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">3 main.c:6: too many arguments to function 'do_sub'</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">4 main.c: At top level:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">5 main.c:10: parse error before '}'</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">6 make: *** [prog] Error 1</span><br>
 <br>
 現在のエラーは強調表示されます。前のエラーに戻るには次のコマンドを使います:<br>
 <br>
@@ -116,7 +116,7 @@ Vim にはquickfix機能があります。これは、Vim の中でプログラ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:cc 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3つ目のエラー<br>
 <br>
 <br>
-他のコンパイラを使う<br>
+<span class="Statement">他のコンパイラを使う</span><br>
 <br>
 &quot;:make&quot; コマンドが実際に実行するプログラムは&nbsp;<a class="Type" href="options.html#'makeprg'">'makeprg'</a>&nbsp;オプションで設定しま<br>
 す。通常は &quot;make&quot; に設定されていますが、例えば Visual C++ を使う場合は &quot;nmake&quot;<br>
@@ -150,7 +150,7 @@ main.c を編集しているときに &quot;:make&quot; を実行すると次の
 修飾子については&nbsp;<a class="Identifier" href="cmdline.html#filename-modifiers">filename-modifiers</a>&nbsp;を参照してください。<br>
 <br>
 <br>
-古いエラーリスト<br>
+<span class="Statement">古いエラーリスト</span><br>
 <br>
 例えば &quot;:make&quot; を実行したときに、一つのファイルで警告メッセージが出て、他の<br>
 ファイルではエラーが出たとします。エラーを修正し、本当に直ったかどうかを確認す<br>
@@ -161,7 +161,7 @@ main.c を編集しているときに &quot;:make&quot; を実行すると次の
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:colder</div>
 <br>
-&quot;:clist&quot; と &quot;:cc&nbsp;{nr}&quot; を使って、警告が発生した場所にジャンプしましょう。<br>
+&quot;:clist&quot; と &quot;:cc&nbsp;<span class="Special">{nr}</span>&quot; を使って、警告が発生した場所にジャンプしましょう。<br>
 次のコマンドで新しいエラーリストに戻れます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:cnewer</div>
@@ -169,7 +169,7 @@ main.c を編集しているときに &quot;:make&quot; を実行すると次の
 全部で 10 個までのエラーリストを保持しておくことができます。<br>
 <br>
 <br>
-他のコンパイラを使う<br>
+<span class="Statement">他のコンパイラを使う</span><br>
 <br>
 コンパイラが出力するエラーメッセージの書式を調べ、<a class="Type" href="options.html#'errorformat'">'errorformat'</a>&nbsp;オプションを設<br>
 定する必要があります。このオプションの構文は非常に複雑ですが、どのようなコンパ<br>
@@ -185,7 +185,7 @@ main.c を編集しているときに &quot;:make&quot; を実行すると次の
 自分で設定スクリプトを書くこともできます。<a class="Identifier" href="usr_51.html#write-compiler-plugin">write-compiler-plugin</a>&nbsp;参照。<br>
 <br>
 <br>
-出力のリダイレクト<br>
+<span class="Statement">出力のリダイレクト</span><br>
 <br>
 &quot;:make&quot; コマンドは、実行したプログラムの出力をエラーファイルにリダイレクトしま<br>
 す。その動作はいろいろな要因に依存しています (例えば&nbsp;<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;オプション)。<br>
@@ -201,7 +201,7 @@ main.c を編集しているときに &quot;:make&quot; を実行すると次の
 <br>
 &quot;:make&quot; コマンドと同様にエラーにジャンプできます。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_30.html#30.2" name="30.2">30.2</a>&nbsp;&nbsp;C 言語系インデント<br>
 <br>
 プログラムを適切にインデントするとコードが読みやすくなります。Vim の機能を使え<br>
@@ -256,7 +256,7 @@ main.c を編集しているときに &quot;:make&quot; を実行すると次の
 要もあるからです。<br>
 <br>
 <br>
-インデントスタイルの設定<br>
+<span class="Statement">インデントスタイルの設定</span><br>
 <br>
 インデントスタイルは人によってさまざまです。初期設定では 90% のプログラマが満<br>
 足するようなスタイルに設定されています。しかし、世の中にはいろいろなスタイルが<br>
@@ -266,11 +266,11 @@ main.c を編集しているときに &quot;:make&quot; を実行すると次の
 このオプションに値を追加していくことでスタイルを変更できます。例えば、波カッコ<br>
 の位置を次のようにしたい場合は:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (flag)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = 8;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j = 0;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">if (flag)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">i = 8;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">j = 0;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">}</span><br>
 <br>
 次のコマンドを使います:<br>
 <br>
@@ -278,7 +278,7 @@ main.c を編集しているときに &quot;:make&quot; を実行すると次の
 <br>
 設定できる項目はたくさんあります。<a class="Identifier" href="indent.html#cinoptions-values">cinoptions-values</a>&nbsp;参照。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_30.html#30.3" name="30.3">30.3</a>&nbsp;&nbsp;インデント設定の自動化<br>
 <br>
 C ファイルを開くたびに&nbsp;<a class="Type" href="options.html#'cindent'">'cindent'</a>&nbsp;オプションを設定するのは面倒ですよね。インデ<br>
@@ -304,35 +304,35 @@ C ファイルを開くたびに&nbsp;<a class="Type" href="options.html#'cinden
 <br>
 これを、決められた名前で保存します:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{directory}/indent/{filetype}.vim<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{directory}</span>/indent/<span class="Special">{filetype}</span>.vim<br>
 <br>
-{filetype}&nbsp;は &quot;cpp&quot; や &quot;java&quot; といったファイルタイプの名前です。次のコマンドで<br>
+<span class="Special">{filetype}</span>&nbsp;は &quot;cpp&quot; や &quot;java&quot; といったファイルタイプの名前です。次のコマンドで<br>
 Vim が使っている名前を確認できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set filetype</div>
 <br>
 例えばこのヘルプファイルなら次のように表示されます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filetype=help<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">filetype=help</span><br>
 <br>
-したがって、{filetype}&nbsp;には &quot;help&quot; が入ります。<br>
-{directory}&nbsp;はランタイムディレクトリです。次のコマンドの出力を調べてください:<br>
+したがって、<span class="Special">{filetype}</span>&nbsp;には &quot;help&quot; が入ります。<br>
+<span class="Special">{directory}</span>&nbsp;はランタイムディレクトリです。次のコマンドの出力を調べてください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set runtimepath</div>
 <br>
 ここでは先頭のパスを使います。つまり、出力が次のようなら:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtimepath=~/.vim,/usr/local/share/vim/vim60/runtime,~/.vim/after<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">runtimepath=~/.vim,/usr/local/share/vim/vim60/runtime,~/.vim/after</span><br>
 <br>
-{directory}&nbsp;には &quot;~/.vim&quot; が入ります。したがって、ファイル名は次のようになりま<br>
+<span class="Special">{directory}</span>&nbsp;には &quot;~/.vim&quot; が入ります。したがって、ファイル名は次のようになりま<br>
 す:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~/.vim/indent/help.vim<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">~/.vim/indent/help.vim</span><br>
 <br>
 インデントをオフにするのではなく、自分のインデントファイルを作成したい場合は、<br>
 <a class="Identifier" href="indent.html#indent-expression">indent-expression</a>&nbsp;を参照してください。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_30.html#30.4" name="30.4">30.4</a>&nbsp;&nbsp;その他のインデント<br>
 <br>
 最もシンプルな自動インデントは&nbsp;<a class="Type" href="options.html#'autoindent'">'autoindent'</a>&nbsp;オプションを使う方法です。これは直<br>
@@ -345,44 +345,44 @@ Vim が使っている名前を確認できます:<br>
 レクティブの行はインデントされません。その次の行は通常通りインデントされます。<br>
 <br>
 <br>
-インデントの訂正<br>
+<span class="Statement">インデントの訂正</span><br>
 <br>
 <a class="Type" href="options.html#'autoindent'">'autoindent'</a>&nbsp;や&nbsp;<a class="Type" href="options.html#'smartindent'">'smartindent'</a>&nbsp;を設定すると、直前の行と同じインデントを使うこと<br>
 ができますが、自分でインデントを (<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;の幅ずつ) 増やしたり減らしたり<br>
-する必要も多々あります。それには挿入モードで&nbsp;CTRL-D&nbsp;と&nbsp;CTRL-T&nbsp;を使うと簡単で<br>
+する必要も多々あります。それには挿入モードで&nbsp;<span class="Special">CTRL-D</span>&nbsp;と&nbsp;<span class="Special">CTRL-T</span>&nbsp;を使うと簡単で<br>
 す。例えば、次のようなシェルスクリプトを入力してみましょう:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if test -n a; then<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo a<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo &quot;-------&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">if test -n a; then</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">echo a</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">echo &quot;-------&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">fi</span><br>
 <br>
 まず、次のオプションを設定します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set autoindent shiftwidth=3</div>
 <br>
-一行目を入力し、&lt;Enter&gt;&nbsp;を押して二行目を開始します:<br>
+一行目を入力し、<span class="Special">&lt;Enter&gt;</span>&nbsp;を押して二行目を開始します:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if test -n a; then<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">if test -n a; then</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">echo</span><br>
 <br>
-二行目にはインデントが必要ですね。CTRL-T&nbsp;を押します:<br>
+二行目にはインデントが必要ですね。<span class="Special">CTRL-T</span>&nbsp;を押します:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if test -n a; then<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">if test -n a; then</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">echo</span><br>
 <br>
-挿入モードの&nbsp;CTRL-T&nbsp;コマンドは、<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;の幅だけインデントを増やします。<br>
+挿入モードの&nbsp;<span class="Special">CTRL-T</span>&nbsp;コマンドは、<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;の幅だけインデントを増やします。<br>
 カーソルの位置は関係ありません。<br>
-二行目を入力し、&lt;Enter&gt;&nbsp;を押して三行目を開始します。三行目のインデントは問題あ<br>
-りません。&lt;Enter&gt;&nbsp;を押して最後の行を入力します。テキストは次のようになりまし<br>
+二行目を入力し、<span class="Special">&lt;Enter&gt;</span>&nbsp;を押して三行目を開始します。三行目のインデントは問題あ<br>
+りません。<span class="Special">&lt;Enter&gt;</span>&nbsp;を押して最後の行を入力します。テキストは次のようになりまし<br>
 た:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if test -n a; then<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo a<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo &quot;-------&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">if test -n a; then</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">echo a</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">echo &quot;-------&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">fi</span><br>
 <br>
-最後の行の余分なインデントを削除するには&nbsp;CTRL-D&nbsp;押します。これは&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a><br>
+最後の行の余分なインデントを削除するには&nbsp;<span class="Special">CTRL-D</span>&nbsp;押します。これは&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a><br>
 の幅だけインデントを減らします。カーソルの位置は関係ありません。<br>
 ノーマルモードでは &quot;&gt;&gt;&quot; コマンドと &quot;&lt;&lt;&quot; コマンドで同様の操作ができます。&quot;&gt;&quot; と<br>
 &quot;&lt;&quot; はオペレータなので、他のオペレータと同様に、インデントを変更する範囲を三通<br>
@@ -396,16 +396,16 @@ Vim が使っている名前を確認できます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;original text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; after &quot;&gt;i{&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; after &quot;&gt;a{&quot;<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (flag)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (flag)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (flag)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;yes&quot;);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;yes&quot;);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;yes&quot;);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flag = 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; flag = 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; flag = 0;&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">if (flag)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (flag)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (flag)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">printf(&quot;yes&quot;);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;yes&quot;);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;yes&quot;);</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">flag = 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; flag = 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; flag = 0;&nbsp;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span><br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_30.html#30.5" name="30.5">30.5</a>&nbsp;&nbsp;タブとスペース<br>
 <br>
-タブ導入の背景の簡単な歴史<br>
+<span class="Statement">タブ導入の背景の簡単な歴史</span><br>
 <br>
 (Vim の祖先である)&nbsp;<a class="Comment" href="intro.html#vi">vi</a>&nbsp;は Bill Joy によって開発されました。当時、彼はメモリと<br>
 I/O 操作能力が限られた PDP-11 を使用していました。当時は、次のようなトリックを<br>
@@ -419,11 +419,11 @@ I/O 操作能力が限られた PDP-11 を使用していました。当時は�
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1234^I9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1234&nbsp;&nbsp;&nbsp;&nbsp;9</div>
 <br>
-&lt;Tab&gt;&nbsp;キーを使用する方が、&lt;Space&gt;&nbsp;キーを複数回入力するよりも高速でした。&lt;BS&gt;<br>
+<span class="Special">&lt;Tab&gt;</span>&nbsp;キーを使用する方が、<span class="Special">&lt;Space&gt;</span>&nbsp;キーを複数回入力するよりも高速でした。<span class="Special">&lt;BS&gt;</span><br>
 キーの場合も同様です。<br>
 <br>
 <br>
-タブとインデントの問題<br>
+<span class="Statement">タブとインデントの問題</span><br>
 <br>
 Vim では、2 つの (仮想的な) 水平タブストップ間の列数は&nbsp;<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;で制御され、<br>
 デフォルトでは 8 に設定されています。この値は変更できますが、後ですぐに問題に<br>
@@ -439,37 +439,37 @@ Vim では、2 つの (仮想的な) 水平タブストップ間の列数は&nbs
 ンデントを使用したいので、タブ文字を使用してインデントを作成することはできませ<br>
 ん。<br>
 &nbsp;&nbsp;これを改善するために、<a class="Comment" href="intro.html#vi">vi</a>&nbsp;には&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;オプションがありました。これを<br>
-4 に設定すると、挿入モードで新しい行に&nbsp;&lt;C-t&gt;&nbsp;を押すと行が 4 スペース分インデン<br>
-トされます。これは、&lt;Tab&gt;&nbsp;キーと&nbsp;<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;を 8 に設定しただけでは実現できない<br>
+4 に設定すると、挿入モードで新しい行に&nbsp;<span class="Special">&lt;C-t&gt;</span>&nbsp;を押すと行が 4 スペース分インデン<br>
+トされます。これは、<span class="Special">&lt;Tab&gt;</span>&nbsp;キーと&nbsp;<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;を 8 に設定しただけでは実現できない<br>
 結果です。<br>
 &nbsp;スペースを最適化するために、<a class="Comment" href="intro.html#vi">vi</a>&nbsp;は暗黙的にスペースの塊を削除し、タブ文字に置<br>
-き換えます。以下は、&lt;C-t&gt;&nbsp;を数回押したときに何が起こるかを示しています。<br>
+き換えます。以下は、<span class="Special">&lt;C-t&gt;</span>&nbsp;を数回押したときに何が起こるかを示しています。<br>
 &nbsp;&nbsp;&quot;.&quot; はスペース文字を表し、&quot;-------&gt;&quot; はタブ文字を表します。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;C-t&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ....<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;C-t&gt;&lt;C-t&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;C-t&gt;&lt;C-t&gt;&lt;C-t&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -------&gt;....<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-t&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ....<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-t&gt;&lt;C-t&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-t&gt;&lt;C-t&gt;&lt;C-t&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -------&gt;....<br>
 <br>
-&nbsp;&nbsp;同様に、挿入モードで&nbsp;&lt;C-d&gt;&nbsp;を押すとインデントが減ります。したがって、<br>
+&nbsp;&nbsp;同様に、挿入モードで&nbsp;<span class="Special">&lt;C-d&gt;</span>&nbsp;を押すとインデントが減ります。したがって、<br>
 <span class="Comment">set tabstop=8 shiftwidth=2</span>&nbsp;とすると、以下のようになります<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;C-t&gt;&lt;Tab&gt;&lt;C-t&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ..-----&gt;..<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;C-t&gt;&lt;Tab&gt;&lt;C-t&gt;&lt;C-d&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-t&gt;&lt;Tab&gt;&lt;C-t&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ..-----&gt;..<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-t&gt;&lt;Tab&gt;&lt;C-t&gt;&lt;C-d&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------&gt;<br>
 <br>
 &nbsp;&nbsp;<a class="Comment" href="intro.html#vi">vi</a>&nbsp;で設定できる 3 つ目のオプションは&nbsp;<a class="Type" href="options.html#'autoindent'">'autoindent'</a>&nbsp;です。これは前の行のイン<br>
 デントレベルをコピーします<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Space&gt;&lt;Tab&gt;hello&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .------&gt;hello<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Space&gt;&lt;Tab&gt;hello&lt;Enter&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.------&gt;hello<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Space&gt;&lt;Tab&gt;</span>hello&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .------&gt;hello<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Space&gt;&lt;Tab&gt;</span>hello<span class="Special">&lt;Enter&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.------&gt;hello<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------&gt;<br>
 <br>
 ただし、新しい行は、使用される文字数を最適化することによって生成されます。<br>
 <br>
 <br>
-スペースだけ<br>
+<span class="Statement">スペースだけ</span><br>
 <br>
 しかし、タブストップを 8 桁で区切るという方法は普遍的ではありませんでした。IBM<br>
 では 10 桁が標準であり、今日では Go 開発者の中には&nbsp;<span class="Comment">tabstop=4</span>&nbsp;でコードを記述<br>
@@ -484,14 +484,14 @@ Vim では、2 つの (仮想的な) 水平タブストップ間の列数は&nbs
 &nbsp;&nbsp;Vim 4.0 では、<a class="Type" href="options.html#'expandtab'">'expandtab'</a>&nbsp;オプションが導入され、スペースのみの操作がタブのみ<br>
 (またはタブとスペースの混合) の操作と同じくらい便利になりました。このオプショ<br>
 ンを有効にすると、Vim は通常挿入する水平タブ文字を同数のスペースに置き換え、視<br>
-覚効果を同じにします。&lt;BS&gt;&nbsp;は、これまでと同様に一度に 1 文字のみを削除します。<br>
+覚効果を同じにします。<span class="Special">&lt;BS&gt;</span>&nbsp;は、これまでと同様に一度に 1 文字のみを削除します。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Tab&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ........<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Tab&gt;&lt;BS&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .......<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ........<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;&lt;BS&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .......<br>
 <br>
 <br>
-タブをスペースに変換 (およびその逆)<br>
+<span class="Statement">タブをスペースに変換 (およびその逆)</span><br>
 <br>
 <a class="Type" href="options.html#'expandtab'">'expandtab'</a>&nbsp;を設定しても、既存のタブ文字にはすぐには影響しません。ファイル内の<br>
 水平タブ文字をすべて削除するには、Vim 5.3 で&nbsp;<a class="Identifier" href="change.html#:retab">:retab</a>&nbsp;コマンドが導入されまし<br>
@@ -514,35 +514,35 @@ Vim では、2 つの (仮想的な) 水平タブストップ間の列数は&nbs
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:retab!</div>
 <br>
 <br>
-ソフトタブストップ<br>
+<span class="Statement">ソフトタブストップ</span><br>
 <br>
 スペースだけを使用する場合、またはスペースと水平タブを組み合わせて使用する場<br>
-合、タブ文字だけを使用する場合のように、&lt;Tab&gt;&nbsp;キーと&lt;BS&gt;&nbsp;キーが対称的に動作し<br>
+合、タブ文字だけを使用する場合のように、<span class="Special">&lt;Tab&gt;</span>&nbsp;キーと<span class="Special">&lt;BS&gt;</span>&nbsp;キーが対称的に動作し<br>
 ないという不快な感覚を覚えます。<br>
 &nbsp;&nbsp;Vim 5.4 では&nbsp;<a class="Type" href="options.html#'softtabstop'">'softtabstop'</a>&nbsp;オプションが導入されました。テキスト内の水平タブ<br>
 文字を表示するために使われる (ハード) タブストップに加え、Vim はカーソル専用の<br>
 ソフトタブストップを追加します。<a class="Type" href="options.html#'softtabstop'">'softtabstop'</a>&nbsp;が正の値に設定されている場合、<br>
-&lt;Tab&gt;&nbsp;キーを押すとカーソルが次のソフトタブストップに移動します。Vim はこの効果<br>
+<span class="Special">&lt;Tab&gt;</span>&nbsp;キーを押すとカーソルが次のソフトタブストップに移動します。Vim はこの効果<br>
 を実現するために、タブ文字とスペースの適切な組み合わせを挿入します。同様に、<br>
-&lt;BS&gt;&nbsp;キーを押すと、カーソルは最も近いソフトタブストップに移動しようとします。<br>
+<span class="Special">&lt;BS&gt;</span>&nbsp;キーを押すと、カーソルは最も近いソフトタブストップに移動しようとします。<br>
 以下の例では、<span class="Comment">:set softtabstop=4</span>&nbsp;を使用しています。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Tab&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ....<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Tab&gt;&lt;Tab&gt;a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -------&gt;a<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Tab&gt;&lt;Tab&gt;a&lt;Tab&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------&gt;a...<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Tab&gt;&lt;Tab&gt;a&lt;Tab&gt;&lt;BS&gt;&nbsp;&nbsp;&nbsp;&nbsp;-------&gt;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ....<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;&lt;Tab&gt;</span>a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -------&gt;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;&lt;Tab&gt;</span>a<span class="Special">&lt;Tab&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------&gt;a...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;&lt;Tab&gt;</span>a<span class="Special">&lt;Tab&gt;&lt;BS&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;-------&gt;a<br>
 <br>
 &nbsp;&nbsp;全体的な一貫性を維持するために、<span class="Comment">:set softtabstop=-1</span>&nbsp;を指定し、2 つのソフト<br>
 タブストップ間の列数に&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;の値が使用されるようにすることができます。<br>
 <br>
 &nbsp;&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'softtabstop'">'softtabstop'</a>&nbsp;に異なる値を設定したい場合でも、<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a><br>
-でインデントするには&nbsp;&lt;C-t&gt;&nbsp;を使用できます。または、<a class="Type" href="options.html#'smarttab'">'smarttab'</a>&nbsp;オプションを使用<br>
-して、さまざまな状況で何を行うかを認識する統合された&nbsp;&lt;Tab&gt;&nbsp;キーを有効にするこ<br>
+でインデントするには&nbsp;<span class="Special">&lt;C-t&gt;</span>&nbsp;を使用できます。または、<a class="Type" href="options.html#'smarttab'">'smarttab'</a>&nbsp;オプションを使用<br>
+して、さまざまな状況で何を行うかを認識する統合された&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;キーを有効にするこ<br>
 ともできます。<br>
 <br>
 <br>
-可変タブストップ<br>
+<span class="Statement">可変タブストップ</span><br>
 <br>
 前述の通り、ASCII テーブルはテレプリンターを遠隔制御するために設計されました。<br>
 特定のテレプリンターでは、物理的なタブストップの間隔を可変に設定できます。結局<br>
@@ -552,7 +552,7 @@ Vim では、2 つの (仮想的な) 水平タブストップ間の列数は&nbs
 ば、Vim を&nbsp;<a class="Comment" href="various.html#+vartabs">+vartabs</a>&nbsp;でコンパイルし、<span class="Comment">:set vartabstop=2,4</span>&nbsp;とすると、以下のよ<br>
 うになります<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;実際の文字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">実際の文字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^I^I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;---&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^I^I^I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;---&gt;---&gt;<br>
@@ -560,13 +560,13 @@ Vim では、2 つの (仮想的な) 水平タブストップ間の列数は&nbs
 &nbsp;&nbsp;同様に、可変間隔のソフトタブストップを設定するための&nbsp;<a class="Type" href="options.html#'varsofttabstop'">'varsofttabstop'</a>&nbsp;も導入<br>
 されました。<span class="Comment">:set varsofttabstop=2,4</span>&nbsp;とすると、以下のようになります。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Tab&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ..<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Tab&gt;&lt;Tab&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;......<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Tab&gt;&lt;Tab&gt;&lt;Tab&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -------&gt;....<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ..<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;&lt;Tab&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;......<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;&lt;Tab&gt;&lt;Tab&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -------&gt;....<br>
 <br>
 <br>
-構成例<br>
+<span class="Statement">構成例</span><br>
 <br>
 デフォルトでは、Vim はタブのみを使用するように設定されています:<br>
 <br>
@@ -598,17 +598,17 @@ Vim では、2 つの (仮想的な) 水平タブストップ間の列数は&nbs
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set softtabstop=-1</div>
 <br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_30.html#30.6" name="30.6">30.6</a>&nbsp;&nbsp;コメントの整形<br>
 <br>
 Vim のすばらしいところはコメントを解釈できるところです。コメントの整形を指示す<br>
 るだけで適切に処理してくれます。<br>
 例えば、次のようなコメントがあるとします:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* This is a test<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* of the text formatting.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/*</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">* This is a test</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">* of the text formatting.</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">*/</span><br>
 <br>
 最初の行に移動して次のコマンドを実行すると、コメントを整形できます:<br>
 <br>
@@ -617,9 +617,9 @@ Vim のすばらしいところはコメントを解釈できるところです�
 &quot;gq&quot; はテキスト整形のためのオペレータです。&quot;]/&quot; はコメントの末尾に移動するコマ<br>
 ンドです。次のような結果になります:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* This is a test of the text formatting.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/*</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">* This is a test of the text formatting.</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">*/</span><br>
 <br>
 各行の行頭が適切に処理されていますね。<br>
 ビジュアルモードでテキストを選択してから &quot;gq&quot; を使う方法でも構いません。<br>
@@ -627,31 +627,31 @@ Vim のすばらしいところはコメントを解釈できるところです�
 新しい行を追加したい場合は、真ん中の行に移動して &quot;o&quot; を押します。次のような結<br>
 果になります:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* This is a test of the text formatting.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/*</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">* This is a test of the text formatting.</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">*</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">*/</span><br>
 <br>
 行頭のスペースと * は自動的に挿入されるので、そのままコメントを入力することが<br>
 できます。テキストが&nbsp;<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;より長くなると自動的に改行されます。そのとき<br>
 も、行頭の * は自動的に挿入されます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* This is a test of the text formatting.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Typing a lot of text here will make Vim<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* break<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/*</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">* This is a test of the text formatting.</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">* Typing a lot of text here will make Vim</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">* break</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">*/</span><br>
 <br>
 この機能を使うには&nbsp;<a class="Type" href="options.html#'formatoptions'">'formatoptions'</a>&nbsp;の設定が必要です:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 挿入モードで&nbsp;&lt;Enter&gt;&nbsp;を押したときに * を挿入する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 挿入モードで&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押したときに * を挿入する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ノーマルモードで &quot;o&quot; または &quot;O&quot; を使ったときに * を挿入する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; コメントを&nbsp;<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;の幅で改行する<br>
 <br>
 詳しくは&nbsp;<a class="Identifier" href="change.html#fo-table">fo-table</a>&nbsp;参照。<br>
 <br>
 <br>
-コメントの定義<br>
+<span class="Statement">コメントの定義</span><br>
 <br>
 コメントの書式は&nbsp;<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;オプションで設定します。一行コメントと三部コメント<br>
 (開始、中間、終端からなるコメント) は分けて処理されます。<br>
@@ -663,9 +663,9 @@ Vim は &quot; です。例えば、C++ のコメントなら次のように設�
 コロンはフラグとコメント文字の区切りです。<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;の設定は次のような形式で<br>
 指定します:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{flags}:{text}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{flags}</span>:<span class="Special">{text}</span><br>
 <br>
-この例のように、{flags}&nbsp;は空でも構いません。<br>
+この例のように、<span class="Special">{flags}</span>&nbsp;は空でも構いません。<br>
 複数のアイテムを指定するときはコンマで区切ります。アイテムを複数指定できるの<br>
 で、同じファイルの中でいろんな種類のコメントを使うことができます。例えばメール<br>
 を返信するときに、相手のメッセージに &quot;&gt;&quot; や &quot;!&quot; を付けて引用する場合は、次のよ<br>
@@ -678,19 +678,19 @@ Vim は &quot; です。例えば、C++ のコメントなら次のように設�
 す。つまり、&quot;&gt;&quot; で開始する行は、&quot;&gt;&quot; の後ろに他のコメントを含んでいても構いませ<br>
 ん。この設定により、次のようなメッセージを整形することができます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; ! Did you see that site?<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; ! It looks really great.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; I don't like it.&nbsp;&nbsp;The<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; colors are terrible.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;What is the URL of that<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;site?<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&gt; ! Did you see that site?</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&gt; ! It looks really great.</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&gt; I don't like it.&nbsp;&nbsp;The</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&gt; colors are terrible.</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">What is the URL of that</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">site?</span><br>
 <br>
 <a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;の設定を変更して (例えば 80 にして)、テキストを整形してみましょ<br>
 う。ビジュアルモードでテキストを選択してから &quot;gq&quot; を押します:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; ! Did you see that site? It looks really great.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt; I don't like it.&nbsp;&nbsp;The colors are terrible.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;What is the URL of that site?<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&gt; ! Did you see that site? It looks really great.</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&gt; I don't like it.&nbsp;&nbsp;The colors are terrible.</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">What is the URL of that site?</span><br>
 <br>
 違う種類のコメントテキストは混ざっていませんね。<br>
 二行目の &quot;I&quot; は一行目の末尾に入れることも可能ですが、しかし、一行目は &quot;&gt; !&quot; で<br>
@@ -698,7 +698,7 @@ Vim は &quot; です。例えば、C++ のコメントなら次のように設�
 断されます。<br>
 <br>
 <br>
-三部コメント<br>
+<span class="Statement">三部コメント</span><br>
 <br>
 C のコメントは &quot;/*&quot; で始まり、中間には &quot;*&quot; が付き、&quot;*/&quot; で終わります。このよう<br>
 なコメントは次のように設定します:<br>
@@ -717,7 +717,7 @@ C のコメントは &quot;/*&quot; で始まり、中間には &quot;*&quot; �
 <br>
 詳細は&nbsp;<a class="Identifier" href="change.html#format-comments">format-comments</a>&nbsp;を参照してください。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <br>
 次章:&nbsp;<a class="Identifier" href="usr_31.html">usr_31.txt</a>&nbsp;&nbsp;GUI を活用する<br>
 <br>

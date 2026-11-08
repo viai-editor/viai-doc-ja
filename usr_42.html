@@ -3,10 +3,10 @@ layout: viai-doc
 helpname: 'usr_42'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="usr_42.html" name="usr_42.txt">usr_42.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;ViAI バージョン 1.0.&nbsp;&nbsp;Last change: 2026 Feb 14<br>
+<a class="Constant" href="usr_42.html" name="usr_42.txt">usr_42.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Feb 14<br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル<br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 新しいメニューを追加する<br>
@@ -25,7 +25,7 @@ Vim の柔軟性については既にご存知だと思います。それは GUI
 前章:&nbsp;<a class="Identifier" href="usr_41.html">usr_41.txt</a>&nbsp;&nbsp;Vim script 書法<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_42.html#42.1" name="42.1">42.1</a>&nbsp;&nbsp;はじめに<br>
 <br>
 Vim のメニューは &quot;$VIMRUNTIME/menu.vim&quot; で定義されています。自分のメニューを作<br>
@@ -34,7 +34,7 @@ Vim のメニューは &quot;$VIMRUNTIME/menu.vim&quot; で定義されていま
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:menu {menu-item} {keys}</div>
 <br>
-{menu-item}&nbsp;にはメニューの場所を指定します。例えば&nbsp;{menu-item}&nbsp;が &quot;File.Save&quot;<br>
+<span class="Special">{menu-item}</span>&nbsp;にはメニューの場所を指定します。例えば&nbsp;<span class="Special">{menu-item}</span>&nbsp;が &quot;File.Save&quot;<br>
 なら、&quot;File&quot; メニューの下の &quot;Save&quot; 項目を示します。ドットで名前を区切ります。<br>
 例:<br>
 <br>
@@ -46,23 +46,23 @@ Vim のメニューは &quot;$VIMRUNTIME/menu.vim&quot; で定義されていま
 ることもできます。メニューが深くなりすぎるとマウスをたくさん動かさなければなら<br>
 なくなるので注意してください。<br>
 &quot;:menu&quot; コマンドは &quot;:map&quot; コマンドとよく似ています。パラメーターの左側でコマン<br>
-ドの実行方法を指定し、右側で実行されるコマンドを指定します。{keys}&nbsp;は文字列で、<br>
-それが実際に入力されたかのように使われます。つまり、挿入モードでは&nbsp;{keys}の文<br>
+ドの実行方法を指定し、右側で実行されるコマンドを指定します。<span class="Special">{keys}</span>&nbsp;は文字列で、<br>
+それが実際に入力されたかのように使われます。つまり、挿入モードでは&nbsp;<span class="Special">{keys}</span>の文<br>
 字列がそのまま挿入されます。<br>
 <br>
 <br>
-キーボードアクセラレータ<br>
+<span class="Statement">キーボードアクセラレータ</span><br>
 <br>
 アンパサンド文字 (&amp;) はアクセラレータを示すために使われます。例えば、Alt-F で<br>
 &quot;File&quot; を選択し、そして S で &quot;Save&quot; を選択できます。 (<a class="Type" href="options.html#'winaltkeys'">'winaltkeys'</a>&nbsp;オプション<br>
-の設定によって無効になっている可能性もあります)。その場合、{menu-item}&nbsp;は<br>
+の設定によって無効になっている可能性もあります)。その場合、<span class="Special">{menu-item}</span>&nbsp;は<br>
 &quot;&amp;File.&amp;Save&quot; のようになります。アクセラレータ文字は下線付きで表示されます<br>
 それぞれのキーは各メニューの中で一度だけしか使わないようにしてください。そうし<br>
 ないと、どちらが実行されるのかわからなくなります。これについて Vim は警告は発<br>
 しません。<br>
 <br>
 <br>
-並び順<br>
+<span class="Statement">並び順</span><br>
 <br>
 &quot;File.Save&quot; メニューの実際の定義は次のようになっています:<br>
 <br>
@@ -113,28 +113,28 @@ Vim のメニューは &quot;$VIMRUNTIME/menu.vim&quot; で定義されていま
 とができます (ただし、標準メニューに手を加えるより、新しいメニューを追加したほ<br>
 うがよいでしょう)。<br>
 サブメニューを作るときは、さらに &quot;.number&quot; を追加することができます。つまり、<br>
-{menu-item}&nbsp;のそれぞれの名前が順位番号を持ちます。<br>
+<span class="Special">{menu-item}</span>&nbsp;のそれぞれの名前が順位番号を持ちます。<br>
 <br>
 <br>
-特殊文字<br>
+<span class="Statement">特殊文字</span><br>
 <br>
-例では、{menu-item}&nbsp;に &quot;&amp;File.&amp;Save&lt;Tab&gt;:w&quot; が指定されていました。これは重要な<br>
-ポイントです。{menu-item}&nbsp;は一つの単語でなければなりません。ドット、スペース、<br>
-タブなどを使いたい場合は &lt;&gt; 表記 (&lt;Space&gt;や&lt;Tab&gt;など) を使うか、バックスラッ<br>
+例では、<span class="Special">{menu-item}</span>&nbsp;に &quot;&amp;File.&amp;Save<span class="Special">&lt;Tab&gt;</span>:w&quot; が指定されていました。これは重要な<br>
+ポイントです。<span class="Special">{menu-item}</span>&nbsp;は一つの単語でなければなりません。ドット、スペース、<br>
+タブなどを使いたい場合は &lt;&gt; 表記 (<span class="Special">&lt;Space&gt;</span>や<span class="Special">&lt;Tab&gt;</span>など) を使うか、バックスラッ<br>
 シュ (\) でエスケープする必要があります。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:menu 10.305 &amp;File.&amp;Do\ It\.\.\. :exit&lt;CR&gt;</div>
 <br>
 これは、メニュー項目の名前が &quot;Do It...&quot; (空白が含まれてます)、実行されるコマン<br>
-ドは &quot;:exit&lt;CR&gt;&quot; になります。<br>
+ドは &quot;:exit<span class="Special">&lt;CR&gt;</span>&quot; になります。<br>
 <br>
-メニューの名前は&nbsp;&lt;Tab&gt;&nbsp;文字を使って、名前の部分とヒント情報の部分を区切ること<br>
-ができます。&lt;Tab&gt;&nbsp;より後ろの部分は右寄せされて表示されます。File.Save では<br>
-&quot;&amp;File.&amp;Save&lt;Tab&gt;:w&quot; という名前が使われていました。これは &quot;File.Save&quot; という名<br>
+メニューの名前は&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;文字を使って、名前の部分とヒント情報の部分を区切ること<br>
+ができます。<span class="Special">&lt;Tab&gt;</span>&nbsp;より後ろの部分は右寄せされて表示されます。File.Save では<br>
+&quot;&amp;File.&amp;Save<span class="Special">&lt;Tab&gt;</span>:w&quot; という名前が使われていました。これは &quot;File.Save&quot; という名<br>
 前と &quot;:w&quot; というヒント情報です。<br>
 <br>
 <br>
-セパレータ<br>
+<span class="Statement">セパレータ</span><br>
 <br>
 セパレータは、関連した項目をグループ化するのに使います。これは例えば &quot;-sep-&quot;<br>
 のように名前の最初と最後に &quot;-&quot; を付けることで定義できます。複数のセパレータを<br>
@@ -144,7 +144,7 @@ Vim のメニューは &quot;$VIMRUNTIME/menu.vim&quot; で定義されていま
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:amenu 20.510 Edit.-sep3- :</div>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_42.html#42.2" name="42.2">42.2</a>&nbsp;&nbsp;メニューコマンド<br>
 <br>
 メニューはモード別に定義できます。メニュー項目は対応するモードでのみ使えます。<br>
@@ -164,11 +164,11 @@ Vim のメニューは &quot;$VIMRUNTIME/menu.vim&quot; で定義されていま
 &quot;:anoremenu&quot; などを使います。<br>
 <br>
 <br>
-:amenu の使い方<br>
+<span class="Statement">:amenu の使い方</span><br>
 <br>
-&quot;:amenu&quot; コマンドは少し特殊です。{keys}&nbsp;に指定した文字列はノーマルモードで実行<br>
+&quot;:amenu&quot; コマンドは少し特殊です。<span class="Special">{keys}</span>&nbsp;に指定した文字列はノーマルモードで実行<br>
 するものとして扱われます。ビジュアルモードや挿入モードでメニューが使われた場合<br>
-は、実行の前にノーマルモードに戻らなければならないので、CTRL-C&nbsp;や&nbsp;CTRL-O&nbsp;が挿<br>
+は、実行の前にノーマルモードに戻らなければならないので、<span class="Special">CTRL-C</span>&nbsp;や&nbsp;<span class="Special">CTRL-O</span>&nbsp;が挿<br>
 入されます。例えば、次のコマンドを使うと:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:amenu&nbsp;&nbsp;90.100 Mine.Find\ Word&nbsp;&nbsp;*</div>
@@ -176,15 +176,15 @@ Vim のメニューは &quot;$VIMRUNTIME/menu.vim&quot; で定義されていま
 メニューのコマンドは次のように定義されます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ノーマルモード:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモード:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-C&nbsp;*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;オペレータ待機モード:&nbsp;&nbsp;&nbsp;CTRL-C&nbsp;*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挿入モード:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-O&nbsp;*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンドラインモード:&nbsp;&nbsp;&nbsp;CTRL-C&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモード:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-C</span>&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;オペレータ待機モード:&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-C</span>&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挿入モード:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-O</span>&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンドラインモード:&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-C</span>&nbsp;*<br>
 <br>
-コマンドラインモードでは、入力途中のコマンドが&nbsp;CTRL-C&nbsp;によって破棄されます。ビ<br>
-ジュアルモードとオペレータ待機モードでは、CTRL-C&nbsp;によってモードが停止します。<br>
-挿入モードでは、CTRL-O&nbsp;を使ってコマンドを実行してから挿入モードに戻ります。<br>
-CTRL-O&nbsp;は一つのコマンドに対してのみ機能します。複数のコマンドを実行したい場合<br>
+コマンドラインモードでは、入力途中のコマンドが&nbsp;<span class="Special">CTRL-C</span>&nbsp;によって破棄されます。ビ<br>
+ジュアルモードとオペレータ待機モードでは、<span class="Special">CTRL-C</span>&nbsp;によってモードが停止します。<br>
+挿入モードでは、<span class="Special">CTRL-O</span>&nbsp;を使ってコマンドを実行してから挿入モードに戻ります。<br>
+<span class="Special">CTRL-O</span>&nbsp;は一つのコマンドに対してのみ機能します。複数のコマンドを実行したい場合<br>
 は、それらを関数に入れて、その関数を呼んでください。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:amenu&nbsp;&nbsp;Mine.Next\ File&nbsp;&nbsp;:call &lt;SID&gt;NextFile()&lt;CR&gt;<br>
@@ -195,35 +195,35 @@ CTRL-O&nbsp;は一つのコマンドに対してのみ機能します。複数�
 <br>
 このメニュー項目は、&quot;:next&quot; で引数リストの次のファイルに移動し、&quot;Code&quot; で始ま<br>
 る行を検索します。<br>
-関数名の前にある&nbsp;&lt;SID&gt;&nbsp;はスクリプトIDです。関数がスクリプトの中に限定されるよ<br>
+関数名の前にある&nbsp;<span class="Special">&lt;SID&gt;</span>&nbsp;はスクリプトIDです。関数がスクリプトの中に限定されるよ<br>
 うになります。複数のスクリプトファイルで関数の名前が重複してしまう問題を避ける<br>
 ことができます。<a class="Identifier" href="map.html#<SID>">&lt;SID&gt;</a>&nbsp;参照。<br>
 <br>
 <br>
-サイレントメニュー<br>
+<span class="Statement">サイレントメニュー</span><br>
 <br>
-メニューは&nbsp;{keys}&nbsp;を実際に入力したかのように実行されます。&quot;:&quot; コマンドであれば<br>
+メニューは&nbsp;<span class="Special">{keys}</span>&nbsp;を実際に入力したかのように実行されます。&quot;:&quot; コマンドであれば<br>
 コマンドラインにエコーされたコマンドが表示されます。そのコマンドが長ければ、<br>
 hit-Enter プロンプトが表示されます。そんなのはうっとうしいですよね。<br>
-これはメニューをサイレントにすることで解決できます。それには&nbsp;&lt;silent&gt;&nbsp;引数を指<br>
+これはメニューをサイレントにすることで解決できます。それには&nbsp;<span class="Special">&lt;silent&gt;</span>&nbsp;引数を指<br>
 定します。例えば、上の例の NextFile() を呼び出してみます。メニューを実行する<br>
 と、コマンドラインには次のような表示がでます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:call &lt;SNR&gt;34_NextFile()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">:call &lt;SNR&gt;34_NextFile()</span><br>
 <br>
-このような表示をなくすには、最初の引数として &quot;&lt;silent&gt;&quot; を指定します:<br>
+このような表示をなくすには、最初の引数として &quot;<span class="Special">&lt;silent&gt;</span>&quot; を指定します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:amenu &lt;silent&gt; Mine.Next\ File :call &lt;SID&gt;NextFile()&lt;CR&gt;</div>
 <br>
-&quot;&lt;silent&gt;&quot; の使いすぎに注意してください。コマンドが短いならそれは必要ありませ<br>
+&quot;<span class="Special">&lt;silent&gt;</span>&quot; の使いすぎに注意してください。コマンドが短いならそれは必要ありませ<br>
 ん。誰かのためにメニューを作る場合、実行されたコマンドが見えるようになっていれ<br>
 ば、マウスを使わない場合はどのように入力すればいいかのヒントになります。<br>
 <br>
 <br>
-メニューの一覧<br>
+<span class="Statement">メニューの一覧</span><br>
 <br>
-{keys}&nbsp;を指定せずに menu コマンドを使うと、定義されたメニューの一覧を表示でき<br>
-ます。{menu-item}&nbsp;やその一部を指定することで、特定の項目だけを表示できます。<br>
+<span class="Special">{keys}</span>&nbsp;を指定せずに menu コマンドを使うと、定義されたメニューの一覧を表示でき<br>
+ます。<span class="Special">{menu-item}</span>&nbsp;やその一部を指定することで、特定の項目だけを表示できます。<br>
 例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:amenu</div>
@@ -241,11 +241,11 @@ hit-Enter プロンプトが表示されます。そんなのはうっとうし�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:imenu 編集(E).取り消す(U)</div>
 <br>
 名前は正しく指定する必要があります。大文字と小文字は区別されます。ただし、アク<br>
-セラレータ指定のための '&amp;' は省略できます。&lt;Tab&gt;&nbsp;と、その後に続く文字列も同様<br>
+セラレータ指定のための '&amp;' は省略できます。<span class="Special">&lt;Tab&gt;</span>&nbsp;と、その後に続く文字列も同様<br>
 に省略できます。<br>
 <br>
 <br>
-メニューの削除<br>
+<span class="Statement">メニューの削除</span><br>
 <br>
 メニューを削除するには一覧表示と同じようなコマンドを使います。ただし、&quot;menu&quot;<br>
 ではなく &quot;unmenu&quot; を使います。&quot;:menu&quot; は &quot;:unmenu&quot; になり、&quot;:nmenu&quot; は<br>
@@ -262,7 +262,7 @@ hit-Enter プロンプトが表示されます。そんなのはうっとうし�
 <br>
 シンタックスメニューとその中の項目がすべて削除されます。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_42.html#42.3" name="42.3">42.3</a>&nbsp;&nbsp;その他いろいろ<br>
 <br>
 <a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;のフラグを設定することでメニューの表示を変更できます。初期設定で<br>
@@ -300,19 +300,19 @@ hit-Enter プロンプトが表示されます。そんなのはうっとうし�
 confirm() 関数や inputdialog() 関数を使ってもっと複雑な処理をすることもできま<br>
 す。標準メニューにいくつか例があります。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_42.html#42.4" name="42.4">42.4</a>&nbsp;&nbsp;ツールバーとポップアップメニュー<br>
 <br>
 特殊なメニューが二つあります。ToolBar (ツールバー) と PopUp (ポップアップ) で<br>
 す。これらの名前で始まるメニュー項目はメニューバーに表示されません。<br>
 <br>
 <br>
-ツールバー<br>
+<span class="Statement">ツールバー</span><br>
 <br>
 ツールバーは&nbsp;<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;オプションに &quot;T&quot; フラグが含まれている場合のみ表示さ<br>
 れます。<br>
 ツールバーではテキストの代わりにアイコンが表示されます。例えば、&quot;ToolBar.New&quot;<br>
-という&nbsp;{menu-item}&nbsp;はツールバーの &quot;New&quot; アイコンとして表示されます。<br>
+という&nbsp;<span class="Special">{menu-item}</span>&nbsp;はツールバーの &quot;New&quot; アイコンとして表示されます。<br>
 Vim には 28 個のアイコンが組み込まれています。その一覧は&nbsp;<a class="Identifier" href="gui.html#builtin-tools">builtin-tools</a>&nbsp;にあ<br>
 ります。ほとんどのアイコンは標準ツールバーで使われています。それらの項目の動作<br>
 は変更可能です (標準メニューの初期化後に変更できます)。<br>
@@ -348,7 +348,7 @@ Vim には 28 個のアイコンが組み込まれています。その一覧は
 像だけを表示しています。<br>
 <br>
 <br>
-ポップアップメニュー<br>
+<span class="Statement">ポップアップメニュー</span><br>
 <br>
 ポップアップメニューはマウスポインタのある場所に表示されるメニューです。<br>
 MS-Windows ではマウスの右クリックで表示し、左クリックで項目を選択します。Unix<br>
@@ -365,7 +365,7 @@ MS-Windows ではマウスの右クリックで表示し、左クリックで項
 この問の真意を知っていた唯一の人物、ダグラス・アダムズは残念ながら他界しまし<br>
 た。それで死の答えはなんなんだろう...<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <br>
 次章:&nbsp;<a class="Identifier" href="usr_43.html">usr_43.txt</a>&nbsp;&nbsp;ファイルタイプを使う<br>
 <br>

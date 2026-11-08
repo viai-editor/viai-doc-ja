@@ -3,10 +3,10 @@ layout: viai-doc
 helpname: 'os_390'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="os_390.html" name="os_390.txt">os_390.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;ViAI バージョン 1.0.&nbsp;&nbsp;Last change: 2026 Feb 14<br>
+<a class="Constant" href="os_390.html" name="os_390.txt">os_390.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Feb 14<br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル<br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_390.html#zOS" name="zOS">zOS</a>&nbsp;<a class="Constant" href="os_390.html#z/OS" name="z/OS">z/OS</a>&nbsp;<a class="Constant" href="os_390.html#OS390" name="OS390">OS390</a>&nbsp;<a class="Constant" href="os_390.html#os390" name="os390">os390</a>&nbsp;<a class="Constant" href="os_390.html#MVS" name="MVS">MVS</a><br>
@@ -19,7 +19,7 @@ helpname: 'os_390'
 5. 制限事項&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_390.html#zOS-limitations">zOS-limitations</a><br>
 6. z/OS UNIX 上のオープンソース&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_390.html#zOS-open-source">zOS-open-source</a><br>
 <br>
-貢献者:<br>
+<span class="PreProc">貢献者:</span><br>
 z/OS Unix への移植は Ralf Schandl &lt;schandl@de.ibm.com&gt; によって後述の Redbook<br>
 のために行われた。<br>
 <br>
@@ -29,7 +29,7 @@ z/OS Unix への移植は Ralf Schandl &lt;schandl@de.ibm.com&gt; によって�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Anthony Giorgio<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and others<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 1. ASCII/EBCDIC に依存のスクリプト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_390.html#OS390-has-ebcdic" name="OS390-has-ebcdic">OS390-has-ebcdic</a>&nbsp;<a class="Constant" href="os_390.html#zOS-has-ebcdic" name="zOS-has-ebcdic">zOS-has-ebcdic</a><br>
 <br>
 Vim script 用に &quot;ebcdic&quot; 機能が追加された。ASCII に依存したスクリプトは、以下<br>
@@ -42,7 +42,7 @@ Vim script 用に &quot;ebcdic&quot; 機能が追加された。ASCII に依存�
 &nbsp;&nbsp;&nbsp;&nbsp;endif</div>
 <br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 2. Putty と色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_390.html#OS390-PuTTY" name="OS390-PuTTY">OS390-PuTTY</a>&nbsp;<a class="Constant" href="os_390.html#zOS-PuTTY" name="zOS-PuTTY">zOS-PuTTY</a><br>
 <br>
 Putty を使って z/OS に接続したときに、構文強調表示やスクリーンの表示が乱れるよ<br>
@@ -57,9 +57,9 @@ Putty を使って z/OS に接続したときに、構文強調表示やスク�
 &nbsp;&nbsp;&nbsp;&nbsp;set t_CO=8</div>
 <br>
 <br>
-<span class="Todo">Note</span>: ^[ は一文字で、&lt;C-V&gt;&lt;Esc&gt;&nbsp;を使って入力できる。<br>
+<span class="Todo">Note</span>: ^[ は一文字で、<span class="Special">&lt;C-V&gt;&lt;Esc&gt;</span>&nbsp;を使って入力できる。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 3. Motifの問題&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_390.html#OS390-Motif" name="OS390-Motif">OS390-Motif</a>&nbsp;<a class="Constant" href="os_390.html#zOS-Motif" name="zOS-Motif">zOS-Motif</a><br>
 <br>
 <span class="Todo">Note</span>: Vim 6.* で確認。その後は未テスト。<br>
@@ -67,18 +67,18 @@ Putty を使って z/OS に接続したときに、構文強調表示やスク�
 Motif ライブラリの z/OS への移植において、プルダウンメニューのアクセラレータ文<br>
 字を EBCDIC から ASCII への変換することが忘れられているように思える。<br>
 手動で変換するように試してみたが、メニューを開くところ (ファイルメニューを開く<br>
-&nbsp;&lt;Alt-F&gt;) までしか働かず、メニュー項目を選択すること (ファイルブラウザーを開く<br>
-&nbsp;&lt;Alt-F&gt;O) はできない。<br>
+&nbsp;<span class="Special">&lt;Alt-F&gt;</span>) までしか働かず、メニュー項目を選択すること (ファイルブラウザーを開く<br>
+&nbsp;<span class="Special">&lt;Alt-F&gt;</span>O) はできない。<br>
 <br>
 まだ解決法が見つかっていない。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 4. バグ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_390.html#OS390-bugs" name="OS390-bugs">OS390-bugs</a>&nbsp;<a class="Constant" href="os_390.html#zOS-Bugs" name="zOS-Bugs">zOS-Bugs</a><br>
 <br>
 - ビジュアルブロックモードで長大なテキストを選択すると常にハングする。これはメ<br>
 &nbsp;&nbsp;モリ破壊による可能性がある。ターミナルと GUI 版両方で起きる。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 5. 制限事項&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_390.html#OS390-limitations" name="OS390-limitations">OS390-limitations</a>&nbsp;<a class="Constant" href="os_390.html#zOS-limitations" name="zOS-limitations">zOS-limitations</a><br>
 <br>
 - タグファイルには二分探索を使っていない<br>
@@ -116,7 +116,7 @@ Motif ライブラリの z/OS への移植において、プルダウンメニ�
 &nbsp;&nbsp;&nbsp;&nbsp;- TCL インターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="Identifier" href="if_tcl.html#tcl">tcl</a>)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;....<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 6. z/OS UNIX 上のオープンソース&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_390.html#OS390-open-source" name="OS390-open-source">OS390-open-source</a>&nbsp;<a class="Constant" href="os_390.html#zOS-open-source" name="zOS-open-source">zOS-open-source</a><br>
 <br>
 z/OS UNIX 上の他のオープンソースソフトウェアに興味があるなら、以下の Redbook<br>
@@ -126,15 +126,15 @@ z/OS UNIX 上の他のオープンソースソフトウェアに興味がある�
 &nbsp;&nbsp;&nbsp;&nbsp;&quot;Open Source Software for z/OS and OS/390 UNIX&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;IBM Form Number: SG24-5944-01<br>
 &nbsp;&nbsp;&nbsp;&nbsp;ISBN: 0738424633<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www-03.ibm.com/systems/resources/servers_eserver_zseries_zos_unix_redbook_sg245944.pdf">http://www-03.ibm.com/systems/resources/servers_eserver_zseries_zos_unix_redbook_sg245944.pdf</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://www-03.ibm.com/systems/resources/servers_eserver_zseries_zos_unix_redbook_sg245944.pdf">http://www-03.ibm.com/systems/resources/servers_eserver_zseries_zos_unix_redbook_sg245944.pdf</a></span><br>
 <br>
 以下も参照してください:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.redbooks.ibm.com">http://www.redbooks.ibm.com</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www-03.ibm.com/systems/z/os/zos/features/unix/">http://www-03.ibm.com/systems/z/os/zos/features/unix/</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www-03.ibm.com/systems/z/os/zos/features/unix/library/IBM+Redbooks/index.html">http://www-03.ibm.com/systems/z/os/zos/features/unix/library/IBM+Redbooks/index.html</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://www.redbooks.ibm.com">http://www.redbooks.ibm.com</a></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://www-03.ibm.com/systems/z/os/zos/features/unix/">http://www-03.ibm.com/systems/z/os/zos/features/unix/</a></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://www-03.ibm.com/systems/z/os/zos/features/unix/library/IBM+Redbooks/index.html">http://www-03.ibm.com/systems/z/os/zos/features/unix/library/IBM+Redbooks/index.html</a></span><br>
 <br>
 <br>
 <br>
-------------------------------------------------------------------------------<br>
+<span class="PreProc">------------------------------------------------------------------------------</span><br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>

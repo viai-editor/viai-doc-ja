@@ -3,10 +3,10 @@ layout: viai-doc
 helpname: 'vim9class'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="vim9class.html" name="vim9class.txt">vim9class.txt</a>&nbsp;For&nbsp;ViAI バージョン 1.0.&nbsp;&nbsp;Last change: 2026 May 21<br>
+<a class="Constant" href="vim9class.html" name="vim9class.txt">vim9class.txt</a>&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 May 21<br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル<br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
 Vim9 のクラス、オブジェクト、インターフェイス、型定義と列挙型。&nbsp;<a class="Constant" href="vim9class.html#vim9-class" name="vim9-class">vim9-class</a><br>
@@ -23,7 +23,7 @@ Vim9 のクラス、オブジェクト、インターフェイス、型定義と
 9.&nbsp;&nbsp;論理的根拠<br>
 10. 後でやる<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <br>
 1. 概要&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#Vim9-class-overview" name="Vim9-class-overview">Vim9-class-overview</a><br>
 <br>
@@ -58,7 +58,7 @@ script や従来の関数では使用できない。<br>
 クラス階層は単一の継承になる。それ以外の場合は、必要に応じてインターフェイスを<br>
 使用すること。<br>
 <br>
-クラスのモデリング<br>
+<span class="PreProc">クラスのモデリング</span><br>
 <br>
 好きな方法でクラスをモデル化できる。何を構築しているのかを念頭に置き、現実世界<br>
 をモデル化しようとしないこと。これは、特に教師が現実世界のオブジェクトを使用し<br>
@@ -73,7 +73,7 @@ script や従来の関数では使用できない。<br>
 題ではない。<br>
 <br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <br>
 2.&nbsp;&nbsp;単純なクラス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#Vim9-simple-class" name="Vim9-simple-class">Vim9-simple-class</a><br>
 <br>
@@ -127,7 +127,7 @@ new() メソッドを使用して、このクラスからオブジェクトを�
 クラス名を式として使用することはできない。クラス名は、代入の左辺では使用できな<br>
 い。<br>
 <br>
-オブジェクト変数の書き込みアクセス<br>
+<span class="PreProc">オブジェクト変数の書き込みアクセス</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#read-only-variable" name="read-only-variable">read-only-variable</a><br>
 では、オブジェクト変数を直接変更してみよう:<br>
 <br>
@@ -155,12 +155,12 @@ new() メソッドを使用して、このクラスからオブジェクトを�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#E1326" name="E1326">E1326</a><br>
 存在しないオブジェクト変数を設定しようとすると、エラーが発生する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pos.other = 9</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E1326: Member not found on object &quot;TextPosition&quot;: other<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">E1326: Member not found on object &quot;TextPosition&quot;: other</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#E1376" name="E1376">E1376</a><br>
 クラス名を使用してオブジェクト変数にアクセスすることはできない。<br>
 <br>
-Protected 変数<br>
+<span class="PreProc">Protected 変数</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#protected-variable" name="protected-variable">protected-variable</a>&nbsp;<a class="Constant" href="vim9class.html#E1332" name="E1332">E1332</a>&nbsp;<a class="Constant" href="vim9class.html#E1333" name="E1333">E1333</a><br>
 一方、オブジェクト変数をクラスまたはそのサブクラスの外部から直接読み取られたく<br>
 ない場合は、オブジェクト変数を保護することができる。これは、名前の前にアンダー<br>
@@ -190,7 +190,7 @@ Protected 変数<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return this._lnum<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enddef</div>
 <br>
-Protected メソッド<br>
+<span class="PreProc">Protected メソッド</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#protected-method" name="protected-method">protected-method</a>&nbsp;<a class="Constant" href="vim9class.html#E1366" name="E1366">E1366</a><br>
 オブジェクトメソッドを同じクラスの他のメソッドからのみアクセス可能にし、クラス<br>
 の外部からは使用しないようにしたい場合は、オブジェクトメソッドを protected に<br>
@@ -211,7 +211,7 @@ Protected メソッド<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;var a = SomeClass.new()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;a._Foo()</div>
 <br>
-new() メソッドの単純化<br>
+<span class="PreProc">new() メソッドの単純化</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#new()" name="new()">new()</a>&nbsp;<a class="Constant" href="vim9class.html#constructor" name="constructor">constructor</a><br>
 <a class="Identifier" href="vim9class.html#default-constructor">default-constructor</a>&nbsp;および&nbsp;<a class="Identifier" href="vim9class.html#multiple-constructors">multiple-constructors</a>&nbsp;も参照。<br>
 <br>
@@ -277,7 +277,7 @@ new() メソッドは、&quot;_new()&quot; を使用して protected メソッ�
 オブジェクトメソッドを呼び出すときは、メソッド名の前にオブジェクト変数名を付け<br>
 る必要がある。クラス名を使用してオブジェクトメソッドを呼び出すことはできない。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <br>
 3.&nbsp;&nbsp;クラス変数とメソッド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#Vim9-class-member" name="Vim9-class-member">Vim9-class-member</a><br>
 <br>
@@ -468,7 +468,7 @@ const 変数およびその値は変更できない。例:<br>
 const 変数はインターフェイスではサポートされていない。クラスまたはオブジェクト<br>
 のメソッドを const にすることはできない。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <br>
 4.&nbsp;&nbsp;抽象クラスを使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#Vim9-abstract-class" name="Vim9-abstract-class">Vim9-abstract-class</a><br>
 <br>
@@ -527,7 +527,7 @@ const 変数はインターフェイスではサポートされていない。�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#E1431" name="E1431">E1431</a><br>
 抽象スーパークラス内の抽象メソッドは呼び出すことができない。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <br>
 5.&nbsp;&nbsp;インターフェイスを使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#Vim9-using-interface" name="Vim9-using-interface">Vim9-using-interface</a><br>
 <br>
@@ -594,11 +594,11 @@ Shape, Square および Triangle を使用した上記の例は、オブジェ�
 <br>
 関数内でインターフェイスを定義することはできない。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#E1436" name="E1436">E1436</a><br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <br>
 6.&nbsp;&nbsp;さらなるクラスの詳細&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#Vim9-class" name="Vim9-class">Vim9-class</a>&nbsp;<a class="Constant" href="vim9class.html#Class" name="Class">Class</a>&nbsp;<a class="Constant" href="vim9class.html#class" name="class">class</a><br>
 <br>
-クラスの定義<br>
+<span class="PreProc">クラスの定義</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#:class" name=":class">:class</a>&nbsp;<a class="Constant" href="vim9class.html#:endclass" name=":endclass">:endclass</a>&nbsp;<a class="Constant" href="vim9class.html#:abstract" name=":abstract">:abstract</a><br>
 クラスは&nbsp;<a class="Comment" href="vim9class.html#:class">:class</a>&nbsp;と&nbsp;<a class="Comment" href="vim9class.html#:endclass">:endclass</a>&nbsp;の間で定義される。クラス全体は 1 つのスクリプ<br>
 トファイルで定義される。後からクラスに追加することはできない。<br>
@@ -643,7 +643,7 @@ Shape, Square および Triangle を使用した上記の例は、オブジェ�
 前で使用することはできない。スーパークラスで使用したオブジェクト変数名を子クラ<br>
 スで再利用することはできない。<br>
 <br>
-オブジェクト変数の初期化<br>
+<span class="PreProc">オブジェクト変数の初期化</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#E1430" name="E1430">E1430</a><br>
 変数の型がクラスで明示的に指定されていない場合、クラス定義時に &quot;any&quot; に設定さ<br>
@@ -654,7 +654,7 @@ Shape, Square および Triangle を使用した上記の例は、オブジェ�
 &quot;null_class&quot;, &quot;null_dict&quot;, &quot;null_function&quot;, &quot;null_job&quot;, &quot;null_list&quot;,<br>
 &quot;null_object&quot;, &quot;null_partial&quot; および &quot;null_string&quot;。<br>
 <br>
-クラスを拡張する<br>
+<span class="PreProc">クラスを拡張する</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#extends" name="extends">extends</a><br>
 クラスは他のクラスを拡張できる。&nbsp;<a class="Constant" href="vim9class.html#E1352" name="E1352">E1352</a>&nbsp;<a class="Constant" href="vim9class.html#E1353" name="E1353">E1353</a>&nbsp;<a class="Constant" href="vim9class.html#E1354" name="E1354">E1354</a><br>
 基本的な考え方は、既存のクラスの上に構築し、それにプロパティを追加することだ。<br>
@@ -692,20 +692,20 @@ Shape, Square および Triangle を使用した上記の例は、オブジェ�
 る。<br>
 <br>
 <br>
-インターフェイスを実装するクラス<br>
+<span class="PreProc">インターフェイスを実装するクラス</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#implements" name="implements">implements</a>&nbsp;<a class="Constant" href="vim9class.html#E1346" name="E1346">E1346</a>&nbsp;<a class="Constant" href="vim9class.html#E1347" name="E1347">E1347</a>&nbsp;<a class="Constant" href="vim9class.html#E1389" name="E1389">E1389</a><br>
 クラスは 1 つ以上のインターフェイスを実装できる。&quot;implements&quot; キーワードは 1 回<br>
 のみ使用できる&nbsp;<a class="Constant" href="vim9class.html#E1350" name="E1350">E1350</a>&nbsp;。複数のインターフェイスをコンマで区切って指定できる。<br>
 各インターフェイス名は 1 回だけ出現できる。&nbsp;<a class="Constant" href="vim9class.html#E1351" name="E1351">E1351</a><br>
 <br>
-インターフェイスを定義するクラス<br>
+<span class="PreProc">インターフェイスを定義するクラス</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#specifies" name="specifies">specifies</a><br>
 クラスは、名前付きインターフェイスを使用して、そのインターフェイス、オブジェク<br>
 ト変数およびメソッドを宣言できる。これにより、多くの言語、特に Java で頻繁に行<br>
 われる、インターフェイスを個別に指定する必要がなくなった。<br>
 TODO: 現時点では実装されていない。<br>
 <br>
-クラス内の項目<br>
+<span class="PreProc">クラス内の項目</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#E1318" name="E1318">E1318</a>&nbsp;<a class="Constant" href="vim9class.html#E1325" name="E1325">E1325</a>&nbsp;<a class="Constant" href="vim9class.html#E1388" name="E1388">E1388</a><br>
 クラス内では、<a class="Comment" href="vim9class.html#:class">:class</a>&nbsp;と&nbsp;<a class="Comment" href="vim9class.html#:endclass">:endclass</a>&nbsp;の間に、次の項目を含めることができる:<br>
 - オブジェクト変数宣言:<br>
@@ -726,7 +726,7 @@ TODO: 現時点では実装されていない。<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def SomeMethod(arguments)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def _ProtectedMethod(arguments)</div>
 <br>
-オブジェクト変数の場合は、型を指定する必要がある。最善の方法は、&quot;:&nbsp;{type}&quot; を<br>
+オブジェクト変数の場合は、型を指定する必要がある。最善の方法は、&quot;:&nbsp;<span class="Special">{type}</span>&quot; を<br>
 使用してこれを明示的に行うことである。単純な型の場合、&quot;= 123&quot; などの初期化子を<br>
 使用することもでき、Vim はその型が数値であると認識する。より複雑な型や、型が不<br>
 完全になる場合には、これを行わないこと。<br>
@@ -738,8 +738,8 @@ TODO: 現時点では実装されていない。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#E1330" name="E1330">E1330</a><br>
 &quot;void&quot;, &quot;null&quot; および &quot;v:none&quot; 等、一部の型は使用できない。<br>
 <br>
-組み込みオブジェクトメソッド<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#builtin-object-methods" name="builtin-object-methods">builtin-object-methods</a><br>
+<span class="PreProc">組み込みオブジェクトメソッド</span><br>
+<span class="Statement">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="Constant" href="vim9class.html#builtin-object-methods" name="builtin-object-methods">builtin-object-methods</a><br>
 <a class="Identifier" href="builtin.html#empty()">empty()</a>、<a class="Identifier" href="builtin.html#len()">len()</a>&nbsp;および&nbsp;<a class="Identifier" href="builtin.html#string()">string()</a>&nbsp;などの一部の組み込み関数はオブジェクトで<br>
 使用できる。オブジェクトは、これらの組み込み関数と同じ名前のメソッドを実装し<br>
 て、オブジェクト固有の値を返すことができる。<br>
@@ -764,7 +764,7 @@ TODO: 現時点では実装されていない。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#E1413" name="E1413">E1413</a><br>
 クラスメソッドを組み込みメソッドとして使用することはできない。<br>
 <br>
-インターフェイスの定義<br>
+<span class="PreProc">インターフェイスの定義</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#interface" name="interface">interface</a>&nbsp;<a class="Constant" href="vim9class.html#Interface" name="Interface">Interface</a>&nbsp;<a class="Constant" href="vim9class.html#:interface" name=":interface">:interface</a>&nbsp;<a class="Constant" href="vim9class.html#:endinterface" name=":endinterface">:endinterface</a><br>
 インターフェイスは&nbsp;<a class="Comment" href="vim9class.html#:interface">:interface</a>&nbsp;と&nbsp;<a class="Comment" href="vim9class.html#:endinterface">:endinterface</a>&nbsp;の間で定義される。プリフィッ<br>
 クスとして&nbsp;<a class="Comment" href="vim9.html#:export">:export</a>&nbsp;を付けることができる:<br>
@@ -793,7 +793,7 @@ TODO: 現時点では実装されていない。<br>
 インターフェイスは他のインターフェイスを &quot;implement&quot; することはできないが、他<br>
 のインターフェイスを &quot;extend&quot; することはできる。&nbsp;<a class="Constant" href="vim9class.html#E1381" name="E1381">E1381</a><br>
 <br>
-null オブジェクト<br>
+<span class="PreProc">null オブジェクト</span><br>
 <br>
 変数がオブジェクトの型を持つように宣言されているが初期化されていない場合、値は<br>
 null になる。この null オブジェクトを使用しようとすると、Vim はどのクラスを使<br>
@@ -801,7 +801,7 @@ null になる。この null オブジェクトを使用しようとすると、
 正しいかどうかをチェックできず、変数名が無効な場合でも &quot;Using a null object&quot;<br>
 エラーが発生する。&nbsp;<a class="Constant" href="vim9class.html#E1360" name="E1360">E1360</a>&nbsp;<a class="Constant" href="vim9class.html#E1362" name="E1362">E1362</a><br>
 <br>
-デフォルトコンストラクタ<br>
+<span class="PreProc">デフォルトコンストラクタ</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#default-constructor" name="default-constructor">default-constructor</a><br>
 new() メソッドを使用せずにクラスを定義した場合は、自動的に new() メソッドが定<br>
 義される。このデフォルトコンストラクタには、指定された順序ですべてのオブジェク<br>
@@ -850,7 +850,7 @@ new() メソッドを使用せずにクラスを定義した場合は、自動�
 クラスが別のクラスを拡張する場合、そのクラスのオブジェクト変数が最初に来る。<br>
 <br>
 <br>
-複数のコンストラクタ<br>
+<span class="PreProc">複数のコンストラクタ</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#multiple-constructors" name="multiple-constructors">multiple-constructors</a><br>
 通常、クラスには new() コンストラクタが 1 つだけある。コンストラクタが同じ引数<br>
 を使用して呼び出されることが多い場合は、それらの引数を 2 番目のコンストラクタ<br>
@@ -878,7 +878,7 @@ new() メソッドを使用せずにクラスを定義した場合は、自動�
 ない場合は、他のコンストラクタメソッドがあっても、デフォルトコンストラクタが追<br>
 加される。<br>
 <br>
-オブジェクトに変数型 &quot;any&quot; を使用する<br>
+<span class="PreProc">オブジェクトに変数型 &quot;any&quot; を使用する</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#obj-var-type-any" name="obj-var-type-any">obj-var-type-any</a><br>
 オブジェクトを保持するために、&quot;any&quot; 型で宣言された変数を使用できる。例:<br>
 <br>
@@ -904,7 +904,7 @@ new() メソッドを使用せずにクラスを定義した場合は、自動�
 ではないため、効率を高めるために可能な限りより具体的な型を使用することをお勧め<br>
 する。<br>
 <br>
-クラス内のメソッドをコンパイルする<br>
+<span class="PreProc">クラス内のメソッドをコンパイルする</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#class-compile" name="class-compile">class-compile</a><br>
 <a class="Identifier" href="vim9.html#:defcompile">:defcompile</a>&nbsp;コマンドを使用すると、クラスで定義されているすべてのクラスメソッ<br>
 ドおよびオブジェクトメソッドをコンパイルできる:<br>
@@ -912,7 +912,7 @@ new() メソッドを使用せずにクラスを定義した場合は、自動�
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;defcompile MyClass&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# クラス &quot;MyClass&quot; をコンパイルする<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;defcompile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 現在のスクリプト内のクラス群をコンパイルする</div>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <br>
 7.&nbsp;&nbsp;型定義&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#typealias" name="typealias">typealias</a>&nbsp;<a class="Constant" href="vim9class.html#Vim9-type" name="Vim9-type">Vim9-type</a>&nbsp;<a class="Constant" href="vim9class.html#:type" name=":type">:type</a><br>
 <br>
@@ -945,7 +945,7 @@ new() メソッドを使用せずにクラスを定義した場合は、自動�
 &nbsp;&nbsp;&nbsp;&nbsp;echo typename(ListOfStudents)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;typealias&lt;list&lt;dict&lt;any&gt;&gt;&gt;</div>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <br>
 8.&nbsp;&nbsp;列挙型&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#Vim9-enum" name="Vim9-enum">Vim9-enum</a>&nbsp;<a class="Constant" href="vim9class.html#:enum" name=":enum">:enum</a>&nbsp;<a class="Constant" href="vim9class.html#:endenum" name=":endenum">:endenum</a><br>
 <br>
@@ -1082,7 +1082,7 @@ enum には、通常のクラスと同様にオブジェクト変数とメソッ
 &nbsp;&nbsp;&nbsp;&nbsp;endenum<br>
 &nbsp;&nbsp;&nbsp;&nbsp;echo Color.Magenta.Get_RGB()</div>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <br>
 9.&nbsp;&nbsp;論理的根拠<br>
 <br>
@@ -1114,7 +1114,7 @@ Vim では、クラスがまったく新しいものであるため、さまざ�
 - 大規模なプロジェクトではなく、平均的な規模のプラグインを目指すこと。<br>
 <br>
 <br>
-コンストラクタに new() を使用する<br>
+<span class="PreProc">コンストラクタに new() を使用する</span><br>
 <br>
 多くの言語では、コンストラクタメソッドのクラス名が使用される。欠点は、多くの場<br>
 合、名前が長いことだ。また、クラス名を変更する場合は、すべてのコンストラクタメ<br>
@@ -1129,7 +1129,7 @@ TypeScript などの他の言語では、&quot;constructor()&quot; 等の特定�
 トは正しい選択であるように思えた。これを new() と呼び出すことで、呼び出し元と<br>
 呼び出されるメソッドの関係が明確になる。<br>
 <br>
-コンストラクタのオーバーロードを行わない<br>
+<span class="PreProc">コンストラクタのオーバーロードを行わない</span><br>
 <br>
 Vim script では、旧来と&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;の両スクリプトとも、メソッドのオーバーロードは<br>
 ない。つまり、異なる種類の引数で同じメソッド名を使用することはできない。した<br>
@@ -1147,14 +1147,14 @@ Vim script では、旧来と&nbsp;<a class="Identifier" href="vim9.html#Vim9">V
 のコンストラクタが使用されているかを確認するのが非常に簡単になる。引数の型も適<br>
 切に確認できる。<br>
 <br>
-メソッドのオーバーロードを行わない<br>
+<span class="PreProc">メソッドのオーバーロードを行わない</span><br>
 <br>
 コンストラクタの場合と同じ理由である。多くの場合、引数の型が明らかではないた<br>
 め、実際にどのメソッドが呼び出されているかを把握することが困難になる。メソッド<br>
 に別の名前を付けるだけで、型チェックによって意図したとおりに動作することが確認<br>
 される。これにより、実際には必要のないポリモーフィズムが排除される。<br>
 <br>
-単一の継承とインターフェイス<br>
+<span class="PreProc">単一の継承とインターフェイス</span><br>
 <br>
 一部の言語は多重継承をサポートしている。これは場合によっては便利だが、クラスの<br>
 動作規則が非常に複雑になる。<br>
@@ -1168,7 +1168,7 @@ Vim script では、旧来と&nbsp;<a class="Identifier" href="vim9.html#Vim9">V
 たま一致したからといって、クラスがインターフェイスを実装しているとみなすメカニ<br>
 ズムは脆弱で、分かりにくい問題を引き起こすため、やめておこう。<br>
 <br>
-あらゆる場所で &quot;this.variable&quot; を使用する<br>
+<span class="PreProc">あらゆる場所で &quot;this.variable&quot; を使用する</span><br>
 <br>
 さまざまなプログラミング言語のオブジェクト変数には、多くの場合、場所に応じてさ<br>
 まざまな方法でアクセスできる。曖昧さを避けるために &quot;this.&quot; を前置しなければな<br>
@@ -1185,7 +1185,7 @@ Vim script では、旧来と&nbsp;<a class="Identifier" href="vim9.html#Vim9">V
 使用される。シンプルで一貫性がある。クラス内部のコードを見る時にも、どの変数参<br>
 照がオブジェクト変数で、どれがそうでないかが直接明らかになる。<br>
 <br>
-クラス変数の使用<br>
+<span class="PreProc">クラス変数の使用</span><br>
 <br>
 &quot;static variable&quot; を使ってクラス変数を宣言するのはよくあることで、特に目新しい<br>
 ことはない。<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では、クラス変数は名前によって直接アクセスできる。<br>
@@ -1197,7 +1197,7 @@ TypeScript は、クラス内でもクラス変数名の前にクラス名を付
 問題がある: クラス名はかなり長くなり、かなりのスペースが必要になることと、クラ<br>
 ス名が変更されたときに、これらの場所もすべて変更する必要があることだ。<br>
 <br>
-オブジェクト変数とクラス変数の宣言<br>
+<span class="PreProc">オブジェクト変数とクラス変数の宣言</span><br>
 <br>
 主な選択肢は、変数宣言のように &quot;var&quot; を使うかどうかである。TypeScript では使用<br>
 していない:<br>
@@ -1249,7 +1249,7 @@ Vim のオブジェクト変数は以下のように宣言できる:<br>
 を再利用している。そのため、一貫性を保つために、これらの宣言では &quot;var&quot; を必要<br>
 とする。<br>
 <br>
-&quot;ClassName.new()&quot; を使用してオブジェクトを構築する<br>
+<span class="PreProc">&quot;ClassName.new()&quot; を使用してオブジェクトを構築する</span><br>
 <br>
 多くの言語では、オブジェクトの作成に &quot;new&quot; 演算子を使用するが、コンストラクタ<br>
 はコマンドではなく引数を持つメソッドとして定義されているため、実際には少し奇妙<br>
@@ -1262,7 +1262,7 @@ ClassName() メソッドはなく、ClassName というクラス内の別名の�
 なり混乱する。<br>
 <br>
 <br>
-Vim9class のアクセスモード<br>
+<span class="PreProc">Vim9class のアクセスモード</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#vim9-access-modes" name="vim9-access-modes">vim9-access-modes</a><br>
 Vim9class でサポートされる変数アクセスモードとその意味は、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="vim9class.html#public-variable">public-variable</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; どこからでも読み書きできる<br>
@@ -1273,7 +1273,7 @@ Vim9class でサポートされる変数アクセスモードとその意味は�
 メソッドのアクセスモードは似ているが、読み取り専用モードがない。<br>
 <br>
 <br>
-オブジェクト変数へのデフォルトの読み取りアクセス<br>
+<span class="PreProc">オブジェクト変数へのデフォルトの読み取りアクセス</span><br>
 <br>
 ユーザーの中には、オブジェクト変数のアクセスルールが非対称であると指摘する人も<br>
 いる。まあ、それは意図的だ。値の変更は、値の読み取りとは大きく異なるアクション<br>
@@ -1288,7 +1288,7 @@ Vim9class でサポートされる変数アクセスモードとその意味は�
 の少ないコードを作成するのに役立つ。<br>
 <br>
 <br>
-アンダースコアを使用してオブジェクト変数を protected にする<br>
+<span class="PreProc">アンダースコアを使用してオブジェクト変数を protected にする</span><br>
 <br>
 オブジェクト変数がプライベートの場合、クラス内 (およびサブクラス内) でのみ読み<br>
 取りおよび変更でき、クラス外では使用できない。<br>
@@ -1313,7 +1313,7 @@ Vim9class でサポートされる変数アクセスモードとその意味は�
 &quot;protected&quot; キーワードを使用することもできる。まぁ、これはキーワードの数を減ら<br>
 すためなのだが。<br>
 <br>
-オブジェクト変数に private はない<br>
+<span class="PreProc">オブジェクト変数に private はない</span><br>
 <br>
 一部の言語では、オブジェクト変数へのアクセスを制御するいくつかの方法が提供され<br>
 ている。<br>
@@ -1330,7 +1330,7 @@ Vim script は、1 人または小規模なチームが作業するプラグイ�
 にしておく。<br>
 <br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <br>
 10. 後でやる<br>
 <br>

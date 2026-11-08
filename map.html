@@ -3,10 +3,10 @@ layout: viai-doc
 helpname: 'map'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="map.html" name="map.txt">map.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For&nbsp;ViAI バージョン 1.0.&nbsp;&nbsp;Last change: 2026 Jun 13<br>
+<a class="Constant" href="map.html" name="map.txt">map.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Jun 13<br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル<br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
 キーマップ、短縮入力、ユーザー定義コマンドについて。<br>
@@ -33,7 +33,7 @@ helpname: 'map'
 3. ローカルマップとローカル関数&nbsp;<a class="Identifier" href="map.html#script-local">script-local</a><br>
 4. ユーザー定義コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#user-commands">user-commands</a><br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 1. マップ (Key mapping)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#key-mapping" name="key-mapping">key-mapping</a>&nbsp;<a class="Constant" href="map.html#mapping" name="mapping">mapping</a>&nbsp;<a class="Constant" href="map.html#macro" name="macro">macro</a><br>
 <br>
 マップは入力キーの動作を変更するために使われます。一般的にはファンクションキー<br>
@@ -41,7 +41,7 @@ helpname: 'map'
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;F2&gt; a&lt;C-R&gt;=strftime(&quot;%c&quot;)&lt;CR&gt;&lt;Esc&gt;</div>
 <br>
-このマップはカーソルの位置に現在の日時を挿入します。(&lt;F2&gt;などは<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>表記法を参照)<br>
+このマップはカーソルの位置に現在の日時を挿入します。(<span class="Special">&lt;F2&gt;</span>などは<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>表記法を参照)<br>
 <br>
 <br>
 1.1 マップコマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map-commands" name=":map-commands">:map-commands</a><br>
@@ -49,68 +49,68 @@ helpname: 'map'
 マップを新しく作成、削除、一覧表示するコマンドがあります。マップコマンドの種類<br>
 とモードの関係については&nbsp;<a class="Identifier" href="map.html#map-overview">map-overview</a>を参照してください。<br>
 <br>
-{lhs}&nbsp;&nbsp; left-hand-side&nbsp;&nbsp;(左辺値) の略&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#{lhs}" name="{lhs}">{lhs}</a><br>
-{rhs}&nbsp;&nbsp; right-hand-side (右辺値) の略&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#{rhs}" name="{rhs}">{rhs}</a><br>
+<span class="Special">{lhs}</span>&nbsp;&nbsp; left-hand-side&nbsp;&nbsp;(左辺値) の略&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#{lhs}" name="{lhs}">{lhs}</a><br>
+<span class="Special">{rhs}</span>&nbsp;&nbsp; right-hand-side (右辺値) の略&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#{rhs}" name="{rhs}">{rhs}</a><br>
 <br>
-:map&nbsp;&nbsp;&nbsp;&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-nvo">mapmode-nvo</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map" name=":map">:map</a><br>
-:nm[ap]&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-n">mapmode-n</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:nm" name=":nm">:nm</a>&nbsp;<a class="Constant" href="map.html#:nmap" name=":nmap">:nmap</a><br>
-:vm[ap]&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-v">mapmode-v</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:vm" name=":vm">:vm</a>&nbsp;<a class="Constant" href="map.html#:vmap" name=":vmap">:vmap</a><br>
-:xm[ap]&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-x">mapmode-x</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:xm" name=":xm">:xm</a>&nbsp;<a class="Constant" href="map.html#:xmap" name=":xmap">:xmap</a><br>
-:smap&nbsp;&nbsp;&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-s">mapmode-s</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:smap" name=":smap">:smap</a><br>
-:om[ap]&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-o">mapmode-o</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:om" name=":om">:om</a>&nbsp;<a class="Constant" href="map.html#:omap" name=":omap">:omap</a><br>
-:map!&nbsp;&nbsp;&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-ic">mapmode-ic</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map!" name=":map!">:map!</a><br>
-:im[ap]&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-i">mapmode-i</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:im" name=":im">:im</a>&nbsp;<a class="Constant" href="map.html#:imap" name=":imap">:imap</a><br>
-:lm[ap]&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-l">mapmode-l</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:lm" name=":lm">:lm</a>&nbsp;<a class="Constant" href="map.html#:lma" name=":lma">:lma</a>&nbsp;<a class="Constant" href="map.html#:lmap" name=":lmap">:lmap</a><br>
-:cm[ap]&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-c">mapmode-c</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:cm" name=":cm">:cm</a>&nbsp;<a class="Constant" href="map.html#:cmap" name=":cmap">:cmap</a><br>
-:tma[p]&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-t">mapmode-t</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:tma" name=":tma">:tma</a>&nbsp;<a class="Constant" href="map.html#:tmap" name=":tmap">:tmap</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キー入力&nbsp;{lhs}&nbsp;を&nbsp;{rhs}&nbsp;に割り当てます。作成したマップ<br>
+:map&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-nvo">mapmode-nvo</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map" name=":map">:map</a><br>
+:nm[ap]&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-n">mapmode-n</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:nm" name=":nm">:nm</a>&nbsp;<a class="Constant" href="map.html#:nmap" name=":nmap">:nmap</a><br>
+:vm[ap]&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-v">mapmode-v</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:vm" name=":vm">:vm</a>&nbsp;<a class="Constant" href="map.html#:vmap" name=":vmap">:vmap</a><br>
+:xm[ap]&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-x">mapmode-x</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:xm" name=":xm">:xm</a>&nbsp;<a class="Constant" href="map.html#:xmap" name=":xmap">:xmap</a><br>
+:smap&nbsp;&nbsp;&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-s">mapmode-s</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:smap" name=":smap">:smap</a><br>
+:om[ap]&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-o">mapmode-o</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:om" name=":om">:om</a>&nbsp;<a class="Constant" href="map.html#:omap" name=":omap">:omap</a><br>
+:map!&nbsp;&nbsp;&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-ic">mapmode-ic</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map!" name=":map!">:map!</a><br>
+:im[ap]&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-i">mapmode-i</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:im" name=":im">:im</a>&nbsp;<a class="Constant" href="map.html#:imap" name=":imap">:imap</a><br>
+:lm[ap]&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-l">mapmode-l</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:lm" name=":lm">:lm</a>&nbsp;<a class="Constant" href="map.html#:lma" name=":lma">:lma</a>&nbsp;<a class="Constant" href="map.html#:lmap" name=":lmap">:lmap</a><br>
+:cm[ap]&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-c">mapmode-c</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:cm" name=":cm">:cm</a>&nbsp;<a class="Constant" href="map.html#:cmap" name=":cmap">:cmap</a><br>
+:tma[p]&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-t">mapmode-t</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:tma" name=":tma">:tma</a>&nbsp;<a class="Constant" href="map.html#:tmap" name=":tmap">:tmap</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キー入力&nbsp;<span class="Special">{lhs}</span>&nbsp;を&nbsp;<span class="Special">{rhs}</span>&nbsp;に割り当てます。作成したマップ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、マップコマンドに対応したモードで使用できます。マッ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プが使用されたときに&nbsp;{rhs}&nbsp;が調べられ、再マップされま<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プが使用されたときに&nbsp;<span class="Special">{rhs}</span>&nbsp;が調べられ、再マップされま<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。マップを入れ子にしたり再帰的にすることができます。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 空白は有効なノーマルモードのコマンドであるため、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;末尾の空白は&nbsp;{rhs}&nbsp;に含まれます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;末尾の空白は&nbsp;<span class="Special">{rhs}</span>&nbsp;に含まれます。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#map-trailing-white">map-trailing-white</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:nore" name=":nore">:nore</a>&nbsp;<a class="Constant" href="map.html#:norem" name=":norem">:norem</a><br>
-:no[remap]&nbsp;&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-nvo">mapmode-nvo</a>&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:no" name=":no">:no</a>&nbsp;&nbsp;<a class="Constant" href="map.html#:noremap" name=":noremap">:noremap</a>&nbsp;<a class="Constant" href="map.html#:nor" name=":nor">:nor</a><br>
-:nn[oremap]&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-n">mapmode-n</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:nn" name=":nn">:nn</a>&nbsp;&nbsp;<a class="Constant" href="map.html#:nnoremap" name=":nnoremap">:nnoremap</a><br>
-:vn[oremap]&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-v">mapmode-v</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:vn" name=":vn">:vn</a>&nbsp;&nbsp;<a class="Constant" href="map.html#:vnoremap" name=":vnoremap">:vnoremap</a><br>
-:xn[oremap]&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-x">mapmode-x</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:xn" name=":xn">:xn</a>&nbsp;&nbsp;<a class="Constant" href="map.html#:xnoremap" name=":xnoremap">:xnoremap</a><br>
-:snor[emap]&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-s">mapmode-s</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:snor" name=":snor">:snor</a>&nbsp;<a class="Constant" href="map.html#:snore" name=":snore">:snore</a>&nbsp;<a class="Constant" href="map.html#:snoremap" name=":snoremap">:snoremap</a><br>
-:ono[remap]&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-o">mapmode-o</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:ono" name=":ono">:ono</a>&nbsp;<a class="Constant" href="map.html#:onoremap" name=":onoremap">:onoremap</a><br>
-:no[remap]!&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-ic">mapmode-ic</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:no!" name=":no!">:no!</a>&nbsp;<a class="Constant" href="map.html#:noremap!" name=":noremap!">:noremap!</a><br>
-:ino[remap]&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-i">mapmode-i</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:ino" name=":ino">:ino</a>&nbsp;<a class="Constant" href="map.html#:inor" name=":inor">:inor</a>&nbsp;<a class="Constant" href="map.html#:inoremap" name=":inoremap">:inoremap</a><br>
-:ln[oremap]&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-l">mapmode-l</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:ln" name=":ln">:ln</a>&nbsp;&nbsp;<a class="Constant" href="map.html#:lnoremap" name=":lnoremap">:lnoremap</a><br>
-:cno[remap]&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-c">mapmode-c</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:cno" name=":cno">:cno</a>&nbsp;<a class="Constant" href="map.html#:cnor" name=":cnor">:cnor</a>&nbsp;<a class="Constant" href="map.html#:cnoremap" name=":cnoremap">:cnoremap</a><br>
-:tno[remap]&nbsp;{lhs}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-t">mapmode-t</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:tno" name=":tno">:tno</a>&nbsp;<a class="Constant" href="map.html#:tnoremap" name=":tnoremap">:tnoremap</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キー入力&nbsp;{lhs}&nbsp;を&nbsp;{rhs}&nbsp;に割り当てます。作成したマップ<br>
+:no[remap]&nbsp;&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-nvo">mapmode-nvo</a>&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:no" name=":no">:no</a>&nbsp;&nbsp;<a class="Constant" href="map.html#:noremap" name=":noremap">:noremap</a>&nbsp;<a class="Constant" href="map.html#:nor" name=":nor">:nor</a><br>
+:nn[oremap]&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-n">mapmode-n</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:nn" name=":nn">:nn</a>&nbsp;&nbsp;<a class="Constant" href="map.html#:nnoremap" name=":nnoremap">:nnoremap</a><br>
+:vn[oremap]&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-v">mapmode-v</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:vn" name=":vn">:vn</a>&nbsp;&nbsp;<a class="Constant" href="map.html#:vnoremap" name=":vnoremap">:vnoremap</a><br>
+:xn[oremap]&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-x">mapmode-x</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:xn" name=":xn">:xn</a>&nbsp;&nbsp;<a class="Constant" href="map.html#:xnoremap" name=":xnoremap">:xnoremap</a><br>
+:snor[emap]&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-s">mapmode-s</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:snor" name=":snor">:snor</a>&nbsp;<a class="Constant" href="map.html#:snore" name=":snore">:snore</a>&nbsp;<a class="Constant" href="map.html#:snoremap" name=":snoremap">:snoremap</a><br>
+:ono[remap]&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-o">mapmode-o</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:ono" name=":ono">:ono</a>&nbsp;<a class="Constant" href="map.html#:onoremap" name=":onoremap">:onoremap</a><br>
+:no[remap]!&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-ic">mapmode-ic</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:no!" name=":no!">:no!</a>&nbsp;<a class="Constant" href="map.html#:noremap!" name=":noremap!">:noremap!</a><br>
+:ino[remap]&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-i">mapmode-i</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:ino" name=":ino">:ino</a>&nbsp;<a class="Constant" href="map.html#:inor" name=":inor">:inor</a>&nbsp;<a class="Constant" href="map.html#:inoremap" name=":inoremap">:inoremap</a><br>
+:ln[oremap]&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-l">mapmode-l</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:ln" name=":ln">:ln</a>&nbsp;&nbsp;<a class="Constant" href="map.html#:lnoremap" name=":lnoremap">:lnoremap</a><br>
+:cno[remap]&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-c">mapmode-c</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:cno" name=":cno">:cno</a>&nbsp;<a class="Constant" href="map.html#:cnor" name=":cnor">:cnor</a>&nbsp;<a class="Constant" href="map.html#:cnoremap" name=":cnoremap">:cnoremap</a><br>
+:tno[remap]&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-t">mapmode-t</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:tno" name=":tno">:tno</a>&nbsp;<a class="Constant" href="map.html#:tnoremap" name=":tnoremap">:tnoremap</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キー入力&nbsp;<span class="Special">{lhs}</span>&nbsp;を&nbsp;<span class="Special">{rhs}</span>&nbsp;に割り当てます。作成したマップ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、マップコマンドに対応したモードで使用できます。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{rhs}&nbsp;は再マップされないので、マップが入れ子になったり<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{rhs}</span>&nbsp;は再マップされないので、マップが入れ子になったり<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;再帰的になることはありません。コマンドを再定義するとき<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;によく使われます。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>:&nbsp;{rhs}&nbsp;内のキーも、<a class="Identifier" href="insert.html#i_CTRL-]">i_CTRL-]</a>&nbsp;と&nbsp;<a class="Identifier" href="cmdline.html#c_CTRL-]">c_CTRL-]</a>&nbsp;を除<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>:&nbsp;<span class="Special">{rhs}</span>&nbsp;内のキーも、<a class="Identifier" href="insert.html#i_CTRL-]">i_CTRL-]</a>&nbsp;と&nbsp;<a class="Identifier" href="cmdline.html#c_CTRL-]">c_CTRL-]</a>&nbsp;を除<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;き、短縮入力をトリガーしません。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>:&nbsp;{rhs}&nbsp;に&nbsp;&lt;Plug&gt;&nbsp;が表れる場合は再マップが許可され<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ていなくてもその部分には常に適用{訳注:再マップ}されま<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>:&nbsp;<span class="Special">{rhs}</span>&nbsp;に&nbsp;<span class="Special">&lt;Plug&gt;</span>&nbsp;が表れる場合は再マップが許可され<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ていなくてもその部分には常に適用<span class="Special">{訳注:再マップ}</span>されま<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<br>
 <br>
 <br>
-:unm[ap]&nbsp;&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-nvo">mapmode-nvo</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:unm" name=":unm">:unm</a>&nbsp;&nbsp;<a class="Constant" href="map.html#:unmap" name=":unmap">:unmap</a><br>
-:nun[map]&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-n">mapmode-n</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:nun" name=":nun">:nun</a>&nbsp;&nbsp;<a class="Constant" href="map.html#:nunmap" name=":nunmap">:nunmap</a><br>
-:vu[nmap]&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-v">mapmode-v</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:vu" name=":vu">:vu</a>&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:vunmap" name=":vunmap">:vunmap</a><br>
-:xu[nmap]&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-x">mapmode-x</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:xu" name=":xu">:xu</a>&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:xunmap" name=":xunmap">:xunmap</a><br>
-:sunm[ap]&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-s">mapmode-s</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:sunm" name=":sunm">:sunm</a>&nbsp;<a class="Constant" href="map.html#:sunmap" name=":sunmap">:sunmap</a><br>
-:ou[nmap]&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-o">mapmode-o</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:ou" name=":ou">:ou</a>&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:ounmap" name=":ounmap">:ounmap</a><br>
-:unm[ap]!&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-ic">mapmode-ic</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:unm!" name=":unm!">:unm!</a>&nbsp;<a class="Constant" href="map.html#:unmap!" name=":unmap!">:unmap!</a><br>
-:iu[nmap]&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-i">mapmode-i</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:iu" name=":iu">:iu</a>&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:iunmap" name=":iunmap">:iunmap</a><br>
-:lu[nmap]&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-l">mapmode-l</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:lu" name=":lu">:lu</a>&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:lunmap" name=":lunmap">:lunmap</a><br>
-:cu[nmap]&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-c">mapmode-c</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:cu" name=":cu">:cu</a>&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:cun" name=":cun">:cun</a>&nbsp;<a class="Constant" href="map.html#:cunmap" name=":cunmap">:cunmap</a><br>
-:tunma[p]&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-t">mapmode-t</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:tunma" name=":tunma">:tunma</a>&nbsp;<a class="Constant" href="map.html#:tunmap" name=":tunmap">:tunmap</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マップコマンドに対応したモードの&nbsp;{lhs}&nbsp;というマップを<br>
+:unm[ap]&nbsp;&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-nvo">mapmode-nvo</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:unm" name=":unm">:unm</a>&nbsp;&nbsp;<a class="Constant" href="map.html#:unmap" name=":unmap">:unmap</a><br>
+:nun[map]&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-n">mapmode-n</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:nun" name=":nun">:nun</a>&nbsp;&nbsp;<a class="Constant" href="map.html#:nunmap" name=":nunmap">:nunmap</a><br>
+:vu[nmap]&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-v">mapmode-v</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:vu" name=":vu">:vu</a>&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:vunmap" name=":vunmap">:vunmap</a><br>
+:xu[nmap]&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-x">mapmode-x</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:xu" name=":xu">:xu</a>&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:xunmap" name=":xunmap">:xunmap</a><br>
+:sunm[ap]&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-s">mapmode-s</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:sunm" name=":sunm">:sunm</a>&nbsp;<a class="Constant" href="map.html#:sunmap" name=":sunmap">:sunmap</a><br>
+:ou[nmap]&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-o">mapmode-o</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:ou" name=":ou">:ou</a>&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:ounmap" name=":ounmap">:ounmap</a><br>
+:unm[ap]!&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-ic">mapmode-ic</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:unm!" name=":unm!">:unm!</a>&nbsp;<a class="Constant" href="map.html#:unmap!" name=":unmap!">:unmap!</a><br>
+:iu[nmap]&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-i">mapmode-i</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:iu" name=":iu">:iu</a>&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:iunmap" name=":iunmap">:iunmap</a><br>
+:lu[nmap]&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-l">mapmode-l</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:lu" name=":lu">:lu</a>&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:lunmap" name=":lunmap">:lunmap</a><br>
+:cu[nmap]&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-c">mapmode-c</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:cu" name=":cu">:cu</a>&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:cun" name=":cun">:cun</a>&nbsp;<a class="Constant" href="map.html#:cunmap" name=":cunmap">:cunmap</a><br>
+:tunma[p]&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-t">mapmode-t</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:tunma" name=":tunma">:tunma</a>&nbsp;<a class="Constant" href="map.html#:tunmap" name=":tunmap">:tunmap</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マップコマンドに対応したモードの&nbsp;<span class="Special">{lhs}</span>&nbsp;というマップを<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;削除します。他のモードのマップは残ります。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{lhs}&nbsp;がマッピングの&nbsp;{rhs}&nbsp;にマッチするときも機能しま<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{lhs}</span>&nbsp;がマッピングの&nbsp;<span class="Special">{rhs}</span>&nbsp;にマッチするときも機能しま<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。これは略語が適用された場合に使用します。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 末尾の空白は&nbsp;{lhs}&nbsp;に含まれます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 末尾の空白は&nbsp;<span class="Special">{lhs}</span>&nbsp;に含まれます。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#map-trailing-white">map-trailing-white</a>&nbsp;を参照。<br>
 <br>
 :mapc[lear]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-nvo">mapmode-nvo</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:mapc" name=":mapc">:mapc</a>&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:mapclear" name=":mapclear">:mapclear</a><br>
@@ -126,7 +126,7 @@ helpname: 'map'
 :tmapc[lear]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-t">mapmode-t</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:tmapc" name=":tmapc">:tmapc</a>&nbsp;&nbsp;<a class="Constant" href="map.html#:tmapclear" name=":tmapclear">:tmapclear</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マップコマンドに対応したモードのすべてのマップを削除し<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ます。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファローカルなマップを削除するには&nbsp;&lt;buffer&gt;&nbsp;引数を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファローカルなマップを削除するには&nbsp;<span class="Special">&lt;buffer&gt;</span>&nbsp;引数を<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;付けてください&nbsp;<a class="Identifier" href="map.html#:map-<buffer>">:map-&lt;buffer&gt;</a>。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">警告:</span>&nbsp;Mac の標準マップ&nbsp;<a class="Identifier" href="os_mac.html#mac-standard-mappings">mac-standard-mappings</a>&nbsp;と<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS-DOS の標準マップ&nbsp;<a class="Identifier" href="os_dos.html#dos-standard-mappings">dos-standard-mappings</a>&nbsp;も削除され<br>
@@ -147,18 +147,18 @@ helpname: 'map'
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;示します。<span class="Todo">Note</span>: &quot;:map&quot; と &quot;:map!&quot; は複数のモードを表示<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;できるのでよく使われます。<br>
 <br>
-:map&nbsp;&nbsp;&nbsp;&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-nvo">mapmode-nvo</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map_l" name=":map_l">:map_l</a><br>
-:nm[ap]&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-n">mapmode-n</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:nmap_l" name=":nmap_l">:nmap_l</a><br>
-:vm[ap]&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-v">mapmode-v</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:vmap_l" name=":vmap_l">:vmap_l</a><br>
-:xm[ap]&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-x">mapmode-x</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:xmap_l" name=":xmap_l">:xmap_l</a><br>
-:sm[ap]&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-s">mapmode-s</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:smap_l" name=":smap_l">:smap_l</a><br>
-:om[ap]&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-o">mapmode-o</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:omap_l" name=":omap_l">:omap_l</a><br>
-:map!&nbsp;&nbsp;&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-ic">mapmode-ic</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map_l!" name=":map_l!">:map_l!</a><br>
-:im[ap]&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-i">mapmode-i</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:imap_l" name=":imap_l">:imap_l</a><br>
-:lm[ap]&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-l">mapmode-l</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:lmap_l" name=":lmap_l">:lmap_l</a><br>
-:cm[ap]&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-c">mapmode-c</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:cmap_l" name=":cmap_l">:cmap_l</a><br>
-:tma[p]&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-t">mapmode-t</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:tmap_l" name=":tmap_l">:tmap_l</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マップコマンドに対応したモードの&nbsp;{lhs}&nbsp;で始まるマップ<br>
+:map&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-nvo">mapmode-nvo</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map_l" name=":map_l">:map_l</a><br>
+:nm[ap]&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-n">mapmode-n</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:nmap_l" name=":nmap_l">:nmap_l</a><br>
+:vm[ap]&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-v">mapmode-v</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:vmap_l" name=":vmap_l">:vmap_l</a><br>
+:xm[ap]&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-x">mapmode-x</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:xmap_l" name=":xmap_l">:xmap_l</a><br>
+:sm[ap]&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-s">mapmode-s</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:smap_l" name=":smap_l">:smap_l</a><br>
+:om[ap]&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-o">mapmode-o</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:omap_l" name=":omap_l">:omap_l</a><br>
+:map!&nbsp;&nbsp;&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-ic">mapmode-ic</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map_l!" name=":map_l!">:map_l!</a><br>
+:im[ap]&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-i">mapmode-i</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:imap_l" name=":imap_l">:imap_l</a><br>
+:lm[ap]&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-l">mapmode-l</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:lmap_l" name=":lmap_l">:lmap_l</a><br>
+:cm[ap]&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-c">mapmode-c</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:cmap_l" name=":cmap_l">:cmap_l</a><br>
+:tma[p]&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#mapmode-t">mapmode-t</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:tmap_l" name=":tmap_l">:tmap_l</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マップコマンドに対応したモードの&nbsp;<span class="Special">{lhs}</span>&nbsp;で始まるマップ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を一覧表示します。<br>
 <br>
 マップコマンドを使うと、単キーまたは複数キーの入力を別の文字列にマップできま<br>
@@ -176,7 +176,7 @@ helpname: 'map'
 れず、次の入力まで待機状態になります。例えば空白文字を入力すれば &quot;foo&quot; と空白<br>
 文字が挿入されます。&quot;a&quot; を入力すれば &quot;bar&quot; が挿入されます。<br>
 <br>
-末尾空白<br>
+<span class="PreProc">末尾空白</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#map-trailing-white" name="map-trailing-white">map-trailing-white</a><br>
 このunmapコマンドは動作しません:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map @@ foo<br>
@@ -200,21 +200,21 @@ helpname: 'map'
 <br>
 1.2 特別な引数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map-arguments" name=":map-arguments">:map-arguments</a><br>
 <br>
-引数に &quot;&lt;buffer&gt;&quot;、&quot;&lt;nowait&gt;&quot;、&quot;&lt;silent&gt;&quot;、&quot;&lt;special&gt;&quot;、&quot;&lt;script&gt;&quot;、&quot;&lt;expr&gt;&quot;、<br>
-&quot;&lt;unique&gt;&quot; を指定できます。マップコマンドの直後 (他の引数の前) に置いてくださ<br>
+引数に &quot;<span class="Special">&lt;buffer&gt;</span>&quot;、&quot;<span class="Special">&lt;nowait&gt;</span>&quot;、&quot;<span class="Special">&lt;silent&gt;</span>&quot;、&quot;<span class="Special">&lt;special&gt;</span>&quot;、&quot;<span class="Special">&lt;script&gt;</span>&quot;、&quot;<span class="Special">&lt;expr&gt;</span>&quot;、<br>
+&quot;<span class="Special">&lt;unique&gt;</span>&quot; を指定できます。マップコマンドの直後 (他の引数の前) に置いてくださ<br>
 い。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map-local" name=":map-local">:map-local</a>&nbsp;<a class="Constant" href="map.html#:map-<buffer>" name=":map-&lt;buffer&gt;">:map-&lt;buffer&gt;</a>&nbsp;<a class="Constant" href="map.html#:map-buffer" name=":map-buffer">:map-buffer</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#E224" name="E224">E224</a>&nbsp;<a class="Constant" href="map.html#E225" name="E225">E225</a><br>
 カレントバッファだけで使用できるマップを作成するには、マップコマンドの引数に<br>
-&quot;&lt;buffer&gt;&quot; を指定します。例:<br>
+&quot;<span class="Special">&lt;buffer&gt;</span>&quot; を指定します。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;buffer&gt;&nbsp;&nbsp;,w&nbsp;&nbsp;/[.,;]&lt;CR&gt;</div>
 この場合、他のバッファで、&quot;,w&quot; に対して別の操作を割り当てることができます:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;buffer&gt;&nbsp;&nbsp;,w&nbsp;&nbsp;/[#&amp;!]&lt;CR&gt;</div>
 ローカルバッファのマップは、グローバルのマップよりも優先して使用される。より長<br>
 いグローバルなマップが存在する場合に、短いローカルなマップを有効にするには、以<br>
-下の&nbsp;&lt;nowait&gt;&nbsp;を参照。<br>
-&quot;&lt;buffer&gt;&quot; はマップを削除するときにも指定できる:<br>
+下の&nbsp;<span class="Special">&lt;nowait&gt;</span>&nbsp;を参照。<br>
+&quot;<span class="Special">&lt;buffer&gt;</span>&quot; はマップを削除するときにも指定できる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:unmap &lt;buffer&gt; ,w<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mapclear &lt;buffer&gt;</div>
 ローカルなマップは、バッファが削除されるとクリアされるが、アンロードされてもク<br>
@@ -225,10 +225,10 @@ helpname: 'map'
 &quot;,&quot; にバッファローカルなマップを定義する場合に &quot;,&quot; から始まるグローバルなマッ<br>
 プがあるかもしれません。その場合はVimが &quot;,&quot; のマップか、あるいはより長いマップ<br>
 を使用するかどうか知るために別の文字を入力する必要があります。これを避けるには<br>
-引数に&nbsp;&lt;nowait&gt;&nbsp;を追加します。そしてそのマップは一致する場合に使用され、Vimは<br>
+引数に&nbsp;<span class="Special">&lt;nowait&gt;</span>&nbsp;を追加します。そしてそのマップは一致する場合に使用され、Vimは<br>
 それ以上入力される文字を待ちません。しかし、既に文字が入力されていた場合はそれ<br>
 が使われます。<br>
-<span class="Todo">Note</span>: これが動作するのは&nbsp;&lt;nowait&gt;&nbsp;なマッピングが完全にマッチし、なんらかの部分<br>
+<span class="Todo">Note</span>: これが動作するのは&nbsp;<span class="Special">&lt;nowait&gt;</span>&nbsp;なマッピングが完全にマッチし、なんらかの部分<br>
 マッチの前に見付かるときです。これが動作するのは:<br>
 - バッファローカルなマッピングで唯一のマッチがあるとき。なぜなら常にグローバル<br>
 &nbsp;&nbsp;なマッピングより先に見付かるからです。<br>
@@ -237,7 +237,7 @@ helpname: 'map'
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map-<silent>" name=":map-&lt;silent&gt;">:map-&lt;silent&gt;</a>&nbsp;<a class="Constant" href="map.html#:map-silent" name=":map-silent">:map-silent</a><br>
 実行するコマンドがコマンドラインに表示されないようにするには、マップコマンドの<br>
-引数に &quot;&lt;silent&gt;&quot; を指定します。例:<br>
+引数に &quot;<span class="Special">&lt;silent&gt;</span>&quot; を指定します。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;silent&gt; ,h /Header&lt;CR&gt;</div>
 このマップを使用するとき、検索文字列はコマンドラインに表示されません。しかし、<br>
 実行されたコマンドが出力するメッセージは表示されてしまいます。それを静かにさせ<br>
@@ -246,7 +246,7 @@ helpname: 'map'
 <span class="Todo">Note</span>&nbsp;コマンドの効果も静かにさせられることに注意してください。例えば、このマッ<br>
 プがコマンドライン補完の別のエントリを選択するとき、それは表示されません。<br>
 それでもまだ、例えば inputdialog() のプロンプトなどは表示されます。<br>
-&quot;&lt;silent&gt;&quot; は短縮入力にも使えますが、コマンドラインで使うと正しく表示されなく<br>
+&quot;<span class="Special">&lt;silent&gt;</span>&quot; は短縮入力にも使えますが、コマンドラインで使うと正しく表示されなく<br>
 なります。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map-<special>" name=":map-&lt;special&gt;">:map-&lt;special&gt;</a>&nbsp;<a class="Constant" href="map.html#:map-special" name=":map-special">:map-special</a><br>
@@ -256,17 +256,17 @@ helpname: 'map'
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;special&gt; &lt;F12&gt; /Header&lt;CR&gt;</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map-<script>" name=":map-&lt;script&gt;">:map-&lt;script&gt;</a>&nbsp;<a class="Constant" href="map.html#:map-script" name=":map-script">:map-script</a><br>
-マップや短縮入力を定義するときに &quot;&lt;script&gt;&quot; 引数を指定すると、{rhs}&nbsp;の中の<br>
-&quot;&lt;SID&gt;&quot; で始まるスクリプトローカルなマップだけが再マップされます。別の場所で<br>
-マップが定義されていても (例えば mswin.vim で&nbsp;CTRL-V&nbsp;にマップが定義されていて<br>
+マップや短縮入力を定義するときに &quot;<span class="Special">&lt;script&gt;</span>&quot; 引数を指定すると、<span class="Special">{rhs}</span>&nbsp;の中の<br>
+&quot;<span class="Special">&lt;SID&gt;</span>&quot; で始まるスクリプトローカルなマップだけが再マップされます。別の場所で<br>
+マップが定義されていても (例えば mswin.vim で&nbsp;<span class="Special">CTRL-V</span>&nbsp;にマップが定義されていて<br>
 も)、その影響を避けることができます。その場合でも同じスクリプトで定義された<br>
 マップは使うことができます。<br>
-<span class="Todo">Note</span>: &quot;:map&nbsp;&lt;script&gt;&quot; と &quot;:noremap&nbsp;&lt;script&gt;&quot; の動作は同じです。コマンド名より<br>
-&quot;&lt;script&gt;&quot; の効果が優先されます。再マップが制限されることが明確になるため<br>
-&quot;:noremap&nbsp;&lt;script&gt;&quot; を使う方がいいでしょう。<br>
+<span class="Todo">Note</span>: &quot;:map&nbsp;<span class="Special">&lt;script&gt;</span>&quot; と &quot;:noremap&nbsp;<span class="Special">&lt;script&gt;</span>&quot; の動作は同じです。コマンド名より<br>
+&quot;<span class="Special">&lt;script&gt;</span>&quot; の効果が優先されます。再マップが制限されることが明確になるため<br>
+&quot;:noremap&nbsp;<span class="Special">&lt;script&gt;</span>&quot; を使う方がいいでしょう。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map-<unique>" name=":map-&lt;unique&gt;">:map-&lt;unique&gt;</a>&nbsp;<a class="Constant" href="map.html#:map-unique" name=":map-unique">:map-unique</a>&nbsp;<a class="Constant" href="map.html#E226" name="E226">E226</a>&nbsp;<a class="Constant" href="map.html#E227" name="E227">E227</a><br>
-マップや短縮入力を定義するときに &quot;&lt;unique&gt;&quot; 引数を指定すると、同じ名前のものが<br>
+マップや短縮入力を定義するときに &quot;<span class="Special">&lt;unique&gt;</span>&quot; 引数を指定すると、同じ名前のものが<br>
 すでに定義されていた場合に、コマンドは失敗します。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;unique&gt; ,w&nbsp;&nbsp;/[#&amp;!]&lt;CR&gt;</div>
 バッファローカルのマップを定義するときは、通常のマップも検査の対象となります。<br>
@@ -277,23 +277,23 @@ helpname: 'map'
 <a class="Identifier" href="builtin.html#maparg()">maparg()</a>&nbsp;を参照してください。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map-<expr>" name=":map-&lt;expr&gt;">:map-&lt;expr&gt;</a>&nbsp;<a class="Constant" href="map.html#:map-expression" name=":map-expression">:map-expression</a><br>
-マップや短縮入力を定義するときに &quot;&lt;expr&gt;&quot; 引数を指定すると、引数が式 (スクリプ<br>
-ト) として扱われます。マップが実行されたときに、式が評価され、その値が&nbsp;{rhs}<br>
+マップや短縮入力を定義するときに &quot;<span class="Special">&lt;expr&gt;</span>&quot; 引数を指定すると、引数が式 (スクリプ<br>
+ト) として扱われます。マップが実行されたときに、式が評価され、その値が&nbsp;<span class="Special">{rhs}</span><br>
 として使われます。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:inoremap &lt;expr&gt; . &lt;SID&gt;InsertDot()</div>
 s:InsertDot() 関数の戻り値が挿入されます。カーソルの前のテキストをチェックし<br>
 て、ある条件に一致するなら omni 補完を開始する、というようなことができます。<br>
 グローバルな名前空間の汚染を回避するには、スクリプトローカル関数を利用すること<br>
-が望しいです。RHS内に&nbsp;&lt;SID&gt;&nbsp;を使ってマッピングが定義されたスクリプトを見付けら<br>
+が望しいです。RHS内に&nbsp;<span class="Special">&lt;SID&gt;</span>&nbsp;を使ってマッピングが定義されたスクリプトを見付けら<br>
 れるようにします。<br>
 <br>
 短縮入力では、入力されて短縮入力展開のトリガーとなった文字が&nbsp;<a class="Identifier" href="eval.html#v:char">v:char</a>&nbsp;にセット<br>
-されます。これを使って&nbsp;{lhs}&nbsp;の展開方法を決めることもできます。自分で v:char<br>
+されます。これを使って&nbsp;<span class="Special">{lhs}</span>&nbsp;の展開方法を決めることもできます。自分で v:char<br>
 を挿入したり変更したりすべきではありません。<br>
 <br>
 マッピングで何も実行させない場合は、評価結果が空文字列になるようにします。も<br>
-し、なんからの{訳注:状態などの}変更で Vim がメインループを通過する必要があるも<br>
-のなら (例えば、画面の更新など)、&quot;\&lt;Ignore&gt;&quot; を返すようにします。<br>
+し、なんからの<span class="Special">{訳注:状態などの}</span>変更で Vim がメインループを通過する必要があるも<br>
+のなら (例えば、画面の更新など)、&quot;\<span class="Special">&lt;Ignore&gt;</span>&quot; を返すようにします。<br>
 これは、&quot;何もしない&quot; と同義ですが Vim はループから入力待ちに戻ります。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;func s:OpenPopup()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call popup_create(... arguments ...)<br>
@@ -311,7 +311,7 @@ s:InsertDot() 関数の戻り値が挿入されます。カーソルの前のテ
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nmap ! f!x</div>
 g:column に &quot;f!&quot; 実行前の値がある、つまり &quot;x&quot; が評価されるのが &quot;f!&quot; の実行前で<br>
 あることに気付くでしょう。<br>
-これは評価のマッピングの文字の前に&nbsp;&lt;Ignore&gt;&nbsp;を挿入することで解決できます:<br>
+これは評価のマッピングの文字の前に&nbsp;<span class="Special">&lt;Ignore&gt;</span>&nbsp;を挿入することで解決できます:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nmap ! f!&lt;Ignore&gt;x</div>
 <br>
 <a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script 内でのマッピング定義時は、式がそのスクリプトのコンテキストで評価<br>
@@ -331,7 +331,7 @@ getchar() が使用できます。先行入力があればそれが消費され�
 マップを定義します:<br>
 <div class="helpExample">&nbsp;&nbsp;inoremap &lt;expr&gt; &lt;C-L&gt; nr2char(getchar())<br>
 &nbsp;&nbsp;inoremap &lt;expr&gt; &lt;C-L&gt;x &quot;foo&quot;</div>
-そして&nbsp;CTRL-L&nbsp;を押してみます。すぐには何も起きません。どのマップを使うかを決定<br>
+そして&nbsp;<span class="Special">CTRL-L</span>&nbsp;を押してみます。すぐには何も起きません。どのマップを使うかを決定<br>
 するためには文字がもう一つ必要です。次に 'x' を押すと後者のマップが使われ、<br>
 &quot;foo&quot; が挿入されます。他のキーを押すと前者のマップが使われ、その文字が<br>
 getchar() によって取得され、返されます。<br>
@@ -351,31 +351,31 @@ getchar() によって取得され、返されます。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return ''<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfunc</div>
 <br>
-CTRL-L&nbsp;で次の番号を挿入し、CTRL-R&nbsp;で番号をリセットします。CTRL-R&nbsp;は空文字列を<br>
+<span class="Special">CTRL-L</span>&nbsp;で次の番号を挿入し、<span class="Special">CTRL-R</span>&nbsp;で番号をリセットします。<span class="Special">CTRL-R</span>&nbsp;は空文字列を<br>
 返すので、何も挿入されません。<br>
 <br>
 <span class="Todo">Note</span>: テキストの末尾以外で 0x80 をシングルバイトとして使った場合、それは機能し<br>
 ません。特殊キーとして認識されます。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#<Cmd>" name="&lt;Cmd&gt;">&lt;Cmd&gt;</a>&nbsp;<a class="Constant" href="map.html#:map-cmd" name=":map-cmd">:map-cmd</a><br>
-特別な文字列&nbsp;&lt;Cmd&gt;&nbsp;は &quot;コマンドマッピング&quot; を開始し、モードを変化させずにコマ<br>
-ンドを直に実行します。マッピングの&nbsp;{rhs}&nbsp;で &quot;:...&lt;CR&gt;&quot; を使うなら、代わりに<br>
-&quot;&lt;Cmd&gt;...&lt;CR&gt;&quot; が使えます。例:<br>
+特別な文字列&nbsp;<span class="Special">&lt;Cmd&gt;</span>&nbsp;は &quot;コマンドマッピング&quot; を開始し、モードを変化させずにコマ<br>
+ンドを直に実行します。マッピングの&nbsp;<span class="Special">{rhs}</span>&nbsp;で &quot;:...<span class="Special">&lt;CR&gt;</span>&quot; を使うなら、代わりに<br>
+&quot;<span class="Special">&lt;Cmd&gt;</span>...<span class="Special">&lt;CR&gt;</span>&quot; が使えます。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;noremap x &lt;Cmd&gt;echo mode(1)&lt;CR&gt;</div>
 <br>
 これはビジュアルおよびオペレータ待機モードでの&nbsp;<span class="Comment">:&lt;C-U&gt;</span>、挿入モードでの<br>
 <span class="Comment">&lt;C-O&gt;:</span>&nbsp;より柔軟で、なぜなら常にノーマルモードへ移行する代わりにコマンド実行<br>
-が現在のモードのままでだからです。ビジュアルモードでは&nbsp;<a class="Identifier" href="visual.html#gv">gv</a>&nbsp;での{訳注:選択の}<br>
+が現在のモードのままでだからです。ビジュアルモードでは&nbsp;<a class="Identifier" href="visual.html#gv">gv</a>&nbsp;での<span class="Special">{訳注:選択の}</span><br>
 維持のトリックが不要です。コマンドをコマンドラインモードで直に動かせます (これ<br>
 でないならタイマーでのハックが必要です)。<br>
-挿入モードを跨いで&nbsp;&lt;Cmd&gt;&nbsp;を使う例:<br>
+挿入モードを跨いで&nbsp;<span class="Special">&lt;Cmd&gt;</span>&nbsp;を使う例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nnoremap &lt;F3&gt; aText &lt;Cmd&gt;echo mode(1)&lt;CR&gt; Added&lt;Esc&gt;</div>
 <br>
-&lt;expr&gt;&nbsp;マッピングとは異なり、&lt;Cmd&gt;&nbsp;コマンドに特別な制約はありません: あたかも<br>
+<span class="Special">&lt;expr&gt;</span>&nbsp;マッピングとは異なり、<span class="Special">&lt;Cmd&gt;</span>&nbsp;コマンドに特別な制約はありません: あたかも<br>
 (制約のない)&nbsp;<a class="Identifier" href="autocmd.html#autocommand">autocommand</a>&nbsp;が呼び出されたかのように実行されます。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#<ScriptCmd>" name="&lt;ScriptCmd&gt;">&lt;ScriptCmd&gt;</a><br>
-&lt;ScriptCmd&gt;&nbsp;は&nbsp;&lt;Cmd&gt;&nbsp;に似ていますが、コマンド実行時のコンテキストはマッピング<br>
+<span class="Special">&lt;ScriptCmd&gt;</span>&nbsp;は&nbsp;<span class="Special">&lt;Cmd&gt;</span>&nbsp;に似ていますが、コマンド実行時のコンテキストはマッピング<br>
 が定義された箇所のスクリプトのものが設定されます。これは&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script で特に<br>
 便利です。また、インポートでの参照でも動作するので、autoload されるかもしれな<br>
 いスクリプトを使用するプラグインで便利です:<br>
@@ -383,28 +383,28 @@ CTRL-L&nbsp;で次の番号を挿入し、CTRL-R&nbsp;で番号をリセット�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;import autoload 'implementation.vim' as impl<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nnoremap &lt;F4&gt; &lt;ScriptCmd&gt;impl.DoTheWork()&lt;CR&gt;</div>
 <br>
-&lt;F4&gt;&nbsp;がどこで入力されたとしても、&quot;impl&quot; のインポートはマッピングが定義された<br>
+<span class="Special">&lt;F4&gt;</span>&nbsp;がどこで入力されたとしても、&quot;impl&quot; のインポートはマッピングが定義された<br>
 場所のスクリプトのコンテキストで検出されます。この例のように autoload のイン<br>
-ポートをする場合、マッピングが定義された時点ではなく、一度&nbsp;&lt;F4&gt;&nbsp;が入力された時<br>
+ポートをする場合、マッピングが定義された時点ではなく、一度&nbsp;<span class="Special">&lt;F4&gt;</span>&nbsp;が入力された時<br>
 にのみ &quot;implementation.vim&quot; スクリプトがロードされます。<br>
 <br>
-&lt;ScriptCmd&gt;&nbsp;がない時は &quot;s:impl&quot; は &quot;E121: Undefined variable&quot; という結果になり<br>
+<span class="Special">&lt;ScriptCmd&gt;</span>&nbsp;がない時は &quot;s:impl&quot; は &quot;E121: Undefined variable&quot; という結果になり<br>
 ます。<br>
 <br>
 <span class="Todo">Note</span>:<br>
--&nbsp;&lt;Cmd&gt;&nbsp;と&nbsp;&lt;ScriptCmd&gt;&nbsp;はモード変更を回避するので、ユーザーの介入を必要としな<br>
+-&nbsp;<span class="Special">&lt;Cmd&gt;</span>&nbsp;と&nbsp;<span class="Special">&lt;ScriptCmd&gt;</span>&nbsp;はモード変更を回避するので、ユーザーの介入を必要としな<br>
 &nbsp;&nbsp;いため、<a class="Identifier" href="autocmd.html#CmdlineEnter">CmdlineEnter</a>&nbsp;と&nbsp;<a class="Identifier" href="autocmd.html#CmdlineLeave">CmdlineLeave</a>&nbsp;イベントをトリガーしません。<br>
-- 同じ理由により、&lt;C-R&gt;&lt;C-W&gt;&nbsp;のようなキーコード&nbsp;<a class="Identifier" href="intro.html#keycodes">keycodes</a>&nbsp;は通常の、マッピン<br>
+- 同じ理由により、<span class="Special">&lt;C-R&gt;&lt;C-W&gt;</span>&nbsp;のようなキーコード&nbsp;<a class="Identifier" href="intro.html#keycodes">keycodes</a>&nbsp;は通常の、マッピン<br>
 &nbsp;&nbsp;グされていないキーとして解釈されます。<br>
-- コマンドは echo されません、&lt;silent&gt;&nbsp;は不要です。<br>
--&nbsp;{rhs}&nbsp;は、マッピングが再帰的であっても、短縮入力や他のマッピングの対象にはな<br>
+- コマンドは echo されません、<span class="Special">&lt;silent&gt;</span>&nbsp;は不要です。<br>
+-&nbsp;<span class="Special">{rhs}</span>&nbsp;は、マッピングが再帰的であっても、短縮入力や他のマッピングの対象にはな<br>
 &nbsp;&nbsp;りません。<br>
 - ビジュアルモードでは、<span class="Comment">line('v')</span>&nbsp;と&nbsp;<span class="Comment">col('v')</span>&nbsp;を使って、ビジュアルエリアの<br>
 &nbsp;&nbsp;一端を取得でき、カーソルは反対の端にいます。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#E1255" name="E1255">E1255</a>&nbsp;<a class="Constant" href="map.html#E1136" name="E1136">E1136</a><br>
-&lt;Cmd&gt;&nbsp;と&nbsp;&lt;ScriptCmd&gt;&nbsp;コマンドではマッピング定義の&nbsp;{rhs}&nbsp;が&nbsp;&lt;CR&gt;&nbsp;で終わる必要が<br>
-あります。<a class="Identifier" href="cmdline.html#Command-line">Command-line</a>&nbsp;に入ることはありません。{rhs}&nbsp;でリテラル&nbsp;&lt;CR&gt;&nbsp;を使用<br>
+<span class="Special">&lt;Cmd&gt;</span>&nbsp;と&nbsp;<span class="Special">&lt;ScriptCmd&gt;</span>&nbsp;コマンドではマッピング定義の&nbsp;<span class="Special">{rhs}</span>&nbsp;が&nbsp;<span class="Special">&lt;CR&gt;</span>&nbsp;で終わる必要が<br>
+あります。<a class="Identifier" href="cmdline.html#Command-line">Command-line</a>&nbsp;に入ることはありません。<span class="Special">{rhs}</span>&nbsp;でリテラル&nbsp;<span class="Special">&lt;CR&gt;</span>&nbsp;を使用<br>
 するには、<a class="Identifier" href="intro.html#<lt>">&lt;lt&gt;</a>&nbsp;を使用します。<br>
 <br>
 <br>
@@ -428,7 +428,7 @@ CTRL-L&nbsp;で次の番号を挿入し、CTRL-R&nbsp;で番号をリセット�
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#map-overview" name="map-overview">map-overview</a>&nbsp;<a class="Constant" href="map.html#map-modes" name="map-modes">map-modes</a><br>
 マップコマンドとモードの対応。詳細は以後に。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;モード<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;モード</span><br>
 :map&nbsp;&nbsp; :noremap&nbsp;&nbsp;:unmap&nbsp;&nbsp;&nbsp;&nbsp; ノーマル、ビジュアル、選択、オペレータ待機<br>
 :nmap&nbsp;&nbsp;:nnoremap :nunmap&nbsp;&nbsp;&nbsp;&nbsp;ノーマル<br>
 :vmap&nbsp;&nbsp;:vnoremap :vunmap&nbsp;&nbsp;&nbsp;&nbsp;ビジュアル、選択<br>
@@ -441,12 +441,12 @@ CTRL-L&nbsp;で次の番号を挿入し、CTRL-R&nbsp;で番号をリセット�
 :cmap&nbsp;&nbsp;:cnoremap :cunmap&nbsp;&nbsp;&nbsp;&nbsp;コマンドライン<br>
 :tmap&nbsp;&nbsp;:tnoremap :tunmap&nbsp;&nbsp;&nbsp;&nbsp;端末ジョブ<br>
 <br>
-{訳注: Lang-Argについては&nbsp;<a class="Identifier" href="map.html#language-mapping">language-mapping</a>&nbsp;を参照}<br>
+<span class="Special">{訳注: Lang-Argについては&nbsp;</span><a class="Identifier" href="map.html#language-mapping">language-mapping</a><span class="Special">&nbsp;を参照}</span><br>
 <br>
 上記のマップコマンドの対応表:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#map-table" name="map-table">map-table</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;モード&nbsp;&nbsp;| Norm | Ins | Cmd | Vis | Sel | Opr | Term | Lang |<br>
-コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +------+-----+-----+-----+-----+-----+------+------+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">モード&nbsp;&nbsp;| Norm | Ins | Cmd | Vis | Sel | Opr | Term | Lang |</span><br>
+<span class="PreProc">コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +------+-----+-----+-----+-----+-----+------+------+</span><br>
 [nore]map&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| yes&nbsp;&nbsp;|&nbsp;&nbsp;-&nbsp;&nbsp;|&nbsp;&nbsp;-&nbsp;&nbsp;| yes | yes | yes |&nbsp;&nbsp;-&nbsp;&nbsp; |&nbsp;&nbsp;-&nbsp;&nbsp; |<br>
 n[nore]map&nbsp;&nbsp;&nbsp;&nbsp; | yes&nbsp;&nbsp;|&nbsp;&nbsp;-&nbsp;&nbsp;|&nbsp;&nbsp;-&nbsp;&nbsp;|&nbsp;&nbsp;-&nbsp;&nbsp;|&nbsp;&nbsp;-&nbsp;&nbsp;|&nbsp;&nbsp;-&nbsp;&nbsp;|&nbsp;&nbsp;-&nbsp;&nbsp; |&nbsp;&nbsp;-&nbsp;&nbsp; |<br>
 [nore]map!&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;-&nbsp;&nbsp; | yes | yes |&nbsp;&nbsp;-&nbsp;&nbsp;|&nbsp;&nbsp;-&nbsp;&nbsp;|&nbsp;&nbsp;-&nbsp;&nbsp;|&nbsp;&nbsp;-&nbsp;&nbsp; |&nbsp;&nbsp;-&nbsp;&nbsp; |<br>
@@ -460,14 +460,14 @@ t[nore]map&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;-&nbsp;&nbsp; |&nbsp;&nbsp;-&nbs
 l[nore]map&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;-&nbsp;&nbsp; | yes | yes |&nbsp;&nbsp;-&nbsp;&nbsp;|&nbsp;&nbsp;-&nbsp;&nbsp;|&nbsp;&nbsp;-&nbsp;&nbsp;|&nbsp;&nbsp;-&nbsp;&nbsp; | yes&nbsp;&nbsp;|<br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;モード<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ノーマル&nbsp;&nbsp;ビジュアル+選択&nbsp;&nbsp;オペレータ待機<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;モード</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">ノーマル&nbsp;&nbsp;ビジュアル+選択&nbsp;&nbsp;オペレータ待機</span><br>
 :map&nbsp;&nbsp; :noremap&nbsp;&nbsp; :unmap&nbsp;&nbsp; :mapclear&nbsp;&nbsp;&nbsp;&nbsp; yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yes<br>
 :nmap&nbsp;&nbsp;:nnoremap&nbsp;&nbsp;:nunmap&nbsp;&nbsp;:nmapclear&nbsp;&nbsp;&nbsp;&nbsp;yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<br>
 :vmap&nbsp;&nbsp;:vnoremap&nbsp;&nbsp;:vunmap&nbsp;&nbsp;:vmapclear&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br>
 :omap&nbsp;&nbsp;:onoremap&nbsp;&nbsp;:ounmap&nbsp;&nbsp;:omapclear&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yes<br>
 <br>
-:nunmap は修道院の外でも使えます。{訳注: nunは修道女の意}<br>
+:nunmap は修道院の外でも使えます。<span class="Special">{訳注: nunは修道女の意}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#mapmode-x" name="mapmode-x">mapmode-x</a>&nbsp;<a class="Constant" href="map.html#mapmode-s" name="mapmode-s">mapmode-s</a><br>
 いくつかのコマンドはビジュアルモードと選択モードの両方で機能しますが、そうでな<br>
 いコマンドもあります。「ビジュアル」という言葉がビジュアルモードと選択モードの<br>
@@ -477,8 +477,8 @@ l[nore]map&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;-&nbsp;&nbsp; | yes | yes |&nbsp
 しれません。印字可能文字に対しては明示的に :xmap と :smap を使い分けるのがいい<br>
 でしょう。マップを定義したあとで :sunmap を使う方法もあります。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;モード<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアル&nbsp;&nbsp;選択<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;モード</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">ビジュアル&nbsp;&nbsp;選択</span><br>
 :vmap&nbsp;&nbsp;:vnoremap&nbsp;&nbsp;:vunmap&nbsp;&nbsp;:vmapclear&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yes<br>
 :xmap&nbsp;&nbsp;:xnoremap&nbsp;&nbsp;:xunmap&nbsp;&nbsp;:xmapclear&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br>
 :smap&nbsp;&nbsp;:snoremap&nbsp;&nbsp;:sunmap&nbsp;&nbsp;:smapclear&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yes<br>
@@ -487,8 +487,8 @@ l[nore]map&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;-&nbsp;&nbsp; | yes | yes |&nbsp
 一部のコマンドは、挿入モードとコマンドラインモードの両方で使えますが、一部はそ<br>
 うではありません:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;モード<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挿入&nbsp;&nbsp;コマンドライン Lang-Arg<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;モード</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">挿入&nbsp;&nbsp;コマンドライン Lang-Arg</span><br>
 :map!&nbsp;&nbsp;:noremap!&nbsp;&nbsp;:unmap!&nbsp;&nbsp;:mapclear!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br>
 :imap&nbsp;&nbsp;:inoremap&nbsp;&nbsp;:iunmap&nbsp;&nbsp;:imapclear&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<br>
 :cmap&nbsp;&nbsp;:cnoremap&nbsp;&nbsp;:cunmap&nbsp;&nbsp;:cmapclear&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<br>
@@ -518,7 +518,7 @@ Vim では &quot;:nmap&quot;、&quot;:vmap&quot;、&quot;:omap&quot;、&quot;:cm
 ジュアルモードを開始して対象となるテキストを選択してください。例えば、現在行の<br>
 関数名を選択するには次のようにします:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onoremap &lt;silent&gt; F :&lt;C-U&gt;normal! 0f(hviw&lt;CR&gt;</div>
-CTRL-U&nbsp;(&lt;C-U&gt;) を使って (Vimによって挿入される) 範囲指定を削除しています。ノー<br>
+<span class="Special">CTRL-U</span>&nbsp;(<span class="Special">&lt;C-U&gt;</span>) を使って (Vimによって挿入される) 範囲指定を削除しています。ノー<br>
 マルモードコマンドを使って、最初の '(' 文字を探し、その前にある単語を選択しま<br>
 す。通常はこれで関数名を選択できるでしょう。<br>
 <br>
@@ -543,10 +543,10 @@ CTRL-U&nbsp;(&lt;C-U&gt;) を使って (Vimによって挿入される) 範囲�
 な場面の総称です。<br>
 &nbsp;&nbsp; ある言語用の言語マップをロードするには、オプション&nbsp;<a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;を設定するのが<br>
 簡単です。<a class="Identifier" href="usr_45.html#45.5">45.5</a>を参照してください。<br>
-&nbsp;&nbsp; 挿入モードとコマンドラインモードでは&nbsp;CTRL-^&nbsp;で言語マップの使用の有無を切り替<br>
+&nbsp;&nbsp; 挿入モードとコマンドラインモードでは&nbsp;<span class="Special">CTRL-^</span>&nbsp;で言語マップの使用の有無を切り替<br>
 えることができます<a class="Identifier" href="insert.html#i_CTRL-^">i_CTRL-^</a>&nbsp;<a class="Identifier" href="cmdline.html#c_CTRL-^">c_CTRL-^</a>。これらのコマンドは&nbsp;<a class="Type" href="options.html#'iminsert'">'iminsert'</a>&nbsp;オプショ<br>
 ンの値を変更します。(検索パターンの入力ではなく)コマンドラインに入力するときに<br>
-は&nbsp;CTRL-^&nbsp;で切り替えるまで言語マップは無効になっています。挿入モードと検索パ<br>
+は&nbsp;<span class="Special">CTRL-^</span>&nbsp;で切り替えるまで言語マップは無効になっています。挿入モードと検索パ<br>
 ターンでの使用状態は別々に記録されます。挿入モードの使用状態は &quot;f&quot; や &quot;t&quot; など<br>
 のコマンドで文字を入力するときにも使用されます。<br>
 &nbsp;&nbsp; 言語マップは、既にマップが適用された文字には適用されません。言語マップは入<br>
@@ -557,8 +557,8 @@ CTRL-U&nbsp;(&lt;C-U&gt;) を使って (Vimによって挿入される) 範囲�
 1.4 マップの一覧表示&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#map-listing" name="map-listing">map-listing</a><br>
 マップを一覧表示したときの行頭の2文字は使用できるモードを表しています:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;モード<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Space&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ノーマル、ビジュアル、選択、オペレータ待機<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">文字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;モード</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Space&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ノーマル、ビジュアル、選択、オペレータ待機<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ノーマル<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ビジュアル、選択<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 選択<br>
@@ -570,22 +570,22 @@ CTRL-U&nbsp;(&lt;C-U&gt;) を使って (Vimによって挿入される) 範囲�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; コマンドライン<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 端末ジョブ<br>
 <br>
-{訳注: Lang-Argについては&nbsp;<a class="Identifier" href="map.html#language-mapping">language-mapping</a>&nbsp;を参照}<br>
+<span class="Special">{訳注: Lang-Argについては&nbsp;</span><a class="Identifier" href="map.html#language-mapping">language-mapping</a><span class="Special">&nbsp;を参照}</span><br>
 <br>
-{rhs}&nbsp;の直前に特殊な文字が表示されているものは次のことを意味します:<br>
+<span class="Special">{rhs}</span>&nbsp;の直前に特殊な文字が表示されているものは次のことを意味します:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 再マップされません<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スクリプトローカルなマップだけが再マップされます<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バッファローカルなマップです。<br>
 <br>
-{lhs}&nbsp;の後ろの最初の非空白文字から行末 (もしくは '|') までのすべての文字は<br>
-{rhs}&nbsp;の一部です。そのため&nbsp;{rhs}&nbsp;の末尾を空白文字にすることができます。<br>
+<span class="Special">{lhs}</span>&nbsp;の後ろの最初の非空白文字から行末 (もしくは '|') までのすべての文字は<br>
+<span class="Special">{rhs}</span>&nbsp;の一部です。そのため&nbsp;<span class="Special">{rhs}</span>&nbsp;の末尾を空白文字にすることができます。<br>
 <br>
 <span class="Todo">Note</span>: ビジュアルモードのマップでは &quot;'&lt;&quot; マークが使えます。これはカレントバッ<br>
 ファで選択されていた範囲の開始位置を示しています<a class="Identifier" href="motion.html#'<">'&lt;</a>。<br>
 <br>
 何がマッピングされているか調べるのに&nbsp;<a class="Identifier" href="various.html#:filter">:filter</a>&nbsp;コマンドを使うことができます。<br>
-パターンは&nbsp;{lhs}&nbsp;と&nbsp;{rhs}&nbsp;に対しては、生の形式で&nbsp;{訳注: 実際のキャラクターコー<br>
-ドを用いて}&nbsp;マッチします。<br>
+パターンは&nbsp;<span class="Special">{lhs}</span>&nbsp;と&nbsp;<span class="Special">{rhs}</span>&nbsp;に対しては、生の形式で&nbsp;<span class="Special">{訳注: 実際のキャラクターコー</span><br>
+<span class="Special">ドを用いて}</span>&nbsp;マッチします。<br>
 <br>
 マッピングが一覧表示されている際に、例えばタイマーコールバックなどからマッピン<br>
 グを追加したりクリアすることはできません。&nbsp;<a class="Constant" href="map.html#E1309" name="E1309">E1309</a><br>
@@ -606,23 +606,23 @@ CTRL-U&nbsp;(&lt;C-U&gt;) を使って (Vimによって挿入される) 範囲�
 1.5 特殊キーのマップ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map-special-keys" name=":map-special-keys">:map-special-keys</a><br>
 <br>
 特殊キーをマップに含めるのには次の 3 つの方法があります:<br>
-1. Vi 互換の方法: 生のキーコードをマップします。それはほとんどの場合&nbsp;&lt;Esc&gt;&nbsp;で<br>
+1. Vi 互換の方法: 生のキーコードをマップします。それはほとんどの場合&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;で<br>
 &nbsp;&nbsp; 始まるキーコード列です。このようなマップを入力するには、まず &quot;:map &quot; と入力<br>
-&nbsp;&nbsp; し、CTRL-V&nbsp;を押してからファンクションキーを押します。<span class="Todo">Note</span>: そのキーのキー<br>
+&nbsp;&nbsp; し、<span class="Special">CTRL-V</span>&nbsp;を押してからファンクションキーを押します。<span class="Todo">Note</span>: そのキーのキー<br>
 &nbsp;&nbsp; コードが termcap(t_options) にある場合は、自動的に内部コードの形式に変換さ<br>
 &nbsp;&nbsp; れ、次の 2. のようなマップになります (<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;に 'k' フラグが指定されて<br>
 &nbsp;&nbsp; いる場合は除く)<br>
 2. ファンクションキーの内部コードを使います。そのようなマップを入力するには、<br>
-&nbsp;&nbsp;&nbsp;CTRL-K&nbsp;を押してからファンクションキーを押します。もしくは、<br>
-&nbsp;&nbsp; &quot;#1&quot;、&quot;#2&quot;、.. &quot;#9&quot;、&quot;#0&quot;、&quot;&lt;Up&gt;&quot;、&quot;&lt;S-Down&gt;&quot;、&quot;&lt;S-F7&gt;&quot;、などの形式で指定し<br>
-&nbsp;&nbsp; ます。(キーの表は&nbsp;<a class="Identifier" href="intro.html#key-notation">key-notation</a>&nbsp;参照。&lt;Up&gt;&nbsp;以下のすべてのキーを使うことが<br>
+&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-K</span>&nbsp;を押してからファンクションキーを押します。もしくは、<br>
+&nbsp;&nbsp; &quot;#1&quot;、&quot;#2&quot;、.. &quot;#9&quot;、&quot;#0&quot;、&quot;<span class="Special">&lt;Up&gt;</span>&quot;、&quot;<span class="Special">&lt;S-Down&gt;</span>&quot;、&quot;<span class="Special">&lt;S-F7&gt;</span>&quot;、などの形式で指定し<br>
+&nbsp;&nbsp; ます。(キーの表は&nbsp;<a class="Identifier" href="intro.html#key-notation">key-notation</a>&nbsp;参照。<span class="Special">&lt;Up&gt;</span>&nbsp;以下のすべてのキーを使うことが<br>
 &nbsp;&nbsp; できます)。1 から 10 までのファンクションキーは二つの方法で定義できます:<br>
-&nbsp;&nbsp; &quot;#2&quot; のような番号だけの方法と、&quot;&lt;F2&gt;&quot; という表記で指定する方法です。この両<br>
+&nbsp;&nbsp; &quot;#2&quot; のような番号だけの方法と、&quot;<span class="Special">&lt;F2&gt;</span>&quot; という表記で指定する方法です。この両<br>
 &nbsp;&nbsp; 方がファンクションキー 2 を表します。&quot;#0&quot; はファンクションキー 10 を表し、<br>
 &nbsp;&nbsp; 't_f10' で定義されます。&quot;#0&quot; は、キーボードによってはファンクションキー 0に<br>
 &nbsp;&nbsp; なることがあります。<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;に '&lt;' フラグが指定されている場合は、<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>表<br>
 &nbsp;&nbsp; 記は使えません。<br>
-3. termcap エントリを&nbsp;&lt;t_xx&gt;&nbsp;という形式で指定します。&quot;xx&quot; は termcap エントリ<br>
+3. termcap エントリを&nbsp;<span class="Special">&lt;t_xx&gt;</span>&nbsp;という形式で指定します。&quot;xx&quot; は termcap エントリ<br>
 &nbsp;&nbsp; の名前です。どんなエントリの文字列も使うことができます。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp; :map &lt;t_F3&gt; G</div>
 &nbsp;&nbsp;&nbsp;これはファンクションキー 13 を &quot;G&quot; にマップします。<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;に '&lt;' フラ<br>
@@ -641,43 +641,43 @@ CTRL-U&nbsp;(&lt;C-U&gt;) を使って (Vimによって挿入される) 範囲�
 ります。端末のキーコードがマップとして認識された場合は、キーコードそのものがス<br>
 クリプトファイルに書き込まれます。端末コードとして認識された場合は、内部コード<br>
 がスクリプトファイルに書き込まれます。<br>
-{訳注: &gt; スクリプトファイルに書き込まれる...<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;おそらく&nbsp;<a class="Identifier" href="starting.html#-w">-w</a>&nbsp;の話。}<br>
+<span class="Special">{訳注: &gt; スクリプトファイルに書き込まれる...</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">おそらく&nbsp;</span><a class="Identifier" href="starting.html#-w">-w</a><span class="Special">&nbsp;の話。}</span><br>
 <br>
 <br>
 1.6 特殊文字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map-special-chars" name=":map-special-chars">:map-special-chars</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#map_backslash" name="map_backslash">map_backslash</a>&nbsp;<a class="Constant" href="map.html#map-backslash" name="map-backslash">map-backslash</a><br>
-<span class="Todo">Note</span>: このドキュメントでは、マップや短縮入力を定義するときに、CTRL-V&nbsp;だけが特<br>
+<span class="Todo">Note</span>: このドキュメントでは、マップや短縮入力を定義するときに、<span class="Special">CTRL-V</span>&nbsp;だけが特<br>
 殊な文字として触れられていますが、<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;が 'B' を含んでいない場合は、<br>
-バックスラッシュも&nbsp;CTRL-V&nbsp;と同様の特殊な働きをします。<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>&nbsp;表記も問題なく使用<br>
-できます。しかし、&quot;&lt;C-V&gt;&quot; を&nbsp;CTRL-V&nbsp;と同じように、(マップを入力するときに)次の<br>
+バックスラッシュも&nbsp;<span class="Special">CTRL-V</span>&nbsp;と同様の特殊な働きをします。<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>&nbsp;表記も問題なく使用<br>
+できます。しかし、&quot;<span class="Special">&lt;C-V&gt;</span>&quot; を&nbsp;<span class="Special">CTRL-V</span>&nbsp;と同じように、(マップを入力するときに)次の<br>
 文字をエスケープする目的で使うことはできません。<br>
 <br>
-バックスラッシュにマップしたり、バックスラッシュをそのまま&nbsp;{rhs}&nbsp;に使いたい場<br>
-合は、特別文字 &quot;&lt;Bslash&gt;&quot; を使います。マップを入れ子にした場合などにバックス<br>
+バックスラッシュにマップしたり、バックスラッシュをそのまま&nbsp;<span class="Special">{rhs}</span>&nbsp;に使いたい場<br>
+合は、特別文字 &quot;<span class="Special">&lt;Bslash&gt;</span>&quot; を使います。マップを入れ子にした場合などにバックス<br>
 ラッシュを二重にする必要がなくなります。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#map_CTRL-C" name="map_CTRL-C">map_CTRL-C</a>&nbsp;<a class="Constant" href="map.html#map-CTRL-C" name="map-CTRL-C">map-CTRL-C</a><br>
-CTRL-C&nbsp;を&nbsp;{lhs}&nbsp;で使うことはできますが、それは Vim がキー入力を待機中のときだ<br>
+<span class="Special">CTRL-C</span>&nbsp;を&nbsp;<span class="Special">{lhs}</span>&nbsp;で使うことはできますが、それは Vim がキー入力を待機中のときだ<br>
 け機能します。Vim がビジー状態 (何かを実行中) のときは機能しません。Vim がビ<br>
-ジー状態の場合、CTRL-C&nbsp;は実行中のコマンドを中断します。<br>
-MS-Windows の GUI 環境では、CTRL-C&nbsp;にマップすることができるので、クリップボー<br>
+ジー状態の場合、<span class="Special">CTRL-C</span>&nbsp;は実行中のコマンドを中断します。<br>
+MS-Windows の GUI 環境では、<span class="Special">CTRL-C</span>&nbsp;にマップすることができるので、クリップボー<br>
 ドにコピーする機能を割り当てることができます。Vim の動作を中断するには<br>
-CTRL-Break&nbsp;を使います。<br>
+<span class="Special">CTRL-Break</span>&nbsp;を使います。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#map_space_in_lhs" name="map_space_in_lhs">map_space_in_lhs</a>&nbsp;<a class="Constant" href="map.html#map-space_in_lhs" name="map-space_in_lhs">map-space_in_lhs</a><br>
-{lhs}&nbsp;に空白文字を含めるには&nbsp;CTRL-V&nbsp;を前置してください (空白文字の前で&nbsp;CTRL-V<br>
+<span class="Special">{lhs}</span>&nbsp;に空白文字を含めるには&nbsp;<span class="Special">CTRL-V</span>&nbsp;を前置してください (空白文字の前で&nbsp;<span class="Special">CTRL-V</span><br>
 を二度押しで入力)。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#map_space_in_rhs" name="map_space_in_rhs">map_space_in_rhs</a>&nbsp;<a class="Constant" href="map.html#map-space_in_rhs" name="map-space_in_rhs">map-space_in_rhs</a><br>
-{rhs}&nbsp;を空白文字で開始するには &quot;&lt;Space&gt;&quot; を使ってください。Vi との互換性を完全<br>
-に保ちたい場合は&nbsp;<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>&nbsp;表記を使わずに、{rhs}&nbsp;の直前に&nbsp;CTRL-V&nbsp;(CTRL-V&nbsp;を二度押し<br>
+<span class="Special">{rhs}</span>&nbsp;を空白文字で開始するには &quot;<span class="Special">&lt;Space&gt;</span>&quot; を使ってください。Vi との互換性を完全<br>
+に保ちたい場合は&nbsp;<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>&nbsp;表記を使わずに、<span class="Special">{rhs}</span>&nbsp;の直前に&nbsp;<span class="Special">CTRL-V</span>&nbsp;(<span class="Special">CTRL-V</span>&nbsp;を二度押し<br>
 で入力)を前置してください。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#map_empty_rhs" name="map_empty_rhs">map_empty_rhs</a>&nbsp;<a class="Constant" href="map.html#map-empty-rhs" name="map-empty-rhs">map-empty-rhs</a><br>
-CTRL-V&nbsp;を1つだけ入力した後に (CTRL-Vを2度押しで入力) 何も入力しないことで空の<br>
-{rhs}&nbsp;を作ることもできます。残念ながらvimrcファイル内ではこの方法は使用できま<br>
+<span class="Special">CTRL-V</span>&nbsp;を1つだけ入力した後に (<span class="Special">CTRL-V</span>を2度押しで入力) 何も入力しないことで空の<br>
+<span class="Special">{rhs}</span>&nbsp;を作ることもできます。残念ながらvimrcファイル内ではこの方法は使用できま<br>
 せん。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#<Nop>" name="&lt;Nop&gt;">&lt;Nop&gt;</a><br>
-空のマップを作るには&nbsp;{rhs}&nbsp;に &quot;&lt;Nop&gt;&quot; を指定する方法が簡単です。これは&nbsp;<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>&nbsp;表<br>
+空のマップを作るには&nbsp;<span class="Special">{rhs}</span>&nbsp;に &quot;<span class="Special">&lt;Nop&gt;</span>&quot; を指定する方法が簡単です。これは&nbsp;<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>&nbsp;表<br>
 記を使えるようにしていれば動作します。例えば、ファンクションキー 8 は何もしな<br>
 い、としたい場合は次のようにします:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map&nbsp;&nbsp;&lt;F8&gt;&nbsp;&nbsp;&lt;Nop&gt;<br>
@@ -690,12 +690,12 @@ CTRL-V&nbsp;を1つだけ入力した後に (CTRL-Vを2度押しで入力) 何�
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set encoding=latin1<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:imap &lt;M-C&gt; foo<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set encoding=utf-8</div>
-latin1 環境で文字「Ã」(0xc3 または&nbsp;&lt;M-C&gt;) をマップしています。例えば、「á」<br>
-(0xe1 または&nbsp;&lt;M-a&gt;) は UTF-8 では 0xc3 0xa1 の 2 バイトで表現されるので、0xc3<br>
+latin1 環境で文字「Ã」(0xc3 または&nbsp;<span class="Special">&lt;M-C&gt;</span>) をマップしています。例えば、「á」<br>
+(0xe1 または&nbsp;<span class="Special">&lt;M-a&gt;</span>) は UTF-8 では 0xc3 0xa1 の 2 バイトで表現されるので、0xc3<br>
 をマップしてしまうと á が入力できなくなってしまいます。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#<Leader>" name="&lt;Leader&gt;">&lt;Leader&gt;</a>&nbsp;<a class="Constant" href="map.html#mapleader" name="mapleader">mapleader</a><br>
-マップコマンドで特別な文字列 &quot;&lt;Leader&gt;&quot; を使用すると、その部分が変数<br>
+マップコマンドで特別な文字列 &quot;<span class="Special">&lt;Leader&gt;</span>&quot; を使用すると、その部分が変数<br>
 &quot;g:mapleader&quot; に設定された文字列で置き換わります。&quot;g:mapleader&quot; が空文字列のと<br>
 きや設定されていない場合にはバックスラッシュが使用されます。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map &lt;Leader&gt;A&nbsp;&nbsp;oanother line&lt;Esc&gt;</div>
@@ -712,57 +712,57 @@ latin1 環境で文字「Ã」(0xc3 または&nbsp;&lt;M-C&gt;) をマップし�
 を変更しても、すでに定義されているマップには影響しません。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#<LocalLeader>" name="&lt;LocalLeader&gt;">&lt;LocalLeader&gt;</a>&nbsp;<a class="Constant" href="map.html#maplocalleader" name="maplocalleader">maplocalleader</a><br>
-&lt;LocalLeader&gt;&nbsp;は&nbsp;&lt;Leader&gt;&nbsp;に似ていますが、&quot;mapleader&quot; ではなく<br>
-&quot;maplocalleader&quot; を使用します。&lt;LocalLeader&gt;&nbsp;はバッファローカルのマップに使用<br>
+<span class="Special">&lt;LocalLeader&gt;</span>&nbsp;は&nbsp;<span class="Special">&lt;Leader&gt;</span>&nbsp;に似ていますが、&quot;mapleader&quot; ではなく<br>
+&quot;maplocalleader&quot; を使用します。<span class="Special">&lt;LocalLeader&gt;</span>&nbsp;はバッファローカルのマップに使用<br>
 するといいでしょう。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;buffer&gt; &lt;LocalLeader&gt;A&nbsp;&nbsp;oanother line&lt;Esc&gt;</div>
 <br>
-グローバルプラグインでは&nbsp;&lt;Leader&gt;&nbsp;を使用し、ファイルタイププラグインでは<br>
-&lt;LocalLeader&gt;&nbsp;を使用するといいでしょう。&quot;mapleader&quot; と &quot;maplocalleader&quot; の設定<br>
+グローバルプラグインでは&nbsp;<span class="Special">&lt;Leader&gt;</span>&nbsp;を使用し、ファイルタイププラグインでは<br>
+<span class="Special">&lt;LocalLeader&gt;</span>&nbsp;を使用するといいでしょう。&quot;mapleader&quot; と &quot;maplocalleader&quot; の設定<br>
 は同じでも構いませんが、別の値を設定すれば、グローバルプラグインとファイルタイ<br>
 ププラグインのマップが重なる可能性が低くなります。設定例としては、&quot;mapleader&quot;<br>
 をバックスラッシュのままにしておいて、&quot;maplocalleader&quot; をアンダースコア (_) に<br>
 するなど。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#map-<SID>" name="map-&lt;SID&gt;">map-&lt;SID&gt;</a><br>
-特別な文字列 &quot;&lt;SID&gt;&quot; を使ってスクリプトローカルなマップを定義できます。詳細は<br>
+特別な文字列 &quot;<span class="Special">&lt;SID&gt;</span>&quot; を使ってスクリプトローカルなマップを定義できます。詳細は<br>
 <a class="Identifier" href="map.html#<SID>">&lt;SID&gt;</a>を参照してください。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#<Plug>" name="&lt;Plug&gt;">&lt;Plug&gt;</a><br>
-特別な文字列 &quot;&lt;Plug&gt;&quot; を使ってスクリプトの内部作業用のマップを定義できます。こ<br>
+特別な文字列 &quot;<span class="Special">&lt;Plug&gt;</span>&quot; を使ってスクリプトの内部作業用のマップを定義できます。こ<br>
 れはどのキー入力にもマッチしません。プラグインを作成するときに便利です<br>
 <a class="Identifier" href="usr_51.html#using-<Plug>">using-&lt;Plug&gt;</a>。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#<MouseMove>" name="&lt;MouseMove&gt;">&lt;MouseMove&gt;</a><br>
-特別な文字列 &quot;&lt;MouseMove&gt;&quot; を使ってマウスの移動を取り扱えます。そのためには<br>
+特別な文字列 &quot;<span class="Special">&lt;MouseMove&gt;</span>&quot; を使ってマウスの移動を取り扱えます。そのためには<br>
 <a class="Type" href="options.html#'mousemoveevent'">'mousemoveevent'</a>&nbsp;が有効になっている必要があります。現在、GUI でのみ動作します。<br>
 <a class="Identifier" href="builtin.html#getmousepos()">getmousepos()</a>&nbsp;関数がマウスの位置を取得するのに使えます。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#<Char>" name="&lt;Char&gt;">&lt;Char&gt;</a>&nbsp;<a class="Constant" href="map.html#<Char->" name="&lt;Char-&gt;">&lt;Char-&gt;</a><br>
-&lt;Char&gt;&nbsp;を使って、文字を10進数、8進数、16進数の数値指定でマップできます:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Char-123&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;character 123<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Char-033&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;character 27<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Char-0x7f&gt;&nbsp;&nbsp;&nbsp;&nbsp; character 127<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;S-Char-114&gt;&nbsp;&nbsp;&nbsp;&nbsp;character 114 ('r') shifted ('R')<br>
+<span class="Special">&lt;Char&gt;</span>&nbsp;を使って、文字を10進数、8進数、16進数の数値指定でマップできます:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Char-123&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;character 123<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Char-033&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;character 27<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Char-0x7f&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp; character 127<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-Char-114&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;character 114 ('r') shifted ('R')<br>
 これは&nbsp;<a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;ファイルで (マルチバイト) 文字を定義するのに便利です。表記は大<br>
 文字でも小文字でも構いません。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#map-comments" name="map-comments">map-comments</a><br>
-マップコマンドでは '&quot;' (ダブルクォート) も&nbsp;{lhs}&nbsp;や&nbsp;{rhs}&nbsp;の一部と見なされるた<br>
+マップコマンドでは '&quot;' (ダブルクォート) も&nbsp;<span class="Special">{lhs}</span>&nbsp;や&nbsp;<span class="Special">{rhs}</span>&nbsp;の一部と見なされるた<br>
 め、マップコマンドの後ろにコメントを置くことはできません。しかし、|&quot; を使うこ<br>
 とができます。これはコメント付きの空の新しいコマンドを開始するからです。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#map_bar" name="map_bar">map_bar</a>&nbsp;<a class="Constant" href="map.html#map-bar" name="map-bar">map-bar</a><br>
 '|' 文字は、マップコマンドと次のコマンドを分けるために使われるので、'|' 文字を<br>
-{rhs}&nbsp;に含めるには特殊な方法が必要です。<br>
+<span class="Special">{rhs}</span>&nbsp;に含めるには特殊な方法が必要です。<br>
 次の3つの方法があります:<br>
-&nbsp;&nbsp;&nbsp;方法&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用できる条件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 例<br>
-&nbsp;&nbsp;&nbsp;&lt;Bar&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>に'&lt;'が含まれていない&nbsp;&nbsp; :map _l :!ls&nbsp;&lt;Bar&gt;&nbsp;more^M<br>
+&nbsp;&nbsp;&nbsp;<span class="PreProc">方法&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用できる条件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 例</span><br>
+&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Bar&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>に'&lt;'が含まれていない&nbsp;&nbsp; :map _l :!ls&nbsp;<span class="Special">&lt;Bar&gt;</span>&nbsp;more^M<br>
 &nbsp;&nbsp; \|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>に'b'が含まれていない&nbsp;&nbsp; :map _l :!ls \| more^M<br>
 &nbsp;&nbsp; ^V|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VimとViで常に使用できる&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map _l :!ls ^V| more^M<br>
 <br>
-(ここで ^V は&nbsp;CTRL-V&nbsp;を表します。一つの&nbsp;CTRL-V&nbsp;を挿入するには&nbsp;CTRL-V&nbsp;を二度押<br>
-しで入力します。この用途では、<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>表記を使って &quot;&lt;C-V&gt;&quot; とすることはできません)。<br>
+(ここで ^V は&nbsp;<span class="Special">CTRL-V</span>&nbsp;を表します。一つの&nbsp;<span class="Special">CTRL-V</span>&nbsp;を挿入するには&nbsp;<span class="Special">CTRL-V</span>&nbsp;を二度押<br>
+しで入力します。この用途では、<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>表記を使って &quot;<span class="Special">&lt;C-V&gt;</span>&quot; とすることはできません)。<br>
 <br>
 <a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;が標準設定のままなら、三つ全ての方法が使用できます。<br>
 <br>
@@ -772,12 +772,12 @@ latin1 環境で文字「Ã」(0xc3 または&nbsp;&lt;M-C&gt;) をマップし�
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#map_return" name="map_return">map_return</a>&nbsp;<a class="Constant" href="map.html#map-return" name="map-return">map-return</a><br>
 マップに Ex コマンドを含める場合、そのコマンドラインを実行するために改行文字を<br>
-挿入する必要があります。これには&nbsp;&lt;CR&gt;&nbsp;を使うことが推奨されています(参照<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>)。<br>
+挿入する必要があります。これには&nbsp;<span class="Special">&lt;CR&gt;</span>&nbsp;を使うことが推奨されています(参照<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>)。<br>
 例:<br>
 <div class="helpExample">&nbsp;&nbsp; :map&nbsp;&nbsp;_ls&nbsp;&nbsp;:!ls -l %:S&lt;CR&gt;:echo &quot;the end&quot;&lt;CR&gt;</div>
 <br>
 挿入モードやコマンドラインモードで、入力する文字がマップされないようにするに<br>
-は、その文字を入力する前に&nbsp;CTRL-V&nbsp;を (1回) 押してください。<a class="Type" href="options.html#'paste'">'paste'</a>&nbsp;がオンの場<br>
+は、その文字を入力する前に&nbsp;<span class="Special">CTRL-V</span>&nbsp;を (1回) 押してください。<a class="Type" href="options.html#'paste'">'paste'</a>&nbsp;がオンの場<br>
 合には、挿入モードでマップを使用できません。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#map-error" name="map-error">map-error</a><br>
@@ -785,33 +785,33 @@ latin1 環境で文字「Ã」(0xc3 または&nbsp;&lt;M-C&gt;) をマップし�
 あるいはビープ音が出るかもしれません)、マップのまだ実行されていない部分は実行<br>
 されません。これはVi互換です。<br>
 <br>
-<span class="Todo">Note</span>: コマンド「@zZtTfF[]rm'`&quot;v」と&nbsp;CTRL-X&nbsp;の引数にはマップは適用されません。<br>
+<span class="Todo">Note</span>: コマンド「@zZtTfF[]rm'`&quot;v」と&nbsp;<span class="Special">CTRL-X</span>&nbsp;の引数にはマップは適用されません。<br>
 どのようなマップがあっても、レジスタやマークを指定できるようにするためです。<br>
 <br>
 1.7 マップに使うキー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#map-which-keys" name="map-which-keys">map-which-keys</a><br>
 <br>
-マップを定義するときに&nbsp;{lhs}&nbsp;に指定するキーを選ぶことができますが、Vim のコマ<br>
+マップを定義するときに&nbsp;<span class="Special">{lhs}</span>&nbsp;に指定するキーを選ぶことができますが、Vim のコマ<br>
 ンドに使われているキーをマップしてしまうとそれらのコマンドを使用できなくなりま<br>
 す。そこで、いくつかの提案があります:<br>
-- ファンクションキー (&lt;F2&gt;、&lt;F3&gt;など) や Shift+ファンクションキー(&lt;S-F1&gt;、<br>
-&nbsp;&nbsp;&lt;S-F2&gt;など) を使用する。&lt;F1&gt;&nbsp;には既にヘルプコマンドが割り当てられています。<br>
+- ファンクションキー (<span class="Special">&lt;F2&gt;</span>、<span class="Special">&lt;F3&gt;</span>など) や Shift+ファンクションキー(<span class="Special">&lt;S-F1&gt;</span>、<br>
+&nbsp;&nbsp;<span class="Special">&lt;S-F2&gt;</span>など) を使用する。<span class="Special">&lt;F1&gt;</span>&nbsp;には既にヘルプコマンドが割り当てられています。<br>
 - Alt キー または Meta キーと任意のキーを押す。あなたのキーボードのアクセント<br>
 &nbsp;&nbsp;記号付き文字の使用頻度に依存します。&nbsp;<a class="Identifier" href="map.html#:map-alt-keys">:map-alt-keys</a><br>
 - &quot;_&quot; や &quot;,&quot; などの文字と別の文字を組み合わせて使用する。コマンド &quot;_&quot; と&quot;,&quot; は<br>
 &nbsp;&nbsp;すでに存在していますが (<a class="Identifier" href="motion.html#_">_</a>と<a class="Identifier" href="motion.html#,">,</a>を参照)、使う機会はあまりないでしょう。<br>
-- 他に類するコマンドがあるキーを使用する。例えば、CTRL-P&nbsp;と&nbsp;CTRL-N。さらに多く<br>
+- 他に類するコマンドがあるキーを使用する。例えば、<span class="Special">CTRL-P</span>&nbsp;と&nbsp;<span class="Special">CTRL-N</span>。さらに多く<br>
 &nbsp;&nbsp;のマップを使用するには、複数文字を使用します。<br>
--&nbsp;&lt;Leader&gt;&nbsp;と 1 つまたは複数のキーを組み合わせて使用する。これは特にスクリプト<br>
+-&nbsp;<span class="Special">&lt;Leader&gt;</span>&nbsp;と 1 つまたは複数のキーを組み合わせて使用する。これは特にスクリプト<br>
 &nbsp;&nbsp;で便利です。&nbsp;<a class="Identifier" href="map.html#mapleader">mapleader</a><br>
 <br>
 標準のキー操作を損なうことなくマップできるキーや、使われていないキーを探すには<br>
-<a class="Identifier" href="vimindex.html">index.txt</a>&nbsp;を参照してください。&quot;:help&nbsp;{key}^D&quot; を使用してそのキーが使われてい<br>
-るかどうかを調べることもできます ({key}は調べたいキー、^DはCTRL-Dの入力)。<br>
+<a class="Identifier" href="vimindex.html">index.txt</a>&nbsp;を参照してください。&quot;:help&nbsp;<span class="Special">{key}</span>^D&quot; を使用してそのキーが使われてい<br>
+るかどうかを調べることもできます (<span class="Special">{key}</span>は調べたいキー、^Dは<span class="Special">CTRL-D</span>の入力)。<br>
 <br>
 <br>
 1.8 例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#map-examples" name="map-examples">map-examples</a><br>
 <br>
-マップの例をいくつか示します (見た通り入力してください。&quot;&lt;CR&gt;&quot; は 4 文字です。<br>
+マップの例をいくつか示します (見た通り入力してください。&quot;<span class="Special">&lt;CR&gt;</span>&quot; は 4 文字です。<br>
 このような表記(<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>)は&nbsp;<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;に '&lt;' が含まれていると使用できません)。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp; :map &lt;F3&gt;&nbsp;&nbsp;o#include<br>
@@ -821,10 +821,10 @@ latin1 環境で文字「Ã」(0xc3 または&nbsp;&lt;M-C&gt;) をマップし�
 <br>
 カウント指定の掛け算<br>
 <br>
-マップの展開前にカウント指定が入力されると、そのカウントは&nbsp;{lhs}&nbsp;の前に入力さ<br>
+マップの展開前にカウント指定が入力されると、そのカウントは&nbsp;<span class="Special">{lhs}</span>&nbsp;の前に入力さ<br>
 れたものとして扱われます。例えば、次のマップを定義したとき:<br>
 <div class="helpExample">&nbsp;&nbsp; :map &lt;F4&gt;&nbsp;&nbsp;3w</div>
-2&lt;F4&gt;&nbsp;は &quot;23w&quot; となります。つまり、2 * 3 単語移動するのではなく、23 単語の移動<br>
+2<span class="Special">&lt;F4&gt;</span>&nbsp;は &quot;23w&quot; となります。つまり、2 * 3 単語移動するのではなく、23 単語の移動<br>
 になります。カウントを掛けたい場合は式レジスタを使ってください:<br>
 <div class="helpExample">&nbsp;&nbsp; :map &lt;F4&gt;&nbsp;&nbsp;@='3w'&lt;CR&gt;</div>
 クォートで囲まれた部分が実行される式です。<a class="Identifier" href="change.html#@=">@=</a><br>
@@ -845,7 +845,7 @@ Vim は、入力されたキーで始まるマップがあるかどうか調べ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#map-precedence" name="map-precedence">map-precedence</a><br>
 バッファローカルなマップ(<a class="Identifier" href="map.html#:map-<buffer>">:map-&lt;buffer&gt;</a>を使用して定義された)はどのグローバル<br>
 なマップよりも優先されます。バッファローカルなマップがグローバルなマップと同じ<br>
-場合、Vimはバッファローカルなマップを使用します。加えて、&lt;nowait&gt;&nbsp;で定義された<br>
+場合、Vimはバッファローカルなマップを使用します。加えて、<span class="Special">&lt;nowait&gt;</span>&nbsp;で定義された<br>
 場合はより長いマップが同じ接頭辞を持っているとしても、直ちに完了したマップを使<br>
 用します。例えば、次の2つのマップがあるとします:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;buffer&gt; &lt;nowait&gt; \a&nbsp;&nbsp; :echo &quot;Local \a&quot;&lt;CR&gt;<br>
@@ -857,24 +857,24 @@ Vim は、入力されたキーで始まるマップがあるかどうか調べ�
 次のような状況では、キーコードが認識されないことがあります:<br>
 - Vim がキーコードを部分的にしか読めない。これは最初の文字だけ読める場合が多い<br>
 &nbsp;&nbsp;です。特定の Unix 版と xterm の組み合わせで起こります。<br>
-- 文字(列)の後にキーコードがあるマップ。例、&quot;&lt;F1&gt;&lt;F1&gt;&quot; や &quot;g&lt;F1&gt;&quot;。<br>
+- 文字(列)の後にキーコードがあるマップ。例、&quot;<span class="Special">&lt;F1&gt;&lt;F1&gt;</span>&quot; や &quot;g<span class="Special">&lt;F1&gt;</span>&quot;。<br>
 <br>
 このように、キーコードが認識されない状況では、そのようなマップを使用することが<br>
 できません。対処方が2つあります:<br>
 <br>
 -&nbsp;<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;から 'K' フラグを除く。そうすると Vim はファンクションキーの残り<br>
 &nbsp;&nbsp;のコードを待つようになります。<br>
--&nbsp;&lt;F1&gt;&nbsp;から&nbsp;&lt;F4&gt;&nbsp;のキーによって生成される実際のキーコードが&nbsp;&lt;xF1&gt;&nbsp;から&nbsp;&lt;xF4&gt;<br>
-&nbsp;&nbsp;と同じ場合があります。&lt;xF1&gt;&nbsp;を&nbsp;&lt;F1&gt;&nbsp;へ、&lt;xF2&gt;&nbsp;を&nbsp;&lt;F2&gt;へ、といったマップが存<br>
-&nbsp;&nbsp;在しますが、これはマップの後半では認識されません。&lt;F1&gt;&nbsp;から&nbsp;&lt;F4&gt;&nbsp;のキーの<br>
+-&nbsp;<span class="Special">&lt;F1&gt;</span>&nbsp;から&nbsp;<span class="Special">&lt;F4&gt;</span>&nbsp;のキーによって生成される実際のキーコードが&nbsp;<span class="Special">&lt;xF1&gt;</span>&nbsp;から&nbsp;<span class="Special">&lt;xF4&gt;</span><br>
+&nbsp;&nbsp;と同じ場合があります。<span class="Special">&lt;xF1&gt;</span>&nbsp;を&nbsp;<span class="Special">&lt;F1&gt;</span>&nbsp;へ、<span class="Special">&lt;xF2&gt;</span>&nbsp;を&nbsp;<span class="Special">&lt;F2&gt;</span>へ、といったマップが存<br>
+&nbsp;&nbsp;在しますが、これはマップの後半では認識されません。<span class="Special">&lt;F1&gt;</span>&nbsp;から&nbsp;<span class="Special">&lt;F4&gt;</span>&nbsp;のキーの<br>
 &nbsp;&nbsp;キーコードを正しく設定してください:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set &lt;F1&gt;=&lt;type CTRL-V&gt;&lt;type F1&gt;</div>
-&nbsp;&nbsp;&lt;F1&gt;&nbsp;を四文字として入力してください。&quot;=&quot; の後の部分は文字通りにではなく、実<br>
+&nbsp;&nbsp;<span class="Special">&lt;F1&gt;</span>&nbsp;を四文字として入力してください。&quot;=&quot; の後の部分は文字通りにではなく、実<br>
 &nbsp;&nbsp;際のキーを入力してください。<br>
 マップを定義するときに二番目の特殊キーを実際のキーコードで指定することでも解決<br>
 できます:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;F1&gt;&lt;Esc&gt;OP :echo &quot;yes&quot;&lt;CR&gt;</div>
-本物の&nbsp;&lt;Esc&gt;&nbsp;を入力しないでください。Vim がキーコードを認識し、&lt;F1&gt;&nbsp;に置き換え<br>
+本物の&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;を入力しないでください。Vim がキーコードを認識し、<span class="Special">&lt;F1&gt;</span>&nbsp;に置き換え<br>
 てしまいます。<br>
 <br>
 他にも、ALT や Meta キーを押しながらキーを入力したときに、コードの 8 ビット目<br>
@@ -882,15 +882,15 @@ Vim は、入力されたキーで始まるマップがあるかどうか調べ�
 ります。<a class="Identifier" href="map.html#:map-alt-keys">:map-alt-keys</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#recursive_mapping" name="recursive_mapping">recursive_mapping</a><br>
-{rhs}&nbsp;の中に&nbsp;{lhs}&nbsp;を含めて、再帰マップを作成できます。{lhs}&nbsp;を入力すると<br>
-{rhs}&nbsp;に置き換えられ、{rhs}&nbsp;の中に&nbsp;{lhs}&nbsp;があるとその&nbsp;{lhs}&nbsp;がさらに&nbsp;{rhs}&nbsp;に<br>
-置き換えられ、さらに&nbsp;{rhs}&nbsp;の中の&nbsp;{lhs}&nbsp;が置き換えられ...。というようにコマン<br>
+<span class="Special">{rhs}</span>&nbsp;の中に&nbsp;<span class="Special">{lhs}</span>&nbsp;を含めて、再帰マップを作成できます。<span class="Special">{lhs}</span>&nbsp;を入力すると<br>
+<span class="Special">{rhs}</span>&nbsp;に置き換えられ、<span class="Special">{rhs}</span>&nbsp;の中に&nbsp;<span class="Special">{lhs}</span>&nbsp;があるとその&nbsp;<span class="Special">{lhs}</span>&nbsp;がさらに&nbsp;<span class="Special">{rhs}</span>&nbsp;に<br>
+置き換えられ、さらに&nbsp;<span class="Special">{rhs}</span>&nbsp;の中の&nbsp;<span class="Special">{lhs}</span>&nbsp;が置き換えられ...。というようにコマン<br>
 ドを無限に繰り返すことができます。エラーを生じさせないと止めることができないの<br>
-が唯一の問題です。例外として、{rhs}&nbsp;が&nbsp;{lhs}&nbsp;で始まっている場合は、その文字は<br>
+が唯一の問題です。例外として、<span class="Special">{rhs}</span>&nbsp;が&nbsp;<span class="Special">{lhs}</span>&nbsp;で始まっている場合は、その文字は<br>
 再帰的にマップされません (これは Vi 互換です)。<br>
 例えば次のマップは:<br>
 <div class="helpExample">&nbsp;&nbsp; :map ab abcd</div>
-&quot;a&quot; コマンドを実行して &quot;bcd&quot; を挿入します。{rhs}&nbsp;の中の &quot;ab&quot; は再帰的にマップ<br>
+&quot;a&quot; コマンドを実行して &quot;bcd&quot; を挿入します。<span class="Special">{rhs}</span>&nbsp;の中の &quot;ab&quot; は再帰的にマップ<br>
 されません。<br>
 <br>
 二つのキーの意味を入れ換えるような場合は :noremap を使ってください。例えば:<br>
@@ -899,7 +899,7 @@ Vim は、入力されたキーで始まるマップがあるかどうか調べ�
 これは、カーソルの上下移動のコマンドを入れ換えます。<br>
 <br>
 普通の :map コマンドでマップを定義した場合、<a class="Type" href="options.html#'remap'">'remap'</a>&nbsp;オプションがオンになってい<br>
-ると、そのマップが使用された後のテキスト ({rhs}) に&nbsp;{lhs}&nbsp;が含まれている限り、<br>
+ると、そのマップが使用された後のテキスト (<span class="Special">{rhs}</span>) に&nbsp;<span class="Special">{lhs}</span>&nbsp;が含まれている限り、<br>
 マップが再帰的に繰り返されます。例えば、次のようなマップを使用する場合:<br>
 <div class="helpExample">&nbsp;&nbsp; :map x y<br>
 &nbsp;&nbsp; :map y x</div>
@@ -908,7 +908,7 @@ Vim はまず、x を y で置き換え、それから y を x で置き換え�
 &quot;recursive mapping&quot; というエラーメッセージを表示します。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map-undo" name=":map-undo">:map-undo</a><br>
-マップされたもの({rhs})がアンドゥコマンドを含んでいると、その操作を実行する前<br>
+マップされたもの(<span class="Special">{rhs}</span>)がアンドゥコマンドを含んでいると、その操作を実行する前<br>
 の状態に戻すことになります。アンドゥが1回だけなら、その動作はオリジナルのVi互<br>
 換です(オリジナルのViでは、2回アンドゥしても意味がなく、最初のアンドゥを実行す<br>
 る前の状態に戻るだけです)。<br>
@@ -916,9 +916,9 @@ Vim はまず、x を y で置き換え、それから y を x で置き換え�
 <br>
 1.10 ALT キーを使ったマップ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map-alt-keys" name=":map-alt-keys">:map-alt-keys</a><br>
 <br>
-マッピングコマンドの読みやすさのため&nbsp;&lt;A-k&gt;&nbsp;の形式が使えます。<span class="Todo">Note</span>&nbsp;&lt;A-k&gt;&nbsp;と<br>
-&lt;A-K&gt;&nbsp;は異なることに注意してください。後者は大文字を使います。実際には&nbsp;&lt;A-K&gt;<br>
-と&nbsp;&lt;A-S-K&gt;&nbsp;は同じです。&quot;A&quot; の代わりに &quot;M&quot; を使うこともできます。もし実際の<br>
+マッピングコマンドの読みやすさのため&nbsp;<span class="Special">&lt;A-k&gt;</span>&nbsp;の形式が使えます。<span class="Todo">Note</span>&nbsp;<span class="Special">&lt;A-k&gt;</span>&nbsp;と<br>
+<span class="Special">&lt;A-K&gt;</span>&nbsp;は異なることに注意してください。後者は大文字を使います。実際には&nbsp;<span class="Special">&lt;A-K&gt;</span><br>
+と&nbsp;<span class="Special">&lt;A-S-K&gt;</span>&nbsp;は同じです。&quot;A&quot; の代わりに &quot;M&quot; を使うこともできます。もし実際の<br>
 Meta 修飾キーがある場合は、<a class="Identifier" href="map.html#:map-meta-keys">:map-meta-keys</a>&nbsp;を参照してください。<br>
 <br>
 GUI では、Vim は Alt キーを直接取り扱うので、ALT キーを使ったマップは常に機能<br>
@@ -933,7 +933,7 @@ Kitty キーボードプロトコルも同じように動作します。<a class
 <br>
 初期設定では、ALT キーが押されているときは、文字の 8 ビット目が設定されるもの<br>
 と仮定しています。xterm、aterm、rxvt など、ほとんどの端末はこの方法で問題あり<br>
-ません。&lt;A-k&gt;&nbsp;のようなマップが動作しない場合は、その端末が、文字の前に ESC を<br>
+ません。<span class="Special">&lt;A-k&gt;</span>&nbsp;のようなマップが動作しない場合は、その端末が、文字の前に ESC を<br>
 付けているのかもしれません。ユーザーが文字の前に ESC を入力することもできます<br>
 から、Vim は何が起きたか知ることはできません (ただし、ESC と文字の間に延滞があ<br>
 るかどうかをチェックする方法はあります。確実な方法ではありませんが)。<br>
@@ -959,7 +959,7 @@ Meta キーバインディングが動作するようにしてください。(�
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$include /etc/inputrc</div>
 <br>
 このように設定すると、ウムラウトのような特殊な文字を入力できなくなるかもしれま<br>
-せん。その場合は、文字の前に&nbsp;CTRL-V&nbsp;を入力してください。<br>
+せん。その場合は、文字の前に&nbsp;<span class="Special">CTRL-V</span>&nbsp;を入力してください。<br>
 <br>
 convert-meta は UTF-8 ロケールでは問題を起こすことがすでに報告されています。<br>
 xterm のような端末では、起動しているときに、メニューの &quot;Main Options&quot; から<br>
@@ -974,7 +974,7 @@ Meta 修飾子を使ったマッピングは Alt キーを使った場合と非�
 す。キーボードのどのキーが Meta 修飾子として動作するかはキーボードと設定に依存<br>
 します。<br>
 <br>
-<span class="Todo">Note</span>&nbsp;&lt;M-a&gt;&nbsp;マップは実際には Alt キーを使うことに注意してください。これは混乱す<br>
+<span class="Todo">Note</span>&nbsp;<span class="Special">&lt;M-a&gt;</span>&nbsp;マップは実際には Alt キーを使うことに注意してください。これは混乱す<br>
 るでしょう! 後方互換性がなくなるため、変更することはできません。<br>
 <br>
 Meta 修飾子には文字 &quot;T&quot; が使われます。例えば挿入モードで Meta-b をマップするに<br>
@@ -996,7 +996,7 @@ Command キーを表し、GTK GUI を使用する Linux では、Super キーを
 <br>
 xterm と他のいくつかの端末は、修飾子付きのキーが特別なエスケープコードで送信さ<br>
 れるモードにすることができます。Vim はこれらのコードを認識し、Backspace が文字<br>
-の 8 を送信した場合でも、CTRL-H&nbsp;と Backspace を区別できます。Tab と&nbsp;CTRL-I&nbsp;な<br>
+の 8 を送信した場合でも、<span class="Special">CTRL-H</span>&nbsp;と Backspace を区別できます。Tab と&nbsp;<span class="Special">CTRL-I</span>&nbsp;な<br>
 ど、他の方法では個別にマップできないさらに多くの特別なキーも区別できます。<br>
 <br>
 xterm の場合、組み込みの termcap エントリで modifyOtherKeys が有効になっていま<br>
@@ -1016,17 +1016,17 @@ modifyOtherKeys モードで問題が発生する場合は、無効にするこ�
 は、シェルコマンドを実行します。例:&nbsp;<span class="Comment">!ls</span>。あるいはこれらの行を&nbsp;<a class="Identifier" href="starting.html#vimrc">vimrc</a>&nbsp;に書い<br>
 てください。<br>
 <br>
-modifyOtherKeys が有効化されているときは&nbsp;&lt;C-[&gt;&nbsp;と &lt;C-S-{&gt; をマップすることがで<br>
+modifyOtherKeys が有効化されているときは&nbsp;<span class="Special">&lt;C-[&gt;</span>&nbsp;と &lt;C-S-{&gt; をマップすることがで<br>
 きます:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imap &lt;C-[&gt; [[[<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imap &lt;C-{&gt; {{ "{{{" }}</div>
-modifyOtherKeys 無しだと&nbsp;&lt;C-[&gt;&nbsp;と&nbsp;&lt;C-{&gt;&nbsp;は Esc と区別することができません。<br>
-<span class="Todo">Note</span>&nbsp;&lt;C-S-[&gt; や &lt;C-S-{&gt; ではなく&nbsp;&lt;C-{&gt;&nbsp;が使われていることに注意してください。<br>
-これは多くのキーボードで動作します。同様に、&lt;C-}&gt;&nbsp;は &lt;C-S-]&gt; もしくは &lt;C-S-}&gt;<br>
-のそして&nbsp;&lt;C-|&gt;&nbsp;は &lt;C-S-\&gt; もしくは &lt;C-S-|&gt; の代わりに使用されます。<span class="Todo">Note</span>&nbsp;'|' は<br>
+modifyOtherKeys 無しだと&nbsp;<span class="Special">&lt;C-[&gt;</span>&nbsp;と&nbsp;<span class="Special">&lt;C-{&gt;</span>&nbsp;は Esc と区別することができません。<br>
+<span class="Todo">Note</span>&nbsp;&lt;C-S-[&gt; や &lt;C-S-{&gt; ではなく&nbsp;<span class="Special">&lt;C-{&gt;</span>&nbsp;が使われていることに注意してください。<br>
+これは多くのキーボードで動作します。同様に、<span class="Special">&lt;C-}&gt;</span>&nbsp;は &lt;C-S-]&gt; もしくは &lt;C-S-}&gt;<br>
+のそして&nbsp;<span class="Special">&lt;C-|&gt;</span>&nbsp;は &lt;C-S-\&gt; もしくは &lt;C-S-|&gt; の代わりに使用されます。<span class="Todo">Note</span>&nbsp;'|' は<br>
 マッピングにおいて特別な意味を持ちます、<a class="Identifier" href="map.html#map-bar">map-bar</a>&nbsp;を参照。<br>
 <br>
-<span class="Todo">警告:</span>&nbsp;&lt;C-[&gt;&nbsp;をマップした場合、非常に多くのEscから開始するキーコードを破壊する<br>
+<span class="Todo">警告:</span>&nbsp;<span class="Special">&lt;C-[&gt;</span>&nbsp;をマップした場合、非常に多くのEscから開始するキーコードを破壊する<br>
 ことがあります。他のマッピングの「後」であることを確認してください。<br>
 <br>
 xterm version 377 以降では Vim は modifyOtherKeys の状態を要求して検出すること<br>
@@ -1039,15 +1039,15 @@ version 377 より前では Vim は modifyOtherKeys モードによって生成�
 がそのようなエスケープシーケンスを検出したかを見るには&nbsp;<span class="Comment">:verbose map</span>&nbsp;を使いま<br>
 す。1 行目に &quot;Seen modifyOtherKeys: true&quot; (おそらく翻訳される) と表示されます。<br>
 <br>
-この自動検出は &quot;&lt;1b&gt;[27;&quot; で始まるエスケープシーケンスを受信することに依存しま<br>
+この自動検出は &quot;<span class="Special">&lt;1b&gt;</span>[27;&quot; で始まるエスケープシーケンスを受信することに依存しま<br>
 す。これは xterm がこれらのキーコードを送信する通常の方法です。しかし、もし<br>
 <a class="Constant" href="map.html#formatOtherKeys" name="formatOtherKeys">formatOtherKeys</a>&nbsp;リソースが他の形式を使って設定されているとこれが認識ができな<br>
 いため、formatOtherKeys を設定してはいけません。<br>
 <br>
-既知の副作用として、挿入モードでは、CTRL-V&nbsp;キーの後に生のエスケープシーケンス<br>
+既知の副作用として、挿入モードでは、<span class="Special">CTRL-V</span>&nbsp;キーの後に生のエスケープシーケンス<br>
 が挿入されます。これは、modifyOtherKeys が有効になっているかどうかを確認するた<br>
-めに使用できます。挿入モードで&nbsp;CTRL-SHIFT-V&nbsp;CTRL-V&nbsp;と入力し、1 バイトが得られ<br>
-たら modifyOtherKeys はオフで、&lt;1b&gt;[27;5;118~ が得られたらオンです。<br>
+めに使用できます。挿入モードで&nbsp;<span class="Special">CTRL-S</span>HIFT-V&nbsp;<span class="Special">CTRL-V</span>&nbsp;と入力し、1 バイトが得られ<br>
+たら modifyOtherKeys はオフで、<span class="Special">&lt;1b&gt;</span>[27;5;118~ が得られたらオンです。<br>
 <br>
 <span class="Todo">Note</span>&nbsp;xterm の version 376 までは Shift-Esc が通常の Esc を送信し、Shift 修飾子<br>
 がドロップするバグがあることに注意してください。<br>
@@ -1071,8 +1071,8 @@ Vim はステータス要求 (これは&nbsp;<a class="Identifier" href="term.ht
 に Kitty キーボードプロトコルが有効化されているかを自動で検出します。Vim がそ<br>
 のようなエスケープシーケンスを検出したかを見るには以下を使います:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:verbose map</div>
-1 行目に &quot;Kitty keyboard protocol:&nbsp;{value}&quot; (おそらく翻訳される) と表示されま<br>
-す。{value}&nbsp;の意味は:<br>
+1 行目に &quot;Kitty keyboard protocol:&nbsp;<span class="Special">{value}</span>&quot; (おそらく翻訳される) と表示されま<br>
+す。<span class="Special">{value}</span>&nbsp;の意味は:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ステータスはまだ受信していない<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; プロトコルは使われていない<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プロトコルが使われている<br>
@@ -1084,24 +1084,24 @@ Vim はステータス要求 (これは&nbsp;<a class="Identifier" href="term.ht
 <br>
 1.15 オペレータの作成&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:map-operator" name=":map-operator">:map-operator</a><br>
 <br>
-オペレータは&nbsp;{motion}&nbsp;コマンドと合わせて使われます。独自のオペレータを定義する<br>
+オペレータは&nbsp;<span class="Special">{motion}</span>&nbsp;コマンドと合わせて使われます。独自のオペレータを定義する<br>
 には、最初に&nbsp;<a class="Type" href="options.html#'operatorfunc'">'operatorfunc'</a>&nbsp;を設定し、そして、<a class="Identifier" href="map.html#g@">g@</a>&nbsp;オペレータを呼びます。ユー<br>
-ザーが&nbsp;{motion}&nbsp;コマンドを実行した後、設定した関数が実行されます。<br>
+ザーが&nbsp;<span class="Special">{motion}</span>&nbsp;コマンドを実行した後、設定した関数が実行されます。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#g@" name="g@">g@</a>&nbsp;<a class="Constant" href="map.html#E774" name="E774">E774</a>&nbsp;<a class="Constant" href="map.html#E775" name="E775">E775</a><br>
-g@{motion}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'operatorfunc'">'operatorfunc'</a>&nbsp;に設定された関数を実行します。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'[ マークに&nbsp;{motion}&nbsp;で選択された範囲の最初の位置が設<br>
+g@<span class="Special">{motion}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'operatorfunc'">'operatorfunc'</a>&nbsp;に設定された関数を実行します。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'[ マークに&nbsp;<span class="Special">{motion}</span>&nbsp;で選択された範囲の最初の位置が設<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定されます。'] マークには選択範囲の最後の位置が設定さ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れます。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数の引数には、文字列が一つ渡されます:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;line&quot;&nbsp;&nbsp;{motion}&nbsp;は行単位&nbsp;<a class="Identifier" href="motion.html#linewise">linewise</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;char&quot;&nbsp;&nbsp;{motion}&nbsp;は文字単位&nbsp;<a class="Identifier" href="motion.html#characterwise">characterwise</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;block&quot;&nbsp;{motion}&nbsp;は矩形&nbsp;<a class="Identifier" href="visual.html#blockwise-visual">blockwise-visual</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;line&quot;&nbsp;&nbsp;<span class="Special">{motion}</span>&nbsp;は行単位&nbsp;<a class="Identifier" href="motion.html#linewise">linewise</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;char&quot;&nbsp;&nbsp;<span class="Special">{motion}</span>&nbsp;は文字単位&nbsp;<a class="Identifier" href="motion.html#characterwise">characterwise</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;block&quot;&nbsp;<span class="Special">{motion}</span>&nbsp;は矩形&nbsp;<a class="Identifier" href="visual.html#blockwise-visual">blockwise-visual</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タイプは強制することができます。<a class="Identifier" href="motion.html#forced-motion">forced-motion</a>&nbsp;を参照し<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;てください。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<a class="Identifier" href="various.html#+eval">+eval</a>&nbsp;が有効な場合のみ利用できます}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{</span><a class="Identifier" href="various.html#+eval">+eval</a><span class="Special">&nbsp;が有効な場合のみ利用できます}</span><br>
 <br>
-例を示します。これは&nbsp;&lt;F4&gt;&nbsp;を使ってスペースの数を数えます:<br>
+例を示します。これは&nbsp;<span class="Special">&lt;F4&gt;</span>&nbsp;を使ってスペースの数を数えます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nnoremap &lt;expr&gt; &lt;F4&gt; CountSpaces()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xnoremap &lt;expr&gt; &lt;F4&gt; CountSpaces()<br>
@@ -1161,7 +1161,7 @@ g@{motion}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endtry<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfunction</div>
 <br>
-&lt;expr&gt;&nbsp;のマッピングを使うことでなんらかのカウントかレジスタの接頭詞を取ること<br>
+<span class="Special">&lt;expr&gt;</span>&nbsp;のマッピングを使うことでなんらかのカウントかレジスタの接頭詞を取ること<br>
 が可能になります。それにより、CmdlineEnter と CmdlineLeave の自動コマンドをト<br>
 リガーするコマンドラインの使用も回避します。<br>
 <br>
@@ -1185,7 +1185,7 @@ g@{motion}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\ -&gt;join(&quot;&quot;)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\ -&gt;setline(&quot;.&quot;)}'&lt;CR&gt;g@</div>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 2. 短縮入力 (Abbreviations)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#abbreviations" name="abbreviations">abbreviations</a>&nbsp;<a class="Constant" href="map.html#Abbreviations" name="Abbreviations">Abbreviations</a><br>
 <br>
 短縮入力は、挿入モード、置換モード、コマンドラインモードで使えます。短縮入力と<br>
@@ -1210,22 +1210,22 @@ end-id&nbsp;&nbsp;&nbsp;&nbsp;&quot;end-id&quot; タイプはキーワード文�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例: &quot;#i&quot;, &quot;..f&quot;, &quot;$/7&quot;<br>
 <br>
 non-id&nbsp;&nbsp;&nbsp;&nbsp;&quot;non-id&quot; タイプは非キーワード文字で終わります。他の文字はスペースと<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タブ文字以外のどんな文字でもよいです。{Vi では、このタイプはサポート<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;されていません}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タブ文字以外のどんな文字でもよいです。<span class="Special">{Vi では、このタイプはサポート</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">されていません}</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例: &quot;def#&quot;, &quot;4/7$&quot;<br>
 <br>
 短縮入力にできない文字列の例: &quot;a.b&quot;, &quot;#def&quot;, &quot;a b&quot;, &quot;_$r&quot;<br>
 <br>
 短縮入力は非キーワード文字を入力したときに展開されます。これは、挿入モードを終<br>
-わらせる&lt;Esc&gt;を入力したり、コマンドを終わらせる&lt;CR&gt;を入力したときにも起こりま<br>
+わらせる<span class="Special">&lt;Esc&gt;</span>を入力したり、コマンドを終わらせる<span class="Special">&lt;CR&gt;</span>を入力したときにも起こりま<br>
 す。短縮入力を終わらせる非キーワード文字は、短縮入力を展開した後に挿入されま<br>
-す。&lt;C-]&gt;文字は例外で、短縮入力だけが展開され挿入されます。<br>
+す。<span class="Special">&lt;C-]&gt;</span>文字は例外で、短縮入力だけが展開され挿入されます。<br>
 <br>
 例:<br>
 <div class="helpExample">&nbsp;&nbsp; :ab hh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hello</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;hh&lt;Space&gt;&quot; で &quot;hello&lt;Space&gt;&quot; に展開されます。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;hh&lt;C-]&gt;&quot; で &quot;hello&quot; に展開されます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;hh<span class="Special">&lt;Space&gt;</span>&quot; で &quot;hello<span class="Special">&lt;Space&gt;</span>&quot; に展開されます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;hh<span class="Special">&lt;C-]&gt;</span>&quot; で &quot;hello&quot; に展開されます。<br>
 <br>
 カーソルの前の文字が短縮入力とマッチする場合のみ機能します。短縮入力の種類に<br>
 よって、さらに条件があります:<br>
@@ -1242,27 +1242,27 @@ end-id&nbsp;&nbsp;&nbsp;&nbsp;マッチした場所の前が非キーワード�
 non-id&nbsp;&nbsp;&nbsp;&nbsp;マッチした場所の前がスペース、タブ、行頭、挿入を開始した場所、である<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;こと。<br>
 <br>
-例: ({CURSOR}は非キーワード文字を入力する場所です)<br>
+例: (<span class="Special">{CURSOR}</span>は非キーワード文字を入力する場所です)<br>
 <div class="helpExample">&nbsp;&nbsp; :ab foo&nbsp;&nbsp; four old otters</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; foo{CURSOR}&quot;&nbsp;&nbsp;&nbsp;&nbsp;は &quot; four old otters&quot; に展開されます<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; foobar{CURSOR}&quot; は展開されません<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;barfoo{CURSOR}&quot;&nbsp;&nbsp;は展開されません<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; foo<span class="Special">{CURSOR}</span>&quot;&nbsp;&nbsp;&nbsp;&nbsp;は &quot; four old otters&quot; に展開されます<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; foobar<span class="Special">{CURSOR}</span>&quot; は展開されません<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;barfoo<span class="Special">{CURSOR}</span>&quot;&nbsp;&nbsp;は展開されません<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp; :ab #i #include</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;#i{CURSOR}&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は &quot;#include&quot; に展開されます<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&gt;#i{CURSOR}&quot;&nbsp;&nbsp;&nbsp;&nbsp; は展開されません<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;#i<span class="Special">{CURSOR}</span>&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は &quot;#include&quot; に展開されます<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&gt;#i<span class="Special">{CURSOR}</span>&quot;&nbsp;&nbsp;&nbsp;&nbsp; は展開されません<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp; :ab ;; &lt;endofline&gt;</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;test;;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は展開されません<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;test ;;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; は &quot;test&nbsp;&lt;endofline&gt;&quot; に展開されます<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;test ;;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; は &quot;test&nbsp;<span class="Special">&lt;endofline&gt;</span>&quot; に展開されます<br>
 <br>
 挿入モードで短縮入力の展開を避けるには、短縮入力を発動する可能性のある文字を入<br>
-力する前に&nbsp;CTRL-V&nbsp;を押します。 例:CTRL-V&nbsp;&lt;Space&gt;&nbsp;もしくは短縮入力の一部を入力<br>
-してから挿入モードを&nbsp;&lt;Esc&gt;&nbsp;で抜け、再度挿入モードに &quot;a&quot; で入って残りを入力しま<br>
+力する前に&nbsp;<span class="Special">CTRL-V</span>&nbsp;を押します。 例:<span class="Special">CTRL-V</span>&nbsp;<span class="Special">&lt;Space&gt;</span>&nbsp;もしくは短縮入力の一部を入力<br>
+してから挿入モードを&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;で抜け、再度挿入モードに &quot;a&quot; で入って残りを入力しま<br>
 す。<br>
 <br>
-コマンドラインモードで短縮入力の展開を避けるには、短縮入力の文字の途中でCTRL-V<br>
-を入力します (CTRL-V&nbsp;を2度押し)。展開されなかった場合、普通の文字の前のCTRL-V<br>
+コマンドラインモードで短縮入力の展開を避けるには、短縮入力の文字の途中で<span class="Special">CTRL-V</span><br>
+を入力します (<span class="Special">CTRL-V</span>&nbsp;を2度押し)。展開されなかった場合、普通の文字の前の<span class="Special">CTRL-V</span><br>
 は普通は無視されます。<br>
 <br>
 短縮入力の後で、カーソルを動かすこともできます:<br>
@@ -1280,9 +1280,9 @@ non-id&nbsp;&nbsp;&nbsp;&nbsp;マッチした場所の前がスペース、タ�
 標準設定されている短縮入力はありません。<br>
 <br>
 短縮入力の展開は再帰的には行われません。&quot;:ab f f-o-o&quot; という短縮入力を問題なく<br>
-使うことができます。しかし、展開された文字にはマップが適用されます。&nbsp;{Vi のい<br>
-くつかのバージョンで再帰的な短縮入力をサポートしていますが、そこになんら明確な<br>
-理由はありません}<br>
+使うことができます。しかし、展開された文字にはマップが適用されます。&nbsp;<span class="Special">{Vi のい</span><br>
+<span class="Special">くつかのバージョンで再帰的な短縮入力をサポートしていますが、そこになんら明確な</span><br>
+<span class="Special">理由はありません}</span><br>
 <br>
 <a class="Type" href="options.html#'paste'">'paste'</a>&nbsp;オプションがオンの場合、短縮入力は使用できません。<br>
 <br>
@@ -1307,80 +1307,80 @@ non-id&nbsp;&nbsp;&nbsp;&nbsp;マッチした場所の前がスペース、タ�
 <br>
 詳しくは&nbsp;<a class="Identifier" href="various.html#:verbose-cmd">:verbose-cmd</a>&nbsp;を参照してください。<br>
 <br>
-:ab[breviate]&nbsp;{lhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{lhs}&nbsp;で始まる短縮入力を一覧表示します。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{lhs}&nbsp;に入力した文字が短縮入力として展開されないように<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;するには&nbsp;CTRL-V&nbsp;(2度押しで入力する) を挿入します。そう<br>
+:ab[breviate]&nbsp;<span class="Special">{lhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{lhs}</span>&nbsp;で始まる短縮入力を一覧表示します。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{lhs}</span>&nbsp;に入力した文字が短縮入力として展開されないように<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;するには&nbsp;<span class="Special">CTRL-V</span>&nbsp;(2度押しで入力する) を挿入します。そう<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;しないとコマンドライン用の短縮入力があった場合にそれが<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;展開されてしまいます。<br>
 <br>
-:ab[breviate] [&lt;expr&gt;] [&lt;buffer&gt;]&nbsp;{lhs}&nbsp;{rhs}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{rhs}&nbsp;の短縮入力を&nbsp;{lhs}&nbsp;として定義します。既に&nbsp;{lhs}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が定義されていると、新しい&nbsp;{rhs}&nbsp;で置き換えられます。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{rhs}&nbsp;はスペースを含んでいてもかまいません。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;expr&gt;&nbsp;引数については<a class="Identifier" href="map.html#:map-<expr>">:map-&lt;expr&gt;</a>を参照してください。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;buffer&gt;&nbsp;引数については&nbsp;<a class="Identifier" href="map.html#:map-<buffer>">:map-&lt;buffer&gt;</a>&nbsp;を参照してくだ<br>
+:ab[breviate] [<span class="Special">&lt;expr&gt;</span>] [<span class="Special">&lt;buffer&gt;</span>]&nbsp;<span class="Special">{lhs}</span>&nbsp;<span class="Special">{rhs}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{rhs}</span>&nbsp;の短縮入力を&nbsp;<span class="Special">{lhs}</span>&nbsp;として定義します。既に&nbsp;<span class="Special">{lhs}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が定義されていると、新しい&nbsp;<span class="Special">{rhs}</span>&nbsp;で置き換えられます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{rhs}</span>&nbsp;はスペースを含んでいてもかまいません。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;expr&gt;</span>&nbsp;引数については<a class="Identifier" href="map.html#:map-<expr>">:map-&lt;expr&gt;</a>を参照してください。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;buffer&gt;</span>&nbsp;引数については&nbsp;<a class="Identifier" href="map.html#:map-<buffer>">:map-&lt;buffer&gt;</a>&nbsp;を参照してくだ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;さい。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:una" name=":una">:una</a>&nbsp;<a class="Constant" href="map.html#:unabbreviate" name=":unabbreviate">:unabbreviate</a><br>
-:una[bbreviate] [&lt;buffer&gt;]&nbsp;{lhs}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{lhs}&nbsp;という短縮入力を全て削除します。見つからなかった<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;場合は、{lhs}&nbsp;に入力した文字を各短縮入力の&nbsp;{rhs}&nbsp;から<br>
+:una[bbreviate] [<span class="Special">&lt;buffer&gt;</span>]&nbsp;<span class="Special">{lhs}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{lhs}</span>&nbsp;という短縮入力を全て削除します。見つからなかった<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;場合は、<span class="Special">{lhs}</span>&nbsp;に入力した文字を各短縮入力の&nbsp;<span class="Special">{rhs}</span>&nbsp;から<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;探して見つかったものを削除します。これは短縮入力が展開<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;されてしまった状態でも削除できるようにするためです。短<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;縮入力の展開を防ぐには&nbsp;CTRL-V&nbsp;(2度押しで入力する) を挿<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;縮入力の展開を防ぐには&nbsp;<span class="Special">CTRL-V</span>&nbsp;(2度押しで入力する) を挿<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入します。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:norea" name=":norea">:norea</a>&nbsp;<a class="Constant" href="map.html#:noreabbrev" name=":noreabbrev">:noreabbrev</a><br>
-:norea[bbrev] [&lt;expr&gt;] [&lt;buffer&gt;]&nbsp;[lhs]&nbsp;[rhs]<br>
+:norea[bbrev] [<span class="Special">&lt;expr&gt;</span>] [<span class="Special">&lt;buffer&gt;</span>]&nbsp;<span class="Special">[lhs]</span>&nbsp;<span class="Special">[rhs]</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:ab&quot; と同じですが、展開後にマップを適用しません。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:ca" name=":ca">:ca</a>&nbsp;<a class="Constant" href="map.html#:cab" name=":cab">:cab</a>&nbsp;<a class="Constant" href="map.html#:cabbrev" name=":cabbrev">:cabbrev</a><br>
-:ca[bbrev] [&lt;expr&gt;] [&lt;buffer&gt;]&nbsp;[lhs]&nbsp;[rhs]<br>
+:ca[bbrev] [<span class="Special">&lt;expr&gt;</span>] [<span class="Special">&lt;buffer&gt;</span>]&nbsp;<span class="Special">[lhs]</span>&nbsp;<span class="Special">[rhs]</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:ab&quot; と同じですが、コマンドラインモード用の短縮入力の<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;み対象です。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:cuna" name=":cuna">:cuna</a>&nbsp;<a class="Constant" href="map.html#:cunabbrev" name=":cunabbrev">:cunabbrev</a><br>
-:cuna[bbrev] [&lt;buffer&gt;]&nbsp;{lhs}<br>
+:cuna[bbrev] [<span class="Special">&lt;buffer&gt;</span>]&nbsp;<span class="Special">{lhs}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:una&quot; と同じですが、コマンドラインモード用の短縮入力<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のみ対象です。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:cnorea" name=":cnorea">:cnorea</a>&nbsp;<a class="Constant" href="map.html#:cnoreabbrev" name=":cnoreabbrev">:cnoreabbrev</a><br>
-:cnorea[bbrev] [&lt;expr&gt;] [&lt;buffer&gt;]&nbsp;[lhs]&nbsp;[rhs]<br>
+:cnorea[bbrev] [<span class="Special">&lt;expr&gt;</span>] [<span class="Special">&lt;buffer&gt;</span>]&nbsp;<span class="Special">[lhs]</span>&nbsp;<span class="Special">[rhs]</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:ab&quot; と同じですが、コマンドラインモード用の短縮入力の<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;み対象で、展開後にマップを適用しません。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:ia" name=":ia">:ia</a>&nbsp;<a class="Constant" href="map.html#:iabbrev" name=":iabbrev">:iabbrev</a><br>
-:ia[bbrev] [&lt;expr&gt;] [&lt;buffer&gt;]&nbsp;[lhs]&nbsp;[rhs]<br>
+:ia[bbrev] [<span class="Special">&lt;expr&gt;</span>] [<span class="Special">&lt;buffer&gt;</span>]&nbsp;<span class="Special">[lhs]</span>&nbsp;<span class="Special">[rhs]</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:ab&quot; と同じですが、挿入モード用の短縮入力のみ対象で<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:iuna" name=":iuna">:iuna</a>&nbsp;<a class="Constant" href="map.html#:iunabbrev" name=":iunabbrev">:iunabbrev</a><br>
-:iuna[bbrev] [&lt;buffer&gt;]&nbsp;{lhs}<br>
+:iuna[bbrev] [<span class="Special">&lt;buffer&gt;</span>]&nbsp;<span class="Special">{lhs}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:una&quot; と同じですが、挿入モード用の短縮入力のみ対象で<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:inorea" name=":inorea">:inorea</a>&nbsp;<a class="Constant" href="map.html#:inoreabbrev" name=":inoreabbrev">:inoreabbrev</a><br>
-:inorea[bbrev] [&lt;expr&gt;] [&lt;buffer&gt;]&nbsp;[lhs]&nbsp;[rhs]<br>
+:inorea[bbrev] [<span class="Special">&lt;expr&gt;</span>] [<span class="Special">&lt;buffer&gt;</span>]&nbsp;<span class="Special">[lhs]</span>&nbsp;<span class="Special">[rhs]</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:ab&quot; と同じですが、挿入モード用の短縮入力のみ対象で、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;展開後にマップを適用しません。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:abc" name=":abc">:abc</a>&nbsp;<a class="Constant" href="map.html#:abclear" name=":abclear">:abclear</a><br>
-:abc[lear] [&lt;buffer&gt;]&nbsp;&nbsp; すべての短縮入力を削除します。<br>
+:abc[lear] [<span class="Special">&lt;buffer&gt;</span>]&nbsp;&nbsp; すべての短縮入力を削除します。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:iabc" name=":iabc">:iabc</a>&nbsp;<a class="Constant" href="map.html#:iabclear" name=":iabclear">:iabclear</a><br>
-:iabc[lear] [&lt;buffer&gt;]&nbsp;&nbsp;挿入モード用の短縮入力を削除します。<br>
+:iabc[lear] [<span class="Special">&lt;buffer&gt;</span>]&nbsp;&nbsp;挿入モード用の短縮入力を削除します。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:cabc" name=":cabc">:cabc</a>&nbsp;<a class="Constant" href="map.html#:cabclear" name=":cabclear">:cabclear</a><br>
-:cabc[lear] [&lt;buffer&gt;]&nbsp;&nbsp;コマンドラインモード用の短縮入力を削除します。<br>
+:cabc[lear] [<span class="Special">&lt;buffer&gt;</span>]&nbsp;&nbsp;コマンドラインモード用の短縮入力を削除します。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#using_CTRL-V" name="using_CTRL-V">using_CTRL-V</a><br>
-特殊な文字を短縮入力の{rhs}で使うことができます。非印字可能文字の特殊な意味を<br>
-打ち消す(クォートする)には、CTRL-Vを使用します。必要なCTRL-Vの数は、どのような<br>
+特殊な文字を短縮入力の<span class="Special">{rhs}</span>で使うことができます。非印字可能文字の特殊な意味を<br>
+打ち消す(クォートする)には、<span class="Special">CTRL-V</span>を使用します。必要な<span class="Special">CTRL-V</span>の数は、どのような<br>
 短縮入力を作成するかによります。これはマップでも同様です。例を示します。<br>
 <br>
-&quot;esc&quot; を実際の&lt;Esc&gt;文字を挿入する短縮入力にしたいとしましょう。Vim で &quot;:ab&quot; コ<br>
-マンドを使うときには、次のようにしなければなりません: (ここで^VはCTRL-Vで、<br>
-^[は&lt;Esc&gt;です)<br>
+&quot;esc&quot; を実際の<span class="Special">&lt;Esc&gt;</span>文字を挿入する短縮入力にしたいとしましょう。Vim で &quot;:ab&quot; コ<br>
+マンドを使うときには、次のようにしなければなりません: (ここで^Vは<span class="Special">CTRL-V</span>で、<br>
+^[は<span class="Special">&lt;Esc&gt;</span>です)<br>
 <br>
 入力:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ab esc ^V^V^V^V^V^[<br>
 <br>
@@ -1413,7 +1413,7 @@ non-id&nbsp;&nbsp;&nbsp;&nbsp;マッチした場所の前がスペース、タ�
 <br>
 [例は Steve Kirkendall によって提供されました]<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 3. ローカルマップとローカル関数(Local mappings and functions)&nbsp;<a class="Constant" href="map.html#script-local" name="script-local">script-local</a><br>
 <br>
 いくつかの Vim script を併用すると、あるスクリプトで使われているマップや関数と<br>
@@ -1421,24 +1421,24 @@ non-id&nbsp;&nbsp;&nbsp;&nbsp;マッチした場所の前がスペース、タ�
 スクリプトローカルなマップや関数を使用します。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#<SID>" name="&lt;SID&gt;">&lt;SID&gt;</a>&nbsp;<a class="Constant" href="map.html#<SNR>" name="&lt;SNR&gt;">&lt;SNR&gt;</a>&nbsp;<a class="Constant" href="map.html#E81" name="E81">E81</a><br>
-マップやメニューに &quot;&lt;SID&gt;&quot; という特別な文字列を使用できます。これは&nbsp;<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a><br>
+マップやメニューに &quot;<span class="Special">&lt;SID&gt;</span>&quot; という特別な文字列を使用できます。これは&nbsp;<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a><br>
 にフラグ '&lt;' が含まれていると利用できません。これはスクリプトローカル関数を同<br>
 じスクリプト内のマッピングから呼びたい場合に便利です。<br>
-マップコマンドを実行すると、&quot;&lt;SID&gt;&quot; は、&lt;SNR&gt;&nbsp;という特別なキーコードとスクリプ<br>
+マップコマンドを実行すると、&quot;<span class="Special">&lt;SID&gt;</span>&quot; は、<span class="Special">&lt;SNR&gt;</span>&nbsp;という特別なキーコードとスクリプ<br>
 ト固有の番号、そしてアンダースコアに置換されます。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;SID&gt;Add</div>
-これは &quot;&lt;SNR&gt;23_Add&quot; といったマップを定義します。<br>
+これは &quot;<span class="Special">&lt;SNR&gt;</span>23_Add&quot; といったマップを定義します。<br>
 <br>
 スクリプトで関数を作成するときに、関数名の前に &quot;s:&quot; を付けると、ローカル関数を<br>
 作成できます(<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script ではプリフィックスなしの関数はスクリプトローカルに<br>
 なります)。しかし、その関数をマップで使用する場合、そのマップをスクリプト以外<br>
 の場所で実行すると、その関数がどのスクリプトで定義されたのか分かりません。これ<br>
-を解決するには、マップ中で &quot;s:&quot; ではなく &quot;&lt;SID&gt;&quot; を使用します。この場合も<br>
-&quot;&lt;SID&gt;&quot; は上記の例と同じように置換されます。これでローカル関数の呼び出しを含む<br>
+を解決するには、マップ中で &quot;s:&quot; ではなく &quot;<span class="Special">&lt;SID&gt;</span>&quot; を使用します。この場合も<br>
+&quot;<span class="Special">&lt;SID&gt;</span>&quot; は上記の例と同じように置換されます。これでローカル関数の呼び出しを含む<br>
 マップを定義できます。<br>
 <br>
 ローカル関数は、その関数を定義したスクリプトのコンテキストで実行されます。その<br>
-ため、その関数内で新たに定義した関数やマップにも &quot;s:&quot; や &quot;&lt;SID&gt;&quot; を使用できま<br>
+ため、その関数内で新たに定義した関数やマップにも &quot;s:&quot; や &quot;<span class="Special">&lt;SID&gt;</span>&quot; を使用できま<br>
 す。その場合、その関数自身と同じスクリプト番号が使用されます。&quot;s:var&quot; といった<br>
 スクリプトローカル変数も同様です。<br>
 <br>
@@ -1446,11 +1446,11 @@ non-id&nbsp;&nbsp;&nbsp;&nbsp;マッチした場所の前がスペース、タ�
 行されます。そのコマンドからローカル関数を呼び出したり、ローカルマップを使用す<br>
 ることができます。<br>
 <br>
-&lt;SID&gt;&nbsp;が正しく展開されないコンテキストで値が使われる場合は、expand() 関数を使<br>
+<span class="Special">&lt;SID&gt;</span>&nbsp;が正しく展開されないコンテキストで値が使われる場合は、expand() 関数を使<br>
 います:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let &amp;includexpr = expand('&lt;SID&gt;') .. 'My_includeexpr()'</div>
 <br>
-スクリプト以外の場所で &quot;&lt;SID&gt;&quot; を使うとエラーになります。<br>
+スクリプト以外の場所で &quot;<span class="Special">&lt;SID&gt;</span>&quot; を使うとエラーになります。<br>
 <br>
 複雑な処理をするスクリプトで、スクリプト番号が必要な場合は、次の関数で番号を得<br>
 られます:<br>
@@ -1458,15 +1458,15 @@ non-id&nbsp;&nbsp;&nbsp;&nbsp;マッチした場所の前がスペース、タ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return matchstr(expand('&lt;SID&gt;'), '&lt;SNR&gt;\zs\d\+\ze_')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfunc</div>
 <br>
-関数やマップを一覧表示するときには &quot;&lt;SNR&gt;&quot; も表示されます。それらがどのように<br>
+関数やマップを一覧表示するときには &quot;<span class="Special">&lt;SNR&gt;</span>&quot; も表示されます。それらがどのように<br>
 定義されているのか調べるときに便利です。<br>
 <br>
 コマンド<a class="Identifier" href="repeat.html#:scriptnames">:scriptnames</a>を使って、それまでに実行されたスクリプトとそのスクリプト<br>
 番号を確認できます。<br>
 <br>
-これらはすべて&nbsp;{<a class="Identifier" href="various.html#+eval">+eval</a>&nbsp;が有効な場合のみ利用できます}<br>
+これらはすべて&nbsp;<span class="Special">{</span><a class="Identifier" href="various.html#+eval">+eval</a><span class="Special">&nbsp;が有効な場合のみ利用できます}</span><br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 4. ユーザー定義コマンド (User-defined command)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#user-commands" name="user-commands">user-commands</a><br>
 <br>
 ユーザー独自のExコマンドを定義することできます。ユーザー定義コマンドはビルトイ<br>
@@ -1521,23 +1521,23 @@ non-id&nbsp;&nbsp;&nbsp;&nbsp;マッチした場所の前がスペース、タ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ば次のようにします:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filter Pyth command</div>
 <br>
-:com[mand]&nbsp;{cmd}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{cmd}&nbsp;で始まるユーザー定義コマンドを一覧表示します。<br>
+:com[mand]&nbsp;<span class="Special">{cmd}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{cmd}</span>&nbsp;で始まるユーザー定義コマンドを一覧表示します。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:command-verbose" name=":command-verbose">:command-verbose</a><br>
 <a class="Type" href="options.html#'verbose'">'verbose'</a>&nbsp;がゼロ以外のときにコマンド一覧を表示すると、そのコマンドが最後に定義<br>
 された場所と補完の引数も表示します。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;:verbose command TOhtml</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Args Range Complete&nbsp;&nbsp;Definition<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TOhtml&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :call Convert2HTML(&lt;line1&gt;, &lt;line2&gt;)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last set from /usr/share/vim/vim-7.0/plugin/tohtml.vim<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Args Range Complete&nbsp;&nbsp;Definition</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">TOhtml&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :call Convert2HTML(&lt;line1&gt;, &lt;line2&gt;)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Last set from /usr/share/vim/vim-7.0/plugin/tohtml.vim</span><br>
 <br>
 詳しくは&nbsp;<a class="Identifier" href="various.html#:verbose-cmd">:verbose-cmd</a>&nbsp;を参照してください。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#E174" name="E174">E174</a>&nbsp;<a class="Constant" href="map.html#E182" name="E182">E182</a><br>
-:com[mand][!] [{attr}...]&nbsp;{cmd}&nbsp;{repl}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ユーザー定義コマンドを定義します。コマンド名は&nbsp;{cmd}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;でそれを置き換えるテキストが&nbsp;{repl}&nbsp;です。{attr}&nbsp;はコ<br>
+:com[mand][!] [<span class="Special">{attr}</span>...]&nbsp;<span class="Special">{cmd}</span>&nbsp;<span class="Special">{repl}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ユーザー定義コマンドを定義します。コマンド名は&nbsp;<span class="Special">{cmd}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;でそれを置き換えるテキストが&nbsp;<span class="Special">{repl}</span>&nbsp;です。<span class="Special">{attr}</span>&nbsp;はコ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マンド属性(下記参照)です。既にコマンドが存在している場<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合はエラーになります。! を指定した場合は再定義されま<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。1つ例外があります: スクリプトを再読み込みする場合、<br>
@@ -1545,19 +1545,19 @@ non-id&nbsp;&nbsp;&nbsp;&nbsp;マッチした場所の前がスペース、タ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;置き換えられます。<br>
 <br>
 <br>
-:delc[ommand]&nbsp;{cmd}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:delc" name=":delc">:delc</a>&nbsp;<a class="Constant" href="map.html#:delcommand" name=":delcommand">:delcommand</a>&nbsp;<a class="Constant" href="map.html#E184" name="E184">E184</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ユーザー定義コマンド&nbsp;{cmd}&nbsp;を削除します。<br>
+:delc[ommand]&nbsp;<span class="Special">{cmd}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:delc" name=":delc">:delc</a>&nbsp;<a class="Constant" href="map.html#:delcommand" name=":delcommand">:delcommand</a>&nbsp;<a class="Constant" href="map.html#E184" name="E184">E184</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ユーザー定義コマンド&nbsp;<span class="Special">{cmd}</span>&nbsp;を削除します。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これはコマンドの一覧表示中には許可されません。例えばタ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;イマーから呼ぶなど。&nbsp;<a class="Constant" href="map.html#E1311" name="E1311">E1311</a><br>
 <br>
-:delc[ommand] -buffer&nbsp;{cmd}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#E1237" name="E1237">E1237</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントバッファで定義されたユーザー定義コマンド&nbsp;{cmd}<br>
+:delc[ommand] -buffer&nbsp;<span class="Special">{cmd}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#E1237" name="E1237">E1237</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントバッファで定義されたユーザー定義コマンド&nbsp;<span class="Special">{cmd}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を削除します。<br>
 <br>
 :comc[lear]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:comc" name=":comc">:comc</a>&nbsp;<a class="Constant" href="map.html#:comclear" name=":comclear">:comclear</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;すべてのユーザー定義コマンドを削除します。<br>
 <br>
-コマンド属性<br>
+<span class="PreProc">コマンド属性</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#command-attributes" name="command-attributes">command-attributes</a><br>
 ユーザー定義コマンドは、他のビルトインコマンドと同様に扱われます。引数や範囲も<br>
 指定できます。引数の入力時にはファイル名やバッファ名などを補完することができま<br>
@@ -1573,7 +1573,7 @@ non-id&nbsp;&nbsp;&nbsp;&nbsp;マッチした場所の前がスペース、タ�
 方、特殊なケース、の4つの分野に分けることができます。以下、分野別に説明しま<br>
 す。<br>
 <br>
-引数の扱い方<br>
+<span class="PreProc">引数の扱い方</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#E175" name="E175">E175</a>&nbsp;<a class="Constant" href="map.html#E176" name="E176">E176</a>&nbsp;<a class="Constant" href="map.html#:command-nargs" name=":command-nargs">:command-nargs</a><br>
 <br>
 属性を指定しなかった場合、ユーザー定義コマンドは引数を取らない (引数が与えられ<br>
@@ -1601,11 +1601,11 @@ non-id&nbsp;&nbsp;&nbsp;&nbsp;マッチした場所の前がスペース、タ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:command -nargs=1 -complete=customlist,MyComplete MyCmd1 echo &lt;q-args&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:command -nargs=_ -complete=customlist,MyComplete MyCmd2 echo &lt;q-args&gt;</div>
 <br>
-&quot;:MyCmd1 two va&lt;tab&gt;&quot; を補完すると、以下のようになる:<br>
+&quot;:MyCmd1 two va<span class="Special">&lt;tab&gt;</span>&quot; を補完すると、以下のようになる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:MyCmd1 two one value</div>
 <br>
-&quot;:MyCmd2 two va&lt;tab&gt;&quot; を補完すると、以下のようになる:<br>
+&quot;:MyCmd2 two va<span class="Special">&lt;tab&gt;</span>&quot; を補完すると、以下のようになる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:MyCmd2 two values</div>
 <br>
@@ -1629,7 +1629,7 @@ non-id&nbsp;&nbsp;&nbsp;&nbsp;マッチした場所の前がスペース、タ�
 script2.vim を実行すると、結果として &quot;None&quot; が表示されてしまう。これは意図した<br>
 動作ではないはずである! 代替案として、関数を呼び出す方法が考えられる。<br>
 <br>
-補完の動作<br>
+<span class="PreProc">補完の動作</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:command-completion" name=":command-completion">:command-completion</a>&nbsp;<a class="Constant" href="map.html#E179" name="E179">E179</a>&nbsp;<a class="Constant" href="map.html#E180" name="E180">E180</a>&nbsp;<a class="Constant" href="map.html#E181" name="E181">E181</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:command-complete" name=":command-complete">:command-complete</a><br>
 属性を指定しない場合、ユーザー定義コマンドの入力時に引数は補完されません。下記<br>
@@ -1677,22 +1677,22 @@ script2.vim を実行すると、結果として &quot;None&quot; が表示さ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-complete=syntax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;シンタックスファイル名&nbsp;<a class="Type" href="options.html#'syntax'">'syntax'</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-complete=syntime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="syntax.html#:syntime">:syntime</a>&nbsp;サブオプション<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-complete=tag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; タグ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-complete=tag_listfiles&nbsp;CTRL-D&nbsp;を押した時にタグ、ファイル名を表示<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-complete=tag_listfiles&nbsp;<span class="Special">CTRL-D</span>&nbsp;を押した時にタグ、ファイル名を表示<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-complete=user&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ユーザー名<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-complete=var&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ユーザー変数<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-complete=custom,{func}&nbsp;{func}によるユーザー定義の補完<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-complete=customlist,{func}&nbsp;{func}によるユーザー定義の補完<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-complete=custom,<span class="Special">{func}</span>&nbsp;<span class="Special">{func}</span>によるユーザー定義の補完<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-complete=customlist,<span class="Special">{func}</span>&nbsp;<span class="Special">{func}</span>によるユーザー定義の補完<br>
 <br>
 補完するものがないとき(デフォルトは -nargs=0)に補完を指定すると&nbsp;<a class="Constant" href="map.html#E1208" name="E1208">E1208</a>&nbsp;になり<br>
 ます。<br>
 <span class="Todo">Note</span>: いくつかの補完方法は環境変数を展開します。<br>
 <br>
 <br>
-ユーザー定義の補完<br>
+<span class="PreProc">ユーザー定義の補完</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:command-completion-custom" name=":command-completion-custom">:command-completion-custom</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:command-completion-customlist" name=":command-completion-customlist">:command-completion-customlist</a>&nbsp;<a class="Constant" href="map.html#E467" name="E467">E467</a>&nbsp;<a class="Constant" href="map.html#E468" name="E468">E468</a><br>
-補完方法に &quot;custom,{func}&quot;、&quot;customlist,{func}&quot; を指定すると独自の補完を使用で<br>
-きます。{func}には次のような関数を指定します。<br>
+補完方法に &quot;custom,<span class="Special">{func}</span>&quot;、&quot;customlist,<span class="Special">{func}</span>&quot; を指定すると独自の補完を使用で<br>
+きます。<span class="Special">{func}</span>には次のような関数を指定します。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:function {func}(ArgLead, CmdLine, CursorPos)</div>
 <br>
@@ -1792,25 +1792,25 @@ script2.vim を実行すると、結果として &quot;None&quot; が表示さ�
 -nargs=_ と -completeopt=escape を組み合わせるとエラーになる (E1579)。<br>
 <br>
 <br>
-範囲指定<br>
+<span class="PreProc">範囲指定</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#E177" name="E177">E177</a>&nbsp;<a class="Constant" href="map.html#E178" name="E178">E178</a>&nbsp;<a class="Constant" href="map.html#:command-range" name=":command-range">:command-range</a>&nbsp;<a class="Constant" href="map.html#:command-count" name=":command-count">:command-count</a><br>
 属性を指定しない場合、ユーザー定義コマンドは行番号による範囲指定を受け付けませ<br>
 ん。-range属性を指定して、コマンドが範囲指定を受け付けるようにできます。任意の<br>
 カウント値を取るようにすることもできます。この場合、行番号の位置(<a class="Identifier" href="windows.html#:split">:split</a>コマ<br>
-ンドのように。-range=N)で指定するか、&quot;count&quot; 引数(<a class="Identifier" href="editing.html#:Next">:Next</a>コマンドのように。<br>
--count=N)で指定します。カウント指定は&nbsp;<a class="Identifier" href="map.html#<count>">&lt;count&gt;</a>&nbsp;で取得できます。<br>
+ンドのように。-range=<span class="Special">N</span>)で指定するか、&quot;count&quot; 引数(<a class="Identifier" href="editing.html#:Next">:Next</a>コマンドのように。<br>
+-count=<span class="Special">N</span>)で指定します。カウント指定は&nbsp;<a class="Identifier" href="map.html#<count>">&lt;count&gt;</a>&nbsp;で取得できます。<br>
 <br>
 次の属性が利用できます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-range&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;範囲指定が可能になります、無指定時は現在行<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-range=%&nbsp;&nbsp;&nbsp;&nbsp;範囲指定が可能になります、無指定時はファイル全体(1,$)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-range=N&nbsp;&nbsp;&nbsp;&nbsp;カウント(無指定時はN)を行番号位置に指定できます<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-range=<span class="Special">N</span>&nbsp;&nbsp;&nbsp;&nbsp;カウント(無指定時は<span class="Special">N</span>)を行番号位置に指定できます<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(例&nbsp;<a class="Identifier" href="windows.html#:split">:split</a>)。行番号に 0 を指定可能になる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-count=N&nbsp;&nbsp;&nbsp;&nbsp;カウント(無指定時はN)を行番号位置か、初期化引数に指定でき<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-count=<span class="Special">N</span>&nbsp;&nbsp;&nbsp;&nbsp;カウント(無指定時は<span class="Special">N</span>)を行番号位置か、初期化引数に指定でき<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ます (例&nbsp;<a class="Identifier" href="editing.html#:Next">:Next</a>)。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-count&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-count=0 と同じです<br>
 <br>
-<span class="Todo">Note</span>: -range=Nと-count=Nは相互に排他的であるということに注意してください。どち<br>
+<span class="Todo">Note</span>: -range=<span class="Special">N</span>と-count=<span class="Special">N</span>は相互に排他的であるということに注意してください。どち<br>
 らか一方のみを指定することができます。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:command-addr" name=":command-addr">:command-addr</a><br>
@@ -1830,7 +1830,7 @@ script2.vim を実行すると、結果として &quot;None&quot; が表示さ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$&quot;, &quot;%&quot; が使えます (-count のデフォルト)<br>
 <br>
 <br>
-特殊なケース<br>
+<span class="PreProc">特殊なケース</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:command-bang" name=":command-bang">:command-bang</a>&nbsp;<a class="Constant" href="map.html#:command-bar" name=":command-bar">:command-bar</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:command-register" name=":command-register">:command-register</a>&nbsp;<a class="Constant" href="map.html#:command-buffer" name=":command-buffer">:command-buffer</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:command-keepscript" name=":command-keepscript">:command-keepscript</a><br>
@@ -1852,9 +1852,9 @@ script2.vim を実行すると、結果として &quot;None&quot; が表示さ�
 <span class="Todo">Note</span>&nbsp;これらの引数は省略できますが、これは廃止される機能です。新しいスクリプト<br>
 では完全な名前を使用して下さい。<br>
 <br>
-置き換えテキスト<br>
+<span class="PreProc">置き換えテキスト</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#:command-repl" name=":command-repl">:command-repl</a><br>
-引数&nbsp;{repl}&nbsp;は通常は1つの長い文字列で、分割のコマンド &quot;|&quot; と合せて利用できま<br>
+引数&nbsp;<span class="Special">{repl}</span>&nbsp;は通常は1つの長い文字列で、分割のコマンド &quot;|&quot; と合せて利用できま<br>
 す。特殊な場合として引数が &quot;{&quot; であるなら、&quot;}&quot; で始まる行までのそれ以降の行が<br>
 利用され&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;の文法が適用されます。<br>
 例:<br>
@@ -1868,31 +1868,31 @@ script2.vim を実行すると、結果として &quot;None&quot; が表示さ�
 &quot;|&quot; の後に別のコマンドを続けることはできません。<br>
 <br>
 コマンドが Vim9 script (<a class="Comment" href="repeat.html#:vim9script">:vim9script</a>&nbsp;で始まるスクリプトか&nbsp;<a class="Comment" href="vim9.html#:def">:def</a>&nbsp;関数の中) で<br>
-定義されている場合、{repl}&nbsp;は Vim9 script 内で実行されます。つまりこれは、コマ<br>
+定義されている場合、<span class="Special">{repl}</span>&nbsp;は Vim9 script 内で実行されます。つまりこれは、コマ<br>
 ンドがどこで使われたかではなく、どこで定義されたかに依存します。<br>
 <br>
-ユーザー定義コマンドでは、&lt;...&gt;表記を使った特別な文字列&nbsp;{repl}&nbsp;を使用できます。<br>
+ユーザー定義コマンドでは、&lt;...&gt;表記を使った特別な文字列&nbsp;<span class="Special">{repl}</span>&nbsp;を使用できます。<br>
 その文字列はコマンドラインに入力された実際の引数に置き換えられます。その他のテ<br>
 キストは変更されません。そして特別な文字列を実際の引数で置換したものがExコマン<br>
 ドとして実行されます。&lt;&gt; 表記が置き換えられないようにするには、最初の &lt; の代わ<br>
-りに&nbsp;&lt;lt&gt;&nbsp;を使ってください。例えば、&quot;&lt;bang&gt;&quot; をリテラル文字として使うには<br>
-&quot;&lt;lt&gt;bang&gt;&quot; とします。<br>
+りに&nbsp;<span class="Special">&lt;lt&gt;</span>&nbsp;を使ってください。例えば、&quot;<span class="Special">&lt;bang&gt;</span>&quot; をリテラル文字として使うには<br>
+&quot;<span class="Special">&lt;lt&gt;</span>bang&gt;&quot; とします。<br>
 <br>
 次のものを使用できます<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#<line1>" name="&lt;line1&gt;">&lt;line1&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;line1&gt;&nbsp;コマンド範囲の最初の行<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;line1&gt;</span>&nbsp;コマンド範囲の最初の行<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#<line2>" name="&lt;line2&gt;">&lt;line2&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;line2&gt;&nbsp;コマンド範囲の最後の行<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;line2&gt;</span>&nbsp;コマンド範囲の最後の行<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#<range>" name="&lt;range&gt;">&lt;range&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;range&gt;&nbsp;コマンド範囲を指定するために使われた要素の数: 0, 1 もしくは 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;range&gt;</span>&nbsp;コマンド範囲を指定するために使われた要素の数: 0, 1 もしくは 2<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#<count>" name="&lt;count&gt;">&lt;count&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;count&gt;&nbsp;与えられたカウント('-range' と '-count' 属性で記述されている)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;count&gt;</span>&nbsp;与えられたカウント('-range' と '-count' 属性で記述されている)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#<bang>" name="&lt;bang&gt;">&lt;bang&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;bang&gt;&nbsp;&nbsp;('-bang' 属性を参照) コマンドが ! 修飾子付きで実行された場合に<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;bang&gt;</span>&nbsp;&nbsp;('-bang' 属性を参照) コマンドが ! 修飾子付きで実行された場合に<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;! に置換されます。指定なしの場合は空文字列になります。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#<mods>" name="&lt;mods&gt;">&lt;mods&gt;</a>&nbsp;<a class="Constant" href="map.html#<q-mods>" name="&lt;q-mods&gt;">&lt;q-mods&gt;</a>&nbsp;<a class="Constant" href="map.html#:command-modifiers" name=":command-modifiers">:command-modifiers</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mods&gt;&nbsp;&nbsp;指定されている場合はコマンド修飾子。されていない場合は何も展開<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;mods&gt;</span>&nbsp;&nbsp;指定されている場合はコマンド修飾子。されていない場合は何も展開<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;しません。対応している修飾子は以下の通り:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="windows.html#:aboveleft">:aboveleft</a>,&nbsp;<a class="Identifier" href="windows.html#:belowright">:belowright</a>,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="windows.html#:botright">:botright</a>,&nbsp;<a class="Identifier" href="editing.html#:browse">:browse</a>,&nbsp;<a class="Identifier" href="editing.html#:confirm">:confirm</a>,&nbsp;<a class="Identifier" href="windows.html#:hide">:hide</a>,&nbsp;<a class="Identifier" href="windows.html#:horizontal">:horizontal</a>,<br>
@@ -1916,29 +1916,29 @@ script2.vim を実行すると、結果として &quot;None&quot; が表示さ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\ call SpecialEdit(&lt;q-args&gt;, &lt;q-mods&gt;)</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#<reg>" name="&lt;reg&gt;">&lt;reg&gt;</a>&nbsp;<a class="Constant" href="map.html#<register>" name="&lt;register&gt;">&lt;register&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;reg&gt;&nbsp;&nbsp; ('-register' 属性を参照) レジスタ名に置換されます。指定なしの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;場合は空文字列になります。&lt;register&gt;も同義です。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;reg&gt;</span>&nbsp;&nbsp; ('-register' 属性を参照) レジスタ名に置換されます。指定なしの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;場合は空文字列になります。<span class="Special">&lt;register&gt;</span>も同義です。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#<args>" name="&lt;args&gt;">&lt;args&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;args&gt;&nbsp;&nbsp;与えられた通りのコマンド引数(上記の通り、カウントやレジスタが<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定された場合は&lt;args&gt;に含まれません)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;lt&gt;&nbsp;&nbsp;&nbsp;&nbsp;1つの '&lt;' (小なり)文字。特別な文字列を文字どおりに使用したい場<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合に必要となります。例えば&lt;bang&gt;を得るには&lt;lt&gt;bang&gt;とします。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;args&gt;</span>&nbsp;&nbsp;与えられた通りのコマンド引数(上記の通り、カウントやレジスタが<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定された場合は<span class="Special">&lt;args&gt;</span>に含まれません)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;lt&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;1つの '&lt;' (小なり)文字。特別な文字列を文字どおりに使用したい場<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合に必要となります。例えば<span class="Special">&lt;bang&gt;</span>を得るには<span class="Special">&lt;lt&gt;</span>bang&gt;とします。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#<q-args>" name="&lt;q-args&gt;">&lt;q-args&gt;</a><br>
-特別な文字列の始めの2文字が &quot;q-&quot; なら(例えば&lt;q-args&gt;)、引数は式で使えるように<br>
+特別な文字列の始めの2文字が &quot;q-&quot; なら(例えば<span class="Special">&lt;q-args&gt;</span>)、引数は式で使えるように<br>
 クォートされます(&quot;で囲まれる)。これは引数を1つの値として扱います。引数がない場<br>
-合は&nbsp;&lt;q-args&gt;&nbsp;は空文字列になります。下記&nbsp;<a class="Identifier" href="map.html#q-args-example">q-args-example</a>&nbsp;を参照してください。<br>
+合は&nbsp;<span class="Special">&lt;q-args&gt;</span>&nbsp;は空文字列になります。下記&nbsp;<a class="Identifier" href="map.html#q-args-example">q-args-example</a>&nbsp;を参照してください。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#<f-args>" name="&lt;f-args&gt;">&lt;f-args&gt;</a><br>
-ユーザー定義コマンドの引数を関数に渡すには、&lt;f-args&gt;(&quot;function args&quot;)が利用で<br>
+ユーザー定義コマンドの引数を関数に渡すには、<span class="Special">&lt;f-args&gt;</span>(&quot;function args&quot;)が利用で<br>
 きます。これはコマンドの引数をスペースやタブ文字で区切り、それぞれの引数を別々<br>
-にクォート(&quot;で囲む)し、コンマで区切ったリストにして&lt;f-args&gt;と置き換えます。下<br>
-のMycmdの例をご覧下さい。引数がない場合は&nbsp;&lt;f-args&gt;&nbsp;は取り除かれます。<br>
-&lt;f-args&gt;&nbsp;の引数にスペースを含めるには、バックスラッシュを前置します。&lt;f-args&gt;<br>
+にクォート(&quot;で囲む)し、コンマで区切ったリストにして<span class="Special">&lt;f-args&gt;</span>と置き換えます。下<br>
+のMycmdの例をご覧下さい。引数がない場合は&nbsp;<span class="Special">&lt;f-args&gt;</span>&nbsp;は取り除かれます。<br>
+<span class="Special">&lt;f-args&gt;</span>&nbsp;の引数にスペースを含めるには、バックスラッシュを前置します。<span class="Special">&lt;f-args&gt;</span><br>
 では二つのバックスラッシュ (\\) は一つのバックスラッシュに置換されます。スペー<br>
 スとバックスラッシュ以外の文字に付いているバックスラッシュはそのまま使われま<br>
 す。下記&nbsp;<a class="Identifier" href="map.html#f-args-example">f-args-example</a>&nbsp;も参照してください。要約:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;f-args&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;f-args&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XX ab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="MissingTag">'ab'</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XX a\b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'a\b'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XX a\ b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'a b'<br>
@@ -1949,7 +1949,7 @@ script2.vim を実行すると、結果として &quot;None&quot; が表示さ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XX a\\\ b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'a\ b'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XX a\\\\b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'a\\b'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XX a\\\\ b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'a\\', 'b'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[nothing]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[nothing]</span><br>
 <br>
 <span class="Todo">Note</span>&nbsp;&quot;引数無し&quot; の状況を扱う場合、関数が引数無しでも呼び出せるようにしなければ<br>
 ならないことに注意してください。コンパイル済み関数の場合、可変引数が使えます。<br>
@@ -1972,7 +1972,7 @@ script2.vim を実行すると、結果として &quot;None&quot; が表示さ�
 &nbsp;&nbsp; :com! -range -nargs=0 Lines&nbsp;&nbsp;echo &lt;line2&gt; - &lt;line1&gt; + 1 &quot;lines&quot;</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="map.html#f-args-example" name="f-args-example">f-args-example</a><br>
-ユーザー関数を呼ぶには (&lt;f-args&gt;の例)<br>
+ユーザー関数を呼ぶには (<span class="Special">&lt;f-args&gt;</span>の例)<br>
 <div class="helpExample">&nbsp;&nbsp; :com -nargs=* Mycmd call Myfunc(&lt;f-args&gt;)</div>
 <br>
 次のように実行された場合は:<br>

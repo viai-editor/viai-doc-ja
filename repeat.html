@@ -3,10 +3,10 @@ layout: viai-doc
 helpname: 'repeat'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="repeat.html" name="repeat.txt">repeat.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;ViAI バージョン 1.0.&nbsp;&nbsp;Last change: 2026 Oct 13<br>
+<a class="Constant" href="repeat.html" name="repeat.txt">repeat.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Oct 13<br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル<br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
 繰り返しコマンド、Vim script とデバッグ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#repeating" name="repeating">repeating</a><br>
@@ -22,11 +22,11 @@ helpname: 'repeat'
 7. スクリプトのデバッグ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="repeat.html#debug-scripts">debug-scripts</a><br>
 8. プロファイリング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="repeat.html#profiling">profiling</a><br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 1. 単発繰り返し&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#single-repeat" name="single-repeat">single-repeat</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#." name=".">.</a><br>
-.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最後の変更を繰り返す。変更の回数は[count]で指定した回<br>
+.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最後の変更を繰り返す。変更の回数は<span class="Special">[count]</span>で指定した回<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数で置き換えられる。<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;に 'y' フラグが含まれ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;てる時には、ヤンクコマンドも繰り返す。コマンドラインコ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マンドは繰り返さない。<br>
@@ -42,24 +42,24 @@ helpname: 'repeat'
 ることに注意。<a class="Identifier" href="visual.html#visual-repeat">visual-repeat</a>を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#@:" name="@:">@:</a><br>
-@:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後のコマンドラインを[count]回繰り返す。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<a class="Identifier" href="various.html#+cmdline_hist">+cmdline_hist</a>が無効にされていると使えない}<br>
+@:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後のコマンドラインを<span class="Special">[count]</span>回繰り返す。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{</span><a class="Identifier" href="various.html#+cmdline_hist">+cmdline_hist</a><span class="Special">が無効にされていると使えない}</span><br>
 <br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 2. 多重繰り返し&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#multi-repeat" name="multi-repeat">multi-repeat</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:g" name=":g">:g</a>&nbsp;<a class="Constant" href="repeat.html#:global" name=":global">:global</a>&nbsp;<a class="Constant" href="repeat.html#E148" name="E148">E148</a><br>
-:[range]g[lobal]/{pattern}/[cmd]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[range]の範囲で{pattern}にマッチする行に対して、Exコマ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンド[cmd](省略した場合 &quot;:p&quot;)を実行する。<br>
+:<span class="Special">[range]</span>g[lobal]/<span class="Special">{pattern}</span>/<span class="Special">[cmd]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[range]</span>の範囲で<span class="Special">{pattern}</span>にマッチする行に対して、Exコマ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンド<span class="Special">[cmd]</span>(省略した場合 &quot;:p&quot;)を実行する。<br>
 <br>
-:[range]g[lobal]!/{pattern}/[cmd]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[range]の範囲で{pattern}にマッチしない行に対して、Exコ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マンド[cmd](省略した場合 &quot;:p&quot;)を実行する。<br>
+:<span class="Special">[range]</span>g[lobal]!/<span class="Special">{pattern}</span>/<span class="Special">[cmd]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[range]</span>の範囲で<span class="Special">{pattern}</span>にマッチしない行に対して、Exコ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マンド<span class="Special">[cmd]</span>(省略した場合 &quot;:p&quot;)を実行する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:v" name=":v">:v</a>&nbsp;<a class="Constant" href="repeat.html#:vglobal" name=":vglobal">:vglobal</a><br>
-:[range]v[global]/{pattern}/[cmd]<br>
+:<span class="Special">[range]</span>v[global]/<span class="Special">{pattern}</span>/<span class="Special">[cmd]</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:g! と同じ。<br>
 <br>
 例:<br>
@@ -67,25 +67,25 @@ helpname: 'repeat'
 <a class="Comment" href="change.html#:d">:d</a>&nbsp;の後にアンダースコアを使用すると、レジスタやクリップボードの上書きを回避<br>
 できる。これはコマンドの処理速度もより速くする。<br>
 <br>
-{pattern}&nbsp;の両側の '/' の代わりにどんなシングルバイト文字でも使うことができる<br>
+<span class="Special">{pattern}</span>&nbsp;の両側の '/' の代わりにどんなシングルバイト文字でも使うことができる<br>
 が、アルファベット、'\'、'&quot;'、'|' 、'!' は使えない。<br>
-これは、検索パターンや置換文字列に '/' が含まれる場合に便利である。[cmd]&nbsp;が指<br>
-定されていない場合、終了区切り文字は省略可能であり、その場合パターンは&nbsp;&lt;EOL&gt;<br>
+これは、検索パターンや置換文字列に '/' が含まれる場合に便利である。<span class="Special">[cmd]</span>&nbsp;が指<br>
+定されていない場合、終了区切り文字は省略可能であり、その場合パターンは&nbsp;<span class="Special">&lt;EOL&gt;</span><br>
 で終了する。<br>
 <br>
 パターンの定義については&nbsp;<a class="Identifier" href="pattern.html#pattern">pattern</a>&nbsp;を参照。<br>
 <br>
-デフォルトの&nbsp;[cmd]&nbsp;は&nbsp;<a class="Comment" href="various.html#:print">:print</a>&nbsp;である。<br>
+デフォルトの&nbsp;<span class="Special">[cmd]</span>&nbsp;は&nbsp;<a class="Comment" href="various.html#:print">:print</a>&nbsp;である。<br>
 <br>
-<span class="Todo">NOTE</span>&nbsp;[cmd]&nbsp;は範囲指定を含むかもしれない。実例は&nbsp;<a class="Identifier" href="tips.html#collapse">collapse</a>&nbsp;や<br>
+<span class="Todo">NOTE</span>&nbsp;<span class="Special">[cmd]</span>&nbsp;は範囲指定を含むかもしれない。実例は&nbsp;<a class="Identifier" href="tips.html#collapse">collapse</a>&nbsp;や<br>
 <a class="Identifier" href="usr_25.html#edit-paragraph-join">edit-paragraph-join</a>&nbsp;を参照。<br>
 <br>
-globalコマンドの動作はまず第1に[range]の行をスキャンしマッチした行すべてに印を<br>
+globalコマンドの動作はまず第1に<span class="Special">[range]</span>の行をスキャンしマッチした行すべてに印を<br>
 つける(複数行にかかるパターンではマッチの最初の行だけが重要である)。<br>
 次のスキャンでマークされたすべての行について、カーソルがその行にあるかのように<br>
-[cmd]が実行される。&quot;:v&quot; と &quot;:g!&quot; の場合は、マークされていないすべての行につい<br>
+<span class="Special">[cmd]</span>が実行される。&quot;:v&quot; と &quot;:g!&quot; の場合は、マークされていないすべての行につい<br>
 てコマンドが実行される。行が削除された場合そのマークは消滅する。<br>
-省略した場合の[range]はバッファ全体(1,$)である。コマンドを中断するには &quot;CTRL-C&quot;<br>
+省略した場合の<span class="Special">[range]</span>はバッファ全体(1,$)である。コマンドを中断するには &quot;<span class="Special">CTRL-C</span>&quot;<br>
 を使用する。ある行についてエラーメッセージが与えられると、そのラインに対するコ<br>
 マンドは中断されglobalコマンドはマッチした次の行の処理を続ける。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#E147" name="E147">E147</a><br>
@@ -94,12 +94,12 @@ globalコマンドの動作はまず第1に[range]の行をスキャンしマッ
 つけるのに便利だ:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:g/found/v/notfound/{cmd}</div>
 これは、はじめに &quot;found&quot; を含むすべての行を見つけるが、&quot;notfound&quot; にマッチしな<br>
-いものがあるときにだけ&nbsp;{cmd}&nbsp;を実行する。<br>
+いものがあるときにだけ&nbsp;<span class="Special">{cmd}</span>&nbsp;を実行する。<br>
 <br>
 任意のExコマンドを使用できる、<a class="Identifier" href="vimindex.html#ex-cmd-index">ex-cmd-index</a>&nbsp;を参照。Normalモードコマンドを実<br>
 行するには&nbsp;<a class="Comment" href="various.html#:normal">:normal</a>&nbsp;コマンドを使用すれば良い:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:g/pat/normal {commands}</div>
-確実に&nbsp;{commands}&nbsp;が完全なコマンドとして終了するようにすること。そうでないと<br>
+確実に&nbsp;<span class="Special">{commands}</span>&nbsp;が完全なコマンドとして終了するようにすること。そうでないと<br>
 Vim は全部のマッチに 1 つ 1 つについて、コマンドの残りを期待して貴方の入力を待<br>
 ち続けるだろう。画面は更新されないので、いま何をしているのかわからないだろう。<br>
 <a class="Identifier" href="various.html#:normal">:normal</a>&nbsp;を参照。<br>
@@ -120,14 +120,14 @@ Ex モード中で &quot;global&quot; を使い、そのコマンドに &quot;:v
 殊である。これを行うと、マッチする行へ移動してノーマルモードに入るので、<a class="Identifier" href="intro.html#Q">Q</a>&nbsp;を<br>
 押して Ex モードへ戻るまでコマンドを実行することができる。これがマッチする各行<br>
 に対して繰り返される。これを行っている間は &quot;:global&quot; を使うことはできない。中<br>
-止するには&nbsp;CTRL-C&nbsp;を2回押すこと。<br>
+止するには&nbsp;<span class="Special">CTRL-C</span>&nbsp;を2回押すこと。<br>
 <br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 3. 複雑な繰り返し&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#complex-repeat" name="complex-repeat">complex-repeat</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#q" name="q">q</a>&nbsp;<a class="Constant" href="repeat.html#recording" name="recording">recording</a><br>
-q{0-9a-zA-Z&quot;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; タイプした文字をレジスタ{0-9a-zA-Z&quot;}にレコーディングす<br>
+q<span class="Special">{0-9a-zA-Z&quot;}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; タイプした文字をレジスタ<span class="Special">{0-9a-zA-Z&quot;}</span>にレコーディングす<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る(大文字なら追記)。レジスタを実行中は 'q' コマンドは<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;無効化される。マッピングや&nbsp;<a class="Identifier" href="various.html#:normal">:normal</a>&nbsp;の中でも機能しな<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い。<br>
@@ -148,7 +148,7 @@ q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ジスタに記録されない)<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#@" name="@">@</a><br>
-@{0-9a-z&quot;.=*+}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;レジスタ&nbsp;{0-9a-z&quot;.=*+}&nbsp;の内容を&nbsp;[count]&nbsp;回実行する。<br>
+@<span class="Special">{0-9a-z&quot;.=*+}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;レジスタ&nbsp;<span class="Special">{0-9a-z&quot;.=*+}</span>&nbsp;の内容を&nbsp;<span class="Special">[count]</span>&nbsp;回実行する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: レジスタ '%' (現在のファイルの名前) と '#' (オル<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タネートファイルの名前) は使用できない。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;レジスタはマッピングと同様に実行される。つまり、<br>
@@ -160,12 +160,12 @@ q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="repeat.html#@:">@:</a>&nbsp;も参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#@@" name="@@">@@</a>&nbsp;<a class="Constant" href="repeat.html#E748" name="E748">E748</a><br>
-@@&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;直前の @{0-9a-z&quot;:*}&nbsp;を&nbsp;[count]&nbsp;回繰り返す。<br>
+@@&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;直前の @<span class="Special">{0-9a-z&quot;:*}</span>&nbsp;を&nbsp;<span class="Special">[count]</span>&nbsp;回繰り返す。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:@" name=":@">:@</a><br>
-:[addr]@{0-9a-z&quot;.=*+}&nbsp;&nbsp; レジスタ{0-9a-z&quot;.=*+}の内容をExコマンドとして実行する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;まず最初にカーソルを[addr]行に設定する(省略した場合現<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在の行)。レジスタの最終行に&lt;CR&gt;が含まれない場合、<br>
+:<span class="Special">[addr]</span>@<span class="Special">{0-9a-z&quot;.=*+}</span>&nbsp;&nbsp; レジスタ<span class="Special">{0-9a-z&quot;.=*+}</span>の内容をExコマンドとして実行する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;まず最初にカーソルを<span class="Special">[addr]</span>行に設定する(省略した場合現<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在の行)。レジスタの最終行に<span class="Special">&lt;CR&gt;</span>が含まれない場合、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;に 'e' フラグが含まれていれば自動的に追加<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;される。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:@=&quot; には最後に評価された式が使用される。式の評価結果<br>
@@ -178,7 +178,7 @@ q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将来: 指定された範囲の各々の行に対してレジスタの内容が<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;実行されるだろう。<br>
 <br>
-:[addr]*{0-9a-z&quot;.=+}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:star-compatible" name=":star-compatible">:star-compatible</a><br>
+:<span class="Special">[addr]</span>*<span class="Special">{0-9a-z&quot;.=+}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:star-compatible" name=":star-compatible">:star-compatible</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;<a class="Identifier" href="options.html#cpo-star">cpo-star</a>&nbsp;に '*' が存在する場合は、&quot;:@&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と同手段として &quot;:*&quot; を使用する。これは、<a class="Type" href="options.html#'nocompatible'">'nocompatible'</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が使用されている場合、デフォルトではない。'*' フラグが<br>
@@ -186,27 +186,27 @@ q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リアスであり、ビジュアル領域を選択&nbsp;<a class="Identifier" href="cmdline.html#:star">:star</a>&nbsp;する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:@:" name=":@:">:@:</a><br>
-:[addr]@:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最後のコマンドラインを繰り返す。まずカーソルを[addr]行<br>
+:<span class="Special">[addr]</span>@:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最後のコマンドラインを繰り返す。まずカーソルを<span class="Special">[addr]</span>行<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に設定する(省略した場合現在の行)。<br>
 <br>
-:[addr]@&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:@@" name=":@@">:@@</a><br>
-:[addr]@@&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最後の :@{register}&nbsp;を繰り返す。まず最初にカーソルを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[addr]行に設定する(省略した場合現在の行)。<br>
+:<span class="Special">[addr]</span>@&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:@@" name=":@@">:@@</a><br>
+:<span class="Special">[addr]</span>@@&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最後の :@<span class="Special">{register}</span>&nbsp;を繰り返す。まず最初にカーソルを<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[addr]</span>行に設定する(省略した場合現在の行)。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 4. Vim script を使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#using-scripts" name="using-scripts">using-scripts</a><br>
 <br>
 Vim script の書き方はユーザーマニュアルの41章<a class="Identifier" href="usr_41.html">usr_41.txt</a>を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:so" name=":so">:so</a>&nbsp;<a class="Constant" href="repeat.html#:source" name=":source">:source</a>&nbsp;<a class="Constant" href="repeat.html#load-vim-script" name="load-vim-script">load-vim-script</a><br>
-:so[urce]&nbsp;{file}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exコマンドを{file}から読み込む。これは &quot;:&quot; で始まるコ<br>
+:so[urce]&nbsp;<span class="Special">{file}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exコマンドを<span class="Special">{file}</span>から読み込む。これは &quot;:&quot; で始まるコ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マンドを列挙したファイルである。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{訳注: 実際に &quot;:&quot; を書く必要はない}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{訳注: 実際に &quot;:&quot; を書く必要はない}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自動コマンド&nbsp;<a class="Identifier" href="autocmd.html#SourcePre">SourcePre</a>&nbsp;が発生する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:source-range" name=":source-range">:source-range</a><br>
-:[range]so[urce] [++clear]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントバッファの[range]行の範囲からExコマンドを読み<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;込む。[range]&nbsp;がない場合はすべての行を読み込む。<br>
+:<span class="Special">[range]</span>so[urce] [++clear]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントバッファの<span class="Special">[range]</span>行の範囲からExコマンドを読み<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;込む。<span class="Special">[range]</span>&nbsp;がない場合はすべての行を読み込む。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントバッファからコマンドを読み込む時、そのバッファ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が複数回読み込まれる場合は同じスクリプトのID(識別子)<br>
@@ -235,14 +235,14 @@ Vim script の書き方はユーザーマニュアルの41章<a class="Identifie
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:4,5source<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:10,18source ++clear</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 実装の詳細: 折り畳まれた領域内にある行の&nbsp;[range]&nbsp;を読<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 実装の詳細: 折り畳まれた領域内にある行の&nbsp;<span class="Special">[range]</span>&nbsp;を読<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;み込む場合、範囲は折り畳みの開始と終了に合わせて調整さ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れるが、2 つの行指定子の範囲が使用された場合のみであ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:source-dryrun" name=":source-dryrun">:source-dryrun</a><br>
-:so[urce] ++dryrun&nbsp;{file}<br>
-:[range]so[urce] ++dryrun<br>
+:so[urce] ++dryrun&nbsp;<span class="Special">{file}</span><br>
+:<span class="Special">[range]</span>so[urce] ++dryrun<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクリプトを実行せずに読み込む: 定義だけが行われ、その<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;後、その中のすべての&nbsp;<a class="Identifier" href="vim9.html#:def">:def</a>&nbsp;関数がコンパイルされ、エ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ラーは通常どおり報告される。<br>
@@ -307,7 +307,7 @@ Vim script の書き方はユーザーマニュアルの41章<a class="Identifie
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を止めず、エラーのあるすべての行が報告される。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:source!" name=":source!">:source!</a><br>
-:so[urce]!&nbsp;{file}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vimコマンドを{file}から読み込む。ノーマルモードでファ<br>
+:so[urce]!&nbsp;<span class="Special">{file}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vimコマンドを<span class="Special">{file}</span>から読み込む。ノーマルモードでファ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;イルの内容をあなたがタイプしたのと同じように実行される。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="repeat.html#:global">:global</a>,&nbsp;<a class="Identifier" href="editing.html#:argdo">:argdo</a>,&nbsp;<a class="Identifier" href="windows.html#:windo">:windo</a>,&nbsp;<a class="Identifier" href="windows.html#:bufdo">:bufdo</a>で使ったとき、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ループ中や他のコマンドが続けられたときは、コマンドの実<br>
@@ -315,24 +315,24 @@ Vim script の書き方はユーザーマニュアルの41章<a class="Identifie
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="eval.html#sandbox">sandbox</a>&nbsp;内では使用できない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:ru" name=":ru">:ru</a>&nbsp;<a class="Constant" href="repeat.html#:runtime" name=":runtime">:runtime</a><br>
-:ru[ntime][!]&nbsp;[where]&nbsp;{file}&nbsp;..<br>
+:ru[ntime][!]&nbsp;<span class="Special">[where]</span>&nbsp;<span class="Special">{file}</span>&nbsp;..<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;か&nbsp;<a class="Type" href="options.html#'packpath'">'packpath'</a>&nbsp;で示された各ディレクトリの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{file}からExコマンドを読み込む。ファイルがなくてもエラ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{file}</span>からExコマンドを読み込む。ファイルがなくてもエラ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ーにはならない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:runtime syntax/c.vim</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{file}には空白で区切って複数のファイルを指定できる。指<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定された{file}は&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の最初のディレクトリ、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次に二番目のディレクトリ、と検索される。{file}に空白を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{file}</span>には空白で区切って複数のファイルを指定できる。指<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定された<span class="Special">{file}</span>は&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の最初のディレクトリ、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次に二番目のディレクトリ、と検索される。<span class="Special">{file}</span>に空白を<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;含めるにはバックスラッシュを使う(しかしファイル名に空<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;白を含めるのは望ましくない。トラブルのもとである)。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[!] を付けると見つかった全てのファイルを読み込む。付け<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;なければ最初に見つかったファイルだけを読み込む。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[where]&nbsp;が省略された場合は&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;が使われる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[where]</span>&nbsp;が省略された場合は&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;が使われる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;他の値は以下の通り:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;START&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'packpath'">'packpath'</a>&nbsp;の &quot;start&quot; ディレクトリ以下<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を検索する<br>
@@ -344,7 +344,7 @@ Vim script の書き方はユーザーマニュアルの41章<a class="Identifie
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'packpath'">'packpath'</a>&nbsp;の &quot;start&quot; と &quot;opt&quot; ディレ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;クトリ以下を検索する<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{file}がワイルドカードを含んでいるとそれは展開される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{file}</span>がワイルドカードを含んでいるとそれは展開される。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:runtime! plugin/**/*.vim</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; これはVimが起動時にプラグインファイルを読み込むのに使っ<br>
@@ -358,30 +358,30 @@ Vim script の書き方はユーザーマニュアルの41章<a class="Identifie
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;メッセージが表示される。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:pa" name=":pa">:pa</a>&nbsp;<a class="Constant" href="repeat.html#:packadd" name=":packadd">:packadd</a>&nbsp;<a class="Constant" href="repeat.html#E919" name="E919">E919</a><br>
-:pa[ckadd][!]&nbsp;{name}&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'packpath'">'packpath'</a>&nbsp;中の任意のプラグインディレクトリを検索し、<br>
+:pa[ckadd][!]&nbsp;<span class="Special">{name}</span>&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'packpath'">'packpath'</a>&nbsp;中の任意のプラグインディレクトリを検索し、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;見つかったプラグインのファイルを読み込む。ディレクトリ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は以下にマッチしなければならない:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pack/*/opt/{name}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">pack/*/opt/{name}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;見つかったディレクトリは、もし含まれていなければ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;に追加される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;もしディレクトリ pack/*/opt/{name}/after が存在すれば、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;もしディレクトリ pack/*/opt/<span class="Special">{name}</span>/after が存在すれば、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の最後に追加される。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;pack/*/start&quot; からのパッケージの読み込みがスキップさ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れた場合、次のディレクトリが最初に検索される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pack/*/start/{name}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">pack/*/start/{name}</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>&nbsp;{name}&nbsp;はディレクトリの名前である。.vimファイルの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>&nbsp;<span class="Special">{name}</span>&nbsp;はディレクトリの名前である。.vimファイルの<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名前ではない。以下のパターンにマッチする全てのファイル<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が読み込まれる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pack/*/opt/{name}/plugin/**/*.vim<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">pack/*/opt/{name}/plugin/**/*.vim</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これにより、ちょうど&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;内のプラグインのよ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;うに、&quot;plugin&quot; 以下のサブディレクトリを使うことができ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルタイプの検知が有効化されていない場合(これは通<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;常 .vimrc 中の&nbsp;<span class="Comment">syntax enable</span>&nbsp;か&nbsp;<span class="Comment">filetype on</span>&nbsp;コマン<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ドにより行われる)、&quot;{name}/ftdetect/*.vim&quot; ファイルを<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ドにより行われる)、&quot;<span class="Special">{name}</span>/ftdetect/*.vim&quot; ファイルを<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参照する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;任意の ! が付けられた場合、プラグインのファイルや<br>
@@ -402,7 +402,7 @@ Vim script の書き方はユーザーマニュアルの41章<a class="Identifie
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;るため。そうしないと自動では読み込まれない)。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;また&nbsp;<a class="Identifier" href="repeat.html#pack-add">pack-add</a>&nbsp;も参照。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<a class="Identifier" href="various.html#+eval">+eval</a>&nbsp;機能付きでコンパイルされたときのみ有効}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{</span><a class="Identifier" href="various.html#+eval">+eval</a><span class="Special">&nbsp;機能付きでコンパイルされたときのみ有効}</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:packl" name=":packl">:packl</a>&nbsp;<a class="Constant" href="repeat.html#:packloadall" name=":packloadall">:packloadall</a><br>
 :packl[oadall][!]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'packpath'">'packpath'</a>&nbsp;以下の &quot;start&quot; ディレクトリ中の全パッケージ<br>
@@ -432,16 +432,16 @@ Vim script の書き方はユーザーマニュアルの41章<a class="Identifie
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プトの読み込みのみを中止させる。その他のプラグインは読<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;み込まれる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="repeat.html#packages">packages</a>を参照。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<a class="Identifier" href="various.html#+eval">+eval</a>&nbsp;機能付きでコンパイルされたときのみ有効}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{</span><a class="Identifier" href="various.html#+eval">+eval</a><span class="Special">&nbsp;機能付きでコンパイルされたときのみ有効}</span><br>
 <br>
-:scripte[ncoding]&nbsp;[encoding]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:scripte" name=":scripte">:scripte</a>&nbsp;<a class="Constant" href="repeat.html#:scriptencoding" name=":scriptencoding">:scriptencoding</a>&nbsp;<a class="Constant" href="repeat.html#E167" name="E167">E167</a><br>
+:scripte[ncoding]&nbsp;<span class="Special">[encoding]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:scripte" name=":scripte">:scripte</a>&nbsp;<a class="Constant" href="repeat.html#:scriptencoding" name=":scriptencoding">:scriptencoding</a>&nbsp;<a class="Constant" href="repeat.html#E167" name="E167">E167</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクリプトで使われている文字コードを宣言する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;それ以降の行は必要なら&nbsp;[encoding]から&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;オプ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;それ以降の行は必要なら&nbsp;<span class="Special">[encoding]</span>から&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;オプ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ションの文字コードに変換される。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scriptencoding iso-8859-5<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scriptencoding cp932</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[encoding]が空のときは変換はされない。これはそれ以降の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[encoding]</span>が空のときは変換はされない。これはそれ以降の<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行の文字コードの変換を限定するために使える:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scriptencoding euc-jp<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... 変換される ...<br>
@@ -466,23 +466,23 @@ Vim script の書き方はユーザーマニュアルの41章<a class="Identifie
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scriptencoding utf-8</div>
 <br>
 <br>
-:scriptv[ersion]&nbsp;{version}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:scriptv" name=":scriptv">:scriptv</a>&nbsp;<a class="Constant" href="repeat.html#:scriptversion" name=":scriptversion">:scriptversion</a><br>
+:scriptv[ersion]&nbsp;<span class="Special">{version}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:scriptv" name=":scriptv">:scriptv</a>&nbsp;<a class="Constant" href="repeat.html#:scriptversion" name=":scriptversion">:scriptversion</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#E999" name="E999">E999</a>&nbsp;<a class="Constant" href="repeat.html#E984" name="E984">E984</a>&nbsp;<a class="Constant" href="repeat.html#E1040" name="E1040">E1040</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同じファイルの後に続く行のVimのバージョンを指定する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;読み込まれるスクリプトのトップレベルにのみ適用され、関<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数内部には適用されない。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{version}が現在のVimのバージョンがサポートしているもの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{version}</span>が現在のVimのバージョンがサポートしているもの<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;よりも高い場合は E999 が与えられる。スクリプトを古い<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vimバージョンで動作するように書き直すか、またはVimを新<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;しいバージョンに更新する必要がある。バージョン間の変更<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;点については&nbsp;<a class="Identifier" href="eval.html#vimscript-version">vimscript-version</a>&nbsp;を参照。<br>
 <br>
-:vim9s[cript]&nbsp;[noclear]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:vim9s" name=":vim9s">:vim9s</a>&nbsp;<a class="Constant" href="repeat.html#:vim9script" name=":vim9script">:vim9script</a><br>
+:vim9s[cript]&nbsp;<span class="Special">[noclear]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:vim9s" name=":vim9s">:vim9s</a>&nbsp;<a class="Constant" href="repeat.html#:vim9script" name=":vim9script">:vim9script</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="vim9.html#Vim9-script">Vim9-script</a>&nbsp;のコマンドがスクリプトファイルに含まれる<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ことをマークする。<a class="Identifier" href="vim9.html#vim9-namespace">vim9-namespace</a>&nbsp;も参照。&nbsp;<a class="Constant" href="repeat.html#E1038" name="E1038">E1038</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルの先頭のコマンドである必要がある。&nbsp;<a class="Constant" href="repeat.html#E1039" name="E1039">E1039</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[noclear]&nbsp;については&nbsp;<a class="Identifier" href="vim9.html#vim9-reload">vim9-reload</a>&nbsp;を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[noclear]</span>&nbsp;については&nbsp;<a class="Identifier" href="vim9.html#vim9-reload">vim9-reload</a>&nbsp;を参照。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="various.html#+eval">+eval</a>&nbsp;機能がない場合、これは一部のコマンドの文法を変<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim9 の文法と方式で単一コマンドを実行するには<br>
@@ -500,10 +500,10 @@ Vim script の書き方はユーザーマニュアルの41章<a class="Identifie
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は &quot;-&gt;&quot; の後に表示される。例えば、&quot;20-&gt;22&quot; はスクリプ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ト20はスクリプト22として読み込まれたことを意味する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="builtin.html#getscriptinfo()">getscriptinfo()</a>&nbsp;も参照。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<a class="Identifier" href="various.html#+eval">+eval</a>&nbsp;機能付きでコンパイルされたときのみ有効}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{</span><a class="Identifier" href="various.html#+eval">+eval</a><span class="Special">&nbsp;機能付きでコンパイルされたときのみ有効}</span><br>
 <br>
-:scr[iptnames][!]&nbsp;{scriptId}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:script" name=":script">:script</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクリプト{scriptId}を編集する。&quot;:scriptnames name&quot; は<br>
+:scr[iptnames][!]&nbsp;<span class="Special">{scriptId}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:script" name=":script">:script</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクリプト<span class="Special">{scriptId}</span>を編集する。&quot;:scriptnames name&quot; は<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;動作するが、&quot;:script name&quot; を使用することを推奨する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントファイルを放棄&nbsp;<a class="Identifier" href="editing.html#abandon">abandon</a>&nbsp;できず、[!] も付けら<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れていないときは、コマンドは失敗する。<br>
@@ -543,17 +543,17 @@ Vim script の書き方はユーザーマニュアルの41章<a class="Identifie
 して解釈される。<br>
 <br>
 例: &quot;:!ls&quot; コマンドを実行したとすると<a class="Identifier" href="message.html#hit-enter">hit-enter</a>プロンプトが表示される。&quot;!ls&quot;<br>
-を含むファイルを ':source' したならば、自分で&lt;Enter&gt;をタイプする必要があるだろ<br>
-う。しかし ':!ls' を含んだファイルを ':source!' したならば、&lt;CR&gt;が見つかるまで<br>
+を含むファイルを ':source' したならば、自分で<span class="Special">&lt;Enter&gt;</span>をタイプする必要があるだろ<br>
+う。しかし ':!ls' を含んだファイルを ':source!' したならば、<span class="Special">&lt;CR&gt;</span>が見つかるまで<br>
 そのファイルから続く文字が読込まれる。&quot;:!ls&quot; がファイルの最終行でない限り、<br>
-&lt;CR&gt;を自分でタイプする必要はないだろう。<br>
+<span class="Special">&lt;CR&gt;</span>を自分でタイプする必要はないだろう。<br>
 <br>
 スクリプトファイルの中で ':source[!]' コマンドを使うことも可能なので、階層関係<br>
 のあるスクリプトファイルを作ることもできる。':source' コマンドは同時に開くこと<br>
 のできるファイル数(だいたい15)と同じだけネスト(入れ子に)することができる。<br>
 ':source!' コマンドは15段までネストすることができる。<br>
 <br>
-読込まれるファイルの中ではファイル名が必要なところに、&quot;&lt;sfile&gt;&quot; という文字列<br>
+読込まれるファイルの中ではファイル名が必要なところに、&quot;<span class="Special">&lt;sfile&gt;</span>&quot; という文字列<br>
 (文字通りであってスペシャルキーではない)を使うことができる。この文字列は読込ま<br>
 れたファイルのファイル名に置き換えられる。例えば、&quot;.vimrc&quot; ファイルと同じ場所<br>
 に &quot;other.vimrc&quot; というファイルがあれば、&quot;.vimrc&quot; から次のコマンドでそれを読込<br>
@@ -564,28 +564,28 @@ Vim script の書き方はユーザーマニュアルの41章<a class="Identifie
 される。これは異なる種類の端末でも同じ方法で依存キーコードを使用できることを意<br>
 味する。最初のキーコードの文字は0x80つまり128で、画面では &quot;~@&quot; と表される。2つ<br>
 目のキャラクタは<a class="Identifier" href="intro.html#key-notation">key-notation</a>の表にて見ることができる。これらのコードはどれも<br>
-CTRL-Vに続けて3つの10進コードを叩くことで入力できる。これはtermcapコード&lt;t_xx&gt;<br>
+<span class="Special">CTRL-V</span>に続けて3つの10進コードを叩くことで入力できる。これはtermcapコード<span class="Special">&lt;t_xx&gt;</span><br>
 に対しては使用できない。これらはマッピングの中だけで使うことができる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:source_crnl" name=":source_crnl">:source_crnl</a>&nbsp;<a class="Constant" href="repeat.html#W15" name="W15">W15</a><br>
-Win32: &quot;:source&quot; で読込まれるファイルは通常、行末に&lt;CR&gt;&lt;NL&gt;を持っている。これ<br>
-らは常に働く。もしも行末に&lt;NL&gt;を持つファイルを使っているならば (例えばUNIXで作<br>
-られたファイル)、<a class="Type" href="options.html#'fileformats'">'fileformats'</a>&nbsp;が空でなくかつ先頭行が&lt;CR&gt;で終わってなければ正<br>
-しく認識される。しかしこれは先頭行が &quot;:map&nbsp;&lt;F1&gt;&nbsp;:help^M&quot; (^Mは&lt;CR&gt;) みたいな内<br>
-容だった場合には失敗する。ファイルの先頭行が&lt;CR&gt;で終わっていてその1行限りの時、<br>
-先頭行から&lt;CR&gt;が失われてしまうのでエラーメッセージが出るだろう。<br>
+Win32: &quot;:source&quot; で読込まれるファイルは通常、行末に<span class="Special">&lt;CR&gt;&lt;NL&gt;</span>を持っている。これ<br>
+らは常に働く。もしも行末に<span class="Special">&lt;NL&gt;</span>を持つファイルを使っているならば (例えばUNIXで作<br>
+られたファイル)、<a class="Type" href="options.html#'fileformats'">'fileformats'</a>&nbsp;が空でなくかつ先頭行が<span class="Special">&lt;CR&gt;</span>で終わってなければ正<br>
+しく認識される。しかしこれは先頭行が &quot;:map&nbsp;<span class="Special">&lt;F1&gt;</span>&nbsp;:help^M&quot; (^Mは<span class="Special">&lt;CR&gt;</span>) みたいな内<br>
+容だった場合には失敗する。ファイルの先頭行が<span class="Special">&lt;CR&gt;</span>で終わっていてその1行限りの時、<br>
+先頭行から<span class="Special">&lt;CR&gt;</span>が失われてしまうのでエラーメッセージが出るだろう。<br>
 <br>
-Mac Classic: &quot;:source&quot; で読み込まれるファイルは通常、行末に&lt;CR&gt;を持っている。<br>
-これらは常に機能する。もしも行末に&lt;NL&gt;を持つファイルを使っているならば(例えば<br>
-UNIXで作られたファイル)、<a class="Type" href="options.html#'fileformats'">'fileformats'</a>&nbsp;が空でなくかつ先頭行が&lt;CR&gt;で終わってな<br>
-ければ正しく認識される。先頭行に&lt;CR&gt;を持ち&lt;NL&gt;で改行しているファイルを使用しな<br>
+Mac Classic: &quot;:source&quot; で読み込まれるファイルは通常、行末に<span class="Special">&lt;CR&gt;</span>を持っている。<br>
+これらは常に機能する。もしも行末に<span class="Special">&lt;NL&gt;</span>を持つファイルを使っているならば(例えば<br>
+UNIXで作られたファイル)、<a class="Type" href="options.html#'fileformats'">'fileformats'</a>&nbsp;が空でなくかつ先頭行が<span class="Special">&lt;CR&gt;</span>で終わってな<br>
+ければ正しく認識される。先頭行に<span class="Special">&lt;CR&gt;</span>を持ち<span class="Special">&lt;NL&gt;</span>で改行しているファイルを使用しな<br>
 いように気をつけること。<br>
 <br>
-その他のシステムでは、Vimは &quot;:source&quot; で読込まれたファイルの行末は&lt;NL&gt;であるこ<br>
-とを期待する。これは常に働く。もしも行末が&lt;CR&gt;&lt;NL&gt;であるファイル(例えばMS-<br>
-Windowsで作られたファイル)を使っているならば、全ての行が末尾に&lt;CR&gt;を持っている<br>
+その他のシステムでは、Vimは &quot;:source&quot; で読込まれたファイルの行末は<span class="Special">&lt;NL&gt;</span>であるこ<br>
+とを期待する。これは常に働く。もしも行末が<span class="Special">&lt;CR&gt;&lt;NL&gt;</span>であるファイル(例えばMS-<br>
+Windowsで作られたファイル)を使っているならば、全ての行が末尾に<span class="Special">&lt;CR&gt;</span>を持っている<br>
 ことになる。これは幾つかのコマンドにとって問題となるだろう(例、マッピング)。自<br>
-動的に行末記号を検出する機構はない。なぜなら&lt;CR&gt;で終了するマッピングの定義を<br>
+動的に行末記号を検出する機構はない。なぜなら<span class="Special">&lt;CR&gt;</span>で終了するマッピングの定義を<br>
 ファイルの先頭に書くことは一般的で、自動検出用の仕組みを作るのが難しいからであ<br>
 る。<br>
 <br>
@@ -667,7 +667,7 @@ Windowsで作られたファイル)を使っているならば、全ての行が
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;妙に見えるかもしれない。バックスラッシュの後にスペースを必要とすること<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、これが通常のコメント行にはとても見えないようにするためである。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 5. Vimパッケージを使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#packages" name="packages">packages</a><br>
 <br>
 Vim script のパッケージは1つかそれ以上のプラグインを含むディレクトリである。<br>
@@ -682,7 +682,7 @@ Vim script のパッケージは1つかそれ以上のプラグインを含む�
 &nbsp;&nbsp;<a class="Comment" href="repeat.html#:packadd">:packadd</a>&nbsp;により読み込まれるプラグインを含むことができる。<br>
 <br>
 <br>
-パッケージの使用と自動読み込み<br>
+<span class="PreProc">パッケージの使用と自動読み込み</span><br>
 <br>
 あなたの Vim 関連のファイルは &quot;~/.vim/&quot; にあるとする。<br>
 さらにZIP圧縮ファイル &quot;/tmp/foopack.zip&quot; からパッケージを追加したい場合は以下<br>
@@ -733,7 +733,7 @@ Vim が起動した時、.vimrcを処理した後、<a class="Type" href="option
 の末尾に追加される。そのため、そこにあるものは全て後でロードされる。<br>
 <br>
 <br>
-単一プラグインの使用とその自動読み込み<br>
+<span class="PreProc">単一プラグインの使用とその自動読み込み</span><br>
 <br>
 パッケージでなく単一のプラグインがある場合は、余分なディレクトリ階層を作成する<br>
 必要がある:<br>
@@ -748,7 +748,7 @@ Vim が起動した時、.vimrcを処理した後、<a class="Type" href="option
 ここから上のように動作する。<br>
 <br>
 <br>
-任意のプラグイン<br>
+<span class="PreProc">任意のプラグイン</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#pack-add" name="pack-add">pack-add</a><br>
 上記の pack ディレクトリから任意のプラグインをロードするには&nbsp;<a class="Comment" href="repeat.html#:packadd">:packadd</a>&nbsp;コマン<br>
 ドを使う:<br>
@@ -770,7 +770,7 @@ Vim が起動した時、.vimrcを処理した後、<a class="Type" href="option
 合、それを使いたいときは(明示的に)読み込む必要がある。<br>
 <br>
 <br>
-どこに何を置くか<br>
+<span class="PreProc">どこに何を置くか</span><br>
 <br>
 <a class="Comment" href="syntax.html#:colorscheme">:colorscheme</a>&nbsp;で読み込まれるカラースキームは &quot;pack/*/start&quot; と &quot;pack/*/opt&quot;<br>
 の下から探し出されるのでどこにでも置くことができる。例えば、<br>
@@ -789,7 +789,7 @@ Filetype プラグインはファイルタイプに複数のプラグインが�
 &quot;after&quot; ディレクトリはパッケージで使うには十中八九便利ではない。しかし、使用が<br>
 禁じられているわけではない。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 6. Vimパッケージを作る&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#package-create" name="package-create">package-create</a><br>
 <br>
 パッケージとして配布する1つ以上のプラグインを記述していることを前提とする。<br>
@@ -811,8 +811,8 @@ Filetype プラグインはファイルタイプに複数のプラグインが�
 &nbsp;&nbsp; start/foobar/autoload/foo.vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; fooコマンドを使用した時に読み込む<br>
 &nbsp;&nbsp; start/foobar/doc/foo.txt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; foo.vimのヘルプ<br>
 &nbsp;&nbsp; start/foobar/doc/tags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ヘルプタグ<br>
-&nbsp;&nbsp; start/foobar/lang/&lt;lang_id&gt;/LC_MESSAGES/foobar.mo<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;&lt;lang_id&gt;&nbsp;言語でのプラグインのメッ<br>
+&nbsp;&nbsp; start/foobar/lang/<span class="Special">&lt;lang_id&gt;</span>/LC_MESSAGES/foobar.mo<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;<span class="Special">&lt;lang_id&gt;</span>&nbsp;言語でのプラグインのメッ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; セージ。これらのファイルは任意。<br>
 &nbsp;&nbsp; opt/fooextra/plugin/extra.vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; オプションのプラグイン、コマンド定義<br>
 &nbsp;&nbsp; opt/fooextra/autoload/extra.vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; extraコマンドを使用した時に読み込む<br>
@@ -857,7 +857,7 @@ Filetype プラグインはファイルタイプに複数のプラグインが�
 <br>
 メッセージ翻訳ファイルを配置するディレクトリ構造は、(パッケージの最上位ディレ<br>
 クトリから):<br>
-&quot;lang/&lt;lang_id&gt;/LC_MESSAGES&quot; である。&lt;lang_id&gt;&nbsp;の形式については、<a class="Identifier" href="mlang.html#multi-lang">multi-lang</a><br>
+&quot;lang/<span class="Special">&lt;lang_id&gt;</span>/LC_MESSAGES&quot; である。<span class="Special">&lt;lang_id&gt;</span>&nbsp;の形式については、<a class="Identifier" href="mlang.html#multi-lang">multi-lang</a><br>
 を参照。この関数は、プラグインの初期化中に 1 回だけ呼び出す必要がある。<br>
 これが完了すると、<a class="Identifier" href="builtin.html#gettext()">gettext()</a>&nbsp;関数を使用して翻訳されたメッセージを取得できる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:echo gettext(&quot;Hello&quot;, &quot;foobar&quot;)</div>
@@ -892,7 +892,7 @@ VIMPROG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;すでにビルドおよびインストールされていて、$PATH 環境変<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数に含まれている場合は、vim 実行可能ファイルの名前だけ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を指定できる。<br>
-{package}.pot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; これはターゲットである。パッケージ名として指定される。<br>
+<span class="Special">{package}</span>.pot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; これはターゲットである。パッケージ名として指定される。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例えば、&quot;foobar&quot; に .pot 拡張子を付けたもの。<br>
 POT ファイルが作成されると、その内容は、翻訳が準備される言語ごとに個別の PO<br>
 ファイルにコピーされる。<br>
@@ -917,7 +917,7 @@ MO_PLUGPACKAGE_PATH&nbsp;&nbsp;&nbsp;&nbsp; &quot;lang/&quot; ディレクトリ
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これは必須の変数ではない。ディレクトリが指定されていな<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い場合、MO ファイルは &quot;src/po&quot; ディレクトリに保存され<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
-{package}.mo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これはターゲットである。パッケージの名前として指定され<br>
+<span class="Special">{package}</span>.mo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これはターゲットである。パッケージの名前として指定され<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。例えば、&quot;foobar&quot; に .mo 拡張子を付けたもの。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#package-translate_example" name="package-translate_example">package-translate_example</a><br>
@@ -980,60 +980,60 @@ MO_PLUGPACKAGE_PATH&nbsp;&nbsp;&nbsp;&nbsp; &quot;lang/&quot; ディレクトリ
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copy aap.pot de.po</div>
 <br>
 ロシア語への翻訳を含む PO ファイルを用意:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;# Test plugins translate<br>
-&nbsp;&nbsp;&nbsp;&nbsp;#<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgid &quot;&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgstr &quot;&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Project-Id-Version: aap\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Report-Msgid-Bugs-To: \n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;POT-Creation-Date: 2024-06-23 14:58+0300\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;PO-Revision-Date: 2024-06-23 14:58+0300\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Last-Translator: Restorer\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Language-Team: RuVim\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Language: ru\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;MIME-Version: 1.0\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Content-Type: text/plain; charset=UTF-8\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Content-Transfer-Encoding: 8bit\n&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc"># Test plugins translate</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgid &quot;&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgstr &quot;&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Project-Id-Version: aap\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Report-Msgid-Bugs-To: \n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;POT-Creation-Date: 2024-06-23 14:58+0300\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;PO-Revision-Date: 2024-06-23 14:58+0300\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Last-Translator: Restorer\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Language-Team: RuVim\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Language: ru\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;MIME-Version: 1.0\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Content-Type: text/plain; charset=UTF-8\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Content-Transfer-Encoding: 8bit\n&quot;</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;#: ../../runtime/ftplugin/aap.vim:32<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgid &quot;Aap Recipe Files (*.aap)\t*.aap\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgstr &quot;Файлы инструкций Aap (*.aap)\t*.aap\n&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#: ../../runtime/ftplugin/aap.vim:32</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgid &quot;Aap Recipe Files (*.aap)\t*.aap\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgstr &quot;Файлы инструкций Aap (*.aap)\t*.aap\n&quot;</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;#: ../../runtime/ftplugin/aap.vim:34<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgid &quot;All Files (*.*)\t*\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgstr &quot;Все файлы (*.*)\t*\n&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#: ../../runtime/ftplugin/aap.vim:34</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgid &quot;All Files (*.*)\t*\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgstr &quot;Все файлы (*.*)\t*\n&quot;</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;#: ../../runtime/ftplugin/aap.vim:36<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgid &quot;All Files (*)\t*\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgstr &quot;Все файлы (*)\t*\n&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#: ../../runtime/ftplugin/aap.vim:36</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgid &quot;All Files (*)\t*\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgstr &quot;Все файлы (*)\t*\n&quot;</span><br>
 <br>
 そして、ドイツ語の PO ファイル:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;# Test plugins translate<br>
-&nbsp;&nbsp;&nbsp;&nbsp;#<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgid &quot;&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgstr &quot;&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Project-Id-Version: aap\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Report-Msgid-Bugs-To: \n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;POT-Creation-Date: 2024-06-23 14:58+0300\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;PO-Revision-Date: 2024-06-24 13:11+0300\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Last-Translator: Restorer\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Language-Team: German\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Language: de\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;MIME-Version: 1.0\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Content-Type: text/plain; charset=UTF-8\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Content-Transfer-Encoding: 8bit\n&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc"># Test plugins translate</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgid &quot;&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgstr &quot;&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Project-Id-Version: aap\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Report-Msgid-Bugs-To: \n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;POT-Creation-Date: 2024-06-23 14:58+0300\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;PO-Revision-Date: 2024-06-24 13:11+0300\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Last-Translator: Restorer\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Language-Team: German\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Language: de\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;MIME-Version: 1.0\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Content-Type: text/plain; charset=UTF-8\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Content-Transfer-Encoding: 8bit\n&quot;</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;#: ../../runtime/ftplugin/aap.vim:32<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgid &quot;Aap Recipe Files (*.aap)\t*.aap\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgstr &quot;Aap-Rezeptdateien (*.aap)\t*.aap\n&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#: ../../runtime/ftplugin/aap.vim:32</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgid &quot;Aap Recipe Files (*.aap)\t*.aap\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgstr &quot;Aap-Rezeptdateien (*.aap)\t*.aap\n&quot;</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;#: ../../runtime/ftplugin/aap.vim:34<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgid &quot;All Files (*.*)\t*\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgstr &quot;Alle Dateien (*.*)\t*.*\n&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#: ../../runtime/ftplugin/aap.vim:34</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgid &quot;All Files (*.*)\t*\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgstr &quot;Alle Dateien (*.*)\t*.*\n&quot;</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;#: ../../runtime/ftplugin/aap.vim:36<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgid &quot;All Files (*)\t*\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgstr &quot;Alle Dateien (*)\t*\n&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#: ../../runtime/ftplugin/aap.vim:36</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgid &quot;All Files (*)\t*\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgstr &quot;Alle Dateien (*)\t*\n&quot;</span><br>
 <br>
 ここで、これらのファイルを MO ファイルに変換し、<a class="Identifier" href="builtin.html#gettext()">gettext()</a>&nbsp;がメッセージの翻訳<br>
 を表示できるようにする。<span class="Todo">Note</span>&nbsp;これは特殊なプラグインパッケージではないため、MO<br>
@@ -1117,29 +1117,29 @@ POT ファイルのあるディレクトリに移動し、翻訳を行う。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cp ./netrw.pot ja.po</div>
 <br>
 &quot;ja.po&quot; ファイルに翻訳が準備できたら:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;# Test plugins translate<br>
-&nbsp;&nbsp;&nbsp;&nbsp;#<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgid &quot;&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgstr &quot;&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Project-Id-Version: netrw\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Report-Msgid-Bugs-To: \n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;POT-Creation-Date: 2024-06-23 17:14+0300\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;PO-Revision-Date: 2024-06-23 17:14+0300\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Last-Translator: Restorer\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Language-Team: Japanese\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Language: ja\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;MIME-Version: 1.0\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Content-Type: text/plain; charset=UTF-8\n&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;Content-Transfer-Encoding: 8bit\n&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc"># Test plugins translate</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgid &quot;&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgstr &quot;&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Project-Id-Version: netrw\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Report-Msgid-Bugs-To: \n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;POT-Creation-Date: 2024-06-23 17:14+0300\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;PO-Revision-Date: 2024-06-23 17:14+0300\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Last-Translator: Restorer\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Language-Team: Japanese\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Language: ja\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;MIME-Version: 1.0\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Content-Type: text/plain; charset=UTF-8\n&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;Content-Transfer-Encoding: 8bit\n&quot;</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;#: ../../runtime/autoload/netrw.vim:51<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgid &quot;***sorry*** this version of netrw requires vim v7.4 with patch#&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgstr &quot;&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;***申し訳ありません***このバージョンのnetrwには、パッチ付きのvim v7.4が必要です#&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#: ../../runtime/autoload/netrw.vim:51</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgid &quot;***sorry*** this version of netrw requires vim v7.4 with patch#&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgstr &quot;&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;***申し訳ありません***このバージョンのnetrwには、パッチ付きのvim v7.4が必要です#&quot;</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;#: ../../runtime/autoload/netrwSettings.vim:28<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgid &quot;***warning*** this version of netrwSettings needs vim 7.0&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;msgstr &quot;***警告***このバージョンのnetrwSettingsにはvim7.0が必要です&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#: ../../runtime/autoload/netrwSettings.vim:28</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgid &quot;***warning*** this version of netrwSettings needs vim 7.0&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">msgstr &quot;***警告***このバージョンのnetrwSettingsにはvim7.0が必要です&quot;</span><br>
 <br>
 ja.po を MO ファイルに変換する:<br>
 <br>
@@ -1152,7 +1152,7 @@ ja.po を MO ファイルに変換する:<br>
 これらの手順を実行すると、サードパーティのプラグインパッケージの翻訳を取得でき<br>
 るようになる。<br>
 <br>
-プラグイン間の依存関係<br>
+<span class="PreProc">プラグイン間の依存関係</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#packload-two-steps" name="packload-two-steps">packload-two-steps</a><br>
 同じ機能に依存する2つのプラグインがあるとする。共通機能を autoload ディレクト<br>
 リに置くことで、自動的に見つかるようにすることができる。あなたのパッケージには<br>
@@ -1168,7 +1168,7 @@ ja.po を MO ファイルに変換する:<br>
 これは動作する。なぜなら、パッケージをロードすると、プラグインを読み込む前に見<br>
 つかったすべてのディレクトリが&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;に追加されるからである。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 7. スクリプトのデバッグ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#debug-scripts" name="debug-scripts">debug-scripts</a><br>
 <br>
 スクリプトの動作を知るためのコードを追加することができるのは当り前として、Vim<br>
@@ -1183,7 +1183,7 @@ ja.po を MO ファイルに変換する:<br>
 の動作についてより詳細なメッセージを得られる。<br>
 <br>
 <br>
-デバッグモードを開始する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#debug-mode" name="debug-mode">debug-mode</a><br>
+<span class="Statement">デバッグモードを開始する</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#debug-mode" name="debug-mode">debug-mode</a><br>
 <br>
 デバッグモードを開始するにはこれらの方法のうちどれかを使う:<br>
 1. Vimを<a class="Identifier" href="starting.html#-D">-D</a>引数付きで起動する:<br>
@@ -1210,7 +1210,7 @@ ja.po を MO ファイルに変換する:<br>
 いた場合には分けて表示される。<br>
 <br>
 <br>
-デバッグモード<br>
+<span class="Statement">デバッグモード</span><br>
 <br>
 デバッグモードに入ると、通常のExコマンドが使える。例えば、変数の値を見るには:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo idx</div>
@@ -1241,7 +1241,7 @@ ja.po を MO ファイルに変換する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#>cont" name="&gt;cont">&gt;cont</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cont&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次のブレークポイントまで実行する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#>quit" name="&gt;quit">&gt;quit</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;異常停止する。これはCTRL-Cを使うことに似ているが、全て<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;異常停止する。これは<span class="Special">CTRL-C</span>を使うことに似ているが、全て<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を停止するわけではない。次のブレークポイントで停止す<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#>next" name="&gt;next">&gt;next</a><br>
@@ -1253,7 +1253,7 @@ ja.po を MO ファイルに変換する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ユーザー関数やソースファイルの呼び出し時には呼び出し先<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の行に進む。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#>interrupt" name="&gt;interrupt">&gt;interrupt</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interrupt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-C&nbsp;を使うことに似ているが、次のコマンドを実行する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interrupt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-C</span>&nbsp;を使うことに似ているが、次のコマンドを実行する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ためにデバッグモードに戻る場所が &quot;&gt;quit&quot; と違う。例外<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;割り込みについて<a class="Identifier" href="eval.html#:finally">:finally</a>や<a class="Identifier" href="eval.html#:catch">:catch</a>をテストするのに便<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;利である。<br>
@@ -1267,7 +1267,7 @@ ja.po を MO ファイルに変換する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;示する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#>frame" name="&gt;frame">&gt;frame</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame&nbsp;N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N&nbsp;番目のスタックフレームへ移動する。+ や - 記号で、相<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame&nbsp;<span class="Special">N</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">N</span>&nbsp;番目のスタックフレームへ移動する。+ や - 記号で、相<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;対的に移動できる。例えば、&quot;:frame +3&quot; で 3 つ上のス<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タックフレームへ移動する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#>up" name="&gt;up">&gt;up</a><br>
@@ -1279,7 +1279,7 @@ ja.po を MO ファイルに変換する:<br>
 - 補完はできない。通常のExコマンドのみ補完できる。<br>
 - コマンド名は、他のコマンドが同じ文字で始まらない限り 1 文字まで省略できる。<br>
 &nbsp;&nbsp;&quot;f&quot; は &quot;finish&quot; になるので &quot;frame&quot; を省略するには &quot;fr&quot; を用いる。<br>
--&nbsp;&lt;CR&gt;を押すと前回のものを繰り返す。関係ないコマンドを使うとリセットされる<br>
+-&nbsp;<span class="Special">&lt;CR&gt;</span>を押すと前回のものを繰り返す。関係ないコマンドを使うとリセットされる<br>
 &nbsp;&nbsp;(どうすべきかがわかりにくいため)。<br>
 - 同じ名前のExコマンドを使うにはコロンを付けること:<br>
 &nbsp;&nbsp;&quot;:cont&quot;, &quot;:next&quot;, &quot;:finish&quot; (省略時も)<br>
@@ -1298,29 +1298,29 @@ ja.po を MO ファイルに変換する:<br>
 ことができず、したがって少々誤解を招くかもしれない(しかし便利に使える)。<br>
 <br>
 バックトレースは、関数呼び出しの階層を表示する。例えば:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;bt<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 function One[3]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 Two[3]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;1 Three[3]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0 Four<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行 1: let four = 4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&gt;bt</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">3 function One[3]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">2 Two[3]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">-&gt;1 Three[3]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">0 Four</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">行 1: let four = 4</span><br>
 <br>
-&quot;-&gt;&quot; は現在いるフレームを指す。&quot;up&quot;、&quot;down&quot;、&quot;frame&nbsp;N&quot; を使うことで、別のフレー<br>
+&quot;-&gt;&quot; は現在いるフレームを指す。&quot;up&quot;、&quot;down&quot;、&quot;frame&nbsp;<span class="Special">N</span>&quot; を使うことで、別のフレー<br>
 ムを選択できる。<br>
 <br>
 現在いるフレームの、その関数内でのローカル変数にアクセスできる。現在いるフレー<br>
 ムの、現在行の内容を表示する方法はまだない。<br>
 <br>
 <br>
-ブレークポイントの定義<br>
+<span class="Statement">ブレークポイントの定義</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:breaka" name=":breaka">:breaka</a>&nbsp;<a class="Constant" href="repeat.html#:breakadd" name=":breakadd">:breakadd</a><br>
-:breaka[dd] func&nbsp;[lnum]&nbsp;{name}<br>
+:breaka[dd] func&nbsp;<span class="Special">[lnum]</span>&nbsp;<span class="Special">{name}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数にブレークポイントを設定する。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:breakadd func Explore</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 関数名が妥当かどうか検査しないので、関数定義の前にブレークポイ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ントを定義できる。<br>
 <br>
-:breaka[dd] file&nbsp;[lnum]&nbsp;{name}<br>
+:breaka[dd] file&nbsp;<span class="Special">[lnum]</span>&nbsp;<span class="Special">{name}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ソースファイルにブレークポイントを設定する。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:breakadd file 43 .vimrc</div>
 <br>
@@ -1331,8 +1331,8 @@ ja.po を MO ファイルに変換する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>&nbsp;これはファイルを読み込むときに実行されるコマンドに対して<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;だけ働く。そのファイル中で定義される関数に対しては働かない。<br>
 <br>
-:breaka[dd] expr&nbsp;{expression}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{expression}&nbsp;の評価結果が異なる値となるときに常にブレークする<br>
+:breaka[dd] expr&nbsp;<span class="Special">{expression}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{expression}</span>&nbsp;の評価結果が異なる値となるときに常にブレークする<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ブレークポイントを設定する。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:breakadd expr g:lnum</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; これはグローバル変数の lnum が変化するときに常にブレークする。<br>
@@ -1352,7 +1352,7 @@ ja.po を MO ファイルに変換する:<br>
 省略時すると1行目になる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:debug-name" name=":debug-name">:debug-name</a><br>
-{name}&nbsp;はファイル名や関数名のパターンである。パターンは自動コマンドで使われる<br>
+<span class="Special">{name}</span>&nbsp;はファイル名や関数名のパターンである。パターンは自動コマンドで使われる<br>
 ものと同じである。完全に一致しなければならない (パターンが &quot;^&quot; で始まって&quot;$&quot;<br>
 で終わるように)。&quot;*&quot; は全ての文字列に一致する。<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;は使われないが、大<br>
 文字と小文字を区別しないために &quot;\c&quot; を使うことができる<a class="Identifier" href="pattern.html#/\c">/\c</a>。関数名には()を付<br>
@@ -1368,25 +1368,25 @@ ja.po を MO ファイルに変換する:<br>
 <br>
 関数名のパターン検査は &quot;:function&quot; で表示される名前に対して行われる。しかしな<br>
 がら、ローカル関数ではスクリプトのIDを知らずともスクリプトローカル関数との照合<br>
-が容易にできるようにスクリプト固有の &quot;&lt;SNR&gt;99_&quot; のような接頭辞は無視される。<br>
+が容易にできるようにスクリプト固有の &quot;<span class="Special">&lt;SNR&gt;</span>99_&quot; のような接頭辞は無視される。<br>
 <br>
 <span class="Todo">Note</span>&nbsp;関数はまず読み込まれ、後で実行される。読み込まれたときに &quot;file&quot; ブレーク<br>
 ポイントがチェックされ、実行されるときに &quot;func&quot; ブレークポイントがチェックされ<br>
 る。<br>
 <br>
-ブレークポイントの削除<br>
+<span class="Statement">ブレークポイントの削除</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:breakd" name=":breakd">:breakd</a>&nbsp;<a class="Constant" href="repeat.html#:breakdel" name=":breakdel">:breakdel</a>&nbsp;<a class="Constant" href="repeat.html#E161" name="E161">E161</a><br>
-:breakd[el]&nbsp;{nr}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ブレークポイント{nr}を削除する。<a class="Identifier" href="repeat.html#:breaklist">:breaklist</a>を使って番号を確認<br>
+:breakd[el]&nbsp;<span class="Special">{nr}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ブレークポイント<span class="Special">{nr}</span>を削除する。<a class="Identifier" href="repeat.html#:breaklist">:breaklist</a>を使って番号を確認<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;できる。<br>
 <br>
 :breakd[el] *<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;すべてのブレークポイントを削除する。<br>
 <br>
-:breakd[el] func&nbsp;[lnum]&nbsp;{name}<br>
+:breakd[el] func&nbsp;<span class="Special">[lnum]</span>&nbsp;<span class="Special">{name}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数内のブレークポイントを削除する。<br>
 <br>
-:breakd[el] file&nbsp;[lnum]&nbsp;{name}<br>
+:breakd[el] file&nbsp;<span class="Special">[lnum]</span>&nbsp;<span class="Special">{name}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ソースファイル内のブレークポイントを削除する。<br>
 <br>
 :breakd[el] here<br>
@@ -1394,17 +1394,17 @@ ja.po を MO ファイルに変換する:<br>
 <br>
 <br>
 [lnum] が省略されると関数、またはファイルの最初のブレークポイントが削除される。<br>
-{name}&nbsp;は &quot;:breakadd&quot; で使った名前と完全に同じでなければならない。&quot;explorer&quot;<br>
+<span class="Special">{name}</span>&nbsp;は &quot;:breakadd&quot; で使った名前と完全に同じでなければならない。&quot;explorer&quot;<br>
 と &quot;*explorer.vim&quot;、&quot;*explorer*&quot; は違う。<br>
 <br>
 <br>
-ブレークポイントを列挙する<br>
+<span class="Statement">ブレークポイントを列挙する</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:breakl" name=":breakl">:breakl</a>&nbsp;<a class="Constant" href="repeat.html#:breaklist" name=":breaklist">:breaklist</a><br>
 :breakl[ist]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全てのブレークポイントを列挙する。<br>
 <br>
 <br>
-その他<br>
+<span class="Statement">その他</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:debugg" name=":debugg">:debugg</a>&nbsp;<a class="Constant" href="repeat.html#:debuggreedy" name=":debuggreedy">:debuggreedy</a><br>
 :debugg[reedy]<br>
@@ -1417,7 +1417,7 @@ ja.po を MO ファイルに変換する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:debuggreedy&quot; を取り消す。それ以降のデバッグモードコマンドを<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使わず、ユーザーから直接デバッグモードコマンドを受け取る。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 8. プロファイリング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#profile" name="profile">profile</a>&nbsp;<a class="Constant" href="repeat.html#profiling" name="profiling">profiling</a><br>
 <br>
 プロファイリングとは、関数やスクリプトの実行にかかる時間を計測することである。<br>
@@ -1436,12 +1436,12 @@ ja.po を MO ファイルに変換する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:exit</div>
 <br>
 <br>
-:prof[ile] start&nbsp;{fname}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:prof" name=":prof">:prof</a>&nbsp;<a class="Constant" href="repeat.html#:profile" name=":profile">:profile</a>&nbsp;<a class="Constant" href="repeat.html#E750" name="E750">E750</a><br>
+:prof[ile] start&nbsp;<span class="Special">{fname}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="repeat.html#:prof" name=":prof">:prof</a>&nbsp;<a class="Constant" href="repeat.html#:profile" name=":profile">:profile</a>&nbsp;<a class="Constant" href="repeat.html#E750" name="E750">E750</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プロファイリングを開始し、終了時もしくは&nbsp;<span class="Comment">:profile stop</span>&nbsp;また<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は&nbsp;<span class="Comment">:profile dump</span>&nbsp;コマンドを実行した時に出力を&nbsp;{fname}&nbsp;に書き<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は&nbsp;<span class="Comment">:profile dump</span>&nbsp;コマンドを実行した時に出力を&nbsp;<span class="Special">{fname}</span>&nbsp;に書き<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;出す。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{fname}&nbsp;中の &quot;~/&quot; や環境変数は展開される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{fname}&nbsp;がすでに存在するときは、警告なしに上書きされる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{fname}</span>&nbsp;中の &quot;~/&quot; や環境変数は展開される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{fname}</span>&nbsp;がすでに存在するときは、警告なしに上書きされる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変数&nbsp;<a class="Identifier" href="eval.html#v:profiling">v:profiling</a>&nbsp;に 1 が代入される。<br>
 <br>
 :prof[ile] stop<br>
@@ -1459,14 +1459,14 @@ ja.po を MO ファイルに変換する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment">:profile pause</span>&nbsp;の後にこれを実行すると、プロファイリングを再<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;開する。<br>
 <br>
-:prof[ile] func&nbsp;{pattern}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パターン&nbsp;{pattern}&nbsp;にマッチする関数をプロファイリングする。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{pattern}&nbsp;がどう使われるかは&nbsp;<a class="Identifier" href="repeat.html#:debug-name">:debug-name</a>&nbsp;を参照。<br>
+:prof[ile] func&nbsp;<span class="Special">{pattern}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パターン&nbsp;<span class="Special">{pattern}</span>&nbsp;にマッチする関数をプロファイリングする。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{pattern}</span>&nbsp;がどう使われるかは&nbsp;<a class="Identifier" href="repeat.html#:debug-name">:debug-name</a>&nbsp;を参照。<br>
 <br>
-:prof[ile][!] file&nbsp;{pattern}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パターン&nbsp;{pattern}&nbsp;にマッチするスクリプトファイルをプロファイ<br>
+:prof[ile][!] file&nbsp;<span class="Special">{pattern}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パターン&nbsp;<span class="Special">{pattern}</span>&nbsp;にマッチするスクリプトファイルをプロファイ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リングする。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{pattern}&nbsp;がどう使われるかは&nbsp;<a class="Identifier" href="repeat.html#:debug-name">:debug-name</a>&nbsp;を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{pattern}</span>&nbsp;がどう使われるかは&nbsp;<a class="Identifier" href="repeat.html#:debug-name">:debug-name</a>&nbsp;を参照。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このコマンドはスクリプトそのものをプロファイリングするだけで、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;その中で定義されている関数のプロファイリングは行わない。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[!] がつけられたときは、そのスクリプト中で定義されている全ての<br>
@@ -1495,17 +1495,17 @@ ja.po を MO ファイルに変換する:<br>
 <br>
 次に出力の例を挙げる。説明のために行番号が行頭についている:<br>
 <br>
-&nbsp;&nbsp;1 FUNCTION&nbsp;&nbsp;Test2()<br>
-&nbsp;&nbsp;2 Called 1 time<br>
-&nbsp;&nbsp;3 Total time:&nbsp;&nbsp; 0.155251<br>
-&nbsp;&nbsp;4&nbsp;&nbsp;Self time:&nbsp;&nbsp; 0.002006<br>
-&nbsp;&nbsp;5&nbsp;<br>
-&nbsp;&nbsp;6 count&nbsp;&nbsp;total (s)&nbsp;&nbsp; self (s)<br>
-&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp; 9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.000096&nbsp;&nbsp; for i in range(8)<br>
-&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp; 8&nbsp;&nbsp; 0.153655&nbsp;&nbsp; 0.000410&nbsp;&nbsp;&nbsp;&nbsp; call Test3()<br>
-&nbsp;&nbsp;9&nbsp;&nbsp;&nbsp;&nbsp; 8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.000070&nbsp;&nbsp; endfor<br>
-&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; Ask a question<br>
-&nbsp;11&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.001341&nbsp;&nbsp; echo input(&quot;give me an answer: &quot;)<br>
+&nbsp;&nbsp;<span class="PreProc">1 FUNCTION&nbsp;&nbsp;Test2()</span><br>
+&nbsp;&nbsp;<span class="PreProc">2 Called 1 time</span><br>
+&nbsp;&nbsp;<span class="PreProc">3 Total time:&nbsp;&nbsp; 0.155251</span><br>
+&nbsp;&nbsp;<span class="PreProc">4&nbsp;&nbsp;Self time:&nbsp;&nbsp; 0.002006</span><br>
+&nbsp;&nbsp;<span class="PreProc">5&nbsp;</span><br>
+&nbsp;&nbsp;<span class="PreProc">6 count&nbsp;&nbsp;total (s)&nbsp;&nbsp; self (s)</span><br>
+&nbsp;&nbsp;<span class="PreProc">7&nbsp;&nbsp;&nbsp;&nbsp; 9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.000096&nbsp;&nbsp; for i in range(8)</span><br>
+&nbsp;&nbsp;<span class="PreProc">8&nbsp;&nbsp;&nbsp;&nbsp; 8&nbsp;&nbsp; 0.153655&nbsp;&nbsp; 0.000410&nbsp;&nbsp;&nbsp;&nbsp; call Test3()</span><br>
+&nbsp;&nbsp;<span class="PreProc">9&nbsp;&nbsp;&nbsp;&nbsp; 8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.000070&nbsp;&nbsp; endfor</span><br>
+&nbsp;<span class="PreProc">10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; Ask a question</span><br>
+&nbsp;<span class="PreProc">11&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.001341&nbsp;&nbsp; echo input(&quot;give me an answer: &quot;)</span><br>
 <br>
 ヘッダー (1行目から4行目) は関数全体にかかった時間を示している。&quot;Total&quot; はこの<br>
 関数を実行している間に経過した時間である。&quot;Self&quot; は &quot;Total&quot; のうち、次のことに<br>

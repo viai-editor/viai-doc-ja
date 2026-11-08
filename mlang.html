@@ -3,10 +3,10 @@ layout: viai-doc
 helpname: 'mlang'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="mlang.html" name="mlang.txt">mlang.txt</a>&nbsp;&nbsp;&nbsp;&nbsp; For&nbsp;ViAI バージョン 1.0.&nbsp;&nbsp;Last change: 2026 Jul 28<br>
+<a class="Constant" href="mlang.html" name="mlang.txt">mlang.txt</a>&nbsp;&nbsp;&nbsp;&nbsp; For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Jul 28<br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル<br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
 多言語機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mlang.html#multilang" name="multilang">multilang</a>&nbsp;<a class="Constant" href="mlang.html#multi-lang" name="multi-lang">multi-lang</a><br>
@@ -22,9 +22,9 @@ helpname: 'mlang'
 <br>
 多言語のヘルプ機能については<a class="Identifier" href="helphelp.html#help-translated">help-translated</a>を参照のこと。<br>
 <br>
-{<a class="Identifier" href="various.html#+multi_lang">+multi_lang</a>機能を無効にしてコンパイルした場合には利用できない}<br>
+<span class="Special">{</span><a class="Identifier" href="various.html#+multi_lang">+multi_lang</a><span class="Special">機能を無効にしてコンパイルした場合には利用できない}</span><br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 1. メッセージ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mlang.html#multilang-messages" name="multilang-messages">multilang-messages</a><br>
 <br>
 Vimはシステム環境からロケール(地域情報)を判定する。ほとんどの場合これは、その<br>
@@ -33,8 +33,8 @@ Vimはシステム環境からロケール(地域情報)を判定する。ほと
 <br>
 システムによりサポートされるロケールの一覧を見るには、(UNIXでは)これらのディレ<br>
 クトリを見る:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/lib/locale<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/share/locale<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/usr/lib/locale</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/usr/share/locale</span><br>
 ロケール名には不幸にして大文字と小文字の違いがある。また &quot;-&quot; と &quot;_&quot; の使われ方<br>
 にも用心すること。<br>
 <br>
@@ -58,15 +58,15 @@ Vimはシステム環境からロケール(地域情報)を判定する。ほと
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在の言語は<a class="Identifier" href="eval.html#v:lang">v:lang</a>,&nbsp;<a class="Identifier" href="eval.html#v:ctype">v:ctype</a>,&nbsp;<a class="Identifier" href="eval.html#v:collate">v:collate</a>&nbsp;そして<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="eval.html#v:lc_time">v:lc_time</a>&nbsp;の各変数で取得することもできる。<br>
 <br>
-:lan[guage]&nbsp;{name}<br>
-:lan[guage] mes[sages]&nbsp;{name}<br>
-:lan[guage] cty[pe]&nbsp;{name}<br>
-:lan[guage] tim[e]&nbsp;{name}<br>
-:lan[guage] col[late]&nbsp;{name}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在の言語(言い換えればロケール)を{name}に設定する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{name}&nbsp;の POSIX 形式は以下のとおり:<br>
+:lan[guage]&nbsp;<span class="Special">{name}</span><br>
+:lan[guage] mes[sages]&nbsp;<span class="Special">{name}</span><br>
+:lan[guage] cty[pe]&nbsp;<span class="Special">{name}</span><br>
+:lan[guage] tim[e]&nbsp;<span class="Special">{name}</span><br>
+:lan[guage] col[late]&nbsp;<span class="Special">{name}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在の言語(言い換えればロケール)を<span class="Special">{name}</span>に設定する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>&nbsp;の POSIX 形式は以下のとおり:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;language[_territory][.encoding]</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{name}というロケールがシステムに存在していなければなら<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>というロケールがシステムに存在していなければなら<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ない。あるシステムでは &quot;en&quot; とか &quot;en_US&quot; と言った別称<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を受け付けるが、中には &quot;en_US.ISO_8859-1&quot; のように完全<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;な指定しか受け付けないシステムもある。Unix では次のコ<br>
@@ -102,14 +102,14 @@ Vimはシステム環境からロケール(地域情報)を判定する。ほと
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:lang mes en</div>
 <br>
 <br>
-MS-WINDOWSでのメッセージ翻訳&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mlang.html#win32-gettext" name="win32-gettext">win32-gettext</a><br>
+<span class="Statement">MS-WINDOWSでのメッセージ翻訳</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mlang.html#win32-gettext" name="win32-gettext">win32-gettext</a><br>
 <br>
 インストーラを利用した場合には、既にメッセージの翻訳が動作している。動作しない<br>
 のであればlibintl.dllを別途入手する必要がある:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://sourceforge.net/projects/gettext">http://sourceforge.net/projects/gettext</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://sourceforge.net/projects/gettext">http://sourceforge.net/projects/gettext</a></span><br>
 Or:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://mlocati.github.io/gettext-iconv-windows/">https://mlocati.github.io/gettext-iconv-windows/</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://mlocati.github.io/gettext-iconv-windows/">https://mlocati.github.io/gettext-iconv-windows/</a></span><br>
 <br>
 これにはxgettext, msgformatその他のツールも含まれている。<br>
 <br>
@@ -136,9 +136,9 @@ libintl.dll は、(g)viai.exe と同じディレクトリか、PATH環境変数�
 翻訳をしないようにするには &quot;en&quot; を指定する。<br>
 <br>
 (このWindows向け文章は村岡太郎によって書かれた)<br>
-{訳注: 訳注として追加されたわけでなく原文にこの記述がある}<br>
+<span class="Special">{訳注: 訳注として追加されたわけでなく原文にこの記述がある}</span><br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 2. メニュー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mlang.html#multilang-menus" name="multilang-menus">multilang-menus</a><br>
 <br>
 基本(特に&nbsp;<a class="Type" href="options.html#'langmenu'">'langmenu'</a>&nbsp;の使い方)は<a class="Identifier" href="usr_45.html#45.2">45.2</a>を参照。<br>
@@ -146,7 +146,7 @@ libintl.dll は、(g)viai.exe と同じディレクトリか、PATH環境変数�
 メニューの翻訳が作られた後に元のメニューが変更された場合には、それらのメニュー<br>
 は英語のまま表示されることがある。そのような場合には翻訳のメンテナーに連絡を取<br>
 り更新するように頼んで欲しい。翻訳者の名前とメールアドレスはファイル<br>
-&quot;$VIMRUNTIME/lang/menu_&lt;lang&gt;.vim&quot; の中に見つけることができる。<br>
+&quot;$VIMRUNTIME/lang/menu_<span class="Special">&lt;lang&gt;</span>.vim&quot; の中に見つけることができる。<br>
 <br>
 メニューに利用するフォント(もしくはフォントセット)を指定するには、<a class="Identifier" href="syntax.html#:highlight">:highlight</a><br>
 コマンドを使用する。例:<br>
@@ -154,7 +154,7 @@ libintl.dll は、(g)viai.exe と同じディレクトリか、PATH環境変数�
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:highlight Menu font=k12,r12</div>
 <br>
 <br>
-ロケールの省略名<br>
+<span class="Statement">ロケールの省略名</span><br>
 <br>
 あいにく、同じ言語に同じエンコードであっても、ロケール名がシステムによって異な<br>
 ることがある。期待した通りにメニューが翻訳されない時には、次のコマンドの実行結<br>
@@ -181,7 +181,7 @@ libintl.dll は、(g)viai.exe と同じディレクトリか、PATH環境変数�
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime lang/menu_&lt;other_lang&gt;.vim</div>
 <br>
 <br>
-メニューを翻訳する<br>
+<span class="Statement">メニューを翻訳する</span><br>
 <br>
 メニューを独自に翻訳したい場合は、以下で説明するように<a class="Identifier" href="mlang.html#:menutrans">:menutrans</a>コマンドを使<br>
 うことができる。ある1つの言語の翻訳は1つの Vim script にまとめられることが推奨<br>
@@ -193,12 +193,12 @@ Vimユーザーに提供することを是非とも考えていただきたい�
 :menut[ranslate] clear<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;メニューの翻訳をすべて削除する。<br>
 <br>
-:menut[ranslate]&nbsp;{english}&nbsp;{mylang}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;メニュー名{english}を{mylang}に翻訳する。&quot;&amp;&quot; と<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&lt;Tab&gt;&quot; の特別な文字も全て含まれる必要がある。半角ス<br>
+:menut[ranslate]&nbsp;<span class="Special">{english}</span>&nbsp;<span class="Special">{mylang}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;メニュー名<span class="Special">{english}</span>を<span class="Special">{mylang}</span>に翻訳する。&quot;&amp;&quot; と<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;<span class="Special">&lt;Tab&gt;</span>&quot; の特別な文字も全て含まれる必要がある。半角ス<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ペースとピリオド('.')は<a class="Identifier" href="gui.html#:menu">:menu</a>コマンドと同様に、バック<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スラッシュ&nbsp;{訳注: '\'}&nbsp;でエスケープする必要がある。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{english}内の大文字小文字は無視される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スラッシュ&nbsp;<span class="Special">{訳注: '\'}</span>&nbsp;でエスケープする必要がある。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{english}</span>内の大文字小文字は無視される。<br>
 <br>
 例は$VIMRUNTIME/langディレクトリを参照。<br>
 <br>
@@ -212,7 +212,7 @@ Vimユーザーに提供することを是非とも考えていただきたい�
 &quot;Überblick&quot; に訳される時、結果的に &quot;Help.Overview&quot; は &quot;Hilfe.Überblick&quot; と翻訳<br>
 される。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 3. スクリプト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mlang.html#multilang-scripts" name="multilang-scripts">multilang-scripts</a><br>
 <br>
 Vim script では現在の言語(ロケールを)取得するのに変数<a class="Identifier" href="eval.html#v:lang">v:lang</a>を使うことがで<br>

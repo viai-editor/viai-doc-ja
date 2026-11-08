@@ -3,10 +3,10 @@ layout: viai-doc
 helpname: 'version8'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="version8.html" name="version8.txt">version8.txt</a>&nbsp;&nbsp;For&nbsp;ViAI バージョン 1.0.&nbsp;&nbsp;Last change: 2026 Oct 17<br>
+<a class="Constant" href="version8.html" name="version8.txt">version8.txt</a>&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Oct 17<br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル<br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#vim8" name="vim8">vim8</a>&nbsp;<a class="Constant" href="version8.html#vim-8" name="vim-8">vim-8</a>&nbsp;<a class="Constant" href="version8.html#version-8.0" name="version-8.0">version-8.0</a>&nbsp;<a class="Constant" href="version8.html#version8.0" name="version8.0">version8.0</a><br>
@@ -47,15 +47,15 @@ Vi と Vim 8.0 の違いの概要については&nbsp;<a class="Identifier" href
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#vim-changelog" name="vim-changelog">vim-changelog</a><br>
 このサイトで(Martin Tournoijによる)最重要な変更の概要を見付けることができる:<br>
-<a href="https://www.arp242.net/vimlog/">https://www.arp242.net/vimlog/</a><br>
+<span class="Constant"><a href="https://www.arp242.net/vimlog/">https://www.arp242.net/vimlog/</a></span><br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 新機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#new-8" name="new-8">new-8</a><br>
 <br>
 初めに、より興味深い新機能の概要を示す。包括的な一覧は下にある。<br>
 <br>
 <br>
-非同期 I/O 対応、チャネル<br>
+<span class="PreProc">非同期 I/O 対応、チャネル</span><br>
 <br>
 Vim はバックグラウンドで他のプロセスとメッセージをやり取りすることができるよう<br>
 になった。これにより、サーバーに仕事をさせ、結果を Vim に送り返すことができる。<br>
@@ -70,7 +70,7 @@ Vim はバックグラウンドで他のプロセスとメッセージをやり�
 を作ることができるようになる。<br>
 <br>
 <br>
-ジョブ<br>
+<span class="PreProc">ジョブ</span><br>
 <br>
 Vim はジョブを開始し、それと通信し、そしてそれを停止することができるようになっ<br>
 た。これは補完や文法チェックなどのためのプロセスを走らせる際に非常に有用であ<br>
@@ -78,7 +78,7 @@ Vim はジョブを開始し、それと通信し、そしてそれを停止す�
 から読んだり書いたりすることができる。<a class="Identifier" href="channel.html#job_start()">job_start()</a>&nbsp;を参照。<br>
 <br>
 <br>
-タイマー<br>
+<span class="PreProc">タイマー</span><br>
 <br>
 タイマーもまた非同期である。これは、1 回あるいは周期的に発火し、任意の仕事を行<br>
 う関数を呼ぶことができる。例えば:<br>
@@ -86,7 +86,7 @@ Vim はジョブを開始し、それと通信し、そしてそれを停止す�
 これは 4 秒 (4000 ミリ秒) 後に CheckTemp() 関数を呼ぶ。<a class="Identifier" href="builtin.html#timer_start()">timer_start()</a>&nbsp;を参照。<br>
 <br>
 <br>
-部分適用<br>
+<span class="PreProc">部分適用</span><br>
 <br>
 Vim は既に Funcref、すなわち関数への参照を持っていた。部分適用も関数を参照する<br>
 が、それに加えて引数および/もしくは辞書と結びついている。これは特にチャネルや<br>
@@ -96,7 +96,7 @@ Vim は既に Funcref、すなわち関数への参照を持っていた。部�
 これは 4 秒後に CheckTemp(<span class="MissingTag">'out'</span>) を呼び出す。<br>
 <br>
 <br>
-ラムダとクロージャ<br>
+<span class="PreProc">ラムダとクロージャ</span><br>
 <br>
 関数を作成する簡単な方法が追加された: {args -&gt; expr}。<a class="Identifier" href="eval.html#lambda">lambda</a>&nbsp;を参照。これは<br>
 例えば&nbsp;<a class="Comment" href="builtin.html#filter()">filter()</a>&nbsp;や&nbsp;<a class="Comment" href="builtin.html#map()">map()</a>&nbsp;のような関数に有用である。これらの関数は関数引数<br>
@@ -110,7 +110,7 @@ Vim は既に Funcref、すなわち関数への参照を持っていた。部�
 <a class="Identifier" href="userfunc.html#:func-closure">:func-closure</a>。<br>
 <br>
 <br>
-パッケージ<br>
+<span class="PreProc">パッケージ</span><br>
 <br>
 プラグインは成長を続け、今まで以上に多くのプラグインが使えるようになっている。<br>
 プラグインの集合を管理し続けることができるように、パッケージ対応が追加された。<br>
@@ -119,7 +119,7 @@ Vim は既に Funcref、すなわち関数への参照を持っていた。部�
 り、要求された時にロードする。<a class="Identifier" href="repeat.html#packages">packages</a>&nbsp;を参照。<br>
 <br>
 <br>
-新スタイルのテスト<br>
+<span class="PreProc">新スタイルのテスト</span><br>
 <br>
 これは、Vim 開発者のためのものである。今まで Vim のためのテストを書くのは簡単<br>
 ではなかった。Vim 8 は assert 関数とテストを実行するためのフレームワークを追加<br>
@@ -128,7 +128,7 @@ Vim は既に Funcref、すなわち関数への参照を持っていた。部�
 <a class="Identifier" href="usr_41.html#test-functions">test-functions</a>&nbsp;を参照。<br>
 <br>
 <br>
-ウィンドウ ID<br>
+<span class="PreProc">ウィンドウ ID</span><br>
 <br>
 以前は、ウィンドウはその番号でのみアクセスすることができた。そして、その番号は<br>
 ウィンドウを開いたり閉じたり移動するたびに変更される。それぞれのウィンドウは一<br>
@@ -136,26 +136,26 @@ Vim は既に Funcref、すなわち関数への参照を持っていた。部�
 <a class="Identifier" href="builtin.html#win_getid()">win_getid()</a>&nbsp;と&nbsp;<a class="Identifier" href="builtin.html#win_id2win()">win_id2win()</a>&nbsp;を参照。<br>
 <br>
 <br>
-Viminfo のタイムスタンプ利用<br>
+<span class="PreProc">Viminfo のタイムスタンプ利用</span><br>
 <br>
 以前は、viminfo に格納される情報はどんなものでも最後の Vim が書いたものだった。<br>
 常に最新の要素が保持されるように、タイムスタンプが使用されるようになった。<br>
 <a class="Identifier" href="starting.html#viminfo-timestamp">viminfo-timestamp</a>&nbsp;を参照。<br>
 <br>
 <br>
-インデント付きの行折り返し<br>
+<span class="PreProc">インデント付きの行折り返し</span><br>
 <br>
 インデントの量を変更せずに行の折り返しを行えるように、<a class="Type" href="options.html#'breakindent'">'breakindent'</a>&nbsp;オプション<br>
 が追加された。<br>
 <br>
 <br>
-Windows: DirectX 対応<br>
+<span class="PreProc">Windows: DirectX 対応</span><br>
 <br>
 MS-Windows で DirectX (DirectWrite) 対応を有効化できるように、<a class="Type" href="options.html#'renderoptions'">'renderoptions'</a><br>
 オプションが追加された。<br>
 <br>
 <br>
-GTK+ 3 対応<br>
+<span class="PreProc">GTK+ 3 対応</span><br>
 <br>
 GTK+ 3 GUI は、いくつかのめったに気づかない技術上の差分を除き、GTK+ 2 と同じよ<br>
 うに動作する。Configure は、GTK+ 2 と 3 が両方使用可能な場合、引き続き 2 を選<br>
@@ -164,7 +164,7 @@ GTK+ 3 GUI は、いくつかのめったに気づかない技術上の差分を
 <br>
 <br>
 Vim script の拡張&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#new-vim-script-8" name="new-vim-script-8">new-vim-script-8</a><br>
------------------<br>
+<span class="PreProc">-----------------</span><br>
 <br>
 Vim script に以下の型が追加された:<br>
 <br>
@@ -184,34 +184,34 @@ printf() は %s の引数として任意の型を受け付けるようになっ�
 <br>
 <br>
 さまざまな新要素&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#new-items-8" name="new-items-8">new-items-8</a><br>
-----------------<br>
+<span class="PreProc">----------------</span><br>
 <br>
-ビジュアルモードコマンド:<br>
+<span class="PreProc">ビジュアルモードコマンド:</span><br>
 <br>
-<a class="Identifier" href="change.html#v_CTRL-A">v_CTRL-A</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択範囲の数値を一律に&nbsp;N&nbsp;ずつ増やす<br>
-<a class="Identifier" href="change.html#v_CTRL-X">v_CTRL-X</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択範囲の数値を一律に&nbsp;N&nbsp;ずつ減らす<br>
-<a class="Identifier" href="change.html#v_g_CTRL-A">v_g_CTRL-A</a>&nbsp;&nbsp;&nbsp;&nbsp;g&nbsp;CTRL-A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択範囲の数値を漸増的に&nbsp;N&nbsp;ずつ増やす<br>
-<a class="Identifier" href="change.html#v_g_CTRL-X">v_g_CTRL-X</a>&nbsp;&nbsp;&nbsp;&nbsp;g&nbsp;CTRL-X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択範囲の数値を漸減的に&nbsp;N&nbsp;ずつ減らす<br>
-<br>
-<br>
-挿入モードコマンド:<br>
-<br>
-<a class="Identifier" href="insert.html#i_CTRL-G_U">i_CTRL-G_U</a>&nbsp;&nbsp;&nbsp;&nbsp;CTRL-G&nbsp;U&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次のカーソル移動でアンドゥを分割しない<br>
+<a class="Identifier" href="change.html#v_CTRL-A">v_CTRL-A</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-A</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択範囲の数値を一律に&nbsp;<span class="Special">N</span>&nbsp;ずつ増やす<br>
+<a class="Identifier" href="change.html#v_CTRL-X">v_CTRL-X</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-X</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択範囲の数値を一律に&nbsp;<span class="Special">N</span>&nbsp;ずつ減らす<br>
+<a class="Identifier" href="change.html#v_g_CTRL-A">v_g_CTRL-A</a>&nbsp;&nbsp;&nbsp;&nbsp;g&nbsp;<span class="Special">CTRL-A</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択範囲の数値を漸増的に&nbsp;<span class="Special">N</span>&nbsp;ずつ増やす<br>
+<a class="Identifier" href="change.html#v_g_CTRL-X">v_g_CTRL-X</a>&nbsp;&nbsp;&nbsp;&nbsp;g&nbsp;<span class="Special">CTRL-X</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択範囲の数値を漸減的に&nbsp;<span class="Special">N</span>&nbsp;ずつ減らす<br>
 <br>
 <br>
-コマンドラインモードコマンド:<br>
+<span class="PreProc">挿入モードコマンド:</span><br>
 <br>
-<a class="Identifier" href="cmdline.html#/_CTRL-G">/_CTRL-G</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;がアクティブならば、次マッチへ移動<br>
-<a class="Identifier" href="cmdline.html#/_CTRL-T">/_CTRL-T</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;がアクティブならば、前マッチへ移動<br>
+<a class="Identifier" href="insert.html#i_CTRL-G_U">i_CTRL-G_U</a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-G</span>&nbsp;U&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次のカーソル移動でアンドゥを分割しない<br>
 <br>
 <br>
-オプション:<br>
+<span class="PreProc">コマンドラインモードコマンド:</span><br>
+<br>
+<a class="Identifier" href="cmdline.html#/_CTRL-G">/_CTRL-G</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-G</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;がアクティブならば、次マッチへ移動<br>
+<a class="Identifier" href="cmdline.html#/_CTRL-T">/_CTRL-T</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-T</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;がアクティブならば、前マッチへ移動<br>
+<br>
+<br>
+<span class="PreProc">オプション:</span><br>
 <br>
 <a class="Type" href="options.html#'belloff'">'belloff'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 指定した場合にベルを鳴らさない<br>
 <a class="Type" href="options.html#'breakindent'">'breakindent'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 折り返された行でインデントを繰り返す<br>
 <a class="Type" href="options.html#'breakindentopt'">'breakindentopt'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'breakindent'">'breakindent'</a>&nbsp;のための設定<br>
 <a class="Type" href="options.html#'emoji'">'emoji'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 絵文字を全角として扱う<br>
-<a class="Type" href="options.html#'fixendofline'">'fixendofline'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイル末尾に&nbsp;&lt;EOL&gt;&nbsp;を必ずつける<br>
+<a class="Type" href="options.html#'fixendofline'">'fixendofline'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイル末尾に&nbsp;<span class="Special">&lt;EOL&gt;</span>&nbsp;を必ずつける<br>
 <a class="Type" href="options.html#'langremap'">'langremap'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; マッピングされた文字に&nbsp;<a class="Type" href="options.html#'langmap'">'langmap'</a>&nbsp;を適用する<br>
 <a class="Type" href="options.html#'luadll'">'luadll'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lua 動的ライブラリの名前<br>
 <a class="Type" href="options.html#'packpath'">'packpath'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パッケージのために使われるディレクトリのリスト<br>
@@ -226,7 +226,7 @@ printf() は %s の引数として任意の型を受け付けるようになっ�
 <a class="Type" href="options.html#'termguicolors'">'termguicolors'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ターミナルで GUI カラーを使う<br>
 <br>
 <br>
-Ex コマンド:<br>
+<span class="PreProc">Ex コマンド:</span><br>
 <br>
 <a class="Identifier" href="quickfix.html#:cbottom">:cbottom</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quickfixウィンドウの最下へスクロールする<br>
 <a class="Identifier" href="quickfix.html#:cdo">:cdo</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quickfixリストの各項目に対してコマンドを実行する<br>
@@ -245,13 +245,13 @@ Ex コマンド:<br>
 <a class="Identifier" href="vimindex.html#:smile">:smile</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ユーザーを幸せにする<br>
 <br>
 <br>
-Ex コマンド修飾子:<br>
+<span class="PreProc">Ex コマンド修飾子:</span><br>
 <br>
 <a class="Identifier" href="cmdline.html#:keeppatterns">:keeppatterns</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 検索パターン履歴を変更せずにコマンドを実行する<br>
 <a class="Identifier" href="map.html#<mods>">&lt;mods&gt;</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンド修飾子をユーザー定義コマンドに提供する<br>
 <br>
 <br>
-新規および拡張された関数:<br>
+<span class="PreProc">新規および拡張された関数:</span><br>
 <br>
 <a class="Identifier" href="builtin.html#arglistid()">arglistid()</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 引数リストのIDを得る<br>
 <a class="Identifier" href="testing.html#assert_equal()">assert_equal()</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2つの式が等しい事をテストする<br>
@@ -283,7 +283,7 @@ Ex コマンド修飾子:<br>
 <a class="Identifier" href="channel.html#ch_status()">ch_status()</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; チャネルの状態を取得する<br>
 <a class="Identifier" href="builtin.html#execute()">execute()</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ex コマンドを実行し出力を得る<br>
 <a class="Identifier" href="builtin.html#exepath()">exepath()</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 実行可能ファイルのフルパスを得る<br>
-<a class="Identifier" href="builtin.html#funcref()">funcref()</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 関数&nbsp;{name}&nbsp;への参照を返す<br>
+<a class="Identifier" href="builtin.html#funcref()">funcref()</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 関数&nbsp;<span class="Special">{name}</span>&nbsp;への参照を返す<br>
 <a class="Identifier" href="builtin.html#getbufinfo()">getbufinfo()</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの情報一覧を得る<br>
 <a class="Identifier" href="builtin.html#getcharsearch()">getcharsearch()</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 文字検索情報を返す<br>
 <a class="Identifier" href="builtin.html#getcmdwintype()">getcmdwintype()</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 現在のコマンドラインウィンドウの種類を返す<br>
@@ -336,7 +336,7 @@ Ex コマンド修飾子:<br>
 <a class="Identifier" href="builtin.html#wordcount()">wordcount()</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バッファ内のバイト数/単語数/文字数などを得る<br>
 <br>
 <br>
-新しい Vim 変数:<br>
+<span class="PreProc">新しい Vim 変数:</span><br>
 <br>
 <a class="Identifier" href="eval.html#v:beval_winid">v:beval_winid</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; マウスポインタがあるウィンドウのウィンドウID<br>
 <a class="Identifier" href="eval.html#v:completed_item">v:completed_item</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最も最近補完された単語用の補完要素<br>
@@ -370,7 +370,7 @@ Ex コマンド修飾子:<br>
 <a class="Identifier" href="eval.html#v:vim_did_enter">v:vim_did_enter</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VimEnter 自動コマンドが実行される直前にセットされる<br>
 <br>
 <br>
-新しい自動コマンドイベント:<br>
+<span class="PreProc">新しい自動コマンドイベント:</span><br>
 <br>
 <a class="Identifier" href="autocmd.html#CmdUndefined">CmdUndefined</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;呼び出そうとしたユーザー定義コマンドが定義されていな<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;かったとき<br>
@@ -382,18 +382,18 @@ Ex コマンド修飾子:<br>
 <a class="Identifier" href="autocmd.html#WinNew">WinNew</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しいウィンドウを作成した後<br>
 <br>
 <br>
-新しいハイライトグループ:<br>
+<span class="PreProc">新しいハイライトグループ:</span><br>
 <br>
 EndOfBuffer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バッファ中で最終行以降の領域を埋めるための行 (~)。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="syntax.html#hl-EndOfBuffer">hl-EndOfBuffer</a><br>
 <br>
 <br>
-検索パターンにおける新要素:<br>
+<span class="PreProc">検索パターンにおける新要素:</span><br>
 <br>
 <a class="Identifier" href="pattern.html#/\%C">/\%C</a>&nbsp;&nbsp;\%C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; すべての合成文字にマッチする<br>
 <br>
 <br>
-新しい Syntax/Indent/FTplugin ファイル:<br>
+<span class="PreProc">新しい Syntax/Indent/FTplugin ファイル:</span><br>
 <br>
 AVR Assembler (Avra) syntax<br>
 Arduino syntax<br>
@@ -430,20 +430,20 @@ Text ftplugin<br>
 Vroom syntax and indent and ftplugin<br>
 <br>
 <br>
-新しいキーマップ:<br>
+<span class="PreProc">新しいキーマップ:</span><br>
 <br>
 Armenian eastern and western<br>
 Russian jcukenwintype<br>
 Vietnamese telex and vni<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 非互換な変更&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#incompatible-8" name="incompatible-8">incompatible-8</a><br>
 <br>
 これらの変更は以前のリリースとは互換性がない。もしもあなたが Vim 7.4 か<br>
 ら 8.0 に更新した際に問題が起きた場合、この一覧を確認すること。<br>
 <br>
 <br>
-vimrc が無いときのより良い既定値<br>
+<span class="PreProc">vimrc が無いときのより良い既定値</span><br>
 <br>
 vimrc ファイルが見つからないとき、新規ユーザーのためにより有用な既定値を設定す<br>
 るために&nbsp;<a class="Identifier" href="starting.html#defaults.vim">defaults.vim</a>&nbsp;がロードされる。これは&nbsp;<a class="Type" href="options.html#'nocompatible'">'nocompatible'</a>&nbsp;の設定も含んでい<br>
@@ -452,7 +452,7 @@ vimrc ファイルが見つからないとき、新規ユーザーのために�
 る。<br>
 <br>
 <br>
-対応の削除<br>
+<span class="PreProc">対応の削除</span><br>
 <br>
 MS-DOS 対応は削除された。それは、(Vim がメモリに収まらないため) しばらく動いて<br>
 いなかった。削除によりコードが少しきれいになった。<br>
@@ -465,11 +465,11 @@ OS/2 の対応は削除された。それはしばらく誰も使っていなか
 SNiFF+ 対応は削除された。<br>
 <br>
 <br>
-小さな非互換点<br>
+<span class="PreProc">小さな非互換点</span><br>
 <br>
 おそらく……<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 改善点&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#improvements-8" name="improvements-8">improvements-8</a><br>
 <br>
 既存の blowfish 暗号化は想定よりも弱かったことが判明した。それを修正するため、<br>
@@ -477,18 +477,18 @@ blowfish2 方式が追加された。<span class="Todo">Note</span>&nbsp;これ�
 注意。しかし、たいていの用途には十分だろう。<a class="Type" href="options.html#'cryptmethod'">'cryptmethod'</a>&nbsp;を参照。<br>
 <br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 コンパイル時の変更&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#compile-changes-8" name="compile-changes-8">compile-changes-8</a><br>
 <br>
 Vim のリポジトリは、Google code が閉鎖されたため、Google code から github に移<br>
-動した。リポジトリは&nbsp;<a href="https://github.com/vim/vim&nbsp;にある。">https://github.com/vim/vim&nbsp;にある。</a><br>
+動した。リポジトリは&nbsp;<span class="Constant"><a href="https://github.com/vim/vim">https://github.com/vim/vim</a></span>&nbsp;にある。<br>
 <br>
 ANSI-C 関数宣言を使用するようになった。最低でも C-89 互換のコンパイラが要求さ<br>
 れる。<br>
 <br>
 常に&nbsp;<a class="Identifier" href="various.html#+visual">+visual</a>&nbsp;機能が含まれるようになった。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 パッチ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#patches-8" name="patches-8">patches-8</a>&nbsp;<a class="Constant" href="version8.html#bug-fixes-8" name="bug-fixes-8">bug-fixes-8</a><br>
 <br>
 7.4.0 以降に取り込まれたパッチのリストである。これはすべての新機能を含んでいる<br>
@@ -496,7 +496,7 @@ ANSI-C 関数宣言を使用するようになった。最低でも C-89 互換�
 ない。<br>
 <br>
 Patch 7.4.001<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Character classes such as&nbsp;[a-z]&nbsp;do not react to&nbsp;<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Character classes such as&nbsp;<span class="Special">[a-z]</span>&nbsp;do not react to&nbsp;<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Breaks man page highlighting. (Mario Grgic)<br>
 Solution:&nbsp;&nbsp; Add separate items for classes that react to&nbsp;<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>.&nbsp;&nbsp;Clean<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;up logic handling character classes.&nbsp;&nbsp;Add more tests.<br>
@@ -538,7 +538,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/main.c<br>
 <br>
 Patch 7.4.008<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;New regexp engine can't be interrupted.<br>
-Solution:&nbsp;&nbsp; Check for&nbsp;CTRL-C&nbsp;pressed. (Yasuhiro Matsumoto)<br>
+Solution:&nbsp;&nbsp; Check for&nbsp;<span class="Special">CTRL-C</span>&nbsp;pressed. (Yasuhiro Matsumoto)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/regexp_nfa.c, src/regexp.c<br>
 <br>
 Patch 7.4.009<br>
@@ -643,7 +643,7 @@ Solution:&nbsp;&nbsp; Use unsigned and cast back to int. (Dominique Pelle)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/misc2.c<br>
 <br>
 Patch 7.4.027 (after 7.4.025)<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Another valgrind error when using&nbsp;CTRL-X&nbsp;CTRL-F&nbsp;at the start of<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Another valgrind error when using&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-F</span>&nbsp;at the start of<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the line. (Dominique Pelle)<br>
 Solution:&nbsp;&nbsp; Don't call mb_ptr_back() at the start of the line.&nbsp;&nbsp;Add a test.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c, src/testdir/test32.in<br>
@@ -884,7 +884,7 @@ Solution:&nbsp;&nbsp; Change the colon to &quot;%&quot;. (Yasuhiro Matsumoto)<br
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/fileio.c, src/memline.c, src/misc1.c, src/proto/misc1.pro<br>
 <br>
 Patch 7.4.067<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;After inserting comment leader,&nbsp;CTRL-\&nbsp;CTRL-O&nbsp;does move the<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;After inserting comment leader,&nbsp;<span class="Special">CTRL-\</span>&nbsp;<span class="Special">CTRL-O</span>&nbsp;does move the<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cursor. (Wiktor Ruben)<br>
 Solution:&nbsp;&nbsp; Avoid moving the cursor. (Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c<br>
@@ -896,7 +896,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/configure.in, src/auto/configure, 
 <br>
 Patch 7.4.069<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot right shift lines starting with #.<br>
-Solution:&nbsp;&nbsp; Allow the right shift when&nbsp;<a class="Type" href="options.html#'cino'">'cino'</a>&nbsp;contains #N&nbsp;with&nbsp;N&nbsp;&gt; 0.<br>
+Solution:&nbsp;&nbsp; Allow the right shift when&nbsp;<a class="Type" href="options.html#'cino'">'cino'</a>&nbsp;contains #<span class="Special">N</span>&nbsp;with&nbsp;<span class="Special">N</span>&nbsp;&gt; 0.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Christian Brabandt)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Refactor parsing&nbsp;<a class="Type" href="options.html#'cino'">'cino'</a>, store the values in the buffer.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/indent.txt, src/buffer.c, src/edit.c, src/eval.c,<br>
@@ -1183,7 +1183,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_unix.c<br>
 Patch 7.4.116<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;When a mapping starts with a space, the typed space does not show<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;up for&nbsp;<a class="Type" href="options.html#'showcmd'">'showcmd'</a>.<br>
-Solution:&nbsp;&nbsp; Show &quot;&lt;20&gt;&quot;. (Brook Hong)<br>
+Solution:&nbsp;&nbsp; Show &quot;<span class="Special">&lt;20&gt;</span>&quot;. (Brook Hong)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/normal.c<br>
 <br>
 Patch 7.4.117<br>
@@ -1558,7 +1558,7 @@ Solution:&nbsp;&nbsp; Add version number. (Mike Williams)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/Make_mvc.mak<br>
 <br>
 Patch 7.4.184<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;match() does not work properly with a&nbsp;{count}&nbsp;argument.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;match() does not work properly with a&nbsp;<span class="Special">{count}</span>&nbsp;argument.<br>
 Solution:&nbsp;&nbsp; Compute the length once and update it.&nbsp;&nbsp;Quit the loop when at the<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end. (Hirohito Higashi)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/eval.c, src/testdir/test53.in, src/testdir/test53.ok<br>
@@ -1939,7 +1939,7 @@ Solution:&nbsp;&nbsp; Remove the error messages.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_unix.c<br>
 <br>
 Patch 7.4.245<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Crash for &quot;vim -u NONE -N&nbsp;&nbsp;-c '&amp;&amp;'&quot;.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Crash for &quot;vim -u NONE -<span class="Special">N</span>&nbsp;&nbsp;-c '&amp;&amp;'&quot;.<br>
 Solution:&nbsp;&nbsp; Check for the pattern to be NULL. (Dominique Pelle)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_cmds.c<br>
 <br>
@@ -2077,12 +2077,12 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/Make_amiga.mak, src/testdi
 Patch 7.4.268<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using exists() on a funcref for a script-local function does not<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;work.<br>
-Solution:&nbsp;&nbsp; Translate&nbsp;&lt;SNR&gt;&nbsp;to the special byte sequence.&nbsp;&nbsp;Add a test.<br>
+Solution:&nbsp;&nbsp; Translate&nbsp;<span class="Special">&lt;SNR&gt;</span>&nbsp;to the special byte sequence.&nbsp;&nbsp;Add a test.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/eval.c, src/testdir/test_eval.in, src/testdir/test_eval.ok,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_eval_func.vim, Filelist<br>
 <br>
 Patch 7.4.269<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-U&nbsp;in Insert mode does not work after using a cursor key.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-U</span>&nbsp;in Insert mode does not work after using a cursor key.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Pine Wu)<br>
 Solution:&nbsp;&nbsp; Use the original insert start position. (Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c, src/testdir/test29.in, src/testdir/test29.ok<br>
@@ -3115,7 +3115,7 @@ Solution:&nbsp;&nbsp; Call validate_cursor() instead of check_cursor(). (Hirohit
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c<br>
 <br>
 Patch 7.4.441<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Endless loop and other problems when&nbsp;<a class="Type" href="options.html#'cedit'">'cedit'</a>&nbsp;is set to&nbsp;CTRL-C.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Endless loop and other problems when&nbsp;<a class="Type" href="options.html#'cedit'">'cedit'</a>&nbsp;is set to&nbsp;<span class="Special">CTRL-C</span>.<br>
 Solution:&nbsp;&nbsp; Do not call ex_window() when ex_normal_busy or got_int was set.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Yasuhiro Matsumoto)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_getln.c<br>
@@ -3187,7 +3187,7 @@ Solution:&nbsp;&nbsp; Add #ifdef.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_cmds.c<br>
 <br>
 Patch 7.4.454<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;When using a Visual selection of multiple words and doing&nbsp;CTRL-W_]<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;When using a Visual selection of multiple words and doing&nbsp;<span class="Special">CTRL-W</span>_]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it jumps to the tag matching the word under the cursor, not the<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;selected text.&nbsp;&nbsp;(Patrick hemmer)<br>
 Solution:&nbsp;&nbsp; Do not reset Visual mode. (idea by Christian Brabandt)<br>
@@ -3208,7 +3208,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/options.txt, src/buffer.c,
 Patch 7.4.457<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using getchar() in an expression mapping may result in<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;K_CURSORHOLD, which can't be recognized.<br>
-Solution:&nbsp;&nbsp; Add the&nbsp;&lt;CursorHold&gt;&nbsp;key.&nbsp;&nbsp;(Hirohito Higashi)<br>
+Solution:&nbsp;&nbsp; Add the&nbsp;<span class="Special">&lt;CursorHold&gt;</span>&nbsp;key.&nbsp;&nbsp;(Hirohito Higashi)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/misc2.c<br>
 <br>
 Patch 7.4.458<br>
@@ -3256,8 +3256,8 @@ Solution:&nbsp;&nbsp; Use wcsncpy() instead of wcscpy(). (Ken Takata)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_win32.c<br>
 <br>
 Patch 7.4.466 (after 7.4.460)<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-W&nbsp;} does not open preview window. (Erik Falor)<br>
-Solution:&nbsp;&nbsp; Don't set g_do_tagpreview for&nbsp;CTRL-W&nbsp;}.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-W</span>&nbsp;} does not open preview window. (Erik Falor)<br>
+Solution:&nbsp;&nbsp; Don't set g_do_tagpreview for&nbsp;<span class="Special">CTRL-W</span>&nbsp;}.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/window.c<br>
 <br>
 Patch 7.4.467<br>
@@ -3268,7 +3268,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/normal.c, src/screen.c, src/testdi
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_listlbr.ok<br>
 <br>
 Patch 7.4.468<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Issue 26:&nbsp;CTRL-C&nbsp;does not interrupt after it was mapped and then<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Issue 26:&nbsp;<span class="Special">CTRL-C</span>&nbsp;does not interrupt after it was mapped and then<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unmapped.<br>
 Solution:&nbsp;&nbsp; Reset mapped_ctrl_c. (Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/getchar.c<br>
@@ -3414,7 +3414,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/eval.c<br>
 <br>
 Patch 7.4.492<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;In Insert mode, after inserting a newline that inserts a comment<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;leader,&nbsp;CTRL-O&nbsp;moves to the right. (ZyX) Issue 57.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;leader,&nbsp;<span class="Special">CTRL-O</span>&nbsp;moves to the right. (ZyX) Issue 57.<br>
 Solution:&nbsp;&nbsp; Correct the condition for moving the cursor back to the NUL.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c, src/testdir/test4.in, src/testdir/test4.ok<br>
@@ -3883,7 +3883,7 @@ Solution:&nbsp;&nbsp; Allow the zero in the range. (Marcin Szamotulski)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_docmd.c, src/testdir/test_command_count.ok<br>
 <br>
 Patch 7.4.569 (after 7.4.468)<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Having&nbsp;CTRL-C&nbsp;interrupt or not does not check the mode of the<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Having&nbsp;<span class="Special">CTRL-C</span>&nbsp;interrupt or not does not check the mode of the<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mapping. (Ingo Karkat)<br>
 Solution:&nbsp;&nbsp; Use a bitmask with the map mode. (Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/getchar.c, src/structs.h, src/testdir/test_mapping.in,<br>
@@ -3905,7 +3905,7 @@ Solution:&nbsp;&nbsp; Check the argument.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_docmd.c, src/window.c, src/proto/window.pro<br>
 <br>
 Patch 7.4.573 (after 7.4.569)<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Mapping&nbsp;CTRL-C&nbsp;in Visual mode doesn't work. (Ingo Karkat)<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Mapping&nbsp;<span class="Special">CTRL-C</span>&nbsp;in Visual mode doesn't work. (Ingo Karkat)<br>
 Solution:&nbsp;&nbsp; Call get_real_state() instead of using State directly.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ui.c, src/testdir/test_mapping.in, src/testdir/test_mapping.ok<br>
 <br>
@@ -3929,7 +3929,7 @@ Patch 7.4.577<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Matching with a virtual column has a lot of overhead on very long<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lines. (Issue 310)<br>
 Solution:&nbsp;&nbsp; Bail out early if there can't be a match. (Christian Brabandt)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Also check for&nbsp;CTRL-C&nbsp;at every position.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Also check for&nbsp;<span class="Special">CTRL-C</span>&nbsp;at every position.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/regexp_nfa.c<br>
 <br>
 Patch 7.4.578<br>
@@ -4019,7 +4019,7 @@ Solution:&nbsp;&nbsp; Do no clear the buffer.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_cmds.c<br>
 <br>
 Patch 7.4.593<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Crash when searching for &quot;x\{0,90000}&quot;. (Dominique Pelle)<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Crash when searching for &quot;x\<span class="Special">{0,90000}</span>&quot;. (Dominique Pelle)<br>
 Solution:&nbsp;&nbsp; Bail out from the NFA engine when the max limit is much higher<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;than the min limit.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/regexp_nfa.c, src/regexp.c, src/vim.h<br>
@@ -4186,7 +4186,7 @@ Solution:&nbsp;&nbsp; Add UNUSED.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/regexp_nfa.c<br>
 <br>
 Patch 7.4.623<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Crash with pattern: \(\)\{80000}&nbsp;&nbsp;(Dominique Pelle)<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Crash with pattern: \(\)\<span class="Special">{80000}</span>&nbsp;&nbsp;(Dominique Pelle)<br>
 Solution:&nbsp;&nbsp; When the max limit is large fall back to the old engine.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/regexp_nfa.c<br>
 <br>
@@ -4356,8 +4356,8 @@ Solution:&nbsp;&nbsp; Use 8 characters for the file position.&nbsp;&nbsp;Add the
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/xxd/xxd.c, runtime/doc/xxd.1<br>
 <br>
 Patch 7.4.653<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Insert mode completion with complete() may have&nbsp;CTRL-L&nbsp;work like<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-P.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Insert mode completion with complete() may have&nbsp;<span class="Special">CTRL-L</span>&nbsp;work like<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-P</span>.<br>
 Solution:&nbsp;&nbsp; Handle completion with complete() differently. (Yasuhiro<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Matsumoto, Christian Brabandt, Hirohito Higashi)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c<br>
@@ -4405,7 +4405,7 @@ Solution:&nbsp;&nbsp; Make a copy of the variable value.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/syntax.c<br>
 <br>
 Patch 7.4.661<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using &quot;0&nbsp;CTRL-D&quot; in Insert mode may have CursorHoldI interfere.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using &quot;0&nbsp;<span class="Special">CTRL-D</span>&quot; in Insert mode may have CursorHoldI interfere.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Gary Johnson)<br>
 Solution:&nbsp;&nbsp; Don't store K_CURSORHOLD as the last character. (Christian<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Brabandt)<br>
@@ -4522,7 +4522,7 @@ Solution:&nbsp;&nbsp; Truncate to 255 colors. (Yasuhiro Matsumoto)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_win32.c<br>
 <br>
 Patch 7.4.680<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-W&nbsp;in Insert mode does not work well for multibyte<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-W</span>&nbsp;in Insert mode does not work well for multibyte<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;characters.<br>
 Solution:&nbsp;&nbsp; Use mb_get_class(). (Yasuhiro Matsumoto)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c, src/testdir/Make_amiga.mak, src/testdir/Make_dos.mak,<br>
@@ -4590,7 +4590,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/main.c<br>
 <br>
 Patch 7.4.690<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Memory access errors when changing indent in Ex mode. Also missing<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;redraw when using&nbsp;CTRL-U. (Knil Ino)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;redraw when using&nbsp;<span class="Special">CTRL-U</span>. (Knil Ino)<br>
 Solution:&nbsp;&nbsp; Update pointers after calling ga_grow().<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_getln.c<br>
 <br>
@@ -4869,7 +4869,7 @@ Solution:&nbsp;&nbsp; Add #ifdef around use of w_p_cul. (Hirohito Higashi)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/normal.c, src/screen.c<br>
 <br>
 Patch 7.4.739<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;In a string &quot;\U&quot; only takes 4 digits, while after&nbsp;CTRL-V&nbsp;U eight<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;In a string &quot;\U&quot; only takes 4 digits, while after&nbsp;<span class="Special">CTRL-V</span>&nbsp;U eight<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;digits can be used.<br>
 Solution:&nbsp;&nbsp; Make &quot;\U&quot; also take eight digits. (Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/eval.c<br>
@@ -4916,7 +4916,7 @@ Solution:&nbsp;&nbsp; Fix setmatches(). (Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/eval.c, src/testdir/test63.in, src/testdir/test63.ok<br>
 <br>
 Patch 7.4.746<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;&quot;:[count]tag&quot; is not always working. (cs86661)<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;&quot;:<span class="Special">[count]</span>tag&quot; is not always working. (cs86661)<br>
 Solution:&nbsp;&nbsp; Set cur_match a bit later. (Hirohito Higashi)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/tag.c,<br>
 <br>
@@ -4962,7 +4962,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/normal.c, src/testdir/test_listlbr
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_listlbr_utf8.ok<br>
 <br>
 Patch 7.4.754<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using&nbsp;CTRL-A&nbsp;in Visual mode does not work well. (Gary Johnson)<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using&nbsp;<span class="Special">CTRL-A</span>&nbsp;in Visual mode does not work well. (Gary Johnson)<br>
 Solution:&nbsp;&nbsp; Make it increment all numbers in the Visual area. (Christian<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/change.txt, src/normal.c, src/ops.c,<br>
@@ -4992,7 +4992,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/main.c, src/term.c, src/term.h, sr
 <br>
 Patch 7.4.758<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;<a class="Type" href="options.html#'conceallevel'">'conceallevel'</a>&nbsp;is 1 and quitting the command-line window with<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-C&nbsp;the first character ':' is erased.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-C</span>&nbsp;the first character ':' is erased.<br>
 Solution:&nbsp;&nbsp; Reset&nbsp;<a class="Type" href="options.html#'conceallevel'">'conceallevel'</a>&nbsp;in the command-line window. (Hirohito<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Higashi)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_getln.c<br>
@@ -5028,7 +5028,7 @@ Solution:&nbsp;&nbsp; Clear Visual mappings. (Taro Muraoka)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_increment.in<br>
 <br>
 Patch 7.4.765 (after 7.4.754)<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-A&nbsp;and&nbsp;CTRL-X&nbsp;in Visual mode do not always work well.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-A</span>&nbsp;and&nbsp;<span class="Special">CTRL-X</span>&nbsp;in Visual mode do not always work well.<br>
 Solution:&nbsp;&nbsp; Improvements for increment and decrement. (Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/normal.c, src/ops.c, src/testdir/test_increment.in,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_increment.ok<br>
@@ -5111,7 +5111,7 @@ Solution:&nbsp;&nbsp; Change condition of assignment.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ops.c<br>
 <br>
 Patch 7.4.779<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using&nbsp;CTRL-A&nbsp;in a line without a number moves the cursor. May<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using&nbsp;<span class="Special">CTRL-A</span>&nbsp;in a line without a number moves the cursor. May<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cause a crash when at the start of the line. (Urtica Dioica)<br>
 Solution:&nbsp;&nbsp; Do not move the cursor if no number was changed.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ops.c<br>
@@ -5128,7 +5128,7 @@ Solution:&nbsp;&nbsp; Only adjust the size for the last line. (Rob Wu)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/memline.c<br>
 <br>
 Patch 7.4.782<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Still a few problems with&nbsp;CTRL-A&nbsp;and&nbsp;CTRL-X&nbsp;in Visual mode.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Still a few problems with&nbsp;<span class="Special">CTRL-A</span>&nbsp;and&nbsp;<span class="Special">CTRL-X</span>&nbsp;in Visual mode.<br>
 Solution:&nbsp;&nbsp; Fix the reported problems. (Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/charset.c, src/eval.c, src/ex_cmds.c, src/ex_getln.c,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/misc2.c, src/normal.c, src/ops.c, src/option.c,<br>
@@ -5287,14 +5287,14 @@ Solution:&nbsp;&nbsp; Use &quot;All&quot; when the first line and one filler lin
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/buffer.c<br>
 <br>
 Patch 7.4.806<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-A&nbsp;in Visual mode doesn't work properly with &quot;alpha&quot; in<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-A</span>&nbsp;in Visual mode doesn't work properly with &quot;alpha&quot; in<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'nrformats'">'nrformats'</a>.<br>
 Solution:&nbsp;&nbsp; Make it work. (Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ops.c, src/testdir/test_increment.in,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_increment.ok<br>
 <br>
 Patch 7.4.807 (after 7.4.798)<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;After&nbsp;CTRL-V&nbsp;CTRL-A&nbsp;mode isn't updated. (Hirohito Higashi)<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;After&nbsp;<span class="Special">CTRL-V</span>&nbsp;<span class="Special">CTRL-A</span>&nbsp;mode isn't updated. (Hirohito Higashi)<br>
 Solution:&nbsp;&nbsp; Clear the command line or update the displayed command.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/normal.c<br>
 <br>
@@ -5392,7 +5392,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_unix.c, src/eval.c, src/ex_cmds
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/normal.c, src/regexp.c, src/syntax.c, src/ui.c, src/window.c<br>
 <br>
 Patch 7.4.823<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cursor moves after&nbsp;CTRL-A&nbsp;on alphabetic character.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cursor moves after&nbsp;<span class="Special">CTRL-A</span>&nbsp;on alphabetic character.<br>
 Solution:&nbsp;&nbsp; (Hirohito Higashi, test by Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_increment.in, src/testdir/test_increment.ok,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ops.c<br>
@@ -5526,20 +5526,20 @@ Solution:&nbsp;&nbsp; Skip over multibyte character. (Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/search.c<br>
 <br>
 Patch 7.4.848<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-A&nbsp;on hex number in Visual block mode is incorrect.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-A</span>&nbsp;on hex number in Visual block mode is incorrect.<br>
 Solution:&nbsp;&nbsp; Account for the &quot;0x&quot;. (Hirohito Higashi)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/charset.c, src/testdir/test_increment.in,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_increment.ok<br>
 <br>
 Patch 7.4.849<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Moving the cursor in Insert mode starts new undo sequence.<br>
-Solution:&nbsp;&nbsp; Add&nbsp;CTRL-G&nbsp;U to keep the undo sequence for the following cursor<br>
+Solution:&nbsp;&nbsp; Add&nbsp;<span class="Special">CTRL-G</span>&nbsp;U to keep the undo sequence for the following cursor<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;movement command. (Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/insert.txt, src/edit.c, src/testdir/test_mapping.in,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_mapping.ok<br>
 <br>
 Patch 7.4.850 (after 7.4.846)<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;&lt;Esc&gt;&nbsp;does not show up.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;does not show up.<br>
 Solution:&nbsp;&nbsp; Use &amp;gt; and &amp;lt;. (Kazunobu Kuriyama)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONTRIBUTING.md<br>
 <br>
@@ -5726,7 +5726,7 @@ Solution:&nbsp;&nbsp; Add line number to check of call stack.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test49.vim<br>
 <br>
 Patch 7.4.882<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;When leaving the command line window with&nbsp;CTRL-C&nbsp;while a<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;When leaving the command line window with&nbsp;<span class="Special">CTRL-C</span>&nbsp;while a<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;completion menu is displayed the menu isn't removed.<br>
 Solution:&nbsp;&nbsp; Force a screen update. (Hirohito Higashi)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c<br>
@@ -5956,7 +5956,7 @@ Solution:&nbsp;&nbsp; Add the missing line for mch_ishidden.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/proto/os_win32.pro<br>
 <br>
 Patch 7.4.922<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Leaking memory with &quot;:helpt&nbsp;{dir-not-exists}&quot;.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Leaking memory with &quot;:helpt&nbsp;<span class="Special">{dir-not-exists}</span>&quot;.<br>
 Solution:&nbsp;&nbsp; Free dirname. (Dominique Pelle)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_cmds.c<br>
 <br>
@@ -6135,7 +6135,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/eval.c<br>
 <br>
 Patch 7.4.951<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Sorting number strings does not work as expected. (Luc Hermitte)<br>
-Solution:&nbsp;&nbsp; Add the &quot;N&quot; argument to sort()<br>
+Solution:&nbsp;&nbsp; Add the &quot;<span class="Special">N</span>&quot; argument to sort()<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/eval.c, runtime/doc/eval.txt, src/testdir/test_alot.vim,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_sort.vim, src/testdir/Makefile<br>
 <br>
@@ -6201,7 +6201,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/Makefile, src/testdir/Makefile<br>
 <br>
 Patch 7.4.963<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;test_listlbr_utf8 sometimes fails.<br>
-Solution:&nbsp;&nbsp; Don't use a literal multibyte character but&nbsp;&lt;C-V&gt;uXXXX. Do not<br>
+Solution:&nbsp;&nbsp; Don't use a literal multibyte character but&nbsp;<span class="Special">&lt;C-V&gt;</span>uXXXX. Do not<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dump the screen highlighting. (Christian Brabandt, closes #518)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_listlbr_utf8.in, src/testdir/test_listlbr_utf8.ok<br>
 <br>
@@ -6254,7 +6254,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/option.c<br>
 <br>
 Patch 7.4.973<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;When pasting on the command line line breaks result in literal<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;CR&gt;&nbsp;characters. This makes pasting a long file name difficult.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;CR&gt;</span>&nbsp;characters. This makes pasting a long file name difficult.<br>
 Solution:&nbsp;&nbsp; Skip the characters.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_getln.c, src/ops.c<br>
 <br>
@@ -6689,7 +6689,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filelist, src/testdir/README.txt, src/
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/INSTALLmac.txt<br>
 <br>
 Patch 7.4.1042<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;g-CTRL-G&nbsp;shows the word count, but there is no way to get the word<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;g-<span class="Special">CTRL-G</span>&nbsp;shows the word count, but there is no way to get the word<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count in a script.<br>
 Solution:&nbsp;&nbsp; Add the wordcount() function. (Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/editing.txt, runtime/doc/eval.txt,<br>
@@ -6882,7 +6882,7 @@ Solution:&nbsp;&nbsp; Fix generating the error message. (Dominique Pelle)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_docmd.c<br>
 <br>
 Patch 7.4.1076<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-A&nbsp;does not work well in right-left mode.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-A</span>&nbsp;does not work well in right-left mode.<br>
 Solution:&nbsp;&nbsp; Remove reversing the line, add a test. (Hirohito Higashi)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ops.c, src/testdir/test_increment.vim<br>
 <br>
@@ -6927,13 +6927,13 @@ Solution:&nbsp;&nbsp; Adjust the makefile. (Mike Williams)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/GvimExt/Makefile<br>
 <br>
 Patch 7.4.1084<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using &quot;.&quot; to repeat&nbsp;CTRL-A&nbsp;in Visual mode increments the wrong<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using &quot;.&quot; to repeat&nbsp;<span class="Special">CTRL-A</span>&nbsp;in Visual mode increments the wrong<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numbers.<br>
 Solution:&nbsp;&nbsp; Append right size to the redo buffer. (Ozaki Kiichi)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/normal.c, src/testdir/test_increment.vim<br>
 <br>
 Patch 7.4.1085<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;CTRL-A&nbsp;and&nbsp;CTRL-X&nbsp;commands do not update the '[ and '] marks.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;<span class="Special">CTRL-A</span>&nbsp;and&nbsp;<span class="Special">CTRL-X</span>&nbsp;commands do not update the '[ and '] marks.<br>
 Solution:&nbsp;&nbsp; (Yukihiro Nakadaira)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ops.c, src/testdir/test_marks.in, src/testdir/test_marks.ok<br>
 <br>
@@ -6943,7 +6943,7 @@ Solution:&nbsp;&nbsp; Limit the return value of vim_snprintf(). (Dominique Pelle
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/buffer.c<br>
 <br>
 Patch 7.4.1087<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-A&nbsp;and&nbsp;CTRL-X&nbsp;do not work properly with blockwise visual<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-A</span>&nbsp;and&nbsp;<span class="Special">CTRL-X</span>&nbsp;do not work properly with blockwise visual<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;selection if there is a mix of Tab and spaces.<br>
 Solution:&nbsp;&nbsp; Add OP_NR_ADD and OP_NR_SUB. (Hirohito Higashi)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_increment.vim, src/normal.c, src/ops.c,<br>
@@ -6956,7 +6956,7 @@ Solution:&nbsp;&nbsp; Move the conditions.&nbsp;&nbsp;Don't use endpos if handli
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ops.c<br>
 <br>
 Patch 7.4.1089<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Repeating&nbsp;CTRL-A&nbsp;doesn't work.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Repeating&nbsp;<span class="Special">CTRL-A</span>&nbsp;doesn't work.<br>
 Solution:&nbsp;&nbsp; Call prep_redo_cmd(). (Hirohito Higashi)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/normal.c, src/testdir/test_increment.vim<br>
 <br>
@@ -7106,7 +7106,7 @@ Solution:&nbsp;&nbsp; Give an error message.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_cmds2.c<br>
 <br>
 Patch 7.4.1113 (after 7.4.1105)<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using&nbsp;{ns}&nbsp;in variable name does not work. (lilydjwg)<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using&nbsp;<span class="Special">{ns}</span>&nbsp;in variable name does not work. (lilydjwg)<br>
 Solution:&nbsp;&nbsp; Fix recognizing colon.&nbsp;&nbsp;Add a test.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/eval.c, src/testdir/test_viml.vim<br>
 <br>
@@ -7305,7 +7305,7 @@ Solution:&nbsp;&nbsp; Make it return &quot;dir&quot;. (Ken Takata)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_mswin.c<br>
 <br>
 Patch 7.4.1140<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Recognizing&nbsp;&lt;sid&gt;&nbsp;does not work when the language is Turkish.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Recognizing&nbsp;<span class="Special">&lt;sid&gt;</span>&nbsp;does not work when the language is Turkish.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Christian Brabandt)<br>
 Solution:&nbsp;&nbsp; Use MB_STNICMP() instead of STNICMP().<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/eval.c<br>
@@ -8084,7 +8084,7 @@ Solution:&nbsp;&nbsp; Divide by 1000.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/channel.c<br>
 <br>
 Patch 7.4.1269<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Encoding&nbsp;{'key':v:none}&nbsp;to JSON doesn't give an error (Tyru)<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Encoding&nbsp;<span class="Special">{'key':v:none}</span>&nbsp;to JSON doesn't give an error (Tyru)<br>
 Solution:&nbsp;&nbsp; Give an error.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/json.c, src/testdir/test_json.vim<br>
 <br>
@@ -9791,7 +9791,7 @@ Solution:&nbsp;&nbsp; Check for NULL. (Dominique Pelle)&nbsp;&nbsp;Add a test.<b
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/eval.c, src/testdir/test_assert.vim<br>
 <br>
 Patch 7.4.1568<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using&nbsp;CTRL-]&nbsp;in help on option in parentheses doesn't work.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using&nbsp;<span class="Special">CTRL-]</span>&nbsp;in help on option in parentheses doesn't work.<br>
 Solution:&nbsp;&nbsp; Skip the &quot;(&quot; in &quot;('&quot;. (Hirohito Higashi)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_cmds.c<br>
 <br>
@@ -10182,7 +10182,7 @@ Solution:&nbsp;&nbsp; Only try moving the file if it exists.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/Makefile<br>
 <br>
 Patch 7.4.1634<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Vertical movement after&nbsp;CTRL-A&nbsp;ends up in the wrong column.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Vertical movement after&nbsp;<span class="Special">CTRL-A</span>&nbsp;ends up in the wrong column.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Urtica Dioica)<br>
 Solution:&nbsp;&nbsp; Set curswant when appropriate. (Hirohito Higashi)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ops.c, src/testdir/test_increment.vim<br>
@@ -10721,7 +10721,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/channel.c, src/eval.c, src/getchar
 <br>
 Patch 7.4.1728<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;The help for functions require a space after the &quot;(&quot;.<br>
-Solution:&nbsp;&nbsp; Make&nbsp;CTRL-]&nbsp;on a function name ignore the arguments. (Hirohito<br>
+Solution:&nbsp;&nbsp; Make&nbsp;<span class="Special">CTRL-]</span>&nbsp;on a function name ignore the arguments. (Hirohito<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Higashi)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_cmds.c, src/testdir/test_help_tagjump.vim,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/eval.txt<br>
@@ -10900,8 +10900,8 @@ Solution:&nbsp;&nbsp; Use Down/Up instead of Next/Previous match. (Shougo Matsu,
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c<br>
 <br>
 Patch 7.4.1758<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Triggering CursorHoldI when in&nbsp;CTRL-X&nbsp;mode causes problems.<br>
-Solution:&nbsp;&nbsp; Do not trigger CursorHoldI in&nbsp;CTRL-X&nbsp;mode. Add &quot;!&quot; flag to<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Triggering CursorHoldI when in&nbsp;<span class="Special">CTRL-X</span>&nbsp;mode causes problems.<br>
+Solution:&nbsp;&nbsp; Do not trigger CursorHoldI in&nbsp;<span class="Special">CTRL-X</span>&nbsp;mode. Add &quot;!&quot; flag to<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;feedkeys() (test with that didn't work though).<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c, src/eval.c<br>
 <br>
@@ -11699,7 +11699,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/buffer.c, src/ex_docmd.c, src/getc
 <br>
 Patch 7.4.1898<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;User commands don't support modifiers.<br>
-Solution:&nbsp;&nbsp; Add the&nbsp;&lt;mods&gt;&nbsp;item. (Yegappan Lakshmanan, closes #829)<br>
+Solution:&nbsp;&nbsp; Add the&nbsp;<span class="Special">&lt;mods&gt;</span>&nbsp;item. (Yegappan Lakshmanan, closes #829)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/map.txt, src/ex_docmd.c, src/testdir/Make_all.mak,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_usercommands.vim<br>
 <br>
@@ -11710,7 +11710,7 @@ Solution:&nbsp;&nbsp; Instead of gui_gtk_window_clear() use gui_mch_clear_block(
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/gui_gtk_x11.c<br>
 <br>
 Patch 7.4.1900<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using&nbsp;CTRL-]&nbsp;in the help on &quot;{address}.&quot; doesn't work.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using&nbsp;<span class="Special">CTRL-]</span>&nbsp;in the help on &quot;<span class="Special">{address}</span>.&quot; doesn't work.<br>
 Solution:&nbsp;&nbsp; Recognize an item in {}. (Hirohito Higashi, closes #814)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_cmds.c, src/testdir/test_help_tagjump.vim<br>
 <br>
@@ -12024,7 +12024,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_cmds.c, src/globals.h, src/misc
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/proto/misc2.pro, src/structs.h, src/vim.h<br>
 <br>
 Patch 7.4.1956<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;When using&nbsp;CTRL-W&nbsp;f and pressing &quot;q&quot; at the ATTENTION dialog the<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;When using&nbsp;<span class="Special">CTRL-W</span>&nbsp;f and pressing &quot;q&quot; at the ATTENTION dialog the<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newly opened window is not closed.<br>
 Solution:&nbsp;&nbsp; Close the window and go back to the original one. (Norio Takagi,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hirohito Higashi)<br>
@@ -12098,7 +12098,7 @@ Solution:&nbsp;&nbsp; Do not restore nfa_match. (Christian Brabandt, closes #867
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/regexp_nfa.c, src/testdir/test64.in, src/testdir/test64.ok<br>
 <br>
 Patch 7.4.1968<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Invalid memory access with &quot;\&lt;C-&quot;&gt;.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Invalid memory access with &quot;\<span class="Special">&lt;C-&quot;&gt;</span>.<br>
 Solution:&nbsp;&nbsp; Do not recognize this as a special character. (Dominique Pelle)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/misc2.c, src/testdir/test_expr.vim<br>
 <br>
@@ -13183,9 +13183,9 @@ Solution:&nbsp;&nbsp; Use _beginthreadex and return from the thread. (Ken Takata
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_win32.c<br>
 <br>
 Patch 7.4.2146<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Not enough testing for popup menu.&nbsp;&nbsp;CTRL-E&nbsp;does not always work<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Not enough testing for popup menu.&nbsp;&nbsp;<span class="Special">CTRL-E</span>&nbsp;does not always work<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;properly.<br>
-Solution:&nbsp;&nbsp; Add more tests.&nbsp;&nbsp;When using&nbsp;CTRL-E&nbsp;check if the popup menu is<br>
+Solution:&nbsp;&nbsp; Add more tests.&nbsp;&nbsp;When using&nbsp;<span class="Special">CTRL-E</span>&nbsp;check if the popup menu is<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visible. (Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c, src/testdir/test_popup.vim<br>
 <br>
@@ -13358,7 +13358,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/main.c, src/structs.h, src/vim.h, 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/proto/if_mzsch.pro<br>
 <br>
 Patch 7.4.2177<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;No testing for -C and -N&nbsp;command line flags, file arguments,<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;No testing for -C and -<span class="Special">N</span>&nbsp;command line flags, file arguments,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;startuptime.<br>
 Solution:&nbsp;&nbsp; Add tests.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_startup.vim, src/testdir/shared.vim<br>
@@ -13419,7 +13419,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_glob2regpat.vim<br>
 <br>
 Patch 7.4.2188 (after 7.4.2146)<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Completion does not work properly with some plugins.<br>
-Solution:&nbsp;&nbsp; Revert the part related to typing&nbsp;CTRL-E. (closes #972)<br>
+Solution:&nbsp;&nbsp; Revert the part related to typing&nbsp;<span class="Special">CTRL-E</span>. (closes #972)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c, src/testdir/test_popup.vim<br>
 <br>
 Patch 7.4.2189<br>
@@ -13543,7 +13543,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_mapping.vim, src/test
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_alot.vim, src/testdir/Make_all.mak<br>
 <br>
 Patch 7.4.2209<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot map&nbsp;&lt;M-&quot;&gt;. (Stephen Riehm)<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot map&nbsp;<span class="Special">&lt;M-&quot;&gt;</span>. (Stephen Riehm)<br>
 Solution:&nbsp;&nbsp; Solve the memory access problem in another way. (Dominique Pelle)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Allow for using &lt;M-\&quot;&gt; in a string.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/eval.c, src/gui_mac.c, src/misc2.c, src/option.c,<br>
@@ -13857,7 +13857,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/json.c, src/channel.c, src/vim.h, 
 <br>
 Patch 7.4.2259<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;With&nbsp;<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;can only see the next match.<br>
-Solution:&nbsp;&nbsp; Make&nbsp;CTRL-N/CTRL-P&nbsp;move to the previous/next match. (Christian<br>
+Solution:&nbsp;&nbsp; Make&nbsp;<span class="Special">CTRL-N</span>/<span class="Special">CTRL-P</span>&nbsp;move to the previous/next match. (Christian<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/cmdline.txt, src/ex_getln.c, src/testdir/Make_all.mak,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_search.vim, src/Makefile<br>
@@ -13908,8 +13908,8 @@ Solution:&nbsp;&nbsp; Add define to get isinf().<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/message.c<br>
 <br>
 Patch 7.4.2268 (after 7.4.2259)<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using&nbsp;CTRL-N&nbsp;and&nbsp;CTRL-P&nbsp;for incsearch shadows completion keys.<br>
-Solution:&nbsp;&nbsp; Use&nbsp;CTRL-T&nbsp;and&nbsp;CTRL-G&nbsp;instead.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using&nbsp;<span class="Special">CTRL-N</span>&nbsp;and&nbsp;<span class="Special">CTRL-P</span>&nbsp;for incsearch shadows completion keys.<br>
+Solution:&nbsp;&nbsp; Use&nbsp;<span class="Special">CTRL-T</span>&nbsp;and&nbsp;<span class="Special">CTRL-G</span>&nbsp;instead.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/cmdline.txt, src/ex_getln.c,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_search.vim<br>
 <br>
@@ -14240,7 +14240,7 @@ Solution:&nbsp;&nbsp; Do some tests only on Unix.&nbsp;&nbsp;Set&nbsp;<a class="
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_normal.vim<br>
 <br>
 Patch 7.4.2318<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;is not set&nbsp;CTRL-T&nbsp;and&nbsp;CTRL-G&nbsp;are not inserted as<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;is not set&nbsp;<span class="Special">CTRL-T</span>&nbsp;and&nbsp;<span class="Special">CTRL-G</span>&nbsp;are not inserted as<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;before.<br>
 Solution:&nbsp;&nbsp; Move #ifdef and don't use goto.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_getln.c<br>
@@ -14319,7 +14319,7 @@ Solution:&nbsp;&nbsp; Use firstwin to avoid the warning.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/buffer.c<br>
 <br>
 Patch 7.4.2331<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using&nbsp;CTRL-X&nbsp;CTRL-V&nbsp;to complete a command line from Insert mode<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-V</span>&nbsp;to complete a command line from Insert mode<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;does not work after entering an expression on the command line.<br>
 Solution:&nbsp;&nbsp; Don't use &quot;ccline&quot; when not actually using a command line. (test<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by Hirohito Higashi)<br>
@@ -14346,7 +14346,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_getcwd.in<br>
 <br>
 Patch 7.4.2335<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;taglist() is slow. (Luc Hermitte)<br>
-Solution:&nbsp;&nbsp; Check for&nbsp;CTRL-C&nbsp;less often when doing a linear search. (closes<br>
+Solution:&nbsp;&nbsp; Check for&nbsp;<span class="Special">CTRL-C</span>&nbsp;less often when doing a linear search. (closes<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#1044)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/tag.c<br>
 <br>
@@ -14358,7 +14358,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_normal.vim<br>
 <br>
 Patch 7.4.2337<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;taglist() is still slow. (Luc Hermitte)<br>
-Solution:&nbsp;&nbsp; Check for&nbsp;CTRL-C&nbsp;less often when finding duplicates.<br>
+Solution:&nbsp;&nbsp; Check for&nbsp;<span class="Special">CTRL-C</span>&nbsp;less often when finding duplicates.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/tag.c<br>
 <br>
 Patch 7.4.2338<br>
@@ -14537,7 +14537,7 @@ Solution:&nbsp;&nbsp; Add the comma.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/runtest.vim<br>
 <br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 バージョン 8.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#version-8.1" name="version-8.1">version-8.1</a>&nbsp;<a class="Constant" href="version8.html#version8.1" name="version8.1">version8.1</a>&nbsp;<a class="Constant" href="version8.html#vim-8.1" name="vim-8.1">vim-8.1</a><br>
 <br>
 このセクションでは、バージョン 8.0 と 8.1 の間の改善点について説明する。<br>
@@ -14546,7 +14546,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/runtest.vim<br>
 <br>
 <br>
 端末ウィンドウ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#new-terminal-window" name="new-terminal-window">new-terminal-window</a><br>
---------------<br>
+<span class="PreProc">--------------</span><br>
 <br>
 端末として機能するウィンドウを開くことができるようになった。<br>
 以下の用途に使用できる:<br>
@@ -14561,7 +14561,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/runtest.vim<br>
 <br>
 <br>
 変更点&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#changed-8.1" name="changed-8.1">changed-8.1</a><br>
-------<br>
+<span class="PreProc">------</span><br>
 <br>
 内部的変更: C99 のいくつかの機能 (&quot;//&quot; ダブルスラッシュのコメント、enum で最後<br>
 の要素の後にコンマを付けるなど) が許可されるようになった。<br>
@@ -14572,11 +14572,11 @@ MS-Windows XP 以降のみがサポートされる。<br>
 <br>
 <br>
 追加要素&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#added-8.1" name="added-8.1">added-8.1</a><br>
---------<br>
+<span class="PreProc">--------</span><br>
 <br>
 さまざまなシンタックス、インデント、その他プラグインが追加された。<br>
 <br>
-Quickfix の改善 (by Yegappan Lakshmanan):<br>
+<span class="PreProc">Quickfix の改善 (by Yegappan Lakshmanan):</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quickfix/locationリストのスタックに含まれる、あらゆるリストを変更する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;機能が追加された。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;すべてのquickfix/locationリストに固有識別子が追加された。<br>
@@ -14599,7 +14599,7 @@ Quickfix の改善 (by Yegappan Lakshmanan):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:copen/:cwindow コマンドでquickfixウィンドウを開く場合に、分割修飾子が<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;適用される。<br>
 <br>
-関数:<br>
+<span class="PreProc">関数:</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全ての term_ 関数。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="testing.html#assert_beeps()">assert_beeps()</a><br>
@@ -14619,7 +14619,7 @@ Quickfix の改善 (by Yegappan Lakshmanan):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="builtin.html#trim()">trim()</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="builtin.html#win_screenpos()">win_screenpos()</a><br>
 <br>
-自動コマンドイベント:<br>
+<span class="PreProc">自動コマンドイベント:</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="autocmd.html#CmdlineChanged">CmdlineChanged</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="autocmd.html#CmdlineEnter">CmdlineEnter</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="autocmd.html#CmdlineLeave">CmdlineLeave</a><br>
@@ -14630,7 +14630,7 @@ Quickfix の改善 (by Yegappan Lakshmanan):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="autocmd.html#TextChangedP">TextChangedP</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="autocmd.html#TextYankPost">TextYankPost</a><br>
 <br>
-Ex コマンド:<br>
+<span class="PreProc">Ex コマンド:</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_pyth.html#:pyx">:pyx</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_pyth.html#:pythonx">:pythonx</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_pyth.html#:pyxdo">:pyxdo</a><br>
@@ -14641,7 +14641,7 @@ Ex コマンド:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#:tnoremap">:tnoremap</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="map.html#:tunmap">:tunmap</a><br>
 <br>
-オプション:<br>
+<span class="PreProc">オプション:</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'balloonevalterm'">'balloonevalterm'</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'imstyle'">'imstyle'</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'mzschemedll'">'mzschemedll'</a><br>
@@ -14659,7 +14659,7 @@ Ex コマンド:<br>
 <br>
 <br>
 パッチ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#patches-8.1" name="patches-8.1">patches-8.1</a><br>
-------<br>
+<span class="PreProc">------</span><br>
 <br>
 Patch 8.0.0001<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Intro screen still mentions version7. (Paul)<br>
@@ -14920,7 +14920,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c, src/testdir/test_popup.vim
 <br>
 Patch 8.0.0043 (after 8.0.0041)<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;When using Insert mode completion with&nbsp;<a class="Type" href="options.html#'completeopt'">'completeopt'</a>&nbsp;containing<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;noinsert&quot; with&nbsp;CTRL-N&nbsp;the change is not saved for undo.&nbsp;&nbsp;(Tommy<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;noinsert&quot; with&nbsp;<span class="Special">CTRL-N</span>&nbsp;the change is not saved for undo.&nbsp;&nbsp;(Tommy<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Allen)<br>
 Solution:&nbsp;&nbsp; Call stop_arrow() before inserting for any key.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c, src/testdir/test_popup.vim<br>
@@ -15353,7 +15353,7 @@ Solution:&nbsp;&nbsp; Link winpthread statically. (jmmerz, closes #1255, closes 
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/Make_cyg_ming.mak<br>
 <br>
 Patch 8.0.0116<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;When reading English help and using&nbsp;CTRL-]&nbsp;the language from<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;When reading English help and using&nbsp;<span class="Special">CTRL-]</span>&nbsp;the language from<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'helplang'">'helplang'</a>&nbsp;is used.<br>
 Solution:&nbsp;&nbsp; Make help tag jumps keep the language. (Tatsuki, test by Hirohito<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Higashi, closes #1249)<br>
@@ -15370,7 +15370,7 @@ Solution:&nbsp;&nbsp; Add #ifdef.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/misc2.c<br>
 <br>
 Patch 8.0.0119<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;No test for using&nbsp;CTRL-R&nbsp;on the command line.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;No test for using&nbsp;<span class="Special">CTRL-R</span>&nbsp;on the command line.<br>
 Solution:&nbsp;&nbsp; Add a test. (Dominique Pelle) And some more.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_cmdline.vim<br>
 <br>
@@ -15401,7 +15401,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/evalfunc.c, src/testdir/test_asser
 <br>
 Patch 8.0.0125<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Not enough testing for entering Ex commands.<br>
-Solution:&nbsp;&nbsp; Add test for&nbsp;CTRL-\&nbsp;e&nbsp;{expr}. (Dominique Pelle)<br>
+Solution:&nbsp;&nbsp; Add test for&nbsp;<span class="Special">CTRL-\</span>&nbsp;e&nbsp;<span class="Special">{expr}</span>. (Dominique Pelle)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_cmdline.vim<br>
 <br>
 Patch 8.0.0126<br>
@@ -15415,7 +15415,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/screen.c, src/testdir/Make_all.mak
 Patch 8.0.0127<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cancelling completion still inserts text when formatting is done<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;<a class="Type" href="options.html#'textwidth'">'textwidth'</a>. (lacygoill)<br>
-Solution:&nbsp;&nbsp; Don't format when&nbsp;CTRL-E&nbsp;was typed. (Hirohito Higashi,<br>
+Solution:&nbsp;&nbsp; Don't format when&nbsp;<span class="Special">CTRL-E</span>&nbsp;was typed. (Hirohito Higashi,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;closes #1312)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c, src/testdir/test_popup.vim<br>
 <br>
@@ -15887,7 +15887,7 @@ Solution:&nbsp;&nbsp; Close the file descriptor.&nbsp;&nbsp;(Dominique Pelle, cl
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/evalfunc.c<br>
 <br>
 Patch 8.0.0208<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Internally used commands for&nbsp;CTRL-Z&nbsp;and mouse click end up in<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Internally used commands for&nbsp;<span class="Special">CTRL-Z</span>&nbsp;and mouse click end up in<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;history. (Matthew Malcomson)<br>
 Solution:&nbsp;&nbsp; Use do_cmdline_cmd() instead of stuffing them in the readahead<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buffer. (James McCoy, closes #1395)<br>
@@ -15931,7 +15931,7 @@ Solution:&nbsp;&nbsp; Free the memory.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/syntax.c<br>
 <br>
 Patch 8.0.0215<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;When a Cscope line contains&nbsp;CTRL-L&nbsp;a NULL pointer may be used.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;When a Cscope line contains&nbsp;<span class="Special">CTRL-L</span>&nbsp;a NULL pointer may be used.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Coverity)<br>
 Solution:&nbsp;&nbsp; Don't check for an emacs tag in a cscope line.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/tag.c<br>
@@ -16002,7 +16002,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ops.c, src/testdir/test_put.vim<br
 Patch 8.0.0226<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;The test for patch 8.0.0224 misses the CR characters and passes<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;even without the fix. (Christian Brabandt)<br>
-Solution:&nbsp;&nbsp; Use double quotes and \&lt;CR&gt;.<br>
+Solution:&nbsp;&nbsp; Use double quotes and \<span class="Special">&lt;CR&gt;</span>.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_fileformat.vim<br>
 <br>
 Patch 8.0.0227<br>
@@ -16013,7 +16013,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/fileio.c, src/testdir/test_filefor
 <br>
 Patch 8.0.0228 (after 8.0.0210)<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;When pasting test in an xterm on the command line it is surrounded<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;&lt;PasteStart&gt;&nbsp;and&nbsp;&lt;PasteEnd&gt;. (Johannes Kaltenbach)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;<span class="Special">&lt;PasteStart&gt;</span>&nbsp;and&nbsp;<span class="Special">&lt;PasteEnd&gt;</span>. (Johannes Kaltenbach)<br>
 Solution:&nbsp;&nbsp; Add missing changes.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_getln.c, src/term.c<br>
 <br>
@@ -16125,7 +16125,7 @@ Solution:&nbsp;&nbsp; Fix macro for mch_memmove(). (John Marriott)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/vim.h<br>
 <br>
 Patch 8.0.0247<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Under some circumstances, one needs to type Ctrl-N&nbsp;or Ctrl-P twice<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Under some circumstances, one needs to type Ctrl-<span class="Special">N</span>&nbsp;or Ctrl-P twice<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to have a menu entry selected. (Lifepillar)<br>
 Solution:&nbsp;&nbsp; call ins_compl_free(). (Christian Brabandt, closes #1411)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c, src/testdir/test_popup.vim<br>
@@ -16307,7 +16307,7 @@ Solution:&nbsp;&nbsp; Check and update updating_screen. (Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/screen.c<br>
 <br>
 Patch 8.0.0275<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;When checking for&nbsp;CTRL-C&nbsp;typed the GUI may detect a screen resize<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;When checking for&nbsp;<span class="Special">CTRL-C</span>&nbsp;typed the GUI may detect a screen resize<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and redraw the screen, causing trouble.<br>
 Solution:&nbsp;&nbsp; Set updating_screen in ui_breakcheck().<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ui.c<br>
@@ -16348,7 +16348,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_win32.c, src/gui_w32.c, src/os_
 <br>
 Patch 8.0.0282<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;When doing a Visual selection and using &quot;I&quot; to go to insert mode,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-O&nbsp;needs to be used twice to go to Normal mode. (Coacher)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-O</span>&nbsp;needs to be used twice to go to Normal mode. (Coacher)<br>
 Solution:&nbsp;&nbsp; Check for the return value of edit(). (Christian Brabandt,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;closes #1290)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/normal.c, src/ops.c<br>
@@ -16547,7 +16547,7 @@ Solution:&nbsp;&nbsp; Add tests. (Yegappan Lakshmanan)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_cmdline.vim<br>
 <br>
 Patch 8.0.0315<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;&quot;:help :[range]&quot; does not work. (Tony Mechelynck)<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;&quot;:help :<span class="Special">[range]</span>&quot; does not work. (Tony Mechelynck)<br>
 Solution:&nbsp;&nbsp; Translate to insert a backslash.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_cmds.c<br>
 <br>
@@ -16728,7 +16728,7 @@ Solution:&nbsp;&nbsp; Always include limits.h.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_unixx.h, src/vim.h<br>
 <br>
 Patch 8.0.0347<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;When using&nbsp;CTRL-X&nbsp;CTRL-U&nbsp;inside a comment, the use of the comment<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;When using&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-U</span>&nbsp;inside a comment, the use of the comment<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;leader may not work. (Klement)<br>
 Solution:&nbsp;&nbsp; Save and restore did_ai. (Christian Brabandt, closes #1494)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c, src/testdir/test_popup.vim<br>
@@ -16763,7 +16763,7 @@ Solution:&nbsp;&nbsp; Init the type to VAR_UNKNOWN and always clear it.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/eval.c<br>
 <br>
 Patch 8.0.0353<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;[RO]&nbsp;in the status line is translated to a longer string, it is<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;<span class="Special">[RO]</span>&nbsp;in the status line is translated to a longer string, it is<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;truncated to 4 bytes.<br>
 Solution:&nbsp;&nbsp; Skip over the resulting string. (Jente Hidskes, closes #1499)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/screen.c<br>
@@ -16923,8 +16923,8 @@ Solution:&nbsp;&nbsp; Check if allocated size is not too big. (King)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/undo.c<br>
 <br>
 Patch 8.0.0379<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-Z&nbsp;and mouse click use&nbsp;CTRL-O&nbsp;unnecessary.<br>
-Solution:&nbsp;&nbsp; Remove stuffing&nbsp;CTRL-O. (James McCoy, closes #1453)<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-Z</span>&nbsp;and mouse click use&nbsp;<span class="Special">CTRL-O</span>&nbsp;unnecessary.<br>
+Solution:&nbsp;&nbsp; Remove stuffing&nbsp;<span class="Special">CTRL-O</span>. (James McCoy, closes #1453)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c, src/normal.c<br>
 <br>
 Patch 8.0.0380<br>
@@ -17058,8 +17058,8 @@ Solution:&nbsp;&nbsp; Add check for balloon feature.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_functions.vim<br>
 <br>
 Patch 8.0.0402<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;:map completion does not have&nbsp;&lt;special&gt;. (Dominique Pelle)<br>
-Solution:&nbsp;&nbsp; Recognize&nbsp;&lt;special&gt;&nbsp;in completion.&nbsp;&nbsp;Add a test.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;:map completion does not have&nbsp;<span class="Special">&lt;special&gt;</span>. (Dominique Pelle)<br>
+Solution:&nbsp;&nbsp; Recognize&nbsp;<span class="Special">&lt;special&gt;</span>&nbsp;in completion.&nbsp;&nbsp;Add a test.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/getchar.c, src/testdir/test_cmdline.vim<br>
 <br>
 Patch 8.0.0403<br>
@@ -18091,7 +18091,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/term.c<br>
 Patch 8.0.0570<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Can't run make with several jobs, creating directories has a race<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;condition.<br>
-Solution:&nbsp;&nbsp; Use the MKDIR_P autoconf mechanism. (Eric&nbsp;N. Vander Weele,<br>
+Solution:&nbsp;&nbsp; Use the MKDIR_P autoconf mechanism. (Eric&nbsp;<span class="Special">N</span>. Vander Weele,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;closes #1639)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/configure.ac, src/auto/configure, src/Makefile,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/config.mk.in, src/install-sh, src/mkinstalldirs, Filelist<br>
@@ -18314,7 +18314,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/quickfix.c<br>
 <br>
 Patch 8.0.0609<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;For some people the hint about quitting is not sufficient.<br>
-Solution:&nbsp;&nbsp; Put&nbsp;&lt;Enter&gt;&nbsp;separately.&nbsp;&nbsp;Also use &quot;:qa!&quot; to get out even when<br>
+Solution:&nbsp;&nbsp; Put&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;separately.&nbsp;&nbsp;Also use &quot;:qa!&quot; to get out even when<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;there are changes.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/normal.c<br>
 <br>
@@ -18374,7 +18374,7 @@ Solution:&nbsp;&nbsp; Check the postscript feature is supported.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_hardcopy.vim<br>
 <br>
 Patch 8.0.0618<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;NFA regex engine handles&nbsp;[0-z]&nbsp;incorrectly.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;NFA regex engine handles&nbsp;<span class="Special">[0-z]</span>&nbsp;incorrectly.<br>
 Solution:&nbsp;&nbsp; Return at the right point. (James McCoy, closes #1703)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/regexp_nfa.c, src/testdir/test36.in, src/testdir/test36.ok<br>
 <br>
@@ -18528,9 +18528,9 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/evalfunc.c, src/testdir/test_write
 Patch 8.0.0643<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;<a class="Type" href="options.html#'hlsearch'">'hlsearch'</a>&nbsp;is set and matching with the last search pattern<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is very slow, Vim becomes unusable.&nbsp;&nbsp;Cannot quit search by<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pressing&nbsp;CTRL-C.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pressing&nbsp;<span class="Special">CTRL-C</span>.<br>
 Solution:&nbsp;&nbsp; When the search times out set a flag and don't try again.&nbsp;&nbsp;Check<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for timeout and&nbsp;CTRL-C&nbsp;in NFA loop that adds states.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for timeout and&nbsp;<span class="Special">CTRL-C</span>&nbsp;in NFA loop that adds states.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/screen.c, src/ex_cmds.c, src/quickfix.c, src/regexp.c,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/proto/regexp.pro, src/regexp.h, src/search.c,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/proto/search.pro, src/syntax.c, src/regexp_nfa.c, src/spell.c,<br>
@@ -18681,7 +18681,7 @@ Solution:&nbsp;&nbsp; Fix the syntax of /SD.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nsis/gvim.nsi<br>
 <br>
 Patch 8.0.0669<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;In Insert mode,&nbsp;CTRL-N&nbsp;at start of the buffer does not work<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;In Insert mode,&nbsp;<span class="Special">CTRL-N</span>&nbsp;at start of the buffer does not work<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;correctly. (zuloloxi)<br>
 Solution:&nbsp;&nbsp; Wrap around the start of the buffer. (Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c, src/testdir/test_popup.vim<br>
@@ -18695,7 +18695,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/evalfunc.c, src/ex_cmds2.c, src/gl
 <br>
 Patch 8.0.0671<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;When a function invoked from a timer calls confirm() and the user<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;types&nbsp;CTRL-C&nbsp;then Vim hangs.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;types&nbsp;<span class="Special">CTRL-C</span>&nbsp;then Vim hangs.<br>
 Solution:&nbsp;&nbsp; Reset typebuf_was_filled. (Ozaki Kiichi, closes #1791)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/getchar.c<br>
 <br>
@@ -18788,7 +18788,7 @@ Solution:&nbsp;&nbsp; First try converting the file and write the file only when
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/fileio.c, src/testdir/test_writefile.vim<br>
 <br>
 Patch 8.0.0686<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;When typing&nbsp;CTRL-L&nbsp;in a window that's not the first one, another<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;When typing&nbsp;<span class="Special">CTRL-L</span>&nbsp;in a window that's not the first one, another<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;redraw will happen later. (Christian Brabandt)<br>
 Solution:&nbsp;&nbsp; Reset must_redraw after calling screenclear().<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/screen.c<br>
@@ -18810,7 +18810,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_cmds.h, src/testdir/test_quickf
 <br>
 Patch 8.0.0689<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;The ~ character is not escaped when adding to the search pattern<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;CTRL-L. (Ramel Eshed)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;<span class="Special">CTRL-L</span>. (Ramel Eshed)<br>
 Solution:&nbsp;&nbsp; Escape the character. (Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_getln.c, src/testdir/test_search.vim<br>
 <br>
@@ -18825,7 +18825,7 @@ Solution:&nbsp;&nbsp; Add #ifdef. (John Marriott)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c<br>
 <br>
 Patch 8.0.0692<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using&nbsp;CTRL-G&nbsp;with&nbsp;<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;and ? goes in the wrong direction.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using&nbsp;<span class="Special">CTRL-G</span>&nbsp;with&nbsp;<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;and ? goes in the wrong direction.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Ramel Eshed)<br>
 Solution:&nbsp;&nbsp; Adjust search_start. (Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_getln.c, src/testdir/test_search.vim<br>
@@ -19029,7 +19029,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/option.c<br>
 <br>
 Patch 8.0.0714<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;When a timer causes a command line redraw the &quot; that is displayed<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;CTRL-R&nbsp;goes missing.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;<span class="Special">CTRL-R</span>&nbsp;goes missing.<br>
 Solution:&nbsp;&nbsp; Remember an extra character to display.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_getln.c<br>
 <br>
@@ -19089,7 +19089,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_arglist.vim<br>
 <br>
 Patch 8.0.0724<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;The message for yanking doesn't indicate the register.<br>
-Solution:&nbsp;&nbsp; Show the register name in the &quot;N&nbsp;lines yanked&quot; message. (LemonBoy,<br>
+Solution:&nbsp;&nbsp; Show the register name in the &quot;<span class="Special">N</span>&nbsp;lines yanked&quot; message. (LemonBoy,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;closes #1803, closes #1809)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ops.c, src/Makefile, src/testdir/test_registers.vim,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/Make_all.mak<br>
@@ -19465,8 +19465,8 @@ Solution:&nbsp;&nbsp; Go back to precise temporarily.&nbsp;&nbsp;Disable coverag
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.travis.yml<br>
 <br>
 Patch 8.0.0787<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot send&nbsp;CTRL-W&nbsp;command to terminal job.<br>
-Solution:&nbsp;&nbsp; Make&nbsp;CTRL-W&nbsp;. a prefix for sending a key to the job.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot send&nbsp;<span class="Special">CTRL-W</span>&nbsp;command to terminal job.<br>
+Solution:&nbsp;&nbsp; Make&nbsp;<span class="Special">CTRL-W</span>&nbsp;. a prefix for sending a key to the job.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c, runtime/doc/terminal.txt, src/option.c<br>
 <br>
 Patch 8.0.0788<br>
@@ -19669,7 +19669,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/runtest.vim<br>
 <br>
 Patch 8.0.0823<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot paste text into a terminal window.<br>
-Solution:&nbsp;&nbsp; Make&nbsp;CTRL-W&nbsp;&quot; work.<br>
+Solution:&nbsp;&nbsp; Make&nbsp;<span class="Special">CTRL-W</span>&nbsp;&quot; work.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c<br>
 <br>
 Patch 8.0.0824<br>
@@ -19758,7 +19758,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/buffer.c, src/terminal.c, src/prot
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_terminal.vim<br>
 <br>
 Patch 8.0.0839<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot kill a job in a terminal with&nbsp;CTRL-C.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot kill a job in a terminal with&nbsp;<span class="Special">CTRL-C</span>.<br>
 Solution:&nbsp;&nbsp; Set the controlling tty and send SIGINT. (closes #1910)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_unix.c, src/terminal.c, src/proto/os_unix.pro<br>
 <br>
@@ -19907,9 +19907,9 @@ Solution:&nbsp;&nbsp; Set fileformat after opening new buffer.&nbsp;&nbsp;Strip 
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_file_size.vim<br>
 <br>
 Patch 8.0.0863<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;A remote command starting with&nbsp;CTRL-\&nbsp;CTRL-N&nbsp;does not work in the<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;A remote command starting with&nbsp;<span class="Special">CTRL-\</span>&nbsp;<span class="Special">CTRL-N</span>&nbsp;does not work in the<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;terminal window. (Christian J. Robinson)<br>
-Solution:&nbsp;&nbsp; Use&nbsp;CTRL-\&nbsp;CTRL-N&nbsp;as a prefix or a Normal mode command.<br>
+Solution:&nbsp;&nbsp; Use&nbsp;<span class="Special">CTRL-\</span>&nbsp;<span class="Special">CTRL-N</span>&nbsp;as a prefix or a Normal mode command.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c, runtime/doc/terminal.txt<br>
 <br>
 Patch 8.0.0864<br>
@@ -19965,9 +19965,9 @@ Solution:&nbsp;&nbsp; Send the scroll action to the right window.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c, src/normal.c, src/proto/terminal.pro<br>
 <br>
 Patch 8.0.0873<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;In a terminal window cannot use&nbsp;CTRL-\&nbsp;CTRL-N&nbsp;to start Visual<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;In a terminal window cannot use&nbsp;<span class="Special">CTRL-\</span>&nbsp;<span class="Special">CTRL-N</span>&nbsp;to start Visual<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mode.<br>
-Solution:&nbsp;&nbsp; After&nbsp;CTRL-\&nbsp;CTRL-N&nbsp;enter Terminal-Normal mode for one command.<br>
+Solution:&nbsp;&nbsp; After&nbsp;<span class="Special">CTRL-\</span>&nbsp;<span class="Special">CTRL-N</span>&nbsp;enter Terminal-Normal mode for one command.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/main.c, src/terminal.c, src/proto/terminal.pro<br>
 <br>
 Patch 8.0.0874 (after 8.0.0873)<br>
@@ -19987,7 +19987,7 @@ Solution:&nbsp;&nbsp; Do not handle backslashes inside backticks in the wrong pl
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_mswin.c, src/os_win32.c<br>
 <br>
 Patch 8.0.0877<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using&nbsp;CTRL-\&nbsp;CTRL-N&nbsp;in terminal is inconsistent.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using&nbsp;<span class="Special">CTRL-\</span>&nbsp;<span class="Special">CTRL-N</span>&nbsp;in terminal is inconsistent.<br>
 Solution:&nbsp;&nbsp; Stay in Normal mode.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c, src/proto/terminal.pro, src/main.c, src/normal.c,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/option.c<br>
@@ -20196,9 +20196,9 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c, src/structs.h, src/cha
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/terminal.txt, src/testdir/test_terminal.vim<br>
 <br>
 Patch 8.0.0913<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;MS-Windows:&nbsp;CTRL-C&nbsp;kills shell in terminal window instead of the<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;MS-Windows:&nbsp;<span class="Special">CTRL-C</span>&nbsp;kills shell in terminal window instead of the<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;command running in the shell.<br>
-Solution:&nbsp;&nbsp; Make&nbsp;CTRL-C&nbsp;only send a CTRL_C_EVENT and have&nbsp;CTRL-BREAK kill the<br>
+Solution:&nbsp;&nbsp; Make&nbsp;<span class="Special">CTRL-C</span>&nbsp;only send a CTRL_C_EVENT and have&nbsp;<span class="Special">CTRL-B</span>REAK kill the<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;job. (partly by Yasuhiro Matsumoto, closes #1962)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_win32.c, src/gui_w32.c, src/terminal.c, src/globals.h<br>
 <br>
@@ -20221,8 +20221,8 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/channel.c, src/structs.h, src/term
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/eval.txt, src/testdir/test_terminal.vim<br>
 <br>
 Patch 8.0.0917<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;MS-Windows:CTRL-C&nbsp;handling in terminal window is wrong<br>
-Solution:&nbsp;&nbsp; Pass&nbsp;CTRL-C&nbsp;as a key. Turn&nbsp;CTRL-BREAK into a key stroke. (Yasuhiro<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;MS-Windows:<span class="Special">CTRL-C</span>&nbsp;handling in terminal window is wrong<br>
+Solution:&nbsp;&nbsp; Pass&nbsp;<span class="Special">CTRL-C</span>&nbsp;as a key. Turn&nbsp;<span class="Special">CTRL-B</span>REAK into a key stroke. (Yasuhiro<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Matsumoto, closes #1965)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_win32.c, src/terminal.c<br>
 <br>
@@ -20388,7 +20388,7 @@ Solution:&nbsp;&nbsp; use MAXPATHL instead. (James McCoy, closes #1973)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/main.c<br>
 <br>
 Patch 8.0.0947<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;When in Insert mode and using&nbsp;CTRL-O&nbsp;CTRL-W&nbsp;CTRL-W&nbsp;to move to a<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;When in Insert mode and using&nbsp;<span class="Special">CTRL-O</span>&nbsp;<span class="Special">CTRL-W</span>&nbsp;<span class="Special">CTRL-W</span>&nbsp;to move to a<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;terminal window, get in a weird Insert mode.<br>
 Solution:&nbsp;&nbsp; Don't go to Insert mode in a terminal window. (closes #1977)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/normal.c<br>
@@ -20466,8 +20466,8 @@ Solution:&nbsp;&nbsp; Use ioctlsocket() instead of fcntl().<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/channel.c<br>
 <br>
 Patch 8.0.0960<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Job in terminal does not get&nbsp;CTRL-C, we send a SIGINT instead.<br>
-Solution:&nbsp;&nbsp; Don't call may_send_sigint() on&nbsp;CTRL-C.&nbsp;&nbsp;Make&nbsp;CTRL-W&nbsp;CTRL-C&nbsp;end<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Job in terminal does not get&nbsp;<span class="Special">CTRL-C</span>, we send a SIGINT instead.<br>
+Solution:&nbsp;&nbsp; Don't call may_send_sigint() on&nbsp;<span class="Special">CTRL-C</span>.&nbsp;&nbsp;Make&nbsp;<span class="Special">CTRL-W</span>&nbsp;<span class="Special">CTRL-C</span>&nbsp;end<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the job.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c, runtime/doc/terminal.txt<br>
 <br>
@@ -20554,7 +20554,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/option.c<br>
 <br>
 Patch 8.0.0976<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot send lines to a terminal job.<br>
-Solution:&nbsp;&nbsp; Make&nbsp;[range]terminal send selected lines to the job.<br>
+Solution:&nbsp;&nbsp; Make&nbsp;<span class="Special">[range]</span>terminal send selected lines to the job.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use ++rows and ++cols for the terminal size.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_cmds.h, src/terminal.c, src/os_unix.c,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_terminal.vim<br>
@@ -20651,9 +20651,9 @@ Solution:&nbsp;&nbsp; Convert the title from DBCS to utf-8. (Yasuhiro Matsumoto,
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c<br>
 <br>
 Patch 8.0.0993<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Sometimes an xterm sends an extra&nbsp;CTRL-X&nbsp;after the response for<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Sometimes an xterm sends an extra&nbsp;<span class="Special">CTRL-X</span>&nbsp;after the response for<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the background color.&nbsp;&nbsp;Related to t_RS.<br>
-Solution:&nbsp;&nbsp; Check for the&nbsp;CTRL-X&nbsp;after the terminating 0x7.<br>
+Solution:&nbsp;&nbsp; Check for the&nbsp;<span class="Special">CTRL-X</span>&nbsp;after the terminating 0x7.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/term.c<br>
 <br>
 Patch 8.0.0994<br>
@@ -20892,7 +20892,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_unix.c, src/term.c<br>
 <br>
 Patch 8.0.1034<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Sending buffer lines to terminal doesn't work on MS-Windows.<br>
-Solution:&nbsp;&nbsp; Send&nbsp;CTRL-D&nbsp;to mark the end of the text. (Yasuhiro Matsumoto,<br>
+Solution:&nbsp;&nbsp; Send&nbsp;<span class="Special">CTRL-D</span>&nbsp;to mark the end of the text. (Yasuhiro Matsumoto,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;closes #2043) Add the &quot;eof_chars&quot; option.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/channel.c, src/proto/terminal.pro, src/terminal.c,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_terminal.vim, src/structs.h<br>
@@ -21046,7 +21046,7 @@ Solution:&nbsp;&nbsp; Lower version limit from 2800 to 2500. (#2032)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/term.c<br>
 <br>
 Patch 8.0.1060<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;When imstyle is zero, mapping&nbsp;&lt;Left&gt;&nbsp;breaks preediting.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;When imstyle is zero, mapping&nbsp;<span class="Special">&lt;Left&gt;</span>&nbsp;breaks preediting.<br>
 Solution:&nbsp;&nbsp; Pass though preediting key-events. (Yasuhiro Matsumoto, closes<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#2064, closes #2063)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/getchar.c, src/mbyte.c<br>
@@ -21099,7 +21099,7 @@ Solution:&nbsp;&nbsp; Fix pointer computation. (closes #2008)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/term.c<br>
 <br>
 Patch 8.0.1069<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Still get&nbsp;CTRL-X&nbsp;sometimes for t_RS request.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Still get&nbsp;<span class="Special">CTRL-X</span>&nbsp;sometimes for t_RS request.<br>
 Solution:&nbsp;&nbsp; Also skip 0x18 after a key code response.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/term.c<br>
 <br>
@@ -21219,17 +21219,17 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/syntax.c<br>
 <br>
 Patch 8.0.1089<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot get range count in user command.<br>
-Solution:&nbsp;&nbsp; Add&nbsp;&lt;range&gt;&nbsp;argument.<br>
+Solution:&nbsp;&nbsp; Add&nbsp;<span class="Special">&lt;range&gt;</span>&nbsp;argument.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_docmd.c, runtime/doc/map.txt<br>
 <br>
 Patch 8.0.1090<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;cannot get the text under the cursor like v:beval_text<br>
-Solution:&nbsp;&nbsp; Add&nbsp;&lt;cexpr&gt;.<br>
+Solution:&nbsp;&nbsp; Add&nbsp;<span class="Special">&lt;cexpr&gt;</span>.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_docmd.c, src/testdir/test_normal.vim,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/cmdline.txt<br>
 <br>
 Patch 8.0.1091 (after 8.0.1090)<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Test for&nbsp;&lt;cexpr&gt;&nbsp;fails without +balloon_eval feature.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Test for&nbsp;<span class="Special">&lt;cexpr&gt;</span>&nbsp;fails without +balloon_eval feature.<br>
 Solution:&nbsp;&nbsp; Remove #ifdefs.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/normal.c<br>
 <br>
@@ -21464,9 +21464,9 @@ Solution:&nbsp;&nbsp; Avoid an integer overflow. (James McCoy, closes #2116)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_cmds2.c<br>
 <br>
 Patch 8.0.1128<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Old xterm sends&nbsp;CTRL-X&nbsp;in response to t_RS.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Old xterm sends&nbsp;<span class="Special">CTRL-X</span>&nbsp;in response to t_RS.<br>
 Solution:&nbsp;&nbsp; Only send t_RS for xterm 279 and later.&nbsp;&nbsp;Remove the workaround to<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ignore&nbsp;CTRL-X.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ignore&nbsp;<span class="Special">CTRL-X</span>.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/term.c<br>
 <br>
 Patch 8.0.1129<br>
@@ -21724,7 +21724,7 @@ Solution:&nbsp;&nbsp; Assign NULL to &quot;s&quot;. (Christian Brabandt)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/eval.c, src/testdir/test_assign.vim<br>
 <br>
 Patch 8.0.1173<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Terminal window is not redrawn after&nbsp;CTRL-L. (Marcin Szamotulski)<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Terminal window is not redrawn after&nbsp;<span class="Special">CTRL-L</span>. (Marcin Szamotulski)<br>
 Solution:&nbsp;&nbsp; Redraw the whole terminal when w_redr_type is NOT_VALID.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c<br>
 <br>
@@ -21955,7 +21955,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/Makefile, src/testdir/Make_all.mak
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_user_func.vim<br>
 <br>
 Patch 8.0.1210<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;When typing a search pattern&nbsp;CTRL-G&nbsp;and&nbsp;CTRL-T&nbsp;are ignored when<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;When typing a search pattern&nbsp;<span class="Special">CTRL-G</span>&nbsp;and&nbsp;<span class="Special">CTRL-T</span>&nbsp;are ignored when<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;there is typeahead.<br>
 Solution:&nbsp;&nbsp; Don't pass SEARCH_PEEK and don't call char_avail(). (haya14busa,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;closes #2233)<br>
@@ -22088,7 +22088,7 @@ Solution:&nbsp;&nbsp; Remove the condition. (Closes #2259)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/charset.c<br>
 <br>
 Patch 8.0.1230<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-A&nbsp;in Visual mode uses character after selection. (Nikolai<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-A</span>&nbsp;in Visual mode uses character after selection. (Nikolai<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pavlov)<br>
 Solution:&nbsp;&nbsp; Check the length before using a character.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/charset.c<br>
@@ -22221,7 +22221,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/shared.vim, src/testdir/te
 Patch 8.0.1250<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'hlsearch'">'hlsearch'</a>&nbsp;highlighting not removed after incsearch (lacygoill)<br>
 Solution:&nbsp;&nbsp; Redraw all windows. Start search at the end of the match.&nbsp;&nbsp;Improve<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;how&nbsp;CTRL-G&nbsp;works with incremental search. Add tests. (Christian<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;how&nbsp;<span class="Special">CTRL-G</span>&nbsp;works with incremental search. Add tests. (Christian<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Brabandt, Hirohito Higashi, haya14busa, closes #2267)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/options.txt, src/ex_getln.c,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_search.vim<br>
@@ -22557,7 +22557,7 @@ Solution:&nbsp;&nbsp; Recognize Iterm2 by the termresponse.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/term.c<br>
 <br>
 Patch 8.0.1304<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-G/CTRL-T&nbsp;don't work with incsearch and empty pattern.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-G</span>/<span class="Special">CTRL-T</span>&nbsp;don't work with incsearch and empty pattern.<br>
 Solution:&nbsp;&nbsp; Use the last search pattern. (Christian Brabandt, closes #2292)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_getln.c, src/proto/search.pro, src/search.c,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_search.vim<br>
@@ -22982,7 +22982,7 @@ Solution:&nbsp;&nbsp; Always check the value. (Ken Takata, closes #2413)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/gui_w32.c, src/option.c<br>
 <br>
 Patch 8.0.1374<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-A&nbsp;does not work with an empty line. (Alex)<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-A</span>&nbsp;does not work with an empty line. (Alex)<br>
 Solution:&nbsp;&nbsp; Decrement the end only once. (Hirohito Higashi, closes #2387)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ops.c, src/testdir/test_increment.vim<br>
 <br>
@@ -23123,7 +23123,7 @@ Solution:&nbsp;&nbsp; Add a script that checks for common mistakes. (Christian B
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/colors/check_colors.vim, runtime/colors/README.txt<br>
 <br>
 Patch 8.0.1396<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Memory leak when&nbsp;CTRL-G&nbsp;in search command line fails.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Memory leak when&nbsp;<span class="Special">CTRL-G</span>&nbsp;in search command line fails.<br>
 Solution:&nbsp;&nbsp; Move restore_last_search_pattern to after &quot;if&quot;.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_getln.c<br>
 <br>
@@ -23208,7 +23208,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/eval.txt, src/evalfunc.c,<
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_functions.vim<br>
 <br>
 Patch 8.0.1411<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Reading invalid memory with&nbsp;CTRL-W&nbsp;:.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Reading invalid memory with&nbsp;<span class="Special">CTRL-W</span>&nbsp;:.<br>
 Solution:&nbsp;&nbsp; Correct the command characters. (closes #2469)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/normal.c, src/testdir/test_window_cmd.vim, src/ops.c<br>
 <br>
@@ -23290,7 +23290,7 @@ Solution:&nbsp;&nbsp; Switch off redir_off and restore it. (Ozaki Kiichi, closes
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/evalfunc.c, src/testdir/test_usercommands.vim<br>
 <br>
 Patch 8.0.1426<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;&quot;gf&quot; and&nbsp;&lt;cfile&gt;&nbsp;don't accept ? and &amp; in URL. (Dmitrii Tcyganok)<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;&quot;gf&quot; and&nbsp;<span class="Special">&lt;cfile&gt;</span>&nbsp;don't accept ? and &amp; in URL. (Dmitrii Tcyganok)<br>
 Solution:&nbsp;&nbsp; Check for a URL and allow for extra characters. (closes #2493)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/window.c, src/testdir/test_gf.vim<br>
 <br>
@@ -24287,8 +24287,8 @@ Solution:&nbsp;&nbsp; When pasting from the * or + register always assume litera
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ops.c, src/proto/ops.pro, src/testdir/test_paste.vim<br>
 <br>
 Patch 8.0.1588<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Popup menu hangs after typing&nbsp;CTRL-C.<br>
-Solution:&nbsp;&nbsp; Make&nbsp;CTRL-C&nbsp;exit the loop. (Ozaki Kiichi, closes #2697)<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Popup menu hangs after typing&nbsp;<span class="Special">CTRL-C</span>.<br>
+Solution:&nbsp;&nbsp; Make&nbsp;<span class="Special">CTRL-C</span>&nbsp;exit the loop. (Ozaki Kiichi, closes #2697)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/popupmnu.c<br>
 <br>
 Patch 8.0.1589<br>
@@ -24423,8 +24423,8 @@ Solution:&nbsp;&nbsp; Add #ifdef.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c<br>
 <br>
 Patch 8.0.1611<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-W&nbsp;in system terminal does not go to job.<br>
-Solution:&nbsp;&nbsp; Do not use&nbsp;CTRL-W&nbsp;as a terminal command in a system terminal.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-W</span>&nbsp;in system terminal does not go to job.<br>
+Solution:&nbsp;&nbsp; Do not use&nbsp;<span class="Special">CTRL-W</span>&nbsp;as a terminal command in a system terminal.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c<br>
 <br>
 Patch 8.0.1612<br>
@@ -24967,8 +24967,8 @@ Solution:&nbsp;&nbsp; Only reset clear_cmdline when filling all columns of the l
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/screen.c, src/testdir/test_window_cmd.vim<br>
 <br>
 Patch 8.0.1706<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot send&nbsp;CTRL-\&nbsp;to a terminal window.<br>
-Solution:&nbsp;&nbsp; Make&nbsp;CTRL-W&nbsp;CTRL-\&nbsp;send&nbsp;CTRL-\&nbsp;to a terminal window.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot send&nbsp;<span class="Special">CTRL-\</span>&nbsp;to a terminal window.<br>
+Solution:&nbsp;&nbsp; Make&nbsp;<span class="Special">CTRL-W</span>&nbsp;<span class="Special">CTRL-\</span>&nbsp;send&nbsp;<span class="Special">CTRL-\</span>&nbsp;to a terminal window.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c, runtime/doc/terminal.txt<br>
 <br>
 Patch 8.0.1707<br>
@@ -25010,7 +25010,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c, src/option.h, src/opti
 <br>
 Patch 8.0.1713<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Terminal debugger doesn't handle arguments.<br>
-Solution:&nbsp;&nbsp; Use&nbsp;&lt;f-args&gt;&nbsp;and pass all the arguments to gdb, e.g. the core file<br>
+Solution:&nbsp;&nbsp; Use&nbsp;<span class="Special">&lt;f-args&gt;</span>&nbsp;and pass all the arguments to gdb, e.g. the core file<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or process number. (suggested by Christian Brabandt) Disallow<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;starting the debugger twice.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/pack/dist/opt/termdebug/plugin/termdebug.vim,<br>
@@ -25123,7 +25123,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/buffer.c, src/terminal.c, src/test
 <br>
 Patch 8.0.1733<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Incomplete testing for completion fix. (Lifepillar)<br>
-Solution:&nbsp;&nbsp; Add a test with&nbsp;CTRL-P.<br>
+Solution:&nbsp;&nbsp; Add a test with&nbsp;<span class="Special">CTRL-P</span>.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_popup.vim<br>
 <br>
 Patch 8.0.1734<br>
@@ -25315,7 +25315,7 @@ Solution:&nbsp;&nbsp; Add a config file for lgtm. (Bas van Schaik, closes #2844)
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.lgtm.yml, Filelist<br>
 <br>
 Patch 8.0.1765<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-G&nbsp;j in Insert mode is incorrect when&nbsp;<a class="Type" href="options.html#'virtualedit'">'virtualedit'</a>&nbsp;is set.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-G</span>&nbsp;j in Insert mode is incorrect when&nbsp;<a class="Type" href="options.html#'virtualedit'">'virtualedit'</a>&nbsp;is set.<br>
 Solution:&nbsp;&nbsp; Take coladd into account. (Christian Brabandt, closes #2743)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/charset.c, src/testdir/test_virtualedit.vim<br>
 <br>
@@ -25451,7 +25451,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_terminal.vim, src/ter
 <br>
 Patch 8.0.1787<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot insert the whole cursor line.<br>
-Solution:&nbsp;&nbsp; Make&nbsp;CTRL-R&nbsp;CTRL-L&nbsp;work. (Andy Massimino, closes #2857)<br>
+Solution:&nbsp;&nbsp; Make&nbsp;<span class="Special">CTRL-R</span>&nbsp;<span class="Special">CTRL-L</span>&nbsp;work. (Andy Massimino, closes #2857)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/cmdline.txt, src/ex_getln.c, src/ops.c,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_cmdline.vim<br>
 <br>
@@ -25644,7 +25644,7 @@ Solution:&nbsp;&nbsp; When stdout is not connected to pty_master_fd then use it 
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_unix.c, src/testdir/test_terminal.vim<br>
 <br>
 Patch 8.0.1821<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cursor in terminal window moves when pressing&nbsp;CTRL-W. (Dominique<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cursor in terminal window moves when pressing&nbsp;<span class="Special">CTRL-W</span>. (Dominique<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pelle)<br>
 Solution:&nbsp;&nbsp; Do not more the cursor or redraw when not in Terminal-Normal mode.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(closes #2904)<br>
@@ -25811,7 +25811,7 @@ Solution:&nbsp;&nbsp; Move the todo items to the help file.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c<br>
 <br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 バージョン 8.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#version-8.2" name="version-8.2">version-8.2</a>&nbsp;<a class="Constant" href="version8.html#version8.2" name="version8.2">version8.2</a>&nbsp;<a class="Constant" href="version8.html#vim-8.2" name="vim-8.2">vim-8.2</a><br>
 <br>
 このセクションでは、バージョン 8.1 と 8.2 の間の改善点について説明する。<br>
@@ -25821,7 +25821,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c<br>
 <br>
 <br>
 ボップアップウィンドウ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#new-popup-window" name="new-popup-window">new-popup-window</a><br>
-----------------------<br>
+<span class="PreProc">----------------------</span><br>
 <br>
 ポップアップウィンドウは他のウィンドウの上にテキストを表示するために使える。<br>
 これは、「ビルドが正常に終了しました」のような単純なメッセージを表示したり、関<br>
@@ -25838,7 +25838,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c<br>
 <br>
 <br>
 テキストプロパティ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#new-text-properties" name="new-text-properties">new-text-properties</a><br>
-------------------<br>
+<span class="PreProc">------------------</span><br>
 <br>
 テキストプロパティは、プラグインの作者に何をハイライトするかについての柔軟性を<br>
 与える。これは、外部の非同期パーサーによってシンタックスハイライトを行うために<br>
@@ -25852,7 +25852,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c<br>
 <br>
 <br>
 Vim script の改良点&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#new-vimscript-8.2" name="new-vimscript-8.2">new-vimscript-8.2</a><br>
--------------------<br>
+<span class="PreProc">-------------------</span><br>
 <br>
 関数は、&quot;-&gt;&quot; を使って連鎖で呼び出すことができるようになった:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mylist-&gt;filter(filterexpr)-&gt;map(mapexpr)-&gt;sort()-&gt;join()</div>
@@ -25886,7 +25886,7 @@ heredoc スタイルの代入が追加された:<br>
 <br>
 <br>
 その他の改良点&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#new-other-8.2" name="new-other-8.2">new-other-8.2</a><br>
---------------<br>
+<span class="PreProc">--------------</span><br>
 <br>
 -&nbsp;<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;がセットされているとき&nbsp;<a class="Comment" href="change.html#:substitute">:substitute</a>&nbsp;にも適用される。<br>
 - より多くのキーの組み合わせがマッピングできるように&nbsp;<a class="Identifier" href="map.html#modifyOtherKeys">modifyOtherKeys</a>&nbsp;が追加<br>
@@ -25897,7 +25897,7 @@ heredoc スタイルの代入が追加された:<br>
 <br>
 <br>
 変更点&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#changed-8.2" name="changed-8.2">changed-8.2</a><br>
-------<br>
+<span class="PreProc">------</span><br>
 <br>
 外部 diff プログラムの必要を避け、差分の更新をより高速化するために、xdiff ライ<br>
 ブラリが取り込まれた。<br>
@@ -25929,7 +25929,7 @@ VIMDLL は再実装された。これはインストールサイズを減らす�
 <br>
 <br>
 追加要素&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#added-8.2" name="added-8.2">added-8.2</a><br>
---------<br>
+<span class="PreProc">--------</span><br>
 <br>
 追加された関数:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全ての popup_ 関数。<br>
@@ -26034,7 +26034,7 @@ VIMDLL は再実装された。これはインストールサイズを減らす�
 <br>
 <br>
 パッチ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="version8.html#patches-8.2" name="patches-8.2">patches-8.2</a><br>
-------<br>
+<span class="PreProc">------</span><br>
 <br>
 これらのパッチは 8.1 リリースの後に適用され、8.2 リリースに含まれている。<br>
 <br>
@@ -26092,7 +26092,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/quickfix.c<br>
 <br>
 Patch 8.1.0011<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;maparg() and mapcheck() confuse empty and non-existing.<br>
-Solution:&nbsp;&nbsp; Return&nbsp;&lt;Nop&gt;&nbsp;for an existing non-empty mapping. (closes #2940)<br>
+Solution:&nbsp;&nbsp; Return&nbsp;<span class="Special">&lt;Nop&gt;</span>&nbsp;for an existing non-empty mapping. (closes #2940)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/evalfunc.c, src/testdir/test_maparg.vim<br>
 <br>
 Patch 8.1.0012<br>
@@ -26207,7 +26207,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_terminal.vim<br>
 <br>
 Patch 8.1.0030<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Stopping Vim running in a terminal may not work.<br>
-Solution:&nbsp;&nbsp; Instead of sending&nbsp;&lt;Esc&gt;&nbsp;send&nbsp;CTRL-O.<br>
+Solution:&nbsp;&nbsp; Instead of sending&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;send&nbsp;<span class="Special">CTRL-O</span>.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/screendump.vim, src/testdir/test_prompt_buffer.vim<br>
 <br>
 Patch 8.1.0031<br>
@@ -26223,7 +26223,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/option.c, src/terminal.c, src/test
 <br>
 Patch 8.1.0033<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Keys to stop Vim in terminal are wrong. (Marius Gedminas)<br>
-Solution:&nbsp;&nbsp; Move &quot;:&quot; to before&nbsp;CTRL-U.<br>
+Solution:&nbsp;&nbsp; Move &quot;:&quot; to before&nbsp;<span class="Special">CTRL-U</span>.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/screendump.vim<br>
 <br>
 Patch 8.1.0034<br>
@@ -26234,7 +26234,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_cmds.c, src/testdir/test_edit.v
 <br>
 Patch 8.1.0035<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Not easy to switch between prompt buffer and other windows.<br>
-Solution:&nbsp;&nbsp; Accept&nbsp;CTRL-W&nbsp;commands in Insert mode.&nbsp;&nbsp;Start and stop Insert mode<br>
+Solution:&nbsp;&nbsp; Accept&nbsp;<span class="Special">CTRL-W</span>&nbsp;commands in Insert mode.&nbsp;&nbsp;Start and stop Insert mode<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;as one would expect.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c, src/ex_docmd.c, src/structs.h, src/window.c<br>
 <br>
@@ -26334,7 +26334,7 @@ Solution:&nbsp;&nbsp; Add the #endif.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_win32.c<br>
 <br>
 Patch 8.1.0052<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;When a mapping to&nbsp;&lt;Nop&gt;&nbsp;times out the next mapping is skipped.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;When a mapping to&nbsp;<span class="Special">&lt;Nop&gt;</span>&nbsp;times out the next mapping is skipped.<br>
 Solution:&nbsp;&nbsp; Reset &quot;timedout&quot; when waiting for a character. (Christian<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Brabandt, closes #2921)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/getchar.c<br>
@@ -26404,7 +26404,7 @@ Solution:&nbsp;&nbsp; Use NSPasteboardTypeString. (Akshay Hegde, closes #3022)<b
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_macosx.m<br>
 <br>
 Patch 8.1.0064<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Typing&nbsp;CTRL-W&nbsp;in a prompt buffer shows mode &quot;-- --&quot;.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Typing&nbsp;<span class="Special">CTRL-W</span>&nbsp;in a prompt buffer shows mode &quot;-- --&quot;.<br>
 Solution:&nbsp;&nbsp; Set restart_edit to 'A' and check for it.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c, src/window.c, src/screen.c<br>
 <br>
@@ -26430,7 +26430,7 @@ Solution:&nbsp;&nbsp; Disallow using setloclist() and setqflist() recursively.<b
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/evalfunc.c<br>
 <br>
 Patch 8.1.0069<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot handle pressing&nbsp;CTRL-C&nbsp;in a prompt buffer.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot handle pressing&nbsp;<span class="Special">CTRL-C</span>&nbsp;in a prompt buffer.<br>
 Solution:&nbsp;&nbsp; Add prompt_setinterrupt().<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/eval.txt, src/edit.c, src/evalfunc.c, src/channel.c,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/proto/channel.pro<br>
@@ -26469,7 +26469,7 @@ Solution:&nbsp;&nbsp; Add one. (Árni Dagur, closes #3024)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;README.md<br>
 <br>
 Patch 8.1.0076<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Command getting cleared with&nbsp;CTRL-W&nbsp;: in a terminal window. (Jason<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Command getting cleared with&nbsp;<span class="Special">CTRL-W</span>&nbsp;: in a terminal window. (Jason<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Franklin)<br>
 Solution:&nbsp;&nbsp; Call redraw_after_callback() when editing the command line.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c<br>
@@ -26706,7 +26706,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/screen.c, src/testdir/test_vartabs
 <br>
 Patch 8.1.0117<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;URL in install program still points to SourceForge.<br>
-Solution:&nbsp;&nbsp; Change it to&nbsp;www.vim.org. (closes #3100)<br>
+Solution:&nbsp;&nbsp; Change it to&nbsp;<span class="Constant">www.vim.org</span>. (closes #3100)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/dosinst.c<br>
 <br>
 Patch 8.1.0118<br>
@@ -26812,7 +26812,7 @@ Solution:&nbsp;&nbsp; Add funcref support. (Luis Carvalho)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/if_lua.c, src/testdir/test_lua.vim<br>
 <br>
 Patch 8.1.0135<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Undo message delays screen update for&nbsp;CTRL-O&nbsp;u.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Undo message delays screen update for&nbsp;<span class="Special">CTRL-O</span>&nbsp;u.<br>
 Solution:&nbsp;&nbsp; Add smsg_attr_keep(). (closes #3125)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/message.c, src/proto.h, src/undo.c<br>
 <br>
@@ -26935,8 +26935,8 @@ Solution:&nbsp;&nbsp; Recognize the termresponse.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/term.c<br>
 <br>
 Patch 8.1.0158<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;GUI: input() fails if&nbsp;CTRL-C&nbsp;was pressed before. (Michael Naumann)<br>
-Solution:&nbsp;&nbsp; call vpeekc() to drop the&nbsp;CTRL-C&nbsp;from the input stream.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;GUI: input() fails if&nbsp;<span class="Special">CTRL-C</span>&nbsp;was pressed before. (Michael Naumann)<br>
+Solution:&nbsp;&nbsp; call vpeekc() to drop the&nbsp;<span class="Special">CTRL-C</span>&nbsp;from the input stream.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_docmd.c<br>
 <br>
 Patch 8.1.0159<br>
@@ -27007,7 +27007,7 @@ Solution:&nbsp;&nbsp; Reallocate the list of listids when needed. (closes #3175)
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/regexp_nfa.c<br>
 <br>
 Patch 8.1.0171<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Typing&nbsp;CTRL-W&nbsp;n in a terminal window causes ml_get error.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Typing&nbsp;<span class="Special">CTRL-W</span>&nbsp;n in a terminal window causes ml_get error.<br>
 Solution:&nbsp;&nbsp; When resizing the terminal outside of terminal_loop() make sure<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the snapshot is complete.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c, src/testdir/test_terminal.vim<br>
@@ -27237,7 +27237,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/if_lua.c, src/if_mzsch.c, src/if_p
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_tcl.vim<br>
 <br>
 Patch 8.1.0213<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-W&nbsp;CR does not work properly in a quickfix window.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-W</span>&nbsp;CR does not work properly in a quickfix window.<br>
 Solution:&nbsp;&nbsp; Split the window if needed. (Jason Franklin)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/normal.c, src/proto/quickfix.pro, src/quickfix.c,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_quickfix.vim, src/window.c<br>
@@ -27301,7 +27301,7 @@ Solution:&nbsp;&nbsp; Break out of the loop when got_int is set. (suggested by C
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c<br>
 <br>
 Patch 8.1.0225<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Mode() does not indicate using&nbsp;CTRL-O&nbsp;from Insert mode.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Mode() does not indicate using&nbsp;<span class="Special">CTRL-O</span>&nbsp;from Insert mode.<br>
 Solution:&nbsp;&nbsp; Add &quot;niI&quot;, &quot;niR&quot; and &quot;niV&quot; to mode() result. (closes #3000)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/eval.txt, src/evalfunc.c,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_functions.vim<br>
@@ -27391,7 +27391,7 @@ Solution:&nbsp;&nbsp; Prepend the &quot;g:&quot; name space. (closes #3279)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/buffer.c<br>
 <br>
 Patch 8.1.0241<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Effect of &quot;:tabmove&nbsp;N&quot; is not clear.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Effect of &quot;:tabmove&nbsp;<span class="Special">N</span>&quot; is not clear.<br>
 Solution:&nbsp;&nbsp; Add a test that shows the behavior. (Christian Brabandt,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;closes #3288)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_tabpage.vim<br>
@@ -27873,7 +27873,7 @@ Solution:&nbsp;&nbsp; Use temp variables instead of character from cell.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c, src/testdir/dumps/Test_syntax_c_01.dump<br>
 <br>
 Patch 8.1.0327<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;The &quot;g&nbsp;CTRL-G&quot; command isn't tested much.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;The &quot;g&nbsp;<span class="Special">CTRL-G</span>&quot; command isn't tested much.<br>
 Solution:&nbsp;&nbsp; Add more tests. (Dominique Pelle, closes #3369)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_normal.vim<br>
 <br>
@@ -28015,7 +28015,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/channel.c, src/structs.h, src/test
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/channel.txt<br>
 <br>
 Patch 8.1.0351<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;for :/foo/s//&lt;Esc&gt;&nbsp;changes last search pattern.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;for :/foo/s//<span class="Special">&lt;Esc&gt;</span>&nbsp;changes last search pattern.<br>
 Solution:&nbsp;&nbsp; Save the last search pattern earlier.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_docmd.c, src/ex_getln.c, src/testdir/test_search.vim<br>
 <br>
@@ -28043,7 +28043,7 @@ Solution:&nbsp;&nbsp; Compute position and height properly. (Ronan Pigott)&nbsp;
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/popupmnu.c<br>
 <br>
 Patch 8.1.0356<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using :s with&nbsp;<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;prevents&nbsp;CTRL-R&nbsp;CTRL-W. (Boris Staletic)<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Using :s with&nbsp;<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;prevents&nbsp;<span class="Special">CTRL-R</span>&nbsp;<span class="Special">CTRL-W</span>. (Boris Staletic)<br>
 Solution:&nbsp;&nbsp; When past the pattern put cursor back in the start position.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(closes #3413)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_getln.c, src/testdir/test_search.vim<br>
@@ -28502,7 +28502,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/xdiff/xemit.c<br>
 <br>
 Patch 8.1.0433<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Mapping can obtain text from inputsecret(). (Tommy Allen)<br>
-Solution:&nbsp;&nbsp; Disallow&nbsp;CTRL-R&nbsp;= and&nbsp;CTRL-\&nbsp;e when using inputsecret().<br>
+Solution:&nbsp;&nbsp; Disallow&nbsp;<span class="Special">CTRL-R</span>&nbsp;= and&nbsp;<span class="Special">CTRL-\</span>&nbsp;e when using inputsecret().<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_getln.c<br>
 <br>
 Patch 8.1.0434<br>
@@ -28917,8 +28917,8 @@ Solution:&nbsp;&nbsp; Add the missing test function.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_diffmode.vim<br>
 <br>
 Patch 8.1.0504<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;CTRL-C&nbsp;is mapped it triggers InsertLeave.<br>
-Solution:&nbsp;&nbsp; Make&nbsp;CTRL-C&nbsp;behave the same way when typed or used in a mapping.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;<span class="Special">CTRL-C</span>&nbsp;is mapped it triggers InsertLeave.<br>
+Solution:&nbsp;&nbsp; Make&nbsp;<span class="Special">CTRL-C</span>&nbsp;behave the same way when typed or used in a mapping.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c, src/testdir/test_edit.vim<br>
 <br>
 Patch 8.1.0505<br>
@@ -28968,7 +28968,7 @@ Solution:&nbsp;&nbsp; Check for missing argument. (Hirohito Higashi, closes #359
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/diff.c, src/testdir/gen_opt_test.vim<br>
 <br>
 Patch 8.1.0514<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-W&nbsp;^ does not work when alternate buffer has no name.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-W</span>&nbsp;^ does not work when alternate buffer has no name.<br>
 Solution:&nbsp;&nbsp; Use another method to split and edit the alternate buffer. (Jason<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Franklin)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_normal.vim, src/testdir/test_window_cmd.vim,<br>
@@ -29389,7 +29389,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/dict.c, src/proto/dict.pro, src/ed
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/textprop.c<br>
 <br>
 Patch 8.1.0584<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;With search&nbsp;CTRL-L&nbsp;does not pick up composing characters.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;With search&nbsp;<span class="Special">CTRL-L</span>&nbsp;does not pick up composing characters.<br>
 Solution:&nbsp;&nbsp; Check for composing characters. (Christian Brabandt, closes #3682)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[code change was accidentally included in 8.1.0579]<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_search.vim<br>
@@ -29590,7 +29590,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filelist, nsis/gvim.nsi, nsis/icons/he
 <br>
 Patch 8.1.0617 (after 8.1.0616)<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;NSIS installer gets two files from the wrong directory.<br>
-Solution:&nbsp;&nbsp; Change ${VIMRT}&nbsp;to &quot;..\&quot;.<br>
+Solution:&nbsp;&nbsp; Change $<span class="Special">{VIMRT}</span>&nbsp;to &quot;..\&quot;.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nsis/gvim.nsi<br>
 <br>
 Patch 8.1.0618<br>
@@ -29647,7 +29647,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/gui.c<br>
 <br>
 Patch 8.1.0627<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Python cannot handle function name of script-local function.<br>
-Solution:&nbsp;&nbsp; Use&nbsp;&lt;SNR&gt;&nbsp;instead of the special byte code. (Ozaki Kiichi, closes<br>
+Solution:&nbsp;&nbsp; Use&nbsp;<span class="Special">&lt;SNR&gt;</span>&nbsp;instead of the special byte code. (Ozaki Kiichi, closes<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#3681)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/if_py_both.h, src/testdir/test_python2.vim,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_python3.vim<br>
@@ -29779,7 +29779,7 @@ Solution:&nbsp;&nbsp; Move the declarations to that file.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/globals.h, src/os_unix.c<br>
 <br>
 Patch 8.1.0650<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Command line argument -q&nbsp;[errorfile]&nbsp;is not tested.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Command line argument -q&nbsp;<span class="Special">[errorfile]</span>&nbsp;is not tested.<br>
 Solution:&nbsp;&nbsp; Add a test. (Dominique Pelle, closes #3730)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_startup.vim<br>
 <br>
@@ -31450,7 +31450,7 @@ Solution:&nbsp;&nbsp; Reduce the recursiveness limit for regexp.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/regexp_nfa.c<br>
 <br>
 Patch 8.1.0908<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Can't handle large value for %{nr}v in regexp. (Kuang-che Wu)<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Can't handle large value for %<span class="Special">{nr}</span>v in regexp. (Kuang-che Wu)<br>
 Solution:&nbsp;&nbsp; Give an error if the value is too large. (closes #3948)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/regexp_nfa.c<br>
 <br>
@@ -31854,7 +31854,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/search.c, src/testdir/test_textobj
 <br>
 Patch 8.1.0972<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot switch from terminal window to next tabpage.<br>
-Solution:&nbsp;&nbsp; Make&nbsp;CTRL-W&nbsp;gt move to next tabpage.<br>
+Solution:&nbsp;&nbsp; Make&nbsp;<span class="Special">CTRL-W</span>&nbsp;gt move to next tabpage.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/window.c, src/testdir/test_terminal.vim,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/terminal.txt<br>
 <br>
@@ -31867,7 +31867,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/regexp_nfa.c, src/testdir/test_sea
 <br>
 Patch 8.1.0974<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot switch from terminal window to previous tabpage.<br>
-Solution:&nbsp;&nbsp; Make&nbsp;CTRL-W&nbsp;gT move to previous tabpage.<br>
+Solution:&nbsp;&nbsp; Make&nbsp;<span class="Special">CTRL-W</span>&nbsp;gT move to previous tabpage.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/window.c, src/testdir/test_terminal.vim,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/terminal.txt<br>
 <br>
@@ -32034,7 +32034,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/findfile.c, src/testdir/test_gf.vi
 <br>
 Patch 8.1.1003<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Playing back recorded key sequence mistakes key code.<br>
-Solution:&nbsp;&nbsp; Insert a&nbsp;&lt;Nop&gt;&nbsp;after the&nbsp;&lt;Esc&gt;. (closes #4068)<br>
+Solution:&nbsp;&nbsp; Insert a&nbsp;<span class="Special">&lt;Nop&gt;</span>&nbsp;after the&nbsp;<span class="Special">&lt;Esc&gt;</span>. (closes #4068)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/getchar.c, src/testdir/test_registers.vim<br>
 <br>
 Patch 8.1.1004<br>
@@ -32288,7 +32288,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test85.ok, src/testdir/Mak
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/README.txt<br>
 <br>
 Patch 8.1.1049<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;When user tries to exit with&nbsp;CTRL-C&nbsp;message is confusing.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;When user tries to exit with&nbsp;<span class="Special">CTRL-C</span>&nbsp;message is confusing.<br>
 Solution:&nbsp;&nbsp; Only mention &quot;:qa!&quot; when there is a changed buffer. (closes #4163)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/undo.c, src/proto/undo.pro, src/normal.c,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_normal.vim<br>
@@ -32305,7 +32305,7 @@ Solution:&nbsp;&nbsp; Add more test cases.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_terminal.vim<br>
 <br>
 Patch 8.1.1052<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;test for&nbsp;CTRL-C&nbsp;message sometimes fails<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;test for&nbsp;<span class="Special">CTRL-C</span>&nbsp;message sometimes fails<br>
 Solution:&nbsp;&nbsp; Make sure there are no changed buffers.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_normal.vim<br>
 <br>
@@ -32320,7 +32320,7 @@ Solution:&nbsp;&nbsp; Only append when ga_grow() returns OK.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/if_lua.c<br>
 <br>
 Patch 8.1.1055<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-G&nbsp;U in Insert mode doesn't work to avoid splitting the undo<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-G</span>&nbsp;U in Insert mode doesn't work to avoid splitting the undo<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sequence for shift-left and shift-right.<br>
 Solution:&nbsp;&nbsp; Also check dont_sync_undo for shifted cursor keys. (Christian<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Brabandt)<br>
@@ -32464,7 +32464,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_python2.vim, src/test
 <br>
 Patch 8.1.1075<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Function reference count wrong in Python code.<br>
-Solution:&nbsp;&nbsp; Use &quot;O&quot; instead of &quot;N&quot; for the arguments. (Ben Jackson,<br>
+Solution:&nbsp;&nbsp; Use &quot;O&quot; instead of &quot;<span class="Special">N</span>&quot; for the arguments. (Ben Jackson,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;closes #4188)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/if_py_both.h<br>
 <br>
@@ -32553,7 +32553,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/autocmd.c, src/buffer.c, src/crypt
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/regexp_nfa.c, src/screen.c, src/spell.c, src/terminal.c<br>
 <br>
 Patch 8.1.1087<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;tag stack is incorrect after&nbsp;CTRL-T&nbsp;and then :tag<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;tag stack is incorrect after&nbsp;<span class="Special">CTRL-T</span>&nbsp;and then :tag<br>
 Solution:&nbsp;&nbsp; Handle DT_TAG differently. (test by Andy Massimino, closes #3944,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;closes #4177)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/tag.c, src/testdir/test_tagjump.vim<br>
@@ -32604,7 +32604,7 @@ Solution:&nbsp;&nbsp; Use much bigger buffer. (Ken Takata, closes #4015)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_win32.c, src/testdir/test_functions.vim<br>
 <br>
 Patch 8.1.1096<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;MS-Windows: cannot distinguish BS and&nbsp;CTRL-H.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;MS-Windows: cannot distinguish BS and&nbsp;<span class="Special">CTRL-H</span>.<br>
 Solution:&nbsp;&nbsp; Add code for VK_BACK. (Linwei, closes #1833)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/term.c, src/os_win32.c<br>
 <br>
@@ -32904,7 +32904,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/po/Makefile, src/po/gvim.desktop.i
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/gvim.desktop<br>
 <br>
 Patch 8.1.1148<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-L&nbsp;with&nbsp;<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;does not pick up char under cursor.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-L</span>&nbsp;with&nbsp;<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;does not pick up char under cursor.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Smylers)<br>
 Solution:&nbsp;&nbsp; Do not compare the position with the cursor position. (Hirohito<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Higashi, closes #3620)<br>
@@ -33115,8 +33115,8 @@ Solution:&nbsp;&nbsp; Delete the undo file. (Dominique Pelle, closes #4279)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_filechanged.vim<br>
 <br>
 Patch 8.1.1185<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Mapping for&nbsp;CTRL-X&nbsp;is inconsistent.<br>
-Solution:&nbsp;&nbsp; Map&nbsp;CTRL-X&nbsp;to &quot;*d also for the MS-Windows console. (Ken Takata,<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Mapping for&nbsp;<span class="Special">CTRL-X</span>&nbsp;is inconsistent.<br>
+Solution:&nbsp;&nbsp; Map&nbsp;<span class="Special">CTRL-X</span>&nbsp;to &quot;*d also for the MS-Windows console. (Ken Takata,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;closes #4265)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/getchar.c<br>
 <br>
@@ -33379,7 +33379,7 @@ Solution:&nbsp;&nbsp; Add support for posix_openpt(). (Ozaki Kiichi, closes #430
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/configure.ac, src/config.h.in, src/auto/configure, src/pty.c<br>
 <br>
 Patch 8.1.1226<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;{not in Vi}&nbsp;remarks get in the way of useful help text.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{not in Vi}</span>&nbsp;remarks get in the way of useful help text.<br>
 Solution:&nbsp;&nbsp; Make a list of all Vi options, instead of mentioning what Vi does<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not have.&nbsp;&nbsp;Update the help text for options.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/vi_diff.txt, runtime/doc/options.txt<br>
@@ -33500,7 +33500,7 @@ Solution:&nbsp;&nbsp; Add ADDR_QUICKFIX to the list.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_docmd.c<br>
 <br>
 Patch 8.1.1244<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;No tests for&nbsp;CTRL-mouse-click.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;No tests for&nbsp;<span class="Special">CTRL-m</span>ouse-click.<br>
 Solution:&nbsp;&nbsp; Add a few tests. (Dominique Pelle, closes #4323)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_termcodes.vim<br>
 <br>
@@ -33578,7 +33578,7 @@ Solution:&nbsp;&nbsp; Adjust comment.&nbsp;&nbsp;Don't use different directory f
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/Make_mvc.mak<br>
 <br>
 Patch 8.1.1258<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;The &quot;N&nbsp;files to edit&quot; message can not be suppressed.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;The &quot;<span class="Special">N</span>&nbsp;files to edit&quot; message can not be suppressed.<br>
 Solution:&nbsp;&nbsp; Suppress the message with --not-a-term. (closes #4320)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/main.c<br>
 <br>
@@ -33704,7 +33704,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/option.c, src/testdir/gen_opt_test
 Patch 8.1.1280<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Remarks about functionality not in Vi clutters the help.<br>
 Solution:&nbsp;&nbsp; Move all info about what is new in Vim or already existed in Vi to<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vi_diff.txt.&nbsp;&nbsp;Remove&nbsp;{not in Vi}&nbsp;remarks. (closes #4268) Add<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vi_diff.txt.&nbsp;&nbsp;Remove&nbsp;<span class="Special">{not in Vi}</span>&nbsp;remarks. (closes #4268) Add<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;noet&quot; to the help files modeline.&nbsp;&nbsp;Also include many other help<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file improvements.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/vi_diff.txt, runtime/doc/arabic.txt,<br>
@@ -33888,7 +33888,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/screen.c, src/testdir/test_listcha
 <br>
 Patch 8.1.1300<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;In a terminal&nbsp;<a class="Type" href="options.html#'ballooneval'">'ballooneval'</a>&nbsp;does not work right away.<br>
-Solution:&nbsp;&nbsp; Flush output after drawing the balloon.&nbsp;&nbsp;Add the&nbsp;&lt;Ignore&gt;&nbsp;key<br>
+Solution:&nbsp;&nbsp; Flush output after drawing the balloon.&nbsp;&nbsp;Add the&nbsp;<span class="Special">&lt;Ignore&gt;</span>&nbsp;key<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;code.&nbsp;&nbsp;Add a test.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_cmds2.c, src/testdir/test_balloon.vim, src/misc2.c,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/Make_all.mak,<br>
@@ -34893,7 +34893,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/popupwin.c, src/testdir/test_popup
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/dumps/Test_popupwin_corners.dump<br>
 <br>
 Patch 8.1.1451<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-L&nbsp;does not clear screen with a popup window.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-L</span>&nbsp;does not clear screen with a popup window.<br>
 Solution:&nbsp;&nbsp; Do not change the type to NOT_VALID.&nbsp;&nbsp;Redraw all windows.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(closes #4471)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/screen.c<br>
@@ -36680,7 +36680,7 @@ Solution:&nbsp;&nbsp; Require the marker does not start with a lower case charac
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/eval.txt, src/eval.c, src/testdir/test_let.vim<br>
 <br>
 Patch 8.1.1724<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Too much overhead checking for&nbsp;CTRL-C&nbsp;while processing text.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Too much overhead checking for&nbsp;<span class="Special">CTRL-C</span>&nbsp;while processing text.<br>
 Solution:&nbsp;&nbsp; Increase BREAKCHECK_SKIP.&nbsp;&nbsp;Remove the difference for when built<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with the GUI. (suggested by Andy Massimino, closes #4708)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/misc1.c, src/screen.c, src/feature.h<br>
@@ -37379,7 +37379,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/evalfunc.c<br>
 <br>
 Patch 8.1.1834<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot use a lambda as a method.<br>
-Solution:&nbsp;&nbsp; Implement -&gt;{lambda}(). (closes #4768)<br>
+Solution:&nbsp;&nbsp; Implement -&gt;<span class="Special">{lambda}</span>(). (closes #4768)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/eval.txt, src/eval.c, src/testdir/test_method.vim<br>
 <br>
 Patch 8.1.1835<br>
@@ -37461,7 +37461,7 @@ Solution:&nbsp;&nbsp; Do not use GetVimCommandClean().<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_suspend.vim<br>
 <br>
 Patch 8.1.1848<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'langmap'">'langmap'</a>&nbsp;is not used for&nbsp;CTRL-W&nbsp;command in terminal.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'langmap'">'langmap'</a>&nbsp;is not used for&nbsp;<span class="Special">CTRL-W</span>&nbsp;command in terminal.<br>
 Solution:&nbsp;&nbsp; Push the command in the typeahead buffer instead of the stuff<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buffer. (closes #4814)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/terminal.c, src/testdir/test_terminal.vim<br>
@@ -38889,7 +38889,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_compiler.vim<br>
 <br>
 Patch 8.1.2055<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Not easy to jump to function line from profile.<br>
-Solution:&nbsp;&nbsp; Use &quot;file:99&quot; instead of &quot;file line 99&quot; so that &quot;gf&quot; works.<br>
+Solution:&nbsp;&nbsp; Use &quot;<span class="Constant">file:99</span>&quot; instead of &quot;file line 99&quot; so that &quot;gf&quot; works.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Daniel Hahler, closes #4951)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/profiler.c, src/testdir/test_profile.vim<br>
 <br>
@@ -39229,7 +39229,7 @@ Solution:&nbsp;&nbsp; Correct pointer name. (Marko Mahnič, closes #5006)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/popupwin.c, src/testdir/test_popupwin.vim<br>
 <br>
 Patch 8.1.2110<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-C&nbsp;closes two popups instead of one.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-C</span>&nbsp;closes two popups instead of one.<br>
 Solution:&nbsp;&nbsp; Reset got_int when the filter consumed the key.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/getchar.c, src/testdir/test_popupwin.vim<br>
 <br>
@@ -39249,7 +39249,7 @@ Solution:&nbsp;&nbsp; Escape &quot;~&quot; after &quot;expr-&quot;. (closes #501
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_cmds.c, src/testdir/test_help.vim<br>
 <br>
 Patch 8.1.2114<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;When a popup is closed with&nbsp;CTRL-C&nbsp;the callback aborts.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;When a popup is closed with&nbsp;<span class="Special">CTRL-C</span>&nbsp;the callback aborts.<br>
 Solution:&nbsp;&nbsp; Reset got_int when invoking the callback. (closes #5008)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/popupwin.c<br>
 <br>
@@ -39439,8 +39439,8 @@ Solution:&nbsp;&nbsp; Add t_TI and t_TE.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/term.txt, src/term.c, src/optiondefs.h, src/term.h,<br>
 <br>
 Patch 8.1.2145<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot map&nbsp;&lt;C-H&gt;&nbsp;when modifyOtherKeys is enabled.<br>
-Solution:&nbsp;&nbsp; Add the&nbsp;&lt;C-H&gt;&nbsp;mapping twice, both with modifier and as 0x08.&nbsp;&nbsp;Use<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot map&nbsp;<span class="Special">&lt;C-H&gt;</span>&nbsp;when modifyOtherKeys is enabled.<br>
+Solution:&nbsp;&nbsp; Add the&nbsp;<span class="Special">&lt;C-H&gt;</span>&nbsp;mapping twice, both with modifier and as 0x08.&nbsp;&nbsp;Use<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;only the first one when modifyOtherKeys has been detected.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/term.c, src/eval.c, src/getchar.c, src/globals.h,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/gui_mac.c, src/gui_w32.c, src/highlight.c, src/if_ole.cpp,<br>
@@ -39712,7 +39712,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_syntax.vim,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/dumps/Test_syntax_c_01.dump<br>
 <br>
 Patch 8.1.2191<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;When using modifyOtherKeys&nbsp;CTRL-X&nbsp;mode may not work.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;When using modifyOtherKeys&nbsp;<span class="Special">CTRL-X</span>&nbsp;mode may not work.<br>
 Solution:&nbsp;&nbsp; Recognize a control character also in the form with a modifier.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/getchar.c<br>
 <br>
@@ -40073,7 +40073,7 @@ Solution:&nbsp;&nbsp; Test existence with &quot;which&quot; instead of &quot;tes
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/Makefile<br>
 <br>
 Patch 8.1.2248<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-W&nbsp;dot does not work in a terminal when modifyOtherKeys is<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-W</span>&nbsp;dot does not work in a terminal when modifyOtherKeys is<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enabled.<br>
 Solution:&nbsp;&nbsp; Use the modifier when needed.&nbsp;&nbsp;Pass the modifier along with the<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key to avoid mistakes.<br>
@@ -40085,7 +40085,7 @@ Solution:&nbsp;&nbsp; Add a message that the tags have been updated.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/Makefile<br>
 <br>
 Patch 8.1.2250<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-U&nbsp;and&nbsp;CTRL-D&nbsp;don't work in popup window.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-U</span>&nbsp;and&nbsp;<span class="Special">CTRL-D</span>&nbsp;don't work in popup window.<br>
 Solution:&nbsp;&nbsp; Initialize&nbsp;<a class="Type" href="options.html#'scroll'">'scroll'</a>.&nbsp;&nbsp;Add &quot;lastline&quot; in popup_getpos().<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(closes #5170)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/popupwin.c, src/testdir/test_popupwin.vim,<br>
@@ -40578,7 +40578,7 @@ Solution:&nbsp;&nbsp; Update missing file.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/search.c<br>
 <br>
 Patch 8.1.2333<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;With modifyOtherKeys&nbsp;CTRL-^&nbsp;doesn't work.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;With modifyOtherKeys&nbsp;<span class="Special">CTRL-^</span>&nbsp;doesn't work.<br>
 Solution:&nbsp;&nbsp; Handle the exception.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/getchar.c, src/testdir/test_termcodes.vim<br>
 <br>
@@ -40651,9 +40651,9 @@ Solution:&nbsp;&nbsp; Add the *.cjs pattern. (closes #5268)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/filetype.vim, src/testdir/test_filetype.vim<br>
 <br>
 Patch 8.1.2346<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;CTRL-R&nbsp;CTRL-R&nbsp;doesn't work with modifyOtherKeys.<br>
-Solution:&nbsp;&nbsp; Allow key codes when fetching argument for&nbsp;CTRL-R. (closes #5266)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Also fix&nbsp;CTRL-G&nbsp;in Insert mode.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-R</span>&nbsp;<span class="Special">CTRL-R</span>&nbsp;doesn't work with modifyOtherKeys.<br>
+Solution:&nbsp;&nbsp; Allow key codes when fetching argument for&nbsp;<span class="Special">CTRL-R</span>. (closes #5266)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Also fix&nbsp;<span class="Special">CTRL-G</span>&nbsp;in Insert mode.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c, src/ex_getln.c, src/testdir/test_termcodes.vim<br>
 <br>
 Patch 8.1.2347 (after 8.1.2344)<br>
@@ -40675,9 +40675,9 @@ Solution:&nbsp;&nbsp; Check for following commands. (closes #5269)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_const.vim, src/ex_docmd.c<br>
 <br>
 Patch 8.1.2350<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Other text for&nbsp;CTRL-V&nbsp;in Insert mode with modifyOtherKeys.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Other text for&nbsp;<span class="Special">CTRL-V</span>&nbsp;in Insert mode with modifyOtherKeys.<br>
 Solution:&nbsp;&nbsp; Convert the Escape sequence back to key as if modifyOtherKeys is<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not set, and use&nbsp;CTRL-SHIFT-V to get the Escape sequence itself.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not set, and use&nbsp;<span class="Special">CTRL-S</span>HIFT-V to get the Escape sequence itself.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(closes #5254)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/insert.txt, runtime/doc/cmdline.txt, src/edit.c,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/proto/edit.pro, src/term.c, src/proto/term.pro, src/getchar.c,<br>
@@ -41151,7 +41151,7 @@ Solution:&nbsp;&nbsp; Only call ResizeConBuf() when the size differs. (Nobuhiro<
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Takasaki, closes #5343)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_win32.c<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <br>
 パッチ 8.2.0001 以降は&nbsp;<a class="Identifier" href="version9.html#patches-after-8.2">patches-after-8.2</a>&nbsp;にある。<br>
 <br>

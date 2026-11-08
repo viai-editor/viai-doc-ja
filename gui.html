@@ -3,10 +3,10 @@ layout: viai-doc
 helpname: 'gui'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="gui.html" name="gui.txt">gui.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For&nbsp;ViAI バージョン 1.0.&nbsp;&nbsp;Last change: 2026 Oct 17<br>
+<a class="Constant" href="gui.html" name="gui.txt">gui.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Oct 17<br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル<br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
 Vimのグラフィカルユーザーインターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#gui" name="gui">gui</a>&nbsp;<a class="Constant" href="gui.html#GUI" name="GUI">GUI</a><br>
@@ -25,7 +25,7 @@ Vimのグラフィカルユーザーインターフェイス&nbsp;&nbsp;&nbsp;&n
 <a class="Identifier" href="gui_w32.html">gui_w32.txt</a>&nbsp;&nbsp; Win32 GUIに特有の項目について。<br>
 <br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 1. GUIの開始&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#gui-start" name="gui-start">gui-start</a>&nbsp;<a class="Constant" href="gui.html#E229" name="E229">E229</a>&nbsp;<a class="Constant" href="gui.html#E233" name="E233">E233</a><br>
 <br>
 まずはVimがGUIに対応したバージョンであるか確認する必要がある。それは &quot;:version&quot;<br>
@@ -35,7 +35,7 @@ X11-Motif, Photon, GTK2, GTK3, GTK4, などである。<br>
 <br>
 どのようにGUIで起動するかは使用しているシステムに依存する。たいていはこのよう<br>
 にしてGUI版のVimを実行できる:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;gvim&nbsp;[options]&nbsp;[files...]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gvim&nbsp;<span class="Special">[options]</span>&nbsp;[files...]<br>
 <br>
 VimのX11バージョンはGUIとGUIでないモードの両方で実行することができる。<br>
 <a class="Identifier" href="gui_x11.html#gui-x11-start">gui-x11-start</a>&nbsp;を参照。<br>
@@ -62,9 +62,9 @@ GUIの初期化は次の順序で行われる:<br>
 &nbsp;&nbsp;メニューに表示されるバッファの名前は35文字で切り詰められる。違う長さで切り詰<br>
 &nbsp;&nbsp;めるなら、例えば50文字にするなら、次のようにする:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let bmenu_max_pathlen = 50</div>
-- Vimを起動するときのコマンドライン引数に &quot;-U&nbsp;{gvimrc}&quot; が指定されると、<br>
-&nbsp;&nbsp;{gvimrc}ファイルが初期化のために読み込まれ、以下の初期化処理は省略される。<br>
-&nbsp;&nbsp;{gvimrc}が &quot;NONE&quot; の場合は、どの初期化ファイルも読み込まれない。<br>
+- Vimを起動するときのコマンドライン引数に &quot;-U&nbsp;<span class="Special">{gvimrc}</span>&quot; が指定されると、<br>
+&nbsp;&nbsp;<span class="Special">{gvimrc}</span>ファイルが初期化のために読み込まれ、以下の初期化処理は省略される。<br>
+&nbsp;&nbsp;<span class="Special">{gvimrc}</span>が &quot;NONE&quot; の場合は、どの初期化ファイルも読み込まれない。<br>
 - UnixとMS-Windowsでは、システムのgvimrcが存在するなら、それが読み込まれる。こ<br>
 &nbsp;&nbsp;のファイルの名前は通常 &quot;$VIM/gvimrc&quot; である。&quot;:version&quot; でこれを確認できる。<br>
 &nbsp;&nbsp;<a class="Identifier" href="starting.html#$VIM">$VIM</a>も参照。<br>
@@ -151,8 +151,8 @@ Vimは起動時に、スクリーンに合わせてウィンドウの位置を�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="builtin.html#getwinpos()">getwinpos()</a>、<a class="Identifier" href="builtin.html#getwinposx()">getwinposx()</a>&nbsp;および&nbsp;<a class="Identifier" href="builtin.html#getwinposy()">getwinposy()</a>&nbsp;も参照のこ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と。<br>
 <br>
-:winp[os]&nbsp;{X}&nbsp;{Y}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#E466" name="E466">E466</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;与えられた{X}と{Y}の座標にGUI vimウィンドウを移動する。座標は<br>
+:winp[os]&nbsp;<span class="Special">{X}</span>&nbsp;<span class="Special">{Y}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#E466" name="E466">E466</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;与えられた<span class="Special">{X}</span>と<span class="Special">{Y}</span>の座標にGUI vimウィンドウを移動する。座標は<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウの左上隅の位置をピクセル単位で指定する。全てのバー<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ジョンで機能する訳ではない。(新しい)xtermで機能する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="syntax.html#xterm-color">xterm-color</a>。<br>
@@ -161,8 +161,8 @@ Vimは起動時に、スクリーンに合わせてウィンドウの位置を�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;能なら)。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#:wi" name=":wi">:wi</a>&nbsp;<a class="Constant" href="gui.html#:win" name=":win">:win</a>&nbsp;<a class="Constant" href="gui.html#:winsize" name=":winsize">:winsize</a>&nbsp;<a class="Constant" href="gui.html#E465" name="E465">E465</a><br>
-:win[size]&nbsp;{width}&nbsp;{height}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{width}(幅)と{height}(高さ)を指定してウィンドウの大きさを設定<br>
+:win[size]&nbsp;<span class="Special">{width}</span>&nbsp;<span class="Special">{height}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{width}</span>(幅)と<span class="Special">{height}</span>(高さ)を指定してウィンドウの大きさを設定<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数字の意味がよりわかりやすいので、代わりに `:set lines=11<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;columns=22` を使用することを推奨する。<br>
@@ -183,7 +183,7 @@ X で各国の文字を入力するためのインプットメソッドで XIM �
 <br>
 対処療法としては gvim の起動引数に&nbsp;<a class="Identifier" href="starting.html#-f">-f</a>&nbsp;を付けてフォークをしないようにすると症<br>
 状は出なくなる。理由は不明だが。<br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 2. スクロールバー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#gui-scrollbars" name="gui-scrollbars">gui-scrollbars</a><br>
 <br>
 垂直スクロールバーと水平スクロールバーがある。<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;オプションでどれが<br>
@@ -216,7 +216,7 @@ X で各国の文字を入力するためのインプットメソッドで XIM �
 効にできる。下スクロールバーは&nbsp;<a class="Type" href="options.html#'nowrap'">'nowrap'</a>&nbsp;が設定されているときだけ有用である。<br>
 <br>
 <br>
-垂直スクロールバー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#gui-vert-scroll" name="gui-vert-scroll">gui-vert-scroll</a><br>
+<span class="Statement">垂直スクロールバー</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#gui-vert-scroll" name="gui-vert-scroll">gui-vert-scroll</a><br>
 <br>
 各Vimウィンドウはとなりにスクロールバーを持っていて、上下にスクロールしてその<br>
 バッファ内のテキストの表示を移動できる。スクロールバーのつまみのサイズはウィン<br>
@@ -235,7 +235,7 @@ X で各国の文字を入力するためのインプットメソッドで XIM �
 が逆でも同様。<br>
 <br>
 <br>
-水平スクロールバー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#gui-horiz-scroll" name="gui-horiz-scroll">gui-horiz-scroll</a><br>
+<span class="Statement">水平スクロールバー</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#gui-horiz-scroll" name="gui-horiz-scroll">gui-horiz-scroll</a><br>
 <br>
 (Vim GUIの最下段の)水平スクロールバーは、<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;オプションがオフのときに、テキ<br>
 ストを横にスクロールするために使用する。スクロールバーのつまみのサイズは、左右<br>
@@ -259,7 +259,7 @@ X で各国の文字を入力するためのインプットメソッドで XIM �
 使用することについて多少の情報がある(けれども必要とするものはないかもしれない):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;(リンク切れ) inria.fr/koala/colas/mouse-wheel-scroll/<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 3. マウス制御&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#gui-mouse" name="gui-mouse">gui-mouse</a><br>
 <br>
 マウスは、<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;オプションに適切なフラグが設定されている場合にだけ機能する。<br>
@@ -272,18 +272,18 @@ GUIに切り替わるときに、<a class="Type" href="options.html#'mouse'">'mo
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="gui.html#gui-mouse-focus">gui-mouse-focus</a><br>
 <a class="Type" href="options.html#'mousemodel'">'mousemodel'</a>&nbsp;&nbsp;&nbsp;&nbsp;マウスのボタンがどのような動作をするか<br>
 <a class="Type" href="options.html#'mousehide'">'mousehide'</a>&nbsp;&nbsp;&nbsp;&nbsp; テキストを入力している間マウスポインタを隠す<br>
-<a class="Type" href="options.html#'mousemoveevent'">'mousemoveevent'</a>&nbsp;マウス移動イベントを有効にし、&lt;MouseMove&gt;&nbsp;をマッピングできる<br>
+<a class="Type" href="options.html#'mousemoveevent'">'mousemoveevent'</a>&nbsp;マウス移動イベントを有効にし、<span class="Special">&lt;MouseMove&gt;</span>&nbsp;をマッピングできる<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ようにする<br>
 <a class="Type" href="options.html#'selectmode'">'selectmode'</a>&nbsp;&nbsp;&nbsp;&nbsp;選択時に選択モードとビジュアルモードのどちらを使うか<br>
 <br>
 素早くこれらを設定するには &quot;:behave&quot; コマンドで行う。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#:behave" name=":behave">:behave</a>&nbsp;<a class="Constant" href="gui.html#:be" name=":be">:be</a><br>
-:be[have]&nbsp;{model}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; マウスと選択の動作を設定する。有効な引数は:<br>
+:be[have]&nbsp;<span class="Special">{model}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; マウスと選択の動作を設定する。有効な引数は:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mswin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS-Windowsの動作<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xterm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Xtermの動作<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:behave&quot; を使用するとこれらのオプションが変更される:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;option&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mswin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xterm<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">option&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mswin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xterm</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'selectmode'">'selectmode'</a>&nbsp;&nbsp;&nbsp;&nbsp;&quot;mouse,key&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'mousemodel'">'mousemodel'</a>&nbsp;&nbsp;&nbsp;&nbsp;&quot;popup&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;extend&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'keymodel'">'keymodel'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;startsel,stopsel&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&quot;<br>
@@ -291,7 +291,7 @@ GUIに切り替わるときに、<a class="Type" href="options.html#'mouse'">'mo
 <br>
 $VIMRUNTIMEディレクトリの中に、MS-Windowsにあるようなcut/copy/paste機能のため<br>
 のキーマッピングを設定する<a class="Identifier" href="gui_w32.html#mswin.vim">mswin.vim</a>と呼ばれるスクリプトがある。これは、<br>
-CTRL-V、CTRL-X、CTRL-Cキーを用いるので、標準の操作と互換性がなくなってしまう。<br>
+<span class="Special">CTRL-V</span>、<span class="Special">CTRL-X</span>、<span class="Special">CTRL-C</span>キーを用いるので、標準の操作と互換性がなくなってしまう。<br>
 それでも構わないなら、このコマンドで使用する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:so $VIMRUNTIME/mswin.vim</div>
 <br>
@@ -302,7 +302,7 @@ CTRL-V、CTRL-X、CTRL-Cキーを用いるので、標準の操作と互換性�
 <br>
 カーソルを持って行きたいテキストバッファのどこかでマウスの左ボタンをクリックす<br>
 ると、カーソルはそこに行く!<br>
-動作するモード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'mouse'が以下を含んでいるとき<br>
+<span class="PreProc">動作するモード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'mouse'が以下を含んでいるとき</span><br>
 ノーマルモード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'n' or 'a'<br>
 ビジュアルモード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'v' or 'a'<br>
 挿入モード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'i' or 'a'<br>
@@ -367,12 +367,12 @@ CTRL-V、CTRL-X、CTRL-Cキーを用いるので、標準の操作と互換性�
 ンを使用する。<br>
 選択したテキストが変更されると、選択は解除される。<br>
 <br>
-コマンドラインでは&nbsp;CTRL-Y&nbsp;で選択範囲をクリップボードにコピーできる。挿入モード<br>
-中にコピーするには&nbsp;CTRL-O&nbsp;を使い&nbsp;CTRL-Y&nbsp;&lt;CR&gt;&nbsp;とする。<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;に a か A が<br>
+コマンドラインでは&nbsp;<span class="Special">CTRL-Y</span>&nbsp;で選択範囲をクリップボードにコピーできる。挿入モード<br>
+中にコピーするには&nbsp;<span class="Special">CTRL-O</span>&nbsp;を使い&nbsp;<span class="Special">CTRL-Y</span>&nbsp;<span class="Special">&lt;CR&gt;</span>&nbsp;とする。<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;に a か A が<br>
 含まれるとき (X11 では既定でそうなっている) は、選択範囲が自動的にレジスタ &quot;*<br>
 にコピーされる。<br>
 <br>
-マウス中ボタンでテキストを貼り付けられる。X11 以外のシステムでは&nbsp;CTRL-R&nbsp;+ を<br>
+マウス中ボタンでテキストを貼り付けられる。X11 以外のシステムでは&nbsp;<span class="Special">CTRL-R</span>&nbsp;+ を<br>
 使えば貼り付けられる。<br>
 <br>
 <br>
@@ -391,12 +391,12 @@ Vimウィンドウの下のステータス行でマウスの左ボタンか右�
 <br>
 3.5 様々なマウスクリック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#gui-mouse-various" name="gui-mouse-various">gui-mouse-various</a><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;S-LeftMouse&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; マウスクリックで単語を前方検索する。<a class="Type" href="options.html#'mousemodel'">'mousemodel'</a>&nbsp;が<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-LeftMouse&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; マウスクリックで単語を前方検索する。<a class="Type" href="options.html#'mousemodel'">'mousemodel'</a>&nbsp;が<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;popup&quot; のときには、これは選択を開始するか、あるいは延<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;長する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;S-RightMouse&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マウスクリックで単語を後方検索する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;C-LeftMouse&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; マウスクリックでタグ名へジャンプする。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;C-RightMouse&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;直前のタグジャンプの前の位置に戻る(&quot;CTRL-T&quot; と同じ)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-RightMouse&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マウスクリックで単語を後方検索する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-LeftMouse&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; マウスクリックでタグ名へジャンプする。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-RightMouse&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;直前のタグジャンプの前の位置に戻る(&quot;<span class="Special">CTRL-T</span>&quot; と同じ)。<br>
 <br>
 <br>
 3.6 マウスマッピング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#gui-mouse-mapping" name="gui-mouse-mapping">gui-mouse-mapping</a><br>
@@ -418,7 +418,7 @@ Vimウィンドウの下のステータス行でマウスの左ボタンか右�
 するために、マウスの右ボタンを使わずに、Shiftキーを押しながら左ボタンを押す方<br>
 法を設定している。<br>
 <br>
-&lt;MouseMove&gt;&nbsp;にマッピングできるが、マッピングに使うには&nbsp;<a class="Type" href="options.html#'mousemoveevent'">'mousemoveevent'</a>&nbsp;を有効<br>
+<span class="Special">&lt;MouseMove&gt;</span>&nbsp;にマッピングできるが、マッピングに使うには&nbsp;<a class="Type" href="options.html#'mousemoveevent'">'mousemoveevent'</a>&nbsp;を有効<br>
 にしなくてはならない。<br>
 <br>
 修飾キーを使ったマウス操作のマッピングはモードレス選択では機能しない。<br>
@@ -445,7 +445,7 @@ Shiftキーを同時に押していると、Vimはカレントディレクトリ
 文字(スペース、タブ、ダブルクォート、'|'、MS-Windows以外ではバックスラッシュ<br>
 も)はエスケープされる。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 4. GUI選択の作成&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#gui-selections" name="gui-selections">gui-selections</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#quotestar" name="quotestar">quotestar</a><br>
@@ -487,7 +487,7 @@ X11でこのレジスタを使うには、<a class="Identifier" href="gui_x11.ht
 <br>
 <a class="Identifier" href="gui_x11.html#W23">W23</a>&nbsp;および&nbsp;<a class="Identifier" href="gui_x11.html#W24">W24</a>&nbsp;も参照。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 5. メニュー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#menus" name="menus">menus</a><br>
 <br>
 まずはユーザーマニュアルの<a class="Identifier" href="usr_42.html">usr_42.txt</a>を参照すること。<br>
@@ -513,7 +513,7 @@ X11でこのレジスタを使うには、<a class="Identifier" href="gui_x11.ht
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let g:did_install_default_menus = 1</div>
 メニュー項目のSyntax(シンタックス)も無効にしたいなら:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let g:did_install_syntax_menu = 1</div>
-Syntax メニューの最初の項目&nbsp;{訳注:「対応形式をメニューに表示」}&nbsp;を使うと、利用<br>
+Syntax メニューの最初の項目&nbsp;<span class="Special">{訳注:「対応形式をメニューに表示」}</span>&nbsp;を使うと、利用<br>
 可能な全てのファイルタイプをメニューに表示できる(読み込みに少し時間がかかるかも<br>
 しれない)。起動時に全てのファイルタイプが表示されているようにしたければ次の行<br>
 を加える:<br>
@@ -521,9 +521,9 @@ Syntax メニューの最初の項目&nbsp;{訳注:「対応形式をメニュ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#menu-lazyload" name="menu-lazyload">menu-lazyload</a>&nbsp;<a class="Constant" href="gui.html#g:do_no_lazyload_menus" name="g:do_no_lazyload_menus">g:do_no_lazyload_menus</a><br>
 以下のメニュー項目は、使用可能なすべてのカラースキーム、キーマップおよびコンパ<br>
 イラ設定を表示する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit &gt; Color Scheme<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit &gt; Keymap<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tools &gt; Set Compiler<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Edit &gt; Color Scheme</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Edit &gt; Keymap</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Tools &gt; Set Compiler</span><br>
 しかしながら、<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;内のディレクトリから関連するファイルをすべて検索す<br>
 るので読み込みに多少時間がかかる。したがって、それらは (イベント&nbsp;<a class="Identifier" href="autocmd.html#CursorHold">CursorHold</a><br>
 によって) 遅れて読み込まれる、もしくは手動で読み込むこともできる。すでに存在す<br>
@@ -547,9 +547,9 @@ Syntax メニューの最初の項目&nbsp;{訳注:「対応形式をメニュ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set cpo-=&lt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set wcm=&lt;C-Z&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;F4&gt; :emenu &lt;C-Z&gt;</div>
-メニューを開始するには&lt;F4&gt;を押す。そのときにはメニューのエントリを選択するため<br>
-にカーソルキーを使用することができる。それを実行するには&lt;Enter&gt;を入力する。<br>
-キャンセルするには&lt;Esc&gt;を入力する。これはコンパイル時に<a class="Identifier" href="various.html#+menu">+menu</a>機能を有効にする<br>
+メニューを開始するには<span class="Special">&lt;F4&gt;</span>を押す。そのときにはメニューのエントリを選択するため<br>
+にカーソルキーを使用することができる。それを実行するには<span class="Special">&lt;Enter&gt;</span>を入力する。<br>
+キャンセルするには<span class="Special">&lt;Esc&gt;</span>を入力する。これはコンパイル時に<a class="Identifier" href="various.html#+menu">+menu</a>機能を有効にする<br>
 必要がある。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#tear-off-menus" name="tear-off-menus">tear-off-menus</a><br>
@@ -596,16 +596,16 @@ Win32 GUIバージョンはMotifの切取りメニューをエミュレートす
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;トキーも(サブ)メニューの中で1度だけしか使用されていないことを<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;確認すること。メニュー名に &quot;&amp;&quot; を入れるには &quot;&amp;&amp;&quot; とする。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#menu-text" name="menu-text">menu-text</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Tab&gt;&nbsp;&nbsp; メニューの名前をそこで区切って以降を右詰めにする。実行する操作<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;&nbsp; メニューの名前をそこで区切って以降を右詰めにする。実行する操作<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;をそろえて表示するのに便利である。使いやすいように文字として<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&lt;Tab&gt;&quot; をそのまま書けばいいようになっている。本当のTab文字を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;<span class="Special">&lt;Tab&gt;</span>&quot; をそのまま書けばいいようになっている。本当のTab文字を<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用するなら、その前にバックスラッシュを付けること!<br>
 例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp; :amenu &amp;File.&amp;Open&lt;Tab&gt;:e&nbsp;&nbsp;:browse e&lt;CR&gt;</div>
 <br>
 [文字通りタイプする]<br>
-(&lt;Alt&gt;キーと同時に)ショートカットキーの &quot;F&quot; を押し、それから &quot;O&quot; を押すと、こ<br>
+(<span class="Special">&lt;Alt&gt;</span>キーと同時に)ショートカットキーの &quot;F&quot; を押し、それから &quot;O&quot; を押すと、こ<br>
 のメニューを使用できる。Openの項目は &quot;Open&nbsp;&nbsp;&nbsp;&nbsp; :e&quot; のように表示される。&quot;:e&quot; は<br>
 右詰めされ、&quot;O&quot; にはショートカットであることを示すために下線が引かれる。<br>
 <br>
@@ -613,14 +613,14 @@ Win32 GUIバージョンはMotifの切取りメニューをエミュレートす
 &quot;:amenu&quot; コマンドは端末モードを除く全てのモードで使えるメニューの項目を1度に定<br>
 義することができる。コマンドを正確に機能させるために、いくつかのモード用に自動<br>
 的に文字が付加される:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;モード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前に付加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;後ろに付加<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">モード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前に付加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;後ろに付加</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ノーマルモード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;なし&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;なし<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;C-C&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;C-\&gt;&lt;C-G&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挿入モード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;C-\&gt;&lt;C-O&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンドラインモード&nbsp;&nbsp;&nbsp;&nbsp;&lt;C-C&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;C-\&gt;&lt;C-G&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;オペレータ待機モード&nbsp;&nbsp;&nbsp;&nbsp;&lt;C-C&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;C-\&gt;&lt;C-G&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-C&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-\&gt;&lt;C-G&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挿入モード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-\&gt;&lt;C-O&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンドラインモード&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-C&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-\&gt;&lt;C-G&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;オペレータ待機モード&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-C&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-\&gt;&lt;C-G&gt;</span><br>
 <br>
-後ろに付加されるCTRL-\&nbsp;CTRL-Gは&nbsp;<a class="Type" href="options.html#'insertmode'">'insertmode'</a>&nbsp;が設定されているときには挿入モー<br>
+後ろに付加される<span class="Special">CTRL-\</span>&nbsp;<span class="Special">CTRL-G</span>は&nbsp;<a class="Type" href="options.html#'insertmode'">'insertmode'</a>&nbsp;が設定されているときには挿入モー<br>
 ドに戻る。<a class="Identifier" href="intro.html#CTRL-\_CTRL-G">CTRL-\_CTRL-G</a>を参照。<br>
 <br>
 例:<br>
@@ -636,24 +636,24 @@ Win32 GUIバージョンはMotifの切取りメニューをエミュレートす
 &nbsp;&nbsp; :omenu File.Next&nbsp;&nbsp;&nbsp;&nbsp; ^C:next^M^\^G</div>
 <br>
 注意: 挿入モードでは1つのノーマルモードのコマンドに対してだけ機能する。これは<br>
-CTRL-Oの仕様による。2つ以上のコマンドを使うには、&quot;:imenu&quot; コマンドを使用する必<br>
+<span class="Special">CTRL-O</span>の仕様による。2つ以上のコマンドを使うには、&quot;:imenu&quot; コマンドを使用する必<br>
 要がある。どのモードでもテキストを挿入するために式レジスタ('=' レジスタ)を使用<br>
 することができる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp; :amenu Insert.foobar&nbsp;&nbsp; &quot;='foobar'&lt;CR&gt;P</div>
 <br>
-特殊なテキスト&nbsp;&lt;Cmd&gt;&nbsp;は &quot;コマンドメニュー&quot; を開始し、モードを変更せずにコマン<br>
-ドを直接実行する。&quot;:...&lt;CR&gt;&quot; を使う箇所で代わりに &quot;&lt;Cmd&gt;...&lt;CR&gt;&quot; を使うことが<br>
+特殊なテキスト&nbsp;<span class="Special">&lt;Cmd&gt;</span>&nbsp;は &quot;コマンドメニュー&quot; を開始し、モードを変更せずにコマン<br>
+ドを直接実行する。&quot;:...<span class="Special">&lt;CR&gt;</span>&quot; を使う箇所で代わりに &quot;<span class="Special">&lt;Cmd&gt;</span>...<span class="Special">&lt;CR&gt;</span>&quot; を使うことが<br>
 できる。詳細は&nbsp;<a class="Identifier" href="map.html#<Cmd>">&lt;Cmd&gt;</a>&nbsp;を参照。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;anoremenu File.Next &lt;Cmd&gt;next&lt;CR&gt;</div>
 <br>
 <span class="Todo">Note</span>:&nbsp;<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;の中の '&lt;' フラグと 'k' フラグが適用される(含まれていたとき<br>
 には、&lt;&gt;による特殊キーの書式や生のキーコードは認識されない)。<br>
 <br>
-<span class="Todo">Note</span>: コマンドラインモードでの&lt;Esc&gt;はマッピングで使用されたときと同様に(入力を<br>
+<span class="Todo">Note</span>: コマンドラインモードでの<span class="Special">&lt;Esc&gt;</span>はマッピングで使用されたときと同様に(入力を<br>
 キャンセルするのではなく)コマンドを実行する。これはVi互換である。コマンドライ<br>
-ンモードを終了するにはCTRL-Cを使用する。<br>
-{訳注:&nbsp;<a class="Identifier" href="cmdline.html#c_<Esc>">c_&lt;Esc&gt;</a>を参照}<br>
+ンモードを終了するには<span class="Special">CTRL-C</span>を使用する。<br>
+<span class="Special">{訳注:&nbsp;</span><a class="Identifier" href="cmdline.html#c_<Esc>">c_&lt;Esc&gt;</a><span class="Special">を参照}</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#:nme" name=":nme">:nme</a>&nbsp;<a class="Constant" href="gui.html#:nmenu" name=":nmenu">:nmenu</a>&nbsp;&nbsp;<a class="Constant" href="gui.html#:nnoreme" name=":nnoreme">:nnoreme</a>&nbsp;<a class="Constant" href="gui.html#:nnoremenu" name=":nnoremenu">:nnoremenu</a>&nbsp;<a class="Constant" href="gui.html#:nunme" name=":nunme">:nunme</a>&nbsp;<a class="Constant" href="gui.html#:nunmenu" name=":nunmenu">:nunmenu</a><br>
 メニューコマンドが &quot;n&quot; で始まるものはノーマルモードに作用する。<a class="Identifier" href="map.html#mapmode-n">mapmode-n</a><br>
@@ -680,40 +680,40 @@ CTRL-Oの仕様による。2つ以上のコマンドを使うには、&quot;:ime
 る。<a class="Identifier" href="map.html#mapmode-c">mapmode-c</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#:tlm" name=":tlm">:tlm</a>&nbsp;<a class="Constant" href="gui.html#:tlmenu" name=":tlmenu">:tlmenu</a>&nbsp;<a class="Constant" href="gui.html#:tln" name=":tln">:tln</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#:tlnoremenu" name=":tlnoremenu">:tlnoremenu</a>&nbsp;<a class="Constant" href="gui.html#:tlu" name=":tlu">:tlu</a>&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#:tlunmenu" name=":tlunmenu">:tlunmenu</a><br>
-メニューコマンドが &quot;tl&quot; で始まるものは端末{訳注:ノーマルとジョブ両方の}モード<br>
+メニューコマンドが &quot;tl&quot; で始まるものは端末<span class="Special">{訳注:ノーマルとジョブ両方の}</span>モード<br>
 に作用する。<a class="Identifier" href="map.html#mapmode-t">mapmode-t</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#:menu-<silent>" name=":menu-&lt;silent&gt;">:menu-&lt;silent&gt;</a>&nbsp;<a class="Constant" href="gui.html#:menu-silent" name=":menu-silent">:menu-silent</a><br>
 実行したコマンドをコマンドラインに表示しないようなメニューを定義するには、最初<br>
-の引数に &quot;&lt;silent&gt;&quot; を加える。例:<br>
+の引数に &quot;<span class="Special">&lt;silent&gt;</span>&quot; を加える。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:menu &lt;silent&gt; Settings.Ignore\ case&nbsp;&nbsp;:set ic&lt;CR&gt;</div>
 これでこのメニューを使っても &quot;:set ic&quot; はコマンドラインに表示されない。それで<br>
 も実行したコマンドの出力は表示される。それを表示しないようにするには、<br>
 &quot;:silent&quot; を付けてコマンドを実行する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:menu &lt;silent&gt; Search.Header :exe &quot;:silent normal /Header\r&quot;&lt;CR&gt;</div>
-&quot;&lt;silent&gt;&quot; は &quot;&lt;special&gt;&quot; や &quot;&lt;script&gt;&quot; の直後に書いてもよい。<br>
+&quot;<span class="Special">&lt;silent&gt;</span>&quot; は &quot;<span class="Special">&lt;special&gt;</span>&quot; や &quot;<span class="Special">&lt;script&gt;</span>&quot; の直後に書いてもよい。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#:menu-<special>" name=":menu-&lt;special&gt;">:menu-&lt;special&gt;</a>&nbsp;<a class="Constant" href="gui.html#:menu-special" name=":menu-special">:menu-special</a><br>
 <a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;にフラグ &quot;&lt;&quot; が含まれているときでも、メニューを定義する際には &lt;&gt;<br>
 記法で特殊なキーを表すことができる。これは&nbsp;<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;の副作用が望ましくない<br>
 場合に便利である。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:menu &lt;special&gt; Search.Header /Header&lt;CR&gt;</div>
-&quot;&lt;special&gt;&quot; はコマンド :menu の引数の一番最初か、&quot;&lt;silent&gt;&quot; や &quot;&lt;script&gt;&quot; の直<br>
+&quot;<span class="Special">&lt;special&gt;</span>&quot; はコマンド :menu の引数の一番最初か、&quot;<span class="Special">&lt;silent&gt;</span>&quot; や &quot;<span class="Special">&lt;script&gt;</span>&quot; の直<br>
 後に書かねばならない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#:menu-<script>" name=":menu-&lt;script&gt;">:menu-&lt;script&gt;</a>&nbsp;<a class="Constant" href="gui.html#:menu-script" name=":menu-script">:menu-script</a><br>
 メニューに指定されたコマンドにはマッピングが適用される。適用しないようにするに<br>
 は、&quot;:noremenu&quot; コマンド(とそれに類するモード別のコマンド)を使う。スクリプト<br>
 ローカルなマッピングを使うには &quot;:menu&quot; コマンドの最初の引数、あるいは<br>
-&quot;&lt;silent&gt;&quot; の次に &quot;&lt;script&gt;&quot; と書く。<br>
-{訳注: これは&lt;SID&gt;で指定した部分だけがマッピングされる。例:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nnoremenu &lt;script&gt; AAA.BBB :echo &quot;&lt;SID&gt;LM&quot; &quot;LM&quot;&lt;CR&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cnoremap &lt;SID&gt;LM 'This is script-local mapping'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cnoremap LM 'This is not used'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクリプトファイルでこのように設定し、メニューのAAA.BBBを実行すると<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'This is script-local mapping' LM<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と表示される。&quot;&lt;SID&gt;LM&quot; はマッピングされ、&quot;LM&quot; はマッピングされていな<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い。}<br>
+&quot;<span class="Special">&lt;silent&gt;</span>&quot; の次に &quot;<span class="Special">&lt;script&gt;</span>&quot; と書く。<br>
+<span class="Special">{訳注: これは&lt;SID&gt;で指定した部分だけがマッピングされる。例:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">nnoremenu &lt;script&gt; AAA.BBB :echo &quot;&lt;SID&gt;LM&quot; &quot;LM&quot;&lt;CR&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">cnoremap &lt;SID&gt;LM 'This is script-local mapping'</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">cnoremap LM 'This is not used'</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">スクリプトファイルでこのように設定し、メニューのAAA.BBBを実行すると</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">'This is script-local mapping' LM</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">と表示される。&quot;&lt;SID&gt;LM&quot; はマッピングされ、&quot;LM&quot; はマッピングされていな</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">い。}</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#menu-priority" name="menu-priority">menu-priority</a><br>
 メニューに優先度を与えることができる。より高い優先度を与えられたメニューほど右<br>
@@ -825,7 +825,7 @@ CTRL-Oの仕様による。2つ以上のコマンドを使うには、&quot;:ime
 5)&nbsp;&nbsp;全てが失敗すると、空白だが、ちゃんと機能する、ボタンが表示される。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#builtin-tools" name="builtin-tools">builtin-tools</a><br>
-番号&nbsp;&nbsp;名前&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通常の動作&nbsp;<br>
+<span class="PreProc">番号&nbsp;&nbsp;名前&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通常の動作&nbsp;</span><br>
 00&nbsp;&nbsp;&nbsp;&nbsp;New&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 新しいウィンドウを開く<br>
 01&nbsp;&nbsp;&nbsp;&nbsp;Open&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在のウィンドウで開くためにファイルをブラウズする<br>
 02&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファをファイルに保存する<br>
@@ -911,12 +911,12 @@ Win32、GTK+、Motif、Photon GUIでは、特別なメニュー &quot;PopUp&quot
 メニュー項目の一覧には、指定されたコマンドの前に特別な文字が表示される:<br>
 *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; そのメニュー項目は再マッピングを避けるために &quot;nore&quot; を付けて定義された<br>
 &amp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; そのメニュー項目は再マッピングをスクリプトローカルに限定するために<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&lt;script&gt;&quot; を付けて定義された<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;<span class="Special">&lt;script&gt;</span>&quot; を付けて定義された<br>
 s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; そのメニュー項目のマッピングが実行されたとき、表示がないように<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&lt;silent&gt;&quot; を付けて定義された<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;<span class="Special">&lt;silent&gt;</span>&quot; を付けて定義された<br>
 -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; そのメニュー項目は非表示である<br>
 <br>
-<span class="Todo">NOTE</span>: menuコマンドでメニューの名前を入力しているときに&lt;Tab&gt;を打つと名前が補完<br>
+<span class="Todo">NOTE</span>: menuコマンドでメニューの名前を入力しているときに<span class="Special">&lt;Tab&gt;</span>を打つと名前が補完<br>
 される(設定による)。<br>
 <br>
 列挙中にメニューを変更することはできない。&nbsp;<a class="Constant" href="gui.html#E1310" name="E1310">E1310</a><br>
@@ -926,15 +926,15 @@ s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; そのメニュー項目のマッピング
 5.4 メニューの実行&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#execute-menus" name="execute-menus">execute-menus</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#:em" name=":em">:em</a>&nbsp;&nbsp;<a class="Constant" href="gui.html#:emenu" name=":emenu">:emenu</a>&nbsp;<a class="Constant" href="gui.html#E334" name="E334">E334</a>&nbsp;<a class="Constant" href="gui.html#E335" name="E335">E335</a><br>
-:[range]em[enu]&nbsp;{menu}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンドラインから{menu}を実行する。<br>
+:<span class="Special">[range]</span>em[enu]&nbsp;<span class="Special">{menu}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンドラインから<span class="Special">{menu}</span>を実行する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通常はノーマルモードのメニューを実行する。実行<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;範囲が与えられたときは、ビジュアルモードのメ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ニューを実行する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;c-o&gt;から実行されたときは、挿入モードのメ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;c-o&gt;</span>から実行されたときは、挿入モードのメ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ニューを実行する。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:emenu File.Exit</div>
 <br>
-:[range]em[enu]&nbsp;{mode}&nbsp;{menu}&nbsp;&nbsp; 上記と同様だが、{mode}&nbsp;用のメニューを実行する:<br>
+:<span class="Special">[range]</span>em[enu]&nbsp;<span class="Special">{mode}</span>&nbsp;<span class="Special">{menu}</span>&nbsp;&nbsp; 上記と同様だが、<span class="Special">{mode}</span>&nbsp;用のメニューを実行する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'n':&nbsp;<a class="Identifier" href="gui.html#:nmenu">:nmenu</a>&nbsp;&nbsp;ノーマルモード<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'v':&nbsp;<a class="Identifier" href="gui.html#:vmenu">:vmenu</a>&nbsp;&nbsp;ビジュアルモード<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'s':&nbsp;<a class="Identifier" href="gui.html#:smenu">:smenu</a>&nbsp;&nbsp;選択モード<br>
@@ -963,7 +963,7 @@ CUI版のvimをWANT_MENUを定義してコンパイルしたなら、:emenuを�
 これは挿入モードとコマンドラインモードでの操作をEditメニューの項目Pasteから取<br>
 り除く。<br>
 <br>
-<span class="Todo">NOTE</span>: umenuコマンドでメニューの名前を入力しているときに&lt;Tab&gt;を打つと名前が補完<br>
+<span class="Todo">NOTE</span>: umenuコマンドでメニューの名前を入力しているときに<span class="Special">&lt;Tab&gt;</span>を打つと名前が補完<br>
 される(設定による)。<br>
 <br>
 全てのメニューを取り除くには次のようにする:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#:unmenu-all" name=":unmenu-all">:unmenu-all</a>&nbsp;<br>
@@ -1008,8 +1008,8 @@ CUI版のvimをWANT_MENUを定義してコンパイルしたなら、:emenuを�
 &nbsp;&nbsp;:imenu Words.Remove\ Var&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Esc&gt;wb&quot;zye:unmenu! Words.&lt;C-R&gt;z&lt;CR&gt;a</div>
 <br>
 (指定するコマンドには&lt;&gt;記法を使える。このテキストをそのままコピー/ペーストして<br>
-試してみたり、gvimrcに書き加えることができる。&quot;&lt;C-R&gt;&quot; は&nbsp;CTRL-R&nbsp;であり、&quot;&lt;CR&gt;&quot;<br>
-は&nbsp;&lt;CR&gt;&nbsp;キーである。<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>)<br>
+試してみたり、gvimrcに書き加えることができる。&quot;<span class="Special">&lt;C-R&gt;</span>&quot; は&nbsp;<span class="Special">CTRL-R</span>&nbsp;であり、&quot;<span class="Special">&lt;CR&gt;</span>&quot;<br>
+は&nbsp;<span class="Special">&lt;CR&gt;</span>&nbsp;キーである。<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>)<br>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#tooltips" name="tooltips">tooltips</a>&nbsp;<a class="Constant" href="gui.html#menu-tips" name="menu-tips">menu-tips</a><br>
@@ -1018,14 +1018,14 @@ CUI版のvimをWANT_MENUを定義してコンパイルしたなら、:emenuを�
 ユーザーマニュアルの<a class="Identifier" href="usr_42.html#42.4">42.4</a>を参照すること。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#:tmenu" name=":tmenu">:tmenu</a>&nbsp;<a class="Constant" href="gui.html#:tm" name=":tm">:tm</a><br>
-:tm[enu]&nbsp;{menupath}&nbsp;{rhs}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; メニューやツールバーにチップを定義する。<br>
+:tm[enu]&nbsp;<span class="Special">{menupath}</span>&nbsp;<span class="Special">{rhs}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; メニューやツールバーにチップを定義する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{X11とWin32 GUIのみ}<br>
 <br>
-:tm[enu]&nbsp;[menupath]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; メニューチップを一覧表示する。<br>
+:tm[enu]&nbsp;<span class="Special">[menupath]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; メニューチップを一覧表示する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{X11とWin32 GUIのみ}<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#:tunmenu" name=":tunmenu">:tunmenu</a>&nbsp;<a class="Constant" href="gui.html#:tu" name=":tu">:tu</a><br>
-:tu[nmenu]&nbsp;{menupath}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; メニューやツールバーのチップを削除する。<br>
+:tu[nmenu]&nbsp;<span class="Special">{menupath}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; メニューやツールバーのチップを削除する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{X11とWin32 GUIのみ}<br>
 <br>
 <span class="Todo">Note</span>: 端末モードのメニューを作成するには、代わりに&nbsp;&nbsp;<a class="Identifier" href="gui.html#:tlmenu">:tlmenu</a>&nbsp;を使用する。<br>
@@ -1067,13 +1067,13 @@ Win32とGTK+ GUIでは、カーソルの位置にメニューをポップアッ�
 ならこのコマンドのふるまいは好ましくないからである。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#:popup" name=":popup">:popup</a>&nbsp;<a class="Constant" href="gui.html#:popu" name=":popu">:popu</a><br>
-:popu[p]&nbsp;{name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; メニュー項目{name}をポップアップ表示する。その<br>
+:popu[p]&nbsp;<span class="Special">{name}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; メニュー項目<span class="Special">{name}</span>をポップアップ表示する。その<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;メニューは少なくとも1つ以上の項目を持っている<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;必要がある。メニューバーに表示されている必要は<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ない (<a class="Identifier" href="gui.html#hidden-menus">hidden-menus</a>&nbsp;を参照)。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{Win32 および GTK GUI もしくは端末内で利用可能}<br>
 <br>
-:popu[p]!&nbsp;{name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上記と同様だが、カーソル位置でなくマウスポイン<br>
+:popu[p]!&nbsp;<span class="Special">{name}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上記と同様だが、カーソル位置でなくマウスポイン<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タの位置にメニューを表示する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;端末では、これは通常最後にクリックした、もしく<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は離した、最後に分かっている位置である (マウス<br>
@@ -1094,12 +1094,12 @@ Win32とGTK+ GUIでは、カーソルの位置にメニューをポップアッ�
 <br>
 <span class="Todo">Note</span>: ']' で始まるメニュー項目はメニューバーに表示されない。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 6. フォント<br>
 <br>
 このセクションではフォント関連のオプションについて説明する。<br>
 <br>
-GUIFONT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#gui-font" name="gui-font">gui-font</a><br>
+<span class="Statement">GUIFONT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="Constant" href="gui.html#gui-font" name="gui-font">gui-font</a><br>
 <br>
 <a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;はどのフォントを使うかをVimに指示するオプションである。最も単純な形<br>
 式は、フォント名のみである。コンマで区切られたフォント名のリストにすることもで<br>
@@ -1127,7 +1127,7 @@ GUIFONT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
 フォントをどれも読み込めなかったら現在の設定のままになる。空のフォントリストが<br>
 与えられると、他のリソース設定を試してみて (X では Vim.font リソースが使われ<br>
 る)、それがだめなら、必ず存在するはずの組み込みの既定フォントを試す (Xの場合は<br>
-&quot;7x13&quot;)。指定されるフォント名は &quot;normal&quot; な{訳注: 太字や斜字体でない}&nbsp;フォント<br>
+&quot;7x13&quot;)。指定されるフォント名は &quot;normal&quot; な<span class="Special">{訳注: 太字や斜字体でない}</span>&nbsp;フォント<br>
 でなければならない。Vim は関連する太字体や斜字体を見つけようとする。<br>
 <br>
 Win32, GTK, Motif, Mac OS および Photon の場合:<br>
@@ -1208,7 +1208,7 @@ Windowsは多くの場合、フォント名よりも高い優先順位でフォ�
 することはこの望まれない置換に対して軽減するかもしれない。<br>
 <br>
 <br>
-GUIFONTWIDE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#gui-fontwide" name="gui-fontwide">gui-fontwide</a><br>
+<span class="Statement">GUIFONTWIDE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="Constant" href="gui.html#gui-fontwide" name="gui-fontwide">gui-fontwide</a><br>
 <br>
 空でない場合、<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;は、全角文字に使用されるフォントのコンマ区切りリス<br>
 トを指定する。ロードできる最初のフォントが使用される。<br>
@@ -1237,27 +1237,27 @@ Windows&nbsp;<a class="Identifier" href="various.html#+multi_byte_ime">+multi_by
 有効な値が設定されている場合、<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;の代わりに&nbsp;<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;がIME の表示<br>
 に使われる。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 7. 付記&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#gui-extras" name="gui-extras">gui-extras</a><br>
 <br>
 このセクションではGUIに関連したその他の特徴を説明する。<br>
 <br>
-- GUIでは、キーコードは&lt;Esc&gt;で始まらないため、エスケープを入力した後に1秒待た<br>
+- GUIでは、キーコードは<span class="Special">&lt;Esc&gt;</span>で始まらないため、エスケープを入力した後に1秒待た<br>
 &nbsp;&nbsp;なくてよい。<br>
 <br>
-- GUIでCTRL-Vに続いて特殊なキーを入力すると &quot;&lt;Key&gt;&quot; のように入力される。そのよ<br>
+- GUIで<span class="Special">CTRL-V</span>に続いて特殊なキーを入力すると &quot;<span class="Special">&lt;Key&gt;</span>&quot; のように入力される。そのよ<br>
 &nbsp;&nbsp;うな特殊なキーは内部で意味を持たないためである。修飾キーを同時に押して<br>
-&nbsp;&nbsp;&quot;&lt;Modifiers-Key&gt;&quot; を得ることもできる。<br>
-{訳注: 例えば、挿入モードでCTRL-Vに続いてDelキーを押すと &quot;&lt;Del&gt;&quot; (見た通り5文<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字)が入力される。Alt(META)キーを押しながらDelキーを押すと &quot;&lt;M-Del&gt;&quot; が<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入力される。Shiftキーなら &quot;&lt;S-Del&gt;&quot;。}<br>
+&nbsp;&nbsp;&quot;<span class="Special">&lt;Modifiers-Key&gt;</span>&quot; を得ることもできる。<br>
+<span class="Special">{訳注: 例えば、挿入モードでCTRL-Vに続いてDelキーを押すと &quot;&lt;Del&gt;&quot; (見た通り5文</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">字)が入力される。Alt(META)キーを押しながらDelキーを押すと &quot;&lt;M-Del&gt;&quot; が</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">入力される。Shiftキーなら &quot;&lt;S-Del&gt;&quot;。}</span><br>
 <br>
 - GUIでは、修飾キーのSHIFT、CTRL、ALT(META)は特殊キーやマウスイベントのマッピ<br>
 &nbsp;&nbsp;ングで使用できる。<br>
-&nbsp;&nbsp;例えば、:map&nbsp;&lt;M-LeftDrag&gt;&nbsp;&lt;LeftDrag&gt;<br>
+&nbsp;&nbsp;例えば、:map&nbsp;<span class="Special">&lt;M-LeftDrag&gt;</span>&nbsp;<span class="Special">&lt;LeftDrag&gt;</span><br>
 <br>
 - GUIでは、いくつかの普通のキーにマッピング等で修飾キーを付けて使用できる。そ<br>
-&nbsp;&nbsp;のようなキーは&lt;Space&gt;、&lt;Tab&gt;、&lt;NL&gt;、&lt;CR&gt;、&lt;Esc&gt;である。<br>
+&nbsp;&nbsp;のようなキーは<span class="Special">&lt;Space&gt;</span>、<span class="Special">&lt;Tab&gt;</span>、<span class="Special">&lt;NL&gt;</span>、<span class="Special">&lt;CR&gt;</span>、<span class="Special">&lt;Esc&gt;</span>である。<br>
 <br>
 - GUIが使われているかどうかをVim script 内で調べるには次のようにする:<br>
 <br>
@@ -1283,7 +1283,7 @@ Windows&nbsp;<a class="Identifier" href="various.html#+multi_byte_ime">+multi_by
 <br>
 推奨される日本語フォントは MS Mincho である。MS Mincho についての情報はここで<br>
 みつかる:<br>
-<a href="https://learn.microsoft.com/en-us/typography/font-list/ms-mincho">https://learn.microsoft.com/en-us/typography/font-list/ms-mincho</a><br>
+<span class="Constant"><a href="https://learn.microsoft.com/en-us/typography/font-list/ms-mincho">https://learn.microsoft.com/en-us/typography/font-list/ms-mincho</a></span><br>
 Windows と一緒に配布されているはずだ。<br>
 <br>
 <br>
@@ -1312,7 +1312,7 @@ Vim の GUI 版でフルスクリーンモードを有効にするには、<a cl
 し、画面全体を占有する。<br>
 <br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 8. シェルコマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui.html#gui-shell" name="gui-shell">gui-shell</a><br>
 <br>
 X11 GUIでは外部プログラムはgvimウィンドウの中で実行される。<br>

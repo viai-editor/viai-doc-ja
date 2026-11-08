@@ -3,10 +3,10 @@ layout: viai-doc
 helpname: 'usr_29'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="usr_29.html" name="usr_29.txt">usr_29.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;ViAI バージョン 1.0.&nbsp;&nbsp;Last change: 2026 Feb 14<br>
+<a class="Constant" href="usr_29.html" name="usr_29.txt">usr_29.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Feb 14<br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル<br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; プログラムの中を移動する<br>
@@ -27,7 +27,7 @@ Vim の作者はプログラマです。当然、プログラムを書くため�
 前章:&nbsp;<a class="Identifier" href="usr_28.html">usr_28.txt</a>&nbsp;&nbsp;折り畳み<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_29.html#29.1" name="29.1">29.1</a>&nbsp;&nbsp;タグを使う<br>
 <br>
 タグとは、識別子が定義された場所のことです。例えば C や C++ の関数定義がそうで<br>
@@ -41,8 +41,8 @@ Vim の作者はプログラマです。当然、プログラムを書くため�
 &quot;ctags&quot; は Vim に付属してません。ほとんどの Unix システムには最初からインス<br>
 トールされています。持っていない場合は Universal/Exuberant ctags を使ってくだ<br>
 さい:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://ctags.io">http://ctags.io</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://ctags.sf.net">http://ctags.sf.net</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://ctags.io">http://ctags.io</a></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://ctags.sf.net">http://ctags.sf.net</a></span><br>
 <br>
 Exuberant ctags は開発されなくなったので、Universal ctags を推奨します。<br>
 <br>
@@ -51,13 +51,13 @@ Vim のコマンドラインから次のコマンドを実行すると関数定�
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tag startlist</div>
 <br>
 &quot;startlist&quot; 関数が検索されます。他のファイルで定義されていても検索可能です。<br>
-CTRL-]&nbsp;コマンドを使うとカーソルの下の単語をタグとみなしてジャンプできます。こ<br>
+<span class="Special">CTRL-]</span>&nbsp;コマンドを使うとカーソルの下の単語をタグとみなしてジャンプできます。こ<br>
 れは複雑な C コードの探索を簡単にしてくれます。例えば、&quot;write_block&quot; 関数の中<br>
 で &quot;write_line&quot; の呼び出しを見つけたとき、その関数の動作を知りたかったら、<br>
-&quot;write_line&quot; にカーソルを合わせて&nbsp;CTRL-]&nbsp;を押せば、その関数の定義にジャンプで<br>
+&quot;write_line&quot; にカーソルを合わせて&nbsp;<span class="Special">CTRL-]</span>&nbsp;を押せば、その関数の定義にジャンプで<br>
 きます。<br>
 &quot;write_line&quot; の中で &quot;write_char&quot; が呼ばれていたら、その関数の動作も調べる必要<br>
-があります。&quot;write_char&quot; にカーソルを合わせて&nbsp;CTRL-]&nbsp;を押しましょう。これ<br>
+があります。&quot;write_char&quot; にカーソルを合わせて&nbsp;<span class="Special">CTRL-]</span>&nbsp;を押しましょう。これ<br>
 で &quot;write_char&quot; の定義に移動できました。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-------------------------------------+<br>
@@ -69,7 +69,7 @@ CTRL-]&nbsp;コマンドを使うとカーソルの下の単語をタグとみ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-----------|-------------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-]&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-]</span>&nbsp;|<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;+----------------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+--&gt; |void write_line(char *s)&nbsp;&nbsp;&nbsp;&nbsp;|<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
@@ -78,7 +78,7 @@ CTRL-]&nbsp;コマンドを使うとカーソルの下の単語をタグとみ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +--------|-------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-]&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-]</span>&nbsp;|<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;+------------------------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+--&gt; |void write_char(char c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
@@ -89,12 +89,12 @@ CTRL-]&nbsp;コマンドを使うとカーソルの下の単語をタグとみ�
 &quot;:tags&quot; コマンドで移動経路を確認できます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tags<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# TO tag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FROM line&nbsp;&nbsp;in file/text<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;1 write_line&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;write_block.c<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;1 write_char&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;write_line.c<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc"># TO tag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FROM line&nbsp;&nbsp;in file/text</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">1&nbsp;&nbsp;1 write_line&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;write_block.c</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">2&nbsp;&nbsp;1 write_char&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;write_line.c</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&gt;</span><br>
 <br>
-では元の場所に戻りましょう。CTRL-T&nbsp;で直前のタグに戻れます。上の例であれば、<br>
+では元の場所に戻りましょう。<span class="Special">CTRL-T</span>&nbsp;で直前のタグに戻れます。上の例であれば、<br>
 &quot;write_line&quot; 関数の中の &quot;write_char&quot; の呼び出しに戻ることになります。<br>
 このコマンドはカウント指定を付けてジャンプする回数を指定できます。前方にジャン<br>
 プして、そして戻ってくることができましたね。もう一度前方に移動してみましょう。<br>
@@ -103,12 +103,12 @@ CTRL-]&nbsp;コマンドを使うとカーソルの下の単語をタグとみ�
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tag</div>
 <br>
 コマンドの前にカウント指定を付けてジャンプする回数を指定できます。例えば<br>
-&quot;:3tag&quot; のように使います。CTRL-T&nbsp;も同様に回数指定できます。<br>
-このように、CTRL-]&nbsp;をコールツリーをたどって下り、CTRL-T&nbsp;で戻ることができます。<br>
+&quot;:3tag&quot; のように使います。<span class="Special">CTRL-T</span>&nbsp;も同様に回数指定できます。<br>
+このように、<span class="Special">CTRL-]</span>&nbsp;をコールツリーをたどって下り、<span class="Special">CTRL-T</span>&nbsp;で戻ることができます。<br>
 &quot;:tags&quot; コマンドで現在地を確認できます。<br>
 <br>
 <br>
-ウィンドウを分割する<br>
+<span class="Statement">ウィンドウを分割する</span><br>
 <br>
 &quot;:tag&quot; コマンドはカレントウィンドウを使ってジャンプ先のファイルを表示します。<br>
 しかし現在の関数とジャンプ先の関数を同時に表示したいこともあると思います。<br>
@@ -125,7 +125,7 @@ CTRL-]&nbsp;コマンドを使うとカーソルの下の単語をタグとみ�
 カウント指定を付けて新しいウィンドウの高さを指定できます。<br>
 <br>
 <br>
-複数のタグファイルを使う<br>
+<span class="Statement">複数のタグファイルを使う</span><br>
 <br>
 ファイルが複数のディレクトリに分れている場合、ディレクトリ毎にタグファイルを作<br>
 ることもできますが、その方法だとタグファイルと同じディレクトリのファイルにしか<br>
@@ -145,7 +145,7 @@ CTRL-]&nbsp;コマンドを使うとカーソルの下の単語をタグとみ�
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set tags=~/proj/**/tags</div>
 <br>
 <br>
-タグファイルを一つだけ使う<br>
+<span class="Statement">タグファイルを一つだけ使う</span><br>
 <br>
 たくさんの場所からタグファイルを検索しているときは、ハードディスクがガリガリと<br>
 音を立てるのが聞こえると思います。これは効率が良くありません。そんなときは少し<br>
@@ -165,7 +165,7 @@ Universal/Exuberant ctags のいいところは、いろんなファイルタイ
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set tags=~/proj/tags</div>
 <br>
 <br>
-定義の重複<br>
+<span class="Statement">定義の重複</span><br>
 <br>
 同じ名前の関数が何度も定義されている場合、あるいは複数のクラスで同名のメソッド<br>
 が定義されている場合、&quot;:tag&quot; コマンドは最初に見つかったタグにジャンプします。<br>
@@ -181,16 +181,16 @@ Universal/Exuberant ctags のいいところは、いろんなファイルタイ
 <br>
 このような選択画面が表示されます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# pri kind tag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 F&nbsp;&nbsp; f&nbsp;&nbsp;&nbsp;&nbsp;mch_init&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os_amiga.c<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mch_init()<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 F&nbsp;&nbsp; f&nbsp;&nbsp;&nbsp;&nbsp;mch_init&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os_mac.c<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mch_init()<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 F&nbsp;&nbsp; f&nbsp;&nbsp;&nbsp;&nbsp;mch_init&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os_msdos.c<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mch_init(void)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 F&nbsp;&nbsp; f&nbsp;&nbsp;&nbsp;&nbsp;mch_init&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os_riscos.c<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mch_init()<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter nr of choice (&lt;CR&gt; to abort):&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc"># pri kind tag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">1 F&nbsp;&nbsp; f&nbsp;&nbsp;&nbsp;&nbsp;mch_init&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os_amiga.c</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">mch_init()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">2 F&nbsp;&nbsp; f&nbsp;&nbsp;&nbsp;&nbsp;mch_init&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os_mac.c</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">mch_init()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">3 F&nbsp;&nbsp; f&nbsp;&nbsp;&nbsp;&nbsp;mch_init&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os_msdos.c</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">mch_init(void)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">4 F&nbsp;&nbsp; f&nbsp;&nbsp;&nbsp;&nbsp;mch_init&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os_riscos.c</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">mch_init()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Enter nr of choice (&lt;CR&gt; to abort):&nbsp;</span><br>
 <br>
 (行頭の) 番号を入力してジャンプしたい場所を選択してください。他の列にはタグの<br>
 場所を示すヒントが表示されます。<br>
@@ -198,22 +198,22 @@ Universal/Exuberant ctags のいいところは、いろんなファイルタイ
 次のコマンドで他の重複タグに移動できます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tfirst&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最初のタグに移動<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:[count]tprevious&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[count]個 前のタグに移動<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:[count]tnext&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[count]個 次のタグに移動<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span class="Special">[count]</span>tprevious&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>個 前のタグに移動<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span class="Special">[count]</span>tnext&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>個 次のタグに移動<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tlast&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後のタグに移動<br>
 <br>
-[count]&nbsp;を省略すると 1 が使われます。<br>
+<span class="Special">[count]</span>&nbsp;を省略すると 1 が使われます。<br>
 <br>
 <br>
-タグ名の推測<br>
+<span class="Statement">タグ名の推測</span><br>
 <br>
 コマンドライン補完を使うと長いタグ名の入力が簡単になります。最初の数文字を入力<br>
-してから&nbsp;&lt;Tab&gt;&nbsp;キーを押してください:<br>
+してから&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;キーを押してください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tag write_&lt;Tab&gt;</div>
 <br>
 最初にマッチしたタグが補完されます。それが意図したタグでない場合は、目的のタグ<br>
-が見つかるまで&nbsp;&lt;Tab&gt;&nbsp;キーを押してください。<br>
+が見つかるまで&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;キーを押してください。<br>
 関数名の一部しか知らない場合や、同じ文字で始まるタグ (後半だけが違っている) が<br>
 たくさんある場合は、パターンを使ってタグを検索できます。<br>
 例えば、名前に &quot;block&quot; が含まれているタグにジャンプする場合は、まず次のように<br>
@@ -221,7 +221,7 @@ Universal/Exuberant ctags のいいところは、いろんなファイルタイ
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tag /block</div>
 <br>
-そして、コマンドライン補完を使います。&lt;Tab&gt;&nbsp;キーを押してください。&quot;block&quot; を含<br>
+そして、コマンドライン補完を使います。<span class="Special">&lt;Tab&gt;</span>&nbsp;キーを押してください。&quot;block&quot; を含<br>
 むタグが検索され、最初にマッチしたタグが使われます。<br>
 タグ名の前に &quot;/&quot; を付けると、続くタグ名はそのまま使われず、パターンとして解釈<br>
 されます。検索パターンと同じ機能がすべて使えます。例えば、&quot;write_&quot; で始まるタ<br>
@@ -234,9 +234,9 @@ Universal/Exuberant ctags のいいところは、いろんなファイルタイ
 マッチするようになります。<br>
 <br>
 <br>
-タグブラウザー<br>
+<span class="Statement">タグブラウザー</span><br>
 <br>
-CTRL-]&nbsp;を使うとカーソルの下にある識別子の定義にジャンプできますが、これを利用<br>
+<span class="Special">CTRL-]</span>&nbsp;を使うとカーソルの下にある識別子の定義にジャンプできますが、これを利用<br>
 すると、識別子の一覧を目次として使うことができます。例を示します。まず識別子の<br>
 一覧を作ります (Universal か Exuberant ctags が必要です)<br>
 <br>
@@ -255,11 +255,11 @@ CTRL-]&nbsp;を使うとカーソルの下にある識別子の定義にジャ�
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:nnoremap &lt;buffer&gt; &lt;CR&gt; 0ye&lt;C-W&gt;w:tag &lt;C-R&gt;&quot;&lt;CR&gt;</div>
 <br>
-表示したい関数の行に移動して&nbsp;&lt;Enter&gt;&nbsp;を押すと、カーソルが他のウィンドウに移動<br>
+表示したい関数の行に移動して&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押すと、カーソルが他のウィンドウに移動<br>
 して、選択した関数にジャンプします。<br>
 <br>
 <br>
-関連項目<br>
+<span class="Statement">関連項目</span><br>
 <br>
 タグ名の大文字と小文字を無視する場合には、<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;を &quot;ignore&quot; に設定する<br>
 か、<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;を &quot;followic&quot; のまま変更せず&nbsp;<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;をオンに設定してくださ<br>
@@ -274,7 +274,7 @@ CTRL-]&nbsp;を使うとカーソルの下にある識別子の定義にジャ�
 cscope はフリーのプログラムです。識別子の定義場所を探すだけでなく、それが使わ<br>
 れている場所も検索できます。<a class="Identifier" href="if_cscop.html#cscope">cscope</a>&nbsp;参照。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_29.html#29.2" name="29.2">29.2</a>&nbsp;&nbsp;プレビューウィンドウ<br>
 <br>
 コードの中で関数を呼び出すときには、その引数を正確に把握する必要があります。引<br>
@@ -286,7 +286,7 @@ cscope はフリーのプログラムです。識別子の定義場所を探す�
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ptag write_char</div>
 <br>
 ウィンドウが開いて &quot;write_char&quot; タグにジャンプします。カーソルの位置は動かない<br>
-ので&nbsp;CTRL-W&nbsp;コマンドを使って戻る必要はありません。<br>
+ので&nbsp;<span class="Special">CTRL-W</span>&nbsp;コマンドを使って戻る必要はありません。<br>
 テキストの中に関数名がある場合は、次のコマンドでその定義をプレビューウィンドウ<br>
 で表示できます:<br>
 <br>
@@ -314,23 +314,23 @@ cscope はフリーのプログラムです。識別子の定義場所を探す�
 &quot;stdio.h&quot; がプレビューウィンドウで開き、popen() 関数のプロトタイプが表示されま<br>
 す:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FILE&nbsp;&nbsp;&nbsp;&nbsp;*popen __P((const char *, const char *));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">FILE&nbsp;&nbsp;&nbsp;&nbsp;*popen __P((const char *, const char *));</span><br>
 <br>
 プレビューウィンドウの高さは&nbsp;<a class="Type" href="options.html#'previewheight'">'previewheight'</a>&nbsp;オプションで設定できます (最初に<br>
 開いたときに使われる)。<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_29.html#29.3" name="29.3">29.3</a>&nbsp;&nbsp;プログラムの中を移動する<br>
 <br>
 プログラムには構造があるので、構文を認識することが可能です。その情報を利用して<br>
 移動するコマンドが用意されています。<br>
 例えば C のプログラムには次のような構文がよく現れます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#ifdef USE_POPEN<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fd = popen(&quot;ls&quot;, &quot;r&quot;)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#else<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fd = fopen(&quot;tmp&quot;, &quot;w&quot;)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#endif<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#ifdef USE_POPEN</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">fd = popen(&quot;ls&quot;, &quot;r&quot;)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#else</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">fd = fopen(&quot;tmp&quot;, &quot;w&quot;)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#endif</span><br>
 <br>
 もっと長いかもしれませんし、入れ子になっていることもあります。&quot;#ifdef&quot; に移動<br>
 して % を押すと &quot;#else&quot; にジャンプできます。もう一度 % を押すと &quot;#endif&quot; に<br>
@@ -350,18 +350,18 @@ cscope はフリーのプログラムです。識別子の定義場所を探す�
 これらのコマンドは、途中にある &quot;#if&quot; - &quot;#endif&quot; ブロックをスキップします。<br>
 例:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#if defined(HAS_INC_H)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a = a + inc();<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# ifdef USE_THEME<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a += 3;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# endif<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set_width(a);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#if defined(HAS_INC_H)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">a = a + inc();</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc"># ifdef USE_THEME</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">a += 3;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc"># endif</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">set_width(a);</span><br>
 <br>
 カーソルが最後の行にあるとき、&quot;[#&quot; で最初の行に移動できます。途中の &quot;#ifdef&quot; -<br>
 &quot;#endif&quot; ブロックはスキップされます。<br>
 <br>
 <br>
-コードブロック内の移動<br>
+<span class="Statement">コードブロック内の移動</span><br>
 <br>
 C のコードブロックは {} で囲まれています。ブロックはかなり大きい場合もありま<br>
 す。アウターブロック (最も外側のブロック) の開始位置に移動するには &quot;[[&quot; コマン<br>
@@ -413,7 +413,7 @@ C++ や Java では、最も外側の {} ブロックはクラスです。その
 括弧の間に複数の行がはさまっていても機能します。<br>
 <br>
 <br>
-カッコ内の移動<br>
+<span class="Statement">カッコ内の移動</span><br>
 <br>
 &quot;[(&quot; と &quot;])&quot; は &quot;[{&quot; と &quot;]}&quot; と機能は同じです。ただし、{} のペアではなく () の<br>
 ペアに対して動作します。<br>
@@ -421,12 +421,12 @@ C++ や Java では、最も外側の {} ブロックはクラスです。その
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[(</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;--------------------------------<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;-------<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (a == b &amp;&amp; (c == d || (e &gt; f)) &amp;&amp; x &gt; y)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">if (a == b &amp;&amp; (c == d || (e &gt; f)) &amp;&amp; x &gt; y)</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--------------&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--------------------------------&gt;<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ])</div>
 <br>
-コメント内の移動<br>
+<span class="Statement">コメント内の移動</span><br>
 <br>
 コメントの開始位置に戻るには &quot;[/&quot; コマンドを使います。コメントの終了位置に移動<br>
 するには &quot;]/&quot; を使います。これは /* - */ 形式のコメントのみ対応しています。<br>
@@ -440,7 +440,7 @@ C++ や Java では、最も外側の {} ブロックはクラスです。その
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ]/<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* a short comment */&nbsp;&nbsp;&lt;-+<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_29.html#29.4" name="29.4">29.4</a>&nbsp;&nbsp;グローバル識別子を検索する<br>
 <br>
 C プログラムを編集していて、変数の型が &quot;int&quot; なのか &quot;unsigned&quot; なのか分からな<br>
@@ -453,8 +453,8 @@ C プログラムを編集していて、変数の型が &quot;int&quot; なの�
 その中でインクルードされているファイル) が検索されます。検索結果は次のように表<br>
 示されます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;structs.h<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1:&nbsp;&nbsp; 29&nbsp;&nbsp;&nbsp;&nbsp; unsigned&nbsp;&nbsp;&nbsp;&nbsp; column;&nbsp;&nbsp;&nbsp;&nbsp;/* column number */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">structs.h</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">1:&nbsp;&nbsp; 29&nbsp;&nbsp;&nbsp;&nbsp; unsigned&nbsp;&nbsp;&nbsp;&nbsp; column;&nbsp;&nbsp;&nbsp;&nbsp;/* column number */</span><br>
 <br>
 インクルードファイルも検索されるという点が、タグやプレビューウィンドウを使った<br>
 検索よりも便利です。たいていは正しい定義場所が見つかります。タグファイルが更新<br>
@@ -465,7 +465,7 @@ C プログラムを編集していて、変数の型が &quot;int&quot; なの�
 す。<br>
 <br>
 <br>
-インクルードファイルの場所<br>
+<span class="Statement">インクルードファイルの場所</span><br>
 <br>
 インクルードファイルは&nbsp;<a class="Type" href="options.html#'path'">'path'</a>&nbsp;オプションに設定された場所から検索されます。設定<br>
 に含まれていないディレクトリがあると、いくつかのインクルードファイルは検出でき<br>
@@ -476,11 +476,11 @@ C プログラムを編集していて、変数の型が &quot;int&quot; なの�
 検出できなかったインクルードファイルの一覧が表示されます。インクルードファイル<br>
 の中のインクルードも検査されます。次のような結果が表示されます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--- Included files not found in path ---<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;io.h&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim.h --&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;functions.h&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;clib/exec_protos.h&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">--- Included files not found in path ---</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&lt;io.h&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">vim.h --&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&lt;functions.h&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&lt;clib/exec_protos.h&gt;</span><br>
 <br>
 カレントファイルでインクルードしている &quot;io.h&quot; が見つかっていません。&quot;vim.h&quot; は<br>
 見つかったので &quot;:checkpath&quot; はさらにそのファイルのインクルードも検査しました。<br>
@@ -510,9 +510,9 @@ C プログラムを編集していて、変数の型が &quot;int&quot; なの�
 <br>
 例えば次のようなディレクトリからファイルが検索されます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/projects/invent/include<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/projects/invent/main/include<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/projects/invent/main/os/include<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/projects/invent/include</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/projects/invent/main/include</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/projects/invent/main/os/include</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;etc.<br>
 <br>
 設定方法は他にもあります。<a class="Type" href="options.html#'path'">'path'</a>&nbsp;オプションの説明を確認してください。<br>
@@ -525,31 +525,31 @@ C プログラムを編集していて、変数の型が &quot;int&quot; なの�
 クルードファイルは表示しません。<br>
 <br>
 <br>
-定義場所にジャンプする<br>
+<span class="Statement">定義場所にジャンプする</span><br>
 <br>
 &quot;[I&quot; はマッチした行だけを一覧表示します。その周辺を見たい場合は、次のコマンド<br>
 で最初のマッチにジャンプします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&lt;Tab&gt;</div>
 <br>
-&lt;Tab&gt;&nbsp;と&nbsp;CTRL-I&nbsp;は同じなので &quot;[&nbsp;CTRL-I&quot; でも構いません。<br>
+<span class="Special">&lt;Tab&gt;</span>&nbsp;と&nbsp;<span class="Special">CTRL-I</span>&nbsp;は同じなので &quot;[&nbsp;<span class="Special">CTRL-I</span>&quot; でも構いません。<br>
 <br>
 &quot;[I&quot; で表示される一覧には番号が付いています。最初の項目以外の場所にジャンプし<br>
 たい場合は番号を指定してください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3[&lt;Tab&gt;</div>
 <br>
-三番目のマッチにジャンプします。CTRL-O&nbsp;で元の場所に戻れることをお忘れなく。<br>
+三番目のマッチにジャンプします。<span class="Special">CTRL-O</span>&nbsp;で元の場所に戻れることをお忘れなく。<br>
 <br>
 <br>
-関連コマンド<br>
+<span class="Statement">関連コマンド</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初のマッチだけ表示<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルより後ろのマッチを一覧表示<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルより後ろの最初のマッチだけ表示<br>
 <br>
 <br>
-定義済識別子の検索<br>
+<span class="Statement">定義済識別子の検索</span><br>
 <br>
 &quot;[I&quot; コマンドはすべての識別子を検索します。&quot;#define&quot; で定義されたマクロだけを<br>
 検索するには次のコマンドを使います:<br>
@@ -565,7 +565,7 @@ C プログラムを編集していて、変数の型が &quot;int&quot; なの�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルより後ろのマッチを一覧表示<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルより後ろの最初のマッチだけ表示<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_29.html#29.5" name="29.5">29.5</a>&nbsp;&nbsp;ローカル識別子を検索する<br>
 <br>
 &quot;[I&quot; コマンドはインクルードファイルの中も検索します。カーソルの下の単語が最初<br>
@@ -603,7 +603,7 @@ C プログラムを編集していて、変数の型が &quot;int&quot; なの�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return idx;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
 <br>
-==============================================================================<br>
+<span class="PreProc">==============================================================================</span><br>
 <br>
 次章:&nbsp;<a class="Identifier" href="usr_30.html">usr_30.txt</a>&nbsp;&nbsp;プログラムの編集<br>
 <br>
