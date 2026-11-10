@@ -3,7 +3,7 @@ layout: viai-doc
 helpname: 'remote'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="remote.html" name="remote.txt">remote.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Jun 05<br>
+<a class="Constant" href="remote.html" name="remote.txt">remote.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Nov 09<br>
 <br>
 <br>
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
@@ -236,9 +236,14 @@ gviaiを使っている時には、--remote-wait は以下のようにしない�
 汎用クライアントサーバー命名規則（Unix でのみ使用可能）を使用する場合、ソケッ<br>
 トは使用可能な順に以下のディレクトリに配置される:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;1. 環境に $XDG_RUNTIME_DIR が設定されている場合は &quot;$XDG_RUTIME_DIR/vim&quot;。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;2. &quot;$TMPDIR/vim-[uid]&quot;。ここで &quot;[uid]&quot; はユーザーの uid である。このディレ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; クトリのアクセス権限は 700 に設定され、ユーザーのみが読み書きできる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $TMPDIR が設定されていない場合は、&quot;/tmp&quot; が使用される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;2. &quot;$TMPDIR/vim-[uid]&quot;。ここで &quot;[uid]&quot; はユーザーの uid である。$TMPDIR が<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 設定されていない場合は、&quot;/tmp&quot; が使用される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="remote.html#E1589" name="E1589">E1589</a><br>
+ディレクトリはパーミッション 700 で作成される。既に存在する場合、それはディレ<br>
+クトリ (シンボリックリンクではない) で、ユーザーが所有し、グループやその他の<br>
+ユーザーがアクセスできないものでなければならない。そうでない場合は E1589 が発<br>
+生し、そこではソケットは作成も使用もされない。ソケット自体はパーミッション 700<br>
+で作成される。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="remote.html#socketserver-name" name="socketserver-name">socketserver-name</a><br>
 サーバー id/名前を指定する際は、汎用名、絶対パス、または相対パスで指定できる。<br>
