@@ -1,4 +1,4 @@
-*vim9.txt*	For ViAI バージョン 1.0.  Last change: 2026 Nov 01
+*vim9.txt*	For ViAI バージョン 1.0.  Last change: 2026 Nov 09
 
 
 		  VIAI リファレンスマニュアル
@@ -5218,6 +5218,17 @@ U、Aなど)。複数の文字で構成されている場合もあるが、名�
 	def My1041<E>(): E
 	enddef
 	# E1041: Redefining script item: "E"
+<
+型エイリアスやクラスなど、ジェネリック関数の後に定義された、型パラメータと同じ
+名前の項目は、関数内の型パラメータの意味を変えない:
+>vim9
+	vim9script
+	def Id<T>(x: T): T
+	  var y: T = x
+	  return y
+	enddef
+	type T = string
+	echo Id<number>(3)	# 3
 <
 
 ジェネリック関数の呼び出し~
