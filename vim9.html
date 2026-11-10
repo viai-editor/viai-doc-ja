@@ -3,7 +3,7 @@ layout: viai-doc
 helpname: 'vim9'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="vim9.html" name="vim9.txt">vim9.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Nov 01<br>
+<a class="Constant" href="vim9.html" name="vim9.txt">vim9.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Nov 09<br>
 <br>
 <br>
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
@@ -5223,6 +5223,17 @@ U、Aなど)。複数の文字で構成されている場合もあるが、名�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">def</span>&nbsp;My1041<span class="Special">&lt;</span>E<span class="Special">&gt;()</span>:&nbsp;E<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">enddef</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># E1041: Redefining script item: &quot;E&quot;</span><br>
+<br>
+型エイリアスやクラスなど、ジェネリック関数の後に定義された、型パラメータと同じ<br>
+名前の項目は、関数内の型パラメータの意味を変えない:<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9script</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">def</span>&nbsp;Id<span class="Special">&lt;</span>T<span class="Special">&gt;(</span><span class="Normal">x</span>:&nbsp;T<span class="Special">)</span>:&nbsp;T<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">var</span>&nbsp;<span class="Normal">y</span>:&nbsp;T&nbsp;<span class="Statement">=</span>&nbsp;<span class="Normal">x</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">return</span>&nbsp;<span class="Normal">y</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">enddef</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">type</span>&nbsp;T&nbsp;<span class="Statement">=</span>&nbsp;<span class="Type">string</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">Id</span><span class="Special">&lt;</span><span class="Type">number</span><span class="Special">&gt;</span><span class="Special">(</span><span class="Constant">3</span><span class="Special">)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># 3</span><br>
 <br>
 <br>
 <span class="PreProc">ジェネリック関数の呼び出し</span><br>
