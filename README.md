@@ -3,7 +3,6 @@
 [![Generate viai help](https://github.com/viai-editor/viai-doc-ja-working/actions/workflows/generate.yml/badge.svg)](https://github.com/viai-editor/viai-doc-ja-working/actions/workflows/generate.yml)
 
 日本語に翻訳した ViAI 付属のヘルプを配布するためのプロジェクトです。
-[vim-jp/vimdoc-ja](https://github.com/vim-jp/vimdoc-ja) の翻訳を元にしています。
 
 ## 導入方法
 
@@ -26,6 +25,7 @@ set helplang=ja
 ## Web ブラウザで読む
 
 HTML 版は <https://viai-editor.github.io/viai-doc-ja/> から参照できます。
+
 英語版は <https://viai-editor.github.io/viai-doc-en/> にあります。
 
 ## ライセンス
@@ -36,3 +36,7 @@ ViAI 付属のヘルプ (原文) と同じく、Open Publication License v1.0 �
 ## 間違いを見付けた場合
 
 [issueトラッカー](https://github.com/viai-editor/viai-doc-ja-working/issues) でお知らせください。
+
+---
+
+[vim-jp/vimdoc-ja](https://github.com/vim-jp/vimdoc-ja) の翻訳を取り込んで始めたプロジェクトです。
