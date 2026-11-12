@@ -6,15 +6,25 @@
 
 ## 導入方法
 
-[vim-plug](https://github.com/junegunn/vim-plug) を使う場合は、vimrc に次の行を追加して `:PlugInstall` を実行してください。
+[vim-plug](https://github.com/junegunn/vim-plug) を使う場合は、vimrc (または viairc) に以下の行を追加して `:PlugInstall` を実行してください。
+
+最新の翻訳に更新するには `:PlugUpdate` を実行してください。
 
 ```vim
 Plug 'viai-editor/viai-doc-ja'
 ```
 
-最新の翻訳に更新するには `:PlugUpdate` を実行してください。
+vimrc を Vim と共有している場合は、以下のように処理を振り分けるといいでしょう。
 
-日本語のヘルプが優先されない場合は、vimrc で `'helplang'` を設定してください。
+```vim
+if has('viai')
+  Plug 'viai-editor/viai-doc-ja'
+else
+  Plug 'vim-jp/vimdoc-ja'
+endif
+```
+
+日本語のヘルプが優先されない場合は、vimrc (または viairc) で `'helplang'` を設定してください。
 
 ```vim
 set helplang=ja
