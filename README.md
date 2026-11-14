@@ -14,7 +14,7 @@
 Plug 'viai-editor/viai-doc-ja'
 ```
 
-vimrc を Vim と共有している場合は、以下のように処理を振り分けるといいでしょう。
+vimrc を Vim と共有している場合は、以下のように処理を振り分けるとよいでしょう。
 
 ```vim
 if has('viai')
