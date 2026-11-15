@@ -569,6 +569,27 @@ ViAI のチェックにより、Vim でのエラーを回避します。ViAI が
 	:h lsp.txt
 	:h vim9ls.txt
 
+------------------------------------------------------------------------------
+viai.mcp パッケージの追加		*viaimcp-install* *package-viai.mcp*
+------------------------------------------------------------------------------
+
+viai.mcp は Model Context Protocol (MCP) のサーバーで、AI ツールに ViAI のヘル
+プと Vim script のチェックを提供します。AI ツールはパッケージ内のコマンドでサー
+バーを起動するので、そのためにパッケージを読み込む必要はありません。Claude
+Code の場合: >
+	claude mcp add viaimcp -- {runtime}/pack/dist/opt/viai.mcp/bin/viaimcp
+<{runtime} は ViAI での |$VIMRUNTIME| の値です。MS-Windows ではコマンドは
+bin\viaimcp.cmd です。サーバーは $PATH から "viai" を実行します。別の ViAI を
+実行するには、$VIAIMCP_VIM にその名前を設定してください。
+
+そのヘルプを読むには、vimrc ファイルに以下の行を追加してください: >
+	if has('viai')
+	  packadd! viai.mcp
+	endif
+<
+パッケージの読み込みが完了したら、こちらで詳細をご覧ください: >
+	:h viaimcp.txt
+
 パッケージについてのより詳しい情報は次の項目を参照してください: |packages|
 
 ==============================================================================
