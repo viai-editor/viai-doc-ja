@@ -1,4 +1,4 @@
-*vim9.txt*	For ViAI バージョン 1.0.  Last change: 2026 Nov 09
+*vim9.txt*	For ViAI バージョン 1.0.  Last change: 2026 Nov 14
 
 
 		  VIAI リファレンスマニュアル
@@ -895,6 +895,9 @@ Vim9 script を 2 回目以降に読み込むとき、デフォルトでは、�
 	var MyList: list<number> = !exists('MyList') ? [9] : MyList->add(9)
 	echo MyList
 <
+そのようなスクリプト内の `:type` は、変数の宣言と同様に、型エイリアスを再度定
+義する。
+
 これは、再度読み込まれたときに、ある時点で `finish` コマンドを使用して抜け出す
 スクリプトで使用したいものである。例えば、バッファローカルなオプションが関数に
 設定されている場合、その関数を 2 回以上定義する必要はない:
