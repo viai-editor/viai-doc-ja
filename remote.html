@@ -3,7 +3,7 @@ layout: viai-doc
 helpname: 'remote'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="remote.html" name="remote.txt">remote.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Nov 09<br>
+<a class="Constant" href="remote.html" name="remote.txt">remote.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Nov 18<br>
 <br>
 <br>
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
@@ -235,8 +235,8 @@ gviaiを使っている時には、--remote-wait は以下のようにしない�
 クライアントとサーバー間の通信は、内部的にチャネルを使用して行われる。従来型の<br>
 汎用クライアントサーバー命名規則（Unix でのみ使用可能）を使用する場合、ソケッ<br>
 トは使用可能な順に以下のディレクトリに配置される:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;1. 環境に $XDG_RUNTIME_DIR が設定されている場合は &quot;$XDG_RUTIME_DIR/vim&quot;。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;2. &quot;$TMPDIR/vim-[uid]&quot;。ここで &quot;[uid]&quot; はユーザーの uid である。$TMPDIR が<br>
+&nbsp;&nbsp;&nbsp;&nbsp;1. 環境に $XDG_RUNTIME_DIR が設定されている場合は &quot;$XDG_RUNTIME_DIR/vim&quot;。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;2. &quot;$TMPDIR/vim-$UID&quot;。ここで &quot;$UID&quot; はユーザーの uid である。$TMPDIR が<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 設定されていない場合は、&quot;/tmp&quot; が使用される。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="remote.html#E1589" name="E1589">E1589</a><br>
 ディレクトリはパーミッション 700 で作成される。既に存在する場合、それはディレ<br>
@@ -256,30 +256,31 @@ gviaiを使っている時には、--remote-wait は以下のようにしない�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="remote.html#socketserver-address" name="socketserver-address">socketserver-address</a><br>
 さらに、ソケットサーバーはチャネルアドレスとして作成することもできる。そのため<br>
 には、アドレスの前に &quot;channel:&quot; を付ける (この部分は無視される)。これは Unix<br>
-と MS-Windows の両方で使用可能で、Windows ではソケットサーバーバックエンドの命<br>
-名方法としてのみ使用できる。<span class="Todo">note</span>&nbsp;<a class="Identifier" href="channel.html#ch_listen()">ch_listen()</a>&nbsp;には制限があり、TCP ソケットに<br>
-はポート番号しか使用できないことに注意。<br>
+と MS-Windows の両方で使用可能で、MS-Windows ではソケットサーバーバックエンド<br>
+の命名方法としてのみ使用できる。<span class="Todo">note</span>&nbsp;<a class="Identifier" href="channel.html#ch_listen()">ch_listen()</a>&nbsp;には制限があり、TCP ソケッ<br>
+トにはポート番号しか使用できないことに注意。その場合、サーバーはループバックイ<br>
+ンターフェイス (localhost) でのみ待ち受ける。<br>
 <br>
-名前の前にs &quot;name:&quot; を付けると、従来のサーバー名の動作が使用されるため、<br>
+名前の前に &quot;name:&quot; を付けると、従来のサーバー名の動作が使用されるため、<br>
 &quot;name:VIM&quot; は &quot;VIM&quot; と同じになる。<br>
 <br>
 Vim が&nbsp;<a class="Identifier" href="various.html#+autoservername">+autoservername</a>&nbsp;機能付きでコンパイルされていない限り、X11 と同様にソ<br>
 ケットサーバーを明示的に起動する必要がある。これは、X11 GUI 版の Vim を使用し<br>
 ている場合を除く。<br>
 <br>
-ソケットサーバー機能は、GTK GUI 版とターミナル版の両方の Vim で使用できる。Vim<br>
-が&nbsp;<a class="Identifier" href="various.html#+autoservername">+autoservername</a>&nbsp;機能付きでコンパイルされていない場合、GUI 版であっても<br>
-X11 と同様にソケットサーバーを明示的に起動する必要がある。<br>
-<br>
 Vim がクラッシュしたり、正常に終了しなかったりした場合、ソケットサーバーはソ<br>
 ケットファイルを削除せずそのまま残す。これは通常問題にはならない。ソケット名が<br>
 既に使用されている場合、Vim はそのソケットがデッド (どのプロセスにも接続されて<br>
 いない) かどうかを確認し、新しい名前を探す代わりに既存のソケットを置き換えるこ<br>
-とができるためである。<br>
+とができるためである。これは Unix にのみ関係する。<br>
 <br>
-別のアプリケーションから Vim ソケットサーバーにコマンドを送信するには、ソース<br>
-ファイル src/os_unix.c を読むこと。そこには、使用されるプロトコルの詳細な説明<br>
-がある。これは Unix にのみ関係する情報である。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="remote.html#socketserver-security" name="socketserver-security">socketserver-security</a><br>
+<span class="Todo">警告:</span>&nbsp;TCP のソケットサーバーにはアクセス制御がない。同じマシン上のあらゆるプロ<br>
+セスは、他のユーザーのものも含めて、そのポートに接続してキーや式を送ることがで<br>
+き、それによって Vim サーバーを実行しているユーザーとして任意のコマンドを実行<br>
+できてしまう。TCP アドレスは、信頼できる単一ユーザーの環境でのみ使用すること。<br>
+Unix では、ファイルのパーミッションで保護されるソケットのパスまたは名前<br>
+(<a class="Identifier" href="remote.html#socketserver-name">socketserver-name</a>&nbsp;を参照) を使うのが望ましい。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="remote.html#socketserver-differences" name="socketserver-differences">socketserver-differences</a><br>
 機能の大部分は、他のクライアント/サーバーバックエンドと同じである。<br>
@@ -295,18 +296,18 @@ Vim がクラッシュしたり、正常に終了しなかったりした場合�
 <br>
 Unix の場合、<a class="Identifier" href="remote.html#--serverlist">--serverlist</a>&nbsp;引数は X11 と同様に動作するが、上記の共通ディレク<br>
 トリのみをチェックする。ソケットにカスタムパスが使用されている場合、例えば、<br>
-<a class="Identifier" href="remote.html#--serverlist">--serverlist</a>&nbsp;で指定された Vim プロセスの $XDG_RUNTIME_DIR あるいは &lt;$TMPDIR<br>
-または /tmp&gt;/vim に含まれないパスは検出されない。<br>
-MS-Windows の場合、<a class="Identifier" href="remote.html#--serverlist">--serverlist</a>&nbsp;引数は何も出力しない。<br>
+<a class="Identifier" href="remote.html#--serverlist">--serverlist</a>&nbsp;で指定された Vim プロセスの $XDG_RUNTIME_DIR/vim あるいは<br>
+$TMPDIR/vim-$UID ($TMPDIR が設定されていない場合は /tmp/vim-$UID) に含まれな<br>
+いパスは検出されない。MS-Windows の場合、<a class="Identifier" href="remote.html#--serverlist">--serverlist</a>&nbsp;引数は何も出力しない。<br>
 <br>
-Unix または MS-Windows 上では&nbsp;<a class="Identifier" href="various.html#+socketserver">+socketserver</a>&nbsp;機能が自動的に有効にな<br>
-り、<a class="Identifier" href="various.html#+channel">+channel</a>&nbsp;機能が有効になる。<br>
+Unix と MS-Windows では、<a class="Identifier" href="various.html#+channel">+channel</a>&nbsp;機能が使用可能な場合に&nbsp;<a class="Identifier" href="various.html#+socketserver">+socketserver</a>&nbsp;機<br>
+能が自動的に有効になる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="remote.html#socketserver-x11" name="socketserver-x11">socketserver-x11</a><br>
 Vim が&nbsp;<a class="Identifier" href="various.html#+socketserver">+socketserver</a>&nbsp;と別のクライアントサーバーバックエンドの両方でコンパイ<br>
 ルされている場合、使用するバックエンドは起動時に&nbsp;<a class="Identifier" href="remote.html#--clientserver">--clientserver</a>&nbsp;引数によって<br>
 決定される。デフォルトでは、指定されていない場合は、使用可能なネイティブバック<br>
-エンド (X11 または MS-Window メッセージ) が使用される。ソケットサーバーを使用<br>
+エンド (X11 または MS-Windows メッセージ) が使用される。ソケットサーバーを使用<br>
 する Vim インスタンスは、別のクライアントサーバーバックエンドを使用する Vim イ<br>
 ンスタンスと通信できない。<br>
 <br>
