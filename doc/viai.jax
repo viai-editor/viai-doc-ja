@@ -1,4 +1,4 @@
-*viai.txt*	For ViAI バージョン 1.0.  Last change: 2026 Nov 15
+*viai.txt*	For ViAI バージョン 1.0.  Last change: 2026 Nov 18
 
 
 		  VIAI リファレンスマニュアル
@@ -28,13 +28,12 @@ ViAI (Vim Advanced Integrated、"vee-eye" と発音する) は、元 Vim メン�
 ==============================================================================
 1. 開発方針					*viai-policy*
 
-- ViAI の主な目的は、以下のプラグインがうまく動作することである:
+- ViAI は以下のプラグインを同梱し、それらがうまく動作することを目指している:
 	lsp.vim		LSP クライアント
 			https://github.com/h-east/lsp.vim
 	vim9ls		Vim9 script の言語サーバー
 			https://github.com/h-east/vim9ls
-  これらはオプションのパッケージとして ViAI に付属している。|package-lsp.vim|
-  を参照。
+  これらはオプションのパッケージである。|package-lsp.vim| を参照。
 - ViAI は、Vim9 script を読み込むときに Vim が出すエラーを、スクリプトを実行せ
   ずに診断として表示できる唯一のエディタである。|:source-dryrun| を参照。
 - あなたの Vim の設定とプラグインは、そのまま ViAI で動作する。|viai-config|
@@ -243,6 +242,9 @@ ViAI が追加するエラーメッセージは E8000 から E8999 の番号を�
 
 ==============================================================================
 9. 関数インターフェイス				*viai-functions*
+
+バッファの全行が削除されたとき、|listener_add()| は残った空行を変更された行と
+して報告する: "added" は Vim より 1 大きく、"text" はその行を保持する。
 
 ==============================================================================
 10. 追加機能					*viai-additional-features*
