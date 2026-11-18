@@ -3,7 +3,7 @@ layout: viai-doc
 helpname: 'viai'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="viai.html" name="viai.txt">viai.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Nov 15<br>
+<a class="Constant" href="viai.html" name="viai.txt">viai.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Nov 18<br>
 <br>
 <br>
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
@@ -33,13 +33,12 @@ ViAI (Vim Advanced Integrated、&quot;vee-eye&quot; と発音する) は、元 V
 <span class="PreProc">==============================================================================</span><br>
 1. 開発方針&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-policy" name="viai-policy">viai-policy</a><br>
 <br>
-- ViAI の主な目的は、以下のプラグインがうまく動作することである:<br>
+- ViAI は以下のプラグインを同梱し、それらがうまく動作することを目指している:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lsp.vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LSP クライアント<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/h-east/lsp.vim">https://github.com/h-east/lsp.vim</a></span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9ls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim9 script の言語サーバー<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/h-east/vim9ls">https://github.com/h-east/vim9ls</a></span><br>
-&nbsp;&nbsp;これらはオプションのパッケージとして ViAI に付属している。<a class="Identifier" href="usr_05.html#package-lsp.vim">package-lsp.vim</a><br>
-&nbsp;&nbsp;を参照。<br>
+&nbsp;&nbsp;これらはオプションのパッケージである。<a class="Identifier" href="usr_05.html#package-lsp.vim">package-lsp.vim</a>&nbsp;を参照。<br>
 - ViAI は、Vim9 script を読み込むときに Vim が出すエラーを、スクリプトを実行せ<br>
 &nbsp;&nbsp;ずに診断として表示できる唯一のエディタである。<a class="Identifier" href="repeat.html#:source-dryrun">:source-dryrun</a>&nbsp;を参照。<br>
 - あなたの Vim の設定とプラグインは、そのまま ViAI で動作する。<a class="Identifier" href="viai.html#viai-config">viai-config</a><br>
@@ -248,6 +247,9 @@ ViAI が追加するエラーメッセージは E8000 から E8999 の番号を�
 <br>
 <span class="PreProc">==============================================================================</span><br>
 9. 関数インターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-functions" name="viai-functions">viai-functions</a><br>
+<br>
+バッファの全行が削除されたとき、<a class="Identifier" href="builtin.html#listener_add()">listener_add()</a>&nbsp;は残った空行を変更された行と<br>
+して報告する: &quot;added&quot; は Vim より 1 大きく、&quot;text&quot; はその行を保持する。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 10. 追加機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-additional-features" name="viai-additional-features">viai-additional-features</a><br>
