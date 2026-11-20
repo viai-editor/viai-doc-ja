@@ -896,7 +896,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/configure.in, src/auto/configure, 
 <br>
 Patch 7.4.069<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Cannot right shift lines starting with #.<br>
-Solution:&nbsp;&nbsp; Allow the right shift when&nbsp;<a class="Type" href="options.html#'cino'">'cino'</a>&nbsp;contains #<span class="Special">N</span>&nbsp;with&nbsp;<span class="Special">N</span>&nbsp;&gt; 0.<br>
+Solution:&nbsp;&nbsp; Allow the right shift when&nbsp;<a class="Type" href="options.html#'cino'">'cino'</a>&nbsp;contains #N with&nbsp;<span class="Special">N</span>&nbsp;&gt; 0.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Christian Brabandt)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Refactor parsing&nbsp;<a class="Type" href="options.html#'cino'">'cino'</a>, store the values in the buffer.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/indent.txt, src/buffer.c, src/edit.c, src/eval.c,<br>
@@ -1939,7 +1939,7 @@ Solution:&nbsp;&nbsp; Remove the error messages.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/os_unix.c<br>
 <br>
 Patch 7.4.245<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Crash for &quot;vim -u NONE -<span class="Special">N</span>&nbsp;&nbsp;-c '&amp;&amp;'&quot;.<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Crash for &quot;vim -u NONE -N&nbsp;&nbsp;-c '&amp;&amp;'&quot;.<br>
 Solution:&nbsp;&nbsp; Check for the pattern to be NULL. (Dominique Pelle)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/ex_cmds.c<br>
 <br>
@@ -4268,7 +4268,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/normal.c, src/testdir/test44.in, s
 Patch 7.4.637<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Incorrectly read the number of buffer for which an autocommand<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;should be registered.<br>
-Solution:&nbsp;&nbsp; Reverse check for &quot;&lt;buffer=abuf&gt;&quot;. (Lech Lorens)<br>
+Solution:&nbsp;&nbsp; Reverse check for &quot;<span class="Special">&lt;buffer=abuf&gt;</span>&quot;. (Lech Lorens)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/fileio.c<br>
 <br>
 Patch 7.4.638<br>
@@ -13358,7 +13358,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/main.c, src/structs.h, src/vim.h, 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/proto/if_mzsch.pro<br>
 <br>
 Patch 7.4.2177<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;No testing for -C and -<span class="Special">N</span>&nbsp;command line flags, file arguments,<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;No testing for -C and -N command line flags, file arguments,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;startuptime.<br>
 Solution:&nbsp;&nbsp; Add tests.<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_startup.vim, src/testdir/shared.vim<br>
@@ -16125,7 +16125,7 @@ Solution:&nbsp;&nbsp; Fix macro for mch_memmove(). (John Marriott)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/vim.h<br>
 <br>
 Patch 8.0.0247<br>
-Problem:&nbsp;&nbsp;&nbsp;&nbsp;Under some circumstances, one needs to type Ctrl-<span class="Special">N</span>&nbsp;or Ctrl-P twice<br>
+Problem:&nbsp;&nbsp;&nbsp;&nbsp;Under some circumstances, one needs to type Ctrl-N or Ctrl-P twice<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to have a menu entry selected. (Lifepillar)<br>
 Solution:&nbsp;&nbsp; call ins_compl_free(). (Christian Brabandt, closes #1411)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/edit.c, src/testdir/test_popup.vim<br>
@@ -40677,7 +40677,7 @@ Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/testdir/test_const.vim, src/ex_doc
 Patch 8.1.2350<br>
 Problem:&nbsp;&nbsp;&nbsp;&nbsp;Other text for&nbsp;<span class="Special">CTRL-V</span>&nbsp;in Insert mode with modifyOtherKeys.<br>
 Solution:&nbsp;&nbsp; Convert the Escape sequence back to key as if modifyOtherKeys is<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not set, and use&nbsp;<span class="Special">CTRL-S</span>HIFT-V to get the Escape sequence itself.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not set, and use&nbsp;<span class="Special">CTRL-SHIFT-V</span>&nbsp;to get the Escape sequence itself.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(closes #5254)<br>
 Files:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime/doc/insert.txt, runtime/doc/cmdline.txt, src/edit.c,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src/proto/edit.pro, src/term.c, src/proto/term.pro, src/getchar.c,<br>

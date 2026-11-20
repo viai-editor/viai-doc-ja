@@ -13,7 +13,7 @@ helpname: 'eval'
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="eval.html#E1002" name="E1002">E1002</a><br>
 式の評価についてはユーザーマニュアルの41章<a class="Identifier" href="usr_41.html">usr_41.txt</a>でも解説されている。<br>
 <br>
-<span class="Todo">Note</span>: 式の評価はコンパイル時に無効化できる。無効化されている場合、このドキュメ<br>
+<span class="Todo">Note:</span>&nbsp;式の評価はコンパイル時に無効化できる。無効化されている場合、このドキュメ<br>
 ントに書かれている事は有効ではない。<a class="Identifier" href="various.html#+eval">+eval</a>&nbsp;と&nbsp;<a class="Identifier" href="eval.html#no-eval-feature">no-eval-feature</a>&nbsp;を参照。<br>
 <br>
 このファイルは主に後方互換の(旧来の) Vim script について書かれている。より高速<br>
@@ -104,7 +104,7 @@ Blob&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バ�
 文字列から数値への変換は旧来の Vim script のみで行われ、Vim9 script では行われ<br>
 ない。最初に出る数字を用いて数値に変換する。16進表記 &quot;0xf9&quot; や8進表記 &quot;017&quot; も<br>
 しくは &quot;0o17&quot;、2進表記の &quot;0b10&quot; も認識される。<br>
-<span class="Todo">NOTE</span>:&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script か&nbsp;<a class="Identifier" href="eval.html#scriptversion-4">scriptversion-4</a>&nbsp;を使用する場合、先頭が &quot;0&quot; の8進数は<br>
+<span class="Todo">NOTE:</span>&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script か&nbsp;<a class="Identifier" href="eval.html#scriptversion-4">scriptversion-4</a>&nbsp;を使用する場合、先頭が &quot;0&quot; の8進数は<br>
 認識されない。&quot;0o&quot; 記法はパッチ 8.2.0886 が必要になる。<br>
 文字列が数字で始まらない場合結果は0となる。<br>
 例:<br>
@@ -165,7 +165,7 @@ Blob&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バ�
 関数の引数は、<a class="Identifier" href="eval.html#TRUE">TRUE</a>&nbsp;とは少し異なる場合がある: 引数が存在し、それが非ゼロの<br>
 Number、<a class="Identifier" href="eval.html#v:true">v:true</a>&nbsp;または空でない String に評価される場合、値は TRUE と見なされ<br>
 る。<br>
-<span class="Todo">Note</span>: &quot; &quot; と &quot;0&quot; も空文字列ではないので、TRUE と見なされる。List、Dictionary、<br>
+<span class="Todo">Note:</span>&nbsp;&quot; &quot; と &quot;0&quot; も空文字列ではないので、TRUE と見なされる。List、Dictionary、<br>
 または Float は数値または文字列ではないため、FALSE と評価される。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="eval.html#E611" name="E611">E611</a>&nbsp;<a class="Constant" href="eval.html#E745" name="E745">E745</a>&nbsp;<a class="Constant" href="eval.html#E728" name="E728">E728</a>&nbsp;<a class="Constant" href="eval.html#E703" name="E703">E703</a>&nbsp;<a class="Constant" href="eval.html#E729" name="E729">E729</a>&nbsp;<a class="Constant" href="eval.html#E730" name="E730">E730</a>&nbsp;<a class="Constant" href="eval.html#E731" name="E731">E731</a>&nbsp;<a class="Constant" href="eval.html#E908" name="E908">E908</a>&nbsp;<a class="Constant" href="eval.html#E910" name="E910">E910</a><br>
@@ -196,7 +196,7 @@ Number、<a class="Identifier" href="eval.html#v:true">v:true</a>&nbsp;または
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">f</span>&nbsp;<span class="Statement">==</span>&nbsp;<span class="Identifier">v:</span><span class="Identifier">none</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<span class="Comment">&quot; E907: Using a special value as a Float</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">f</span>&nbsp;<span class="Statement">==</span>&nbsp;<span class="Special">(</span><span class="Constant">8</span>,&nbsp;<span class="Constant">0</span><span class="Special">)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<span class="Comment">&quot; E1521: Can only compare Tuple with Tuple</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>:&nbsp;<a class="Comment" href="channel.html#job">job</a>&nbsp;を使用すると E911 が発生し、<a class="Comment" href="channel.html#channel">channel</a>&nbsp;を使用すると E914 が<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;<a class="Comment" href="channel.html#job">job</a>&nbsp;を使用すると E911 が発生し、<a class="Comment" href="channel.html#channel">channel</a>&nbsp;を使用すると E914 が<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;発生する。Vim9 script では、<a class="Comment" href="change.html#==">==</a>&nbsp;比較に相当するすべての演算で&nbsp;<a class="Identifier" href="eval.html#E1072">E1072</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が発生する。<br>
 <br>
@@ -360,7 +360,7 @@ funcref() に渡すことで作成される。その関数を呼び出すと、�
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let mylist = [0, 1, 2, 3]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:echo mylist[2:8]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; 結果: [2, 3]</div>
 <br>
-<span class="Todo">NOTE</span>: mylist[s:e] と書くと変数 &quot;s:e&quot; をインデックスとして使ったと解釈される。<br>
+<span class="Todo">NOTE:</span>&nbsp;mylist[s:e] と書くと変数 &quot;s:e&quot; をインデックスとして使ったと解釈される。<br>
 &quot;:&quot; の前に1文字の変数を使うときは十分注意すること。必要であればこのようにスペー<br>
 スを入れるとよい: mylist[s : e].<br>
 <br>
@@ -656,7 +656,7 @@ Tuple の一部を取得するには、角括弧でコロンで区切られた�
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let mytuple = (0, 1, 2, 3)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:echo mytuple[2:8]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 結果 (2, 3)</div>
 <br>
-<span class="Todo">NOTE</span>: mytuple[s:e] は、変数 &quot;s:e&quot; をインデックスとして使用することを意味する。<br>
+<span class="Todo">NOTE:</span>&nbsp;mytuple[s:e] は、変数 &quot;s:e&quot; をインデックスとして使用することを意味する。<br>
 &quot;:&quot; の前に 1 文字の変数を使用することに注意。必要に応じてスペースを挿入する:&nbsp;<br>
 mytuple[s : e]。<br>
 <br>
@@ -1325,7 +1325,7 @@ script では結果を&nbsp;<a class="Identifier" href="vim9.html#true">true</a>
 &quot;abc&quot; ==# &quot;Abc&quot;&nbsp;&nbsp; 0と評価される<br>
 &quot;abc&quot; ==? &quot;Abc&quot;&nbsp;&nbsp; 1と評価される<br>
 &quot;abc&quot; == &quot;Abc&quot;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;が設定されていれば1と、でなければ0と評価<br>
-<span class="Todo">NOTE</span>:&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では&nbsp;<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;を使用しない。<br>
+<span class="Todo">NOTE:</span>&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では&nbsp;<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;を使用しない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="eval.html#E1588" name="E1588">E1588</a><br>
 比較を連結することはできない。&quot;1 &lt; x &lt; 3&quot; と記述するとエラーになる (括弧内で<br>
@@ -1503,7 +1503,7 @@ expr9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb
 <br>
 '!' 演算子では<a class="Identifier" href="eval.html#TRUE">TRUE</a>は<a class="Identifier" href="eval.html#FALSE">FALSE</a>に、<a class="Identifier" href="eval.html#FALSE">FALSE</a>は<a class="Identifier" href="eval.html#TRUE">TRUE</a>になる。<br>
 '-' では数値の符号が反転される。<br>
-'+&quot; では変化はない。<span class="Todo">Note</span>: &quot;++&quot; は効果がない。<br>
+'+&quot; では変化はない。<span class="Todo">Note:</span>&nbsp;&quot;++&quot; は効果がない。<br>
 <br>
 旧来のスクリプトでは文字列はまず数値に変換される。<span class="Todo">Note</span>&nbsp;文字列が数値から始まっ<br>
 ていない時は期待した結果が得られないことがある。<br>
@@ -2013,7 +2013,7 @@ function(expr1, ...)&nbsp;&nbsp;&nbsp;&nbsp;関数呼出<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">Bar</span><span class="Special">(</span><span class="Constant">6</span><span class="Special">)</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment">&quot; 5</span><br>
 <br>
-<span class="Todo">Note</span>: これが正しく機能するためには、ラムダが定義される前の外側のスコープ内にそ<br>
+<span class="Todo">Note:</span>&nbsp;これが正しく機能するためには、ラムダが定義される前の外側のスコープ内にそ<br>
 れらの変数が存在していなければならない。<a class="Identifier" href="userfunc.html#:func-closure">:func-closure</a>&nbsp;も参照。Vim9 script の<br>
 クロージャについては、<a class="Identifier" href="vim9.html#vim9-closure">vim9-closure</a>&nbsp;を参照。<br>
 <br>
@@ -2102,7 +2102,7 @@ Vim9 script ではコマンドブロックが使える。<a class="Identifier" h
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;unlet s:[k]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:endfor</div>
 <br>
-<span class="Todo">Note</span>: Vim9 script では、変数はコマンドのブロックについてローカルにすることもで<br>
+<span class="Todo">Note:</span>&nbsp;Vim9 script では、変数はコマンドのブロックについてローカルにすることもで<br>
 きる。<a class="Identifier" href="vim9.html#vim9-scopes">vim9-scopes</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="eval.html#buffer-variable" name="buffer-variable">buffer-variable</a>&nbsp;<a class="Constant" href="eval.html#b:var" name="b:var">b:var</a>&nbsp;<a class="Constant" href="eval.html#b:" name="b:">b:</a><br>
@@ -2300,7 +2300,7 @@ v:cmdarg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2つの目的のため�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ころ &quot;++enc=&quot; と &quot;++ff=&quot; がそれである。読み書きコマンドに対<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; する自動コマンドイベントが発生する前にこの変数が代入される。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; その読み書きコマンドの後に直接この変数を連結できるように、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 先頭にスペースがついている。<span class="Todo">Note</span>: ここには &quot;+cmd&quot; 引数は含<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 先頭にスペースがついている。<span class="Todo">Note:</span>&nbsp;ここには &quot;+cmd&quot; 引数は含<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; まれていない。どちらにしろそれは実行されるからである。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. &quot;:hardcopy&quot; でPostScriptファイルを印刷するとき、これが<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;:hardcopy&quot; への引数になる。<a class="Type" href="options.html#'printexpr'">'printexpr'</a>&nbsp;の中で使うことがで<br>
@@ -2368,7 +2368,7 @@ v:completed_item<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最も最近補完された単語が含まれた<a class="Identifier" href="insert.html#complete-items">complete-items</a>の<a class="Identifier" href="eval.html#Dictionary">Dictionary</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が<a class="Identifier" href="autocmd.html#CompleteDone">CompleteDone</a>イベント後に設定される。補完に失敗した時、その<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="eval.html#Dictionary">Dictionary</a>は空である。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: プラグインは、組み込みの&nbsp;<a class="Identifier" href="autocmd.html#CompleteDone">CompleteDone</a>&nbsp;イベントの動作を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;プラグインは、組み込みの&nbsp;<a class="Identifier" href="autocmd.html#CompleteDone">CompleteDone</a>&nbsp;イベントの動作を<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;エミュレートするために、この値を変更することができる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="eval.html#v:count" name="v:count">v:count</a>&nbsp;<a class="Constant" href="eval.html#count-variable" name="count-variable">count-variable</a><br>
@@ -2376,7 +2376,7 @@ v:count&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最後に実行された
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マッピングの前のカウントを取得するのに使用できる。読出し専用。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map _x :&lt;C-U&gt;echo &quot;the count is &quot; .. v:count&lt;CR&gt;</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>:&nbsp;<span class="Special">&lt;C-U&gt;</span>は、カウントの後に ':' をタイプした時に示される行範<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;<span class="Special">&lt;C-U&gt;</span>は、カウントの後に ':' をタイプした時に示される行範<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;囲指定を削除するために必要となる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;3d2w&quot; のようにカウントが2個指定された場合、その数が掛けられる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;よって &quot;d6w&quot; となる。<br>
@@ -2403,7 +2403,7 @@ v:dying&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 通常時は0。致命�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:au VimLeave * if v:dying | echo &quot;\nAAAAaaaarrrggghhhh!!!\n&quot; | endif</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: v:dying が 1 のときに別の致命的なシグナルを受信した場合<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;v:dying が 1 のときに別の致命的なシグナルを受信した場合<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は VimLeave 自動コマンドは実行されない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="eval.html#v:exiting" name="v:exiting">v:exiting</a>&nbsp;<a class="Constant" href="eval.html#exiting-variable" name="exiting-variable">exiting-variable</a><br>
@@ -3056,7 +3056,7 @@ v:windowid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X11 ベースの GUI を使って�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS-Windows の GUI を使っているときはウィンドウハンドルがセット<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;される。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;それ以外では値はゼロである。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: Vim の中のウィンドウを扱うときは&nbsp;<a class="Identifier" href="builtin.html#winnr()">winnr()</a>&nbsp;または<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;Vim の中のウィンドウを扱うときは&nbsp;<a class="Identifier" href="builtin.html#winnr()">winnr()</a>&nbsp;または<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="builtin.html#win_getid()">win_getid()</a>&nbsp;を使う。<a class="Identifier" href="windows.html#window-ID">window-ID</a>&nbsp;を参照。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
@@ -3133,7 +3133,7 @@ Vimはこれを見つけると、まず波括弧の中の式を評価し、そ�
 <span class="PreProc">==============================================================================</span><br>
 7. コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="eval.html#expression-commands" name="expression-commands">expression-commands</a><br>
 <br>
-<span class="Todo">Note</span>:&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では、<a class="Comment" href="eval.html#:let">:let</a>&nbsp;は使用されない。<a class="Comment" href="vim9.html#:var">:var</a>&nbsp;は変数宣言に使用され、<br>
+<span class="Todo">Note:</span>&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では、<a class="Comment" href="eval.html#:let">:let</a>&nbsp;は使用されない。<a class="Comment" href="vim9.html#:var">:var</a>&nbsp;は変数宣言に使用され、<br>
 代入はコマンドを使用しない。<a class="Identifier" href="vim9.html#vim9-declaration">vim9-declaration</a><br>
 <br>
 :let&nbsp;<span class="Special">{var-name}</span>&nbsp;=&nbsp;<span class="Special">{expr1}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="eval.html#:let" name=":let">:let</a>&nbsp;<a class="Constant" href="eval.html#E18" name="E18">E18</a><br>
@@ -3455,7 +3455,7 @@ text...<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; は、以下と同義である:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let x = 1<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:lockvar! x</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE</span>: Vim9 script では&nbsp;<a class="Comment" href="eval.html#:const">:const</a>&nbsp;とは異なった動きをする。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE:</span>&nbsp;Vim9 script では&nbsp;<a class="Comment" href="eval.html#:const">:const</a>&nbsp;とは異なった動きをする。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="vim9.html#vim9-declaration">vim9-declaration</a>&nbsp;および&nbsp;<a class="Identifier" href="vim9.html#vim9-const">vim9-const</a>&nbsp;を参照。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これは、変数が変更されないことを確実にしたいときに便利<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;である。<br>
@@ -3578,7 +3578,7 @@ text...<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では、スクリプトの可読性向上のため<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="eval.html#:endif">:endif</a>&nbsp;は短縮できない。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE</span>:&nbsp;<a class="Comment" href="insert.html#:append">:append</a>&nbsp;と&nbsp;<a class="Comment" href="insert.html#:insert">:insert</a>&nbsp;コマンドは&nbsp;<a class="Comment" href="eval.html#:if">:if</a>&nbsp;と<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE:</span>&nbsp;<a class="Comment" href="insert.html#:append">:append</a>&nbsp;と&nbsp;<a class="Comment" href="insert.html#:insert">:insert</a>&nbsp;コマンドは&nbsp;<a class="Comment" href="eval.html#:if">:if</a>&nbsp;と<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="eval.html#:endif">:endif</a>&nbsp;の間では正しく動かない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="eval.html#:else" name=":else">:else</a>&nbsp;<a class="Constant" href="eval.html#:el" name=":el">:el</a>&nbsp;<a class="Constant" href="eval.html#E581" name="E581">E581</a>&nbsp;<a class="Constant" href="eval.html#E583" name="E583">E583</a><br>
@@ -3609,7 +3609,7 @@ text...<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では、スクリプトの可読性向上のため<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="eval.html#:endwhile">:endwhile</a>&nbsp;は短縮できない。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE</span>:&nbsp;<a class="Comment" href="insert.html#:append">:append</a>&nbsp;と&nbsp;<a class="Comment" href="insert.html#:insert">:insert</a>&nbsp;コマンドは&nbsp;<a class="Comment" href="eval.html#:while">:while</a>&nbsp;と<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE:</span>&nbsp;<a class="Comment" href="insert.html#:append">:append</a>&nbsp;と&nbsp;<a class="Comment" href="insert.html#:insert">:insert</a>&nbsp;コマンドは&nbsp;<a class="Comment" href="eval.html#:while">:while</a>&nbsp;と<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="eval.html#:for">:for</a>&nbsp;ループの内側では正しく動かない。<br>
 <br>
 :for&nbsp;<span class="Special">{var}</span>&nbsp;in&nbsp;<span class="Special">{object}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="eval.html#:for" name=":for">:for</a>&nbsp;<a class="Constant" href="eval.html#E690" name="E690">E690</a>&nbsp;<a class="Constant" href="eval.html#E732" name="E732">E732</a><br>
@@ -3745,7 +3745,7 @@ text...<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;てはならず、<span class="Special">{pattern}</span>の内側に現れてはならない。&nbsp;<a class="Constant" href="eval.html#E1067" name="E1067">E1067</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例外の情報は&nbsp;<a class="Identifier" href="eval.html#v:exception">v:exception</a>&nbsp;で得られる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="eval.html#throw-variables">throw-variables</a>&nbsp;も参照。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE</span>: エラーメッセージの本文によって &quot;:catch&quot; すること<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE:</span>&nbsp;エラーメッセージの本文によって &quot;:catch&quot; すること<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は確実ではない。メッセージはロケールによって異なるから<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;である。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では、スクリプトの可読性向上のため<br>
@@ -3776,7 +3776,7 @@ text...<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:try | throw &quot;oops&quot; | catch /^oo/ | echo &quot;caught&quot; | endtry</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: エラーによって行のパースがスキップされ、&quot;|&quot; によ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;エラーによって行のパースがスキップされ、&quot;|&quot; によ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;るコマンド区切りが解釈されないような場合は &quot;catch&quot; は<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行を分けて書く必要がある。<br>
 <br>
@@ -3932,7 +3932,7 @@ text...<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:execute &quot;e &quot; .. fnameescape(filename)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:execute &quot;!ls &quot; .. shellescape(filename, 1)</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: execute に渡す文字列はいかなるコマンドでも構わな<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;execute に渡す文字列はいかなるコマンドでも構わな<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いが、&quot;if&quot; や &quot;while&quot;、&quot;for&quot; の開始や終了は常に機能す<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;るとは限らない。なぜならコマンドをスキップするときには<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:execute&quot; は解釈されないので Vim はブロックの開始や終<br>
@@ -4467,7 +4467,7 @@ finally節におけるエラーにより、割り込みが正しく動作しな�
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:catch /^Vim\((\a\+)\)\=:E\d\+:/</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="eval.html#catch-text" name="catch-text">catch-text</a><br>
-<span class="Todo">NOTE</span>: エラーメッセージの本文によって捕捉しようとしてはならない<br>
+<span class="Todo">NOTE:</span>&nbsp;エラーメッセージの本文によって捕捉しようとしてはならない<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:catch /No such variable/</div>
 こうすると英語の環境では動作するが、コマンド&nbsp;<a class="Identifier" href="mlang.html#:language">:language</a>により他の言語を使って<br>
 いるユーザーの環境では動作しなくなる。しかし、コメントとしてメッセージテキスト<br>
@@ -4580,7 +4580,7 @@ finally節におけるエラーにより、割り込みが正しく動作しな�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:endtry<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&quot; スクリプトの終わり</div>
 <br>
-<span class="Todo">Note</span>: 全てを捕捉すると、期待していた以上のものを捕捉してしまうかもしれない。そ<br>
+<span class="Todo">Note:</span>&nbsp;全てを捕捉すると、期待していた以上のものを捕捉してしまうかもしれない。そ<br>
 れゆえ、&quot;:catch&quot; コマンドの引数に正規表現を指定することにより、自分が本当に制<br>
 御できる問題だけを捕捉することが強く推奨されている。<br>
 全てを捕捉してしまうと、<span class="Special">CTRL-C</span>&nbsp;を押してスクリプトを中断することがほぼ不可能に<br>
@@ -5233,7 +5233,7 @@ Linux の&nbsp;<span class="Comment">xdg-open</span>&nbsp;等) を使用して&n
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルバックとして使用する。(デフォルト:&nbsp;<span class="Comment">unset</span>)<br>
 <br>
 <br>
-<span class="Todo">NOTE</span>: パスのエスケープは自動的に適用される。<br>
+<span class="Todo">NOTE:</span>&nbsp;パスのエスケープは自動的に適用される。<br>
 <br>
 使用法:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span class="Statement">call</span>&nbsp;<span class="Normal">dist#vim9#Open</span><span class="Special">(</span><span class="Statement">&lt;</span><span class="Normal">path</span><span class="Statement">&gt;</span><span class="Special">)</span><br>
@@ -5248,7 +5248,7 @@ Linux の&nbsp;<span class="Comment">xdg-open</span>&nbsp;等) を使用して&n
 <br>
 <a class="Identifier" href="eval.html#:Launch">:Launch</a>&nbsp;ユーザーコマンドは、最初の引数にシェル補完を使用する。<br>
 <br>
-<span class="Todo">NOTE</span>:&nbsp;<span class="Special">&lt;args&gt;</span>&nbsp;のエスケープはユーザーに任される<br>
+<span class="Todo">NOTE:</span>&nbsp;<span class="Special">&lt;args&gt;</span>&nbsp;のエスケープはユーザーに任される<br>
 <br>
 例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script</div>

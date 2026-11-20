@@ -31,7 +31,7 @@ Vim9 script の概要については、他のリソース、例えば、<br>
 <br>
 <span class="PreProc">------------------------------------------------------------------------------</span><br>
 <br>
-<span class="Todo">NOTE</span>: この vim9.txt ヘルプファイルでは、<a class="Comment" href="vim9.html#vim9script">vim9script</a>&nbsp;(および&nbsp;<a class="Comment" href="vim9.html#:vim9cmd">vim9cmd</a>&nbsp;で始ま<br>
+<span class="Todo">NOTE:</span>&nbsp;この vim9.txt ヘルプファイルでは、<a class="Comment" href="vim9.html#vim9script">vim9script</a>&nbsp;(および&nbsp;<a class="Comment" href="vim9.html#:vim9cmd">vim9cmd</a>&nbsp;で始ま<br>
 る個々の行) で始まる Vim9 script のコードブロックは、Vim9 script の構文がハイ<br>
 ライトされている。また、これらはソースとして実行できるため、実行して出力内容を<br>
 確認できる。ソースとして実行するには、<span class="Comment">:'&lt;,'&gt;source</span>&nbsp;を使用する<br>
@@ -87,7 +87,7 @@ Vim9 script と旧来の Vim script を混在させることができる。古�
 直す必要はなく、以前と同じように動作する。高速化が必要なコードには、いくつかの<br>
 <a class="Comment" href="vim9.html#:def">:def</a>&nbsp;関数を使用するとよいだろう。<br>
 <br>
-:vim9<span class="Special">[cmd]</span>&nbsp;<span class="Special">{cmd}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#:vim9" name=":vim9">:vim9</a>&nbsp;<a class="Constant" href="vim9.html#:vim9cmd" name=":vim9cmd">:vim9cmd</a><br>
+:vim9[cmd]&nbsp;<span class="Special">{cmd}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#:vim9" name=":vim9">:vim9</a>&nbsp;<a class="Constant" href="vim9.html#:vim9cmd" name=":vim9cmd">:vim9cmd</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim9 script の構文、セマンティクス、および動作を使用して&nbsp;<span class="Special">{cmd}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を評価し、実行する。<a class="Comment" href="userfunc.html#:function">:function</a>&nbsp;や旧来の Vim script 内でコマン<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ドを入力するときに便利である。<br>
@@ -101,7 +101,7 @@ Vim9 script と旧来の Vim script を混在させることができる。古�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9cmd</span>&nbsp;<span class="Identifier">popup_notification</span><span class="Special">(</span><span class="Constant">'entrée'</span>[<span class="Constant">5</span>&nbsp;:]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">-&gt;</span><span class="Identifier">str2list</span><span class="Special">()</span><span class="Statement">-&gt;</span><span class="Identifier">string</span><span class="Special">()</span>,&nbsp;<span class="Special">{</span><span class="Normal">time</span>:&nbsp;<span class="Constant">7000</span><span class="Special">}</span><span class="Special">)</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Notes</span>: 1. 出力が異なる理由は、Vim9 script は文字インデックスを<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Notes:</span>&nbsp;1. 出力が異なる理由は、Vim9 script は文字インデックスを<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用するのに対し、旧来の Vim script はバイトインデックスを使用<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;するためである。<a class="Identifier" href="vim9.html#vim9-string-index">vim9-string-index</a>を参照。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 構文も異なる。Vim9 script では:<br>
@@ -233,7 +233,7 @@ Vim9 script と旧来の Vim script を混在させることができる。古�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="change.html#:t">:t</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="editing.html#:xit">:xit</a>&nbsp;(または短縮形&nbsp;<a class="Comment" href="editing.html#:x">:x</a>&nbsp;と&nbsp;<span class="Comment">:xi</span>)<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: エラーにはならないが、Vim9 script では動作が異なるコマンドがいく<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;エラーにはならないが、Vim9 script では動作が異なるコマンドがいく<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;つかある。1 つは&nbsp;<a class="Comment" href="change.html#:dl">:dl</a>&nbsp;で、これは&nbsp;<a class="Comment" href="tagsrch.html#:dlist">:dlist</a>&nbsp;の省略形である (旧来の Vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;script では&nbsp;<a class="Comment" href="change.html#:delete">:delete</a>&nbsp;である)。他には&nbsp;<a class="Comment" href="change.html#:sc">:sc</a>、<a class="Comment" href="change.html#:si">:si</a>、<a class="Comment" href="change.html#:sr">:sr</a>&nbsp;があり、これ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;らは旧来の Vim script では (上記に挙げた他の 38 個のように) 短い置換コ<br>
@@ -426,7 +426,7 @@ Vi では、# は番号付きでテキストを一覧表示するコマンドで
 <br>
 これらの呼び出しは失敗し、しかも異なる理由で失敗するが、重要なのは、どのコマン<br>
 ドも実行されるときに存在していなければならないということである。そのため、次の<br>
-スクリプトは、コマンドが実行される前に定義されているため動作する (<span class="Todo">Note</span>: このス<br>
+スクリプトは、コマンドが実行される前に定義されているため動作する (<span class="Todo">Note:</span>&nbsp;このス<br>
 クリプトを読み込む前に、2 つのグローバル関数を定義するスクリプトを再度読み込む<br>
 必要がある):<br>
 <br>
@@ -517,7 +517,7 @@ Vim9 script では、&quot;dict&quot; 関数を使用する代わりに、いく
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Normal">avar</span>&nbsp;<span class="Statement">=</span>&nbsp;<span class="Special">[[</span><span class="Constant">'A'</span>,&nbsp;<span class="Constant">'list'</span><span class="Special">]</span>,&nbsp;<span class="Special">[</span><span class="Constant">'of'</span>,&nbsp;<span class="Constant">'lists'</span><span class="Special">]]</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">avar</span><span class="Statement">-&gt;</span><span class="Identifier">typename</span><span class="Special">()</span>&nbsp;&nbsp;&nbsp;<span class="Comment"># list&lt;list&lt;string&gt;&gt;</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Warning: &quot;any&quot; 型のデフォルトは数値型で 0 である。特定の型を必要とする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Warning:</span>&nbsp;&quot;any&quot; 型のデフォルトは数値型で 0 である。特定の型を必要とする<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;操作では、そのことを考慮していないと予期しない結果やエラーになる可能性<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;がある。さらに、明示的に数値として宣言された変数とは異なり、他のいずれ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;かの型を直接代入することは変数の型が推論し直されることを意味し、これは<br>
@@ -556,7 +556,7 @@ Vim9 script で同等のもの:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">MyFirst</span><span class="Special">(</span><span class="Constant">'The value of key 2 of MyDict is '</span>,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Normal">MyDict</span>,&nbsp;<span class="Constant">2</span>,&nbsp;<span class="Constant">null</span>,&nbsp;<span class="Constant">'!'</span>,&nbsp;<span class="Constant">9999</span><span class="Special">)</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: この Vim9 script では、以下の箇所でスペースを省略するとエラーが<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;この Vim9 script では、以下の箇所でスペースを省略するとエラーが<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;発生するだろう:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- いずれかのコンマの後<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 'key: value' または 'variable: type' のいずれかのコロンの後<br>
@@ -620,7 +620,7 @@ E1106 の例:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">val</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">}</span><span class="Special">)</span>&nbsp;&nbsp;<span class="Comment"># E1106: One argument too many (ラムダには引数が 1 つしかない)</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>:&nbsp;<a class="Comment" href="builtin.html#foreach()">foreach()</a>&nbsp;はコールバックに 2 つの引数を渡す。リストの場合、そ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;<a class="Comment" href="builtin.html#foreach()">foreach()</a>&nbsp;はコールバックに 2 つの引数を渡す。リストの場合、そ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れはリストのインデックスと値である。Vim9 のラムダは、引数が 1 つだけ必<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;要に見える場合でも、両方を持つ必要がある (専門的には「アリティの一<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;致」)。そのため、後述するように &quot;(val)&quot; は &quot;(_, val)&quot; とすべきである。<br>
@@ -652,7 +652,7 @@ E1106 の例:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">endfor</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Constant">$&quot;There are&nbsp;</span><span class="Special">{</span><span class="Normal">count</span><span class="Special">}</span><span class="Constant">&nbsp;staff members in the 2020s.&quot;</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: このスクリプトは&nbsp;<a class="Identifier" href="builtin.html#call()">call()</a>&nbsp;を使用している。<a class="Identifier" href="userfunc.html#:call">:call</a>&nbsp;と混同しないこ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;このスクリプトは&nbsp;<a class="Identifier" href="builtin.html#call()">call()</a>&nbsp;を使用している。<a class="Identifier" href="userfunc.html#:call">:call</a>&nbsp;と混同しないこ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1181" name="E1181">E1181</a><br>
@@ -710,7 +710,7 @@ Vim9 script のスクリプトレベルで&nbsp;<a class="Comment" href="userfun
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">enddef</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Outer<span class="Special">()</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 文字列引数を渡すと失敗するのは、&quot;Inner&quot; が生成された内部名を持つ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;文字列引数を渡すと失敗するのは、&quot;Inner&quot; が生成された内部名を持つ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数への関数参照になるためであり、それは &quot;funcref(Inner)&quot; で表示でき<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
 <br>
@@ -837,7 +837,7 @@ Vim9 script では、スクリプトローカル関数 (<a class="Comment" href=
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">enddef</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">delfunction</span>&nbsp;MyDef&nbsp;&nbsp;<span class="Comment"># E1084: Cannot delete Vim9 script function MyDef</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: スクリプトローカル関数は、スクリプトを再読み込みすることで置換で<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;スクリプトローカル関数は、スクリプトを再読み込みすることで置換で<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;きる。<a class="Identifier" href="vim9.html#vim9-reload">vim9-reload</a>&nbsp;を参照。<br>
 <br>
 グローバル関数 (&quot;g:&quot; プリフィックス付き) は、依然としてほぼいつでも定義および<br>
@@ -862,7 +862,7 @@ Vim9 script では、スクリプトローカル関数 (<a class="Comment" href=
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Normal">Funcref</span>&nbsp;<span class="Statement">=</span>&nbsp;<span class="Identifier">funcref</span><span class="Special">(</span><span class="Identifier">g:</span><span class="Normal">F</span><span class="Special">)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># Funcref を再宣言</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Special">(</span><span class="Normal">Function</span><span class="Special">()</span>,&nbsp;<span class="Normal">Funcref</span><span class="Special">())</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># ('two', 'two')</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: この&nbsp;<a class="Identifier" href="builtin.html#funcref()">funcref()</a>&nbsp;の永続的な動作は、機能とみなされることもあるし、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;この&nbsp;<a class="Identifier" href="builtin.html#funcref()">funcref()</a>&nbsp;の永続的な動作は、機能とみなされることもあるし、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;理解されていなければ予期しないものであることもある。<br>
 <br>
 関数をコンパイルしていて、(まだ) 定義されていない関数の関数呼び出しに遭遇した<br>
@@ -944,7 +944,7 @@ Vim9 script を 2 回目以降に読み込むとき、デフォルトでは、�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return name<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enddef</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: これを再実行したい場合は、<a class="Comment" href="eval.html#:unlet">:unlet</a>&nbsp;g:loaded_E1149 を使用してグ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;これを再実行したい場合は、<a class="Comment" href="eval.html#:unlet">:unlet</a>&nbsp;g:loaded_E1149 を使用してグ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ローバル変数を削除すること。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1150" name="E1150">E1150</a><br>
@@ -1014,7 +1014,7 @@ E1190 が発生する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Func<span class="Special">()</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Constant">$&quot;Visible:&nbsp;</span><span class="Special">{</span><span class="Normal">s</span><span class="Special">}</span><span class="Constant">&nbsp;only&quot;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># f と b: :def の外では見えない</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 変数が存在するかどうかの判定における制限については<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;変数が存在するかどうかの判定における制限については<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="vim9.html#vim9-exists()">vim9-exists()</a>&nbsp;を参照。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#vim9-block" name="vim9-block">vim9-block</a><br>
 変数は、ネストされたブロックを含め、それが定義されたブロック内でのみ見える。ブ<br>
@@ -1128,7 +1128,7 @@ E1190 が発生する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Identifier">empty</span><span class="Special">(</span><span class="Normal">s</span><span class="Special">)</span>&nbsp;<span class="Statement">&amp;&amp;</span>&nbsp;<span class="Identifier">empty</span><span class="Special">(</span><span class="Normal">F</span><span class="Special">)</span>&nbsp;<span class="Statement">&amp;&amp;</span>&nbsp;<span class="Identifier">empty</span><span class="Special">(</span><span class="Normal">l</span><span class="Special">)</span>&nbsp;<span class="Statement">&amp;&amp;</span>&nbsp;<span class="Identifier">empty</span><span class="Special">(</span><span class="Normal">d</span><span class="Special">)</span>&nbsp;<span class="Statement">&amp;&amp;</span>&nbsp;<span class="Identifier">empty</span><span class="Special">(</span><span class="Normal">j</span><span class="Special">)</span>&nbsp;<span class="Statement">&amp;&amp;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">\</span>&nbsp;<span class="Identifier">empty</span><span class="Special">(</span><span class="Normal">c</span><span class="Special">)</span>&nbsp;<span class="Statement">&amp;&amp;</span>&nbsp;<span class="Identifier">empty</span><span class="Special">(</span><span class="Normal">z</span><span class="Special">)</span>&nbsp;<span class="Statement">&amp;&amp;</span>&nbsp;<span class="Identifier">empty</span><span class="Special">(</span><span class="Normal">t</span><span class="Special">)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># true</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: &quot;any&quot; 型はデフォルトが 0 であることを考慮して、使用には注意する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;&quot;any&quot; 型はデフォルトが 0 であることを考慮して、使用には注意する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;こと。影響については、<a class="Identifier" href="vim9.html#vim9-any-type">vim9-any-type</a>&nbsp;を参照。<br>
 <br>
 初期化されていないコンテナ型には追加することができる。例:<br>
@@ -1201,7 +1201,7 @@ E1190 が発生する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">var</span>&nbsp;<span class="Normal">nb</span>:&nbsp;<span class="Type">blob</span>&nbsp;<span class="Statement">=</span>&nbsp;<span class="Constant">null_blob</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Normal">nb</span><span class="Statement">-&gt;</span><span class="Identifier">add</span><span class="Special">(</span><span class="Constant">0xF0</span><span class="Special">)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># E1131: Cannot add to null_blob</span><br>
 <br>
-<span class="Todo">Note</span>: 以下では同様のエラーに遭遇することはないはずである:<br>
+<span class="Todo">Note:</span>&nbsp;以下では同様のエラーに遭遇することはないはずである:<br>
 -&nbsp;<span class="Comment">null_tuple</span>&nbsp;(<a class="Identifier" href="eval.html#Tuples">Tuples</a>&nbsp;は不変であるため、それらへの追加も拡張も許可されてい<br>
 &nbsp;&nbsp;ない)、および<br>
 -&nbsp;<a class="Comment" href="vim9.html#null_string">null_string</a>&nbsp;(これは&nbsp;<a class="Identifier" href="vim9.html#null-anomalies">null-anomalies</a>&nbsp;のひとつである)、例えば:<br>
@@ -1429,7 +1429,7 @@ Vim9 script では、<a class="Comment" href="builtin.html#exists()">exists()</a
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span class="Constant">1</span><span class="Statement">substitute</span><span class="Special">/</span><span class="Constant">s</span><span class="Special">//</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span class="Statement">&amp;</span><br>
 <br>
-<span class="Todo">Note</span>: このスクリプトで &quot;:&amp;&quot; の代わりに &quot;&amp;&quot; を使用した場合、<a class="Identifier" href="eval.html#E112">E112</a>&nbsp;が発生する。<br>
+<span class="Todo">Note:</span>&nbsp;このスクリプトで &quot;:&amp;&quot; の代わりに &quot;&amp;&quot; を使用した場合、<a class="Identifier" href="eval.html#E112">E112</a>&nbsp;が発生する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#vim9-unpack-ignore" name="vim9-unpack-ignore">vim9-unpack-ignore</a><br>
 アンパック代入 (分割代入) では、関数の引数を無視できるのと同様に、アンダースコ<br>
@@ -1527,7 +1527,7 @@ Vim9 script では、<a class="Comment" href="builtin.html#exists()">exists()</a
 スクリプトローカルのスコープで定数を変更しようとした場合は、エラー&nbsp;<a class="Identifier" href="message.html#E46">E46</a>&nbsp;や<br>
 <a class="Identifier" href="eval.html#E741">E741</a>&nbsp;が発生することもある。<br>
 <br>
-<span class="Todo">Note</span>: このヘルプファイルの例で行われているように、定数を ALL_CAPS で書くのが一<br>
+<span class="Todo">Note:</span>&nbsp;このヘルプファイルの例で行われているように、定数を ALL_CAPS で書くのが一<br>
 般的であるが、そうする必要はない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#:final" name=":final">:final</a>&nbsp;<a class="Constant" href="vim9.html#E1125" name="E1125">E1125</a><br>
@@ -1707,7 +1707,7 @@ Vim9 script のラムダは、引数と戻り値の一方または両方に厳�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Constant">0</span><span class="Statement">-&gt;</span><span class="Normal">I01</span><span class="Special">()</span><span class="Statement">-&gt;</span><span class="Normal">I02</span><span class="Special">()</span><span class="Statement">-&gt;</span><span class="Normal">I03</span><span class="Special">()</span><span class="Statement">-&gt;</span><span class="Normal">I04</span><span class="Special">()</span><span class="Statement">-&gt;</span><span class="Normal">I05</span><span class="Special">()</span><span class="Statement">-&gt;</span><span class="Normal">I06</span><span class="Special">()</span><span class="Statement">-&gt;</span><span class="Normal">I07</span><span class="Special">()</span><span class="Statement">-&gt;</span><span class="Normal">I08</span><span class="Special">()</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">-&gt;</span><span class="Normal">I09</span><span class="Special">()</span><span class="Statement">-&gt;</span><span class="Normal">I10</span><span class="Special">()</span><span class="Statement">-&gt;</span><span class="Normal">I11</span><span class="Special">()</span><span class="Statement">-&gt;</span><span class="Normal">I12</span><span class="Special">()</span><span class="Statement">-&gt;</span><span class="Normal">I13</span><span class="Special">()</span><span class="Statement">-&gt;</span><span class="Normal">I14</span><span class="Special">()</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># 14</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Notes</span>: 1. 戻り値の型は、変数の宣言とラムダの戻り値の型のどちらかにある<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Notes:</span>&nbsp;1. 戻り値の型は、変数の宣言とラムダの戻り値の型のどちらかにある<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最も具体的な型が使用される (つまり、&quot;:&nbsp;<span class="Special">{type}</span>&quot; がどちらかに現れる場合、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;それがラムダの戻り値の型になる)。さらに、変数の宣言は食い違ってはなら<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ない - ラムダの明示的または推論された戻り値の型であるか、&quot;any&quot; である<br>
@@ -1740,7 +1740,7 @@ Vim9 script のラムダは、引数と戻り値の一方または両方に厳�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">Increment</span><span class="Special">(</span><span class="Constant">0</span><span class="Special">)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># 1</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">Increment</span><span class="Statement">-&gt;</span><span class="Identifier">typename</span><span class="Special">()</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># func(number): number</span><br>
 <br>
-<span class="Todo">Note</span>: func 型を明示的に指定するのは冗長に見えるかもしれないが、それはその変数<br>
+<span class="Todo">Note:</span>&nbsp;func 型を明示的に指定するのは冗長に見えるかもしれないが、それはその変数<br>
 が func であることを最初からより明確にし、そして上記で述べた理由から、ラムダの<br>
 戻り値の型と引数の型を指定するのは賢明である。&quot;any&quot; 型のチェックが必要ないた<br>
 め、それは実行時のパフォーマンスもより高い (これは&nbsp;<a class="Identifier" href="vim9.html#:disassemble">:disassemble</a>&nbsp;を使用して確<br>
@@ -1806,7 +1806,7 @@ Vim9 script のラムダは、引数と戻り値の一方または両方に厳�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># (例えば、p&lt;Tab&gt; と入力すると apple と apricot が表示される)</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echowindow</span>&nbsp;<span class="Constant">$&quot;Your choice was&nbsp;</span><span class="Special">{</span><span class="Normal">fruit</span><span class="Special">}</span><span class="Constant">&quot;</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: &quot;..._&quot; がないと、この関数は失敗する。<a class="Identifier" href="builtin.html#input()">input()</a>&nbsp;の&nbsp;<span class="Special">{completion}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;&quot;..._&quot; がないと、この関数は失敗する。<a class="Identifier" href="builtin.html#input()">input()</a>&nbsp;の&nbsp;<span class="Special">{completion}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数には 3 つのリスト項目 (ArgLead、CmdLine、CursorPos) がある。出力リ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ストを作成するのにどれも必要ないため、&quot;..._&quot; を使用するのが望ましいが、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;...l: list<span class="Special">&lt;any&gt;</span>&quot; でも動作する)。<a class="Identifier" href="map.html#:command-completion-custom">:command-completion-custom</a>&nbsp;を参照。<br>
@@ -1835,7 +1835,7 @@ Vim9 script のラムダは、引数と戻り値の一方または両方に厳�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echowindow</span>&nbsp;<span class="Constant">$'Handler called&nbsp;</span><span class="Special">{</span><span class="Normal">count</span><span class="Special">}</span><span class="Constant">'</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">}</span>,&nbsp;<span class="Special">{</span><span class="Normal">repeat</span>:&nbsp;<span class="Constant">3</span><span class="Special">}</span><span class="Special">)</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: この例では、<a class="Identifier" href="builtin.html#timer_start()">timer_start()</a>&nbsp;は 2 番目のパラメータとして、呼び出<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;この例では、<a class="Identifier" href="builtin.html#timer_start()">timer_start()</a>&nbsp;は 2 番目のパラメータとして、呼び出<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す関数である&nbsp;<span class="Special">{callback}</span>&nbsp;を必要とする。タイマーが発火すると、Vim はコー<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルバック関数を呼び出し、必須の引数としてタイマー ID を渡す。ラムダ内の<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;(_)&quot; 構文は、その ID に明示的に名前を付けることも、それを参照すること<br>
@@ -1875,7 +1875,7 @@ Vim9 script のラムダは、引数と戻り値の一方または両方に厳�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MyHeredoc<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: &quot;{6 * 7}&quot; が評価され、<a class="Identifier" href="eval.html#literal-string">literal-string</a>&nbsp;として扱われないよう<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;&quot;{6 * 7}&quot; が評価され、<a class="Identifier" href="eval.html#literal-string">literal-string</a>&nbsp;として扱われないよう<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に、&quot;=&lt;&lt;&quot; の後に &quot;eval&quot; が必要である。コマンドブロックは Vim9 script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;であるが、これは&nbsp;<a class="Identifier" href="vim9.html#vim9-omitting-:eval">vim9-omitting-:eval</a>&nbsp;とは異なる。<br>
 <br>
@@ -1934,7 +1934,7 @@ Vim9 script のラムダは、引数と戻り値の一方または両方に厳�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PopDict&nbsp;one tahi<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 括弧内であっても、辞書の &quot;}&quot; を別の行に置くことはできない。また、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;括弧内であっても、辞書の &quot;}&quot; を別の行に置くことはできない。また、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;辞書のキーを式として評価させるには、角括弧で囲む必要がある -<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="vim9.html#vim9-literal-dict">vim9-literal-dict</a>&nbsp;を参照。<br>
 <br>
@@ -2013,7 +2013,7 @@ min:sec のペースの入力を促し、5km のラン/ウォークの合計の�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;<span class="Statement">endif</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ShowFileLine<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: そのため、ヒアドキュメントの最初の行は通常、バーで始めることがで<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;そのため、ヒアドキュメントの最初の行は通常、バーで始めることがで<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;きない:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9script</span><br>
@@ -2160,7 +2160,7 @@ script では、エラーによって継続行が意図しない形で解釈さ�
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1144" name="E1144">E1144</a><br>
 上記のような意図しない結果を防ぐため、Vim9 script では、ほとんどのコマンド名と<br>
-その引数の間に空白が必要である。(<span class="Todo">Note</span>:&nbsp;<a class="Comment" href="repeat.html#:global">:global</a>&nbsp;や&nbsp;<a class="Comment" href="change.html#:substitute">:substitute</a>&nbsp;のような区切<br>
+その引数の間に空白が必要である。(<span class="Todo">Note:</span>&nbsp;<a class="Comment" href="repeat.html#:global">:global</a>&nbsp;や&nbsp;<a class="Comment" href="change.html#:substitute">:substitute</a>&nbsp;のような区切<br>
 り文字を使うコマンドは例外である。) 例:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9script</span><br>
@@ -2182,7 +2182,7 @@ script では、エラーによって継続行が意図しない形で解釈さ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">windo</span>&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Constant">'hi'</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">\</span>&nbsp;<span class="Statement">-&gt;</span><span class="Identifier">toupper</span><span class="Special">()</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># 'HI' (全てのウィンドウに対して)</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 例えば、コマンドが &quot;windo execute ':global/something/'&quot; で、継続<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;例えば、コマンドが &quot;windo execute ':global/something/'&quot; で、継続<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行が &quot;.. d&quot; だった場合、深刻な結果を招く可能性がある。&quot;something&quot; を含<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;む行はカレントウィンドウでのみ削除され、他のウィンドウでは &quot;something&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の行に対して&nbsp;<a class="Comment" href="various.html#:print">:print</a>&nbsp;(つまりデフォルトの &quot;:p&quot;) だけが実行される。<br>
@@ -2330,7 +2330,7 @@ Vim9 script は空白の適切な使用を強制する。例えば、変数代�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MyN<span class="Special">(</span>&nbsp;&nbsp;&nbsp;<span class="Constant">4</span>,&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant">5</span>,&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant">6</span>&nbsp;<span class="Special">)</span>&nbsp;&nbsp;<span class="Comment"># [4, 5, 6]</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MyN&nbsp;&nbsp;(7, 8, 9)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# E492: Not an editor command<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 以下も許可されず、<a class="Identifier" href="message.html#E492">E492</a>&nbsp;が発生する:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;以下も許可されず、<a class="Identifier" href="message.html#E492">E492</a>&nbsp;が発生する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MyN<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\ (7, 8, 9)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MyN<br>
@@ -2428,7 +2428,7 @@ script でエラーにならないのと同様)。例えば、このスクリプ
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">silent</span>&nbsp;<span class="Statement">endif</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># E1176: Misplaced command modifier</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: このスクリプトの 2 行目から 4 行目だけが読み込まれた場合、E1176<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;このスクリプトの 2 行目から 4 行目だけが読み込まれた場合、E1176<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が発生しないことが分かる (その場合、スクリプトは旧来の Vim script のコ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンテキストで実行されるため)。<br>
 <br>
@@ -2468,7 +2468,7 @@ script でエラーにならないのと同様)。例えば、このスクリプ
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">var</span>&nbsp;<span class="Normal">dict</span>&nbsp;<span class="Statement">=</span>&nbsp;<span class="Special">{</span><span class="Normal">key</span>:&nbsp;<span class="Constant">9</span><span class="Special">}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">dict</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># {'key': 9}</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: Vim はキーを正規化し、' 文字を追加する。辞書のキーは常に文字列で<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;Vim はキーを正規化し、' 文字を追加する。辞書のキーは常に文字列で<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ある。<br>
 <br>
 リテラルキーは英数字、アンダースコア、およびダッシュを使用して動作する。それら<br>
@@ -2555,7 +2555,7 @@ script でエラーにならないのと同様)。例えば、このスクリプ
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="change.html#:t">:t</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#:copy">:copy</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="editing.html#:xit">:xit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="editing.html#:exit">:exit</a><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>:&nbsp;<a class="Comment" href="editing.html#:x">:x</a>&nbsp;のような短縮形も許可されない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;<a class="Comment" href="editing.html#:x">:x</a>&nbsp;のような短縮形も許可されない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1100" name="E1100">E1100</a><br>
 例えば、次のスクリプトで &quot;mark x&quot; を使用すると動作するが、&quot;k x&quot; を使用すると<br>
@@ -2680,7 +2680,7 @@ Vim9 script では、クラスオブジェクトの比較も同様に動作す�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">O4</span>&nbsp;<span class="Statement">is</span>&nbsp;<span class="Normal">O5</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># true (同じ初期化済みのクラスオブジェクト)</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">O5</span>&nbsp;<span class="Statement">is</span>&nbsp;<span class="Normal">O6</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># false (異なるクラスオブジェクト)</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: クラス自体は比較できない:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;クラス自体は比較できない:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9script</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">class</span>&nbsp;C<br>
@@ -2915,7 +2915,7 @@ Vim9 script では、条件式 (<a class="Comment" href="eval.html#??">??</a>&nb
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Constant">&quot;Tuple:&nbsp;&nbsp;</span><span class="Special">\t</span><span class="Constant">()</span><span class="Special">\t\t</span><span class="Constant">&quot;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">()</span>&nbsp;<span class="Statement">??</span>&nbsp;<span class="Constant">'is falsy'</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Constant">&quot;void:&nbsp;&nbsp;&nbsp;</span><span class="Special">\t\t\t</span><span class="Constant">&quot;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Identifier">test_void</span><span class="Special">()</span>&nbsp;<span class="Statement">??</span>&nbsp;<span class="Constant">'is falsy'</span><br>
 <br>
-<span class="Todo">Note</span>: Vim9 script の偽値性は Python のものとほぼ同じである (例えば、Python の<br>
+<span class="Todo">Note:</span>&nbsp;Vim9 script の偽値性は Python のものとほぼ同じである (例えば、Python の<br>
 &quot;if []:&quot; は偽であり、Vim9 script の &quot;if []&quot; と同じである。JavaScript も同様だ<br>
 が、空のオブジェクト/配列に対する独特な真値の評価において異なる。<br>
 <br>
@@ -2938,7 +2938,7 @@ Vim9 script では、条件式 (<a class="Comment" href="eval.html#??">??</a>&nb
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">!!</span><span class="Identifier">v:</span><span class="Identifier">false</span>,&nbsp;<span class="Statement">!!</span><span class="Identifier">v:</span><span class="Identifier">none</span>,&nbsp;<span class="Statement">!!</span><span class="Identifier">v:</span><span class="Identifier">null</span>,&nbsp;<span class="Statement">!!</span><span class="Constant">null_job</span>,&nbsp;<span class="Statement">!!</span><span class="Constant">null_channel</span>,&nbsp;<span class="Statement">!!</span><span class="Constant">0z</span>,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">!!</span><span class="Constant">null_object</span>,&nbsp;<span class="Statement">!!</span><span class="Special">()</span>,&nbsp;<span class="Statement">!!</span><span class="Identifier">test_void</span><span class="Special">()</span><span class="Special">]</span><br>
 <br>
-<span class="Todo">Note</span>: これは、Vim9 script が旧来の Vim script よりも寛容な稀なケースである。以<br>
+<span class="Todo">Note:</span>&nbsp;これは、Vim9 script が旧来の Vim script よりも寛容な稀なケースである。以<br>
 下の例が示すように、旧来の Vim script では、多くの型 (Funcref、List、<br>
 Dictionary、Blob、Job、Tuple を含む) で &quot;!&quot; または &quot;!!&quot; を使用するとエラーが発<br>
 生する:<br>
@@ -2960,7 +2960,7 @@ Dictionary、Blob、Job、Tuple を含む) で &quot;!&quot; または &quot;!!&
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">var</span>&nbsp;<span class="Normal">mystr</span>&nbsp;<span class="Statement">=</span>&nbsp;<span class="Constant">8</span>&nbsp;<span class="Statement">..</span>&nbsp;<span class="Constant">', '</span>&nbsp;<span class="Statement">..</span>&nbsp;<span class="Constant">9.2</span>&nbsp;<span class="Statement">..</span>&nbsp;<span class="Constant">', '</span>&nbsp;<span class="Statement">..</span>&nbsp;<span class="Constant">true</span>&nbsp;<span class="Statement">..</span>&nbsp;<span class="Constant">' and '</span>&nbsp;<span class="Statement">..</span>&nbsp;<span class="Identifier">v:</span><span class="Identifier">none</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Special">[</span><span class="Normal">mystr</span>,&nbsp;<span class="Normal">mystr</span><span class="Statement">-&gt;</span><span class="Identifier">typename</span><span class="Special">()</span><span class="Special">]</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Notes</span>: 1.&nbsp;<a class="Comment" href="vim9.html#true">true</a>&nbsp;(および、ここでは示していないが&nbsp;<a class="Comment" href="eval.html#v:true">v:true</a>) はどちらも<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Notes:</span>&nbsp;1.&nbsp;<a class="Comment" href="vim9.html#true">true</a>&nbsp;(および、ここでは示していないが&nbsp;<a class="Comment" href="eval.html#v:true">v:true</a>) はどちらも<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;true&quot; に文字列化されるが、旧来の Vim script では&nbsp;<a class="Comment" href="eval.html#v:true">v:true</a>&nbsp;は &quot;v:true&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に文字列化される。2. Vim9 script では '..' による文字列の連結は浮動小<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数点数を一貫して扱う。旧来の Vim script はそうではなく、最初の &quot;.&quot; ま<br>
@@ -2987,7 +2987,7 @@ Dictionary、Blob、Job、Tuple を含む) で &quot;!&quot; または &quot;!!&
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Identifier">string</span><span class="Special">(</span><span class="Normal">l</span><span class="Special">)</span>&nbsp;<span class="Statement">==</span>&nbsp;<span class="Constant">&quot;[9, '9.2']&quot;</span>&nbsp;&nbsp;<span class="Comment"># true</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">l</span>&nbsp;<span class="Statement">==</span>&nbsp;<span class="Constant">&quot;[9, '9.2']&quot;</span>&nbsp;&nbsp;<span class="Comment"># E1072: Cannot compare List with String</span><br>
 <br>
-<span class="Todo">WARNING</span>: OR 式がすべてのオペランドを評価しなくても&nbsp;<a class="Comment" href="vim9.html#true">true</a>&nbsp;であると判断できる場<br>
+<span class="Todo">WARNING:</span>&nbsp;OR 式がすべてのオペランドを評価しなくても&nbsp;<a class="Comment" href="vim9.html#true">true</a>&nbsp;であると判断できる場<br>
 合、短絡評価によって真偽値式のエラーが隠される可能性がある。評価が早期に停止す<br>
 るため、不正なコードが実行されないことがあり、Vim9 script の型関連のエラーを含<br>
 め、本来は実行時に発生するはずのエラーが隠される。例えば、クラス自体は比較に使<br>
@@ -3069,7 +3069,7 @@ Vim9 script には、真、偽、および null の状態を表す定義済み�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">CheckMyList</span><span class="Special">(</span><span class="Special">[]</span><span class="Special">)</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">CheckMyList</span><span class="Special">(</span><span class="Special">[</span><span class="Constant">8</span>,&nbsp;<span class="Constant">9</span><span class="Special">]</span><span class="Special">)</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: この例では、リスト &quot;l&quot; を&nbsp;<a class="Comment" href="vim9.html#null_list">null_list</a>&nbsp;ではなく&nbsp;<a class="Comment" href="vim9.html#null">null</a>&nbsp;と比較して<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;この例では、リスト &quot;l&quot; を&nbsp;<a class="Comment" href="vim9.html#null_list">null_list</a>&nbsp;ではなく&nbsp;<a class="Comment" href="vim9.html#null">null</a>&nbsp;と比較して<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いる。これは、デフォルト値の null_list と空リスト [] を区別できるよう<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;にするので便利である。null に対するテストについての詳細は<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="vim9.html#null-compare">null-compare</a>&nbsp;および&nbsp;<a class="Identifier" href="vim9.html#null-anomalies">null-anomalies</a>&nbsp;を参照。<br>
@@ -3093,7 +3093,7 @@ Vim9 script には、真、偽、および null の状態を表す定義済み�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Constant">'Q: &quot;v:false&quot; and &quot;false&quot; can be used interchangeably?'</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Constant">$'A:&nbsp;</span><span class="Special">{</span><span class="Identifier">v:</span><span class="Identifier">false</span>&nbsp;<span class="Statement">==</span>&nbsp;<span class="Constant">false</span><span class="Special">}</span><span class="Constant">'</span><br>
 <br>
-<span class="Todo">Note</span>:&nbsp;<a class="Comment" href="eval.html#v:none">v:none</a>&nbsp;に対する &quot;none&quot; はない。他の言語に同等のものがないためである。<br>
+<span class="Todo">Note:</span>&nbsp;<a class="Comment" href="eval.html#v:none">v:none</a>&nbsp;に対する &quot;none&quot; はない。他の言語に同等のものがないためである。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#vim9-string-index" name="vim9-string-index">vim9-string-index</a><br>
 [idx] による文字列のインデックス指定、または [idx : idx] によるスライスの取得<br>
@@ -3140,7 +3140,7 @@ Vim9 script には、真、偽、および null の状態を表す定義済み�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">enddef</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F1148<span class="Special">()</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: スコープや、変数にプリフィックスが付いているかどうかによって、他<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;スコープや、変数にプリフィックスが付いているかどうかによって、他<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のエラーが発生する場合がある。例えば、この例の変数がバッファ変数ではな<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;く&nbsp;<a class="Comment" href="vim9.html#:var">:var</a>&nbsp;で宣言されていた場合は&nbsp;<a class="Identifier" href="eval.html#E1141">E1141</a>&nbsp;が発生し、スコープが&nbsp;<a class="Comment" href="vim9.html#:def">:def</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ではなくスクリプトローカルであった場合は&nbsp;<a class="Identifier" href="eval.html#E689">E689</a>&nbsp;が発生する。<br>
@@ -3550,7 +3550,7 @@ Ex コマンドの範囲指定には、多くの場合コロンを前置する�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">delfunction</span><span class="Statement">!</span>&nbsp;F_1084<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># E1084: Cannot delete Vim9 script function F_1084</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 一般的なエラー&nbsp;<a class="Constant" href="vim9.html#E1028" name="E1028">E1028</a>&nbsp;(&quot;Compiling :def function<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;一般的なエラー&nbsp;<a class="Constant" href="vim9.html#E1028" name="E1028">E1028</a>&nbsp;(&quot;Compiling :def function<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;failed&quot;) は、コンパイル中に発生した原因不明のエラーを<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;示す。再現可能な場合は、Vim のエラー報告に欠陥がある可<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;能性があるため、<br>
@@ -3743,7 +3743,7 @@ Vim9 script 内のスクリプトローカル変数は、スクリプトレベ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="vim9.html#:disassemble">:disassemble</a>&nbsp;と似ているが、デバッグに使用される命令<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が含まれている。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>:&nbsp;<span class="Special">{func}</span>&nbsp;のコマンドライン補完では、スクリプトローカル関数が&nbsp;<span class="Special">&lt;SNR&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;<span class="Special">{func}</span>&nbsp;のコマンドライン補完では、スクリプトローカル関数が&nbsp;<span class="Special">&lt;SNR&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;とともに表示される。<a class="Identifier" href="builtin.html#wildmenumode()">wildmenumode()</a>&nbsp;などのオプションによっては、&quot;s:&quot;、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&lt;S&quot;、または関数名を直接入力することで補完が機能する場合がある。(例え<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ば&nbsp;<a class="Identifier" href="starting.html#-u">-u</a>&nbsp;NONE で起動した Vim では、&quot;:disa s:&quot; と&nbsp;<a class="Identifier" href="cmdline.html#c_CTRL-E">c_CTRL-E</a>&nbsp;はスクリプ<br>
@@ -3884,7 +3884,7 @@ Vim9 script では、ループ変数はループが終了した後は無効に�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Identifier">v:</span><span class="Identifier">exception</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">endtry</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: タイマーでは&nbsp;<a class="Comment" href="eval.html#:echowindow">:echowindow</a>&nbsp;を使用すると便利である。メッセージが<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;タイマーでは&nbsp;<a class="Comment" href="eval.html#:echowindow">:echowindow</a>&nbsp;を使用すると便利である。メッセージが<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ポップアップに表示されるため、トリガー時にユーザーの操作を妨げない。<br>
 <br>
 <br>
@@ -3947,7 +3947,7 @@ Vim9 script で同等のもの:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim9<span class="Special">(</span><span class="Constant">10</span><span class="Special">)</span><span class="Statement">-&gt;</span><span class="Identifier">popup_notification</span><span class="Special">(</span><span class="Special">{</span><span class="Normal">time</span>:&nbsp;<span class="Constant">3000</span><span class="Special">}</span><span class="Special">)</span>&nbsp;&nbsp;<span class="Comment"># 'Result: 42' をポップアッ</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># プする</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: この例では、(<a class="Comment" href="vim9.html#:def">:def</a>&nbsp;関数の外側で) 以下のことも示している:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;この例では、(<a class="Comment" href="vim9.html#:def">:def</a>&nbsp;関数の外側で) 以下のことも示している:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 旧来の&nbsp;<a class="Identifier" href="eval.html##{}">#{}</a>&nbsp;から &quot;#&quot; を削除する -&nbsp;<a class="Identifier" href="vim9.html#vim9-literal-dict">vim9-literal-dict</a>&nbsp;を参照、および<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;<a class="Comment" href="userfunc.html#:call">:call</a>&nbsp;の省略 (Vim9 script では不要だが許可されている)<br>
 <br>
@@ -3970,7 +3970,7 @@ Vim9 script で同等のもの:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">set</span>&nbsp;<span class="PreProc">foldmethod</span><span class="Statement">=</span>expr<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">normal</span><span class="Statement">!</span>&nbsp;zM<br>
 <br>
-Warning: このスクリプトは、この vim9.txt ヘルプバッファの &quot;Heading 1&quot; レベルに<br>
+<span class="Todo">Warning:</span>&nbsp;このスクリプトは、この vim9.txt ヘルプバッファの &quot;Heading 1&quot; レベルに<br>
 折り畳みを作成して適用する。(スクリプトを読み込んだ後、通常モードで&nbsp;<a class="Identifier" href="fold.html#zR">zR</a>&nbsp;を使<br>
 用すると、すべての折り畳むを開くことができる。）<br>
 <br>
@@ -4357,7 +4357,7 @@ enumvalue 型 (<a class="Identifier" href="eval.html#v:t_enumvalue">v:t_enumvalu
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Constant">$&quot;Quad&nbsp;&nbsp;</span><span class="Special">\t</span><span class="Special">{</span><span class="Normal">Quad</span><span class="Statement">-&gt;</span><span class="Identifier">type</span><span class="Special">()</span><span class="Special">}</span><span class="Constant">&nbsp;&nbsp;</span><span class="Special">\t</span><span class="Special">{</span><span class="Normal">Quad</span><span class="Statement">-&gt;</span><span class="Identifier">typename</span><span class="Special">()</span><span class="Special">}</span><span class="Constant">&quot;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Constant">$&quot;myQuad</span><span class="Special">\t</span><span class="Special">{</span><span class="Normal">myQuad</span><span class="Statement">-&gt;</span><span class="Identifier">type</span><span class="Special">()</span><span class="Special">}</span><span class="Special">\t</span><span class="Special">{</span><span class="Normal">myQuad</span><span class="Statement">-&gt;</span><span class="Identifier">typename</span><span class="Special">()</span><span class="Special">}</span><span class="Constant">&quot;</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Notes</span>: ここでは組み込みメソッド &quot;string()&quot; が使用されている。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Notes:</span>&nbsp;ここでは組み込みメソッド &quot;string()&quot; が使用されている。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="vim9class.html#object-string()">object-string()</a>&nbsp;を参照。Quad と myQuad の typename() は同じ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&quot;enum<span class="Special">&lt;Quad&gt;</span>&quot;) だが、type() は区別される (myQuad は 16、つまり<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EnumValue を返すが、Quad は 15、つまり Enum を返す)。<br>
@@ -4413,7 +4413,7 @@ Vimは &quot;b:two&quot; の型を知らないため、式は list<span class="S
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Identifier">v:</span><span class="Identifier">exception</span>&nbsp;&nbsp;<span class="Comment"># E1012: Type mismatch; Expected number but got...</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">endtry</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 型チェックがいつ行われるかを示すエラーメッセージがどのように異な<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;型チェックがいつ行われるかを示すエラーメッセージがどのように異な<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;るかに注意。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1104" name="E1104">E1104</a><br>
@@ -4440,7 +4440,7 @@ Vimは &quot;b:two&quot; の型を知らないため、式は list<span class="S
 型が予期されないコンテキストにて型が使用されると、E1272 が発生する可能性がああ<br>
 る。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:vim9cmd echo islocked('x: string')</div>
-&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: エラーを見るには、このコマンドは読み込むのではなく、Vim のコマンドラ<br>
+&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;エラーを見るには、このコマンドは読み込むのではなく、Vim のコマンドラ<br>
 &nbsp;&nbsp;インから実行する必要がある。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1363" name="E1363">E1363</a>&nbsp;<a class="Constant" href="vim9.html#E1395" name="E1395">E1395</a><br>
@@ -4669,7 +4669,7 @@ script と Vim9 script の両方で、辞書以外の値が必要なときに、
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9cmd</span>&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Identifier">v:</span><span class="Identifier">none</span>&nbsp;<span class="Statement">is</span>&nbsp;<span class="Constant">8</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># E1072: Cannot compare special wit...</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9cmd</span>&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Identifier">v:</span><span class="Identifier">true</span>&nbsp;<span class="Statement">is</span>&nbsp;<span class="Identifier">v:</span><span class="Identifier">none</span>&nbsp;&nbsp;&nbsp;<span class="Comment"># E1072: Cannot compare bool with s...</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 上記の最後の 2 つの Vim9 script の例では、<a class="Comment" href="eval.html#v:none">v:none</a>&nbsp;ではエラーが<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;上記の最後の 2 つの Vim9 script の例では、<a class="Comment" href="eval.html#v:none">v:none</a>&nbsp;ではエラーが<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;発生するが、<a class="Comment" href="eval.html#v:null">v:null</a>&nbsp;では&nbsp;<a class="Comment" href="vim9.html#false">false</a>&nbsp;が返される (これは&nbsp;<a class="Comment" href="vim9.html#null">null</a>&nbsp;と同じであ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る -&nbsp;<a class="Identifier" href="eval.html#v:null">v:null</a>&nbsp;を参照):<br>
 <br>
@@ -4812,7 +4812,7 @@ Vim9 script では&nbsp;<a class="Identifier" href="builtin.html#flatten()">flat
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Normal">FlatSort</span>&nbsp;<span class="Statement">=</span>&nbsp;<span class="Special">(</span>...<span class="Normal">v</span>:&nbsp;<span class="Type">list&lt;</span><span class="Type">any</span><span class="Type">&gt;</span><span class="Special">)</span>&nbsp;<span class="Statement">=&gt;</span>&nbsp;<span class="Identifier">flattennew</span><span class="Special">(</span><span class="Normal">v</span><span class="Special">)</span><span class="Statement">-&gt;</span><span class="Identifier">sort</span><span class="Special">(</span><span class="Constant">'n'</span><span class="Special">)</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">FlatSort</span><span class="Special">(</span><span class="Constant">true</span>,&nbsp;<span class="Special">[[[</span><span class="Constant">5</span>,&nbsp;<span class="Constant">3</span><span class="Special">]</span>,&nbsp;<span class="Constant">2</span><span class="Special">]</span>,&nbsp;<span class="Constant">4</span><span class="Special">]</span><span class="Special">)</span>&nbsp;&nbsp;&nbsp;<span class="Comment"># [true, 2, 3, 4, 5]</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: lambda 式で&nbsp;<span class="Special">&lt;any&gt;</span>&nbsp;を使用しても、funcref の型チェックは回避されな<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;lambda 式で&nbsp;<span class="Special">&lt;any&gt;</span>&nbsp;を使用しても、funcref の型チェックは回避されな<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い。宣言された funcref の型によって制約され、以下の例に示すように、型<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が一致しない場合は実行時エラーまたはコンパイルエラーが発生する:<br>
 <br>
@@ -4924,7 +4924,7 @@ FlexArgs が最初に文字列引数を受け取り、次にリスト引数を�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">endenum</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">var</span>&nbsp;<span class="Normal">e</span>:&nbsp;Enum&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Special">[</span><span class="Normal">e</span>,&nbsp;<span class="Normal">e</span>&nbsp;<span class="Statement">==</span>&nbsp;<span class="Constant">null</span><span class="Special">]</span>&nbsp;&nbsp;<span class="Comment"># [object of [unknown], true]</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Notes</span>: (1) 空のジョブ、空のチャネル、空のオブジェクト型の説明について<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Notes:</span>&nbsp;(1) 空のジョブ、空のチャネル、空のオブジェクト型の説明について<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、<a class="Identifier" href="builtin.html#empty()">empty()</a>&nbsp;を参照。(2)&nbsp;<a class="Comment" href="vim9class.html#class">class</a>、<a class="Comment" href="vim9class.html#enum">enum</a>、<a class="Comment" href="vim9class.html#typealias">typealias</a>&nbsp;型は値として使<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用できないため、<a class="Comment" href="vim9.html#null">null</a>&nbsp;と比較できない (それぞれ&nbsp;<a class="Identifier" href="vim9class.html#E1405">E1405</a>、<a class="Identifier" href="vim9class.html#E1421">E1421</a>、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="vim9class.html#E1403">E1403</a>&nbsp;を参照)。<br>
@@ -5031,7 +5031,7 @@ null_<span class="Special">&lt;type&gt;</span>&nbsp;==&nbsp;<a class="Comment" h
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">result</span><span class="Statement">-&gt;</span><span class="Identifier">empty</span><span class="Special">()</span>&nbsp;<span class="Statement">?</span>&nbsp;<span class="Constant">$&quot;No matches for '</span><span class="Special">{</span><span class="Normal">C</span><span class="Special">}</span><span class="Constant">'&quot;</span>&nbsp;<span class="Statement">:</span>&nbsp;<span class="Constant">$&quot;</span><span class="Special">{</span><span class="Normal">result</span><span class="Special">}</span><span class="Constant">&quot;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">endif</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: &quot;result == null&quot; の代わりに &quot;result == null_list&quot; を使用すると、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;&quot;result == null&quot; の代わりに &quot;result == null_list&quot; を使用すると、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[] != null であるのに対し [] == null_list であるため、エラー (何も入力<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;されていない) と有効な結果 (何も一致していない) を区別できなくなる。<br>
 <br>
@@ -5126,7 +5126,7 @@ null_<span class="Special">&lt;type&gt;</span>&nbsp;と同等であるが、同�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">endenum</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">var</span>&nbsp;<span class="Normal">ne</span>:&nbsp;Enum&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">ne</span>&nbsp;<span class="Statement">==</span>&nbsp;<span class="Constant">null</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: job のような特殊な変数はデフォルトで null に設定され、対応する空<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;job のような特殊な変数はデフォルトで null に設定され、対応する空<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の値を持つ特殊な変数はない。<br>
 <br>
 空に初期化されたコンテナ変数は null_<span class="Special">&lt;type&gt;</span>&nbsp;に等しいため、これらはすべて&nbsp;<a class="Comment" href="vim9.html#true">true</a><br>
@@ -5246,7 +5246,7 @@ U、Aなど)。複数の文字で構成されている場合もあるが、名�
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MyFunc&lt;number, string, list&lt;number&gt;&gt;()</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: このセクションには、<a class="Identifier" href="vim9.html#generic-function-example">generic-function-example</a>&nbsp;など、読み込むこ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;このセクションには、<a class="Identifier" href="vim9.html#generic-function-example">generic-function-example</a>&nbsp;など、読み込むこ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;とができる実用的な例がいくつかある。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1555" name="E1555">E1555</a>&nbsp;<a class="Constant" href="vim9.html#E1556" name="E1556">E1556</a>&nbsp;<a class="Constant" href="vim9.html#E1557" name="E1557">E1557</a>&nbsp;<a class="Constant" href="vim9.html#E1559" name="E1559">E1559</a><br>
@@ -5946,7 +5946,7 @@ Vim コマンドの行を命令にコンパイルする場合、可能な限り�
 時に発生し、2 つの数値の加算が失敗することはほとんどないため、実行時にエラー処<br>
 理は必要ない。<br>
 <br>
-<span class="Todo">Note</span>: 余談だが、例外として整数オーバーフローがある。これは、結果が整数の最大値<br>
+<span class="Todo">Note:</span>&nbsp;余談だが、例外として整数オーバーフローがある。これは、結果が整数の最大値<br>
 を超える場合である。例えば、64 ビット符号付き整数に加算した結果が 2^63 を超え<br>
 る場合を考える:<br>
 <br>

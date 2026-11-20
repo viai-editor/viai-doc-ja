@@ -425,7 +425,7 @@ Netrw にはたくさんの変数が用意されていて、好きなように�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 内部処理で優先番号とファイル名を区切るのに使われる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="pi_netrw.html#netrw-p12">netrw-p12</a>&nbsp;参照。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_silent" name="g:netrw_silent">g:netrw_silent</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=0 : 普通に転送処理をする<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_silent" name="g:netrw_silent">g:netrw_silent</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=0 : 普通に転送処理をする<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=1 : 静か (silent) に転送処理をする<br>
 <br>
 &nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_cygwin" name="g:netrw_cygwin">g:netrw_cygwin</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =1 windows で cygwin 付属の scp を想定する。また、ネッ<br>
@@ -506,7 +506,7 @@ ftp 操作をするために複数の &quot;ftp セッション&quot; を使い�
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:netrw_scp_cmd = '&quot;c:\Program Files\PuTTY\pscp.exe&quot; -q -batch'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:netrw_sftp_cmd= '&quot;c:\Program Files\PuTTY\psftp.exe&quot;'</div>
 <br>
-(<span class="Todo">note</span>: windows 7 では putty v0.6 の &quot;-batch&quot; オプションが機能しないという報告<br>
+(<span class="Todo">note:</span>&nbsp;windows 7 では putty v0.6 の &quot;-batch&quot; オプションが機能しないという報告<br>
 があったので、そのようなシステムではオプションを使わないようにするといいでしょ<br>
 う。)<br>
 <br>
@@ -618,7 +618,7 @@ ftp を使うときは userid と password を聞かれることがあります�
 :Nread コマンドと :Nwrite コマンドには複数のファイル名を指定できます。<br>
 <br>
 <br>
-<span class="Statement">NETRC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#netrw-netrc" name="netrw-netrc">netrw-netrc</a><br>
+<span class="Statement">NETRC</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#netrw-netrc" name="netrw-netrc">netrw-netrc</a><br>
 <br>
 &lt;.netrc&gt; ファイル (普通はホームディレクトリある) には、ホスト (マシン) と<br>
 userid/password を関連付ける設定を書くことができます。<br>
@@ -632,7 +632,7 @@ userid/password を関連付ける設定を書くことができます。<br>
 ftp が自動的に &lt;.netrc&gt; ファイルを使うようになっている必要があります。&lt;.netrc&gt;<br>
 ファイルが存在する場合は、ftp 転送において user-id と passwordは聞かれません。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このファイルにはパスワードが含まれているので、他の誰もファイルを読めな<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いようにしてください。ほとんどのプログラムは他人が読むことができる<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.netrc ファイルの使用を拒否します。システム管理者は常にそのファイルを<br>
@@ -830,7 +830,7 @@ netrw は複数のプロトコルをサポートしています。それぞれ�
 &nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="pi_netrw.html#g:netrw_list_cmd">g:netrw_list_cmd</a>&nbsp;&nbsp; 変数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&quot;ssh USEPORT HOSTNAME ls -Fa&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;g:netrw_rcp_cmd&nbsp;&nbsp;&nbsp;&nbsp;変数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&quot;rcp&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;g:netrw_rsync_cmd&nbsp;&nbsp;変数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&quot;rsync&quot;<br>
-<span class="Statement">&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_rsync_sep" name="g:netrw_rsync_sep">g:netrw_rsync_sep</a>&nbsp;&nbsp;変数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&quot;/&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルスペックからホスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_rsync_sep" name="g:netrw_rsync_sep">g:netrw_rsync_sep</a>&nbsp;&nbsp;変数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&quot;/&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルスペックからホスト<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名を分けるのに使われる<br>
 &nbsp;&nbsp;&nbsp;&nbsp;g:netrw_scp_cmd&nbsp;&nbsp;&nbsp;&nbsp;変数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&quot;scp -q&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;g:netrw_sftp_cmd&nbsp;&nbsp; 変数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&quot;sftp&quot;<br>
@@ -984,7 +984,7 @@ netrw で実行できる操作の一覧は&nbsp;<a class="Identifier" href="pi_n
 装飾文字は&nbsp;<a class="Identifier" href="pi_netrw.html#g:netrw_sort_sequence">g:netrw_sort_sequence</a>&nbsp;にも影響します。<br>
 <br>
 <br>
-<span class="Statement">QUICK HELP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#netrw-quickhelp" name="netrw-quickhelp">netrw-quickhelp</a>&nbsp;{{ "{{{" }}2<br>
+<span class="Statement">QUICK HELP</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#netrw-quickhelp" name="netrw-quickhelp">netrw-quickhelp</a>&nbsp;{{ "{{{" }}2<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">(ctrl-] を押すと項目を選択できます)</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ブラウジングの紹介..............................<a class="Identifier" href="pi_netrw.html#netrw-intro-browse">netrw-intro-browse</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;クイックリファレンス: マップ..................<a class="Identifier" href="pi_netrw.html#netrw-quickmap">netrw-quickmap</a><br>
@@ -1124,7 +1124,7 @@ netrw で実行できる操作の一覧は&nbsp;<a class="Identifier" href="pi_n
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mb</div>
 <br>
-<span class="Todo">Note</span>: ブックマークされたパスは正規化され、絶対パスとして保存される。<br>
+<span class="Todo">Note:</span>&nbsp;ブックマークされたパスは正規化され、絶対パスとして保存される。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#.netrwbook" name=".netrwbook">.netrwbook</a><br>
 ブックマークは、Vim のセッションの間 .netrwbook というファイル内に&nbsp;<a class="Identifier" href="eval.html#List">List</a>&nbsp;とし<br>
@@ -1349,7 +1349,7 @@ tree 形式ではトップディレクトリに続いてファイル/ディレ�
 <span class="Special">{cnt}</span>&nbsp;を省略すると、現在のブックマークの一覧が表示され、移動するブックマーク番<br>
 号の入力を求められる。<br>
 <br>
-<span class="Todo">Note</span>:&nbsp;<a class="Identifier" href="pi_netrw.html#netrw-qb">netrw-qb</a>&nbsp;はブックマークと履歴を両方表示する。履歴の場所に移動したい場<br>
+<span class="Todo">Note:</span>&nbsp;<a class="Identifier" href="pi_netrw.html#netrw-qb">netrw-qb</a>&nbsp;はブックマークと履歴を両方表示する。履歴の場所に移動したい場<br>
 合は&nbsp;<a class="Identifier" href="pi_netrw.html#netrw-u">netrw-u</a>&nbsp;と&nbsp;<a class="Identifier" href="pi_netrw.html#netrw-U">netrw-U</a>&nbsp;を参照。<br>
 <br>
 関連項目:<br>
@@ -1446,9 +1446,9 @@ netrw (と vim) が起動されていない間、履歴を保持します。デ�
 <br>
 パターンにマッチしたファイルを削除するには:<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;&nbsp;&nbsp;</span>* :MF パターン (<a class="Identifier" href="pi_netrw.html#netrw-:MF">netrw-:MF</a>&nbsp;参照) を使う。そして &quot;D&quot; を押す。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;* :MF パターン (<a class="Identifier" href="pi_netrw.html#netrw-:MF">netrw-:MF</a>&nbsp;参照) を使う。そして &quot;D&quot; を押す。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;&nbsp;&nbsp;</span>* mr (<a class="Identifier" href="pi_netrw.html#netrw-mr">netrw-mr</a>&nbsp;参照) を使う。パターンを入力するためのプロンプトが表示さ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;* mr (<a class="Identifier" href="pi_netrw.html#netrw-mr">netrw-mr</a>&nbsp;参照) を使う。パターンを入力するためのプロンプトが表示さ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れます。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入力したパターンにマッチしたファイルがマークされるので、それから &quot;D&quot; を<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;押す。<br>
@@ -1519,7 +1519,7 @@ g:netrw_rmdir_cmd によるディレクトリの削除が失敗した場合は�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;まり、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;<span class="Special">[N]</span>&nbsp;&lt; 0 : Lexplore ウィンドウには&nbsp;<a class="Identifier" href="pattern.html#N">N</a>&nbsp;カラムを使用する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;<span class="Special">[N]</span>&nbsp;= 0 : 通常の分割が行われる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;<span class="Special">[N]</span>&nbsp;&gt; 0 : カレントウィンドウの&nbsp;<span class="Special">N</span>% が新しいウィンドウに使用される<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;<span class="Special">[N]</span>&nbsp;&gt; 0 : カレントウィンドウの N% が新しいウィンドウに使用される<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この方法を好む人達はしばしばツリービューも好むでしょう。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="pi_netrw.html#g:netrw_liststyle">g:netrw_liststyle</a>参照。<br>
@@ -1536,7 +1536,7 @@ g:netrw_rmdir_cmd によるディレクトリの削除が失敗した場合は�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#netrw-:Sexplore" name="netrw-:Sexplore">netrw-:Sexplore</a><br>
 :<span class="Special">[N]</span>Sexplore は、常に新しいウィンドウを作成してローカルディレクトリブラウザー<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を開始します。Explore と同様、通常はウィンドウは水平分割されます。<br>
-:[<span class="Special">N</span>}Sexplore!&nbsp;<span class="Special">[dir]</span>&nbsp;は、:Sexplore と同じですが、ウィンドウを垂直分割します。<br>
+:[N}Sexplore!&nbsp;<span class="Special">[dir]</span>&nbsp;は、:Sexplore と同じですが、ウィンドウを垂直分割します。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#netrw-:Texplore" name="netrw-:Texplore">netrw-:Texplore</a><br>
 :Texplore&nbsp;&nbsp;<span class="Special">[dir]</span>&nbsp;は、ブラウザーウィンドウを作成する前に&nbsp;<a class="Identifier" href="tabpage.html#:tabnew">:tabnew</a>&nbsp;を実行しま<br>
@@ -1943,7 +1943,7 @@ netrw はファイルをマークする方法をいくつか提供していま�
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:MF *.c</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* (<span class="Todo">Note</span>: :MF の引数は&nbsp;<a class="Identifier" href="map.html#<f-args>">&lt;f-args&gt;</a>&nbsp;として、空白区切りで解釈される)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* (<span class="Todo">Note:</span>&nbsp;:MF の引数は&nbsp;<a class="Identifier" href="map.html#<f-args>">&lt;f-args&gt;</a>&nbsp;として、空白区切りで解釈される)<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<a class="Identifier" href="editing.html#argument-list">argument-list</a>&nbsp;を使用してファイルをマークする (<a class="Identifier" href="pi_netrw.html#netrw-mA">netrw-mA</a>)<br>
 <br>
@@ -2200,7 +2200,7 @@ mt (<a class="Identifier" href="pi_netrw.html#netrw-mt">netrw-mt</a>) でコピ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ローカルマークファイルリスト使用)<br>
 <br>
 この &quot;mh&quot; コマンドは、マークされたファイルの拡張子を隠しリストに追加、または削<br>
-除します。<span class="Todo">Note</span>: 同じ拡張子のファイルが複数選択されていた場合はファイルの数だけ<br>
+除します。<span class="Todo">Note:</span>&nbsp;同じ拡張子のファイルが複数選択されていた場合はファイルの数だけ<br>
 追加と削除が繰り返されます (つまり、同じ拡張子のファイルが偶数個選択されている<br>
 場合はそれを選択しなかったのと同じ)。<br>
 <br>
@@ -2235,23 +2235,23 @@ mt (<a class="Identifier" href="pi_netrw.html#netrw-mt">netrw-mt</a>) で移動�
 <br>
 ファイルコピー/移動のターゲットを設定する (<a class="Identifier" href="pi_netrw.html#netrw-mc">netrw-mc</a>と<a class="Identifier" href="pi_netrw.html#netrw-mm">netrw-mm</a>&nbsp;参照):<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span>* カーソルがファイルの上にある場合、netrw ウィンドウに表示されているディレク<br>
+&nbsp;&nbsp;* カーソルがファイルの上にある場合、netrw ウィンドウに表示されているディレク<br>
 &nbsp;&nbsp;&nbsp;&nbsp;トリがターゲットとして設定される。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span>* また、カーソルがバナー内にある場合、netrw ウィンドウに現在表示されている<br>
+&nbsp;&nbsp;* また、カーソルがバナー内にある場合、netrw ウィンドウに現在表示されている<br>
 &nbsp;&nbsp;&nbsp;&nbsp;ディレクトリがコピー/移動先として使用される。ただし、そのディレクトリが既<br>
 &nbsp;&nbsp;&nbsp;&nbsp;に移動先になっている場合は、&quot;mt&quot; を再度入力すると移動先がクリアされる。し<br>
 &nbsp;&nbsp;&nbsp;&nbsp;たがって、バナー内で &quot;mt&quot; を繰り返し入力すると、カレントディレクトリが移動<br>
 &nbsp;&nbsp;&nbsp;&nbsp;先として切り替わる。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span>* カーソルがディレクトリの上にある場合は、そのディレクトリがターゲットとして<br>
+&nbsp;&nbsp;* カーソルがディレクトリの上にある場合は、そのディレクトリがターゲットとして<br>
 &nbsp;&nbsp;&nbsp;&nbsp;設定される。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span>* :MT&nbsp;<span class="Special">[directory]</span>&nbsp;コマンドでターゲットを設定できる&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#netrw-:MT" name="netrw-:MT">netrw-:MT</a><br>
+&nbsp;&nbsp;* :MT&nbsp;<span class="Special">[directory]</span>&nbsp;コマンドでターゲットを設定できる&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#netrw-:MT" name="netrw-:MT">netrw-:MT</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;このコマンドは&nbsp;<a class="Identifier" href="map.html#<q-args>">&lt;q-args&gt;</a>&nbsp;を使うので、ディレクトリ名のスペースはエスケープ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;しなくても構わない。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span>* マウスが有効化された vim か gvim では、ターゲットを&nbsp;<span class="Special">&lt;c-leftmouse&gt;</span>&nbsp;によって<br>
+&nbsp;&nbsp;* マウスが有効化された vim か gvim では、ターゲットを&nbsp;<span class="Special">&lt;c-leftmouse&gt;</span>&nbsp;によって<br>
 &nbsp;&nbsp;&nbsp;&nbsp;選択できる。<br>
 <br>
 vim セッションでは、一度にコピー/移動先となるターゲットは 1 つだけである。つま<br>
@@ -2354,29 +2354,29 @@ netrw ブラウザーの各種設定は変数で管理されていて、それ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を設定する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 初期設定: =1<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_alto" name="g:netrw_alto">g:netrw_alto</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分割ウィンドウを(上ではなく)下に開くようにする<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_alto" name="g:netrw_alto">g:netrw_alto</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分割ウィンドウを(上ではなく)下に開くようにする<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="Identifier" href="pi_netrw.html#netrw-o">netrw-o</a>&nbsp;参照)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 初期設定: =&amp;sb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="Type" href="options.html#'sb'">'sb'</a>&nbsp;参照)<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_altv" name="g:netrw_altv">g:netrw_altv</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分割ウィンドウを(左ではなく)右に開くようにする<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_altv" name="g:netrw_altv">g:netrw_altv</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分割ウィンドウを(左ではなく)右に開くようにする<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="Identifier" href="pi_netrw.html#netrw-v">netrw-v</a>&nbsp;参照)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 初期設定: =&amp;spr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (<a class="Type" href="options.html#'spr'">'spr'</a>&nbsp;参照)<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_banner" name="g:netrw_banner">g:netrw_banner</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バナーの表示を切り替える<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_banner" name="g:netrw_banner">g:netrw_banner</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バナーの表示を切り替える<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=0: バナーを表示しない<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=1: バナーを表示する (初期設定)<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_bannerbackslash" name="g:netrw_bannerbackslash">g:netrw_bannerbackslash</a>&nbsp;&nbsp;&nbsp;&nbsp; この変数が存在し、ゼロ以外なら、バナーの表示に<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_bannerbackslash" name="g:netrw_bannerbackslash">g:netrw_bannerbackslash</a>&nbsp;&nbsp;&nbsp;&nbsp; この変数が存在し、ゼロ以外なら、バナーの表示に<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(スラッシュではなく) バックスラッシュが使われ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_browse_split" name="g:netrw_browse_split">g:netrw_browse_split</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ブラウザーで&nbsp;<span class="Special">&lt;cr&gt;</span>&nbsp;を押してファイルを開くとき:<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_browse_split" name="g:netrw_browse_split">g:netrw_browse_split</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ブラウザーで&nbsp;<span class="Special">&lt;cr&gt;</span>&nbsp;を押してファイルを開くとき:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=0: 同じウィンドウを使う (デフォルト)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=1: ウィンドウを水平分割する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=2: ウィンドウを垂直分割する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=3: 新しいタブで開く<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=4: &quot;P&quot; で開く (以前のウィンドウで開く)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>:&nbsp;<a class="Identifier" href="pi_netrw.html#g:netrw_preview">g:netrw_preview</a>&nbsp;を使うと (水平分割<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;<a class="Identifier" href="pi_netrw.html#g:netrw_preview">g:netrw_preview</a>&nbsp;を使うと (水平分割<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;から変更して) 垂直分割にできます。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=[サーバー名,タブ番号,ウィンドウ番号]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このような&nbsp;<a class="Identifier" href="eval.html#List">List</a>&nbsp;を指定すると、<br>
@@ -2392,12 +2392,12 @@ netrw ブラウザーの各種設定は変数で管理されていて、それ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="pi_netrw.html#netrw-C">netrw-C</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="pi_netrw.html#netrw-cr">netrw-cr</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="pi_netrw.html#netrw-ctrl-r">netrw-ctrl-r</a><br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_chgperm" name="g:netrw_chgperm">g:netrw_chgperm</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Unix/Linux: &quot;chmod PERM FILENAME&quot;<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_chgperm" name="g:netrw_chgperm">g:netrw_chgperm</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Unix/Linux: &quot;chmod PERM FILENAME&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Windows:&nbsp;&nbsp;&nbsp;&nbsp;&quot;cacls FILENAME /e /p PERM&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルのアクセス権限を変更するのに使われま<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_clipboard" name="g:netrw_clipboard">g:netrw_clipboard</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =1<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_clipboard" name="g:netrw_clipboard">g:netrw_clipboard</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =1<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルトでnetrw はクリップボードの値が変更さ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れないようにしようとします。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;しかし、一部のユーザーからスピードの問題がある<br>
@@ -2409,10 +2409,10 @@ netrw ブラウザーの各種設定は変数で管理されていて、それ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(うっかり)変更された場合でも、それは以前の状態<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に復元されないということです。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_compress" name="g:netrw_compress">g:netrw_compress</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&quot;gzip&quot;<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_compress" name="g:netrw_compress">g:netrw_compress</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&quot;gzip&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイル圧縮コマンド<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:Netrw_corehandler" name="g:Netrw_corehandler">g:Netrw_corehandler</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; netrw ブラウザーの &quot;x&quot; コマンドで&nbsp;<span class="Special">&lt;core&gt;</span>&nbsp;ファ<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:Netrw_corehandler" name="g:Netrw_corehandler">g:Netrw_corehandler</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; netrw ブラウザーの &quot;x&quot; コマンドで&nbsp;<span class="Special">&lt;core&gt;</span>&nbsp;ファ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;イルを処理するときの追加処理を設定できます。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:Netrw_corehandler には 1 つ、または複数の関数<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参照 (<a class="Identifier" href="eval.html#Funcref">Funcref</a>) を指定できます。(g:Netrw...<br>
@@ -2420,10 +2420,10 @@ netrw ブラウザーの各種設定は変数で管理されていて、それ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存するために必要です)<br>
 <br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_ctags" name="g:netrw_ctags">g:netrw_ctags</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&quot;ctags&quot;<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_ctags" name="g:netrw_ctags">g:netrw_ctags</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&quot;ctags&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タグを作成するための外部コマンド<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_cursor" name="g:netrw_cursor">g:netrw_cursor</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 2 (初期設定)<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_cursor" name="g:netrw_cursor">g:netrw_cursor</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 2 (初期設定)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'cursorline'">'cursorline'</a>&nbsp;(cul) と&nbsp;<a class="Type" href="options.html#'cursorcolumn'">'cursorcolumn'</a>&nbsp;(cuc) を<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用するかどうかをコントロールする:<br>
 <br>
@@ -2451,7 +2451,7 @@ netrw ブラウザーの各種設定は変数で管理されていて、それ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;実行されたときに有効だった&nbsp;<a class="Type" href="options.html#'cuc'">'cuc'</a>&nbsp;および<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="MissingTag">'cal'</span>&nbsp;の設定値を意味します。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_decompress" name="g:netrw_decompress">g:netrw_decompress</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= { '.lz4':&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'lz4 -d',<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_decompress" name="g:netrw_decompress">g:netrw_decompress</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= { '.lz4':&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'lz4 -d',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.lzo':&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'lzop -d',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.lz':&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'lzip -dk',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.7z':&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '7za x',<br>
@@ -2481,15 +2481,15 @@ netrw ブラウザーの各種設定は変数で管理されていて、それ�
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;拡張子と伸長プログラムを関連付ける辞書<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_dirhistmax" name="g:netrw_dirhistmax">g:netrw_dirhistmax</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=10: 履歴の最大数を設定する。履歴を使用しな<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_dirhistmax" name="g:netrw_dirhistmax">g:netrw_dirhistmax</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=10: 履歴の最大数を設定する。履歴を使用しな<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; い場合はゼロを設定する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (関連:&nbsp;<a class="Identifier" href="pi_netrw.html#netrw-qb">netrw-qb</a>&nbsp;<a class="Identifier" href="pi_netrw.html#netrw-u">netrw-u</a>&nbsp;<a class="Identifier" href="pi_netrw.html#netrw-U">netrw-U</a>)<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_dynamic_maxfilenamelen" name="g:netrw_dynamic_maxfilenamelen">g:netrw_dynamic_maxfilenamelen</a>&nbsp;=32:&nbsp;<a class="Identifier" href="pi_netrw.html#g:netrw_maxfilenamelen">g:netrw_maxfilenamelen</a>&nbsp;(ローカルファ<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_dynamic_maxfilenamelen" name="g:netrw_dynamic_maxfilenamelen">g:netrw_dynamic_maxfilenamelen</a>&nbsp;=32:&nbsp;<a class="Identifier" href="pi_netrw.html#g:netrw_maxfilenamelen">g:netrw_maxfilenamelen</a>&nbsp;(ローカルファ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;イルの long 一覧表示で使用される) の動的判<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定を有効にする。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_fastbrowse" name="g:netrw_fastbrowse">g:netrw_fastbrowse</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=0: 低速ディレクトリブラウジング<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_fastbrowse" name="g:netrw_fastbrowse">g:netrw_fastbrowse</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=0: 低速ディレクトリブラウジング<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイル一覧を再利用しない<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;常にファイル一覧取得を行う<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=1: 中速ディレクトリブラウジング<br>
@@ -2510,15 +2510,15 @@ netrw ブラウザーの各種設定は変数で管理されていて、それ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この設定によって正確さ (常に最新) とスピードの<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;トレードオフを選択できます。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_ffkeep" name="g:netrw_ffkeep">g:netrw_ffkeep</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(初期設定: 変数なし)<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_ffkeep" name="g:netrw_ffkeep">g:netrw_ffkeep</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(初期設定: 変数なし)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この変数が存在して値がゼロなら、netrw は<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'fileformat'">'fileformat'</a>&nbsp;を保存、復元しない。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_fname_escape" name="g:netrw_fname_escape">g:netrw_fname_escape</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=' ?&amp;;%'<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_fname_escape" name="g:netrw_fname_escape">g:netrw_fname_escape</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=' ?&amp;;%'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リモートで読み/書きするときにファイル名をエス<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ケープするのに使われる。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_ftp_browse_reject" name="g:netrw_ftp_browse_reject">g:netrw_ftp_browse_reject</a>&nbsp;&nbsp; ftp がエラーや警告を出力すると、それがファイル<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_ftp_browse_reject" name="g:netrw_ftp_browse_reject">g:netrw_ftp_browse_reject</a>&nbsp;&nbsp; ftp がエラーや警告を出力すると、それがファイル<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;やディレクトリとして一覧に表示されてしまいま<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。この変数に設定したパターンを使ってそれらの<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;メッセージが取り除かれます。初期設定は以下のと<br>
@@ -2531,71 +2531,71 @@ netrw ブラウザーの各種設定は変数で管理されていて、それ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : connect to address [0-9a-fA-F:]*<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : No route to host$'<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_ftp_list_cmd" name="g:netrw_ftp_list_cmd">g:netrw_ftp_list_cmd</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ftp に渡されるファイル一覧取得コマンド。<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_ftp_list_cmd" name="g:netrw_ftp_list_cmd">g:netrw_ftp_list_cmd</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ftp に渡されるファイル一覧取得コマンド。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初期設定:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unix or g:netrw_cygwin set: : &quot;ls -lF&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; そうでない場合&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;dir&quot;<br>
 <br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_ftp_sizelist_cmd" name="g:netrw_ftp_sizelist_cmd">g:netrw_ftp_sizelist_cmd</a>&nbsp;&nbsp;&nbsp;&nbsp;ftp に渡されるファイル一覧取得コマンド。ファイ<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_ftp_sizelist_cmd" name="g:netrw_ftp_sizelist_cmd">g:netrw_ftp_sizelist_cmd</a>&nbsp;&nbsp;&nbsp;&nbsp;ftp に渡されるファイル一覧取得コマンド。ファイ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルサイズでソートする。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初期設定:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unix or g:netrw_cygwin set: : &quot;ls -slF&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; そうでない場合&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;dir&quot;<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_ftp_timelist_cmd" name="g:netrw_ftp_timelist_cmd">g:netrw_ftp_timelist_cmd</a>&nbsp;&nbsp;&nbsp;&nbsp;ftp に渡されるファイル一覧取得コマンド。最終更<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_ftp_timelist_cmd" name="g:netrw_ftp_timelist_cmd">g:netrw_ftp_timelist_cmd</a>&nbsp;&nbsp;&nbsp;&nbsp;ftp に渡されるファイル一覧取得コマンド。最終更<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新日時でソートする。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初期設定:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unix or g:netrw_cygwin set: : &quot;ls -tlF&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; そうでない場合&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;dir&quot;<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_glob_escape" name="g:netrw_glob_escape">g:netrw_glob_escape</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ='[]*?`{~$'&nbsp;&nbsp;(unix)<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_glob_escape" name="g:netrw_glob_escape">g:netrw_glob_escape</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ='[]*?`{~$'&nbsp;&nbsp;(unix)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;='[]*?`{$'&nbsp;&nbsp;(windows)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;設定された文字がディレクトリ名に使われていたら<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;glob() を適用する前にエスケープされる。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_hide" name="g:netrw_hide">g:netrw_hide</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;a&quot; マップを制御する (<a class="Identifier" href="pi_netrw.html#netrw-a">netrw-a</a>&nbsp;参照)<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_hide" name="g:netrw_hide">g:netrw_hide</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;a&quot; マップを制御する (<a class="Identifier" href="pi_netrw.html#netrw-a">netrw-a</a>&nbsp;参照)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=0 : すべて表示<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=1 : 非隠しファイルを表示<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=2 : 隠しファイルのみ表示<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 初期設定: =0<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_home" name="g:netrw_home">g:netrw_home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ブックマークと履歴 (.netrwbook と .netrwhist)<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_home" name="g:netrw_home">g:netrw_home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ブックマークと履歴 (.netrwbook と .netrwhist)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を保存するホームディレクトリ。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Netrw は文字列に対して&nbsp;<a class="Identifier" href="builtin.html#expand()">expand()</a>&nbsp;を使用しま<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初期設定:&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の最初のディレクトリ<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_keepdir" name="g:netrw_keepdir">g:netrw_keepdir</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =1 (初期設定) カレントディレクトリとブラウジン<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_keepdir" name="g:netrw_keepdir">g:netrw_keepdir</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =1 (初期設定) カレントディレクトリとブラウジン<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; グディレクトリを別にする<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=0 カレントディレクトリとブラウジングディレク<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; トリを同じにする。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在のブラウジングディレクトリはb:netrw_curdir<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に保存されます。 (<a class="Identifier" href="pi_netrw.html#netrw-cd">netrw-cd</a>&nbsp;参照)<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_keepj" name="g:netrw_keepj">g:netrw_keepj</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&quot;keepj&quot; (デフォルト) netrw は&nbsp;<a class="Identifier" href="motion.html#:jumps">:jumps</a>&nbsp;の<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_keepj" name="g:netrw_keepj">g:netrw_keepj</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&quot;keepj&quot; (デフォルト) netrw は&nbsp;<a class="Identifier" href="motion.html#:jumps">:jumps</a>&nbsp;の<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; エントリを保つよう試みます。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&quot;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;netrw は保存/位置の復元以外に<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#:keepjumps">:keepjumps</a>を使わなくなります。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_list_cmd" name="g:netrw_list_cmd">g:netrw_list_cmd</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リモートディレクトリのファイル一覧取得コマンド<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_list_cmd" name="g:netrw_list_cmd">g:netrw_list_cmd</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リモートディレクトリのファイル一覧取得コマンド<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 初期設定: (sshがあるなら)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;ssh HOSTNAME ls -FLa&quot;<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_list_cmd_options" name="g:netrw_list_cmd_options">g:netrw_list_cmd_options</a>&nbsp;&nbsp;&nbsp;&nbsp;もしこの変数が存在するなら、値は<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_list_cmd_options" name="g:netrw_list_cmd_options">g:netrw_list_cmd_options</a>&nbsp;&nbsp;&nbsp;&nbsp;もしこの変数が存在するなら、値は<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:netrw_list_cmd に追加されます。例えば、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;2&gt;/dev/null&quot; はバナー用のメッセージを除去しま<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<br>
 <br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_liststyle" name="g:netrw_liststyle">g:netrw_liststyle</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; デフォルトのファイル一覧表示スタイル:<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_liststyle" name="g:netrw_liststyle">g:netrw_liststyle</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; デフォルトのファイル一覧表示スタイル:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 0: thin listing (一行に 1 つのファイル)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1: long listing (一行に 1 つのファイル、タイ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ムスタンプ、ファイルサイズ)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 2: wide listing (一行に複数のファイル)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 3: tree style listing (ツリー表示)<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_list_hide" name="g:netrw_list_hide">g:netrw_list_hide</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 隠しファイル用のパターンのリスト(コンマ区切り)<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_list_hide" name="g:netrw_list_hide">g:netrw_list_hide</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 隠しファイル用のパターンのリスト(コンマ区切り)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パターンは正規表現です (<a class="Identifier" href="pattern.html#regexp">regexp</a>参照)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;git の隠しファイル用に特別な関数が用意されてい<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ます。この変数に 'netrw_gitignore#Hide()' ヘル<br>
@@ -2608,52 +2608,52 @@ netrw ブラウザーの各種設定は変数で管理されていて、それ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; let g:netrw_list_hide= netrw_gitignore#Hide() .. '.*\.swp$'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初期設定: &quot;&quot;<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_localcopycmd" name="g:netrw_localcopycmd">g:netrw_localcopycmd</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&quot;cp&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Linux/Unix/MacOS/Cygwin<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_localcopycmd" name="g:netrw_localcopycmd">g:netrw_localcopycmd</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&quot;cp&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Linux/Unix/MacOS/Cygwin<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=expand(&quot;$COMSPEC&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Windows<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マークされたファイル (<a class="Identifier" href="pi_netrw.html#netrw-mf">netrw-mf</a>) をターゲット<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ディレクトリにコピー (<a class="Identifier" href="pi_netrw.html#netrw-mt">netrw-mt</a>,&nbsp;<a class="Identifier" href="pi_netrw.html#netrw-mc">netrw-mc</a>)<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_localcopycmdopt" name="g:netrw_localcopycmdopt">g:netrw_localcopycmdopt</a>&nbsp;&nbsp;&nbsp;&nbsp; =''&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Linux/Unix/MacOS/Cygwin<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_localcopycmdopt" name="g:netrw_localcopycmdopt">g:netrw_localcopycmdopt</a>&nbsp;&nbsp;&nbsp;&nbsp; =''&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Linux/Unix/MacOS/Cygwin<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=' \c copy'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Windows<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="pi_netrw.html#g:netrw_localcopycmd">g:netrw_localcopycmd</a>&nbsp;用のオプション<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_localcopydircmd" name="g:netrw_localcopydircmd">g:netrw_localcopydircmd</a>&nbsp;&nbsp;&nbsp;&nbsp; =&quot;cp&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Linux/Unix/MacOS/Cygwin<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_localcopydircmd" name="g:netrw_localcopydircmd">g:netrw_localcopydircmd</a>&nbsp;&nbsp;&nbsp;&nbsp; =&quot;cp&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Linux/Unix/MacOS/Cygwin<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=expand(&quot;$COMSPEC&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Windows<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ディレクトリをターゲットディレクトリに<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コピーします (<a class="Identifier" href="pi_netrw.html#netrw-mc">netrw-mc</a>,&nbsp;<a class="Identifier" href="pi_netrw.html#netrw-mt">netrw-mt</a>)。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_localcopydircmdopt" name="g:netrw_localcopydircmdopt">g:netrw_localcopydircmdopt</a>&nbsp;&nbsp;=&quot; -R&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Linux/Unix/MacOS/Cygwin<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_localcopydircmdopt" name="g:netrw_localcopydircmdopt">g:netrw_localcopydircmdopt</a>&nbsp;&nbsp;=&quot; -R&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Linux/Unix/MacOS/Cygwin<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&quot; /c xcopy /e /c /h/ /i /k&quot;&nbsp;&nbsp;&nbsp;&nbsp;Windows<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="pi_netrw.html#g:netrw_localcopydircmd">g:netrw_localcopydircmd</a>&nbsp;用のオプション<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_localmkdir" name="g:netrw_localmkdir">g:netrw_localmkdir</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&quot;mkdir&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Linux/Unix/MacOS/Cygwin<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_localmkdir" name="g:netrw_localmkdir">g:netrw_localmkdir</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&quot;mkdir&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Linux/Unix/MacOS/Cygwin<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=expand(&quot;$COMSPEC&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Windows<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ローカルディレクトリ作成コマンド<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_localmkdiropt" name="g:netrw_localmkdiropt">g:netrw_localmkdiropt</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&quot;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Linux/Unix/MacOS/Cygwin<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_localmkdiropt" name="g:netrw_localmkdiropt">g:netrw_localmkdiropt</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&quot;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Linux/Unix/MacOS/Cygwin<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&quot; /c mkdir&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Windows<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="pi_netrw.html#g:netrw_localmkdir">g:netrw_localmkdir</a>&nbsp;用のオプション<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_localmovecmd" name="g:netrw_localmovecmd">g:netrw_localmovecmd</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&quot;mv&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Linux/Unix/MacOS/Cygwin<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_localmovecmd" name="g:netrw_localmovecmd">g:netrw_localmovecmd</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&quot;mv&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Linux/Unix/MacOS/Cygwin<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=expand(&quot;$COMSPEC&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Windows<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マークされたファイル (<a class="Identifier" href="pi_netrw.html#netrw-mf">netrw-mf</a>) をターゲット<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ディレクトリに移動 (<a class="Identifier" href="pi_netrw.html#netrw-mt">netrw-mt</a>,&nbsp;<a class="Identifier" href="pi_netrw.html#netrw-mm">netrw-mm</a>)<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_localmovecmdopt" name="g:netrw_localmovecmdopt">g:netrw_localmovecmdopt</a>&nbsp;&nbsp;&nbsp;&nbsp; =&quot;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Linux/Unix/MacOS/Cygwin<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_localmovecmdopt" name="g:netrw_localmovecmdopt">g:netrw_localmovecmdopt</a>&nbsp;&nbsp;&nbsp;&nbsp; =&quot;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Linux/Unix/MacOS/Cygwin<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&quot; /c move&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Windows<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="pi_netrw.html#g:netrw_localmovecmd">g:netrw_localmovecmd</a>&nbsp;用のオプション<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_maxfilenamelen" name="g:netrw_maxfilenamelen">g:netrw_maxfilenamelen</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初期設定は 32。long スタイルでの表示を 80 カ<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_maxfilenamelen" name="g:netrw_maxfilenamelen">g:netrw_maxfilenamelen</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初期設定は 32。long スタイルでの表示を 80 カ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ラムのディスプレイに収められるような値。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大きい画面を使っているか、32 バイトより長い名<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前のファイル/ディレクトリがあるなら、このオプ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ションを設定して表示を調整するといいでしょう。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_mkdir_cmd" name="g:netrw_mkdir_cmd">g:netrw_mkdir_cmd</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ssh 経由でのリモートディレクトリ作成コマンド<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_mkdir_cmd" name="g:netrw_mkdir_cmd">g:netrw_mkdir_cmd</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ssh 経由でのリモートディレクトリ作成コマンド<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="Identifier" href="pi_netrw.html#g:netrw_remote_mkdir">g:netrw_remote_mkdir</a>&nbsp;も参照)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 初期設定: &quot;ssh USEPORT HOSTNAME mkdir&quot;<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_mousemaps" name="g:netrw_mousemaps">g:netrw_mousemaps</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =1 (初期設定) ブラウジングでマウスボタンを有効<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_mousemaps" name="g:netrw_mousemaps">g:netrw_mousemaps</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =1 (初期設定) ブラウジングでマウスボタンを有効<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; にする:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 左クリック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: ファイル/ディレクトリを<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 開く<br>
@@ -2673,16 +2673,16 @@ netrw ブラウザーの各種設定は変数で管理されていて、それ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;query-file maps (<a class="Identifier" href="pi_netrw.html#netrw-qf">netrw-qf</a>) はファイルサイズを<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定されたスタイルで表示します。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_usetab" name="g:netrw_usetab">g:netrw_usetab</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;もしこの変数が存在し、その値が 非0 なら、<span class="Special">&lt;tab&gt;</span><br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_usetab" name="g:netrw_usetab">g:netrw_usetab</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;もしこの変数が存在し、その値が 非0 なら、<span class="Special">&lt;tab&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マップは Lexplore または netrw ウィンドウの縮<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;小・拡張をサポートするようになります。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="Identifier" href="pi_netrw.html#netrw-c-tab">netrw-c-tab</a>参照)<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_remote_mkdir" name="g:netrw_remote_mkdir">g:netrw_remote_mkdir</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ftp 経由でのリモートディレクトリ作成コマンド<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_remote_mkdir" name="g:netrw_remote_mkdir">g:netrw_remote_mkdir</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ftp 経由でのリモートディレクトリ作成コマンド<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="Identifier" href="pi_netrw.html#g:netrw_mkdir_cmd">g:netrw_mkdir_cmd</a>&nbsp;も参照)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 初期設定: &quot;mkdir&quot;<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_retmap" name="g:netrw_retmap">g:netrw_retmap</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この変数が存在し、その値が 1 なら:<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_retmap" name="g:netrw_retmap">g:netrw_retmap</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この変数が存在し、その値が 1 なら:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * netrw でファイルを開いたとき<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;<span class="Special">&lt;2-leftmouse&gt;</span>&nbsp;のノーマルモードのマップが他<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; に定義されていない<br>
@@ -2692,7 +2692,7 @@ netrw ブラウザーの各種設定は変数で管理されていて、それ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 例: クリックしてファイルを開き、ダブルクリッ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; クで戻る。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>:&nbsp;<span class="Special">&lt;2-leftmouse&gt;</span>&nbsp;以外のキーを割り当てたい場<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;<span class="Special">&lt;2-leftmouse&gt;</span>&nbsp;以外のキーを割り当てたい場<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合は:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * let g:netrw_retmap= 1<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * nmap&nbsp;<span class="Special">&lt;silent&gt;</span>&nbsp;好きなキー&nbsp;<span class="Special">&lt;Plug&gt;</span>NetrwReturn<br>
@@ -2703,40 +2703,40 @@ netrw ブラウザーの各種設定は変数で管理されていて、それ�
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初期設定: =0<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_rm_cmd" name="g:netrw_rm_cmd">g:netrw_rm_cmd</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リモートのファイル削除コマンド<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_rm_cmd" name="g:netrw_rm_cmd">g:netrw_rm_cmd</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リモートのファイル削除コマンド<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 初期設定: &quot;ssh USEPORT HOSTNAME rm&quot;<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_rmdir_cmd" name="g:netrw_rmdir_cmd">g:netrw_rmdir_cmd</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; リモートのディレクトリ削除コマンド<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_rmdir_cmd" name="g:netrw_rmdir_cmd">g:netrw_rmdir_cmd</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; リモートのディレクトリ削除コマンド<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 初期設定: &quot;ssh USEPORT HOSTNAME rmdir&quot;<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_rmf_cmd" name="g:netrw_rmf_cmd">g:netrw_rmf_cmd</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; リモートのソフトリンク削除コマンド<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_rmf_cmd" name="g:netrw_rmf_cmd">g:netrw_rmf_cmd</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; リモートのソフトリンク削除コマンド<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 初期設定: &quot;ssh USEPORT HOSTNAME rm -f&quot;<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_servername" name="g:netrw_servername">g:netrw_servername</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="pi_netrw.html#netrw-ctrl-r">netrw-ctrl-r</a>&nbsp;で使うサーバー名<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_servername" name="g:netrw_servername">g:netrw_servername</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="pi_netrw.html#netrw-ctrl-r">netrw-ctrl-r</a>&nbsp;で使うサーバー名<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; デフォルト: &quot;NETRWSERVER&quot;<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_sort_by" name="g:netrw_sort_by">g:netrw_sort_by</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ソートの種類: &quot;name&quot;, &quot;time&quot;, &quot;size&quot;, &quot;exten&quot;<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_sort_by" name="g:netrw_sort_by">g:netrw_sort_by</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ソートの種類: &quot;name&quot;, &quot;time&quot;, &quot;size&quot;, &quot;exten&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 初期設定: &quot;name&quot;<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_sort_direction" name="g:netrw_sort_direction">g:netrw_sort_direction</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ソートの順序: &quot;normal&quot; or &quot;reverse&quot;<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_sort_direction" name="g:netrw_sort_direction">g:netrw_sort_direction</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ソートの順序: &quot;normal&quot; or &quot;reverse&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 初期設定: &quot;normal&quot;<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_sort_options" name="g:netrw_sort_options">g:netrw_sort_options</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ソートには&nbsp;<a class="Identifier" href="change.html#:sort">:sort</a>&nbsp;が使われます。この変数に設<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_sort_options" name="g:netrw_sort_options">g:netrw_sort_options</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ソートには&nbsp;<a class="Identifier" href="change.html#:sort">:sort</a>&nbsp;が使われます。この変数に設<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定された値はソートコマンドに追加されます。例え<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ば .vimrc で次のように設定すると、大文字小文字<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を無視できます:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:netrw_sort_options=&quot;i&quot;</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初期設定: &quot;&quot;<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_sort_sequence" name="g:netrw_sort_sequence">g:netrw_sort_sequence</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 名前でソートするとき、まずこの変数で指定された<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_sort_sequence" name="g:netrw_sort_sequence">g:netrw_sort_sequence</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 名前でソートするとき、まずこの変数で指定された<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パターンを使ってソートする。コンマで区切られた<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パターンのリスト。<span class="Todo">Note</span>: ソート時のファイル名に<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パターンのリスト。<span class="Todo">Note:</span>&nbsp;ソート時のファイル名に<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;はファイルタイプを示す装飾文字<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="Identifier" href="pi_netrw.html#netrw-filigree">netrw-filigree</a>) が含まれます。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 初期設定: '[\/]$,*,\.bak$,\.o$,\.h$,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\.info$,\.swp$,\.obj$'<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_special_syntax" name="g:netrw_special_syntax">g:netrw_special_syntax</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true なら、特定の種類のファイルが特別な色(シン<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_special_syntax" name="g:netrw_special_syntax">g:netrw_special_syntax</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true なら、特定の種類のファイルが特別な色(シン<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タックス)で表示されます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;netrwBak&nbsp;&nbsp;&nbsp;&nbsp; : *.bak<br>
@@ -2792,7 +2792,7 @@ netrw ブラウザーの各種設定は変数で管理されていて、それ�
 &nbsp;hi netrwSymLink&nbsp;&nbsp;term=NONE cterm=NONE gui=NONE ctermfg=220 ctermbg=27 guifg=grey60</div>
 <br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_ssh_browse_reject" name="g:netrw_ssh_browse_reject">g:netrw_ssh_browse_reject</a>&nbsp;&nbsp; ssh の出力に不要なテキスト (メッセージ、バナー<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_ssh_browse_reject" name="g:netrw_ssh_browse_reject">g:netrw_ssh_browse_reject</a>&nbsp;&nbsp; ssh の出力に不要なテキスト (メッセージ、バナー<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;等) が混ざっていて、それらがディレクトリやファ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;イルとして認識されると困ります。この変数に設定<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;されたパターンを使って余計なメッセージを取り除<br>
@@ -2800,12 +2800,12 @@ netrw ブラウザーの各種設定は変数で管理されていて、それ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初期設定:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '^total\s\+\d\+$'<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_ssh_cmd" name="g:netrw_ssh_cmd">g:netrw_ssh_cmd</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; リモートアクセス時に ssh として使われる実行可<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_ssh_cmd" name="g:netrw_ssh_cmd">g:netrw_ssh_cmd</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; リモートアクセス時に ssh として使われる実行可<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;能ファイル。ファイル一覧取得やファイル削除など<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に使われます。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 初期設定: ssh<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_timefmt" name="g:netrw_timefmt">g:netrw_timefmt</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vim の strftime() で使用するフォーマット文字列<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_timefmt" name="g:netrw_timefmt">g:netrw_timefmt</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vim の strftime() で使用するフォーマット文字列<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を指定します。初期設定は &quot;%c&quot; で、これは手元の<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strftime() のマニュアルページによれば &quot;現在の<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ロケールにおいて一般的な日付・時刻の表記&quot; で<br>
@@ -2815,7 +2815,7 @@ netrw ブラウザーの各種設定は変数で管理されていて、それ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; %a %Y-%m-%d&nbsp;&nbsp;%I-%M-%S %p&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 初期設定: &quot;%c&quot;<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_use_noswf" name="g:netrw_use_noswf">g:netrw_use_noswf</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; netrw のブラウザーバッファではスワップファイル<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_use_noswf" name="g:netrw_use_noswf">g:netrw_use_noswf</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; netrw のブラウザーバッファではスワップファイル<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を使わないようにしています。しかし、あるシステ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ムではそれによって ml_get エラーが発生すること<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;があります。そのようなエラーが出た場合は<br>
@@ -2823,7 +2823,7 @@ netrw ブラウザーの各種設定は変数で管理されていて、それ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:netrw_use_noswf= 0<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初期設定: 1<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_winsize" name="g:netrw_winsize">g:netrw_winsize</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ウィンドウを作成したときの初期サイズ。&quot;o&quot;<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_winsize" name="g:netrw_winsize">g:netrw_winsize</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ウィンドウを作成したときの初期サイズ。&quot;o&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="Identifier" href="pi_netrw.html#netrw-o">netrw-o</a>), &quot;v&quot; (<a class="Identifier" href="pi_netrw.html#netrw-v">netrw-v</a>),&nbsp;<a class="Identifier" href="pi_netrw.html#:Hexplore">:Hexplore</a>,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="pi_netrw.html#:Vexplore">:Vexplore</a>&nbsp;で使用。g:netrw_winsize の値は整数<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;です。新しいウィンドウのサイズを netrw のカレ<br>
@@ -2837,11 +2837,11 @@ netrw ブラウザーの各種設定は変数で管理されていて、それ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が機能するなど)。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 初期設定: 50 (50%)<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_wiw" name="g:netrw_wiw">g:netrw_wiw</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =1 netrw ウィンドウ/Lexplore ウィンドウを縮小<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_wiw" name="g:netrw_wiw">g:netrw_wiw</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =1 netrw ウィンドウ/Lexplore ウィンドウを縮小<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する時に使われる最小のウィンドウ幅を指定します<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="Identifier" href="pi_netrw.html#netrw-c-tab">netrw-c-tab</a>参照)。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:netrw_xstrlen" name="g:netrw_xstrlen">g:netrw_xstrlen</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; マルチバイト文字列の長さを計算する方法を指定す<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:netrw_xstrlen" name="g:netrw_xstrlen">g:netrw_xstrlen</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; マルチバイト文字列の長さを計算する方法を指定す<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。 (thanks to&nbsp;<span class="Special">N</span>&nbsp;Weibull, T Mechelynck)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=0: Vim の組み込み関数 strlen() を使う<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=1: 文字数。(Latin a + combining circumflex は<br>
@@ -2854,7 +2854,7 @@ netrw ブラウザーの各種設定は変数で管理されていて、それ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ラビア文字の alif は、lam が前置されている<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;場合は 0、そうでなければ 1。...)<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span><a class="Constant" href="pi_netrw.html#g:NetrwTopLvlMenu" name="g:NetrwTopLvlMenu">g:NetrwTopLvlMenu</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; トップレベルメニューの名前を指定する。初期設定<br>
+&nbsp;&nbsp;<a class="Constant" href="pi_netrw.html#g:NetrwTopLvlMenu" name="g:NetrwTopLvlMenu">g:NetrwTopLvlMenu</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; トップレベルメニューの名前を指定する。初期設定<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は &quot;Netrw.&quot;。これを変更したい場合は .vimrc で<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;設定してください。<br>
 <br>
@@ -3016,7 +3016,7 @@ netrw を次のように設定すると便利かもしれません:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">警告:</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: ファイルの移動はコピーと比べて危険です。なぜなら、リモートのファイル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;ファイルの移動はコピーと比べて危険です。なぜなら、リモートのファイル<br>
 &nbsp;&nbsp;&nbsp;&nbsp;を &quot;移動&quot; するとき、実際には コピー + 削除 を実行しているからです。コピー<br>
 &nbsp;&nbsp;&nbsp;&nbsp;が失敗して削除が成功するとファイルが失われます。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;自己責任で使ってください。<br>
@@ -3078,13 +3078,13 @@ Thin 形式を使用している場合は、V (<a class="Identifier" href="visua
 れは&nbsp;<a class="Identifier" href="pi_netrw.html#g:netrw_usetab">g:netrw_usetab</a>&nbsp;が存在し 非0 である場合のみ有効です (また、もちろんあな<br>
 たの端末が&nbsp;<span class="Special">&lt;c-tab&gt;</span>&nbsp;と&nbsp;<span class="Special">&lt;tab&gt;</span>&nbsp;を区別できる場合のみ)。<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span>* もし現在のウィンドウが netrw ウィンドウなら、その幅をトグルします<br>
+&nbsp;&nbsp;* もし現在のウィンドウが netrw ウィンドウなら、その幅をトグルします<br>
 &nbsp;&nbsp;&nbsp;&nbsp;(<a class="Identifier" href="pi_netrw.html#g:netrw_wiw">g:netrw_wiw</a>と元の幅を行き来します)<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span>* 次に、もし現在のタブに&nbsp;<a class="Identifier" href="pi_netrw.html#:Lexplore">:Lexplore</a>&nbsp;ウィンドウが存在するなら、その幅をトグ<br>
+&nbsp;&nbsp;* 次に、もし現在のタブに&nbsp;<a class="Identifier" href="pi_netrw.html#:Lexplore">:Lexplore</a>&nbsp;ウィンドウが存在するなら、その幅をトグ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;ルします<br>
 <br>
-<span class="Statement">&nbsp;&nbsp;</span>* 最後に、<a class="Identifier" href="pi_netrw.html#:Lexplore">:Lexplore</a>&nbsp;ウィンドウを持ち上げます<br>
+&nbsp;&nbsp;* 最後に、<a class="Identifier" href="pi_netrw.html#:Lexplore">:Lexplore</a>&nbsp;ウィンドウを持ち上げます<br>
 <br>
 もし&nbsp;<a class="Identifier" href="pi_netrw.html#g:netrw_usetab">g:netrw_usetab</a>&nbsp;が存在し 非0 の場合、もしくはすでに&nbsp;<span class="Special">&lt;c-tab&gt;</span>&nbsp;にマッピング<br>
 が存在するなら、<span class="Special">&lt;c-tab&gt;</span>&nbsp;はマッピングされません。もし&nbsp;<span class="Special">&lt;c-tab&gt;</span>&nbsp;以外にマップされ<br>
@@ -3422,7 +3422,7 @@ netrw#Call(&quot;funcname&quot;[,args])&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;そして、netrw バッファのみで使うマップを<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $HOME/.vim/after/ftplugin/netrw.vim で定義します:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nmap &lt;buffer&gt; &lt;2-leftmouse&gt; &lt;CR&gt;</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: g:netrw_mousemaps をゼロに設定すると、<span class="Special">&lt;leftmouse&gt;</span>&nbsp;だけでな<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;g:netrw_mousemaps をゼロに設定すると、<span class="Special">&lt;leftmouse&gt;</span>&nbsp;だけでな<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; く、netrw のマウス関連のマップはすべて無効化されます。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (<a class="Identifier" href="pi_netrw.html#g:netrw_mousemaps">g:netrw_mousemaps</a>&nbsp;参照)<br>
 <br>

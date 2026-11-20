@@ -397,7 +397,7 @@ MS-Windowsでは '\' がパスの区切り文字なので、オプション&nbsp
 作することが知られているが、bash では少なくとも bash バージョン 4.X 以上が必要<br>
 である)。<br>
 &quot;**&quot; はディレクトリツリーを再帰的に検索する。深さの上限は100ディレクトリである。<br>
-<span class="Todo">Note</span>: いくつかのコマンドでは、この挙動が少し異なる。<a class="Identifier" href="editing.html#file-searching">file-searching</a>&nbsp;を参照。<br>
+<span class="Todo">Note:</span>&nbsp;いくつかのコマンドでは、この挙動が少し異なる。<a class="Identifier" href="editing.html#file-searching">file-searching</a>&nbsp;を参照。<br>
 例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:n **/*.txt</div>
 これは次のファイルにマッチする:<br>
@@ -690,7 +690,7 @@ Vim の開始時に複数のファイル名を与えると、それらは引数�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;きる。:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:argadd *.txt | argdedupe</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 現在編集中のファイルは変更されない。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 次の方法が使えることに注意。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;次の方法が使えることに注意。<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:args ## x</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; これは項目 &quot;x&quot; を追加し、新たなリストを並び替える。<br>
 <br>
@@ -754,13 +754,13 @@ Vim の開始時に複数のファイル名を与えると、それらは引数�
 :n[ext]!&nbsp;<span class="Special">[++opt]</span>&nbsp;<span class="Special">[+cmd]</span>&nbsp;<span class="Special">{arglist}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンド&nbsp;<a class="Identifier" href="editing.html#:args_f!">:args_f!</a>&nbsp;と同じ。<br>
 <br>
-:<span class="Special">[count]N</span>[ext]&nbsp;<span class="Special">[count]</span>&nbsp;<span class="Special">[++opt]</span>&nbsp;<span class="Special">[+cmd]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="editing.html#:Next" name=":Next">:Next</a>&nbsp;<a class="Constant" href="editing.html#:N" name=":N">:N</a>&nbsp;<a class="Constant" href="editing.html#E164" name="E164">E164</a><br>
+:<span class="Special">[count]</span>N[ext]&nbsp;<span class="Special">[count]</span>&nbsp;<span class="Special">[++opt]</span>&nbsp;<span class="Special">[+cmd]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="editing.html#:Next" name=":Next">:Next</a>&nbsp;<a class="Constant" href="editing.html#:N" name=":N">:N</a>&nbsp;<a class="Constant" href="editing.html#E164" name="E164">E164</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数リストの中で&nbsp;<span class="Special">[count]</span>&nbsp;個前のファイルを編集する。変<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更点があり、Vimがカレントバッファを破棄&nbsp;<a class="Identifier" href="editing.html#abandon">abandon</a>&nbsp;した<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;くないときには失敗する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="editing.html#++opt">++opt</a>&nbsp;と&nbsp;<a class="Identifier" href="editing.html#+cmd">+cmd</a>&nbsp;も参照。<br>
 <br>
-:<span class="Special">[count]N</span>[ext]!&nbsp;<span class="Special">[count]</span>&nbsp;<span class="Special">[++opt]</span>&nbsp;<span class="Special">[+cmd]</span><br>
+:<span class="Special">[count]</span>N[ext]!&nbsp;<span class="Special">[count]</span>&nbsp;<span class="Special">[++opt]</span>&nbsp;<span class="Special">[+cmd]</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数リスト内で&nbsp;<span class="Special">[count]</span>&nbsp;個前のファイルを編集する。カレ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ントバッファに対するいかなる変更も失われる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="editing.html#++opt">++opt</a>&nbsp;と&nbsp;<a class="Identifier" href="editing.html#+cmd">+cmd</a>&nbsp;も参照。<br>
@@ -906,7 +906,7 @@ Unix およびその他いくつかのシステムではバッククォートも
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;がカレントファイルになる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{cmd}</span>&nbsp;の中では '|' で複数のコマンドを連結できる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{cmd}</span>&nbsp;は引数リストに変更を加えてはならない。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: このコマンドの実行中、オプション&nbsp;<a class="Type" href="options.html#'eventignore'">'eventignore'</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;このコマンドの実行中、オプション&nbsp;<a class="Type" href="options.html#'eventignore'">'eventignore'</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;で自動コマンドのイベント Syntax を指定することでそれを<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;無効化できる。こうすると各ファイルの処理がかなり高速に<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;なる。<br>
@@ -930,7 +930,7 @@ Unix およびその他いくつかのシステムではバッククォートも
 <span class="PreProc">==============================================================================</span><br>
 4. 書き込み&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="editing.html#writing" name="writing">writing</a>&nbsp;<a class="Constant" href="editing.html#save-file" name="save-file">save-file</a><br>
 <br>
-<span class="Todo">Note</span>: オプション&nbsp;<a class="Type" href="options.html#'write'">'write'</a>&nbsp;がオフのときは、どのファイルも書き込めないことに注意。<br>
+<span class="Todo">Note:</span>&nbsp;オプション&nbsp;<a class="Type" href="options.html#'write'">'write'</a>&nbsp;がオフのときは、どのファイルも書き込めないことに注意。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="editing.html#:w" name=":w">:w</a>&nbsp;<a class="Constant" href="editing.html#:write" name=":write">:write</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="editing.html#E502" name="E502">E502</a>&nbsp;<a class="Constant" href="editing.html#E503" name="E503">E503</a>&nbsp;<a class="Constant" href="editing.html#E504" name="E504">E504</a>&nbsp;<a class="Constant" href="editing.html#E505" name="E505">E505</a><br>
@@ -944,7 +944,7 @@ Unix およびその他いくつかのシステムではバッククォートも
 <br>
 :w[rite]!&nbsp;<span class="Special">[++opt]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;:write&quot; と似ているが、<a class="Type" href="options.html#'readonly'">'readonly'</a>&nbsp;がオンであったり書き<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;込みが拒否される理由があっても無理矢理書き込みを行う。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: これはファイルの権限や所属を変更したり、(シンボ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;これはファイルの権限や所属を変更したり、(シンボ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リック) リンクを途切れさせるかもしれないので注意。それ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を避けるには&nbsp;<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;にフラグ 'W' を追加すること。<br>
 <br>
@@ -988,7 +988,7 @@ Unix およびその他いくつかのシステムではバッククォートも
 に失敗した後に &quot;:w #&quot; でもう一度試したいときに使える。オプション<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;か<br>
 らフラグ 'A' を取り除くとこれを無効化できる。<br>
 <br>
-<span class="Todo">Note</span>: 書き込みには&nbsp;<a class="Type" href="options.html#'fsync'">'fsync'</a>&nbsp;オプションが関係してくる。設定されている場合には書<br>
+<span class="Todo">Note:</span>&nbsp;書き込みには&nbsp;<a class="Type" href="options.html#'fsync'">'fsync'</a>&nbsp;オプションが関係してくる。設定されている場合には書<br>
 き込みがより遅くなるかもしれない。(しかしより安全である。)<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="editing.html#:sav" name=":sav">:sav</a>&nbsp;<a class="Constant" href="editing.html#:saveas" name=":saveas">:saveas</a><br>
@@ -1516,7 +1516,7 @@ Vimはファイルを暗号化して保存し、再び読み取ることがで�
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set noundofile<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:noswapfile edit secrets</div>
 <br>
-<span class="Todo">Note</span>: メモリ内のテキストは暗号化されない。ユーザーがテキストを編集している間、<br>
+<span class="Todo">Note:</span>&nbsp;メモリ内のテキストは暗号化されない。ユーザーがテキストを編集している間、<br>
 システム管理者はそれを見ることができる。&quot;:!filter&quot; や &quot;:w !command&quot; によって<br>
 フィルタに通しているときもテキストは暗号化されておらず、他人に見られる可能性が<br>
 ある。<a class="Type" href="options.html#'viminfo'">'viminfo'</a>&nbsp;ファイルは暗号化されない。<br>
@@ -1619,7 +1619,7 @@ Vim にパッチ 7.4.237 が含まれていることが分かっているなら�
 &nbsp;&nbsp;&nbsp;&nbsp; &gt;9 string&nbsp;&nbsp;02&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- &quot;blowfish&quot; cryptmethod<br>
 &nbsp;&nbsp;&nbsp;&nbsp; &gt;9 string&nbsp;&nbsp;03&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- &quot;blowfish2&quot; cryptmethod</div>
 <br>
-<span class="Todo">Note</span>:<br>
+<span class="Todo">Note:</span><br>
 - オプション&nbsp;<a class="Type" href="options.html#'charconvert'">'charconvert'</a>&nbsp;でコード変換をしているときには暗号化はできない。<br>
 - コピーや削除したテキストは番号付きレジスタに格納される。レジスタの内容は<br>
 &nbsp;&nbsp;.viminfoファイル内に保存できるが、ここからは読み出せるかもしれない。安全のた<br>
@@ -1822,7 +1822,7 @@ Win32 でサマータイムが始まる日である。Win32 ライブラリに�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/u/user_x/work/include<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/u/user_x/include</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>:&nbsp;<a class="Type" href="options.html#'path'">'path'</a>&nbsp;設定に存在しないディレクトリが含まれている場合、Vim は存在し<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;<a class="Type" href="options.html#'path'">'path'</a>&nbsp;設定に存在しないディレクトリが含まれている場合、Vim は存在し<br>
 ないディレクトリをスキップする。また、上向き検索が使われている場合は、存在しな<br>
 いディレクトリの親を検索しない。<br>
 <br>
@@ -1846,7 +1846,7 @@ Win32 でサマータイムが始まる日である。Win32 ライブラリに�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/u/user_x/**</div>
 &nbsp;&nbsp;&nbsp; となり、同じディレクトリだが順番が違う。<br>
 <br>
-&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 現在 &quot;:find&quot;、&quot;:sfind&quot;、&quot;:tabfind&quot; コマンドは、<a class="Type" href="options.html#'path'">'path'</a>&nbsp;アイテムに URL<br>
+&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;現在 &quot;:find&quot;、&quot;:sfind&quot;、&quot;:tabfind&quot; コマンドは、<a class="Type" href="options.html#'path'">'path'</a>&nbsp;アイテムに URL<br>
 &nbsp;&nbsp; や深さ制限付きのダブルスター (/usr/**2) や 上方検索 (;) などが含まれている<br>
 &nbsp;&nbsp; と機能しない。<br>
 <br>

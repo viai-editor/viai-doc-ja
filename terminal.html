@@ -386,7 +386,7 @@ Normal ハイライトグループにより決定される。<br>
 引き継いだときにのみ更新されるため、<a class="Type" href="options.html#'ruler'">'ruler'</a>&nbsp;や&nbsp;<a class="Type" href="options.html#'statusline'">'statusline'</a>&nbsp;には古いカーソル位<br>
 置が表示される。<br>
 <br>
-<span class="Special">CTRL-W</span>&nbsp;<span class="Special">N</span>&nbsp;(もしくは&nbsp;<a class="Type" href="options.html#'termwinkey'">'termwinkey'</a>&nbsp;<span class="Special">N</span>) を入力すると 端末ノーマルモードに遷移する。<br>
+<span class="Special">CTRL-W</span>&nbsp;<span class="Special">N</span>&nbsp;(もしくは&nbsp;<a class="Type" href="options.html#'termwinkey'">'termwinkey'</a>&nbsp;N) を入力すると 端末ノーマルモードに遷移する。<br>
 このモードでは端末ウィンドウのコンテンツはVimの制御下に置かれ、ジョブの出力は<br>
 一時保留される。<span class="Special">CTRL-\</span>&nbsp;<span class="Special">CTRL-N</span>&nbsp;でも同様。<br>
 <br>
@@ -518,7 +518,7 @@ term_dumpdiff(<span class="Special">{filename}</span>,&nbsp;<span class="Special
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;差分の検出に失敗したときはバッファ番号もしくは 0 を返す。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="terminal.html#terminal-diff">terminal-diff</a>&nbsp;も参照。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE</span>: これは 2 倍幅文字ではまだ機能しない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE:</span>&nbsp;これは 2 倍幅文字ではまだ機能しない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの先頭部分は 1 つ目のファイルの内容を含み、バッファの<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;末尾部分は 2 つ目のファイルの内容を含む。中央部分は差分を表示<br>
@@ -947,7 +947,7 @@ term_start(<span class="Special">{cmd}</span>&nbsp;[,&nbsp;<span class="Special"
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルトで pty に接続される。&quot;out_cb&quot; を設定しても、stdout は pty<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;から pipe に切り替わらない。&quot;err_cb&quot; を設定した場合のみ、stderr<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が pipe に切り替わる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: pty は行バッファリングされ、pipe はブロックバッファリン<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;pty は行バッファリングされ、pipe はブロックバッファリン<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;グされるため、stdout と stderr の出力順序は保持されない場合が<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ある。&quot;err_cb&quot; を指定しない場合、stderr は stdout と同じ pty<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を使用するため、出力順序は保持されるが、stdout と stderr を区<br>
@@ -962,7 +962,7 @@ term_start(<span class="Special">{cmd}</span>&nbsp;[,&nbsp;<span class="Special"
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;をそれぞれ 1 つずつしか受け付けず、標準エラー出力用の個別のハ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンドルがないためである。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: term_start() は、コールバックに常に RAW モードを使用す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;term_start() は、コールバックに常に RAW モードを使用す<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。&quot;out_cb&quot; と &quot;err_cb&quot; は、OS から読み取った生のデータチャン<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;クを受け取る。1 つのコールバック呼び出しには、NL で区切られた<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;複数の行が含まれる場合があり (pty 経由の標準出力の場合)、各行<br>
@@ -983,7 +983,7 @@ term_start(<span class="Special">{cmd}</span>&nbsp;[,&nbsp;<span class="Special"
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; の垂直サイズ。有効範囲は 0 から 1000<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;term_cols&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (<a class="Type" href="options.html#'termwinsize'">'termwinsize'</a>&nbsp;の代わりに使用される) 端末<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; の水平サイズ。有効範囲は 0 から 1000<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;vertical&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウを垂直に分割する。<span class="Todo">Note</span>: 他のウィ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;vertical&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウを垂直に分割する。<span class="Todo">Note:</span>&nbsp;他のウィ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ンドウの位置は、<a class="Identifier" href="windows.html#:belowright">:belowright</a>&nbsp;のようなコマ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ンド修飾子によって決められる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;curwin&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウを分割せず現在のウィンドウを使<br>
@@ -998,7 +998,7 @@ term_start(<span class="Special">{cmd}</span>&nbsp;[,&nbsp;<span class="Special"
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;close&quot;: ウィンドウを閉じる<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;noclose&quot;: ウィンドウは閉じられない<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;open&quot;: 必要ならばウィンドウを開く<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: &quot;open&quot; は割り込み的に発生する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;&quot;open&quot; は割り込み的に発生する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="terminal.html#term++close">term++close</a>、<a class="Identifier" href="terminal.html#term++noclose">term++noclose</a>&nbsp;および<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="terminal.html#term++open">term++open</a>&nbsp;を参照。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;term_opencmd&quot;&nbsp;&nbsp;&nbsp;&nbsp;&quot;term_finish&quot; が &quot;open&quot; のときにウィンド<br>
@@ -1135,7 +1135,7 @@ Vim にファイルを開かせることが可能である。<a class="Identifie
 る:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call echoraw(&quot;\&lt;ESC&gt;]51;[\&quot;call\&quot;, \&quot;Tapi_TryThis\&quot;, [\&quot;hello\&quot;, 123]]\x07&quot;)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call echoraw(&quot;\&lt;Esc&gt;]51;[\&quot;drop\&quot;, \&quot;README.md\&quot;]\x07&quot;)</div>
-<span class="Todo">Note</span>: JSON では文字列値をダブルクォートで囲む必要があるため、エスケープする必<br>
+<span class="Todo">Note:</span>&nbsp;JSON では文字列値をダブルクォートで囲む必要があるため、エスケープする必<br>
 要がある。<br>
 <br>
 理論的根拠: コマンドや式を許可しないのはなぜか？ セキュリティ上の問題が生じる<br>
@@ -1721,14 +1721,14 @@ gdb は奇妙な動作をしているが、プラグインはその問題を回�
 - ssh 経由でリモートファイルにアクセスするには、<a class="Identifier" href="pi_netrw.html#netrw">netrw</a>&nbsp;を使用する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;let g:termdebug_config['command'] = ['ssh', 'hostname', 'gdb']<br>
 &nbsp;&nbsp;&nbsp;&nbsp;let g:termdebug_config['substitute_path'] = { '/': 'scp://hostname//' }</div>
-&nbsp;&nbsp;<span class="Todo">Note</span>: キーはリモートマシンのルートパスを指定し、値はローカルマシンのルートパ<br>
+&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;キーはリモートマシンのルートパスを指定し、値はローカルマシンのルートパ<br>
 スを指定する。<br>
 - Windows の&nbsp;<span class="Comment">UNC</span>&nbsp;パスを使用して&nbsp;<span class="Comment">WSL2</span>&nbsp;ソースにアクセスする:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;let g:termdebug_config['command'] = ['wsl', 'gdb']<br>
 &nbsp;&nbsp;&nbsp;&nbsp;let g:termdebug_config['substitute_path'] = {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\ '/': '\\wsl.localhost\Ubuntu-22.04\',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\ '/mnt/c/': 'C:/' }</div>
-&nbsp;&nbsp;<span class="Todo">Note</span>: 複数のマッピングが必要である。各ドライブユニットに 1 つ、Linux ファイ<br>
+&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;複数のマッピングが必要である。各ドライブユニットに 1 つ、Linux ファイ<br>
 ルシステムに 1 つ (<span class="Comment">wslpath</span>&nbsp;経由で照会)。<br>
 <br>
 このモードでは、すべての&nbsp;<span class="Comment">ssh</span>&nbsp;または&nbsp;<span class="Comment">wsl</span>&nbsp;コマンドが検出され、同様のコマンド<br>
@@ -1763,12 +1763,12 @@ gdb は奇妙な動作をしているが、プラグインはその問題を回�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\ ['docker', 'exec', '-ti', 'container-name'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\ ,'socat', '-dd', '-', 'PTY,raw,echo=0']</div>
 <br>
-<span class="Todo">Note</span>: プロンプトバッファが&nbsp;<span class="Comment">tty</span>&nbsp;接続を処理できないため、&quot;command&quot; は<br>
+<span class="Todo">Note:</span>&nbsp;プロンプトバッファが&nbsp;<span class="Comment">tty</span>&nbsp;接続を処理できないため、&quot;command&quot; は<br>
 <a class="Identifier" href="terminal.html#termdebug-prompt">termdebug-prompt</a>&nbsp;モードで&nbsp;<a class="Comment" href="starting.html#-t">-t</a>&nbsp;を使用できない。<br>
 &quot;remote_window&quot; コマンドでは&nbsp;<a class="Comment" href="starting.html#-t">-t</a>&nbsp;を使用する必要がある。そうしなければ、gdb が<br>
 接続するための&nbsp;<span class="Comment">pty slave device</span>&nbsp;が不足する。<br>
-<span class="Todo">Note</span>: &quot;socat&quot; は、リモートマシンの &quot;terminal&quot; モードで使用可能である必要がある。<br>
-<span class="Todo">Note</span>: docker コンテナソースは、<span class="Comment">volumes</span>&nbsp;とマッピングを組み合わせてアクセスで<br>
+<span class="Todo">Note:</span>&nbsp;&quot;socat&quot; は、リモートマシンの &quot;terminal&quot; モードで使用可能である必要がある。<br>
+<span class="Todo">Note:</span>&nbsp;docker コンテナソースは、<span class="Comment">volumes</span>&nbsp;とマッピングを組み合わせてアクセスで<br>
 きる (<a class="Identifier" href="terminal.html#termdebug-substitute-path">termdebug-substitute-path</a>&nbsp;を参照)。<br>
 <br>
 <span class="PreProc">GDBコマンド</span><br>

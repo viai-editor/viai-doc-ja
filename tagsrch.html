@@ -453,7 +453,7 @@ Vimはセキュリティの都合上、いくつかのコマンドを禁止し�
 これはちょうど現在のディレクトリにあるexrc/vimrcファイルに&nbsp;<a class="Type" href="options.html#'secure'">'secure'</a>&nbsp;オプション<br>
 が使われているのと同じように機能する。<a class="Identifier" href="starting.html#trojan-horse">trojan-horse</a>と<a class="Identifier" href="eval.html#sandbox">sandbox</a>を参照すること。<br>
 <span class="Special">{tagaddress}</span>がバッファを変更したとき、次のようなエラーメッセージが表示される:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;<span class="Todo">WARNING</span>: tag command changed a buffer!!!&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;<span class="Todo">WARNING:</span>&nbsp;tag command changed a buffer!!!&quot;<br>
 将来のバージョンではバッファを変更することは不可能になるだろう。これらはすべて<br>
 セキュリティの理由である: 誰かが気づかれないように実行される厄介なコマンドをタ<br>
 グファイルに隠しているかもしれない。例えば:<br>
@@ -576,7 +576,7 @@ tags ファイルは次の 2 つの形式のどれかで構成されなければ
 <br>
 <span class="Special">{tagname}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 識別子。普通は関数名であるが、どんな識別子でも構わない。<span class="Special">&lt;Tab&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を含めることはできない。<br>
-<span class="Special">{TAB}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1文字の<span class="Special">&lt;Tab&gt;</span>。&nbsp;<span class="Todo">Note</span>: 以前のバージョンではここでどんな空白文字<br>
+<span class="Special">{TAB}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1文字の<span class="Special">&lt;Tab&gt;</span>。&nbsp;<span class="Todo">Note:</span>&nbsp;以前のバージョンではここでどんな空白文字<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;も許可していた。これは<span class="Special">{tagfile}</span>内にスペースを許可するために放<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;棄された。<br>
 <span class="Special">{tagfile}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{tagname}</span>の定義を含むファイル名。絶対パスでも相対パスでも構わ<br>
@@ -703,7 +703,7 @@ Vimが認識するもう1つのタグはタグファイルのエンコーディ�
 にインクルードファイルを検索する。インクルードファイルによってインクルードされ<br>
 るファイルも同様に検索される。インクルードファイルが見つからなかった場合は黙っ<br>
 て無視する。見つからなかったファイルを知りたいときは<a class="Identifier" href="tagsrch.html#:checkpath">:checkpath</a>コマンドを使う。<br>
-たぶん&nbsp;<a class="Type" href="options.html#'path'">'path'</a>&nbsp;オプションが正しく設定されていないのだろう。<span class="Todo">Note</span>: インクルード<br>
+たぶん&nbsp;<a class="Type" href="options.html#'path'">'path'</a>&nbsp;オプションが正しく設定されていないのだろう。<span class="Todo">Note:</span>&nbsp;インクルード<br>
 ファイルはファイルが検索され、そのファイルを編集中のバッファが存在しても対象に<br>
 ならない。バッファにある行は、現在のファイルにのみ適用される。<br>
 <br>
@@ -720,7 +720,7 @@ Vimが認識するもう1つのタグはタグファイルのエンコーディ�
 ンドは現在のカーソル位置から検索を開始する。<br>
 <br>
 <a class="Type" href="options.html#'include'">'include'</a>&nbsp;オプションは他のファイルをインクルードする行を定義する。デフォルトは<br>
-Cプログラム用の &quot;\^#\s*include&quot; である。<span class="Todo">Note</span>: VimはCの構文を認識しない。もし<br>
+Cプログラム用の &quot;\^#\s*include&quot; である。<span class="Todo">Note:</span>&nbsp;VimはCの構文を認識しない。もし<br>
 <a class="Type" href="options.html#'include'">'include'</a>&nbsp;オプションにマッチする行が &quot;#ifdef/#endif&quot; の間やコメント行であって<br>
 も、とにかく検索される。<a class="Type" href="options.html#'isfname'">'isfname'</a>&nbsp;オプションはマッチパターンに続くファイル名を<br>
 認識するために使用される。<br>
@@ -831,7 +831,7 @@ Cプログラム用の &quot;\^#\s*include&quot; である。<span class="Todo">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="tagsrch.html#[D">[D</a>&nbsp;や&nbsp;<a class="Comment" href="tagsrch.html#]D">]D</a>&nbsp;と同様だが、<span class="Special">[range]</span>&nbsp;で指定された範囲から<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;検索する (デフォルト: ファイル全体)。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/] と [!] については&nbsp;<a class="Identifier" href="tagsrch.html#:search-args">:search-args</a>&nbsp;を参照。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: 旧来の Vim script では、<a class="Comment" href="change.html#:dl">:dl</a>&nbsp;は&nbsp;<a class="Comment" href="tagsrch.html#:dlist">:dlist</a>&nbsp;ではな<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;旧来の Vim script では、<a class="Comment" href="change.html#:dl">:dl</a>&nbsp;は&nbsp;<a class="Comment" href="tagsrch.html#:dlist">:dlist</a>&nbsp;ではな<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;く、<a class="Comment" href="change.html#:delete">:delete</a>&nbsp;に&nbsp;<a class="Comment" href="motion.html#l">l</a>&nbsp;フラグを付けたように動作するが、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では&nbsp;<a class="Comment" href="change.html#:dl">:dl</a>&nbsp;は&nbsp;<a class="Comment" href="tagsrch.html#:dlist">:dlist</a>&nbsp;のように動作する。<br>
 <br>
@@ -881,7 +881,7 @@ Cプログラム用の &quot;\^#\s*include&quot; である。<span class="Todo">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; foobar */</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;foobar&quot; に対する検索はマッチする。これは行がコメントとして認識されな<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いためである(たとえ構文強調表示が認識したとしても)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>: マクロ定義はたいていコメントと誤認されることはないので、&quot;:dlist&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;マクロ定義はたいていコメントと誤認されることはないので、&quot;:dlist&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;や &quot;:dsearch&quot;、&quot;:djump&quot; に[!]を使用することは大差がない。<br>
 [/]&nbsp;&nbsp;&nbsp;&nbsp; パターンは '/' で囲むことができる。'/' なしの場合、&quot;\&lt;pattern\&gt;&quot; とい<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;うパターンを使うことによって、完全な語だけがマッチする。2つ目の '/' の<br>
@@ -967,7 +967,7 @@ Cプログラム用の &quot;\^#\s*include&quot; である。<span class="Todo">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">endfunc</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">set</span>&nbsp;<span class="PreProc">tagfunc</span><span class="Statement">=</span>TagFunc<br>
 <br>
-<span class="Todo">Note</span>:&nbsp;<a class="Identifier" href="builtin.html#taglist()">taglist()</a>&nbsp;を実行すると、<a class="Type" href="options.html#'tagfunc'">'tagfunc'</a>&nbsp;関数は再帰的に呼び出されない。<br>
+<span class="Todo">Note:</span>&nbsp;<a class="Identifier" href="builtin.html#taglist()">taglist()</a>&nbsp;を実行すると、<a class="Type" href="options.html#'tagfunc'">'tagfunc'</a>&nbsp;関数は再帰的に呼び出されない。<br>
 <br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>
