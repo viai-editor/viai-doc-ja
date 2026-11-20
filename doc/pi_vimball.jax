@@ -5,7 +5,7 @@
 			       ----------------
 
 Author:  Charles E. Campbell  <NcampObell@SdrPchip.AorgM-NOSPAM>
-	  (まずメールアドレスから NOSPAM を削除してください)
+	  (まずメールアドレスから NOSPAM を削除すること)
 Copyright: (c) 2004-2015 by Charles E. Campbell		*Vimball-copyright*
 	The VIM LICENSE (see |copyright|) applies to the files in this
 	package, including vimballPlugin.vim, vimball.vim, and pi_vimball.txt.
@@ -32,27 +32,26 @@ Copyright: (c) 2004-2015 by Charles E. Campbell		*Vimball-copyright*
 ==============================================================================
 2. はじめに							*vimball-intro*
 
-	Vimball はプラグインの利用方法をシンプルにします。vimball は次のように
-	実行するだけで利用できます: >
+	Vimball はプラグインの利用方法をシンプルにする。vimball は次のように実
+	行するだけで利用できる: >
 		vim someplugin.vba
 		:so %
 		:q
-<	すると、プラグインが適切なディレクトリにインストールされます。実行前に
-	適切なディレクトリに移動する必要なんてありません。プラグインのヘルプも
-	自動的にインストールされます。
+<	すると、プラグインが適切なディレクトリにインストールされる。実行前に適
+	切なディレクトリに移動する必要なんてない。プラグインのヘルプも自動的に
+	インストールされる。
 
 	AsNeeded プラグインを使っている場合、vimball は .vim/plugin/ に入る予
-	定のものを適切に .vim/AsNeeded/ に入れます。
+	定のものを適切に .vim/AsNeeded/ に入れる。
 
-	vimball でインストールしたプラグインを削除するのは簡単です: >
+	vimball でインストールしたプラグインを削除するのは簡単である: >
 		vim
 		:RmVimball someplugin
-<	例えば zip や tarball でインストールした場合はこのように簡単ではありま
-	せん。
+<	例えば zip や tarball でインストールした場合はこのように簡単ではない。
 
 	Vimball はユーザーの 'runtimepath' 設定を見てスクリプトのインストール
-	場所を決定します。通常は runtimepath の最初の使用可能なディレクトリが
-	使われます。次のコマンドでディレクトリを確認できます >
+	場所を決定する。通常は runtimepath の最初の使用可能なディレクトリが使
+	われる。次のコマンドでディレクトリを確認できる >
 		:echo &rtp
 <
 
@@ -63,88 +62,85 @@ Copyright: (c) 2004-2015 by Charles E. Campbell		*Vimball-copyright*
 		:[range]MkVimball[!] filename [path]
 
 	作成する vimball に含めるファイルのパスを書き、それらの行を範囲指定し
-	て実行します。パスは runtimepath ('rtp') からの相対パスです。例: >
+	て実行する。パスは runtimepath ('rtp') からの相対パスである。例: >
 		plugin/something.vim
 		doc/something.txt
 <	この 2 行を範囲指定して次のように実行すると >
 		:[range]MkVimball filename
 <
-	"filename.vba" という名前のファイルが作成されます。Vimball.vim を使う
-	ことでこのファイルから元のファイルを再構成できます。"filename.vba" が
-	既に存在する場合は警告が表示され、ファイルは作成されません。ファイルの
-	パスは .vim (vimfiles) ディレクトリからの相対パスで、ファイルが存在し
-	ている必要があります。通常は 'runtimepath' の最初のディレクトリが相
-	対パスのルートとして使われます。特別な理由がない限り絶対パスを使わない
-	でください。
+	"filename.vba" という名前のファイルが作成される。Vimball.vim を使うこ
+	とでこのファイルから元のファイルを再構成できる。"filename.vba" が既に
+	存在する場合は警告が表示され、ファイルは作成されない。ファイルのパスは
+	.vim (vimfiles) ディレクトリからの相対パスで、ファイルが存在している必
+	要がある。通常は 'runtimepath' の最初のディレクトリが相対パスのルート
+	として使われる。特別な理由がない限り絶対パスを使わないこと。
 
-	感嘆符 (!) を指定すると、既存の "filename.vba" は上書きされます。
-	|:w| コマンドの動作と同じようなものです。
+	感嘆符 (!) を指定すると、既存の "filename.vba" は上書きされる。|:w| コ
+	マンドの動作と同じようなものである。
 
-	ファイル名にスラッシュを含めたい場合も感嘆符を付ける必要があります
-	(例: :MkVimball! path/filename)。
+	ファイル名にスラッシュを含めたい場合も感嘆符を付ける必要がある (例:
+	:MkVimball! path/filename)。
 
 	http://vim.wikia.com/wiki/Using_VimBall_with_%27Make%27 に、vimball の
-	生成を make を使って自動化するための tip が掲載されています。
+	生成を make を使って自動化するための tip が掲載されている。
 
 
 ☆VIMBALL を展開するディレクトリの設定			*g:vimball_home*
 
 	vimball によって使用される 'runtimepath' を指定したい場合は
-	g:vimball_home 変数を設定してください。
+	g:vimball_home 変数を設定すること。
 
 							*vimball-extract*
 		vim filename.vba
 
 	ファイルを展開するには、Vimball ファイルを Vim で開き、そのファイルを
-	実行 (:source %) してください。
+	実行 (:source %) すること。
 
 	Vimball ファイルの 1 行目が "Vimball Archiver by Charles E. Campbell"
-	となっている場合のみ、ファイルを展開できます。
+	となっている場合のみ、ファイルを展開できる。
 
 ☆VIMBALL 内のファイルを一覧表示する				*:VimballList*
 
 		:VimballList
 
 	このコマンドを実行すると、Vimball ファイルに含まれているファイルと、そ
-	れぞれの行数が表示されます。
+	れぞれの行数が表示される。
 
 ☆VIMBALL の展開を手動で呼び出す				*:UseVimball*
 
 		:UseVimball [path]
 
-	このコマンドは vimball に埋め込まれます。これは vimball#Vimball() を呼
-	び出して vimball を展開します。vimball を実行する代わりに、このコマン
-	ドを自分で実行しても構いません。その場合、インストール先のパスを指定で
-	きます。指定がない場合は 'runtimepath' の最初の存在するディレクトリが
-	使用されます。
+	このコマンドは vimball に埋め込まれる。これは vimball#Vimball() を呼び
+	出して vimball を展開する。vimball を実行する代わりに、このコマンドを
+	自分で実行しても構わない。その場合、インストール先のパスを指定できる。
+	指定がない場合は 'runtimepath' の最初の存在するディレクトリが使用され
+	る。
 
 ☆VIMBALL の削除						*:RmVimball*
 
 		:RmVimball vimballfile [path]
 
-	vimball に含まれていたすべてのファイルを削除します (ディレクトリは削除
-	されません)。アンインストール元のパスを指定できます ('runtimepath' 参
-	照)。指定がない場合は 'runtimepath' の最初の存在するディレクトリが使
-	用されます。
+	vimball に含まれていたすべてのファイルを削除する (ディレクトリは削除さ
+	れない)。アンインストール元のパスを指定できる ('runtimepath' 参照)。指
+	定がない場合は 'runtimepath' の最初の存在するディレクトリが使用される。
 	この機能を実現するため、インストールパスに .VimballRecord というファイ
-	ルが作成され、削除すべきファイル (それまでに vimball によってインス
-	トールされたファイル) が記録されます。
+	ルが作成され、削除すべきファイル (それまでに vimball によってインストー
+	ルされたファイル) が記録される。
 
 ☆ロードの無効化
 
 	もしなんらかの理由で vimballs プラグインを使いたくない場合は、次の二つ
-	の変数を <.vimrc> で設定すると、vimball.vim の読み込みを無効化できま
-	す: >
+	の変数を <.vimrc> で設定すると、vimball.vim の読み込みを無効化でき
+	る: >
 
 		let g:loaded_vimballPlugin= 1
 		let g:loaded_vimball      = 1
 <
 WINDOWS							*vimball-windows*
 
-	多くの vimball ファイルは gzip で圧縮されています。残念ながら Windows
-	には gzip 圧縮されたファイルを展開するためのツールが含まれていません。
-	しかし幸運にも、Windows ユーザーにも使える gzip 展開ツールがいくつかあ
-	ります:
+	多くの vimball ファイルは gzip で圧縮されている。残念ながら Windows に
+	は gzip 圧縮されたファイルを展開するためのツールが含まれていない。しか
+	し幸運にも、Windows ユーザーにも使える gzip 展開ツールがいくつかある:
 >
 	    Item     Tool/Suite   Free   Website
 	    ----     ----------   ----   -------
