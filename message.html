@@ -9,9 +9,9 @@ helpname: 'message'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
-このファイルにはVimが表示するメッセージとエラーメッセージのリストが、アルファ<br>
-ベット順で紹介してある。メッセージの意味がわからなかった時にはこれを使って調べ<br>
-ることができる。だけど完璧ではない。<br>
+このファイルには、Vim が出すメッセージとエラーメッセージの、アルファベット順の<br>
+一覧が含まれている。メッセージの意味が分からない場合に、これを使うことができ<br>
+る。ただし、完全ではない。<br>
 <br>
 1. 古いメッセージ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="message.html#:messages">:messages</a><br>
 2. エラーメッセージ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="message.html#error-messages">error-messages</a><br>
@@ -20,64 +20,63 @@ helpname: 'message'
 <span class="PreProc">==============================================================================</span><br>
 1. 古いメッセージ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#:messages" name=":messages">:messages</a>&nbsp;<a class="Constant" href="message.html#:mes" name=":mes">:mes</a>&nbsp;<a class="Constant" href="message.html#message-history" name="message-history">message-history</a><br>
 <br>
-既に発生したメッセージを見るのに &quot;:messages&quot; コマンドが使用できる。これはメッ<br>
-セージが上書きされてしまったり、スクロールで流れていってしまった時にとりわけ便<br>
-利である。これは&nbsp;<a class="Type" href="options.html#'shortmess'">'shortmess'</a>&nbsp;オプションに依存する。<br>
+&quot;:messages&quot; コマンドを使うと、以前に出されたメッセージを見ることができる。これ<br>
+は、メッセージが上書きされたり切り詰められたりした場合に特に役に立つ。これは<br>
+<a class="Type" href="options.html#'shortmess'">'shortmess'</a>&nbsp;オプションに依存する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mes[sages]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; すべてのメッセージを表示する。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span class="Special">{count}</span>mes[sages]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しい方から&nbsp;<span class="Special">{count}</span>&nbsp;件のメッセージを表示する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span class="Special">{count}</span>mes[sages]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最新の&nbsp;<span class="Special">{count}</span>&nbsp;件のメッセージを表示する。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mes[sages] clear&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; すべてのメッセージを削除する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mes[sages] clear&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; すべてのメッセージをクリアする。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span class="Special">{count}</span>mes[sages] clear<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しい方から&nbsp;<span class="Special">{count}</span>&nbsp;件を残して、メッセージを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;削除する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最新の&nbsp;<span class="Special">{count}</span>&nbsp;件だけを残して、メッセージをク<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リアする。<br>
 <br>
-記憶されるメッセージ数は、<a class="Type" href="options.html#'messagesopt'">'messagesopt'</a>&nbsp;オプションによって決まる。<br>
+記憶されるメッセージの数は、<a class="Type" href="options.html#'messagesopt'">'messagesopt'</a>&nbsp;オプションで決まる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#g<" name="g&lt;">g&lt;</a><br>
-コマンド &quot;g&lt;&quot; を使うと前のコマンドの出力の最後のページを見ることができる。<br>
-hit-enter プロンプトで誤って&nbsp;<span class="Special">&lt;Space&gt;</span>&nbsp;を押してしまったときにこれは便利である。<br>
-このコマンドを使うと hit-enter プロンプトまで戻り、そこでスクロールバックがで<br>
-きる。<br>
-<span class="Todo">Note:</span>&nbsp;出力を表示中に &quot;q&quot; を押してそれ以降の出力表示をさせなかった場合は、<br>
-&quot;g&lt;&quot; を使ったときもそこまでしか表示されない。<br>
-他のコマンドが出力を行うと、前のコマンドの出力は消去される。<br>
-&quot;g&lt;&quot; の出力はリダイレクトされない。<br>
+&quot;g&lt;&quot; コマンドを使うと、前のコマンドの出力の最後のページを見ることができる。こ<br>
+れは、hit-enter プロンプトで誤って&nbsp;<span class="Special">&lt;Space&gt;</span>&nbsp;をタイプした場合に特に役に立つ。そ<br>
+うすると hit-enter プロンプトに戻り、さらに前にスクロールできる。<br>
+<span class="Todo">Note:</span>&nbsp;more プロンプトで &quot;q&quot; によって出力が止められた場合は、この時点までしか表<br>
+示されない。<br>
+別のコマンドが出力を出すと、前のコマンドの出力はクリアされる。&quot;g&lt;&quot; の出力はリ<br>
+ダイレクトされない。<br>
 <br>
-翻訳されたメッセージを使っているなら、誰がそのメッセージや翻訳をメンテナンスし<br>
-ているかが最初の行に表示される。間違いを見つけたときはそこを見てメンテナーと連<br>
-絡をとることができる。<br>
+翻訳されたメッセージを使っている場合、最初に表示される行に、誰がメッセージまた<br>
+は翻訳をメンテナンスしているかが書かれている。誤りを見つけたときに、これを使っ<br>
+てメンテナーに連絡できる。<br>
 <br>
-特定の(エラー)メッセージに関するヘルプを見つけたいときは、メッセージの最初に表<br>
-示されるIDを使う。例えば:<br>
+特定の (エラー) メッセージについてのヘルプを見つけたい場合は、メッセージの最初<br>
+の ID を使う。例えば、このメッセージについてのヘルプを得るには:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">E72: Close error on swap file</span><br>
 <br>
-または翻訳版なら:<br>
+または (翻訳されたもの):<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">E72: Errore durante chiusura swap file</span><br>
 <br>
-というメッセージに関するヘルプを見つけるには:<br>
+これを使う:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:help E72</div>
 <br>
-とすればよい。面倒ならシフトキーを使わないでもできる:<br>
+面倒なら、シフトキーを使わなくても動作する:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:help e72</div>
 <br>
-このIDの番号には意味はありません。<br>
+この ID の番号には意味はない。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 2. エラーメッセージ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#error-messages" name="error-messages">error-messages</a>&nbsp;<a class="Constant" href="message.html#errors" name="errors">errors</a><br>
 <br>
-エラーメッセージが表示されたが、それを読む前に消えてしまった場合には、次のコマ<br>
-ンドでもう一度見ることができる:<br>
+エラーメッセージが表示されたが、読む前に消えてしまった場合は、これでもう一度見<br>
+ることができる:<br>
 <div class="helpExample">&nbsp;&nbsp;:echo errmsg</div>
-もしくは最近のメッセージのリストを見る:<br>
+または、最近のメッセージの一覧をこれで見る:<br>
 <div class="helpExample">&nbsp;&nbsp;:messages</div>
-詳しくは上の&nbsp;<a class="Comment" href="message.html#:messages">:messages</a>&nbsp;を参照。<br>
+上の&nbsp;<a class="Comment" href="message.html#:messages">:messages</a>&nbsp;を参照。<br>
 <br>
 <br>
 <span class="Statement">LIST OF MESSAGES</span><br>
@@ -105,216 +104,219 @@ hit-enter プロンプトで誤って&nbsp;<span class="Special">&lt;Space&gt;</
 &nbsp;&nbsp;<span class="PreProc">fatal error in cs_manage_matches</span><br>
 &nbsp;&nbsp;<span class="PreProc">Invalid count for del_bytes(): {N}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E340" name="E340">E340</a>&nbsp;<a class="Constant" href="message.html#E685" name="E685">E685</a>&nbsp;<a class="Constant" href="message.html#internal-error" name="internal-error">internal-error</a><br>
-これは内部エラーである。これを再現できる場合はバグレポートを送ってください。<br>
-<a class="Identifier" href="intro.html#bugs">bugs</a>を参照。<br>
+これは内部エラーである。再現できる場合は、バグ報告を送ってほしい。<a class="Identifier" href="intro.html#bugs">bugs</a>&nbsp;を参<br>
+照。<br>
 <br>
 <br>
 &nbsp;&nbsp;<span class="PreProc">ATTENTION</span><br>
 &nbsp;&nbsp;<span class="PreProc">Found a swap file by the name ...</span><br>
 <br>
-<a class="Identifier" href="usr_11.html#ATTENTION">ATTENTION</a>を参照。<br>
+<a class="Identifier" href="usr_11.html#ATTENTION">ATTENTION</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E92" name="E92">E92</a><br>
 &nbsp;&nbsp;<span class="PreProc">Buffer {N} not found</span><br>
 <br>
-あなたが要求したバッファは存在しない。これはマークを含んでいたり、その他の方法<br>
-で参照されているバッファを完全に削除(wiped out)したときも起こりうる。<br>
-<a class="Identifier" href="windows.html#:bwipeout">:bwipeout</a><br>
+要求したバッファは存在しない。これは、マークを含んでいたり、他の方法で参照され<br>
+たりしているバッファを完全に削除した場合にも起こりうる。<a class="Identifier" href="windows.html#:bwipeout">:bwipeout</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E95" name="E95">E95</a><br>
 &nbsp;&nbsp;<span class="PreProc">Buffer with this name already exists</span><br>
 <br>
-完全に同名のバッファを2つ持つことはできない。これにはファイルに繋がるパスも含<br>
-まれる。<br>
+完全に同じ名前のバッファを 2 つ持つことはできない。これには、ファイルに至るパ<br>
+スも含まれる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E1513" name="E1513">E1513</a><br>
 &nbsp;&nbsp;<span class="PreProc">Cannot switch buffer. 'winfixbuf' is enabled</span><br>
 <br>
 ウィンドウで&nbsp;<a class="Type" href="options.html#'winfixbuf'">'winfixbuf'</a>&nbsp;が有効になっている場合、そのウィンドウのカレントバッ<br>
-ファを変更することはできない。続行する前に&nbsp;<span class="MissingTag">'nowinfixbuf'</span>&nbsp;を設定する必要がある。<br>
-コマンドがサポートしていれば、[!] を使用してウィンドウのバッファを強制的に切り<br>
-替えることができる。<br>
+ファを変更することはできない。続ける前に&nbsp;<span class="MissingTag">'nowinfixbuf'</span>&nbsp;を設定する必要がある。<br>
+コマンドがサポートしていれば、[!] を使って、ウィンドウにバッファを強制的に切り<br>
+替えさせることができる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E72" name="E72">E72</a><br>
 &nbsp;&nbsp;<span class="PreProc">Close error on swap file</span><br>
 <br>
-編集中のテキストのコピーを保存するスワップファイル<a class="Identifier" href="recover.html#swap-file">swap-file</a>が適切にクローズ<br>
-できなかった。たいていは無害。<br>
+編集したテキストのコピーを保持するのに使われる&nbsp;<a class="Identifier" href="recover.html#swap-file">swap-file</a>&nbsp;を、正しく閉じるこ<br>
+とができなかった。ほとんど無害である。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E169" name="E169">E169</a><br>
 &nbsp;&nbsp;<span class="PreProc">Command too recursive</span><br>
 <br>
-ExコマンドがExコマンドを実行するExコマンドを実行...(以下略)となったとき起こる。<br>
-この制限は、200 または&nbsp;<a class="Type" href="options.html#'maxfuncdepth'">'maxfuncdepth'</a>&nbsp;のどちらか大きいほうである。それ以上多い<br>
-ときはおそらく無限ループである。おそらく<a class="Identifier" href="eval.html#:execute">:execute</a>か<a class="Identifier" href="repeat.html#:source">:source</a>コマンドが関係し<br>
-ているだろう。<br>
+これは、Ex コマンドが Ex コマンドを実行し、それがまた Ex コマンドを実行し、な<br>
+どという場合に起こる。上限は 200 か&nbsp;<a class="Type" href="options.html#'maxfuncdepth'">'maxfuncdepth'</a>&nbsp;の値のどちらか大きいほうで<br>
+ある。それより多い場合は、おそらく無限ループがある。おそらく&nbsp;<a class="Identifier" href="eval.html#:execute">:execute</a>&nbsp;か<br>
+<a class="Identifier" href="repeat.html#:source">:source</a>&nbsp;コマンドが関係している。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E254" name="E254">E254</a><br>
 &nbsp;&nbsp;<span class="PreProc">Cannot allocate color {name}</span><br>
 <br>
-色名<span class="Special">{name}</span>が不明。ほとんどのシステム上で利用可能な色のリストが<a class="Identifier" href="syntax.html#gui-colors">gui-colors</a>にあ<br>
-るので参照。<br>
+色の名前&nbsp;<span class="Special">{name}</span>&nbsp;が分からない。ほとんどのシステムで利用できる色の一覧は<br>
+<a class="Identifier" href="syntax.html#gui-colors">gui-colors</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E1244" name="E1244">E1244</a><br>
 &nbsp;&nbsp;<span class="PreProc">Bad color string: {str}</span><br>
 <br>
-提供された色がパターン #rrggbb に準拠していない<br>
+提供された色が、パターン #rrggbb に合っていなかった<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E458" name="E458">E458</a><br>
 &nbsp;&nbsp;<span class="PreProc">Cannot allocate colormap entry, some colors may be incorrect</span><br>
 <br>
-Vimに必要な色数が使用できないことを意味している。Vimは終了しないが、一部の色が<br>
-正しく表示されない。多くの色を使っていそうなアプリケーションを止めるか、もしく<br>
-はVimを起動した後で起動してみると良い。<br>
-ブラウザーは多くの色を浪費することで知られている。netscape の場合は、独自の<br>
-colormapを使うように指定することで回避できる:<br>
+これは、Vim で利用できる色が足りないことを意味する。Vim は動作し続けるが、いく<br>
+つかの色は指定された色で表示されない。多くの色を使う他のアプリケーションを止め<br>
+てみるか、gvim を起動した後でそれらを起動すること。<br>
+ブラウザーは多くの色を消費することが知られている。netscape では、独自のカラー<br>
+マップを使うように指示することで、これを避けることができる:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">netscape -install</span><br>
-もしくは色数の制限をしてしまう(64くらいが良いらしい):<br>
+または、特定の数の色に制限するように指示する (64 でうまくいくはずである):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">netscape -ncols 64</span><br>
-同じことをXdefaultsを使ってやるなら:<br>
+これは、Xdefaults ファイルの行でも行うことができる:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Netscape*installColormap: Yes</span><br>
-もしくは<br>
+または<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Netscape*maxImageColors:&nbsp;&nbsp;64</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E79" name="E79">E79</a><br>
 &nbsp;&nbsp;<span class="PreProc">Cannot expand wildcards</span><br>
 <br>
-ファイル名がおかしな文字の組み合わせを含んでいる。そのためVimはワイルドカード<br>
-を展開しようとしたが、失敗した。これはマッチするファイル名が見つからなかったと<br>
-いうことではなく、パターンが不正であることを意味している。<br>
+ファイル名に変な文字の組み合わせが含まれていて、それにより Vim がワイルドカー<br>
+ドを展開しようとしたが、これが失敗した。これは、マッチするファイル名が見つから<br>
+なかったという意味ではなく、パターンが不正だったという意味である。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E459" name="E459">E459</a><br>
 &nbsp;&nbsp;<span class="PreProc">Cannot go back to previous directory</span><br>
 <br>
-ファイル名を展開中に、Vimが以前使われていたディレクトリに戻ることに失敗した。<br>
-こうなると、使われている全てのファイル名が無効になるかもしれない。ユーザーはカ<br>
-レントディレクトリに実行パーミッションを持っている必要がある。<br>
+ファイル名を展開している間に、Vim は以前使っていたディレクトリに戻るのに失敗し<br>
+た。使われているファイル名は、今はすべて無効かもしれない! カレントディレクトリ<br>
+に対する実行権限が必要である。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E190" name="E190">E190</a>&nbsp;<a class="Constant" href="message.html#E212" name="E212">E212</a><br>
 &nbsp;&nbsp;<span class="PreProc">Cannot open &quot;{filename}&quot; for writing</span><br>
 &nbsp;&nbsp;<span class="PreProc">Can't open file for writing</span><br>
 <br>
-なんらかの理由によって、あなたが書こうとしているファイルは作成または上書きがで<br>
-きない。理由は、そのディレクトリに書き込みパーミッションを持っていないか、ファ<br>
-イル名が無効であることかもしれない。<br>
+何らかの理由で、書き込もうとしているファイルを作成または上書きできない。理由と<br>
+しては、ディレクトリに書き込む権限がないか、ファイル名が有効でないことが考えら<br>
+れる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E166" name="E166">E166</a><br>
 &nbsp;&nbsp;<span class="PreProc">Can't open linked file for writing</span><br>
 <br>
-あなたは上書きできないファイルに書き込みをしようとしていて、そのファイルはリン<br>
-ク(ハードリンクまたはシンボリックリンク)である。そのリンクまたはファイルのある<br>
-ディレクトリが書き込み可能なら、それでも書き込むことは可能だが、あなたがそのリ<br>
-ンクを削除してその場所にファイルを書き込みたいのか、ファイルそのものを削除して<br>
-その場所に新しいファイルを書き込みたいのかVimにはわからない。もし本当にファイ<br>
-ルをこの名前で書き込みたいのなら、手動でリンクまたはファイルを削除するか、Vim<br>
-がそれを上書きできるようにパーミッションを変更しなければならない。<br>
+上書きできないファイルに書き込もうとしており、そのファイルはリンク (ハードリン<br>
+クかシンボリックリンク) である。リンクまたはファイルを含むディレクトリが書き込<br>
+み可能なら、書き込みはまだ可能かもしれないが、Vim には、リンクを削除してその場<br>
+所にファイルを書き込みたいのか、ファイル自体を削除してその場所に新しいファイル<br>
+を書き込みたいのかが分からない。本当にこの名前でファイルを書き込みたい場合は、<br>
+手動でリンクかファイルを削除するか、Vim が上書きできるように権限を変更する必要<br>
+がある。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E46" name="E46">E46</a><br>
 &nbsp;&nbsp;<span class="PreProc">Cannot change read-only variable &quot;{name}&quot;</span><br>
 <br>
-関数の引数<a class="Identifier" href="userfunc.html#a:var">a:var</a>またはVim内部変数<a class="Identifier" href="eval.html#v:var">v:var</a>に値を代入しようとした。これらはリー<br>
-ドオンリーである。<br>
+読み取り専用の、関数の引数&nbsp;<a class="Identifier" href="userfunc.html#a:var">a:var</a>&nbsp;または Vim の内部変数&nbsp;<a class="Identifier" href="eval.html#v:var">v:var</a>&nbsp;に値を代入し<br>
+ようとしている。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E90" name="E90">E90</a><br>
 &nbsp;&nbsp;<span class="PreProc">Cannot unload last buffer</span><br>
 <br>
-Vimは常に少なくとも1つのバッファをロードしていなければならない。そうでなければ<br>
-ウィンドウに表示するものが何もなくなってしまう。<br>
+Vim は常に 1 つのバッファが読み込まれていることを必要とする。そうでないと、ウィ<br>
+ンドウに表示するものが何もなくなってしまう。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E40" name="E40">E40</a><br>
 &nbsp;&nbsp;<span class="PreProc">Can't open errorfile &lt;filename&gt;</span><br>
-&quot;:make&quot; や &quot;:grep&quot; コマンドを使った時: エラーメッセージやgrepの結果を開くこと<br>
-ができなかった。これには幾つかの原因が考えられる:<br>
--&nbsp;<a class="Type" href="options.html#'shellredir'">'shellredir'</a>&nbsp;に間違った値が入っている。<br>
-- シェルがディレクトリを変更してしまったために、エラーファイルが違うディレクト<br>
-&nbsp;&nbsp;リに作られてしまった。<a class="Type" href="options.html#'makeef'">'makeef'</a>&nbsp;を変更することで修正できるが、makeコマンドは<br>
-&nbsp;&nbsp;誤ったディレクトリで実行されてしまうことになる。<br>
--&nbsp;<a class="Type" href="options.html#'makeef'">'makeef'</a>&nbsp;に間違った値が入っている。<br>
--&nbsp;<a class="Type" href="options.html#'grepprg'">'grepprg'</a>&nbsp;や&nbsp;<a class="Type" href="options.html#'makeprg'">'makeprg'</a>&nbsp;を実行できない。これは必ず検出できるとは限らない(特に<br>
-&nbsp;&nbsp;Windowsでは)。$PATHをチェックすること。<br>
+<br>
+&quot;:make&quot; または &quot;:grep&quot; コマンドを使っている場合: エラーメッセージや grep の出<br>
+力を保存するのに使われるファイルを開くことができない。これにはいくつかの原因が<br>
+ありうる:<br>
+-&nbsp;<a class="Type" href="options.html#'shellredir'">'shellredir'</a>&nbsp;の値が間違っている。<br>
+- シェルがディレクトリを変更し、エラーファイルが別のディレクトリに書き込まれ<br>
+&nbsp;&nbsp;る。これは&nbsp;<a class="Type" href="options.html#'makeef'">'makeef'</a>&nbsp;を変更することで修正できるが、それでも make コマンドは間<br>
+&nbsp;&nbsp;違ったディレクトリで実行される。<br>
+-&nbsp;<a class="Type" href="options.html#'makeef'">'makeef'</a>&nbsp;の値が間違っている。<br>
+-&nbsp;<a class="Type" href="options.html#'grepprg'">'grepprg'</a>&nbsp;または&nbsp;<a class="Type" href="options.html#'makeprg'">'makeprg'</a>&nbsp;を実行できなかった。これは常に検出できるわけでは<br>
+&nbsp;&nbsp;ない (特に MS-Windows では)。$PATH を確かめること。<br>
 <br>
 <br>
 &nbsp;&nbsp;<span class="PreProc">Can't open file C:\TEMP\VIoD243.TMP</span><br>
 <br>
-MS-Windowsにおいて、外部コマンドの出力を読み込もうとしたが、コマンドが正常に動<br>
-作しなかったときに現れる。これには多くの原因がありうる。<a class="Type" href="options.html#'shell'">'shell'</a>,&nbsp;<a class="Type" href="options.html#'shellquote'">'shellquote'</a>,<br>
-<a class="Type" href="options.html#'shellxquote'">'shellxquote'</a>,&nbsp;<a class="Type" href="options.html#'shellslash'">'shellslash'</a>&nbsp;やこれらに関連したオプションをチェックすること。外<br>
-部コマンドが見つからなかったということもありうる。その場合の特別なエラーメッ<br>
-セージは用意されていない。<br>
+MS-Windows では、このメッセージは、外部コマンドの出力を読み込もうとしたが、そ<br>
+のコマンドが正常に実行されなかったときに表示される。これは多くの原因で起こりう<br>
+る。<a class="Type" href="options.html#'shell'">'shell'</a>、<a class="Type" href="options.html#'shellquote'">'shellquote'</a>、<a class="Type" href="options.html#'shellxquote'">'shellxquote'</a>、<a class="Type" href="options.html#'shellslash'">'shellslash'</a>&nbsp;と関連するオプションを<br>
+確かめること。外部コマンドが見つからなかったのかもしれないが、そのための別のエ<br>
+ラーメッセージはない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E12" name="E12">E12</a><br>
 &nbsp;&nbsp;<span class="PreProc">Command not allowed from exrc/vimrc in current dir or tag search</span><br>
 <br>
-いくつかのコマンドはセキュリティ上の理由のために許可されていない。それらのコマ<br>
-ンドはたいていカレントディレクトリの.exrcや.vimrcまたはtagsファイルから来る。<br>
-<a class="Type" href="options.html#'secure'">'secure'</a>&nbsp;も参照。<br>
+いくつかのコマンドは、セキュリティ上の理由で許可されていない。これらのコマンド<br>
+は、ほとんどの場合、カレントディレクトリの .exrc または .vimrc ファイルか、<br>
+tags ファイルから来る。<a class="Type" href="options.html#'secure'">'secure'</a>&nbsp;も参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E74" name="E74">E74</a><br>
 &nbsp;&nbsp;<span class="PreProc">Command too complex</span><br>
 <br>
-マッピングが非常に長いコマンド文字列に展開されてしまった。マッピングが間接的に<br>
-自分自身を呼ぶことによって起こった可能性がある。<br>
+マッピングがとても長いコマンド文字列になった。マッピングが間接的に自分自身を呼<br>
+び出すことが原因かもしれない。<br>
 <br>
 <br>
 &nbsp;&nbsp;<span class="PreProc">CONVERSION ERROR</span><br>
 <br>
-ファイル書き込み時に &quot;CONVERSION ERROR&quot; という文字が現れたら、これは内部で使わ<br>
-れているUTF-8からファイルのフォーマットに変換するときにいくつかのビットが失わ<br>
-れたことを意味する。このファイルにはunmodifiedのマークがされない。情報の欠落が<br>
-気になるなら、バッファ中の文字を扱えるように&nbsp;<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>&nbsp;オプションを他の値<br>
-にし、再度書き込みを行うこと。気にしないならバッファを破棄したり&nbsp;<a class="Type" href="options.html#'modified'">'modified'</a>&nbsp;オ<br>
-プションをリセットしてもよい。<br>
-バックアップファイルがある場合、<a class="Type" href="options.html#'writebackup'">'writebackup'</a>&nbsp;または&nbsp;<a class="Type" href="options.html#'backup'">'backup'</a>&nbsp;が設定されている<br>
-と削除されないので、変更を破棄したい場合は元に戻すことができる。<br>
+ファイルを書き込むときに &quot;CONVERSION ERROR&quot; というテキストが現れた場合、これ<br>
+は、内部で使われている UTF-8 からファイルの形式にテキストを変換するときに、い<br>
+くつかのビットが失われたことを意味する。ファイルは未変更とはマークされない。情<br>
+報の損失が気になる場合は、<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>&nbsp;オプションを、バッファ内の文字を扱え<br>
+る別の値に設定して、もう一度書き込むこと。気にならない場合は、バッファを破棄す<br>
+るか、<a class="Type" href="options.html#'modified'">'modified'</a>&nbsp;オプションをリセットすることができる。<br>
+<a class="Type" href="options.html#'writebackup'">'writebackup'</a>&nbsp;か&nbsp;<a class="Type" href="options.html#'backup'">'backup'</a>&nbsp;が設定されているときに、バックアップファイルがある場<br>
+合、それは削除されないので、変更を捨てたい場合は、それを元の場所に戻すことがで<br>
+きる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E302" name="E302">E302</a><br>
 &nbsp;&nbsp;<span class="PreProc">Could not rename swap file</span><br>
 <br>
-ファイル名が変更されたとき、Vimは<a class="Identifier" href="recover.html#swap-file">swap-file</a>も同様にリネームしようとする。これ<br>
-が失敗し、以前のスワップファイルが引き続き使われる。多くの場合は無害。<br>
+ファイル名が変わったとき、Vim は&nbsp;<a class="Identifier" href="recover.html#swap-file">swap-file</a>&nbsp;の名前も変更しようとする。<br>
+これに失敗し、古いスワップファイルがまだ使われている。ほとんど無害である。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E43" name="E43">E43</a>&nbsp;<a class="Constant" href="message.html#E44" name="E44">E44</a><br>
 &nbsp;&nbsp;<span class="PreProc">Damaged match string</span><br>
 &nbsp;&nbsp;<span class="PreProc">Corrupted regexp program</span><br>
 <br>
-Vim内部でなんらかの不具合が起こり、正規表現が壊れてしまった。この問題を再現で<br>
-きるなら報告してください。<a class="Identifier" href="intro.html#bugs">bugs</a><br>
+Vim の内部で何かがおかしくなり、壊れた正規表現になった。この問題を再現する方法<br>
+が分かっている場合は、報告してほしい。<a class="Identifier" href="intro.html#bugs">bugs</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E208" name="E208">E208</a>&nbsp;<a class="Constant" href="message.html#E209" name="E209">E209</a>&nbsp;<a class="Constant" href="message.html#E210" name="E210">E210</a><br>
 &nbsp;&nbsp;<span class="PreProc">Error writing to &quot;{filename}&quot;</span><br>
 &nbsp;&nbsp;<span class="PreProc">Error closing &quot;{filename}&quot;</span><br>
 &nbsp;&nbsp;<span class="PreProc">Error reading &quot;{filename}&quot;</span><br>
 <br>
-これはVimがファイルをリネームしようとしたが、ファイル名の単純な変更ができな<br>
-かったときに起こる。するとファイルはコピーされるが、どういうわけかこれが失敗し<br>
-た。結果として、元のファイルとコピー先のファイルの両方が存在するが、コピー先の<br>
-ファイルは不完全な可能性がある。<br>
+これは、Vim がファイルの名前を変更しようとしているが、ファイル名の単純な変更が<br>
+うまくいかない場合に起こる。その場合、ファイルはコピーされるが、なぜかこれが失<br>
+敗した。<br>
+結果として、元のファイルとコピー先のファイルの両方が存在し、コピー先のファイル<br>
+が不完全になっているかもしれない。<br>
 <br>
 <br>
 &nbsp;&nbsp;<span class="PreProc">Vim: Error reading input, exiting...</span><br>
 <br>
-これは入力が求められているときにタイプされた文字が読み込めなかった場合に起こ<br>
-る。Vimはどうにもならなくなり、終了するしかない。これは標準入力と標準出力の両<br>
-方がリダイレクトされていて、かつVimを終了させないスクリプトを実行しているとき<br>
-に起こりうる。<br>
+これは、入力が必要なときに、Vim がタイプされた文字を読み込めない場合に起こる。<br>
+Vim は動けなくなり、できるのは終了することだけである。これは、stdin と stderr<br>
+の両方がリダイレクトされ、Vim を終了しないスクリプトを実行している場合に起こり<br>
+うる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E47" name="E47">E47</a><br>
 &nbsp;&nbsp;<span class="PreProc">Error while reading errorfile</span><br>
 <br>
-エラーファイルの読み込みに失敗した。これは、エラーメッセージが認識できないこと<br>
-によって引き起こされるわけではない。<br>
+エラーファイルを読み込むことができなかった。これは、認識されなかったエラーメッ<br>
+セージが原因ではない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E80" name="E80">E80</a><br>
 &nbsp;&nbsp;<span class="PreProc">Error while writing</span><br>
 <br>
-ファイルの書き込みが正常に完了しなかった。そのファイルはおそらく不完全である。<br>
+ファイルの書き込みが正常に完了しなかった。ファイルはおそらく不完全である。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E13" name="E13">E13</a>&nbsp;<a class="Constant" href="message.html#E189" name="E189">E189</a><br>
 &nbsp;&nbsp;<span class="PreProc">File exists (add ! to override)</span><br>
 &nbsp;&nbsp;<span class="PreProc">&quot;{filename}&quot; exists (add ! to override)</span><br>
 <br>
-間違ってファイルを上書きしてしまわないように保護されている。どうしても上書きし<br>
-たいのなら、同じコマンドの直後に &quot;!&quot; を付けて使用する。例:<br>
+誤ってファイルを上書きしないように保護されている。それでも書き込みたい場合は、<br>
+同じコマンドを使い、コマンドのすぐ後に &quot;!&quot; を付ける。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:w /tmp/test</div>
 これをこう変える:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:w! /tmp/test</div>
@@ -322,139 +324,138 @@ Vim内部でなんらかの不具合が起こり、正規表現が壊れてし�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E768" name="E768">E768</a><br>
 &nbsp;&nbsp;<span class="PreProc">Swap file exists: {filename} (:silent! overrides)</span><br>
 <br>
-Vim で編集している最中のファイルは上書きしないようになっている。このエラーはス<br>
-ワップファイルが存在するのに &quot;:w! filename&quot; を実行したときに発生する。<br>
-- もしそのスワップファイルが昔のクラッシュした編集セッションで作られたものなら<br>
-&nbsp;&nbsp;このスワップファイルは消したいだろう。<span class="Special">{filename}</span>&nbsp;を編集するとそのスワップ<br>
-&nbsp;&nbsp;ファイルについての情報が得られる。<br>
-- 強制的に保存したいならコマンドの前に &quot;:silent!&quot; をつける。例:<br>
+Vim で編集されているファイルを上書きしないように保護されている。これは、<br>
+&quot;:w! filename&quot; を使い、スワップファイルが見つかった場合に起こる。<br>
+- スワップファイルが、以前にクラッシュした編集セッションの残りである場合は、ス<br>
+&nbsp;&nbsp;ワップファイルを削除したいかもしれない。スワップファイルについての情報を調べ<br>
+&nbsp;&nbsp;るには、<span class="Special">{filename}</span>&nbsp;を編集する。<br>
+- それでも書き込みたい場合は、コマンドの前に &quot;:silent!&quot; を付ける。例えば:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:silent! w! /tmp/test</div>
-&nbsp;&nbsp;既存のファイルを上書きするために既に ! をつけているので、この特別なコマンド<br>
-が必要になる。<br>
+&nbsp;&nbsp;! はすでに既存のファイルを上書きするために付けているので、この特別なコマンド<br>
+&nbsp;&nbsp;が必要である。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E139" name="E139">E139</a><br>
 &nbsp;&nbsp;<span class="PreProc">File is loaded in another buffer</span><br>
 <br>
-あなたは別のバッファで使われている名前でファイルを書き込もうとしている。そう<br>
-すると同じファイルの2つの版ができてしまう。<br>
+別のバッファでも使われている名前で、ファイルを書き込もうとしている。そうする<br>
+と、同じファイルの 2 つのバージョンができてしまう。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E142" name="E142">E142</a><br>
 &nbsp;&nbsp;<span class="PreProc">File not written: Writing is disabled by 'write' option</span><br>
 <br>
-<a class="Type" href="options.html#'write'">'write'</a>&nbsp;オプションがオフである。これはファイルを書き込もうとする全てのコマンド<br>
-が生成するメッセージである。コマンドライン引数で<a class="Identifier" href="starting.html#-m">-m</a>を指定することで同じメッ<br>
-セージを発生することができる。&quot;:set write&quot; で&nbsp;<a class="Type" href="options.html#'write'">'write'</a>&nbsp;オプションを設定すること<br>
-ができる。<br>
+<a class="Type" href="options.html#'write'">'write'</a>&nbsp;オプションがオフになっている。これにより、ファイルを書き込もうとするす<br>
+べてのコマンドがこのメッセージを出す。これは&nbsp;<a class="Identifier" href="starting.html#-m">-m</a>&nbsp;コマンドライン引数が原因かも<br>
+しれない。&quot;:set write&quot; で&nbsp;<a class="Type" href="options.html#'write'">'write'</a>&nbsp;オプションをオンにできる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E25" name="E25">E25</a><br>
 &nbsp;&nbsp;<span class="PreProc">GUI cannot be used: Not enabled at compile time</span><br>
 <br>
-GUIのためのコードを含んでいないVimのバージョンを実行している。従って &quot;gvim&quot; と<br>
-&quot;:gui&quot; は機能しない。<br>
+GUI のコードを含まないバージョンの Vim を実行している。そのため、&quot;gvim&quot; と<br>
+&quot;:gui&quot; は動作しない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E49" name="E49">E49</a><br>
 &nbsp;&nbsp;<span class="PreProc">Invalid scroll size</span><br>
 <br>
-これは&nbsp;<a class="Type" href="options.html#'scroll'">'scroll'</a>,&nbsp;<a class="Type" href="options.html#'scrolljump'">'scrolljump'</a>,&nbsp;<a class="Type" href="options.html#'scrolloff'">'scrolloff'</a>&nbsp;オプションに無効な値を設定すること<br>
-によって引き起こされる。<br>
+これは、<a class="Type" href="options.html#'scroll'">'scroll'</a>、<a class="Type" href="options.html#'scrolljump'">'scrolljump'</a>&nbsp;または&nbsp;<a class="Type" href="options.html#'scrolloff'">'scrolloff'</a>&nbsp;オプションに無効な値を設定し<br>
+たことが原因である。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E17" name="E17">E17</a><br>
 &nbsp;&nbsp;<span class="PreProc">&quot;{filename}&quot; is a directory</span><br>
 <br>
-あなたは既存のディレクトリの名前でファイルを書き込もうとした。これは不可能であ<br>
-る。ファイル名を追加する必要があるだろう。<br>
+ディレクトリの名前でファイルを書き込もうとした。これはできない。おそらくファイ<br>
+ル名を付け加える必要がある。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E19" name="E19">E19</a><br>
 &nbsp;&nbsp;<span class="PreProc">Mark has invalid line number</span><br>
 <br>
-存在しない行番号を持つマークを使用した。別のファイルのマークを持っているとき<br>
-か、別のプログラムがファイルからラインを消してしまった場合に起こり得る。<br>
+存在しない行番号を持つマークを使っている。これは、別のファイルにマークがあり、<br>
+他のプログラムがそのファイルから行を削除した場合に起こりうる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E219" name="E219">E219</a>&nbsp;<a class="Constant" href="message.html#E220" name="E220">E220</a><br>
 &nbsp;&nbsp;<span class="PreProc">Missing {.</span><br>
 &nbsp;&nbsp;<span class="PreProc">Missing }.</span><br>
 <br>
-ファイル名の中に{}を使っているが、{に対応する}がない、またはその逆。これは<br>
-<span class="Special">{foo,bar}</span>のように使わねばならない。これは &quot;foo&quot; と &quot;bar&quot; にマッチする。<br>
+ファイル名で {} 構文を使っているが、対応する } のない { があるか、その逆であ<br>
+る。これはこのように使うべきである:&nbsp;<span class="Special">{foo,bar}</span>。これは &quot;foo&quot; と &quot;bar&quot; にマッチ<br>
+する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E315" name="E315">E315</a><br>
 &nbsp;&nbsp;<span class="PreProc">ml_get: invalid lnum: {number}</span><br>
 <br>
-Vimの内部エラー。どうしたらこれを再現できるかを発見して、バグレポートを送って<br>
-くれないだろうか&nbsp;<a class="Identifier" href="intro.html#bugreport.vim">bugreport.vim</a>。<br>
+これは Vim の内部エラーである。どうすれば再現できるかを調べて、バグ報告を送っ<br>
+てほしい&nbsp;<a class="Identifier" href="intro.html#bugreport.vim">bugreport.vim</a>。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E173" name="E173">E173</a><br>
 &nbsp;&nbsp;<span class="Special">{number}</span>&nbsp;<span class="PreProc">more files to edit</span><br>
 <br>
-引数リストの最後の項目を編集していないのに終了しようとしている。これはまだ編集<br>
-すべきファイルがあるのに誤って終了するのを防止する。<a class="Identifier" href="editing.html#argument-list">argument-list</a>を参照。もし<br>
-本当に終了したいのなら、もう1度繰り返せば終了できる。<br>
+引数リストの最後の項目が編集されていないのに、終了しようとしている。これは、ま<br>
+だ作業するファイルが残っているのに誤って終了してしまうことを防ぐ。<br>
+<a class="Identifier" href="editing.html#argument-list">argument-list</a>&nbsp;を参照。本当に終了したい場合は、もう一度やればうまくいく。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E23" name="E23">E23</a>&nbsp;<a class="Constant" href="message.html#E194" name="E194">E194</a><br>
 &nbsp;&nbsp;<span class="PreProc">No alternate file</span><br>
 &nbsp;&nbsp;<span class="PreProc">No alternate file name to substitute for '#'</span><br>
 <br>
-オルタネートファイルがまだ定義されていない。<a class="Identifier" href="editing.html#alternate-file">alternate-file</a>参照。<br>
+代替ファイルがまだ定義されていない。<a class="Identifier" href="editing.html#alternate-file">alternate-file</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E32" name="E32">E32</a><br>
 &nbsp;&nbsp;<span class="PreProc">No file name</span><br>
 <br>
-現在のバッファに名前が存在していない。ファイルに保存するためには &quot;:w filename&quot;<br>
-を使う。もしくは &quot;:file fname&quot; でバッファに名前を付ける。<br>
+カレントバッファに名前がない。書き込むには &quot;:w fname&quot; を使う。または<br>
+&quot;:file fname&quot; でバッファに名前を付ける。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E141" name="E141">E141</a><br>
 &nbsp;&nbsp;<span class="PreProc">No file name for buffer {number}</span><br>
 <br>
-変更されたバッファの１つがファイル名を持っていない。そのためそのファイルを書き<br>
-込めない。そのバッファにファイル名を与える必要がある:<br>
+変更されたバッファの 1 つにファイル名がない。そのため、書き込むことができない。<br>
+バッファにファイル名を付ける必要がある:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:buffer {number}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:file {filename}</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E33" name="E33">E33</a><br>
 &nbsp;&nbsp;<span class="PreProc">No previous substitute regular expression</span><br>
 <br>
-パターンに文字 '~' を使用すると、以前に &quot;:substitute&quot; コマンドで使われたパター<br>
-ンに置き換えられる。そのようなコマンドがまだ使われていない時には、これは失敗す<br>
-る。<a class="Identifier" href="pattern.html#/~">/~</a>参照。また、これは &quot;:s/pat/%/&quot; を使ったときにも起こる。この &quot;%&quot; は以前<br>
-の置換で使われた置換後文字列を意味する。<br>
+パターンで '~' 文字を使うと、&quot;:substitute&quot; コマンドで以前に使われたパターンで<br>
+置き換えられる。そのようなコマンドがまだ使われていない場合は、これが失敗す<br>
+る。<a class="Identifier" href="pattern.html#/~">/~</a>&nbsp;を参照。これは &quot;:s/pat/%/&quot; を使ったときにも起こる。ここで &quot;%&quot; は以前<br>
+の置換文字列を表す。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E35" name="E35">E35</a><br>
 &nbsp;&nbsp;<span class="PreProc">No previous regular expression</span><br>
 <br>
-空の検索パターンを使用したときには、以前に使われた検索パターンが再度使用され<br>
-る。しかし、以前に検索が行われていないのならば無理な話だ。<br>
+空の検索パターンを使うと、以前の検索パターンが使われる。しかし、以前の検索がな<br>
+かった場合は、それはできない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E24" name="E24">E24</a><br>
 &nbsp;&nbsp;<span class="PreProc">No such abbreviation</span><br>
 <br>
-&quot;:unabbreviate&quot; コマンドを、存在していない略語を引数にして実行した。<br>
-&quot;:cunabbrev&quot;、&quot;:iunabbrev&quot; などのバリエーションも同じメッセージを与える。<br>
-後ろに空白がついていないかチェックすること。<br>
+既存の短縮入力ではない引数で &quot;:unabbreviate&quot; コマンドを使った。このコマンドの<br>
+すべての変種が同じメッセージを出す: &quot;:cunabbrev&quot;、&quot;:iunabbrev&quot; など。末尾の空<br>
+白を確かめること。<br>
 <br>
 <br>
 &nbsp;&nbsp;<span class="PreProc">/dev/dsp: No such file or directory</span><br>
 <br>
-GnomeサポートつきのGTK GUIでのみ表示される。Gnomeがオーディオデバイスを使おう<br>
-としたが、利用可能でない。このエラーは無視してよい。<br>
+Gnome サポート付きの GTK GUI でのみ出る。Gnome がオーディオデバイスを使おうと<br>
+したが、それが存在しない。このエラーは無視してよい。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E31" name="E31">E31</a><br>
 &nbsp;&nbsp;<span class="PreProc">No such mapping</span><br>
 <br>
-&quot;:unmap&quot; コマンドを、存在していないマップを引数にして実行した。&quot;:cunmap&quot;、<br>
-&quot;:unmap!&quot; などの、このコマンドのバリエーションも同じメッセージを生成する。<br>
-いくつかのヒント:<br>
-- 後ろに空白がついていないかチェックすること。<br>
-- バッファローカルなマッピングについては &quot;:unmap&nbsp;<span class="Special">&lt;buffer&gt;</span>&quot; とする必要がある。<br>
+既存のマッピングではない引数で &quot;:unmap&quot; コマンドを使った。このコマンドのすべて<br>
+の変種が同じメッセージを出す: &quot;:cunmap&quot;、&quot;:unmap!&quot; など。いくつかのヒント:<br>
+- 末尾の空白を確かめること。<br>
+- マッピングがバッファローカルの場合は、&quot;:unmap&nbsp;<span class="Special">&lt;buffer&gt;</span>&quot; を使う必要がある。<br>
 &nbsp;&nbsp;<a class="Identifier" href="map.html#:map-<buffer>">:map-&lt;buffer&gt;</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E37" name="E37">E37</a>&nbsp;<a class="Constant" href="message.html#E89" name="E89">E89</a><br>
 &nbsp;&nbsp;<span class="PreProc">No write since last change (add ! to override)</span><br>
 &nbsp;&nbsp;<span class="PreProc">No write since last change for buffer {N} (add ! to override)</span><br>
 <br>
-変更のあるファイルを放棄(<a class="Identifier" href="editing.html#abandon">abandon</a>)しようとした。Vimは仕事(ファイル)を失ってし<br>
-まう危険から守ってくれる。変更されたファイルを &quot;:w&quot; で保存するか、変更を失った<br>
-としても本当に放棄(<a class="Identifier" href="editing.html#abandon">abandon</a>)するかのどちらかである。破棄するには、使ったコマ<br>
-ンドに '!' を付けて実行すればよい。例:<br>
+変更のあるファイルを&nbsp;<a class="Identifier" href="editing.html#abandon">abandon</a>&nbsp;しようとしている。Vim は作業が失われないように<br>
+保護している。変更されたファイルを &quot;:w&quot; で書き込むか、確かな場合は、とにかく<br>
+<a class="Identifier" href="editing.html#abandon">abandon</a>&nbsp;して、すべての変更を失うことができる。これは、使ったコマンドのすぐ後<br>
+に '!' 文字を付けることで行える。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:e other_file</div>
 これをこう変える:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:e! other_file</div>
@@ -462,23 +463,24 @@ GnomeサポートつきのGTK GUIでのみ表示される。Gnomeがオーディ
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E162" name="E162">E162</a><br>
 &nbsp;&nbsp;<span class="PreProc">No write since last change for buffer &quot;{name}&quot;</span><br>
 <br>
-変更されたバッファがあるのにVimを終了しようとしたとき表示される。変更された<br>
-バッファを<a class="Identifier" href="editing.html#:w">:w</a>で書き込むか、&quot;:qa!&quot; などのバッファを強制的に破棄するコマンドを使<br>
-うかしなければならない。保存しておきたい変更を破棄しないように注意すること。特<br>
-に&nbsp;<a class="Type" href="options.html#'hidden'">'hidden'</a>&nbsp;をセットしているときは、バッファのことを忘れているかもしれない。<br>
+これは、いくつかのバッファが変更されているときに Vim を終了しようとすると表示<br>
+される。変更されたバッファを (<a class="Identifier" href="editing.html#:w">:w</a>&nbsp;で) 書き込むか、例えば &quot;:qa!&quot; で、バッファ<br>
+を強制的に破棄するコマンドを使う必要がある。本当に残したい変更を捨ててしまわな<br>
+いように注意すること。特に&nbsp;<a class="Type" href="options.html#'hidden'">'hidden'</a>&nbsp;が設定されている場合は、バッファのことを忘<br>
+れているかもしれない。<br>
 <br>
 <br>
 &nbsp;&nbsp;<span class="PreProc">[No write since last change]</span><br>
 <br>
-このメッセージは、少なくとも1つのバッファが変更されているときにシェルコマンド<br>
-を実行したときに現れる。このメッセージを表示させなくするには、オプション<br>
-<a class="Type" href="options.html#'warn'">'warn'</a>&nbsp;をオフにする。<br>
+これは、少なくとも 1 つのバッファが変更されている状態でシェルコマンドを実行し<br>
+たときに表示される。このメッセージを避けるには、<a class="Type" href="options.html#'warn'">'warn'</a>&nbsp;オプションをリセットす<br>
+る。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E38" name="E38">E38</a><br>
 &nbsp;&nbsp;<span class="PreProc">Null argument</span><br>
 <br>
-Vim内部で何か不具合が起こり、NULLポインタが現れてしまった。もしこの問題を再現<br>
-できるなら報告してください。<a class="Identifier" href="intro.html#bugs">bugs</a><br>
+Vim の内部で何かがおかしくなり、NULL ポインタになった。この問題を再現する方法<br>
+が分かっている場合は、報告してほしい。<a class="Identifier" href="intro.html#bugs">bugs</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E41" name="E41">E41</a>&nbsp;<a class="Constant" href="message.html#E82" name="E82">E82</a>&nbsp;<a class="Constant" href="message.html#E83" name="E83">E83</a>&nbsp;<a class="Constant" href="message.html#E342" name="E342">E342</a><br>
 &nbsp;&nbsp;<span class="PreProc">Out of memory!</span><br>
@@ -486,37 +488,37 @@ Vim内部で何か不具合が起こり、NULLポインタが現れてしまっ�
 &nbsp;&nbsp;<span class="PreProc">Cannot allocate any buffer, exiting...</span><br>
 &nbsp;&nbsp;<span class="PreProc">Cannot allocate buffer, using other one...</span><br>
 <br>
-あ～あ… 何か厄介なことをしたか、別のプログラムがメモリを喰らい尽くしたか。気<br>
-をつけて。Vimはメモリ不足の状況というのは、想定していない。まず、変更したファ<br>
-イルが保存されているか確認しよう。それからメモリを節約する方法を考えよう。安全<br>
-に使いたいのならば、一度Vimを終了して、再度起動しましょう。<br>
+おっと。何か複雑なことをしていたか、他のプログラムがメモリを消費しているに違い<br>
+ない。気をつけること! Vim はメモリ不足の状況に完全には備えていない。まず、すべ<br>
+ての変更が保存されていることを確かめること。それからメモリ不足を解決しようとす<br>
+ること。安全のために、Vim を終了して、もう一度起動すること。<br>
 <br>
-Vimがまだ初期化中にこれが発生した場合、ファイルの編集が機能する可能性は非常に<br>
-低いため、Vimは値123で終了する。<br>
+Vim がまだ初期化中にこれが起こった場合は、ファイルの編集はまず動作しないので、<br>
+Vim は値 123 で終了する。<br>
 <br>
-バッファは一部のみメモリに保持されるので、大きなファイルを編集するときでもメモ<br>
-リ不足になることはほとんどない。アンドゥ情報は完全にメモリに保持されるが、次の<br>
-方法でその量を減らすことができる:<br>
--&nbsp;<a class="Type" href="options.html#'undolevels'">'undolevels'</a>&nbsp;を小さい値に設定する。-1 に設定するとアンドゥ機能を完全に無効に<br>
-&nbsp;&nbsp;できる。すべての行を変更するような場合に役立つ。<br>
--&nbsp;<a class="Type" href="options.html#'undoreload'">'undoreload'</a>&nbsp;をゼロに設定して無効化する。<br>
+バッファは部分的にしかメモリに保持されないので、とても大きなファイルを編集して<br>
+も、メモリ不足の状況が起こることはまずない。アンドゥ情報は完全にメモリ内にあ<br>
+り、これらのオプションでそれを減らすことができる:<br>
+-&nbsp;<a class="Type" href="options.html#'undolevels'">'undolevels'</a>&nbsp;&nbsp;低い値に設定するか、アンドゥを完全に無効にするには -1 に設定す<br>
+&nbsp;&nbsp;る。これは、すべての行に影響する変更に役に立つ。<br>
+-&nbsp;<a class="Type" href="options.html#'undoreload'">'undoreload'</a>&nbsp;無効にするにはゼロに設定する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E339" name="E339">E339</a><br>
 &nbsp;&nbsp;<span class="PreProc">Pattern too long</span><br>
 <br>
-int型が16ビットのシステム上で起こる: コンパイルされた正規表現パターンの長さが<br>
-65000文字以上である。もっと短いパターンを試してみること。<br>
-また、ルールのオフセットが利用可能な空間に収まらない場合にも起こる。もっとシン<br>
-プルなパターンを試してみること。<br>
+これは 16 ビットの int を持つシステムで起こる: コンパイルされた正規表現パター<br>
+ンが約 65000 文字より長い。より短いパターンを使ってみること。<br>
+ルールのオフセットが利用可能な領域に収まらない場合にも起こる。パターンを単純に<br>
+してみること。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E45" name="E45">E45</a><br>
 &nbsp;&nbsp;<span class="PreProc">'readonly' option is set (add ! to override)</span><br>
 <br>
-読み込み専用とマークされたファイルに書き込もうとした。本当にファイルを書き込ん<br>
-でしまうには、<a class="Type" href="options.html#'readonly'">'readonly'</a>&nbsp;オプションをリセットするか、保存に使用したコマンドに<br>
-'!' を付けて実行し直すかのどちらか。例:<br>
+読み取り専用とマークされたファイルを書き込もうとしている。それでもファイルを書<br>
+き込むには、<a class="Type" href="options.html#'readonly'">'readonly'</a>&nbsp;オプションをリセットするか、使ったコマンドのすぐ後に<br>
+'!' 文字を付ける。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:w</div>
-これはこう変える:<br>
+これをこう変える:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:w!</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E294" name="E294">E294</a>&nbsp;<a class="Constant" href="message.html#E295" name="E295">E295</a>&nbsp;<a class="Constant" href="message.html#E301" name="E301">E301</a><br>
@@ -524,264 +526,261 @@ int型が16ビットのシステム上で起こる: コンパイルされた正�
 &nbsp;&nbsp;<span class="PreProc">Seek error in swap file read</span><br>
 &nbsp;&nbsp;<span class="PreProc">Oops, lost the swap file!!!</span><br>
 <br>
-Vimが<a class="Identifier" href="recover.html#swap-file">swap-file</a>からテキストを読み込もうとしたが、何かまずいことが起こった。関<br>
-係するバッファのテキストが破壊されているかもしれない。バッファを書き込む前に注<br>
-意深くチェックすること。違いをチェックするために、別のファイルに書き出すといい<br>
-かもしれない。<br>
+Vim は&nbsp;<a class="Identifier" href="recover.html#swap-file">swap-file</a>&nbsp;からテキストを読み込もうとしたが、何かがおかしくなった。関<br>
+連するバッファのテキストは、今は壊れているかもしれない! バッファを書き込む前に<br>
+注意深く確かめること。別のファイルに書き込んで、違いを確かめたいかもしれない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E192" name="E192">E192</a><br>
 &nbsp;&nbsp;<span class="PreProc">Recursive use of :normal too deep</span><br>
 <br>
-&quot;:normal&quot; コマンドの引数で再び &quot;:normal&quot; コマンドを使い、再帰的になっている。<br>
-これは&nbsp;<a class="Type" href="options.html#'maxmapdepth'">'maxmapdepth'</a>&nbsp;で回数が制限されている。この例ではどうやってそれを引き起<br>
-こすかを示している:<br>
+引数がまた &quot;:normal&quot; コマンドを再帰的に使う &quot;:normal&quot; コマンドを使っている。こ<br>
+れは&nbsp;<a class="Type" href="options.html#'maxmapdepth'">'maxmapdepth'</a>&nbsp;レベルに制限されている。この例は、このメッセージが出る様子<br>
+を示している:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map gq :normal gq&lt;CR&gt;</div>
-&quot;gq&quot; とタイプすれば、このマッピングが実行され、その結果再び &quot;gq&quot; が呼び出され<br>
-る。<br>
+&quot;gq&quot; とタイプすると、このマッピングが実行され、それがまた &quot;gq&quot; を呼び出す。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E22" name="E22">E22</a><br>
 &nbsp;&nbsp;<span class="PreProc">Scripts nested too deep</span><br>
 <br>
-スクリプトはコマンドライン引数の &quot;-s&quot; や、<a class="Comment" href="repeat.html#:source!">:source!</a>&nbsp;コマンドで読み込むことが<br>
-できる。スクリプトは、他のスクリプトファイルを読み込むことができる。これは14段<br>
-階まで続けることができる。それ以上に入れ子にした場合には、Vimは再帰的なループ<br>
-があると仮定し、このエラーメッセージを出して読み込みを止める。<br>
+スクリプトは &quot;-s&quot; コマンドライン引数と&nbsp;<a class="Comment" href="repeat.html#:source!">:source!</a>&nbsp;コマンドで読み込むことができ<br>
+る。そのスクリプトがまた別のスクリプトを読み込むことができる。これは約 14 レベ<br>
+ルまで続けることができる。それ以上ネストすると、Vim は再帰ループがあるとみな<br>
+し、このエラーメッセージで止まる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E319" name="E319">E319</a><br>
 &nbsp;&nbsp;<span class="PreProc">Sorry, the command is not available in this version</span><br>
 <br>
-使用中のVimでは利用できないコマンドを使おうとした。Vimのコンパイル時に、いくつ<br>
-もの機能を有効／無効にすることができる。これはVimをどれだけ大きくするかの決定<br>
-とOSに依存する。いつどの機能が利用できるのかを見るには<a class="Identifier" href="various.html#+feature-list">+feature-list</a>を参照。<br>
-<a class="Identifier" href="various.html#:version">:version</a>コマンドを使うとVimがどの機能つきでコンパイルされたかを表示できる。<br>
+使っている Vim のバージョンには存在しないコマンドを使った。Vim をコンパイルす<br>
+るとき、多くの異なる機能を有効または無効にできる。これは、Vim がどれだけ大きく<br>
+なるように選ばれたかと、オペレーティングシステムに依存する。どの機能がいつ利用<br>
+可能かは&nbsp;<a class="Identifier" href="various.html#+feature-list">+feature-list</a>&nbsp;を参照。<a class="Identifier" href="various.html#:version">:version</a>&nbsp;コマンドは、Vim がどの機能付きでコ<br>
+ンパイルされたかを表示する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E300" name="E300">E300</a><br>
 &nbsp;&nbsp;<span class="PreProc">Swap file already exists (symlink attack?)</span><br>
 <br>
-Vimがスワップファイルを開こうとしたが、それが既に存在するかその場所にシンボ<br>
-リックリンクがあったとき表示される。これは本来起こってはならない。なぜならVim<br>
-はすでにそのファイルが存在しないことをチェックしたからである。他の誰かが同じ<br>
-ファイルをちょうど同じ瞬間に開いたか(これはほぼありえない)、誰かがsymlink攻撃<br>
-をしようとしているかである(/tmpにあるファイルを編集中か、<a class="Type" href="options.html#'directory'">'directory'</a>&nbsp;が &quot;/tmp&quot;<br>
-で始まっている場合に起こりうる。<a class="Type" href="options.html#'directory'">'directory'</a>&nbsp;を &quot;/tmp&quot; 以下に設定すべきではな<br>
-い)。<br>
+このメッセージは、Vim がスワップファイルを開こうとして、それがすでに存在する<br>
+か、その場所にシンボリックリンクがあるのを見つけたときに表示される。Vim はファ<br>
+イルが存在しないことをすでに確かめているので、これは起こるべきではない。誰か他<br>
+の人がまったく同じ瞬間に同じファイルを開いたか (とてもありそうにない)、誰かが<br>
+symlink 攻撃を試みている (/tmp にあるファイルを編集しているときか、<a class="Type" href="options.html#'directory'">'directory'</a><br>
+が &quot;/tmp&quot; で始まっている場合に起こりうる。これは悪い選択である)。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E432" name="E432">E432</a><br>
 &nbsp;&nbsp;<span class="PreProc">Tags file not sorted: {file name}</span><br>
 <br>
-Vim(およびVi)はtagsファイルがASCII順でソートされていることを期待する。そうすれ<br>
-ば線形探索よりもかなり高速な二分探索が可能になるからである。もしもtagsファイル<br>
-がソートされていなかったら、<a class="Type" href="options.html#'tagbsearch'">'tagbsearch'</a>&nbsp;オプションをリセットする必要がある。<br>
-このメッセージはVimがtagを探している時に問題があると表示される。tagsファイルが<br>
-ソートされていないにもかかわらず、このメッセージが表示されないことも時々ある。<br>
+Vim (と Vi) は、tags ファイルが ASCII 順でソートされていることを期待する。そう<br>
+すると二分探索を使うことができ、線形探索よりずっと速い。tags ファイルが正しく<br>
+ソートされていない場合は、<a class="Type" href="options.html#'tagbsearch'">'tagbsearch'</a>&nbsp;オプションをリセットすること。<br>
+このメッセージは、タグを検索するときに Vim が問題を検出した場合にのみ出る。<br>
+tags ファイルが正しくソートされていなくても、このメッセージが出ないこともある。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E424" name="E424">E424</a><br>
 &nbsp;&nbsp;<span class="PreProc">Too many different highlighting attributes in use</span><br>
 <br>
-Vimは約223種類までの強調表示を扱うことができる。この限界に達してしまったという<br>
-ことは、異なる引数に対して<a class="Identifier" href="syntax.html#:highlight">:highlight</a>コマンドを使いすぎたことを意味する。<br>
-&quot;:highlight link&quot; はカウントされない。<br>
+Vim は約 223 種類の異なるハイライトしか扱えない。この上限に達した場合は、異な<br>
+る引数で&nbsp;<a class="Identifier" href="syntax.html#:highlight">:highlight</a>&nbsp;コマンドを使いすぎている。&quot;:highlight link&quot; は数えられな<br>
+い。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E77" name="E77">E77</a><br>
 &nbsp;&nbsp;<span class="PreProc">Too many file names</span><br>
 <br>
-ファイル名を展開して、マッチが1個以上見つかった。直前に使われたコマンドに対し<br>
-てはマッチが1つしか許されない。<br>
+ファイル名を展開するときに、2 つ以上のマッチが見つかった。使われたコマンドに<br>
+は、マッチは 1 つしか許されない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E303" name="E303">E303</a><br>
 &nbsp;&nbsp;<span class="PreProc">Unable to open swap file for &quot;{filename}&quot;, recovery impossible</span><br>
 <br>
-Vimがスワップファイルを作成できなかった。ファイルを編集することはできるが、も<br>
-しVimが不意に終了したら、変更は失われる。また、巨大なファイルを編集するときは<br>
-メモリを多く消費するかもしれない。このエラーを回避するために&nbsp;<a class="Type" href="options.html#'directory'">'directory'</a>&nbsp;オプ<br>
-ションを変更するとよいかもしれない。<a class="Type" href="options.html#'directory'">'directory'</a>&nbsp;が空の場合、このエラーは発生し<br>
-ない。<a class="Identifier" href="recover.html#swap-file">swap-file</a>を参照。<br>
+Vim はスワップファイルを作成できなかった。ファイルを編集することはできるが、<br>
+Vim が予期せず終了すると、変更は失われる。また、大きなファイルを編集するとき<br>
+に、Vim が多くのメモリを消費するかもしれない。このエラーを避けるために、<br>
+<a class="Type" href="options.html#'directory'">'directory'</a>&nbsp;オプションを変更したいかもしれない。<a class="Type" href="options.html#'directory'">'directory'</a>&nbsp;が空の場合は、この<br>
+エラーは出ない。<a class="Identifier" href="recover.html#swap-file">swap-file</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E140" name="E140">E140</a><br>
 &nbsp;&nbsp;<span class="PreProc">Use ! to write partial buffer</span><br>
 <br>
-範囲選択をしてバッファの一部を書き込むとき、元のファイルを上書きしようとするこ<br>
-とはあまりない。これはおそらく誤りである(例えばビジュアルモードがアクティブな<br>
-ときに &quot;:w&quot; を使った)。それゆえVimはコマンドの後に ! をつけることを要求する。<br>
-例: &quot;:3,10w!&quot;。<br>
+範囲を使ってバッファの一部を書き込むとき、元のファイルを上書きすることは普通で<br>
+はない。おそらく誤りである (例えば、&quot;:w&quot; を使ったときにビジュアルモードがアク<br>
+ティブだった)。そのため Vim は、コマンドの後に ! を使うことを要求する。例:<br>
+&quot;:3,10w!&quot;。<br>
 <br>
 <br>
 &nbsp;&nbsp;<span class="Todo">Warning:</span>&nbsp;<span class="PreProc">Cannot convert string &quot;&lt;Key&gt;Escape,_Key_Cancel&quot; to type</span><br>
 &nbsp;&nbsp;<span class="PreProc">VirtualBinding</span><br>
 <br>
-起動時にこのようなメッセージが現れた場合、これはVimの問題ではなく、X11の設定が<br>
-間違っている。この問題を解決するためのヒントがここにある:<br>
+このようなメッセージが起動時に現れる。これは Vim の問題ではなく、X11 の設定が<br>
+間違っている。これを解決する方法のヒントはここで見つけられる:<br>
 <span class="Constant"><a href="http://groups.yahoo.com/group/solarisonintel/message/12179">http://groups.yahoo.com/group/solarisonintel/message/12179</a></span>.<br>
-[この URL はもはや有効ではない]<br>
+[この URL はもう有効ではない]<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#W10" name="W10">W10</a><br>
 &nbsp;&nbsp;<span class="Todo">Warning:</span>&nbsp;<span class="PreProc">Changing a readonly file</span><br>
 <br>
-ファイルが読み込み専用なのに、変更を加えようとしている。このメッセージを避ける<br>
-には、自動コマンドイベント<a class="Identifier" href="autocmd.html#FileChangedRO">FileChangedRO</a>を使うことができる(自動コマンドは<br>
-<a class="Type" href="options.html#'readonly'">'readonly'</a>&nbsp;オプションをリセットしなければならない)。ファイルへの変更を完全に禁<br>
-止するには&nbsp;<a class="Type" href="options.html#'modifiable'">'modifiable'</a>&nbsp;を参照。<br>
-このメッセージは&nbsp;<a class="Type" href="options.html#'readonly'">'readonly'</a>&nbsp;がセットされて以降最初の変更に対してのみ現れる。<br>
+ファイルは読み取り専用だが、それでも変更を加えようとしている。このメッセージを<br>
+避けるには、<a class="Identifier" href="autocmd.html#FileChangedRO">FileChangedRO</a>&nbsp;自動コマンドイベントを使うことができる (自動コマン<br>
+ドは&nbsp;<a class="Type" href="options.html#'readonly'">'readonly'</a>&nbsp;オプションをリセットしなければならない)。ファイルへの変更を完<br>
+全に禁止するには、<a class="Type" href="options.html#'modifiable'">'modifiable'</a>&nbsp;を参照。<br>
+このメッセージは、<a class="Type" href="options.html#'readonly'">'readonly'</a>&nbsp;が設定された後の最初の変更に対してのみ出る。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#W13" name="W13">W13</a><br>
 &nbsp;&nbsp;<span class="Todo">Warning:</span>&nbsp;<span class="PreProc">File &quot;{filename}&quot; has been created after editing started</span><br>
 <br>
-存在しないファイルの編集をしていたはずが、今は同名のファイルが存在する。現在開<br>
-いているファイルの編集を続けるか、新しく作成されたファイルを開くか決めなければ<br>
-ならない。<a class="Type" href="options.html#'buftype'">'buftype'</a>&nbsp;が空でないときはこのメッセージは表示されない。<br>
+Vim でファイルを編集しているとき、それは存在しなかったが、今は存在する。<br>
+Vim の中のバージョンを残したいのか、新しく作成されたファイルを残したいのかを決<br>
+める必要がある。<a class="Type" href="options.html#'buftype'">'buftype'</a>&nbsp;が空でない場合、このメッセージは出ない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#W11" name="W11">W11</a><br>
 &nbsp;&nbsp;<span class="Todo">Warning:</span>&nbsp;<span class="PreProc">File &quot;{filename}&quot; has changed since editing started</span><br>
 <br>
-ファイルが編集を始めた時とは違うタイムスタンプを持っていて、その内容が変更され<br>
-ている(より正確には: 現在のオプション設定と自動コマンドでそのファイルを読み直<br>
-した結果、異なるテキストになってしまったとき)多分他のプログラムがそのファイル<br>
-を書き換えたのだろう。何が起こったのか究明し、どっちの版を残したいのか決断する<br>
-必要がある。これを自動的に行わせたいのなら&nbsp;<a class="Type" href="options.html#'autoread'">'autoread'</a>&nbsp;オプションをセットするこ<br>
-と。<a class="Type" href="options.html#'buftype'">'buftype'</a>&nbsp;が空でない場合は、このメッセージは表示されない。<br>
+編集を始めたファイルのタイムスタンプが変わり、内容が変更された (より正確には:<br>
+現在のオプション設定と自動コマンドでファイルを再び読み込むと、異なるテキストに<br>
+なる)。これはおそらく、他のプログラムがファイルを変更したことを意味する。何が<br>
+起こったのかを調べ、どのバージョンのファイルを残したいのかを決める必要がある。<br>
+これを自動的に行いたい場合は、<a class="Type" href="options.html#'autoread'">'autoread'</a>&nbsp;オプションを設定すること。<br>
+<a class="Type" href="options.html#'buftype'">'buftype'</a>&nbsp;が空でない場合、このメッセージは出ない。<br>
 <a class="Identifier" href="autocmd.html#FileChangedShell">FileChangedShell</a>&nbsp;自動コマンドも参照。<br>
 <br>
-次のオプションを含むダイアログが表示される:<br>
+以下の選択肢を持つダイアログが表示される:<br>
 <br>
-&quot;OK&quot;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 警告を無視して編集を続行する。変更は読み込まれず、バッファはそ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のまま残る。<br>
+&quot;OK&quot;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 警告を消して、編集を続ける。変更は読み込まれず、バッファはその<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ままである。<br>
 <br>
 &quot;Load File&quot;:&nbsp;&nbsp;&nbsp;&nbsp;ディスクからファイルを再読み込みし、現在のバッファの内容を置き<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;換える。Vim で行った変更のうち保存されていないものはすべて失わ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;換える。Vim で行った変更のうち、保存されていないものはすべて失<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;われる。<br>
 <br>
 &quot;Load File and Options&quot;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ディスクからファイルを再読み込みし、インデント、構文ハイライ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ト、テキスト幅、その他のファイルタイプ固有のオプションなど、関<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;連するファイル設定を適用する。これにより、現在の設定と自動コマ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンドに基づいて、バッファがファイルの意図した構成と一致するよう<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;になる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ディスクからファイルを再読み込みし、さらに、インデント、構文ハ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;イライト、テキスト幅、その他のファイルタイプ固有のオプションな<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ど、関連するファイル設定を適用する。これにより、現在の設定と自<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;動コマンドに従って、バッファがファイルの意図した構成に一致する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ことが保証される。<br>
 <br>
-何も間違ったことをしていないのに、このメッセージを受け取る可能性が1つ考えられ<br>
-る: 夏時間が始まる日にWindowsでファイルを保存した場合である。この場合、次の方<br>
-法のうちどれかで修正できる:<br>
-- 次の行をautoexec.batに加える:<br>
+何も間違っていないのに、このメッセージが出る状況が 1 つある: 夏時間が始まる日<br>
+に Windows でファイルを保存した場合である。これは、これらの方法のどれかで修正<br>
+できる:<br>
+- この行を autoexec.bat に追加する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SET TZ=-1</div>
-&nbsp;&nbsp;タイムゾーンに &quot;-1&quot; の修正を施す。<br>
+&nbsp;&nbsp;&quot;-1&quot; をタイムゾーンに合わせる。<br>
 - &quot;automatically adjust clock for daylight saving changes&quot; を無効にする。<br>
-- 単に、次の日にファイルを再び書き直す。または時計を次の日にセットし、ファイル<br>
-&nbsp;&nbsp;を2回書き込み、時計を戻す。<br>
+- 単に次の日にもう一度ファイルを書き込む。または、時計を次の日に設定し、ファイ<br>
+&nbsp;&nbsp;ルを 2 回書き込み、時計を戻す。<br>
 <br>
-もし W11 が常に表示される場合、&quot;Acronis Active Protection&quot; を無効にするか、Vim<br>
-を信頼できるサービス/アプリケーションとして登録する必要があるかもしれない。<br>
+W11 がいつも出る場合は、&quot;Acronis Active Protection&quot; を無効にするか、Vim を信頼<br>
+できるサービス/アプリケーションとして登録する必要があるかもしれない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#W12" name="W12">W12</a><br>
 &nbsp;&nbsp;<span class="Todo">Warning:</span>&nbsp;<span class="PreProc">File &quot;{filename}&quot; has changed and the buffer was changed in Vim as well</span><br>
 <br>
-上のものと同様だが、Vim内のバッファも同様に変更された。Vim中の版とディスク上の<br>
-版のどちらを残すのか決めなければならない。<a class="Type" href="options.html#'buftype'">'buftype'</a>&nbsp;が空でない場合、このメッ<br>
-セージは表示されない。<br>
+上と同様だが、ファイルのバッファもこの Vim の中で変更された。この Vim の中の<br>
+バージョンを残したいのか、ディスク上のものを残したいのかを決める必要がある。<br>
+<a class="Type" href="options.html#'buftype'">'buftype'</a>&nbsp;が空でない場合、このメッセージは出ない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#W16" name="W16">W16</a><br>
 &nbsp;&nbsp;<span class="Todo">Warning:</span>&nbsp;<span class="PreProc">Mode of file &quot;{filename}&quot; has changed since editing started</span><br>
 <br>
-バッファのタイムスタンプが変更され、中身は同じだがモード(パーミッション)が変更<br>
-されたとき。これは通常、読み込み専用ビットをリセットするようなバージョン管理シ<br>
-ステムからファイルをチェックアウトしたときに起こる。ファイルを読み直すのが安全<br>
-である。自動的にファイルを読み直させるようにするには&nbsp;<a class="Type" href="options.html#'autoread'">'autoread'</a>&nbsp;をセットするこ<br>
-と。<br>
+バッファのタイムスタンプが変更され、内容は同じままだが、モード (権限) が変わっ<br>
+たとき。これは通常、バージョン管理システムからファイルをチェックアウトしたとき<br>
+に起こり、それにより読み取り専用ビットがリセットされる。ファイルを再読み込みし<br>
+ても安全なはずである。ファイルを自動的に再読み込みするには、<a class="Type" href="options.html#'autoread'">'autoread'</a>&nbsp;を設定<br>
+すること。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E211" name="E211">E211</a><br>
 &nbsp;&nbsp;<span class="PreProc">File &quot;{filename}&quot; no longer available</span><br>
 <br>
-編集を始めているファイルが消え失せたか、もはやアクセスできない。変更が失われる<br>
-のを避けるため、バッファが書き込まれたか確認すること。<a class="Type" href="options.html#'buftype'">'buftype'</a>&nbsp;が空でないとき<br>
-はこのメッセージは表示されない。<br>
+編集を始めたファイルが消えたか、もうアクセスできない。変更を失わないように、<br>
+バッファをどこかに書き込むようにすること。<a class="Type" href="options.html#'buftype'">'buftype'</a>&nbsp;が空でない場合、このメッ<br>
+セージは出ない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#W14" name="W14">W14</a><br>
 &nbsp;&nbsp;<span class="Todo">Warning:</span>&nbsp;<span class="PreProc">List of file names overflow</span><br>
 <br>
-とてつもなくたくさんのバッファを使っている。こうなると2つのバッファに同じ番号<br>
-が割り当てられるようになり、様々な問題を引き起こす。Vim を終了し、再起動すると<br>
-よいかもしれない。<br>
+とてもたくさんのバッファを使っているに違いない。今は 2 つのバッファが同じ番号<br>
+を持つ可能性があり、それはさまざまな問題を引き起こす。Vim を終了して再起動した<br>
+いかもしれない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E931" name="E931">E931</a><br>
 &nbsp;&nbsp;<span class="PreProc">Buffer cannot be registered</span><br>
 <br>
-メモリ不足になったかバッファ番号が重複した。W14 の後に発生するかもしれない。<br>
-バッファ検索は常には機能しないので、Vim を再起動したほうが良い。<br>
+メモリ不足か、重複したバッファ番号。W14 の後に起こるかもしれない。バッファの検<br>
+索は常に動作するとは限らないので、Vim を再起動したほうが良い。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E296" name="E296">E296</a>&nbsp;<a class="Constant" href="message.html#E297" name="E297">E297</a><br>
 &nbsp;&nbsp;<span class="PreProc">Seek error in swap file write</span><br>
 &nbsp;&nbsp;<span class="PreProc">Write error in swap file</span><br>
 <br>
-これはたいていディスクが一杯のときに起こる。Vim が&nbsp;<a class="Identifier" href="recover.html#swap-file">swap-file</a>&nbsp;にテキストを書<br>
-き込むことができなかった。直接的には有害ではないが、Vim が不意に終了したとき、<br>
-テキストが失われ、復活の可能性もなくなってしまうかもしれない。この問題が持続す<br>
-る場合は、Vim がメモリを使い果たしているのかもしれない。<br>
+これはほとんどの場合、ディスクがいっぱいのときに起こる。Vim は&nbsp;<a class="Identifier" href="recover.html#swap-file">swap-file</a>&nbsp;に<br>
+テキストを書き込めなかった。直接害はないが、Vim が予期せず終了すると、リカバ<br>
+リーができずにテキストが失われるかもしれない。この問題が続くと、Vim はメモリ不<br>
+足になるかもしれない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#connection-refused" name="connection-refused">connection-refused</a><br>
 &nbsp;&nbsp;<span class="PreProc">Xlib: connection to &quot;&lt;machine-name:0.0&quot; refused by server</span><br>
 <br>
-Vim が X サーバーへ接続を試みたが、接続を確立できなかった場合にこれが起こる。X<br>
-サーバーへの接続は、タイトルと xterm のクリップボードをサポートするために必要<br>
-とされる。残念なことに、<a class="Identifier" href="various.html#+xterm_clipboard">+xterm_clipboard</a>&nbsp;と&nbsp;<a class="Identifier" href="various.html#+X11">+X11</a>&nbsp;の機能を無効にしない限り、<br>
-このエラーメッセージは避けることはできない。<br>
+これは、Vim が X サーバーに接続しようとしたが、X サーバーが接続を許可しない場<br>
+合に起こる。X サーバーへの接続は、タイトルを復元するためと、xterm クリップボー<br>
+ドのサポートのために必要である。残念ながら、このエラーメッセージは、<br>
+<a class="Identifier" href="various.html#+xterm_clipboard">+xterm_clipboard</a>&nbsp;と&nbsp;<a class="Identifier" href="various.html#+X11">+X11</a>&nbsp;機能を無効にする以外に避けることはできない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E10" name="E10">E10</a><br>
 &nbsp;&nbsp;<span class="PreProc">\\ should be followed by /, ? or &amp;</span><br>
 <br>
-コマンドラインがバックスラッシュで始まっているか、コマンドの範囲のおかしな場所<br>
-にバックスラッシュが含まれている。これはしばしばコマンドラインの行継続が無効に<br>
-されているため引き起こされる。行継続を有効にするには&nbsp;<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;から 'C' フラ<br>
-グを除くか、または &quot;:set nocp&quot; とすること。<br>
+コマンドラインがバックスラッシュで始まったか、コマンドの範囲に間違った場所に<br>
+バックスラッシュが含まれていた。これは、コマンドライン継続が無効になっているこ<br>
+とが原因であることが多い。それを有効にするには、<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;オプションから 'C'<br>
+フラグを取り除く。または &quot;:set nocp&quot; を使う。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E471" name="E471">E471</a><br>
 &nbsp;&nbsp;<span class="PreProc">Argument required</span><br>
 <br>
-引数を必要とするExコマンドに対し、引数を与えないで実行したとき起こる。<br>
+必須の引数を持つ Ex コマンドが実行されたが、引数が指定されていない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E474" name="E474">E474</a>&nbsp;<a class="Constant" href="message.html#E475" name="E475">E475</a>&nbsp;<a class="Constant" href="message.html#E983" name="E983">E983</a><br>
 &nbsp;&nbsp;<span class="PreProc">Invalid argument</span><br>
 &nbsp;&nbsp;<span class="PreProc">Invalid argument: {arg}</span><br>
 &nbsp;&nbsp;<span class="PreProc">Duplicate argument: {arg}</span><br>
 <br>
-Ex コマンドまたは関数が実行されたが、無効な引数が指定された。<br>
+Ex コマンドか関数が実行されたが、無効な引数が指定された。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E488" name="E488">E488</a><br>
 &nbsp;&nbsp;<span class="PreProc">Trailing characters</span><br>
 &nbsp;&nbsp;<span class="PreProc">Trailing characters: {text}</span><br>
 <br>
-引数をつけてはならないExコマンドに引数が指定された。<br>
-または、引数に無効な文字が含まれていて、認識されていない。<br>
+引数を許さない Ex コマンドに引数が追加された。<br>
+または、引数に無効な文字があり、認識されなかった。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E477" name="E477">E477</a>&nbsp;<a class="Constant" href="message.html#E478" name="E478">E478</a><br>
 &nbsp;&nbsp;<span class="PreProc">No ! allowed</span><br>
 &nbsp;&nbsp;<span class="PreProc">Don't panic!</span><br>
 <br>
-&quot;!&quot; をつけてはならない Ex コマンドに &quot;!&quot; をつけた。<br>
+&quot;!&quot; を許さない Ex コマンドの後に &quot;!&quot; を追加した。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E481" name="E481">E481</a><br>
 &nbsp;&nbsp;<span class="PreProc">No range allowed</span><br>
 <br>
-範囲指定を許可していない Ex コマンドに範囲を指定した。<a class="Identifier" href="cmdline.html#cmdline-ranges">cmdline-ranges</a>を参照。<br>
+範囲を許さない Ex コマンドに範囲が指定された。<a class="Identifier" href="cmdline.html#cmdline-ranges">cmdline-ranges</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E482" name="E482">E482</a>&nbsp;<a class="Constant" href="message.html#E483" name="E483">E483</a><br>
 &nbsp;&nbsp;<span class="PreProc">Can't create file {filename}</span><br>
 &nbsp;&nbsp;<span class="PreProc">Can't get temp file name</span><br>
 <br>
-Vim が一時ファイルを作成できなかった。<br>
+Vim は一時ファイルを作成できない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E484" name="E484">E484</a>&nbsp;<a class="Constant" href="message.html#E485" name="E485">E485</a><br>
 &nbsp;&nbsp;<span class="PreProc">Can't open file {filename}</span><br>
 &nbsp;&nbsp;<span class="PreProc">Can't read file {filename}</span><br>
 <br>
-Vim が一時ファイルを読み込めなかった。特に Windows では、cmd.exe での特殊文字<br>
-のエスケープがうまくできない場合に発生する。パッチ 7.3.443 でエスケープ方法が<br>
-変更された。<a class="Identifier" href="builtin.html#system()">system()</a>&nbsp;に与えるすべてのシェル引数に&nbsp;<a class="Identifier" href="builtin.html#shellescape()">shellescape()</a>&nbsp;を使ってみ<br>
-るとよい。あるいは、明示的に ^ でエスケープする方法もある。<a class="Type" href="options.html#'shellxquote'">'shellxquote'</a><br>
-と&nbsp;<a class="Type" href="options.html#'shellxescape'">'shellxescape'</a>&nbsp;も参照。<br>
+Vim は一時ファイルを読み込めない。特に Windows では、これは cmd.exe 用の特殊文<br>
+字の間違ったエスケープが原因でありうる。このやり方は patch 7.3.443 で変更され<br>
+た。<a class="Identifier" href="builtin.html#system()">system()</a>&nbsp;に与えるすべてのシェル引数に&nbsp;<a class="Identifier" href="builtin.html#shellescape()">shellescape()</a>&nbsp;を使ってみるか、^<br>
+で明示的にエスケープを追加すること。<a class="Type" href="options.html#'shellxquote'">'shellxquote'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'shellxescape'">'shellxescape'</a>&nbsp;も参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E464" name="E464">E464</a><br>
 &nbsp;&nbsp;<span class="PreProc">Ambiguous use of user-defined command</span><br>
 <br>
-名前の先頭部分が一致するユーザー定義コマンドが 2 つあり、そのうちの 1 つを実行<br>
-しようとコマンドライン補完をした。<a class="Identifier" href="map.html#user-cmd-ambiguous">user-cmd-ambiguous</a>&nbsp;を参照。<br>
+共通の名前のプリフィックスを持つ 2 つのユーザー定義コマンドがあり、コマンドラ<br>
+イン補完を使ってそのうちの 1 つを実行した。<a class="Identifier" href="map.html#user-cmd-ambiguous">user-cmd-ambiguous</a><br>
 例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:command MyCommand1 echo &quot;one&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:command MyCommand2 echo &quot;two&quot;<br>
@@ -790,75 +789,76 @@ Vim が一時ファイルを読み込めなかった。特に Windows では、c
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E492" name="E492">E492</a><br>
 &nbsp;&nbsp;<span class="PreProc">Not an editor command</span><br>
 <br>
-Exコマンドでもユーザー定義コマンドでもないコマンドを実行しようとした。<br>
+Ex コマンドでもユーザー定義コマンドでもないコマンドを実行しようとした。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E943" name="E943">E943</a><br>
 &nbsp;&nbsp;<span class="PreProc">Command table needs to be updated, run 'make cmdidxs'</span><br>
 <br>
-これはソースコードを変更して src/ex_cmds.h にコマンドを追加した時にのみ生じる。<br>
-このルックアップテーブルは次を実行して更新する必要がある:<br>
+これは、ソースコードを変更しているとき、src/ex_cmds.h にコマンドを追加している<br>
+ときにのみ起こりうる。その場合、以下を実行して、ルックアップテーブルを更新する<br>
+必要がある:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make cmdidxs</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#E928" name="E928">E928</a>&nbsp;<a class="Constant" href="message.html#E889" name="E889">E889</a><br>
 &nbsp;&nbsp;<span class="PreProc">E928: String required</span><br>
 &nbsp;&nbsp;<span class="PreProc">E889: Number required</span><br>
 <br>
-これらは期待された型を持たない値または式が使用された場合に発生する。<br>
+これらは、期待される型を持たない値または式が使われたときに起こる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 3. メッセージ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#messages" name="messages">messages</a><br>
 <br>
-Vimがくれるさまざまなメッセージの (不完全な) 概観である:<br>
+これは、Vim が出すさまざまなメッセージの (不完全な) 概要である:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#hit-enter" name="hit-enter">hit-enter</a>&nbsp;<a class="Constant" href="message.html#press-enter" name="press-enter">press-enter</a>&nbsp;<a class="Constant" href="message.html#hit-return" name="hit-return">hit-return</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="message.html#press-return" name="press-return">press-return</a>&nbsp;<a class="Constant" href="message.html#hit-enter-prompt" name="hit-enter-prompt">hit-enter-prompt</a><br>
 <br>
 &nbsp;&nbsp;<span class="PreProc">Press ENTER or type command to continue</span><br>
 <br>
-このメッセージは読んでもらいたい何かがあって、スクリーンの再描画が中断されてい<br>
-るときに与えられる:<br>
-- 外部コマンドの実行直後 (例えば &quot;:!ls&quot; と &quot;=&quot;)。<br>
-- ウィンドウの幅よりも長い何かがステータスラインに表示されたか、<a class="Type" href="options.html#'showcmd'">'showcmd'</a>&nbsp;か<br>
-&nbsp;&nbsp;<a class="Type" href="options.html#'ruler'">'ruler'</a>&nbsp;の出力にまで達してしまった。<br>
+このメッセージは、画面に読むべきものがあり、画面が再描画されようとしているとき<br>
+に出る:<br>
+- 外部コマンドを実行した後 (例えば &quot;:!ls&quot; と &quot;=&quot;)。<br>
+- ウィンドウの幅より長いものがステータスラインに表示されたか、<a class="Type" href="options.html#'showcmd'">'showcmd'</a>&nbsp;か<br>
+&nbsp;&nbsp;<a class="Type" href="options.html#'ruler'">'ruler'</a>&nbsp;の出力にまで達した。<br>
 <br>
--&gt; スクリーンを再描画し再開するには、<span class="Special">&lt;Enter&gt;</span>&nbsp;か&nbsp;<span class="Special">&lt;Space&gt;</span>&nbsp;(他の用途に使われてい<br>
-&nbsp;&nbsp; ないことが条件) を押す。<br>
--&gt; 何かコマンドを使うために、&quot;:&quot; か他のノーマルモードコマンドのキャラクタを叩<br>
-&nbsp;&nbsp; く。<br>
-&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>&nbsp;外部コマンドの実行直後いくつかの特殊キー、例えばカーソルキー、は通常通<br>
-&nbsp;&nbsp; りに動かない。これは、端末はまだ外部コマンドを実行する状態に設定されている<br>
-&nbsp;&nbsp; からである。<br>
--&gt; 'k',&nbsp;<span class="Special">&lt;Up&gt;</span>, 'u', 'b', 'g' を押すとメッセージが上にスクロールする。これは<br>
-&nbsp;&nbsp;&nbsp;<a class="Identifier" href="message.html#more-prompt">more-prompt</a>&nbsp;と同様に働く。<a class="Type" href="options.html#'compatible'">'compatible'</a>&nbsp;がオフで&nbsp;<a class="Type" href="options.html#'more'">'more'</a>&nbsp;がオンのときだけ有<br>
-&nbsp;&nbsp; 効である。<br>
--&gt;&nbsp;<a class="Type" href="options.html#'compatible'">'compatible'</a>&nbsp;がオフで&nbsp;<a class="Type" href="options.html#'more'">'more'</a>&nbsp;がオンのとき、メッセージが画面上端を越えてスク<br>
-&nbsp;&nbsp; ロールした場合、'j', 'f', 'd',&nbsp;<span class="Special">&lt;Down&gt;</span>&nbsp;は無視される。これは 'j', 'f' を押しっ<br>
-&nbsp;&nbsp; ぱなしにしたときメッセージが消えてしまうのを避けるためである。<br>
--&gt;&nbsp;<span class="Special">&lt;C-Y&gt;</span>&nbsp;を押し、モードレスセレクションをクリップボードレジスタにコピー (ヤン<br>
-&nbsp;&nbsp; ク)する。<br>
--&gt; メニューを使う。コマンドラインモード用に定義されている文字が使われる。<br>
--&gt;&nbsp;<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;が 'r' フラグを含んでいる場合は、マウスの左クリックが&nbsp;<span class="Special">&lt;Space&gt;</span>&nbsp;を押<br>
-&nbsp;&nbsp; すのと同様になる。ただし 'r' フラグを含んでいるとテキストを選択できなくな<br>
-&nbsp;&nbsp; る。<br>
--&gt; GUI を使っているときは、最後の行で左クリックすると&nbsp;<span class="Special">&lt;Space&gt;</span>&nbsp;を押すのと同様に<br>
-&nbsp;&nbsp; なる。<br>
--&gt;&nbsp;<a class="Identifier" href="repeat.html#q">q</a>&nbsp;はレジスタへの記録を開始しない (理由: 多くの場合、ユーザーによって<br>
-&nbsp;&nbsp; &quot;quit&quot; プロンプトキーとして使用される)<br>
+-&gt; 画面を再描画して続けるには、<span class="Special">&lt;Enter&gt;</span>&nbsp;か&nbsp;<span class="Special">&lt;Space&gt;</span>&nbsp;を押す。そのキーが他に使われ<br>
+&nbsp;&nbsp; ることはない。<br>
+-&gt; そのコマンドを開始するには、':' か他のノーマルモードコマンドの文字を押す。<br>
+&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>&nbsp;外部コマンドの後では、端末がまだ外部コマンドを実行するための状態に設定<br>
+&nbsp;&nbsp; されているため、カーソルキーなどのいくつかの特殊キーが正常に動作しないかも<br>
+&nbsp;&nbsp; しれないことに注意。<br>
+-&gt; メッセージを前にスクロールするには、'k'、<span class="Special">&lt;Up&gt;</span>、'u'、'b' か 'g' を押す。これ<br>
+&nbsp;&nbsp; は&nbsp;<a class="Identifier" href="message.html#more-prompt">more-prompt</a>&nbsp;と同じように動作する。<a class="Type" href="options.html#'compatible'">'compatible'</a>&nbsp;がオフで&nbsp;<a class="Type" href="options.html#'more'">'more'</a>&nbsp;がオン<br>
+&nbsp;&nbsp; のときだけ動作する。<br>
+-&gt; メッセージが画面の上端からスクロールして消え、<a class="Type" href="options.html#'compatible'">'compatible'</a>&nbsp;がオフで&nbsp;<a class="Type" href="options.html#'more'">'more'</a><br>
+&nbsp;&nbsp; がオンのときは、'j'、'f'、'd' か&nbsp;<span class="Special">&lt;Down&gt;</span>&nbsp;を押しても無視される。これは、'j'<br>
+&nbsp;&nbsp; か 'f' を 1 回余計にタイプしたことでメッセージが消えてしまうのを避けるため<br>
+&nbsp;&nbsp; である。<br>
+-&gt; モードレスセレクションをクリップボードレジスタにコピー (ヤンク) するには、<br>
+&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-Y&gt;</span>&nbsp;を押す。<br>
+-&gt; メニューを使う。コマンドラインモード用に定義された文字が使われる。<br>
+-&gt;&nbsp;<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;に 'r' フラグが含まれている場合、マウスの左ボタンをクリックすると、<br>
+&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Space&gt;</span>&nbsp;を押すのと同じように動作する。ただし、これによりテキストを選択でき<br>
+&nbsp;&nbsp; なくなる。<br>
+-&gt; GUI では、最後の行でマウスの左ボタンをクリックすると、<span class="Special">&lt;Space&gt;</span>&nbsp;を押すのと同<br>
+&nbsp;&nbsp; じように動作する。<br>
+-&gt;&nbsp;<a class="Identifier" href="repeat.html#q">q</a>&nbsp;はレジスタへの記録を開始しない (根拠: ユーザーによって &quot;quit&quot; プロンプ<br>
+&nbsp;&nbsp; トキーとしてよく使われる)<br>
 <br>
-もし誤って&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;や&nbsp;<span class="Special">&lt;Space&gt;</span>&nbsp;を押してしまって、テキストを表示し直したいときは<br>
-<a class="Identifier" href="message.html#g<">g&lt;</a>&nbsp;を使う。これは&nbsp;<a class="Type" href="options.html#'more'">'more'</a>&nbsp;がオンのときだけ有効である。<br>
+誤って&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;か&nbsp;<span class="Special">&lt;Space&gt;</span>&nbsp;を押してしまい、表示されたテキストを見たい場合は、<br>
+<a class="Identifier" href="message.html#g<">g&lt;</a>&nbsp;を使う。これは&nbsp;<a class="Type" href="options.html#'more'">'more'</a>&nbsp;が設定されている場合のみ動作する。<br>
 <br>
-手入力されなかったキーはプロンプトを閉じ、通常のコマンドとして処理される。<br>
+タイプされていないキーは、プロンプトを閉じ、通常のコマンドとして扱われる。<br>
 <br>
-hit-enter のプロンプトの回数を減らすには:<br>
+hit-enter プロンプトの数を減らすには:<br>
 -&nbsp;<a class="Type" href="options.html#'messagesopt'">'messagesopt'</a>&nbsp;を設定する。<br>
--&nbsp;<a class="Type" href="options.html#'cmdheight'">'cmdheight'</a>&nbsp;を 2 かそれ以上に設定する。<br>
+-&nbsp;<a class="Type" href="options.html#'cmdheight'">'cmdheight'</a>&nbsp;を 2 以上に設定する。<br>
 -&nbsp;<a class="Type" href="options.html#'shortmess'">'shortmess'</a>&nbsp;にフラグを追加する。<br>
--&nbsp;<a class="Type" href="options.html#'showcmd'">'showcmd'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'ruler'">'ruler'</a>&nbsp;の両方か、もしくはどちらかをリセットする。<br>
--&nbsp;<a class="Comment" href="eval.html#:echo">:echo</a>&nbsp;テキストの長さが確実に&nbsp;<a class="Identifier" href="eval.html#v:echospace">v:echospace</a>&nbsp;画面セル数以下になるようにする。<br>
+-&nbsp;<a class="Type" href="options.html#'showcmd'">'showcmd'</a>&nbsp;と/または&nbsp;<a class="Type" href="options.html#'ruler'">'ruler'</a>&nbsp;をリセットする。<br>
+-&nbsp;<a class="Comment" href="eval.html#:echo">:echo</a>&nbsp;のテキストが&nbsp;<a class="Identifier" href="eval.html#v:echospace">v:echospace</a>&nbsp;画面セル以下になるようにする。<br>
 <br>
-スクリプトが hit-enter プロンプトを出すが、なぜそれが出るのかわからない場合は<br>
-変数&nbsp;<a class="Identifier" href="eval.html#v:scrollstart">v:scrollstart</a>&nbsp;が便利かもしれない。<br>
+スクリプトが hit-enter プロンプトを出し、その理由が分からない場合は、<br>
+<a class="Identifier" href="eval.html#v:scrollstart">v:scrollstart</a>&nbsp;変数が役に立つかもしれない。<br>
 <br>
 <a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;も参照。hit-enter メッセージは&nbsp;<a class="Identifier" href="syntax.html#hl-Question">hl-Question</a>&nbsp;グループでハイライトされ<br>
 る。<br>
@@ -868,42 +868,45 @@ hit-enter のプロンプトの回数を減らすには:<br>
 &nbsp;&nbsp;<span class="PreProc">-- More --</span><br>
 &nbsp;&nbsp;<span class="PreProc">-- More -- SPACE/d/j: screen/page/line down, b/u/k: up, q: quit</span><br>
 <br>
-このメッセージはスクリーンがメッセージで埋め尽くされた時に表示される。<a class="Type" href="options.html#'more'">'more'</a><br>
-オプションがオンの時だけ与えられる。<a class="Identifier" href="syntax.html#hl-MoreMsg">hl-MoreMsg</a>&nbsp;グループでハイライトされる。<br>
+このメッセージは、画面がメッセージでいっぱいになったときに出る。<a class="Type" href="options.html#'more'">'more'</a>&nbsp;オプショ<br>
+ンがオンのときだけ出る。これは&nbsp;<a class="Identifier" href="syntax.html#hl-MoreMsg">hl-MoreMsg</a>&nbsp;グループでハイライトされる。<br>
 <br>
-<span class="PreProc">種類&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;効果</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;CR&gt;</span>&nbsp;か&nbsp;<span class="Special">&lt;NL&gt;</span>&nbsp;か j か&nbsp;<span class="Special">&lt;Down&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 行進める<br>
+<span class="PreProc">タイプ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;効果</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;CR&gt;</span>&nbsp;か&nbsp;<span class="Special">&lt;NL&gt;</span>&nbsp;か j か&nbsp;<span class="Special">&lt;Down&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;もう 1 行<br>
 &nbsp;&nbsp;&nbsp;&nbsp; d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 ページ下 (半画面)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Space&gt;</span>&nbsp;か f か&nbsp;<span class="Special">&lt;PageDown&gt;</span>&nbsp;か&nbsp;<span class="Special">CTRL-F</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 画面下<br>
-&nbsp;&nbsp;&nbsp;&nbsp; G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一番下まで進む、hit-enter プロ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンプトが表示されるところまで<br>
+&nbsp;&nbsp;&nbsp;&nbsp; G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ずっと下まで、hit-enter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プロンプトまで<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;BS&gt;</span>&nbsp;か k か&nbsp;<span class="Special">&lt;Up&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 行戻る<br>
 &nbsp;&nbsp;&nbsp;&nbsp; u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 ページ上 (半画面)<br>
-&nbsp;&nbsp;&nbsp;&nbsp; b か&nbsp;<span class="Special">&lt;PageUp&gt;</span>&nbsp;か&nbsp;<span class="Special">CTRL-B</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 画面上<br>
-&nbsp;&nbsp;&nbsp;&nbsp; g&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初へ戻る<br>
+&nbsp;&nbsp;&nbsp;&nbsp; b か&nbsp;<span class="Special">&lt;PageUp&gt;</span>&nbsp;か&nbsp;<span class="Special">CTRL-B</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 画面戻る<br>
+&nbsp;&nbsp;&nbsp;&nbsp; g&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初に戻る<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp; q か&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;か&nbsp;<span class="Special">CTRL-C</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; リスト表示を止める<br>
-&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リスト表示を止めコマンドライン<br>
+&nbsp;&nbsp;&nbsp;&nbsp; q、<span class="Special">&lt;Esc&gt;</span>&nbsp;か&nbsp;<span class="Special">CTRL-C</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 一覧表示を止める<br>
+&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一覧表示を止めてコマンドライン<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に入る<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-Y&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モードレスセレクションをクリッ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プボード (レジスタ &quot;* と &quot;+)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;にヤンク (コピー) する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;{メニューの項目}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンドラインでメニューが定義<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;されていること<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-Y&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モードレスセレクションを<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;クリップボード<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&quot;* と &quot;+ レジスタ) にヤンク<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(コピー) する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{menu-entry}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;メニューがコマンドラインモード<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;で定義されているもの。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;LeftMouse&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 次のページ (*)<br>
 <br>
-その他のキーは、これらのキーの意味が表示される。<br>
+その他のキーを押すと、キーの意味が表示される。<br>
 <br>
-(*) 左クリックは次のときだけ機能する:<br>
-&nbsp;&nbsp;&nbsp;&nbsp; - GUI使用時:スクリーンの最後の行で<br>
-&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;が 'r' を含んでいるとき(ただしこのときテキスト選択はできない)<br>
+(*) マウスの左ボタンのクリックは、以下の場合のみ動作する:<br>
+&nbsp;&nbsp;&nbsp;&nbsp; - GUI の場合: 画面の最後の行で。<br>
+&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;に 'r' が含まれている場合 (ただし、テキストの選択は動作しなくな<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; る)。<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;タイプされたキーはターミナルから直接得られ、マップされずtypeaheadは無視<br>
-される。<br>
 <br>
-コマンド&nbsp;<a class="Identifier" href="message.html#g<">g&lt;</a>&nbsp;を使うと前のコマンドの出力の最後のページを見ることができる。<br>
-hit-enter プロンプトで誤って&nbsp;<span class="Special">&lt;Space&gt;</span>&nbsp;を押してしまったときにこれは便利である。<br>
+<span class="Todo">Note:</span>&nbsp;タイプされたキーは端末から直接得られ、マップされず、先行入力は無視され<br>
+る。<br>
+<br>
+<a class="Identifier" href="message.html#g<">g&lt;</a>&nbsp;コマンドを使うと、前のコマンドの出力の最後のページを見ることができる。こ<br>
+れは、hit-enter プロンプトで誤って&nbsp;<span class="Special">&lt;Space&gt;</span>&nbsp;をタイプした場合に特に役に立つ。<br>
 <br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>
