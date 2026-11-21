@@ -22,7 +22,7 @@ Vim の Lua インターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 9. luaeval() Vim 関数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_lua.html#lua-luaeval">lua-luaeval</a><br>
 10. 動的ローディング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_lua.html#lua-dynamic">lua-dynamic</a><br>
 <br>
-<span class="Special">{Vim が&nbsp;</span><a class="Identifier" href="various.html#+lua">+lua</a><span class="Special">&nbsp;機能付きでコンパイルされたときのみ利用できます}</span><br>
+<span class="Special">{Vim が&nbsp;</span><a class="Identifier" href="various.html#+lua">+lua</a><span class="Special">&nbsp;機能付きでコンパイルされたときのみ利用できる}</span><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 1. コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_lua.html#lua-commands" name="lua-commands">lua-commands</a><br>
@@ -42,15 +42,14 @@ Vim の Lua インターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 <span class="Special">{endmarker}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lua スクリプト&nbsp;<span class="Special">{script}</span>&nbsp;を実行する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;Lua のサポートを有効にしてコンパイルされていない<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;とこのコマンドは機能しません。エラーを回避するには<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_perl.html#script-here">script-here</a>&nbsp;を参照してください。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;とこのコマンドは機能しない。エラーを回避するには<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_perl.html#script-here">script-here</a>&nbsp;を参照。<br>
 <br>
 &quot;&lt;&lt;&quot; の後の&nbsp;<span class="Special">[endmarker]</span>&nbsp;を省略した場合は&nbsp;<a class="Identifier" href="insert.html#:append">:append</a>&nbsp;や&nbsp;<a class="Identifier" href="insert.html#:insert">:insert</a>&nbsp;コマンドのよう<br>
-にドット '.' で&nbsp;<span class="Special">{script}</span>&nbsp;を閉じます。詳細については&nbsp;<a class="Identifier" href="eval.html#:let-heredoc">:let-heredoc</a>&nbsp;を参照して<br>
-ください。<br>
+にドット '.' で&nbsp;<span class="Special">{script}</span>&nbsp;を閉じる。詳細については&nbsp;<a class="Identifier" href="eval.html#:let-heredoc">:let-heredoc</a>&nbsp;を参照。<br>
 <br>
 <a class="Identifier" href="if_lua.html#:lua">:lua</a>&nbsp;コマンドのこの書式は主に Vim script の中に Lua コードを埋め込むときに便<br>
-利です。<br>
+利である。<br>
 <br>
 例:<br>
 <br>
@@ -66,7 +65,7 @@ Vim の Lua インターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 どの Lua のバージョンであるかを見るには:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:lua print(_VERSION)</div>
 <br>
-もし LuaJIT を使っているならばこれも使えます:<br>
+もし LuaJIT を使っているならばこれも使える:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:lua print(jit.version)</div>
 <br>
 <br>
@@ -74,9 +73,9 @@ Vim の Lua インターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 :<span class="Special">[range]</span>luado&nbsp;<span class="Special">{body}</span>&nbsp;&nbsp;&nbsp;&nbsp;Lua 関数 &quot;function (line, linenr)&nbsp;<span class="Special">{body}</span>&nbsp;end&quot; を<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[range]</span>&nbsp;で指定された各行に対して実行する。関数の引数に<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は各行のテキスト (末尾の&nbsp;<span class="Special">&lt;EOL&gt;</span>&nbsp;無し) と現在の行番号が<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;渡されます。関数の戻り値が文字列なら行のテキストはその<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文字列で置換されます。<span class="Special">[range]</span>&nbsp;を省略するとすべてのファ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;イル (&quot;1,$&quot;) が処理されます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;渡される。関数の戻り値が文字列なら行のテキストはその文<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字列で置換される。<span class="Special">[range]</span>&nbsp;を省略するとすべてのファイル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&quot;1,$&quot;) が処理される。<br>
 <br>
 例:<br>
 <br>
@@ -91,7 +90,7 @@ Vim の Lua インターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_lua.html#:luafile" name=":luafile">:luafile</a><br>
 :<span class="Special">[range]</span>luafile&nbsp;<span class="Special">{file}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{file}</span>&nbsp;内の Lua スクリプトを実行する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数全体で一つのファイル名として認識されます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数全体で 1 つのファイル名として認識される。<br>
 <br>
 例:<br>
 <br>
@@ -100,44 +99,44 @@ Vim の Lua インターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 <br>
 <br>
 これらすべてのコマンドはコマンドライン (:lua と :luado) かファイル (:luafile)<br>
-で指定された Lua チャンクを範囲指定&nbsp;<span class="Special">[range]</span>&nbsp;に対して実行します。Lua インタープ<br>
-リターと同様に各チャンクはそれぞれのスコープを持つため、各コマンドの実行で共有<br>
-されるのはグローバル変数だけです。すべての Lua デフォルトライブラリが利用可能<br>
-です。加えて、Lua の &quot;print&quot; 関数の出力先は Vim のメッセージエリアになり、引数<br>
-はタブ文字ではなくスペースで区切られます。<br>
+で指定された Lua チャンクを範囲指定&nbsp;<span class="Special">[range]</span>&nbsp;に対して実行する。Lua インタープリ<br>
+ターと同様に各チャンクはそれぞれのスコープを持つため、各コマンドの実行で共有さ<br>
+れるのはグローバル変数だけである。すべての Lua デフォルトライブラリが利用可能<br>
+である。加えて、Lua の &quot;print&quot; 関数の出力先は Vim のメッセージエリアになり、引<br>
+数はタブ文字ではなくスペースで区切られる。<br>
 <br>
-Lua は &quot;vim&quot; モジュール (<a class="Identifier" href="if_lua.html#lua-vim">lua-vim</a>&nbsp;参照) を使って、Vim コマンドを発行したり<br>
-バッファ (<a class="Identifier" href="if_lua.html#lua-buffer">lua-buffer</a>) やウィンドウ (<a class="Identifier" href="if_lua.html#lua-window">lua-window</a>) を管理したりします。ただ<br>
-し、コマンドが&nbsp;<a class="Identifier" href="eval.html#sandbox">sandbox</a>&nbsp;の中で実行されたときはバッファの変更、新規バッファの<br>
-作成、カーソル位置の変更は制限されます。<br>
+Lua は &quot;vim&quot; モジュール (<a class="Identifier" href="if_lua.html#lua-vim">lua-vim</a>&nbsp;参照) を使って、Vim コマンドを発行したりバッ<br>
+ファ (<a class="Identifier" href="if_lua.html#lua-buffer">lua-buffer</a>) やウィンドウ (<a class="Identifier" href="if_lua.html#lua-window">lua-window</a>) を管理したりする。ただし、コマ<br>
+ンドが&nbsp;<a class="Identifier" href="eval.html#sandbox">sandbox</a>&nbsp;の中で実行されたときはバッファの変更、新規バッファの作成、カー<br>
+ソル位置の変更は制限される。<br>
 <br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 2. vim モジュール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_lua.html#lua-vim" name="lua-vim">lua-vim</a><br>
 <br>
-Lua からは &quot;vim&quot; モジュールを使って Vim を操作します。範囲指定の最初と最後の行<br>
-は &quot;vim.firstline&quot; と &quot;vim.lastline&quot; に格納されています。vim モジュールには<br>
-バッファ操作、ウィンドウ操作、現在行の取得、Vim 式評価、Vim コマンド実行、など<br>
-のルーチンが含まれています。<br>
+Lua からは &quot;vim&quot; モジュールを使って Vim を操作する。範囲指定の最初と最後の行は<br>
+&quot;vim.firstline&quot; と &quot;vim.lastline&quot; に格納されている。vim モジュールにはバッファ<br>
+操作、ウィンドウ操作、現在行の取得、Vim 式評価、Vim コマンド実行、などのルーチ<br>
+ンが含まれている。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim.list(<span class="Special">[arg]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;arg&quot; が 1, ..., n の数値をキーに持つ Lua のテ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ーブルの時、i = 1, ..., n に対して l[i] =<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arg[i] となるようなリスト l を返し (<a class="Identifier" href="eval.html#List">List</a>&nbsp;を参<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;照) 、そうでなければ空のリストを返します。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arg[i] となるようなリスト l を返し (<a class="Identifier" href="eval.html#List">List</a>&nbsp;を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参照)、そうでなければ空のリストを返す。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数値以外のキーは戻り値のリストの初期化に使われ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ません。変換のルールについては&nbsp;<a class="Identifier" href="if_lua.html#lua-eval">lua-eval</a>&nbsp;を参照<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;してください。例:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ない。変換のルールについては&nbsp;<a class="Identifier" href="if_lua.html#lua-eval">lua-eval</a>&nbsp;を参<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;照。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:lua t = {math.pi, false, say = 'hi'}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:echo luaeval('vim.list(t)')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&quot; [3.141593, v:false], 'say' is ignored</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim.dict(<span class="Special">[arg]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;arg&quot; が Lua のテーブルの時、&quot;arg&quot; のそれぞれの<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キー k に対して d[k] = arg[k] となるような辞書<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を返し (<a class="Identifier" href="eval.html#Dictionary">Dictionary</a>&nbsp;を参照) 、そうでなければ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;空の辞書を返します。数値のキーは文字列に変換さ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れます。文字列以外のキーは戻り値の辞書の初期化<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に使われません。変換のルールについては<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_lua.html#lua-eval">lua-eval</a>&nbsp;を参照してください。例:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を返し (<a class="Identifier" href="eval.html#Dictionary">Dictionary</a>&nbsp;を参照)、そうでなければ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;空の辞書を返す。数値のキーは文字列に変換され<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。文字列以外のキーは戻り値の辞書の初期化に使<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;われない。変換のルールについては&nbsp;<a class="Identifier" href="if_lua.html#lua-eval">lua-eval</a>&nbsp;を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参照。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:lua t = {math.pi, false, say = 'hi'}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:echo luaeval('vim.dict(t)')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&quot; {'1': 3.141593, '2': v:false,<br>
@@ -151,9 +150,9 @@ Lua からは &quot;vim&quot; モジュールを使って Vim を操作します
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:echo luaeval('vim.blob(s)')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&quot; 0z31326162.0080FEFF</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim.funcref(<span class="Special">{name}</span>)&nbsp;&nbsp;&nbsp;&nbsp; 関数&nbsp;<span class="Special">{name}</span>&nbsp;への関数参照を返します (<a class="Identifier" href="eval.html#Funcref">Funcref</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を参照) 。その値は Vim の function() と等価で<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim.funcref(<span class="Special">{name}</span>)&nbsp;&nbsp;&nbsp;&nbsp; 関数&nbsp;<span class="Special">{name}</span>&nbsp;への関数参照を返す (<a class="Identifier" href="eval.html#Funcref">Funcref</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を参照)。その値は Vim の function() と等価で<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ある。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim.buffer(<span class="Special">[arg]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;arg&quot; が数値ならバッファリストの &quot;arg&quot; 番の<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファを返す。&quot;arg&quot; が文字列ならフルパスか<br>
@@ -171,15 +170,15 @@ Lua からは &quot;vim&quot; モジュールを使って Vim を操作します
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントウィンドウを返す。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim.type(<span class="Special">{arg}</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{arg}</span>&nbsp;の型を返す。これは Lua の &quot;type&quot; 関数と<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同じようなものですが、<span class="Special">{arg}</span>&nbsp;がリスト、辞書、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同じようなものであるが、<span class="Special">{arg}</span>&nbsp;がリスト、辞書、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数参照、バッファ、ウィンドウのときに、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;list&quot;、&quot;dict&quot;、&quot;funcref&quot;、&quot;buffer&quot;、&quot;window&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;をそれぞれ返します。例:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;をそれぞれ返す。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:lua l = vim.list()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:lua print(type(l), vim.type(l))<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&quot; list</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim.command(<span class="Special">{cmds}</span>)&nbsp;&nbsp;&nbsp;&nbsp; Vim の 1行もしくは複数行の Ex コマンド&nbsp;<span class="Special">{cmds}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim.command(<span class="Special">{cmds}</span>)&nbsp;&nbsp;&nbsp;&nbsp; Vim の 1 行もしくは複数行の Ex コマンド&nbsp;<span class="Special">{cmds}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を実行する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:lua vim.command&quot;set tw=60&quot;<br>
@@ -207,7 +206,7 @@ Lua からは &quot;vim&quot; モジュールを使って Vim を操作します
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim.beep()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビープ音を鳴らす。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim.open(<span class="Special">{fname}</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ファイル&nbsp;<span class="Special">{fname}</span>&nbsp;用の新しいバッファを開いて返<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<span class="Todo">Note:</span>&nbsp;カレントバッファは変更されません。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<span class="Todo">Note:</span>&nbsp;カレントバッファは変更されない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim.call(<span class="Special">{name}</span>&nbsp;[,&nbsp;<span class="Special">{args}</span>])<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名前が&nbsp;<span class="Special">{name}</span>&nbsp;の Vim の関数を引数&nbsp;<span class="Special">{args}</span>&nbsp;でプ<br>
@@ -231,29 +230,29 @@ Lua からは &quot;vim&quot; モジュールを使って Vim を操作します
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_lua.html#lua-vim-variables" name="lua-vim-variables">lua-vim-variables</a><br>
 Vim エディタのグローバルな辞書&nbsp;<a class="Identifier" href="eval.html#g:">g:</a>&nbsp;<a class="Identifier" href="eval.html#w:">w:</a>&nbsp;<a class="Identifier" href="eval.html#b:">b:</a>&nbsp;<a class="Identifier" href="eval.html#t:">t:</a>&nbsp;<a class="Identifier" href="eval.html#v:">v:</a>&nbsp;は以下で説明する<br>
 <span class="Comment">vim.*</span>&nbsp;という Lua テーブルを参照することで Lua から便利かつ慣用的にアクセスす<br>
-ることができます。これにより Lua からグローバルな Vim script 変数を容易に読ん<br>
-だり変更することができます。<br>
+ることができる。これにより Lua からグローバルな Vim script 変数を容易に読んだ<br>
+り変更することができる。<br>
 <br>
 例:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;vim.g.foo = 5&nbsp;&nbsp;&nbsp;&nbsp; -- Vim script変数の g:foo を設定する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;print(vim.g.foo)&nbsp;&nbsp;-- Vim script変数の g:foo を取得し印刷する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;vim.g.foo = nil&nbsp;&nbsp; -- Vim script変数を削除(:unlet)する。</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;vim.g.foo = 5&nbsp;&nbsp;&nbsp;&nbsp; -- Vim script 変数の g:foo を設定する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print(vim.g.foo)&nbsp;&nbsp;-- Vim script 変数の g:foo を取得し印刷する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;vim.g.foo = nil&nbsp;&nbsp; -- Vim script 変数を削除 (:unlet) する。</div>
 <br>
 vim.g&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_lua.html#vim.g" name="vim.g">vim.g</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;エディタのグローバル変数(<a class="Identifier" href="eval.html#g:">g:</a>)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キーがない場合は<span class="Comment">nil</span>を返す。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;エディタのグローバル変数 (<a class="Identifier" href="eval.html#g:">g:</a>)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キーがない場合は&nbsp;<span class="Comment">nil</span>&nbsp;を返す。<br>
 <br>
 vim.b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_lua.html#vim.b" name="vim.b">vim.b</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントバッファのバッファローカル変数(<a class="Identifier" href="eval.html#b:">b:</a>)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントバッファのバッファローカル変数 (<a class="Identifier" href="eval.html#b:">b:</a>)。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;無効もしくはセットされてないキーは&nbsp;<span class="Comment">nil</span>&nbsp;を返す。<br>
 <br>
 vim.w&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_lua.html#vim.w" name="vim.w">vim.w</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントウィンドウのウィンドウローカル変数(<a class="Identifier" href="eval.html#w:">w:</a>)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントウィンドウのウィンドウローカル変数 (<a class="Identifier" href="eval.html#w:">w:</a>)。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;無効もしくはセットされてないキーは&nbsp;<span class="Comment">nil</span>&nbsp;を返す。<br>
 <br>
 vim.t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_lua.html#vim.t" name="vim.t">vim.t</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントタブのタブローカル変数(<a class="Identifier" href="eval.html#t:">t:</a>)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントタブのタブローカル変数 (<a class="Identifier" href="eval.html#t:">t:</a>)。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;無効もしくはセットされてないキーは&nbsp;<span class="Comment">nil</span>&nbsp;を返す。<br>
 <br>
 vim.v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_lua.html#vim.v" name="vim.v">vim.v</a><br>
@@ -263,12 +262,12 @@ vim.v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb
 <span class="PreProc">==============================================================================</span><br>
 3. List ユーザーデータ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_lua.html#lua-list" name="lua-list">lua-list</a><br>
 <br>
-List ユーザーデータは vim のリストを表します。Vim のリストに近い形で操作できる<br>
-ようになっています。リストはオブジェクトなので、Lua 内で参照しているリストを変<br>
-更すると、それは Vim 内にも影響します。逆も同様です。リスト &quot;l&quot; は以下のプロパ<br>
-ティとメソッドを持っています:<br>
+List ユーザーデータは vim のリストを表す。Vim のリストに近い形で操作できるよう<br>
+になっている。リストはオブジェクトなので、Lua 内で参照しているリストを変更する<br>
+と、それは Vim 内にも影響する。逆も同様である。リスト &quot;l&quot; は以下のプロパティと<br>
+メソッドを持っている:<br>
 <span class="Todo">NOTE:</span>&nbsp;パッチ 8.2.1066 にて、配列のインデックスが 0 基準から 1 基準に変更になっ<br>
-ています。チェックするなら:<br>
+ている。チェックするなら:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if has(&quot;patch-8.2.1066&quot;)</div>
 <br>
 プロパティ<br>
@@ -312,9 +311,9 @@ List ユーザーデータは vim のリストを表します。Vim のリスト
 <span class="PreProc">==============================================================================</span><br>
 4. Dict ユーザーデータ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_lua.html#lua-dict" name="lua-dict">lua-dict</a><br>
 <br>
-list ユーザーデータと同様、dict ユーザーデータは vim の辞書を表します。辞書も<br>
-オブジェクトなので、Lua と Vim 間で参照が保持されます。辞書 &quot;d&quot; は以下のプロパ<br>
-ティを持っています。<br>
+list ユーザーデータと同様、dict ユーザーデータは vim の辞書を表す。辞書もオブ<br>
+ジェクトなので、Lua と Vim 間で参照が保持される。辞書 &quot;d&quot; は以下のプロパティを<br>
+持っている。<br>
 <br>
 プロパティ<br>
 <span class="PreProc">----------</span><br>
@@ -339,12 +338,12 @@ list ユーザーデータと同様、dict ユーザーデータは vim の辞�
 <span class="PreProc">==============================================================================</span><br>
 5. Blob ユーザーデータ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_lua.html#lua-blob" name="lua-blob">lua-blob</a><br>
 <br>
-Blob ユーザーデータは vim の Blob を表します。Blob &quot;b&quot; は以下のプロパティを持<br>
-っています。<br>
+Blob ユーザーデータは vim の Blob を表す。Blob &quot;b&quot; は以下のプロパティを持って<br>
+いる。<br>
 <br>
 プロパティ<br>
 <span class="PreProc">----------</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o &quot;#b&quot; は Blob &quot;b&quot; の要素数。Vim の&quot;len(b)&quot; と同じ。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o &quot;#b&quot; は Blob &quot;b&quot; の要素数。Vim の &quot;len(b)&quot; と同じ。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o &quot;b[k]&quot; は &quot;b&quot; の k 番目の要素を返す。&quot;b&quot; は Vim と同様に 0 から始ま<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;るインデックスを使用する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim と同様に、負の &quot;k&quot; は末尾から数えるため、&quot;b[-1]&quot; は最後の要素<br>
@@ -361,7 +360,7 @@ Blob ユーザーデータは vim の Blob を表します。Blob &quot;b&quot; 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:lua b = vim.eval('b') -- 'b' と同じ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:lua print(b, b[0], #b)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:lua b[1] = 32<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:lua b[#b] = 0x33 -- 末尾へ1バイト追加<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:lua b[#b] = 0x33 -- 末尾へ 1 バイト追加<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:lua b:add(&quot;\x80\x81\xfe\xff&quot;)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:echo b</div>
 <br>
@@ -369,15 +368,15 @@ Blob ユーザーデータは vim の Blob を表します。Blob &quot;b&quot; 
 <span class="PreProc">==============================================================================</span><br>
 6. Funcref ユーザーデータ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_lua.html#lua-funcref" name="lua-funcref">lua-funcref</a><br>
 <br>
-Funcref ユーザーデータは Vim における関数参照変数を表します。&quot;dict&quot; 属性付きで<br>
-定義された Vim の関数参照 はその呼び出し時に &quot;self&quot; に適切に辞書が代入できるよ<br>
-うに、辞書のメンバーとして取得できなければなりません (下記の例を参照してくださ<br>
-い) 。Lua の関数参照 &quot;f&quot; は次のプロパティを持っています:<br>
+Funcref ユーザーデータは Vim における関数参照変数を表す。&quot;dict&quot; 属性付きで定義<br>
+された Vim の関数参照はその呼び出し時に &quot;self&quot; に適切に辞書が代入できるように、<br>
+辞書のメンバーとして取得できなければならない (下記の例を参照)。Lua の関数参照<br>
+&quot;f&quot; は次のプロパティを持っている:<br>
 <br>
 プロパティ<br>
 <span class="PreProc">----------</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o &quot;#f&quot; は &quot;f&quot; が参照している関数の名前です<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o &quot;f(...)&quot; は &quot;f&quot; が参照している関数を (引数と共に) 呼びます<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o &quot;#f&quot; は &quot;f&quot; が参照している関数の名前である<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o &quot;f(...)&quot; は &quot;f&quot; が参照している関数を (引数と共に) 呼ぶ<br>
 <br>
 例:<br>
 <br>
@@ -399,7 +398,7 @@ Funcref ユーザーデータは Vim における関数参照変数を表しま�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:lua print(l())</div>
 <br>
 Lua の関数とクロージャは自動的に Vim の&nbsp;<a class="Identifier" href="eval.html#Funcref">Funcref</a>&nbsp;に変換されて Vim script から<br>
-アクセスできます。例:<br>
+アクセスできる。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lua &lt;&lt;EOF<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim.fn.timer_start(1000, function(timer)<br>
@@ -410,8 +409,8 @@ Lua の関数とクロージャは自動的に Vim の&nbsp;<a class="Identifier
 <span class="PreProc">==============================================================================</span><br>
 7. バッファユーザーデータ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_lua.html#lua-buffer" name="lua-buffer">lua-buffer</a><br>
 <br>
-バッファユーザーデータは Vim のバッファを表します。バッファユーザーデータ &quot;b&quot;<br>
-は以下のプロパティとメソッドを持っています:<br>
+バッファユーザーデータは Vim のバッファを表す。バッファユーザーデータ &quot;b&quot; は以<br>
+下のプロパティとメソッドを持っている:<br>
 <br>
 プロパティ<br>
 <span class="PreProc">----------</span><br>
@@ -461,8 +460,8 @@ Lua の関数とクロージャは自動的に Vim の&nbsp;<a class="Identifier
 <span class="PreProc">==============================================================================</span><br>
 8. ウィンドウユーザーデータ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_lua.html#lua-window" name="lua-window">lua-window</a><br>
 <br>
-ウィンドウオブジェクトは Vim のウィンドウを表します。ウィンドウユーザーデータ<br>
-&quot;w&quot; は以下のプロパティとメソッドを持っています:<br>
+ウィンドウオブジェクトは Vim のウィンドウを表す。ウィンドウユーザーデータ &quot;w&quot;<br>
+は以下のプロパティとメソッドを持っている:<br>
 <br>
 プロパティ<br>
 <span class="PreProc">----------</span><br>
@@ -493,9 +492,9 @@ Lua の関数とクロージャは自動的に Vim の&nbsp;<a class="Identifier
 <span class="PreProc">==============================================================================</span><br>
 9. luaeval() Vim 関数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_lua.html#lua-luaeval" name="lua-luaeval">lua-luaeval</a>&nbsp;<a class="Constant" href="if_lua.html#lua-eval" name="lua-eval">lua-eval</a><br>
 <br>
-&quot;luaeval&quot; は &quot;vim.eval&quot; と対となる関数で Lua の値を Vim に渡すことができます。<br>
-&quot;luaeval&quot; は式文字列と任意の引数を受け取り、式の結果を返します。意味的には次の<br>
-Lua コードと同じです:<br>
+&quot;luaeval&quot; は &quot;vim.eval&quot; と対となる関数で Lua の値を Vim に渡すことができる。<br>
+&quot;luaeval&quot; は式文字列と任意の引数を受け取り、式の結果を返す。意味的には次の Lua<br>
+コードと同じである:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;local chunkheader = &quot;local _A = select(1, ...) return &quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function luaeval (expstr, arg)<br>
@@ -504,10 +503,10 @@ Lua コードと同じです:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return chunk(arg)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end</div>
 <br>
-<span class="Todo">Note</span>&nbsp;&quot;_A&quot; には &quot;luaeval&quot; の引数が渡されます。Lua の数値、文字列、リスト、Blob、<br>
-辞書そして Funcref ユーザーデータはそれぞれの Vim の型に変換されます。ただし、<br>
-Lua のブール値は数値に変換されます。リスト、辞書および関数参照以外のユーザーデ<br>
-ータを含む、それ以外の Lua の型を変換しようとするとエラーが返されます。<br>
+<span class="Todo">Note</span>&nbsp;&quot;_A&quot; には &quot;luaeval&quot; の引数が渡される。Lua の数値、文字列、リスト、Blob、<br>
+辞書そして Funcref ユーザーデータはそれぞれの Vim の型に変換される。ただし、<br>
+Lua のブール値は数値に変換される。リスト、辞書および関数参照以外のユーザーデー<br>
+タを含む、それ以外の Lua の型を変換しようとするとエラーが返される。<br>
 <br>
 例:<br>
 <br>
@@ -524,26 +523,25 @@ Lua のブール値は数値に変換されます。リスト、辞書および�
 <span class="PreProc">==============================================================================</span><br>
 10. 動的ローディング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_lua.html#lua-dynamic" name="lua-dynamic">lua-dynamic</a><br>
 <br>
-MS-Windows と Unix では Lua ライブラリを動的にロードすることができます。<br>
-<a class="Identifier" href="various.html#+lua/dyn">+lua/dyn</a>&nbsp;が&nbsp;<a class="Identifier" href="various.html#:version">:version</a>&nbsp;の出力に含まれている時に利用できます。<br>
+MS-Windows と Unix では Lua ライブラリを動的にロードすることができる。<br>
+<a class="Identifier" href="various.html#+lua/dyn">+lua/dyn</a>&nbsp;が&nbsp;<a class="Identifier" href="various.html#:version">:version</a>&nbsp;の出力に含まれている時に利用できる。<br>
 <br>
-これにより、Vim は必要な時だけ Lua DLL もしくは共有ライブラリを検索します。も<br>
-しあなたが Lua インターフェイスを必要としておらず使わなければ Lua DLL もしくは<br>
-共有ライブラリ無しで Vim を使うことができます。<br>
+これにより、Vim は必要な時だけ Lua DLL もしくは共有ライブラリを検索する。もし<br>
+あなたが Lua インターフェイスを必要としておらず使わなければ Lua DLL もしくは共<br>
+有ライブラリ無しで Vim を使うことができる。<br>
 <br>
 <span class="PreProc">MS-Windows</span><br>
 <br>
-Lua インターフェイスを利用するには Lua DLL が検索パス内になければなりません。<br>
-コンソールウィンドウ内で &quot;path&quot; と入力し、どのディレクトリが使われているかを<br>
-確認してください。<a class="Type" href="options.html#'luadll'">'luadll'</a>&nbsp;オプションで Lua の DLL を指定する事ができます。<br>
-DLL のバージョンは Vim と共にコンパイルされた Lua のバージョンと一致していな<br>
-ければなりません。<br>
+Lua インターフェイスを利用するには Lua DLL が検索パス内になければならない。コ<br>
+ンソールウィンドウ内で &quot;path&quot; と入力し、どのディレクトリが使われているかを確認<br>
+すること。<a class="Type" href="options.html#'luadll'">'luadll'</a>&nbsp;オプションで Lua の DLL を指定する事ができる。DLL のバージョ<br>
+ンは Vim と共にコンパイルされた Lua のバージョンと一致していなければならない。<br>
 <br>
 <span class="PreProc">Unix</span><br>
 <br>
 コンパイル時に指定された DYNAMIC_LUA_DLL ファイルの代わりに&nbsp;<a class="Type" href="options.html#'luadll'">'luadll'</a>&nbsp;オプショ<br>
-ンで Lua 共有ライブラリを指定できます。共有ライブラリのバージョンは Vim と共に<br>
-コンパイルされた Lua のバージョンと一致していなければなりません。<br>
+ンで Lua 共有ライブラリを指定できる。共有ライブラリのバージョンは Vim と共にコ<br>
+ンパイルされた Lua のバージョンと一致していなければならない。<br>
 <br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
