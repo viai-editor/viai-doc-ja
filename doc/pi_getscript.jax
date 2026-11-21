@@ -1,9 +1,9 @@
 *pi_getscript.txt*  For ViAI バージョン 1.0.  Last change: 2026 Aug 17
 >
-		GETSCRIPT REFERENCE MANUAL  by Charles E. Campbell
+		GETSCRIPT リファレンスマニュアル
 <
 Original Author:  Charles E. Campbell  <NcampObell@SdrPchip.AorgM-NOSPAM>
-	 (メールアドレスから NOSPAM を削除してください)
+	 (メールアドレスから NOSPAM を削除すること)
 						*GetLatestVimScripts-copyright*
 Copyright: (c) 2004-2012 by Charles E. Campbell	*glvs-copyright*
 	The VIM LICENSE (see |copyright|) applies to the files in this
@@ -17,55 +17,56 @@ Copyright: (c) 2004-2012 by Charles E. Campbell	*glvs-copyright*
 	holder be liable for any damages resulting from the use of this
 	software. Use at your own risk!
 
-Getscript はあなたが使っている Vim script の最新バージョンを簡単に検索するため
-のプラグインです。|:GLVS| と入力すると getscript が実行されます。すると、
-<GetLatestVimScripts.dat> ファイル (|GetLatestVimScripts_dat|参照) に列挙され
-たスクリプトの最新バージョンが https://www.vim.org/ から取得されます。
+Getscript は、あなた自身が使っているスクリプトの最新版の取得を簡単にするプラグ
+インである！ |:GLVS| とタイプすると getscript が起動し、続いて
+<GetLatestVimScripts.dat> (|GetLatestVimScripts_dat| を参照) ファイルを使って、
+そこに列挙されているスクリプトの最新版を https://www.vim.org/ から取得する。
 
 ==============================================================================
 1. 目次					*glvs-contents* *glvs* *getscript*
 					*GetLatestVimScripts*
 
 	1. 目次............................................: |glvs-contents|
-	2. GetLatestVimScripts -- 準備.....................: |glvs-install|
+	2. GetLatestVimScripts -- はじめに.................: |glvs-install|
 	3. GetLatestVimScripts の使い方....................: |glvs-usage|
 	4. GetLatestVimScripts データファイル..............: |glvs-data|
 	5. GetLatestVimScripts 対応プラグイン..............: |glvs-plugins|
-	6. GetLatestVimScripts 自動インストール............: |glvs-autoinstall|
+	6. GetLatestVimScripts AutoInstall.................: |glvs-autoinstall|
 	7. GetLatestViMScripts オプション..................: |glvs-options|
 	8. GetLatestVimScripts アルゴリズム................: |glvs-alg|
-	9. GetLatestVimScripts 開発履歴....................: |glvs-hist|
+	9. GetLatestVimScripts 履歴........................: |glvs-hist|
 
 
 ==============================================================================
-2. GetLatestVimScripts -- 準備				*getscript-start*
+2. GetLatestVimScripts -- はじめに			*getscript-start*
 						*getlatestvimscripts-install*
 
-	Vim に付属の getscript				*glvs-dist-install*
+	Vim の配布物からの版				*glvs-dist-install*
 
-Vim 7.0 には GetLatestVimScripts.dist (サンプルファイル) が付属していないの
-で、自分で作成する必要がある。|GetLatestVimScripts_dat| 参照。
+Vim 7.0 には、例およびテンプレートとなる GetLatestVimScripts.dist ファイルは含
+まれていない。そのため、自分で作成する必要がある！ |GetLatestVimScripts_dat|
+を参照。
 
-	vim.sf.net から入手した getscript		*glvs-install*
+	VIM SF NET からの版				*glvs-install*
 
-NOTE: GetLatestVimScripts.dist のコピーは、初めて getscript をインストールする
-ときだけ必要である。
+NOTE: 最後の手順、つまり GetLatestVimScripts.dist ファイルの名前の変更/移動は、
+GetLatestVimScripts.tar.bz2 を初めてダウンロードした人のためのものである。
 
-GetLatestVimScripts.dist は自分の一覧を作成するためのサンプルまたはテンプレー
-トとして使える。ファイルにはスクリプトがいくつか列挙されているが、必要なければ
-削除しても構わない。重要なのはファイル先頭の 2 行だけである。
+GetLatestVimScripts.dist ファイルは、あなた自身の個人用リストの例およびテンプ
+レートとなる。その中に書かれているスクリプトはすべて自由に削除してよい。その
+"重要な" 部分は最初の 2 行である。
 
-GetLatestVimScripts の動作には wget か curl が必要である。
+GetLatestVimScripts が動作するには、コンピュータに wget か curl が必要である。
 
-	1. ファイルが圧縮されている場合:  gunzip getscript.vmb.gz
+	1. 圧縮されている場合:  gunzip getscript.vmb.gz
 	2. Unix:
 		vim getscript.vmb
 		:so %
 		:q
 		cd ~/.vim/GetLatest
 		mv GetLatestVimScripts.dist GetLatestVimScripts.dat
-		(GetLatestVimScripts.dat を編集して、インストールしたいプラグ
-		インの一覧を書く。|GetLatestVimScripts_dat| 参照)
+		(GetLatestVimScripts.dat を編集して、欲しいプラグインの個人用
+		リストをインストールする -- |GetLatestVimScripts_dat| を参照)
 
 	3. Windows:
 		vim getscript.vmb
@@ -73,13 +74,13 @@ GetLatestVimScripts の動作には wget か curl が必要である。
 		:q
 		cd **path-to-vimfiles**/GetLatest
 		mv GetLatestVimScripts.dist GetLatestVimScripts.dat
-		(GetLatestVimScripts.dat を編集して、インストールしたいプラグ
-		インの一覧を書いく。|GetLatestVimScripts_dat| 参照)
+		(GetLatestVimScripts.dat を編集して、欲しいプラグインの個人用
+		リストをインストールする -- |GetLatestVimScripts_dat| を参照)
 
-	読み込みを防止する
+	読み込みの防止
 
-プラグインを使用したいが、何らかの理由で getscript を使用したくない場合は、
-|vimrc| に以下を記述することで、getscript プラグインの読み込みを回避できる: >
+プラグインは使いたいが、何らかの理由で getscript は使いたくない場合は、以下を
+|vimrc| に追加することで getscript プラグインの読み込みを避けられる: >
 
 	:let g:loaded_getscriptPlugin = 1
 <
@@ -87,108 +88,112 @@ GetLatestVimScripts の動作には wget か curl が必要である。
 ==============================================================================
 3. GetLatestVimScripts の使い方				*glvs-usage* *:GLVS*
 
-次のコマンドを実行すると GetLatestVimScripts() が呼び出されます >
+他の場所で定義されていなければ >
 
 	:GLVS
 
-同じ名前のコマンドが他のプラグインによって既に定義されていた場合は、次のコマン
-ドを使ってください
+で GetLatestVimScripts() が起動する。他のプラグインがそのコマンドを定義してい
+た場合は、次のようにタイプすればよい
 >
 	:GetLatestVimScripts
 <
-このコマンドは http://vim.sourceforge.net/ をチェックしてスクリプトを更新し、
-許可がある場合はそれを自動的にインストールします。そのために次のファイルが使わ
-れます:
+このスクリプトは更新を試み、許可されていれば http://vim.sourceforge.net/ から
+スクリプトを自動的にインストールする。そのために、ファイル
 >
 	.vim/GetLatest/GetLatestVimScripts.dat                    (unix)
 <
-or >
+または >
 	..wherever..\vimfiles\GetLatest\GetLatestVimScripts.dat   (windows)
-(|glvs-data|参照)。そして、[.vim|vimfiles]/plugin ディレクトリ内のプラグインが
-検査されます (|glvs-plugins|参照)。
+(|glvs-data| を参照) を精読し、あなたの [.vim|vimfiles]/plugin ディレクトリ内
+のプラグインを調べる (|glvs-plugins| を参照)。
 
 ダウンロードされたスクリプトは
-~/.vim/GetLatest (unix) or ...\vimfiles\GetLatest (windows)
-に保存されます。vimrc ファイルに次の設定を書いておくと、ダウンロードしたスクリ
-プトが自動的にインストールされます: >
+~/.vim/GetLatest (unix) または ..wherever..\vimfiles\GetLatest (windows)
+サブディレクトリに現れる。<.vimrc> に以下の行があれば、GetLatestVimScripts は
+それらを自動的にインストールしようとする: >
 
 	let g:GetLatestVimScripts_allowautoinstall=1
-<
-<GetLatestVimScripts.dat> ファイルは自動的に更新され、ダウンロードした最新スク
-リプトのバージョンが反映されます。
-(|glvs-options|も参照)
+
+<GetLatestVimScripts.dat> ファイルは、そのようにダウンロードされたスクリプトの
+最新版を反映するように自動的に更新される。
+(|glvs-options| も参照)
 
 
 ==============================================================================
 4. GetLatestVimScripts データファイル		*getscript-data* *glvs-data*
 						*:GetLatestVimScripts_dat*
-<GetLatestVimScripts.dat> ファイルの先頭二行は次のようなテキストになっていま
-す:
+データファイル <GetLatestVimScripts.dat> は、最初の 2 行に以下のテキストがなけ
+ればならない:
 >
 	ScriptID SourceID Filename
 	--------------------------
 <
-その下に三列 (数値 数値 テキスト) の行が続きます。
-GetLatest/GetLatestVimScripts.dist ファイルはそのようなデータファイルの例に
-なっています。コメントは #... で書くことができます。
+その 2 行に続くのは 3 つの列である。最初の 2 つは数値で、その後にテキストの列
+が続く。GetLatest/GetLatestVimScripts.dist ファイルには、そのようなデータファ
+イルの例が含まれている。#... に続くものはすべて無視されるので、ファイルにコメ
+ントを埋め込んでよい。
 
-一列目の数値はスクリプトの ScriptID です。Web ブラウザーで http://vim.sf.net/
-にあるスクリプトを探すとき、スクリプトへのリンクにマウスカーソルを合わせると、
-次のような URL が確認できますが
+各行の最初の数値はスクリプトの ScriptID を与える。ウェブブラウザーを使って
+http://vim.sf.net/ のスクリプトを見ようとするとき、スクリプトのリンクをクリッ
+クする直前に、次のような行が見えるだろう
 
 	http://vim.sourceforge.net/scripts/script.php?script_id=40
 
-この "40" が ScriptID です。GetLatestVimScripts はこの番号を使ってスクリプトの
-ページにアクセスします。この番号は最初に vim.sf.net にプラグインをアップロード
-したときに付けられます。
+この "40" がたまたま、GetLatestVimScripts が関連するページをダウンロードするの
+に必要な ScriptID であり、プラグインの最初のアップロードの間に vim.sf.net 自身
+によって割り当てられる。
 
-二列目の数値はスクリプトの SourceID です。SourceID は vim.sf.net にスクリプト
-がアップロードされるごとに新しい番号が付けられます。したがって、その番号を見れ
-ばスクリプトがアップロードされた時期が分かります。SourceID に 1 を指定すると、
-そのスクリプトがまだ最新版に更新されていないということを明示できます。
+各行の 2 番目の数値はスクリプトの SourceID を与える。SourceID は、vim.sf.net
+が決めたアップロード済みスクリプトの数を記録している。そのため、スクリプトが
+"いつ" アップロードされたかを示す役目を果たす。SourceID を 1 に設定すると、
+GetLatestVimScripts は手元にあるスクリプトが古いとみなすことが保証される。
 
-GetLatestVimScripts は、vim.sf.net のスクリプトのページから SourceID を抜き出
-して、それが GetLatestVimScripts.dat に記録された番号よりも大きければ、そのス
-クリプトをダウンロードします。
-(|GetLatestVimScripts_dat|参照)
+SourceID は、GetLatestVimScripts によって vim.sf.net のスクリプトのページから
+取り出される。それが GetLatestVimScripts.dat ファイルに保存されているものより
+大きいときは常に、スクリプトがダウンロードされる
+(|GetLatestVimScripts_dat| を参照)。
 
-スクリプトの作者が、プラグインに特殊なコメント行を書いていた場合、そのコメント
-行を使って <GetLatestVimScripts.dat> が生成されます。スクリプトの依存関係も処
-理されます。例: >
+スクリプトの作者が自分のプラグインに特別なコメント行を含めている場合は、そのプ
+ラグイン自身が GetLatestVimScripts によって、それが持つかもしれない他のスクリ
+プトへの依存関係も含めて、あなたの <GetLatestVimScripts.dat> ファイルを作成す
+るのに使われる。例として、次を考える: >
 
 	" GetLatestVimScripts: 884  1 :AutoInstall: AutoAlign.vim
 
-このコメントは、チェックすべき Vim script の番号が 884 番であること、そのスク
-リプトが自動インストール可能であることを示しています。getscript はこの情報を
-GetLatestVimScripts.dat に保存します (まだなければ)。次のような行になります: >
+このコメント行は getscript.vim に、Vim script #884 をチェックすること、そして
+そのスクリプトが自動的にインストール可能であることを伝える。Getscript はまた、
+この行を使い、次のような行を含めることで GetLatestVimScripts.dat ファイルの作
+成を助ける: >
 
 	884 1 :AutoInstall: AutoAlign.vim
 <
-詳細は |glvs-plugins| を参照してください。このように、GetLatestVimScripts はプ
-ラグインを更新するための包括的な機能を提供しています。
+ただし、そのような行がまだ GetLatestVimScripts.dat ファイルにないと仮定しての
+ことである。詳細は |glvs-plugins| を参照。このように、GetLatestVimScripts はこ
+のように、あなたのプラグインを最新に保つ包括的な機能を提供する！
 
-要約:
+要約すると:
 
-  * getscript が、既にインストールされているプラグインを元に
-    GetLatestVimScripts.dat を構築/追加できるように設定する: >
+  * 任意で、既にインストールされているプラグインに基づいて
+    GetLatestVimScripts.dat ファイルを作成/追記してよいことを getscript に伝え
+    る: >
 	let g:GetLatestVimScripts_allowautoinstall=1
 <
   * 次のような行が >
 	" GetLatestVimScripts: 884  1 :AutoInstall: AutoAlign.vim
-<   プラグインに含まれていれば、そのプラグインは AutoInstall 可能であることが
-    プラグインの作者によって示されていることになる。すべてのプラグインが
-    AutoInstall できるとは限らない。そして、AutoInstall できるかどうかを判断す
-    るのはプラグインの作者がもっとも適している。
+<   既にダウンロードされたプラグイン内にあれば、それは getscript が
+    AutoInstall してよいというプラグイン作者の同意となる。すべてのプラグインが
+    AutoInstall 可能とは限らず、自分のプラグインが正しく AutoInstall されるか
+    どうかを知るのに最も適した立場にいるのはプラグインの作者である。
 
   * 次のような行が >
 	884 1 :AutoInstall: AutoAlign.vim
-<   GetLatestVimScripts.dat ファイルに含まれていれば、あなたが getscript に対
-    して AutoInstall の許可を与えていることになる。AutoInstall にはあなたとプ
-    ラグインの作者の両者の許可が必要です。|GetLatestVimScripts_dat| 参照。
+<   GetLatestVimScripts.dat ファイル内にあれば、それは getscript が
+    AutoInstall することへのあなたの許可となる。AutoInstall にはあなたとプラグ
+    イン作者の両方の許可が必要である。|GetLatestVimScripts_dat| を参照。
 
 
 						*GetLatestVimScripts_dat*
-<GetLatestVimScripts.dat> ファイルの例:
+<GetLatestVimScripts.dat> ファイルの例として:
 >
     ScriptID SourceID Filename
     --------------------------
@@ -200,17 +205,17 @@ GetLatestVimScripts.dat に保存します (まだなければ)。次のよう�
     642 6 GetLatestVimScripts.vim
     489 7 Manpageview.vim
 <
-Note: 最初の二行は必須です。ただしコメントと同様に無視されます。
+Note: 最初の 2 行は必須だが、本質的にはコメントとして働く。
 
 
 ==============================================================================
 5. GetLatestVimScripts 対応プラグイン	*getscript-plugins* *glvs-plugins*
 
-		(このセクションはプラグイン作者向けの説明です)~
+		(この節はプラグイン作者向け)~
 
-プラグインの作者がプラグインのどこかに以下のようなコメントを書いていた場合、
-GetLatestVimScripts はそれを見付けて、GetLatestVimScripts.dat ファイルの構築に
-使います:
+プラグインの作者が自分のプラグイン内のどこかに以下のコメントを含めると、
+GetLatestVimScripts はそれを見つけ、それを使ってユーザーの
+GetLatestVimScripts.dat ファイルを自動的に作成する:
 >
 	                         src_id
 	                            v
@@ -218,13 +223,13 @@ GetLatestVimScripts はそれを見付けて、GetLatestVimScripts.dat ファイ
 	                        ^
 	                    scriptid
 <
-プラグインの作者は、上記のような行を書いて自分のプラグインを参照させてくださ
-い。複数行書けるので、依存している別のプラグインを参照することもできます。その
-場合でも書式は同じです。
+作者として、あなたは自分自身のスクリプトを参照するそのような行と、それが持つか
+もしれないプラグインの依存関係を記述する追加の行を含めるべきである。もちろん同
+じ形式で！
 
-プラグインが自動インストール可能 (|glvs-autoinstall|参照) なら (ほとんどのスク
-リプトはそうだと思いますが)、"yourscriptname" の前に :AutoInstall: を指定する
-ことができます。
+あなたのコマンドが自動インストール可能なら (|glvs-autoinstall| を参照)、ほとん
+どのスクリプトはそうなのだが、"yourscriptname" の直前に :AutoInstall: を含めて
+よい:
 >
 	                         src_id
 	                            v
@@ -232,89 +237,95 @@ GetLatestVimScripts はそれを見付けて、GetLatestVimScripts.dat ファイ
 	                        ^
 	                    scriptid
 <
-NOTE: :AutoInstall: 機能の実行にはプラグイン作者とユーザーの両者の許可が必要 ~
-      です。 ~
+NOTE: :AutoInstall: 機能が動作するには、プラグイン作者と~
+      ユーザーの両方の許可が必要である！~
 
-GetLatestVimScripts 命令が未登録の場合は、ユーザーの
-GetLatest/GetLatestVimScripts.dat ファイルに追加されます。あなたのプラグインが
-依存しているスクリプトのインストールを比較的簡単に自動化できます。
+そして、それらのスクリプトの GetLatestVimScripts コマンドが、まだ存在しなけれ
+ば、ユーザーの GetLatest/GetLatestVimScripts.dat ファイルに追加される。これは、
+あなたのプラグインが依存するスクリプトの取得を自動化する、比較的手間のかからな
+い方法である。
 
-プラグインの作者の方は、自分の環境で自分のプラグインをダウンロードしたくはない
-と思います。リリース前の作業中のスクリプトが上書きされると困りますよね。それを
-防ぐための仕組みが用意されています。次の行を <GetLatestVimScripts.dat> に書い
-てください:
+さて、作者としては、GetLatestVimScripts が自分のスクリプトを自分の手元のコピー
+の上にダウンロードし、それによってまだリリースしていない苦労の成果を上書きして
+しまうことは望まないだろう。GetLatestVimScripts はこれに対する解決策を提供して
+いる:  次の行
 >
 	0 0 yourscriptname
 <
-スクリプト "yourscriptname" に対する GetLatestVimScript 命令は処理されなくなり
-ます。その命令行は <GetLatestVimScripts.dat> には登録されず、スクリプトはダウ
-ンロードされません。これは :AutoInstall: を指定しているときには特に重要です。
+を <GetLatestVimScripts.dat> ファイルに入れると、GetLatestVimScripts は
+"yourscriptname" スクリプトについて、それらの GetLatestVimScripts コメント行の
+調査を飛ばす。その結果、それらの行がうっかり <GetLatestVimScripts.dat> ファイ
+ルに入れられ、その後で自分のスクリプトのダウンロードに使われることはな
+い。:AutoInstall: オプションを含めている場合は、これを行うことが特に重要であ
+る。
 
-"0 0 yourscriptname" の指定ではスクリプトに書かれた "yourscriptname" と同じ名
-前を使ってください。
+必ず "0 0 yourscriptname" の行で、GetLatestVimScripts コメントで使ったのと同じ
+"yourscriptname" を使うこと！
 
 
 ==============================================================================
-6. GetLatestVimScripts 自動インストール			*getscript-autoinstall*
+6. GetLatestVimScripts AutoInstall			*getscript-autoinstall*
 							*glvs-autoinstall*
 
-GetLatestVimScripts には自動インストール機能があります。スクリプトによってはイ
-ンストールに特別な作業が必要なものもありますが (各スクリプトのインストール方法
-を確認してください)、ほとんどのスクリプトは自動インストール可能です。
+GetLatestVimScripts は現在 "AutoInstall" をサポートしている。すべてのスクリプ
+トが自動インストールに対応しているわけではない。インストールするために特別なこ
+とをする必要がある場合があるからである (スクリプトの "install" の指示を参照)。
+一方で、ほとんどのスクリプトは自動インストール可能である。
 
-自動インストールするには、データファイルのコメントフィールドを次のテキストで開
-始してください (前後の空白は無視されます): >
+GetLatestVimScripts に自動インストールをさせるには、データファイルのコメント
+フィールドが次で始まっていなければならない (前後の空白は無視される): >
 
 	:AutoInstall:
 <
-両端のコロンは必須です。必ずコメントフィールド (yourscriptname) の先頭に書いて
-ください。
+両方のコロンが必要であり、それがコメント (yourscriptname) フィールドの先頭にな
+ければならない。
 
-以下の行を <.vimrc> に書くと、自動インストール機能を無効にできます: >
+<.vimrc> に以下の行を入れると、自動インストールをすべて防ぐことができる: >
 
 	let g:GetLatestVimScripts_allowautoinstall= 0
 <
-:AutoInstall: が有効になっている場合 (デフォルト)、次のような拡張子のファイル
-が自動インストール可能です:
+デフォルトのとおり :AutoInstall: が有効な場合、次で終わり
 
-	---.tar.bz2  : 伸長して .vim/ ディレクトリに展開
-	---.vba.bz2  : 伸長して .vim/ ディレクトリにコピー、vimball で処理
+	---.tar.bz2  : .vim/ ディレクトリで解凍し untar する
+	---.vba.bz2  : .vim/ ディレクトリで解凍し、その後 vimball が処理する
 	---.vmb.bz2  : 同上
-	---.vim.bz2  : 伸長して .vim/plugin ディレクトリにコピー
-	---.tar.gz   : 伸長して .vim/ 展開
-	---.vba.gz   : 伸長して .vim/ ディレクトリにコピー、vimball で処理
+	---.vim.bz2  : 解凍し .vim/plugin ディレクトリに移動する
+	---.tar.gz   : .vim/ ディレクトリで解凍し untar する
+	---.vba.gz   : .vim/ ディレクトリで解凍し、その後 vimball が処理する
 	---.vmb.gz   : 同上
-	---.vim.gz   : 伸長して .vim/plugin ディレクトリにコピー
-	---.vba      : .vim/ ディレクトリにコピー、vimball で処理
+	---.vim.gz   : 解凍し .vim/plugin ディレクトリに移動する
+	---.vba      : .vim/ ディレクトリに移動し、その後 vimball が処理する
 	---.vmb      : 同上
-	---.vim      : .vim/plugin ディレクトリにコピー
-	---.zip      : .vim/ ディレクトリに展開
+	---.vim      : .vim/plugin ディレクトリに移動する
+	---.zip      : .vim/ ディレクトリで unzip する
 
-ただし、圧縮ファイルを展開するか、あるいはファイルをプラグインディレクトリにコ
-ピーするだけでインストール可能である必要があります。Vimball は常に自動インス
-トール可能です。
+かつ untar/gunzip またはプラグインディレクトリへの移動の処理によって構成要素を
+配置するだけでよいファイルは、自動インストール可能なはずである。もちろん、
+Vimball は常に自動インストール可能なはずである。
 
-自動インストールできないのはどんな場合でしょうか？ 例を示します:
+スクリプトが自動インストール可能でないのはどんなときか？ 例を挙げよう:
 
 	.vim/after/syntax/blockhl.vim
 
-<blockhl.vim> は C/C++ のブロックを強調表示するスクリプトです。次の場所から入
-手できます:
+<blockhl.vim> スクリプトは C/C++ プログラムのブロックハイライトを提供する。次
+から入手できる:
 
 	https://www.vim.org/scripts/script.php?script_id=104
 
-現在、Vim の after/syntax はファイルタイプと同じ名前のスクリプトしかサポートし
-てません (blockhl.vim の場合は、after/syntax/c.vim)。そのため、自動的にインス
-トールすると、ユーザーの after/syntax/c.vim を上書きする可能性があります。
+現在、vim の after/syntax はファイルタイプ別のスクリプトしかサポートしていない
+(blockhl.vim の場合、それは after/syntax/c.vim である)。そのため、自動インス
+トールは現在のユーザーの after/syntax/c.vim ファイルを上書きしてしまう可能性が
+ある。
 
-私は個人的に、<aftersyntax.vim> を after/syntax/c.vim にコピーして、
-after/syntax/c/ ディレクトリを使えるようにしています:
+私自身の場合は、after/syntax/c/ ディレクトリを使えるようにするために
+<aftersyntax.vim> (after/syntax/c.vim に名前を変えたもの) を使っている:
 
 	https://www.vim.org/scripts/script.php?script_id=1023
 
-このスクリプトを使うと、after/syntax/c ディレクトリにある複数のファイルをシン
-タックスファイルとして使えます。ユーザーの after/syntax/c.vim を上書きしてしま
-う可能性があるため、配布物には含めていません。
+このスクリプトにより、after/syntax/c サブディレクトリに複数の構文ファイルを別々
+に置くことができる。その中に含まれる after/syntax/c.vim がユーザーの c.vim を
+上書きする可能性があるため、aftersyntax.vim を同梱して自動インストール用の適切
+な tarball を作ることはできない。
 
 
 ==============================================================================
@@ -322,26 +333,27 @@ after/syntax/c/ ディレクトリを使えるようにしています:
 >
 	g:GetLatestVimScripts_wget
 <	デフォルト= "wget"
-		スクリプトをダウンロードするのに使われるプログラム。
+		この変数は、スクリプトを取得するためのコマンドの名前を保持す
+		る。
 >
 	g:GetLatestVimScripts_options
 <	デフォルト= "-q -O"
-		g:GetLatestVimScripts_wget に設定されたプログラムの起動引数。
+		この変数は、g:GetLatestVimScripts_wget コマンドで使われるオプ
+		ションを保持する。
 >
 	g:GetLatestVimScripts_allowautoinstall
 <	デフォルト= 1
-		スクリプトの自動インストールを許可するかどうかの設定。自動イン
-		ストールはプラグインの作者によってそのプラグインが自動インス
-		トール可能であることが明示されている必要があります (それには
-		:AutoInstall: キーワードを GetLatestVimScripts コメント行に指
-		定します)。
+		この変数は、GetLatestVimScripts がスクリプトの自動インストール
+		を試みることが許されているかどうかを示す。さらに、プラグインの
+		作者が、自分のプラグインが自動インストール可能であることを
+		(GetLatestVimScripts コメント行の :AutoInstall: キーワードに
+		よって) 明示的に示していなければならない。
 >
 	g:GetLatestVimScripts_autoinstalldir
 <	デフォルト= $HOME/.vim     (linux)
 	デフォルト= $HOME/vimfiles (windows)
-		自動インストールスクリプト (:AutoInstall:) のインストール先を
-		変更できます。
-		vimball のインストールには適用されません。
+		:AutoInstall: のスクリプトがインストールされる場所を上書きす
+		る。vimball のインストールは上書きしない。
 >
 	g:GetLatestVimScripts_scriptaddr
 <	デフォルト='https://www.vim.org/scripts/script.php?script_id='
@@ -351,27 +363,27 @@ after/syntax/c/ ディレクトリを使えるようにしています:
 >
 	g:GetLatestVimScripts_bunzip2
 <	デフォルト= bunzip2
-		この変数は .bz2 ファイルを解凍するコマンド名を保持します。
+		この変数は、.bz2 ファイルを解凍するコマンドの名前を保持する
 >
 	g:GetLatestVimScripts_bunzip3
 <	デフォルト= bunzip3
-		この変数は .bz3 ファイルを解凍するコマンド名を保持します。
+		この変数は、.bz3 ファイルを解凍するコマンドの名前を保持する
 >
 	g:GetLatestVimScripts_gunzip
 <	デフォルト= gunzip
-		この変数は .bz ファイルを解凍するコマンド名を保持します。
+		この変数は、.gz ファイルを解凍するコマンドの名前を保持する
 >
 	g:GetLatestVimScripts_unxz
 <	デフォルト= unxz
-		この変数は .xz ファイルを解凍するコマンド名を保持します。
+		この変数は、.xz ファイルを解凍するコマンドの名前を保持する
 >
 	g:GetLatestVimScripts_unzip
 <	デフォルト= unzip
-		この変数は .zip ファイルを解凍するコマンド名を保持します。
+		この変数は、.zip ファイルを解凍するコマンドの名前を保持する
 
-Note: 解凍コマンドに関連付けられた変数は、クロスプラットフォームの問題を回避す
-るのに役立ちます。例えば、Windows では、以下のようにしてこの呼び出しを `wsl`
-に委任できます: >
+Note: 解凍コマンドに関連する変数は、クロスプラットフォームの問題の回避に役立
+      つ。例えば、Windows では次のようにして、この呼び出しを `wsl` に委ねるこ
+      とが可能である: >
 
 	let g:GetLatestVimScripts_bunzip2= "wsl -e bunzip2"
 	let g:GetLatestVimScripts_gunzip= "wsl -e gunzip"
@@ -381,39 +393,40 @@ Note: 解凍コマンドに関連付けられた変数は、クロスプラッ�
 ==============================================================================
 8. GetLatestVimScripts アルゴリズム		*glvs-algorithm* *glvs-alg*
 
-Vim の Web サイトでは、スクリプトID を利用してページを動的に生成しています。
+Vim の sourceforge のページは、いわゆる script-id をキーにしてページを動的に作
+成する。
 
 	https://www.vim.org/scripts/script.php?script_id=40
 
-ページ内には最新の ソースID が書かれています。ソースID の番号は再利用されない
-ので、その番号が、GetLatestVimScripts.dat に記録された番号より大きい場合は、新
-しいスクリプトがダウンロードできるということです。
+のウェブページ内には、最新の source-id (src_id) を指定する行がある。ソース識別
+番号は常に増加していくので、src_id が GetLatestVimScripts にそのスクリプト用に
+記録されているものより大きければ、そのスクリプトの新しいコピーをダウンロードす
+る時である。
 
-スクリプトをダウンロードしたら、内部データベースの ScriptID、SourceID、
-scriptname を更新します。
+そして GetLatestVimScripts はスクリプトをダウンロードし、スクリプト ID、ソース
+ID、スクリプト名の内部データベースを更新する。
 
-自動インストールの手順は次の通り:
+AutoInstall の処理は次のことを行う:
 
 	ファイルを GetLatest/ から以下のディレクトリに移動する
 		Unix   : $HOME/.vim
 		Windows: $HOME\vimfiles
-	if ファイルの拡張子 == ".bz2"
-		bunzip2 <file>
-	else if ファイルの拡張子 == ".bz3"
-		bunzip3 it
-	else if ファイルの拡張子 == ".gz"
-		gunzip <file>
-	そして、
-	if ファイルの拡張子 == ".zip"
-		unzip <file>
-	else if ファイルの拡張子 == ".tar"
-		tar -oxvf <file>
-	else if ファイルの拡張子 == ".vim"
-		plugin ディレクトリに移動
+	ダウンロードしたファイルが ".bz2" で終わる場合
+		それを bunzip2 する
+	そうでなく、ダウンロードしたファイルが ".bz3" で終わる場合
+		それを bunzip3 する
+	そうでなく、ダウンロードしたファイルが ".gz" で終わる場合
+		それを gunzip する
+	結果のファイルが ".zip" で終わる場合
+		それを unzip する
+	そうでなく、結果のファイルが ".tar" で終わる場合
+		それを tar -oxvf する
+	そうでなく、結果のファイルが ".vim" で終わる場合
+		それを plugin サブディレクトリに移動する
 
 
 ==============================================================================
-9. GetLatestVimScripts 開発履歴		*getscript-history* *glvs-hist* {{{1
+9. GetLatestVimScripts 履歴		*getscript-history* *glvs-hist* {{{1
 
 v38 Feb 25, 2025 : * handles additional decompression option for .bzip3 files.
 v37 Sep 23, 2024 : * Support for the new vimball's .vmb extension (old .vba
@@ -425,11 +438,12 @@ v36 Apr 22, 2013 : * (glts) suggested use of plugin/**/*.vim instead of
 		     plugin/*.vim in globpath() call.
 		   * (Andy Wokula) got warning message when setting
 		     g:loaded_getscriptPlugin
-v35 Apr 07, 2012 : * (MengHuan Yu) pointed out that the script url has
+v35 Apr 07, 2012 : * (MengHuan Yu) pointed out that the script URL has
 		     changed (somewhat).  However, it doesn't work, and
 		     the original one does (under Linux). I'll make it
 		     yet-another-option.
 v34 Jun 23, 2011 : * handles additional decompression options for tarballs
+                     (tgz taz tbz txz)
 v33 May 31, 2011 : * using fnameescape() instead of escape()
 		   * *.xz support
 v32 Jun 19, 2010 : * (Jan Steffens) added support for xz compression
