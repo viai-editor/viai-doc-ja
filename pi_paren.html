@@ -9,67 +9,65 @@ helpname: 'pi_paren'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
-対応するカッコの強調表示&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_paren.html#matchparen" name="matchparen">matchparen</a><br>
+対応する括弧のハイライト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_paren.html#matchparen" name="matchparen">matchparen</a><br>
 <br>
-このプラグインは標準プラグイン&nbsp;<a class="Identifier" href="usr_05.html#standard-plugin">standard-plugin</a>&nbsp;である。<br>
-<a class="Type" href="options.html#'compatible'">'compatible'</a>&nbsp;がオフのときだけ使用できる。<br>
+ここで述べる機能は&nbsp;<a class="Identifier" href="usr_05.html#standard-plugin">standard-plugin</a>&nbsp;である。<br>
+このプラグインは&nbsp;<a class="Type" href="options.html#'compatible'">'compatible'</a>&nbsp;が設定されていない場合にだけ使える。<br>
 <br>
-&quot;loaded_matchparen&quot; 変数を設定することで、このプラグインの読み込みを回避でき<br>
-る:<br>
+&quot;loaded_matchparen&quot; 変数を設定すると、このプラグインの読み込みを避けられる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let loaded_matchparen = 1</div>
 <br>
-このプラグインは自動コマンドイベントの CursorMoved、CursorMovedI、WinEnter を<br>
-使って強調表示を再設定する。<br>
+このプラグインは、マッチのハイライトを再定義するために、CursorMoved、<br>
+CursorMovedI、WinEnter の自動コマンドをインストールする。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_paren.html#:NoMatchParen" name=":NoMatchParen">:NoMatchParen</a>&nbsp;<a class="Constant" href="pi_paren.html#:DoMatchParen" name=":DoMatchParen">:DoMatchParen</a><br>
-このプラグインの機能を無効にするには次のコマンドを使う:<br>
+読み込まれた後でプラグインを無効にするには、このコマンドを使う:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:NoMatchParen</div>
 <br>
-機能を有効に戻すには次のコマンドを使う:<br>
+再び有効にするには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:DoMatchParen</div>
 <br>
-強調表示には MatchParen が使われる。&quot;:highlight&quot; コマンドを使って好きな色を設<br>
-定できる。例:<br>
+使われるハイライトは MatchParen である。&quot;:highlight&quot; コマンドで別の色を指定で<br>
+きる。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:hi MatchParen ctermbg=blue guibg=lightblue</div>
 <br>
-デフォルトでは、プラグインはカーソルの下の括弧とマッチする括弧の両方を、<br>
-<a class="Identifier" href="syntax.html#hl-MatchParen">hl-MatchParen</a>&nbsp;ハイライトグループを使用してハイライトする。これにより、カーソ<br>
-ルのハイライトが MatchParen の色に置き換えられるため、カーソルが一時的に画面か<br>
-ら消える場合がある。これを防ぎ、プラグインがマッチする括弧のみをハイライトし、<br>
-(実質的にカーソルのスタイルを変更せずに) カーソルの下の括弧をハイライトしない<br>
-ようにするには、&quot;matchparen_disable_cursor_hl&quot; 変数を設定する:<br>
+デフォルトでは、プラグインはカーソル下の括弧と対応する括弧の両方を、<br>
+<a class="Identifier" href="syntax.html#hl-MatchParen">hl-MatchParen</a>&nbsp;ハイライトグループを使ってハイライトする。このため、MatchParen<br>
+の色がカーソルのハイライトを上書きして、カーソルが一瞬画面から消えることがあ<br>
+る。これが起きないようにして、プラグインがカーソル下の括弧ではなく対応する括弧<br>
+だけをハイライトする (実質的にカーソルのスタイルを変えない) ようにするには、<br>
+&quot;matchparen_disable_cursor_hl&quot; 変数を設定すればよい:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let matchparen_disable_cursor_hl = 1</div>
 <br>
-オプション&nbsp;<a class="Type" href="options.html#'matchpairs'">'matchpairs'</a>&nbsp;に設定されている文字が強調表示される。このオプションを<br>
-設定することで好きな文字を強調表示できる。<span class="Todo">Note</span>&nbsp;設定しても機能しない文字もある。<br>
-例えば、シングルクォートやダブルクォートのペアなどは、始点と終点が同じなので強<br>
-調表示できない。<br>
+対応させる文字は&nbsp;<a class="Type" href="options.html#'matchpairs'">'matchpairs'</a>&nbsp;オプションから取られる。値を変えると、別の対応を<br>
+ハイライトできる。<span class="Todo">Note</span>&nbsp;すべてが可能なわけではないことに注意。例えば、始まりと<br>
+終わりが同じなので、シングルクォートやダブルクォートはハイライトできない。<br>
 <br>
-対応するカッコを探すときには構文強調の属性が使われる。カーソル位置の文字が、文<br>
-字列やコメント以外のときは、文字列やコメントの中は無視される。名前に &quot;string&quot;<br>
-や &quot;comment&quot; が含まれている構文強調アイテムはすべて、文字列やコメントとして扱<br>
-われる。<br>
+シンタックスハイライトの属性が使われる。カーソルが今、文字列やコメントのシン<br>
+タックスアイテムの中に無い場合、文字列やコメントのシンタックスアイテムの中の<br>
+マッチは無視される。名前のどこかに &quot;string&quot; か &quot;comment&quot; を含むシンタックスア<br>
+イテムは、文字列かコメントのアイテムとみなされる。<br>
 <br>
-カーソルの移動が遅くならないように、対応するカッコの検索には次の制限がある:<br>
-- ウィンドウに表示されている範囲だけ検索する。<br>
-- 閉じた折り畳みがあると処理に時間がかかるので、カーソル位置から 100 行以内の<br>
-&nbsp;&nbsp;範囲だけ検索する。<br>
-- 長い行が構文強調表示されていると処理に時間がかかるので、カーソル位置から<br>
-&nbsp;&nbsp;<a class="Type" href="options.html#'synmaxcol'">'synmaxcol'</a>&nbsp;の二倍の範囲の文字だけ検索する。<br>
-- 300 ミリ秒でタイムアウト (挿入モードでは 60 ミリ秒)。これは変数の<br>
-&nbsp;&nbsp;&quot;g:matchparen_timeout&quot; と &quot;g:matchparen_insert_timeout&quot; を設定することで変更<br>
-&nbsp;&nbsp;できる。バッファ毎に設定する場合は &quot;b:matchparen_timeout&quot; と<br>
-&nbsp;&nbsp;&quot;b:matchparen_insert_timeout&quot; を設定する。<br>
+カーソルを移動したときの遅延を避けるため、検索は制限されている。制限は以下であ<br>
+る:<br>
+- ウィンドウに見えている範囲。<br>
+- 閉じた折り畳みがある場合に長い遅延を避けるため、カーソルの上下 100 行。<br>
+- シンタックスハイライトのある長い行での遅延を避けるため、カーソルの前後<br>
+&nbsp;&nbsp;<a class="Type" href="options.html#'synmaxcol'">'synmaxcol'</a>&nbsp;の 2 倍のバイト。<br>
+- 300 ミリ秒のタイムアウト (挿入モードでは 60 ミリ秒)。これは<br>
+&nbsp;&nbsp;&quot;g:matchparen_timeout&quot; と &quot;g:matchparen_insert_timeout&quot; 変数、およびそれらの<br>
+&nbsp;&nbsp;バッファローカル版の &quot;b:matchparen_timeout&quot; と &quot;b:matchparen_insert_timeout&quot;<br>
+&nbsp;&nbsp;で変更できる。<br>
 <br>
-<a class="Identifier" href="motion.html#%">%</a>&nbsp;コマンドの動作を改善したい場合は matchit プラグインが使用できる。<br>
-<a class="Identifier" href="usr_05.html#matchit-install">matchit-install</a>&nbsp;参照。このプラグインを使うとコメント内のカッコをスキップする<br>
-こともできる。これは matchparen プラグインとの関連性はない。matchit プラグイン<br>
-は matchparen とは別のメカニズムを使っている。<br>
+<a class="Identifier" href="motion.html#%">%</a>&nbsp;コマンドがもっとうまく動作するようにしたい場合は、matchit プラグインが使え<br>
+る。<a class="Identifier" href="usr_05.html#matchit-install">matchit-install</a>&nbsp;を参照。このプラグインはコメント内のマッチをスキップする<br>
+のにも役立つ。これは matchparen のハイライトとは関係が無く、別の仕組みを使って<br>
+いる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
