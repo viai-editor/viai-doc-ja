@@ -14,63 +14,66 @@ Vim の MzScheme インターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb
 1. コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_mzsch.html#mzscheme-commands">mzscheme-commands</a><br>
 2. 例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_mzsch.html#mzscheme-examples">mzscheme-examples</a><br>
 3. スレッド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_mzsch.html#mzscheme-threads">mzscheme-threads</a><br>
-4. MzScheme から Vim にアクセスする&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_mzsch.html#mzscheme-vim">mzscheme-vim</a><br>
+4. MzScheme から Vim へのアクセス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_mzsch.html#mzscheme-vim">mzscheme-vim</a><br>
 5. mzeval() Vim 関数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_mzsch.html#mzscheme-mzeval">mzscheme-mzeval</a><br>
 6. 関数参照を使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_mzsch.html#mzscheme-funcref">mzscheme-funcref</a><br>
 7. 動的ローディング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_mzsch.html#mzscheme-dynamic">mzscheme-dynamic</a><br>
-8. MzSchemeのセットアップ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_mzsch.html#mzscheme-setup">mzscheme-setup</a><br>
+8. MzScheme のセットアップ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_mzsch.html#mzscheme-setup">mzscheme-setup</a><br>
 <br>
-<span class="Special">{Vim が&nbsp;</span><a class="Identifier" href="various.html#+mzscheme">+mzscheme</a><span class="Special">&nbsp;機能付きでコンパイルされたときのみ利用できます}</span><br>
+<span class="Special">{Vim が&nbsp;</span><a class="Identifier" href="various.html#+mzscheme">+mzscheme</a><span class="Special">&nbsp;機能付きでコンパイルされたときのみ利用できる}</span><br>
 <br>
-Brent Fulgham の作業にもとづいています。<br>
-動的ローディングは Sergey Khorev によって追加されました。<br>
+Brent Fulgham の作業に基づいている。<br>
+動的ローディングは Sergey Khorev によって追加された。<br>
 <br>
-MzScheme と PLT Scheme は Racket という名前になりました。詳しいことは<br>
-<span class="Constant"><a href="http://racket-lang.org">http://racket-lang.org</a></span>&nbsp;を見てください。<br>
+MzScheme と PLT Scheme の名前は Racket に改められた。詳細については<br>
+<span class="Constant"><a href="http://racket-lang.org">http://racket-lang.org</a></span>&nbsp;を確認すること。<br>
 <br>
-Racket 5.x (5.3.1も含む) の futures と places は Vim から作成されたプロセスで<br>
-は機能しません。<br>
-簡単な解決法はそれらの機能を無効にした Racket を自分でビルドすることです。:<br>
+Racket バージョン 5.x から 5.3.1 まで (5.3.1 を含む) の futures と places は、<br>
+Vim が作成したプロセスでは正しく動作しない。<br>
+最も簡単な解決策は、これらの機能を無効にして Racket を自分でビルドすることであ<br>
+る:<br>
 <div class="helpExample">&nbsp;&nbsp;./configure --disable-futures --disable-places --prefix=your-install-prefix</div>
 <br>
-プロセスを高速化するには、--disable-gracket と --disable-docs も指定するといい<br>
-かもしれません。<br>
+処理を速くするために、--disable-gracket と --disable-docs も使うとよいかもしれ<br>
+ない。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 1. コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_mzsch.html#mzscheme-commands" name="mzscheme-commands">mzscheme-commands</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_mzsch.html#:mzscheme" name=":mzscheme">:mzscheme</a>&nbsp;<a class="Constant" href="if_mzsch.html#:mz" name=":mz">:mz</a><br>
 :<span class="Special">[range]</span>mz[scheme]&nbsp;<span class="Special">{stmt}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MzScheme のステートメント&nbsp;<span class="Special">{stmt}</span>&nbsp;を実行します。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MzScheme のステートメント&nbsp;<span class="Special">{stmt}</span>&nbsp;を実行する。<br>
 <br>
 :<span class="Special">[range]</span>mz[scheme] &lt;&lt;&nbsp;<span class="Special">[trim]</span>&nbsp;[<span class="Special">{endmarker}</span>]<br>
 <span class="Special">{script}</span><br>
 <span class="Special">{endmarker}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MzScheme のスクリプト&nbsp;<span class="Special">{script}</span>&nbsp;を実行します。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;MzScheme のサポートを有効にしてコンパイルされて<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いないとこのコマンドは機能しません。エラーを回避するに<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は&nbsp;<a class="Identifier" href="if_perl.html#script-here">script-here</a>&nbsp;を参照してください。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;埋め込まれた MzScheme スクリプト&nbsp;<span class="Special">{script}</span>&nbsp;を実行する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;このコマンドは MzScheme 機能が組み込まれていない<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ときは動作しない。エラーを避けるには&nbsp;<a class="Identifier" href="if_perl.html#script-here">script-here</a>&nbsp;を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参照。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&lt;&lt;&quot; の後の&nbsp;<span class="Special">[endmarker]</span>&nbsp;を省略した場合は&nbsp;<a class="Identifier" href="insert.html#:append">:append</a>&nbsp;や<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="insert.html#:insert">:insert</a>&nbsp;コマンドのようにドット '.' で&nbsp;<span class="Special">{script}</span>&nbsp;を閉<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;じます。詳細については&nbsp;<a class="Identifier" href="eval.html#:let-heredoc">:let-heredoc</a>&nbsp;を参照してくださ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&lt;&lt;&quot; の後の&nbsp;<span class="Special">[endmarker]</span>&nbsp;を省略した場合は、<a class="Identifier" href="insert.html#:append">:append</a>&nbsp;や<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="insert.html#:insert">:insert</a>&nbsp;コマンドと同様に、<span class="Special">{script}</span>&nbsp;の後にドット '.'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を使わなければならない。詳細については&nbsp;<a class="Identifier" href="eval.html#:let-heredoc">:let-heredoc</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を参照。<br>
+<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_mzsch.html#:mzfile" name=":mzfile">:mzfile</a>&nbsp;<a class="Constant" href="if_mzsch.html#:mzf" name=":mzf">:mzf</a><br>
-:<span class="Special">[range]</span>mzf[ile]&nbsp;<span class="Special">{file}</span>&nbsp;<span class="Special">{file}</span>&nbsp;内の MzScheme スクリプトを実行します。<br>
+:<span class="Special">[range]</span>mzf[ile]&nbsp;<span class="Special">{file}</span>&nbsp;<span class="Special">{file}</span>&nbsp;内の MzScheme スクリプトを実行する。<br>
 <br>
-これらのコマンドは、本質的には同じことを行います - つまり、MzScheme のコードを、<br>
-与えられた &quot;現在の範囲&quot; に対して実行します。<br>
+これらのコマンドはすべて本質的に同じことを行う - &quot;現在の範囲&quot; を指定された行範<br>
+囲に設定して、MzScheme のコードの断片を実行する。<br>
 <br>
-:mzscheme の場合は、実行するコードはコマンドラインから与えます。<br>
-:mzfile の場合は、実行するコードは指定したファイルから読み込まれます。<br>
+:mzscheme の場合、実行するコードはコマンドラインにある。<br>
+:mzfile の場合、実行するコードは指定されたファイルの内容である。<br>
 <br>
-MzScheme インターフェイスは、exn から派生した例外 exn:vim を定義します。Vim<br>
-の様々なエラーを通知するために、この例外が投げられます。<br>
+MzScheme インターフェイスは exn から派生した例外 exn:vim を定義する。<br>
+これは様々な Vim のエラーで発生する。<br>
 <br>
-コンパイルの実行中に、その時点の MzScheme コレクションのパスが記録されます。も<br>
-し他にもパスを指定したい場合は、パラメーター &quot;current-library-collection-paths&quot;<br>
-を使ってください。例: ユーザーごとのコレクションパスを追加するには:<br>
+コンパイル時に、MzScheme インターフェイスはその時点の MzScheme のコレクション<br>
+パスを記憶する。パスを追加で指定したい場合は<br>
+&quot;current-library-collection-paths&quot; パラメーターを使うこと。例えば、ユーザーロー<br>
+カルな MzScheme のコレクションパスを cons するには:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;:mz &lt;&lt; EOF<br>
 &nbsp;&nbsp;&nbsp;&nbsp;(current-library-collection-paths<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(cons<br>
@@ -79,19 +82,19 @@ MzScheme インターフェイスは、exn から派生した例外 exn:vim を�
 &nbsp;&nbsp;&nbsp;&nbsp;EOF</div>
 <br>
 <br>
-すべての機能は vimext モジュールを通して提供されます。<br>
+すべての機能はモジュール vimext を通して提供される。<br>
 <br>
-exn:vim は明示的なインポートをしなくても利用可能です。<br>
+exn:vim は明示的なインポートなしで利用できる。<br>
 <br>
-モジュールを require するときは、MzScheme との衝突を避けるため、プリフィック<br>
-スを使うことも考えてください。例:<br>
+MzScheme との衝突を避けるため、モジュールを require するときはプリフィックスを<br>
+使うことを検討すること。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mzscheme (require (prefix vim- vimext))</div>
 <br>
-本マニュアル中、以降のすべての例は、このプリフィックスを使っています。<br>
+以下の例はすべてこの命名方式を前提としている。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_mzsch.html#mzscheme-sandbox" name="mzscheme-sandbox">mzscheme-sandbox</a><br>
-サンドボックス&nbsp;<a class="Identifier" href="eval.html#sandbox">sandbox</a>&nbsp;の中で実行されているときは、ファイルシステムへのア<br>
-クセスや Vim インターフェイスプロシージャの実行は制限されています。<br>
+<a class="Identifier" href="eval.html#sandbox">sandbox</a>&nbsp;の中で実行されたときは、一部のファイルシステムと Vim インターフェイ<br>
+スのプロシージャへのアクセスが制限される。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 2. 例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_mzsch.html#mzscheme-examples" name="mzscheme-examples">mzscheme-examples</a><br>
@@ -99,18 +102,18 @@ exn:vim は明示的なインポートをしなくても利用可能です。<br
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mzscheme (display &quot;Hello&quot;)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mz (display (string-append &quot;Using MzScheme version &quot; (version)))<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mzscheme (require (prefix vim- vimext)) ; MzScheme &lt; 4.x 用<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mzscheme (require (prefix-in vim- 'vimext)) ; MzScheme 4.x 用<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mzscheme (require (prefix-in vim- 'vimext)) ; MzScheme 4.x<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mzscheme (vim-set-buff-line 10 &quot;This is line #10&quot;)</div>
 <br>
 使っている MzScheme のバージョンを見るには:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mzscheme (display (version))</div>
 <br>
-インラインスクリプトの例:<br>
+インラインスクリプトの使い方:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function! &lt;SID&gt;SetFirstLine()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mz &lt;&lt; EOF<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(display &quot;!!!&quot;)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(require (prefix vim- vimext))<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; ↑新しいバージョンでは (require (prefix-in vim- 'vimext))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; 新しいバージョンでは (require (prefix-in vim- 'vimext))<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(vim-set-buff-line 1 &quot;This is line #1&quot;)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(vim-beep)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EOF<br>
@@ -121,25 +124,25 @@ exn:vim は明示的なインポートをしなくても利用可能です。<br
 ファイルの実行:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mzfile supascript.scm</div>
 <br>
-例外制御:<br>
+Vim の例外処理:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mz &lt;&lt; EOF<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(require (prefix vim- vimext))<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; ↑新しいバージョンでは (require (prefix-in vim- 'vimext))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; 新しいバージョンでは (require (prefix-in vim- 'vimext))<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(with-handlers<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([exn:vim? (lambda (e) (display (exn-message e)))])<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(vim-eval &quot;nonsense-string&quot;))<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EOF</div>
 <br>
-vimext モジュールの自動インスタンス化(<a class="Identifier" href="starting.html#vimrc">vimrc</a>&nbsp;に書くことができます):<br>
+vimext モジュールの自動インスタンス化 (<a class="Identifier" href="starting.html#vimrc">vimrc</a>&nbsp;に置くことができる):<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;function! MzRequire()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:redir =&gt; l:mzversion<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mz (version)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:redir END<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if strpart(l:mzversion, 1, 1) &lt; &quot;4&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; MzScheme versions &lt; 4.x では:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; MzScheme バージョン &lt; 4.x:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mz (require (prefix vim- vimext))<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; それ以降のバージョンでは<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 新しいバージョン:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mz (require (prefix-in vim- 'vimext))<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif<br>
 &nbsp;&nbsp;&nbsp;&nbsp;endfunction</div>
@@ -151,120 +154,119 @@ vimext モジュールの自動インスタンス化(<a class="Identifier" href=
 <span class="PreProc">==============================================================================</span><br>
 3. スレッド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_mzsch.html#mzscheme-threads" name="mzscheme-threads">mzscheme-threads</a><br>
 <br>
-MzScheme インターフェイスはスレッドをサポートしています。これは OS のスレッ<br>
-ドとは独立しており、よってスケジューリングが必要になります。オプション<br>
-<a class="Type" href="options.html#'mzquantum'">'mzquantum'</a>&nbsp;によって、Vim がどれだけの時間間隔で MzScheme スレッドに切り替え<br>
-るかが決定されます。<br>
+MzScheme インターフェイスはスレッドをサポートしている。これは OS のスレッドと<br>
+は独立しているので、スケジューリングが必要である。オプション&nbsp;<a class="Type" href="options.html#'mzquantum'">'mzquantum'</a>&nbsp;は、<br>
+Vim が利用可能な MzScheme スレッドをどのくらいの頻度でポーリングするかを決め<br>
+る。<br>
 <span class="Todo">NOTE</span><br>
-コンソール版 Vim のスレッドスケジューリングは GUI 版よりやや信頼性が低くなり<br>
-ます。<br>
+コンソール版 Vim のスレッドスケジューリングは、GUI 版よりも信頼性が低い。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-4. MzScheme から VIM にアクセスする&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_mzsch.html#mzscheme-vim" name="mzscheme-vim">mzscheme-vim</a><br>
+4. MzScheme から Vim へのアクセス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_mzsch.html#mzscheme-vim" name="mzscheme-vim">mzscheme-vim</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_mzsch.html#mzscheme-vimext" name="mzscheme-vimext">mzscheme-vimext</a><br>
-<span class="MissingTag">'vimext'</span>&nbsp;モジュールは MzScheme インターフェイスで定義されたプロシージャへの<br>
-アクセスを提供します。<br>
+<span class="MissingTag">'vimext'</span>&nbsp;モジュールは、MzScheme インターフェイスで定義されたプロシージャへのア<br>
+クセスを提供する。<br>
 <br>
 共通<br>
 <span class="PreProc">------</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;(command&nbsp;<span class="Special">{command-string}</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim の Ex コマンドを実行する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(eval&nbsp;<span class="Special">{expr-string}</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim の式を評価し、対応する MzScheme のオブ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ジェクトに変換する。リスト (<a class="Identifier" href="eval.html#Lists">Lists</a>) は<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scheme のリスト、辞書 (<a class="Identifier" href="eval.html#Dictionaries">Dictionaries</a>) は<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;はハッシュテーブル、関数参照 (<a class="Identifier" href="eval.html#Funcref">Funcref</a>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は関数になる。(<a class="Identifier" href="if_mzsch.html#mzscheme-funcref">mzscheme-funcref</a>&nbsp;も参照)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE:</span>&nbsp;MzScheme の eval と名前が衝突してい<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;るので、呼び出すにはモジュール限定子を使っ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;てください。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(range-start)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Scheme コマンドに渡された範囲の開始行<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(range-end)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /終了行を取得<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(beep)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビープを鳴らす<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(get-option&nbsp;<span class="Special">{option-name}</span>&nbsp;<span class="Special">[buffer-or-window]</span>) Vim の(ローカルまたはグロー<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バルな)オプションの値を取得する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(command&nbsp;<span class="Special">{command-string}</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim の &quot;:Ex&quot; 形式のコマンドを実行する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(eval&nbsp;<span class="Special">{expr-string}</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim の式を評価して対応する MzScheme のオブ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ジェクトにする:&nbsp;<a class="Identifier" href="eval.html#Lists">Lists</a>&nbsp;は Scheme のリスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;として、<a class="Identifier" href="eval.html#Dictionaries">Dictionaries</a>&nbsp;はハッシュテーブル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;として、<a class="Identifier" href="eval.html#Funcref">Funcref</a>&nbsp;は関数として表される<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="Identifier" href="if_mzsch.html#mzscheme-funcref">mzscheme-funcref</a>&nbsp;も参照)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE</span>&nbsp;名前が MzScheme の eval と衝突するの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;で、これを回避するにはモジュール修飾子を使<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;うこと。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(range-start)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Scheme コマンドに渡された範囲の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(range-end)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 開始/終了。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(beep)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビープ音を鳴らす<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(get-option&nbsp;<span class="Special">{option-name}</span>&nbsp;<span class="Special">[buffer-or-window]</span>) Vim のオプションの値を取得<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する (ローカルかグローバルのいずれか。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set-option を参照)。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;(set-option&nbsp;<span class="Special">{string}</span>&nbsp;<span class="Special">[buffer-or-window]</span>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim のオプションをセットする。<span class="Special">{string}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;はオプション設定形式(optname=optvalue や<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;optname+=optval など)になっていなければ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ならない。<span class="Special">{buffer}</span>&nbsp;または&nbsp;<span class="Special">{window}</span>&nbsp;を<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定した場合、そのバッファまたはウィンド<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウにローカルなオプションがセットされる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{buffer-or-window}</span>&nbsp;としてシンボル<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'global を渡すと&nbsp;<a class="Identifier" href="options.html#:setglobal">:setglobal</a>と同じにな<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim のオプションを設定する。文字列はオプ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ション設定の形式 (optname=optval や<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;optname+=optval など) でなければならない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{buffer}</span>&nbsp;または&nbsp;<span class="Special">{window}</span>&nbsp;を指定して呼ぶと、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ローカルオプションが設定される。シンボル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'global を&nbsp;<span class="Special">{buffer-or-window}</span>&nbsp;として渡すこ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;とができる。その場合は&nbsp;<a class="Identifier" href="options.html#:setglobal">:setglobal</a>&nbsp;が使わ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れる。<br>
 <br>
 バッファ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_mzsch.html#mzscheme-buffer" name="mzscheme-buffer">mzscheme-buffer</a><br>
 <span class="PreProc">-------</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;(buff?&nbsp;<span class="Special">{object}</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;オブジェクトがバッファであるか？<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(buff-valid?&nbsp;<span class="Special">{object}</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;オブジェクトが有効なバッファであるか？<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(実際に Vim のバッファに対応しているか)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(buff?&nbsp;<span class="Special">{object}</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;オブジェクトはバッファか？<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(buff-valid?&nbsp;<span class="Special">{object}</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;オブジェクトは有効なバッファか？ (つまり、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;実際の Vim のバッファに対応しているか)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;(get-buff-line&nbsp;<span class="Special">{linenr}</span>&nbsp;<span class="Special">[buffer]</span>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファから行を取得する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファから行を取得する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;(set-buff-line&nbsp;<span class="Special">{linenr}</span>&nbsp;<span class="Special">{string}</span>&nbsp;<span class="Special">[buffer]</span>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの&nbsp;<span class="Special">{linenr}</span>&nbsp;行目を&nbsp;<span class="Special">{string}</span>&nbsp;にす<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<span class="Special">{string}</span>&nbsp;が#fならその行は削除される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数&nbsp;<span class="Special">[buffer]</span>&nbsp;は省略可能。省略された場合<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;はカレントバッファが対象となる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの行を設定する。<span class="Special">{string}</span>&nbsp;が #f の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;場合、その行は削除される。<span class="Special">[buffer]</span>&nbsp;引数は<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;省略可能である。省略した場合はカレントバッ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファが使われる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;(get-buff-line-list&nbsp;<span class="Special">{start}</span>&nbsp;<span class="Special">{end}</span>&nbsp;<span class="Special">[buffer]</span>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファ内の行のリストを取得する。<span class="Special">{start}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と&nbsp;<span class="Special">{end}</span>&nbsp;は 1 から始まる。<span class="Special">{start}</span>&nbsp;行目と<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{end}</span>&nbsp;行目は含まれる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの行のリストを取得する。<span class="Special">{start}</span>&nbsp;と<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{end}</span>&nbsp;は 1 から始まり、その行を含む。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;(set-buff-line-list&nbsp;<span class="Special">{start}</span>&nbsp;<span class="Special">{end}</span>&nbsp;<span class="Special">{string-list}</span>&nbsp;<span class="Special">[buffer]</span>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファに行のリストをセットする。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{string-list}</span>&nbsp;が #f または null の場合、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;その行は削除される。リストの長さが<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{end}</span>&nbsp;-&nbsp;<span class="Special">{start}</span>&nbsp;以下である場合、足りない分<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の行は削除される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(get-buff-name&nbsp;<span class="Special">[buffer]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの名前を取得する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(get-buff-num&nbsp;<span class="Special">[buffer]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バッファ番号を取得する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(get-buff-size&nbsp;<span class="Special">[buffer]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの行数を取得する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファに行のリストを設定する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string-list が #f または null の場合、その<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行は削除される。リストが&nbsp;<span class="Special">{end}</span>-<span class="Special">{start}</span>&nbsp;よ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;り短い場合、残りの行は削除される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(get-buff-name&nbsp;<span class="Special">[buffer]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファのテキストの名前を取得する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(get-buff-num&nbsp;<span class="Special">[buffer]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バッファの番号を取得する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(get-buff-size&nbsp;<span class="Special">[buffer]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの行数を取得する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;(insert-buff-line-list&nbsp;<span class="Special">{linenr}</span>&nbsp;<span class="Special">{string/string-list}</span>&nbsp;<span class="Special">[buffer]</span>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{linenr}</span>&nbsp;行目の後ろに行を挿入する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{linenr}</span>&nbsp;が 0 の場合、バッファの先頭に挿<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(curr-buff)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カレントバッファ(オブジェクト)を取得する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファを変更するには他の MzScheme イン<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ターフェイス手続きを使う。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(buff-count)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの総数を取得する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(get-next-buff&nbsp;<span class="Special">[buffer]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次のバッファを取得する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(get-prev-buff&nbsp;<span class="Special">[buffer]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前のバッファを取得する。それ以上前が存在し<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの&nbsp;<span class="Special">{linenr}</span>&nbsp;の後に行のリストを挿入<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。<span class="Special">{linenr}</span>&nbsp;が 0 の場合、行は先頭に挿入<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(curr-buff)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カレントバッファを取得する。それを変更する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;には他の MzScheme インターフェイスのプロ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;シージャを使うこと。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(buff-count)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;エディタ内のバッファの総数を取得する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(get-next-buff&nbsp;<span class="Special">[buffer]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次のバッファを取得する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(get-prev-buff&nbsp;<span class="Special">[buffer]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前のバッファを取得する。それ以上バッファが<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ないときは #f を返す。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(open-buff&nbsp;<span class="Special">{filename}</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{filename}</span>&nbsp;という名前で新規バッファを開く<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(get-buff-by-name&nbsp;<span class="Special">{buffername}</span>) バッファ名を指定してバッファオブジェクトを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;取得する。見つからなければ #f を返す。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(get-buff-by-num&nbsp;<span class="Special">{buffernum}</span>)&nbsp;&nbsp; バッファ番号を指定してバッファオブジェクト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を取得する。見つからなければ #f を返す。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(open-buff&nbsp;<span class="Special">{filename}</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しいバッファを開く (ファイル&nbsp;<span class="Special">{filename}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(get-buff-by-name&nbsp;<span class="Special">{buffername}</span>) ファイル名でバッファを取得する。そのような<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファがない場合は #f。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(get-buff-by-num&nbsp;<span class="Special">{buffernum}</span>)&nbsp;&nbsp; 番号でバッファを取得する (その番号のバッ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファがない場合は #f を返す)。<br>
 <br>
 ウィンドウ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_mzsch.html#mzscheme-window" name="mzscheme-window">mzscheme-window</a><br>
 <span class="PreProc">------</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;(win?&nbsp;<span class="Special">{object}</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクトはウィンドウか？<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(win-valid?&nbsp;<span class="Special">{object}</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクトは有効なウィンドウであるか？<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(実際に Vim のウィンドウに対応しているか)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(curr-win)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントウィンドウ(オブジェクト)を取得する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(win-count)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ウィンドウの個数を取得する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(get-win-num&nbsp;<span class="Special">[window]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウ番号を取得する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(get-win-by-num&nbsp;<span class="Special">{windownum}</span>)&nbsp;&nbsp;&nbsp;&nbsp;番号を指定してウィンドウを取得する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(get-win-buffer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[window]</span>)&nbsp;&nbsp; 指定したウィンドウ内のバッファを取得する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(win-valid?&nbsp;<span class="Special">{object}</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクトは有効なウィンドウか？ (つま<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;り、実際の Vim のウィンドウに対応している<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;か)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(curr-win)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントウィンドウを取得する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(win-count)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ウィンドウの数を取得する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(get-win-num&nbsp;<span class="Special">[window]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウの番号を取得する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(get-win-by-num&nbsp;<span class="Special">{windownum}</span>)&nbsp;&nbsp;&nbsp;&nbsp;番号でウィンドウを取得する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(get-win-buffer&nbsp;<span class="Special">[window]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 指定したウィンドウのバッファを取得する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;(get-win-height&nbsp;<span class="Special">[window]</span>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(set-win-height&nbsp;<span class="Special">{height}</span>&nbsp;<span class="Special">[window]</span>)&nbsp;&nbsp;ウィンドウの高さを取得/セットする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(set-win-height&nbsp;<span class="Special">{height}</span>&nbsp;<span class="Special">[window]</span>)&nbsp;&nbsp;ウィンドウの高さを取得/設定する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;(get-win-width&nbsp;<span class="Special">[window]</span>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(set-win-width&nbsp;<span class="Special">{width}</span>&nbsp;<span class="Special">[window]</span>)ウィンドウの幅を取得/セットする<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(get-win-list&nbsp;<span class="Special">[buffer]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バッファを表示しているウィンドウのリスト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(get-cursor&nbsp;<span class="Special">[window]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ウィンドウ内のカーソル位置をペア<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(linenr . column) として取得する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(set-cursor (line . col)&nbsp;<span class="Special">[window]</span>)&nbsp;&nbsp;カーソル位置をセットする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(set-win-width&nbsp;<span class="Special">{width}</span>&nbsp;<span class="Special">[window]</span>)&nbsp;&nbsp;ウィンドウの幅を取得/設定する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(get-win-list&nbsp;<span class="Special">[buffer]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バッファのウィンドウのリストを取得する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(get-cursor&nbsp;<span class="Special">[window]</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ウィンドウ内のカーソル位置をペア (linenr .<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column) として取得する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(set-cursor (line . col)&nbsp;<span class="Special">[window]</span>)&nbsp;&nbsp;カーソル位置を設定する。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 5. mzeval() Vim 関数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_mzsch.html#mzscheme-mzeval" name="mzscheme-mzeval">mzscheme-mzeval</a><br>
 <br>
-相互接続を容易にするために&nbsp;<a class="Identifier" href="builtin.html#mzeval()">mzeval()</a>&nbsp;関数が提供されています。この関数は<br>
-MzScheme の式を評価してその結果を Vim script の値に変換したものを返します。<br>
+双方向のインターフェイスを容易にするために、<a class="Identifier" href="builtin.html#mzeval()">mzeval()</a>&nbsp;関数を使って MzScheme<br>
+の式を評価し、その値を Vim script に渡すことができる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 6. 関数参照を使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_mzsch.html#mzscheme-funcref" name="mzscheme-funcref">mzscheme-funcref</a><br>
 <br>
-MzScheme インターフェイスでは関数参照 (<a class="Identifier" href="eval.html#Funcref">Funcref</a>) が使えます。Vim の関数を<br>
-Scheme から直接呼び出せます。例:<br>
+MzScheme インターフェイスでは&nbsp;<a class="Identifier" href="eval.html#Funcref">Funcref</a>&nbsp;を使えるので、Scheme から直接 Vim の関<br>
+数を呼び出すことができる。例えば:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;function! MyAdd2(arg)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return a:arg + 2<br>
 &nbsp;&nbsp;&nbsp;&nbsp;endfunction<br>
@@ -272,56 +274,55 @@ Scheme から直接呼び出せます。例:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;mz (f2 7)</div>
 &nbsp;&nbsp;または :<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;:mz (define indent (vim-eval &quot;function('indent')&quot;))<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot; return Vim indent for line 12<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&quot; 12 行目の Vim のインデントを返す<br>
 &nbsp;&nbsp;&nbsp;&nbsp;:mz (indent 12)</div>
 <br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 7. 動的ローディング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_mzsch.html#mzscheme-dynamic" name="mzscheme-dynamic">mzscheme-dynamic</a>&nbsp;<a class="Constant" href="if_mzsch.html#E815" name="E815">E815</a><br>
 <br>
-MS-Windows では MzScheme ライブラリを動的に読み込むことが可能です。これを行う<br>
-と&nbsp;<a class="Identifier" href="various.html#:version">:version</a>&nbsp;の出力に&nbsp;<a class="Identifier" href="various.html#+mzscheme/dyn">+mzscheme/dyn</a>&nbsp;が含まれるようになります。<br>
+MS-Windows では MzScheme のライブラリを動的に読み込むことができる。その場合<br>
+<a class="Identifier" href="various.html#:version">:version</a>&nbsp;の出力に&nbsp;<a class="Identifier" href="various.html#+mzscheme/dyn">+mzscheme/dyn</a>&nbsp;が含まれる。<br>
 <br>
-この場合、Vim は必要なときだけ MzScheme の DLL ファイルを検索するようになりま<br>
-す。MzScheme インターフェイスを使わないときは DLL を必要としないので、DLL な<br>
-しで Vim を使うことができます。<br>
-<span class="Todo">NOTE:</span>&nbsp;比較的新しいバージョンの MzScheme (Racket) は scheme_main_setup によるト<br>
-ランポリンを用いた事前初期化処理を必要とします。そのために Vim は可能であれば常<br>
-に MzScheme の DLL を初期化時に読み込みます。これは Vim の起動を遅くするかもし<br>
-れません。<br>
+これは、Vim が必要なときにだけ MzScheme の DLL ファイルを検索するということで<br>
+ある。MzScheme インターフェイスを使わないときはそれらは必要ないので、これらの<br>
+DLL ファイルなしで Vim を使うことができる。<br>
+<span class="Todo">NOTE:</span>&nbsp;新しいバージョンの MzScheme (Racket) は scheme_main_setup による早期の<br>
+(トランポリン化された) 初期化を必要とする。そのため Vim は可能であれば常に起動<br>
+時に MzScheme の DLL を読み込む。これにより Vim の起動が遅くなることがある。<br>
 <br>
-MzScheme インターフェイスを使うには MzScheme の DLL が検索パス内に存在しなけ<br>
-ればなりません。コンソールウィンドウで &quot;path&quot; とタイプすると、どのディレクト<br>
-リが検索パスとなるか表示できます。<br>
+MzScheme インターフェイスを使うには、MzScheme の DLL が検索パス内になければな<br>
+らない。<br>
+コンソールウィンドウで &quot;path&quot; と入力すると、どのディレクトリが使われるかがわか<br>
+る。<br>
 <br>
-MS-Windows では&nbsp;<a class="Type" href="options.html#'mzschemedll'">'mzschemedll'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'mzschemegcdll'">'mzschemegcdll'</a>&nbsp;オプションが読み込むライ<br>
-ブラリの名前として使用されます。初期値はビルド時に指定されます。<br>
+MS-Windows では、読み込むライブラリの名前に&nbsp;<a class="Type" href="options.html#'mzschemedll'">'mzschemedll'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'mzschemegcdll'">'mzschemegcdll'</a><br>
+オプションが使われる。初期値はビルド時に指定される。<br>
 <br>
-DLL のバージョンは Vim をコンパイルした時の MzScheme のバージョンと一致しなけ<br>
-ればなりません。MzScheme 209 用ならば &quot;libmzsch209_000.dll&quot; と<br>
-&quot;libmzgc209_000.dll&quot; となるでしょう。確認するには &quot;:version&quot; コマンドの出力<br>
-を見て、コンパイル情報から -DDYNAMIC_MZSCH_DLL=&quot;なんらか&quot; と<br>
--DDYNAMIC_MZGC_DLL=&quot;なんらか&quot; を探してください。<br>
+DLL のバージョンは、Vim のコンパイルに使った MzScheme のバージョンと一致しなけ<br>
+ればならない。MzScheme バージョン 209 の場合は &quot;libmzsch209_000.dll&quot; と<br>
+&quot;libmzgc209_000.dll&quot; になる。確実に知るには &quot;:version&quot; コマンドの出力を見て、<br>
+&quot;Compilation&quot; 情報の中の -DDYNAMIC_MZSCH_DLL=&quot;something&quot; と<br>
+-DDYNAMIC_MZGC_DLL=&quot;something&quot; を探すこと。<br>
 <br>
-例えば、MzScheme (Racket) が C:\Racket63 にインストールされている場合、次のよう<br>
-に環境変数を設定する必要があるかもしれません:<br>
+例えば、MzScheme (Racket) が C:\Racket63 にインストールされている場合、環境変<br>
+数を次のように設定する必要があるかもしれない:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;PATH=%PATH%;C:\Racket63\lib<br>
 &nbsp;&nbsp;PLTCOLLECTS=C:\Racket63\collects<br>
 &nbsp;&nbsp;PLTCONFIGDIR=C:\Racket63\etc</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-8. MzScheme setup&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_mzsch.html#mzscheme-setup" name="mzscheme-setup">mzscheme-setup</a>&nbsp;<a class="Constant" href="if_mzsch.html#E895" name="E895">E895</a><br>
+8. MzScheme のセットアップ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_mzsch.html#mzscheme-setup" name="mzscheme-setup">mzscheme-setup</a>&nbsp;<a class="Constant" href="if_mzsch.html#E895" name="E895">E895</a><br>
 <br>
-Vim は if_mzsch のコアモジュールとして &quot;racket/base&quot; (もし存在しなければ<br>
-&quot;scheme/base&quot; にフォールバックします) を、テストのために &quot;r5rs&quot; モジュールを、<br>
-そして Vim のビルド時に必要な &quot;raco ctool&quot; コマンドを要求します。MzScheme がそ<br>
-れらを持っていなかった場合は MzScheme の raco コマンドで次のようにインストール<br>
-できます:<br>
+Vim は、if_mzsch のコアに &quot;racket/base&quot; モジュール (存在しない場合は<br>
+&quot;scheme/base&quot; にフォールバックする) を、テストに &quot;r5rs&quot; モジュールを、Vim のビ<br>
+ルドに &quot;raco ctool&quot; コマンドを必要とする。MzScheme にそれらがない場合は、<br>
+MzScheme の raco コマンドでインストールできる:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;raco pkg install scheme-lib&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # scheme/base module<br>
-&nbsp;&nbsp;raco pkg install r5rs-lib&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # r5rs module<br>
-&nbsp;&nbsp;raco pkg install cext-lib&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # raco ctool command</div>
+<div class="helpExample">&nbsp;&nbsp;raco pkg install scheme-lib&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # scheme/base モジュール<br>
+&nbsp;&nbsp;raco pkg install r5rs-lib&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # r5rs モジュール<br>
+&nbsp;&nbsp;raco pkg install cext-lib&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # raco ctool コマンド</div>
 <br>
 <span class="PreProc">======================================================================</span><br>
 &nbsp;&nbsp;vim:tw=78:ts=8:noet:sts=4:ft=help:norl:<br>
