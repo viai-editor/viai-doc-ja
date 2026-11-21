@@ -1,4 +1,4 @@
-*ft_ps1.txt*  Windows PowerShell 用のシンタックスプラグイン
+*ft_ps1.txt*  Vim 用の Windows PowerShell シンタックスプラグイン
 
 著者:       Peter Provost <https://www.github.com/PProvost>
 ライセンス: Apache 2.0
@@ -6,34 +6,33 @@ URL:        https://github.com/PProvost/vim-ps1
 
 ☆はじめに                                                      *ps1-syntax*
 
-このプラグインは、Windows PowerShell スクリプト、モジュール、XML 設定ファイル
-用のシンタックス、インデント、ファイルタイプ検知を提供する。
+このプラグインは、Windows PowerShell のスクリプト、モジュール、XML 設定ファイ
+ル用に、Vim のシンタックス、インデント、ファイルタイプ検出を提供する。
 
 
 ☆概要                                                          *ps1-about*
 
-最新版の入手やバグの報告は GitHub にて:
+最新版の入手やバグの報告は GitHub で:
 
 https://github.com/PProvost/vim-ps1
 
 
 ☆折り畳み                                                      *ps1-folding*
 
-ps1 シンタックスファイルは、スクリプトブロックとスクリプト内の電子署名に対する
-構文折り畳み (|:syn-fold| 参照) を提供する。
+ps1 シンタックスファイルは、スクリプトブロックと、スクリプト内のデジタル署名に
+対して、シンタックス折り畳み (|:syn-fold| を参照) を提供する。
 
-'foldmethod' が "syntax" に設定されている場合、関数とスクリプトのブロックが折
-り畳まれる。無効にしたい場合は、次のコマンドを .vimrc に書くか、スクリプトを開
-く前に実行すること: >
+'foldmethod' が "syntax" に設定されている場合、.vimrc 内か、スクリプトを開く前
+に以下を使わない限り、関数のスクリプトブロックは折り畳まれる: >
 
     :let g:ps1_nofold_blocks = 1
 <
-スクリプト内の電子署名も、次を使用しない限り折り畳まれる: >
+以下を使わない限り、スクリプト内のデジタル署名も折り畳まれる: >
 
     :let g:ps1_nofold_sig = 1
 <
-Note: 折り畳みによりシンタックスハイライトが著しく遅くなることがある。特に巨大
-なファイルで顕著である。
+Note: シンタックス折り畳みにより、特に大きなファイルでは、シンタックスハイライ
+トがかなり遅くなることがある。
 
 
 ☆コンパイラ                                                    *ps1-compiler*
@@ -41,25 +40,25 @@ Note: 折り畳みによりシンタックスハイライトが著しく遅く�
 powershell の `:compiler` スクリプトは、|:make| が PowerShell でスクリプトを実
 行するように設定する。
 
-デフォルトでは、適切な PowerShell コマンドが選択される: 利用可能なら `pwsh`、
-そうでなければ `powershell` である。コマンドをカスタマイズすることもできる: >
+気の利いたデフォルトの PowerShell コマンドを選ぼうとする: 利用できれば `pwsh`、
+そうでなければ `powershell`。ただし、コマンドはカスタマイズできる: >
 
     :let g:ps1_makeprg_cmd = '/path/to/pwsh'
 <
-例外の種別情報を表示するように設定するには: >
+例外の種類の情報を表示するかどうかを設定するには: >
 
     :let g:ps1_efm_show_error_categories = 1
 <
 
-☆キーワード検索                                                *ps1-keyword*
+☆キーワード検索                                               *ps1-keyword*
 
-PowerShell の Get-Help を利用してキーワードの検索をするには、|K| キーを押下す
-る。より便利にページングしたい場合は、多数の Linux ディストリビューションや
-macOS に同梱されているページャの `less` をインストールすること。
+PowerShell の Get-Help を使ってキーワードを調べるには、|K| キーを押す。より便
+利にページングするには、ページャー `less` がインストールされているべきである。
+これは多くの Linux ディストリビューションと macOS に含まれている。
 
-Windows では https://chocolatey.org/packages/less/ およびこれに類似した多数の
-他の配布がある。`less` は環境変数 `PATH` に含まれるディレクトリに配置する。上
-記の chocolatey はこれを行う。
+Windows 向けにも、https://chocolatey.org/packages/less/ のように、他の多くの配
+布物がある。`less` が環境変数 `PATH` に列挙されたディレクトリにあることを確か
+めること。上記の chocolatey はそうしている。
 
 ------------------------------------------------------------------------------
  vim:ft=help:
