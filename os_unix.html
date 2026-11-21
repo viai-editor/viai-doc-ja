@@ -6,62 +6,64 @@ helpname: 'os_unix'
 <a class="Constant" href="os_unix.html" name="os_unix.txt">os_unix.txt</a>&nbsp;&nbsp; For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Feb 14<br>
 <br>
 <br>
-<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_unix.html#unix" name="unix">unix</a>&nbsp;<a class="Constant" href="os_unix.html#Unix" name="Unix">Unix</a><br>
-このファイルは Unix のバージョンの Vim で特殊な事柄について書いてある。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_unix.html#unix" name="unix">unix</a>&nbsp;<a class="Constant" href="os_unix.html#Unix" name="Unix">Unix</a><br>
+このファイルには、Unix 版 Vim の特記事項が書かれている。<br>
 <br>
-Vim を Unix でコンパイルするには src ディレクトリにある &quot;INSTALL&quot; と<br>
-&quot;Makefile&quot; を参照。<br>
+Unix で Vim をコンパイルするには、src ディレクトリの &quot;INSTALL&quot; と &quot;Makefile&quot;<br>
+を参照。<br>
 <br>
-デフォルトのヘルプファイルの名前は &quot;/usr/local/lib/vim/help.txt&quot; である。<br>
+デフォルトのヘルプファイル名は &quot;/usr/local/lib/vim/help.txt&quot; である<br>
 &quot;s:.vimrc&quot; と &quot;s:.exrc&quot; の代わりに &quot;$HOME/.vimrc&quot; と &quot;$HOME/.exrc&quot; が使われる。<br>
-さらに &quot;/usr/local/etc/vimrc&quot; が初めに使われる。&quot;/usr/local/share&quot; があれば<br>
-&quot;/usr/local/lib&quot; の代わりにそちらが使われる。<br>
-<br>
-(フィルタを実行するときに使われる) 一時的なファイルは &quot;/tmp&quot; に置かれる。他の<br>
-場所に置きたければ $TMPDIR 環境変数を自分の好みの場所に設定すること。<br>
-<br>
-ワイルドカード展開と '~' (ホームディレクトリ)と '$' (環境変数)を使うことがで<br>
+さらに、&quot;/usr/local/etc/vimrc&quot; が最初に使われる。<br>
+&quot;/usr/local/share&quot; が存在する場合は、&quot;/usr/local/lib&quot; の代わりにそれが使われ<br>
 る。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_unix.html#fork" name="fork">fork</a>&nbsp;<a class="Constant" href="os_unix.html#spoon" name="spoon">spoon</a><br>
-可能であれば fork()/exec() が外部コマンドの実行に使われる、そうでない場合は<br>
-もう少し遅い system() が使われる。fork()/exec() が使われる場合は&nbsp;<a class="Identifier" href="various.html#+fork">+fork</a>&nbsp;が、<br>
-system() が使われる場合は&nbsp;<a class="Identifier" href="various.html#+system()">+system()</a>&nbsp;が &quot;:version&quot; コマンドの出力に含まれる。<br>
-これはコンパイルするときに変更することができる。<br>
-(GUI バージョンのフォークに関しては&nbsp;<a class="Identifier" href="gui_x11.html#gui-fork">gui-fork</a>&nbsp;を参照)<br>
+(フィルタ処理用の) 一時ファイルは &quot;/tmp&quot; に置かれる。ほかの場所に置きたい場合<br>
+は、環境変数 $TMPDIR に好みのディレクトリを設定すること。<br>
 <br>
-Unix では歴史的経緯で端末の更新が遅いことが予想されるので (例: シリアルライン端<br>
-末、suntools でのシェルウィンドウ)、<a class="Type" href="options.html#'showcmd'">'showcmd'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'ruler'">'ruler'</a>&nbsp;オプションはオフをデ<br>
-フォルトにしてある。速い端末を使っているのであれば、以下の設定を試して欲しい:<br>
+ワイルドカード展開では、'~' (ホームディレクトリ) と '$'<br>
+(環境変数) を使える。<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_unix.html#fork" name="fork">fork</a>&nbsp;<a class="Constant" href="os_unix.html#spoon" name="spoon">spoon</a><br>
+外部コマンドの実行には、可能なら fork()/exec() が使われ、そうでなければ<br>
+system() が使われる。system() は少し遅い。&quot;:version&quot; の出力には、fork()/exec()<br>
+が使われる場合は&nbsp;<a class="Identifier" href="various.html#+fork">+fork</a>&nbsp;が、system() が使われる場合は&nbsp;<a class="Identifier" href="various.html#+system()">+system()</a>&nbsp;が含まれる。<br>
+これはコンパイル時に変更できる。<br>
+(GUI 版の fork については&nbsp;<a class="Identifier" href="gui_x11.html#gui-fork">gui-fork</a>&nbsp;を参照。)<br>
+<br>
+歴史的な理由から、Unix では端末の更新は遅いと想定されているので (例: シリアル<br>
+回線の端末、suntools のシェルウィンドウ)、<a class="Type" href="options.html#'showcmd'">'showcmd'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'ruler'">'ruler'</a>&nbsp;オプションはデ<br>
+フォルトでオフになっている。速い端末を使っている場合は、これらを<br>
+オンに設定してみること:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set showcmd ruler</div>
 <br>
-Vim を xterm 上で使っている場合&nbsp;<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;オプションを &quot;a&quot; にセットすることで<br>
-Vim でマウスクリックを使うことができるようになる。X-server へのアクセスがあれ<br>
-ば GUI スタイルのコピー/ペーストが使用できる。そしてマウスをドラッグしている間<br>
-ビジュアルなフィードバックが得られるようになる。まだ xterm でのマウスを使って<br>
-のコピー/ペーストを行いたい場合は、マウスを使うときに Shift キーを押すこと。<br>
-<a class="Identifier" href="term.html#mouse-using">mouse-using</a>&nbsp;を参照。十分に新しい xterm を使っていれば&nbsp;<a class="Type" href="options.html#'ttymouse'">'ttymouse'</a>&nbsp;オプション<br>
-を通してドラッグする間にビジュアルなフィードバックを得られる。<br>
+xterm の中で Vim を使っているときは、<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;を &quot;a&quot; に設定すれば、マウスのク<br>
+リックを Vim で使える。X-server にアクセスできる場合は、GUI スタイルのコピー/<br>
+ペーストが使われ、マウスでドラッグしている間、視覚的なフィードバックが表示され<br>
+る。<br>
+それでもマウスで xterm のコピー/ペーストをしたい場合は、マウスを使うときに<br>
+Shift キーを押すこと。<a class="Identifier" href="term.html#mouse-using">mouse-using</a>&nbsp;を参照。xterm が十分に新しければ、ドラッグ<br>
+中の視覚的なフィードバックは&nbsp;<a class="Type" href="options.html#'ttymouse'">'ttymouse'</a>&nbsp;オプションでも実現できる。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_unix.html#terminal-colors" name="terminal-colors">terminal-colors</a><br>
-Vim で色を使う場合は次のような例を使うことができる (端末が色をサポートしてはい<br>
-るが &quot;T_Co&quot; が空かゼロの場合):<br>
-<div class="helpExample">&nbsp;&nbsp; :set t_me=^[[0;1;36m&nbsp;&nbsp;&nbsp;&nbsp; &quot; ノーマルモード(t_mr と t_md を消す)<br>
-&nbsp;&nbsp; :set t_mr=^[[0;1;33;44m&nbsp;&nbsp;&quot; 反転表示モードオン<br>
-&nbsp;&nbsp; :set t_md=^[[1;33;41m&nbsp;&nbsp;&nbsp;&nbsp;&quot; 太字表示モードオン<br>
-&nbsp;&nbsp; :set t_se=^[[1;36;40m&nbsp;&nbsp;&nbsp;&nbsp;&quot; 強調表示モードから抜ける<br>
-&nbsp;&nbsp; :set t_so=^[[1;32;45m&nbsp;&nbsp;&nbsp;&nbsp;&quot; 強調表示モード開始<br>
-&nbsp;&nbsp; :set t_ue=^[[0;1;36m&nbsp;&nbsp;&nbsp;&nbsp; &quot; 下線モードから抜ける<br>
-&nbsp;&nbsp; :set t_us=^[[1;32m&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; 下線モード開始</div>
-[ ^[ は&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;で入力するには&nbsp;<span class="Special">CTRL-V</span>&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;とタイプする]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_unix.html#terminal-colors" name="terminal-colors">terminal-colors</a><br>
+Vim で色を使うには、以下の例が使える (端末が色をサポートしているが、&quot;T_Co&quot; が<br>
+空かゼロの場合):<br>
+<div class="helpExample">&nbsp;&nbsp; :set t_me=^[[0;1;36m&nbsp;&nbsp;&nbsp;&nbsp; &quot; ノーマルモード (t_mr と t_md を元に戻す)<br>
+&nbsp;&nbsp; :set t_mr=^[[0;1;33;44m&nbsp;&nbsp;&quot; リバース (反転) モード<br>
+&nbsp;&nbsp; :set t_md=^[[1;33;41m&nbsp;&nbsp;&nbsp;&nbsp;&quot; 太字モード<br>
+&nbsp;&nbsp; :set t_se=^[[1;36;40m&nbsp;&nbsp;&nbsp;&nbsp;&quot; 強調表示の終了<br>
+&nbsp;&nbsp; :set t_so=^[[1;32;45m&nbsp;&nbsp;&nbsp;&nbsp;&quot; 強調表示モード<br>
+&nbsp;&nbsp; :set t_ue=^[[0;1;36m&nbsp;&nbsp;&nbsp;&nbsp; &quot; 下線の終了<br>
+&nbsp;&nbsp; :set t_us=^[[1;32m&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; 下線モードの開始</div>
+[^[ は&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;である。入力するには&nbsp;<span class="Special">CTRL-V</span>&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;とタイプする]<br>
 <br>
-本物の色端末では &quot;:highlight&quot; コマンドを使うこともできる。<br>
+本物のカラー端末では、&quot;:highlight&quot; コマンドが使える。<br>
 <br>
-&quot;tools/vim132&quot; ファイルは Vim を vt100 もしくはそれによく似た端末上で 132 カラ<br>
-ムモードで使うためのシェルスクリプトである。<br>
+&quot;tools/vim132&quot; ファイルは、vt100 とその類似の端末で Vim を 132 カラムモードに<br>
+するために使えるシェルスクリプトである。<br>
 <br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>
