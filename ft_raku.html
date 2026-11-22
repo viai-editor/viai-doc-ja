@@ -3,34 +3,34 @@ layout: viai-doc
 helpname: 'ft_raku'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="ft_raku.html" name="ft_raku.txt">ft_raku.txt</a>&nbsp;&nbsp; Raku プログラミング言語ファイルタイプ<br>
+<a class="Constant" href="ft_raku.html" name="ft_raku.txt">ft_raku.txt</a>&nbsp;&nbsp; Raku プログラミング言語のファイルタイプ<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_raku.html#vim-raku" name="vim-raku">vim-raku</a><br>
 <br>
-vim-raku はシンタックスハイライト、インデント、その他 Raku プログラムの編集の<br>
-ためのサポートを提供する。<br>
+Vim-raku は、Raku のプログラムを編集するための、シンタックスハイライト、インデ<br>
+ント、その他のサポートを提供する。<br>
 <br>
-1. Raku ファイル内での Unicode の利用&nbsp;&nbsp;&nbsp;<a class="Identifier" href="ft_raku.html#raku-unicode">raku-unicode</a><br>
+1. Raku ファイルで Unicode を使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="ft_raku.html#raku-unicode">raku-unicode</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-1. Raku ファイル内での Unicode の利用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_raku.html#raku-unicode" name="raku-unicode">raku-unicode</a><br>
+1. Raku ファイルで Unicode を使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_raku.html#raku-unicode" name="raku-unicode">raku-unicode</a><br>
 <br>
-Unicode の記号を用いて新しい演算子を定義することは、あなたの Raku プログラムを<br>
-読み易くする良い方法である。参照:<br>
+Unicode の記号を使って新しい演算子を定義するのは、Raku のプログラムを読みやす<br>
+くする良い方法である。参照:<br>
 <span class="Constant"><a href="https://perl6advent.wordpress.com/2012/12/18/day-18-formulas-resistance-is-futile/">https://perl6advent.wordpress.com/2012/12/18/day-18-formulas-resistance-is-futile/</a></span><br>
 <br>
-Raku は基本的な演算子については ASCII での代替定義をしているが (参照<br>
-<span class="Constant"><a href="https://docs.raku.org/language/unicode_ascii">https://docs.raku.org/language/unicode_ascii</a></span>)、Unicode 演算子の全範囲が使える<br>
-のが望しい。あなたのオペレーティングシステムが入力環境を提供していても、Vim 組<br>
-み込み機能を使うのが望しいだろう。<br>
+Raku はいくつかの一般的な演算子に ASCII の代替を定義しているが<br>
+(<span class="Constant"><a href="https://docs.raku.org/language/unicode_ascii">https://docs.raku.org/language/unicode_ascii</a></span>&nbsp;を参照)、Unicode の演算子をすべ<br>
+て使うことが強く望まれる。オペレーティングシステムは入力の機能を提供している<br>
+が、Vim に組み込まれた機能を使う方が好ましいかもしれない。<br>
 <br>
-自然な方法でこれらの記号を Vim 内に出すにはダイグラフショートカットを使う<br>
-(:help&nbsp;<a class="Identifier" href="digraph.html#digraphs-use">digraphs-use</a>)。多くの記号が定義されており、<a class="Comment" href="digraph.html#:digraphs">:digraphs</a>&nbsp;とタイプするこ<br>
-とでその一覧が得られる。便利な方法として、ダイグラフの一覧をファイルに保存して<br>
-それを読んでもよい。シェルからなら:<br>
+Vim でこれらの記号を生成する自然な方法は、ダイグラフのショートカットを使うこと<br>
+である (:help&nbsp;<a class="Identifier" href="digraph.html#digraphs-use">digraphs-use</a>)。それらの多くは定義されている。一覧を得るには<br>
+<a class="Comment" href="digraph.html#:digraphs">:digraphs</a>&nbsp;とタイプする。ダイグラフの一覧を読む便利な方法は、それをファイルに<br>
+保存することである。シェルから:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim +'redir &gt;/tmp/vim-digraphs-listing.txt' +digraphs +'redir END' +q</div>
 <br>
-標準の Vim のダイグラフにいくつかある:<br>
+それらのいくつかは、Vim の標準のダイグラフで使える:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&lt;&lt; «&nbsp;&nbsp;&nbsp;&nbsp;/0 ∅&nbsp;&nbsp;&nbsp;&nbsp;!&lt; ≮&nbsp;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&gt;&gt; »&nbsp;&nbsp;&nbsp;&nbsp;Ob ∘&nbsp;&nbsp;&nbsp;&nbsp;!&gt; ≯&nbsp;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">., …&nbsp;&nbsp;&nbsp;&nbsp;00 ∞&nbsp;&nbsp;&nbsp;&nbsp;(C ⊂&nbsp;</span><br>
@@ -40,18 +40,18 @@ Raku は基本的な演算子については ASCII での代替定義をして�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">(- ∈&nbsp;&nbsp;&nbsp;&nbsp;?= ≅&nbsp;&nbsp;&nbsp;&nbsp;!= ≠&nbsp;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">-) ∋&nbsp;&nbsp;&nbsp;&nbsp;?- ≃&nbsp;</span><br>
 <br>
-ギリシャ文字は '*' の後に同等のラテン文字を続ける:<br>
+ギリシャ文字は、'*' の後に似たラテン文字を続けると使える:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">*p π&nbsp;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">*t τ&nbsp;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">*X ×&nbsp;</span><br>
 <br>
-下付きと上付き数値は 's' と 'S' と共に:<br>
+数字、下付き文字、上付き文字は 's' と 'S' で使える:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">0s ₀&nbsp;&nbsp;&nbsp;&nbsp;0S ⁰&nbsp;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">1s ₁&nbsp;&nbsp;&nbsp;&nbsp;1S ¹&nbsp;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">2s ₂&nbsp;&nbsp;&nbsp;&nbsp;9S ⁹&nbsp;</span><br>
 <br>
-しかし、いくつかは標準では定義されていない。それらについては ~/.vimrc ファイル<br>
-にダイグラフの定義を追加することができる。<br>
+しかし、デフォルトでは定義されていないものもある。これらが、~/.vimrc ファイル<br>
+に追加できるダイグラフの定義である。<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exec 'digraph \\ ' .. char2nr('∖')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exec 'digraph \&lt; ' .. char2nr('≼')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exec 'digraph \&gt; ' .. char2nr('≽')<br>
@@ -62,13 +62,13 @@ Raku は基本的な演算子については ASCII での代替定義をして�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exec 'digraph )/ ' .. char2nr('⊅')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exec 'digraph U+ ' .. char2nr('⊎')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exec 'digraph 0- ' .. char2nr('⊖')<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; オイラー数/ネイピア数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; オイラーの定数<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exec 'digraph ne ' .. char2nr('𝑒')<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; Raku の atomic 演算子記号<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; Raku のアトミック操作の記号<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exec 'digraph @@ ' .. char2nr('⚛')</div>
 <br>
-別の方法としては、挿入モードでの短縮入力で ASCII の演算子から同等の Unicode の<br>
-単一文字へ変換することもできる。<br>
+あるいは、ASCII ベースの演算子を、それに相当する 1 文字の Unicode に変換する挿<br>
+入モードの短縮入力を書くこともできる。<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iabbrev &lt;buffer&gt; !(&lt;) ⊄<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iabbrev &lt;buffer&gt; !(&lt;=) ⊈<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iabbrev &lt;buffer&gt; !(&gt;) ⊅<br>
