@@ -6,165 +6,169 @@
 
 Vim のデバッグ						*debug-vim*
 
-これは、Vim 自体が正しく動作しない場合にデバッグするためのものである。
-Vim script や関数などのデバッグについては、|debug-scripts| を参照。
+これは、Vim が正しく動作しないときに、Vim 自体をデバッグするためのものである。
+Vim script や関数などのデバッグについては |debug-scripts| を参照
 
-1. gcc と gdb を使ってクラッシュの場所を特定する	|debug-gcc|
-2. メモリリークの特定					|debug-leaks|
-3. Windows でのバグレポート				|debug-win32|
+1. gcc および gdb を使ったクラッシュの場所の特定	|debug-gcc|
+2. メモリリークの特定				|debug-leaks|
+3. Windows のバグ報告				|debug-win32|
 
 ==============================================================================
 
-1. gcc と gdb を使ってクラッシュの場所を特定する	*debug-gcc* *gdb*
+1. gcc および gdb を使ったクラッシュの場所の特定	*debug-gcc* *gdb*
 
-Vim がテストファイルの 1 つでクラッシュし、コンパイルに gcc を使用している場
-合、Vim がどこでクラッシュするかを正確に見つけるためにできることがある。これは
-MingW ツールを使用している場合にも当てはまる。
+Vim がテストファイルの 1 つでクラッシュし、コンパイルに gcc を使っている場合
+に、Vim がどこでクラッシュするかを正確に突き止めるためにできることをここに示
+す。これは MingW ツールを使っている場合にも当てはまる。
 
-1. "-g" オプション付きで Vim をコンパイル (src/Makefile にそのための行があるの
-   で、それをコメントアウトする)。さらに "strip" を無効化する (strip をインス
-   トールしないか、"STRIP = /bin/true" の行を使う)。
+1. "-g" オプション付きで Vim をコンパイルする (src/Makefile にこのための行があ
+   るので、そのコメントを外せばよい)。また、"strip" が無効になっていることを確
+   かめること (それをインストールしないか、または "STRIP = /bin/true" の行を使
+   う)。
 
-2. 次のコマンドを実行する ("11" の所を失敗したテストの番号に変える): >
+2. これらのコマンドを実行する ("11" は失敗するテストに置き換える): >
 	cd testdir
 	gdb ../vim
 	run -u unix.vim -U NONE -s dotest.in test11.in
 
-3. Vim のクラッシュを確認する。gdb は関連するメッセージを表示するはずである。
+3. Vim がどこでクラッシュするかを確認する。gdb がこれについてのメッセージを出
+   すはずである。
 
-4. 次のコマンドでスタックトレースを表示できる: >
+4. このコマンドで gdb からスタックトレースを取得する: >
 	where
-<  次のコマンドで別の場所のスタックトレースを表示できる: >
+<  スタックトレースの別の場所は、以下で確認できる: >
 	frame 3
-<  "3" をスタックトレース内の番号の 1 つに置き換える。
+<  "3" をスタックトレースの番号の 1 つに置き換える。
 
 ==============================================================================
 
 2. メモリリークの特定				*debug-leaks* *valgrind*
 
-Linux を使っていて Vim がメモリリークしていると思われる場合は、メモリリークを
-正確に特定するのに valgrind ツールが非常に役立つ。
+Vim がメモリリークしていると疑い、Linux を使っている場合は、valgrind ツールが
+メモリリークの場所を正確に突き止めるのにとても役に立つ。
 
-まず、EXITFREE を定義して Vim をビルドする。MAKEFILE でこれを検索して、行のコ
-メントを外す。
+まず、EXITFREE を定義して Vim をビルドする。MAKEFILE でこれを検索し、その行の
+コメントを外す。
 
-次のコマンドで Vim を起動する:
+このコマンドを使って Vim を起動する:
 >
 	valgrind --log-file=valgrind.log --leak-check=full ./vim
 
-Note: Vim の実行はとても遅くなる。.vimrc が大きかったり多くのプラグインを入れ
-ていたりすると起動にとても時間がかかるので、その場合は "--clean" 引数を指定し
-て起動する。
+Note: Vim の動作はかなり遅くなる。.vimrc が大きい場合、またはプラグインがいく
+つかある場合は、起動を辛抱強く待つ必要があるか、または "--clean" 引数を付けて
+実行する必要がある。
 
-ライブラリがメモリリークを起こしている場合もよくある。例えば getpwuid() や
-XtVaAppCreateShell() など。それらを避けることはできない。リークしているバイト
-数は数キロバイト以下のはずである。
+getpwuid() および XtVaAppCreateShell() など、ライブラリからのリークがいくつか
+あることが多い。これらは避けられない。そのバイト数は、1 K バイト以下のとても小
+さいものであるはずである。
 
 ==============================================================================
 
-3. Windows でのバグレポート				*debug-win32*
+3. Windows のバグ報告					*debug-win32*
 
-Windows版の Vim が再現可能な手段でクラッシュした場合、次の方法で有用なバグレ
-ポートを作成できる。
+Windows 版の Vim が再現可能な形でクラッシュする場合は、役に立つバグ報告をする
+ための手順を踏むことができる。
 
-3.1 一般事項 ~
 
-実行可能ファイルに対応したデバッグシンボルファイル (PDB) を取得する必要がある。
-gviai.exe には gviai.pdb、viai.exe には viai.pdb が必要である。あなたが実行可
-能ファイルを入手したのと同じ場所に用意されているはずである。EXE に対応した (同
-じ日付の) PDB でなければならない。
+3.1 一般 ~
 
-Microsoft Visual C++ コンパイラを使って自分で実行可能ファイルを作成した場合は、
-PDB は EXE と一緒に作成されている。
+実行可能ファイルのデバッガシンボル (PDB) ファイルを入手しなければならない:
+gviai.exe には gviai.pdb、または viai.exe には viai.pdb。PDB は、実行可能ファ
+イルを入手したのと同じ場所から入手できるはずである。EXE と一致する (同じ日付の)
+PDB を使うようにすること。
 
-Visual Studio を持っている場合、VC Toolkit と WinDbg の代わりにそれを使用する。
+実行可能ファイルを自分で Microsoft Visual C++ コンパイラでビルドした場合は、
+PDB は EXE と一緒にビルドされている。
 
-他のコンパイラを使っている場合は、それぞれ適切なデバッガを使用する必要がある。
-Cygwin または MinGW のコンパイラ用の gdb (上記参照 |debug-gcc|) など。
+Visual Studio がある場合は、VC Toolkit および WinDbg の代わりにそれを使うこと。
+
+他のコンパイラの場合は、常に対応するデバッガを使うべきである: Cygwin および
+MinGW のコンパイラには gdb (上記の |debug-gcc| を参照)。
 
 
 								*debug-vs2005*
-3.2 Visual Studio 2005/Visual C++ 2005 Express で Vim をデバッグする ~
+3.2 Visual Studio 2005/Visual C++ 2005 Express での Vim のクラッシュのデバッグ ~
 
-最初に、viai.exe か gviai.exe を起動し、Visual Studio を起動する。(Visual
-Studio を持っていない場合は、|get-ms-debuggers| の説明に従って、無料の Visual
-C++ 2005 Express Edition を入手する。)
+まず viai.exe または gviai.exe を起動し、次に Visual Studio を起動する。
+(Visual Studio が無い場合は、|get-ms-debuggers| の手順に従って、Visual C++
+2005 Express Edition の無料のコピーを入手する。)
 
-メニューから「ツール/プロセスにアタッチ」を選択し、Vim のプロセスを選択する。
+Tools メニューで、Attach to Process をクリックする。Vim のプロセスを選択する。
 
-そして、Vim を操作してクラッシュを再現する。「ハンドルされていない例外が発生し
-ました」という Visual Studio のダイアログが表示されるので、中断ボタンをクリッ
-クしてプロセスを中断する。
+Vim で、クラッシュを再現する。Visual Studio にダイアログが現れ、Vim のプロセス
+での処理されない例外について知らせる。Break をクリックして、プロセスに割り込
+む。
 
-シンボルが読み込めず、ソースコードを表示できなかったときは、もう 1 つダイアロ
-グが表示される。OK をクリックする。
+Visual Studio は別のダイアログを表示し、シンボルが読み込まれておらず、ソース
+コードを表示できないことを知らせる。OK をクリックする。
 
-ウィンドウがいくつか開く。呼び出し履歴ウィンドウの右クリックメニューから「シン
-ボルの読み込み」を選択する。シンボル検索ダイアログが開くので、(g)viai.pdb のあ
-るディレクトリを選択する。
+いくつかのウィンドウが開く。Call Stack ウィンドウで右クリックする。Load
+Symbols を選択する。Find Symbols ダイアログが開き、(g)viai.pdb を探す。PDB ファ
+イルがあるディレクトリに移動し、Open をクリックする。
 
-このとき、呼び出し履歴ウィンドウには Vim の関数名や行番号が表示されているはず
-である。どれかをダブルクリックするとソースの検索ダイアログが表示される。Vim の
-ソースがあるディレクトリを選択する (ソースがあれば)。
+この時点で、vim の関数名および行番号付きの完全なコールスタックが得られるはずで
+ある。行の 1 つをダブルクリックすると、Find Source ダイアログが現れる。Vim の
+ソースがあるディレクトリに移動する (ソースがある場合。)
 
-さらに詳しくデバッグする方法が分からないときは、":help bug-reports" の説明に
-従う。バグレポートに呼び出し履歴を貼り付ける。
+これ以上どうデバッグすればよいか分からない場合は、":help bug-reports" の手順に
+従うこと。コールスタックをバグ報告に貼り付ける。
 
-有料版の Visual Studio を使っている場合は、デバッグメニューから minidump を保
-存できるので、それをバグレポートに添付する。minidump は 100KB 以下の小さなファ
-イルで、Vim のプロセスに関する情報が入っている。
-Visual C++ 2005 Express Edition では minidump を保存できない。just-in-time デ
-バッガ (クラッシュを検出して自動的に起動されるデバッガ) もインストールされな
-い。それらが必要なときは WinDbg (|debug-windbg|) を使う。
+Visual Studio の無料でないバージョンがある場合は、Debug メニューからミニダンプ
+を保存し、それをバグ報告と一緒に送ることができる。ミニダンプは、プロセスの状態
+についての情報を含む小さなファイル (<100KB) である。
+Visual C++ 2005 Express Edition はミニダンプを保存できず、ジャストインタイムデ
+バッガとしてインストールすることもできない。ミニダンプを保存する必要がある場
+合、またはジャストインタイム (ポストモーテム) デバッガが欲しい場合は、WinDbg
+(|debug-windbg|) を使うこと。
 
 								*debug-windbg*
-3.3 WinDbg を使って Vim をデバッグする ~
+3.3 WinDbg での Vim のクラッシュのデバッグ ~
 
-WinDbg の入手方法は |get-ms-debuggers| を参照。
+WinDbg のコピーを入手するには |get-ms-debuggers| を参照。
 
-Visual Studio IDE を使うのと同じように、WinDbg から Vim のプロセスにアタッチで
-きる。プログラムがクラッシュしたときに、事後分析デバッガ (postmortem debugger)
-として、WinDebug を自動的に起動することができる。事後分析デバッガとして WinDeb
-を設定するには "windbg -I" を実行する。
+Visual Studio IDE と同様に、実行中の Vim のプロセスに WinDbg をアタッチできる。
+システムが WinDbg をポストモーテムデバッガとして自動的に起動するようにすること
+もできる。WinDbg をポストモーテムデバッガとして設定するには、"windbg -I" を実
+行する。
 
-WinDbg から、実行中の Vim のプロセスにアタッチするには、WinDeb を起動し、File
-メニューから「プロセスにアタッチ」を選択し、Vim のプロセスを選択して OK をク
-リックする。
+実行中の Vim のプロセスに WinDbg をアタッチするには、WinDbg を起動する。File
+メニューで、Attach to a Process を選択する。Vim のプロセスを選択し、OK をクリッ
+クする。
 
-メニューから「File->Symbol File Path」を選択し、Vim PDB の入っているフォルダを
-symbolpath に追加する。Vim のソースファイルもある場合は、File メニューの
-Source File Path を使う。WinDbg でソースファイルを開いたり、ブレークポイントを
-設定したりできる。Vim をクラッシュさせると、クラッシュした場所のソースファイル
-が WinDbg で開かれる。View メニューを使って、コールスタック、ローカル変数、
-ウォッチウィンドウなどを見ることができる。
+この時点で、File メニューの Symbol File Path を選択し、Vim の PDB があるフォル
+ダを sympath に追加する。Vim のソースがあるなら、File メニューの Source File
+Path を使う。これで、WinDbg でソースファイルを開き、必要ならブレークポイントを
+設定できる。クラッシュを再現する。WinDbg はクラッシュした場所でソースファイル
+を開くはずである。View メニューを使って、コールスタック、ローカル変数、ウォッ
+チウィンドウなどを調べられる。
 
-事後分析デバッガとして WinDbg を使っている場合、WinDbg から Vim のプロセスにア
-タッチする必要はない。Vim をクラッシュさせるだけで WinDbg が自動的に起動する。
-上述のように、シンボルファイルパスとソースファイルパスを設定する。
+WinDbg がポストモーテムデバッガである場合は、Vim のプロセスに WinDbg をアタッ
+チする必要はない。単にクラッシュを再現すれば、WinDbg が自動的に起動する。上と
+同様に、Symbol File Path および Source File Path を設定する。
 
-minidump を保存するには、WinDbg コマンドラインで次のコマンドを入力する: >
+ミニダンプを保存するには、WinDbg のコマンドラインで以下を入力する: >
         .dump vim.dmp
 <
 							*debug-minidump*
-3.4 Minidump を開く ~
+3.4 ミニダンプを開く ~
 
-Visual Studio か WinDbg を使って minidump を開くことができる。
+ミニダンプファイルがある場合は、それを Visual Studio または WinDbg で開ける。
 
-Visual Studio 2005 の場合: メニューから「ファイル->開く->プロジェクト/ソリュー
-ション」選択し、.dmp ファイルを開く。F5 キーを押してデバッガを起動する。
-|debug-vs2005| の指示に従って Symbol File Path を設定する。
+Visual Studio 2005 では: File メニューで Open を選択し、次に Project/Solution
+を選択する。.dmp ファイルに移動し、それを開く。ここで F5 を押してデバッガを起
+動する。Symbol File Path を設定するには、|debug-vs2005| の手順に従う。
 
-WinDbg の場合: メニューから「File->Open Crash Dump」を選択する。|debug-windbg|
-の指示に従って Symbol File Path を設定する。
+WinDbg では: File メニューで Open Crash Dump を選択する。Symbol File Path を設
+定するには、|debug-windbg| の手順に従う。
 
 							*get-ms-debuggers*
-3.5 Microsoft デバッグツールの入手方法 ~
+3.5 Microsoft のデバッグツールの入手 ~
 
-Windows 用のデバッグツールは次の場所からダウンロードできる
+Debugging Tools for Windows (WinDbg を含む) は以下からダウンロードできる
     https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools
-これには WinDbg デバッガが含まれている。
+これには WinDbg デバッガが含まれる。
 
-Visual C++ 2005 Express Edition は次の場所から無料でダウンロードできる。
+Visual C++ 2005 Express Edition は以下から無料でダウンロードできる:
     https://visualstudio.microsoft.com/
 
 =========================================================================
