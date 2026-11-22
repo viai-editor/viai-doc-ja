@@ -5,7 +5,7 @@
 				+====================+
 
 Author:  Charles E. Campbell  <NcampObell@SdrPchip.AorgM-NOSPAM>
-	  (まずメールアドレスから NOSPAM を削除する)
+	  (まず Campbell のメールアドレスから NOSPAM を削除すること)
 Copyright: Copyright (C) 2005-2015 Charles E Campbell	 *zip-copyright*
 	The VIM LICENSE (see |copyright|) applies to the files in this
 	package, including zipPlugin.vim, zip.vim, and pi_zip.vim.  except use
@@ -21,103 +21,104 @@ Copyright: Copyright (C) 2005-2015 Charles E Campbell	 *zip-copyright*
 1. 目次							*zip* *zip-contents*
    1. 目次....................................................|zip-contents|
    2. 使い方..................................................|zip-usage|
-   3. zip以外の拡張子.........................................|zip-extension|
-   4. 開発履歴................................................|zip-history|
+   3. 追加の拡張子............................................|zip-extension|
+   4. 履歴....................................................|zip-history|
 
 ==============================================================================
 2. 使い方						*zip-usage* *zip-manual*
 
-   *.zip ファイルを編集する場合、このプラグインは内容ページの表示処理を行う。
-   編集するファイルを選択するには、カーソルを目的のファイルの上に移動して、
-   <return> キーを押す。編集後、ファイルに書き込むこともできる。現在、このプラ
-   グインを使用して zip アーカイブに新しいファイルを作成することはできない。
+   *.zip ファイルを編集すると、このプラグインが内容ページの表示を処理する。編
+   集するファイルは、カーソルをそのファイルの上に移動してから <return> キーを
+   押して選ぶ。編集した後、そのファイルに書き込むこともできる。現在、このプラ
+   グインで zip アーカイブの中に新しいファイルを作ることはできない。
 
-   zip プラグインは、一般的なパストラバーサル攻撃のパターンを検出しようとする
-   が、すべてのケースを検出できるとは限らない。信頼できない入力データを使用す
-   る場合は、このプラグインの使用に十分注意すること。
+   zip プラグインは、よくあるパストラバーサル攻撃のパターンをいくつか検出しよ
+   うとするが、すべての場合を捕捉できるとは限らない。信頼できない入力に対して
+   このプラグインを使うときは、十分に注意すること。
 
    コマンド~
 								*zip-x*
-   x : カーソル上にある一覧のファイルを解凍する
+   x : カーソルが一覧のファイルの上にあるとき、そのファイルを展開する
 
    オプション~
 
 							*g:zip_nomax*
 
-   この変数が存在し、かつ真である場合、ファイルウィンドウは開かれたときに自動
-   的に最大化されない。
+   この変数が存在し真である場合、ファイルウィンドウは開いたときに自動的に最大
+   化されない。
 
 							*g:zip_unzipcmd*
-   これらのオプションを使用して、"unzip" の役割を果たすプログラムと、必要な引
-   数スイッチを指定する。
-   これはブラウジングに使用される。デフォルトでは: >
+   これらのオプションを使って、"unzip" の役目を果たすプログラム、および必要な
+   引数スイッチを指定する。
+   これはブラウズのときに使われる。デフォルト: >
 	let g:zip_unzipcmd= "unzip"
 	let g:zip_unzipcmd_browseopt= "-Z1"
 	let g:zip_unzipcmd_readopt= "-p"
 <
-   Note: オプションの終わりを示すために、g:zip_unzipcmd_browseopt および
-   g:zip_unzipcmd_readopt の設定の後に `--` が付加される。
+   Note: オプションの終わりを示すため、g:zip_unzipcmd_browseopt および
+   g:zip_unzipcmd_readopt の設定の後に `--` が付け加えられる。
 
 							*g:zip_zipcmd*
-   これらのオプションを使用して、"zip" の役割を果たすプログラムと、必要な引数
-   スイッチを指定する。
-   これは、すでに zip ファイル内にあるファイルの書き込み (更新) に使用される。
-   デフォルトでは: >
+   これらのオプションを使って、"zip" の役目を果たすプログラム、および必要な引
+   数スイッチを指定する。
+   これは、すでに zip ファイルの中にあるファイルを書き込む (更新する) ときに使
+   われる。デフォルト: >
 	let g:zip_zipcmd= "zip"
 	let g:zip_zipcmd_deleteopt= "-d"
 	let g:zip_zipcmd_updateopt= "-u"
 <
 							*g:zip_extractcmd*
-   このオプションは、zip アーカイブからファイルを抽出する為に使用するプログラ
-   ム（および必要なオプション）を指定する。デフォルトでは, >
+   このオプションは、zip アーカイブからファイルを展開するのに使うプログラム
+   (および必要なオプション) を指定する。デフォルト: >
 	let g:zip_extractcmd= g:zip_unzipcmd
 	let g:zip_extractcmd_extractopt= "-o"
 <
 							*g:zip_exec*
-   セキュリティ上の理由から、バッファを開いた時に Vim が実行可能ファイルを自動
-   的に実行しないようにすることができる。このオプション (デフォルト: "1") を
-   "0" に設定すると、"unzip" コマンドの実行を防ぐことができる: >
+   セキュリティ上の理由から、バッファを開いたときに Vim が実行可能ファイルを自
+   動的に実行するのを防ぐことができる。このオプション (デフォルト: "1") を "0"
+   に設定すると、"unzip" コマンドの実行を防ぐことができる: >
 	let g:zip_exec=0
 <
-   PowerShell へのフォールバック~
+   POWERSHELL へのフォールバック~
 
 							*g:zip_pwsh*
-   このプラグインは、まず (より高機能な) GNU zip/unzip コマンドの使用を試みる。
-   これらのコマンドが使用できない、または失敗し、かつユーザーが PowerShell を
-   使用している場合、プラグインは PowerShell のコマンドレットに切り替える。
-   PowerShell のコマンドレットには制限があり、zip アーカイブ内のサブディレクト
-   リにあるファイルの書き込みや展開はできない。しかし、別途 unzip のバイナリを
-   インストールする必要がないという利点がある。"pwsh" と "powershell" のどちら
-   を使用するかは 'shell' オプションの設定または `g:zip_pwsh` の設定に基づいて
-   決定される。両方が使用可能な場合、このプラグインは pwsh を優先する。
-   "g:zip_pwsh" のデフォルト値は空文字列であり、この場合 'shell' オプションの
-   設定は上書きされない。MS-Windows ではデフォルトの 'shell' が "cmd.exe" であ
-   るため、この機能はデフォルトでは有効にならない。例: >
+   このプラグインは、まず (より高機能な) GNU の zip/unzip コマンドを使おうとす
+   る。これらのコマンドが使えないか、または失敗し、ユーザーが PowerShell を使っ
+   ている場合は、プラグインは PowerShell のコマンドレットにフォールバックする。
+   PowerShell のコマンドレットには制限があり、zip アーカイブのサブディレクトリ
+   の中のファイルの書き込みまたは展開はできない。しかし利点は、別に unzip のバ
+   イナリをインストールする必要がないことである。"pwsh" または "powershell" の
+   どちらを選ぶかについて 'shell' オプションが確認される。または `g:zip_pwsh`
+   を設定する。両方が使える場合、このプラグインは pwsh を優先する。
+   "g:zip_pwsh" のデフォルト値は空文字列で、これは 'shell' オプションの設定を
+   上書きしない。MS-Windows ではデフォルトの 'shell' が "cmd.exe" なので、この
+   機能はデフォルトでは有効にならない。例: >
 	let g:zip_pwsh='powershell'
 <
-   読み込みの無効化~
+   読み込みの防止~
 
-   何らかの理由で vim を使用して zip ファイルを検査したくない場合は、次の 2 つ
-   の変数を <.vimrc> に追加して、zip プラグインが読み込まれないようにすること
-   ができる: >
+   何らかの理由で zip されたファイルを調べるのに vim を使いたくない場合は、以
+   下の 2 つの変数を <.vimrc> に入れると、zip プラグインが読み込まれるのを防ぐ
+   ことができる: >
 
 	let g:loaded_zipPlugin= 1
 	let g:loaded_zip      = 1
 <
 
 ==============================================================================
-3. zip 以外の拡張子						*zip-extension*
+3. 追加の拡張子							*zip-extension*
 
-   zip ファイルを zip 以外の拡張子 (.jar や .xpi など) で生成するアーカイバが
-   あるようだ。そのようなファイルを扱いたい場合は、<.vimrc> ファイルに以下の
-   行を追加する: >
+   .zip の拡張子を使わない zip ファイルを生成するアーカイバーがたくさんあるよ
+   うだ (.jar、.xpi など)。このようなファイルを扱うには、<.vimrc> ファイルに 1
+   行入れる: >
 
 	au BufReadCmd *.jar,*.xpi call zip#Browse(expand("<amatch>"))
 <
-   この行に拡張子を追加していけば対応する拡張子を増やすことができる。
+   この行を拡張して、zip ファイルとして扱うべき拡張子を追加することは簡単にで
+   きる。
 
-   代わりに .vimrc で *g:zipPlugin_ext* を使って変更する方法もある。現時点
-   (2026年5月現在) は以下が含まれる: >
+   または、.vimrc で *g:zipPlugin_ext* を変更してもよい。
+   現在 (2026年5月の時点で)、これが保持しているもの: >
 
         let g:zipPlugin_ext='*.aar,*.apk,*.cbz,*.celzip,*.crtx,*.docm,*.docx,
        \ *.dotm,*.dotx,*.ear,*.epub,*.gcsx,*.glox,*.gqsx,*.ja,*.jar,*.kmz,
@@ -127,7 +128,7 @@ Copyright: Copyright (C) 2005-2015 Charles E Campbell	 *zip-copyright*
        \ *.wsz, *.xap,*.xlam,*.xlsb,*.xlsm,*.xlsx,*.xltm,*.xltx,*.xpi,*.zip'
 
 ==============================================================================
-4. 開発履歴							*zip-history* {{{1
+4. 履歴								*zip-history* {{{1
    unreleased:
        Jul 25, 2026 * support both Windows PowerShell 5 and pwsh 7+
        Sep 19, 2025 * support PowerShell Core
@@ -160,7 +161,6 @@ Copyright: Copyright (C) 2005-2015 Charles E Campbell	 *zip-copyright*
    v27 Jul 02, 2013 * sanity check: zipfile must have "PK" as its first
 		      two bytes.
 		    * modified to allow zipfile: entries in quickfix lists
-
    v26 Nov 15, 2012 * (Jason Spiro) provided a lot of new extensions that
 		      are synonyms for .zip
    v25 Jun 27, 2011 * using keepj with unzip -Z
