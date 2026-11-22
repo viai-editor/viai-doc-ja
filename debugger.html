@@ -9,124 +9,125 @@ helpname: 'debugger'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
-デバッガ支援機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debugger.html#debugger-support" name="debugger-support">debugger-support</a><br>
+デバッガサポート機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debugger.html#debugger-support" name="debugger-support">debugger-support</a><br>
 <br>
-これらの機能はデバッガ、統合プログラミング環境(IPE)、統合開発環境(IDE)との統合<br>
-のためのものである。Vim の端末ウィンドウ内で動作するデバッガについては<br>
-<a class="Identifier" href="terminal.html#terminal-debugger">terminal-debugger</a>&nbsp;を参照。<br>
+これらの機能は、デバッガ、または統合プログラミング環境 (IPE) または統合開発環<br>
+境 (IDE) と統合するためのものである。Vim の端末ウィンドウで動くデバッガについ<br>
+ては&nbsp;<a class="Identifier" href="terminal.html#terminal-debugger">terminal-debugger</a>&nbsp;を参照。<br>
 <br>
 1. デバッガ機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="debugger.html#debugger-features">debugger-features</a><br>
-2. Vimのコンパイルオプション&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="debugger.html#debugger-compilation">debugger-compilation</a><br>
-<br>
+2. Vim のコンパイルオプション&nbsp;&nbsp;&nbsp;<a class="Identifier" href="debugger.html#debugger-compilation">debugger-compilation</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 1. デバッガ機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debugger.html#debugger-features" name="debugger-features">debugger-features</a><br>
 <br>
 以下の機能が利用できる:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;もう1つのコマンド入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="debugger.html#alt-input">alt-input</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;代替コマンド入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="debugger.html#alt-input">alt-input</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デバッグ目印&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="debugger.html#debug-signs">debug-signs</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デバッグソースコード強調&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="debugger.html#debug-highlight">debug-highlight</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デバッグソースハイライト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="debugger.html#debug-highlight">debug-highlight</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;メッセージフッター&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="debugger.html#gui-footer">gui-footer</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バルーンウィンドウ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="debugger.html#balloon-eval">balloon-eval</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バルーン評価&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="debugger.html#balloon-eval">balloon-eval</a><br>
 <br>
-これらの機能はMotifバージョンのgvimで使うために特別に追加された。しかしなが<br>
-ら、<a class="Identifier" href="debugger.html#alt-input">alt-input</a>&nbsp;と&nbsp;<a class="Identifier" href="debugger.html#debug-highlight">debug-highlight</a>はvimとgvimでも使用できるように書かれてい<br>
-る。その他の機能は非GUIバージョンのVimでもわずかな変更で使うことができる。だ<br>
-が、著者はそのような変更をしていないし、Motif GUIではないバージョンのVimではテ<br>
-ストしていない。<br>
+これらの機能は、特に Motif 版の gvim で使うために追加された。ただし、<br>
+<a class="Identifier" href="debugger.html#alt-input">alt-input</a>&nbsp;および&nbsp;<a class="Identifier" href="debugger.html#debug-highlight">debug-highlight</a>&nbsp;は vim および gvim の両方で使えるように書<br>
+かれた。他の機能のいくつかは、少し修正すれば GUI でない vim でも使えるだろう。<br>
+ただし、私はそれを行わなかったし、vim または Motif 以外の GUI 版向けにビルドし<br>
+た場合の信頼性もテストしなかった。<br>
 <br>
 <br>
-1.1 もう1つのコマンド入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debugger.html#alt-input" name="alt-input">alt-input</a><br>
+1.1 代替コマンド入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debugger.html#alt-input" name="alt-input">alt-input</a><br>
 <br>
-Vimがデバッガと協調動作するには、最低限デバッガや外部ツールからの入力のための<br>
-接続が必要である。多くの場合は出力のための接続も必要であるがこれは絶対に必要と<br>
-いうわけではない。<br>
+Vim がデバッガと連携するには、少なくともデバッガまたは外部ツールとの入力接続が<br>
+なければならない。多くの場合は出力接続もあるが、これは絶対に必要というわけでは<br>
+ない。<br>
 <br>
-外部デバッガがVimにコマンドを送ることが入力接続の目的である。デバッガから送ら<br>
-れるコマンドは現在のデバッグ環境や状態を表示するために充分である必要がある。<br>
+入力接続の目的は、外部のデバッガが Vim にコマンドを送れるようにすることである。<br>
+デバッガが送るコマンドは、現在のデバッグ環境および状態を表示するのに十分な制御<br>
+をデバッガに与えるべきである。<br>
 <br>
-現在の実装はXツールキット(X Toolkit)の発送ループとXtAddInput()ファンクション<br>
-コールを基本にしている。<br>
+現在の実装は、X Toolkit のディスパッチループおよび XtAddInput() 関数の呼び出し<br>
+に基づいている。<br>
 <br>
 <br>
 1.2 デバッグ目印&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debugger.html#debug-signs" name="debug-signs">debug-signs</a><br>
 <br>
-多くのデバッガは小さな目印を表示したりその行を色で強調することで特定の行に印を<br>
-付ける。デバッガは<a class="Identifier" href="sign.html#:sign">:sign</a>コマンドを使って(Vimに)グラフィカルな目印を設定させる<br>
-ことができる。この機能の使われ方の一例は、デバッグしているプログラムの実行位置<br>
-(プログラムカウンタ:PC)を表示するのにデバッガが表示する矢印に見る事ができる。<br>
-別の例ではブレークポイントを示す小さな停止記号がある。これらの視覚的な強調は<br>
-ユーザーがデバッガ状態の経過を追う助けになる。<br>
+多くのデバッガは、行に小さな目印または色ハイライトを置いて、特定の行に印を付け<br>
+る。<a class="Identifier" href="sign.html#:sign">:sign</a>&nbsp;コマンドを使うと、デバッガがこのグラフィカルな印を設定できる。この<br>
+機能が使われる例としては、デバッグ中のプログラムのプログラムカウンタ (PC) を表<br>
+す矢印を表示するデバッガがある。別の例としては、ブレークポイントのある行の小さ<br>
+な停止目印がある。これらの目に見えるハイライトにより、ユーザーはデバッガの状態<br>
+の特定の部分を追跡できる。<br>
 <br>
-この機能はデバッガ以外の用途にも使用できる。IPEはビルドエラー、検索したテキス<br>
-ト、その他を強調するのに何かしらの目印を使用する。この機能は印がより高い視認性<br>
-を確保するために<a class="Identifier" href="debugger.html#debug-highlight">debug-highlight</a>と一緒に利用できる。<br>
+この機能はデバッガ以外でも使える。IPE は、ビルドエラー、検索したテキスト、また<br>
+はその他のものをハイライトするために目印を使える。目印機能は、<br>
+<a class="Identifier" href="debugger.html#debug-highlight">debug-highlight</a>&nbsp;と一緒に使って、印が確実によく目立つようにすることもできる。<br>
 <br>
-デバッグ目印は<a class="Identifier" href="sign.html#:sign">:sign</a>コマンドを使って定義、設置する。<br>
+デバッグ目印は&nbsp;<a class="Identifier" href="sign.html#:sign">:sign</a>&nbsp;コマンドを使って定義し、配置する。<br>
 <br>
 <br>
-1.3 デバッグソースコード強調&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debugger.html#debug-highlight" name="debug-highlight">debug-highlight</a><br>
+1.3 デバッグソースハイライト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debugger.html#debug-highlight" name="debug-highlight">debug-highlight</a><br>
 <br>
-この機能により行に優れた強調を施すことができる。これは特定の行を目立たせること<br>
-を目的としている。この強調はvimとgvim両方で動作させることができ、gvimに限り多<br>
-くの場合デバッグ目印と一緒に使うことができる。唯一の例外はSun Microsystemの<br>
-dttermである。dttermには目印を表示するためのスペースがある。<span class="Special">{訳注: なので、こ</span><br>
-<span class="Special">れを利用する際はコンソールvimでも目印を利用可能となる}</span><br>
+この機能を使うと、行に優先的なハイライトを付けられる。このハイライトは、特定の<br>
+行を目立たせるためのものである。デバッグ目印はほとんどの場合 gvim に限られるの<br>
+に対して、このハイライトは vim および gvim の両方で動作するようにできる。これ<br>
+の唯一の例外は Sun Microsystem の dtterm である。Sun の dtterm には、目印を表<br>
+示するための &quot;sign gutter&quot; がある。<br>
 <br>
 <br>
 1.4 メッセージフッター&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debugger.html#gui-footer" name="gui-footer">gui-footer</a><br>
 <br>
-メッセージフッターはデバッガやIPEからのメッセージを表示するのに使用する。また<br>
-メニューやツールバーのtips(一言ヒント)を表示するのにも使用できる。GUIウィンド<br>
-ウの下のフッターエリアは、Exコマンドを表示する行のさらに下に位置する。<br>
+メッセージフッターは、デバッガまたは IPE からのメッセージを表示するのに使える。<br>
+メニューおよびツールバーのチップを表示するのにも使える。フッター領域は GUI ウィ<br>
+ンドウの最下部、コロンコマンドを表示するのに使う行の下にある。<br>
 <br>
-フッターエリアの表示・非表示は&nbsp;<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;の 'F' フラグで制御する。<br>
+フッターの表示は&nbsp;<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;の文字 'F' で制御される。<br>
 <br>
 <br>
-1.5 バルーンウィンドウ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debugger.html#balloon-eval" name="balloon-eval">balloon-eval</a><br>
+1.5 バルーン評価&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debugger.html#balloon-eval" name="balloon-eval">balloon-eval</a><br>
 <br>
-この機能はデバッガや外部ツールに、マウスが指す位置に応じた動的な情報を表示する<br>
-機能を提供する。この機能は「Sun's Visual WorkShop」のデバッガに式の評価結果を<br>
-表示させることを目的とした。しかしながら、その他の情報を表示するのに利用できる<br>
-よう、可能な限り一般的な様式で実現されている。ただし、機能は制限されている。高<br>
-度なポップアップについては&nbsp;<a class="Identifier" href="popup.html#popup-window">popup-window</a>&nbsp;を参照。<br>
+この機能を使うと、デバッガ、またはその他の外部ツールが、マウスが指している場所<br>
+に基づいた動的な情報を表示できる。この機能の目的は、Sun の Visual WorkShop デ<br>
+バッガが式評価を表示できるようにすることだった。ただし、この機能はできるだけ汎<br>
+用的な方法で実装されており、他の情報の表示にも使える。ただ、機能は限られてい<br>
+る。高度なポップアップについては&nbsp;<a class="Identifier" href="popup.html#popup-window">popup-window</a>&nbsp;を参照。<br>
 <br>
-バルーンウィンドウを使うもう1つの方法は、オプション&nbsp;<a class="Type" href="options.html#'balloonexpr'">'balloonexpr'</a>&nbsp;を使うことで<br>
-ある。これは完全にユーザーが定義できる。<br>
+バルーンを使うもう 1 つの方法は&nbsp;<a class="Type" href="options.html#'balloonexpr'">'balloonexpr'</a>&nbsp;オプションである。これは完全に<br>
+ユーザーが定義できる。<br>
 <br>
-バルーンウィンドウには幾つかの設定可能なパラメーターがある。Motifではフォント<br>
-リストと色はXリソース経由で設定される(XmNballoonEvalFontList,<br>
-XmNballoonEvalBackground, XmNballoonEvalForeground)。<br>
-オプション&nbsp;<a class="Type" href="options.html#'balloondelay'">'balloondelay'</a>&nbsp;はバルーンを表示するまでの遅延時間を設定する。<br>
-この機能を有効にするにはオプション&nbsp;<a class="Type" href="options.html#'ballooneval'">'ballooneval'</a>&nbsp;や&nbsp;<a class="Type" href="options.html#'balloonevalterm'">'balloonevalterm'</a>&nbsp;をオンに<br>
-する必要がある。<br>
+バルーン評価には、設定できるパラメータもある。Motif では、フォントリストおよび<br>
+色を X リソース (XmNballoonEvalFontList、XmNballoonEvalBackground、および<br>
+XmNballoonEvalForeground) で設定できる。<br>
+<a class="Type" href="options.html#'balloondelay'">'balloondelay'</a>&nbsp;オプションは、バルーンを表示しようとするまでの遅延を設定する。<br>
+有効にするには、<a class="Type" href="options.html#'ballooneval'">'ballooneval'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'balloonevalterm'">'balloonevalterm'</a>&nbsp;の一方または両方のオプ<br>
+ションを設定する必要がある。<br>
 <br>
-バルーンウィンドウは GUI の場合&nbsp;<a class="Identifier" href="various.html#+balloon_eval">+balloon_eval</a>&nbsp;機能付きでコンパイルした時のみ<br>
-利用できる。端末の場合&nbsp;<a class="Identifier" href="various.html#+balloon_eval_term">+balloon_eval_term</a>&nbsp;機能が必要である。<br>
+バルーン評価は、<a class="Identifier" href="various.html#+balloon_eval">+balloon_eval</a>&nbsp;機能付きでコンパイルされた場合に、GUI でのみ利<br>
+用できる。端末では&nbsp;&nbsp;<a class="Identifier" href="various.html#+balloon_eval_term">+balloon_eval_term</a>&nbsp;機能が関係する。<br>
 <br>
-バルーンウィンドウ関数はツールバーのツールチップを表示する際にも利用されてい<br>
-る。これにはオプション&nbsp;<a class="Type" href="options.html#'ballooneval'">'ballooneval'</a>&nbsp;を設定する必要はない。しかしその他の設定<br>
-はこのツールチップにも適用される。<br>
+バルーン評価の関数は、ツールバーのツールチップを表示するのにも使われる。このた<br>
+めには&nbsp;<a class="Type" href="options.html#'ballooneval'">'ballooneval'</a>&nbsp;オプションを設定する必要はない。ただし、他の設定は適用さ<br>
+れる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-2. Vimのコンパイルオプション&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debugger.html#debugger-compilation" name="debugger-compilation">debugger-compilation</a><br>
+2. Vim のコンパイルオプション&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debugger.html#debugger-compilation" name="debugger-compilation">debugger-compilation</a><br>
 <br>
-デバッガ機能はSunの「Visual WorkShop Integrated Programming Environment」(ipe)<br>
-と一緒に使うために加えられた。しかし、それらの機能は他のデバッガも一部もしくは<br>
-全部を使うことができるように、可能な限り一般的な様式で実現されている。<br>
+デバッガ機能は、Sun の Visual WorkShop 統合プログラミング環境 (ipe) で使うため<br>
+に追加された。ただし、他のデバッガとの統合でもこれらの機能を使えるように、でき<br>
+るだけ汎用的な方法で作られた。<br>
 <br>
-以下のコンパイル時のプリプロセッサー変数で機能の有無効を制御する:<br>
+以下のコンパイル時のプリプロセッサ変数が、機能を制御する:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;もう1つのコマンド入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ALT_X_INPUT<br>
-&nbsp;&nbsp;&nbsp;&nbsp;デバッグ目印&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FEAT_SIGNS<br>
-&nbsp;&nbsp;&nbsp;&nbsp;デバッグソースコード強調&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FEAT_SIGNS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;代替コマンド入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALT_X_INPUT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;デバッググリフ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FEAT_SIGNS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;デバッグハイライト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FEAT_SIGNS<br>
 &nbsp;&nbsp;&nbsp;&nbsp;メッセージフッター&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FEAT_FOOTER<br>
-&nbsp;&nbsp;&nbsp;&nbsp;バルーンウィンドウ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FEAT_BEVAL<br>
+&nbsp;&nbsp;&nbsp;&nbsp;バルーン評価&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FEAT_BEVAL<br>
 <br>
-Sun Visual WorkShop は既に存在しないため、この製品特有のサポートは削除された。<br>
+Sun Visual WorkShop に特化したサポートは、製品がもう存在しないので削除された。<br>
 <br>
-SunのNetBeansのサポートについては<a class="Identifier" href="netbeans.html#netbeans">netbeans</a>を参照。<br>
+Sun NetBeans のサポートについては&nbsp;<a class="Identifier" href="netbeans.html#netbeans">netbeans</a>&nbsp;を参照。<br>
+<br>
 <br>
 &nbsp;vim:tw=78:sw=4:ts=8:noet:ft=help:norl:<br>
 </div>
