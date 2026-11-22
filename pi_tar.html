@@ -26,32 +26,31 @@ Copyright 2005-2017:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp; 1. 目次......................................................<a class="Identifier" href="pi_tar.html#tar-contents">tar-contents</a><br>
 &nbsp;&nbsp; 2. 使い方....................................................<a class="Identifier" href="pi_tar.html#tar-usage">tar-usage</a><br>
 &nbsp;&nbsp; 3. オプション................................................<a class="Identifier" href="pi_tar.html#tar-options">tar-options</a><br>
-&nbsp;&nbsp; 4. 開発履歴..................................................<a class="Identifier" href="pi_tar.html#tar-history">tar-history</a><br>
+&nbsp;&nbsp; 4. 履歴......................................................<a class="Identifier" href="pi_tar.html#tar-history">tar-history</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 2. 使い方&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_tar.html#tar-usage" name="tar-usage">tar-usage</a>&nbsp;<a class="Constant" href="pi_tar.html#tar-manual" name="tar-manual">tar-manual</a><br>
 <br>
-&nbsp;&nbsp; *.tar ファイルを編集する場合、このプラグインは内容ページの表示処理を行う。<br>
-&nbsp;&nbsp; 編集するファイルを選択するには、カーソルを目的のファイルの上に移動して、<br>
-&nbsp;&nbsp;&nbsp;<span class="Special">&lt;return&gt;</span>&nbsp;キーを押す。編集後、ファイルに書き込むこともできる。現在、このプラ<br>
-&nbsp;&nbsp; グインを使用して tar アーカイブに新しいファイルを作成することはできない。<br>
+&nbsp;&nbsp; *.tar ファイルを編集すると、このプラグインが内容ページの表示を処理する。目<br>
+&nbsp;&nbsp; 的のファイルの上にカーソルを移動して編集するファイルを選択し、<span class="Special">&lt;return&gt;</span>&nbsp;キー<br>
+&nbsp;&nbsp; を押す。編集後は、そのファイルに書き込むこともできる。現在のところ、このプ<br>
+&nbsp;&nbsp; ラグインで tar アーカイブの中に新しいファイルを作ることはできない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_tar.html#:Vimuntar" name=":Vimuntar">:Vimuntar</a><br>
 &nbsp;&nbsp;&nbsp;<span class="PreProc">VIMUNTAR</span><br>
 <br>
 &nbsp;&nbsp; :Vimuntar&nbsp;<span class="Special">[vimhome]</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このコマンドは&nbsp;<span class="Special">[vimhome]</span>&nbsp;が指定されていない場合、必要に応じて<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の最初の書き込み可能なディレクトリを使用し、tarball を<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.vim または vimfiles ディレクトリにコピーする。それ以外の場合は、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[vimhome]</span>&nbsp;引数を使用して代わりにそのディレクトリを指定できる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このコマンドは、必要なら、tarball を .vim または vimfiles ディレクトリ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;にコピーする。<span class="Special">[vimhome]</span>&nbsp;が指定されていない場合は、<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の中の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;書き込み可能な最初のディレクトリを使う。そうでなければ、<span class="Special">[vimhome]</span>&nbsp;引数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;で、代わりにそのディレクトリをユーザーが指定できる。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コピーは&nbsp;<a class="Constant" href="pi_tar.html#g:tar_copycmd" name="g:tar_copycmd">g:tar_copycmd</a>&nbsp;に指定されたコマンドを使用して行われる。以下<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の通り<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コピーは&nbsp;<a class="Constant" href="pi_tar.html#g:tar_copycmd" name="g:tar_copycmd">g:tar_copycmd</a>&nbsp;の中のコマンドを使って行われる。それは<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cp&nbsp;&nbsp; for cygwin, unix, macunix<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copy for windows (32, 95, 64, 16)</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 抽出は&nbsp;<a class="Constant" href="pi_tar.html#g:tar_extractcmd" name="g:tar_extractcmd">g:tar_extractcmd</a>&nbsp;で指定されたコマンドで行われる。デフォルトは<br>
-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 展開は&nbsp;<a class="Constant" href="pi_tar.html#g:tar_extractcmd" name="g:tar_extractcmd">g:tar_extractcmd</a>&nbsp;で指定されたコマンドで行われる。それはデフォ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルトでは<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;tar -xf&quot;</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_tar.html#:TarDiff" name=":TarDiff">:TarDiff</a><br>
@@ -59,21 +58,21 @@ Copyright 2005-2017:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <br>
 &nbsp;&nbsp; :TarDiff&nbsp;<span class="Special">[filename]</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このコマンドは tarball の中のファイルと、システム上の関連付けられたファ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;イルの差分を表示する。システム上のファイルを探すため、そのファイルに関<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;連する tarball 内のファイルのパスが使われる。カレントディレクトリがそ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のパスと整合しなかった場合は、:TarDiff コマンドは関連付けられたファイ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルを見つけることができずに失敗する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このコマンドは、ファイルの tarball 版と、システム上の関連するファイル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;との差分を表示しようとする。システム上のそのファイルを見つけるために、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクリプトは tarball の中に書かれたファイルに関連付けられたパスを使う。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントディレクトリがそのパスにとって正しくない場合、:TarDiff は関連<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;するファイルを見つけられない。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[filename]</span>&nbsp;が指定された場合は、関連付けられたファイルとしてそのファイ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ル名 (とパス) が使われる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[filename]</span>&nbsp;が与えられた場合は、そのファイル名 (およびパス) が関連する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルを指定するために使われる。<br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;<span class="PreProc">読み込みの無効化</span><br>
+&nbsp;&nbsp;&nbsp;<span class="PreProc">読み込みの防止</span><br>
 <br>
-&nbsp;&nbsp; 何らかの理由で vim を使用して tar ファイルを検査したくない場合は、次の 2 つ<br>
-&nbsp;&nbsp; の変数を &lt;.vimrc&gt; に追加して、tar プラグインが読み込まれないようにすること<br>
-&nbsp;&nbsp; ができる:<br>
+&nbsp;&nbsp; 何らかの理由で、tar されたファイルを調べるのに vim を使いたくない場合は、以<br>
+&nbsp;&nbsp; 下の 2 つの変数を &lt;.vimrc&gt; に入れると、tar プラグインが読み込まれないように<br>
+&nbsp;&nbsp; できる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:loaded_tarPlugin= 1<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:loaded_tar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1</div>
@@ -81,28 +80,28 @@ Copyright 2005-2017:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_tar.html#tar-mappings" name="tar-mappings">tar-mappings</a><br>
 &nbsp;&nbsp;&nbsp;<span class="PreProc">マッピング</span><br>
 <br>
-&nbsp;&nbsp; tar バッファでは、以下の (バッファローカル) マッピングが使用できる:<br>
+&nbsp;&nbsp; tar バッファでは、以下の (バッファローカルな) マッピングが使える:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;CR&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択したファイルを編集用に開くと、変更内容がアーカイブ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;CR&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択したファイルを編集するために開く。変更はアーカイブ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に書き戻される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;LeftMouse&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;CR&gt;</span>&nbsp;と同じ。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 選択したファイルを抽出する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;LeftMouse&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;CR&gt;</span>&nbsp;と同じ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 選択したファイルを展開する。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 3. オプション&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_tar.html#tar-options" name="tar-options">tar-options</a><br>
 <br>
-&nbsp;&nbsp; これらのオプション変数は、通常は &lt;.vimrc&gt; ファイル内で変更できる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルト<br>
-&nbsp;&nbsp; 変数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 値&nbsp;&nbsp;&nbsp;&nbsp;説明<br>
-&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_tar.html#g:tar_browseoptions" name="g:tar_browseoptions">g:tar_browseoptions</a>&nbsp;&nbsp;&nbsp;&nbsp;&quot;Ptf&quot;&nbsp;&nbsp; ファイル一覧を取得するときに使われる<br>
-&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_tar.html#g:tar_readoptions" name="g:tar_readoptions">g:tar_readoptions</a>&nbsp;&nbsp;&nbsp;&nbsp;&quot;OPxf&quot;&nbsp;&nbsp;tar ファイルから抽出するときに使われる<br>
+&nbsp;&nbsp; これらのオプションは変数であり、通常は &lt;.vimrc&gt; ファイルで変更できる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; デフォルト<br>
+&nbsp;&nbsp; 変数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 値&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;説明<br>
+&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_tar.html#g:tar_browseoptions" name="g:tar_browseoptions">g:tar_browseoptions</a>&nbsp;&nbsp;&nbsp;&nbsp;&quot;Ptf&quot;&nbsp;&nbsp; 内容の一覧を得るのに使われる<br>
+&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_tar.html#g:tar_readoptions" name="g:tar_readoptions">g:tar_readoptions</a>&nbsp;&nbsp;&nbsp;&nbsp;&quot;OPxf&quot;&nbsp;&nbsp;tarball からファイルを展開するのに使われる<br>
 &nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_tar.html#g:tar_cmd" name="g:tar_cmd">g:tar_cmd</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;tar&quot;&nbsp;&nbsp; tar プログラムの名前<br>
-&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_tar.html#g:tar_nomax" name="g:tar_nomax">g:tar_nomax</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp; true ならファイルウィンドウが最大化されない<br>
-&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_tar.html#g:tar_writeoptions" name="g:tar_writeoptions">g:tar_writeoptions</a>&nbsp;&nbsp; &quot;uf&quot;&nbsp;&nbsp;&nbsp;&nbsp;ファイルを更新/置換するときに使われる<br>
+&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_tar.html#g:tar_nomax" name="g:tar_nomax">g:tar_nomax</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp; 真なら、ファイルウィンドウが最大化されない<br>
+&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_tar.html#g:tar_writeoptions" name="g:tar_writeoptions">g:tar_writeoptions</a>&nbsp;&nbsp; &quot;uf&quot;&nbsp;&nbsp;&nbsp;&nbsp;ファイルを更新/置換するのに使われる<br>
 <br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-4. 開発履歴&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_tar.html#tar-history" name="tar-history">tar-history</a><br>
+4. 履歴&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_tar.html#tar-history" name="tar-history">tar-history</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unreleased:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apr 16, 2026&nbsp;&nbsp;&nbsp;&nbsp;* add missing g:tar_secure into tar#Extract<br>
