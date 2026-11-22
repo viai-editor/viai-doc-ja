@@ -5,17 +5,17 @@ helpname: 'ft_mp'
 <div id='vimCodeElement'>
 <a class="Constant" href="ft_mp.html" name="ft_mp.txt">ft_mp.txt</a>&nbsp;&nbsp;&nbsp;&nbsp; For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 May 04<br>
 <br>
-これは METAFONT および MetaPost ファイルタイププラグインのドキュメントである。<br>
-特に指定がない限り、以下で定義されているコマンド、設定、およびマッピングは、両<br>
+これは METAFONT および MetaPost のファイルタイププラグインのドキュメントであ<br>
+る。特に明記しない限り、以下で定義されるコマンド、設定、およびマッピングは、両<br>
 方のファイルタイプに等しく適用される。<br>
 <br>
-<span class="Todo">NOTE:</span>&nbsp;このプラグインは&nbsp;<a class="Identifier" href="various.html#+vim9script">+vim9script</a>&nbsp;が必要である。<br>
+<span class="Todo">NOTE:</span>&nbsp;このプラグインは&nbsp;<a class="Identifier" href="various.html#+vim9script">+vim9script</a>&nbsp;を必要とする。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<span class="Statement">内容</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#mp.vim" name="mp.vim">mp.vim</a>&nbsp;<a class="Constant" href="ft_mp.html#ft-metapost" name="ft-metapost">ft-metapost</a><br>
+<span class="Statement">目次</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#mp.vim" name="mp.vim">mp.vim</a>&nbsp;<a class="Constant" href="ft_mp.html#ft-metapost" name="ft-metapost">ft-metapost</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#mf.vim" name="mf.vim">mf.vim</a>&nbsp;<a class="Constant" href="ft_mp.html#ft-metafont" name="ft-metafont">ft-metafont</a><br>
 <br>
-1. 前書き&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="ft_mp.html#ft-metapost-intro">ft-metapost-intro</a><br>
+1. はじめに&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="ft_mp.html#ft-metapost-intro">ft-metapost-intro</a><br>
 2. コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="ft_mp.html#ft-metapost-commands">ft-metapost-commands</a><br>
 3. 設定&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="ft_mp.html#ft-metapost-settings">ft-metapost-settings</a><br>
 4. マッピング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="ft_mp.html#ft-metapost-mappings">ft-metapost-mappings</a><br>
@@ -23,24 +23,24 @@ helpname: 'ft_mp'
 <span class="PreProc">==============================================================================</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#ft-metapost-intro" name="ft-metapost-intro">ft-metapost-intro</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#ft-metafont-intro" name="ft-metafont-intro">ft-metafont-intro</a><br>
-<span class="PreProc">前書き</span><br>
-このファイルタイププラグインは、METAFONT および MetaPost 文書の編集のための、<br>
-構文の色付け、インデント、補完など幅広いサポートを提供する。<br>
+<span class="PreProc">はじめに</span><br>
+このファイルタイププラグインは、構文の色付け、インデント、および補完など、<br>
+METAFONT および MetaPost のドキュメントの編集のための広範なサポートを提供する。<br>
 <br>
-METAFONT および MetaPost コードのインデントルールの定義は、構文が非常に自由度<br>
-が高いため、トリッキーでやや主観的である。プラグインは、ほとんどの場合うまく機<br>
-能するいくつかのヒューリスティックを使用するが、特定のケースでは、手動で定義さ<br>
-れたインデントが&nbsp;<span class="Comment">gg=G</span>&nbsp;などのコマンドによって保持されるように、自動的なルール<br>
-をオーバーライドしたい場合がある。<br>
+METAFONT および MetaPost のコードのインデント規則を定義するのは難しく、やや主<br>
+観的である。構文がかなり自由だからである。プラグインは、ほとんどの場合にうまく<br>
+動作するいくつかの経験則を使うが、特定の場合には、自動の規則を上書きして、手動<br>
+で定義したインデントが&nbsp;<span class="Comment">gg=G</span>&nbsp;のようなコマンドで保たれるようにしたいかもしれな<br>
+い。<br>
 <br>
-これは、<span class="Comment">%&gt;</span>,&nbsp;<span class="Comment">%&lt;</span>,&nbsp;<span class="Comment">%=</span>&nbsp;または&nbsp;<span class="Comment">%!</span>&nbsp;を行に追加して、次行のインデントを明示的<br>
-に制御することで実現できる。<a class="Comment" href="change.html#<">&lt;</a>&nbsp;と&nbsp;<a class="Comment" href="change.html#>">&gt;</a>&nbsp;記号は何度も繰り返すことができる。例え<br>
-ば、<span class="Comment">%&gt;&gt;</span>&nbsp;は次行を 2 回インデントすることを意味する。もちろん、<span class="Comment">%&lt;</span>&nbsp;は次行をイ<br>
-ンデント解除することを意味し、<span class="Comment">%=</span>&nbsp;は次行のインデントを現在行のインデントと同<br>
-じに設定し、そして、<span class="Comment">%!</span>&nbsp;は次行のインデントが手動で設定されたものから変更され<br>
-ないことを意味する。<br>
+これは、行に&nbsp;<span class="Comment">%&gt;</span>、<span class="Comment">%&lt;</span>、<span class="Comment">%=</span>、または&nbsp;<span class="Comment">%!</span>&nbsp;を付け足して、次の行のインデントを<br>
+明示的に制御することで実現できる。<a class="Comment" href="change.html#<">&lt;</a>&nbsp;および&nbsp;<a class="Comment" href="change.html#>">&gt;</a>&nbsp;の記号は何回でも繰り返してよ<br>
+い: 例えば、<span class="Comment">%&gt;&gt;</span>&nbsp;は次の行を 2 回インデントする。もちろん、<span class="Comment">%&lt;</span>&nbsp;は次の行のイン<br>
+デントを戻すことを意味し、<span class="Comment">%=</span>&nbsp;は次の行のインデントを現在の行のインデントと同<br>
+じにし、<span class="Comment">%!</span>&nbsp;は次の行のインデントを、手動で設定されたものから変えないことを意<br>
+味する。<br>
 <br>
-例えば、これはシンプルなマクロのデフォルトのインデントである:<br>
+例えば、これは単純なマクロのデフォルトのインデントである:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def foo =<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;makepen(<br>
@@ -51,7 +51,7 @@ METAFONT および MetaPost コードのインデントルールの定義は、�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;withcolor black<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enddef</div>
 <br>
-特別なコメントを追加することで、インデントを任意に調整できる:<br>
+特別なコメントを付け足すと、インデントを任意に調整できる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def foo =<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;makepen(<br>
@@ -65,61 +65,59 @@ METAFONT および MetaPost コードのインデントルールの定義は、�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#ft-metapost-commands" name="ft-metapost-commands">ft-metapost-commands</a><br>
 <span class="PreProc">コマンド</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#:FixBeginfigs" name=":FixBeginfigs">:FixBeginfigs</a><br>
-カレントバッファの beginfig() ブロックの n 番目の図が番号 n になるようにリナン<br>
-バリングする。MetaPost のみ。<br>
+現在のバッファの beginfig() ブロックの番号を、n 番目の図が番号 n を持つように<br>
+振り直す。MetaPost のみ。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#ft-metapost-settings" name="ft-metapost-settings">ft-metapost-settings</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#ft-metafont-settings" name="ft-metafont-settings">ft-metafont-settings</a><br>
 <span class="PreProc">設定</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#'g:mf_other_macros'" name="'g:mf_other_macros'">'g:mf_other_macros'</a><br>
-cmbase や logo 等、他のいくつかの基本的なマクロ名をハイライトする。これは、<br>
-METAFONT バッファではデフォルトで 1 に設定され、MetaPost バッファではデフォル<br>
-トで 0 に設定される。<br>
+その他のいくつかの基本的なマクロ名、例えば cmbase、logo などのものをハイライト<br>
+する。これは METAFONT バッファではデフォルトで 1 に設定され、MetaPost バッファ<br>
+ではデフォルトで 0 に設定される。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#'g:mf_plain_macros'" name="'g:mf_plain_macros'">'g:mf_plain_macros'</a><br>
-plain.mf で定義されたキーワードをハイライトする。METAFONT バッファではデフォル<br>
-トで 1 に設定され、MetaPost バッファではデフォルトで 0 に設定される。<br>
+plain.mf で定義されたキーワードをハイライトする。これは METAFONT バッファでは<br>
+デフォルトで 1 に設定され、MetaPost バッファではデフォルトで 0 に設定される。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#'g:mf_plain_modes'" name="'g:mf_plain_modes'">'g:mf_plain_modes'</a><br>
-modes.mf で定義されたキーワードをハイライトする。METAFONT バッファではデフォル<br>
-トで 1 に設定され、MetaPost バッファではデフォルトで 0 に設定される。<br>
+modes.mf で定義されたキーワードをハイライトする。これは METAFONT バッファでは<br>
+デフォルトで 1 に設定され、MetaPost バッファではデフォルトで 0 に設定される。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#'g:mp_close_tag'" name="'g:mp_close_tag'">'g:mp_close_tag'</a><br>
-インデントされたブロックを終了する追加のキーワードを定義する。例えば、次のよう<br>
-に定義した場合:<br>
+インデントされたブロックを終わらせる追加のキーワードを定義する。例えば、定義す<br>
+ると:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:mp_close_tag = ['\&lt;endfoo\&gt;']</div>
 <br>
-<span class="Comment">endfoo</span>&nbsp;で始まるすべての行は、その前行と比較してインデントが解除される。<br>
+<span class="Comment">endfoo</span>&nbsp;で始まる行はすべて、その前の行と比べてインデントが戻される。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:mp_close_tag = []</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#'b:mp_metafun'" name="'b:mp_metafun'">'b:mp_metafun'</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#'g:mp_metafun'" name="'g:mp_metafun'">'g:mp_metafun'</a><br>
-1 に設定した場合、ConTeXt の MetaFun キーワードがハイライトされる。MetaPost の<br>
-み。<br>
+1 に設定すると、ConTeXt の MetaFun キーワードをハイライトする。MetaPost のみ。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:mp_metafun = 0</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#'g:mp_mfplain_macros'" name="'g:mp_mfplain_macros'">'g:mp_mfplain_macros'</a><br>
-mfplain.mp で定義されたキーワードがハイライトされる。MetaPost のみ。<br>
+mfplain.mp で定義されたキーワードをハイライトする。MetaPost のみ。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:mp_mfplain_macros = 1</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#'g:mp_open_tag'" name="'g:mp_open_tag'">'g:mp_open_tag'</a><br>
-インデントされるブロックを開始する追加のキーワードを定義する。例えば、次のよう<br>
-に定義した場合:<br>
+インデントされたブロックを始める追加のキーワードを定義する。例えば、定義すると:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:mp_open_tag = ['\&lt;beginfoo\&gt;']</div>
 <br>
-<span class="Comment">beginfoo</span>&nbsp;に続く行はインデントされる。<br>
+<span class="Comment">beginfoo</span>&nbsp;の次の行がインデントされる。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:mp_open_tag = []</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#'g:mp_other_macros'" name="'g:mp_other_macros'">'g:mp_other_macros'</a><br>
-すべての基本マクロパッケージ(boxes, rboxes, format, graph, marith, sarith,<br>
-string, TEX)で定義されたキーワードをハイライトする。このオプションは、MetaPost<br>
-バッファのみに影響する。<br>
+すべてのベースマクロパッケージ (boxes, rboxes, format, graph, marith, sarith,<br>
+string, TEX) で定義されたキーワードをハイライトする。このオプションは MetaPost<br>
+バッファにだけ影響する。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:mp_other_macros = 1</div>
 <br>
@@ -130,7 +128,7 @@ plain.mp で定義されたキーワードをハイライトする。MetaPost �
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#'g:no_mp_maps'" name="'g:no_mp_maps'">'g:no_mp_maps'</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#'g:no_mf_maps'" name="'g:no_mf_maps'">'g:no_mf_maps'</a><br>
-設定時、対応ファイルタイプによるバッファのマッピングを一切定義しない。<br>
+設定すると、対応するファイルタイプのバッファでは、マッピングを一切定義しない。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:no_mp_maps = 0<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:no_mf_maps = 0</div>
@@ -139,17 +137,21 @@ plain.mp で定義されたキーワードをハイライトする。MetaPost �
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="ft_mp.html#ft-metafont-mappings" name="ft-metafont-mappings">ft-metafont-mappings</a><br>
 <span class="PreProc">マッピング</span><br>
 <br>
-]]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;vardef, マクロ, 図に進む。<br>
+]]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;個の vardef、マクロ、または図だけ前方へ。<br>
 <br>
-[[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;vardef, マクロ, 図に戻る。<br>
+[[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;個の vardef、マクロ、または図だけ後方へ。<br>
 <br>
-][&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;vardef, マクロ, 図の終了に進む。<br>
+][&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;個の vardef、マクロ、または図の終わりだけ前方<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;へ。<br>
 <br>
-[]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;vardef, マクロ, 図の終了に戻る。<br>
+[]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;個の vardef、マクロ、または図の終わりだけ後方<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;へ。<br>
 <br>
-]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;ブロックの終了(fi, endfor, endgroup)に進む。<br>
+]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;個のブロック (fi, endfor, endgroup) の終わりだ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;け前方へ。<br>
 <br>
-[{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;ブロックの開始(if, for, begingroup)に戻る。<br>
+[{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;個のブロック (if, for, begingroup) の始まりだ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;け後方へ。<br>
 <br>
 &nbsp;vim:tw=78:sw=4:ts=8:noet:ft=help:norl:<br>
 </div>
