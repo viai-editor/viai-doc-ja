@@ -266,10 +266,10 @@ Termcap オプションを設定するには、<span class="Special">{option}</s
 文字 &quot;|&quot; によって、コマンド &quot;:set&quot; を後に続くコマンドと分けることができる。文<br>
 字列オプションの値に &quot;|&quot; を含めるには、代わりに &quot;\|&quot; を使うこと。次の例ではオ<br>
 プション&nbsp;<a class="Type" href="options.html#'titlestring'">'titlestring'</a>&nbsp;の値を &quot;hi|there&quot; に設定している:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set titlestring=hi\|there</div>
+<div class="helpExample">&nbsp;&nbsp; :set titlestring=hi\|there</div>
 しかし次の例では、2個のオプション&nbsp;<a class="Type" href="options.html#'titlestring'">'titlestring'</a>,&nbsp;<a class="Type" href="options.html#'iconstring'">'iconstring'</a>&nbsp;をそれぞれ &quot;hi&quot;,<br>
 &quot;there&quot; に設定している:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set titlestring=hi|set iconstring=there</div>
+<div class="helpExample">&nbsp;&nbsp; :set titlestring=hi|set iconstring=there</div>
 <br>
 また、旧来のスクリプトではダブルクォート文字はコメントを開始する。オプションの<br>
 値に '&quot;' を含めるには '\&quot;' と書くこと。次の例は&nbsp;<a class="Type" href="options.html#'titlestring'">'titlestring'</a>&nbsp;を 'hi &quot;there&quot;'<br>
@@ -300,9 +300,9 @@ Win32では、ファイル名の中の '\' は大抵は取り除かれない。�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="options.html#E539" name="E539">E539</a>&nbsp;<a class="Constant" href="options.html#E550" name="E550">E550</a>&nbsp;<a class="Constant" href="options.html#E551" name="E551">E551</a>&nbsp;<a class="Constant" href="options.html#E552" name="E552">E552</a><br>
 値がフラグのリストからなるオプションもある。そういったオプションにフラグを追加<br>
 したいとき、既存の値を変更したくないならば、こうすること:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set guioptions+=a</div>
+<div class="helpExample">&nbsp;&nbsp; :set guioptions+=a</div>
 オプションからフラグを取り除くには、こうすること:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set guioptions-=a</div>
+<div class="helpExample">&nbsp;&nbsp; :set guioptions-=a</div>
 これはオプション&nbsp;<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;からフラグ 'a' を取り除く。<br>
 <span class="Todo">Note</span>&nbsp;フラグは1個ずつ追加したり取り除いたりするよう注意。オプション<br>
 <a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;が &quot;ab&quot; という値であるとき、&quot;set guioptions-=ba&quot; は機能しない。な<br>
@@ -314,8 +314,8 @@ Win32では、ファイル名の中の '\' は大抵は取り除かれない。�
 '$' とそれに続く変数名は変更を受けない。識別子に使えない non-id 文字 (英字、数<br>
 字、'_' 以外) なら、どれでも環境変数名の後に続けることができる。識別子に使えな<br>
 い文字とそれに続く文字は、環境変数の値の後ろにそのまま追加される。例:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set term=$TERM.new<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set path=/usr/$INCLUDE,$HOME/include,.</div>
+<div class="helpExample">&nbsp;&nbsp; :set term=$TERM.new<br>
+&nbsp;&nbsp; :set path=/usr/$INCLUDE,$HOME/include,.</div>
 コマンド &quot;:set opt-=値&quot; でオプションから文字列を取り除いたり、コマンド<br>
 &quot;:set opt+=値&quot; でオプションに文字列を追加したりするときには、環境変数の展開が<br>
 行われてからそうした操作がなされる。<br>
@@ -601,7 +601,7 @@ $HOME に空ではない何らかの文字列を設定すると、それはサ�
 :fix[del]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ターミナルオプション&nbsp;<a class="Type" href="term.html#'t_kD'">'t_kD'</a>&nbsp;<span class="Special">{訳注: デリートキー}</span>&nbsp;の値<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を設定する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">'t_kb' が&nbsp;&nbsp;&nbsp;&nbsp; のとき&nbsp;&nbsp;'t_kD' は</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-?</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-H</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-?</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-H</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-?</span>以外&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-?</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="Special">CTRL-?</span>&nbsp;は8進数で 0o177、16進数で 0x7f)<br>
@@ -677,8 +677,8 @@ $HOME に空ではない何らかの文字列を設定すると、それはサ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い)<br>
 <br>
 例:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">vi:noai:sw=3 ts=6</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">vim: tw=77</span><br>
+&nbsp;&nbsp;&nbsp;<span class="PreProc">vi:noai:sw=3 ts=6</span><br>
+&nbsp;&nbsp;&nbsp;<span class="PreProc">vim: tw=77</span><br>
 <br>
 2つ目の形式は次の通りである (Viのバージョンによってはこの形式と互換性がある)。<br>
 <br>
@@ -3624,7 +3624,7 @@ Vim 7.2より新しいバージョンでのみモードラインを使うには�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;all&quot; が含まれていると全ての autocommand のイベントが無視され、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;autocommand は実行されなくなる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;それ以外では、値はイベント名のコンマ区切りのリストである。例:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set ei=WinEnter,WinLeave</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set ei=WinEnter,WinLeave</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一部のイベントを除くすべてのイベントを無視するには、&quot;-&quot; プリフィックス<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が使用できる:<br>
@@ -4336,7 +4336,7 @@ Vim 7.2より新しいバージョンでのみモードラインを使うには�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;&nbsp;&nbsp;&nbsp;the first item<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wraps<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^^^^^^<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パターンの後ろに文字がなければならない。行全体がマッチすると、その行は<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マッチがないのと同様に扱われてしまう。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;既定では数字(後ろに句読点や空白があってもよい)を認識する。<br>
@@ -4519,8 +4519,8 @@ Vim 7.2より新しいバージョンでのみモードラインを使うには�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通の設定をするためにある。例えば、点滅を止めるには &quot;a:blinkon0&quot; とする。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソル強調表示の例:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:highlight Cursor gui=reverse guifg=NONE guibg=NONE<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:highlight Cursor gui=NONE guifg=bg guibg=fg</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:highlight Cursor gui=reverse guifg=NONE guibg=NONE<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:highlight Cursor gui=NONE guifg=bg guibg=fg</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="options.html#'guifont'" name="'guifont'">'guifont'</a>&nbsp;<a class="Constant" href="options.html#'gfn'" name="'gfn'">'gfn'</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="options.html#E235" name="E235">E235</a>&nbsp;<a class="Constant" href="options.html#E596" name="E596">E596</a><br>
@@ -4758,7 +4758,7 @@ Vim 7.2より新しいバージョンでのみモードラインを使うには�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'modelineexpr'">'modelineexpr'</a>&nbsp;がオフの場合、このオプションをモードラインで設定するこ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;とはできない。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="options.html#'helpfile'" name="'helpfile'">'helpfile'</a>&nbsp;<a class="Constant" href="options.html#'hf'" name="'hf'">'hf'</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="options.html#'helpfile'" name="'helpfile'">'helpfile'</a>&nbsp;<a class="Constant" href="options.html#'hf'" name="'hf'">'hf'</a><br>
 <a class="Type" href="options.html#'helpfile'">'helpfile'</a>&nbsp;<a class="Type" href="options.html#'hf'">'hf'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 文字列&nbsp;&nbsp;(既定では MS-Windows: &quot;$VIMRUNTIME\doc\help.txt&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;その他: &quot;$VIMRUNTIME/doc/help.txt&quot;)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;グローバル<br>
@@ -6001,9 +6001,9 @@ Vim 7.2より新しいバージョンでのみモードラインを使うには�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;で4桁、\\U で8桁ちょうどでなければならない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set lcs=tab:&gt;-,trail:-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set lcs=tab:&gt;-,eol:&lt;,nbsp:%<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set lcs=extends:&gt;,precedes:&lt;</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set lcs=tab:&gt;-,trail:-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set lcs=tab:&gt;-,eol:&lt;,nbsp:%<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set lcs=extends:&gt;,precedes:&lt;</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;eol&quot;, &quot;extends&quot;, &quot;precedes&quot; にはハイライトグループ &quot;NonText&quot; での強調<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表示がなされ、&quot;tab&quot;, &quot;nbsp&quot;, &quot;space&quot;, &quot;multispace&quot;, &quot;lead&quot;, &quot;trail&quot; に<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;はハイライトグループ &quot;SpecialKey&quot; が適用される。<br>
@@ -6093,7 +6093,7 @@ Vim 7.2より新しいバージョンでのみモードラインを使うには�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ユーザーのフィルタが &quot;マイフィルタ&quot; であるときは、次のようにする。<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set makeprg=gmake\ \\\|\ マイフィルタ</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 引数が挿入される場所を指定するには、&quot;$*&quot; を (複数回でも) 使える。例:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set makeprg=latex\ \\\\nonstopmode\ \\\\input\\{$*}</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set makeprg=latex\ \\\\nonstopmode\ \\\\input\\{$*}</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; セキュリティ上の理由から、このオプションを&nbsp;<a class="Identifier" href="options.html#modeline">modeline</a>&nbsp;または&nbsp;<a class="Identifier" href="eval.html#sandbox">sandbox</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内で設定することはできない。<br>
 <br>
@@ -6938,7 +6938,7 @@ Vim 7.2より新しいバージョンでのみモードラインを使うには�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'copyindent'">'copyindent'</a>&nbsp;も参照。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;空白文字を揃えるには&nbsp;<a class="Identifier" href="change.html#:retab">:retab</a>&nbsp;を使う。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="options.html#'previewheight'" name="'previewheight'">'previewheight'</a>&nbsp;<a class="Constant" href="options.html#'pvh'" name="'pvh'">'pvh'</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="options.html#'previewheight'" name="'previewheight'">'previewheight'</a>&nbsp;<a class="Constant" href="options.html#'pvh'" name="'pvh'">'pvh'</a><br>
 <a class="Type" href="options.html#'previewheight'">'previewheight'</a>&nbsp;<a class="Type" href="options.html#'pvh'">'pvh'</a>&nbsp;&nbsp; 数値 (既定では 12)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;グローバル<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{</span><a class="Identifier" href="various.html#+quickfix">+quickfix</a><span class="Special">&nbsp;機能付きでコンパイルされたときのみ有効}</span><br>
@@ -8657,7 +8657,7 @@ Vim 7.2より新しいバージョンでのみモードラインを使うには�
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;値は、普通のテキストに挟まれた関数 printf 形式の項目からなる。項目の形<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式は以下の通りである。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%-0<span class="Special">{minwid}</span>.<span class="Special">{maxwid}{item}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%-0<span class="Special">{minwid}</span>.<span class="Special">{maxwid}{item}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{item}</span>&nbsp;以外の欄は指定しなくてもよい。パーセント記号そのものを表示する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;には &quot;%%&quot; とする。<br>
 <br>
@@ -8722,7 +8722,7 @@ Vim 7.2より新しいバージョンでのみモードラインを使うには�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{訳注: 日本語メッセージの場合:</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&quot;[Quickfix List]&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;[Quickfixリスト]&quot;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&quot;[Location List]&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;[Locationリスト]&quot;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k S&nbsp;&nbsp; 他言語用マッピング&nbsp;<a class="Identifier" href="map.html#:lmap">:lmap</a>&nbsp;が使われているとき、変数<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;b:keymap_name&quot; または&nbsp;<a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;を &quot;<span class="Special">&lt;keymap&gt;</span>&quot; と表示する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n&nbsp;<span class="Special">N</span>&nbsp;&nbsp; バッファ番号。<br>
@@ -9190,7 +9190,7 @@ Vim 7.2より新しいバージョンでのみモードラインを使うには�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set tabpanelopt=vert,align:right<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set tabpanelopt=columns:16</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="options.html#'tabstop'" name="'tabstop'">'tabstop'</a>&nbsp;<a class="Constant" href="options.html#'ts'" name="'ts'">'ts'</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="options.html#'tabstop'" name="'tabstop'">'tabstop'</a>&nbsp;<a class="Constant" href="options.html#'ts'" name="'ts'">'ts'</a><br>
 <a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;<a class="Type" href="options.html#'ts'">'ts'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数値&nbsp;&nbsp;&nbsp;&nbsp;(既定では 8)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファについてローカル<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;水平タブ文字 (ASCII 9) の表示に使用する桁数を定義する。水平タブは常に<br>
@@ -9218,7 +9218,7 @@ Vim 7.2より新しいバージョンでのみモードラインを使うには�
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タグファイルの先頭に、それが整列されていないことを示す行があったとき<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、そのファイルでは線形探索が使われる。<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!_TAG_FILE_SORTED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /some comment/</div>
+<div class="helpExample">&nbsp;&nbsp; !_TAG_FILE_SORTED&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /some comment/</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ['0' の前後の余白は、単一の&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;でなければならない]<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;二分探索が完了し、<a class="Type" href="options.html#'tags'">'tags'</a>&nbsp;で列挙されたどのファイルからもマッチが見つか<br>
@@ -9393,7 +9393,7 @@ Vim 7.2より新しいバージョンでのみモードラインを使うには�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このオプションは GUI を開始するとリセットされる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;詳細は&nbsp;<a class="Identifier" href="arabic.html">arabic.txt</a>&nbsp;を参照のこと。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="options.html#'termencoding'" name="'termencoding'">'termencoding'</a>&nbsp;<a class="Constant" href="options.html#'tenc'" name="'tenc'">'tenc'</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="options.html#'termencoding'" name="'termencoding'">'termencoding'</a>&nbsp;<a class="Constant" href="options.html#'tenc'" name="'tenc'">'tenc'</a><br>
 <a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;<a class="Type" href="options.html#'tenc'">'tenc'</a>&nbsp;&nbsp; 文字列&nbsp;&nbsp;(既定では &quot;&quot;; GTK+ GUI では &quot;utf-8&quot;)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;グローバル<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ターミナルで使われるエンコーディング名。このオプションは、どの文字エン<br>
@@ -10124,7 +10124,7 @@ Vim 7.2より新しいバージョンでのみモードラインを使うには�
 <a class="Type" href="options.html#'viewdir'">'viewdir'</a>&nbsp;<a class="Type" href="options.html#'vdir'">'vdir'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文字列&nbsp;&nbsp;(既定値 Amiga用: &quot;$VIM/vimfiles/view&quot;,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Win32用: &quot;$HOME/vimfiles/view&quot;,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unix用: &quot;$HOME/.vim/view&quot; または<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;$XDG_CONFIG_HOME/vim/view&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;$XDG_CONFIG_HOME/vim/view&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VMS用: &quot;sys$login:vimfiles/view&quot;)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;グローバル<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{</span><a class="Identifier" href="various.html#+mksession">+mksession</a><span class="Special">&nbsp;機能付きでコンパイルされたときのみ有効}</span><br>

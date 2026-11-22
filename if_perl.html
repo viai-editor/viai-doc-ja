@@ -105,10 +105,10 @@ Vim script の例:<br>
 <br>
 いくつかの例をあげると:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp; :perl $a=1<br>
-&nbsp;&nbsp; :perldo $_ = reverse($_);1<br>
-&nbsp;&nbsp; :perl VIM::Msg(&quot;hello&quot;)<br>
-&nbsp;&nbsp; :perl $line = $curbuf-&gt;Get(42)</div>
+<div class="helpExample">&nbsp;&nbsp;:perl $a=1<br>
+&nbsp;&nbsp;:perldo $_ = reverse($_);1<br>
+&nbsp;&nbsp;:perl VIM::Msg(&quot;hello&quot;)<br>
+&nbsp;&nbsp;:perl $line = $curbuf-&gt;Get(42)</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#E299" name="E299">E299</a><br>
 <a class="Identifier" href="eval.html#sandbox">sandbox</a>の中のPerlコマンドの実行は制限されている。&quot;:perldo&quot; は常に使えない。<br>
 &quot;:perl&quot; は安全な環境の中で、可能なら評価される。<br>
@@ -132,13 +132,13 @@ Perl で使える関数の一覧である:<br>
 &nbsp;&nbsp; :perl $v = VIM::Eval('expand(&quot;&lt;cfile&gt;&quot;)') # &lt;cfile&gt; を展開<br>
 &nbsp;&nbsp; :perl $curwin-&gt;SetHeight(10)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # ウィンドウの高さを設定する<br>
 &nbsp;&nbsp; :perl @pos = $curwin-&gt;Cursor()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # (行, 列) 配列を返す<br>
-&nbsp;&nbsp; :perl @pos = (10, 10)<br>
+&nbsp;&nbsp;:perl @pos = (10, 10)<br>
 &nbsp;&nbsp; :perl $curwin-&gt;Cursor(@pos)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# カーソルを @pos にセットする<br>
 &nbsp;&nbsp; :perl $curwin-&gt;Cursor(10,10)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # カーソルを10行10列目にセットする<br>
 &nbsp;&nbsp; :perl $mybuf = $curwin-&gt;Buffer()&nbsp;&nbsp;&nbsp;&nbsp; # ウィンドウのバッファオブジェクトを<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 返す<br>
 &nbsp;&nbsp; :perl $curbuf-&gt;Name()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# バッファ名を返す<br>
-&nbsp;&nbsp; :perl $curbuf-&gt;Number()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# returns buffer number<br>
+&nbsp;&nbsp;:perl $curbuf-&gt;Number()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # returns buffer number<br>
 &nbsp;&nbsp; :perl $curbuf-&gt;Count()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 行数を返す<br>
 &nbsp;&nbsp; :perl $l = $curbuf-&gt;Get(10)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 10 行目を返す<br>
 &nbsp;&nbsp; :perl @l = $curbuf-&gt;Get(1 .. 5)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 1行目から5行目までを返す<br>
@@ -146,7 +146,7 @@ Perl で使える関数の一覧である:<br>
 &nbsp;&nbsp; :perl $curbuf-&gt;Delete(10, 20)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 10行目から20行目までを削除する<br>
 &nbsp;&nbsp; :perl $curbuf-&gt;Append(10, &quot;Line&quot;)&nbsp;&nbsp;&nbsp;&nbsp;# 行を挿入する<br>
 &nbsp;&nbsp; :perl $curbuf-&gt;Append(10, &quot;Line1&quot;, &quot;Line2&quot;, &quot;Line3&quot;) # 3行挿入する<br>
-&nbsp;&nbsp; :perl @l = (&quot;L1&quot;, &quot;L2&quot;, &quot;L3&quot;)<br>
+&nbsp;&nbsp;:perl @l = (&quot;L1&quot;, &quot;L2&quot;, &quot;L3&quot;)<br>
 &nbsp;&nbsp; :perl $curbuf-&gt;Append(10, @l)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# L1, L2, L3 を挿入する<br>
 &nbsp;&nbsp; :perl $curbuf-&gt;Set(10, &quot;Line&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 10行目を置き換える<br>
 &nbsp;&nbsp; :perl $curbuf-&gt;Set(10, &quot;Line1&quot;, &quot;Line2&quot;)&nbsp;&nbsp;&nbsp;&nbsp; # 10行目と11行目を置き換える<br>
