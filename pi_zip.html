@@ -10,7 +10,7 @@ helpname: 'pi_zip'
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+====================+<br>
 <br>
 Author:&nbsp;&nbsp;Charles E. Campbell&nbsp;&nbsp;&lt;NcampObell@SdrPchip.AorgM-NOSPAM&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(まずメールアドレスから NOSPAM を削除する)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(まず Campbell のメールアドレスから NOSPAM を削除すること)<br>
 Copyright: Copyright (C) 2005-2015 Charles E Campbell&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_zip.html#zip-copyright" name="zip-copyright">zip-copyright</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The VIM LICENSE (see&nbsp;<a class="Identifier" href="uganda.html#copyright">copyright</a>) applies to the files in this<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;package, including zipPlugin.vim, zip.vim, and pi_zip.vim.&nbsp;&nbsp;except use<br>
@@ -26,103 +26,104 @@ Copyright: Copyright (C) 2005-2015 Charles E Campbell&nbsp;&nbsp;&nbsp;&nbsp;<a 
 1. 目次&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_zip.html#zip" name="zip">zip</a>&nbsp;<a class="Constant" href="pi_zip.html#zip-contents" name="zip-contents">zip-contents</a><br>
 &nbsp;&nbsp; 1. 目次....................................................<a class="Identifier" href="pi_zip.html#zip-contents">zip-contents</a><br>
 &nbsp;&nbsp; 2. 使い方..................................................<a class="Identifier" href="pi_zip.html#zip-usage">zip-usage</a><br>
-&nbsp;&nbsp; 3. zip以外の拡張子.........................................<a class="Identifier" href="pi_zip.html#zip-extension">zip-extension</a><br>
-&nbsp;&nbsp; 4. 開発履歴................................................<a class="Identifier" href="pi_zip.html#zip-history">zip-history</a><br>
+&nbsp;&nbsp; 3. 追加の拡張子............................................<a class="Identifier" href="pi_zip.html#zip-extension">zip-extension</a><br>
+&nbsp;&nbsp; 4. 履歴....................................................<a class="Identifier" href="pi_zip.html#zip-history">zip-history</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 2. 使い方&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_zip.html#zip-usage" name="zip-usage">zip-usage</a>&nbsp;<a class="Constant" href="pi_zip.html#zip-manual" name="zip-manual">zip-manual</a><br>
 <br>
-&nbsp;&nbsp; *.zip ファイルを編集する場合、このプラグインは内容ページの表示処理を行う。<br>
-&nbsp;&nbsp; 編集するファイルを選択するには、カーソルを目的のファイルの上に移動して、<br>
-&nbsp;&nbsp;&nbsp;<span class="Special">&lt;return&gt;</span>&nbsp;キーを押す。編集後、ファイルに書き込むこともできる。現在、このプラ<br>
-&nbsp;&nbsp; グインを使用して zip アーカイブに新しいファイルを作成することはできない。<br>
+&nbsp;&nbsp; *.zip ファイルを編集すると、このプラグインが内容ページの表示を処理する。編<br>
+&nbsp;&nbsp; 集するファイルは、カーソルをそのファイルの上に移動してから&nbsp;<span class="Special">&lt;return&gt;</span>&nbsp;キーを<br>
+&nbsp;&nbsp; 押して選ぶ。編集した後、そのファイルに書き込むこともできる。現在、このプラ<br>
+&nbsp;&nbsp; グインで zip アーカイブの中に新しいファイルを作ることはできない。<br>
 <br>
-&nbsp;&nbsp; zip プラグインは、一般的なパストラバーサル攻撃のパターンを検出しようとする<br>
-&nbsp;&nbsp; が、すべてのケースを検出できるとは限らない。信頼できない入力データを使用す<br>
-&nbsp;&nbsp; る場合は、このプラグインの使用に十分注意すること。<br>
+&nbsp;&nbsp; zip プラグインは、よくあるパストラバーサル攻撃のパターンをいくつか検出しよ<br>
+&nbsp;&nbsp; うとするが、すべての場合を捕捉できるとは限らない。信頼できない入力に対して<br>
+&nbsp;&nbsp; このプラグインを使うときは、十分に注意すること。<br>
 <br>
 &nbsp;&nbsp;&nbsp;<span class="PreProc">コマンド</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_zip.html#zip-x" name="zip-x">zip-x</a><br>
-&nbsp;&nbsp; x : カーソル上にある一覧のファイルを解凍する<br>
+&nbsp;&nbsp; x : カーソルが一覧のファイルの上にあるとき、そのファイルを展開する<br>
 <br>
 &nbsp;&nbsp;&nbsp;<span class="PreProc">オプション</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_zip.html#g:zip_nomax" name="g:zip_nomax">g:zip_nomax</a><br>
 <br>
-&nbsp;&nbsp; この変数が存在し、かつ真である場合、ファイルウィンドウは開かれたときに自動<br>
-&nbsp;&nbsp; 的に最大化されない。<br>
+&nbsp;&nbsp; この変数が存在し真である場合、ファイルウィンドウは開いたときに自動的に最大<br>
+&nbsp;&nbsp; 化されない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_zip.html#g:zip_unzipcmd" name="g:zip_unzipcmd">g:zip_unzipcmd</a><br>
-&nbsp;&nbsp; これらのオプションを使用して、&quot;unzip&quot; の役割を果たすプログラムと、必要な引<br>
-&nbsp;&nbsp; 数スイッチを指定する。<br>
-&nbsp;&nbsp; これはブラウジングに使用される。デフォルトでは:<br>
+&nbsp;&nbsp; これらのオプションを使って、&quot;unzip&quot; の役目を果たすプログラム、および必要な<br>
+&nbsp;&nbsp; 引数スイッチを指定する。<br>
+&nbsp;&nbsp; これはブラウズのときに使われる。デフォルト:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:zip_unzipcmd= &quot;unzip&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:zip_unzipcmd_browseopt= &quot;-Z1&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:zip_unzipcmd_readopt= &quot;-p&quot;</div>
 <br>
-&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;オプションの終わりを示すために、g:zip_unzipcmd_browseopt および<br>
-&nbsp;&nbsp; g:zip_unzipcmd_readopt の設定の後に&nbsp;<a class="Comment" href="starting.html#--">--</a>&nbsp;が付加される。<br>
+&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;オプションの終わりを示すため、g:zip_unzipcmd_browseopt および<br>
+&nbsp;&nbsp; g:zip_unzipcmd_readopt の設定の後に&nbsp;<a class="Comment" href="starting.html#--">--</a>&nbsp;が付け加えられる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_zip.html#g:zip_zipcmd" name="g:zip_zipcmd">g:zip_zipcmd</a><br>
-&nbsp;&nbsp; これらのオプションを使用して、&quot;zip&quot; の役割を果たすプログラムと、必要な引数<br>
-&nbsp;&nbsp; スイッチを指定する。<br>
-&nbsp;&nbsp; これは、すでに zip ファイル内にあるファイルの書き込み (更新) に使用される。<br>
-&nbsp;&nbsp; デフォルトでは:<br>
+&nbsp;&nbsp; これらのオプションを使って、&quot;zip&quot; の役目を果たすプログラム、および必要な引<br>
+&nbsp;&nbsp; 数スイッチを指定する。<br>
+&nbsp;&nbsp; これは、すでに zip ファイルの中にあるファイルを書き込む (更新する) ときに使<br>
+&nbsp;&nbsp; われる。デフォルト:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:zip_zipcmd= &quot;zip&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:zip_zipcmd_deleteopt= &quot;-d&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:zip_zipcmd_updateopt= &quot;-u&quot;</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_zip.html#g:zip_extractcmd" name="g:zip_extractcmd">g:zip_extractcmd</a><br>
-&nbsp;&nbsp; このオプションは、zip アーカイブからファイルを抽出する為に使用するプログラ<br>
-&nbsp;&nbsp; ム（および必要なオプション）を指定する。デフォルトでは,<br>
+&nbsp;&nbsp; このオプションは、zip アーカイブからファイルを展開するのに使うプログラム<br>
+&nbsp;&nbsp; (および必要なオプション) を指定する。デフォルト:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:zip_extractcmd= g:zip_unzipcmd<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:zip_extractcmd_extractopt= &quot;-o&quot;</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_zip.html#g:zip_exec" name="g:zip_exec">g:zip_exec</a><br>
-&nbsp;&nbsp; セキュリティ上の理由から、バッファを開いた時に Vim が実行可能ファイルを自動<br>
-&nbsp;&nbsp; 的に実行しないようにすることができる。このオプション (デフォルト: &quot;1&quot;) を<br>
-&nbsp;&nbsp; &quot;0&quot; に設定すると、&quot;unzip&quot; コマンドの実行を防ぐことができる:<br>
+&nbsp;&nbsp; セキュリティ上の理由から、バッファを開いたときに Vim が実行可能ファイルを自<br>
+&nbsp;&nbsp; 動的に実行するのを防ぐことができる。このオプション (デフォルト: &quot;1&quot;) を &quot;0&quot;<br>
+&nbsp;&nbsp; に設定すると、&quot;unzip&quot; コマンドの実行を防ぐことができる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:zip_exec=0</div>
 <br>
-&nbsp;&nbsp;&nbsp;<span class="PreProc">PowerShell へのフォールバック</span><br>
+&nbsp;&nbsp;&nbsp;<span class="PreProc">POWERSHELL へのフォールバック</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_zip.html#g:zip_pwsh" name="g:zip_pwsh">g:zip_pwsh</a><br>
-&nbsp;&nbsp; このプラグインは、まず (より高機能な) GNU zip/unzip コマンドの使用を試みる。<br>
-&nbsp;&nbsp; これらのコマンドが使用できない、または失敗し、かつユーザーが PowerShell を<br>
-&nbsp;&nbsp; 使用している場合、プラグインは PowerShell のコマンドレットに切り替える。<br>
-&nbsp;&nbsp; PowerShell のコマンドレットには制限があり、zip アーカイブ内のサブディレクト<br>
-&nbsp;&nbsp; リにあるファイルの書き込みや展開はできない。しかし、別途 unzip のバイナリを<br>
-&nbsp;&nbsp; インストールする必要がないという利点がある。&quot;pwsh&quot; と &quot;powershell&quot; のどちら<br>
-&nbsp;&nbsp; を使用するかは&nbsp;<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;オプションの設定または&nbsp;<a class="Comment" href="pi_zip.html#g:zip_pwsh">g:zip_pwsh</a>&nbsp;の設定に基づいて<br>
-&nbsp;&nbsp; 決定される。両方が使用可能な場合、このプラグインは pwsh を優先する。<br>
-&nbsp;&nbsp; &quot;g:zip_pwsh&quot; のデフォルト値は空文字列であり、この場合&nbsp;<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;オプションの<br>
-&nbsp;&nbsp; 設定は上書きされない。MS-Windows ではデフォルトの&nbsp;<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;が &quot;cmd.exe&quot; であ<br>
-&nbsp;&nbsp; るため、この機能はデフォルトでは有効にならない。例:<br>
+&nbsp;&nbsp; このプラグインは、まず (より高機能な) GNU の zip/unzip コマンドを使おうとす<br>
+&nbsp;&nbsp; る。これらのコマンドが使えないか、または失敗し、ユーザーが PowerShell を使っ<br>
+&nbsp;&nbsp; ている場合は、プラグインは PowerShell のコマンドレットにフォールバックする。<br>
+&nbsp;&nbsp; PowerShell のコマンドレットには制限があり、zip アーカイブのサブディレクトリ<br>
+&nbsp;&nbsp; の中のファイルの書き込みまたは展開はできない。しかし利点は、別に unzip のバ<br>
+&nbsp;&nbsp; イナリをインストールする必要がないことである。&quot;pwsh&quot; または &quot;powershell&quot; の<br>
+&nbsp;&nbsp; どちらを選ぶかについて&nbsp;<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;オプションが確認される。または&nbsp;<a class="Comment" href="pi_zip.html#g:zip_pwsh">g:zip_pwsh</a><br>
+&nbsp;&nbsp; を設定する。両方が使える場合、このプラグインは pwsh を優先する。<br>
+&nbsp;&nbsp; &quot;g:zip_pwsh&quot; のデフォルト値は空文字列で、これは&nbsp;<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;オプションの設定を<br>
+&nbsp;&nbsp; 上書きしない。MS-Windows ではデフォルトの&nbsp;<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;が &quot;cmd.exe&quot; なので、この<br>
+&nbsp;&nbsp; 機能はデフォルトでは有効にならない。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:zip_pwsh='powershell'</div>
 <br>
-&nbsp;&nbsp;&nbsp;<span class="PreProc">読み込みの無効化</span><br>
+&nbsp;&nbsp;&nbsp;<span class="PreProc">読み込みの防止</span><br>
 <br>
-&nbsp;&nbsp; 何らかの理由で vim を使用して zip ファイルを検査したくない場合は、次の 2 つ<br>
-&nbsp;&nbsp; の変数を &lt;.vimrc&gt; に追加して、zip プラグインが読み込まれないようにすること<br>
-&nbsp;&nbsp; ができる:<br>
+&nbsp;&nbsp; 何らかの理由で zip されたファイルを調べるのに vim を使いたくない場合は、以<br>
+&nbsp;&nbsp; 下の 2 つの変数を &lt;.vimrc&gt; に入れると、zip プラグインが読み込まれるのを防ぐ<br>
+&nbsp;&nbsp; ことができる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:loaded_zipPlugin= 1<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:loaded_zip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1</div>
 <br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-3. zip 以外の拡張子&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_zip.html#zip-extension" name="zip-extension">zip-extension</a><br>
+3. 追加の拡張子&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_zip.html#zip-extension" name="zip-extension">zip-extension</a><br>
 <br>
-&nbsp;&nbsp; zip ファイルを zip 以外の拡張子 (.jar や .xpi など) で生成するアーカイバが<br>
-&nbsp;&nbsp; あるようだ。そのようなファイルを扱いたい場合は、&lt;.vimrc&gt; ファイルに以下の<br>
-&nbsp;&nbsp; 行を追加する:<br>
+&nbsp;&nbsp; .zip の拡張子を使わない zip ファイルを生成するアーカイバーがたくさんあるよ<br>
+&nbsp;&nbsp; うだ (.jar、.xpi など)。このようなファイルを扱うには、&lt;.vimrc&gt; ファイルに 1<br>
+&nbsp;&nbsp; 行入れる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;au BufReadCmd *.jar,*.xpi call zip#Browse(expand(&quot;&lt;amatch&gt;&quot;))</div>
 <br>
-&nbsp;&nbsp; この行に拡張子を追加していけば対応する拡張子を増やすことができる。<br>
+&nbsp;&nbsp; この行を拡張して、zip ファイルとして扱うべき拡張子を追加することは簡単にで<br>
+&nbsp;&nbsp; きる。<br>
 <br>
-&nbsp;&nbsp; 代わりに .vimrc で&nbsp;<a class="Constant" href="pi_zip.html#g:zipPlugin_ext" name="g:zipPlugin_ext">g:zipPlugin_ext</a>&nbsp;を使って変更する方法もある。現時点<br>
-&nbsp;&nbsp; (2026年5月現在) は以下が含まれる:<br>
+&nbsp;&nbsp; または、.vimrc で&nbsp;<a class="Constant" href="pi_zip.html#g:zipPlugin_ext" name="g:zipPlugin_ext">g:zipPlugin_ext</a>&nbsp;を変更してもよい。<br>
+&nbsp;&nbsp; 現在 (2026年5月の時点で)、これが保持しているもの:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:zipPlugin_ext='*.aar,*.apk,*.cbz,*.celzip,*.crtx,*.docm,*.docx,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \ *.dotm,*.dotx,*.ear,*.epub,*.gcsx,*.glox,*.gqsx,*.ja,*.jar,*.kmz,<br>
@@ -132,7 +133,7 @@ Copyright: Copyright (C) 2005-2015 Charles E Campbell&nbsp;&nbsp;&nbsp;&nbsp;<a 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \ *.wsz, *.xap,*.xlam,*.xlsb,*.xlsm,*.xlsx,*.xltm,*.xltx,*.xpi,*.zip'</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-4. 開発履歴&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_zip.html#zip-history" name="zip-history">zip-history</a>&nbsp;{{ "{{{" }}1<br>
+4. 履歴&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="pi_zip.html#zip-history" name="zip-history">zip-history</a>&nbsp;{{ "{{{" }}1<br>
 &nbsp;&nbsp; unreleased:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jul 25, 2026 * support both Windows PowerShell 5 and pwsh 7+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sep 19, 2025 * support PowerShell Core<br>
@@ -165,7 +166,6 @@ Copyright: Copyright (C) 2005-2015 Charles E Campbell&nbsp;&nbsp;&nbsp;&nbsp;<a 
 &nbsp;&nbsp; v27 Jul 02, 2013 * sanity check: zipfile must have &quot;PK&quot; as its first<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;two bytes.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* modified to allow zipfile: entries in quickfix lists<br>
-<br>
 &nbsp;&nbsp; v26 Nov 15, 2012 * (Jason Spiro) provided a lot of new extensions that<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;are synonyms for .zip<br>
 &nbsp;&nbsp; v25 Jun 27, 2011 * using keepj with unzip -Z<br>

@@ -9,29 +9,27 @@ helpname: 'if_ole'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
-VimへのOLEインターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#ole-interface" name="ole-interface">ole-interface</a><br>
+Vim への OLE インターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#ole-interface" name="ole-interface">ole-interface</a><br>
 <br>
-1. アクティブにする&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_ole.html#ole-activation">ole-activation</a><br>
+1. 起動&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_ole.html#ole-activation">ole-activation</a><br>
 2. メソッド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_ole.html#ole-methods">ole-methods</a><br>
 3. &quot;normal&quot; コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_ole.html#ole-normal">ole-normal</a><br>
 4. 登録&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_ole.html#ole-registration">ole-registration</a><br>
-5. MS Visual Studioとの統合&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_ole.html#MSVisualStudio">MSVisualStudio</a><br>
+5. MS Visual Studio との統合&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_ole.html#MSVisualStudio">MSVisualStudio</a><br>
 <br>
-<span class="Special">{Vim が&nbsp;</span><a class="Identifier" href="various.html#+ole">+ole</a><span class="Special">&nbsp;機能付きでコンパイルされたときのみ利用できる。</span><br>
-<span class="Special">src/if_ole.INSTALLを参照}</span><br>
-<br>
-代わりにクライアント、サーバー型の通信を使うこともできる<a class="Identifier" href="remote.html#clientserver">clientserver</a>。<br>
+<span class="Special">{</span><a class="Identifier" href="various.html#+ole">+ole</a><span class="Special">&nbsp;機能付きでコンパイルされたときだけ使える。src/if_ole.INSTALL を参照}</span><br>
+代わりに、クライアントサーバー通信&nbsp;<a class="Identifier" href="remote.html#clientserver">clientserver</a>&nbsp;を使う方法もある。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-1. アクティブにする&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#ole-activation" name="ole-activation">ole-activation</a><br>
+1. 起動&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#ole-activation" name="ole-activation">ole-activation</a><br>
 <br>
-Vimは、あらゆるオートメーションクライアント、例えばVisual Basic、Python、Perl<br>
-などからアクセス可能な、OLEオートメーションサーバーとして振舞う。Vimアプリケー<br>
-ションの &quot;名前&quot; (これはOLE用語で言うところの &quot;ProgID&quot;) は、&quot;ViAI.Application&quot;<br>
-である。<br>
+Vim は OLE オートメーションサーバーとして動作し、どのオートメーションクライア<br>
+ント、例えば Visual Basic、Python、または Perl からでもアクセスできる。Vim の<br>
+アプリケーションの &quot;名前&quot; (OLE の用語では &quot;ProgID&quot;) は &quot;ViAI.Application&quot; であ<br>
+る。<br>
 <br>
-したがって、Vimのインスタンスを起動する(あるいはすでに起動しているインスタンス<br>
-に接続する)には、次のようなコードが用いられることになる:<br>
+したがって、Vim のインスタンスを起動する (または、すでに起動しているインスタン<br>
+スに接続する) には、以下のようなコードを使えばよい:<br>
 <br>
 [Visual Basic]<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim Vim As Object<br>
@@ -47,154 +45,156 @@ Vimは、あらゆるオートメーションクライアント、例えばVisua
 <br>
 [C#]<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// プロジェクトに Vim への参照を追加する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// COM タブを選択する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// &quot;ViAI OLE Interface 1.1 Type Library&quot; を選択する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// COM タブを選ぶ。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// &quot;ViAI OLE Interface 1.1 Type Library&quot; を選択する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ViAI.ViAI vimobj = new ViAI.ViAI();</div>
 <br>
-Vimは、他の一部のOLEサーバーがサポートしているような、&quot;hidden&quot; なOLEサーバーと<br>
-しての機能をサポートしていない。クライアントがVimのインスタンスを起動する場合、<br>
-そのインスタンスは即座に可視化される。単にVimインスタンスとのOLE接続を閉じるだ<br>
-けでは、Vimインスタンスを終了するに十分ではない - 明確に終了コマンド(例えば、<br>
-:qa!、:wqa)を実行する必要がある。<br>
+Vim は、他の一部の OLE オートメーションサーバーのような &quot;hidden&quot; の OLE サー<br>
+バーとしての動作をサポートしていない。クライアントが Vim のインスタンスを起動<br>
+すると、そのインスタンスはすぐに見える状態になる。Vim のインスタンスへの OLE<br>
+接続を閉じるだけでは、Vim のインスタンスを終了させるには足りない - 明示的に終<br>
+了のコマンド (例えば :qa!、:wqa) を実行する必要がある。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 2. メソッド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#ole-methods" name="ole-methods">ole-methods</a><br>
 <br>
-Vimはクライアントに対して４つのメソッドを公開している。<br>
+Vim はクライアントが使うための 4 つのメソッドを公開している。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#ole-sendkeys" name="ole-sendkeys">ole-sendkeys</a><br>
-SendKeys(keys)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一連のキー操作を実行する。<br>
+SendKeys(keys)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キーの並びを実行する。<br>
 <br>
-このメソッドはひとつの引数、すなわちキーストロークの文字列を取る。これらのキー<br>
-ストロークは、完全にキーボードから打ち込まれたもののように実行される。スペシャ<br>
-ルキーは、マッピングの右側に書かれる、&lt;...&gt;形式の名前で与えることができる。<br>
-<span class="Todo">Note:</span>&nbsp;Ex &quot;normal&quot; コマンドの実行はサポートされていない - 以下の<a class="Identifier" href="if_ole.html#ole-normal">ole-normal</a>を<br>
-見よ。<br>
+このメソッドは 1 つの引数を取り、それはキーストロークの文字列である。これらの<br>
+キーストロークは、キーボードから打ち込まれたのとまったく同じように実行される。<br>
+特殊キーは、マッピングの右辺と同様に、&lt;..&gt; の名前で指定できる。<span class="Todo">Note:</span>&nbsp;Ex の<br>
+&quot;normal&quot; コマンドの実行はサポートされていない - 以下の&nbsp;<a class="Identifier" href="if_ole.html#ole-normal">ole-normal</a>&nbsp;を参照。<br>
 <br>
-例 (Visual Basic の文法)<br>
+例 (Visual Basic の構文)<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim.SendKeys &quot;ihello&lt;Esc&gt;&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim.SendKeys &quot;ma1GV4jy`a&quot;</div>
 <br>
-これらの例は、Vimがノーマルモードで始まるものと仮定している。必ずノーマルモー<br>
-ドにするには、一連のキーを次のように&nbsp;<span class="Special">CTRL-\</span>&nbsp;<span class="Special">CTRL-N</span>&nbsp;で始めるとよい<br>
+これらの例は、Vim がノーマルモードで始まることを前提にしている。ノーマルモード<br>
+にするには、以下のようにキーシーケンスを&nbsp;<span class="Special">CTRL-\</span>&nbsp;<span class="Special">CTRL-N</span>&nbsp;で始める<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim.SendKeys &quot;&lt;C-\&gt;&lt;C-N&gt;ihello&lt;Esc&gt;&quot;</div>
 <br>
-<span class="Special">CTRL-\</span>&nbsp;<span class="Special">CTRL-N</span>&nbsp;は、挿入モード、コマンドラインモードにいるとき、Vimをノーマル<br>
-モードに戻す。これらはVimコマンドの途中に入れると機能しないことに注意せよ。<br>
+<span class="Special">CTRL-\</span>&nbsp;<span class="Special">CTRL-N</span>&nbsp;は、挿入モードまたはコマンドラインモードのときに、Vim をノーマル<br>
+モードに戻す。<span class="Todo">Note</span>&nbsp;これは Vim のコマンドの途中では動作しないことに注意<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#ole-eval" name="ole-eval">ole-eval</a><br>
-Eval(expr)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式(expr)を実行する。<br>
+Eval(expr)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式を評価する。<br>
 <br>
-このメソッドはひとつの引数、Vim標準フォーマットの式、を取る(<a class="Identifier" href="eval.html#expression">expression</a>を参<br>
-照)。戻り値は、その式を評価した結果の文字列である。リスト&nbsp;<a class="Identifier" href="eval.html#List">List</a>&nbsp;は文字列に変<br>
-換される。そのとき各要素の間に改行が挿入され、連結される。<br>
+このメソッドは 1 つの引数を取り、それは Vim の通常の形式の式である<br>
+(<a class="Identifier" href="eval.html#expression">expression</a>&nbsp;を参照)。戻り値は文字列で、式を評価した結果である。<a class="Identifier" href="eval.html#List">List</a>&nbsp;は、要<br>
+素を連結し改行を挿入して、文字列に変換される。<br>
 <br>
-例 (Visual Basic の文法で)<br>
+例 (Visual Basic の構文)<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Line20 = Vim.Eval(&quot;getline(20)&quot;)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Twelve = Vim.Eval(&quot;6 + 6&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' これが文字列であることに注意<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Twelve = Vim.Eval(&quot;6 + 6&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' Note これは STRING であることに注意<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Font = Vim.Eval(&quot;&amp;guifont&quot;)</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#ole-setforeground" name="ole-setforeground">ole-setforeground</a><br>
-SetForeground()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vimウィンドウを最前面に持ってくる。<br>
+SetForeground()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vim のウィンドウを前面に出す<br>
 <br>
-このメソッドは引数を持たない。戻り値はない。<br>
+このメソッドは引数を取らない。値は返さない。<br>
 <br>
-例 (Visual Basic の文法で)<br>
+例 (Visual Basic の構文)<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim.SetForeground</div>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#ole-gethwnd" name="ole-gethwnd">ole-gethwnd</a><br>
-GetHwnd()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vimのウィンドウハンドルを得る。<br>
+GetHwnd()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vim のウィンドウのハンドルを返す。<br>
 <br>
-このメソッドは引数を持たない。戻り値はVimウィンドウのウィンドウハンドルである。<br>
-これはVimウィンドウに対して何かの操作を行いたい時に使う。<br>
+このメソッドは引数を取らない。Vim のメインウィンドウの hwnd を返す。Vim のウィ<br>
+ンドウを操作するか、または z オーダーでそれを追跡する必要があるものなどを書い<br>
+ているときに、これを使える。<br>
 <br>
-例 (Visual Basic の文法で)<br>
+例 (Visual Basic の構文)<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim_Hwnd = Vim.GetHwnd</div>
 <br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 3. &quot;normal&quot; コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#ole-normal" name="ole-normal">ole-normal</a><br>
 <br>
-VimがOLEオートメーションコマンドを処理する方法は、exコマンド :normal の実装と<br>
-統合されているため、OLEオートメーションから :normal コマンドを実行することは<br>
-できない。実際に実行しようとしても失敗する、たぶん害はないと思われるが、予期<br>
-しない動作をする恐れはある。<br>
+Vim が OLE オートメーションのコマンドを処理する方法と、Ex コマンド :normal の<br>
+実装方法の組み合わせにより、OLE オートメーションから :normal コマンドを実行す<br>
+ることはできない。実行しようとすると失敗する。おそらく害はないが、予測できない<br>
+形で失敗するかもしれない。<br>
 <br>
-この状況をトラップする現実的な方法は今のところ存在しないため、ユーザーはこの制<br>
-限に単に気をつけるようにする他ない。<br>
+現在、この状況を捕捉する実用的な方法は無く、ユーザーはこの制限を知っておくしか<br>
+ない。<br>
 <span class="PreProc">==============================================================================</span><br>
 4. 登録&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#ole-registration" name="ole-registration">ole-registration</a>&nbsp;<a class="Constant" href="if_ole.html#E243" name="E243">E243</a><br>
 <br>
-VimをOLEサーバーとして動作させる前に、システムレジストリに登録する必要がある。<br>
-これを行うには、Vimをひとつの引数 &quot;-register&quot; で実行すればよい。<br>
+Vim が OLE サーバーとして動作するには、その前にシステムレジストリに登録されて<br>
+いなければならない。これを行うには、Vim を &quot;-register&quot; という 1 つの引数で実行<br>
+すればよい。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#-register" name="-register">-register</a>&nbsp;<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gviai -register</div>
 <br>
+OLE サポート付きの gviai を実行し、ViAI の OLE サーバーが登録されていないこと<br>
+を検出すると、ダイアログを表示し、&quot;Yes&quot; をクリックして登録するかを選べるように<br>
+する。<br>
 <br>
-OLEサーバーが登録されていないとき、OLEをサポートしたgviaiを起動すると警告ダイ<br>
-アログが出る。&quot;Yes&quot; を選択するとレジストリに登録できる。<br>
+登録できない状況もある。これはレジストリが書き込み可能でない場合に起こる。この<br>
+問題に遭遇したら、gviai を &quot;Administrator&quot; として実行する必要がある。<br>
 <br>
-レジストリが書き込み可能でないときには登録はできない。もし登録できないときは<br>
-&quot;Administrator&quot; 権限でgviaiを起動すること。<br>
-<br>
-いったんVimが登録されると、アプリケーションへのパスはレジストリに保存される。<br>
-Vimを移動、削除、更新する前に、レジストリの項目を &quot;-unregister&quot; スイッチを使っ<br>
-て削除する必要がある。<br>
+いったん vim が登録されると、アプリケーションパスはレジストリに保存される。Vim<br>
+を移動、削除、またはアップグレードする前に、&quot;-unregister&quot; スイッチを使ってレジ<br>
+ストリ項目を削除するべきである。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#-unregister" name="-unregister">-unregister</a>&nbsp;<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gviai -unregister</div>
 <br>
-OLEメカニズムは、登録されたVimの内、最初に見つけたものを使用する。Vimがすでに<br>
-実行されている場合は、そのVimが使用される。OLEコマンドに影響されないで、(いく<br>
-つかの)Vimセッションを張ろうとする場合は、非OLEバージョンを違うディレクトリに<br>
-置いて使用するとよい。そして、OLEバージョンをパスに含まれないディレクトリに置<br>
-けば、&quot;gviai&quot; とタイプしたとき非OLEバージョンが起動するようになる。<br>
+OLE の仕組みは、最初に見つけた登録済みの Vim を使う。Vim がすでに実行中の場合<br>
+は、それが使われる。OLE コマンドに反応してはいけない Vim のセッションを (いく<br>
+つか) 開いておきたい場合は、非 OLE 版を使い、それを別のディレクトリに置くこと。<br>
+そして OLE 版は通常のパスに入っていないディレクトリに置き、&quot;gviai&quot; とタイプす<br>
+ると非 OLE 版が起動するようにすること。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#-silent" name="-silent">-silent</a><br>
-結果を表示するメッセージボックスを表示したくないなら &quot;-silent&quot; を付けること。<br>
+結果を報告するためにポップアップするメッセージボックスを避けるには、&quot;-silent&quot;<br>
+を前に付ける:<br>
+<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gviai -silent -register<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gviai -silent -unregister</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 5. MS Visual Studio との統合&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ole.html#MSVisualStudio" name="MSVisualStudio">MSVisualStudio</a><br>
 <br>
-旧来の &quot;VisVim&quot; 統合は Vim のパッチ 9.0.0698 にて削除された。<br>
+古い &quot;VisVim&quot; との統合は、パッチ 9.0.0698 で Vim から削除された。<br>
 <br>
 <br>
-<span class="PreProc">Vim と Visual Studio.Net を連携させる</span><br>
+<span class="PreProc">Vim を Visual Studio .Net で使う</span><br>
 <br>
-.Net studio は外部エディタをサポートしている。次のようにするとよい:<br>
+.Net studio は外部エディタをサポートしている。これらの指示に従うこと:<br>
 <br>
-.Net Studio でメニューから[ツール]→[外部ツール]を選択する。<br>
-次を追加する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;タイトル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Vim<br>
-&nbsp;&nbsp;&nbsp;&nbsp;コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - c:\viai\viai10\gviai.exe<br>
-&nbsp;&nbsp;&nbsp;&nbsp;引数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - --servername VS_NET --remote-silent &quot;+call cursor($(CurLine), $(CurCol))&quot; $(ItemPath)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;初期ディレクトリ - 空<br>
+.Net Studio で、メニューから Tools-&gt;External Tools... を選ぶ<br>
+追加する<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Title&nbsp;&nbsp;&nbsp;&nbsp; - Vim<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Command&nbsp;&nbsp; - c:\viai\viai10\gviai.exe<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Arguments - --servername VS_NET --remote-silent &quot;+call cursor($(CurLine), $(CurCol))&quot; $(ItemPath)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Init Dir&nbsp;&nbsp;- Empty<br>
 <br>
-こうしておくと .Net でファイルを開いたとき、.Net のメニューから[ツール]→[Vim]<br>
-を選べるようになる。<br>
+これで、.Net でファイルを開くときに、.Net のメニューから選べる:<br>
+Tools-&gt;Vim<br>
 <br>
-それを選ぶとそのファイルが Vim で開かれる。<br>
-この外部コマンドをアイコンにして好きなところに置くことができる。これをデフォル<br>
-トのエディタに設定することもできる。<br>
+これで、そのファイルが Vim で開かれる。<br>
+その後、この外部コマンドをアイコンとして追加し、好きな場所に置ける。これをデ<br>
+フォルトエディタに設定することもできるかもしれない。<br>
 <br>
-もしこれをさらに改良できたら、それを留めておけるように Vim メーリングリストに<br>
-投稿していただきたい。<br>
+これをさらに改良したら、記録が残るように、Vim のメーリングリストに投稿していた<br>
+だきたい。<br>
 <br>
 --servername VS_NET<br>
-この引数をつけると、VS_NET という名前で新しい Vim インスタンスを作る。そのため、<br>
-VS で複数のファイルを開いても、同じ Vim のインスタンスが使われる。これによって<br>
-複数の Vim のインスタンスを起動し、かつどのインスタンスが VS のファイルを開い<br>
-ているかを管理することができる。<br>
+これは VS_NET という名前の vim の新しいインスタンスを作る。そのため、VS から複<br>
+数のファイルを開いても、それらは同じ Vim のインスタンスを使う。これにより、複<br>
+数の Vim のコピーを実行できるが、どれが VS のファイルを持つかは制御できる。<br>
 <br>
 --remote-silent &quot;+call cursor(10, 27)&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- カーソルを10行27桁に移動する<br>
-より詳しくは Vim 内で<br>
-<div class="helpExample">&nbsp;&nbsp; :h --remote-silent</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- カーソルを 10 行目の 27 桁目に置く<br>
+Vim の中で<br>
+<div class="helpExample">&nbsp;&nbsp; :h --remote-silent で詳細を参照</div>
 <br>
-[.Net の部分は Dave Fishburn と Brian Sturk によって提供された]<br>
+[.Net の記述は Dave Fishburn および Brian Sturk によって提供された]<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
