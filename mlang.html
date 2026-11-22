@@ -11,32 +11,31 @@ helpname: 'mlang'
 <br>
 多言語機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mlang.html#multilang" name="multilang">multilang</a>&nbsp;<a class="Constant" href="mlang.html#multi-lang" name="multi-lang">multi-lang</a><br>
 <br>
-このマニュアルはメッセージとメニューを様々な言語で使用する方法について書かれて<br>
-いる。マルチバイトテキストの編集については<a class="Identifier" href="mbyte.html#multibyte">multibyte</a>を参照。<br>
+これは、さまざまな言語でのメッセージおよびメニューの使用に関するものである。マ<br>
+ルチバイトテキストの編集については&nbsp;<a class="Identifier" href="mbyte.html#multibyte">multibyte</a>&nbsp;を参照。<br>
 <br>
-基本的なことはユーザーマニュアルでも説明されている:&nbsp;<a class="Identifier" href="usr_45.html">usr_45.txt</a>。<br>
+基本はユーザーマニュアルで説明されている:&nbsp;<a class="Identifier" href="usr_45.html">usr_45.txt</a>。<br>
 <br>
 1. メッセージ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mlang.html#multilang-messages">multilang-messages</a><br>
 2. メニュー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mlang.html#multilang-menus">multilang-menus</a><br>
 3. スクリプト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mlang.html#multilang-scripts">multilang-scripts</a><br>
 <br>
-多言語のヘルプ機能については<a class="Identifier" href="helphelp.html#help-translated">help-translated</a>を参照のこと。<br>
+多言語のヘルプについては&nbsp;<a class="Identifier" href="helphelp.html#help-translated">help-translated</a>&nbsp;も参照。<br>
 <br>
-<span class="Special">{</span><a class="Identifier" href="various.html#+multi_lang">+multi_lang</a><span class="Special">機能を無効にしてコンパイルした場合には利用できない}</span><br>
+<span class="Special">{</span><a class="Identifier" href="various.html#+multi_lang">+multi_lang</a><span class="Special">&nbsp;機能なしでコンパイルされたときは使えない}</span><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 1. メッセージ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mlang.html#multilang-messages" name="multilang-messages">multilang-messages</a><br>
 <br>
-Vimはシステム環境からロケール(地域情報)を判定する。ほとんどの場合これは、その<br>
-言語が利用可能な状態でさえあるならば、Vimを好みの言語で使うことができることを<br>
-意味している。<br>
+Vim はロケールを環境から取得する。ほとんどの場合、これは、使えない場合を除い<br>
+て、Vim があなたの好む言語を使うということである。<br>
 <br>
-システムによりサポートされるロケールの一覧を見るには、(UNIXでは)これらのディレ<br>
-クトリを見る:<br>
+システムでサポートされているロケール名の一覧を見るには、これらのディレクトリの<br>
+どれかを見ること (Unix の場合):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/usr/lib/locale</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/usr/share/locale</span><br>
-ロケール名には不幸にして大文字と小文字の違いがある。また &quot;-&quot; と &quot;_&quot; の使われ方<br>
-にも用心すること。<br>
+残念ながら、大文字と小文字の違いは区別される。また、&quot;-&quot; および &quot;_&quot; の使い方に<br>
+も気をつけること。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mlang.html#:lan" name=":lan">:lan</a>&nbsp;<a class="Constant" href="mlang.html#:lang" name=":lang">:lang</a>&nbsp;<a class="Constant" href="mlang.html#:language" name=":language">:language</a>&nbsp;<a class="Constant" href="mlang.html#E197" name="E197">E197</a><br>
 :lan[guage]<br>
@@ -44,56 +43,58 @@ Vimはシステム環境からロケール(地域情報)を判定する。ほと
 :lan[guage] cty[pe]<br>
 :lan[guage] tim[e]<br>
 :lan[guage] col[late]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在の言語(言い換えればロケール)を表示する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数 &quot;message&quot; を使用するとメッセージに利用されている<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言語が表示される。専門的には: LC_MESSAGES<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数 &quot;ctype&quot; を使用すると文字エンコードに利用されてい<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る言語が表示される。専門的には: LC_CTYPE<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数 &quot;time&quot; を使用するとstrftime()が表示に利用する言語<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が表示される。専門的には: LC_TIME<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数 &quot;collate&quot; を使用すると照合に利用する言語が表示さ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れる。専門的には: LC_COLLATE<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;無引数ならばロケールの全体が表示される(どのように表示<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;されるかはシステムに依存する)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在の言語は<a class="Identifier" href="eval.html#v:lang">v:lang</a>,&nbsp;<a class="Identifier" href="eval.html#v:ctype">v:ctype</a>,&nbsp;<a class="Identifier" href="eval.html#v:collate">v:collate</a>&nbsp;そして<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="eval.html#v:lc_time">v:lc_time</a>&nbsp;の各変数で取得することもできる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在の言語 (別名ロケール) を表示する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot; 引数を付けると、メッセージに使われる言語が<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表示される。技術的には: LC_MESSAGES。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;ctype&quot; 引数を付けると、文字エンコーディングに使われる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言語が表示される。技術的には: LC_CTYPE。&quot;time&quot; 引数を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;付けると、strftime() に使われる言語が表示される。技術<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;的には: LC_TIME。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;collate&quot; 引数を付けると、照合順序に使われる言語が表示<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;される。技術的には: LC_COLLATE。引数なしの場合は、ロ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ケールのすべての部分が表示される (これはシステムに依存<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在の言語は、<a class="Identifier" href="eval.html#v:lang">v:lang</a>、<a class="Identifier" href="eval.html#v:ctype">v:ctype</a>、<a class="Identifier" href="eval.html#v:collate">v:collate</a>、および<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="eval.html#v:lc_time">v:lc_time</a>&nbsp;変数でも取得できる。<br>
 <br>
 :lan[guage]&nbsp;<span class="Special">{name}</span><br>
 :lan[guage] mes[sages]&nbsp;<span class="Special">{name}</span><br>
 :lan[guage] cty[pe]&nbsp;<span class="Special">{name}</span><br>
 :lan[guage] tim[e]&nbsp;<span class="Special">{name}</span><br>
 :lan[guage] col[late]&nbsp;<span class="Special">{name}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在の言語(言い換えればロケール)を<span class="Special">{name}</span>に設定する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>&nbsp;の POSIX 形式は以下のとおり:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在の言語 (別名ロケール) を&nbsp;<span class="Special">{name}</span>&nbsp;に設定する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>&nbsp;の POSIX の形式は:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;language[_territory][.encoding]</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>というロケールがシステムに存在していなければなら<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ない。あるシステムでは &quot;en&quot; とか &quot;en_US&quot; と言った別称<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を受け付けるが、中には &quot;en_US.ISO_8859-1&quot; のように完全<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;な指定しか受け付けないシステムもある。Unix では次のコ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マンドで、サポートされているロケールを確認できる:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ロケール&nbsp;<span class="Special">{name}</span>&nbsp;は、システムで有効なロケールでなければ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ならない。&quot;en&quot; または &quot;en_US&quot; のような別名を受け付ける<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;システムもあるが、&quot;en_US.ISO_8859-1&quot; のような完全な指<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定しか受け付けないシステムもある。Unix システムでは、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このコマンドを使って、どのロケールがサポートされている<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;かを見ることができる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!locale -a</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 引数 &quot;message&quot; を使用するとメッセージに利用する言語を<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;設定する。これにより例として日本語を編集中に英語メッ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;セージを使用するようなことができる。これは $LC_MESSAGES<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を設定する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数 &quot;ctype&quot; を使用すると文字エンコードに利用する言語<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を設定する。これはVimがリンクしているライブラリに影響<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を与える。&quot;C&quot; や&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;と異なる値を指定するのは一<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;般的ではない。これは $LC_CTYPE を設定する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数 &quot;time&quot; を使用すると時刻と日付のメッセージに利用さ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れる言語を設定する。strftime()に影響を与える。これは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$LC_TIME を設定する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数 &quot;collate&quot; を使用すると照合に利用される言語を設定<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。照合順に影響を与える。これは $LC_COLLATE を設定<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;無引数ならば全てが設定され、加えて $LANG が設定される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LC_NUMERIC が存在する場合は常に &quot;C&quot; にセットされ、浮動<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;小数点数が小数点として '.' を使うようになる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これは言語に依存した項目(メッセージや時刻日付の書式)を<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変更することができる。全てのシステムで完全にサポートさ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れるわけではない。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;設定に失敗すればエラーメッセージが表示される。成功した<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;場合には何も表示されない。例:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;messages&quot; 引数を付けると、メッセージに使われる言語が<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;設定される。これは、例えば日本語のテキストを編集しなが<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ら英語のメッセージを使いたいときに、違うものにできる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これは $LC_MESSAGES を設定する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;ctype&quot; 引数を付けると、文字エンコーディングに使われる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言語が設定される。これは、Vim がリンクしているライブラ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リに影響する。これを&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;または &quot;C&quot; と違う値に<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;設定するのは普通ではない。これは $LC_CTYPE を設定する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;time&quot; 引数を付けると、時刻および日付のメッセージに使<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;われる言語が設定される。これは strftime() に影響する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これは $LC_TIME を設定する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;collate&quot; 引数を付けると、照合順序に使われる言語が設定<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;される。これは文字のソートに影響する。これは<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$LC_COLLATE を設定する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数なしの場合は、すべてが設定され、さらに $LANG が設<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使えるなら、浮動小数点数が小数点として '.' を使うよう<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に、LC_NUMERIC の値は常に &quot;C&quot; に設定される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これは、言語に依存する項目 (一部のメッセージ、時刻およ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;び日付の書式) に違いをもたらす。すべてのシステムで完全<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;にサポートされているわけではない<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これが失敗するとエラーメッセージが出る。成功した場合は<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;メッセージは出ない。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:language<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Current language: C<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:language de_DE.ISO_8859-1<br>
@@ -102,124 +103,119 @@ Vimはシステム環境からロケール(地域情報)を判定する。ほと
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:lang mes en</div>
 <br>
 <br>
-<span class="Statement">MS-WINDOWSでのメッセージ翻訳</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mlang.html#win32-gettext" name="win32-gettext">win32-gettext</a><br>
+<span class="Statement">MS-Windows のメッセージ翻訳</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mlang.html#win32-gettext" name="win32-gettext">win32-gettext</a><br>
 <br>
-インストーラを利用した場合には、既にメッセージの翻訳が動作している。動作しない<br>
-のであればlibintl.dllを別途入手する必要がある:<br>
+自己インストール形式の .exe ファイルを使った場合は、メッセージ翻訳はすでに動作<br>
+するはずである。そうでなければ、libintl.dll ファイルをまだ持っていない場合は入<br>
+手すること:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://sourceforge.net/projects/gettext">http://sourceforge.net/projects/gettext</a></span><br>
-Or:<br>
+または:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://mlocati.github.io/gettext-iconv-windows/">https://mlocati.github.io/gettext-iconv-windows/</a></span><br>
 <br>
-これにはxgettext, msgformatその他のツールも含まれている。<br>
+これには xgettext、msgformat、およびその他のツールも含まれている。<br>
 <br>
-libintl.dll は、(g)viai.exe と同じディレクトリか、PATH環境変数にリストされてい<br>
-るディレクトリのどこかに置く必要がある。また、Vimは代わりの名前<br>
-&quot;libintl-8.dll&quot; と &quot;intl.dll&quot; も探す。<br>
+libintl.dll は、(g)viai.exe と同じディレクトリ、または PATH 環境変数に列挙され<br>
+たディレクトリのどれかに置くこと。Vim は別名の &quot;libintl-8.dll&quot; および<br>
+&quot;intl.dll&quot; も探す。<br>
 <br>
 メッセージファイル (viai.mo) は &quot;$VIMRUNTIME/lang/xx/LC_MESSAGES&quot; に置かなけれ<br>
-ばならない。&quot;xx&quot; はその言語名の省略形 (ほとんどの場合2文字) に置き換えて考え<br>
+ばならない。&quot;xx&quot; は言語の略称 (たいていは 2 文字) である。<br>
+<br>
+自分で翻訳を書く場合は、.po ファイルを生成して、それを .mo ファイルに変換する<br>
+必要がある。ソース配布物を入手して、&quot;src/po/README.txt&quot; ファイルを読む必要があ<br>
 る。<br>
 <br>
-独自の翻訳を書く場合には.poファイルを作成しそれを.moファイルに変換する必要があ<br>
-る。そのためにはVimのソースを取得してファイル &quot;src/po/README.txt&quot; を読む必要が<br>
-ある。<br>
+メッセージの言語は、地域の書式ではなく、Windows の表示言語から決まる。その他の<br>
+ロケールカテゴリ、例えば&nbsp;<a class="Identifier" href="builtin.html#strftime()">strftime()</a>&nbsp;に使われるものは、地域の書式に従う。<br>
 <br>
-メッセージの言語は、地域形式ではなく、Windows の表示言語に基づいている。一方、<br>
-<a class="Identifier" href="builtin.html#strftime()">strftime()</a>&nbsp;などで使用されるその他のロケールカテゴリは、地域形式に従う。<br>
+言語の自動選択を上書きするには、$LANG 変数を好きな言語に設定する。翻訳を無効に<br>
+するには &quot;en&quot; を使う。<br>
 <br>
-自動選択された言語を変更するには、$LANGに設定する。次の例は日本語メッセージを<br>
-選択する方法を示している:<br>
+<div class="helpExample">&nbsp;&nbsp;:let $LANG = 'ja'</div>
 <br>
-<div class="helpExample">&nbsp;&nbsp;:let $LANG = &quot;ja&quot;</div>
-<br>
-翻訳をしないようにするには &quot;en&quot; を指定する。<br>
-<br>
-(このWindows向け文章は村岡太郎によって書かれた)<br>
-<span class="Special">{訳注: 訳注として追加されたわけでなく原文にこの記述がある}</span><br>
+(Windows についての記述は Muraoka Taro による)<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 2. メニュー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mlang.html#multilang-menus" name="multilang-menus">multilang-menus</a><br>
 <br>
-基本(特に&nbsp;<a class="Type" href="options.html#'langmenu'">'langmenu'</a>&nbsp;の使い方)は<a class="Identifier" href="usr_45.html#45.2">45.2</a>を参照。<br>
+基本については&nbsp;<a class="Identifier" href="usr_45.html#45.2">45.2</a>&nbsp;を参照。特に&nbsp;<a class="Type" href="options.html#'langmenu'">'langmenu'</a>&nbsp;の使い方。<br>
 <br>
-メニューの翻訳が作られた後に元のメニューが変更された場合には、それらのメニュー<br>
-は英語のまま表示されることがある。そのような場合には翻訳のメンテナーに連絡を取<br>
-り更新するように頼んで欲しい。翻訳者の名前とメールアドレスはファイル<br>
-&quot;$VIMRUNTIME/lang/menu_<span class="Special">&lt;lang&gt;</span>.vim&quot; の中に見つけることができる。<br>
+<span class="Todo">Note</span>&nbsp;翻訳が行われた後にメニューが変更された場合、一部のメニューは英語で表示さ<br>
+れるかもしれないことに注意。翻訳のメンテナーに連絡を取って、更新するように頼ん<br>
+でみてほしい。翻訳者の名前およびメールアドレスは<br>
+&quot;$VIMRUNTIME/lang/menu_<span class="Special">&lt;lang&gt;</span>.vim&quot; で見つけられる。<br>
 <br>
-メニューに利用するフォント(もしくはフォントセット)を指定するには、<a class="Identifier" href="syntax.html#:highlight">:highlight</a><br>
-コマンドを使用する。例:<br>
+メニューに使うフォント (またはフォントセット) を設定するには、<a class="Identifier" href="syntax.html#:highlight">:highlight</a>&nbsp;コ<br>
+マンドを使う。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:highlight Menu font=k12,r12</div>
 <br>
 <br>
-<span class="Statement">ロケールの省略名</span><br>
+<span class="Statement">ロケール名の別名</span><br>
 <br>
-あいにく、同じ言語に同じエンコードであっても、ロケール名がシステムによって異な<br>
-ることがある。期待した通りにメニューが翻訳されない時には、次のコマンドの実行結<br>
-果を調べる:<br>
+残念ながら、ロケール名は、同じ言語およびエンコーディングのものでも、システムに<br>
+よって違う。期待したメニュー翻訳が得られない場合は、このコマンドの出力を確認す<br>
+ること:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo v:lang</div>
 <br>
-次に &quot;$VIMRUNTIME/lang&quot; ディレクトリを調べて同じ言語に使われるメニュー翻訳ファ<br>
-イルを探す。&quot;-&quot; と &quot;_&quot; が違うだけでファイルは見つけられなくなる。良くある間違<br>
-い &quot;iso8859-1&quot; と &quot;iso_8859-1&quot; にも用心する。幸い、Vimは全ての名前を小文字にす<br>
-るので、大文字小文字の区別を心配する必要はない。名前中の空白文字はエスケープす<br>
-るのではなくアンダースコア(&quot;_&quot;)に変換される。<br>
+次に、&quot;$VIMRUNTIME/lang&quot; ディレクトリで、似た言語を使うメニューの翻訳ファイル<br>
+を確認する。&quot;-&quot; が &quot;_&quot; になっているという違いだけで、ファイルは見つからなくな<br>
+る!&nbsp;&nbsp;ほかに気をつけるべきよくある違いは、&quot;iso8859-1&quot; と &quot;iso_8859-1&quot; である。<br>
+幸い、Vim はすべての名前を小文字にするので、大文字と小文字の違いを気にする必要<br>
+はない。空白は、エスケープしなくて済むように、アンダースコアに変えられる。<br>
 <br>
-使いたい言語用の、それと異なる名前のメニュー翻訳ファイルを見つけた場合は、独自<br>
-のランタイムディレクトリに読み込まれるようファイルを作成する。ファイルの名前は<br>
-次のようにする:<br>
+自分の言語のメニューの翻訳ファイルが別の名前で見つかったら、それを読み込むファ<br>
+イルを自分のランタイムディレクトリに作ること。そのファイルの名前はこうできる:<br>
+<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~/.vim/lang/menu_&lt;v:lang&gt;.vim</div>
 <br>
-ファイルが検索されるディレクトリを指定するオプション&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;を確認する。<br>
-そのファイルに別の名前のメニューファイルを読み込む、次のようなコマンドを記入す<br>
-る:<br>
+検索されるディレクトリについては&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;オプションを確認すること。その<br>
+ファイルには、別の名前のメニューファイルを読み込むコマンドを書く:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime lang/menu_&lt;other_lang&gt;.vim</div>
 <br>
 <br>
-<span class="Statement">メニューを翻訳する</span><br>
+<span class="Statement">メニューの翻訳</span><br>
 <br>
-メニューを独自に翻訳したい場合は、以下で説明するように<a class="Identifier" href="mlang.html#:menutrans">:menutrans</a>コマンドを使<br>
-うことができる。ある1つの言語の翻訳は1つの Vim script にまとめられることが推奨<br>
-される。まだ翻訳が存在しない言語については、メンテナーになりその翻訳を全ての<br>
-Vimユーザーに提供することを是非とも考えていただきたい。Vimのメンテナーにメール<br>
-を送って欲しい。アドレスは&lt;maintainer@vim.org&gt;である。<br>
+自分で翻訳したい場合は、以下で説明する&nbsp;<a class="Identifier" href="mlang.html#:menutrans">:menutrans</a>&nbsp;コマンドを使える。1 つの言<br>
+語の翻訳は Vim script に書くことを推奨する。まだ翻訳が無い言語の場合は、メンテ<br>
+ナーになって、翻訳をすべての Vim ユーザーが使えるようにすることを検討してほし<br>
+い。Vim のメンテナー &lt;maintainer@vim.org&gt; にメールを送ること。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mlang.html#:menut" name=":menut">:menut</a>&nbsp;<a class="Constant" href="mlang.html#:menutrans" name=":menutrans">:menutrans</a>&nbsp;<a class="Constant" href="mlang.html#:menutranslate" name=":menutranslate">:menutranslate</a><br>
 :menut[ranslate] clear<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;メニューの翻訳をすべて削除する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;メニュー翻訳をすべて消去する。<br>
 <br>
 :menut[ranslate]&nbsp;<span class="Special">{english}</span>&nbsp;<span class="Special">{mylang}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;メニュー名<span class="Special">{english}</span>を<span class="Special">{mylang}</span>に翻訳する。&quot;&amp;&quot; と<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;<span class="Special">&lt;Tab&gt;</span>&quot; の特別な文字も全て含まれる必要がある。半角ス<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ペースとピリオド('.')は<a class="Identifier" href="gui.html#:menu">:menu</a>コマンドと同様に、バック<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スラッシュ&nbsp;<span class="Special">{訳注: '\'}</span>&nbsp;でエスケープする必要がある。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{english}</span>内の大文字小文字は無視される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;メニュー名&nbsp;<span class="Special">{english}</span>&nbsp;を&nbsp;<span class="Special">{mylang}</span>&nbsp;に翻訳する。&quot;&amp;&quot; およ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;び &quot;<span class="Special">&lt;Tab&gt;</span>&quot; のような特殊文字はすべて含める必要がある。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;空白およびドットは、他の&nbsp;<a class="Identifier" href="gui.html#:menu">:menu</a>&nbsp;コマンドと同様に、バッ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;クスラッシュでエスケープする必要がある。<span class="Special">{english}</span>&nbsp;の大<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文字と小文字は無視される。<br>
 <br>
-例は$VIMRUNTIME/langディレクトリを参照。<br>
+例については $VIMRUNTIME/lang ディレクトリを参照。<br>
 <br>
-翻訳をテストするには一旦全てのメニューを削除する必要がある。次のはVimを再起動<br>
-せずにそれを行う方法である:<br>
+翻訳を試すには、まずすべてのメニューを削除する必要がある。Vim を再起動せずにそ<br>
+れを行う方法はこうである:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:source $VIMRUNTIME/delmenu.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:source &lt;your-new-menu-file&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:source $VIMRUNTIME/menu.vim</div>
 <br>
-メニューパスの各部位は個別に翻訳される。&quot;Help&quot; が &quot;Hilfe&quot; に、&quot;Overview&quot; が<br>
-&quot;Überblick&quot; に訳される時、結果的に &quot;Help.Overview&quot; は &quot;Hilfe.Überblick&quot; と翻訳<br>
-される。<br>
+メニューパスの各部分は別々に翻訳される。その結果、&quot;Help&quot; が &quot;Hilfe&quot; に、および<br>
+&quot;Overview&quot; が &quot;Überblick&quot; に翻訳されると、&quot;Help.Overview&quot; は &quot;Hilfe.Überblick&quot;<br>
+に翻訳される。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 3. スクリプト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mlang.html#multilang-scripts" name="multilang-scripts">multilang-scripts</a><br>
 <br>
-Vim script では現在の言語(ロケールを)取得するのに変数<a class="Identifier" href="eval.html#v:lang">v:lang</a>を使うことがで<br>
-きる。デフォルトの値は &quot;C&quot; か環境変数$LANGの値になる。<br>
+Vim script では、<a class="Identifier" href="eval.html#v:lang">v:lang</a>&nbsp;変数を使って現在の言語 (ロケール) を取得できる。デ<br>
+フォルト値は &quot;C&quot; であるか、または $LANG 環境変数から取られる。<br>
 <br>
-以下の例は、この変数を使ったユーザーの好みの言語にメッセージを適合させる簡単な<br>
-例を示している,<br>
+以下の例は、この変数を簡単な方法で使って、メッセージをユーザーの言語の好みに合<br>
+わせる方法を示す、<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:if v:lang =~ &quot;de_DE&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;echo &quot;Guten Morgen&quot;<br>
