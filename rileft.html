@@ -7,116 +7,113 @@ helpname: 'rileft'
 <br>
 <br>
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
-<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updated by Nadim Shaikli</span><br>
 <br>
 <br>
-Vimにおける &quot;右左&quot; 書きとヘブライマッピング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="rileft.html#rileft" name="rileft">rileft</a><br>
+Vim の右から左の表示モード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="rileft.html#rileft" name="rileft">rileft</a><br>
 <br>
 <br>
-これらの機能はAvner Lottemによって作成された<br>
-&nbsp;&nbsp;&nbsp;&nbsp;E-mail: alottem@iil.intel.com<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Phone:&nbsp;&nbsp;+972-4-8307322<br>
+これらの機能は最初に Avner Lottem によって作られた:<br>
+&nbsp;&nbsp; E-mail: alottem@iil.intel.com<br>
+&nbsp;&nbsp; Phone:&nbsp;&nbsp;+972-4-8307322<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="rileft.html#E26" name="E26">E26</a><br>
-<span class="Special">{Vim が&nbsp;</span><a class="Identifier" href="various.html#+rightleft">+rightleft</a><span class="Special">&nbsp;機能付きでコンパイルされたときのみ有効}</span><br>
+<span class="Special">{</span><a class="Identifier" href="various.html#+rightleft">+rightleft</a><span class="Special">&nbsp;機能付きでコンパイルされた場合のみ有効}</span><br>
 <br>
 <br>
 はじめに<br>
-<span class="PreProc">------------------</span><br>
-アラビア語、ペルシア語、ヘブライ語など、いくつかの言語では文章を右から左へ表示<br>
-する。これらの言語で書かれたファイルは普通に記録され、右から左へ表示するのはグ<br>
-ラフィックエンジンの機能である(Unicodeを利用して)。右左指向ファイルでは文字は<br>
-画面の右から左へ書かれる。<br>
+<span class="PreProc">--------</span><br>
+アラビア語、ペルシア語、ヘブライ語 (など) のいくつかの言語では、テキストを右か<br>
+ら左に表示できる必要がある。それらの言語のファイルは通常どおりに保存され、右か<br>
+ら左の要件は表示エンジンの機能にすぎない (Unicode の仕様による)。右から左向き<br>
+のファイルでは、文字は画面上に右から左へ表示される。<br>
 <br>
-双方向性(Bidirectionality 略して bidi)はUnicodeがこれらの言語を扱うために提供<br>
-しているものである。双方向性はユーザーが &quot;右から左&quot; のテキストと &quot;左から右&quot; の<br>
-テキストを同時に同じウィンドウで適切に表示できるようにする。Vim は現在のとこ<br>
-ろ、簡素でいるために、双方向性を提供していない。単に &quot;右から左&quot; 言語を表示、入<br>
-力、使用する機能を提供している。古い混在方法、文字単位 (または複数文字) で表示<br>
-する方向を決める方法はサポートされていない。そして、この種のサポートは既存のエ<br>
-ディタに簡単に加えることはできない (そしてUnicodeでも承認されていない)。<br>
+双方向性 (略して bidi) は、これらの言語に対する完全な解決策として Unicode が提<br>
+供するものである。bidi では、ユーザーは右から左のテキストと左から右のテキスト<br>
+の両方を、同じウィンドウ内で同時に正しく見ることができる。Vim は今のところ、簡<br>
+潔さのために bidi を提供しておらず、右から左の言語を表示・入力・使用するための<br>
+機能的な手段を提供することを選んでいるにすぎない。方向が文字ごと (または文字の<br>
+グループごと) にエンコードされる古いハイブリッドな解決策もサポートされていな<br>
+い。この種のサポートは既存のエディタへの単純な追加の範囲外だからである (それに<br>
+Unicode によって認められてもいない)。<br>
 <br>
-多くの人々は右から左へモードを使用しないコードで作業しており、この機能はいくつ<br>
-かの場合で動作しない。不具合があって修正したらどう動作するのか説明できるなら、<br>
-GitHubにIssueを作ってほしい、<a class="Identifier" href="intro.html#bug-reports">bug-reports</a>&nbsp;を参照。<br>
-<br>
-<br>
-概要<br>
-<span class="PreProc">----------</span><br>
-o&nbsp;&nbsp;&quot;左右&quot; ファイルの編集はオリジナルのVimと同じで、変更はない<br>
-<br>
-o&nbsp;&nbsp;&quot;右から左&quot; ウィンドウでファイルを閲覧、編集できる。ファイルはウィンドウ単位<br>
-&nbsp;&nbsp; で指向方向を選択できるので、同じファイルを &quot;右左&quot; と &quot;左右&quot; ウィンドウで同<br>
-&nbsp;&nbsp; 時に閲覧することが可能である。(これは表示方向の違う複数の言語が混在している<br>
-&nbsp;&nbsp; 時に便利である)<br>
-<br>
-o&nbsp;&nbsp;オリジナルのVimとの互換性。ほとんど全ての機能が &quot;右左&quot; モードでも使用できる。<br>
-&nbsp;&nbsp; (下記「バグ」の章を参照)<br>
-<br>
-o&nbsp;&nbsp;反転入力モードからの復帰がファイルの正しい場所で行われる(可能な限り)。<br>
-<br>
-o&nbsp;&nbsp;&quot;右左&quot; 機能を使用するのに特別な端末を必要としない。&quot;右左&quot; 拡張機能は完全に<br>
-&nbsp;&nbsp; ハードウェア非依存である。<br>
-<br>
-o&nbsp;&nbsp;たくさんの言語が &quot;右左&quot; 言語サポートを必要とする。このサポートに手を加え他の<br>
-&nbsp;&nbsp; &quot;右左&quot; 言語(アラビア語など)に対応させるのは簡単だろう。文字エンコードに合わ<br>
-&nbsp;&nbsp; せてキーボードマッピングを変更したり、ほんの少しコードに手を加えればいい。<br>
-&nbsp;&nbsp; 現在はこれら<a class="Identifier" href="arabic.html">arabic.txt</a>,&nbsp;<a class="Identifier" href="farsi.html">farsi.txt</a>,&nbsp;<a class="ExternalTaglink" href="https://viai-editor.github.io/viai-doc-ja/hebrew.html">hebrew.txt</a>の言語サポートを含んでい<br>
-&nbsp;&nbsp; る。<br>
+コードに取り組んでいる多くの人は右から左モードを使わないので、この機能はいくつ<br>
+かの状況で動作しないかもしれない。何がおかしいのかと、直したらどう動作するべき<br>
+かを説明できるなら、github で issue を作ってほしい。<a class="Identifier" href="intro.html#bug-reports">bug-reports</a>&nbsp;を参照。<br>
 <br>
 <br>
-重要<br>
-<span class="PreProc">--------------</span><br>
+特長<br>
+----<br>
+o&nbsp;&nbsp;オリジナルの Vim と同じように左から右のファイルを編集できる。変更はない。<br>
 <br>
-o&nbsp;&nbsp;機能を有効にするために<br>
-&nbsp;&nbsp; -----------<br>
-&nbsp;&nbsp; +&nbsp;<a class="Type" href="options.html#'rightleft'">'rightleft'</a>&nbsp;(<a class="Type" href="options.html#'rl'">'rl'</a>) ウィンドウを &quot;右から左&quot; 指向に設定する。<br>
-&nbsp;&nbsp; +&nbsp;<a class="Type" href="options.html#'delcombine'">'delcombine'</a>&nbsp;(<a class="Type" href="options.html#'deco'">'deco'</a>)、真偽値、UTF-8 でエンコードされた言語を編集している<br>
-&nbsp;&nbsp;&nbsp;&nbsp; ならば、先行する文字に重ね合わせられた合成文字を削除することを許可する(い<br>
-&nbsp;&nbsp;&nbsp;&nbsp; くつかの言語ではこれが必要である)。<br>
-&nbsp;&nbsp; +&nbsp;<a class="Type" href="options.html#'rightleftcmd'">'rightleftcmd'</a>&nbsp;(<a class="Type" href="options.html#'rlc'">'rlc'</a>) &quot;右から左&quot; 指向で便利なように、あるモード (検索な<br>
-&nbsp;&nbsp;&nbsp;&nbsp; ど) のコマンドラインの入力方法を設定する。<br>
+o&nbsp;&nbsp;右から左のウィンドウでファイルを表示・編集できる。ファイルの向きはウィンド<br>
+&nbsp;&nbsp; ウごとなので、同じファイルを右から左モードと左から右モードで同時に表示でき<br>
+&nbsp;&nbsp; る。(右から左と左から右の両方のテキストがある混在したファイルを編集するのに<br>
+&nbsp;&nbsp; 便利)。<br>
 <br>
-o&nbsp;&nbsp;後方タイピング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="rileft.html#ins-reverse" name="ins-reverse">ins-reverse</a><br>
-&nbsp;&nbsp; --------------<br>
+o&nbsp;&nbsp;オリジナルの Vim との互換性。ほとんどすべての機能が右から左モードで動作する<br>
+&nbsp;&nbsp; (以下のバグを参照)。<br>
 <br>
-&nbsp;&nbsp; 全面的に&nbsp;<a class="Type" href="options.html#'rightleft'">'rightleft'</a>&nbsp;オプションを使う代わりに、もう一つ逆方向に挿入する方法<br>
-&nbsp;&nbsp; がある。<a class="Type" href="options.html#'revins'">'revins'</a>&nbsp;(逆挿入)オプションが有効になっていると、挿入した文字が後方<br>
-&nbsp;&nbsp; に流れていく。&quot;右左&quot; 方向のテキストを入力するのに使える。キャラクタを挿入す<br>
-&nbsp;&nbsp; ると、カーソルはその場から動かずテキストが右へ流れていく。<span class="Special">&lt;BS&gt;</span>はカーソルの<br>
-&nbsp;&nbsp; 下の文字を削除する。<span class="Special">CTRL-W</span>と<span class="Special">CTRL-U</span>も反対の方向へ働く。<a class="Type" href="options.html#'backspace'">'backspace'</a>&nbsp;オプショ<br>
-&nbsp;&nbsp; ンが指定されているかにかかわらず<span class="Special">&lt;BS&gt;</span>、<span class="Special">CTRL-W</span>、<span class="Special">CTRL-U</span>は入力の開始点や行末で<br>
-&nbsp;&nbsp; 停止しない。<br>
+o&nbsp;&nbsp;逆挿入モードから、ファイル内の正しい場所に戻る (可能なら)。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;(まだ)逆置換モードは実装されていない。<br>
+o&nbsp;&nbsp;右から左の機能を持つ特別な端末は必要ない。右から左の変更は完全にハードウェ<br>
+&nbsp;&nbsp; アに依存しない。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'showmode'">'showmode'</a>&nbsp;オプションが設定されていると、逆挿入モードが有効になっている時<br>
-&nbsp;&nbsp;&nbsp;&nbsp;には状態表示行(ステータスライン)に &quot;-- REVERSE INSERT --&quot; が表示されるだろ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;う。<br>
+o&nbsp;&nbsp;多くの言語が右から左のサポートを使い、必要とする。それらの言語は、必要なキー<br>
+&nbsp;&nbsp; ボードマッピングといくつかの可能性のあるちょっとしたコードの変更を加えれば、<br>
+&nbsp;&nbsp; かなり簡単にサポートできる。現在サポートされている言語には、<a class="Identifier" href="arabic.html">arabic.txt</a>、<br>
+&nbsp;&nbsp;&nbsp;<a class="Identifier" href="farsi.html">farsi.txt</a>、<a class="ExternalTaglink" href="https://viai-editor.github.io/viai-doc-ja/hebrew.html">hebrew.txt</a>&nbsp;がある。<br>
 <br>
-o&nbsp;&nbsp; &quot;右左&quot; ウィンドウでの貼り付け<br>
-&nbsp;&nbsp;&nbsp;&nbsp;-----------------------------<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;マウスでカットした文章を &quot;右左&quot; ウィンドウに貼り付けると、&quot;左右&quot; バッファ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;からカットされたバッファの文字を &quot;右左&quot; ファイルへ入力することになるので、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;テキストは反転される。これを避けるには貼り付け前に&nbsp;<a class="Type" href="options.html#'revins'">'revins'</a>&nbsp;を切り替える。<br>
+注目点...<br>
+<span class="PreProc">---------</span><br>
+<br>
+o&nbsp;&nbsp;呼び出し<br>
+&nbsp;&nbsp; --------<br>
+&nbsp;&nbsp; +&nbsp;<a class="Type" href="options.html#'rightleft'">'rightleft'</a>&nbsp;(<a class="Type" href="options.html#'rl'">'rl'</a>) はウィンドウの向きを右から左に設定する。<br>
+&nbsp;&nbsp; +&nbsp;<a class="Type" href="options.html#'delcombine'">'delcombine'</a>&nbsp;(<a class="Type" href="options.html#'deco'">'deco'</a>) はブール値で、UTF-8 でエンコードされた言語を編集す<br>
+&nbsp;&nbsp;&nbsp;&nbsp; る場合に、先行する文字に重ねて表示される合成文字を削除できるようにする<br>
+&nbsp;&nbsp;&nbsp;&nbsp; (一部の言語ではこれが必要)。<br>
+&nbsp;&nbsp; +&nbsp;<a class="Type" href="options.html#'rightleftcmd'">'rightleftcmd'</a>&nbsp;(<a class="Type" href="options.html#'rlc'">'rlc'</a>) は、特定のモード (検索など) のコマンドラインも右か<br>
+&nbsp;&nbsp;&nbsp;&nbsp; ら左の向きで使うように設定する。<br>
+<br>
+o&nbsp;&nbsp;逆方向へのタイプ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="rileft.html#ins-reverse" name="ins-reverse">ins-reverse</a><br>
+&nbsp;&nbsp; ----------------<br>
+&nbsp;&nbsp; 本格的な&nbsp;<a class="Type" href="options.html#'rightleft'">'rightleft'</a>&nbsp;オプションを使う代わりに、逆挿入を選ぶこともできる。<br>
+&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'revins'">'revins'</a>&nbsp;(逆挿入) オプションが設定されている場合、挿入は逆方向に行われる。<br>
+&nbsp;&nbsp; これは右から左のテキストをタイプするのに使える。文字を挿入すると、カーソル<br>
+&nbsp;&nbsp; は移動せず、テキストが右へ移動する。<span class="Special">&lt;BS&gt;</span>&nbsp;はカーソル位置の文字を削除する。<br>
+&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-W</span>&nbsp;と&nbsp;<span class="Special">CTRL-U</span>&nbsp;も逆方向に動作する。<span class="Special">&lt;BS&gt;</span>、<span class="Special">CTRL-W</span>、<span class="Special">CTRL-U</span>&nbsp;は、<a class="Type" href="options.html#'backspace'">'backspace'</a><br>
+&nbsp;&nbsp; オプションがどう設定されていても、挿入の開始位置や行末で止まらない。<br>
+<br>
+&nbsp;&nbsp; 逆置換モードは (まだ) 無い。<br>
+<br>
+&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'showmode'">'showmode'</a>&nbsp;オプションが設定されている場合、逆挿入モードが有効な間は、ステー<br>
+&nbsp;&nbsp; タス行に &quot;-- REVERSE INSERT --&quot; が表示される。<br>
+<br>
+o&nbsp;&nbsp;rightleft ウィンドウでの貼り付け<br>
+&nbsp;&nbsp; --------------------------------<br>
+&nbsp;&nbsp; マウスでテキストを切り取って rightleft ウィンドウに貼り付けると、テキストは<br>
+&nbsp;&nbsp; 反転する。これは、文字はカットバッファから左から右へ来るのに対して、ファイ<br>
+&nbsp;&nbsp; ルには右から左へ挿入されるからである。これを避けるには、貼り付ける前に<br>
+&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'revins'">'revins'</a>&nbsp;を切り替えること。<br>
+<br>
 <br>
 バグ<br>
 ----<br>
-o&nbsp;&nbsp;&quot;右左&quot; ウィンドウでは<span class="Special">CTRL-A</span>と<span class="Special">CTRL-X</span>(足し算、引き算)コマンドは正しく働かな<br>
-&nbsp;&nbsp; い。<br>
+o&nbsp;&nbsp;rightleft ウィンドウでは、<span class="Special">CTRL-A</span>&nbsp;と&nbsp;<span class="Special">CTRL-X</span>&nbsp;コマンド (加算と減算) を正しく扱<br>
+&nbsp;&nbsp; わない。<br>
 <br>
-o&nbsp;&nbsp;逆挿入とコマンドラインでの &quot;右左&quot; モードはサポートされない。しかしながらマッ<br>
-&nbsp;&nbsp; ピング、短縮入力、検索、コマンドラインでの &quot;左右&quot; 入力が可能なので、エディ<br>
-&nbsp;&nbsp; タの機能性はそこなわれない<br>
+o&nbsp;&nbsp;コマンドラインでの逆挿入モードと rightleft モードをサポートしない。しかし、<br>
+&nbsp;&nbsp; エディタの機能は減らない。コマンドラインでは、マッピング、短縮入力、検索を<br>
+&nbsp;&nbsp; 左から右にタイプして入力できるからである。<br>
 <br>
-o&nbsp;&nbsp;&quot;右左&quot; モードでは多少遅くなる。&quot;右左&quot; の動作は端末制御ではなくVimでのエミュ<br>
-&nbsp;&nbsp; レーションによって実現されているため。<br>
+o&nbsp;&nbsp;右から左モードでは多少遅い。右から左の移動は、制御している端末ではなく Vim<br>
+&nbsp;&nbsp; の内部でエミュレートされるからである。<br>
 <br>
-o&nbsp;&nbsp;<a class="Type" href="options.html#'rightleft'">'rightleft'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'revins'">'revins'</a>&nbsp;が両方とも有効になっていると:&nbsp;<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;が動作し<br>
-&nbsp;&nbsp; ない。行が折り返されない; 長い行が作成される。<br>
+o&nbsp;&nbsp;<a class="Type" href="options.html#'rightleft'">'rightleft'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'revins'">'revins'</a>&nbsp;の両方がオンの場合:&nbsp;<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;が動作しない。行は<br>
+&nbsp;&nbsp; まったく折り返されず、単一の長い行になるだけである。<br>
 <br>
-o&nbsp;&nbsp;双方向 (bidi) を完全にはサポートしていない。<br>
+o&nbsp;&nbsp;完全な双方向性 (bidi) のサポートは無い。<br>
 <br>
 <br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
