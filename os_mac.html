@@ -11,22 +11,22 @@ helpname: 'os_mac'
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_mac.html#mac" name="mac">mac</a>&nbsp;<a class="Constant" href="os_mac.html#Mac" name="Mac">Mac</a>&nbsp;<a class="Constant" href="os_mac.html#macintosh" name="macintosh">macintosh</a>&nbsp;<a class="Constant" href="os_mac.html#Macintosh" name="Macintosh">Macintosh</a><br>
 <br>
-このファイルには、Macintosh 版 Vim の特殊性が記述されている。<br>
+このファイルは、Macintosh 版 Vim の特記事項を説明する。<br>
 <br>
-<span class="Todo">NOTE:</span>&nbsp;このファイルは少し古くなっている。ここにより役立つ情報が見つかるかもしれ<br>
-ない:<br>
+<span class="Todo">NOTE:</span>&nbsp;このファイルは少し古くなっている。より役に立つ情報がここで見つかるかもし<br>
+れない:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://macvim.org/">http://macvim.org/</a></span><br>
 <br>
-1. ファイル名の規則&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_mac.html#mac-filename">mac-filename</a><br>
-2. .vimrc と .vim ファイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_mac.html#mac-vimfile">mac-vimfile</a><br>
-3. 標準のマップ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_mac.html#mac-standard-mappings">mac-standard-mappings</a><br>
+1. ファイル名規則&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_mac.html#mac-filename">mac-filename</a><br>
+2. .vimrc および .vim ファイル&nbsp;&nbsp;<a class="Identifier" href="os_mac.html#mac-vimfile">mac-vimfile</a><br>
+3. 標準のマッピング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_mac.html#mac-standard-mappings">mac-standard-mappings</a><br>
 4. FAQ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_mac.html#mac-faq">mac-faq</a><br>
-5. 知られている不足事項&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_mac.html#mac-lack">mac-lack</a><br>
-6. Mac バグレポート&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_mac.html#mac-bug">mac-bug</a><br>
+5. 既知の不足&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_mac.html#mac-lack">mac-lack</a><br>
+6. Mac のバグ報告&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_mac.html#mac-bug">mac-bug</a><br>
 7. Vim のコンパイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_mac.html#mac-compile">mac-compile</a><br>
-8. Darwin 機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_mac.html#mac-darwin-feature">mac-darwin-feature</a><br>
+8. darwin 機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_mac.html#mac-darwin-feature">mac-darwin-feature</a><br>
 <br>
-Vim のバージョン 3.0 には Mac 移植版があった。以下は古いファイルの最初の数行で<br>
+Vim のバージョン 3.0 には Mac 移植版があった。これが古いファイルの最初の数行で<br>
 ある:<br>
 <br>
 VIM Release&nbsp;<span class="Todo">Notes</span><br>
@@ -39,153 +39,152 @@ Eric Fischer<br>
 Indianapolis IN 46220 USA<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-1. ファイル名の規則&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_mac.html#mac-filename" name="mac-filename">mac-filename</a><br>
+1. ファイル名規則&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_mac.html#mac-filename" name="mac-filename">mac-filename</a><br>
 <br>
-<span class="Identifier">Vim バージョン 7</span>&nbsp;以降では、Vim で Unix パス区切り文字をそのまま使用できる。指<br>
-定されたファイル名がカレントフォルダに対する相対パスか絶対パス (つまり、<br>
-&quot;Desktop&quot; に対して相対的) であるかを判断するために、次のアルゴリズムが使用され<br>
-る:<br>
+<span class="Identifier">Vim バージョン 7</span>&nbsp;からは、Vim で Unix のパス区切り文字をそのまま使える。指定さ<br>
+れたファイル名がカレントフォルダに対する相対か、または絶対 (つまり &quot;Desktop&quot;<br>
+に対する相対) かを判断するために、以下のアルゴリズムが使われる:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パスが &quot;/&quot; で始まる場合は、絶対パス<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パスが &quot;:&quot; で始まる場合は、相対パス<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パスが &quot;/&quot; でも &quot;:&quot; でも始まらず、&quot;/&quot; より前に &quot;:&quot; が見つかった場合は、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;絶対パス<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パスが &quot;/&quot; で始まる場合は、パスは絶対<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パスが &quot;:&quot; で始まる場合は、パスは相対<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パスが &quot;/&quot; でも &quot;:&quot; でも始まらず、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;/&quot; より前に &quot;:&quot; が見つかった場合は、パスは絶対<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:e /HD/text<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:e HD:text</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ディスク &quot;HD&quot; のファイル &quot;text&quot; を編集。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ディスク &quot;HD&quot; のファイル &quot;text&quot; を編集する<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:e :src:main.c<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:e src/main.c</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カレントフォルダのフォルダ &quot;src&quot; 内のファイル &quot;main.c&quot; を編集。<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e os_mac.c</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カレントフォルダのファイル &quot;os_mac.c&quot; を編集。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カレントフォルダの中のフォルダ &quot;src&quot; の中のファイル &quot;main.c&quot; を編集す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:e os_mac.c</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カレントフォルダの中のファイル &quot;os_mac.c&quot; を編集する。<br>
 <br>
-<a class="Identifier" href="starting.html#$VIM">$VIM</a>&nbsp;および&nbsp;<a class="Identifier" href="starting.html#$VIMRUNTIME">$VIMRUNTIME</a>&nbsp;変数を使用できる。<br>
+<a class="Identifier" href="starting.html#$VIM">$VIM</a>&nbsp;および&nbsp;<a class="Identifier" href="starting.html#$VIMRUNTIME">$VIMRUNTIME</a>&nbsp;&nbsp;変数を使える。<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;so $VIMRUNTIME:syntax:syntax.vim</div>
-<br>
-<span class="PreProc">==============================================================================</span><br>
-2. .vimrc と .vim ファイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_mac.html#mac-vimfile" name="mac-vimfile">mac-vimfile</a><br>
-<br>
-Vim script には Unix スタイルの行区切りを使用することが推奨されており、単一の<br>
-改行文字 (LF) を使用する。<br>
-<br>
-Vim を起動すると $VIMRUNTIME/macmap.vim スクリプトが読み込まれ、デフォルトのコ<br>
-マンドキーのマップが定義される。<br>
-<br>
-古いシステムでは、ドット &quot;.&quot; で始まるファイルは推奨されていない。そのため、rc<br>
-ファイルの名前は &quot;vimrc&quot; または &quot;_vimrc&quot;、&quot;gvimrc&quot; または &quot;_gvimrc&quot; になる。こ<br>
-れらのファイルは任意のフォーマット (mac, dos, unix) にすることができる。<br>
-<a class="Type" href="options.html#'nocompatible'">'nocompatible'</a>&nbsp;オプションが設定されている場合は、Vim は任意のファイル形式を扱<br>
-えるが、それ以外の場合は mac 形式のファイルのみを扱う。<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:so $VIMRUNTIME:syntax:syntax.vim</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-3. 標準のマップ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_mac.html#mac-standard-mappings" name="mac-standard-mappings">mac-standard-mappings</a><br>
+2. .vimrc および .vim ファイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_mac.html#mac-vimfile" name="mac-vimfile">mac-vimfile</a><br>
 <br>
-クリップボードから/クリップボードへのカット/コピー/ペーストには、以下のマップ<br>
-が使用できる。<br>
+Vim script には Unix 形式の行区切り、つまり単一の改行文字を使うことを推奨する。<br>
 <br>
-<span class="PreProc">キー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ノーマル&nbsp;&nbsp;&nbsp;&nbsp;ビジュアル&nbsp;&nbsp;挿入&nbsp;&nbsp;&nbsp;&nbsp;説明</span><br>
-Command-v&nbsp;&nbsp; &quot;*P&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;-d&quot;*P&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-R&gt;</span>*&nbsp;&nbsp;テキストのペースト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_mac.html#<D-v>" name="&lt;D-v&gt;">&lt;D-v&gt;</a><br>
-Command-c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;*y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ビジュアルテキストのコピー&nbsp;&nbsp;<a class="Constant" href="os_mac.html#<D-c>" name="&lt;D-c&gt;">&lt;D-c&gt;</a><br>
-Command-x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;*d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ビジュアルテキストのカット&nbsp;&nbsp;<a class="Constant" href="os_mac.html#<D-x>" name="&lt;D-x&gt;">&lt;D-x&gt;</a><br>
-Backspace&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;*d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ビジュアルテキストのカット<br>
+起動時に Vim は、デフォルトのコマンドキーマッピングを定義するために、<br>
+$VIMRUNTIME/macmap.vim スクリプトを読み込む。<br>
+<br>
+古いシステムではドット &quot;.&quot; で始まるファイルは推奨されないので、rc ファイルの名<br>
+前は &quot;vimrc&quot; または &quot;_vimrc&quot;、および &quot;gvimrc&quot; または &quot;_gvimrc&quot; になっている。<br>
+これらのファイルはどの形式 (mac、dos、または unix) でもよい。<a class="Type" href="options.html#'nocompatible'">'nocompatible'</a>&nbsp;オ<br>
+プションが設定されていれば、Vim はどのファイル形式でも扱える。そうでなければ、<br>
+mac 形式のファイルだけを扱う。<br>
+<br>
+<span class="PreProc">==============================================================================</span><br>
+3. 標準のマッピング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_mac.html#mac-standard-mappings" name="mac-standard-mappings">mac-standard-mappings</a><br>
+<br>
+クリップボードから/へのカット/コピー/ペーストのために、以下のマッピングが使え<br>
+る。<br>
+<br>
+<span class="PreProc">キー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ノーマル&nbsp;&nbsp;ビジュアル&nbsp;&nbsp;挿入&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;説明</span><br>
+Command-v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;*P&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;-d&quot;*P&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-R&gt;</span>*&nbsp;&nbsp;&nbsp;&nbsp;テキストのペースト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_mac.html#<D-v>" name="&lt;D-v&gt;">&lt;D-v&gt;</a><br>
+Command-c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;*y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ビジュアルテキストのコピー&nbsp;<a class="Constant" href="os_mac.html#<D-c>" name="&lt;D-c&gt;">&lt;D-c&gt;</a><br>
+Command-x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;*d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ビジュアルテキストのカット&nbsp;<a class="Constant" href="os_mac.html#<D-x>" name="&lt;D-x&gt;">&lt;D-x&gt;</a><br>
+Backspace&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;*d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ビジュアルテキストのカット<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 4. Mac FAQ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_mac.html#mac-faq" name="mac-faq">mac-faq</a><br>
 <br>
 インターネット上:&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/macvim-dev/macvim/wiki/FAQ">https://github.com/macvim-dev/macvim/wiki/FAQ</a></span><br>
 <br>
-Q: Apple ターミナルで非 ASCII 文字を入力できない。<br>
-A: [ウィンドウ設定] → [エミュレーション] で「非 ASCII 文字をエスケープする」<br>
-&nbsp;&nbsp;のチェックを外す。<br>
+Q: Apple Terminal で非 ASCII 文字を入力できない。<br>
+A: Window Settings の Emulation で、&quot;Escape non-ASCII characters&quot; がチェックさ<br>
+&nbsp;&nbsp; れていないことを確かめること。<br>
 <br>
-Q: コマンドラインから GUI の Vim を起動するには？<br>
-A: Vim.app が /Applications にあると仮定すると:<br>
+Q: コマンドラインから GUI を起動するには?<br>
+A: Vim.app が /Applications にあるとすると:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;open /Applications/Vim.app<br>
 &nbsp;&nbsp; または:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/Applications/Vim.app/Contents/MacOS/Vim -g&nbsp;&nbsp;<span class="Special">{arguments}</span><br>
 <br>
-Q: GUI または open から Vim.app を起動するときに、$PATH を適切な値に設定するに<br>
-&nbsp;&nbsp; はどうすればよいか?<br>
-A: 以下のトリックはほとんどのシェルで動作する。これを vimrc ファイルに記述す<br>
-&nbsp;&nbsp; る。これは macvim.org で配布されているバイナリに含まれているシステム vimrc<br>
+Q: Vim.app を GUI から、または open で起動するときに、$PATH を適切な値に設定す<br>
+&nbsp;&nbsp; るには?<br>
+A: 以下のトリックはほとんどのシェルで動作する。これを vimrc ファイルに入れるこ<br>
+&nbsp;&nbsp; と。これは、macvim.org で配布されているバイナリに含まれるシステムの vimrc<br>
 &nbsp;&nbsp; ファイルに含まれている。<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let s:path = system(&quot;echo echo VIMPATH'${PATH}' | $SHELL -l&quot;)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let $PATH = matchstr(s:path, 'VIMPATH\zs.\{-}\ze\n')</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-5. 知られている不足事項&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_mac.html#mac-lack" name="mac-lack">mac-lack</a><br>
+5. Mac の不足&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_mac.html#mac-lack" name="mac-lack">mac-lack</a><br>
 <br>
-ターミナルでは&nbsp;<span class="Special">CTRL-^</span>&nbsp;は Shift-Control-6 とタイプする必要がある。<span class="Special">CTRL-@</span>&nbsp;は<br>
-Shift-Control-2 である。<br>
+端末では、<span class="Special">CTRL-^</span>&nbsp;は Shift-Control-6 として入力する必要がある。<span class="Special">CTRL-@</span>&nbsp;は<br>
+Shift-Control-2 として入力する。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-6. Mac バグ レポート&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_mac.html#mac-bug" name="mac-bug">mac-bug</a><br>
+6. Mac のバグ報告&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_mac.html#mac-bug" name="mac-bug">mac-bug</a><br>
 <br>
-Mac 版固有のバグや特性の変更を報告する場合は、ViAI のリポジトリで issue を作成<br>
-すること。<a class="Identifier" href="intro.html#viai-bugs">viai-bugs</a>&nbsp;を参照:<br>
+Mac 固有のバグまたは機能変更を報告するときは、ViAI のリポジトリで issue を開く<br>
+こと。<a class="Identifier" href="intro.html#viai-bugs">viai-bugs</a>&nbsp;を参照:<br>
 <br>
 <span class="Constant"><a href="https://github.com/viai-editor/viai/issues">https://github.com/viai-editor/viai/issues</a></span><br>
 <br>
-または、MacVim 固有の問題についてはこちらで報告できる:<br>
+または、MacVim 固有の issue は、こちらで報告できる:<br>
 <br>
 <span class="Constant"><a href="https://github.com/macvim-dev/macvim/issues">https://github.com/macvim-dev/macvim/issues</a></span><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 7. Vim のコンパイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_mac.html#mac-compile" name="mac-compile">mac-compile</a><br>
 <br>
-ソースファイルと一緒にある &quot;src/INSTALLmac.txt&quot; を参照。<br>
+ソースファイルに付属しているファイル &quot;src/INSTALLmac.txt&quot; を参照。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 8. Darwin 機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_mac.html#mac-darwin-feature" name="mac-darwin-feature">mac-darwin-feature</a><br>
 <br>
-とても古い Mac でなければ、Darwin とも呼ばれる OS X を使用しているはずである。<br>
-Darwin の 1 つ前の OS は Mac OS 9 である。Darwin 機能は Vim が Darwin 特有の資<br>
-産を使えるようにする。<br>
+それほど古くない Mac を使っているなら、Darwin とも呼ばれる OS X を動かしている<br>
+だろう。Darwin より前の最後の OS は Mac OS 9 である。darwin 機能は、Vim に<br>
+Darwin 固有の特性を使わせる。<br>
 <br>
-この機能によって実現されるものは 2 つある:<br>
+この機能によって達成されることは 2 つある:<br>
 <br>
-- Vim をシステムクリップボードと連携可能にする。<br>
-- いくつかのプラットフォーム特有の文字エンコーディングと Vim が認識しているそ<br>
-&nbsp;&nbsp;れらの差分を橋渡しする変換モジュールを Vim に組み入れる。<br>
+- Vim をシステムクリップボードと相互運用できるようにする。<br>
+- プラットフォーム固有のいくつかの文字エンコーディングと Vim が知っている文字<br>
+&nbsp;&nbsp;エンコーディングの間の溝を埋める変換モジュールを Vim に組み込む。<br>
 <br>
-言うまでもなく、同じデスクトップ環境上で動く他のアプリケーションとうまく連携す<br>
-るまともなテキストエディタにとって、この両方は必要不可欠なものである。<br>
+言うまでもなく、まともなテキストエディタが同じデスクトップ環境で動作する他のア<br>
+プリケーションとうまく連携するには、どちらも欠かせない。<br>
 <br>
-Vim は macOS 専用のアプリケーションではないので、他のプラットフォーム上のユー<br>
-ザーが得ているユーザー体験を macOS 上の人々にも提供するための特別な機能を追加<br>
-する必要がある。<br>
+Vim は macOS だけに特化したアプリケーションではないので、他のプラットフォーム<br>
+の私たちのユーザーが享受しているのと同じユーザー体験を macOS の人々に提供する<br>
+ためには、追加の機能を加える必要がある。<br>
 <br>
-簡単のために、この特定のプラットフォームに特化した Vim の機能は &quot;darwin&quot; と呼<br>
-ばれる。<br>
+簡潔にするため、この機能は、その特定のプラットフォームに固有の Vim の機能の 1<br>
+つであることを示すために &quot;darwin&quot; と呼ばれる。<br>
 <br>
-この機能は configuration のオプションである。したがって有効か無効かはビルド時<br>
-に決定され、一度有効にするよう選択されると組み込まれてしまい、それゆえ実行時に<br>
-無効にすることはできない。<br>
+この機能は configure のオプションである。したがって、有効かどうかはビルド時に<br>
+決まる。有効にするよう選択されると、組み込まれてコンパイルされるので、実行時に<br>
+は無効にできない。<br>
 <br>
-この機能は標準で有効になっている。簡単に後述する特別なニーズでもない限り、ほと<br>
-んどのユーザーにとってこれは満足のゆくものだろう。<br>
+この機能はデフォルトで有効である。ほとんどの macOS のユーザーにとっては、以下<br>
+で簡単に述べる特定の必要が無い限り、それで十分なはずである。<br>
 <br>
 無効にしたい場合は、configure スクリプトに&nbsp;<span class="Comment">--disable-darwin</span>&nbsp;を渡す:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;./configure --disable-darwin &lt;その他のオプション&gt;</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;./configure --disable-darwin &lt;other options&gt;</div>
 <br>
-その後 Vim をビルドするために&nbsp;<a class="Comment" href="quickfix.html#:make">make</a>&nbsp;を実行する。オプションの順番は関係ない。<br>
+そして&nbsp;<a class="Comment" href="quickfix.html#:make">make</a>&nbsp;を実行して Vim をビルドする。オプションの順番は関係ない。<br>
 <br>
-実行時に darwin 機能が組み込まれているかどうかを確かめるには<br>
-<span class="Comment">has('osxdarwin')</span>&nbsp;を使用することができ、機能が組み込まれている場合には 1 が返<br>
-り、それ以外では 0 が返る。後方互換性のため、<span class="Comment">osxdarwin</span>&nbsp;の代わりに&nbsp;<span class="Comment">macunix</span><br>
-もまだ使用することができる。<br>
+darwin 機能が組み込まれてコンパイルされているかどうかを実行時に確かめるには、<br>
+<span class="Comment">has('osxdarwin')</span>&nbsp;を使える。これは、機能が組み込まれていれば 1 を、そうでなけ<br>
+れば 0 を返す。後方互換性のため、<span class="Comment">osxdarwin</span>&nbsp;の代わりに&nbsp;<span class="Comment">macunix</span>&nbsp;もまだ使え<br>
+る。<br>
 <br>
-<span class="Comment">--disable-darwin</span>&nbsp;が有用だと分かった着目すべきケースは次のとおり:<br>
+<span class="Comment">--disable-darwin</span>&nbsp;が役に立つと分かった主な使用例は:<br>
 <br>
-- システムクリップボードの代わりに&nbsp;<a class="Identifier" href="gui_x11.html#x11-selection">x11-selection</a>&nbsp;を使用したいとき。<br>
--&nbsp;<a class="Identifier" href="remote.html#x11-clientserver">x11-clientserver</a>&nbsp;を使用したいとき。<br>
+- システムクリップボードの代わりに&nbsp;<a class="Identifier" href="gui_x11.html#x11-selection">x11-selection</a>&nbsp;を使いたい場合。<br>
+-&nbsp;<a class="Identifier" href="remote.html#x11-clientserver">x11-clientserver</a>&nbsp;を使いたい場合。<br>
 <br>
-どちらも適切に動作するために X11 のクライアント間通信を利用する必要があり、通<br>
-信メカニズムがシステムクリップボードと競合する可能性があるので、実行時に Vim<br>
-が停止するのを防ぐため darwin 機能は無効にしておくべきである。<br>
+どちらも、動作するには X11 のクライアント間通信を利用する必要があり、その通信<br>
+の仕組みはシステムクリップボードと衝突することがあるので、Vim が実行時にハング<br>
+しないように、darwin 機能を無効にするべきである。<br>
 <br>
 <br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
