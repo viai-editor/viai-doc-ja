@@ -9,29 +9,31 @@ helpname: 'usr_26'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 繰り返し<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;繰り返し<br>
 <br>
 <br>
-ほとんどの編集作業は手順が決まっています。同じ変更を繰り返したいと思うことはよ<br>
-くあります。この章では、変更を繰り返すための便利な方法をいくつか説明します。<br>
+編集作業がまったく構造を持たないことはめったにありません。変更は何度も行う必要<br>
+があることがよくあります。この章では、変更を繰り返すための便利な方法をいくつか<br>
+説明します。<br>
 <br>
-<a class="Identifier" href="usr_26.html#26.1">26.1</a>&nbsp;&nbsp;ビジュアルモードを使って繰り返す<br>
-<a class="Identifier" href="usr_26.html#26.2">26.2</a>&nbsp;&nbsp;加算と減算<br>
-<a class="Identifier" href="usr_26.html#26.3">26.3</a>&nbsp;&nbsp;複数のファイルを変更する<br>
+<a class="Identifier" href="usr_26.html#26.1">26.1</a>&nbsp;&nbsp;ビジュアルモードで繰り返す<br>
+<a class="Identifier" href="usr_26.html#26.2">26.2</a>&nbsp;&nbsp;加算および減算<br>
+<a class="Identifier" href="usr_26.html#26.3">26.3</a>&nbsp;&nbsp;多くのファイルで変更する<br>
 <a class="Identifier" href="usr_26.html#26.4">26.4</a>&nbsp;&nbsp;シェルスクリプトから Vim を使う<br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_27.html">usr_27.txt</a>&nbsp;&nbsp;検索コマンドと正規表現<br>
-前章:&nbsp;<a class="Identifier" href="usr_25.html">usr_25.txt</a>&nbsp;&nbsp;テキストの整形<br>
+次章:&nbsp;<a class="Identifier" href="usr_27.html">usr_27.txt</a>&nbsp;&nbsp;検索コマンドおよびパターン<br>
+前章:&nbsp;<a class="Identifier" href="usr_25.html">usr_25.txt</a>&nbsp;&nbsp;整形されたテキストの編集<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_26.html#26.1" name="26.1">26.1</a>&nbsp;&nbsp;ビジュアルモードを使って繰り返す<br>
+<a class="Constant" href="usr_26.html#26.1" name="26.1">26.1</a>&nbsp;&nbsp;ビジュアルモードで繰り返す<br>
 <br>
-ビジュアルモードを使えば好きな範囲のテキストを変更できるのでとても便利です。選<br>
-択範囲は強調表示されるので、変更される範囲が正しいかどうか確認できます。しか<br>
-し、何度も範囲選択するのは少し面倒です。&quot;gv&quot; コマンドを使えば同じ範囲を再選択<br>
-できます。同じ範囲に対して別の変更を加えることができます。<br>
-例えば、&quot;2001&quot; を &quot;2002&quot; に変更し、&quot;2000&quot; を &quot;2001&quot; に変更してみます:<br>
+ビジュアルモードは、任意の範囲の行で変更を行うのにとても便利です。ハイライトさ<br>
+れたテキストが見えるので、正しい行が変更されるかを確認できます。しかし、選択す<br>
+るにはいくらかタイプする必要があります。&quot;gv&quot; コマンドは同じ範囲を再び選択しま<br>
+す。これにより、同じテキストに対して別の操作を行うことができます。<br>
+&nbsp;&nbsp; &quot;2001&quot; を &quot;2002&quot; に、および &quot;2000&quot; を &quot;2001&quot; に変更したい行がいくつかあると<br>
+します:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">The financial results for 2001 are better</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">than for 2000.&nbsp;&nbsp;The income increased by 50%,</span><br>
@@ -39,26 +41,26 @@ helpname: 'usr_26'
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">2000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2001</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">income&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45,403&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;66,234</span><br>
 <br>
-まず &quot;2001&quot; を &quot;2002&quot; に変更します。ビジュアルモードでテキストを選択し、次のコ<br>
-マンドを実行します:<br>
+まず &quot;2001&quot; を &quot;2002&quot; に変更します。ビジュアルモードで行を選択し、これを使いま<br>
+す:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:s/2001/2002/g</div>
 <br>
-次に &quot;gv&quot; で同じ範囲を再選択します。カーソルの位置は気にしなくて大丈夫です。そ<br>
-して、&quot;:s/2000/2001/g&quot; で二回目の変更を加えます。<br>
-同じ方法で何度でも変更を繰り返せます。<br>
+次に &quot;gv&quot; を使って同じテキストを再選択します。カーソルがどこにあっても構いませ<br>
+ん。それから &quot;:s/2000/2001/g&quot; を使って 2 つ目の変更を行います。<br>
+&nbsp;&nbsp; もちろん、これらの変更は何度でも繰り返せます。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_26.html#26.2" name="26.2">26.2</a>&nbsp;&nbsp;加算と減算<br>
+<a class="Constant" href="usr_26.html#26.2" name="26.2">26.2</a>&nbsp;&nbsp;加算および減算<br>
 <br>
-ある数字を変更し、それと同じ数だけ他の数字を変更したいような場合があります。例<br>
-えば上の例ではすべての年に 1 を加えました。変更したいすべての年に対して置換コ<br>
-マンドを実行しなくても、<span class="Special">CTRL-A</span>&nbsp;を使って同じことができます。<br>
-上記例文から、年を検索します:<br>
+ある数を別の数に変える変更を繰り返すときは、決まった差であることがよくありま<br>
+す。上の例では、それぞれの年に 1 を足しました。出てくる年ごとに置換コマンドを<br>
+タイプする代わりに、<span class="Special">CTRL-A</span>&nbsp;コマンドを使うことができます。<br>
+&nbsp;&nbsp; 上と同じテキストを使って、年を検索します:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/19[0-9][0-9]\|20[0-9][0-9]&lt;Enter&gt;</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/19[0-9][0-9]\|20[0-9][0-9]</div>
 <br>
-そして&nbsp;<span class="Special">CTRL-A</span>&nbsp;を押すと、年が一つ増えます:<br>
+ここで&nbsp;<span class="Special">CTRL-A</span>&nbsp;を押します。年が 1 増えます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">The financial results for 2002 are better</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">than for 2000.&nbsp;&nbsp;The income increased by 50%,</span><br>
@@ -66,156 +68,157 @@ helpname: 'usr_26'
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">2000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2001</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">income&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45,403&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;66,234</span><br>
 <br>
-&quot;n&quot; で次の年を検索し、&quot;.&quot; を押して&nbsp;<span class="Special">CTRL-A</span>&nbsp;を繰り返します (&quot;.&quot; を押す方が簡単で<br>
-すよね)。&quot;n&quot; と &quot;.&quot; を繰り返し、全ての年を更新します。<br>
-ヒント:&nbsp;<a class="Type" href="options.html#'hlsearch'">'hlsearch'</a>&nbsp;オプションを設定して検索にヒットした場所を確認できるように<br>
-すると、先の方まで見通せるので作業がはかどります。<br>
+&quot;n&quot; を使って次の年を見つけ、&quot;.&quot; を押して&nbsp;<span class="Special">CTRL-A</span>&nbsp;を繰り返します (&quot;.&quot; の方が少し<br>
+速くタイプできます)。出てくるすべての年について &quot;n&quot; および &quot;.&quot; を繰り返します。<br>
+&nbsp;&nbsp; ヒント:&nbsp;<a class="Type" href="options.html#'hlsearch'">'hlsearch'</a>&nbsp;オプションを設定すると、これから変更するマッチが見えるの<br>
+で、先を見越して速く作業できます。<br>
 <br>
-加算する量を増やしたい場合は&nbsp;<span class="Special">CTRL-A</span>&nbsp;の前に数値を指定します。例えば、次のテキス<br>
-トで:<br>
+1 より大きい数を足すには、<span class="Special">CTRL-A</span>&nbsp;の前に数を付けます。このリストがあるとします:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">1.&nbsp;&nbsp;item four</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">2.&nbsp;&nbsp;item five</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">3.&nbsp;&nbsp;item six</span><br>
 <br>
-カーソルを &quot;1.&quot; のところに動かして次のように入力します:<br>
+カーソルを &quot;1.&quot; に移動して、こうタイプします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 CTRL-A</div>
 <br>
-&quot;1.&quot; が &quot;4.&quot; に変わります。&quot;.&quot; を使って同じ変更を繰り返せます。<br>
+&quot;1.&quot; は &quot;4.&quot; に変わります。ここでも、&quot;.&quot; を使って他の数にこれを繰り返せます。<br>
 <br>
-もう一つ例を示します:<br>
+別の例:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">006&nbsp;&nbsp;&nbsp;&nbsp; foo bar</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">007&nbsp;&nbsp;&nbsp;&nbsp; foo bar</span><br>
 <br>
-これらの数字に対して&nbsp;<span class="Special">CTRL-A</span>&nbsp;を使うと次のようになります:<br>
+これらの数に&nbsp;<span class="Special">CTRL-A</span>&nbsp;を使うと、結果はこうなります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">007&nbsp;&nbsp;&nbsp;&nbsp; foo bar</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">010&nbsp;&nbsp;&nbsp;&nbsp; foo bar</span><br>
 <br>
-7 + 1 = 10?&nbsp;&nbsp;これは、&quot;007&quot; の先頭が 0 で始まっているため、8進数と認識されてし<br>
-まったのです。この表記方法は C 言語などで使われています。先頭が 0 で始まってい<br>
-る数字を8進数として扱いたくない場合は、次のように設定してください:<br>
+7 足す 1 が 10?&nbsp;&nbsp;ここで起きたのは、先頭にゼロがあるので、Vim が &quot;007&quot; を 8 進<br>
+数と認識したということです。この表記は C のプログラムでよく使われます。先頭に<br>
+ゼロがある数を 8 進数として扱ってほしくない場合は、これを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set nrformats-=octal</div>
 <br>
-<span class="Special">CTRL-X</span>&nbsp;コマンドを使うと同じ方法で減算できます。<br>
+<span class="Special">CTRL-X</span>&nbsp;コマンドは、同じようにして減算を行います。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_26.html#26.3" name="26.3">26.3</a>&nbsp;&nbsp;複数のファイルを変更する<br>
+<a class="Constant" href="usr_26.html#26.3" name="26.3">26.3</a>&nbsp;&nbsp;多くのファイルで変更する<br>
 <br>
-あるプログラムに &quot;x_cnt&quot; という変数があり、それを &quot;x_counter&quot; に変更したい場合<br>
-を考えます。変数は複数の C ファイルで使われているので、すべてのファイルを変更<br>
-しなければなりません。その方法を説明します。<br>
-関連ファイルを引数リストに加えます:<br>
+&quot;x_cnt&quot; という変数があり、それを &quot;x_counter&quot; に変えたいとします。この変数は、<br>
+いくつかの C ファイルで使われています。すべてのファイルで変更する必要がありま<br>
+す。これがそのやり方です。<br>
+&nbsp;&nbsp; 関係するファイルをすべて引数リストに入れます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:args *.c</div>
 <br>
-すべての C ファイルが検索され、一つ目のファイルが開きます。これで、すべてのファ<br>
-イルに対して置換コマンドを実行できます:<br>
+これはすべての C ファイルを見つけて、最初のファイルを編集します。ここで、これ<br>
+らすべてのファイルに対して置換コマンドを実行できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:argdo %s/\&lt;x_cnt\&gt;/x_counter/ge | update</div>
 <br>
-&quot;:argdo&quot; コマンドの引数にはコマンドを指定できます。指定されたコマンドは引数リ<br>
-スト内のすべてのファイルに対して実行されます。<br>
-&quot;%s&quot; はファイル全体を置換するコマンドです。&quot;\&lt;x_cnt\&gt;&quot; で &quot;x_cnt&quot; を検索してい<br>
-ます。&quot;\&lt;&quot; と &quot;\&gt;&quot; を使って単語全体がマッチするようにしています。つまり<br>
-&quot;px_cnt&quot; や &quot;x_cnt2&quot; は置換されません。<br>
-置換コマンドに指定された &quot;g&quot; フラグは、一つの行で複数の &quot;x_cnt&quot; が見つかった場<br>
-合に、すべての &quot;x_cnt&quot; を置換するための指定です。&quot;e&quot; フラグは &quot;x_cnt&quot; が見つか<br>
-らなかった場合でもエラーメッセージを表示しないための指定です。エラーが起こると<br>
-その場で &quot;:argdo&quot; が止まってしまいます。<br>
-&quot;|&quot; はコマンドの区切りです。&quot;update&quot; コマンドを使って、変更があったときだけ<br>
-ファイルを保存しています。置換する &quot;x_cnt&quot; が見つからなければ保存は実行されま<br>
-せん。<br>
+&quot;:argdo&quot; コマンドは、別のコマンドを引数に取ります。そのコマンドは引数リストの<br>
+すべてのファイルで実行されます。<br>
+&nbsp;&nbsp; それに続く &quot;%s&quot; 置換コマンドは、すべての行に作用します。これは &quot;\&lt;x_cnt\&gt;&quot;<br>
+で単語 &quot;x_cnt&quot; を見つけます。&quot;\&lt;&quot; および &quot;\&gt;&quot; は、単語全体だけにマッチさせ、<br>
+&quot;px_cnt&quot; または &quot;x_cnt2&quot; にはマッチさせないために使います。<br>
+&nbsp;&nbsp; 置換コマンドのフラグには、同じ行のすべての &quot;x_cnt&quot; を置換するための &quot;g&quot; が<br>
+含まれています。&quot;e&quot; フラグは、ファイルの中に &quot;x_cnt&quot; が無いときにエラーメッセー<br>
+ジを出さないために使います。そうしないと、&quot;:argdo&quot; は &quot;x_cnt&quot; が見つからなかっ<br>
+た最初のファイルで中断してしまいます。<br>
+&nbsp;&nbsp; &quot;|&quot; は 2 つのコマンドを区切ります。以下の &quot;update&quot; コマンドは、ファイルが変<br>
+更されたときだけファイルを書き込みます。&quot;x_cnt&quot; が &quot;x_counter&quot; に変更されなかっ<br>
+た場合は、何も起きません。<br>
 <br>
-他にも、すべてのウィンドウに対してコマンドを実行する &quot;:windo&quot; コマンド、すべて<br>
-のバッファに対してコマンドを実行する &quot;:bufdo&quot; コマンドがあります。バッファリス<br>
-トにはあなたの予想以上にファイルが入っているかもしれないので注意してください。<br>
-&quot;:buffers&quot; コマンド (or &quot;:ls&quot;) で確認できます。<br>
+&quot;:windo&quot; コマンドもあり、これはすべてのウィンドウで引数を実行します。また<br>
+&quot;:bufdo&quot; は、すべてのバッファで引数を実行します。思っているより多くのファイル<br>
+がバッファリストにあるかもしれないので、これには注意してください。&quot;:buffers&quot;<br>
+コマンド (または &quot;:ls&quot;) で確認してください。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_26.html#26.4" name="26.4">26.4</a>&nbsp;&nbsp;シェルスクリプトから Vim を使う<br>
 <br>
-例えば、たくさんのファイルがあって、&quot;-person-&quot; を &quot;Jones&quot; に置換して印刷する必<br>
-要があるとします。どのように実行すればいいでしょう。すべてを手作業で実行するの<br>
-も一つの方法ですが、シェルスクリプトを書いて済ます方法もあります。<br>
-スクリーンエディタとして Vim を使うとき、ノーマルモードコマンドを使えば簡単に<br>
-処理できます。しかし、バッチ処理したい場合は、ノーマルモードコマンドでは分かり<br>
-難くなってしまいますし、コマンドファイルにコメントも書けません。代わりに Ex<br>
-モードを使います。Ex モードのコマンドはバッチファイルを書くのに適しています。<br>
-(&quot;EX コマンド&quot; はコマンドライン (:) コマンドの別名です)<br>
-必要となる Ex コマンドは次のとおりです:<br>
+文字列 &quot;-person-&quot; を &quot;Jones&quot; に変えてから印刷する必要があるファイルがたくさん<br>
+あるとします。どうすればよいでしょうか?&nbsp;&nbsp;1 つの方法は、たくさんタイプすること<br>
+です。もう 1 つは、その作業を行うシェルスクリプトを書くことです。<br>
+&nbsp;&nbsp; Vim エディタは、ノーマルモードのコマンドを使うと、画面指向のエディタとして<br>
+素晴らしい仕事をします。しかしバッチ処理では、ノーマルモードのコマンドからは、<br>
+分かりやすくコメント付きのコマンドファイルにはなりません。そのためここでは、代<br>
+わりに Ex モードを使います。このモードは、バッチファイルに入れやすい、よいコマ<br>
+ンドラインインターフェイスを提供します。(&quot;Ex コマンド&quot; は、コマンドライン (:)<br>
+のコマンドの別名にすぎません。)<br>
+&nbsp;&nbsp; 必要な Ex モードのコマンドは以下のとおりです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%s/-person-/Jones/g<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;write tempfile<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quit</div>
 <br>
-これらのコマンドを &quot;change.vim&quot; に保存します。そして、Vim をバッチモードで起動<br>
-します:<br>
+これらのコマンドを &quot;change.vim&quot; ファイルに入れます。そして、エディタをバッチ<br>
+モードで実行するには、このシェルスクリプトを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for file in *.txt; do<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim -e -s $file &lt; change.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lpr -r tempfile<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done</div>
 <br>
-for-done ループは間にある行を繰り返し実行するためのシェル構文です。繰り返すた<br>
-びに $file 変数に異なるファイル名が設定されます。<br>
-二行目では、Vim を Ex モード (-e 引数) で起動して $file を開き、&quot;change.vim&quot;<br>
-からコマンドを読み込んでいます。-s 引数を指定して Vim をサイレントモードにして<br>
-いるので、&quot;:&quot; プロンプトやその他のプロンプトは表示されません。<br>
-&quot;lpr -r tempfile&quot; コマンドで出力結果の &quot;tempfile&quot; を印刷し、そのファイルを削除<br>
-しています (&quot;-r&quot; 引数が削除指示)。<br>
+for-done ループは、間にある 2 行を、$file 変数に毎回違うファイル名を設定しなが<br>
+ら繰り返すシェル構文です。<br>
+&nbsp;&nbsp; 2 行目は、ファイル $file に対して Vim エディタを Ex モード (-e 引数) で実行<br>
+し、ファイル &quot;change.vim&quot; からコマンドを読み込みます。-s 引数は、Vim にサイレ<br>
+ントモードで動作するように指示します。言い換えると、:prompt、またはその他のど<br>
+んなプロンプトも出力し続けないということです。<br>
+&nbsp;&nbsp; &quot;lpr -r tempfile&quot; コマンドは、結果の &quot;tempfile&quot; を印刷し、それを削除します<br>
+(-r 引数がそれを行います)。<br>
 <br>
 <br>
-<span class="Statement">標準入力からの読み込み</span><br>
+<span class="Statement">標準入力から読み込む</span><br>
 <br>
-Vim は標準入力からテキストを読み込めます。標準入力からはコマンドを読み込むのが<br>
-普通なので、そうでないことを Vim に伝えなくてはなりません。ファイルを指定する<br>
-場所に &quot;-&quot; 引数を指定してください。例:<br>
+Vim は標準入力のテキストを読み込むことができます。通常はそこからコマンドを読み<br>
+込むので、代わりにテキストを読み込むように Vim に指示する必要があります。これ<br>
+は、ファイルの代わりに &quot;-&quot; 引数を渡すことで行います。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ls | vim -</div>
 <br>
-&quot;ls&quot; コマンドの出力結果を、ファイルに保存せずに直接編集できます。<br>
-標準入力からテキストを読み込む場合でも、&quot;-S&quot; 引数を使えば、スクリプトを読み込<br>
-ませることができます。<br>
+これにより、テキストを先にファイルに保存せずに、&quot;ls&quot; コマンドの出力を編集でき<br>
+ます。<br>
+&nbsp;&nbsp; テキストを読み込むのに標準入力を使う場合は、&quot;-S&quot; 引数を使ってスクリプトを読<br>
+み込むことができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;producer | vim -S change.vim -</div>
 <br>
 <br>
-<span class="Statement">ノーマルモードスクリプト</span><br>
+<span class="Statement">ノーマルモードのスクリプト</span><br>
 <br>
-ノーマルモードコマンドをスクリプトの中で使いたい場合は、次のようにすればできま<br>
-す:<br>
+本当にスクリプトでノーマルモードのコマンドを使いたい場合は、このように使えます:<br>
+<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim -s script file.txt ...</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;-s&quot; 引数は &quot;-e&quot; の有無で違う意味になります。この例の場合は、&quot;script&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;をノーマルモードコマンドとして実行するという意味になります。&quot;-e&quot; といっ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;しょに指定された場合はサイレントモードの指定になり、&quot;-s&quot; にファイルを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定することはできません。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;-s&quot; は &quot;-e&quot; なしで使うと意味が違います。ここでは、&quot;script&quot; をノーマル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;モードのコマンドとして読み込むという意味です。&quot;-e&quot; と一緒に使うと、サ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;イレントにするという意味になり、次の引数をファイル名として使いません。<br>
 <br>
-&quot;script&quot; の中のコマンドは、実際に入力したのと同じように実行されます。改行は<br>
-<span class="Special">&lt;Enter&gt;</span>&nbsp;として解釈されるので注意してください。次の行へ移動するノーマルモードコ<br>
-マンドとして実行されます。<br>
-スクリプトを作る方法はスクリプトファイルを開いてコマンドを入力するだけですが、<br>
-コマンドの結果を自分で想像しなければならないので、少し難しい作業になります。<br>
-実際に編集をしてみて、その操作手順を記録する方法もあります。次のコマンドを使い<br>
-ます:<br>
+&quot;script&quot; の中のコマンドは、タイプしたのと同じように実行されます。改行は<br>
+<span class="Special">&lt;Enter&gt;</span>&nbsp;を押したと解釈されることを忘れないでください。ノーマルモードでは、それ<br>
+はカーソルを次の行に移動します。<br>
+&nbsp;&nbsp; スクリプトを作るには、スクリプトファイルを編集して、コマンドをタイプすれば<br>
+よいです。結果がどうなるかを想像する必要があり、それは少し難しいかもしれませ<br>
+ん。別の方法は、コマンドを手で実行しながら記録することです。そのやり方はこうで<br>
+す:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim -w script file.txt ...</div>
 <br>
-入力したすべてのキーが &quot;script&quot; に保存されます。多少のミスがあってもそのまま操<br>
-作を続けて、後からスクリプトを編集できます。<br>
-&quot;-w&quot; 引数は既存のスクリプトに追記します。したがって、スクリプトの記録を少しず<br>
-つ進めることができます。スクリプトをスクラッチから作成したい場合は &quot;-W&quot; 引数を<br>
-使ってください。既存のファイルが上書きされます。<br>
+タイプしたキーはすべて &quot;script&quot; に書き込まれます。小さな間違いをしても、そのま<br>
+ま続けて、後でスクリプトを編集することを覚えておけばよいです。<br>
+&nbsp;&nbsp; &quot;-w&quot; 引数は、既存のスクリプトに追加します。スクリプトを少しずつ記録したいと<br>
+きに便利です。一から始めて全部やり直したい場合は、&quot;-W&quot; 引数を使います。これは<br>
+既存のファイルを上書きします。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_27.html">usr_27.txt</a>&nbsp;&nbsp;検索コマンドと正規表現<br>
+次章:&nbsp;<a class="Identifier" href="usr_27.html">usr_27.txt</a>&nbsp;&nbsp;検索コマンドおよびパターン<br>
 <br>
 Copyright: see&nbsp;<a class="Identifier" href="usr_01.html#manual-copyright">manual-copyright</a>&nbsp;&nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>
