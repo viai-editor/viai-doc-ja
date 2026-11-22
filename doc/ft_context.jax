@@ -2,38 +2,39 @@
 
 これは ConTeXt ファイルタイププラグインのドキュメントである。
 
-NOTE: このプラグインは |+vim9script| が必要である。
+NOTE: このプラグインには |+vim9script| が必要である。
 
 ==============================================================================
-☆内容						*context.vim* *ft-context*
+☆目次							*context.vim* *ft-context*
 
-1. 前書き				|ft-context-intro|
+1. はじめに				|ft-context-intro|
 2. コマンド				|ft-context-commands|
 3. 設定					|ft-context-settings|
 4. マッピング				|ft-context-mappings|
 
 ==============================================================================
 							*ft-context-intro*
-前書き ~
+はじめに ~
 
-ConTeXt は、LaTeX と同じで、TeX 上に構築されたマクロベースの組版システムである:
+ConTeXt は、LaTeX と同様に、TeX の上に構築されたマクロベースの組版システムであ
+る:
 >
 	https://wiki.contextgarden.net
 	https://wiki.contextgarden.net/Input_and_compilation/Text_editors/Vim
 <
-ConTeXt プラグインは構文ハイライト、組版した ConTeXt 文章の補完とサポートを提
-供する。文章を組版するための推奨される方法は、$PATH にある `mtxrun` スクリプト
-を呼び出す |:ConTeXt| を使用することである。
+ConTeXt プラグインは、ConTeXt 文書のための構文ハイライト、補完、および組版のサ
+ポートを提供する。文書を組版するのに推奨される方法は |:ConTeXt| を使うことで、
+これは $PATH にある `mtxrun` スクリプトを起動する。
 
-コマンドとその環境でよりきめ細かな制御をするには、`context.Typeset()` を直接使
-うことができる (または旧来の Vim script からは `context#Typeset()`)。例えば、
-`~/context` 内にインストールされているバージョンの ConTeXt の場合、以下のよう
-にそれを使用する関数を定義できる:
+コマンドおよびその環境をより細かく制御するには、`context.Typeset()` を直接使え
+る (旧来の Vim script からは `context#Typeset()`)。例えば、ConTeXt のあるバー
+ジョンが `~/context` にインストールされている場合、それを使う関数を以下のよう
+に定義できる:
 >
 	import autoload 'context.vim'
 
-	var os = "linux"    # システムに合わせて更新
-	var arch = "arm64"  # システムに合わせて更新
+	var os = "linux"    # システムに合わせて更新する
+	var arch = "arm64"  # システムに合わせて更新する
 
 	def MyConTeXt()
 	  var env = {
@@ -44,11 +45,11 @@ ConTeXt プラグインは構文ハイライト、組版した ConTeXt 文章の
 
 	nnoremap <silent><buffer><leader>t <scriptcmd>MyConTeXt()<cr>
 <
-このコードは `~/.vim/after/ftplugin/context.vim` に配置する必要がある。
+このコードは `~/.vim/after/ftplugin/context.vim` に置くべきである。
 
-`context.Typeset()` は、カスタムの組版コマンドを指定するための 3 番目のオプショ
-ナルな引数を受け入れる。これは、パスを受け取り、コマンドを |list| として返す関数
-でなければならない。例えば:
+`context.Typeset()` は、独自の組版コマンドを指定するための省略可能な 3 番目の
+引数を受け付ける。それは、パスを受け取ってコマンドを |list| として返す関数でな
+ければならない。例:
 >
 	def ConTeXtCustomCommand(path: string): list<string>
 	  return ['mtxrun', '--script', 'context', '--nonstopmode', path]
@@ -58,63 +59,63 @@ ConTeXt プラグインは構文ハイライト、組版した ConTeXt 文章の
 	    context.Typeset("%", v:none, ConTeXtCustomCommand)
 	enddef
 <
-大規模なプロジェクトでは、ルートドキュメントと様々な章ファイルで構成されること
-がよくある。章ファイルを編集する場合、ルートファイルに切り替えることなく、章
-ファイル上で直接 |:ConTeXt| を呼び出すと便利である。各章ファイルの先頭には、
-ルートファイルへの相対パスを指定する "マジック行" を追加することができる。例え
-ば:
+大きなプロジェクトは、ルート文書およびさまざまな章ファイルで構成されていること
+が多い。章ファイルを編集しているときは、ルートファイルに切り替えなくても、その
+ファイルで直接 |:ConTeXt| を起動できると便利である。各章ファイルの先頭に、ルー
+トファイルへの相対パスを指定する "マジックライン" を追加できる。例:
 >
 	% !TEX root = ../MyRoot.tex
 <
-Vim は、カレントバッファの最初の 10 行内にマジック行を検索する: 見付かった場合
-はカレントバッファの文書ではなく、その行で指定された文書が組版される。ルート文
-書が Vim で開かれている必要はない。
+Vim はカレントバッファの最初の 10 行でマジックラインを探す: 見つかった場合は、
+カレントバッファの文書ではなく、その行で指定された文書が組版される。ルート文書
+を Vim で開いておく必要はない。
 
-補完と構文ハイライトを拡張するには、ConTeXt を使用して補助ファイル群を生成して
-設定に追加する。設定が `~/.vim` にある場合は、これらのコマンドが使用できる:
+補完および構文ハイライトを拡張するには、ConTeXt を使って補助ファイルを生成し、
+それを設定に追加できる。設定が `~/.vim` にある場合は、これらのコマンドを使える:
 >
 	mkdir -p ~/.vim/syntax/shared
 	cd ~/.vim/syntax/shared
 	mtxrun --script interface --vim
 <
-最後のコマンドは以下の構文ファイルを生成する:
+最後のコマンドは、以下の構文ファイルを作成する:
 
 - `context-data-context.vim`;
 - `context-data-interfaces.vim`;
 - `context-data-metafun.vim`;
 - `context-data-tex.vim`.
 
-存在する場合、そのようなファイルは構文のハイライトを強化するために自動的に読み
-込まれる。同じコマンドを使用して、これらの構文ファイルを更新できる。
+これらのファイルがあれば、構文ハイライトを強化するために自動的に読み込まれる。
+同じコマンドで、これらの構文ファイルを更新できる。
 
 							*ft-context-commands*
 コマンド ~
 					*:ConTeXt*
-カレントバッファの文書を組版するバックグラウンド |job| を開始する。このコマン
-ドは別バッファの文書を組版したい場合、オプションとしてバッファ名を受け入れる。
+カレントバッファの文書を組版するバックグラウンドの |job| を開始する。別のバッ
+ファにある文書を組版したい場合は、このコマンドに省略可能なバッファ名を指定でき
+る。
 
 					*:ConTeXtLog*
-カレントバッファの文章ソースに対応するログファイルを編集する。
+カレントバッファのソースに対応するログファイルを編集する。
 
 					*:ConTeXtJobsStatus*
-現在バックグラウンドで動作しているジョブ数を表示する。
+現在バックグラウンドで実行中のジョブの数を表示する。
 
 					*:ConTeXtStopJobs*
-現在バックグラウンドで動作している ConTeXt ジョブをすべて停止する。
+現在バックグラウンドで実行中のすべての ConTeXt ジョブを停止する。
 
 							*ft-context-settings*
 設定 ~
 					*'b:context_ignore_makefile'*
 					*'g:context_ignore_makefile'*
-|:make| で(同期的な)文章の組版が行える。Makefile が存在し、このオプションが未
-設定の場合、通常の `make` が使用される。このオプションが設定されている場合は、
-Makefile が存在していても、代わりに `mtxrun` が呼び出される。
+|:make| を使って文書を (同期的に) 組版できる。Makefile があり、このオプション
+が設定されていない場合は、標準の `make` が使われる。このオプションが設定されて
+いる場合は、Makefile があっても、代わりに `mtxrun` が起動される。
 >
 	g:context_ignore_makefile = 0
 <
-NOTE: |:make| を使用する前に、バッファの作業ディレクトリがタイプセットしたい
-ファイルのディレクトリに設定されていることを確認すること。また、|:make| は
-$PATH 内で `mtxrun` を検索することに注意。
+NOTE: |:make| を使う前に、バッファの作業ディレクトリが、組版したいファイルの
+ディレクトリに設定されていることを確かめること。さらに、|:make| は $PATH から
+`mtxrun` を探すことに注意すること。
 
 					*'g:context_extra_options'*
 `mtxrun` に渡す追加のオプションのリスト。
@@ -123,43 +124,42 @@ $PATH 内で `mtxrun` を検索することに注意。
 <
 					*'b:context_include'*
 					*'g:context_include'*
-\startGROUP と \stopGROUP の間で有効になる構文ハイライトのファイルタイプ/GROUP
-のペアの辞書。デフォルトでは `\startXML` と `\stopXML` の間がXMLでハイライトさ
-れる。
+\startGROUP と \stopGROUP の間で構文ハイライトを有効にする、ファイルタイプ
+/GROUP の組の辞書。デフォルトでは、`\startXML` と `\stopXML` の間を XML として
+ハイライトする。
 >
 	g:context_include = {'xml': 'XML'}
 
-NOTE: Lua と MetaPost は個別のブロック内では常にハイライトされる。
+NOTE: Lua および MetaPost は、それぞれのブロックの中で常にハイライトされる。
 
 					*'g:no_context_maps'*
-設定時、マッピングは定義されない。
+設定されている場合、マッピングを定義しない。
 >
 	g:no_context_maps = 0
 <
 							*ft-context-mappings*
 マッピング ~
 
-tp			"reflow TeX paragraph"、TeX での段落を整形する。(モー
-			ション)
+tp			"TeX の段落を整形し直す" (移動)。
 
-i$			"inside inline math block"、インラインの数式ブロック内
-			部を選択する。(テキストオブジェクトの選択)
+i$			"インライン数式ブロックの内側" (テキストオブジェクト選
+			択)。
 
-a$			"around inline math block"、インラインの数式ブロックを
-			選択する。(テキストオブジェクトの選択)
+a$			"インライン数式ブロックの周り" (テキストオブジェクト選
+			択)。
 
-]]			[count] セクションの開始に進む。
+]]			[count] 個先の節の始まり。
 
-[[			[count] セクションの開始に戻る。
+[[			[count] 個前の節の始まり。
 
-][			[count] セクションの終了に進む。
+][			[count] 個先の節の終わり。
 
-[]			[count] セクションの終了に戻る。
+[]			[count] 個前の節の終わり。
 
-]}			[count] ブロックの終了 (\stop..., \setup...,
-			\define...) に進む。
+]}			[count] 個先のブロック (\stop...、\setup...、
+			\define...) の終わり。
 
-[{			[count] ブロックの開始 (\start..., \setup...,
-			\define...) に戻る。
+[{			[count] 個前のブロック (\start...、\setup...、
+			\define...) の始まり。
 
  vim:tw=78:sw=4:ts=8:noet:ft=help:norl:
