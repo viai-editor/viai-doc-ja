@@ -11,99 +11,101 @@ helpname: 'wayland'
 <br>
 Wayland プロトコルのサポート&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="wayland.html#wayland" name="wayland">wayland</a><br>
 <br>
-1. Wayland の役立つ情報&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="wayland.html#wayland-useful">wayland-useful</a><br>
+1. 役に立つ Wayland 情報&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="wayland.html#wayland-useful">wayland-useful</a><br>
 2. Wayland セレクション&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="wayland.html#wayland-selections">wayland-selections</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-1. Wayland の役立つ情報&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="wayland.html#wayland-useful" name="wayland-useful">wayland-useful</a><br>
+1. 役に立つ Wayland 情報&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="wayland.html#wayland-useful" name="wayland-useful">wayland-useful</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="wayland.html#wayland-seat" name="wayland-seat">wayland-seat</a><br>
-Wayland のクリップボードなどの機能を使用するには、シートが必要である。Wayland<br>
-シートは、キーボード、ポインター、タッチデバイスで構成される。使用するシートは<br>
-<a class="Type" href="options.html#'wlseat'">'wlseat'</a>&nbsp;オプションで設定できる。これは、同じ Wayland セッションで複数の<br>
-Wayland シートを使用する場合にのみ役立つ。これが何を意味するのか分からないので<br>
-あれば、それはおそらくあなたにとって問題ではないだろう。<br>
+Wayland のクリップボードなどの機能は、使うシートを必要とする。Wayland シート<br>
+は、キーボード、ポインタ、およびタッチデバイスから成ることがある。使うシートは<br>
+<a class="Type" href="options.html#'wlseat'">'wlseat'</a>&nbsp;オプションで設定できる。同じ Wayland セッションで複数の Wayland シー<br>
+トを使う場合にだけ役に立つ。これが何であるのか分からない場合は、おそらくあなた<br>
+には関係ない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="wayland.html#wayland-gui" name="wayland-gui">wayland-gui</a><br>
-<a class="Identifier" href="gui_x11.html#gui-wayland">gui-wayland</a>&nbsp;を参照。GUI 使用時、Vim はクリップボードへのアクセスに GTK など<br>
-のツールキットを使用し、Wayland 経由ではアクセスしない。これは&nbsp;<a class="Identifier" href="eval.html#v:clipmethod">v:clipmethod</a><br>
-変数で確認できる。GUI 実行時にはこの変数は &quot;none&quot; になる。<br>
+<a class="Identifier" href="gui_x11.html#gui-wayland">gui-wayland</a>&nbsp;を参照。<span class="Todo">Note</span>&nbsp;GUI を使うとき、Vim は GTK などのツールキットを使っ<br>
+てクリップボードにアクセスし、Wayland を通してはクリップボードにアクセスしない<br>
+ことに注意。これは&nbsp;<a class="Identifier" href="eval.html#v:clipmethod">v:clipmethod</a>&nbsp;変数で確認できる。GUI を実行しているときは<br>
+&quot;none&quot; に等しくなるはずである。<br>
 <br>
-Wayland のコマンド:<br>
+Wayland コマンド:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="wayland.html#:wlrestore" name=":wlrestore">:wlrestore</a>&nbsp;<a class="Constant" href="wayland.html#:wl" name=":wl">:wl</a><br>
-:wl[restore]&nbsp;<span class="Special">[display]</span>&nbsp;&nbsp;Wayland コンポジタへの接続を再初期化する。Wayland コン<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ポジタの再起動後も Vim を screen/tmux セッションで実行<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;し続ける場合に便利である。<br>
+:wl[restore]&nbsp;<span class="Special">[display]</span>&nbsp;&nbsp;Wayland コンポジタへの接続を再初期化する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim を screen/tmux セッションで実行していて、Wayland<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コンポジタが再起動した後もそのセッションが実行され続け<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る場合に役に立つ。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[display]</span>&nbsp;は、環境変数 $WAYLAND_DISPLAY の形式（例:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;wayland-0&quot;）で指定する必要がある。<span class="Special">[display]</span>&nbsp;を省略し<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;た場合は、このコマンドの前回実行時に使用された値と同じ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;値を使用して接続を再初期化する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;値が指定されていない場合は、環境変数 $WAYLAND_DISPLAY<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の値が使用される。また、<a class="Identifier" href="eval.html#v:clipmethod">v:clipmethod</a>&nbsp;も更新される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{Vimが&nbsp;</span><a class="Identifier" href="various.html#+wayland">+wayland</a><span class="Special">&nbsp;機能付きでコンパイルされたときのみ有</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">効}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[display]</span>&nbsp;は $WAYLAND_DISPLAY 環境変数の形式 (例:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;wayland-0&quot;) でなければならない。<span class="Special">[display]</span>&nbsp;を省略する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と、このコマンドの前回の実行で使われたのと同じ値を使っ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;て接続を再初期化する。値が一度も指定されていなければ、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$WAYLAND_DISPLAY 環境変数の値を使う。これは<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="eval.html#v:clipmethod">v:clipmethod</a>&nbsp;も更新する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{</span><a class="Identifier" href="various.html#+wayland">+wayland</a><span class="Special">&nbsp;機能付きでコンパイルされたときのみ有効}</span><br>
 <br>
-Wayland のエラー:<br>
+Wayland エラー:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="wayland.html#E1548" name="E1548">E1548</a><br>
-Vim は Wayland コンポジタとの通信に失敗した。これは Wayland コンポジタのプロセ<br>
-スが強制終了したことが原因である可能性がある。再接続するには&nbsp;<a class="Comment" href="wayland.html#:wlrestore">:wlrestore</a>&nbsp;コマ<br>
-ンドを試すこと。<br>
+Vim は Wayland コンポジタとの通信に失敗した。これはおそらく、Wayland コンポジ<br>
+タのプロセスが kill されたためである。もう一度接続を試みるには、<a class="Comment" href="wayland.html#:wlrestore">:wlrestore</a><br>
+コマンドを試すこと。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 2. Wayland セレクション&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="wayland.html#wayland-selections" name="wayland-selections">wayland-selections</a><br>
 <br>
-Vim は、現在の Wayland セレクションにアクセスするための<br>
-wlr-data-control-unstable-v1 プロトコルと ext-data-control-v1 プロトコルをサ<br>
-ポートしている。この場合のセレクションは基本的に &quot;clipboard&quot; を指す。Wayland<br>
-コンポジタがこれらのプロトコルをサポートしているかどうかを確認するには、<br>
-wayland-info コマンドを実行する。このコマンドは、あなたのシステムでは<br>
-libwayland にバンドルされているはずである:<br>
+Vim は、現在の Wayland セレクションにアクセスするために、<br>
+wlr-data-control-unstable-v1 および ext-data-control-v1 プロトコルをサポートし<br>
+ている。この場合のセレクションは、本質的に &quot;クリップボード.&quot; を意味する。<br>
+Wayland コンポジタがこれらのプロトコルのどちらかをサポートしているかは、<br>
+wayland-info コマンドを実行して確認できる。このコマンドはシステムの libwayland<br>
+に同梱されているはずである:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wayland-info | grep -E '(ext_data_control|zwlr_data_control)'</div>
-grep で一致するものが見つかった場合、システムにはどちらか、または両方のプロト<br>
-コルが存在する。<br>
+grep がマッチを見つけたら、システムにどちらかまたは両方のプロトコルがある。<br>
 <br>
-どちらかまたは両方のプロトコルをサポートすることが知られているコンポジタの一部:<br>
+どちらかまたは両方のプロトコルをサポートしていることが知られているコンポジタ:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;1. KWin (KDE)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;2. wlroots based (Sway, Labwc)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;2. wlroots ベース (Sway, Labwc)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3. Niri<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4. Hyprland<br>
 &nbsp;&nbsp;&nbsp;&nbsp;5. Wayfire<br>
 <br>
-X11 から移行する場合、通常の Waylandセレクション は X11 のクリップボードセレク<br>
-ションに相当し、プライマリ Wayland セレクションは X11 のプライマリセレクション<br>
-に相当する。これらのセレクションへのアクセスは Vim の X11 と同様で、+ レジスタ<br>
-が通常のセレクション、* レジスタがプライマリセレクションである。<span class="Todo">Note</span>&nbsp;コンポジ<br>
-タがプライマリセレクションをサポートしていない可能性があることに注意。詳細は<br>
+X11 から来た場合、通常の Wayland セレクションは X11 の CLIPBOARD セレクション<br>
+に相当し、プライマリの Wayland セレクションは X11 の PRIMARY セレクションに相<br>
+当する。これらのセレクションへのアクセスは Vim の X11 と同じで、+ レジスタが通<br>
+常のセレクション、* レジスタがプライマリセレクションである。<span class="Todo">Note</span>&nbsp;コンポジタが<br>
+プライマリセレクションをサポートしていないかもしれないことに注意。詳細は<br>
 <a class="Identifier" href="wayland.html#wayland-primary-selection">wayland-primary-selection</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="wayland.html#wayland-persist" name="wayland-persist">wayland-persist</a><br>
-X11 のカットバッファを使用する場合、Wayland にはそのような機能は存在しない。そ<br>
-のような機能をエミュレートするには、Wayland クライアントが終了した後も選択デー<br>
-タを保持するために、別のクリップボードマネージャーを使用する必要がある。<br>
+X11 のカットバッファを使っている場合、Wayland にはそのようなものは存在しない。<br>
+代わりに、そのような機能を模倣するには、Wayland クライアントが終了したときにセ<br>
+レクションデータを保持するために、別のクリップボードマネージャーを使わなければ<br>
+ならない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="wayland.html#wayland-and-x11" name="wayland-and-x11">wayland-and-x11</a><br>
-使用している Vim のバージョンが X11 と Wayland の両方のサポートでコンパイルさ<br>
-れている場合、Vim は&nbsp;<a class="Type" href="options.html#'clipmethod'">'clipmethod'</a>&nbsp;オプションを使用してクリップボードにアクセス<br>
-するときにどちらを使用するかを決定する。<br>
+使っている Vim が X11 および Wayland の両方のサポート付きでコンパイルされてい<br>
+る場合、クリップボードにアクセスするときにどちらを使うかは、Vim が<br>
+<a class="Type" href="options.html#'clipmethod'">'clipmethod'</a>&nbsp;オプションを使って決める。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="wayland.html#wayland-primary-selection" name="wayland-primary-selection">wayland-primary-selection</a><br>
-X11 スタイルのプライマリ選択が便利だと感じる場合、Wayland も Vim がサポートす<br>
-るプロトコルを使用してこの機能を実装している。ただし、wlr-data-control プロト<br>
-コルのバージョン 1 (プロトコル名の 'v1' とは異なる) を使用している場合は、プラ<br>
-イマリ選択はサポートされない。これを確認するには、以下を使用する<br>
+X11 スタイルのプライマリセレクションが便利だと思う場合、Wayland も Vim がサポー<br>
+トするプロトコルを使ってこの機能を実装している。ただし、wlr-data-control プロ<br>
+トコルのバージョン 1 (プロトコル名の 'v1' とは別物) を使っている場合はこの限り<br>
+ではなく、その場合プライマリセレクションはサポートされない。これは次を使って確<br>
+認できる<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wayland-info | grep -E '(ext_data_control|zwlr_data_control)'</div>
-&quot;zwlr_data_control_manager_v1&quot; の &quot;version:&quot; エントリが &quot;2&quot; 以上であれば、プラ<br>
-イマリ選択がサポートされる。また、&quot;ext_data_control_manager_v1&quot; も取得できた場<br>
-合は、Vim は代わりにそのプロトコルを使用する。このプロトコルにはプライマリ選択<br>
-のサポートが組み込まれている。<br>
+&quot;zwlr_data_control_manager_v1&quot; の &quot;version:&quot; エントリが &quot;2&quot; 以上なら、プライマ<br>
+リセレクションはサポートされている。&quot;ext_data_control_manager_v1&quot; も得られた場<br>
+合は、Vim は代わりにそのプロトコルを使う。そのプロトコルにはプライマリセレク<br>
+ションのサポートが組み込まれている。<br>
 <br>
 Wayland コンポジタが wlr-data-control-v1 または ext-data-control-v1 プロトコル<br>
-をサポートしていない場合、Vim は Wayland プロトコルを介してクリップボードに直<br>
-接アクセスできない。代わりに、ユーザー定義の&nbsp;<a class="Identifier" href="eval.html#clipboard-providers">clipboard-providers</a>&nbsp;を介して<br>
-wl-clipboard などの外部ツールを使用できる。<br>
+をサポートしていない場合、Vim は Wayland プロトコルを通してクリップボードに直<br>
+接アクセスできない。代わりに、ユーザー定義の&nbsp;<a class="Identifier" href="eval.html#clipboard-providers">clipboard-providers</a>&nbsp;を通して、<br>
+wl-clipboard などの外部ツールを使える。<br>
 <br>
-例:&nbsp;<span class="Comment">wl-copy</span>&nbsp;と&nbsp;<span class="Comment">wl-paste</span>&nbsp;を実行するプロバイダを定義する:<br>
+例:&nbsp;<span class="Comment">wl-copy</span>&nbsp;および&nbsp;<span class="Comment">wl-paste</span>&nbsp;をシェルで実行するプロバイダを定義する:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9script</span><br>
 <br>
@@ -146,8 +148,8 @@ wl-clipboard などの外部ツールを使用できる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">set</span>&nbsp;<span class="PreProc">clipmethod</span><span class="Statement">=</span>wl_clipboard<br>
 <br>
 <br>
-これは、wl-clipboard パッケージがインストールされていることを前提としている<br>
-(<span class="Constant"><a href="https://github.com/bugaevc/wl-clipboard">https://github.com/bugaevc/wl-clipboard</a></span>).<br>
+これは wl-clipboard パッケージがインストールされていることに依存する<br>
+(<span class="Constant"><a href="https://github.com/bugaevc/wl-clipboard">https://github.com/bugaevc/wl-clipboard</a></span>)。<br>
 <br>
-&nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
+&nbsp;vim:tw=78:ts=8:noet:ft=help:norl<br>
 </div>
