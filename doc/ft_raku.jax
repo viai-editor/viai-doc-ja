@@ -1,31 +1,31 @@
-*ft_raku.txt*	Raku プログラミング言語ファイルタイプ
+*ft_raku.txt*	Raku プログラミング言語のファイルタイプ
 
                                                       *vim-raku*
 
-vim-raku はシンタックスハイライト、インデント、その他 Raku プログラムの編集の
-ためのサポートを提供する。
+Vim-raku は、Raku のプログラムを編集するための、シンタックスハイライト、インデ
+ント、その他のサポートを提供する。
 
-1. Raku ファイル内での Unicode の利用	|raku-unicode|
+1. Raku ファイルで Unicode を使う	|raku-unicode|
 
 ==============================================================================
-1. Raku ファイル内での Unicode の利用                         *raku-unicode*
+1. Raku ファイルで Unicode を使う                             *raku-unicode*
 
-Unicode の記号を用いて新しい演算子を定義することは、あなたの Raku プログラムを
-読み易くする良い方法である。参照:
+Unicode の記号を使って新しい演算子を定義するのは、Raku のプログラムを読みやす
+くする良い方法である。参照:
 https://perl6advent.wordpress.com/2012/12/18/day-18-formulas-resistance-is-futile/
 
-Raku は基本的な演算子については ASCII での代替定義をしているが (参照
-https://docs.raku.org/language/unicode_ascii)、Unicode 演算子の全範囲が使える
-のが望しい。あなたのオペレーティングシステムが入力環境を提供していても、Vim 組
-み込み機能を使うのが望しいだろう。
+Raku はいくつかの一般的な演算子に ASCII の代替を定義しているが
+(https://docs.raku.org/language/unicode_ascii を参照)、Unicode の演算子をすべ
+て使うことが強く望まれる。オペレーティングシステムは入力の機能を提供している
+が、Vim に組み込まれた機能を使う方が好ましいかもしれない。
 
-自然な方法でこれらの記号を Vim 内に出すにはダイグラフショートカットを使う
-(:help |digraphs-use|)。多くの記号が定義されており、`:digraphs` とタイプするこ
-とでその一覧が得られる。便利な方法として、ダイグラフの一覧をファイルに保存して
-それを読んでもよい。シェルからなら: >
+Vim でこれらの記号を生成する自然な方法は、ダイグラフのショートカットを使うこと
+である (:help |digraphs-use|)。それらの多くは定義されている。一覧を得るには
+`:digraphs` とタイプする。ダイグラフの一覧を読む便利な方法は、それをファイルに
+保存することである。シェルから: >
         vim +'redir >/tmp/vim-digraphs-listing.txt' +digraphs +'redir END' +q
 
-標準の Vim のダイグラフにいくつかある:
+それらのいくつかは、Vim の標準のダイグラフで使える:
 	<< «    /0 ∅    !< ≮  ~
 	>> »    Ob ∘    !> ≯  ~
 	., …    00 ∞    (C ⊂  ~
@@ -35,18 +35,18 @@ https://docs.raku.org/language/unicode_ascii)、Unicode 演算子の全範囲が
 	(- ∈    ?= ≅    != ≠  ~
 	-) ∋    ?- ≃  ~
 
-ギリシャ文字は '*' の後に同等のラテン文字を続ける:
+ギリシャ文字は、'*' の後に似たラテン文字を続けると使える:
 	*p π  ~
 	*t τ  ~
 	*X ×  ~
 
-下付きと上付き数値は 's' と 'S' と共に:
+数字、下付き文字、上付き文字は 's' と 'S' で使える:
 	0s ₀    0S ⁰  ~
 	1s ₁    1S ¹  ~
 	2s ₂    9S ⁹  ~
 
-しかし、いくつかは標準では定義されていない。それらについては ~/.vimrc ファイル
-にダイグラフの定義を追加することができる。 >
+しかし、デフォルトでは定義されていないものもある。これらが、~/.vimrc ファイル
+に追加できるダイグラフの定義である。 >
 	exec 'digraph \\ ' .. char2nr('∖')
 	exec 'digraph \< ' .. char2nr('≼')
 	exec 'digraph \> ' .. char2nr('≽')
@@ -57,13 +57,13 @@ https://docs.raku.org/language/unicode_ascii)、Unicode 演算子の全範囲が
 	exec 'digraph )/ ' .. char2nr('⊅')
 	exec 'digraph U+ ' .. char2nr('⊎')
 	exec 'digraph 0- ' .. char2nr('⊖')
-	" オイラー数/ネイピア数
+	" オイラーの定数
 	exec 'digraph ne ' .. char2nr('𝑒')
-	" Raku の atomic 演算子記号
+	" Raku のアトミック操作の記号
 	exec 'digraph @@ ' .. char2nr('⚛')
 
-別の方法としては、挿入モードでの短縮入力で ASCII の演算子から同等の Unicode の
-単一文字へ変換することもできる。 >
+あるいは、ASCII ベースの演算子を、それに相当する 1 文字の Unicode に変換する挿
+入モードの短縮入力を書くこともできる。 >
 	iabbrev <buffer> !(<) ⊄
 	iabbrev <buffer> !(<=) ⊈
 	iabbrev <buffer> !(>) ⊅
