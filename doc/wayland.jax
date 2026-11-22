@@ -6,99 +6,101 @@
 
 Wayland プロトコルのサポート				*wayland*
 
-1. Wayland の役立つ情報		|wayland-useful|
+1. 役に立つ Wayland 情報	|wayland-useful|
 2. Wayland セレクション		|wayland-selections|
 
 ==============================================================================
-1. Wayland の役立つ情報					*wayland-useful*
+1. 役に立つ Wayland 情報				*wayland-useful*
 
 							*wayland-seat*
-Wayland のクリップボードなどの機能を使用するには、シートが必要である。Wayland
-シートは、キーボード、ポインター、タッチデバイスで構成される。使用するシートは
-'wlseat' オプションで設定できる。これは、同じ Wayland セッションで複数の
-Wayland シートを使用する場合にのみ役立つ。これが何を意味するのか分からないので
-あれば、それはおそらくあなたにとって問題ではないだろう。
+Wayland のクリップボードなどの機能は、使うシートを必要とする。Wayland シート
+は、キーボード、ポインタ、およびタッチデバイスから成ることがある。使うシートは
+'wlseat' オプションで設定できる。同じ Wayland セッションで複数の Wayland シー
+トを使う場合にだけ役に立つ。これが何であるのか分からない場合は、おそらくあなた
+には関係ない。
 
 							*wayland-gui*
-|gui-wayland| を参照。GUI 使用時、Vim はクリップボードへのアクセスに GTK など
-のツールキットを使用し、Wayland 経由ではアクセスしない。これは |v:clipmethod|
-変数で確認できる。GUI 実行時にはこの変数は "none" になる。
+|gui-wayland| を参照。Note GUI を使うとき、Vim は GTK などのツールキットを使っ
+てクリップボードにアクセスし、Wayland を通してはクリップボードにアクセスしない
+ことに注意。これは |v:clipmethod| 変数で確認できる。GUI を実行しているときは
+"none" に等しくなるはずである。
 
-Wayland のコマンド:
+Wayland コマンド:
 							*:wlrestore* *:wl*
-:wl[restore] [display]	Wayland コンポジタへの接続を再初期化する。Wayland コン
-			ポジタの再起動後も Vim を screen/tmux セッションで実行
-			し続ける場合に便利である。
+:wl[restore] [display]	Wayland コンポジタへの接続を再初期化する。
+			Vim を screen/tmux セッションで実行していて、Wayland
+			コンポジタが再起動した後もそのセッションが実行され続け
+			る場合に役に立つ。
 
-			[display] は、環境変数 $WAYLAND_DISPLAY の形式（例:
-			"wayland-0"）で指定する必要がある。[display] を省略し
-			た場合は、このコマンドの前回実行時に使用された値と同じ
-			値を使用して接続を再初期化する。
-			値が指定されていない場合は、環境変数 $WAYLAND_DISPLAY
-			の値が使用される。また、|v:clipmethod| も更新される。
-			{Vimが |+wayland| 機能付きでコンパイルされたときのみ有
-			効}
+			[display] は $WAYLAND_DISPLAY 環境変数の形式 (例:
+			"wayland-0") でなければならない。[display] を省略する
+			と、このコマンドの前回の実行で使われたのと同じ値を使っ
+			て接続を再初期化する。値が一度も指定されていなければ、
+			$WAYLAND_DISPLAY 環境変数の値を使う。これは
+			|v:clipmethod| も更新する。
+			{|+wayland| 機能付きでコンパイルされたときのみ有効}
 
-Wayland のエラー:
+Wayland エラー:
 							*E1548*
-Vim は Wayland コンポジタとの通信に失敗した。これは Wayland コンポジタのプロセ
-スが強制終了したことが原因である可能性がある。再接続するには `:wlrestore` コマ
-ンドを試すこと。
+Vim は Wayland コンポジタとの通信に失敗した。これはおそらく、Wayland コンポジ
+タのプロセスが kill されたためである。もう一度接続を試みるには、`:wlrestore`
+コマンドを試すこと。
 
 ==============================================================================
 2. Wayland セレクション					*wayland-selections*
 
-Vim は、現在の Wayland セレクションにアクセスするための
-wlr-data-control-unstable-v1 プロトコルと ext-data-control-v1 プロトコルをサ
-ポートしている。この場合のセレクションは基本的に "clipboard" を指す。Wayland
-コンポジタがこれらのプロトコルをサポートしているかどうかを確認するには、
-wayland-info コマンドを実行する。このコマンドは、あなたのシステムでは
-libwayland にバンドルされているはずである: >
+Vim は、現在の Wayland セレクションにアクセスするために、
+wlr-data-control-unstable-v1 および ext-data-control-v1 プロトコルをサポートし
+ている。この場合のセレクションは、本質的に "クリップボード." を意味する。
+Wayland コンポジタがこれらのプロトコルのどちらかをサポートしているかは、
+wayland-info コマンドを実行して確認できる。このコマンドはシステムの libwayland
+に同梱されているはずである: >
 	wayland-info | grep -E '(ext_data_control|zwlr_data_control)'
-<grep で一致するものが見つかった場合、システムにはどちらか、または両方のプロト
-コルが存在する。
+<grep がマッチを見つけたら、システムにどちらかまたは両方のプロトコルがある。
 
-どちらかまたは両方のプロトコルをサポートすることが知られているコンポジタの一部:
+どちらかまたは両方のプロトコルをサポートしていることが知られているコンポジタ:
     1. KWin (KDE)
-    2. wlroots based (Sway, Labwc)
+    2. wlroots ベース (Sway, Labwc)
     3. Niri
     4. Hyprland
     5. Wayfire
 
-X11 から移行する場合、通常の Waylandセレクション は X11 のクリップボードセレク
-ションに相当し、プライマリ Wayland セレクションは X11 のプライマリセレクション
-に相当する。これらのセレクションへのアクセスは Vim の X11 と同様で、+ レジスタ
-が通常のセレクション、* レジスタがプライマリセレクションである。Note コンポジ
-タがプライマリセレクションをサポートしていない可能性があることに注意。詳細は
+X11 から来た場合、通常の Wayland セレクションは X11 の CLIPBOARD セレクション
+に相当し、プライマリの Wayland セレクションは X11 の PRIMARY セレクションに相
+当する。これらのセレクションへのアクセスは Vim の X11 と同じで、+ レジスタが通
+常のセレクション、* レジスタがプライマリセレクションである。Note コンポジタが
+プライマリセレクションをサポートしていないかもしれないことに注意。詳細は
 |wayland-primary-selection| を参照。
 
 							*wayland-persist*
-X11 のカットバッファを使用する場合、Wayland にはそのような機能は存在しない。そ
-のような機能をエミュレートするには、Wayland クライアントが終了した後も選択デー
-タを保持するために、別のクリップボードマネージャーを使用する必要がある。
+X11 のカットバッファを使っている場合、Wayland にはそのようなものは存在しない。
+代わりに、そのような機能を模倣するには、Wayland クライアントが終了したときにセ
+レクションデータを保持するために、別のクリップボードマネージャーを使わなければ
+ならない。
 
 							*wayland-and-x11*
-使用している Vim のバージョンが X11 と Wayland の両方のサポートでコンパイルさ
-れている場合、Vim は 'clipmethod' オプションを使用してクリップボードにアクセス
-するときにどちらを使用するかを決定する。
+使っている Vim が X11 および Wayland の両方のサポート付きでコンパイルされてい
+る場合、クリップボードにアクセスするときにどちらを使うかは、Vim が
+'clipmethod' オプションを使って決める。
 
 						*wayland-primary-selection*
-X11 スタイルのプライマリ選択が便利だと感じる場合、Wayland も Vim がサポートす
-るプロトコルを使用してこの機能を実装している。ただし、wlr-data-control プロト
-コルのバージョン 1 (プロトコル名の 'v1' とは異なる) を使用している場合は、プラ
-イマリ選択はサポートされない。これを確認するには、以下を使用する >
+X11 スタイルのプライマリセレクションが便利だと思う場合、Wayland も Vim がサポー
+トするプロトコルを使ってこの機能を実装している。ただし、wlr-data-control プロ
+トコルのバージョン 1 (プロトコル名の 'v1' とは別物) を使っている場合はこの限り
+ではなく、その場合プライマリセレクションはサポートされない。これは次を使って確
+認できる >
 	wayland-info | grep -E '(ext_data_control|zwlr_data_control)'
-"zwlr_data_control_manager_v1" の "version:" エントリが "2" 以上であれば、プラ
-イマリ選択がサポートされる。また、"ext_data_control_manager_v1" も取得できた場
-合は、Vim は代わりにそのプロトコルを使用する。このプロトコルにはプライマリ選択
-のサポートが組み込まれている。
+"zwlr_data_control_manager_v1" の "version:" エントリが "2" 以上なら、プライマ
+リセレクションはサポートされている。"ext_data_control_manager_v1" も得られた場
+合は、Vim は代わりにそのプロトコルを使う。そのプロトコルにはプライマリセレク
+ションのサポートが組み込まれている。
 
 Wayland コンポジタが wlr-data-control-v1 または ext-data-control-v1 プロトコル
-をサポートしていない場合、Vim は Wayland プロトコルを介してクリップボードに直
-接アクセスできない。代わりに、ユーザー定義の |clipboard-providers| を介して
-wl-clipboard などの外部ツールを使用できる。
+をサポートしていない場合、Vim は Wayland プロトコルを通してクリップボードに直
+接アクセスできない。代わりに、ユーザー定義の |clipboard-providers| を通して、
+wl-clipboard などの外部ツールを使える。
 
-例: `wl-copy` と `wl-paste` を実行するプロバイダを定義する: >vim9
+例: `wl-copy` および `wl-paste` をシェルで実行するプロバイダを定義する: >vim9
 
     vim9script
 
@@ -141,7 +143,7 @@ wl-clipboard などの外部ツールを使用できる。
     set clipmethod=wl_clipboard
 
 
-これは、wl-clipboard パッケージがインストールされていることを前提としている
-(https://github.com/bugaevc/wl-clipboard).
+これは wl-clipboard パッケージがインストールされていることに依存する
+(https://github.com/bugaevc/wl-clipboard)。
 
- vim:tw=78:ts=8:noet:ft=help:norl:
+ vim:tw=78:ts=8:noet:ft=help:norl
