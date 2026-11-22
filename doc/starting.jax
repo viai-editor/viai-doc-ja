@@ -146,10 +146,10 @@ VMSでは全てのオプション引数は小文字であるとみなされる�
 		Note: |-u|引数でもプラグインを読み込まないようにできる:
 		  引数	      load:  vimrcファイル  プラグイン  defaults.vim ~
 		  なし			yes		yes	    yes
-		  -u NONE		no		no	    no
-		  -u DEFAULTS		no		no	    yes
-		  -u NORC		no		yes	    no
-		  --noplugin		yes		no	    yes
+			-u NONE		     no		no	  no
+			-u DEFAULTS	     no		no	  yes
+			-u NORC		     no		yes	  no
+			--noplugin	     yes	no	  yes
 
 --startuptime {fname}					*--startuptime*
 		起動処理の間、経過時間のメッセージをファイル {fname} に書き出
@@ -183,7 +183,7 @@ VMSでは全てのオプション引数は小文字であるとみなされる�
 		含んでいる場合には、ダブルクォートで挟まれている必要がある(こ
 		れは使われているシェルに依存する)。例: >
 			vim  "+set si"  main.c
-			vim "+find stdio.h"
+			vim  "+find stdio.h"
 			vim  -c "set ff=dos"  -c wq  mine.mak
 <
 		Note: Vimコマンドの引数として "+" か "-c" をあわせ、最大10個ま
@@ -298,7 +298,7 @@ VMSでは全てのオプション引数は小文字であるとみなされる�
 		初期化処理はスキップされる(このオプションが引数 "-u" と一緒に
 		使われた場合は除く)。
 		例: >
-			vim -e -s < thefilter  thefile
+			vim -e -s  < thefilter  thefile
 <		逆に、スクリプトからのエラーを見るには、|-u| フラグを付けファイ
 		ルを実行する: >
 			vim -u thefilter thefile

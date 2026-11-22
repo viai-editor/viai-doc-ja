@@ -69,7 +69,7 @@ Tuple		順序付けられた不変の項目のシーケンス。詳細につい�
 
 辞書		順序を持たない連想配列: 各項目はキーと値を持つ。|Dictionary|
 		例:
-		    {'blue': "#0000ff", 'red': "#ff0000"}
+			{'blue': "#0000ff", 'red': "#ff0000"}
 		    #{blue: "0000ff", red: "ff0000"}
 
 Funcref		関数への参照 |Funcref|。
@@ -1296,7 +1296,7 @@ expr5 {cmp} expr5
 2つの式expr5を比較。旧来のスクリプトでは結果が偽なら0を、真なら1を返す。|Vim9|
 script では結果を |true| または |false| で返す。
 
-			*expr-==*  *expr-!=*  *expr->*   *expr->=*
+			*expr-==*  *expr-!=*  *expr->*	 *expr->=*
 			*expr-<*   *expr-<=*  *expr-=~*  *expr-!~*
 			*expr-==#* *expr-!=#* *expr->#*  *expr->=#*
 			*expr-<#*  *expr-<=#* *expr-=~#* *expr-!~#*
@@ -1645,11 +1645,11 @@ expr10->name([args])	メソッド呼び出し		*method* *->*
 expr10->{lambda}([args])
 							*E260* *E276* *E1265*
 グローバル関数としても利用可能なメソッドの場合、これは次と同じである: >
-    name(expr10 [, args])
+	name(expr10 [, args])
 これらは "expr10" 専用としても利用できる
 
 これにより、あるメソッドが返す値を次のメソッドに渡して連鎖させることができる: >
-    mylist->filter(filterexpr)->map(mapexpr)->sort()->join()
+	mylist->filter(filterexpr)->map(mapexpr)->sort()->join()
 <
 ラムダの使用例: >
 	GetPercentage()->{x -> x * 100}()->printf('%d%%')
@@ -1947,7 +1947,7 @@ $VAR			環境変数
 `environ()` 関数は、すべての環境変数を含む辞書を取得するために使用できる。
 
 
-							*expr-env-expand*
+						*expr-env-expand*
 Note $VARを直接使用した場合とexpand("$VAR")を使用した場合では、動作に違いがあ
 ることに注意。直接使用した場合には、現在のVimのセッション中で既知の値に展開さ
 れるだけである。expand()を使用した場合、まず最初にVimのセッション中で既知の値
@@ -2114,8 +2114,8 @@ b:changedtick	現在のバッファに対する総変更の回数。変更を行
 		この変数はバッファに変更が行われた際にだけアクションを起こした
 		い時に利用できる。例: >
 		    :if my_changedtick != b:changedtick
-		    :   let my_changedtick = b:changedtick
-		    :   call My_Update()
+		    :	let my_changedtick = b:changedtick
+		    :	call My_Update()
 		    :endif
 <		b:changedtick 変数を変更したり削除することはできない。
 		変更に関する詳細情報が必要な場合は、|listener_add()| を参照。
@@ -2420,7 +2420,7 @@ v:errmsg	最後に発生したエラーメッセージ (必ずしも表示され
 	:let errmsg = ""
 	:next
 	:if (errmsg != "")
-	:  ...
+     :	...
 <		|scriptversion| が 3以降でなければ、"errmsg" も、以前の版のVim
 		との互換性の為に動作する。
 
@@ -3342,9 +3342,9 @@ text...
 			いる場合、インデントが取り除かれるため以下を実行でき
 			る: >
 				let text =<< trim END
-				  if ok
-				    echo 'done'
-				  endif
+				   if ok
+				     echo 'done'
+				   endif
 				END
 <			結果: ["if ok", "  echo 'done'", "endif"]
 			エンドマーカーは "let" のインデントと並ばなければなら
@@ -3512,8 +3512,8 @@ text...
 			[depth] 0 の例: >
 				let mylist = [1, 2, 3]
 				lockvar 0 mylist
-				let mylist[0] = 77  " OK
-				call add(mylist, 4) " OK
+				let mylist[0] = 77	" OK
+				call add(mylist, 4)	" OK
 				let mylist = [7, 8, 9]  " エラー!
 <								*E743*
 			深さを無限にするには[!]を使い、[depth]を省略する。しか
@@ -3978,21 +3978,21 @@ try条件文はコマンド|:try|によって始まり、対応するコマン�
 らない。catch節とfinally節の前の部分はtryブロックと呼ばれる。 >
 
      :try
-     :  ...
+     :	...
      :  ...				try ブロック
-     :  ...
+     :	...
      :catch /{pattern}/
-     :  ...
+     :	...
      :  ...				catch 節
-     :  ...
+     :	...
      :catch /{pattern}/
-     :  ...
+     :	...
      :  ...				catch 節
-     :  ...
+     :	...
      :finally
-     :  ...
+     :	...
      :  ...				finally 節
-     :  ...
+     :	...
      :endtry
 
 try条件文により、コードから発生する例外を監視したり、適切な対応を取ることがで
@@ -4292,7 +4292,7 @@ Note この方法はVimのエラーや割り込み例外を "rethrow" するた�
 
 このコードを実行すると次が表示される
 
-	Vim(echoerr):Vim:E492: Not an editor command:   asdf ~
+	Vim(echoerr):Vim:E492: Not an editor command:	asdf ~
 
 
 ☆後始末処理						*try-finally*

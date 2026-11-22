@@ -100,10 +100,10 @@ Vim script の例: >
 
 いくつかの例をあげると: >
 
-   :perl $a=1
-   :perldo $_ = reverse($_);1
-   :perl VIM::Msg("hello")
-   :perl $line = $curbuf->Get(42)
+  :perl $a=1
+  :perldo $_ = reverse($_);1
+  :perl VIM::Msg("hello")
+  :perl $line = $curbuf->Get(42)
 <							*E299*
 |sandbox|の中のPerlコマンドの実行は制限されている。":perldo" は常に使えない。
 ":perl" は安全な環境の中で、可能なら評価される。
@@ -127,13 +127,13 @@ Perl で使える関数の一覧である: >
    :perl $v = VIM::Eval('expand("<cfile>")') # <cfile> を展開
    :perl $curwin->SetHeight(10)		# ウィンドウの高さを設定する
    :perl @pos = $curwin->Cursor()	# (行, 列) 配列を返す
-   :perl @pos = (10, 10)
+  :perl @pos = (10, 10)
    :perl $curwin->Cursor(@pos)		# カーソルを @pos にセットする
    :perl $curwin->Cursor(10,10)		# カーソルを10行10列目にセットする
    :perl $mybuf = $curwin->Buffer()	# ウィンドウのバッファオブジェクトを
 					# 返す
    :perl $curbuf->Name()		# バッファ名を返す
-   :perl $curbuf->Number()		# returns buffer number
+  :perl $curbuf->Number()		# returns buffer number
    :perl $curbuf->Count()		# 行数を返す
    :perl $l = $curbuf->Get(10)		# 10 行目を返す
    :perl @l = $curbuf->Get(1 .. 5)	# 1行目から5行目までを返す
@@ -141,7 +141,7 @@ Perl で使える関数の一覧である: >
    :perl $curbuf->Delete(10, 20)	# 10行目から20行目までを削除する
    :perl $curbuf->Append(10, "Line")	# 行を挿入する
    :perl $curbuf->Append(10, "Line1", "Line2", "Line3") # 3行挿入する
-   :perl @l = ("L1", "L2", "L3")
+  :perl @l = ("L1", "L2", "L3")
    :perl $curbuf->Append(10, @l)	# L1, L2, L3 を挿入する
    :perl $curbuf->Set(10, "Line")	# 10行目を置き換える
    :perl $curbuf->Set(10, "Line1", "Line2")	# 10行目と11行目を置き換える

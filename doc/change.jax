@@ -294,13 +294,13 @@ gr{char}		カーソル下の仮想文字を {char} に置き換える。この�
 			の CTRL-キー などの挿入モードにおいて特別な意味を持つ
 			文字は使用できない。
 
-							*digraph-arg*
+						*digraph-arg*
 |r| や |t| 等のノーマルモードコマンドの引数は、1個の文字である。オプション
 'cpoptions' がフラグ 'D' を含まないとき、この文字はダイグラフ |digraphs| と同
 様に入力できる。まず CTRL-K を打ち込み、次にダイグラフの2文字を入力する。
 {Vimが |+digraphs| 機能付きでコンパイルされたときのみ有効}
 
-							*case*
+						*case*
 以下のコマンドは、アルファベットの大文字／小文字を切り替える。現在有効なロケー
 ル |locale| が使われる。|:language| を参照。環境変数 LC_CTYPE の値に影響される。
 
@@ -954,7 +954,7 @@ NOTE: 以前のバージョンでは CTRL-V が特別に扱われていた。こ
 
 4.3 検索と置換					*search-replace*
 
-						*:pro* *:promptfind*
+							*:pro* *:promptfind*
 :promptf[ind] [string]
 			検索ダイアログを表示する。 [string] が与えられると、そ
 			れが初期検索文字列になる。
@@ -1004,10 +1004,10 @@ NOTE: 以前のバージョンでは CTRL-V が特別に扱われていた。こ
 めに autocommand と ":retab" を使う例。警告: 文字列内の空白は変わってしまうこ
 とがある！オプション 'softtabstop' も参照。 >
 
-	:auto BufReadPost	*.xx	retab! 4
-	:auto BufWritePre	*.xx	retab! 8
-	:auto BufWritePost	*.xx	retab! 4
-	:auto BufNewFile	*.xx	set ts=4
+  :auto BufReadPost	*.xx	retab! 4
+  :auto BufWritePre	*.xx	retab! 8
+  :auto BufWritePost	*.xx	retab! 4
+  :auto BufNewFile	*.xx	set ts=4
 
 ==============================================================================
 5. テキストのコピーと移動				*copy-move*

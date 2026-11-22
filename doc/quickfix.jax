@@ -387,12 +387,12 @@ locationリストが |autocommand| に変更される場合、それは中断さ
 :cl[ist]! +{count}	カレントと次の {count} 個のエラー行をリストする。これ
 			は、カレント行の後にある認識されていない行を確認するの
 			に役立つ。例えば、":clist" が次のように表示される場合:
-        8384 testje.java:252: error: cannot find symbol ~
+	8384 testje.java:252: error: cannot find symbol ~
 			そして ":cl！+3" を使うと理由が表示される:
-        8384 testje.java:252: error: cannot find symbol ~
-        8385:   ZexitCode = Fmainx(); ~
-        8386:               ^ ~
-        8387:   symbol:   method Fmainx() ~
+	8384 testje.java:252: error: cannot find symbol ~
+	8385:   ZexitCode = Fmainx(); ~
+	8386:               ^ ~
+	8387:   symbol:   method Fmainx() ~
 
 :lli[st] [from] [, [to]]				*:lli* *:llist*
 			":clist" と同様だが、quickfixリストでなく、カレントウィ
@@ -664,7 +664,7 @@ quickfixリストのエントリ数が多すぎる場合は、cfilterプラグ�
 quickfixウィンドウには各行に1個ずつエラーが表示される。その行数はエラー番号に
 等しい。現在の項目はQuickFixLineハイライティングでハイライトされる。あなたはそ
 れをあなたの好みに変更することができる。例: >
-   :hi QuickFixLine ctermbg=Yellow guibg=Yellow
+	:hi QuickFixLine ctermbg=Yellow guibg=Yellow
 
 ":.cc" でカーソル下のエラーに移動できる。
 <Enter>キーを押すのと行をダブルクリックするのは同じ効果がある。そのエラーを含
@@ -1176,7 +1176,7 @@ Regular Expression (正規表現) を意味する。]
 			プすることはできない。
 			引数リスト内のファイルに対して実行し、マッチがないファ
 			イルでのエラーを回避する例: >
-                                :silent argdo try
+				:silent argdo try
 				  \ | grepadd! something %
 				  \ | catch /E480:/
 				  \ | endtry"
@@ -2222,10 +2222,10 @@ GNU-makeを使用しない場合、正しいディレクトリを管理する事
    次のようになる:
 
    Makeの出力                     Vimが解釈するディレクトリ
-   ------------------------       ----------------------------
-   Making all in dir1             ./dir1
-   Making all in dir2             ./dir1/dir2
-   Making all in dir2             ./dir1/dir2
+   ------------------------	  ----------------------------
+   Making all in dir1		  ./dir1
+   Making all in dir2		  ./dir1/dir2
+   Making all in dir2		  ./dir1/dir2
 
    これはメッセージ "enter directory" に絶対パスが記述されるか、メッセージ
    "leave directory" が表示されれば解決される。
@@ -2237,10 +2237,10 @@ Makefileの例:
 
 Unix:
     libs:
-            for dn in $(LIBDIRS); do                            \
-                (cd $$dn; echo "Entering dir '$$(pwd)'"; make); \
-                echo "Leaving dir";                             \
-            done
+	    for dn in $(LIBDIRS); do				\
+		(cd $$dn; echo "Entering dir '$$(pwd)'"; make); \
+		echo "Leaving dir";				\
+	    done
 
 上の出力を取り扱うために
     %DEntering\ dir\ '%f',%XLeaving\ dir

@@ -73,9 +73,9 @@
 タブで始まる一連の行範囲を1つの折り畳みにまとめる: >
 	:set foldexpr=getline(v:lnum)[0]==\"\\t\"
 空行で仕切られた「段落」を折り畳みとする: >
-    :set foldexpr=getline(v:lnum)=~'^\\s*$'&&getline(v:lnum+1)=~'\\S'?'<1':1
+	:set foldexpr=getline(v:lnum)=~'^\\s*$'&&getline(v:lnum+1)=~'\\S'?'<1':1
 同じ事(「段落」を折り畳みに)をする別の表現: >
-    :set foldexpr=getline(v:lnum-1)=~'^\\s*$'&&getline(v:lnum)=~'\\S'?'>1':1
+	:set foldexpr=getline(v:lnum-1)=~'^\\s*$'&&getline(v:lnum)=~'\\S'?'>1':1
 
 Note バックスラッシュ (日本では \ 記号) が ":set" の流儀で、通常とは異なるキャ
 ラクタ (空白文字、バックスラッシュ、ダブルクォート、その他、詳細は

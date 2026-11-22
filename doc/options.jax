@@ -261,10 +261,10 @@ Termcap オプションを設定するには、{option} に "t_xx" の形式を�
 文字 "|" によって、コマンド ":set" を後に続くコマンドと分けることができる。文
 字列オプションの値に "|" を含めるには、代わりに "\|" を使うこと。次の例ではオ
 プション 'titlestring' の値を "hi|there" に設定している: >
-	:set titlestring=hi\|there
+   :set titlestring=hi\|there
 しかし次の例では、2個のオプション 'titlestring', 'iconstring' をそれぞれ "hi",
 "there" に設定している: >
-	:set titlestring=hi|set iconstring=there
+   :set titlestring=hi|set iconstring=there
 
 また、旧来のスクリプトではダブルクォート文字はコメントを開始する。オプションの
 値に '"' を含めるには '\"' と書くこと。次の例は 'titlestring' を 'hi "there"'
@@ -295,9 +295,9 @@ Win32では、ファイル名の中の '\' は大抵は取り除かれない。�
 				*E539* *E550* *E551* *E552*
 値がフラグのリストからなるオプションもある。そういったオプションにフラグを追加
 したいとき、既存の値を変更したくないならば、こうすること: >
-	:set guioptions+=a
+   :set guioptions+=a
 オプションからフラグを取り除くには、こうすること: >
-	:set guioptions-=a
+   :set guioptions-=a
 これはオプション 'guioptions' からフラグ 'a' を取り除く。
 Note フラグは1個ずつ追加したり取り除いたりするよう注意。オプション
 'guioptions' が "ab" という値であるとき、"set guioptions-=ba" は機能しない。な
@@ -309,8 +309,8 @@ Note フラグは1個ずつ追加したり取り除いたりするよう注意�
 '$' とそれに続く変数名は変更を受けない。識別子に使えない non-id 文字 (英字、数
 字、'_' 以外) なら、どれでも環境変数名の後に続けることができる。識別子に使えな
 い文字とそれに続く文字は、環境変数の値の後ろにそのまま追加される。例: >
-	:set term=$TERM.new
-	:set path=/usr/$INCLUDE,$HOME/include,.
+   :set term=$TERM.new
+   :set path=/usr/$INCLUDE,$HOME/include,.
 コマンド ":set opt-=値" でオプションから文字列を取り除いたり、コマンド
 ":set opt+=値" でオプションに文字列を追加したりするときには、環境変数の展開が
 行われてからそうした操作がなされる。
@@ -596,7 +596,7 @@ Note 展開されるオプションの値の長さ制限に注意。システム
 :fix[del]		ターミナルオプション 't_kD' {訳注: デリートキー} の値
 			を設定する。
 			  't_kb' が	のとき	't_kD' は	~
-			    CTRL-?		  CTRL-H
+				  CTRL-?	CTRL-H
 			    CTRL-?以外		  CTRL-?
 
 			(CTRL-? は8進数で 0o177、16進数で 0x7f)
@@ -672,8 +672,8 @@ Note 展開されるオプションの値の長さ制限に注意。システム
 			い)
 
 例:
-	vi:noai:sw=3 ts=6 ~
-	vim: tw=77 ~
+   vi:noai:sw=3 ts=6 ~
+   vim: tw=77 ~
 
 2つ目の形式は次の通りである (Viのバージョンによってはこの形式と互換性がある)。
 
@@ -3619,7 +3619,7 @@ Note 1番目の形式では、行全体がオプション指定に使われる�
 	"all" が含まれていると全ての autocommand のイベントが無視され、
 	autocommand は実行されなくなる。
 	それ以外では、値はイベント名のコンマ区切りのリストである。例: >
-		:set ei=WinEnter,WinLeave
+	    :set ei=WinEnter,WinLeave
 <
 	一部のイベントを除くすべてのイベントを無視するには、"-" プリフィックス
 	が使用できる: >
@@ -4331,7 +4331,7 @@ Note 1番目の形式では、行全体がオプション指定に使われる�
 	    1.    the first item
 	      wraps
 	^^^^^^
-	}
+		    }
 	パターンの後ろに文字がなければならない。行全体がマッチすると、その行は
 	マッチがないのと同様に扱われてしまう。
 	既定では数字(後ろに句読点や空白があってもよい)を認識する。
@@ -4514,8 +4514,8 @@ Note 1番目の形式では、行全体がオプション指定に使われる�
 	通の設定をするためにある。例えば、点滅を止めるには "a:blinkon0" とする。
 
 	カーソル強調表示の例: >
-		:highlight Cursor gui=reverse guifg=NONE guibg=NONE
-		:highlight Cursor gui=NONE guifg=bg guibg=fg
+	    :highlight Cursor gui=reverse guifg=NONE guibg=NONE
+	    :highlight Cursor gui=NONE guifg=bg guibg=fg
 <
 					*'guifont'* *'gfn'*
 						   *E235* *E596*
@@ -4753,7 +4753,7 @@ Note 1番目の形式では、行全体がオプション指定に使われる�
 	'modelineexpr' がオフの場合、このオプションをモードラインで設定するこ
 	とはできない。
 
-					*'helpfile'* *'hf'*
+						*'helpfile'* *'hf'*
 'helpfile' 'hf'		文字列	(既定では MS-Windows: "$VIMRUNTIME\doc\help.txt"
 					その他: "$VIMRUNTIME/doc/help.txt")
 			グローバル
@@ -5996,9 +5996,9 @@ Note 1番目の形式では、行全体がオプション指定に使われる�
 	で4桁、\\U で8桁ちょうどでなければならない。
 
 	例: >
-		:set lcs=tab:>-,trail:-
-		:set lcs=tab:>-,eol:<,nbsp:%
-		:set lcs=extends:>,precedes:<
+	    :set lcs=tab:>-,trail:-
+	    :set lcs=tab:>-,eol:<,nbsp:%
+	    :set lcs=extends:>,precedes:<
 <	"eol", "extends", "precedes" にはハイライトグループ "NonText" での強調
 	表示がなされ、"tab", "nbsp", "space", "multispace", "lead", "trail" に
 	はハイライトグループ "SpecialKey" が適用される。
@@ -6088,7 +6088,7 @@ Note 1番目の形式では、行全体がオプション指定に使われる�
 	ユーザーのフィルタが "マイフィルタ" であるときは、次のようにする。 >
 		:set makeprg=gmake\ \\\|\ マイフィルタ
 <	引数が挿入される場所を指定するには、"$*" を (複数回でも) 使える。例: >
-		:set makeprg=latex\ \\\\nonstopmode\ \\\\input\\{$*}
+	    :set makeprg=latex\ \\\\nonstopmode\ \\\\input\\{$*}
 <	セキュリティ上の理由から、このオプションを |modeline| または |sandbox|
 	内で設定することはできない。
 
@@ -6933,7 +6933,7 @@ Note 1番目の形式では、行全体がオプション指定に使われる�
 	'copyindent' も参照。
 	空白文字を揃えるには |:retab| を使う。
 
-				    *'previewheight'* *'pvh'*
+					*'previewheight'* *'pvh'*
 'previewheight' 'pvh'	数値 (既定では 12)
 			グローバル
 			{|+quickfix| 機能付きでコンパイルされたときのみ有効}
@@ -8652,7 +8652,7 @@ Note 1番目の形式では、行全体がオプション指定に使われる�
 
 	値は、普通のテキストに挟まれた関数 printf 形式の項目からなる。項目の形
 	式は以下の通りである。
-		%-0{minwid}.{maxwid}{item}
+	  %-0{minwid}.{maxwid}{item}
 	{item} 以外の欄は指定しなくてもよい。パーセント記号そのものを表示する
 	には "%%" とする。
 
@@ -8717,7 +8717,7 @@ Note 1番目の形式では、行全体がオプション指定に使われる�
 	      {訳注: 日本語メッセージの場合:
 		"[Quickfix List]"	"[Quickfixリスト]"
 		"[Location List]"	"[Locationリスト]"
-	      }
+		    }
 	k S   他言語用マッピング |:lmap| が使われているとき、変数
 	      "b:keymap_name" または 'keymap' を "<keymap>" と表示する。
 	n N   バッファ番号。
@@ -9185,7 +9185,7 @@ Note 1番目の形式では、行全体がオプション指定に使われる�
 		:set tabpanelopt=vert,align:right
 		:set tabpanelopt=columns:16
 <
-					*'tabstop'* *'ts'*
+						*'tabstop'* *'ts'*
 'tabstop' 'ts'		数値	(既定では 8)
 			バッファについてローカル
 	水平タブ文字 (ASCII 9) の表示に使用する桁数を定義する。水平タブは常に
@@ -9213,7 +9213,7 @@ Note 1番目の形式では、行全体がオプション指定に使われる�
 
 	タグファイルの先頭に、それが整列されていないことを示す行があったとき
 	は、そのファイルでは線形探索が使われる。 >
-		!_TAG_FILE_SORTED	0	/some comment/
+   !_TAG_FILE_SORTED	0	/some comment/
 <	['0' の前後の余白は、単一の <Tab> でなければならない]
 
 	二分探索が完了し、'tags' で列挙されたどのファイルからもマッチが見つか
@@ -9388,7 +9388,7 @@ Note 1番目の形式では、行全体がオプション指定に使われる�
 	このオプションは GUI を開始するとリセットされる。
 	詳細は |arabic.txt| を参照のこと。
 
-						*'termencoding'* *'tenc'*
+					*'termencoding'* *'tenc'*
 'termencoding' 'tenc'	文字列	(既定では ""; GTK+ GUI では "utf-8")
 			グローバル
 	ターミナルで使われるエンコーディング名。このオプションは、どの文字エン
@@ -10119,7 +10119,7 @@ Note 1番目の形式では、行全体がオプション指定に使われる�
 'viewdir' 'vdir'	文字列	(既定値 Amiga用: "$VIM/vimfiles/view",
 				        Win32用: "$HOME/vimfiles/view",
 					Unix用: "$HOME/.vim/view" または
-					        "$XDG_CONFIG_HOME/vim/view"
+					           "$XDG_CONFIG_HOME/vim/view"
 					VMS用: "sys$login:vimfiles/view")
 			グローバル
 			{|+mksession| 機能付きでコンパイルされたときのみ有効}

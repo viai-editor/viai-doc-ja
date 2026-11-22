@@ -262,7 +262,7 @@ CTRL-C		コマンドを実行せずにコマンドラインモードを終了す
 		wildmenu 補完モード中の動作については、'wildmenu' を参照。
 		{Vimが |+cmdline_hist| 機能付きでコンパイルされたときのみ有効}
 
-						*c_<S-Up>* *c_<PageUp>*
+							*c_<S-Up>* *c_<PageUp>*
 <S-Up> または <PageUp>
 		履歴から古いコマンドラインの内容を呼び出す。
 		{Vimが |+cmdline_hist| 機能付きでコンパイルされたときのみ有効}
@@ -1107,32 +1107,32 @@ Note: これらは文字通りに打ち込まれる、これらは特別なキ�
 
 ファイル名が "src/version.c"、カレントディレクトリが "/home/mool/vim" のときの
 例: >
-	:p			/home/mool/vim/src/version.c
-	:p:.				       src/version.c
-	:p:~				 ~/vim/src/version.c
-	:h				       src
-	:p:h			/home/mool/vim/src
-	:p:h:h			/home/mool/vim
-	:t					   version.c
-	:p:t					   version.c
-	:r				       src/version
-	:p:r			/home/mool/vim/src/version
-	:t:r					   version
-	:e						   c
-	:s?version?main?		       src/main.c
-	:s?version?main?:p	/home/mool/vim/src/main.c
-	:p:gs?/?\\?		\home\mool\vim\src\version.c
+  :p			/home/mool/vim/src/version.c
+  :p:.				       src/version.c
+  :p:~				 ~/vim/src/version.c
+  :h				       src
+  :p:h			/home/mool/vim/src
+  :p:h:h		/home/mool/vim
+  :t					   version.c
+  :p:t					   version.c
+  :r				       src/version
+  :p:r			/home/mool/vim/src/version
+  :t:r					   version
+  :e						   c
+  :s?version?main?		       src/main.c
+  :s?version?main?:p	/home/mool/vim/src/main.c
+  :p:gs?/?\\?		\home\mool\vim\src\version.c
 
 ファイル名が "src/version.c.gz" のときの例: >
-	:p			/home/mool/vim/src/version.c.gz
-	:e						     gz
-	:e:e						   c.gz
-	:e:e:e						   c.gz
-	:e:e:r						   c
-	:r				       src/version.c
-	:r:e						   c
-	:r:r				       src/version
-	:r:r:r				       src/version
+  :p			/home/mool/vim/src/version.c.gz
+  :e						     gz
+  :e:e						   c.gz
+  :e:e:e					   c.gz
+  :e:e:r					   c
+  :r				       src/version.c
+  :r:e						   c
+  :r:r				       src/version
+  :r:r:r			       src/version
 <
 					*extension-removal* *:_%<*
 "%", "#", "#n" または "CTRL-V p" に "<" を付け加えたとき、ファイル名の拡張子

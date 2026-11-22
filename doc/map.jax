@@ -474,9 +474,9 @@ NOTE: 選択モードで印字可能文字にマップを定義するとユー�
 
     コマンド				      モード ~
 					  ビジュアル  選択 ~
-:vmap  :vnoremap  :vunmap  :vmapclear	    yes        yes
-:xmap  :xnoremap  :xunmap  :xmapclear	    yes         -
-:smap  :snoremap  :sunmap  :smapclear	     -	       yes
+:vmap  :vnoremap  :vunmap  :vmapclear	    yes      yes
+:xmap  :xnoremap  :xunmap  :xmapclear	    yes       -
+:smap  :snoremap  :sunmap  :smapclear	    -	     yes
 
 			*mapmode-ic* *mapmode-i* *mapmode-c* *mapmode-l*
 一部のコマンドは、挿入モードとコマンドラインモードの両方で使えますが、一部はそ
@@ -487,7 +487,7 @@ NOTE: 選択モードで印字可能文字にマップを定義するとユー�
 :map!  :noremap!  :unmap!  :mapclear!	    yes	       yes	   -
 :imap  :inoremap  :iunmap  :imapclear	    yes		-	   -
 :cmap  :cnoremap  :cunmap  :cmapclear	     -	       yes	   -
-:lmap  :lnoremap  :lunmap  :lmapclear	    yes*       yes*       yes*
+:lmap  :lnoremap  :lunmap  :lmapclear	    yes*       yes*	  yes*
 
 * もし 'iminsert' が 1 ならば、下記 |language-mapping| を参照してください。
 
@@ -520,7 +520,7 @@ CTRL-U (<C-U>) を使って (Vimによって挿入される) 範囲指定を削�
 あるマップをノーマルモードとビジュアルモードで使用し、そして、オペレータ待機
 モードでは使用しないという場合は、3つのモードに対してマップを定義してからオペ
 レータ待機モードのマップだけを削除します: >
-	:map	xx something-difficult
+	:map    xx something-difficult
 	:ounmap xx
 
 ビジュアルモードとオペレータ待機モードの場合や、ノーマルモードとオペレータ待機
@@ -1983,9 +1983,9 @@ Note "引数無し" の状況を扱う場合、関数が引数無しでも呼び
    :	  if filereadable(argv(i))
    :	     execute "e " .. argv(i)
    :	     execute a:command
-   :	   endif
-   :	   let i = i + 1
-   :	endwhile
+   :      endif
+   :      let i = i + 1
+   :   endwhile
    :endfunction
    :command -nargs=+ -complete=command Allargs call Allargs(<q-args>)
 

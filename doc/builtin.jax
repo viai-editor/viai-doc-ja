@@ -3305,7 +3305,7 @@ filewritable({file})					*filewritable()*
 		戻り値の型: |Number|
 
 
-filter({expr1}, {expr2})					*filter()*
+filter({expr1}, {expr2})				*filter()*
 		{expr1}はリスト |List|、文字列 |String|、|Blob|、辞書
 		|Dictionary| でなければならない。
 		{expr1}の各要素に対して{expr2}を評価し、その結果が0もしくは偽
@@ -6025,7 +6025,7 @@ histget({history} [, {index}])				*histget()*
 
 <		|:history|によって出力される{num}番目のエントリを、再度実行す
 		るための ":H {num}" というコマンドを定義する。 >
-			:command -nargs=1 H execute histget("cmd",0+<args>)
+			:command -nargs=1 H execute histget("cmd", 0+<args>)
 <
 		|method| としても使用できる: >
 			GetHistory()->histget()
@@ -6210,7 +6210,7 @@ iconv({string}, {from}, {to})				*iconv()*
 		戻り値の型: |String|
 
 
-id({item})							*id()*
+id({item})						*id()*
 		結果は、{item} に関連付けられた一意の文字列であり、{item} の内
 		容に関連付けられたものではない。{item} が存在し参照されている
 		間のみ有効である。結果を生成する vim のインスタンスでのみ有効
@@ -7396,7 +7396,7 @@ maparg({name} [, {mode} [, {abbr} [, {dict}]]])		*maparg()*
 				に加え、次の文字が使用される:
 				" "     ノーマル、ビジュアル、オペレータ待機
 				"!"     挿入、コマンドラインモード
-					(|mapmode-ic|)
+				     (|mapmode-ic|)
 		  "sid"		<sid> マッピングで使用されるスクリプトローカル
 				ID (|<SID>|)。特殊なコンテキストの場合は負値。
 		  "scriptversion"  スクリプトのバージョン番号。999999 は |Vim9|
@@ -9340,8 +9340,8 @@ remote_peek({serverid} [, {retvar}])			*remote_peek()*
 		この関数は |sandbox| 内では使用できない。
 		{|+clientserver|機能付きでコンパイルされたときのみ利用可能}
 		例: >
-		    :let repl = ""
-		    :echo "PEEK: " .. remote_peek(id, "repl") .. ": " .. repl
+		   :let repl = ""
+		   :echo "PEEK: " .. remote_peek(id, "repl") .. ": " .. repl
 
 <		|method| としても使用できる: >
 			ServerId()->remote_peek()
@@ -9760,7 +9760,7 @@ search({pattern} [, {flags} [, {stopline} [, {timeout} [, {skip}]]]])
 		    :  normal G$
 		    :  let flags = "w"
 		    :  while search("foo", flags) > 0
-		    :    s/foo/bar/g
+		    :	 s/foo/bar/g
 		    :	 let flags = "W"
 		    :  endwhile
 		    :  update	    " 修正されていればファイルを保存する
@@ -11508,7 +11508,7 @@ strpart({src}, {start} [, {len} [, {chars}]])		*strpart()*
 			strpart("abcdefg", 3, 2)    == "de"
 			strpart("abcdefg", -2, 4)   == "ab"
 			strpart("abcdefg", 5, 4)    == "fg"
-			strpart("abcdefg", 3)       == "defg"
+			strpart("abcdefg", 3)	    == "defg"
 <		Note: 文字列の最初の文字を指定するためには、{start}は0でなけれ
 		ばならない。カーソルのある位置の文字を取得する例: >
 			strpart(getline("."), col(".") - 1, 1, v:true)
@@ -12506,7 +12506,7 @@ type({expr})						*type()*
 		の値は以下の通り:
 			数値:	       0  |v:t_number|
 			文字列:	       1  |v:t_string|
-			Funcref:       2  |v:t_func|
+			Funcref:    2  |v:t_func|
 			リスト:	       3  |v:t_list|
 			辞書:	       4  |v:t_dict|
 			浮動小数点数:  5  |v:t_float|
@@ -12514,13 +12514,13 @@ type({expr})						*type()*
 			特殊値:	       7  |v:t_none| (v:null と v:none)
 			ジョブ:	       8  |v:t_job|
 			チャネル:      9  |v:t_channel|
-			Blob:	      10  |v:t_blob|
+			Blob:	   10  |v:t_blob|
 			クラス:	      12  |v:t_class|
 			オブジェクト: 13  |v:t_object|
 			型エイリアス: 14  |v:t_typealias|
 			列挙型:	      15  |v:t_enum|
 			列挙値:	      16  |v:t_enumvalue|
-			Tuple:	      17  |v:t_tuple|
+			Tuple:	   17  |v:t_tuple|
 		後方互換性のためには、次のような使い方ができる: >
 			:if type(myvar) == type(0)
 			:if type(myvar) == type("")
