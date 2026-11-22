@@ -11,165 +11,169 @@ helpname: 'debug'
 <br>
 Vim のデバッグ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debug.html#debug-vim" name="debug-vim">debug-vim</a><br>
 <br>
-これは、Vim 自体が正しく動作しない場合にデバッグするためのものである。<br>
-Vim script や関数などのデバッグについては、<a class="Identifier" href="repeat.html#debug-scripts">debug-scripts</a>&nbsp;を参照。<br>
+これは、Vim が正しく動作しないときに、Vim 自体をデバッグするためのものである。<br>
+Vim script や関数などのデバッグについては&nbsp;<a class="Identifier" href="repeat.html#debug-scripts">debug-scripts</a>&nbsp;を参照<br>
 <br>
-1. gcc と gdb を使ってクラッシュの場所を特定する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="debug.html#debug-gcc">debug-gcc</a><br>
-2. メモリリークの特定&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="debug.html#debug-leaks">debug-leaks</a><br>
-3. Windows でのバグレポート&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="debug.html#debug-win32">debug-win32</a><br>
+1. gcc および gdb を使ったクラッシュの場所の特定&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="debug.html#debug-gcc">debug-gcc</a><br>
+2. メモリリークの特定&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="debug.html#debug-leaks">debug-leaks</a><br>
+3. Windows のバグ報告&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="debug.html#debug-win32">debug-win32</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
-1. gcc と gdb を使ってクラッシュの場所を特定する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debug.html#debug-gcc" name="debug-gcc">debug-gcc</a>&nbsp;<a class="Constant" href="debug.html#gdb" name="gdb">gdb</a><br>
+1. gcc および gdb を使ったクラッシュの場所の特定&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debug.html#debug-gcc" name="debug-gcc">debug-gcc</a>&nbsp;<a class="Constant" href="debug.html#gdb" name="gdb">gdb</a><br>
 <br>
-Vim がテストファイルの 1 つでクラッシュし、コンパイルに gcc を使用している場<br>
-合、Vim がどこでクラッシュするかを正確に見つけるためにできることがある。これは<br>
-MingW ツールを使用している場合にも当てはまる。<br>
+Vim がテストファイルの 1 つでクラッシュし、コンパイルに gcc を使っている場合<br>
+に、Vim がどこでクラッシュするかを正確に突き止めるためにできることをここに示<br>
+す。これは MingW ツールを使っている場合にも当てはまる。<br>
 <br>
-1. &quot;-g&quot; オプション付きで Vim をコンパイル (src/Makefile にそのための行があるの<br>
-&nbsp;&nbsp; で、それをコメントアウトする)。さらに &quot;strip&quot; を無効化する (strip をインス<br>
-&nbsp;&nbsp; トールしないか、&quot;STRIP = /bin/true&quot; の行を使う)。<br>
+1. &quot;-g&quot; オプション付きで Vim をコンパイルする (src/Makefile にこのための行があ<br>
+&nbsp;&nbsp; るので、そのコメントを外せばよい)。また、&quot;strip&quot; が無効になっていることを確<br>
+&nbsp;&nbsp; かめること (それをインストールしないか、または &quot;STRIP = /bin/true&quot; の行を使<br>
+&nbsp;&nbsp; う)。<br>
 <br>
-2. 次のコマンドを実行する (&quot;11&quot; の所を失敗したテストの番号に変える):<br>
+2. これらのコマンドを実行する (&quot;11&quot; は失敗するテストに置き換える):<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd testdir<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gdb ../vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;run -u unix.vim -U NONE -s dotest.in test11.in</div>
 <br>
-3. Vim のクラッシュを確認する。gdb は関連するメッセージを表示するはずである。<br>
+3. Vim がどこでクラッシュするかを確認する。gdb がこれについてのメッセージを出<br>
+&nbsp;&nbsp; すはずである。<br>
 <br>
-4. 次のコマンドでスタックトレースを表示できる:<br>
+4. このコマンドで gdb からスタックトレースを取得する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where</div>
-&nbsp;&nbsp;&nbsp;次のコマンドで別の場所のスタックトレースを表示できる:<br>
+&nbsp;&nbsp;&nbsp;スタックトレースの別の場所は、以下で確認できる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame 3</div>
-&nbsp;&nbsp;&nbsp;&quot;3&quot; をスタックトレース内の番号の 1 つに置き換える。<br>
+&nbsp;&nbsp;&nbsp;&quot;3&quot; をスタックトレースの番号の 1 つに置き換える。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
 2. メモリリークの特定&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debug.html#debug-leaks" name="debug-leaks">debug-leaks</a>&nbsp;<a class="Constant" href="debug.html#valgrind" name="valgrind">valgrind</a><br>
 <br>
-Linux を使っていて Vim がメモリリークしていると思われる場合は、メモリリークを<br>
-正確に特定するのに valgrind ツールが非常に役立つ。<br>
+Vim がメモリリークしていると疑い、Linux を使っている場合は、valgrind ツールが<br>
+メモリリークの場所を正確に突き止めるのにとても役に立つ。<br>
 <br>
-まず、EXITFREE を定義して Vim をビルドする。MAKEFILE でこれを検索して、行のコ<br>
-メントを外す。<br>
+まず、EXITFREE を定義して Vim をビルドする。MAKEFILE でこれを検索し、その行の<br>
+コメントを外す。<br>
 <br>
-次のコマンドで Vim を起動する:<br>
+このコマンドを使って Vim を起動する:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valgrind --log-file=valgrind.log --leak-check=full ./vim</div>
 <br>
-<span class="Todo">Note:</span>&nbsp;Vim の実行はとても遅くなる。.vimrc が大きかったり多くのプラグインを入れ<br>
-ていたりすると起動にとても時間がかかるので、その場合は &quot;--clean&quot; 引数を指定し<br>
-て起動する。<br>
+<span class="Todo">Note:</span>&nbsp;Vim の動作はかなり遅くなる。.vimrc が大きい場合、またはプラグインがいく<br>
+つかある場合は、起動を辛抱強く待つ必要があるか、または &quot;--clean&quot; 引数を付けて<br>
+実行する必要がある。<br>
 <br>
-ライブラリがメモリリークを起こしている場合もよくある。例えば getpwuid() や<br>
-XtVaAppCreateShell() など。それらを避けることはできない。リークしているバイト<br>
-数は数キロバイト以下のはずである。<br>
+getpwuid() および XtVaAppCreateShell() など、ライブラリからのリークがいくつか<br>
+あることが多い。これらは避けられない。そのバイト数は、1 K バイト以下のとても小<br>
+さいものであるはずである。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
-3. Windows でのバグレポート&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debug.html#debug-win32" name="debug-win32">debug-win32</a><br>
+3. Windows のバグ報告&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debug.html#debug-win32" name="debug-win32">debug-win32</a><br>
 <br>
-Windows版の Vim が再現可能な手段でクラッシュした場合、次の方法で有用なバグレ<br>
-ポートを作成できる。<br>
+Windows 版の Vim が再現可能な形でクラッシュする場合は、役に立つバグ報告をする<br>
+ための手順を踏むことができる。<br>
 <br>
-<span class="PreProc">3.1 一般事項</span><br>
 <br>
-実行可能ファイルに対応したデバッグシンボルファイル (PDB) を取得する必要がある。<br>
-gviai.exe には gviai.pdb、viai.exe には viai.pdb が必要である。あなたが実行可<br>
-能ファイルを入手したのと同じ場所に用意されているはずである。EXE に対応した (同<br>
-じ日付の) PDB でなければならない。<br>
+<span class="PreProc">3.1 一般</span><br>
 <br>
-Microsoft Visual C++ コンパイラを使って自分で実行可能ファイルを作成した場合は、<br>
-PDB は EXE と一緒に作成されている。<br>
+実行可能ファイルのデバッガシンボル (PDB) ファイルを入手しなければならない:<br>
+gviai.exe には gviai.pdb、または viai.exe には viai.pdb。PDB は、実行可能ファ<br>
+イルを入手したのと同じ場所から入手できるはずである。EXE と一致する (同じ日付の)<br>
+PDB を使うようにすること。<br>
 <br>
-Visual Studio を持っている場合、VC Toolkit と WinDbg の代わりにそれを使用する。<br>
+実行可能ファイルを自分で Microsoft Visual C++ コンパイラでビルドした場合は、<br>
+PDB は EXE と一緒にビルドされている。<br>
 <br>
-他のコンパイラを使っている場合は、それぞれ適切なデバッガを使用する必要がある。<br>
-Cygwin または MinGW のコンパイラ用の gdb (上記参照&nbsp;<a class="Identifier" href="debug.html#debug-gcc">debug-gcc</a>) など。<br>
+Visual Studio がある場合は、VC Toolkit および WinDbg の代わりにそれを使うこと。<br>
+<br>
+他のコンパイラの場合は、常に対応するデバッガを使うべきである: Cygwin および<br>
+MinGW のコンパイラには gdb (上記の&nbsp;<a class="Identifier" href="debug.html#debug-gcc">debug-gcc</a>&nbsp;を参照)。<br>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debug.html#debug-vs2005" name="debug-vs2005">debug-vs2005</a><br>
-<span class="PreProc">3.2 Visual Studio 2005/Visual C++ 2005 Express で Vim をデバッグする</span><br>
+<span class="PreProc">3.2 Visual Studio 2005/Visual C++ 2005 Express での Vim のクラッシュのデバッグ</span><br>
 <br>
-最初に、viai.exe か gviai.exe を起動し、Visual Studio を起動する。(Visual<br>
-Studio を持っていない場合は、<a class="Identifier" href="debug.html#get-ms-debuggers">get-ms-debuggers</a>&nbsp;の説明に従って、無料の Visual<br>
-C++ 2005 Express Edition を入手する。)<br>
+まず viai.exe または gviai.exe を起動し、次に Visual Studio を起動する。<br>
+(Visual Studio が無い場合は、<a class="Identifier" href="debug.html#get-ms-debuggers">get-ms-debuggers</a>&nbsp;の手順に従って、Visual C++<br>
+2005 Express Edition の無料のコピーを入手する。)<br>
 <br>
-メニューから「ツール/プロセスにアタッチ」を選択し、Vim のプロセスを選択する。<br>
+Tools メニューで、Attach to Process をクリックする。Vim のプロセスを選択する。<br>
 <br>
-そして、Vim を操作してクラッシュを再現する。「ハンドルされていない例外が発生し<br>
-ました」という Visual Studio のダイアログが表示されるので、中断ボタンをクリッ<br>
-クしてプロセスを中断する。<br>
+Vim で、クラッシュを再現する。Visual Studio にダイアログが現れ、Vim のプロセス<br>
+での処理されない例外について知らせる。Break をクリックして、プロセスに割り込<br>
+む。<br>
 <br>
-シンボルが読み込めず、ソースコードを表示できなかったときは、もう 1 つダイアロ<br>
-グが表示される。OK をクリックする。<br>
+Visual Studio は別のダイアログを表示し、シンボルが読み込まれておらず、ソース<br>
+コードを表示できないことを知らせる。OK をクリックする。<br>
 <br>
-ウィンドウがいくつか開く。呼び出し履歴ウィンドウの右クリックメニューから「シン<br>
-ボルの読み込み」を選択する。シンボル検索ダイアログが開くので、(g)viai.pdb のあ<br>
-るディレクトリを選択する。<br>
+いくつかのウィンドウが開く。Call Stack ウィンドウで右クリックする。Load<br>
+Symbols を選択する。Find Symbols ダイアログが開き、(g)viai.pdb を探す。PDB ファ<br>
+イルがあるディレクトリに移動し、Open をクリックする。<br>
 <br>
-このとき、呼び出し履歴ウィンドウには Vim の関数名や行番号が表示されているはず<br>
-である。どれかをダブルクリックするとソースの検索ダイアログが表示される。Vim の<br>
-ソースがあるディレクトリを選択する (ソースがあれば)。<br>
+この時点で、vim の関数名および行番号付きの完全なコールスタックが得られるはずで<br>
+ある。行の 1 つをダブルクリックすると、Find Source ダイアログが現れる。Vim の<br>
+ソースがあるディレクトリに移動する (ソースがある場合。)<br>
 <br>
-さらに詳しくデバッグする方法が分からないときは、&quot;:help bug-reports&quot; の説明に<br>
-従う。バグレポートに呼び出し履歴を貼り付ける。<br>
+これ以上どうデバッグすればよいか分からない場合は、&quot;:help bug-reports&quot; の手順に<br>
+従うこと。コールスタックをバグ報告に貼り付ける。<br>
 <br>
-有料版の Visual Studio を使っている場合は、デバッグメニューから minidump を保<br>
-存できるので、それをバグレポートに添付する。minidump は 100KB 以下の小さなファ<br>
-イルで、Vim のプロセスに関する情報が入っている。<br>
-Visual C++ 2005 Express Edition では minidump を保存できない。just-in-time デ<br>
-バッガ (クラッシュを検出して自動的に起動されるデバッガ) もインストールされな<br>
-い。それらが必要なときは WinDbg (<a class="Identifier" href="debug.html#debug-windbg">debug-windbg</a>) を使う。<br>
+Visual Studio の無料でないバージョンがある場合は、Debug メニューからミニダンプ<br>
+を保存し、それをバグ報告と一緒に送ることができる。ミニダンプは、プロセスの状態<br>
+についての情報を含む小さなファイル (&lt;100KB) である。<br>
+Visual C++ 2005 Express Edition はミニダンプを保存できず、ジャストインタイムデ<br>
+バッガとしてインストールすることもできない。ミニダンプを保存する必要がある場<br>
+合、またはジャストインタイム (ポストモーテム) デバッガが欲しい場合は、WinDbg<br>
+(<a class="Identifier" href="debug.html#debug-windbg">debug-windbg</a>) を使うこと。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debug.html#debug-windbg" name="debug-windbg">debug-windbg</a><br>
-<span class="PreProc">3.3 WinDbg を使って Vim をデバッグする</span><br>
+<span class="PreProc">3.3 WinDbg での Vim のクラッシュのデバッグ</span><br>
 <br>
-WinDbg の入手方法は&nbsp;<a class="Identifier" href="debug.html#get-ms-debuggers">get-ms-debuggers</a>&nbsp;を参照。<br>
+WinDbg のコピーを入手するには&nbsp;<a class="Identifier" href="debug.html#get-ms-debuggers">get-ms-debuggers</a>&nbsp;を参照。<br>
 <br>
-Visual Studio IDE を使うのと同じように、WinDbg から Vim のプロセスにアタッチで<br>
-きる。プログラムがクラッシュしたときに、事後分析デバッガ (postmortem debugger)<br>
-として、WinDebug を自動的に起動することができる。事後分析デバッガとして WinDeb<br>
-を設定するには &quot;windbg -I&quot; を実行する。<br>
+Visual Studio IDE と同様に、実行中の Vim のプロセスに WinDbg をアタッチできる。<br>
+システムが WinDbg をポストモーテムデバッガとして自動的に起動するようにすること<br>
+もできる。WinDbg をポストモーテムデバッガとして設定するには、&quot;windbg -I&quot; を実<br>
+行する。<br>
 <br>
-WinDbg から、実行中の Vim のプロセスにアタッチするには、WinDeb を起動し、File<br>
-メニューから「プロセスにアタッチ」を選択し、Vim のプロセスを選択して OK をク<br>
-リックする。<br>
+実行中の Vim のプロセスに WinDbg をアタッチするには、WinDbg を起動する。File<br>
+メニューで、Attach to a Process を選択する。Vim のプロセスを選択し、OK をクリッ<br>
+クする。<br>
 <br>
-メニューから「File-&gt;Symbol File Path」を選択し、Vim PDB の入っているフォルダを<br>
-symbolpath に追加する。Vim のソースファイルもある場合は、File メニューの<br>
-Source File Path を使う。WinDbg でソースファイルを開いたり、ブレークポイントを<br>
-設定したりできる。Vim をクラッシュさせると、クラッシュした場所のソースファイル<br>
-が WinDbg で開かれる。View メニューを使って、コールスタック、ローカル変数、<br>
-ウォッチウィンドウなどを見ることができる。<br>
+この時点で、File メニューの Symbol File Path を選択し、Vim の PDB があるフォル<br>
+ダを sympath に追加する。Vim のソースがあるなら、File メニューの Source File<br>
+Path を使う。これで、WinDbg でソースファイルを開き、必要ならブレークポイントを<br>
+設定できる。クラッシュを再現する。WinDbg はクラッシュした場所でソースファイル<br>
+を開くはずである。View メニューを使って、コールスタック、ローカル変数、ウォッ<br>
+チウィンドウなどを調べられる。<br>
 <br>
-事後分析デバッガとして WinDbg を使っている場合、WinDbg から Vim のプロセスにア<br>
-タッチする必要はない。Vim をクラッシュさせるだけで WinDbg が自動的に起動する。<br>
-上述のように、シンボルファイルパスとソースファイルパスを設定する。<br>
+WinDbg がポストモーテムデバッガである場合は、Vim のプロセスに WinDbg をアタッ<br>
+チする必要はない。単にクラッシュを再現すれば、WinDbg が自動的に起動する。上と<br>
+同様に、Symbol File Path および Source File Path を設定する。<br>
 <br>
-minidump を保存するには、WinDbg コマンドラインで次のコマンドを入力する:<br>
+ミニダンプを保存するには、WinDbg のコマンドラインで以下を入力する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.dump vim.dmp</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debug.html#debug-minidump" name="debug-minidump">debug-minidump</a><br>
-<span class="PreProc">3.4 Minidump を開く</span><br>
+<span class="PreProc">3.4 ミニダンプを開く</span><br>
 <br>
-Visual Studio か WinDbg を使って minidump を開くことができる。<br>
+ミニダンプファイルがある場合は、それを Visual Studio または WinDbg で開ける。<br>
 <br>
-Visual Studio 2005 の場合: メニューから「ファイル-&gt;開く-&gt;プロジェクト/ソリュー<br>
-ション」選択し、.dmp ファイルを開く。F5 キーを押してデバッガを起動する。<br>
-<a class="Identifier" href="debug.html#debug-vs2005">debug-vs2005</a>&nbsp;の指示に従って Symbol File Path を設定する。<br>
+Visual Studio 2005 では: File メニューで Open を選択し、次に Project/Solution<br>
+を選択する。.dmp ファイルに移動し、それを開く。ここで F5 を押してデバッガを起<br>
+動する。Symbol File Path を設定するには、<a class="Identifier" href="debug.html#debug-vs2005">debug-vs2005</a>&nbsp;の手順に従う。<br>
 <br>
-WinDbg の場合: メニューから「File-&gt;Open Crash Dump」を選択する。<a class="Identifier" href="debug.html#debug-windbg">debug-windbg</a><br>
-の指示に従って Symbol File Path を設定する。<br>
+WinDbg では: File メニューで Open Crash Dump を選択する。Symbol File Path を設<br>
+定するには、<a class="Identifier" href="debug.html#debug-windbg">debug-windbg</a>&nbsp;の手順に従う。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="debug.html#get-ms-debuggers" name="get-ms-debuggers">get-ms-debuggers</a><br>
-<span class="PreProc">3.5 Microsoft デバッグツールの入手方法</span><br>
+<span class="PreProc">3.5 Microsoft のデバッグツールの入手</span><br>
 <br>
-Windows 用のデバッグツールは次の場所からダウンロードできる<br>
+Debugging Tools for Windows (WinDbg を含む) は以下からダウンロードできる<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools">https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools</a></span><br>
-これには WinDbg デバッガが含まれている。<br>
+これには WinDbg デバッガが含まれる。<br>
 <br>
-Visual C++ 2005 Express Edition は次の場所から無料でダウンロードできる。<br>
+Visual C++ 2005 Express Edition は以下から無料でダウンロードできる:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://visualstudio.microsoft.com/">https://visualstudio.microsoft.com/</a></span><br>
 <br>
 <span class="PreProc">=========================================================================</span><br>
