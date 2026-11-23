@@ -9,45 +9,47 @@ helpname: 'if_ruby'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
-Rubyインターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#ruby" name="ruby">ruby</a>&nbsp;<a class="Constant" href="if_ruby.html#Ruby" name="Ruby">Ruby</a><br>
+Vim への Ruby インターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#ruby" name="ruby">ruby</a>&nbsp;<a class="Constant" href="if_ruby.html#Ruby" name="Ruby">Ruby</a><br>
 <br>
 <br>
 1. コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_ruby.html#ruby-commands">ruby-commands</a><br>
-2. Vimモジュール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_ruby.html#ruby-vim">ruby-vim</a><br>
+2. Vim モジュール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_ruby.html#ruby-vim">ruby-vim</a><br>
 3. Vim&#0058;:Buffer オブジェクト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_ruby.html#ruby-buffer">ruby-buffer</a><br>
 4. Vim&#0058;:Window オブジェクト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_ruby.html#ruby-window">ruby-window</a><br>
 5. グローバル変数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_ruby.html#ruby-globals">ruby-globals</a><br>
 6. rubyeval() Vim 関数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_ruby.html#ruby-rubyeval">ruby-rubyeval</a><br>
-7. 動的ローディング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_ruby.html#ruby-dynamic">ruby-dynamic</a><br>
+7. 動的ロード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_ruby.html#ruby-dynamic">ruby-dynamic</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#E266" name="E266">E266</a>&nbsp;<a class="Constant" href="if_ruby.html#E267" name="E267">E267</a>&nbsp;<a class="Constant" href="if_ruby.html#E268" name="E268">E268</a>&nbsp;<a class="Constant" href="if_ruby.html#E269" name="E269">E269</a>&nbsp;<a class="Constant" href="if_ruby.html#E270" name="E270">E270</a>&nbsp;<a class="Constant" href="if_ruby.html#E271" name="E271">E271</a>&nbsp;<a class="Constant" href="if_ruby.html#E272" name="E272">E272</a>&nbsp;<a class="Constant" href="if_ruby.html#E273" name="E273">E273</a><br>
 <br>
-<span class="Special">{Vim が&nbsp;</span><a class="Identifier" href="various.html#+ruby">+ruby</a><span class="Special">&nbsp;機能付きでコンパイルされている場合にのみ利用できる}</span><br>
+<span class="Special">{Vim が&nbsp;</span><a class="Identifier" href="various.html#+ruby">+ruby</a><span class="Special">&nbsp;機能付きでコンパイルされたときにのみ利用できる}</span><br>
 <br>
-Rubyのホームページは&nbsp;<span class="Constant"><a href="http://www.ruby-lang.org/">http://www.ruby-lang.org/</a></span>&nbsp;である。ここでRubyをダウンロー<br>
-ドできる。<br>
+ruby のホームページは&nbsp;<span class="Constant"><a href="http://www.ruby-lang.org/">http://www.ruby-lang.org/</a></span>&nbsp;である。そこで Ruby をダウン<br>
+ロードするためのリンクを見つけることができる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 1. コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#ruby-commands" name="ruby-commands">ruby-commands</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#:ruby" name=":ruby">:ruby</a>&nbsp;<a class="Constant" href="if_ruby.html#:rub" name=":rub">:rub</a><br>
-:rub[y]&nbsp;<span class="Special">{cmd}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rubyのコマンド<span class="Special">{cmd}</span>を実行する。次のようにして使う:<br>
+:rub[y]&nbsp;<span class="Special">{cmd}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ruby コマンド&nbsp;<span class="Special">{cmd}</span>&nbsp;を実行する。試してみるためのコマン<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ド:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ruby print &quot;Hello&quot;</div>
 <br>
 :rub[y] &lt;&lt;&nbsp;<span class="Special">[trim]</span>&nbsp;[<span class="Special">{endmarker}</span>]<br>
 <span class="Special">{script}</span><br>
 <span class="Special">{endmarker}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rubyスクリプト<span class="Special">{script}</span>を実行する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ruby スクリプト&nbsp;<span class="Special">{script}</span>&nbsp;を実行する。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[endmarker]</span>が省略された場合、<a class="Identifier" href="insert.html#:append">:append</a>や<a class="Identifier" href="insert.html#:insert">:insert</a>コマ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンド同様にドット '.' がデフォルトである。詳細について<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は&nbsp;<a class="Identifier" href="eval.html#:let-heredoc">:let-heredoc</a>&nbsp;を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[endmarker]</span>&nbsp;が省略された場合、<a class="Identifier" href="insert.html#:append">:append</a>&nbsp;および<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="insert.html#:insert">:insert</a>&nbsp;コマンドと同様に、デフォルトはドット '.' に<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;なる。さらなる情報については&nbsp;<a class="Identifier" href="eval.html#:let-heredoc">:let-heredoc</a>&nbsp;を参照。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この形式の<a class="Identifier" href="if_ruby.html#:ruby">:ruby</a>コマンドは主にVim scriptにRubyコード<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を埋め込むのに便利である。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;Ruby のサポートを有効にしてコンパイルされていな<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いとこのコマンドは機能しない。エラーを回避するには<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この形式の&nbsp;<a class="Identifier" href="if_ruby.html#:ruby">:ruby</a>&nbsp;コマンドは、主に vim script に ruby<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コードを含めるのに便利である。<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;このコマンドは、Ruby 機能がコンパイルに含まれて<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いない場合は動作しない。エラーを避けるには、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_perl.html#script-here">script-here</a>&nbsp;を参照。<br>
 <br>
 Vim script の例:<br>
@@ -67,92 +69,95 @@ Vim script の例:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EOF<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfunction</div>
 <br>
-使っている Ruby のバージョンを見るには:<br>
+どのバージョンの Ruby を持っているかを見るには:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ruby print RUBY_VERSION</div>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#:rubydo" name=":rubydo">:rubydo</a>&nbsp;<a class="Constant" href="if_ruby.html#:rubyd" name=":rubyd">:rubyd</a>&nbsp;<a class="Constant" href="if_ruby.html#E265" name="E265">E265</a><br>
-:<span class="Special">[range]</span>rubyd[o]&nbsp;<span class="Special">{cmd}</span>&nbsp;&nbsp;<span class="Special">[range]</span>の範囲の各行に対し、行末の<span class="Special">&lt;EOL&gt;</span>を削除して$_へ代<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入しつつ、Rubyコマンド<span class="Special">{cmd}</span>を実行評価する。$_を変更す<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;るとバッファのテキストを変更できるが、このコマンドを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使って行を追加したり削除したりはできないことに注意。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[range]</span>を省略した場合ファイル全体が対象: &quot;1,$&quot;<br>
+:<span class="Special">[range]</span>rubyd[o]&nbsp;<span class="Special">{cmd}</span>&nbsp;&nbsp;<span class="Special">[range]</span>&nbsp;内の各行に対して、$_ に各行のテキストを末尾の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;EOL&gt;</span>&nbsp;なしで順に設定しながら、Ruby コマンド&nbsp;<span class="Special">{cmd}</span>&nbsp;を評<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;価する。$_ を設定するとテキストが変更されるが、このコ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マンドを使って行を追加または削除することはできないこと<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に注意。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[range]</span>&nbsp;のデフォルトはファイル全体: &quot;1,$&quot;。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#:rubyfile" name=":rubyfile">:rubyfile</a>&nbsp;<a class="Constant" href="if_ruby.html#:rubyf" name=":rubyf">:rubyf</a><br>
-:rubyf[ile]&nbsp;<span class="Special">{file}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイル<span class="Special">{file}</span>のRubyスクリプトを実行する。ファイル名の<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;補完が利用できる以外は、<span class="Comment">:ruby load 'file'</span>と同じ。<br>
+:rubyf[ile]&nbsp;<span class="Special">{file}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{file}</span>&nbsp;内の Ruby スクリプトを実行する。これは<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment">:ruby load 'file'</span>&nbsp;と同じだが、ファイル名補完を可能に<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。<br>
 <br>
-<a class="Identifier" href="eval.html#sandbox">sandbox</a>環境内ではRubyコマンドを実行できない。<br>
+<a class="Identifier" href="eval.html#sandbox">sandbox</a>&nbsp;の中では Ruby コマンドを実行することはできない。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-2. Vimモジュール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#ruby-vim" name="ruby-vim">ruby-vim</a><br>
+2. Vim モジュール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#ruby-vim" name="ruby-vim">ruby-vim</a><br>
 <br>
-Rubyのコードは全てのVimへのアクセスをVimモジュール経由で行う。<br>
+Ruby コードは、vim へのすべてのアクセスを &quot;Vim&quot; モジュール経由で得る。<br>
 <br>
-概要<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print &quot;Hello&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # メッセージを表示する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim.command(cmd)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Exコマンドを実行する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;num = Vim&#0058;:Window.count&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # ウィンドウ数を取得する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w = Vim&#0058;:Window[n]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# ウィンドウ n を取得する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cw = Vim&#0058;:Window.current&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 現在のウィンドウを取得する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;num = Vim&#0058;:Buffer.count&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # バッファ数を取得する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = Vim&#0058;:Buffer[n]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# バッファ n を取得する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cb = Vim&#0058;:Buffer.current&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 現在のバッファを取得する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w.height = lines&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# ウィンドウの高さ(行数)を設定する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w.cursor = [row, col]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # ウィンドウのカーソル位置を設定する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pos = w.cursor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# カーソルの位置を配列で受け取る<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name = b.name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # バッファのファイル名を取得する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;line = b[n]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # バッファから行の内容を取得する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;num = b.count&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # バッファの行数を取得する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b[n] = str&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# バッファの行の内容を変更する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.delete(n)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 行を削除する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.append(n, str)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# n行目の直後に行を追加する<br>
+概要:<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print &quot;Hello&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # メッセージを表示する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim.command(cmd)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Ex コマンドを実行する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;num = Vim&#0058;:Window.count&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # ウィンドウの数を取得する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w = Vim&#0058;:Window[n]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# ウィンドウ &quot;n&quot; を取得する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cw = Vim&#0058;:Window.current&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# カレントウィンドウを取得する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;num = Vim&#0058;:Buffer.count&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # バッファの数を取得する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = Vim&#0058;:Buffer[n]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# バッファ &quot;n&quot; を取得する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cb = Vim&#0058;:Buffer.current&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# カレントバッファを取得する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w.height = lines&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# ウィンドウの高さを設定する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w.cursor = [row, col]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # ウィンドウのカーソル位置を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 設定する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pos = w.cursor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 配列 [row, col] を取得する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name = b.name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # バッファのファイル名を取得する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;line = b[n]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # バッファから行を取得する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;num = b.count&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 行数を取得する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b[n] = str&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# バッファに行を設定する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.delete(n)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 行を削除する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.append(n, str)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# n の後に行を追加する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;line = Vim&#0058;:Buffer.current.line&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # カレント行を取得する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;num = Vim&#0058;:Buffer.current.line_number # カレント行の行番号を取得する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim::Buffer.current.line = &quot;test&quot;&nbsp;&nbsp;&nbsp;&nbsp; # カレント行を設定する</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;num = Vim&#0058;:Buffer.current.line_number # カレント行番号を取得する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim::Buffer.current.line = &quot;test&quot;&nbsp;&nbsp;&nbsp;&nbsp; # カレント行番号を設定する</div>
 <br>
 <br>
 モジュール関数:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#ruby-message" name="ruby-message">ruby-message</a><br>
 Vim&#0058;:message(<span class="Special">{msg}</span>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;メッセージ<span class="Special">{msg}</span>を表示する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;メッセージ&nbsp;<span class="Special">{msg}</span>&nbsp;を表示する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#ruby-blob" name="ruby-blob">ruby-blob</a><br>
 Vim&#0058;:blob(<span class="Special">{arg}</span>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{arg}</span>から&nbsp;<a class="Identifier" href="eval.html#Blob">Blob</a>&nbsp;リテラル文字列を返す。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{arg}</span>&nbsp;から&nbsp;<a class="Identifier" href="eval.html#Blob">Blob</a>&nbsp;リテラル文字列を返す。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#ruby-set_option" name="ruby-set_option">ruby-set_option</a><br>
 Vim&#0058;:set_option(<span class="Special">{arg}</span>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vimのオプションを設定する。<span class="Special">{arg}</span>は &quot;:set&quot; コマンドが受け付けるものであ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れば何でも良い。引数の中では空白文字が使えないことに注意。<a class="Identifier" href="options.html#:set">:set</a>を参<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim オプションを設定する。<span class="Special">{arg}</span>&nbsp;は &quot;:set&quot; コマンドが受け付ける任意の引<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数にできる。<span class="Todo">Note</span>&nbsp;これは引数の中で空白が許されないことを意味することに<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意!&nbsp;<a class="Identifier" href="options.html#:set">:set</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#ruby-command" name="ruby-command">ruby-command</a><br>
 Vim&#0058;:command(<span class="Special">{cmd}</span>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exコマンド<span class="Special">{cmd}</span>を実行する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ex コマンド&nbsp;<span class="Special">{cmd}</span>&nbsp;を実行する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#ruby-evaluate" name="ruby-evaluate">ruby-evaluate</a><br>
 Vim&#0058;:evaluate(<span class="Special">{expr}</span>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim内部の実行エンジンを使ってスクリプト<span class="Special">{expr}</span>を実行評価する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="Identifier" href="eval.html#expression">expression</a>参照)。実行結果は次のように返される:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Vimの実行結果が number の場合は Integer<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Vimの実行結果が float の場合は Float<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Vimの実行結果が string の場合は String<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Vimの実行結果がVimの list の場合は Array<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Vimの実行結果がVimの dictionary の場合は Hash<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;辞書とリストは再帰的に展開される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim の内部の式評価器を使って&nbsp;<span class="Special">{expr}</span>&nbsp;を評価する (<a class="Identifier" href="eval.html#expression">expression</a>&nbsp;を参照)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式の結果を次として返す:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Vim の式が数値に評価される場合は Integer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Vim の式が浮動小数点数に評価される場合は Float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Vim の式が文字列に評価される場合は String<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Vim の式が Vim のリストに評価される場合は Array<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Vim の式が Vim の辞書に評価される場合は Hash<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;辞書およびリストは再帰的に展開される。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 3. Vim&#0058;:Buffer オブジェクト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#ruby-buffer" name="ruby-buffer">ruby-buffer</a><br>
 <br>
-オブジェクトVim::BufferはVimのバッファを表す。<br>
+Vim&#0058;:Buffer オブジェクトは vim のバッファを表す。<br>
 <br>
 クラスメソッド:<br>
 <br>
 current&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カレントバッファオブジェクトを返す。<br>
-count&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バッファの個数を返す。<br>
-self[<span class="Special">{n}</span>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 番号<span class="Special">{n}</span>のバッファオブジェクトを返す。最初の番号は0。<br>
+count&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バッファの数を返す。<br>
+self[<span class="Special">{n}</span>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 番号&nbsp;<span class="Special">{n}</span>&nbsp;のバッファオブジェクトを返す。最初の番号は 0 である。<br>
 <br>
 メソッド:<br>
 <br>
@@ -160,97 +165,97 @@ name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バ�
 number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの番号を返す。<br>
 count&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 行数を返す。<br>
 length&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行数を返す。<br>
-self[<span class="Special">{n}</span>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バッファの行を返す。<span class="Special">{n}</span>は行番号。<br>
+self[<span class="Special">{n}</span>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バッファから行を返す。<span class="Special">{n}</span>&nbsp;は行番号である。<br>
 self[<span class="Special">{n}</span>] =&nbsp;<span class="Special">{str}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの行を設定する。<span class="Special">{n}</span>は行番号。<br>
-delete(<span class="Special">{n}</span>)&nbsp;&nbsp;&nbsp;&nbsp; バッファから行を削除する。<span class="Special">{n}</span>は行番号。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの行を設定する。<span class="Special">{n}</span>&nbsp;は行番号である。<br>
+delete(<span class="Special">{n}</span>)&nbsp;&nbsp;&nbsp;&nbsp; バッファから行を削除する。<span class="Special">{n}</span>&nbsp;は行番号である。<br>
 append(<span class="Special">{n}</span>,&nbsp;<span class="Special">{str}</span>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行<span class="Special">{n}</span>の後ろに行を追加する。<br>
-line&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;そのバッファがアクティブなら、カレント行を返す。<br>
-line =&nbsp;<span class="Special">{str}</span>&nbsp;&nbsp;&nbsp;&nbsp;そのバッファがアクティブなら、カレント行を設定する。<br>
-line_number&nbsp;&nbsp;&nbsp;&nbsp; そのバッファがアクティブなら、カレント行の行番号を返す。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行&nbsp;<span class="Special">{n}</span>&nbsp;の後に行を追加する。<br>
+line&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファがアクティブな場合、バッファのカレント行を返す。<br>
+line =&nbsp;<span class="Special">{str}</span>&nbsp;&nbsp;&nbsp;&nbsp;バッファがアクティブな場合、バッファのカレント行を設定する。<br>
+line_number&nbsp;&nbsp;&nbsp;&nbsp; バッファがアクティブな場合、カレント行の番号を返す。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 4. Vim&#0058;:Window オブジェクト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#ruby-window" name="ruby-window">ruby-window</a><br>
 <br>
-Vim&#0058;:Window オブジェクトはVimのウィンドウを表現している。<br>
+Vim&#0058;:Window オブジェクトは vim のウィンドウを表す。<br>
 <br>
 クラスメソッド:<br>
 <br>
-current&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 現在のウィンドウオブジェクトを返す。<br>
+current&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カレントウィンドウオブジェクトを返す。<br>
 count&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ウィンドウの数を返す。<br>
-self[<span class="Special">{n}</span>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 番号<span class="Special">{n}</span>のウィンドウオブジェクトを返す。番号は0から数え始める。<br>
+self[<span class="Special">{n}</span>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 番号&nbsp;<span class="Special">{n}</span>&nbsp;のウィンドウオブジェクトを返す。最初の番号は 0 であ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
 <br>
 メソッド:<br>
 <br>
 buffer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウに表示されているバッファを返す。<br>
 height&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウの高さを返す。<br>
-height =&nbsp;<span class="Special">{n}</span>&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウの高さを<span class="Special">{n}</span>に設定する。<br>
+height =&nbsp;<span class="Special">{n}</span>&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウの高さを&nbsp;<span class="Special">{n}</span>&nbsp;に設定する。<br>
 width&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ウィンドウの幅を返す。<br>
-width =&nbsp;<span class="Special">{n}</span>&nbsp;&nbsp;&nbsp;&nbsp; ウィンドウの幅を<span class="Special">{n}</span>に設定する。<br>
-cursor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルの位置を[行数, カラム]の形で配列にして返す。<br>
+width =&nbsp;<span class="Special">{n}</span>&nbsp;&nbsp;&nbsp;&nbsp; ウィンドウの幅を&nbsp;<span class="Special">{n}</span>&nbsp;に設定する。<br>
+cursor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソル位置の [row, col] 配列を返す。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初の行番号は 1 で、最初の桁番号は 0 である。<br>
 cursor = [<span class="Special">{row}</span>,&nbsp;<span class="Special">{col}</span>]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルの位置を<span class="Special">{row}</span>&nbsp;行の&nbsp;<span class="Special">{col}</span>カラムに設定する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソル位置を&nbsp;<span class="Special">{row}</span>&nbsp;および&nbsp;<span class="Special">{col}</span>&nbsp;に設定する。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 5. グローバル変数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#ruby-globals" name="ruby-globals">ruby-globals</a><br>
 <br>
-2つのグローバル変数がある。<br>
+2 つのグローバル変数がある。<br>
 <br>
-$curwin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 現在のウィンドウオブジェクト<br>
-$curbuf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 現在のバッファオブジェクト<br>
+$curwin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カレントウィンドウオブジェクト。<br>
+$curbuf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カレントバッファオブジェクト。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 6. rubyeval() Vim 関数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#ruby-rubyeval" name="ruby-rubyeval">ruby-rubyeval</a><br>
 <br>
-双方向インターフェイスを促進するため、<a class="Identifier" href="builtin.html#rubyeval()">rubyeval()</a>&nbsp;関数を使用して Ruby 式を評<br>
-価しそれらの値を Vim script に渡すことができる。<br>
+双方向インターフェイスを容易にするため、<a class="Identifier" href="builtin.html#rubyeval()">rubyeval()</a>&nbsp;関数を使って Ruby の式を<br>
+評価し、その値を Vim script に渡すことができる。<br>
 <br>
-Ruby の値 &quot;true&quot;, &quot;false&quot; および &quot;nil&quot; は、それぞれ v:true, v:false および<br>
+Ruby の値 &quot;true&quot;、&quot;false&quot; および &quot;nil&quot; は、それぞれ v:true、v:false および<br>
 v:null に変換される。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-7. 動的ローディング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#ruby-dynamic" name="ruby-dynamic">ruby-dynamic</a><br>
+7. 動的ロード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_ruby.html#ruby-dynamic" name="ruby-dynamic">ruby-dynamic</a><br>
 <br>
-MS-WindowsとUnixではRubyライブラリを動的に読み込むことが可能である。これを行う<br>
-と<a class="Identifier" href="various.html#:version">:version</a>の出力に<a class="Identifier" href="various.html#+ruby/dyn">+ruby/dyn</a>が含まれるようになる。<br>
+MS-Windows および Unix では、Ruby ライブラリを動的にロードできる。そのとき、<br>
+<a class="Identifier" href="various.html#:version">:version</a>&nbsp;の出力に&nbsp;<a class="Identifier" href="various.html#+ruby/dyn">+ruby/dyn</a>&nbsp;が含まれる。<br>
 <br>
-この場合、Vimは必要になったときだけRubyのDLLファイル及び共有ライブラリを検索す<br>
-る。Rubyインターフェイスを使わないのであればそれらは必要ではないので、ライブラ<br>
-リファイルがシステムに無くてもVimを使うことができる。<br>
+これは、Vim が必要なときにだけ Ruby の DLL ファイルまたは共有ライブラリを検索<br>
+することを意味する。Ruby インターフェイスを使わない場合はそれは必要ないので、<br>
+このライブラリファイルがシステムに無くても Vim を使うことができる。<br>
 <br>
 <br>
 <span class="PreProc">MS-Windows</span><br>
 <br>
-これが動作するためには Ruby の適切なバージョンがインストールされている必要があ<br>
-る。次の場所からパッケージをダウンロードできる:<br>
+これを動作させるには、正しいバージョンの Ruby をインストールする必要がある。ダ<br>
+ウンロードするパッケージは以下から見つけられる:<br>
 <span class="Constant"><a href="http://rubyinstaller.org/downloads/">http://rubyinstaller.org/downloads/</a></span><br>
-現在のパッケージは rubyinstaller-2.2.5.exe である。<br>
-<span class="Constant"><a href="http://www.garbagecollect.jp/ruby/mswin32/en/download/release.html">http://www.garbagecollect.jp/ruby/mswin32/en/download/release.html</a></span><br>
+現在それは rubyinstaller-2.2.5.exe である<br>
 <br>
-Rubyインターフェイスを使うにはRubyのDLLが検索パス内に存在しなければならない。<br>
-コンソールウィンドウで &quot;path&quot; とタイプすると、どのディレクトリが検索パスとなる<br>
-か表示することができる。また&nbsp;<a class="Type" href="options.html#'rubydll'">'rubydll'</a>&nbsp;オプションを Ruby の DLL を指定するのに<br>
-使うこともできる。<br>
+Ruby インターフェイスを使うには、Ruby の DLL が検索パス内に無ければならない。<br>
+コンソールウィンドウで &quot;path&quot; とタイプすると、どのディレクトリが使われるかを見<br>
+ることができる。<a class="Type" href="options.html#'rubydll'">'rubydll'</a>&nbsp;オプションを使って Ruby の DLL を指定することもでき<br>
+る。<br>
 <br>
-DLLの名前はVimをコンパイルした時のRubyのバージョンに一致しなければならない。現<br>
-在その名前は &quot;msvcrt-ruby220.dll&quot; である。これはRuby 2.2.X用である。これを確か<br>
-めるには、&quot;gviai.exe&quot; を開き、&quot;ruby\d*.dll\c&quot; を検索する。<br>
+DLL の名前は、Vim がコンパイルされたときの Ruby のバージョンと一致しなければな<br>
+らない。現在その名前は &quot;msvcrt-ruby220.dll&quot; である。これは Ruby 2.2.X 用であ<br>
+る。確実に知るには、&quot;gviai.exe&quot; を編集して &quot;ruby\d*.dll\c&quot; を検索する。<br>
 <br>
-自分で RubyInstaller 1.9 または 2.X 対応の Vim を MSVC でビルドするには、ちょっ<br>
-としたこつが必要である。詳細は src/INSTALLpc.txt を参照。<br>
+RubyInstaller 1.9 または 2.X を使って MSVC で Vim をビルドしたい場合は、いくつ<br>
+かのトリックが必要である。詳細は src/INSTALLpc.txt を参照。<br>
 <br>
-Vim が RubyInstaller 2.4 以降でビルドされているなら、環境変数 PATH に<br>
+Vim が RubyInstaller 2.4 以降でビルドされている場合、環境変数 PATH に<br>
 &quot;C:\Ruby<span class="Special">&lt;version&gt;</span>\bin\ruby_builtin_dlls&quot; を追加する必要があるかもしれない。<br>
 <br>
 <br>
 <span class="PreProc">Unix</span><br>
 <br>
-コンパイル時に DYNAMIC_RUBY_DLL で指定されたファイルの代わりに、<a class="Type" href="options.html#'rubydll'">'rubydll'</a>&nbsp;オプ<br>
-ションを使って Ruby の共有ライブラリファイルを指定するのに使える。共有ライブラ<br>
-リのバージョンは Vim をコンパイルする時に用いた Ruby のバージョンと一致してい<br>
-なければならない。<br>
+<a class="Type" href="options.html#'rubydll'">'rubydll'</a>&nbsp;オプションを使って、コンパイル時に指定された DYNAMIC_RUBY_DLL ファイ<br>
+ルの代わりに、Ruby の共有ライブラリファイルを指定できる。共有ライブラリのバー<br>
+ジョンは、Vim がコンパイルされたときの Ruby のバージョンと一致しなければならな<br>
+い。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
