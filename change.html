@@ -3,7 +3,7 @@ layout: viai-doc
 helpname: 'change'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="change.html" name="change.txt">change.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Sep 25<br>
+<a class="Constant" href="change.html" name="change.txt">change.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Nov 21<br>
 <br>
 <br>
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
@@ -77,31 +77,26 @@ helpname: 'change'
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;末までの全てのテキストを削除する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="change.html#:d" name=":d">:d</a>&nbsp;<a class="Constant" href="change.html#:de" name=":de">:de</a>&nbsp;<a class="Constant" href="change.html#:del" name=":del">:del</a>&nbsp;<a class="Constant" href="change.html#:delete" name=":delete">:delete</a>&nbsp;<a class="Constant" href="change.html#:dl" name=":dl">:dl</a>&nbsp;<a class="Constant" href="change.html#:dp" name=":dp">:dp</a><br>
-:<span class="Special">[range]</span>d[elete] [x]&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[range]</span>&nbsp;行 (既定値: 現在行) を [レジスタ x に入れ] 削<br>
+:<span class="Special">[range]</span>d[elete] [x]&nbsp;<span class="Special">[flags]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[range]</span>&nbsp;行 (既定値: 現在行) を [レジスタ x に入れ] 削<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>&nbsp;これらの奇妙な略語は、旧来の Vim script にのみ適<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用される:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:dl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delete と list<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:dell&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 同上<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:delel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同上<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:deletl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 同上<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:deletel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同上<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:dp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delete と print<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:dep&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同上<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:delp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 同上<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:delep&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同上<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:deletp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 同上<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:deletep&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同上<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Warning:</span>&nbsp;これらは&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では&nbsp;<a class="Identifier" href="message.html#E492">E492</a>&nbsp;を生成し、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="change.html#:dl">:dl</a>&nbsp;は&nbsp;<a class="Comment" href="tagsrch.html#:dlist">:dlist</a>&nbsp;として実行される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[flags]</span>&nbsp;については&nbsp;<a class="Identifier" href="cmdline.html#ex-flags">ex-flags</a>&nbsp;を参照。<br>
 <br>
-:<span class="Special">[range]</span>d[elete] [x]&nbsp;<span class="Special">{count}</span><br>
+:<span class="Special">[range]</span>d[elete] [x]&nbsp;<span class="Special">{count}</span>&nbsp;<span class="Special">[flags]</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[range]</span>&nbsp;行目 (既定: 現在行&nbsp;<a class="Identifier" href="cmdline.html#cmdline-ranges">cmdline-ranges</a>) から<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{count}</span>&nbsp;行を [レジスタ x に入れ] 削除する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[flags]</span>&nbsp;については&nbsp;<a class="Identifier" href="cmdline.html#ex-flags">ex-flags</a>&nbsp;を参照。<br>
 <br>
-これらのコマンドはテキストを削除する。これらは (<a class="Comment" href="change.html#:d">:d</a>&nbsp;を除いて) コマンド&nbsp;<a class="Comment" href="repeat.html#.">.</a>&nbsp;で<br>
-繰り返したり、アンドゥできる。テキストのブロックを削除するには、ビジュアルモー<br>
-ドを使う。レジスタの説明については、<a class="Identifier" href="change.html#registers">registers</a>&nbsp;を参照。<br>
+<span class="Todo">Note:</span>&nbsp;<span class="Special">[flags]</span>&nbsp;は、間に空白を入れずにコマンド名の直後に置くこともできる。例え<br>
+ば、<a class="Comment" href="change.html#:dp">:dp</a>、<span class="Comment">:d#</span>&nbsp;または&nbsp;<span class="Comment">:dl#</span>&nbsp;(これは Vi 互換である)。コマンド名とフラグを組<br>
+み合わせたものが、そのコマンド名自体の短縮形になってはならない。例えば、<a class="Comment" href="change.html#:del">:del</a><br>
+は&nbsp;<a class="Comment" href="change.html#:delete">:delete</a>&nbsp;であり、&quot;l&quot; フラグ付きの&nbsp;<a class="Comment" href="change.html#:de">:de</a>&nbsp;ではない。<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では、これ<br>
+らの組み合わせは使用できず (<a class="Identifier" href="message.html#E492">E492</a>&nbsp;を参照)、<a class="Comment" href="change.html#:dl">:dl</a>&nbsp;は&nbsp;<a class="Comment" href="tagsrch.html#:dlist">:dlist</a>&nbsp;として実行され<br>
+る。<br>
+<br>
+これらのコマンドはテキストを削除する。これらは (<a class="Comment" href="change.html#:delete">:delete</a>&nbsp;を除いて) コマンド<br>
+<a class="Comment" href="repeat.html#.">.</a>&nbsp;で繰り返したり、アンドゥできる。テキストのブロックを削除するには、ビジュア<br>
+ルモードを使う。レジスタの説明については、<a class="Identifier" href="change.html#registers">registers</a>&nbsp;を参照。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="change.html#d-special" name="d-special">d-special</a><br>
 コマンド &quot;d<span class="Special">{motion}</span>&quot; に関する例外: 移動が行単位でなく、移動の開始点と終了点が<br>
 同じ行になく、移動の開始点の前に空白しかなく終了点の後に空行以外がない場合に<br>
@@ -1073,8 +1068,8 @@ Vim とは互換性がない。それらの古い環境では &quot;\u&quot; は
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="change.html#v_zy" name="v_zy">v_zy</a><br>
 <span class="Special">{Visual}</span>[&quot;x]zy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアル選択されたテキストを [レジスタ x に] コピー<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。選択したブロックの各行の末尾の空白はコピーされな<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い。<a class="Comment" href="change.html#zp">zp</a>&nbsp;との組み合せが特に便利である。(<span class="Special">{Visual}</span>&nbsp;につ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いては&nbsp;<a class="Identifier" href="visual.html#Visual-mode">Visual-mode</a>&nbsp;を参照)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い。<a class="Comment" href="change.html#zp">zp</a>&nbsp;との組み合せが特に便利である (<span class="Special">{Visual}</span>&nbsp;につい<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ては&nbsp;<a class="Identifier" href="visual.html#Visual-mode">Visual-mode</a>&nbsp;を参照)。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="change.html#:y" name=":y">:y</a>&nbsp;<a class="Constant" href="change.html#:yank" name=":yank">:yank</a>&nbsp;<a class="Constant" href="change.html#E850" name="E850">E850</a><br>
 :<span class="Special">[range]</span>y[ank] [x]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[range]</span>&nbsp;の行を [レジスタ x に] コピーする。&quot;* レジスタ<br>
@@ -1573,6 +1568,7 @@ Vimは特殊な方法で自動的にコメントを挿入・整形できる。Vi
 <br>
 &nbsp;&nbsp;f&nbsp;&nbsp;&nbsp;&nbsp; 最初の行のみがコメント文字列を持つ。次の行にはコメントを繰り返さない<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が、インデントは保持する(例、bullet-list)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#fo-j">fo-j</a>&nbsp;で行を連結する時、コメント文字列は削除されない。<br>
 <br>
 &nbsp;&nbsp;s&nbsp;&nbsp;&nbsp;&nbsp; 3部コメントの開始部分。<br>
 <br>
