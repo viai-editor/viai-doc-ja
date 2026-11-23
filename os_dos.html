@@ -10,164 +10,158 @@ helpname: 'os_dos'
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#dos" name="dos">dos</a>&nbsp;<a class="Constant" href="os_dos.html#DOS" name="DOS">DOS</a><br>
-このファイルはMS-DOSおよびWin32バージョンのVimに共通の特殊事項をまとめる。<br>
-<a class="Identifier" href="os_win32.html">os_win32.txt</a>や<a class="Identifier" href="os_msdos.html">os_msdos.txt</a>も参照すること。<br>
+このファイルは、Vim の MS-DOS 版および Win32 版に共通の特殊事項を説明する。<br>
+<a class="Identifier" href="os_win32.html">os_win32.txt</a>&nbsp;および&nbsp;<a class="Identifier" href="os_msdos.html">os_msdos.txt</a>&nbsp;も参照。<br>
 <br>
-1. ファイルの位置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-locations">dos-locations</a><br>
-2. バックスラッシュを使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-backslash">dos-backslash</a><br>
-3. 標準マッピング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-standard-mappings">dos-standard-mappings</a><br>
-4. 画面出力と色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-colors">dos-colors</a><br>
-5. ファイルの書式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-file-formats">dos-file-formats</a><br>
-6. :cdコマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-:cd">dos-:cd</a><br>
-7. 中断&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-CTRL-Break">dos-CTRL-Break</a><br>
+1. ファイル位置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-locations">dos-locations</a><br>
+2. バックスラッシュの使用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-backslash">dos-backslash</a><br>
+3. 標準のマッピング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-standard-mappings">dos-standard-mappings</a><br>
+4. 画面出力および色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-colors">dos-colors</a><br>
+5. ファイル形式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-file-formats">dos-file-formats</a><br>
+6. :cd コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-:cd">dos-:cd</a><br>
+7. 割り込み&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-CTRL-Break">dos-CTRL-Break</a><br>
 8. 一時ファイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-temp-files">dos-temp-files</a><br>
-9. 標準のシェルオプション&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-shell">dos-shell</a><br>
+9. shell オプションのデフォルト&nbsp;<a class="Identifier" href="os_dos.html#dos-shell">dos-shell</a><br>
 10. PowerShell&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-powershell">dos-powershell</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-1. ファイルの位置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#dos-locations" name="dos-locations">dos-locations</a><br>
+1. ファイル位置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#dos-locations" name="dos-locations">dos-locations</a><br>
 <br>
-Vimの実行可能ファイルと同じディレクトリに、ヘルプおよび構文のサブディレクトリ<br>
-があるならば、特に何もする必要はない。レジストリや環境変数も設定する必要はな<br>
-い。ただVimのディレクトリが検索パスに含まれるか、デスクトップ上のショートカッ<br>
-トを利用するだけでよい。<br>
+Vim の実行可能ファイルを help および syntax サブディレクトリを含むディレクトリ<br>
+に置いておけば、Vim が動作するために特別なことをする必要は無い。レジストリエン<br>
+トリまたは環境変数を設定する必要は無い。単にそのディレクトリが検索パスにあるこ<br>
+とを確かめるか、またはデスクトップ上のショートカットを使うこと。<br>
 <br>
-vimrcファイル(&quot;_vimrc&quot; と &quot;_gvimrc&quot;)は通常、ランタイムファイルがあるディレクト<br>
-リの1つ上のディレクトリに置かれる。もしどこか違う場所に置きたいならば、環境変<br>
-数$VIMにそのディレクトリを設定する。例:<br>
+vimrc ファイル (&quot;_vimrc&quot; および &quot;_gvimrc&quot;) は、通常ランタイムファイルの 1 つ上<br>
+のディレクトリに置かれる。それらを他のどこかに置きたい場合は、環境変数 $VIM を<br>
+それらを置いているディレクトリに設定すること。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set VIM=C:\user\piet</div>
-これは &quot;c:\user\piet\_vimrc&quot; を見つけるだろう。<br>
-<span class="Todo">Note:</span>&nbsp;これはコンピュータを複数人で使う時のために用意されている。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;普通はデフォルトの場所に _vimrc ファイルを置くこと。<br>
+&quot;c:\user\piet\_vimrc&quot; を見つける。<br>
+<span class="Todo">Note:</span>&nbsp;これはコンピューターが複数の人に使われる場合にのみ必要になる。そうでなけ<br>
+れば、_vimrc ファイルをデフォルトの場所に置いておく方が簡単である。<br>
 <br>
-実行可能ファイルを別の場所に移動したい場合は、環境変数$VIMを設定する必要があ<br>
-る。ランタイムファイルは &quot;$VIM/viai<span class="Special">{version}</span>&quot; から見つけられる。例:<br>
+実行可能ファイルを別の場所に移動する場合は、$VIM 環境変数も設定する必要がある。<br>
+ランタイムファイルは &quot;$VIM/viai<span class="Special">{version}</span>&quot; で見つけられる。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set VIM=E:\viai</div>
-これはバージョン1.0のランタイムファイルを &quot;e:\viai\viai10&quot; から見つけるだろう。<br>
-<span class="Todo">Note:</span>&nbsp;これは推奨しない。ランタイムディレクトリに実行可能ファイルを入れておくこ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;とをお勧めする。<br>
+&quot;e:\viai\viai10&quot; にあるバージョン 1.0 のランタイムファイルを見つける。<br>
+<span class="Todo">Note:</span>&nbsp;これは推奨_されない_。望ましい方法は、実行可能ファイルをランタイムディレ<br>
+クトリに置いておくことである。<br>
 <br>
-実行可能ファイルを移動し、「かつ」 &quot;_vimrc&quot; と &quot;_gvimrc&quot; を他の場所に置きたい<br>
-場合は、$VIMにvimrcファイルの場所を、$VIMRUNTIMEにランタイムファイルの場所を設<br>
-定する。<br>
-例:<br>
+実行可能ファイルを移動し、かつ &quot;_vimrc&quot; および &quot;_gvimrc&quot; ファイルを他のどこか<br>
+に置きたい場合は、$VIM を vimrc ファイルのある場所に設定し、$VIMRUNTIME をラン<br>
+タイムファイルに設定しなければならない。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set VIM=C:\usr\piet<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set VIMRUNTIME=E:\viai\viai10</div>
-これは &quot;c:\user\piet\_vimrc&quot; ファイルと &quot;e:\viai\viai10&quot; にあるランタイムファ<br>
-イルを見つけるだろう。<br>
+&quot;c:\user\piet\_vimrc&quot; および &quot;e:\viai\viai10&quot; にあるランタイムファイルを見つけ<br>
+る。<br>
 <br>
-さらに情報が欲しいときは<a class="Identifier" href="starting.html#$VIM">$VIM</a>と<a class="Identifier" href="starting.html#$VIMRUNTIME">$VIMRUNTIME</a>を参照すること。<br>
+詳細は&nbsp;<a class="Identifier" href="starting.html#$VIM">$VIM</a>&nbsp;および&nbsp;<a class="Identifier" href="starting.html#$VIMRUNTIME">$VIMRUNTIME</a>&nbsp;を参照。<br>
 <br>
-「システムのプロパティ」ダイアログボックスから環境変数をユーザーごとに別々に設<br>
-定することができる。そのための手順は:<br>
-1. Windows キー + R をタイプし、「ファイル名を指定して実行」ダイアログボックス<br>
-&nbsp;&nbsp; を開く。<br>
-2. &quot;sysdm.cpl&quot; と入力し、&quot;OK&quot; ボタンを押す。「システムのプロパティ」ダイアログ<br>
-&nbsp;&nbsp; ボックスが開く。<br>
-3. 「詳細設定」タブを選択し、「環境変数(N)...」ボタンを押す。「環境変数」ダイ<br>
-&nbsp;&nbsp; アログボックスが開く。<br>
-4. 「ユーザー環境変数」リストから既存の変数を選択し、「編集(E)...」ボタンを押<br>
-&nbsp;&nbsp; して編集する。あるいは「新規(N)...」ボタンを押して新しい変数を作成する。<br>
-5. 変数の編集が終わったならば、&quot;OK&quot; ボタンを押して変更を保存する。<br>
-<br>
-<span class="PreProc">==============================================================================</span><br>
-2. バックスラッシュを使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#dos-backslash" name="dos-backslash">dos-backslash</a><br>
-<br>
-ファイル名にバックスラッシュを使うことは問題となり得る。Viではいくつかのコマン<br>
-ドにおいて、バックスラッシュの数を半分にする。Vimはもう少し寛大で、ファイル名<br>
-からバックスラッシュを取り除かないので、&quot;:e c:\foo\bar&quot; は期待通りに機能する。<br>
-しかしバックスラッシュが特別な文字(スペース、コンマ、バックスラッシュなど)の前<br>
-に現れた場合は、Vimはバックスラッシュを取り除く。問題を避けるにはスラッシュを<br>
-使用する: &quot;:e c:/foo/bar&quot; はうまく機能する。MS-DOSプログラムやWin32プログラム<br>
-のなかにはこれが問題となるものもあるので、Vimは問題を避けるために内部でスラッ<br>
-シュをバックスラッシュに置き換える。<br>
-<br>
-スラッシュを使うのを好むのなら、<a class="Type" href="options.html#'shellslash'">'shellslash'</a>&nbsp;オプションを設定する。するとVimは<br>
-ファイル名を展開するときにバックスラッシュをスラッシュに置き換える。これは<br>
-Unix-likeの&nbsp;<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;を使用しているときに特に有用である。<br>
+System Properties ダイアログボックスを通して、ユーザーごとに別々に環境変数を設<br>
+定できる。そうする手順:<br>
+1. Windows キー + R を入力して &quot;Run&quot; ダイアログボックスを開く。<br>
+2. &quot;sysdm.cpl&quot; を入力して &quot;OK&quot; ボタンを押す。&quot;System Properties&quot; ダイアログボッ<br>
+&nbsp;&nbsp; クスが開く。<br>
+3. &quot;Advanced&quot; タブを選択して &quot;Environment Variables...&quot; ボタンを押す。<br>
+&nbsp;&nbsp; &quot;Environment Variables&quot; ダイアログボックスが開く。<br>
+4. &quot;User variables&quot; リストで既存の変数を選択し、&quot;Edit...&quot; ボタンを押してそれを<br>
+&nbsp;&nbsp; 編集する。または &quot;New...&quot; ボタンを押して新しい変数を追加する。<br>
+5. 変数の編集を終えた後、&quot;OK&quot; ボタンを押して変更を保存する。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-3. 標準マッピング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#dos-standard-mappings" name="dos-standard-mappings">dos-standard-mappings</a><br>
+2. バックスラッシュの使用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#dos-backslash" name="dos-backslash">dos-backslash</a><br>
 <br>
+ファイル名でバックスラッシュを使うことは問題になり得る。Vi はいくつかのコマン<br>
+ドでバックスラッシュの数を半分にする。Vim はもう少し寛容で、ファイル名からバッ<br>
+クスラッシュを削除しないので、&quot;:e c:\foo\bar&quot; は期待どおりに動作する。しかし、<br>
+特殊文字 (スペース、コンマ、バックスラッシュなど) の前にバックスラッシュがある<br>
+場合は、Vim はそのバックスラッシュを削除する。問題を避けるにはスラッシュを使う<br>
+こと: &quot;:e c:/foo/bar&quot; はうまく動作する。Vim は、いくつかの MS-DOS プログラムお<br>
+よび Win32 プログラムでの問題を避けるために、内部でスラッシュをバックスラッシュ<br>
+に置き換える。<br>
 <br>
-以前の&nbsp;<span class="Special">CTRL-PageUp</span>&nbsp;と&nbsp;<span class="Special">CTRL-PageDown</span>&nbsp;へのマッピングは削除された。今、これらのキー<br>
-はそれぞれ次、前のタブページへジャンプする。<a class="Identifier" href="tabpage.html#<C-PageUp>">&lt;C-PageUp&gt;</a>&nbsp;<a class="Identifier" href="tabpage.html#<C-PageDown>">&lt;C-PageDown&gt;</a><br>
+スラッシュを使う方が好みの場合は、<a class="Type" href="options.html#'shellslash'">'shellslash'</a>&nbsp;オプションを設定すること。そう<br>
+すると、Vim はファイル名を展開する時にバックスラッシュをスラッシュに置き換え<br>
+る。これは Unix 風の&nbsp;<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;を使う場合に特に便利である。<br>
 <br>
-これらのキーを画面上の最初、最後の行へジャンプに使いたければ次のマッピングをす<br>
-ればよい:<br>
+<span class="PreProc">==============================================================================</span><br>
+3. 標準のマッピング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#dos-standard-mappings" name="dos-standard-mappings">dos-standard-mappings</a><br>
 <br>
-<span class="PreProc">キー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キーコード&nbsp;&nbsp; Normal/Visualモード&nbsp;&nbsp;&nbsp;&nbsp;挿入モード</span><br>
+<span class="Special">CTRL-PageUp</span>&nbsp;および&nbsp;<span class="Special">CTRL-PageDown</span>&nbsp;のマッピングは削除された。それらは現在、次ま<br>
+たは前のタブページにジャンプする&nbsp;<a class="Identifier" href="tabpage.html#<C-PageUp>">&lt;C-PageUp&gt;</a>&nbsp;<a class="Identifier" href="tabpage.html#<C-PageDown>">&lt;C-PageDown&gt;</a><br>
+<br>
+それらで最初および最後の画面行に移動したい場合は、これらのマッピングを使える:<br>
+<br>
+<span class="PreProc">キー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キーコード&nbsp;&nbsp; ノーマル/ビジュアルモード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挿入モード</span><br>
 <span class="Special">CTRL-PageUp</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;M-N&gt;&lt;M-C-D&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-O&gt;</span>H<br>
 <span class="Special">CTRL-PageDown</span>&nbsp;&nbsp;&nbsp;<span class="Special">&lt;M-N&gt;</span>v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-O&gt;</span>L<span class="Special">&lt;C-O&gt;</span>$<br>
 <br>
-さらに、次のキーがコピー/切り取り/貼り付けに利用できる。Win32とDJGPPバージョン<br>
-でのみ、これらはクリップボードを使用する。<br>
+さらに、これらのキーがコピー/カット/ペーストに使用できる。Win32 および DJGPP<br>
+版では、それらはクリップボードも使う。<br>
 <br>
-Shift-Insert&nbsp;&nbsp;&nbsp;&nbsp;テキストを貼り付ける(クリップボードから)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#<S-Insert>" name="&lt;S-Insert&gt;">&lt;S-Insert&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#<C-Insert>" name="&lt;C-Insert&gt;">&lt;C-Insert&gt;</a><br>
-<span class="Special">CTRL-Insert</span>&nbsp;&nbsp;&nbsp;&nbsp; ビジュアルモードでテキストをコピーする(クリップボードに)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#<C-Del>" name="&lt;C-Del&gt;">&lt;C-Del&gt;</a><br>
-<span class="Special">CTRL-Del</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモードでテキストを切り取る(クリップボードに)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#<S-Del>" name="&lt;S-Del&gt;">&lt;S-Del&gt;</a><br>
-Shift-Del&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ビジュアルモードでテキストを切り取る(クリップボードに)<br>
-<span class="Special">CTRL-X</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモードでテキストを切り取る(クリップボードに)<br>
+Shift-Insert&nbsp;&nbsp;&nbsp;&nbsp;テキストをペースト (クリップボードから)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#<S-Insert>" name="&lt;S-Insert&gt;">&lt;S-Insert&gt;</a><br>
+<span class="Special">CTRL-Insert</span>&nbsp;&nbsp;&nbsp;&nbsp; ビジュアルテキストをコピー (クリップボードへ)&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#<C-Insert>" name="&lt;C-Insert&gt;">&lt;C-Insert&gt;</a><br>
+<span class="Special">CTRL-Del</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルテキストをカット (クリップボードへ)&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#<C-Del>" name="&lt;C-Del&gt;">&lt;C-Del&gt;</a><br>
+Shift-Del&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ビジュアルテキストをカット (クリップボードへ)&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#<S-Del>" name="&lt;S-Del&gt;">&lt;S-Del&gt;</a><br>
+<span class="Special">CTRL-X</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルテキストをカット (クリップボードへ)<br>
 <br>
-以下のマッピングは同様の目的を果たす(VimのWin32とDJGPPバージョン):<br>
+これらのマッピングがこれを実現する (Vim の Win32 および DJGPP 版):<br>
 <br>
-<span class="PreProc">キー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キーコード&nbsp;&nbsp; Normal&nbsp;&nbsp;&nbsp;&nbsp; Visual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挿入モード</span><br>
+<span class="PreProc">キー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キーコード&nbsp;&nbsp; ノーマル&nbsp;&nbsp; ビジュアル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挿入</span><br>
 Shift-Insert&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;M-N&gt;&lt;M-T&gt;</span>&nbsp;&nbsp; &quot;*P&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;-d&quot;*P&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-R&gt;&lt;C-O&gt;</span>*<br>
 <span class="Special">CTRL-Insert</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;M-N&gt;&lt;M-U&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;*y<br>
 Shift-Del&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;M-N&gt;&lt;M-W&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;*d<br>
 <span class="Special">CTRL-Del</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;M-N&gt;&lt;M-X&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;*d<br>
 <span class="Special">CTRL-X</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-X&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;*d<br>
 <br>
-もしくは次のマッピング(VimのWin32ではないバージョン):<br>
+またはこれらのマッピング (Vim の非 Win32 版):<br>
 <br>
-<span class="PreProc">キー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キーコード&nbsp;&nbsp; Normal&nbsp;&nbsp;&nbsp;&nbsp; Visual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挿入モード</span><br>
-Shift-Insert&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;M-N&gt;&lt;M-T&gt;</span>&nbsp;&nbsp; P&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d&quot;0P&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-R&gt;&lt;C-O&gt;</span>&quot;<br>
+<span class="PreProc">キー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キーコード&nbsp;&nbsp; ノーマル&nbsp;&nbsp; ビジュアル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挿入</span><br>
+Shift-Insert&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;M-N&gt;&lt;M-T&gt;</span>&nbsp;&nbsp; P&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;-dP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-R&gt;&lt;C-O&gt;</span>&quot;<br>
 <span class="Special">CTRL-Insert</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;M-N&gt;&lt;M-U&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y<br>
 Shift-Del&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;M-N&gt;&lt;M-W&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d<br>
 <span class="Special">CTRL-Del</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;M-N&gt;&lt;M-X&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d<br>
 <br>
-クリップボードがサポートされているときは、レジスタの &quot;* が使える。<br>
+クリップボードがサポートされている場合は、&quot;* レジスタが使われる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-4. 画面出力と色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#dos-colors" name="dos-colors">dos-colors</a><br>
+4. 画面出力および色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#dos-colors" name="dos-colors">dos-colors</a><br>
 <br>
-画面出力の方法は、標準ではbiosコールを使用する。これはたいていのシステムで直ち<br>
-に機能する。ansi.sysは必要ない。現在の画面モードを設定するには &quot;:mode&quot; を使う。<br>
-<a class="Identifier" href="term.html#:mode">:mode</a>を参照すること。<br>
+画面のデフォルトの出力方法は bios コールを使うことである。これはほとんどのシス<br>
+テムですぐに動作する。ansi.sys は必要無い。&quot;:mode&quot; を使って現在の画面モードを<br>
+設定できる。<a class="Identifier" href="term.html#:mode">:mode</a>&nbsp;を参照。<br>
 <br>
-Vimが使用する画面の色を変更するには<a class="Identifier" href="syntax.html#:highlight">:highlight</a>コマンドを使用する。Normalハイ<br>
-ライトグループはVimが普通のテキストに使う色を特定する。例えば、背景色が青で文<br>
-字色が灰色にするには:<br>
+Vim が使う画面の色を変更するには、<a class="Identifier" href="syntax.html#:highlight">:highlight</a>&nbsp;コマンドを使える。Normal ハイラ<br>
+イトグループは、Vim が通常のテキストに使う色を指定する。例えば、青い背景に灰色<br>
+のテキストを得るには:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:hi Normal ctermbg=Blue ctermfg=grey</div>
-他に利用できるグループについては<a class="Identifier" href="syntax.html#highlight-groups">highlight-groups</a>を参照すること。<br>
+使用可能な他のグループについては&nbsp;<a class="Identifier" href="syntax.html#highlight-groups">highlight-groups</a>&nbsp;を参照。<br>
 <br>
-DOSコンソールは太字や下線のような属性をサポートしていない。5つのモードで使用す<br>
-る色は9つの端末のオプションで設定できる。&quot;:highlight&quot; コマンドによって直接色を<br>
-設定した場合には必要ないので注意すること; これらのオプションは古いバージョンの<br>
-Vimに互換性がある。<a class="Type" href="options.html#'highlight'">'highlight'</a>&nbsp;オプションは5つのモードがどの操作のときに使用さ<br>
-れるかを特定する。<br>
+DOS コンソールは太字および下線のような属性をサポートしない。9 つの端末オプショ<br>
+ンで、5 つのモードで使われる色を設定できる。<span class="Todo">Note</span>&nbsp;&quot;:highlight&quot; コマンドで色を直<br>
+接設定できるので、これは必要無いことに注意。これらのオプションは古い Vim バー<br>
+ジョンとの後方互換性のためのものである。<a class="Type" href="options.html#'highlight'">'highlight'</a>&nbsp;オプションは、5 つのモード<br>
+のどれがどの動作に使われるかを指定する。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set t_mr=^V^[\|xxm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 反転モードの開始<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set t_md=^V^[\|xxm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 太字モードの開始<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set t_me=^V^[\|xxm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 普通のテキストに戻る</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set t_me=^V^[\|xxm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 通常のテキストに戻る</div>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set t_so=^V^[\|xxm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; standoutモードの開始<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set t_se=^V^[\|xxm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 普通のテキストに戻る</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set t_so=^V^[\|xxm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; standout モードの開始<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set t_se=^V^[\|xxm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 通常のテキストに戻る</div>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set t_us=^V^[\|xxm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 下線モードの開始<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set t_ue=^V^[\|xxm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 普通のテキストに戻る</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set t_ue=^V^[\|xxm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 通常のテキストに戻る</div>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set t_ZH=^V^[\|xxm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 斜字モードの開始<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set t_ZR=^V^[\|xxm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 普通のテキストに戻る</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set t_ZH=^V^[\|xxm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; イタリックモードの開始<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set t_ZR=^V^[\|xxm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 通常のテキストに戻る</div>
 <br>
-^Vは<span class="Special">CTRL-V</span><br>
-^[は<span class="Special">&lt;Esc&gt;</span><br>
-xxは前景色と背景色の数字を足した10進数の数値に置き換える:<br>
+^V は&nbsp;<span class="Special">CTRL-V</span><br>
+^[ は&nbsp;<span class="Special">&lt;Esc&gt;</span><br>
+xx を 10 進コードに置き換えなければならない。それは前景色の番号および背景色の<br>
+番号を足し合わせたものである:<br>
 <br>
-<span class="PreProc">色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 前景色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 背景色</span><br>
+<span class="PreProc">色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前景色&nbsp;&nbsp;背景色</span><br>
 Black&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
 DarkBlue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16<br>
 DarkGreen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;32<br>
@@ -185,209 +179,214 @@ Magenta, LightMagenta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;13&nbsp;&nbsp;&nbsp;&nb
 Yellow, LightYellow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 224 *<br>
 White&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 240 *<br>
 <br>
-* ディスプレイモードによっては128以上の色コードは利用できず、コード128は文字を<br>
-&nbsp;&nbsp;点滅させるだろう。<br>
+* ディスプレイモードによっては、128 以上のカラーコードが使用できないことがあ<br>
+&nbsp;&nbsp;り、コード 128 はテキストを点滅させる。<br>
 <br>
-0を使用した場合は、Vimの開始時の色にリセットされる(普通は7で背景色が黒、文字色<br>
-が淡い灰色であるが、これは上書きできる。もしコマンドプロンプトから標準色を上書<br>
-きした場合は、vimrc内の強調表示色をいくつか調整する必要があるかもしれない---下<br>
-を参照)。<br>
-これがt_meのデフォルトである。<br>
+0 を使うと、色は Vim を開始した時に使われていたものにリセットされる (通常は 7、<br>
+黒地に lightgray だが、これは上書きできる。コマンドプロンプトでデフォルトの色<br>
+を上書きしている場合は、vimrc でいくつかのハイライト色を調整する必要があるかも<br>
+しれない---以下を参照)。<br>
+これは t_me のデフォルトである。<br>
 <br>
-それぞれの強調表示モードの標準:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_mr&nbsp;&nbsp;&nbsp;&nbsp;112&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;反転モード: 文字色Black(0)、背景色LightGray(112)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_md&nbsp;&nbsp;&nbsp;&nbsp; 15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;太字モード: 文字色White(15)、背景色Black(0)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_me&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通常モード(標準に戻る)<br>
+さまざまなハイライトモードのデフォルトは:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_mr&nbsp;&nbsp;&nbsp;&nbsp;112&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;反転モード: LightGray (112) の上に Black のテキスト (0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_md&nbsp;&nbsp;&nbsp;&nbsp; 15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;太字モード: Black (0) の上に White のテキスト (15)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_me&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通常モード (デフォルトに戻す)<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_so&nbsp;&nbsp;&nbsp;&nbsp; 31&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;standoutモード: 文字色White(15)、背景色DarkBlue(16)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_se&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;standoutモードの終了(標準に戻る)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_so&nbsp;&nbsp;&nbsp;&nbsp; 31&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;standout モード: DarkBlue (16) の上に White (15) のテキスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_se&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;standout モードの終了 (デフォルトに戻す)<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_ZH&nbsp;&nbsp;&nbsp;&nbsp;225&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;斜字モード: 文字色DarkBlue(1)、背景色Yellow(224)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_ZR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;斜字モードの終了(標準に戻る)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_ZH&nbsp;&nbsp;&nbsp;&nbsp;225&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;イタリックモード: Yellow (224) の上に DarkBlue のテキスト (1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_ZR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;イタリックモードの終了 (デフォルトに戻す)<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_us&nbsp;&nbsp;&nbsp;&nbsp; 67&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下線モード: 文字色DarkCyan(3)、背景色DarkRed(64)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_ue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下線モードの終了(標準に戻る)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_us&nbsp;&nbsp;&nbsp;&nbsp; 67&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下線モード: DarkRed (64) の上に DarkCyan のテキスト (3)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t_ue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下線モードの終了 (デフォルトに戻す)<br>
 <br>
-これらは反転表示でも良く見えるようために選ばれているが、好みで変更してよい。<br>
+これらの色は、反転したディスプレイを使う時にも見栄えが良いので選ばれたが、好み<br>
+に合わせて変更できる。<br>
 <br>
 例:<br>
-<div class="helpExample">&nbsp;&nbsp; :set t_mr=^V^[\|97m&nbsp;&nbsp;&quot; 反転モードの開始: DarkBlue (1) on Brown (96)<br>
-&nbsp;&nbsp; :set t_md=^V^[\|67m&nbsp;&nbsp;&quot; 太字モードの開始: DarkCyan (3) on DarkRed (64)<br>
-&nbsp;&nbsp; :set t_me=^V^[\|112m &quot; ノーマルモードに戻る: Black (0) on LightGray (112)</div>
+<div class="helpExample">&nbsp;&nbsp;:set t_mr=^V^[\|97m&nbsp;&nbsp; &quot; 反転モードの開始: Brown (96) の上に DarkBlue (1)<br>
+&nbsp;&nbsp;:set t_md=^V^[\|67m&nbsp;&nbsp; &quot; 太字モードの開始: DarkRed (64) の上に DarkCyan (3)<br>
+&nbsp;&nbsp;:set t_me=^V^[\|112m&nbsp;&nbsp;&quot; 通常モードに戻る: LightGray (112) の上に Black (0)</div>
 <br>
-<div class="helpExample">&nbsp;&nbsp; :set t_so=^V^[\|37m&nbsp;&nbsp;&quot; standoutモードの開始: DarkMagenta (5) on DarkGreen<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(32)<br>
-&nbsp;&nbsp; :set t_se=^V^[\|112m &quot; ノーマルモードに戻る: Black (0) on LightGray (112)</div>
-<br>
-<span class="PreProc">==============================================================================</span><br>
-5. ファイルの書式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#dos-file-formats" name="dos-file-formats">dos-file-formats</a><br>
-<br>
-<a class="Type" href="options.html#'fileformat'">'fileformat'</a>&nbsp;オプションに &quot;dos&quot; が設定されている場合(標準)、Vimは<span class="Special">&lt;NL&gt;</span>と<span class="Special">&lt;CR&gt;&lt;NL&gt;</span><br>
-をend-of-line (<span class="Special">&lt;EOL&gt;</span>)として認識する。ファイルを保存したときは、Vimは<span class="Special">&lt;CR&gt;&lt;NL&gt;</span>を<br>
-使用する。このため、ファイルを編集して保存した場合は、Vimは<span class="Special">&lt;NL&gt;</span>を<span class="Special">&lt;CR&gt;&lt;NL&gt;</span>で置<br>
-き換える。<br>
-<br>
-<a class="Type" href="options.html#'fileformat'">'fileformat'</a>&nbsp;オプションが &quot;unix&quot; であるならば、Vimは<span class="Special">&lt;NL&gt;</span>を<span class="Special">&lt;EOL&gt;</span>として使用し、<br>
-<span class="Special">&lt;CR&gt;</span>を^Mと表示する。<br>
-<br>
-Vimはどんなモードで読み込んでもDosモードで保存する(&quot;:se ff=dos&quot;)ことによって、<br>
-<span class="Special">&lt;NL&gt;</span>を<span class="Special">&lt;CR&gt;&lt;NL&gt;</span>に置き換えることができる。<br>
-VimはDosモードで読み込み、Unixモードで保存する(&quot;:se ff=unix&quot;)ことによって、<br>
-<span class="Special">&lt;CR&gt;&lt;NL&gt;</span>を<span class="Special">&lt;NL&gt;</span>に置き換えることができる。<br>
-<br>
-Vimは&nbsp;<a class="Type" href="options.html#'fileformats'">'fileformats'</a>&nbsp;が設定されている(標準)ときには自動的に&nbsp;<a class="Type" href="options.html#'fileformat'">'fileformat'</a>&nbsp;を設定<br>
-するので、あなたがしていることについて全く悩む必要がない。<br>
-<br>
-スクリプトファイルやバイナリファイルを編集したいのならば、ファイルを読み込む前<br>
-に&nbsp;<a class="Type" href="options.html#'binary'">'binary'</a>&nbsp;オプションを設定するとよい。スクリプトファイルやバイナリファイルは<br>
-<span class="Special">&lt;NL&gt;</span>を含んでいて、Vimによって<span class="Special">&lt;CR&gt;&lt;NL&gt;</span>に置き換えられてしまうかもしれない。Vimの<br>
-起動時に &quot;-b&quot; (binary)オプションをつけることによって、自動的に&nbsp;<a class="Type" href="options.html#'binary'">'binary'</a>&nbsp;を設定<br>
-することができる。<br>
+<div class="helpExample">&nbsp;&nbsp;:set t_so=^V^[\|37m&nbsp;&nbsp; &quot; standout モードの開始: DarkGreen (32) の上に<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DarkMagenta (5)<br>
+&nbsp;&nbsp;:set t_se=^V^[\|112m&nbsp;&nbsp;&quot; 通常モードに戻る: LightGray (112) の上に Black (0)</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-6. :cdコマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#dos-:cd" name="dos-:cd">dos-:cd</a><br>
+5. ファイル形式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#dos-file-formats" name="dos-file-formats">dos-file-formats</a><br>
 <br>
-&quot;:cd&quot; コマンドはドライブレターを認識し、カレントドライブを変更する。Cドライブ<br>
-にするには &quot;:cd c:&quot; とする。Dドライブの &quot;foo&quot; ディレクトリに移動するには<br>
-&quot;:cd d:\foo&quot; とする。もしシステムがサポートしているならば、VimはUNC名も認識す<br>
-る; 例えば、<br>
-&quot;:cd \\server\share\dir&quot;。<a class="Identifier" href="editing.html#:cd">:cd</a><br>
+<a class="Type" href="options.html#'fileformat'">'fileformat'</a>&nbsp;オプションが &quot;dos&quot; (これがデフォルト) に設定されている場合、Vim<br>
+は行末 (<span class="Special">&lt;EOL&gt;</span>) として単一の&nbsp;<span class="Special">&lt;NL&gt;</span>&nbsp;または&nbsp;<span class="Special">&lt;CR&gt;&lt;NL&gt;</span>&nbsp;の組を受け付ける。ファイルを<br>
+書き込む時は、Vim は&nbsp;<span class="Special">&lt;CR&gt;&lt;NL&gt;</span>&nbsp;を使う。したがって、ファイルを編集して書き込む<br>
+と、Vim は&nbsp;<span class="Special">&lt;NL&gt;</span>&nbsp;を&nbsp;<span class="Special">&lt;CR&gt;&lt;NL&gt;</span>&nbsp;に置き換える。<br>
+<br>
+<a class="Type" href="options.html#'fileformat'">'fileformat'</a>&nbsp;オプションが &quot;unix&quot; に設定されている場合、Vim は&nbsp;<span class="Special">&lt;EOL&gt;</span>&nbsp;として単一<br>
+の&nbsp;<span class="Special">&lt;NL&gt;</span>&nbsp;を使い、<span class="Special">&lt;CR&gt;</span>&nbsp;を ^M として表示する。<br>
+<br>
+任意のモードで読み込み、Dos モード (&quot;:se ff=dos&quot;) で書き込むことで、Vim を使っ<br>
+て&nbsp;<span class="Special">&lt;NL&gt;</span>&nbsp;を&nbsp;<span class="Special">&lt;CR&gt;&lt;NL&gt;</span>&nbsp;に置き換えられる。<br>
+Dos モードで読み込み、Unix モード (&quot;:se ff=unix&quot;) で書き込むことで、Vim を使っ<br>
+て&nbsp;<span class="Special">&lt;CR&gt;&lt;NL&gt;</span>&nbsp;を&nbsp;<span class="Special">&lt;NL&gt;</span>&nbsp;に置き換えられる。<br>
+<br>
+<a class="Type" href="options.html#'fileformats'">'fileformats'</a>&nbsp;が空でない (これがデフォルト) 場合、Vim は&nbsp;<a class="Type" href="options.html#'fileformat'">'fileformat'</a>&nbsp;を自動的<br>
+に設定するので、自分が何をしているかを実際に心配する必要は無い。<br>
+<br>
+スクリプトファイルまたはバイナリファイルを編集したい場合は、ファイルを読み込む<br>
+前に&nbsp;<a class="Type" href="options.html#'binary'">'binary'</a>&nbsp;オプションを設定するべきである。スクリプトファイルおよびバイナリ<br>
+ファイルは、Vim が&nbsp;<span class="Special">&lt;CR&gt;&lt;NL&gt;</span>&nbsp;に置き換えてしまう単一の&nbsp;<span class="Special">&lt;NL&gt;</span>&nbsp;文字を含んでいること<br>
+がある。&quot;-b&quot; (binary) オプション付きで Vim を起動することで、<a class="Type" href="options.html#'binary'">'binary'</a>&nbsp;を自動的<br>
+に設定できる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-7. 中断&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#dos-CTRL-Break" name="dos-CTRL-Break">dos-CTRL-Break</a><br>
+6. :cd コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#dos-:cd" name="dos-:cd">dos-:cd</a><br>
 <br>
-検索を中断するには<span class="Special">CTRL-C</span>の代わりに<span class="Special">CTRL-Break</span>を使用する。Vimはキーを読み終える<br>
-まで<span class="Special">CTRL-C</span>を検知しない。<br>
+&quot;:cd&quot; コマンドはドライブ指定子を認識し、カレントドライブを変更する。&quot;:cd c:&quot;<br>
+を使うとドライブ C がアクティブなドライブになる。&quot;:cd d:\foo&quot; を使うとドライブ<br>
+D のルートにあるディレクトリ &quot;foo&quot; に移動する。システムがサポートしていれば、<br>
+Vim は UNC 名も認識する。例えば、&quot;:cd \\server\share\dir&quot;。<a class="Identifier" href="editing.html#:cd">:cd</a><br>
+<br>
+<span class="PreProc">==============================================================================</span><br>
+7. 割り込み&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#dos-CTRL-Break" name="dos-CTRL-Break">dos-CTRL-Break</a><br>
+<br>
+検索を中断するには、<span class="Special">CTRL-C</span>&nbsp;の代わりに&nbsp;<span class="Special">CTRL-Break</span>&nbsp;を使うこと。Vim はキーを読も<br>
+うとするまで&nbsp;<span class="Special">CTRL-C</span>&nbsp;を検出しない。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 8. 一時ファイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#dos-temp-files" name="dos-temp-files">dos-temp-files</a><br>
 <br>
-16ビットもしくは32ビットのDOSのみ:<br>
-Vimは以下のリストの順番で、ディレクトリが存在し、かつVimがファイルを生成できる<br>
-最初のディレクトリに一時ファイル(フィルタ用)を置く:<br>
+16 ビットおよび 32 ビット DOS 版のみ:<br>
+Vim は一時ファイル (フィルタリング用) を、これらのディレクトリのうち、存在し、<br>
+かつ Vim がファイルを作成できる最初のものに置く:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$TMP<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$TEMP<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C:\TMP<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C:\TEMP<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在のディレクトリ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントディレクトリ<br>
 <br>
-Win32バージョン(コンソール、GUIともに):<br>
-Vimは標準的なWindows関数を使って一時ファイル名(フィルタ用)を取得する。以下のリ<br>
-ストの順番で、ディレクトリが存在し、かつVimがファイルを生成できる最初のディレ<br>
-クトリが使用される:<br>
+Win32 版 (コンソールおよび GUI の両方) の場合:<br>
+Vim は一時ファイル名 (フィルタリング用) を得るために標準の Windows 関数を使う。<br>
+これらのディレクトリのうち、存在し、かつ Vim がファイルを作成できる最初のもの<br>
+が使われる:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$TMP<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$TEMP<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在のディレクトリ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントディレクトリ<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-9. 標準のシェルオプション&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#dos-shell" name="dos-shell">dos-shell</a><br>
+9. shell オプションのデフォルト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#dos-shell" name="dos-shell">dos-shell</a><br>
 <br>
-<a class="Type" href="options.html#'sh'">'sh'</a>&nbsp;(<a class="Type" href="options.html#'shell'">'shell'</a>) オプションはWindows 95では &quot;command.com&quot;、Windows NTでは<br>
-&quot;cmd.exe&quot; が標準で設定されている。VimはSHELLが定義されている場合はSHELLを、<br>
-SHELLが定義されていない状態でCOMSPECが定義されている場合はCOMSPECを代わりに使<br>
-用する。Vimは外部コマンドを &quot;<span class="Special">&lt;shell&gt;</span>&nbsp;/c&nbsp;<span class="Special">&lt;command_name&gt;</span>&quot; として起動する。新しい<br>
-コマンドシェルを起動するには<span class="Special">CTRL-Z</span>をタイプする。&quot;exit&quot; でVimに戻る。<br>
-<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;<a class="Identifier" href="starting.html#CTRL-Z">CTRL-Z</a><br>
+<a class="Type" href="options.html#'sh'">'sh'</a>&nbsp;(<a class="Type" href="options.html#'shell'">'shell'</a>) オプションのデフォルトは、Windows 95 では &quot;command.com&quot;、<br>
+Windows NT では &quot;cmd.exe&quot; である。SHELL が定義されている場合は、Vim は代わりに<br>
+SHELL を使い、SHELL が定義されていないが COMSPEC が定義されている場合は、Vim<br>
+は COMSPEC を使う。Vim は外部コマンドを &quot;<span class="Special">&lt;shell&gt;</span>&nbsp;/c&nbsp;<span class="Special">&lt;command_name&gt;</span>&quot; で開始す<br>
+る。<span class="Special">CTRL-Z</span>&nbsp;を入力すると新しいコマンドサブシェルが開始される。&quot;exit&quot; で Vim に<br>
+戻る。&nbsp;&nbsp;<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;<a class="Identifier" href="starting.html#CTRL-Z">CTRL-Z</a><br>
 <br>
-サードパーティのシェルを使用する場合は、<a class="Type" href="options.html#'shellcmdflag'">'shellcmdflag'</a>&nbsp;(<a class="Type" href="options.html#'shcf'">'shcf'</a>) と<br>
-<a class="Type" href="options.html#'shellquote'">'shellquote'</a>&nbsp;(<a class="Type" href="options.html#'shq'">'shq'</a>) か&nbsp;<a class="Type" href="options.html#'shellxquote'">'shellxquote'</a>&nbsp;(<a class="Type" href="options.html#'sxq'">'sxq'</a>) オプションを設定する必要があるか<br>
-もしれない。不幸なことに、これは使っているVimのバージョンに依存する。例えば、<br>
-MKS Kornシェルやbashでは、オプションの値を以下のようになる:<br>
+サードパーティのシェルを実行している場合は、<a class="Type" href="options.html#'shellcmdflag'">'shellcmdflag'</a>&nbsp;(<a class="Type" href="options.html#'shcf'">'shcf'</a>) および<br>
+<a class="Type" href="options.html#'shellquote'">'shellquote'</a>&nbsp;(<a class="Type" href="options.html#'shq'">'shq'</a>) または&nbsp;<a class="Type" href="options.html#'shellxquote'">'shellxquote'</a>&nbsp;(<a class="Type" href="options.html#'sxq'">'sxq'</a>) オプションを設定する必要があ<br>
+るかもしれない。残念ながら、これは使われる Vim のバージョンにも依存する。例え<br>
+ば、MKS Korn シェルまたは bash では、オプションの値は以下のようになるべきであ<br>
+る:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">DOS 16ビット&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOS 32ビット&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Win32&nbsp;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">DOS 16 ビット&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DOS 32 ビット&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Win32&nbsp;</span><br>
 <a class="Type" href="options.html#'shellcmdflag'">'shellcmdflag'</a>&nbsp;&nbsp;&nbsp;&nbsp; -c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -c<br>
 <a class="Type" href="options.html#'shellquote'">'shellquote'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;<br>
 <a class="Type" href="options.html#'shellxquote'">'shellxquote'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;<br>
 <br>
-Dos 16ビットの例は次のようにシェルを起動する:<br>
+Dos 16 ビットでは、これはシェルを次のように開始する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;shell&gt; -c &quot;command name&quot; &gt;file</div>
-Win32の例:<br>
+Win32 では:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;shell&gt; -c &quot;command name &gt;file&quot;</div>
-DOS 32ビットでは、DJGPPが内部的にどうにかして処理する。<br>
+DOS 32 ビットでは、DJGPP がこれを何らかの方法で内部的に行う。<br>
 <br>
-起動時にVimがWindowsの標準シェルを認識しない場合は &quot;sh&quot; が&nbsp;<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;オプション<br>
-内のどこかにあるかチェックする。存在するならば、Vimは&nbsp;<a class="Type" href="options.html#'shellcmdflag'">'shellcmdflag'</a>&nbsp;と<br>
-<a class="Type" href="options.html#'shellquote'">'shellquote'</a>&nbsp;または&nbsp;<a class="Type" href="options.html#'shellxquote'">'shellxquote'</a>&nbsp;オプションを上記のように設定するだろう。<br>
+起動時に、Vim が標準の Windows シェルを認識しない場合、<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;オプションのど<br>
+こかに &quot;sh&quot; が存在するかを確認する。存在する場合、Vim は&nbsp;<a class="Type" href="options.html#'shellcmdflag'">'shellcmdflag'</a>&nbsp;および<br>
+<a class="Type" href="options.html#'shellquote'">'shellquote'</a>&nbsp;または&nbsp;<a class="Type" href="options.html#'shellxquote'">'shellxquote'</a>&nbsp;オプションを設定し、上記のとおりに設定される<br>
+だろう。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 10. PowerShell&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_dos.html#dos-powershell" name="dos-powershell">dos-powershell</a>&nbsp;<a class="Constant" href="os_dos.html#dos-pwsh" name="dos-pwsh">dos-pwsh</a><br>
 <br>
 Vim は PowerShell Desktop および PowerShell Core をサポートする。PowerShell<br>
-Desktop は Windows にインストールされている PowerShell のバージョンで、<br>
-PowerShell Core はクロスプラットフォームで動く別途ダウンロード可能なバージョン<br>
-である。使用しているのがどちらのバージョンであるかは PowerShell のプロンプトで<br>
-以下を入力することで確認できる - $PSVersionTable.PSEdition<br>
+Desktop は Windows と一緒にインストールされる PowerShell のバージョンであり、<br>
+一方 PowerShell Core はクロスプラットフォームで動作する別途ダウンロード可能な<br>
+バージョンである。使っているバージョンを確認するには、PowerShell プロンプトで<br>
+以下を入力する -<br>
+$PSVersionTable.PSEdition<br>
 <br>
-起動時に&nbsp;<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;オプションのファイル名に &quot;powershell&quot; が含まれる時、Vimは<br>
-<a class="Type" href="options.html#'shellcmdflag'">'shellcmdflag'</a>,&nbsp;<a class="Type" href="options.html#'shellxquote'">'shellxquote'</a>,&nbsp;<a class="Type" href="options.html#'shellpipe'">'shellpipe'</a>,&nbsp;<a class="Type" href="options.html#'shellredir'">'shellredir'</a>&nbsp;オプションについて以<br>
-下の値を設定する:<br>
+起動時に&nbsp;<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;のファイル名に &quot;powershell&quot; が含まれている場合、VIM は<br>
+<a class="Type" href="options.html#'shellcmdflag'">'shellcmdflag'</a>、<a class="Type" href="options.html#'shellxquote'">'shellxquote'</a>、<a class="Type" href="options.html#'shellpipe'">'shellpipe'</a>、および&nbsp;<a class="Type" href="options.html#'shellredir'">'shellredir'</a>&nbsp;オプションを以<br>
+下の値に設定する:<br>
 <br>
 <a class="Type" href="options.html#'shellcmdflag'">'shellcmdflag'</a>&nbsp;&nbsp;-Command<br>
 <a class="Type" href="options.html#'shellxquote'">'shellxquote'</a>&nbsp;&nbsp; &quot;<br>
 <a class="Type" href="options.html#'shellpipe'">'shellpipe'</a>&nbsp;&nbsp;&nbsp;&nbsp; 2&gt;&amp;1 | Out-File -Encoding default<br>
 <a class="Type" href="options.html#'shellredir'">'shellredir'</a>&nbsp;&nbsp;&nbsp;&nbsp;2&gt;&amp;1 | Out-File -Encoding default<br>
 <br>
-起動時に&nbsp;<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;オプションのファイル名に &quot;pwsh&quot; が含まれる時、Vimは<br>
-<a class="Type" href="options.html#'shellcmdflag'">'shellcmdflag'</a>,&nbsp;<a class="Type" href="options.html#'shellxquote'">'shellxquote'</a>,&nbsp;<a class="Type" href="options.html#'shellpipe'">'shellpipe'</a>,&nbsp;<a class="Type" href="options.html#'shellredir'">'shellredir'</a>&nbsp;オプションについて以<br>
-下の値を設定する:<br>
+起動時に&nbsp;<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;のファイル名に &quot;pwsh&quot; が含まれている場合、VIM は<br>
+<a class="Type" href="options.html#'shellcmdflag'">'shellcmdflag'</a>、<a class="Type" href="options.html#'shellxquote'">'shellxquote'</a>、<a class="Type" href="options.html#'shellpipe'">'shellpipe'</a>、および&nbsp;<a class="Type" href="options.html#'shellredir'">'shellredir'</a>&nbsp;オプションを以<br>
+下の値に設定する:<br>
 <br>
 <a class="Type" href="options.html#'shellcmdflag'">'shellcmdflag'</a>&nbsp;&nbsp;-c<br>
 <a class="Type" href="options.html#'shellxquote'">'shellxquote'</a>&nbsp;&nbsp; &quot;<br>
 <a class="Type" href="options.html#'shellpipe'">'shellpipe'</a>&nbsp;&nbsp;&nbsp;&nbsp; &gt;%s 2&gt;&amp;1<br>
 <a class="Type" href="options.html#'shellredir'">'shellredir'</a>&nbsp;&nbsp;&nbsp;&nbsp;&gt;%s 2&gt;&amp;1<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;これらのオプションは、<a class="Identifier" href="starting.html#.vimrc">.vimrc</a>&nbsp;ファイルを読み込んだ後にのみ設定される。<br>
-特に、<a class="Identifier" href="starting.html#-c">-c</a>&nbsp;による&nbsp;<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;オプションの設定は、他のシェル関連の設定を有効にする<br>
-には遅すぎる。コマンドライン経由でこのオプションをオーバーライドするには、<br>
-<a class="Identifier" href="starting.html#--cmd">--cmd</a>&nbsp;を使用することを検討すること。<br>
+<span class="Todo">Note:</span>&nbsp;これらのオプションは&nbsp;<a class="Identifier" href="starting.html#.vimrc">.vimrc</a>&nbsp;ファイルを読み込んだ後にのみ設定される。特<br>
+に、<a class="Identifier" href="starting.html#-c">-c</a>&nbsp;で&nbsp;<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;オプションを設定するのは、他のシェル関連の設定に反映される<br>
+には遅すぎる。コマンドラインからこのオプションを上書きするには&nbsp;<a class="Identifier" href="starting.html#--cmd">--cmd</a>&nbsp;を使う<br>
+ことを検討すること。<br>
 <br>
-PowerShell コマンドの実行で時間がかかる場合には&nbsp;<a class="Type" href="options.html#'shellcmdflag'">'shellcmdflag'</a>&nbsp;の先頭を<br>
-&quot;-NoProfile&quot; にすることを試すこと。<span class="Todo">Note</span>&nbsp;これにより PowerShell 環境のプロファイ<br>
-ルでの設定が行われるのを防ぐ。<br>
+PowerShell コマンドの実行に長い時間がかかっていると分かった場合は、<br>
+<a class="Type" href="options.html#'shellcmdflag'">'shellcmdflag'</a>&nbsp;の先頭に &quot;-NoProfile&quot; を付けて試すこと。<span class="Todo">Note</span>&nbsp;これはプロファイル<br>
+による PowerShell 環境のセットアップが行われるのを妨げることに注意。<br>
 <br>
-<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;経由での PowerShell スクリプトの実行に問題がある場合には<br>
-<a class="Type" href="options.html#'shellcmdflag'">'shellcmdflag'</a>&nbsp;の先頭を &quot;-ExecutionPolicy RemoteSigned -Command&quot; にするのを試<br>
-すこと。詳細についてはオンラインの Windows のドキュメントにある PowerShell 実<br>
-行ポリシー設定を参照。<br>
+<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;を通して PowerShell スクリプトを実行するのに問題がある場合は、<br>
+<a class="Type" href="options.html#'shellcmdflag'">'shellcmdflag'</a>&nbsp;の先頭に &quot;-ExecutionPolicy RemoteSigned -Command&quot; を付けて試す<br>
+こと。PowerShell の実行ポリシー設定に関する詳細はオンラインの Windows ドキュメ<br>
+ントを参照。<br>
 <br>
-<a class="Type" href="options.html#'shellcmdflag'">'shellcmdflag'</a>&nbsp;で空白を含む複数のフラグを使用するときについては<br>
+複数のフラグを使う時に&nbsp;<a class="Type" href="options.html#'shellcmdflag'">'shellcmdflag'</a>&nbsp;に空白を含めることについては<br>
 <a class="Identifier" href="options.html#option-backslash">option-backslash</a>&nbsp;を参照。<br>
 <br>
-<a class="Type" href="options.html#'shellpipe'">'shellpipe'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'shellredir'">'shellredir'</a>&nbsp;オプションの値は PowerShell Desktop の<br>
-UTF-16LE 出力を現在のあなたのコンソールのコードページに再エンコードする。<br>
-&quot;default&quot; を以下のどれかに変更することで出力を別のエンコーディングに強制できる:<br>
+<a class="Type" href="options.html#'shellpipe'">'shellpipe'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'shellredir'">'shellredir'</a>&nbsp;オプションの値は、PowerShell Desktop からの<br>
+UTF-16LE 出力を、現在設定されているコンソールのコードページに再エンコードする。<br>
+&quot;default&quot; を以下のどれかに変更することで、出力を別のエンコーディングに強制でき<br>
+る:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unicode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- UTF-16LE (PowerShell 5.1 からのデフォルト値)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unicode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- UTF-16LE (PowerShell 5.1 からのデフォルト出力)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bigendianunicode - UTF-16<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;utf8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - UTF-8<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;utf7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - UTF-7 (BOM なし)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;utf7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - UTF-7 (BOM 無し)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;utf32&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- UTF-32<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ascii&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 7-bit ASCII 文字セット<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- システムのアクティブなコードページ (一般には ANSI)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- システムの現在の OEM のコードページ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- システムのアクティブなコードページ (通常は ANSI)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- システムの現在の OEM コードページ<br>
 <br>
-<span class="Todo">Note</span>&nbsp;上記のマルチバイト Unicode エンコーディングはそうでないと掲示がない限り<br>
-BOM から始まるものを含む。<br>
+<span class="Todo">Note</span>&nbsp;上記のマルチバイト Unicode エンコーディングは、特に示されていない限り、先<br>
+頭に BOM を含む。<br>
 <br>
-PowerShell Coreの出力のデフォルトは BOM なしでエンコードされた UTF-8 である。<br>
-出力を別のエンコーディングに強制したい場合&nbsp;<a class="Type" href="options.html#'shellredir'">'shellredir'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'shellpipe'">'shellpipe'</a>&nbsp;を<br>
-&quot;2&gt;&amp;1 | Out-File -Encoding encoding&quot; とし encoding を以下のどれかに設定する:<br>
+デフォルトでは、PowerShell Core の出力は BOM 無しの UTF-8 でエンコードされる。<br>
+PowerShell Core の出力を別のエンコーディングに強制したい場合は、<a class="Type" href="options.html#'shellredir'">'shellredir'</a><br>
+および&nbsp;<a class="Type" href="options.html#'shellpipe'">'shellpipe'</a>&nbsp;を &quot;2&gt;&amp;1 | Out-File -Encoding encoding&quot; に設定すること。こ<br>
+こで encoding は以下のどれかである:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ascii&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 7-bit ASCII 文字セット<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bigendianunicode - UTF-16BE<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bigendianutf32&nbsp;&nbsp; - UTF-32BE<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- システムの現在の OEM のコードページ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- システムの現在の OEM コードページ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unicode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- UTF-16LE<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;utf7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - UTF-7<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;utf8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - UTF-8<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;utf8BOM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- UTF-8 BOM あり<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;utf8NoBOM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- UTF-8 BOM なし (PowerShell Core からのデフォルト値)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;utf8BOM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- UTF-8、BOM 付き<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;utf8NoBOM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- UTF-8、BOM 無し (PowerShell Core からのデフォルト出力)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;utf32&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- UTF-32<br>
 <br>
-PowerShell Core 6.2 から、Encoding パラメータは登録されたコードページの数値<br>
-ID(-Encoding 1251)もしくは登録されたコードページ名文字列(-Encoding<br>
-&quot;windows-1251&quot;)による指定もサポートする。詳細な情報は .NET ドキュメントの<br>
-Encoding.CodePage にある。<br>
+PowerShell Core 6.2 以降、Encoding パラメーターは、登録されたコードページの数<br>
+値 ID (-Encoding 1251) または登録されたコードページの文字列名 (-Encoding<br>
+&quot;windows-1251&quot;) の指定もサポートする。.NET の Encoding.CodePage のドキュメント<br>
+にさらに情報がある<br>
 <br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>
