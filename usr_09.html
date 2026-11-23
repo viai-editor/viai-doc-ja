@@ -9,41 +9,41 @@ helpname: 'usr_09'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GUI を使う<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GUI を使う<br>
 <br>
 <br>
-Vimは通常の端末で動作しますが、gVimはグラフィカルユーザーインターフェイス (GUI)<br>
-を持っています。それはVimと同じこととさらにいくつかのことができます。GUIは、メ<br>
-ニュー、ツールバー、スクロールバー、およびその他のアイテムを提供します。この章<br>
-では、GUIが提供するこれらの機能について説明します。<br>
+Vim は普通の端末で動作しますが、gVim にはグラフィカルユーザーインターフェイス<br>
+(GUI) があります。それは同じことができ、さらにいくつかのことができます。GUI<br>
+は、メニュー、ツールバー、スクロールバー、およびその他の項目を提供します。この<br>
+章は、GUI が提供するこれらの追加のものについてです。<br>
 <br>
-<a class="Identifier" href="usr_09.html#09.1">09.1</a>&nbsp;&nbsp;GUI の部品<br>
+<a class="Identifier" href="usr_09.html#09.1">09.1</a>&nbsp;&nbsp;GUI の各部<br>
 <a class="Identifier" href="usr_09.html#09.2">09.2</a>&nbsp;&nbsp;マウスを使う<br>
 <a class="Identifier" href="usr_09.html#09.3">09.3</a>&nbsp;&nbsp;クリップボード<br>
 <a class="Identifier" href="usr_09.html#09.4">09.4</a>&nbsp;&nbsp;選択モード<br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_10.html">usr_10.txt</a>&nbsp;&nbsp;大規模な編集<br>
+次章:&nbsp;<a class="Identifier" href="usr_10.html">usr_10.txt</a>&nbsp;&nbsp;大きな変更を行う<br>
 前章:&nbsp;<a class="Identifier" href="usr_08.html">usr_08.txt</a>&nbsp;&nbsp;ウィンドウの分割<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_09.html#09.1" name="09.1">09.1</a>&nbsp;&nbsp;GUI の部品<br>
+<a class="Constant" href="usr_09.html#09.1" name="09.1">09.1</a>&nbsp;&nbsp;GUI の各部<br>
 <br>
-おそらく、gvim を起動するためのアイコンがデスクトップにあるはずです。ない場合<br>
-は、次のコマンドのどちらかで起動できます:<br>
+デスクトップに gvim を起動するアイコンがあるかもしれません。そうでなければ、こ<br>
+れらのコマンドのうちの 1 つでそれができるはずです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gvim file.txt<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim -g file.txt</div>
 <br>
-GUI 版の Vim がインストールされていない場合は起動できません。まず最初に GUI 版<br>
-の Vim をインストールしてください。<br>
-起動すると、ウィンドウが開き、そこに &quot;file.txt&quot; が表示されます。ウィンドウの外<br>
-見は Vim のバージョンによって違うかもしれませんが、だいたい次のような画面が表<br>
-示されるはずです (この図は ASCII で正しく表示されます)。<br>
+これがうまくいかない場合、GUI サポート付きの Vim のバージョンを持っていません。<br>
+まずそれをインストールする必要があります。<br>
+&nbsp;&nbsp; Vim はウィンドウを開き、その中に &quot;file.txt&quot; を表示します。ウィンドウがどの<br>
+ように見えるかは、Vim のバージョンによります。以下の絵に似ているはずです<br>
+(ASCII で示せる限りにおいて!)。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+----------------------------------------------------+<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| file.txt + (~/dir) - VIM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X |&nbsp;&nbsp;&lt;- ウィンドウ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+----------------------------------------------------+&nbsp;&nbsp;&nbsp;&nbsp; タイトル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| file.txt + (~/dir) - VIM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X |&nbsp;&nbsp;&lt;- ウィンドウタイトル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+----------------------------------------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| File&nbsp;&nbsp;Edit&nbsp;&nbsp;Tools&nbsp;&nbsp;Syntax&nbsp;&nbsp;Buffers&nbsp;&nbsp;Window&nbsp;&nbsp;Help&nbsp;&nbsp; |&nbsp;&nbsp;&lt;- メニューバー<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+----------------------------------------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| aaa&nbsp;&nbsp;bbb&nbsp;&nbsp;ccc&nbsp;&nbsp;ddd&nbsp;&nbsp;eee&nbsp;&nbsp;fff&nbsp;&nbsp;ggg&nbsp;&nbsp;hhh&nbsp;&nbsp;iii&nbsp;&nbsp;jjj&nbsp;&nbsp; |&nbsp;&nbsp;&lt;- ツールバー<br>
@@ -51,245 +51,252 @@ GUI 版の Vim がインストールされていない場合は起動できま�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+----------------------------------------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| file text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ^ |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| # |<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| # |&nbsp;&nbsp;&lt;- スクロール<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| # |&nbsp;&nbsp;&nbsp;&nbsp; バー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| # |&nbsp;&nbsp;&lt;- スクロールバー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| # |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| # |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| # |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| V |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+----------------------------------------------------+<br>
 <br>
-一番大きな領域にはファイルのテキストが表示されています。その部分は端末での表示<br>
-と同じです。色やフォントは違うかもしれません。<br>
+最も大きな領域は、ファイルのテキストによって占められています。これは、端末と同<br>
+じ方法でファイルを表示します。おそらく、いくらか異なる色および別のフォントで。<br>
 <br>
 <br>
 <span class="Statement">ウィンドウタイトル</span><br>
 <br>
-最上部はウィンドウタイトルです。この部分はウィンドウシステム (Windows や X の<br>
-ウィンドウマネージャーなど) によって描画されます。Vim はカレントファイルの名前<br>
-をタイトルに設定します。ファイル名が先頭に表示され、それから、記号、カッコで囲<br>
-まれたディレクトリ名が表示されます。記号には次の意味があります。<br>
+一番上にはウィンドウタイトルがあります。これはウィンドウシステムによって描画さ<br>
+れます。Vim は、カレントファイルの名前を表示するようにタイトルを設定します。ま<br>
+ずファイルの名前が来ます。次に、いくつかの特殊文字、および括弧で囲まれたファイ<br>
+ルのディレクトリが来ます。これらの特殊文字が存在することがあります:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ファイルは変更不可。(例: ヘルプファイル)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ファイルは変更された。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ファイルは読み込み専用。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルは読み込み専用だが、変更された。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ファイルは変更できない (例えば、ヘルプファイル)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ファイルは変更を含んでいる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ファイルは読み込み専用である<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルは読み込み専用だが、それでも変更を含んでいる<br>
 <br>
-何も表示されていなければ、変更されていない通常のファイルです。<br>
+何も表示されていない場合は、普通の、変更されていないファイルです。<br>
 <br>
 <br>
 <span class="Statement">メニューバー</span><br>
 <br>
-メニューの使い方はわかりますよね？ 一般的な項目に加え、Vim 特有の項目が少しあ<br>
-ります。メニューをざっと眺めてどんなものがあるか確認してください。この章に関連<br>
-したサブメニューが [編集]-[全体設定] にあります。次のような項目です:<br>
+メニューがどう動作するかは知っていますよね? Vim には通常の項目に加えて、いくつ<br>
+かの項目があります。それらを眺めて、何に使えるかの見当をつけてください。関連す<br>
+るサブメニューは Edit/Global Settings です。これらの項目が見つかるでしょう:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ツールバー表示切替&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ツールバーの表示のon/off<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクロールバー(下)表示切替 スクロールバー(下)の表示のon/off<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクロールバー(左)表示切替 スクロールバー(左)の表示のon/off<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクロールバー(右)表示切替 スクロールバー(右)の表示のon/off<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Toggle Toolbar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ツールバーを表示/非表示にする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Toggle Bottom Scrollbar 下部のスクロールバーを表示/非表示にする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Toggle Left Scrollbar&nbsp;&nbsp; 左側のスクロールバーを表示/非表示にする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Toggle Right Scrollbar&nbsp;&nbsp;右側のスクロールバーを表示/非表示にする<br>
 <br>
-ほとんどのシステムではメニューの切り離しができます。メニューの最上部にある点線<br>
-のような項目を選択すると、メニューが別ウィンドウで表示されます。明示的に閉じる<br>
-まで、ウィンドウは開いたままです。<br>
+ほとんどのシステムでは、メニューを切り離すことができます。メニューの一番上の項<br>
+目、破線のように見えるものを選択します。メニューの項目を持つ別のウィンドウが得<br>
+られます。それは、そのウィンドウを閉じるまで残ります。<br>
 <br>
 <br>
 <span class="Statement">ツールバー</span><br>
 <br>
-ツールバーには、よく使われる機能がアイコンの形で格納されています。アイコンを見<br>
-ればその機能を連想できると思います。マウスをアイコンの上に動かしてクリックせず<br>
-に一秒ほど待つと、機能の説明がツールチップで表示されます。<br>
+これには、最もよく使われる操作のためのアイコンが含まれています。アイコンが見た<br>
+だけで分かるものであることを願います。追加のヒントを得るためのツールチップがあ<br>
+ります (クリックせずにマウスポインタをアイコンに移動し、1 秒間動かさないでくだ<br>
+さい)。<br>
 <br>
-メニューの [編集]-[全体設定]-[ツールバー表示切換] を使うとツールバーを非表示に<br>
-できます。ツールバーを全く使わないのであれば、次のコマンドを vimrc に書いてく<br>
-ださい:<br>
+&quot;Edit/Global Settings/Toggle Toolbar&quot; メニュー項目を使って、ツールバーを消すこ<br>
+とができます。ツールバーが決して要らない場合は、vimrc ファイルでこのコマンドを<br>
+使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set guioptions-=T</div>
 <br>
-これは&nbsp;<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;オプションから &quot;T&quot; フラグを取り除くコマンドです。GUI の他<br>
-の部品もこのオプションを使って、表示/非表示を指定できます。詳しくはオプション<br>
-のヘルプを参照してください。<br>
+これは&nbsp;<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;オプションから 'T' フラグを取り除きます。GUI の他の部分も、<br>
+このオプションで有効または無効にできます。それについてのヘルプを参照してくださ<br>
+い。<br>
 <br>
 <br>
 <span class="Statement">スクロールバー</span><br>
 <br>
-初期設定では右側にスクロールバーが表示されます。動作は一般的なアプリケーション<br>
-と同じです。ウィンドウを分割するとウィンドウごとにスクロールバーが作られます。<br>
-メニューの [編集]-[全体設定]-[スクロールバー(下)表示切換] を使うと横スクロール<br>
-バーを表示できます。差分モードのときや&nbsp;<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;オプションをオフにしているときに<br>
-便利です。(詳しくは後で説明します)<br>
+デフォルトでは、右側に 1 つのスクロールバーがあります。それは見てのとおりのこ<br>
+とをします。ウィンドウを分割すると、各ウィンドウはそれぞれ自身のスクロールバー<br>
+を持ちます。<br>
+&nbsp;&nbsp; メニュー項目 Edit/Global Settings/Toggle Bottom Scrollbar で、水平スクロー<br>
+ルバーを表示させることができます。これは diff モードで、または&nbsp;<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;オプショ<br>
+ンがオフにされているときに便利です (これについては後で詳しく)。<br>
 <br>
-ウィンドウを垂直分割していて、右側のウィンドウにだけスクロールバーが付いている<br>
-場合は、左側のウィンドウにカーソルを移動すれば、スクロールバーはそのウィンドウ<br>
-に作用するようになります。<br>
-垂直分割をよく使うなら、左側にもスクロールバーを付けるといいかもしれません。メ<br>
-ニューから選択するか、<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;を設定してください:<br>
+垂直分割されたウィンドウがあるときは、右側のウィンドウだけがスクロールバーを持<br>
+ちます。しかし、カーソルを左のウィンドウに移動すると、スクロールバーが制御する<br>
+のはそのウィンドウになります。これは慣れるのに少し時間がかかります。<br>
+&nbsp;&nbsp; 垂直分割されたウィンドウで作業するときは、左側にスクロールバーを追加するこ<br>
+とを検討してください。これはメニュー項目で、または&nbsp;<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;オプションで行<br>
+えます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set guioptions+=l</div>
 <br>
-これは&nbsp;<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;に 'l' フラグを追加しています。<br>
+これは&nbsp;<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;に 'l' フラグを追加します。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_09.html#09.2" name="09.2">09.2</a>&nbsp;&nbsp;マウスを使う<br>
 <br>
-標準は素晴らしい。Microsoft Windows では、マウスを使った標準的な操作方法でテキ<br>
-ストを選択できます。X ウィンドウシステムにもマウスの操作方法の標準があります。<br>
-残念ながら、この二つの標準は別物です。<br>
-幸運なことに Vim はカスタマイズできます。マウスの振る舞いを X ウィンドウシステ<br>
-ム方式か Microsoft Windows 方式のどちらかに変更できます。次のコマンドでマウス<br>
-の振る舞いを X ウィンドウシステム方式に設定できます:<br>
+標準というのは素晴らしいものです。Microsoft Windows では、標準的な方法でマウス<br>
+を使ってテキストを選択できます。X Window システムにも、マウスを使うための標準<br>
+的なシステムがあります。残念ながら、これら 2 つの標準は同じではありません。<br>
+&nbsp;&nbsp; 幸い、Vim はカスタマイズできます。マウスの振る舞いを、X Window システムのマ<br>
+ウスまたは Microsoft Windows のマウスのように動作させることができます。以下の<br>
+コマンドは、マウスを X Window のマウスのように振る舞わせます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:behave xterm</div>
 <br>
-次のコマンドでマウスの振る舞いを Microsoft Windows 方式に設定できます:<br>
+以下のコマンドは、マウスを Microsoft Windows のマウスのように動作させます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:behave mswin</div>
 <br>
-UNIX での初期設定は xterm です。Microsoft Windows での初期設定はインストール時<br>
-に選択できます。二つの振る舞いの詳細については<a class="Identifier" href="gui.html#:behave">:behave</a>をご覧ください。ここで<br>
-は概要だけ説明します。<br>
+UNIX システムでのマウスのデフォルトの振る舞いは xterm です。Microsoft Windows<br>
+システムでのデフォルトの振る舞いは、インストール処理の間に選択されます。2 つの<br>
+振る舞いが何であるかの詳細については、<a class="Identifier" href="gui.html#:behave">:behave</a>&nbsp;を参照してください。ここに要約<br>
+を示します。<br>
 <br>
 <br>
-<span class="Statement">xterm 方式のマウスの振る舞い</span><br>
+<span class="Statement">xterm マウスの振る舞い</span><br>
 <br>
-左クリック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソル移動<br>
-左ドラッグ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモードでテキストを選択<br>
-中クリック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;クリップボードからテキストを貼り付け<br>
-右クリック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マウスポインタで指した場所まで選択範囲を拡張<br>
-<br>
-<br>
-<span class="Statement">MS-Windows 方式のマウスの振る舞い</span><br>
-<br>
-左クリック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソル移動<br>
-左ドラッグ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択モードでテキストを選択 (<a class="Identifier" href="usr_09.html#09.4">09.4</a>&nbsp;参照)<br>
-シフトキー + 左クリック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; マウスポインタで指した場所まで選択範囲を拡張<br>
-中クリック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;クリップボードからテキストを貼り付け<br>
-右クリック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ポップアップメニューを表示<br>
+マウス左クリック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルを置く<br>
+マウス左ドラッグ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモードでテキストを選択する<br>
+マウス中クリック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;クリップボードからテキストを貼り付ける<br>
+マウス右クリック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択されたテキストをマウスポインタまで拡張する<br>
 <br>
 <br>
-マウスの動作はさらに細かく設定できます。マウスの動作を変更したい場合は、以下の<br>
-オプションを確認してください。<br>
+<span class="Statement">mswin マウスの振る舞い</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vim のどのモードでマウスを使うのか<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'mousemodel'">'mousemodel'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;クリックしたときの動作<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'mousetime'">'mousetime'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ダブルクリックのクリック間隔<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'mousehide'">'mousehide'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 入力している間、マウスを隠す<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'selectmode'">'selectmode'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マウスで選択したときにビジュアルモードとセレク<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;トモードのどちらを開始するか<br>
+マウス左クリック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルを置く<br>
+マウス左ドラッグ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択モードでテキストを選択する (<a class="Identifier" href="usr_09.html#09.4">09.4</a>&nbsp;を参照)<br>
+マウス左クリック、Shift 付き&nbsp;&nbsp;&nbsp;&nbsp;選択されたテキストをマウスポインタまで拡張する<br>
+マウス中クリック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;クリップボードからテキストを貼り付ける<br>
+マウス右クリック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ポップアップメニューを表示する<br>
+<br>
+<br>
+マウスはさらに調整できます。マウスの動作の仕方を変更したい場合は、これらのオプ<br>
+ションを調べてください:<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vim がどのモードでマウスを使うか<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'mousemodel'">'mousemodel'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マウスクリックがどんな効果を持つか<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'mousetime'">'mousetime'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ダブルクリックのためのクリック間の時間<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'mousehide'">'mousehide'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; タイプ中にマウスを隠す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'selectmode'">'selectmode'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マウスがビジュアルモードまたは選択モードを開始するかどうか<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_09.html#09.3" name="09.3">09.3</a>&nbsp;&nbsp;クリップボード<br>
 <br>
-<a class="Identifier" href="usr_04.html#04.7">04.7</a>&nbsp;ではクリップボードの基本的な使い方を説明しました。ここでは X-windows で<br>
-の必須事項を説明します。X-windows にはプログラム間でテキストを交換するための空<br>
-間が二つあります。MS-Windows にはそういうのはありません。<br>
+セクション&nbsp;<a class="Identifier" href="usr_04.html#04.7">04.7</a>&nbsp;で、クリップボードの基本的な使い方が説明されました。<br>
+X-windows について説明すべき重要なことが 1 つあります: プログラム間でテキスト<br>
+を交換する場所は、実際には 2 つあります。MS-Windows にはこれがありません。<br>
 <br>
-X-Windows にはカレントセレクション (&quot;current selection&quot;) があります。これは選<br>
-択中のテキストのことです。Vim において、それはビジュアル選択している範囲のこと<br>
-です (初期設定の場合)。選択しているテキストは特に何もしなくても他のアプリケー<br>
-ションにペーストできます。<br>
-例えば、この文章のどこかを適当にマウスで選択したとします。Vim は自動的にビジュ<br>
-アルモードに切り替わり、選択したテキストが強調表示されます。ここで、別の gvim<br>
-を引数なしで起動し、空のウィンドウを開きます。中央ボタンをクリックすると、選択<br>
-したテキストが挿入されます。<br>
+X-Windows には &quot;カレントセレクション&quot; があります。これは現在ハイライトされてい<br>
+るテキストです。Vim では、これはビジュアル領域です (これは、デフォルトのオプ<br>
+ション設定を使っていることを前提としています)。それ以上何も操作せずに、この選<br>
+択範囲を別のアプリケーションに貼り付けることができます。<br>
+&nbsp;&nbsp; 例えば、このテキストで、マウスを使っていくつかの単語を選択してください。Vim<br>
+はビジュアルモードに切り替わり、テキストをハイライトします。では、ファイル名の<br>
+引数なしで別の gvim を起動し、空のウィンドウが表示されるようにします。マウスの<br>
+中ボタンをクリックします。選択されたテキストが挿入されます。<br>
 <br>
-カレントセレクションは他のテキストを選択するまで有効です。他の gvim にペースト<br>
-した後、そのウィンドウのテキストを選択すると、直前に別の gvim で選択していたテ<br>
-キストの表示が変わるのが確認できると思います。その選択範囲はもうカレントセレク<br>
-ションではないのです。<br>
+&quot;カレントセレクション&quot; は、他のテキストが選択されるまでの間だけ有効なままです。<br>
+もう一方の gvim で貼り付けを行った後、そのウィンドウでいくつかの文字を選択して<br>
+ください。もう一方の gvim ウィンドウで以前に選択されていた単語が、異なる表示に<br>
+なっていることに気づくでしょう。これは、それがもはやカレントセレクションではな<br>
+いことを意味します。<br>
 <br>
-テキストの選択はマウスでなくても構いません。ビジュアルモードのコマンドをキー<br>
-ボードで入力しても同じことになります。<br>
+テキストをマウスで選択する必要はありません。ビジュアルモードのキーボードコマン<br>
+ドを使っても同じように動作します。<br>
 <br>
 <br>
 <span class="Statement">真のクリップボード</span><br>
 <br>
-さて、テキストを交換するためのもう一つの空間を説明します。今までの説明との混同<br>
-を避けるために、ここでは真のクリップボード (&quot;real clipboard&quot;) と呼びます。普通<br>
-はカレントセレクションと真のクリップボードはどちらもクリップボードと呼ばれます<br>
-が、慣れてください。<br>
-真のクリップボードにテキストをプットするために、動作中の gvim で適当なテキスト<br>
-を選択し、メニューの [編集]-[コピー] コマンドを実行してください。これで、テキ<br>
-ストが真のクリップボードにコピーされました。クリップボードの内容は専用のアプリ<br>
-ケーション (例えば KDE の Klipper) がなければ見ることはできません。<br>
-次に、別の gvim に移り、カーソルを適当なところに移動し、メニューの [編集]-[貼<br>
-り付け] コマンドを実行します。真のクリップボードからテキストが挿入されます。<br>
+さて、テキストを交換できるもう一方の場所についてです。混乱を避けるため、これを<br>
+&quot;真のクリップボード&quot; と呼びます。&quot;カレントセレクション&quot; および<br>
+&quot;真のクリップボード&quot; の両方がクリップボードと呼ばれることがよくあります。それ<br>
+には慣れる必要があるでしょう。<br>
+&nbsp;&nbsp; テキストを真のクリップボードに置くには、実行中の gvim の 1 つで、いくつかの<br>
+異なる単語を選択します。それから Edit/Copy メニュー項目を使います。これでテキ<br>
+ストが真のクリップボードにコピーされました。クリップボードの内容を表示するアプ<br>
+リケーション (例えば、KDE の Klipper) がない限り、これを見ることはできません。<br>
+&nbsp;&nbsp; では、もう一方の gvim を選択し、カーソルをどこかに置いて、Edit/Paste メ<br>
+ニューを使います。真のクリップボードからのテキストが挿入されるのが分かるでしょ<br>
+う。<br>
 <br>
 <br>
 <span class="Statement">両方を使う</span><br>
 <br>
-カレントセレクションと真のクリップボードを両方使うのは少し複雑ですが、でもこれ<br>
-はとても便利なのです。例を挙げましょう。<br>
-gvim でテキストファイルを開いて以下の操作を実行してください:<br>
+&quot;カレントセレクション&quot; および &quot;真のクリップボード&quot; の両方をこのように使うのは、<br>
+少し混乱するように聞こえるかもしれません。しかし、これはとても便利です。例でこ<br>
+れを示しましょう。テキストファイルで 1 つの gvim を使い、これらの操作を行いま<br>
+す:<br>
 <br>
--&nbsp;&nbsp;単語をビジュアルモードで選択する。<br>
--&nbsp;&nbsp;[編集]-[コピー] メニューを実行して単語をクリップボードに入れる。<br>
--&nbsp;&nbsp;ビジュアルモードで別の単語を選択する。<br>
--&nbsp;&nbsp;[編集]-[貼り付け] メニューを実行する。選択している単語がクリップボードにあ<br>
-&nbsp;&nbsp; る単語で置き換えられます。<br>
--&nbsp;&nbsp;マウスポインタを他のところに動かして中央ボタンを押す。直前にクリップボード<br>
-&nbsp;&nbsp; のテキストで上書きされた単語がその場所に挿入されます。<br>
+-&nbsp;&nbsp;ビジュアルモードで 2 つの単語を選択する。<br>
+-&nbsp;&nbsp;Edit/Copy メニューを使って、これらの単語をクリップボードに入れる。<br>
+-&nbsp;&nbsp;ビジュアルモードで別の 1 つの単語を選択する。<br>
+-&nbsp;&nbsp;Edit/Paste メニュー項目を使う。起こることは、選択された 1 つの単語が、クリッ<br>
+&nbsp;&nbsp; プボードからの 2 つの単語で置き換えられるということである。<br>
+-&nbsp;&nbsp;マウスポインタをどこか別の場所に移動し、中ボタンをクリックする。クリップボー<br>
+&nbsp;&nbsp; ドで上書きしたばかりの単語が、ここに挿入されるのが分かるだろう。<br>
 <br>
-カレントセレクションと真のクリップボードは気をつけて使いさえすれば、非常に役立<br>
-つテクニックになります。<br>
+&quot;カレントセレクション&quot; および &quot;真のクリップボード&quot; を注意して使えば、それらを<br>
+使って多くの便利な編集を行うことができます。<br>
 <br>
 <br>
 <span class="Statement">キーボードを使う</span><br>
 <br>
-マウスが嫌いなあなたでも、二つのレジスタを使って、カレントセレクションと真のク<br>
-リップボードにアクセスできます。カレントセレクションには &quot;* レジスタでアクセス<br>
-します。<br>
-テキストをカレントセレクションにするにはビジュアルモードを使います。例えば、<br>
-&quot;V&quot; を押せば行全体を選択できます。<br>
-次のコマンドでカレントセレクションのテキストをカーソルの直前に挿入できます:<br>
+マウスを使うのが好きでない場合は、2 つのレジスタを使って、カレントセレクション<br>
+および真のクリップボードにアクセスできます。&quot;* レジスタはカレントセレクション<br>
+用です。<br>
+&nbsp;&nbsp; テキストをカレントセレクションにするには、ビジュアルモードを使います。例え<br>
+ば、行全体を選択するには、&quot;V&quot; を押すだけです。<br>
+&nbsp;&nbsp; カレントセレクションをカーソルの前に挿入するには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;*P</div>
 <br>
-大文字の &quot;P&quot; であることに注意してください。小文字の &quot;p&quot; だとカーソルの直後に<br>
-プットされます。<br>
+大文字の &quot;P&quot; に注意してください。小文字の &quot;p&quot; はテキストをカーソルの後に置きま<br>
+す。<br>
 <br>
-真のクリップボードには &quot;+ レジスタでアクセスします。例えば、カーソル位置から行<br>
-末までを真のクリップボードにコピーするには、次のようにします:<br>
+&quot;+ レジスタは真のクリップボードに使われます。例えば、カーソル位置から行末まで<br>
+のテキストをクリップボードにコピーするには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;+y$</div>
 <br>
-&quot;y&quot; はヤンク、つまり Vim のコピーコマンドのことでしたね。<br>
-次のコマンドで真のクリップボードのテキストをカーソルの直前に挿入できます:<br>
+覚えておいてください、&quot;y&quot; はヤンクで、これは Vim のコピーコマンドです。<br>
+&nbsp;&nbsp; 真のクリップボードの内容をカーソルの前に挿入するには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;+P</div>
 <br>
-カレントセレクションの場合とコマンドは同じですが、スター (*) ではなくプラス<br>
-(+) レジスタを使っています。<br>
+これはカレントセレクションの場合と同じですが、スター (*) レジスタの代わりにプ<br>
+ラス (+) レジスタを使います。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_09.html#09.4" name="09.4">09.4</a>&nbsp;&nbsp;選択モード<br>
 <br>
-これは X Window よりも MS-Windows でよく利用される機能です。しかし、どちらの環<br>
-境でも利用できます。ビジュアルモードについては既に知っていますね。選択モードは<br>
-ビジュアルモードに似ています。選択モードもテキストを選択するための機能です。違<br>
-いは、文字を入力すると、選択されていたテキストが削除され、入力した文字に置き換<br>
-わることです。<br>
+そして次は、X-Windows よりも MS-Windows でよく使われるものです。しかし、どちら<br>
+でもそれができます。ビジュアルモードについては既に知っています。選択モードは、<br>
+それもテキストを選択するのに使われるので、ビジュアルモードに似ています。しか<br>
+し、明らかな違いがあります: テキストをタイプすると、選択されたテキストが削除さ<br>
+れ、タイプされたテキストがそれを置き換えます。<br>
 <br>
-選択モードを使うには、最初にそれを有効にする必要があります。(MS-Windows では、<br>
-既に有効になっていると思いますが、これを実行しても問題ありません):<br>
+選択モードで作業を始めるには、まずそれを有効にしなければなりません (MS-Windows<br>
+では、おそらく既に有効になっていますが、とにかくこれを実行してもかまいません):<br>
+<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set selectmode+=mouse</div>
 <br>
-設定したら、マウスを使ってテキストを選択してみてください。ビジュアルモードのよ<br>
-うにテキストが強調表示されます。そして、文字を入力してください。選択されていた<br>
-テキストが削除され、入力した文字に置き換わります。挿入モードに入るので、続けて<br>
-文字を入力することができます。<br>
+では、マウスを使っていくつかのテキストを選択してください。それはビジュアルモー<br>
+ドのようにハイライトされます。では、文字を 1 つ押してください。選択されたテキ<br>
+ストが削除され、その 1 文字がそれを置き換えます。今は挿入モードなので、タイプ<br>
+し続けることができます。<br>
 <br>
-普通に文字を入力すると選択中のテキストが削除されてしまうので、通常の移動コマン<br>
-ドの &quot;hjkl&quot; や &quot;w&quot; などは使えません。代わりに、シフト + 特殊キーの組み合わせを<br>
-使ってください。<span class="Special">&lt;S-Left&gt;</span>&nbsp;(シフト + 左矢印キー) でカーソルが左に移動します。ビ<br>
-ジュアルモードと同じように選択範囲が変化します。他の矢印キーも同様に使えます。<br>
-<span class="Special">&lt;S-End&gt;</span>&nbsp;と&nbsp;<span class="Special">&lt;S-Home&gt;</span>&nbsp;も使えます。<br>
+通常のテキストをタイプすると選択されたテキストが削除されるので、通常の移動コマ<br>
+ンド &quot;hjkl&quot;、&quot;w&quot; などは使えません。代わりに、Shift 付きのファンクションキーを<br>
+使います。<span class="Special">&lt;S-Left&gt;</span>&nbsp;(Shift 付きの左カーソルキー) はカーソルを左に移動します。選<br>
+択されたテキストはビジュアルモードのように変更されます。他の Shift 付きのカー<br>
+ソルキーは期待どおりのことをします。<span class="Special">&lt;S-End&gt;</span>&nbsp;および&nbsp;<span class="Special">&lt;S-Home&gt;</span>&nbsp;も動作します。<br>
 <br>
-選択モードの動作は&nbsp;<a class="Type" href="options.html#'selectmode'">'selectmode'</a>&nbsp;オプションで変更できます。<br>
+<a class="Type" href="options.html#'selectmode'">'selectmode'</a>&nbsp;オプションで、選択モードの動作の仕方を調整できます。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_10.html">usr_10.txt</a>&nbsp;&nbsp;大規模な編集<br>
+次章:&nbsp;<a class="Identifier" href="usr_10.html">usr_10.txt</a>&nbsp;&nbsp;大きな変更を行う<br>
 <br>
 Copyright: see&nbsp;<a class="Identifier" href="usr_01.html#manual-copyright">manual-copyright</a>&nbsp;&nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>

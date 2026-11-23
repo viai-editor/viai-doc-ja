@@ -9,17 +9,18 @@ helpname: 'usr_31'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GUI を活用する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GUI を活用する<br>
 <br>
 <br>
-Vim は端末でも動作しますが、GUI 版の Vim にはさらに追加機能があります。ファイ<br>
-ルブラウザーを使ってファイルを選択したり、操作を確認するためのダイアログを表示<br>
-したり、キーボードショートカットを使ってメニューにアクセスしたりできます。<br>
+Vim は端末でうまく動作しますが、GUI にはいくつかの追加項目があります。ファイル<br>
+を使うコマンドには、ファイルブラウザーを使えます。選択肢の間で選択をするための<br>
+ダイアログ。メニュー項目に素早くアクセスするには、キーボードショートカットを使<br>
+います。<br>
 <br>
 <a class="Identifier" href="usr_31.html#31.1">31.1</a>&nbsp;&nbsp;ファイルブラウザー<br>
-<a class="Identifier" href="usr_31.html#31.2">31.2</a>&nbsp;&nbsp;操作確認<br>
-<a class="Identifier" href="usr_31.html#31.3">31.3</a>&nbsp;&nbsp;メニューのショートカット<br>
-<a class="Identifier" href="usr_31.html#31.4">31.4</a>&nbsp;&nbsp;Vim ウィンドウの位置とサイズ<br>
+<a class="Identifier" href="usr_31.html#31.2">31.2</a>&nbsp;&nbsp;確認<br>
+<a class="Identifier" href="usr_31.html#31.3">31.3</a>&nbsp;&nbsp;メニューショートカット<br>
+<a class="Identifier" href="usr_31.html#31.4">31.4</a>&nbsp;&nbsp;Vim ウィンドウの位置およびサイズ<br>
 <a class="Identifier" href="usr_31.html#31.5">31.5</a>&nbsp;&nbsp;その他<br>
 <br>
 次章:&nbsp;<a class="Identifier" href="usr_32.html">usr_32.txt</a>&nbsp;&nbsp;undo ツリー<br>
@@ -29,73 +30,78 @@ Vim は端末でも動作しますが、GUI 版の Vim にはさらに追加機�
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_31.html#31.1" name="31.1">31.1</a>&nbsp;&nbsp;ファイルブラウザー<br>
 <br>
-[ファイル]/[開く...] メニューを実行するとファイルブラウザーが表示されます。ファ<br>
-イルブラウザーを使えば簡単にファイルを探すことができます。しかし例えば、[ウィ<br>
-ンドウを分割して開く] などのメニューは用意されていません。[ウィンドウ]/[分割]<br>
-を実行してから [ファイル]/[開く...] を実行することもできますが、面倒ですよね。<br>
-他のコマンドと同様、ファイルブラウザーもコマンド入力で開くことができます。例え<br>
-ば、split コマンドに &quot;browse&quot; を付けることで、ファイルブラウザーを使うことがで<br>
-きます:<br>
+File/Open... メニューを使うと、ファイルブラウザーが表示されます。これにより、<br>
+編集したいファイルを見つけやすくなります。しかし、ウィンドウを分割して別のファ<br>
+イルを編集したい場合はどうでしょうか? これにはメニュー項目がありません。まず<br>
+Window/Split を使い、それから File/Open... を使うこともできますが、それは手間<br>
+が増えます。<br>
+&nbsp;&nbsp; ほとんどのコマンドは Vim でタイプしているので、タイプしたコマンドでファイル<br>
+ブラウザーを開くこともできます。split コマンドがファイルブラウザーを使うように<br>
+するには、&quot;browse&quot; を前に付けます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:browse split</div>
 <br>
-選択したファイルが &quot;:split&quot; コマンドで開かれます。キャンセルボタンを押した場合<br>
-は何も実行されず、ウィンドウも分割されません。引数にファイルを指定すると、ファ<br>
-イルブラウザーの初期ディレクトリとして使われます。例:<br>
+ファイルを選択すると、それに対して &quot;:split&quot; コマンドが実行されます。ファイルダ<br>
+イアログをキャンセルすると、何も起こらず、ウィンドウは分割されません。<br>
+&nbsp;&nbsp; ファイル名の引数を指定することもできます。これは、ファイルブラウザーにどこ<br>
+から始めるかを伝えるのに使われます。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:browse split /etc</div>
 <br>
-&quot;/etc&quot; ディレクトリでファイルブラウザーが開きます。<br>
+ファイルブラウザーが、ディレクトリ &quot;/etc&quot; から始まってポップアップします。<br>
 <br>
-&quot;:browse&quot; コマンドはファイルを開くためのコマンドと組み合わせて使います。<br>
-ディレクトリを指定しなかった場合は、適切なディレクトリが選択されます。初期設定<br>
-では、最後に使ったディレクトリが使われます。例えば、&quot;:browse split&quot; で<br>
-&quot;/usr/local/share&quot; のファイルを開いた場合、次に &quot;:browse&quot; を使ったときは<br>
-&quot;/usr/local/share&quot; が使われます。<br>
-この動作は&nbsp;<a class="Type" href="options.html#'browsedir'">'browsedir'</a>&nbsp;オプションで変更できます。次の値を設定できます:<br>
+&quot;:browse&quot; コマンドは、ファイルを開くほぼすべてのコマンドの前に付けることができ<br>
+ます。<br>
+&nbsp;&nbsp; ディレクトリが指定されていない場合、Vim はファイルブラウザーをどこから始め<br>
+るかを決めます。デフォルトでは前回と同じディレクトリを使います。したがって、<br>
+&quot;:browse split&quot; を使って &quot;/usr/local/share&quot; 内のファイルを選択した場合、次に<br>
+&quot;:browse&quot; を使うときには、再び &quot;/usr/local/share&quot; から始まります。<br>
+&nbsp;&nbsp; これは&nbsp;<a class="Type" href="options.html#'browsedir'">'browsedir'</a>&nbsp;オプションで変更できます。これは 3 つの値のうちの 1 つを<br>
+持つことができます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;last&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後に使ったディレクトリ (初期設定)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buffer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントバッファと同じディレクトリ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カレントディレクトリ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;last&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後にブラウズしたディレクトリを使う (デフォルト)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buffer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントバッファと同じディレクトリを使う<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カレントディレクトリを使う<br>
 <br>
-例えば、カレントディレクトリが &quot;/usr&quot; で、&quot;/usr/local/share/readme&quot; を開いてい<br>
-るとき、次のコマンドを実行すると:<br>
+例えば、ディレクトリ &quot;/usr&quot; にいて、ファイル &quot;/usr/local/share/readme&quot; を編集<br>
+しているとき、このコマンドは:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set browsedir=buffer<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:browse edit</div>
 <br>
-&quot;/usr/local/share&quot; でブラウザーが開きます。次のように設定すると:<br>
+ブラウザーを &quot;/usr/local/share&quot; で開始します。代わりに:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set browsedir=current<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:browse edit</div>
 <br>
-&quot;/usr&quot; で開きます。<br>
+ブラウザーを &quot;/usr&quot; で開始します。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大抵のファイルブラウザーではキーボードが使えるので、マウスを使わなくて<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;も操作できます。操作方法はシステム依存なのでここでは説明しません。Vim<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は (可能な限り) 標準のブラウザーを使用します。システムのドキュメントに<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キーボードショートカットの説明が載っているはずです。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マウスを使わずに済むように、ほとんどのファイルブラウザーは、キーを押し<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;て移動する方法を提供しています。これはシステムごとに異なるので、ここで<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は説明しません。Vim は可能なら標準のブラウザーを使います。キーボード<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ショートカットについての説明は、システムのドキュメントのどこかにあるは<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ずです。<br>
 <br>
-GUI を使っていない場合でも、ファイルエクスプローラーを使えばファイルブラウザー<br>
-と同じようにファイルを選択できます。ただし、&quot;:browse&quot; コマンドは使えません。<br>
-<a class="Identifier" href="pi_netrw.html#netrw-browse">netrw-browse</a>&nbsp;参照。<br>
+GUI 版を使っていないときは、ファイルブラウザーのようにファイルを選択するのに、<br>
+ファイルエクスプローラーウィンドウを使うことができます。しかし、これは<br>
+&quot;:browse&quot; コマンドでは動作しません。<a class="Identifier" href="pi_netrw.html#netrw-browse">netrw-browse</a>&nbsp;を参照してください。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_31.html#31.2" name="31.2">31.2</a>&nbsp;&nbsp;操作確認<br>
+<a class="Constant" href="usr_31.html#31.2" name="31.2">31.2</a>&nbsp;&nbsp;確認<br>
 <br>
-ファイルが上書きされたり変更が失われたりするような操作は、間違って実行してしま<br>
-わないように保護されています。何かがマズいことになりそうなときは「本当にその操<br>
-作を実行したい場合は ! を付けてください」というようなエラーメッセージが表示さ<br>
-れます。<br>
-同じコマンドを再度入力したくない場合は、ダイアログを使うと便利です。&quot;OK&quot; か<br>
-&quot;Cancel&quot; を選ぶだけで動作を指示できます。<br>
-例えば、ファイルを開いて変更を加えてから、次のコマンドで別のファイルを開きま<br>
-す:<br>
+Vim は、うっかりファイルを上書きすることおよびその他の変更を失う方法から、あな<br>
+たを守ります。やるとまずいかもしれないことをすると、Vim はエラーメッセージを出<br>
+し、本当にそれを行いたいなら ! を付けるよう提案します。<br>
+&nbsp;&nbsp; ! を付けてコマンドをタイプし直すのを避けるため、Vim にダイアログを出させる<br>
+ことができます。そうすれば、&quot;OK&quot; または &quot;Cancel&quot; を押して、何をしたいかを Vim<br>
+に伝えられます。<br>
+&nbsp;&nbsp; 例えば、あるファイルを編集していて、それに変更を加えたとします。これで別の<br>
+ファイルの編集を始めます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:confirm edit foo.txt</div>
 <br>
-すると、次のようなダイアログが表示されます:<br>
+Vim は、だいたいこのように見えるダイアログをポップアップします:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-----------------------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
@@ -104,161 +110,168 @@ GUI を使っていない場合でも、ファイルエクスプローラーを�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; YES&nbsp;&nbsp; NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CANCEL&nbsp;&nbsp;&nbsp;&nbsp; |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-----------------------------------+<br>
 <br>
-ファイルを保存したい場合は &quot;YES&quot; を選択します。変更を破棄したい場合は &quot;NO&quot; を<br>
-選択します。戻って状態を確認したい場合は &quot;CANCEL&quot; を選択します。&quot;CANCEL&quot; を選<br>
-択すると元のファイルに戻れます。変更は失われません。<br>
+では、選択をしてください。変更を本当に保存したい場合は &quot;YES&quot; を選択します。変<br>
+更を永久に失いたい場合は: &quot;NO&quot;。何をしていたかを忘れてしまい、実際に何が変更さ<br>
+れたのかを確認したい場合は &quot;CANCEL&quot; を使います。変更が残ったままの同じファイル<br>
+に戻ります。<br>
 <br>
-&quot;:browse&quot; と同様、&quot;:confirm&quot; もファイルを開くためのコマンドと組み合わせること<br>
-ができます。同時に使うこともできます:<br>
+&quot;:browse&quot; と同様に、&quot;:confirm&quot; コマンドは、別のファイルを編集するほとんどのコ<br>
+マンドの前に付けることができます。これらは組み合わせることもできます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:confirm browse edit</div>
 <br>
-カレントバッファが未保存ならダイアログが表示されます。そして、ファイルブラウ<br>
-ザーが表示され、ファイルを選択できます。<br>
+これは、カレントバッファが変更されていた場合にダイアログを出します。それから、<br>
+編集するファイルを選択するためのファイルブラウザーをポップアップします。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ダイアログはキーボードで操作できます。一般的には、<span class="Special">&lt;TAB&gt;</span>&nbsp;キーと矢印キー<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;で選択を変更し、<span class="Special">&lt;Enter&gt;</span>&nbsp;で決定します。操作方法はシステムにより異なりま<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ダイアログでは、キーボードを使って選択肢を選ぶことができます。通常は<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;キーおよびカーソルキーで選択肢が変わります。<span class="Special">&lt;Enter&gt;</span>&nbsp;を押すと選択<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;肢が選択されます。ただし、これはシステムに依存します。<br>
 <br>
-&quot;:conform&quot; コマンドは CUI 版の Vim でも使えます。ダイアログの代わりに Vim ウィ<br>
-ンドウの下部にメッセージが表示されるので、キーを押して操作を選択してください。<br>
+GUI を使っていないときも、&quot;:confirm&quot; コマンドは同様に動作します。ダイアログを<br>
+ポップアップする代わりに、Vim は Vim ウィンドウの下部にメッセージを表示し、選<br>
+択をするためにキーを押すよう求めます。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:confirm edit main.c</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Save changes to &quot;Untitled&quot;?</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">[Y]es, (N)o, (C)ancel:&nbsp;</span><br>
 <br>
-どれか一つのキーを押すと選択できます。コマンドラインでの入力とは違い、<span class="Special">&lt;Enter&gt;</span><br>
-を押す必要はありません。<br>
+これで、選択肢に対応する 1 つのキーを押せます。コマンドラインでの他の入力と違<br>
+い、<span class="Special">&lt;Enter&gt;</span>&nbsp;を押す必要はありません。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_31.html#31.3" name="31.3">31.3</a>&nbsp;&nbsp;メニューのショートカット<br>
+<a class="Constant" href="usr_31.html#31.3" name="31.3">31.3</a>&nbsp;&nbsp;メニューショートカット<br>
 <br>
-キーボードを使えばすべてのコマンドを実行できます。メニューは (複雑な) コマンド<br>
-を簡単に使うための手段を提供しますが、キーボードから手を離してマウスを使わなけ<br>
-ればなりません。<br>
-メニューはキーボードでも選択できます。キーボードが使えるかどうかはシステム依存<br>
-ですが、大抵は大丈夫です。メニューを選択するには、メニューの下線付きの文字と<br>
-<span class="Special">&lt;Alt&gt;</span>&nbsp;キーを組み合わせて使います。例えば、<span class="Special">&lt;A-w&gt;</span>&nbsp;(<span class="Special">&lt;Alt&gt;</span>とw) で [ウィンドウ] メ<br>
-ニューが表示されます。<br>
-[ウィンドウ] メニューの &quot;分割(p)&quot; アイテムは p に下線が付いているので、<span class="Special">&lt;Alt&gt;</span><br>
-キーを押したまま p を押せば選択できます。<br>
+すべての Vim コマンドにはキーボードが使われます。メニューは、コマンドが何と呼<br>
+ばれているかを知らなくても、コマンドを選択する簡単な方法を提供します。しかし、<br>
+キーボードから手を離してマウスをつかむ必要があります。<br>
+&nbsp;&nbsp; メニューは、多くの場合キーでも選択できます。これはシステムに依存しますが、<br>
+たいていはこのように動作します。<span class="Special">&lt;Alt&gt;</span>&nbsp;キーを、メニューの下線付きの文字と組み合<br>
+わせて使います。例えば、<span class="Special">&lt;A-w&gt;</span>&nbsp;(<span class="Special">&lt;Alt&gt;</span>&nbsp;および w) は Window メニューをポップアッ<br>
+プします。<br>
+&nbsp;&nbsp; Window メニューでは、&quot;split&quot; 項目は p に下線が付いています。それを選択する<br>
+には、<span class="Special">&lt;Alt&gt;</span>&nbsp;キーを離して p を押します。<br>
 <br>
-<span class="Special">&lt;Alt&gt;</span>&nbsp;キーでメニューを表示した後は、カーソルキーを使ってメニューを選択できま<br>
-す。サブメニューは&nbsp;<span class="Special">&lt;Right&gt;</span>&nbsp;で開いて&nbsp;<span class="Special">&lt;Left&gt;</span>&nbsp;で閉じることができます。閉じるのは<br>
-<span class="Special">&lt;Esc&gt;</span>&nbsp;でも可能です。<span class="Special">&lt;Enter&gt;</span>&nbsp;でメニューを実行します。<br>
+<span class="Special">&lt;Alt&gt;</span>&nbsp;キーで最初にメニューを選択した後は、カーソルキーを使ってメニュー内を移動<br>
+できます。<span class="Special">&lt;Right&gt;</span>&nbsp;はサブメニューを選択し、<span class="Special">&lt;left&gt;</span>&nbsp;はそれを閉じます。<span class="Special">&lt;Esc&gt;</span>&nbsp;もメ<br>
+ニューを閉じます。<span class="Special">&lt;Enter&gt;</span>&nbsp;はメニュー項目を選択します。<br>
 <br>
-<span class="Special">&lt;Alt&gt;</span>&nbsp;キーはメニュー選択とキーマップの両方で使われるので操作が衝突します。<br>
-<span class="Special">&lt;Alt&gt;</span>&nbsp;キーの動作は&nbsp;<a class="Type" href="options.html#'winaltkeys'">'winaltkeys'</a>&nbsp;オプションで設定できます。<br>
-初期設定は &quot;menu&quot; です。メニューのショートカットと同じキーはマップできません<br>
-が、他のキーはマップすることができます。<br>
-設定を &quot;no&quot; にすると、<span class="Special">&lt;Alt&gt;</span>&nbsp;キーを使ってメニューを選択できなくなります。メ<br>
-ニューを選択するにはマウスを使う必要がありますが、すべての&nbsp;<span class="Special">&lt;Alt&gt;</span>&nbsp;キーをマップ<br>
-できます。<br>
-設定を &quot;yes&quot; にすると、<span class="Special">&lt;Alt&gt;</span>&nbsp;キーはメニューのために使われます。いくつかの<br>
-<span class="Special">&lt;Alt&gt;</span>&nbsp;キー操作はメニュー選択以外の動作になることもあります。<br>
+メニュー項目を選択するために&nbsp;<span class="Special">&lt;Alt&gt;</span>&nbsp;キーを使うことと、マッピングのために&nbsp;<span class="Special">&lt;Alt&gt;</span><br>
+キーの組み合わせを使うことの間には、衝突があります。<a class="Type" href="options.html#'winaltkeys'">'winaltkeys'</a>&nbsp;オプションは、<br>
+<span class="Special">&lt;Alt&gt;</span>&nbsp;キーで何をすべきかを Vim に伝えます。<br>
+&nbsp;&nbsp; デフォルト値 &quot;menu&quot; は賢い選択です: キーの組み合わせがメニューショートカッ<br>
+トである場合、それはマップできません。他のすべてのキーはマッピングに使えます。<br>
+&nbsp;&nbsp; 値 &quot;no&quot; は、メニューに&nbsp;<span class="Special">&lt;Alt&gt;</span>&nbsp;キーを一切使いません。したがって、メニューには<br>
+マウスを使わなければならず、すべての&nbsp;<span class="Special">&lt;Alt&gt;</span>&nbsp;キーをマップできます。<br>
+&nbsp;&nbsp; 値 &quot;yes&quot; は、Vim がメニューにどの&nbsp;<span class="Special">&lt;Alt&gt;</span>&nbsp;キーも使うことを意味します。<span class="Special">&lt;Alt&gt;</span><br>
+キーの組み合わせの中には、メニューの選択以外のことも行うものがあります。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_31.html#31.4" name="31.4">31.4</a>&nbsp;&nbsp;Vim ウィンドウの位置とサイズ<br>
+<a class="Constant" href="usr_31.html#31.4" name="31.4">31.4</a>&nbsp;&nbsp;Vim ウィンドウの位置およびサイズ<br>
 <br>
-次のコマンドでスクリーン上の Vim ウィンドウの位置を確認できます:<br>
+画面上の現在の Vim ウィンドウの位置を見るには、これを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:winpos</div>
 <br>
-このコマンドは GUI でのみ機能します。次のような出力が表示されます:<br>
+これは GUI でのみ動作します。出力はこのようになるでしょう:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Window position: X 272, Y 103</span><br>
 <br>
-位置は画面のピクセル単位です。数値を指定して Vim ウィンドウを移動することもで<br>
-きます。例えば、左に 100 ピクセル移動するには次のようにします:<br>
+位置はスクリーンのピクセル単位で与えられます。これで、その数値を使って Vim を<br>
+どこか別の場所に移動できます。例えば、左に 100 ピクセル移動するには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:winpos 172 103</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定した位置と実際に移動した位置が少しずれることがあります。これはウィ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンドウの枠があるからです。ウィンドウマネージャーがずれを引き起こします。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;報告された位置と、ウィンドウが移動する場所の間には、小さなずれがあるか<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;もしれません。これはウィンドウの周りの枠のためです。これはウィンドウマ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ネージャーによって追加されます。<br>
 <br>
-このコマンドを起動スクリプトに書けば好きな位置でウィンドウを開くことができま<br>
-す。<br>
+スタートアップスクリプトでこのコマンドを使って、ウィンドウを特定の位置に配置す<br>
+ることができます。<br>
 <br>
-Vim ウィンドウのサイズは文字数で計算されるので、実際の幅はフォントの大きさに依<br>
-存します。次のコマンドで現在のサイズを確認できます:<br>
+Vim ウィンドウのサイズは文字単位で計算されます。したがって、これは使われている<br>
+フォントのサイズに依存します。現在のサイズはこのコマンドで見ることができます:<br>
+<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set lines columns</div>
 <br>
-サイズを変更するには&nbsp;<a class="Type" href="options.html#'lines'">'lines'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'columns'">'columns'</a>&nbsp;を設定します:<br>
+サイズを変更するには、<a class="Type" href="options.html#'lines'">'lines'</a>&nbsp;および/または&nbsp;<a class="Type" href="options.html#'columns'">'columns'</a>&nbsp;オプションを新しい値に設<br>
+定します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set lines=50<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set columns=80</div>
 <br>
-CUI 端末でもサイズを取得することができますが、ほとんどの端末ではサイズを変更で<br>
-きません。<br>
+サイズの取得は、GUI と同様に端末でも動作します。サイズの設定は、ほとんどの端末<br>
+ではできません。<br>
 <br>
-X-Windows 版の gvim では、ウィンドウの位置とサイズを起動引数で指定できます:<br>
+X-Windows 版の gvim は、ウィンドウのサイズおよび位置を指定する引数を付けて起動<br>
+できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gvim -geometry {width}x{height}+{x-offset}+{y-offset}</div>
 <br>
-<span class="Special">{width}</span>&nbsp;と&nbsp;<span class="Special">{height}</span>&nbsp;は文字数です。<span class="Special">{x-offset}</span>&nbsp;と&nbsp;<span class="Special">{y-offset}</span>&nbsp;はピクセル数です。<br>
-例:<br>
+<span class="Special">{width}</span>&nbsp;および&nbsp;<span class="Special">{height}</span>&nbsp;は文字単位で、<span class="Special">{x-offset}</span>&nbsp;および&nbsp;<span class="Special">{y-offset}</span>&nbsp;はピクセル<br>
+単位です。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gvim -geometry 80x25+100+300</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_31.html#31.5" name="31.5">31.5</a>&nbsp;&nbsp;その他<br>
 <br>
-gvim はメールの編集にも使えます。そのためには、メーラーを設定して、gvim をエ<br>
-ディタとして選択する必要があります。しかしそれだけではうまくいきません。gvim<br>
-がまだ実行中にもかかわらず、メーラーは、gvim が編集を終えたものと判断してしま<br>
-います。<br>
-gvim が起動するとき、gvim はシェルから分離されます。これは、端末から gvim を起<br>
-動したときに、gvim と端末を平行して使うことができるので便利です。gvim が終了す<br>
-るまで待機させたい場合は分離をしないようにする必要があります。それには &quot;-f&quot; 引<br>
-数を使います:<br>
+gvim を使って電子メールのメッセージを編集できます。電子メールプログラムで、メッ<br>
+セージ用のエディタとして gvim を選択しなければなりません。それを試してみると、<br>
+うまく動かないことが分かるでしょう: gvim がまだ実行中なのに、メールプログラム<br>
+は編集が終わったと考えるのです!<br>
+&nbsp;&nbsp; 何が起こっているかというと、gvim は、起動されたシェルから切り離されるので<br>
+す。端末で gvim を起動したときは、その端末で他の作業ができるので、それで問題あ<br>
+りません。しかし、本当に gvim が終了するのを待ちたい場合は、切り離されるのを防<br>
+がなければなりません。&quot;-f&quot; 引数がこれを行います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gvim -f file.txt</div>
 <br>
-&quot;-f&quot; は &quot;foreground&quot; (操作中) の意味です。Vim を終了するまでシェルがブロックさ<br>
-れます。<br>
+&quot;-f&quot; はフォアグラウンドを表します。これで、Vim は、編集を終えて終了するまで、<br>
+起動されたシェルをブロックします。<br>
 <br>
 <br>
-<span class="Statement">GUI の遅延スタート</span><br>
+<span class="Statement">GUI の遅延起動</span><br>
 <br>
-Unix では gvim を vim として起動することができます。これはシェルの中だけで作業<br>
-を完結したい場合に便利です。ファイルの編集中に GUI を使いたくなったら、次のコ<br>
-マンドで GUI を開始できます:<br>
+Unix では、まず端末で Vim を起動することができます。同じシェルでさまざまな作業<br>
+をする場合、それは便利です。ファイルを編集していて、結局 GUI を使いたいと決め<br>
+た場合は、これで起動できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:gui</div>
 <br>
-GUI ウィンドウが開いて端末が開放されるので、同じ端末で他の作業を開始できます。<br>
-&quot;-f&quot; 引数を指定するとフォアグラウンドで GUI を開始できます。&quot;:gui -f&quot; のように<br>
-指定します。<br>
+Vim は GUI ウィンドウを開き、もう端末を使わなくなります。端末を他のことに使い<br>
+続けることができます。ここでは、GUI をフォアグラウンドで実行するために &quot;-f&quot; 引<br>
+数が使われます。&quot;:gui -f&quot; を使うこともできます。<br>
 <br>
 <br>
-<span class="Statement">gVim の起動ファイル</span><br>
+<span class="Statement">gvim スタートアップファイル</span><br>
 <br>
-gVim を起動すると、gvimrc ファイルが読み込まれます。これは Vim を起動したとき<br>
-に使われる vimrc ファイルのようなものです。gvimrc には、GUI を開始したときだけ<br>
-使いたい設定やコマンドを記述します。例えば、<a class="Type" href="options.html#'lines'">'lines'</a>&nbsp;オプションを設定してウィン<br>
-ドウのサイズを変更できます:<br>
+gvim は起動するとき、gvimrc ファイルを読み込みます。それは、Vim の起動時に使わ<br>
+れる vimrc ファイルに似ています。gvimrc ファイルは、GUI が起動されるときにだけ<br>
+使われる設定およびコマンドに使うことができます。例えば、異なるウィンドウサイズ<br>
+を設定するために&nbsp;<a class="Type" href="options.html#'lines'">'lines'</a>&nbsp;オプションを設定できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set lines=55</div>
 <br>
-端末ではウィンドウサイズは固定なのでこの設定は必要ありません (サイズの変更をサ<br>
-ポートしている xterm もありますが)。<br>
-gvimrc は vimrc と同じ場所から検索されます。通常、Unix では &quot;~/.gvimrc&quot;、<br>
-MS-Windows では &quot;$VIM/_gvimrc&quot; が使われます。<br>
-$MYGVIMRC 環境変数に、読み込まれたファイルの名前が設定されるので、次のコマンド<br>
-でそのファイルを開くことができます (ファイルが存在するなら):<br>
+端末ではこれをしたくないでしょう。そのサイズは固定されているからです (サイズ変<br>
+更をサポートしている xterm を除く)。<br>
+&nbsp;&nbsp; gvimrc ファイルは vimrc ファイルと同じ場所で検索されます。通常、その名前は<br>
+Unix では &quot;~/.gvimrc&quot; であり、MS-Windows では &quot;$VIM/_gvimrc&quot; です。$MYGVIMRC<br>
+環境変数がそれに設定されるので、ファイルがある場合は、このコマンドを使ってそれ<br>
+を編集できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:edit $MYGVIMRC</div>
 <br>
-何らかの理由で通常の gvimrc を使いたくない場合は、&quot;-U&quot; 引数で他のファイルを指<br>
-定できます:<br>
+&nbsp;&nbsp; 何らかの理由で通常の gvimrc ファイルを使いたくない場合は、&quot;-U&quot; 引数で別の<br>
+ファイルを指定できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gvim -U thisrc ...</div>
 <br>
-いつもと違う設定で gvim を起動できます。例えばフォントのサイズを変更するなど。<br>
-gvimrc を読み込みたくない場合は次のようにします:<br>
+これにより、異なる種類の編集のために gvim を起動できます。例えば、別のフォント<br>
+サイズを設定することができるでしょう。<br>
+&nbsp;&nbsp; gvimrc ファイルの読み込みを完全にスキップするには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gvim -U NONE ...</div>
 <br>
