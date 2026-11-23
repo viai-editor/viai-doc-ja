@@ -5,142 +5,154 @@
 			       ----------------
 
 Author:  Charles E. Campbell  <NcampObell@SdrPchip.AorgM-NOSPAM>
-	  (まずメールアドレスから NOSPAM を削除すること)
+	  (まず Campbell のメールアドレスから NOSPAM を削除すること)
 Copyright: (c) 2004-2015 by Charles E. Campbell		*Vimball-copyright*
 	The VIM LICENSE (see |copyright|) applies to the files in this
 	package, including vimballPlugin.vim, vimball.vim, and pi_vimball.txt.
-	except use "vimball" instead of "VIM".  Like anything else that's free,
-	vimball.vim and its associated files are provided *as is* and comes with
-	no warranty of any kind, either expressed or implied.  No guarantees
-	of merchantability.  No guarantees of suitability for any purpose.  By
-	using this plugin, you agree that in no event will the copyright
-	holder be liable for any damages resulting from the use of this
-	software. Use at your own risk!
+	except use "vimball" instead of "VIM".  Like anything else that's
+	free, vimball.vim and its associated files are provided *as is* and
+	comes with no warranty of any kind, either expressed or implied.  No
+	guarantees of merchantability.  No guarantees of suitability for any
+	purpose.  By using this plugin, you agree that in no event will the
+	copyright holder be liable for any damages resulting from the use of
+	this software. Use at your own risk!
 
 ==============================================================================
 1. 目次					*vba* *vimball* *vimball-contents*
 
 	1. 目次..........................................: |vimball-contents|
-	2. はじめに......................................: |vimball-intro|
-	3. マニュアル....................................: |vimball-manual|
+	2. Vimball 入門..................................: |vimball-intro|
+	3. Vimball マニュアル............................: |vimball-manual|
 	   MkVimball.....................................: |:MkVimball|
 	   UseVimball....................................: |:UseVimball|
 	   RmVimball.....................................: |:RmVimball|
-	4. 開発履歴......................................: |vimball-history|
+	4. Vimball 履歴..................................: |vimball-history|
 
 
 ==============================================================================
-2. はじめに							*vimball-intro*
+2. Vimball 入門							*vimball-intro*
 
-	Vimball はプラグインの利用方法をシンプルにする。vimball は次のように実
-	行するだけで利用できる: >
+	Vimball はプラグインユーザーの生活をより簡単にすることを意図している。
+	ユーザーが vimball に対して行う必要があるのは、これだけである: >
 		vim someplugin.vba
 		:so %
 		:q
-<	すると、プラグインが適切なディレクトリにインストールされる。実行前に適
-	切なディレクトリに移動する必要なんてない。プラグインのヘルプも自動的に
-	インストールされる。
+<	すると、プラグインおよびそのすべての構成要素が、それぞれの適切なディレ
+	クトリにインストールされる。Note これを行うときに、特定のディレクトリ
+	にいる必要はないことに注意。さらに、プラグインのヘルプも自動的にインス
+	トールされる。
 
-	AsNeeded プラグインを使っている場合、vimball は .vim/plugin/ に入る予
-	定のものを適切に .vim/AsNeeded/ に入れる。
+	ユーザーが AsNeeded プラグインを使うことにしている場合、vimball は賢い
+	ので、名目上 .vim/plugin/ 向けのスクリプトを、代わりに .vim/AsNeeded/
+	に置く。
 
-	vimball でインストールしたプラグインを削除するのは簡単である: >
+	vimball でインストールされたプラグインを削除するのは本当に簡単である:
+>
 		vim
 		:RmVimball someplugin
-<	例えば zip や tarball でインストールした場合はこのように簡単ではない。
+<	例えば、zip および tarball では、この操作はまったく簡単ではない。
 
-	Vimball はユーザーの 'runtimepath' 設定を見てスクリプトのインストール
-	場所を決定する。通常は runtimepath の最初の使用可能なディレクトリが使
-	われる。次のコマンドでディレクトリを確認できる >
+	Vimball はユーザーの 'runtimepath' を調べて、スクリプトをどこに置くか
+	を決める。可能なら、通常は runtimepath で最初に挙げられたディレクトリ
+	が使われる。そのディレクトリを見るには >
 		:echo &rtp
-<
+<	を使う。
+
 
 ==============================================================================
-3. マニュアル						*vimball-manual*
+3. Vimball マニュアル					*vimball-manual*
 
-☆VIMBALL の作成						*:MkVimball*
+☆Vimball の作成						*:MkVimball*
 		:[range]MkVimball[!] filename [path]
 
-	作成する vimball に含めるファイルのパスを書き、それらの行を範囲指定し
-	て実行する。パスは runtimepath ('rtp') からの相対パスである。例: >
+	範囲は、新しい vimball に含めるファイルへのパスを保持する行で構成され、
+	パスのうち、通常 runtimepath ('rtp') で指定される部分は省く。例として:
+>
 		plugin/something.vim
 		doc/something.txt
-<	この 2 行を範囲指定して次のように実行すると >
+<	この範囲の行に対して >
 		:[range]MkVimball filename
 <
-	"filename.vba" という名前のファイルが作成される。Vimball.vim を使うこ
-	とでこのファイルから元のファイルを再構成できる。"filename.vba" が既に
-	存在する場合は警告が表示され、ファイルは作成されない。ファイルのパスは
-	.vim (vimfiles) ディレクトリからの相対パスで、ファイルが存在している必
-	要がある。通常は 'runtimepath' の最初のディレクトリが相対パスのルート
-	として使われる。特別な理由がない限り絶対パスを使わないこと。
+	を使うと、"filename.vba" というファイルが作成され、それは Vimball.vim
+	がこれらのファイルを再作成するのに使える。"filename.vba" ファイルが既
+	に存在する場合は、MkVimball は警告を出し、ファイルを作成しない。Note
+	これらのパスは .vim (vimfiles) ディレクトリからの相対パスであり、ファ
+	イルはそのディレクトリにあるべきであることに注意。vimball プラグインは
+	通常、存在する最初の 'runtimepath' ディレクトリをプリフィックスとして
+	使う。ユーザーがそのようなパスを指定していない限り、絶対パスを使っては
+	ならない。
 
-	感嘆符 (!) を指定すると、既存の "filename.vba" は上書きされる。|:w| コ
-	マンドの動作と同じようなものである。
+	感嘆符 (!) を使うと、MkVimball は "filename.vba" ファイルを作成し、そ
+	れが既に存在する場合は上書きする。この動作は |:w| のそれに似ている。
 
-	ファイル名にスラッシュを含めたい場合も感嘆符を付ける必要がある (例:
-	:MkVimball! path/filename)。
+	ファイル名にスラッシュを強制的に入れたい場合も、感嘆符を使うことででき
+	る (すなわち :MkVimball! path/filename)。
 
-	http://vim.wikia.com/wiki/Using_VimBall_with_%27Make%27 に、vimball の
-	生成を make を使って自動化するための tip が掲載されている。
+	http://vim.wikia.com/wiki/Using_VimBall_with_%27Make%27 の tip には、
+	make を使って vimball の生成を自動化する方法についての良いアイデアがあ
+	る。
 
 
-☆VIMBALL を展開するディレクトリの設定			*g:vimball_home*
+☆Vimball 展開ディレクトリの制御			*g:vimball_home*
 
-	vimball によって使用される 'runtimepath' を指定したい場合は
-	g:vimball_home 変数を設定すること。
+	変数 g:vimball_home を指定することで、'runtimepath' の使用を上書きでき
+	る。
 
 							*vimball-extract*
 		vim filename.vba
 
-	ファイルを展開するには、Vimball ファイルを Vim で開き、そのファイルを
-	実行 (:source %) すること。
+	Vimball を単に編集すると、Vimball.vim はユーザーに、内容を展開するため
+	にそのファイルを読み込むよう伝える。
 
-	Vimball ファイルの 1 行目が "Vimball Archiver by Charles E. Campbell"
-	となっている場合のみ、ファイルを展開できる。
+	展開は、vimball と思われるファイルの 1 行目に
+	"Vimball Archiver by Charles E. Campbell" という行がある場合にのみ進
+	む。
 
-☆VIMBALL 内のファイルを一覧表示する				*:VimballList*
+☆Vimball 内のファイルの一覧表示				*:VimballList*
 
 		:VimballList
 
-	このコマンドを実行すると、Vimball ファイルに含まれているファイルと、そ
-	れぞれの行数が表示される。
+	このコマンドは Vimball に、アーカイブ内のファイルを、行数で表したその
+	長さとともに一覧表示させる。
 
-☆VIMBALL の展開を手動で呼び出す				*:UseVimball*
+☆Vimball 展開の手動呼び出し					*:UseVimball*
 
 		:UseVimball [path]
 
-	このコマンドは vimball に埋め込まれる。これは vimball#Vimball() を呼び
-	出して vimball を展開する。vimball を実行する代わりに、このコマンドを
-	自分で実行しても構わない。その場合、インストール先のパスを指定できる。
-	指定がない場合は 'runtimepath' の最初の存在するディレクトリが使用され
-	る。
+	このコマンドは vimball 自体の中に含まれている。これは vimball の展開を
+	担う vimball#Vimball() ルーチンを呼び出す。vimball を読み込む代わりに、
+	手でそれを実行することを選んでもよい。また、インストールのためのパスを
+	指定することを選んでもよく、それにより、'runtimepath' 上で最初に存在す
+	るディレクトリという自動的な選択を上書きする。
 
-☆VIMBALL の削除						*:RmVimball*
+☆Vimball の削除						*:RmVimball*
 
 		:RmVimball vimballfile [path]
 
-	vimball に含まれていたすべてのファイルを削除する (ディレクトリは削除さ
-	れない)。アンインストール元のパスを指定できる ('runtimepath' 参照)。指
-	定がない場合は 'runtimepath' の最初の存在するディレクトリが使用される。
-	この機能を実現するため、インストールパスに .VimballRecord というファイ
-	ルが作成され、削除すべきファイル (それまでに vimball によってインストー
-	ルされたファイル) が記録される。
+	このコマンドは、指定された vimball によって生成されたすべてのファイル
+	を削除する (ただし、それが作成したかもしれないディレクトリは削除しな
+	い)。アンインストールのためのパスを選ぶこともできる ('runtimepath' を
+	参照)。そうでなければ、デフォルトは 'runtimepath' 上で最初に存在する
+	ディレクトリである。
+	これを実装するため、そのディレクトリにファイル (.VimballRecord) が作成
+	され、これまでに使われたすべての vimball について、どのファイルを削除
+	する必要があるかの記録を保持する。
 
-☆ロードの無効化
+☆読み込みの防止
 
-	もしなんらかの理由で vimballs プラグインを使いたくない場合は、次の 2
-	つの変数を <.vimrc> で設定すると、vimball.vim の読み込みを無効化できる:
->
+	何らかの理由で、vimball を使ってプラグインを展開できないようにしたい場
+	合は、以下の 2 つの変数を <.vimrc> に入れることで、vimball.vim の読み
+	込みを防止できる: >
 
 		let g:loaded_vimballPlugin= 1
 		let g:loaded_vimball      = 1
 <
-WINDOWS							*vimball-windows*
+☆Windows						*vimball-windows*
 
-	多くの vimball ファイルは gzip で圧縮されている。残念ながら Windows に
-	は gzip 圧縮されたファイルを展開するためのツールが含まれていない。しか
-	し幸運にも、Windows ユーザーにも使える gzip 展開ツールがいくつかある:
+	多くの vimball ファイルは gzip で圧縮されている。残念ながら、Windows
+	には gzip されたファイルを展開するツールが付属していない。幸い、
+	Windows ユーザーが利用できる、ファイルを un-gzip するためのツールがい
+	くつかある:
 >
 	    Item     Tool/Suite   Free   Website
 	    ----     ----------   ----   -------
@@ -153,7 +165,7 @@ WINDOWS							*vimball-windows*
 <
 
 ==============================================================================
-4. 開発履歴						*vimball-history* {{{1
+4. Vimball 履歴						*vimball-history* {{{1
 
 	unreleased:
 	     Feb 28, 2025 * add support for bzip3 (#16755)
@@ -227,8 +239,8 @@ WINDOWS							*vimball-windows*
 	13 : May 01, 2006 * exists("&acd") used to determine if the acd
 			    option exists
 	12 : May 01, 2006 * bugfix - the 'acd' option is not always defined
-	11 : Apr 27, 2006 * VimballList would create missing subdirectories that
-			    the vimball specified were needed.  Fixed.
+	11 : Apr 27, 2006 * VimballList would create missing subdirectories
+			    that the vimball specified were needed.  Fixed.
 	10 : Apr 27, 2006 * moved all setting saving/restoration to a pair of
 			    functions.  Included some more settings in them
 			    which frequently cause trouble.
