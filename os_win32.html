@@ -10,158 +10,157 @@ helpname: 'os_win32'
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32" name="win32">win32</a>&nbsp;<a class="Constant" href="os_win32.html#Win32" name="Win32">Win32</a>&nbsp;<a class="Constant" href="os_win32.html#MS-Windows" name="MS-Windows">MS-Windows</a><br>
-このファイルはVim Win32バージョンに特有の事柄についての文書である。<br>
+このファイルは、Vim の Win32 版の特異な点を説明する。<br>
 <br>
-Win32 版の Vim は Windows 7, 8, 10, 11 で実行可能である。コンソール版と GUI 版<br>
-がある。<br>
+Vim の Win32 版は Windows 7、8、10、および 11 で動作する。コンソール版および<br>
+GUI 版の両方がある。<br>
 <br>
-Windows XP または Vista を所有している場合は、Vim 9.0 のパッチレベル 495 まで<br>
-使用できる。<br>
+Windows XP または Vista を持っている場合は、patch レベル 495 までの Vim 9.0 を<br>
+使える。<br>
 <br>
-32 ビット版 Vim は 64 ビット版 MS-Windows システム上でも実行可能である。<br>
+32 ビット版は 64 ビットの MS-Windows システムでも動作する。<br>
 <br>
-1. 知られている問題点&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_win32.html#win32-problems">win32-problems</a><br>
-2. Vimの起動&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_win32.html#win32-startup">win32-startup</a><br>
-3. スクリーン内容の復帰&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_win32.html#win32-restore">win32-restore</a><br>
+1. 既知の問題&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_win32.html#win32-problems">win32-problems</a><br>
+2. 起動&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_win32.html#win32-startup">win32-startup</a><br>
+3. 画面内容の復元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_win32.html#win32-restore">win32-restore</a><br>
 4. マウスの使用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_win32.html#win32-mouse">win32-mouse</a><br>
-5. Windows 95での使用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_win32.html#win32-win95">win32-win95</a><br>
-6. Windows 3.1での使用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_win32.html#win32-win3.1">win32-win3.1</a><br>
+5. Windows 95 での実行&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_win32.html#win32-win95">win32-win95</a><br>
+6. Windows 3.1 での実行&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_win32.html#win32-win3.1">win32-win3.1</a><br>
 7. インストールパッケージ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_win32.html#win32-installer">win32-installer</a><br>
 8. Win32 ミニ FAQ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_win32.html#win32-faq">win32-faq</a><br>
 <br>
-加えて、<a class="Identifier" href="os_dos.html">os_dos.txt</a>&nbsp;には Win32 と DOS に共通する項目が多数ある:<br>
-ファイルの位置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-locations">dos-locations</a><br>
+さらに、<a class="Identifier" href="os_dos.html">os_dos.txt</a>&nbsp;には Win32 および DOS に共通の項目がいくつかある:<br>
+ファイル位置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-locations">dos-locations</a><br>
 バックスラッシュの使用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-backslash">dos-backslash</a><br>
-標準のマッピング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-standard-mappings">dos-standard-mappings</a><br>
-画面出力とカラー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-colors">dos-colors</a><br>
-ファイルフォーマット&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-file-formats">dos-file-formats</a><br>
+標準マッピング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-standard-mappings">dos-standard-mappings</a><br>
+画面出力および色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-colors">dos-colors</a><br>
+ファイル形式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-file-formats">dos-file-formats</a><br>
 :cd コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-:cd">dos-:cd</a><br>
-割り込み(インタラプト)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-CTRL-Break">dos-CTRL-Break</a><br>
+割り込み&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-CTRL-Break">dos-CTRL-Break</a><br>
 一時ファイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-temp-files">dos-temp-files</a><br>
-Shellオプションのデフォルト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-shell">dos-shell</a><br>
-PowerShell のデフォルト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-powershell">dos-powershell</a><br>
+shell オプションのデフォルト&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-shell">dos-shell</a><br>
+PowerShell デフォルト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="os_dos.html#dos-powershell">dos-powershell</a><br>
 <br>
 Win32 GUI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="gui_w32.html#gui-w32">gui-w32</a><br>
 <br>
 クレジット:<br>
-Win32バージョンはGeorge V. Reilly &lt;george@reilly.org&gt;による。<br>
-オリジナルのWindows NTへの移植はRoger Knobbe &lt;RogerK@wonderware.com&gt;による。<br>
-GUIバージョンはGeorge V. ReillyとRobert Webbによって作成された。<br>
+Win32 版は George V. Reilly &lt;george@reilly.org&gt; によって書かれた。<br>
+最初の Windows NT への移植は Roger Knobbe &lt;RogerK@wonderware.com&gt; によって行わ<br>
+れた。<br>
+GUI 版は George V. Reilly および Robert Webb によって作られた。<br>
 <br>
-コンパイルする場合は &quot;src/INSTALLpc.txt&quot; を参照。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-compiling" name="win32-compiling">win32-compiling</a><br>
+コンパイルについては &quot;src/INSTALLpc.txt&quot; を参照。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-compiling" name="win32-compiling">win32-compiling</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#WSL" name="WSL">WSL</a><br>
-WSL(Windows Subsystem for Linux) 上で Vim を使用する場合、ここでの説明は適用さ<br>
-れず、<span class="Comment">has('win32')</span>&nbsp;は偽を返す。WSL 上で Vim が 実行されているかどうかを知る<br>
-必要がある場合は、<span class="Comment">exists('$WSL_DISTRO_NAME')</span>&nbsp;を使用する。<br>
+WSL (Windows Subsystem for Linux) 上で Vim を使う場合、ここの注意事項は適用さ<br>
+れず、その場合&nbsp;<span class="Comment">has('win32')</span>&nbsp;は false を返す。Vim が WSL 上で実行されているか<br>
+どうかを知る必要がある場合は、<span class="Comment">exists('$WSL_DISTRO_NAME')</span>&nbsp;を使える。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-1. 知られている問題点&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-problems" name="win32-problems">win32-problems</a><br>
+1. 既知の問題&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-problems" name="win32-problems">win32-problems</a><br>
 <br>
-ファイル名補完を行っているとき、Vimは短いファイル名への一致も見つける。しかし、<br>
-それでもVimは長いファイル名への一致を見つけ、採用する。例えば、もしあなたが短<br>
-いファイル名 &quot;this_i~1&quot; を持つ、長いファイル名のファイル &quot;this_is_a_test&quot; を<br>
-持っているなら、コマンド &quot;:e *1&quot; は &quot;this_is_a_test&quot; の編集を始める。<br>
+ファイル名補完を行う時、Vim は短いファイル名に対する一致も見つける。しかし、<br>
+Vim はそれでも対応する長いファイル名を見つけて使う。例えば、短いファイル名<br>
+&quot;this_i~1&quot; を持つ長いファイル名 &quot;this_is_a_test&quot; がある場合、コマンド &quot;:e *1&quot;<br>
+は &quot;this_is_a_test&quot; の編集を開始する。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-2. Vimの起動&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-startup" name="win32-startup">win32-startup</a><br>
+2. 起動&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-startup" name="win32-startup">win32-startup</a><br>
 <br>
 カレントディレクトリ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-curdir" name="win32-curdir">win32-curdir</a><br>
 <br>
-Vimにフルパスのファイル名(&quot;x:\&quot; の形で始まる)を指定したとき、Vimはエクスプロー<br>
-ラーから起動されたと仮定してそのファイルのあるディレクトリをカレントディレクト<br>
-リにする。そうならないようにするにはファイルのパスにバックスラッシュ(\)の代わり<br>
-にスラッシュ(/)を使うこと。<br>
+Vim が単一のファイル名引数で起動され、それがフルパス (&quot;x:\&quot; で始まる) を持つ場<br>
+合、Vim はファイルエクスプローラーから起動されたとみなし、カレントディレクトリ<br>
+をそのファイルのある場所に設定する。Vim を起動するコマンドを入力する時にこれを<br>
+避けるには、バックスラッシュの代わりにスラッシュを使うこと。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim c:\text\files\foo.txt</div>
 <br>
-これはカレントディレクトリを &quot;C:\text\files&quot; に変更する。<br>
+&quot;C:\text\files&quot; ディレクトリに移動する。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim c:/text\files\foo.txt</div>
 <br>
-こうすればカレントディレクトリを変更しない。<br>
+カレントディレクトリを使う。<br>
 <br>
 <br>
-端末オプション&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-term" name="win32-term">win32-term</a><br>
+term オプション&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-term" name="win32-term">win32-term</a><br>
 <br>
-Win32バージョンのVimが認識できる唯一の端末の種類は &quot;win32&quot; であり、これは組み<br>
-込みである。<a class="Type" href="options.html#'term'">'term'</a>&nbsp;に他の何かを設定すると、Vimはたぶんとても奇妙な振る舞いを見<br>
-せることだろう。それゆえ、Vimは&nbsp;<a class="Type" href="options.html#'term'">'term'</a>&nbsp;のデフォルト値を環境変数 &quot;TERM&quot; から取<br>
-得しない。<br>
+Vim の Win32 版が理解する端末タイプの種類は、組み込みである &quot;win32&quot; だけであ<br>
+る。<a class="Type" href="options.html#'term'">'term'</a>&nbsp;を他の何かに設定すると、おそらく Vim から非常に奇妙な動作が得られ<br>
+る。したがって、Vim は&nbsp;<a class="Type" href="options.html#'term'">'term'</a>&nbsp;のデフォルト値を環境変数 &quot;TERM&quot; から取得しない。<br>
 <br>
-端末カラー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-term-colors" name="win32-term-colors">win32-term-colors</a><br>
+端末色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-term-colors" name="win32-term-colors">win32-term-colors</a><br>
 <br>
-Win32 コンソールはデフォルトで 16 色をサポートしている&nbsp;<a class="Identifier" href="os_dos.html#dos-colors">dos-colors</a>。Windows<br>
-10 バージョン 1703 (Creators Update) 以降では、<a class="Type" href="options.html#'termguicolors'">'termguicolors'</a>&nbsp;が設定され、Vim<br>
-が仮想端末処理 (VTP)&nbsp;<a class="Identifier" href="various.html#+vtp">+vtp</a>&nbsp;をサポートするようにビルドされている場合、コンソー<br>
-ルは 256 色と True Color (24 ビット) をサポートする。<br>
+Win32 コンソールはデフォルトで 16 色をサポートする&nbsp;<a class="Identifier" href="os_dos.html#dos-colors">dos-colors</a>。Windows 10<br>
+バージョン 1703 (Creators Update) 以降、<a class="Type" href="options.html#'termguicolors'">'termguicolors'</a>&nbsp;が設定され、かつ Vim<br>
+が Virtual Terminal Processing (VTP)&nbsp;<a class="Identifier" href="various.html#+vtp">+vtp</a>&nbsp;のサポート付きでビルドされている場<br>
+合、コンソールは 256 色および true color (24 ビット) をサポートする。<br>
 <br>
-<a class="Type" href="options.html#'termguicolors'">'termguicolors'</a>&nbsp;オプションが設定されているか、<a class="Type" href="term.html#'t_Co'">'t_Co'</a>&nbsp;オプションが 256 に設定さ<br>
-れている場合、仮想端末処理が自動的に有効になる。これにより、色の ANSI エスケー<br>
-プシーケンスが有効になり、マルチバイト文字のレンダリングが改善され、Windows コ<br>
-ンソールのその他の端末機能が有効になる。<br>
+<a class="Type" href="options.html#'termguicolors'">'termguicolors'</a>&nbsp;オプションが設定されているか、または&nbsp;<a class="Type" href="term.html#'t_Co'">'t_Co'</a>&nbsp;オプションが 256<br>
+に設定されている場合、Virtual Terminal Processing は自動的に有効になる。これは<br>
+色のための ANSI エスケープシーケンスを有効にし、マルチバイト文字の描画を改善<br>
+し、Windows コンソールでその他の端末機能を有効にする。<br>
 <br>
-実際のカラーレンダリングは、ターミナルが VTP をサポートしているかどうかによっ<br>
-て異なる (Windows ターミナルや最新の Windows 10/11 コンソールなど)。<br>
+実際の色の描画は、端末が VTP をサポートしているかどうか (Windows Terminal また<br>
+は最新の Windows 10/11 コンソールなど) による。<br>
 <br>
 $PATH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-PATH" name="win32-PATH">win32-PATH</a><br>
 <br>
-Vim 実行可能ファイルのディレクトリが $PATH に追加される。これは主に「ツール」<br>
-メニューにある &quot;!xxd&quot; が動作するようにするためである。また、これにより<br>
-executable() が 1 を返すときは実際にその実行可能ファイルが実行可能であるように<br>
-なる。<br>
+Vim の実行可能ファイルのディレクトリが $PATH に追加される。これは主に、Tools<br>
+メニューにある &quot;!xxd&quot; を動作させるためである。そしてそれは、executable() が 1<br>
+を返した時にその実行可能ファイルを実際に実行できることも意味する。<br>
 <br>
 コマンドライン引数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-cmdargs" name="win32-cmdargs">win32-cmdargs</a><br>
 <br>
-コマンドラインからパラメーターへの解析は MS-Windows で標準化されていない。<br>
-Vim と gvim はかつては(7.4.432以前)、それをパースするために異なるロジックを用<br>
-いており、さらにどのコンパイラでコンパイルしたかにも依存していた。現在では Vim<br>
-も gvim も CommandLineToArgvW() Win32 API を使用しており、どちらも同じように動<br>
-作する。<br>
+コマンドラインをパラメーターに解析することは、MS-Windows では標準化されていな<br>
+い。Vim および gvim は、かつて (7.4.432 より前) それを解析するために異なるロ<br>
+ジックを使っており、そのロジックは何でコンパイルされたかにも依存していた。現<br>
+在、Vim および gvim はどちらも CommandLineToArgvW() Win32 API を使っているの<br>
+で、同じように動作する。<br>
 <br>
-基本的なルール:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-backslashes" name="win32-backslashes">win32-backslashes</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a) パラメーターは表示可能文字である<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b) パラメーターはスペースで区切られている<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c) ダブルクォートで囲めばパラメーターにスペースを含むことができる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d) バックスラッシュ(\)が一つ以上の後に続くダブルクォート(&quot;)は特別な文<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字である。バックスラッシュの数を半分に割って小数を切捨てた数に意味が<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ある。奇数ならバックスラッシュはスペースやタブの効果を変える。偶数な<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;らバックスラッシュはリテラルのダブルクォートを作る。<br>
+基本的なルールは:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-backslashes" name="win32-backslashes">win32-backslashes</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a) パラメーターは図形文字の並びである。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b) パラメーターは空白で区切られる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c) 空白を含めるために、パラメーターをダブルクォートで囲むことができる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d) 0 個以上のバックスラッシュ (\) およびダブルクォート (&quot;) の並びは特別<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;である。有効なバックスラッシュの数は半分にされ、切り捨てられる。偶数個<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のバックスラッシュはスペースおよびタブの受理を反転させ、奇数個のバック<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スラッシュはリテラルのダブルクォートを生成する。<br>
 <br>
 つまり:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; は特別なダブルクォート<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;はリテラルのダブルクォート<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\&quot;&nbsp;&nbsp;&nbsp;&nbsp; はリテラルのバックスラッシュと特別なダブルクォート<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\\&quot;&nbsp;&nbsp;&nbsp;&nbsp;はリテラルのバックスラッシュとリテラルのダブルクォート<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\\\&quot;&nbsp;&nbsp; はリテラルのバックスラッシュ二つと特別なダブルクォート<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\\\\&quot;&nbsp;&nbsp;はリテラルのバックスラッシュ二つとリテラルのダブルクォート<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;etc.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 特別なダブルクォートである<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リテラルのダブルクォートである<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\&quot;&nbsp;&nbsp;&nbsp;&nbsp; リテラルのバックスラッシュおよび特別なダブルクォートである<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\\&quot;&nbsp;&nbsp;&nbsp;&nbsp;リテラルのバックスラッシュおよびリテラルのダブルクォートである<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\\\&quot;&nbsp;&nbsp; 2 つのリテラルのバックスラッシュおよび特別なダブルクォートである<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\\\\&quot;&nbsp;&nbsp;2 つのリテラルのバックスラッシュおよびリテラルのダブルクォートである<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;など<br>
 <br>
 例:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gvim &quot;C:\My Music\freude&quot; +&quot;set ignorecase&quot; +/&quot;\&quot;foo\\&quot; +\&quot;bar\\\&quot;</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim &quot;C:\My Music\freude&quot; +&quot;set ignorecase&quot; +/&quot;\&quot;foo\\&quot; +\&quot;bar\\\&quot;</div>
 <br>
-は &quot;C:\My Music\freude&quot; を開き、次のコマンドを実行する:<br>
+は &quot;C:\My Music\freude&quot; を開き、行モードコマンドを実行する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set ignorecase; /&quot;foo\ and /bar\&quot;</div>
 <br>
-これらのルールは CommandLineToArgvW API のリファレンスにも記載されている:<br>
+これらのルールは CommandLineToArgvW API のリファレンスにも記述されている:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/bb776391.aspx">https://msdn.microsoft.com/en-us/library/windows/desktop/bb776391.aspx</a></span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-quotes" name="win32-quotes">win32-quotes</a><br>
-クォートには追加のルールがある(これらはちゃんとドキュメント化されていない)。<br>
-前述の通り、ファイル名(もしくは他のコマンドライン引数)の中のクォートはバックス<br>
-ラッシュでエスケープできる。例。<br>
+クォートには追加のルールがある (それらはよく文書化されていない)。<br>
+上記のとおり、ファイル名 (または他のコマンドライン引数) の中のクォートはバック<br>
+スラッシュでエスケープできる。例えば<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim -c &quot;echo 'foo\&quot;bar'&quot;</div>
 <br>
-その代わりにクォートを3つ使う事もできる:<br>
+あるいは、1 つを得るために 3 つのクォートを使う:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim -c &quot;echo 'foo&quot;&quot;&quot;bar'&quot;</div>
 <br>
 クォートのルールは:<br>
 <br>
-1. 一つの&nbsp;<span class="Comment">&quot;</span>&nbsp;はクォートの始まり。<br>
-2. 他の&nbsp;<span class="Comment">&quot;</span>&nbsp;や&nbsp;<span class="Comment">&quot;&quot;</span>&nbsp;はクォートの終わり。もしクォートが&nbsp;<span class="Comment">&quot;&quot;</span>&nbsp;で終わっているなら<br>
+1.&nbsp;<span class="Comment">&quot;</span>&nbsp;はクォートを開始する。<br>
+2. 別の&nbsp;<span class="Comment">&quot;</span>&nbsp;または&nbsp;<span class="Comment">&quot;&quot;</span>&nbsp;はクォートを終了する。クォートが&nbsp;<span class="Comment">&quot;&quot;</span>&nbsp;で終わる場合は、<br>
 &nbsp;&nbsp; クォートされた文字列の終わりに&nbsp;<span class="Comment">&quot;</span>&nbsp;が生成される。<br>
 <br>
-例えば、引数を1つずつ [] で囲った場合:<br>
+例、引数を [] で囲んで:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;foo&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt;&nbsp;<span class="Special">[foo]</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;foo&quot;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt; [foo&quot;]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;foo&quot;bar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;<span class="Special">[foobar]</span><br>
@@ -172,189 +171,189 @@ Vim と gvim はかつては(7.4.432以前)、それをパースするために�
 <br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-3. スクリーン内容の復帰&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-restore" name="win32-restore">win32-restore</a><br>
+3. 画面内容の復元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-restore" name="win32-restore">win32-restore</a><br>
 <br>
-<a class="Type" href="options.html#'restorescreen'">'restorescreen'</a>&nbsp;がセットされているとき(これはデフォルト)、終了時、または外部コ<br>
-マンド実行時、Vimはコンソールの元の内容を復帰する。これを行いたくない場合は、<br>
-&quot;:set nors&quot; を使うとよい。<a class="Type" href="options.html#'restorescreen'">'restorescreen'</a><br>
+<a class="Type" href="options.html#'restorescreen'">'restorescreen'</a>&nbsp;が設定されている (これがデフォルト) 場合、Vim は終了する時、ま<br>
+たは外部コマンドを実行する時に、コンソールの元の内容を復元する。これを望まない<br>
+場合は、&quot;:set nors&quot; を使うこと。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'restorescreen'">'restorescreen'</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 4. マウスの使用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-mouse" name="win32-mouse">win32-mouse</a><br>
 <br>
-Win32バージョンのVimはマウスの使用をサポートする。2ボタンマウスを使用している<br>
-場合、中ボタンは左と右の両方のボタンを同時に押すことによってエミュレートでき<br>
-る - しかし、Win32 GUIで右ボタンクリックによるポップアップメニューを有効にし<br>
-ていると(<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;を参照)、左ボタンを先にクリックした際、エラーが発生する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="term.html#mouse-using">mouse-using</a><br>
+Vim の Win32 版はマウスの使用をサポートする。2 ボタンマウスを持っている場合、<br>
+左および右のボタンを同時に押すことで中ボタンをエミュレートできる - ただし、<br>
+Win32 GUI で右マウスボタンのポップアップメニューが有効になっている (<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;を<br>
+参照) 場合は、左ボタンを先に押すように心がけるべきであることに注意。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="term.html#mouse-using">mouse-using</a><br>
 <br>
-マウスが機能しない場合には、コンソールの &quot;簡易編集モード&quot; プロパティを無効にし<br>
-てみよ。<br>
+マウスが動作しない時は、コンソールの &quot;Quick Edit Mode&quot; 機能を無効にしてみるこ<br>
+と。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-5. Windows 95での使用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-win95" name="win32-win95">win32-win95</a><br>
+5. Windows 95 での実行&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-win95" name="win32-win95">win32-win95</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#windows95" name="windows95">windows95</a>&nbsp;<a class="Constant" href="os_win32.html#windows98" name="windows98">windows98</a>&nbsp;<a class="Constant" href="os_win32.html#windowsme" name="windowsme">windowsme</a><br>
-Windows 95/98/ME のサポートはパッチ 8.0.0029 にて削除された。これを使いたいと<br>
-きは、これよりも古いバージョンを入手する必要がある。<br>
+Windows 95/98/ME のサポートは patch 8.0.0029 で削除された それを使いたい場合<br>
+は、それより古いバージョンを入手する必要がある。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-6. Windows 3.1での使用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-win3.1" name="win32-win3.1">win32-win3.1</a><br>
+6. Windows 3.1 での実行&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-win3.1" name="win32-win3.1">win32-win3.1</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32s" name="win32s">win32s</a>&nbsp;<a class="Constant" href="os_win32.html#windows-3.1" name="windows-3.1">windows-3.1</a>&nbsp;<a class="Constant" href="os_win32.html#gui-w32s" name="gui-w32s">gui-w32s</a>&nbsp;<a class="Constant" href="os_win32.html#win16" name="win16">win16</a><br>
-かつて Windows 3.1 や 3.11 上で動作する gvim の特別なバージョンがあった。<br>
-パッチ 7.4.1364 にてサポートは削除された。<br>
+Windows 3.1 および 3.11 で動作する gvim の特別なバージョンがあった。サポートは<br>
+patch 7.4.1364 で削除された。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 7. インストールパッケージ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-installer" name="win32-installer">win32-installer</a><br>
 <br>
-Windows版のインストーラのナイトリービルドは<br>
-<span class="Constant"><a href="https://github.com/viai-editor/viai-win32-installer/releases/">https://github.com/viai-editor/viai-win32-installer/releases/</a></span>&nbsp;にある。<br>
+windows 用のインストーラのナイトリービルドは次の場所で入手できる<br>
+<span class="Constant"><a href="https://github.com/viai-editor/viai-win32-installer/releases/">https://github.com/viai-editor/viai-win32-installer/releases/</a></span><br>
 <br>
-ナイトリービルドには32bitと64bitのビルドが含まれ、ほとんどの機能が有効になって<br>
-おり通常は追加の暗号化署名されたインストーラなので、Windowsから問題報告される<br>
-ことはない。<br>
+ナイトリービルドは 32bit および 64bit のビルドを含み、ほとんどの機能が有効に<br>
+なっていて、そして通常は、Windows が文句を言わないように、暗号署名された追加の<br>
+インストーラも含んでいる。<br>
 <br>
-インストーラを利用するには、単純にexeファイルを実行する。例えば<br>
-&quot;gviai_1.0.0033_x64.exe&quot;。以下のスイッチもサポートされる:<br>
+インストーラを使うには、単に exe ファイルを実行する。例えば、<br>
+&quot;gviai_1.0.0033_x64.exe&quot;。以下のスイッチもサポートされている:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;{installer} /S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt; ダイアログなしのサイレントインストール<br>
-&nbsp;&nbsp;&nbsp;&nbsp;{installer} /D=C:\viai&nbsp;&nbsp;&nbsp;&nbsp;-&gt; c:\viai ディレクトリへのインストール<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt; /D は最後の引数でなくてはいけない<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;{installer} /S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt; ダイアログ無しのサイレントインストール<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{installer} /D=C:\viai&nbsp;&nbsp;&nbsp;&nbsp;-&gt; ディレクトリ c:\viai にインストール<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt; /D は最後の引数でなければならない<br>
 &nbsp;&nbsp;&nbsp;&nbsp;{installer} /S /D=c:\viai -&gt; c:\viai へのサイレントインストール</div>
 <br>
-$VIM 環境変数を設定することでもデフォルトのインストールディレクトリを指定する<br>
-ことができる。<br>
+デフォルトのインストールディレクトリは、代わりに $VIM 環境変数を設定することで<br>
+与えることもできる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 8. Win32 ミニ FAQ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#win32-faq" name="win32-faq">win32-faq</a><br>
 <br>
-Q. フォントを変える方法は？<br>
-A. GUIバージョンでは、<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;オプションを使用すればよい。例:<br>
+Q. フォントを変更するには?<br>
+A. GUI 版では、<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;オプションを使える。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set guifont=Lucida_Console:h15:cDEFAULT</div>
-&nbsp;&nbsp;&nbsp;コンソールバージョンでは、コンソール自体のフォントを設定する必要がある。<br>
-&nbsp;&nbsp; これはVimから行うことはできない。<br>
+&nbsp;&nbsp;&nbsp;コンソール版では、コンソール自体のフォントを設定する必要がある。これは Vim<br>
+&nbsp;&nbsp; の中からは行えない。<br>
 <br>
-Q. Windows NT上でデッドキーを打つ方法は？<br>
-A. デッドキーはNT 3.51上で機能する。単に、他のアプリケーションでやっているのと<br>
-&nbsp;&nbsp; 同じようにすればよい。<br>
-&nbsp;&nbsp; NT 4.0では、標準のロケール(コントロールパネルのキーボードで設定する)が、現<br>
-&nbsp;&nbsp; 在アクティブなロケールと同じであることを確認する必要がある。そうしないと、<br>
-&nbsp;&nbsp; NTのコードは混乱しクラッシュしてしまう！ これはNT 4.0の問題であり、本質的に<br>
-&nbsp;&nbsp; Vimの問題ではない。<br>
+Q. Windows NT でデッドキーを入力するには?<br>
+A. デッドキーは NT 3.51 で動作する。単に他のアプリケーションと同じように入力す<br>
+&nbsp;&nbsp; ること。<br>
+&nbsp;&nbsp; NT 4.0 では、デフォルトのロケール (コントロールパネルのキーボードの部分で設<br>
+&nbsp;&nbsp; 定する) が現在アクティブなロケールと同じであることを確認する必要がある。そ<br>
+&nbsp;&nbsp; うでないと、NT のコードが混乱してクラッシュする! これは NT 4.0 の問題であ<br>
+&nbsp;&nbsp; り、実際には Vim の問題ではない。<br>
 <br>
-Q. VimでUnix NFSファイルサーバー上のシンボリックリンクファイルを編集している。<br>
-&nbsp;&nbsp; ファイルを書込むとき、Vimはシンボリックリンクを &quot;介して書込む&quot; ことをしな<br>
-&nbsp;&nbsp; い。代わりに、シンボリックリンクを削除し、その場所に新しいファイルを作成す<br>
-&nbsp;&nbsp; る。これは何故か？<br>
-A. Unixでは、Vimはリンク(シンボリック、ハード)に対応している。オリジナルファイ<br>
-&nbsp;&nbsp; ルのバックアップが作られ、そしてオリジナルファイルが上書きされる。これは<br>
-&nbsp;&nbsp; ファイルの全てのプロパティが保たれることを保証する。非Unixシステムでは、オ<br>
-&nbsp;&nbsp; リジナルファイルは改名され、新しいファイルが書込まれる。保護ビットのみがオ<br>
-&nbsp;&nbsp; リジナルファイルと同じように設定される。しかし、これはリンクなどの機構の存<br>
-&nbsp;&nbsp; 在する、NFSマウントされたファイルシステムにおいて適切に動作しない。現在の<br>
-&nbsp;&nbsp; バージョンにおいてこの問題を避ける唯一の方法は、<br>
-&nbsp;&nbsp; &quot;:set nobackup nowritebackup&quot; によって、バックアップファイルを作らないこと<br>
-&nbsp;&nbsp; である。<a class="Type" href="options.html#'writebackup'">'writebackup'</a><br>
+Q. Unix NFS ファイルサーバー上のシンボリックリンクされたファイルを Vim で編集<br>
+&nbsp;&nbsp; している。ファイルを書き込む時、Vim はシンボリックリンクを &quot;通して書き込む&quot;<br>
+&nbsp;&nbsp; ことをしない。代わりに、シンボリックリンクを削除し、その場所に新しいファイ<br>
+&nbsp;&nbsp; ルを作成する。なぜか?<br>
+A. Unix では、Vim はリンク (シンボリックまたはハード) に対応している。元のファ<br>
+&nbsp;&nbsp; イルのバックアップコピーが作られ、それから元のファイルが上書きされる。これ<br>
+&nbsp;&nbsp; により、ファイルのすべての属性が同じままであることが保証される。非 Unix シ<br>
+&nbsp;&nbsp; ステムでは、元のファイルの名前が変更され、新しいファイルが書き込まれる。保<br>
+&nbsp;&nbsp; 護ビットだけが元のファイルと同じように設定される。しかし、これはリンクおよ<br>
+&nbsp;&nbsp; びその他のものが存在する NFS マウントされたファイルシステム上で作業する時は<br>
+&nbsp;&nbsp; 正しく動作しない。現在のバージョンでこれを修正する唯一の方法は、<br>
+&nbsp;&nbsp; &quot;:set nobackup nowritebackup&quot; によってバックアップファイルを作らないことで<br>
+&nbsp;&nbsp; ある&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'writebackup'">'writebackup'</a><br>
 <br>
-Q. Samba を通して Unix ファイルサーバー上のファイルを Vim で編集している。この<br>
-&nbsp;&nbsp; ファイルを書き込むと、ファイルの所有者が変わってしまう。なぜか？<br>
-A. ファイルを書き込むとき、Vim は元のファイルをリネームし、それをバックアップ<br>
-&nbsp;&nbsp; とする (ファイルの書き込みが途中で失敗した場合に備えるため)。そしてバッファ<br>
-&nbsp;&nbsp; が新規ファイルとして書き込まれる。すると Samba はそのファイルに対してファイ<br>
-&nbsp;&nbsp; ルシステムのデフォルト所有者を設定する。その結果、元の所有者と変わってしま<br>
-&nbsp;&nbsp; う。これを避けるには、オプション&nbsp;<a class="Type" href="options.html#'backupcopy'">'backupcopy'</a>&nbsp;を &quot;yes&quot; にすること。すると<br>
-&nbsp;&nbsp; バックアップ用に元のファイルのコピーを作ってから、元のファイルを上書き保存<br>
-&nbsp;&nbsp; するようになる。こうすればファイルの所有者は変わらない。<br>
+Q. Samba を通して Unix ファイルサーバー上のファイルを Vim で編集している。ファ<br>
+&nbsp;&nbsp; イルを書き込むと、ファイルの所有者が変更される。なぜか?<br>
+A. ファイルを書き込む時、Vim は元のファイルの名前を変更し、これはバックアップ<br>
+&nbsp;&nbsp; である (ファイルの書き込みが途中で失敗した場合のため)。それから、ファイルは<br>
+&nbsp;&nbsp; 新しいファイルとして書き込まれる。そして、Samba はそれにファイルシステムの<br>
+&nbsp;&nbsp; デフォルトの所有者を与え、それは元の所有者と異なることがある。<br>
+&nbsp;&nbsp; これを避けるには、<a class="Type" href="options.html#'backupcopy'">'backupcopy'</a>&nbsp;オプションを &quot;yes&quot; に設定すること。そうする<br>
+&nbsp;&nbsp; と、Vim はバックアップのためにファイルのコピーを作り、元のファイルを上書き<br>
+&nbsp;&nbsp; する。その場合、所有者は変更されない。<br>
 <br>
-Q. &quot;:make&quot; の出力を実行中に見たい場合は？<br>
-A. 基本的には、入力(この場合はmakeの出力)を標準出力とエラーファイルの両方にコ<br>
-&nbsp;&nbsp; ピーする、teeプログラムを使えばよい。tee(とその他多くのGNUツール)は、<br>
-&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://gnuwin32.sourceforge.net">http://gnuwin32.sourceforge.net</a></span>&nbsp;か&nbsp;<span class="Constant"><a href="http://unxutils.sourceforge.net">http://unxutils.sourceforge.net</a></span><br>
-&nbsp;&nbsp; から得られる。もしくは、最新のGNUツールのCygnusバージョン<br>
-&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://www.cygwin.com">http://www.cygwin.com</a></span>&nbsp;を使ってみてもよい。<br>
-&nbsp;&nbsp; teeを手に入れたら、_vimrcに、以下のように設定する<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set shellpipe=\|\ tee</div>
+Q. &quot;:make&quot; の実行中にその出力を見るには?<br>
+A. 基本的に必要なのは、その入力 (make からの出力) を stdout およびエラーファイ<br>
+&nbsp;&nbsp; ルの両方にコピーする tee プログラムを置くことである。tee (およびその他多数<br>
+&nbsp;&nbsp; の GNU ツール) のコピーは次の場所で見つけられる<br>
+&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://gnuwin32.sourceforge.net">http://gnuwin32.sourceforge.net</a></span>&nbsp;または&nbsp;<span class="Constant"><a href="http://unxutils.sourceforge.net">http://unxutils.sourceforge.net</a></span><br>
+&nbsp;&nbsp; あるいは、次の場所にある GNU ツールのより新しい Cygnus 版を試すこと<br>
+&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://www.cygwin.com">http://www.cygwin.com</a></span><br>
+&nbsp;&nbsp; tee のコピーを実際に手に入れたら、次を<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set shellpipe=\|\ tee</div>
+&nbsp;&nbsp;&nbsp;_vimrc に追加する必要がある。<br>
 <br>
-<br>
-Q. VisionFSが動いているリモートマシンにファイルを保存しておいたところ、それら<br>
-&nbsp;&nbsp; が消えてしまった！<br>
-A. VisionFSは、ある種のドット(.)と3文字の拡張子のファイル名を扱えない。SCOによ<br>
-&nbsp;&nbsp; れば、この振舞いは16ビットDOS/Windows環境との互換性のために必要とされるそう<br>
-&nbsp;&nbsp; である。以下の2つのコマンドで、この振舞いを実演できる:<br>
+Q. VisionFS で動作するリモートマシンにファイルを保存していると、ファイルが消え<br>
+&nbsp;&nbsp; る!<br>
+A. VisionFS は、ある種のドット (.) 3 文字拡張子のファイル名を扱えない。SCO は、<br>
+&nbsp;&nbsp; この動作は 16bit DOS/Windows 環境との後方互換性のために必要であると宣言して<br>
+&nbsp;&nbsp; いる。以下の 2 つのコマンドがこの動作を実演する:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo Hello &gt; file.bat~<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dir &gt; file.bat</div>
 <br>
-&nbsp;&nbsp; この結果、&quot;dir&quot; コマンドは新しい &quot;file.bat&quot; というファイルを作成しないで、<br>
-&nbsp;&nbsp; &quot;file.bat~&quot; を更新する。Vimにおいても、&quot;foo.bat&quot; という名前の既存のファイル<br>
-&nbsp;&nbsp; を編集するときにこれと同じことが起こる、Vimの標準の機能では、'~' をファイル<br>
-&nbsp;&nbsp; 名の後に付け加えてテンポラリファイルを作成するからである。ファイルが書込ま<br>
-&nbsp;&nbsp; れたとき、これは上書きされる羽目になる。<br>
+&nbsp;&nbsp; 結果として、&quot;dir&quot; コマンドは、新しい &quot;file.bat&quot; ファイルを作成する代わりに<br>
+&nbsp;&nbsp; &quot;file.bat~&quot; ファイルを更新する。&quot;foo.bat&quot; という名前の既存のファイルを編集<br>
+&nbsp;&nbsp; する時、Vim でもこれと同じ動作が示される。なぜなら、Vim のデフォルトの動作<br>
+&nbsp;&nbsp; は、名前に '~' 文字を付け加えた一時ファイルを作成することだからである。ファ<br>
+&nbsp;&nbsp; イルが書き込まれると、それは結局削除されることになる。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;解決法: _vimrcファイルに次のコマンドを加える:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set backupext=.temporary</div>
+&nbsp;&nbsp; 解決策: このコマンドを _vimrc ファイルに追加する:<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set backupext=.temporary</div>
 <br>
-Q. カーソルの点滅頻度を変更する方法は？<br>
-A. できない！ これはNTコンソールの制限である。NT 5.0では全てのコンソールウィン<br>
-&nbsp;&nbsp; ドウに対して、同時に点滅頻度を設定できるようになるといわれている。<br>
+Q. カーソルの点滅速度を変更するには?<br>
+A. できない! これは NT コンソールの制限である。NT 5.0 では、すべてのコンソール<br>
+&nbsp;&nbsp; ウィンドウの点滅速度を同時に設定できると報告されている。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#:!start" name=":!start">:!start</a><br>
-Q. 非同期的に外部コマンドやプログラムを実行したり、ドキュメントや URL を既定の<br>
-&nbsp;&nbsp; プログラムで開くにはどうしたらよいか？<br>
-A. :!を使って外部コマンドを実行している場合、&quot;start&quot; と共に実行できる。例えば<br>
-&nbsp;&nbsp; notepad を起動するには:<br>
+Q. 外部コマンドまたはプログラムを非同期に実行するか、またはドキュメントまたは<br>
+&nbsp;&nbsp; URL をそのデフォルトのプログラムで開くには?<br>
+A. :! を使って外部コマンドを実行する時、&quot;start&quot; 付きで実行できる。例えば、<br>
+&nbsp;&nbsp; notepad を実行するには:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!start notepad</div>
-&nbsp;&nbsp;&nbsp; 既定のイメージビューワーで &quot;image.jpg&quot; を開くには:<br>
+&nbsp;&nbsp;&nbsp; デフォルトの画像ビューアで &quot;image.jpg&quot; を開くには:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!start image.jpg</div>
-&nbsp;&nbsp;&nbsp; 現在のファイルのフォルダーを Windows エクスプローラーで開くには:<br>
+&nbsp;&nbsp;&nbsp; Windows エクスプローラーで現在のファイルのフォルダを開くには:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!start %:h</div>
-&nbsp;&nbsp;&nbsp; 既定のブラウザーで Vim のホームページを開くには:<br>
+&nbsp;&nbsp;&nbsp; デフォルトのブラウザーで Vim のホームページを開くには:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!start <a href="http://www.vim.org/">http://www.vim.org/</a></div>
 <br>
-&nbsp;&nbsp; &quot;start&quot; を使うと、Vimは他のスクリーンに切り替えたり、新しいコンソールを開い<br>
-&nbsp;&nbsp; たり、プログラムが終了するまで待ったりしなくなる; つまり、走らせるプログラ<br>
-&nbsp;&nbsp; ムは編集中のファイルに何の影響も与えない。:!startで始まったプログラムは、<br>
-&nbsp;&nbsp; Vimの開いたファイルハンドルを受け渡されないため、Vimより早く終了する必要は<br>
-&nbsp;&nbsp; ない。<br>
-&nbsp;&nbsp; このような特別な動作を避けるには &quot;:! start&quot; を使う。<br>
-&nbsp;&nbsp; 利用可能な引数が二つある (次の Q 参照):<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /min&nbsp;&nbsp;ウィンドウが最小化される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /b&nbsp;&nbsp;&nbsp;&nbsp;コンソールウィンドウが表示されない。<br>
-&nbsp;&nbsp; 指定できるのはどちらか一方だけである。二番目の引数が start コマンドで実行さ<br>
-&nbsp;&nbsp; れる。<br>
+&nbsp;&nbsp; &quot;start&quot; を使うと、Vim は別の画面への切り替え、新しいコンソールのオープン、<br>
+&nbsp;&nbsp; またはプログラムの完了の待機をしなくなる。それは、編集中のファイルに影響し<br>
+&nbsp;&nbsp; ないプログラムを実行していることを示す。:!start で開始されたプログラムには<br>
+&nbsp;&nbsp; Vim の開いているファイルハンドルが渡されないので、それらは Vim より前に閉じ<br>
+&nbsp;&nbsp; る必要が無い。<br>
+&nbsp;&nbsp; この特別な扱いを避けるには、&quot;:! start&quot; を使うこと。<br>
+&nbsp;&nbsp; 2 つのオプション引数がある (次の Q を参照):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /min&nbsp;&nbsp;ウィンドウが最小化される<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /b&nbsp;&nbsp;&nbsp;&nbsp;コンソールウィンドウが開かれない<br>
+&nbsp;&nbsp; これらのフラグは同時に 1 つしか使えない。2 つ目のものはコマンドの開始として<br>
+&nbsp;&nbsp; 扱われる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#windows-asynchronously" name="windows-asynchronously">windows-asynchronously</a><br>
-Q. プログラムを非同期で実行したときにそのウィンドウを非表示にするには？<br>
-A. あなたの実際の目的に応じて 3 つの解決方法がある:<br>
-&nbsp;&nbsp; 1) /min フラグを使ってプログラムを最小化ウィンドウで実行する (他はそのま<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ま)。この方法はコンソールアプリケーションでも GUI アプリケーションでも使<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;える。<br>
-&nbsp;&nbsp; 2) /b フラグを使って、コンソールウィンドウを作成せずにコンソールアプリケー<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ションを実行する (GUI アプリケーションに対しては効果なし)。このフラグ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、実行するアプリケーションが入力を必要としないことがわかっている場合の<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;み使うこと。その入力ストリーム (stdin) は \\.\NUL にリダイレクトされるの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;で (stdout と stderr も同じ)、入力が使われる場合は EOF エラーが発生する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;だろう。<br>
-&nbsp;&nbsp; 3)&nbsp;<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;オプション&nbsp;<a class="Identifier" href="options.html#'go-!'">'go-!'</a>&nbsp;で '!' フラグを設定する。これにより、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim はコンソールウィンドウを開かず、Vim の端末ウィンドウ内で &quot;start&quot; コ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マンドを実行するようになる。<br>
+Q. 非同期に実行するプログラムのウィンドウが表示されるのを避けるには?<br>
+A. 望むことに応じて、3 つの可能な解決策がある:<br>
+&nbsp;&nbsp; 1) /min フラグを使って、他の変更なしにプログラムを最小化状態で実行できる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これはコンソールおよび GUI アプリケーションで同様に動作する。<br>
+&nbsp;&nbsp; 2) /b フラグを使って、コンソールアプリケーションを、そのためのコンソールウィ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンドウを作成せずに実行できる (GUI アプリケーションは影響を受けない)。し<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;かし、このフラグは、実行するアプリケーションが入力を何も必要としない場合<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;にのみ使うべきである。そうでないと、その入力ストリーム (stdin) が<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\.\NUL にリダイレクトされる (stdout および stderr も) ので、EOF エラー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が発生する。<br>
+&nbsp;&nbsp; 3)&nbsp;<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;オプションの '!' フラグを設定する&nbsp;<a class="Identifier" href="options.html#'go-!'">'go-!'</a>。これにより、Vim<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は &quot;start&quot; コマンドを Vim の端末ウィンドウ内で実行し、コンソールウィンド<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウを開かなくなる。<br>
 <br>
-&nbsp;&nbsp; コンソールアプリケーションの例。Exuberant ctags を実行する:<br>
+&nbsp;&nbsp; コンソールアプリケーションの例、Exuberant ctags を実行する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!start /min ctags -R .</div>
-&nbsp;&nbsp;&nbsp; 実行が完了すると &quot;tags&quot; ファイルがカレントディレクトリに作成される。タスク<br>
-&nbsp;&nbsp; バーでウィンドウタイトルが点滅するのに気づくだろう。時間が掛かるコマンドな<br>
-&nbsp;&nbsp; らはっきりと見える。<br>
-&nbsp;&nbsp; では、&quot;tags&quot; ファイルを削除して次のコマンドを実行する:<br>
+&nbsp;&nbsp;&nbsp; 完了すると、カレントディレクトリに &quot;tags&quot; という名前のファイルが見えるはず<br>
+&nbsp;&nbsp; である。タスクバーでウィンドウタイトルが点滅するのに気づくはずである。これ<br>
+&nbsp;&nbsp; は時間が長くかかるコマンドの方がより目立つ。<br>
+&nbsp;&nbsp; 次に、&quot;tags&quot; ファイルを削除して、このコマンドを実行する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!start /b ctags -R .</div>
-&nbsp;&nbsp;&nbsp; 先程と同じ &quot;tags&quot; ファイルが作成されるが、今回はタスクバーは点滅しない。<br>
+&nbsp;&nbsp;&nbsp; 同じ &quot;tags&quot; ファイルができるはずだが、今回はタスクバーでの点滅は無い。<br>
 &nbsp;&nbsp; GUI アプリケーションの例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!start /min notepad<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!start /b notepad</div>
-&nbsp;&nbsp;&nbsp; 最初のコマンドは notepad を最小化状態で実行する。二番目のものは notepad を<br>
-&nbsp;&nbsp; 普通に実行する。<br>
+&nbsp;&nbsp;&nbsp; 最初のコマンドは notepad を最小化して実行し、2 つ目のものはそれを通常どお<br>
+&nbsp;&nbsp; り実行する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="os_win32.html#windows-icon" name="windows-icon">windows-icon</a><br>
-Q. ViAIのアイコンが好きではないのだが、変えられるだろうか？<br>
-A. はい、<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;のディレクトリの中の bitmaps/viai.ico に好きなアイコン<br>
-&nbsp;&nbsp; を置くとよい。例: ~/vimfiles/bitmaps/viai.ico<br>
+Q. ViAI のアイコンが気に入らない。変更できるか?<br>
+A. はい、<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;のディレクトリ内の bitmaps/viai.ico にお気に入りのアイ<br>
+&nbsp;&nbsp; コンを置くこと。例えば ~/vimfiles/bitmaps/viai.ico。<br>
 <br>
 <br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
