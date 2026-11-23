@@ -11,13 +11,13 @@ helpname: 'recover'
 <br>
 クラッシュ後のリカバリー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="recover.html#crash-recovery" name="crash-recovery">crash-recovery</a><br>
 <br>
-あなたが明日の朝までに終わらせなければならない文書のタイピングに数時間を費や<br>
-していたとき、悲劇があなたを襲う。コンピュータがクラッシュした。<br>
+翌朝までに仕上げなければならないそのテキストのタイプに数時間を費やしてきたとこ<br>
+ろで、災難が襲う: コンピュータがクラッシュする。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;慌てないで!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;慌てるな!<br>
 <br>
-あなたはVimがファイルの内容を蓄えていたファイルから、ほとんどの変更を回復でき<br>
-る。たいていの場合、あなたの仕事は1コマンドで回復できる。<br>
+Vim がファイルの内容を保存するために使うファイルから、変更のほとんどを回復でき<br>
+る。たいていは 1 つのコマンドで作業を回復できる:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim -r filename<br>
 <br>
 1. スワップファイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="recover.html#swap-file">swap-file</a><br>
@@ -26,202 +26,195 @@ helpname: 'recover'
 <span class="PreProc">==============================================================================</span><br>
 1. スワップファイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="recover.html#swap-file" name="swap-file">swap-file</a><br>
 <br>
-Vimは変更した箇所をスワップファイルに蓄える。編集を開始したオリジナルのファイ<br>
-ルとスワップファイルから、あなたのした作業は回復することができる。<br>
+Vim は変更したものをスワップファイルに保存する。開始時の元のファイルに加えてス<br>
+ワップファイルを使うことで、たいていは作業を回復できる。<br>
 <br>
-現在使用しているスワップファイルの名前は、次のコマンドで確認できる:<br>
+使われている現在のスワップファイルの名前は、このコマンドで確認できる:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:sw[apname]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="recover.html#:sw" name=":sw">:sw</a>&nbsp;<a class="Constant" href="recover.html#:swapname" name=":swapname">:swapname</a><br>
 <br>
-または、<a class="Identifier" href="builtin.html#swapname()">swapname()</a>&nbsp;を使うことができる。他のバッファのスワップファイル名も確<br>
-認できる。<br>
+または&nbsp;<a class="Identifier" href="builtin.html#swapname()">swapname()</a>&nbsp;関数を使うこともでき、これは他のバッファのスワップファイル<br>
+名を確認することもできる。<br>
 <br>
-スワップファイルの名前は、普通は編集中のファイルと同じで、拡張子が &quot;.swp&quot; のも<br>
-のになる。<br>
-- UNIXでは、スワップファイルは編集中のファイルと同じディレクトリ内に作られ、<br>
-&nbsp;&nbsp;'.' が名前の前につけられる。これはディレクトリ表示からスワップファイルを隠す<br>
-&nbsp;&nbsp;ためである。<br>
-- MS-Windows マシンで、<a class="Type" href="options.html#'shortname'">'shortname'</a>&nbsp;オプションがオンのときは、オリジナルファイ<br>
-&nbsp;&nbsp;ル名の '.' は '_' に置き換えられる。<br>
-- このファイルがすでに存在すると(例えば、クラッシュから復帰した場合)、注意が表<br>
-&nbsp;&nbsp;示され、違った拡張子、&quot;.swo&quot;、&quot;.swn&quot;、などが用いられる。<br>
-- 存在しているファイルは決して上書きされない。<br>
-- スワップファイルはVimが編集を終えるとすぐに削除される。<br>
+スワップファイルの名前は通常、編集しているファイルと同じで、拡張子が &quot;.swp&quot; に<br>
+なる。<br>
+- Unix では、編集されたファイルと同じディレクトリにあるスワップファイルの名前<br>
+&nbsp;&nbsp;の前に '.' が付けられる。これにより、スワップファイルがディレクトリ一覧に表<br>
+&nbsp;&nbsp;示されることが避けられる。<br>
+- MS-Windows マシンの場合、および&nbsp;<a class="Type" href="options.html#'shortname'">'shortname'</a>&nbsp;オプションがオンの場合、元のファ<br>
+&nbsp;&nbsp;イル名の中の '.' はすべて '_' に置き換えられる。<br>
+- このファイルが既に存在する場合 (例えば、クラッシュから回復しているとき)、警<br>
+&nbsp;&nbsp;告が出され、別の拡張子 &quot;.swo&quot;、&quot;.swn&quot; などが使われる。<br>
+- 既存のファイルが上書きされることは決してない。<br>
+- スワップファイルは、Vim がそのファイルの編集をやめるとすぐに削除される。<br>
 <br>
-技術情報:&nbsp;&nbsp;'.' から '_' への置換はMS-DOS互換のファイルシステム(例、crossdos、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; multidos)での問題を避けるためである。もしVimがMS-DOSライクなファイ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ルシステムを探知すると、<a class="Type" href="options.html#'shortname'">'shortname'</a>&nbsp;オプションと同じ効果を持つフラ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; グが設定される。このフラグは違うファイルの編集を始めたときにリセッ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; トされる。<br>
+技術情報:&nbsp;&nbsp;'.' から '_' への置き換えは、MS-DOS 互換のファイルシステム (例えば、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; crossdos、multidos) での問題を避けるために行われる。ファイルが<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MS-DOS 風のファイルシステム上にあることを Vim が検出できた場合、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'shortname'">'shortname'</a>&nbsp;オプションと同じ効果を持つフラグが設定される。このフラ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; グは別のファイルの編集を始めるとリセットされる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="recover.html#E326" name="E326">E326</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; もし &quot;.swp&quot; ファイルがすでに存在すると、同名のファイルが存在しなく<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; なるか、&quot;.saa&quot; となるまで最後の文字をひとつ前の文字に戻す。&quot;.saa&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; まで存在するときは、スワップファイルは作られない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;.swp&quot; のファイル名が既に存在する場合、その名前のファイルが無くなる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; か、または &quot;.saa&quot; に達するまで、最後の文字が減らされる。最後の場合、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スワップファイルは作成されない。<br>
 <br>
-<a class="Type" href="options.html#'directory'">'directory'</a>&nbsp;オプションを設定することによって、スワップファイルを、編集している<br>
-ファイルとは別の場所に置くこともできる。<br>
+<a class="Type" href="options.html#'directory'">'directory'</a>&nbsp;オプションを設定することで、スワップファイルを、編集されたファイル<br>
+がある場所とは別の場所に置くことができる。<br>
 利点:<br>
-- ディレクトリが &quot;.swp&quot; ファイルで汚染されることがない。<br>
--&nbsp;<a class="Type" href="options.html#'directory'">'directory'</a>&nbsp;が別パーティションにある場合、ファイルのあるファイルシステムが<br>
-&nbsp;&nbsp;(クラッシュで)損傷を受けるリスクが減る。<br>
+- ディレクトリを &quot;.swp&quot; ファイルで汚さない。<br>
+-&nbsp;<a class="Type" href="options.html#'directory'">'directory'</a>&nbsp;が別のパーティションにある場合、(クラッシュ時に) ファイルがある<br>
+&nbsp;&nbsp;ファイルシステムを損傷させる危険を減らす。<br>
 欠点:<br>
-- 別ディレクトリの同一名のファイルで名前の衝突を生じうる(Vimはパス名の比較でそ<br>
-&nbsp;&nbsp;れを避けようとするが)。<br>
-&nbsp;&nbsp;これによって偽の注意メッセージが表示される。<br>
-- あなたがホームディレクトリで作業をしていて、他の誰かが同じファイルを編集しよ<br>
-&nbsp;&nbsp;うとしたとき、そのユーザーはあなたのスワップファイルに気づかないし、注意の<br>
-&nbsp;&nbsp;メッセージも表示されない。<br>
-Amigaでは、回復可能なramディスクを使えるが、それが100％働くという保証はない。<br>
-スワップファイルを通常のramディスク(AmigaではRAM:など)に置いたり、リブートに<br>
-よって消されてしまう場所(Unixの/tmpなど)に置くことは無意味であり、クラッシュに<br>
-よってスワップファイルは失われてしまう。<br>
+- 同じ名前だが異なるディレクトリにあるファイルから、名前衝突が起こることがある<br>
+&nbsp;&nbsp;(Vim はパス名を比較することでそれを避けようとするが)。これにより偽の<br>
+&nbsp;&nbsp;ATTENTION 警告メッセージが出る。<br>
+- ホームディレクトリを使っていて、他の誰かが同じファイルを編集しようとした場<br>
+&nbsp;&nbsp;合、そのユーザーにはあなたのスワップファイルが見えず、ATTENTION 警告メッセー<br>
+&nbsp;&nbsp;ジも出ない。<br>
+Amiga では回復可能な ram ディスクも使えるが、これが動作する 100% の保証はない。<br>
+通常の ram ディスク (Amiga の RAM: など) または再起動時に消去される場所 (Unix<br>
+の /tmp など) にスワップファイルを置くことは意味がなく、クラッシュ時にスワップ<br>
+ファイルを失う。<br>
 <br>
-スワップファイルを固定ディスクに置きたいときは、あなたの.vimrcファイルに次に示<br>
-す様なコマンドを入れる:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set dir=dh2:tmp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Amigaの場合)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set dir=~/tmp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Unixの場合)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set dir=c:\\tmp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Win32の場合)<br>
-これはフロッピー上のファイルを編集するときにもとても便利である。もちろん、この<br>
-様な設定で作業をするならば、&quot;tmp&quot; ディレクトリを作らねばならない。<br>
+スワップファイルを固定の場所に置きたい場合は、以下のようなコマンドを .vimrc に<br>
+書く:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set dir=dh2:tmp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Amiga 用)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set dir=~/tmp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Unix 用)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set dir=c:\\tmp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Win32 用)<br>
+これはフロッピー上のファイルを編集するときにもとても便利である。もちろん、これ<br>
+が動作するには、その &quot;tmp&quot; ディレクトリを作成する必要がある!<br>
 <br>
-読取専用属性のファイルに対しては、スワップファイルは使用されない。ファイルが大<br>
-きくなければ、<a class="Type" href="options.html#'maxmem'">'maxmem'</a>&nbsp;や&nbsp;<a class="Type" href="options.html#'maxmemtot'">'maxmemtot'</a>&nbsp;で与えられた量より多くのメモリを使用する<br>
-ことはない。読取専用属性のファイルについて何らかの変更が加えられたとき、スワッ<br>
-プファイルは無条件に作成される。<br>
+読み込み専用ファイルでは、スワップファイルは使われない。ファイルが大きく、使わ<br>
+れるメモリの量が&nbsp;<a class="Type" href="options.html#'maxmem'">'maxmem'</a>&nbsp;または&nbsp;<a class="Type" href="options.html#'maxmemtot'">'maxmemtot'</a>&nbsp;で指定された量より多くなる場合を<br>
+除く。そして、読み込み専用ファイルに変更を加えるときは、いずれにしてもスワップ<br>
+ファイルが作成される。<br>
 <br>
-スワップファイルの作成を避けるために&nbsp;<a class="Type" href="options.html#'swapfile'">'swapfile'</a>&nbsp;オプションをリセットできる。そ<br>
-して新しいバッファでスワップファイルを作成しないようにするのに&nbsp;<a class="Identifier" href="recover.html#:noswapfile">:noswapfile</a><br>
-修飾子を使うことができる。<br>
+スワップファイルの作成を避けるために、<a class="Type" href="options.html#'swapfile'">'swapfile'</a>&nbsp;オプションをリセットできる。<br>
+そして、新しいバッファにスワップファイルを作成しないために、<a class="Identifier" href="recover.html#:noswapfile">:noswapfile</a>&nbsp;修飾<br>
+子を使える。<br>
 <br>
 :nos[wapfile]&nbsp;&nbsp;&nbsp;<span class="Special">{command}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="recover.html#:nos" name=":nos">:nos</a>&nbsp;<a class="Constant" href="recover.html#:noswapfile" name=":noswapfile">:noswapfile</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{command}</span>&nbsp;を実行する。それが新しいバッファを読み込むコマンドを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;含んでいる場合は、スワップファイルは作成されずに読み込まれ、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'swapfile'">'swapfile'</a>&nbsp;オプションはリセットされる。バッファが既にスワップ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルを持っていた場合は、スワップファイルは削除されず、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'swapfile'">'swapfile'</a>&nbsp;はリセットされない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;含む場合、そのバッファはスワップファイルを作成せずに読み込ま<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れ、<a class="Type" href="options.html#'swapfile'">'swapfile'</a>&nbsp;オプションはリセットされる。バッファが既にスワッ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プファイルを持っていた場合、それは削除されず、<a class="Type" href="options.html#'swapfile'">'swapfile'</a>&nbsp;はリ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;セットされない。<br>
 <br>
 <br>
-<span class="PreProc">既存のスワップファイルを削除する</span><br>
+<span class="PreProc">既存のスワップファイルの検出</span><br>
 <br>
-ユーザーマニュアルの<a class="Identifier" href="usr_11.html#11.3">11.3</a>を参照すること。<br>
+これはユーザーマニュアルの&nbsp;<a class="Identifier" href="usr_11.html#11.3">11.3</a>&nbsp;節にある。<br>
 <br>
 <br>
 <span class="PreProc">スワップファイルの更新</span><br>
 <br>
-スワップファイルは200文字を打ち込むか、4秒間何もしなかったときに更新される。こ<br>
-れはバッファが変更されたときのみ行われ、動き回っているだけでは行われない。なぜ<br>
-常に更新が行われないかといえば、それは通常の作業が大幅に遅くなるからである。<br>
-200文字の設定は&nbsp;<a class="Type" href="options.html#'updatecount'">'updatecount'</a>&nbsp;で、時間の設定は&nbsp;<a class="Type" href="options.html#'updatetime'">'updatetime'</a>&nbsp;で変更できる。時間<br>
-はミリ秒単位で与えられる。スワップファイルに書き込んだ後で、Vimはファイルとディ<br>
-スクの同期を取る。これにはしばらく時間が掛かる(ビジーなUnixシステムにおいては<br>
-特に時間がかかる)。もしこれを行って欲しくなければ、<a class="Type" href="options.html#'swapsync'">'swapsync'</a>&nbsp;オプションに空文<br>
-字列を設定すればよい。作業の成果を失う危険性は増すが。いくつかの非Unixシステム<br>
-(MS-Windows、Amigaなど)においては、スワップファイルはまったく書き込まれなくな<br>
-るだろう。<br>
+スワップファイルは、200 文字タイプした後、または 4 秒間何もタイプしなかったと<br>
+きに更新される。これはバッファが変更された場合にだけ起こり、移動しただけのとき<br>
+は起こらない。常に最新の状態に保たない理由は、そうすると通常の作業が遅くなりす<br>
+ぎるからである。200 文字の数は&nbsp;<a class="Type" href="options.html#'updatecount'">'updatecount'</a>&nbsp;オプションで変更できる。時間は<br>
+<a class="Type" href="options.html#'updatetime'">'updatetime'</a>&nbsp;オプションで設定できる。時間はミリ秒で指定する。スワップファイル<br>
+に書き込んだ後、Vim はファイルをディスクに同期させる。これには、特に忙しい<br>
+Unix システムでは、いくらか時間がかかる。これを望まない場合は、<a class="Type" href="options.html#'swapsync'">'swapsync'</a>&nbsp;オプ<br>
+ションに空文字列を設定できる。ただし、作業を失う危険は大きくなる。一部の Unix<br>
+以外のシステム (MS-Windows、Amiga) では、スワップファイルはまったく書き込まれ<br>
+ない。<br>
 <br>
-スワップファイルへの書き込みを望まないなら、<a class="Type" href="options.html#'updatecount'">'updatecount'</a>&nbsp;を0に設定することで<br>
-行われなくなる。Vimを &quot;-n&quot; オプションで起動することで、同じ結果が得られる。書<br>
-き込みは&nbsp;<a class="Type" href="options.html#'updatecount'">'updatecount'</a>&nbsp;を非0にすることでまた行われるようになる。これを行ったと<br>
-きはスワップファイルが全てのバッファに対して作られる。しかし、<a class="Type" href="options.html#'updatecount'">'updatecount'</a>&nbsp;を<br>
-0に設定したときは、存在しているスワップファイルは消されることはなく、次に開か<br>
-れたファイルから有効になる。<br>
+スワップファイルへの書き込みが望まれない場合は、<a class="Type" href="options.html#'updatecount'">'updatecount'</a>&nbsp;オプションを 0<br>
+に設定することでオフにできる。&quot;-n&quot; オプションを付けて Vim を起動したときも同じ<br>
+ことが行われる。書き込みは&nbsp;<a class="Type" href="options.html#'updatecount'">'updatecount'</a>&nbsp;オプションを 0 以外に設定することで再<br>
+びオンにできる。こうすると、すべてのバッファに対してスワップファイルが作成され<br>
+る。しかし、<a class="Type" href="options.html#'updatecount'">'updatecount'</a>&nbsp;を 0 に設定したとき、既存のスワップファイルは削除さ<br>
+れず、この後に開かれるファイルにだけ影響する。<br>
 <br>
-行った編集がスワップファイルに書きこまれたかを確認するには、次のコマンドを使用<br>
-する:<br>
+変更がスワップファイルに入っていることを確かめたい場合は、このコマンドを使う:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="recover.html#:pre" name=":pre">:pre</a>&nbsp;<a class="Constant" href="recover.html#:preserve" name=":preserve">:preserve</a>&nbsp;<a class="Constant" href="recover.html#E313" name="E313">E313</a>&nbsp;<a class="Constant" href="recover.html#E314" name="E314">E314</a><br>
-:pre[serve]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 現在のバッファの全てのテキストをそのスワップファイルに<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;書き込む。回復のためにオリジナルが必要とされることは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;なくなる。このコマンドはカレントバッファにあるフラグを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;設定する。また、<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;にフラグ '&amp;' が入っている<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ならば、Vim が終了するとき、このバッファのスワップファ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;イルは削除されず、バッファは読み込まれた状態のままにな<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<a class="Identifier" href="options.html#cpo-&">cpo-&amp;</a><br>
+:pre[serve]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カレントバッファのすべてのテキストをそのスワップファイ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルに書き込む。元のファイルは回復にはもう必要ない。これ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;はカレントバッファにフラグを設定する。<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;に<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&amp;' フラグが含まれている場合、Vim が終了するときにバッ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファがまだ読み込まれていると、このバッファのスワップ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルは削除されない&nbsp;<a class="Identifier" href="options.html#cpo-&">cpo-&amp;</a>。<br>
 <br>
-Vimのスワップファイルは最初の6文字で認識される: &quot;b0VIM &quot;。<br>
-この後に &quot;3.0&quot; などのバージョン番号が続く。<br>
+Vim のスワップファイルは最初の 6 文字で識別できる: &quot;b0VIM &quot;。その後にバージョ<br>
+ン番号、例えば、&quot;3.0&quot; が来る。<br>
 <br>
 <br>
-<span class="PreProc">リンクとシンボリックリンク</span><br>
+<span class="PreProc">リンクおよびシンボリックリンク</span><br>
 <br>
-Unix では同一のファイルに2つの名前をつけることができる。それはハードリンクまた<br>
-はシンボリックリンク(symlink)を使って行う。<br>
+Unix では、同じファイルに 2 つの名前を持たせることができる。これはハードリンク<br>
+およびシンボリックリンク (symlink) で行える。<br>
 <br>
-ハードリンクの場合、Vim はそのファイルにつけられた他の名前を知ることができな<br>
-い。そのため、スワップファイルの名前は、そのファイルを開くときに使った名前に基<br>
-づいてつけられる。<br>
-そのファイルが別の名前でも開かれているかどうかのチェックは行わない。他のスワッ<br>
-プファイルを検出することはできないからである(ハードディスク全てを検索するとい<br>
-う方法は除く。それはとても遅くなるから)。<br>
+ハードリンクの場合、Vim はそのファイルの別の名前を知らない。そのため、スワップ<br>
+ファイルの名前は、ファイルを編集するのに使った名前に基づく。別の名前でも同じ<br>
+ファイルを編集していないかのチェックは行われない。Vim は別のスワップファイルを<br>
+見つけられないからである (ハードディスク全体を検索する場合を除く。それはとても<br>
+遅いだろう)。<br>
 <br>
-シンボリックリンクの場合、Vim はそのリンクが指す実際のファイルを見つけられる。<br>
-スワップファイルの名前は実際の名前に基づいてつけられる。よって、ユーザーがどん<br>
-な名前でそのファイルを開いたかは関係なく、スワップファイル名は同一になる。しか<br>
-し次のような例外がある:<br>
-- 実際のファイルのディレクトリが書き込み不可ならば、スワップファイルは別の場所<br>
-&nbsp;&nbsp;に置かれる。<br>
-- シンボリックリンクがなんらかの形でループになっているとき、エラーメッセージ<br>
-&nbsp;&nbsp;<a class="Constant" href="recover.html#E773" name="E773">E773</a>&nbsp;が表示され、変更されていないファイル名が使われる。普通にファイルを保<br>
-&nbsp;&nbsp;存することはできない。<br>
+シンボリックリンクの場合、Vim はリンクを解決して実際のファイルの名前を見つけ<br>
+る。スワップファイル名はその名前に基づく。したがって、どの名前でファイルを編集<br>
+しても、スワップファイル名は通常同じになる。ただし、例外がある:<br>
+- 実際のファイルのディレクトリが書き込み可能でない場合、スワップファイルは別の<br>
+&nbsp;&nbsp;場所に置かれる。<br>
+- シンボリックリンクが何らかの形でループを作っている場合は&nbsp;<a class="Constant" href="recover.html#E773" name="E773">E773</a>&nbsp;エラーメッ<br>
+&nbsp;&nbsp;セージが出て、変更されていないファイル名が使われる。ファイルを通常どおり保存<br>
+&nbsp;&nbsp;することはできない。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 2. リカバリー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="recover.html#recovery" name="recovery">recovery</a>&nbsp;<a class="Constant" href="recover.html#E308" name="E308">E308</a>&nbsp;<a class="Constant" href="recover.html#E311" name="E311">E311</a><br>
 <br>
-基本的なファイルの回復方法はユーザーマニュアルの<a class="Identifier" href="usr_11.html">usr_11.txt</a>を参照すること。<br>
+基本的なファイルリカバリーはユーザーマニュアルで説明されている:&nbsp;<a class="Identifier" href="usr_11.html">usr_11.txt</a>。<br>
 <br>
-ファイルを回復するためのもうひとつの方法は、Vimを起動して &quot;:recover&quot; コマンド<br>
-を使うことである。<br>
-これはVimを起動したときに &quot;ATTENTION: Found a swap file ...&quot; というメッセージ<br>
-を受け取ったときには便利である。その場合には &quot;:recover&quot; というコマンドひとつで<br>
-全てが済む。<br>
-recoverコマンドにはファイル名かスワップファイル名を渡すことができる:<br>
-<br>
+リカバリーを行う別の方法は、Vim を起動して &quot;:recover&quot; コマンドを使うことであ<br>
+る。これは、ファイルを編集するために Vim を起動して<br>
+&quot;ATTENTION: Found a swap file ...&quot; メッセージが出たときに簡単である。この場合、<br>
+&quot;:recover&quot; という 1 つのコマンドで済む。recover コマンドには、ファイルの名前ま<br>
+たはスワップファイルの名前を与えることもできる:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="recover.html#:rec" name=":rec">:rec</a>&nbsp;<a class="Constant" href="recover.html#:recover" name=":recover">:recover</a>&nbsp;<a class="Constant" href="recover.html#E305" name="E305">E305</a>&nbsp;<a class="Constant" href="recover.html#E306" name="E306">E306</a>&nbsp;<a class="Constant" href="recover.html#E307" name="E307">E307</a><br>
-:rec[over]&nbsp;<span class="Special">[file]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スワップファイルから[file]を回復するよう試みる。もし<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[file]</span>が与えられていない場合は、現在のバッファの名前が<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用いられる。現在のバッファの内容は失われる。このコマン<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ドはバッファが修正を加えられている場合に失敗する。<br>
+:rec[over]&nbsp;<span class="Special">[file]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スワップファイルから&nbsp;<span class="Special">[file]</span>&nbsp;の回復を試みる。<span class="Special">[file]</span>&nbsp;が<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;与えられていない場合は、カレントバッファのファイル名を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使う。バッファの現在の内容は失われる。バッファが変更さ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れていた場合、このコマンドは失敗する。<br>
 <br>
-:rec[over]!&nbsp;<span class="Special">[file]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:recover&quot; と同じだが、現在のバッファに対するどんな変<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更も失われる。<br>
+:rec[over]!&nbsp;<span class="Special">[file]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:recover&quot; と同様だが、カレントバッファの変更はすべて<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;失われる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="recover.html#E312" name="E312">E312</a>&nbsp;<a class="Constant" href="recover.html#E309" name="E309">E309</a>&nbsp;<a class="Constant" href="recover.html#E310" name="E310">E310</a>&nbsp;<a class="Constant" href="recover.html#E1364" name="E1364">E1364</a><br>
-Vimはスワップファイルが何らかの理由で壊れているときに、いくつかの対処を提供す<br>
-る。Vimが見つかったものに疑問を持った場合、エラーメッセージが与えられ、&quot;???&quot;<br>
-というテキストが一緒に行に挿入される。回復中にエラーメッセージを受け取ったら、<br>
-&quot;???&quot; を検索することによってどこに問題があったかを知ることができる。必要なテキ<br>
-ストを得るためには、カットやペーストを必要とするかもしれない。<br>
+Vim は、スワップファイルが何らかの形で壊れている場合にどうするかについて、ある<br>
+程度の知能を持っている。見つけたものに Vim が疑いを持った場合、エラーメッセー<br>
+ジを出し、テキストに &quot;???&quot; を含む行を挿入する。回復中にエラーメッセージが出た<br>
+ら、ファイル内で &quot;???&quot; を検索して、何がおかしいのかを確認する。必要なテキスト<br>
+を得るために、カットアンドペーストしたくなるかもしれない。<br>
 <br>
-ほとんどは &quot;???LINES MISSING&quot; のようなものである。これはVimがそのテキストをオ<br>
-リジナルのファイルから読み込めないことを示す。これはシステムがクラッシュした時<br>
-にファイルが正しくディスクに書き込まれなかったときに起こる。<br>
+最もよくある注記は &quot;???LINES MISSING&quot; である。これは、Vim が元のファイルからテ<br>
+キストを読み込めないことを意味する。これは、システムがクラッシュして、元のファ<br>
+イルの一部がディスクに書き込まれなかった場合に起こりうる。<br>
 <br>
-オリジナルを上書きしたり、スワップファイルを削除する前に、回復が成功したことを<br>
-確認すること。回復されたファイルをどこか別の場所に保存して、<a class="Type" href="options.html#'diff'">'diff'</a>&nbsp;によって変<br>
-更を加えた箇所が、ちゃんと回復されたファイルに入っているか調べてみるとよい。ま<br>
+元のファイルを上書きするか、またはスワップファイルを削除する前に、リカバリーが<br>
+成功したことを確かめること。回復したファイルを別の場所に書き込み、<a class="Type" href="options.html#'diff'">'diff'</a>&nbsp;を実<br>
+行して、望む変更が回復したファイルに入っているかを調べるのがよい習慣である。ま<br>
 たは&nbsp;<a class="Identifier" href="diff.html#:DiffOrig">:DiffOrig</a>&nbsp;を使う。<br>
 <br>
-回復が成功したと確信したら、スワップファイルを削除する。そうしないと、&quot;.swp&quot;<br>
-が存在するというメッセージが表示されつづけることになる。<br>
+リカバリーが問題ないと確信したら、スワップファイルを削除する。そうしないと、<br>
+&quot;.swp&quot; ファイルが既に存在するという警告メッセージが出続ける。<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;スワップファイルの復元は、ベストエフォートである。Vim はフィールドの検証<br>
-と破損したセクションのスキップを試みるが、スワップファイル形式は信頼できるファ<br>
-イルのために設計されている。不正に作成されたスワップファイルはパーサーのバグを<br>
-引き起こす可能性がある。このような報告は、セキュリティ上の脆弱性ではなく、堅牢<br>
-性の問題として扱われる。<br>
+<span class="Todo">Note:</span>&nbsp;スワップファイルの回復はベストエフォートである。Vim はフィールドを検証<br>
+し、壊れた部分を飛ばそうとするが、スワップファイルの形式は信頼できるファイルの<br>
+ためのものである。細工されたスワップファイルはパーサーのバグを引き起こすことが<br>
+ある。そのような報告は、セキュリティ脆弱性ではなく、堅牢性問題として扱われる。<br>
 <br>
 <br>
-<span class="Statement">暗号化とスワップファイル</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="recover.html#:recover-crypt" name=":recover-crypt">:recover-crypt</a><br>
+<span class="Statement">暗号化およびスワップファイル</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="recover.html#:recover-crypt" name=":recover-crypt">:recover-crypt</a><br>
 <br>
-テキストファイルが暗号化されているときはスワップファイルも暗号化される。これは<br>
-リカバリーを多少複雑にする。スワップファイルからリカバリーするときにそれが暗号<br>
-化されていた場合、一つか二つの秘密鍵を入力する必要があるだろう。<br>
+テキストファイルが暗号化されている場合、スワップファイルも暗号化される。これに<br>
+よりリカバリーは少し複雑になる。スワップファイルから回復するときに暗号化が使わ<br>
+れていた場合、1 つまたは 2 つの暗号キーを入力するように求められる。<br>
 <br>
-テキストファイルが存在しない場合は入力する必要のある秘密鍵はスワップファイル用<br>
-の一つだけである。<br>
+テキストファイルが存在しない場合は、スワップファイルの暗号キーの入力だけを求め<br>
+られる。<br>
 <br>
-テキストファイルが存在する場合、そのファイルはスワップファイルとは別の方法で復<br>
-号する必要があるかもしれない。秘密鍵を二つ入力する必要がある:<br>
+テキストファイルが存在する場合、それはスワップファイルとは異なる方法で暗号化さ<br>
+れているかもしれない。暗号キーを 2 回尋ねられる:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Need encryption key for &quot;/tmp/tt&quot;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Enter encryption key: ******</span><br>
@@ -235,19 +228,19 @@ Vimはスワップファイルが何らかの理由で壊れているときに�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">to use the same key for text file and swap file</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Enter encryption key:&nbsp;</span><br>
 <br>
-二つの状況が考えられる:<br>
+これら 2 つの状況のどちらかにありうる:<br>
 <br>
-1. 暗号化キーが変更されなかったか、キーが変更された後でファイルが保存された場<br>
-&nbsp;&nbsp; 合。秘密鍵を二回入力する必要がある。二回目に入力するときは単にエンターを押<br>
-&nbsp;&nbsp; すこと。そうするとテキストファイルとスワップファイルの両方に同じキーが使用<br>
-&nbsp;&nbsp; される。<br>
-2. 新しい暗号化キーを入力したが、ファイルは保存されなかった場合。スワップファ<br>
-&nbsp;&nbsp; イルには新しいキーが使用されているが、テキストファイルは古いキーで暗号化さ<br>
-&nbsp;&nbsp; れたままになっている。二回目にキーを入力するときに新しい方のキーを入力する<br>
-&nbsp;&nbsp; こと。<br>
+1. 暗号化キーが変更されなかったか、またはキーを変更した後にテキストファイルが<br>
+&nbsp;&nbsp; 書き込まれた。暗号キーの入力を 2 回促される。2 回目は単に Enter を押せばよ<br>
+&nbsp;&nbsp; い。これは、テキストファイルおよびスワップファイルに同じキーが使われること<br>
+&nbsp;&nbsp; を意味する。<br>
+2. 新しい暗号化キーを入力したが、テキストファイルを保存しなかった。そのとき<br>
+&nbsp;&nbsp; Vim はスワップファイルに新しいキーを使い、テキストファイルは古いキーで暗号<br>
+&nbsp;&nbsp; 化されたままになる。2 回目のプロンプトで新しいキーを入力する。<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;リカバリー実行後にはスワップファイルのキーがテキストファイルに使用され<br>
-る。したがって、ファイルを書き込んだ後は新しいキーを使用する必要がある。<br>
+<span class="Todo">Note</span>&nbsp;リカバリーの後、スワップファイルのキーがテキストファイルに使われることに<br>
+注意。したがって、テキストファイルを書き込む場合は、その新しいキーを使う必要が<br>
+ある。<br>
 <br>
 <br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
