@@ -3,7 +3,7 @@ layout: viai-doc
 helpname: 'vim9'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="vim9.html" name="vim9.txt">vim9.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Nov 14<br>
+<a class="Constant" href="vim9.html" name="vim9.txt">vim9.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Nov 22<br>
 <br>
 <br>
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
@@ -2165,7 +2165,7 @@ script では、エラーによって継続行が意図しない形で解釈さ�
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9script</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Normal">exit_abc</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># E1144: Command &quot;exit&quot; is not followed by white space: exit_abc</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># E1144: Command&nbsp;</span><span class="Constant">&quot;exit&quot;</span><span class="Comment">&nbsp;is not followed by white space: exit_abc</span><br>
 <br>
 ただし、それ自体がコマンドであるコマンドの引数は、一貫して認識されない。例え<br>
 ば、&quot;windo echo&nbsp;<span class="Special">{expr}</span>&quot; の後では、式内の改行はカレントウィンドウにのみ適用さ<br>
@@ -2267,7 +2267,7 @@ Vim9 script は空白の適切な使用を強制する。例えば、変数代�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">mylist</span>[<span class="Constant">1</span>&nbsp;<span class="Statement">:</span>&nbsp;<span class="Constant">2</span>]&nbsp;<span class="Comment"># [8, 9]</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">mylist</span>[:&nbsp;<span class="Constant">1</span>]&nbsp;&nbsp;&nbsp;<span class="Comment"># [7, 8]</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">mylist</span>[<span class="Constant">2</span>&nbsp;:]&nbsp;&nbsp;&nbsp;<span class="Comment"># [9]</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">mylist</span>[<span class="Constant">1</span>:<span class="Constant">2</span>]&nbsp;&nbsp;&nbsp;<span class="Comment"># E1004: White space required before and after &quot;:&quot;…</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">mylist</span>[<span class="Constant">1</span>:<span class="Constant">2</span>]&nbsp;&nbsp;&nbsp;<span class="Comment"># E1004: White space required before and after&nbsp;</span><span class="Constant">&quot;:&quot;</span><span class="Comment">…</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1069" name="E1069">E1069</a><br>
 - 変数名とその &quot;:&quot; の後 (型宣言の前):<br>
@@ -2279,7 +2279,7 @@ Vim9 script は空白の適切な使用を強制する。例えば、変数代�
 - コメントを開始する '#' の前。これがない場合、<a class="Identifier" href="eval.html#E121">E121</a>&nbsp;や&nbsp;<a class="Identifier" href="message.html#E488">E488</a>&nbsp;などのエラーが<br>
 &nbsp;&nbsp;発生する:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9cmd</span>&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Constant">'No'</span>#&nbsp;<span class="Normal">E121</span>:&nbsp;<span class="Normal">Undefined</span>&nbsp;<span class="Normal">variable</span>: #<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9cmd</span>&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Constant">'No'</span>#&nbsp;<span class="Normal">E121</span>:&nbsp;<span class="Normal">Undefined</span>&nbsp;<span class="Normal">variable</span>:&nbsp;<span class="Comment">#</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9cmd</span>&nbsp;<span class="Statement">var</span>&nbsp;<span class="Normal">f</span>:&nbsp;<span class="Type">number</span>&nbsp;<span class="Statement">=</span>&nbsp;<span class="Constant">99</span>#&nbsp;<span class="Normal">E488</span>:&nbsp;<span class="Normal">Trailing</span>&nbsp;<span class="Normal">characters</span>: …<br>
 <br>
 以下では空白は許可されない:<br>
@@ -2399,7 +2399,7 @@ Vim9 script は空白の適切な使用を強制する。例えば、変数代�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Constant">'A curly-braces-function-name: okay in legacy Vim script scope'</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">endfunction</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">legacy</span>&nbsp;<span class="Statement">call</span>&nbsp;<span class="Identifier">s:</span><span class="Normal">F</span><span class="Special">{</span><span class="Identifier">s:</span><span class="Normal">low_line</span><span class="Special">}</span><span class="Normal">curly</span><span class="Special">()</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Normal">F</span><span class="Special">{</span><span class="Normal">low_line</span><span class="Special">}</span><span class="Normal">curly</span><span class="Special">()</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># E1144: Command &quot;F&quot; is not followed by white…</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Normal">F</span><span class="Special">{</span><span class="Normal">low_line</span><span class="Special">}</span><span class="Normal">curly</span><span class="Special">()</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># E1144: Command&nbsp;</span><span class="Constant">&quot;F&quot;</span><span class="Comment">&nbsp;is not followed by white…</span><br>
 <br>
 <br>
 <span class="PreProc">コマンド修飾子は常に無視されるとは限らず、エラーになることがある</span><br>
@@ -2504,8 +2504,8 @@ script でエラーにならないのと同様)。例えば、このスクリプ
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9script</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">var</span>&nbsp;<span class="Normal">dict</span>&nbsp;<span class="Statement">=</span>&nbsp;<span class="Special">{</span><span class="Constant">09</span>:&nbsp;<span class="Constant">'09 is literal &quot;09&quot;'</span>,&nbsp;<span class="Special">[</span><span class="Constant">09</span><span class="Special">]</span>:&nbsp;<span class="Constant">'[09] becomes &quot;9&quot;'</span><span class="Special">}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">dict</span>[<span class="Constant">'09'</span>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># '09 is literal &quot;09&quot;'</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">dict</span>[<span class="Constant">'9'</span>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># '[09] becomes &quot;9&quot;'</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">dict</span>[<span class="Constant">'09'</span>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># '09 is literal&nbsp;</span><span class="Constant">&quot;09&quot;</span><span class="Comment">'</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">dict</span>[<span class="Constant">'9'</span>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># '[09] becomes&nbsp;</span><span class="Constant">&quot;9&quot;</span><span class="Comment">'</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1139" name="E1139">E1139</a><br>
 [] 内のキーが無効な場合、E1139 などのエラーが発生することがある。例:<br>
 <br>
@@ -3505,8 +3505,8 @@ Ex コマンドの範囲指定には、多くの場合コロンを前置する�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># E1056: Expected a type:</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">enddef</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">def</span>&nbsp;F_1059<span class="Special">()</span>&nbsp;<span class="Statement">:</span>&nbsp;<span class="Normal">bool</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">#</span>&nbsp;<span class="Normal">E1059</span>:&nbsp;<span class="Normal">No</span>&nbsp;<span class="Normal">white</span>&nbsp;<span class="Normal">space</span>&nbsp;<span class="Normal">allowed</span>&nbsp;<span class="Normal">before</span>&nbsp;<span class="Normal">colon</span>:&nbsp;<span class="Statement">...</span> <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">enddef</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">#</span>&nbsp;<span class="Normal">E1059</span>:&nbsp;<span class="Normal">No</span>&nbsp;<span class="Normal">white</span>&nbsp;<span class="Normal">space</span>&nbsp;<span class="Normal">allowed</span>&nbsp;<span class="Normal">before</span>&nbsp;<span class="Normal">colon</span>:&nbsp;<span class="Statement">...</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Normal">enddef</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数は、呼び出されたとき、または&nbsp;<a class="Comment" href="vim9.html#:defcompile">:defcompile</a>&nbsp;または<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="vim9.html#:disassemble">:disassemble</a>&nbsp;が使用されたときに命令にコンパイルされ<br>
@@ -5225,7 +5225,7 @@ U、Aなど)。複数の文字で構成されている場合もあるが、名�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">endenum</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">def</span>&nbsp;My1041<span class="Special">&lt;</span>E<span class="Special">&gt;()</span>:&nbsp;E<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">enddef</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># E1041: Redefining script item: &quot;E&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># E1041: Redefining script item:&nbsp;</span><span class="Constant">&quot;E&quot;</span><br>
 <br>
 型エイリアスやクラスなど、ジェネリック関数の後に定義された、型パラメータと同じ<br>
 名前の項目は、関数内の型パラメータの意味を変えない:<br>
@@ -5578,7 +5578,7 @@ import はスクリプトローカルのスコープでのみ許可されてい�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1053" name="E1053">E1053</a>&nbsp;<a class="Constant" href="vim9.html#E1071" name="E1071">E1071</a><br>
 <span class="Special">{filename}</span>&nbsp;が見つからないか、無効な場合はエラーが発生する:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9cmd</span>&nbsp;<span class="Statement">import</span>&nbsp;<span class="Constant">'e1053.vim'</span>&nbsp;&nbsp;<span class="Comment"># E1053: Could not import &quot;e1053.vim&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9cmd</span>&nbsp;<span class="Statement">import</span>&nbsp;<span class="Constant">'e1053.vim'</span>&nbsp;&nbsp;<span class="Comment"># E1053: Could not import&nbsp;</span><span class="Constant">&quot;e1053.vim&quot;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9cmd</span>&nbsp;<span class="Statement">import</span>&nbsp;<span class="Constant">false</span>&nbsp;&nbsp;<span class="Comment"># E1071: Invalid string for :import: false</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#:import-as" name=":import-as">:import-as</a><br>
@@ -5699,7 +5699,7 @@ import した名前を使用する場合、'.' と項目名は連続していな
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9script</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">const</span>&nbsp;<span class="Normal">TMP</span>:&nbsp;<span class="Type">string</span>&nbsp;<span class="Statement">=</span>&nbsp;<span class="Identifier">tempname</span><span class="Special">()</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[</span><span class="Constant">'vim9script'</span><span class="Special">]</span><span class="Statement">-&gt;</span><span class="Identifier">writefile</span><span class="Special">(</span><span class="Normal">TMP</span><span class="Special">)</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">import</span>&nbsp;<span class="Normal">TMP</span>&nbsp;&nbsp;<span class="Comment"># E1257: Imported script must use &quot;as&quot; or end in .vim: ...</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">import</span>&nbsp;<span class="Normal">TMP</span>&nbsp;&nbsp;<span class="Comment"># E1257: Imported script must use&nbsp;</span><span class="Constant">&quot;as&quot;</span><span class="Comment">&nbsp;or end in .vim: ...</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1258" name="E1258">E1258</a><br>
 - import した名前の後の '.' を省略する:<br>
@@ -5742,7 +5742,7 @@ import した名前を使用する場合、'.' と項目名は連続していな
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">-&gt;</span><span class="Identifier">substitute</span><span class="Special">(</span><span class="Constant">'/[^/]\+$'</span>,&nbsp;<span class="Constant">'/'</span>,&nbsp;<span class="Constant">''</span><span class="Special">)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment"># ファイル名を取り除く</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[</span><span class="Constant">'vim9script'</span><span class="Special">]</span><span class="Statement">-&gt;</span><span class="Identifier">writefile</span><span class="Special">(</span><span class="Constant">$'</span><span class="Special">{</span><span class="Normal">TMPDIR</span><span class="Special">}</span><span class="Constant">.vim'</span><span class="Special">)</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Constant">$&quot;Temporary import file name is:&nbsp;</span><span class="Special">{</span><span class="Normal">TMPDIR</span><span class="Special">}</span><span class="Constant">.vim&quot;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">import</span>&nbsp;<span class="Constant">$'</span><span class="Special">{</span><span class="Normal">TMPDIR</span><span class="Special">}</span><span class="Constant">.vim'</span>&nbsp;&nbsp;<span class="Comment"># E1261: Cannot import .vim without using &quot;as&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">import</span>&nbsp;<span class="Constant">$'</span><span class="Special">{</span><span class="Normal">TMPDIR</span><span class="Special">}</span><span class="Constant">.vim'</span>&nbsp;&nbsp;<span class="Comment"># E1261: Cannot import .vim without using&nbsp;</span><span class="Constant">&quot;as&quot;</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9.html#E1262" name="E1262">E1262</a><br>
 - 同じスクリプトを複数回 import しようとする (異なる &quot;as&quot; 名を使用する場合も含<br>
