@@ -4,45 +4,47 @@
 		  VIAI リファレンスマニュアル
 
 
-Rubyインターフェイス					*ruby* *Ruby*
+Vim への Ruby インターフェイス				*ruby* *Ruby*
 
 
 1. コマンド			|ruby-commands|
-2. Vimモジュール		|ruby-vim|
+2. Vim モジュール		|ruby-vim|
 3. Vim::Buffer オブジェクト	|ruby-buffer|
 4. Vim::Window オブジェクト	|ruby-window|
 5. グローバル変数		|ruby-globals|
 6. rubyeval() Vim 関数		|ruby-rubyeval|
-7. 動的ローディング		|ruby-dynamic|
+7. 動的ロード			|ruby-dynamic|
 
 			*E266* *E267* *E268* *E269* *E270* *E271* *E272* *E273*
 
-{Vim が |+ruby| 機能付きでコンパイルされている場合にのみ利用できる}
+{Vim が |+ruby| 機能付きでコンパイルされたときにのみ利用できる}
 
-Rubyのホームページは http://www.ruby-lang.org/ である。ここでRubyをダウンロー
-ドできる。
+ruby のホームページは http://www.ruby-lang.org/ である。そこで Ruby をダウン
+ロードするためのリンクを見つけることができる。
 
 ==============================================================================
 1. コマンド						*ruby-commands*
 
 							*:ruby* *:rub*
-:rub[y] {cmd}		Rubyのコマンド{cmd}を実行する。次のようにして使う: >
+:rub[y] {cmd}		Ruby コマンド {cmd} を実行する。試してみるためのコマン
+			ド: >
 				:ruby print "Hello"
 
 :rub[y] << [trim] [{endmarker}]
 {script}
 {endmarker}
-			Rubyスクリプト{script}を実行する。
+			Ruby スクリプト {script} を実行する。
 
-			[endmarker]が省略された場合、|:append|や|:insert|コマ
-			ンド同様にドット '.' がデフォルトである。詳細について
-			は |:let-heredoc| を参照。
+			[endmarker] が省略された場合、|:append| および
+			|:insert| コマンドと同様に、デフォルトはドット '.' に
+			なる。さらなる情報については |:let-heredoc| を参照。
 
-			この形式の|:ruby|コマンドは主にVim scriptにRubyコード
-			を埋め込むのに便利である。
 
-			Note: Ruby のサポートを有効にしてコンパイルされていな
-			いとこのコマンドは機能しない。エラーを回避するには
+			この形式の |:ruby| コマンドは、主に vim script に ruby
+			コードを含めるのに便利である。
+
+			Note: このコマンドは、Ruby 機能がコンパイルに含まれて
+			いない場合は動作しない。エラーを避けるには、
 			|script-here| を参照。
 
 Vim script の例: >
@@ -62,92 +64,95 @@ Vim script の例: >
 	EOF
 	endfunction
 <
-使っている Ruby のバージョンを見るには: >
+どのバージョンの Ruby を持っているかを見るには: >
 	:ruby print RUBY_VERSION
 <
 
 						*:rubydo* *:rubyd* *E265*
-:[range]rubyd[o] {cmd}	[range]の範囲の各行に対し、行末の<EOL>を削除して$_へ代
-			入しつつ、Rubyコマンド{cmd}を実行評価する。$_を変更す
-			るとバッファのテキストを変更できるが、このコマンドを
-			使って行を追加したり削除したりはできないことに注意。
-			[range]を省略した場合ファイル全体が対象: "1,$"
+:[range]rubyd[o] {cmd}	[range] 内の各行に対して、$_ に各行のテキストを末尾の
+			<EOL> なしで順に設定しながら、Ruby コマンド {cmd} を評
+			価する。$_ を設定するとテキストが変更されるが、このコ
+			マンドを使って行を追加または削除することはできないこと
+			に注意。
+			[range] のデフォルトはファイル全体: "1,$"。
 
 							*:rubyfile* *:rubyf*
-:rubyf[ile] {file}	ファイル{file}のRubyスクリプトを実行する。ファイル名の
-			補完が利用できる以外は、`:ruby load 'file'`と同じ。
+:rubyf[ile] {file}	{file} 内の Ruby スクリプトを実行する。これは
+			`:ruby load 'file'` と同じだが、ファイル名補完を可能に
+			する。
 
-|sandbox|環境内ではRubyコマンドを実行できない。
+|sandbox| の中では Ruby コマンドを実行することはできない。
 
 ==============================================================================
-2. Vimモジュール					*ruby-vim*
+2. Vim モジュール					*ruby-vim*
 
-Rubyのコードは全てのVimへのアクセスをVimモジュール経由で行う。
+Ruby コードは、vim へのすべてのアクセスを "Vim" モジュール経由で得る。
 
-概要 >
-	print "Hello"			# メッセージを表示する
-	Vim.command(cmd)		# Exコマンドを実行する
-	num = Vim::Window.count		# ウィンドウ数を取得する
-	w = Vim::Window[n]		# ウィンドウ n を取得する
-	cw = Vim::Window.current	# 現在のウィンドウを取得する
-	num = Vim::Buffer.count		# バッファ数を取得する
-	b = Vim::Buffer[n]		# バッファ n を取得する
-	cb = Vim::Buffer.current	# 現在のバッファを取得する
-	w.height = lines		# ウィンドウの高さ(行数)を設定する
-	w.cursor = [row, col]		# ウィンドウのカーソル位置を設定する
-	pos = w.cursor			# カーソルの位置を配列で受け取る
-	name = b.name			# バッファのファイル名を取得する
-	line = b[n]			# バッファから行の内容を取得する
-	num = b.count			# バッファの行数を取得する
-	b[n] = str			# バッファの行の内容を変更する
-	b.delete(n)			# 行を削除する
-	b.append(n, str)		# n行目の直後に行を追加する
+概要: >
+	print "Hello"			      # メッセージを表示する
+	Vim.command(cmd)		      # Ex コマンドを実行する
+	num = Vim::Window.count		      # ウィンドウの数を取得する
+	w = Vim::Window[n]		      # ウィンドウ "n" を取得する
+	cw = Vim::Window.current	      # カレントウィンドウを取得する
+	num = Vim::Buffer.count		      # バッファの数を取得する
+	b = Vim::Buffer[n]		      # バッファ "n" を取得する
+	cb = Vim::Buffer.current	      # カレントバッファを取得する
+	w.height = lines		      # ウィンドウの高さを設定する
+	w.cursor = [row, col]		      # ウィンドウのカーソル位置を
+					      # 設定する
+	pos = w.cursor			      # 配列 [row, col] を取得する
+	name = b.name			      # バッファのファイル名を取得する
+	line = b[n]			      # バッファから行を取得する
+	num = b.count			      # 行数を取得する
+	b[n] = str			      # バッファに行を設定する
+	b.delete(n)			      # 行を削除する
+	b.append(n, str)		      # n の後に行を追加する
 	line = Vim::Buffer.current.line       # カレント行を取得する
-	num = Vim::Buffer.current.line_number # カレント行の行番号を取得する
-	Vim::Buffer.current.line = "test"     # カレント行を設定する
+	num = Vim::Buffer.current.line_number # カレント行番号を取得する
+	Vim::Buffer.current.line = "test"     # カレント行番号を設定する
 <
 
 モジュール関数:
 
 							*ruby-message*
 Vim::message({msg})
-	メッセージ{msg}を表示する。
+	メッセージ {msg} を表示する。
 
 							*ruby-blob*
 Vim::blob({arg})
-	{arg}から |Blob| リテラル文字列を返す。
+	{arg} から |Blob| リテラル文字列を返す。
 
 							*ruby-set_option*
 Vim::set_option({arg})
-	Vimのオプションを設定する。{arg}は ":set" コマンドが受け付けるものであ
-	れば何でも良い。引数の中では空白文字が使えないことに注意。|:set|を参
-	照。
+	vim オプションを設定する。{arg} は ":set" コマンドが受け付ける任意の引
+	数にできる。Note これは引数の中で空白が許されないことを意味することに
+	注意! |:set| を参照。
 
 							*ruby-command*
 Vim::command({cmd})
-	Exコマンド{cmd}を実行する。
+	Ex コマンド {cmd} を実行する。
 
 							*ruby-evaluate*
 Vim::evaluate({expr})
-	Vim内部の実行エンジンを使ってスクリプト{expr}を実行評価する
-	(|expression|参照)。実行結果は次のように返される:
-	- Vimの実行結果が number の場合は Integer
-	- Vimの実行結果が float の場合は Float
-	- Vimの実行結果が string の場合は String
-	- Vimの実行結果がVimの list の場合は Array
-	- Vimの実行結果がVimの dictionary の場合は Hash
-	辞書とリストは再帰的に展開される。
+	vim の内部の式評価器を使って {expr} を評価する (|expression| を参照)。
+	式の結果を次として返す:
+	- Vim の式が数値に評価される場合は Integer
+	- Vim の式が浮動小数点数に評価される場合は Float
+	- Vim の式が文字列に評価される場合は String
+	- Vim の式が Vim のリストに評価される場合は Array
+	- Vim の式が Vim の辞書に評価される場合は Hash
+	辞書およびリストは再帰的に展開される。
 
 ==============================================================================
 3. Vim::Buffer オブジェクト				*ruby-buffer*
 
-オブジェクトVim::BufferはVimのバッファを表す。
+Vim::Buffer オブジェクトは vim のバッファを表す。
 
 クラスメソッド:
 
 current		カレントバッファオブジェクトを返す。
-count		バッファの個数を返す。
-self[{n}]	番号{n}のバッファオブジェクトを返す。最初の番号は0。
+count		バッファの数を返す。
+self[{n}]	番号 {n} のバッファオブジェクトを返す。最初の番号は 0 である。
 
 メソッド:
 
@@ -155,97 +160,97 @@ name		バッファの完全な名前を返す。
 number		バッファの番号を返す。
 count		行数を返す。
 length		行数を返す。
-self[{n}]	バッファの行を返す。{n}は行番号。
+self[{n}]	バッファから行を返す。{n} は行番号である。
 self[{n}] = {str}
-                バッファの行を設定する。{n}は行番号。
-delete({n})	バッファから行を削除する。{n}は行番号。
+		バッファの行を設定する。{n} は行番号である。
+delete({n})	バッファから行を削除する。{n} は行番号である。
 append({n}, {str})
-		行{n}の後ろに行を追加する。
-line		そのバッファがアクティブなら、カレント行を返す。
-line = {str}    そのバッファがアクティブなら、カレント行を設定する。
-line_number     そのバッファがアクティブなら、カレント行の行番号を返す。
+		行 {n} の後に行を追加する。
+line		バッファがアクティブな場合、バッファのカレント行を返す。
+line = {str}    バッファがアクティブな場合、バッファのカレント行を設定する。
+line_number     バッファがアクティブな場合、カレント行の番号を返す。
 
 ==============================================================================
 4. Vim::Window オブジェクト				*ruby-window*
 
-Vim::Window オブジェクトはVimのウィンドウを表現している。
+Vim::Window オブジェクトは vim のウィンドウを表す。
 
 クラスメソッド:
 
-current		現在のウィンドウオブジェクトを返す。
+current		カレントウィンドウオブジェクトを返す。
 count		ウィンドウの数を返す。
-self[{n}]	番号{n}のウィンドウオブジェクトを返す。番号は0から数え始める。
+self[{n}]	番号 {n} のウィンドウオブジェクトを返す。最初の番号は 0 であ
+		る。
 
 メソッド:
 
 buffer		ウィンドウに表示されているバッファを返す。
 height		ウィンドウの高さを返す。
-height = {n}	ウィンドウの高さを{n}に設定する。
+height = {n}	ウィンドウの高さを {n} に設定する。
 width		ウィンドウの幅を返す。
-width = {n}	ウィンドウの幅を{n}に設定する。
-cursor		カーソルの位置を[行数, カラム]の形で配列にして返す。
+width = {n}	ウィンドウの幅を {n} に設定する。
+cursor		カーソル位置の [row, col] 配列を返す。
 		最初の行番号は 1 で、最初の桁番号は 0 である。
 cursor = [{row}, {col}]
-		カーソルの位置を{row} 行の {col}カラムに設定する。
+		カーソル位置を {row} および {col} に設定する。
 
 ==============================================================================
 5. グローバル変数					*ruby-globals*
 
-2つのグローバル変数がある。
+2 つのグローバル変数がある。
 
-$curwin		現在のウィンドウオブジェクト
-$curbuf		現在のバッファオブジェクト
+$curwin		カレントウィンドウオブジェクト。
+$curbuf		カレントバッファオブジェクト。
 
 ==============================================================================
 6. rubyeval() Vim 関数					*ruby-rubyeval*
 
-双方向インターフェイスを促進するため、|rubyeval()| 関数を使用して Ruby 式を評
-価しそれらの値を Vim script に渡すことができる。
+双方向インターフェイスを容易にするため、|rubyeval()| 関数を使って Ruby の式を
+評価し、その値を Vim script に渡すことができる。
 
-Ruby の値 "true", "false" および "nil" は、それぞれ v:true, v:false および
+Ruby の値 "true"、"false" および "nil" は、それぞれ v:true、v:false および
 v:null に変換される。
 
 ==============================================================================
-7. 動的ローディング					*ruby-dynamic*
+7. 動的ロード						*ruby-dynamic*
 
-MS-WindowsとUnixではRubyライブラリを動的に読み込むことが可能である。これを行う
-と|:version|の出力に|+ruby/dyn|が含まれるようになる。
+MS-Windows および Unix では、Ruby ライブラリを動的にロードできる。そのとき、
+|:version| の出力に |+ruby/dyn| が含まれる。
 
-この場合、Vimは必要になったときだけRubyのDLLファイル及び共有ライブラリを検索す
-る。Rubyインターフェイスを使わないのであればそれらは必要ではないので、ライブラ
-リファイルがシステムに無くてもVimを使うことができる。
+これは、Vim が必要なときにだけ Ruby の DLL ファイルまたは共有ライブラリを検索
+することを意味する。Ruby インターフェイスを使わない場合はそれは必要ないので、
+このライブラリファイルがシステムに無くても Vim を使うことができる。
 
 
 MS-Windows ~
 
-これが動作するためには Ruby の適切なバージョンがインストールされている必要があ
-る。次の場所からパッケージをダウンロードできる:
+これを動作させるには、正しいバージョンの Ruby をインストールする必要がある。ダ
+ウンロードするパッケージは以下から見つけられる:
 http://rubyinstaller.org/downloads/
-現在のパッケージは rubyinstaller-2.2.5.exe である。
-http://www.garbagecollect.jp/ruby/mswin32/en/download/release.html
+現在それは rubyinstaller-2.2.5.exe である
 
-Rubyインターフェイスを使うにはRubyのDLLが検索パス内に存在しなければならない。
-コンソールウィンドウで "path" とタイプすると、どのディレクトリが検索パスとなる
-か表示することができる。また 'rubydll' オプションを Ruby の DLL を指定するのに
-使うこともできる。
+Ruby インターフェイスを使うには、Ruby の DLL が検索パス内に無ければならない。
+コンソールウィンドウで "path" とタイプすると、どのディレクトリが使われるかを見
+ることができる。'rubydll' オプションを使って Ruby の DLL を指定することもでき
+る。
 
-DLLの名前はVimをコンパイルした時のRubyのバージョンに一致しなければならない。現
-在その名前は "msvcrt-ruby220.dll" である。これはRuby 2.2.X用である。これを確か
-めるには、"gviai.exe" を開き、"ruby\d*.dll\c" を検索する。
+DLL の名前は、Vim がコンパイルされたときの Ruby のバージョンと一致しなければな
+らない。現在その名前は "msvcrt-ruby220.dll" である。これは Ruby 2.2.X 用であ
+る。確実に知るには、"gviai.exe" を編集して "ruby\d*.dll\c" を検索する。
 
-自分で RubyInstaller 1.9 または 2.X 対応の Vim を MSVC でビルドするには、ちょっ
-としたこつが必要である。詳細は src/INSTALLpc.txt を参照。
+RubyInstaller 1.9 または 2.X を使って MSVC で Vim をビルドしたい場合は、いくつ
+かのトリックが必要である。詳細は src/INSTALLpc.txt を参照。
 
-Vim が RubyInstaller 2.4 以降でビルドされているなら、環境変数 PATH に
+Vim が RubyInstaller 2.4 以降でビルドされている場合、環境変数 PATH に
 "C:\Ruby<version>\bin\ruby_builtin_dlls" を追加する必要があるかもしれない。
 
 
 Unix ~
 
-コンパイル時に DYNAMIC_RUBY_DLL で指定されたファイルの代わりに、'rubydll' オプ
-ションを使って Ruby の共有ライブラリファイルを指定するのに使える。共有ライブラ
-リのバージョンは Vim をコンパイルする時に用いた Ruby のバージョンと一致してい
-なければならない。
+'rubydll' オプションを使って、コンパイル時に指定された DYNAMIC_RUBY_DLL ファイ
+ルの代わりに、Ruby の共有ライブラリファイルを指定できる。共有ライブラリのバー
+ジョンは、Vim がコンパイルされたときの Ruby のバージョンと一致しなければならな
+い。
 
 ==============================================================================
  vim:tw=78:ts=8:noet:ft=help:norl:
