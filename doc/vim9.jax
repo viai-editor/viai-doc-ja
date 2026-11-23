@@ -1,4 +1,4 @@
-*vim9.txt*	For ViAI バージョン 1.0.  Last change: 2026 Nov 14
+*vim9.txt*	For ViAI バージョン 1.0.  Last change: 2026 Nov 22
 
 
 		  VIAI リファレンスマニュアル
@@ -2160,7 +2160,7 @@ script では、エラーによって継続行が意図しない形で解釈さ�
 >vim9
 	vim9script
 	exit_abc
-	# E1144: Command "exit" is not followed by white space: exit_abc
+	# E1144: Command "exit" is not followed by white space: exit_abc
 <
 ただし、それ自体がコマンドであるコマンドの引数は、一貫して認識されない。例え
 ば、"windo echo {expr}" の後では、式内の改行はカレントウィンドウにのみ適用さ
@@ -2262,7 +2262,7 @@ Vim9 script は空白の適切な使用を強制する。例えば、変数代�
 	echo mylist[1 : 2] # [8, 9]
 	echo mylist[: 1]   # [7, 8]
 	echo mylist[2 :]   # [9]
-	echo mylist[1:2]   # E1004: White space required before and after ":"…
+	echo mylist[1:2]   # E1004: White space required before and after ":"…
 <
 							*E1069*
 - 変数名とその ":" の後 (型宣言の前):
@@ -2274,7 +2274,7 @@ Vim9 script は空白の適切な使用を強制する。例えば、変数代�
 - コメントを開始する '#' の前。これがない場合、|E121| や |E488| などのエラーが
   発生する:
 >vim9
-	vim9cmd echo 'No'# E121: Undefined variable: #
+	vim9cmd echo 'No'# E121: Undefined variable: #
 	vim9cmd var f: number = 99# E488: Trailing characters: …
 <
 以下では空白は許可されない:
@@ -2394,7 +2394,7 @@ Vim9 script は空白の適切な使用を強制する。例えば、変数代�
 	  echo 'A curly-braces-function-name: okay in legacy Vim script scope'
 	endfunction
 	legacy call s:F{s:low_line}curly()
-	F{low_line}curly()	# E1144: Command "F" is not followed by white…
+	F{low_line}curly()	# E1144: Command "F" is not followed by white…
 <
 
 コマンド修飾子は常に無視されるとは限らず、エラーになることがある ~
@@ -2499,8 +2499,8 @@ script でエラーにならないのと同様)。例えば、このスクリプ
 >vim9
 	vim9script
 	var dict = {09: '09 is literal "09"', [09]: '[09] becomes "9"'}
-	echo dict['09']		# '09 is literal "09"'
-	echo dict['9']		# '[09] becomes "9"'
+	echo dict['09']		# '09 is literal "09"'
+	echo dict['9']		# '[09] becomes "9"'
 <							*E1139*
 [] 内のキーが無効な場合、E1139 などのエラーが発生することがある。例:
 >vim9
@@ -3500,7 +3500,7 @@ Ex コマンドの範囲指定には、多くの場合コロンを前置する�
 			  # E1056: Expected a type:
 			  enddef
 			  def F_1059() : bool
-			  # E1059: No white space allowed before colon: ... 
+			  # E1059: No white space allowed before colon: ...
 			  enddef
 <
 			関数は、呼び出されたとき、または `:defcompile` または
@@ -5220,7 +5220,7 @@ U、Aなど)。複数の文字で構成されている場合もあるが、名�
 	endenum
 	def My1041<E>(): E
 	enddef
-	# E1041: Redefining script item: "E"
+	# E1041: Redefining script item: "E"
 <
 型エイリアスやクラスなど、ジェネリック関数の後に定義された、型パラメータと同じ
 名前の項目は、関数内の型パラメータの意味を変えない:
@@ -5573,7 +5573,7 @@ import はスクリプトローカルのスコープでのみ許可されてい�
 							*E1053* *E1071*
 {filename} が見つからないか、無効な場合はエラーが発生する:
 >vim9
-	vim9cmd import 'e1053.vim'  # E1053: Could not import "e1053.vim"
+	vim9cmd import 'e1053.vim'  # E1053: Could not import "e1053.vim"
 	vim9cmd import false  # E1071: Invalid string for :import: false
 <
 							*:import-as*
@@ -5694,7 +5694,7 @@ import した名前を使用する場合、'.' と項目名は連続していな
 	vim9script
 	const TMP: string = tempname()
 	['vim9script']->writefile(TMP)
-	import TMP  # E1257: Imported script must use "as" or end in .vim: ...
+	import TMP  # E1257: Imported script must use "as" or end in .vim: ...
 <
 							*E1258*
 - import した名前の後の '.' を省略する:
@@ -5737,7 +5737,7 @@ import した名前を使用する場合、'.' と項目名は連続していな
 	  ->substitute('/[^/]\+$', '/', '')	# ファイル名を取り除く
 	['vim9script']->writefile($'{TMPDIR}.vim')
 	echo $"Temporary import file name is: {TMPDIR}.vim"
-	import $'{TMPDIR}.vim'	# E1261: Cannot import .vim without using "as"
+	import $'{TMPDIR}.vim'	# E1261: Cannot import .vim without using "as"
 <
 							*E1262*
 - 同じスクリプトを複数回 import しようとする (異なる "as" 名を使用する場合も含
