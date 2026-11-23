@@ -6,76 +6,76 @@ helpname: 'if_perl'
 <a class="Constant" href="if_perl.html" name="if_perl.txt">if_perl.txt</a>&nbsp;&nbsp; For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Feb 14<br>
 <br>
 <br>
-<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
+<span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
 Perl と Vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl" name="perl">perl</a>&nbsp;<a class="Constant" href="if_perl.html#Perl" name="Perl">Perl</a><br>
 <br>
-1. Perl のファイルを編集する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_perl.html#perl-editing">perl-editing</a><br>
-2. Perl インターフェイス付きのコンパイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_perl.html#perl-compiling">perl-compiling</a><br>
-3. Perl インターフェイスを使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_perl.html#perl-using">perl-using</a><br>
-4. 動的ローディング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_perl.html#perl-dynamic">perl-dynamic</a><br>
+1. Perl ファイルの編集&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_perl.html#perl-editing">perl-editing</a><br>
+2. Perl インターフェイス付きでの Vim のコンパイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_perl.html#perl-compiling">perl-compiling</a><br>
+3. Perl インターフェイスの使用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_perl.html#perl-using">perl-using</a><br>
+4. 動的ローディング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_perl.html#perl-dynamic">perl-dynamic</a><br>
 <br>
-<span class="Special">{Vim が&nbsp;</span><a class="Identifier" href="various.html#+perl">+perl</a><span class="Special">&nbsp;機能付きでコンパイルされている場合にのみ利用できる}</span><br>
+<span class="Special">{Vim が&nbsp;</span><a class="Identifier" href="various.html#+perl">+perl</a><span class="Special">&nbsp;機能付きでコンパイルされたときのみ利用できる}</span><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-1. Perl のファイルを編集する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-editing" name="perl-editing">perl-editing</a><br>
+1. Perl ファイルの編集&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-editing" name="perl-editing">perl-editing</a><br>
 <br>
-Vim の構文ハイライト(syntax highlighting)は Perl と POD のファイルもサポートし<br>
-ている。Vim はファイルの拡張子が .pl か .pm であると、Perl のコードだと想定<br>
-する。Vimは、ファイルタイプが検出されなかった場合、ファイルの shebang 行も調べ<br>
-て、ファイルが Perl スクリプトかどうかを確認する。ファイル名に .POD サフィック<br>
-スが付いている場合、Vim はファイルが POD テキストであると想定する。<br>
+Vim の構文ハイライトは Perl および POD ファイルをサポートしている。ファイル名<br>
+に .pl または .pm の拡張子がある場合、Vim はファイルを Perl のコードとみなす。<br>
+ファイルタイプが検出されていない場合、Vim はファイルの shebang 行も調べて、ファ<br>
+イルが Perl スクリプトかどうかを確認する。ファイル名に .POD の拡張子がある場<br>
+合、Vim はファイルを POD テキストとみなす。<br>
 <br>
-Perl でタグを使うには、Universal/Exuberant Ctags が必要である。ここを訪れるこ<br>
-と:<br>
+Perl でタグを使うには、Universal/Exuberant Ctags が必要である。ここを見ること:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Universal Ctags (推奨):&nbsp;<span class="Constant"><a href="https://ctags.io">https://ctags.io</a></span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exuberant Ctags:&nbsp;<span class="Constant"><a href="http://ctags.sourceforge.net">http://ctags.sourceforge.net</a></span><br>
 <br>
-Perl スクリプトの &quot;pltags.pl&quot; を使うこともできる。これは $VIMRUNTIME/tools ディ<br>
-レクトリにある。これは今のところ最新のctagsよりも高機能である。<br>
+代わりに、Perl スクリプト pltags.pl を使うこともできる。これは<br>
+$VIMRUNTIME/tools ディレクトリで Vim と一緒に配布されている。このスクリプトは<br>
+現在、Exuberant ctags の Perl サポートより多くの機能を持っている。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-2. Perl インターフェイス付きのコンパイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-compiling" name="perl-compiling">perl-compiling</a><br>
+2. Perl インターフェイス付きでの Vim のコンパイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-compiling" name="perl-compiling">perl-compiling</a><br>
 <br>
-Perl インターフェイス付きで Vim をコンパイルするには、最新バージョンの Perl が<br>
-必要である。Vim をコンパイルする前に、Perl がインストールされている必要がある。<br>
+Perl インターフェイス付きで Vim をコンパイルするには、最近のバージョンの Perl<br>
+が必要である。Vim をコンパイルする前に Perl がインストールされていなければなら<br>
+ない。<br>
 <br>
-Vim への Perl パッチは、次の方によって作成された:<br>
+Vim 用の Perl パッチは以下によって作られた:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sven Verdoolaege &lt;skimo@breughel.ufsia.ac.be&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Matt Gerassimof<br>
 <br>
-MS-Windows用 (および他のプラットフォームの) Perl は、次の場所で見つけることが<br>
-できる:<br>
+MS-Windows (および他のプラットフォーム) 用の Perl は以下で見つけられる:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://www.perl.org/">http://www.perl.org/</a></span><br>
-ActiveState のものも動作するはずだが、Strawberry Perlは良い選択肢である。<br>
+ActiveState のものは動作するはずで、Strawberry Perl は良い代替である。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-3. Perl インターフェイスを使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-using" name="perl-using">perl-using</a><br>
+3. Perl インターフェイスの使用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-using" name="perl-using">perl-using</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#:perl" name=":perl">:perl</a>&nbsp;<a class="Constant" href="if_perl.html#:pe" name=":pe">:pe</a><br>
 :pe[rl]&nbsp;<span class="Special">{cmd}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Perl コマンド&nbsp;<span class="Special">{cmd}</span>&nbsp;を実行する。現在のパッケージは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;main&quot; である。<a class="Comment" href="if_perl.html#:perl">:perl</a>&nbsp;が動作するかを確認する単純な例<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;main&quot; である。<a class="Comment" href="if_perl.html#:perl">:perl</a>&nbsp;が動作しているかをテストする簡<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;単な例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:perl VIM::Msg(&quot;Hello&quot;)</div>
 <br>
 :pe[rl] &lt;&lt;&nbsp;<span class="Special">[trim]</span>&nbsp;[<span class="Special">{endmarker}</span>]<br>
 <span class="Special">{script}</span><br>
 <span class="Special">{endmarker}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Perlスクリプト&nbsp;<span class="Special">{script}</span>&nbsp;を実行する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{script}</span>&nbsp;の後ろの&nbsp;<span class="Special">{endmarker}</span>&nbsp;の前に空白を置いてはいけ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Perl スクリプト&nbsp;<span class="Special">{script}</span>&nbsp;を実行する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{script}</span>&nbsp;の後の&nbsp;<span class="Special">{endmarker}</span>&nbsp;の前に空白文字を置いてはな<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;らない。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[endmarker]</span>&nbsp;を省略した時は&nbsp;<a class="Identifier" href="insert.html#:append">:append</a>&nbsp;や&nbsp;<a class="Identifier" href="insert.html#:insert">:insert</a>&nbsp;のよ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;うにドット '.' が使われる。これは関数の中で使う時に便<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;利である。なぜなら &quot;$i;&quot; は&nbsp;<a class="Identifier" href="insert.html#:insert">:insert</a>&nbsp;コマンドの開始と<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;紛らわしいからである。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[endmarker]</span>&nbsp;を省略した場合、<a class="Identifier" href="insert.html#:append">:append</a>&nbsp;および&nbsp;<a class="Identifier" href="insert.html#:insert">:insert</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンドと同様に、ドット '.' がデフォルトになる。関数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の中では '.' を使うと役に立つ。&quot;$i;&quot; は Vim には<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="insert.html#:insert">:insert</a>&nbsp;コマンドの始まりのように見えるからである。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この方法は Vim script の中にPerlスクリプトを埋め込む時<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に便利である。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;Perl のサポートを有効にしてコンパイルされていな<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いとこのコマンドは機能しない。エラーを回避するには<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_perl.html#script-here">script-here</a>&nbsp;を参照すること。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この形式の&nbsp;<a class="Identifier" href="if_perl.html#:perl">:perl</a>&nbsp;コマンドは、主に vim script に perl<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コードを含めるのに便利である。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;このコマンドは Perl 機能が組み込まれていないとき<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は動作しない。エラーを避けるには、<a class="Identifier" href="if_perl.html#script-here">script-here</a>&nbsp;を参<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;照。<br>
 <br>
 <br>
 Vim script の例:<br>
@@ -89,224 +89,217 @@ Vim script の例:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EOF<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfunction</div>
 <br>
-使っている Perl のバージョンを見るには:<br>
+使っている Perl のバージョンを確認するには:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:perl print $^V</div>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#:perldo" name=":perldo">:perldo</a>&nbsp;<a class="Constant" href="if_perl.html#:perld" name=":perld">:perld</a><br>
+:<span class="Special">[range]</span>perld[o]&nbsp;<span class="Special">{cmd}</span>&nbsp;&nbsp;<span class="Special">[range]</span>&nbsp;の各行に対して Perl コマンド&nbsp;<span class="Special">{cmd}</span>&nbsp;を実行する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$_ には各行のテキストが順に、末尾の&nbsp;<span class="Special">&lt;EOL&gt;</span>&nbsp;なしで設定さ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れる。$_ を設定するとテキストが変更されるが、このコマ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンドを使って行を追加または削除することはできないことに<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[range]</span>&nbsp;のデフォルトはファイル全体: &quot;1,$&quot; である。<br>
 <br>
-:<span class="Special">[range]</span>perld[o]&nbsp;<span class="Special">{cmd}</span>&nbsp;&nbsp;Perl コマンド&nbsp;<span class="Special">{cmd}</span>&nbsp;を&nbsp;<span class="Special">{range}</span>&nbsp;のそれぞれの行に対して<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;実行する。$_ はテキスト中のそれぞれの行のテキストに、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;余計な&nbsp;<span class="Special">&lt;EOL&gt;</span>&nbsp;なしでセットされる。$_ をセットすることで<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;テキストを変更するが、このコマンドを使って行を挿入した<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;り、削除したりすることはできないということに注意するこ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルトの&nbsp;<span class="Special">[range]</span>&nbsp;はすべての行である: &quot;1,$&quot;。<br>
-<br>
-いくつかの例をあげると:<br>
+ここに試せることがいくつかある:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;:perl $a=1<br>
 &nbsp;&nbsp;:perldo $_ = reverse($_);1<br>
 &nbsp;&nbsp;:perl VIM::Msg(&quot;hello&quot;)<br>
 &nbsp;&nbsp;:perl $line = $curbuf-&gt;Get(42)</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#E299" name="E299">E299</a><br>
-<a class="Identifier" href="eval.html#sandbox">sandbox</a>の中のPerlコマンドの実行は制限されている。&quot;:perldo&quot; は常に使えない。<br>
-&quot;:perl&quot; は安全な環境の中で、可能なら評価される。<br>
+<a class="Identifier" href="eval.html#sandbox">sandbox</a>&nbsp;内での Perl コマンドの実行は制限される。&quot;:perldo&quot; はまったく使えな<br>
+い。&quot;:perl&quot; は可能であれば Safe 環境で評価される。<br>
+<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-overview" name="perl-overview">perl-overview</a><br>
-Perl で使える関数の一覧である:<br>
+これが Perl で使用できる関数の概要である:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp; :perl VIM::Msg(&quot;Text&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # メッセージを表示する<br>
-&nbsp;&nbsp; :perl VIM::Msg(&quot;Wrong!&quot;, &quot;ErrorMsg&quot;) # エラーメッセージを表示する<br>
-&nbsp;&nbsp; :perl VIM::Msg(&quot;remark&quot;, &quot;Comment&quot;)&nbsp;&nbsp;# ハイライトされたメッセージを表示する<br>
-&nbsp;&nbsp; :perl VIM::SetOption(&quot;ai&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Vim のオプションをセットする<br>
-&nbsp;&nbsp; :perl $nbuf = VIM::Buffers()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 全てのバッファ数を返す<br>
-&nbsp;&nbsp; :perl @buflist = VIM::Buffers()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 全てのバッファの配列を返す<br>
-&nbsp;&nbsp; :perl $mybuf = (VIM::Buffers('qq.c'))[0] # 'qq.c' のバッファオブジェクト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# を返す<br>
-&nbsp;&nbsp; :perl @winlist = VIM::Windows()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 全てのウィンドウの配列を返す<br>
-&nbsp;&nbsp; :perl $nwin = VIM::Windows()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # ウィンドウ数を返す<br>
-&nbsp;&nbsp; :perl ($success, $v) = VIM::Eval('&amp;path') # $v: 'path' オプション、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # $success: 1<br>
-&nbsp;&nbsp; :perl ($success, $v) = VIM::Eval('&amp;xyz')&nbsp;&nbsp;# $v: '' $sucess: 0<br>
-&nbsp;&nbsp; :perl $v = VIM::Eval('expand(&quot;&lt;cfile&gt;&quot;)') # &lt;cfile&gt; を展開<br>
-&nbsp;&nbsp; :perl $curwin-&gt;SetHeight(10)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # ウィンドウの高さを設定する<br>
-&nbsp;&nbsp; :perl @pos = $curwin-&gt;Cursor()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # (行, 列) 配列を返す<br>
+<div class="helpExample">&nbsp;&nbsp;:perl VIM::Msg(&quot;Text&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# メッセージを表示する<br>
+&nbsp;&nbsp;:perl VIM::Msg(&quot;Wrong!&quot;, &quot;ErrorMsg&quot;)&nbsp;&nbsp;# エラーメッセージを表示する<br>
+&nbsp;&nbsp;:perl VIM::Msg(&quot;remark&quot;, &quot;Comment&quot;)&nbsp;&nbsp; # ハイライトされたメッセージを表示する<br>
+&nbsp;&nbsp;:perl VIM::SetOption(&quot;ai&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# vim のオプションを設定する<br>
+&nbsp;&nbsp;:perl $nbuf = VIM::Buffers()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# バッファの数を返す<br>
+&nbsp;&nbsp;:perl @buflist = VIM::Buffers()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # すべてのバッファの配列を返す<br>
+&nbsp;&nbsp;:perl $mybuf = (VIM::Buffers('qq.c'))[0] # 'qq.c' のバッファオブジェクトを返す<br>
+&nbsp;&nbsp;:perl @winlist = VIM::Windows()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # すべてのウィンドウの配列を返す<br>
+&nbsp;&nbsp;:perl $nwin = VIM::Windows()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# ウィンドウの数を返す<br>
+&nbsp;&nbsp;:perl ($success, $v) = VIM::Eval('&amp;path') # $v: オプション 'path'、$success: 1<br>
+&nbsp;&nbsp;:perl ($success, $v) = VIM::Eval('&amp;xyz')&nbsp;&nbsp;# $v: '' および $success: 0<br>
+&nbsp;&nbsp;:perl $v = VIM::Eval('expand(&quot;&lt;cfile&gt;&quot;)') # &lt;cfile&gt; を展開する<br>
+&nbsp;&nbsp;:perl $curwin-&gt;SetHeight(10)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# ウィンドウの高さを設定する<br>
+&nbsp;&nbsp;:perl @pos = $curwin-&gt;Cursor()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# (row, col) の配列を返す<br>
 &nbsp;&nbsp;:perl @pos = (10, 10)<br>
-&nbsp;&nbsp; :perl $curwin-&gt;Cursor(@pos)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# カーソルを @pos にセットする<br>
-&nbsp;&nbsp; :perl $curwin-&gt;Cursor(10,10)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # カーソルを10行10列目にセットする<br>
-&nbsp;&nbsp; :perl $mybuf = $curwin-&gt;Buffer()&nbsp;&nbsp;&nbsp;&nbsp; # ウィンドウのバッファオブジェクトを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 返す<br>
-&nbsp;&nbsp; :perl $curbuf-&gt;Name()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# バッファ名を返す<br>
-&nbsp;&nbsp;:perl $curbuf-&gt;Number()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # returns buffer number<br>
-&nbsp;&nbsp; :perl $curbuf-&gt;Count()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 行数を返す<br>
-&nbsp;&nbsp; :perl $l = $curbuf-&gt;Get(10)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 10 行目を返す<br>
-&nbsp;&nbsp; :perl @l = $curbuf-&gt;Get(1 .. 5)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 1行目から5行目までを返す<br>
-&nbsp;&nbsp; :perl $curbuf-&gt;Delete(10)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 10行目を削除する<br>
-&nbsp;&nbsp; :perl $curbuf-&gt;Delete(10, 20)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 10行目から20行目までを削除する<br>
-&nbsp;&nbsp; :perl $curbuf-&gt;Append(10, &quot;Line&quot;)&nbsp;&nbsp;&nbsp;&nbsp;# 行を挿入する<br>
-&nbsp;&nbsp; :perl $curbuf-&gt;Append(10, &quot;Line1&quot;, &quot;Line2&quot;, &quot;Line3&quot;) # 3行挿入する<br>
+&nbsp;&nbsp;:perl $curwin-&gt;Cursor(@pos)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # カーソルを @pos に設定する<br>
+&nbsp;&nbsp;:perl $curwin-&gt;Cursor(10,10)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# カーソルを 10 行 10 列に設定する<br>
+&nbsp;&nbsp;:perl $mybuf = $curwin-&gt;Buffer()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# ウィンドウのバッファオブジェクトを返す<br>
+&nbsp;&nbsp;:perl $curbuf-&gt;Name()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # バッファ名を返す<br>
+&nbsp;&nbsp;:perl $curbuf-&gt;Number()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # バッファ番号を返す<br>
+&nbsp;&nbsp;:perl $curbuf-&gt;Count()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 行数を返す<br>
+&nbsp;&nbsp;:perl $l = $curbuf-&gt;Get(10)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 10 行目を返す<br>
+&nbsp;&nbsp;:perl @l = $curbuf-&gt;Get(1 .. 5)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 1 行目から 5 行目を返す<br>
+&nbsp;&nbsp;:perl $curbuf-&gt;Delete(10)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 10 行目を削除する<br>
+&nbsp;&nbsp;:perl $curbuf-&gt;Delete(10, 20)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 10 行目から 20 行目を削除する<br>
+&nbsp;&nbsp;:perl $curbuf-&gt;Append(10, &quot;Line&quot;)&nbsp;&nbsp;&nbsp;&nbsp; # 1 行を追加する<br>
+&nbsp;&nbsp;:perl $curbuf-&gt;Append(10, &quot;Line1&quot;, &quot;Line2&quot;, &quot;Line3&quot;) # 3 行を追加する<br>
 &nbsp;&nbsp;:perl @l = (&quot;L1&quot;, &quot;L2&quot;, &quot;L3&quot;)<br>
-&nbsp;&nbsp; :perl $curbuf-&gt;Append(10, @l)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# L1, L2, L3 を挿入する<br>
-&nbsp;&nbsp; :perl $curbuf-&gt;Set(10, &quot;Line&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 10行目を置き換える<br>
-&nbsp;&nbsp; :perl $curbuf-&gt;Set(10, &quot;Line1&quot;, &quot;Line2&quot;)&nbsp;&nbsp;&nbsp;&nbsp; # 10行目と11行目を置き換える<br>
-&nbsp;&nbsp; :perl $curbuf-&gt;Set(10, @l)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # 3行置き換える</div>
+&nbsp;&nbsp;:perl $curbuf-&gt;Append(10, @l)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # L1、L2 および L3 を追加する<br>
+&nbsp;&nbsp;:perl $curbuf-&gt;Set(10, &quot;Line&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 10 行目を置き換える<br>
+&nbsp;&nbsp;:perl $curbuf-&gt;Set(10, &quot;Line1&quot;, &quot;Line2&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 10 行目および 11 行目を置き換える<br>
+&nbsp;&nbsp;:perl $curbuf-&gt;Set(10, @l)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 3 行を置き換える</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-Msg" name="perl-Msg">perl-Msg</a><br>
 VIM::Msg(<span class="Special">{msg}</span>,&nbsp;<span class="Special">{group}</span>?)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{msg}</span>&nbsp;メッセージを表示する。オプショナルな&nbsp;<span class="Special">{group}</span>&nbsp;引<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数は、そのメッセージの Vim でのハイライトグループを指<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;メッセージ&nbsp;<span class="Special">{msg}</span>&nbsp;を表示する。省略可能な引数&nbsp;<span class="Special">{group}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、Vim がそのメッセージに使うハイライトグループを指定<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-SetOption" name="perl-SetOption">perl-SetOption</a><br>
-VIM::SetOption(<span class="Special">{arg}</span>)&nbsp;&nbsp; Vim のオプションをセットする。<span class="Special">{arg}</span>&nbsp;は &quot;:set&quot; コマンド<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;で使える引数であればなんでもよい。このことは、引数の中<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;にスペースを入れることは許されないということを意味する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ので、注意すること。参照:&nbsp;<a class="Identifier" href="options.html#:set">:set</a><br>
+VIM::SetOption(<span class="Special">{arg}</span>)&nbsp;&nbsp; vim のオプションを設定する。<span class="Special">{arg}</span>&nbsp;には &quot;:set&quot; コマンド<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が受け付ける任意の引数を指定できる。<span class="Todo">Note</span>&nbsp;これは引数の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中に空白が許されないことを意味することに注意!&nbsp;<a class="Identifier" href="options.html#:set">:set</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-Buffers" name="perl-Buffers">perl-Buffers</a><br>
-VIM::Buffers([<span class="Special">{bn}</span>...]) 引数なしだと、配列コンテキストではすべてのバッファのリ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ストを、スカラーコンテキストではバッファの数を返す。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファ名&nbsp;<span class="Special">{bn}</span>&nbsp;もしくは、バッファ番号&nbsp;<span class="Special">{bn}</span>&nbsp;のリストが<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;与えられた場合は、<span class="Special">{bn}</span>&nbsp;にマッチするバッファのリストを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;返す。ここでは Vim の内部関数&nbsp;<a class="Identifier" href="builtin.html#bufname()">bufname()</a>&nbsp;と同じルール<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が用いられる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">警告:</span>&nbsp;<a class="Identifier" href="windows.html#:bwipe">:bwipe</a>&nbsp;が使われると、このリストは無効になる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;それを使おうとすると Vim がクラッシュすることがある。<br>
+VIM::Buffers([<span class="Special">{bn}</span>...]) 引数が無い場合、配列コンテキストではすべてのバッファの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リストを返し、スカラーコンテキストではバッファの数を返<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。バッファ名または番号&nbsp;<span class="Special">{bn}</span>&nbsp;のリストに対しては、Vim<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内部の&nbsp;<a class="Identifier" href="builtin.html#bufname()">bufname()</a>&nbsp;関数と同じ規則を使って、<span class="Special">{bn}</span>&nbsp;にマッ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;チするバッファのリストを返す。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">WARNING:</span>&nbsp;<a class="Identifier" href="windows.html#:bwipe">:bwipe</a>&nbsp;が使われるとリストは無効になる。それ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;でも使うと Vim がクラッシュすることがある。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-Windows" name="perl-Windows">perl-Windows</a><br>
-VIM::Windows([<span class="Special">{wn}</span>...]) 引数なしだと、配列コンテキストではすべてのウィンドウの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リストを返し、スカラーコンテキストではウィンドウの数を<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;返す。ウィンドウ数&nbsp;<span class="Special">{wn}</span>&nbsp;にリストが与えられた場合は、そ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れらの番号のウィンドウのリストを返す。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">警告:</span>&nbsp;<a class="Identifier" href="windows.html#:bwipe">:bwipe</a>&nbsp;が使われると、このリストは無効になる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;それを使おうとすると Vim がクラッシュすることがある。<br>
+VIM::Windows([<span class="Special">{wn}</span>...]) 引数が無い場合、配列コンテキストではすべてのウィンドウ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のリストを返し、スカラーコンテキストではウィンドウの数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を返す。ウィンドウ番号&nbsp;<span class="Special">{wn}</span>&nbsp;のリストに対しては、それら<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の番号を持つウィンドウのリストを返す。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">WARNING:</span>&nbsp;ウィンドウが閉じられるとリストは無効になる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;それでも使うと Vim がクラッシュすることがある。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-DoCommand" name="perl-DoCommand">perl-DoCommand</a><br>
 VIM::DoCommand(<span class="Special">{cmd}</span>)&nbsp;&nbsp; Ex コマンド&nbsp;<span class="Special">{cmd}</span>&nbsp;を実行する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-Eval" name="perl-Eval">perl-Eval</a><br>
-VIM::Eval(<span class="Special">{expr}</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{expr}</span>&nbsp;を評価して、リストコンテキストでは (success,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value) を返し、スカラーコンテキストでは単に値を返す。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;success=1 だと、val は&nbsp;<span class="Special">{expr}</span>&nbsp;の値を含む;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;success=0 だと、式の評価に失敗したことを示している。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'@x' はレジスタ x の内容を返し、'&amp;x' はオプション x の<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;値を返す。'x' は内部変数&nbsp;<a class="Identifier" href="eval.html#variables">variables</a>&nbsp;x を返し、'$x'は<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Perl の $ENV<span class="Special">{x}</span>&nbsp;と同じである。コマンドラインからアクセ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スできるすべての&nbsp;<a class="Identifier" href="eval.html#functions">functions</a>&nbsp;は&nbsp;<span class="Special">{expr}</span>&nbsp;に使うことがで<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;きる。リスト&nbsp;<a class="Identifier" href="eval.html#List">List</a>&nbsp;は文字列に変換される。そのとき各要<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;素の間に改行が挿入され、連結される。<br>
+VIM::Eval(<span class="Special">{expr}</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{expr}</span>&nbsp;を評価し、リストコンテキストでは (success,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value) を返し、スカラーコンテキストでは value だけを返<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;success=1 は、val に&nbsp;<span class="Special">{expr}</span>&nbsp;の値が入っていることを示<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。success=0 は式の評価に失敗したことを示す。'@x' は<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;レジスタ x の内容を返し、'&amp;x' はオプション x の値を返<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;し、'x' は内部&nbsp;<a class="Identifier" href="eval.html#variables">variables</a>&nbsp;x の値を返し、'$x' は perl<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の $ENV<span class="Special">{x}</span>&nbsp;と同等である。コマンドラインからアクセスで<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;きるすべての&nbsp;<a class="Identifier" href="eval.html#functions">functions</a>&nbsp;が&nbsp;<span class="Special">{expr}</span>&nbsp;に使える。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="eval.html#List">List</a>&nbsp;は、項目を連結して改行を挿入することで文字列に<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変換される。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-Blob" name="perl-Blob">perl-Blob</a><br>
 VIM::Blob(<span class="Special">{expr}</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スカラー値から&nbsp;<a class="Identifier" href="eval.html#Blob">Blob</a>&nbsp;リテラル文字列 0zXXXX を返す。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-SetHeight" name="perl-SetHeight">perl-SetHeight</a><br>
 Window-&gt;SetHeight(<span class="Special">{height}</span>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウの高さをスクリーンの上限以内で&nbsp;<span class="Special">{height}</span>&nbsp;に<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;セットする。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Window の高さを、画面の制限内で&nbsp;<span class="Special">{height}</span>&nbsp;に設定する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-GetCursor" name="perl-GetCursor">perl-GetCursor</a><br>
 Window-&gt;Cursor(<span class="Special">{row}</span>?,&nbsp;<span class="Special">{col}</span>?)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数なしだと、ウィンドウの現在のカーソル位置の (row,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col) 配列を返す。<span class="Special">{row}</span>&nbsp;と&nbsp;<span class="Special">{col}</span>&nbsp;引数をつけてよばれる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と、ウィンドウのカーソル位置を&nbsp;<span class="Special">{row}</span>&nbsp;と&nbsp;<span class="Special">{col}</span>&nbsp;にセット<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。<span class="Special">{col}</span>&nbsp;は Perl のように0から数えられるので、Vim<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のルーラーの値より1つ小さくなるということに注意するこ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数が無い場合、Window 内の現在のカーソル位置の (row,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col) 配列を返す。<span class="Special">{row}</span>&nbsp;および&nbsp;<span class="Special">{col}</span>&nbsp;引数がある場合、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Window のカーソル位置を&nbsp;<span class="Special">{row}</span>&nbsp;および&nbsp;<span class="Special">{col}</span>&nbsp;に設定する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>&nbsp;<span class="Special">{col}</span>&nbsp;は Perl 流に 0 から数えるので、Vim のルー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ラーの値より 1 小さいことに注意。<br>
 <br>
 Window-&gt;Buffer()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-Buffer" name="perl-Buffer">perl-Buffer</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;与えられたウィンドウに対応するバッファオブジェクトを返<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;与えられた Window に対応する Buffer オブジェクトを返<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-Name" name="perl-Name">perl-Name</a><br>
-Buffer-&gt;Name()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファのファイル名を返す。<br>
+Buffer-&gt;Name()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buffer のファイル名を返す。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-Number" name="perl-Number">perl-Number</a><br>
-Buffer-&gt;Number()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの番号を返す。<br>
+Buffer-&gt;Number()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buffer の番号を返す。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-Count" name="perl-Count">perl-Count</a><br>
-Buffer-&gt;Count()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バッファの行数を返す。<br>
+Buffer-&gt;Count()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Buffer の行数を返す。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-Get" name="perl-Get">perl-Get</a><br>
 Buffer-&gt;Get(<span class="Special">{lnum}</span>,&nbsp;<span class="Special">{lnum}</span>?, ...)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの&nbsp;<span class="Special">{lnum}</span>&nbsp;行目のテキストを、指定されているそれ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ぞれの&nbsp;<span class="Special">{lnum}</span>&nbsp;に関して返す。<span class="Special">{lnum}</span>&nbsp;のリストとして配列<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を渡すこともできる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定された各&nbsp;<span class="Special">{lnum}</span>&nbsp;について、Buffer の&nbsp;<span class="Special">{lnum}</span>&nbsp;行目の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;テキスト文字列を返す。<span class="Special">{lnum}</span>&nbsp;のリストを指定した配列を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;渡すことができる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-Delete" name="perl-Delete">perl-Delete</a><br>
 Buffer-&gt;Delete(<span class="Special">{lnum}</span>,&nbsp;<span class="Special">{lnum}</span>?)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの&nbsp;<span class="Special">{lnum}</span>&nbsp;行目を削除する。二つ目の&nbsp;<span class="Special">{lnum}</span>&nbsp;が指<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定されていると、始めの&nbsp;<span class="Special">{lnum}</span>&nbsp;から二つ目の&nbsp;<span class="Special">{lnum}</span>&nbsp;まで<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の範囲の行が削除される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buffer の&nbsp;<span class="Special">{lnum}</span>&nbsp;行目を削除する。2 つ目の&nbsp;<span class="Special">{lnum}</span>&nbsp;があ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る場合、最初の&nbsp;<span class="Special">{lnum}</span>&nbsp;から 2 つ目の&nbsp;<span class="Special">{lnum}</span>&nbsp;までの範囲<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の行を削除する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-Append" name="perl-Append">perl-Append</a><br>
 Buffer-&gt;Append(<span class="Special">{lnum}</span>,&nbsp;<span class="Special">{line}</span>,&nbsp;<span class="Special">{line}</span>?, ...)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;それぞれの&nbsp;<span class="Special">{line}</span>&nbsp;をバッファの&nbsp;<span class="Special">{lnum}</span>&nbsp;行目の後に挿入す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;各&nbsp;<span class="Special">{line}</span>&nbsp;文字列を Buffer の&nbsp;<span class="Special">{lnum}</span>&nbsp;行目の後に追加す<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<span class="Special">{line}</span>&nbsp;のリストは配列でもよい。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-Set" name="perl-Set">perl-Set</a><br>
 Buffer-&gt;Set(<span class="Special">{lnum}</span>,&nbsp;<span class="Special">{line}</span>,&nbsp;<span class="Special">{line}</span>?, ...)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの行を1行以上&nbsp;<span class="Special">{line}</span>&nbsp;で指定される行で置き換え<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。置き換えは、<span class="Special">{lnum}</span>&nbsp;から始まり、<span class="Special">{line}</span>&nbsp;は配列でもよ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い。引数が有効でないものであれば、置き換えは起こらな<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buffer の&nbsp;<span class="Special">{lnum}</span>&nbsp;行目から始めて、Buffer の 1 行以上を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定された&nbsp;<span class="Special">{lines}</span>s で置き換える。<span class="Special">{line}</span>&nbsp;のリストは配<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;列でもよい。引数が無効な場合、置き換えは行われない。<br>
 <br>
 $main::curwin<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在のウィンドウオブジェクト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在のウィンドウオブジェクト。<br>
 <br>
 $main::curbuf<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在のバッファオブジェクト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在のバッファオブジェクト。<br>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#script-here" name="script-here">script-here</a><br>
-Vim script にその他のスクリプトを埋め込むときに、その言語がサポートされていな<br>
-い場合、その部分をスキップしたいだろう。<br>
+スクリプト言語をインラインで使う場合、その言語がサポートされていないときはこれ<br>
+をスキップしたいことがあるだろう。<br>
 <div class="helpExample">&nbsp;&nbsp; if has('perl')<br>
 &nbsp;&nbsp;&nbsp;&nbsp; perl &lt;&lt; EOF<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print 'perl works'<br>
 &nbsp;&nbsp; EOF<br>
 &nbsp;&nbsp; endif</div>
-<span class="Todo">Note:</span>&nbsp;&quot;EOF&quot; は前に空白を入れずに行頭に置く必要がある。<br>
+<span class="Todo">Note</span>&nbsp;&quot;EOF&quot; は、前に空白を置かずに行頭になければならないことに注意。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 4. 動的ローディング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_perl.html#perl-dynamic" name="perl-dynamic">perl-dynamic</a><br>
 <br>
-MS-Windows と Unix では Perl ライブラリを動的に読み込むことが可能である。これ<br>
-を行うと&nbsp;<a class="Identifier" href="various.html#:version">:version</a>&nbsp;の出力に&nbsp;<a class="Identifier" href="various.html#+perl/dyn">+perl/dyn</a>&nbsp;が含まれるようになる。<br>
+MS-Windows および Unix では、Perl ライブラリを動的に読み込むことができる。その<br>
+とき&nbsp;<a class="Identifier" href="various.html#:version">:version</a>&nbsp;の出力には&nbsp;<a class="Identifier" href="various.html#+perl/dyn">+perl/dyn</a>&nbsp;が含まれる。<br>
 <br>
-この場合、Vimは必要になったときだけPerlのDLLや共有ライブラリのファイルを検索す<br>
-る。Perlインターフェイスを使わないときはDLLを必要としないので、DLLなしでVim を<br>
-使うことができる。<br>
+これは、Vim が必要なときにだけ Perl の DLL または共有ライブラリファイルを検索<br>
+することを意味する。Perl インターフェイスを使わない場合はそれは必要なく、した<br>
+がって、このファイルなしで Vim を使うことができる。<br>
+<br>
 <br>
 <span class="PreProc">MS-Windows</span><br>
 <br>
-<span class="Constant"><a href="http://www.perl.org">http://www.perl.org</a></span>&nbsp;から Perl をダウンロードできる。Vim のビルドには<br>
+Perl は&nbsp;<span class="Constant"><a href="http://www.perl.org">http://www.perl.org</a></span>&nbsp;からダウンロードできる。Vim のビルドには<br>
 ActiveState のものが使われた。<br>
 <br>
-Perl インターフェイスを使うには Perl の DLL が検索パス内に存在しなければならな<br>
-い。perl512.dll が見つからないというようなメッセージが表示された場合は、$PATH<br>
-に適切なディレクトリが含まれているかどうか確認すること。通常は Perl のインス<br>
-トーラによって設定されるだろう。コンソールウィンドウで &quot;path&quot; とタイプすると、<br>
-どのディレクトリが検索パスになっているか確認できる。また&nbsp;<a class="Type" href="options.html#'perldll'">'perldll'</a>&nbsp;オプション<br>
-を Perl の DLL を指定するのに使うこともできる。<br>
+Perl インターフェイスを使うには、Perl の DLL が検索パスになければならない。<br>
+Vim が perl512.dll を見つけられないと報告する場合、$PATH にそれがあるディレク<br>
+トリが含まれていることを確かめること。Perl のインストーラは通常それを行う。<br>
+どのディレクトリが使われるかを見るには、コンソールウィンドウで &quot;path&quot; とタイプ<br>
+する。<a class="Type" href="options.html#'perldll'">'perldll'</a>&nbsp;オプションを使って Perl の DLL を指定することもできる。<br>
 <br>
-DLLの名前はVimをコンパイルした時のPerlのバージョンに一致しなければならない。現<br>
-在その名前は &quot;perl512.dll&quot; である。これはPerl5.12用である。これを確かめるには、<br>
-&quot;gviai.exe&quot; を開き、&quot;perl\d*.dll\c&quot; を検索すること。<br>
+DLL の名前は、Vim がコンパイルされたときの Perl のバージョンと一致しなければな<br>
+らない。現在の名前は &quot;perl512.dll&quot; である。これは Perl 5.12 用である。確実に知<br>
+るには、&quot;gviai.exe&quot; を編集して &quot;perl\d*.dll\c&quot; を検索する。<br>
 <br>
 <br>
 <span class="PreProc">Unix</span><br>
 <br>
-コンパイル時に DYNAMIC_PERL_DLL で指定されたファイルの代わりに&nbsp;<a class="Type" href="options.html#'perldll'">'perldll'</a>&nbsp;オプ<br>
-ションで使用する Perl の共有ライブラリのファイルを指定するのに使える。共有ライ<br>
-ブラリのバージョンは Vim と共にコンパイルされた Perl のバージョンと一致してい<br>
-なければならない。<br>
+<a class="Type" href="options.html#'perldll'">'perldll'</a>&nbsp;オプションを使って、コンパイル時に指定された DYNAMIC_PERL_DLL ファイ<br>
+ルの代わりに Perl の共有ライブラリファイルを指定できる。共有ライブラリのバー<br>
+ジョンは、Vim がコンパイルされたときの Perl のバージョンと一致しなければならな<br>
+い。<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;Perl をローカルでビルドする場合、Vim が正常にリンクするためには、スレッ<br>
-ドサポート付きでコンパイルされたバージョンを使用する必要がある。Perl を構成す<br>
-るときに&nbsp;<span class="Comment">-Dusethreads</span>&nbsp;フラグを使うことができ、Perl のバイナリでこのフラグが<br>
-有効になっているかどうかは&nbsp;<span class="Comment">perl -V</span>&nbsp;を実行して &quot;Compile-time options&quot; の下に<br>
-<span class="Comment">USE_ITHREADS</span>&nbsp;があるかどうかで確認することができる。<br>
+<span class="Todo">Note:</span>&nbsp;Perl をローカルでビルドしている場合、Vim がそれに対して正しくリンクでき<br>
+るように、スレッドサポート付きでコンパイルされたバージョンを使う必要がある。<br>
+Perl を configure するときに&nbsp;<span class="Comment">-Dusethreads</span>&nbsp;フラグを使うことができ、<span class="Comment">perl -V</span><br>
+を実行して&nbsp;<span class="Comment">USE_ITHREADS</span>&nbsp;が &quot;Compile-time options&quot; の下にあることを確かめるこ<br>
+とで、Perl のバイナリでそれが有効になっているかを確認できる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
