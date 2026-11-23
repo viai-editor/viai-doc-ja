@@ -9,183 +9,180 @@ helpname: 'usr_42'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 新しいメニューを追加する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しいメニューを追加する<br>
 <br>
 <br>
-Vim の柔軟性については既にご存知だと思います。それは GUI のメニューにおいても<br>
-同じです。自分でメニューを追加して、コマンドの実行を簡単にすることができます。<br>
-この章はマウスをよく使うユーザー向けです。<br>
+ここまでで、Vim がとても柔軟であることはお分かりでしょう。これには GUI で使わ<br>
+れるメニューも含まれます。独自のメニュー項目を定義して、特定のコマンドに簡単に<br>
+アクセスできるようにすることができます。これはマウス好きのユーザーのためだけの<br>
+ものです。<br>
 <br>
 <a class="Identifier" href="usr_42.html#42.1">42.1</a>&nbsp;&nbsp;はじめに<br>
 <a class="Identifier" href="usr_42.html#42.2">42.2</a>&nbsp;&nbsp;メニューコマンド<br>
-<a class="Identifier" href="usr_42.html#42.3">42.3</a>&nbsp;&nbsp;その他いろいろ<br>
-<a class="Identifier" href="usr_42.html#42.4">42.4</a>&nbsp;&nbsp;ツールバーとポップアップメニュー<br>
+<a class="Identifier" href="usr_42.html#42.3">42.3</a>&nbsp;&nbsp;その他<br>
+<a class="Identifier" href="usr_42.html#42.4">42.4</a>&nbsp;&nbsp;ツールバーおよびポップアップメニュー<br>
 <br>
 次章:&nbsp;<a class="Identifier" href="usr_43.html">usr_43.txt</a>&nbsp;&nbsp;ファイルタイプを使う<br>
-前章:&nbsp;<a class="Identifier" href="usr_41.html">usr_41.txt</a>&nbsp;&nbsp;Vim script 書法<br>
+前章:&nbsp;<a class="Identifier" href="usr_41.html">usr_41.txt</a>&nbsp;&nbsp;Vim script を書く<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_42.html#42.1" name="42.1">42.1</a>&nbsp;&nbsp;はじめに<br>
 <br>
-Vim のメニューは &quot;$VIMRUNTIME/menu.vim&quot; で定義されています。自分のメニューを作<br>
-りたい場合は、そのファイルにざっと目を通してみてください。<br>
-メニューを定義するには &quot;:menu&quot; コマンドを使います。基本的な書式は次のとおり:<br>
+Vim が使うメニューは、ファイル &quot;$VIMRUNTIME/menu.vim&quot; で定義されています。独自<br>
+のメニューを書きたい場合は、まずそのファイルに目を通すとよいでしょう。<br>
+&nbsp;&nbsp; メニュー項目を定義するには、&quot;:menu&quot; コマンドを使います。このコマンドの基本<br>
+的な形式は以下のとおりです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:menu {menu-item} {keys}</div>
 <br>
-<span class="Special">{menu-item}</span>&nbsp;にはメニューの場所を指定します。例えば&nbsp;<span class="Special">{menu-item}</span>&nbsp;が &quot;File.Save&quot;<br>
-なら、&quot;File&quot; メニューの下の &quot;Save&quot; 項目を示します。ドットで名前を区切ります。<br>
-例:<br>
+<span class="Special">{menu-item}</span>&nbsp;は、メニューのどこに項目を置くかを記述します。典型的な&nbsp;<span class="Special">{menu-item}</span><br>
+は &quot;File.Save&quot; で、これは &quot;File&quot; メニューの下の項目 &quot;Save&quot; を表します。名前を<br>
+区切るのにドットが使われます。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:menu File.Save&nbsp;&nbsp;:update&lt;CR&gt;</div>
 <br>
-&quot;:update&quot; コマンドは、ファイルが変更されていればそれを保存するコマンドです。<br>
-階層を深くすることもできます。&quot;Edit.Settings.Shiftwidth&quot; なら、&quot;Edit&quot; メニュー<br>
-の下の &quot;Settings&quot; サブメニューの下の &quot;Shiftwidth&quot; 項目を示します。さらに深くす<br>
-ることもできます。メニューが深くなりすぎるとマウスをたくさん動かさなければなら<br>
-なくなるので注意してください。<br>
-&quot;:menu&quot; コマンドは &quot;:map&quot; コマンドとよく似ています。パラメーターの左側でコマン<br>
-ドの実行方法を指定し、右側で実行されるコマンドを指定します。<span class="Special">{keys}</span>&nbsp;は文字列で、<br>
-それが実際に入力されたかのように使われます。つまり、挿入モードでは&nbsp;<span class="Special">{keys}</span>の文<br>
-字列がそのまま挿入されます。<br>
+&quot;:update&quot; コマンドは、ファイルが変更されていた場合にファイルを書き込みます。<br>
+&nbsp;&nbsp; 別の階層を追加できます: &quot;Edit.Settings.Shiftwidth&quot; は、項目 &quot;Shiftwidth&quot; を<br>
+持つサブメニュー &quot;Settings&quot; を &quot;Edit&quot; メニューの下に定義します。さらに深い階層<br>
+を使うこともできます。これを使いすぎないでください。そのような項目を使うにはマ<br>
+ウスをかなり動かす必要があります。<br>
+&nbsp;&nbsp; &quot;:menu&quot; コマンドは &quot;:map&quot; コマンドにとてもよく似ています: 左側は項目がどの<br>
+ように起動されるかを指定し、右側は実行される文字を定義します。<span class="Special">{keys}</span>&nbsp;は文字で、<br>
+それらはあなたがタイプしたのとまったく同じように使われます。そのため、挿入モー<br>
+ドでは、<span class="Special">{keys}</span>&nbsp;が普通のテキストのとき、そのテキストが挿入されます。<br>
 <br>
 <br>
-<span class="Statement">キーボードアクセラレータ</span><br>
+<span class="Statement">アクセラレータ</span><br>
 <br>
-アンパサンド文字 (&amp;) はアクセラレータを示すために使われます。例えば、Alt-F で<br>
-&quot;File&quot; を選択し、そして S で &quot;Save&quot; を選択できます。 (<a class="Type" href="options.html#'winaltkeys'">'winaltkeys'</a>&nbsp;オプション<br>
-の設定によって無効になっている可能性もあります)。その場合、<span class="Special">{menu-item}</span>&nbsp;は<br>
-&quot;&amp;File.&amp;Save&quot; のようになります。アクセラレータ文字は下線付きで表示されます<br>
-それぞれのキーは各メニューの中で一度だけしか使わないようにしてください。そうし<br>
-ないと、どちらが実行されるのかわからなくなります。これについて Vim は警告は発<br>
-しません。<br>
+アンパサンド文字 (&amp;) は、アクセラレータを示すのに使われます。例えば、Alt-F を<br>
+使って &quot;File&quot; を選択し、S を使って &quot;Save&quot; を選択できます。(ただし、<br>
+<a class="Type" href="options.html#'winaltkeys'">'winaltkeys'</a>&nbsp;オプションがこれを無効にするかもしれません!)。そのため、<br>
+<span class="Special">{menu-item}</span>&nbsp;は &quot;&amp;File.&amp;Save&quot; のようになります。アクセラレータの文字はメニュー<br>
+の中で下線付きで表示されます。<br>
+&nbsp;&nbsp; 各メニューの中で、それぞれのキーが 1 回だけ使われるように注意しなければなり<br>
+ません。そうしないと、2 つのうちのどちらが実際に使われるかが分からなくなりま<br>
+す。Vim はこれについて警告しません。<br>
 <br>
 <br>
-<span class="Statement">並び順</span><br>
+<span class="Statement">優先順位</span><br>
 <br>
-&quot;File.Save&quot; メニューの実際の定義は次のようになっています:<br>
+File.Save メニュー項目の実際の定義は以下のとおりです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:menu 10.340 &amp;File.&amp;Save&lt;Tab&gt;:w&nbsp;&nbsp;:confirm w&lt;CR&gt;</div>
 <br>
-10.340 という数値は順位番号です。これはメニュー項目の位置を決定するために使わ<br>
-れます。最初の番号 (10) はメニューバーにおける位置を示します。数字が小さいほど<br>
-左側に配置され、大きいほど右側に配置されます。<br>
-標準メニューでは次の順位番号が使われています:<br>
+数値 10.340 は優先順位番号と呼ばれます。これは、エディタがメニュー項目をどこに<br>
+置くかを決めるのに使われます。最初の数値 (10) は、メニューバー上の位置を示しま<br>
+す。小さい番号のメニューは左に、大きい番号は右に配置されます。<br>
+&nbsp;&nbsp; これらが標準のメニューに使われている優先順位です:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日本語環境<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;20&nbsp;&nbsp;&nbsp;&nbsp; 40&nbsp;&nbsp;&nbsp;&nbsp; 50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 70&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9999<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-----------------------------------------------------------------+<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ファイル 編集 ツール シンタックス バッファ ウィンドウ&nbsp;&nbsp;&nbsp;&nbsp;ヘルプ |<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-----------------------------------------------------------------+<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;英語環境<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;20&nbsp;&nbsp;&nbsp;&nbsp; 40&nbsp;&nbsp;&nbsp;&nbsp; 50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 70&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9999<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+------------------------------------------------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| File&nbsp;&nbsp;Edit&nbsp;&nbsp;Tools&nbsp;&nbsp;Syntax&nbsp;&nbsp;Buffers&nbsp;&nbsp;Window&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Help |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+------------------------------------------------------------+<br>
 <br>
-ヘルプメニューには大きな番号が与えられ、右端に表示されるようになっています。<br>
-二番目の数字 (340) はプルダウンメニューにおける位置を示します。数字が小さいほ<br>
-ど上に配置され、大きいほど下に配置されます。ファイルメニューの順位番号を以下に<br>
-示します:<br>
+Help メニューには、右端に表示されるように、とても大きな番号が与えられているこ<br>
+とに注目してください。<br>
+&nbsp;&nbsp; 2 番目の数値 (340) は、プルダウンメニューの中での項目の位置を決めます。小さ<br>
+い番号は上に、大きい番号は下に置かれます。これらが File メニューの中の優先順位<br>
+です:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日本語環境&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;英語環境<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-------------------+&nbsp;&nbsp;&nbsp;&nbsp;+-----------------+<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.310&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|開く...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|Open...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.320&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|分割して開く...&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|Split-Open...&nbsp;&nbsp;&nbsp;&nbsp;|<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.325&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|新規作成&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;|New&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.330&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|閉じる&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;|Close&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.335&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|------------------ |&nbsp;&nbsp;&nbsp;&nbsp;|---------------- |<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.340&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;|Save&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.350&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|名前を付けて保存...|&nbsp;&nbsp;&nbsp;&nbsp;|Save As...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.400&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|------------------ |&nbsp;&nbsp;&nbsp;&nbsp;|---------------- |<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.410&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|差分表示...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|Split Diff with&nbsp;&nbsp;|<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.420&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|パッチ結果を表示...|&nbsp;&nbsp;&nbsp;&nbsp;|Split Patched By |<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.500&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|------------------ |&nbsp;&nbsp;&nbsp;&nbsp;|---------------- |<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.510&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|印刷&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;|Print&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.600&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|------------------ |&nbsp;&nbsp;&nbsp;&nbsp;|---------------- |<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.610&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|保存して終了&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;|Save-Exit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.620&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|終了&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;|Exit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-------------------+&nbsp;&nbsp;&nbsp;&nbsp;+-----------------+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-----------------+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.310&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Open...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.320&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Split-Open...&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.325&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|New&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.330&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Close&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.335&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---------------- |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.340&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Save&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.350&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Save As...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.400&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---------------- |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.410&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Split Diff with&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.420&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Split Patched By |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.500&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---------------- |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.510&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Print&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.600&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|---------------- |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.610&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Save-Exit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.620&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Exit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-----------------+<br>
 <br>
-それぞれの番号の間には少し余裕があるので、必要なら、そこにメニューを追加するこ<br>
-とができます (ただし、標準メニューに手を加えるより、新しいメニューを追加したほ<br>
-うがよいでしょう)。<br>
-サブメニューを作るときは、さらに &quot;.number&quot; を追加することができます。つまり、<br>
-<span class="Special">{menu-item}</span>&nbsp;のそれぞれの名前が順位番号を持ちます。<br>
+番号の間に空きがあることに注目してください。本当にそうしたい場合は、ここに独自<br>
+の項目を挿入できます (標準のメニューはそのままにして、独自の項目のために新しい<br>
+メニューを追加する方がよいことが多いです)。<br>
+&nbsp;&nbsp; サブメニューを作るときは、優先順位にさらに &quot;.number&quot; を追加できます。そのた<br>
+め、<span class="Special">{menu-item}</span>&nbsp;の中の各名前はそれぞれの優先順位番号を持ちます。<br>
 <br>
 <br>
 <span class="Statement">特殊文字</span><br>
 <br>
-例では、<span class="Special">{menu-item}</span>&nbsp;に &quot;&amp;File.&amp;Save<span class="Special">&lt;Tab&gt;</span>:w&quot; が指定されていました。これは重要な<br>
-ポイントです。<span class="Special">{menu-item}</span>&nbsp;は一つの単語でなければなりません。ドット、スペース、<br>
-タブなどを使いたい場合は &lt;&gt; 表記 (<span class="Special">&lt;Space&gt;</span>や<span class="Special">&lt;Tab&gt;</span>など) を使うか、バックスラッ<br>
-シュ (\) でエスケープする必要があります。<br>
+この例の&nbsp;<span class="Special">{menu-item}</span>&nbsp;は &quot;&amp;File.&amp;Save<span class="Special">&lt;Tab&gt;</span>:w&quot; です。これは重要な点を提起します:<br>
+<span class="Special">{menu-item}</span>&nbsp;は 1 つの単語でなければなりません。名前にドット、スペースまたはタ<br>
+ブを入れたい場合は、&lt;&gt; 表記 (例えば、<span class="Special">&lt;Space&gt;</span>&nbsp;および&nbsp;<span class="Special">&lt;Tab&gt;</span>) を使うか、またはバッ<br>
+クスラッシュ (\) エスケープを使います。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:menu 10.305 &amp;File.&amp;Do\ It\.\.\. :exit&lt;CR&gt;</div>
 <br>
-これは、メニュー項目の名前が &quot;Do It...&quot; (空白が含まれてます)、実行されるコマン<br>
-ドは &quot;:exit<span class="Special">&lt;CR&gt;</span>&quot; になります。<br>
+この例では、メニュー項目の名前 &quot;Do It...&quot; はスペースを含んでいて、コマンドは<br>
+&quot;:exit<span class="Special">&lt;CR&gt;</span>&quot; です。<br>
 <br>
-メニューの名前は&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;文字を使って、名前の部分とヒント情報の部分を区切ること<br>
-ができます。<span class="Special">&lt;Tab&gt;</span>&nbsp;より後ろの部分は右寄せされて表示されます。File.Save では<br>
-&quot;&amp;File.&amp;Save<span class="Special">&lt;Tab&gt;</span>:w&quot; という名前が使われていました。これは &quot;File.Save&quot; という名<br>
-前と &quot;:w&quot; というヒント情報です。<br>
+メニュー名の中の&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;文字は、メニュー名を定義する部分と、ユーザーにヒントを<br>
+与える部分を区切るのに使われます。<span class="Special">&lt;Tab&gt;</span>&nbsp;の後の部分は、メニューの中で右寄せで表<br>
+示されます。File.Save メニューでは、使われている名前は &quot;&amp;File.&amp;Save<span class="Special">&lt;Tab&gt;</span>:w&quot; で<br>
+す。そのため、メニュー名は &quot;File.Save&quot; で、ヒントは &quot;:w&quot; です。<br>
 <br>
 <br>
 <span class="Statement">セパレータ</span><br>
 <br>
-セパレータは、関連した項目をグループ化するのに使います。これは例えば &quot;-sep-&quot;<br>
-のように名前の最初と最後に &quot;-&quot; を付けることで定義できます。複数のセパレータを<br>
-使う場合はそれぞれ別の名前を付けてください。名前自体に意味はありません。<br>
-セパレータに設定されたコマンドが実行されることはありませんが、その定義は必要で<br>
-す。&quot;:&quot; を書いておいてください。例:<br>
+関連するメニュー項目をまとめるのに使われるセパレータ行は、'-' で始まり、'-' で<br>
+終わる名前を使って定義できます。例えば &quot;-sep-&quot; です。複数のセパレータを使うと<br>
+きは、名前は異なっていなければなりません。それ以外では、名前は関係ありません。<br>
+&nbsp;&nbsp; セパレータのコマンドは決して実行されませんが、それでも定義しなければなりま<br>
+せん。コロン 1 つで十分です。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:amenu 20.510 Edit.-sep3- :</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_42.html#42.2" name="42.2">42.2</a>&nbsp;&nbsp;メニューコマンド<br>
 <br>
-メニューはモード別に定義できます。メニュー項目は対応するモードでのみ使えます。<br>
-&quot;:map&quot; コマンドのバリエーションと同じようなものです:<br>
+特定のモードにだけ存在するメニュー項目を定義できます。これは &quot;:map&quot; コマンドの<br>
+バリエーションとまったく同じように動作します:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:menu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ノーマルモード、ビジュアルモード、オペレータ待機モード<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:menu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ノーマル、ビジュアルおよびオペレータ待機モード<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:nmenu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ノーマルモード<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:vmenu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモード<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:omenu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;オペレータ待機モード<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:menu!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挿入モード、コマンドライン<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:menu!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挿入およびコマンドラインモード<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:imenu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挿入モード<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:cmenu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンドラインモード<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tlmenu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 端末モード<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:amenu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;すべてのモード (端末モードを除く)<br>
 <br>
-メニュー項目が再マップされないようにするには、&quot;:noremenu&quot;、&quot;:nnoremenu&quot;、<br>
-&quot;:anoremenu&quot; などを使います。<br>
+メニュー項目のコマンドがマップされるのを避けるには、コマンド &quot;:noremenu&quot;、<br>
+&quot;:nnoremenu&quot;、&quot;:anoremenu&quot; などを使います。<br>
 <br>
 <br>
-<span class="Statement">:amenu の使い方</span><br>
+<span class="Statement">:amenu を使う</span><br>
 <br>
-&quot;:amenu&quot; コマンドは少し特殊です。<span class="Special">{keys}</span>&nbsp;に指定した文字列はノーマルモードで実行<br>
-するものとして扱われます。ビジュアルモードや挿入モードでメニューが使われた場合<br>
-は、実行の前にノーマルモードに戻らなければならないので、<span class="Special">CTRL-C</span>&nbsp;や&nbsp;<span class="Special">CTRL-O</span>&nbsp;が挿<br>
-入されます。例えば、次のコマンドを使うと:<br>
-<br>
+&quot;:amenu&quot; コマンドは少し異なります。これは、与えた&nbsp;<span class="Special">{keys}</span>&nbsp;がノーマルモードで実<br>
+行されるものと仮定します。メニューが使われたときに Vim がビジュアルモードまた<br>
+は挿入モードにある場合、Vim はまずノーマルモードに戻らなければなりません。<br>
+&quot;:amenu&quot; は&nbsp;<span class="Special">CTRL-C</span>&nbsp;または&nbsp;<span class="Special">CTRL-O</span>&nbsp;を挿入してくれます。例えば、このコマンドを使<br>
+うと:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:amenu&nbsp;&nbsp;90.100 Mine.Find\ Word&nbsp;&nbsp;*</div>
 <br>
-メニューのコマンドは次のように定義されます:<br>
+そうすると、結果のメニューコマンドはこうなります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ノーマルモード:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモード:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-C</span>&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモード:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-C</span>&nbsp;*<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;オペレータ待機モード:&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-C</span>&nbsp;*<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挿入モード:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-O</span>&nbsp;*<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンドラインモード:&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-C</span>&nbsp;*<br>
 <br>
-コマンドラインモードでは、入力途中のコマンドが&nbsp;<span class="Special">CTRL-C</span>&nbsp;によって破棄されます。ビ<br>
-ジュアルモードとオペレータ待機モードでは、<span class="Special">CTRL-C</span>&nbsp;によってモードが停止します。<br>
-挿入モードでは、<span class="Special">CTRL-O</span>&nbsp;を使ってコマンドを実行してから挿入モードに戻ります。<br>
-<span class="Special">CTRL-O</span>&nbsp;は一つのコマンドに対してのみ機能します。複数のコマンドを実行したい場合<br>
-は、それらを関数に入れて、その関数を呼んでください。例:<br>
+コマンドラインモードのときは、<span class="Special">CTRL-C</span>&nbsp;はそれまでにタイプしたコマンドを破棄しま<br>
+す。ビジュアルモードおよびオペレータ待機モードでは、<span class="Special">CTRL-C</span>&nbsp;はそのモードを止め<br>
+ます。挿入モードの&nbsp;<span class="Special">CTRL-O</span>&nbsp;は、コマンドを実行してから挿入モードに戻ります。<br>
+&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-O</span>&nbsp;は 1 つのコマンドにだけ働きます。2 つ以上のコマンドを使う必要がある<br>
+場合は、それらを関数に入れて、その関数を呼び出します。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:amenu&nbsp;&nbsp;Mine.Next\ File&nbsp;&nbsp;:call &lt;SID&gt;NextFile()&lt;CR&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:function &lt;SID&gt;NextFile()<br>
@@ -193,177 +190,177 @@ Vim のメニューは &quot;$VIMRUNTIME/menu.vim&quot; で定義されていま
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;1/^Code<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:endfunction</div>
 <br>
-このメニュー項目は、&quot;:next&quot; で引数リストの次のファイルに移動し、&quot;Code&quot; で始ま<br>
-る行を検索します。<br>
-関数名の前にある&nbsp;<span class="Special">&lt;SID&gt;</span>&nbsp;はスクリプトIDです。関数がスクリプトの中に限定されるよ<br>
-うになります。複数のスクリプトファイルで関数の名前が重複してしまう問題を避ける<br>
-ことができます。<a class="Identifier" href="map.html#<SID>">&lt;SID&gt;</a>&nbsp;参照。<br>
+このメニュー項目は、&quot;:next&quot; で引数リストの次のファイルに移動します。それから、<br>
+&quot;Code&quot; で始まる行を検索します。<br>
+&nbsp;&nbsp; 関数名の前の&nbsp;<span class="Special">&lt;SID&gt;</span>&nbsp;はスクリプト ID です。これにより、関数はカレントの Vim<br>
+script ファイルにローカルになります。これは、同じ名前の関数が別のスクリプトファ<br>
+イルで定義されているときの問題を避けます。<a class="Identifier" href="map.html#<SID>">&lt;SID&gt;</a>&nbsp;を参照してください。<br>
 <br>
 <br>
 <span class="Statement">サイレントメニュー</span><br>
 <br>
-メニューは&nbsp;<span class="Special">{keys}</span>&nbsp;を実際に入力したかのように実行されます。&quot;:&quot; コマンドであれば<br>
-コマンドラインにエコーされたコマンドが表示されます。そのコマンドが長ければ、<br>
-hit-Enter プロンプトが表示されます。そんなのはうっとうしいですよね。<br>
-これはメニューをサイレントにすることで解決できます。それには&nbsp;<span class="Special">&lt;silent&gt;</span>&nbsp;引数を指<br>
-定します。例えば、上の例の NextFile() を呼び出してみます。メニューを実行する<br>
-と、コマンドラインには次のような表示がでます:<br>
+メニューは、<span class="Special">{keys}</span>&nbsp;をあなたがタイプしたかのように実行します。&quot;:&quot; コマンドの場<br>
+合、これはコマンドがコマンドラインにエコーされるのが見えることを意味します。長<br>
+いコマンドの場合は、hit-Enter プロンプトが表示されます。これはとても煩わしいこ<br>
+とがあります!<br>
+&nbsp;&nbsp; これを避けるには、メニューをサイレントにします。これは&nbsp;<span class="Special">&lt;silent&gt;</span>&nbsp;引数で行い<br>
+ます。例えば、前の例の NextFile() の呼び出しを考えます。このメニューを使うと、<br>
+コマンドラインにこれが表示されます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">:call &lt;SNR&gt;34_NextFile()</span><br>
 <br>
-このような表示をなくすには、最初の引数として &quot;<span class="Special">&lt;silent&gt;</span>&quot; を指定します:<br>
+コマンドラインのこのテキストを避けるには、最初の引数として &quot;<span class="Special">&lt;silent&gt;</span>&quot; を挿入し<br>
+ます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:amenu &lt;silent&gt; Mine.Next\ File :call &lt;SID&gt;NextFile()&lt;CR&gt;</div>
 <br>
-&quot;<span class="Special">&lt;silent&gt;</span>&quot; の使いすぎに注意してください。コマンドが短いならそれは必要ありませ<br>
-ん。誰かのためにメニューを作る場合、実行されたコマンドが見えるようになっていれ<br>
-ば、マウスを使わない場合はどのように入力すればいいかのヒントになります。<br>
+&quot;<span class="Special">&lt;silent&gt;</span>&quot; を頻繁に使いすぎないでください。短いコマンドには必要ありません。誰<br>
+か他の人のためにメニューを作る場合は、実行されたコマンドが見えることで、その人<br>
+はマウスを使う代わりに何をタイプすればよかったかのヒントを得られます。<br>
 <br>
 <br>
-<span class="Statement">メニューの一覧</span><br>
+<span class="Statement">メニューの一覧表示</span><br>
 <br>
-<span class="Special">{keys}</span>&nbsp;を指定せずに menu コマンドを使うと、定義されたメニューの一覧を表示でき<br>
-ます。<span class="Special">{menu-item}</span>&nbsp;やその一部を指定することで、特定の項目だけを表示できます。<br>
-例:<br>
+メニューコマンドが&nbsp;<span class="Special">{keys}</span>&nbsp;の部分なしで使われると、すでに定義されているメニュー<br>
+を一覧表示します。特定のメニューを一覧表示するために、<span class="Special">{menu-item}</span>&nbsp;またはその一<br>
+部を指定できます。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:amenu</div>
 <br>
-すべてのメニューが表示されます。とっても長い一覧が表示されます。メニューの名前<br>
-を指定して短い一覧を表示したほうがいいでしょう:<br>
+これはすべてのメニューを一覧表示します。長いリストです! 短いリストを得るには、<br>
+メニューの名前を指定した方がよいです:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:amenu Edit<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:amenu 編集(E)</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:amenu Edit</div>
 <br>
-すべてのモードの &quot;Edit&quot; メニューの項目だけが表示されます。挿入モードのメニュー<br>
-項目を一つだけ表示するには次のようにします:<br>
+これは、すべてのモードの &quot;Edit&quot; メニュー項目だけを一覧表示します。挿入モードの<br>
+特定のメニュー項目 1 つだけを一覧表示するには:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:imenu Edit.Undo<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:imenu 編集(E).取り消す(U)</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:imenu Edit.Undo</div>
 <br>
-名前は正しく指定する必要があります。大文字と小文字は区別されます。ただし、アク<br>
-セラレータ指定のための '&amp;' は省略できます。<span class="Special">&lt;Tab&gt;</span>&nbsp;と、その後に続く文字列も同様<br>
-に省略できます。<br>
+正確に正しい名前をタイプするように注意してください。ここでは大文字小文字が区別<br>
+されます。しかし、アクセラレータの '&amp;' は省略できます。<span class="Special">&lt;Tab&gt;</span>&nbsp;およびその後に来<br>
+るものも省略できます。<br>
 <br>
 <br>
 <span class="Statement">メニューの削除</span><br>
 <br>
-メニューを削除するには一覧表示と同じようなコマンドを使います。ただし、&quot;menu&quot;<br>
-ではなく &quot;unmenu&quot; を使います。&quot;:menu&quot; は &quot;:unmenu&quot; になり、&quot;:nmenu&quot; は<br>
-&quot;:nunmenu&quot; になります。挿入モードの &quot;Tools.Make&quot; を削除するには次のようにしま<br>
-す:<br>
+メニューを削除するには、一覧表示と同じコマンドを、&quot;menu&quot; を &quot;unmenu&quot; に変えて<br>
+使います。そのため、&quot;:menu&quot; は &quot;:unmenu&quot; になり、&quot;:nmenu&quot; は &quot;:nunmenu&quot; にな<br>
+る、などです。挿入モードの &quot;Tools.Make&quot; 項目を削除するには:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:iunmenu Tools.Make<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:iunmenu ツール(T).メイク(M)</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:iunmenu Tools.Make</div>
 <br>
-メニューの名前を指定すると、その中の項目もすべて削除されます。例:<br>
+メニュー名を使って、メニュー全体をそのすべての項目と一緒に削除できます。例:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:aunmenu Syntax<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:aunmenu シンタックス(S)</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:aunmenu Syntax</div>
 <br>
-シンタックスメニューとその中の項目がすべて削除されます。<br>
+これは Syntax メニューおよびその中のすべての項目を削除します。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_42.html#42.3" name="42.3">42.3</a>&nbsp;&nbsp;その他いろいろ<br>
+<a class="Constant" href="usr_42.html#42.3" name="42.3">42.3</a>&nbsp;&nbsp;その他<br>
 <br>
-<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;のフラグを設定することでメニューの表示を変更できます。初期設定で<br>
-は以下の &quot;M&quot; 以外のすべてのフラグが設定されています。フラグは次のようなコマン<br>
-ドで外すことができます:<br>
+<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;のフラグで、メニューの外観を変更できます。デフォルト値では、&quot;M&quot;<br>
+を除いてすべて含まれています。このようなコマンドでフラグを取り除けます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set guioptions-=m</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 外すとメニューバーが非表示になります。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 取り除くと、メニューバーが表示されません。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 追加すると標準メニューがロードされなくなります。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 追加すると、デフォルトのメニューが読み込まれません。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 外すと非アクティブなメニュー項目は灰色表示にはならず非<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表示になります。(そうならないシステムもあります。)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 取り除くと、無効なメニュー項目は灰色にされず、完全に取<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;り除かれます。(すべてのシステムで動作するわけではあり<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ません。)<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 外すとティアオフ機能が無効になります。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 取り除くと、切り離し機能は有効になりません。<br>
 <br>
-メニューの一番上に表示される点線はセパレータではありません。その項目を選択する<br>
-と、メニューは &quot;ティアオフ(切り離し)&quot;、つまり別ウィンドウで表示されます。これ<br>
-をティアオフメニューと呼びます。同じメニュー項目を頻繁に使う場合に便利です。<br>
+メニューの一番上の点線はセパレータ行ではありません。この項目を選択すると、メ<br>
+ニューは &quot;切り離され&quot; ます: 別のウィンドウに表示されます。これは切り離しメ<br>
+ニューと呼ばれます。これは同じメニューを頻繁に使うときに便利です。<br>
 <br>
-メニュー項目の翻訳については&nbsp;<a class="Identifier" href="mlang.html#:menutrans">:menutrans</a>&nbsp;を参照してください。<br>
+メニュー項目の翻訳については、<a class="Identifier" href="mlang.html#:menutrans">:menutrans</a>&nbsp;を参照してください。<br>
 <br>
-メニューはマウスで選択するものなので、&quot;:browse&quot; コマンドを使って、ファイルを選<br>
-択できるようにすると便利です。また、&quot;:confirm&quot; を使って、エラーメッセージの代<br>
-わりにダイアログを表示するのもいいでしょう (例えばカレントバッファに変更がある<br>
-状態で何かをする場合など)。この二つのコマンドは同時に使用できます:<br>
+メニュー項目を選択するにはマウスを使わなければならないので、ファイルを選択する<br>
+のに &quot;:browse&quot; コマンドを使うのはよい考えです。そして、例えばカレントバッファ<br>
+に変更があるときに、エラーメッセージの代わりにダイアログを得るには &quot;:confirm&quot;<br>
+です。これらの 2 つは組み合わせられます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:amenu File.Open&nbsp;&nbsp;:browse confirm edit&lt;CR&gt;</div>
 <br>
-&quot;:browse&quot; を使うと、開くファイルを選択するためのファイルブラウザーが表示されま<br>
-す。&quot;:confirm&quot; を使うと、カレントバッファに変更があった場合にポップアップダイ<br>
-アログが表示され、それを保存するか、破棄するか、コマンドをキャンセルするかを選<br>
+&quot;:browse&quot; は、編集するファイルを選択するためのファイルブラウザーを表示させま<br>
+す。&quot;:confirm&quot; は、カレントバッファに変更があるときにダイアログをポップアップ<br>
+します。それから、変更を保存するか、破棄するか、またはコマンドを取り消すかを選<br>
 択できます。<br>
-confirm() 関数や inputdialog() 関数を使ってもっと複雑な処理をすることもできま<br>
-す。標準メニューにいくつか例があります。<br>
+&nbsp;&nbsp; もっと複雑な項目には、confirm() および inputdialog() 関数を使えます。デフォ<br>
+ルトのメニューにはいくつかの例が含まれています。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_42.html#42.4" name="42.4">42.4</a>&nbsp;&nbsp;ツールバーとポップアップメニュー<br>
+<a class="Constant" href="usr_42.html#42.4" name="42.4">42.4</a>&nbsp;&nbsp;ツールバーおよびポップアップメニュー<br>
 <br>
-特殊なメニューが二つあります。ToolBar (ツールバー) と PopUp (ポップアップ) で<br>
-す。これらの名前で始まるメニュー項目はメニューバーに表示されません。<br>
+2 つの特別なメニューがあります: ToolBar および PopUp です。これらの名前で始ま<br>
+る項目は、通常のメニューバーには表示されません。<br>
 <br>
 <br>
 <span class="Statement">ツールバー</span><br>
 <br>
-ツールバーは&nbsp;<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;オプションに &quot;T&quot; フラグが含まれている場合のみ表示さ<br>
-れます。<br>
-ツールバーではテキストの代わりにアイコンが表示されます。例えば、&quot;ToolBar.New&quot;<br>
-という&nbsp;<span class="Special">{menu-item}</span>&nbsp;はツールバーの &quot;New&quot; アイコンとして表示されます。<br>
-Vim には 28 個のアイコンが組み込まれています。その一覧は&nbsp;<a class="Identifier" href="gui.html#builtin-tools">builtin-tools</a>&nbsp;にあ<br>
-ります。ほとんどのアイコンは標準ツールバーで使われています。それらの項目の動作<br>
-は変更可能です (標準メニューの初期化後に変更できます)。<br>
-標準アイコン以外の画像を使ったり、新しい項目を追加することもできます。例えば、<br>
-次のコマンドで新しい項目を追加できます:<br>
+ツールバーは、<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;オプションに &quot;T&quot; フラグが含まれているときにだけ表示<br>
+されます。<br>
+&nbsp;&nbsp; ツールバーは、コマンドを表すのにテキストではなくアイコンを使います。例えば、<br>
+&quot;ToolBar.New&quot; という名前の&nbsp;<span class="Special">{menu-item}</span>&nbsp;は、ツールバーに &quot;New&quot; アイコンを表示さ<br>
+せます。<br>
+&nbsp;&nbsp; Vim エディタには 28 個の組み込みアイコンがあります。その表はここにあります:<br>
+<a class="Identifier" href="gui.html#builtin-tools">builtin-tools</a>。そのほとんどはデフォルトのツールバーで使われています。これら<br>
+の項目が何をするかを (デフォルトのメニューが設定された後で) 再定義できます。<br>
+&nbsp;&nbsp; ツールバー項目に別のビットマップを追加できます。または、ビットマップ付きの<br>
+新しいツールバー項目を定義できます。例えば、新しいツールバー項目をこれで定義し<br>
+ます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tmenu ToolBar.Compile&nbsp;&nbsp;Compile the current file<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:amenu ToolBar.Compile&nbsp;&nbsp;:!cc %:S -o %:r:S&lt;CR&gt;</div>
 <br>
-アイコンは別途作成する必要があります。MS-Windows では &quot;Compile.bmp&quot; という名前<br>
-の bitmap 形式の画像を使います。Unix では &quot;Compile.xpm&quot; という名前の XPM 形式<br>
-の画像を使います。サイズは 18x18 ドットにしてください。MS-Windows では他のサイ<br>
-ズでも構いませんが、きれいには表示されません。<br>
-画像は、<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の &quot;bitmaps&quot; ディレクトリに入れてください。例えば、Unix<br>
-なら &quot;~/.vim/bitmaps/Compile.xpm&quot; などです。<br>
+ここでアイコンを作る必要があります。MS-Windows では、それはビットマップ形式で、<br>
+名前は &quot;Compile.bmp&quot; でなければなりません。Unix では XPM 形式が使われ、ファイ<br>
+ル名は &quot;Compile.xpm&quot; です。サイズは 18 × 18 ピクセルでなければなりません。<br>
+MS-Windows では他のサイズも使えますが、見栄えが悪くなります。<br>
+&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;のディレクトリの 1 つの中の &quot;bitmaps&quot; ディレクトリにビットマッ<br>
+プを置きます。例えば、Unix では &quot;~/.vim/bitmaps/Compile.xpm&quot; です。<br>
 <br>
-ツールバーの各項目にはツールチップを設定できます。ツールチップとは、機能を説明<br>
-するための短いテキストです。例えば &quot;ファイルを開く&quot; といったものです。項目の上<br>
-にマウスポインタを置いてしばらく待つと表示されます。画像だけではどのような機能<br>
-かわからない場合に便利です。<br>
-例:<br>
+ツールバーの項目にツールチップを定義できます。ツールチップは、ツールバー項目が<br>
+何をするかを説明する短いテキストです。例えば &quot;Open file&quot; です。これは、マウス<br>
+ポインタが項目の上にあって、しばらく動かないときに表示されます。これは、絵の意<br>
+味がそれほど明らかでない場合にとても便利です。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tmenu ToolBar.Make&nbsp;&nbsp;Run make in the current directory</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大文字/小文字に注意してください。&quot;Toolbar&quot; と &quot;toolbar&quot; はどちらも<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;ToolBar&quot; とは区別されます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使われている大文字小文字に注意してください。&quot;Toolbar&quot; および &quot;toolbar&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は &quot;ToolBar&quot; とは異なります!<br>
 <br>
-ツールチップを削除するには&nbsp;<a class="Identifier" href="gui.html#:tunmenu">:tunmenu</a>&nbsp;コマンドを使います。<br>
+ツールチップを取り除くには、<a class="Identifier" href="gui.html#:tunmenu">:tunmenu</a>&nbsp;コマンドを使います。<br>
 <br>
-<a class="Type" href="options.html#'toolbar'">'toolbar'</a>&nbsp;オプションを設定すると、画像の代わりに文字列を表示したり、文字列と画<br>
-像の両方を表示したりできます。テキストの表示は場所を取るので、ほとんどの人は画<br>
-像だけを表示しています。<br>
+<a class="Type" href="options.html#'toolbar'">'toolbar'</a>&nbsp;オプションを使って、ビットマップの代わりにテキストを表示するか、また<br>
+はテキストおよびビットマップの両方を表示できます。テキストはかなりの場所を取る<br>
+ので、ほとんどの人はビットマップだけを使います。<br>
 <br>
 <br>
 <span class="Statement">ポップアップメニュー</span><br>
 <br>
-ポップアップメニューはマウスポインタのある場所に表示されるメニューです。<br>
-MS-Windows ではマウスの右クリックで表示し、左クリックで項目を選択します。Unix<br>
-では右ボタンを押したままにして使います。<br>
-ポップアップメニューは&nbsp;<a class="Type" href="options.html#'mousemodel'">'mousemodel'</a>&nbsp;が &quot;popup&quot; か &quot;popup_setpos&quot; のどちらかに<br>
-設定されている場合にだけ表示されます。両者の違いは、&quot;popup_setpos&quot; ならマウス<br>
-ポインタの場所にカーソルが移動するという点です。選択中のテキストをクリックした<br>
-場合はその選択範囲は変更されずにそのまま使われます。テキストの選択中に他の場所<br>
-をクリックした場合は選択が解除されます。<br>
-ポップアップメニューはモード別になっています。普通のメニューのように、他のモー<br>
-ドの項目が灰色表示されるということはありません。<br>
+ポップアップメニューは、マウスポインタがある場所にポップアップします。<br>
+MS-Windows では、マウスの右ボタンをクリックしてそれを有効にします。それから、<br>
+マウスの左ボタンで項目を選択できます。Unix では、ポップアップメニューは、マウ<br>
+スの右ボタンを押したままにすることで使われます。<br>
+&nbsp;&nbsp; ポップアップメニューは、<a class="Type" href="options.html#'mousemodel'">'mousemodel'</a>&nbsp;が &quot;popup&quot; または &quot;popup_setpos&quot; に設<br>
+定されているときにだけ表示されます。2 つの違いは、&quot;popup_setpos&quot; はカーソルを<br>
+マウスポインタの位置に移動することです。選択範囲の内側をクリックしたときは、選<br>
+択範囲は変更されずに使われます。選択範囲があるが、その外側をクリックしたとき<br>
+は、選択範囲は取り除かれます。<br>
+&nbsp;&nbsp; モードごとに別々のポップアップメニューがあります。そのため、通常のメニュー<br>
+のような灰色の項目は決してありません。<br>
 <br>
-生命、宇宙、その他もろもろの答えは？&nbsp;&nbsp;<a class="Constant" href="usr_42.html#42" name="42">42</a><br>
-この問の真意を知っていた唯一の人物、ダグラス・アダムズは残念ながら他界しまし<br>
-た。それで死の答えはなんなんだろう...<br>
+人生、宇宙、およびすべてのものの意味は何でしょうか?&nbsp;&nbsp;<a class="Constant" href="usr_42.html#42" name="42">42</a><br>
+この質問が本当は何についてのものかを知っていた唯一の人物である Douglas Adams<br>
+は、残念ながら今は亡くなっています。そこで今、あなたは死の意味は何なのかと思う<br>
+かもしれません...<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>

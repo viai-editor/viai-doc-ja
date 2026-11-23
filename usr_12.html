@@ -9,137 +9,137 @@ helpname: 'usr_12'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;便利な小技<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;巧妙な技<br>
 <br>
 <br>
-コマンドを組み合わせれば、ほとんど何でもこなすことができます。この章では、便利<br>
-なコマンドの組み合わせをいくつか紹介します。今までに紹介したコマンドを主に使い<br>
-ますが、まだ紹介していないコマンドも少し登場します。<br>
+いくつかのコマンドを組み合わせることで、Vim にほぼ何でもさせることができます。<br>
+この章では、便利な組み合わせをいくつか紹介します。これは、前の章で紹介したコマ<br>
+ンドおよびさらにいくつかのコマンドを使います。<br>
 <br>
 <a class="Identifier" href="usr_12.html#12.1">12.1</a>&nbsp;&nbsp;単語を置換する<br>
 <a class="Identifier" href="usr_12.html#12.2">12.2</a>&nbsp;&nbsp;&quot;Last, First&quot; を &quot;First Last&quot; に変更する<br>
 <a class="Identifier" href="usr_12.html#12.3">12.3</a>&nbsp;&nbsp;リストをソートする<br>
-<a class="Identifier" href="usr_12.html#12.4">12.4</a>&nbsp;&nbsp;行を逆順に並べ替える<br>
+<a class="Identifier" href="usr_12.html#12.4">12.4</a>&nbsp;&nbsp;行の順序を逆にする<br>
 <a class="Identifier" href="usr_12.html#12.5">12.5</a>&nbsp;&nbsp;単語を数える<br>
-<a class="Identifier" href="usr_12.html#12.6">12.6</a>&nbsp;&nbsp;マニュアルを引く<br>
+<a class="Identifier" href="usr_12.html#12.6">12.6</a>&nbsp;&nbsp;man ページを探す<br>
 <a class="Identifier" href="usr_12.html#12.7">12.7</a>&nbsp;&nbsp;空白を取り除く<br>
-<a class="Identifier" href="usr_12.html#12.8">12.8</a>&nbsp;&nbsp;単語が使われている場所を検索する<br>
+<a class="Identifier" href="usr_12.html#12.8">12.8</a>&nbsp;&nbsp;単語が使われている場所を探す<br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_20.html">usr_20.txt</a>&nbsp;&nbsp;コマンドラインを素早く入力する<br>
-前章:&nbsp;<a class="Identifier" href="usr_11.html">usr_11.txt</a>&nbsp;&nbsp;クラッシュからの復帰<br>
+次章:&nbsp;<a class="Identifier" href="usr_20.html">usr_20.txt</a>&nbsp;&nbsp;コマンドラインのコマンドを素早くタイプする<br>
+前章:&nbsp;<a class="Identifier" href="usr_11.html">usr_11.txt</a>&nbsp;&nbsp;クラッシュからの復旧<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_12.html#12.1" name="12.1">12.1</a>&nbsp;&nbsp;単語を置換する<br>
 <br>
-置換コマンドを使うと、文章中に現れる単語を別の単語に置換することができます:<br>
+置換コマンドを使って、ある単語のすべての出現を別の単語で置き換えることができま<br>
+す:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:%s/four/4/g</div>
 <br>
-&quot;%&quot; はすべての行を処理するための範囲指定です。末尾の &quot;g&quot; は、行のすべての単語<br>
-を置換するための指定です。<br>
-<br>
-上記のコマンドは正しく動作しません。例えば、&quot;thirtyfour&quot; という単語がファイル<br>
-に含まれていた場合、&quot;thirty4&quot; に置換されてしまいます。これを防ぐには、&quot;\&lt;&quot; を<br>
-使って単語の先頭にヒットさせます:<br>
+範囲 &quot;%&quot; は、すべての行で置換することを意味します。末尾の &quot;g&quot; フラグにより、行<br>
+内のすべての単語が置換されます。<br>
+&nbsp;&nbsp; ファイルに &quot;thirtyfour&quot; も含まれている場合、これは正しく動作しません。それ<br>
+は &quot;thirty4&quot; に置換されてしまいます。これを避けるには、&quot;\&lt;&quot; アイテムを使って単<br>
+語の先頭にマッチさせます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:%s/\&lt;four/4/g</div>
 <br>
-これでもまだ、&quot;fourteen&quot; のような単語が間違って置換されてしまいます。&quot;\&gt;&quot; を<br>
-使って単語の末尾にヒットさせましょう:<br>
+明らかに、これでもまだ &quot;fourteen&quot; ではうまくいきません。&quot;\&gt;&quot; を使って単語の末<br>
+尾にマッチさせます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:%s/\&lt;four\&gt;/4/g</div>
 <br>
-プログラムを書いているなら、コメントの中にある &quot;four&quot; だけを置換したい場合もあ<br>
-るでしょう。コメントの中かどうかを区別するのは難しいので、置換コマンドに &quot;c&quot;<br>
-フラグを指定して、確認しながら置換してください:<br>
+プログラミングをしている場合、コメント内の &quot;four&quot; は置換したいが、コード内のも<br>
+のは置換したくないかもしれません。これは指定するのが難しいので、&quot;c&quot; フラグを追<br>
+加して、置換コマンドが置換ごとに確認を求めるようにします:<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:%s/\&lt;four\&gt;/4/gc</div>
 <br>
 <br>
-<span class="Statement">複数のファイル内で置換する</span><br>
+<span class="Statement">複数のファイルで置換する</span><br>
 <br>
-複数のファイル内で置換したい場合を考えます。ファイルを1つずつ開いて、その都度<br>
-コマンドを入力することもできますが、操作の記録と再実行を使えば、はるかに素早く<br>
-置換できます。<br>
-拡張子が &quot;.cpp&quot; の C++ ファイルが入ったディレクトリがあるとします。&quot;GetResp&quot;<br>
-という関数を &quot;GetAnswer&quot; に置換してみましょう。<br>
+単語を複数のファイルで置換したいとします。各ファイルを編集してコマンドを手でタ<br>
+イプすることもできます。記録および再生を使う方がずっと速いです。<br>
+&nbsp;&nbsp; すべて &quot;.cpp&quot; で終わる C++ ファイルがあるディレクトリがあるとします。<br>
+&quot;GetAnswer&quot; に名前を変更したい &quot;GetResp&quot; という関数があります。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim *.cpp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vim を起動して、すべての C++ ファイルを引数リ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ストに加える。Vim が起動すると、最初のファイル<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が表示されます。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qq&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;レジスタ &quot;q&quot; に記録を開始する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim *.cpp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vim を起動し、引数リストにすべての C++ ファイ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルが含まれるように定義します。これで最初のファ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;イルにいます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qq&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q レジスタへの記録を開始します<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:%s/\&lt;GetResp\&gt;/GetAnswer/g<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初のファイルで置換コマンドを実行する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:wnext&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルを保存し、次のファイルに移動する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 記録を終了する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;レジスタ &quot;q&quot; を実行する。置換コマンドと<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:wnext&quot; が再実行されます。エラーメッセージが<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表示されたりしないか確認してください。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;999@q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; レジスタ &quot;q&quot; を繰り返し実行し、残りのファイル<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;をすべて処理します。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初のファイルで置換を行います。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:wnext&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このファイルを書き込み、次のファイルに移動しま<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 記録を停止します。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q レジスタを実行します。これにより、置換および<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:wnext&quot; が再生されます。これがエラーメッセー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ジを出さないことを確認できます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;999@q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 残りのファイルで q レジスタを実行します。<br>
 <br>
-最後のファイルを処理したとき、もうそれ以上ファイルがないので、&quot;:wnext&quot; コマン<br>
-ドがエラーメッセージを表示します。それにより、実行が中断され、すべてが完了しま<br>
-す。<br>
+最後のファイルでは、&quot;:wnext&quot; が次のファイルに移動できないため、エラーメッセー<br>
+ジが出ます。これにより実行が止まり、すべてが完了します。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;記録されたコマンドの実行中にエラーが発生すると、実行は中断されます。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ですから、エラーが出ないように注意して操作を記録してください。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;記録したシーケンスを再生しているとき、エラーが起きると実行は止まりま<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。したがって、記録するときにエラーメッセージが出ないことを確認してく<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ださい。<br>
 <br>
-まだ問題が1つ残っています。もしも、&quot;GetResp&quot; を含んでいないファイルがあった場<br>
-合、置換コマンドがエラーを発生し、そこで処理が停止してしまいます。それを避ける<br>
-には、置換コマンドに &quot;e&quot; フラグを指定してください:<br>
+1 つ落とし穴があります: .cpp ファイルの 1 つが単語 &quot;GetResp&quot; を含んでいない場<br>
+合、エラーが出て置換が止まります。これを避けるには、置換コマンドに &quot;e&quot; フラグ<br>
+を追加します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:%s/\&lt;GetResp\&gt;/GetAnswer/ge</div>
 <br>
-&quot;e&quot; フラグは、パターンが見つからなくてもエラーを発生させないための指定です。<br>
+&quot;e&quot; フラグは、マッチが見つからないことはエラーではないと &quot;:substitute&quot; に伝え<br>
+ます。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_12.html#12.2" name="12.2">12.2</a>&nbsp;&nbsp;&quot;Last, First&quot; を &quot;First Last&quot; に変更する<br>
 <br>
-次のような形式で名前の一覧があるとします:<br>
+この形式の名前のリストがあります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Doe, John</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Smith, Peter</span><br>
 <br>
-これを次のように変更したいとします:<br>
+それを次のように変更したいです:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">John Doe</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Peter Smith</span><br>
 <br>
-これはたった1つのコマンドでできてしまいます:<br>
+これはたった 1 つのコマンドで行えます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:%s/\([^,]*\), \(.*\)/\2 \1/</div>
 <br>
-1つずつ説明しましょう。これが置換コマンドであることはわかりますよね。&quot;%&quot; はす<br>
-べての行を示す範囲指定です。つまり、ファイルのすべての行で置換が実行されます。<br>
-置換コマンドには &quot;/from/to/&quot; という形式で引数を指定します。スラッシュ (/) は<br>
-&quot;from&quot; パターンと &quot;to&quot; 文字列の区切りです。&quot;from&quot; パターンは次のようになってい<br>
-ます:<br>
+これを部分に分解してみましょう。明らかに、これは置換コマンドで始まっています。<br>
+&quot;%&quot; は行範囲で、ファイル全体を表します。したがって、置換はファイルのすべての行<br>
+で行われます。<br>
+&nbsp;&nbsp; 置換コマンドの引数は &quot;/from/to/&quot; です。スラッシュは &quot;from&quot; パターンおよび<br>
+&quot;to&quot; 文字列を区切ります。&quot;from&quot; パターンに含まれるのはこれです:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">\([^,]*\), \(.*\)</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1つ目の \( \) で囲まれた部分は &quot;Last&quot; です&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\(&nbsp;&nbsp;&nbsp;&nbsp; \)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コンマ (,) 以外の文字が&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [^,]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;何文字でもマッチする&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;, &quot; という文字にそのままマッチ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2つ目の \( \) で囲まれた部分は &quot;First&quot; です&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\(&nbsp;&nbsp;\)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;どんな文字でも&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;何文字でもマッチする&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初の \( \) の間の部分は &quot;Last&quot; にマッチする&nbsp;&nbsp; \(&nbsp;&nbsp;&nbsp;&nbsp; \)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コンマ以外の任意の文字にマッチ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[^,]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;任意の回数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;, &quot; にそのままマッチする&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 番目の \( \) の間の部分は &quot;First&quot; にマッチする&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \(&nbsp;&nbsp;\)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;任意の文字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;任意の回数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br>
 <br>
-&quot;to&quot; の部分には &quot;\2&quot; と &quot;\1&quot; が指定されています。これは後方参照というものです。<br>
-&quot;\( \)&quot; で囲まれた部分にマッチしたテキストを参照しています。&quot;\2&quot; は2つ目の<br>
-&quot;\( \)&quot; で囲まれた部分にマッチしたテキスト (&quot;First&quot; name) を参照しています。<br>
-&quot;\1&quot; は1つ目の &quot;\( \)&quot; (&quot;Last&quot; name) を参照しています。<br>
-置換コマンドの &quot;to&quot; 部分には最大で 9 個の後方参照を指定できます。&quot;\0&quot; はパター<br>
-ンがマッチしたテキスト全体になります。置換コマンドには他にもいくつか特殊なアイ<br>
-テムがあります。<a class="Identifier" href="change.html#sub-replace-special">sub-replace-special</a>&nbsp;を参照してください。<br>
+&quot;to&quot; の部分には &quot;\2&quot; および &quot;\1&quot; があります。これらは後方参照と呼ばれます。こ<br>
+れらは、パターン内の &quot;\( \)&quot; の部分にマッチしたテキストを参照します。&quot;\2&quot; は 2<br>
+番目の &quot;\( \)&quot; にマッチしたテキストを参照し、これは &quot;First&quot; の名前です。&quot;\1&quot;<br>
+は最初の &quot;\( \)&quot; を参照し、これは &quot;Last&quot; の名前です。<br>
+&nbsp;&nbsp; 置換コマンドの &quot;to&quot; の部分では、最大 9 個の後方参照を使えます。&quot;\0&quot; はマッ<br>
+チしたパターン全体を表します。置換コマンドには、さらにいくつかの特殊なアイテム<br>
+があります。<a class="Identifier" href="change.html#sub-replace-special">sub-replace-special</a>&nbsp;を参照してください。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_12.html#12.3" name="12.3">12.3</a>&nbsp;&nbsp;リストをソートする<br>
 <br>
-Makefile ではよく、ファイルのリストが使われます。例:<br>
+Makefile には、よくファイルのリストがあります。例えば:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">OBJS = \</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">version.o \</span><br>
@@ -151,18 +151,18 @@ Makefile ではよく、ファイルのリストが使われます。例:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">patch.o \</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">backup.o</span><br>
 <br>
-このリストをソートするには、外部コマンドの sort を使ってテキストをフィルタリン<br>
-グします:<br>
+このリストをソートするには、テキストを外部の sort コマンドに通してフィルタしま<br>
+す:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/^OBJS<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:.,/^$/-1!sort</div>
 <br>
-リストの先頭 (行頭が &quot;OBJS&quot; で始まる行) に移動してから、一行下に移動、その行か<br>
-ら次の空行までの範囲をフィルタに通しています。ビジュアルモードで範囲を選択して<br>
-から &quot;!sort&quot; を実行する方法でも構いません。その方が入力は簡単です。行がたくさ<br>
-んある場合は少し面倒かもしれませんが。<br>
-結果は、次のようになります:<br>
+これは、&quot;OBJS&quot; が行の最初にある最初の行に移動します。次に 1 行下に移動し、次の<br>
+空行までの行をフィルタします。ビジュアルモードで行を選択してから &quot;!sort&quot; を使<br>
+うこともできます。その方がタイプするのは簡単ですが、行が多いときは手間が増えま<br>
+す。<br>
+&nbsp;&nbsp; 結果はこうなります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">OBJS = \</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">backup.o</span><br>
@@ -175,191 +175,185 @@ Makefile ではよく、ファイルのリストが使われます。例:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">version.o \</span><br>
 <br>
 <br>
-各行の末尾に行結合のためのバックスラッシュ (\) が使われている点に注意して下さ<br>
-い。並べ替えたために、これが壊れてしまいました。&quot;backup.o&quot; はリストの最後にあっ<br>
-たので行末にバックスラッシュが付いていませんでしたが、並べ替えによって別の場所<br>
-に移動したため、バックスラッシュが必要になったのです。<br>
-一番簡単な解決方法は &quot;A \<span class="Special">&lt;Esc&gt;</span>&quot; でバックスラッシュを追加することです。最後の行<br>
-にあるバックスラッシュは次の行を空白行にしておけば削除しなくても問題ありませ<br>
-ん。これで同じ問題は二度と起きないでしょう。<br>
+各行の末尾のバックスラッシュは、行が続くことを示すために使われていることに注目<br>
+してください。ソートした後では、これは正しくありません! 末尾にあった<br>
+&quot;backup.o&quot; の行にはバックスラッシュがありませんでした。別の場所にソートされた<br>
+今、それにはバックスラッシュが必要です。<br>
+&nbsp;&nbsp; 最も簡単な解決法は、&quot;A \<span class="Special">&lt;Esc&gt;</span>&quot; でバックスラッシュを追加することです。最後の<br>
+行の後に必ず空行が来るようにすれば、最後の行にバックスラッシュを残しておくこと<br>
+ができます。そうすれば、この問題が再び起きることはありません。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_12.html#12.4" name="12.4">12.4</a>&nbsp;&nbsp;行を逆順に並べ替える<br>
+<a class="Constant" href="usr_12.html#12.4" name="12.4">12.4</a>&nbsp;&nbsp;行の順序を逆にする<br>
 <br>
-<a class="Identifier" href="repeat.html#:global">:global</a>&nbsp;コマンドと&nbsp;<a class="Identifier" href="change.html#:move">:move</a>&nbsp;コマンドを組み合せて、全ての行を 1 行目の上に移動<br>
-することで、行を逆順に並べ替えたファイルを作ることができます。コマンドは次の通<br>
-りです:<br>
+<a class="Identifier" href="repeat.html#:global">:global</a>&nbsp;コマンドを&nbsp;<a class="Identifier" href="change.html#:move">:move</a>&nbsp;コマンドと組み合わせて、すべての行を最初の行の前<br>
+に移動し、結果としてファイルを逆順にすることができます。コマンドはこうです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:global/^/move 0</div>
 <br>
-短縮して書くこともできます:<br>
+省略形:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:g/^/m 0</div>
 <br>
-&quot;^&quot; という正規表現は行の先頭に (それが空行であっても) マッチします。<a class="Identifier" href="change.html#:move">:move</a>&nbsp;コ<br>
-マンドはマッチした行を仮想的な 0 行目の下に移動します。つまり、マッチした行が<br>
-ファイルの先頭行になります。<a class="Identifier" href="repeat.html#:global">:global</a>&nbsp;コマンドは行番号が変更されても処理を継続<br>
-できます。そして、マッチしたすべての行が、順番にファイルの先頭に移動していきま<br>
-す。<br>
+正規表現 &quot;^&quot; は行の先頭にマッチします (行が空であっても)。<a class="Identifier" href="change.html#:move">:move</a>&nbsp;コマンドは、<br>
+マッチした行を仮想的な 0 行目の後に移動するので、現在マッチした行がファイルの<br>
+最初の行になります。<a class="Identifier" href="repeat.html#:global">:global</a>&nbsp;コマンドは変化する行番号に惑わされないので、<br>
+<a class="Identifier" href="repeat.html#:global">:global</a>&nbsp;はファイルの残りのすべての行のマッチを続け、それぞれを最初の行に置き<br>
+ます。<br>
 <br>
-ある一定の範囲だけ並べ替えることもできます。まず、並べ替えたい範囲の一行上に移<br>
-動し、&quot;mt&quot; でマークします。そして、範囲の末尾に移動し、次のように入力します:<br>
+これは行の範囲にも使えます。まず最初の行の上に移動し、&quot;mt&quot; でマークします。次<br>
+に、範囲の最後の行にカーソルを移動して、こうタイプします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:'t+1,.g/^/m 't</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_12.html#12.5" name="12.5">12.5</a>&nbsp;&nbsp;単語を数える<br>
 <br>
-ときには、単語数に制限のある文章を書かなければならない場合もあるでしょう。Vim<br>
-には単語を数えるための機能があります。<br>
-ファイル全体の単語数を数えるには、次のコマンドを使います:<br>
+最大の単語数が決められた文章を書かなければならないことがあります。Vim はあなた<br>
+のために単語を数えることができます。<br>
+&nbsp;&nbsp; ファイル全体の単語を数えたいときは、このコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g CTRL-G</div>
 <br>
-&quot;g&quot; の後の空白は入力しないでください。この空白はコマンドを読み易く表記するため<br>
-のものです。<br>
-次のような結果が出力されます:<br>
+g の後に空白をタイプしないでください。これは、ここでコマンドを読みやすくするた<br>
+めに使っているだけです。<br>
+&nbsp;&nbsp; 出力はこのようになります:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">列 1 / 0; 行 141 / 157; 単語 748 / 774; バイト 4489 / 4976</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Col 1 of 0; Line 141 of 157; Word 748 of 774; Byte 4489 of 4976</span><br>
 <br>
-これを見れば、何番目の単語 (748) にカーソルがあり、ファイル全体でいくつの単語<br>
-(774) があるのかがわかります。<br>
+自分がどの単語にいるか (748)、およびファイル内の単語の総数 (774) がわかります。<br>
 <br>
-ファイルの一部の文章についてのみ単語を数えたい場合は、テキストの先頭に移動して<br>
-&quot;g&nbsp;<span class="Special">CTRL-G</span>&quot; を入力し、テキストの末尾に移動して &quot;g&nbsp;<span class="Special">CTRL-G</span>&quot; をもう一度入力し、そ<br>
-して、表示された単語の位置を引き算して単語数を求めます…これは頭の体操にはなり<br>
-ますが簡単な方法とは言えませんね。ビジュアルモードを使えば、テキストを選択して<br>
-から &quot;g&nbsp;<span class="Special">CTRL-G</span>&quot; を入力するだけです。次のような結果が表示されます:<br>
+文章がファイルの一部だけの場合、文章の先頭に移動して &quot;g&nbsp;<span class="Special">CTRL-G</span>&quot; とタイプし、文<br>
+章の末尾に移動してもう一度 &quot;g&nbsp;<span class="Special">CTRL-G</span>&quot; とタイプし、それから頭を使って単語の位置<br>
+の差を計算することもできます。それは良い練習ですが、もっと簡単な方法がありま<br>
+す。ビジュアルモードで、単語を数えたいテキストを選択します。それから g&nbsp;<span class="Special">CTRL-G</span><br>
+とタイプします。結果:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">選択 5 / 293 行; 70 / 1884 単語; 359 / 10928 バイト</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Selected 5 of 293 Lines; 70 of 1884 Words; 359 of 10928 Bytes</span><br>
 <br>
-単語や行などを数える他の方法については&nbsp;<a class="Identifier" href="tips.html#count-items">count-items</a>&nbsp;を参照してください。<br>
+単語、行、およびその他のアイテムを数える他の方法については、<a class="Identifier" href="tips.html#count-items">count-items</a>&nbsp;を参<br>
+照してください。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_12.html#12.6" name="12.6">12.6</a>&nbsp;&nbsp;マニュアルを引く&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_12.html#find-manpage" name="find-manpage">find-manpage</a><br>
+<a class="Constant" href="usr_12.html#12.6" name="12.6">12.6</a>&nbsp;&nbsp;man ページを探す&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_12.html#find-manpage" name="find-manpage">find-manpage</a><br>
 <br>
-シェルスクリプトや C プログラムを書いているときに、コマンドや関数のマニュアル<br>
-を引きたいことがあると思います (Unix での話です)。まずは簡単な方法でやってみま<br>
-しょう。ヘルプを引きたい単語の上にカーソルを移動して、次のコマンドを入力しま<br>
-す:<br>
+シェルスクリプトまたは C プログラムを編集していて、man ページを探したいコマン<br>
+ドまたは関数を使っています (これは Unix の場合です)。まず簡単な方法を使ってみ<br>
+ましょう: ヘルプを探したい単語にカーソルを移動して、これを押します<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;K</div>
 <br>
-単語を引数として &quot;man&quot; プログラムが実行され、マニュアルが見つかった場合は、そ<br>
-れが表示されます。テキストをスクロール表示するために、標準設定のページャ (おそ<br>
-らく &quot;more&quot; プログラム) が使われます。マニュアルを最後まで表示したら、<span class="Special">&lt;Enter&gt;</span><br>
-を押して Vim に戻ってください。<br>
+Vim はその単語に対して外部の &quot;man&quot; プログラムを実行します。man ページが見つか<br>
+れば、それが表示されます。これは、テキストをスクロールするのに通常のページャ<br>
+(たいていは &quot;more&quot; プログラム) を使います。最後まで行ったら、<span class="Special">&lt;Enter&gt;</span>&nbsp;を押すと<br>
+Vim に戻ります。<br>
 <br>
-この方法の欠点は編集中のテキストとマニュアルを同時に表示できないことです。しか<br>
-し、Vim ウィンドウの中にマニュアルを表示する方法もあります。最初に、man ファイ<br>
-ルタイププラグインをロードしてください:<br>
+欠点は、man ページおよび作業中のテキストを同時に見られないことです。man ページ<br>
+を Vim のウィンドウに表示させる技があります。まず、man ファイルタイププラグイ<br>
+ンを読み込みます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:runtime! ftplugin/man.vim</div>
 <br>
-このコマンドを vimrc ファイルに書いておけばいつでも使えるようになります。さて、<br>
-&quot;:Man&quot; コマンドが使えるようになりました。新しいウィンドウにマニュアルを表示で<br>
-きます:<br>
+これを頻繁に行うつもりの場合、このコマンドを vimrc ファイルに書いてください。<br>
+これで、&quot;:Man&quot; コマンドを使って man ページのウィンドウを開くことができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Man csh</div>
 <br>
-カラー表示されたテキストをスクロールして表示することができます。これで、調べた<br>
-い説明を見つけることができますね。<span class="Special">CTRL-W</span>&nbsp;w を使えば、元のウィンドウにジャンプ<br>
-できます。<br>
-特定のセクションのマニュアルを表示したいときは、セクション番号を指定してくださ<br>
-い。例えば、セクション 3 にある &quot;echo&quot; を調べるなら、次のようにします:<br>
+スクロールすることができ、テキストはハイライトされています。これで探していたヘ<br>
+ルプを見つけられます。<span class="Special">CTRL-W</span>&nbsp;w を使って、作業していたテキストのウィンドウにジャ<br>
+ンプします。<br>
+&nbsp;&nbsp; 特定のセクションの man ページを探すには、セクション番号を先に置きます。例え<br>
+ば、セクション 3 で &quot;echo&quot; を探すには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Man 3 echo</div>
 <br>
-マニュアルの中で &quot;word(1)&quot; のような形式で示されている他のマニュアルにジャンプ<br>
-するには&nbsp;<span class="Special">CTRL-]</span>&nbsp;を押してください。&quot;:Man&quot; コマンドが続けて使われた場合は、同じ<br>
-ウィンドウが使用されます。<br>
+別の man ページにジャンプするには、テキスト内にある典型的な形式 &quot;word(1)&quot; の上<br>
+で&nbsp;<span class="Special">CTRL-]</span>&nbsp;を押します。以降の &quot;:Man&quot; コマンドは同じウィンドウを使います。<br>
 <br>
-カーソル下の単語のマニュアルを表示するには、次のコマンドを使います:<br>
+カーソルの下の単語の man ページを表示するには、これを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\K</div>
 <br>
-(自分で&nbsp;<span class="Special">&lt;Leader&gt;</span>&nbsp;を再定義している場合は、&quot;\&quot; ではなく、それを使ってください)<br>
-例えば、次の行を編集中に &quot;strstr()&quot; の戻り値を知りたくなったら:<br>
+(<span class="Special">&lt;Leader&gt;</span>&nbsp;を再定義している場合は、バックスラッシュの代わりにそれを使ってくださ<br>
+い)。<br>
+例えば、この行を編集しているときに &quot;strstr()&quot; の戻り値を知りたいとします:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">if ( strstr (input, &quot;aap&quot;) == )</span><br>
 <br>
-&quot;strstr&quot; の上にカーソルを移動し、&quot;\K&quot; と入力してください。ウィンドウが開いて<br>
-strstr() のマニュアルが表示されます。<br>
+カーソルを &quot;strstr&quot; のどこかに移動して &quot;\K&quot; とタイプします。ウィンドウが開いて<br>
+strstr() の man ページが表示されます。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_12.html#12.7" name="12.7">12.7</a>&nbsp;&nbsp;空白を取り除く<br>
 <br>
-行末の空白は無用であり、浪費であり、見苦しいものであると考える人々がいます。す<br>
-べての行末から空白を取り除くには、次のコマンドを使います:<br>
+行末の空白およびタブを、役に立たず、無駄で、醜いと考える人もいます。すべての行<br>
+の行末の空白文字を取り除くには、以下のコマンドを実行します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:%s/\s\+$//</div>
 <br>
-&quot;%&quot; を使ってすべての行を範囲指定しています。&quot;:substitute&quot; コマンドに指定されて<br>
-いるパターンは &quot;\s\+$&quot; です。これは、空白文字 (\s) が一文字以上続き (\+)、行末<br>
-($) で終わる文字列にマッチします。このようなパターンの書き方は&nbsp;<a class="Identifier" href="usr_27.html">usr_27.txt</a>&nbsp;で<br>
-説明されています。&quot;to&quot; の部分は空 (&quot;//&quot;) になっています。空文字列で置き換える、<br>
-つまり、マッチした空白を削除するという意味になります。<br>
+行範囲 &quot;%&quot; が使われているので、これはファイル全体に作用します。&quot;:substitute&quot;<br>
+コマンドがマッチするパターンは &quot;\s\+$&quot; です。これは行末 ($) の前にある、1 個以<br>
+上 (\+) の空白文字 (\s) を見つけます。このようなパターンの書き方は後で説明しま<br>
+す。<a class="Identifier" href="usr_27.html">usr_27.txt</a>&nbsp;を参照してください。<br>
+&nbsp;&nbsp; 置換コマンドの &quot;to&quot; の部分は空です: &quot;//&quot;。したがって、何もないもので置換し、<br>
+実質的にマッチした空白を削除します。<br>
 <br>
-もう1つの浪費パターンとして、tab の直前にスペースが使われている場合があります。<br>
-たいていは、そのスペースを削除しても見た目の空白の量は変わりませんが、いつも大<br>
-丈夫というわけではありません。ですから、手作業で削除するのがベストです。次の検<br>
-索コマンドを使ってください:<br>
+空白のもう 1 つの無駄な使い方は、タブの前に置くことです。多くの場合、空白の量<br>
+を変えずにこれらを削除できます。しかし、常にではありません! したがって、これは<br>
+手で行うのが一番です。この検索コマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
 <br>
-何も見えないかもしれませんが、Tab 文字の直前にスペースがあります。つまりこれは<br>
-&quot;/<span class="Special">&lt;Space&gt;&lt;Tab&gt;</span>&quot; です。検索したら、&quot;x&quot; コマンドを使ってスペースを削除し、見た目<br>
-の変化がないことを確認してください。変化があった場合は、tab 文字を挿入して調整<br>
-しましょう。&quot;n&quot; を押して次の場所を検索します。マッチするものがなくなるまで同じ<br>
-操作を繰り返してください。<br>
+見えませんが、このコマンドではタブの前に空白があります。したがって、<br>
+&quot;/<span class="Special">&lt;Space&gt;&lt;Tab&gt;</span>&quot; です。では &quot;x&quot; を使って空白を削除し、空白の量が変わらないこと<br>
+を確認します。変わる場合は、タブを挿入する必要があるかもしれません。&quot;n&quot; とタイ<br>
+プして次のマッチを探します。マッチが見つからなくなるまでこれを繰り返します。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_12.html#12.8" name="12.8">12.8</a>&nbsp;&nbsp;単語が使われている場所を検索する<br>
+<a class="Constant" href="usr_12.html#12.8" name="12.8">12.8</a>&nbsp;&nbsp;単語が使われている場所を探す<br>
 <br>
-UNIX を使っているなら、Vim と grep コマンドを組み合わせれば、指定した単語が含<br>
-まれているすべてのファイルを開くことができます。これは、プログラムを書いている<br>
-ときに、特定の変数が使われているファイルを表示または編集したい場合にとても便利<br>
-です。<br>
-例えば、&quot;frame_counter&quot; という単語が含まれているすべての C 言語ファイルを開く<br>
-には、次のようにします:<br>
+UNIX ユーザーの場合、Vim および grep コマンドを組み合わせて、ある単語を含むす<br>
+べてのファイルを編集できます。これは、プログラムで作業していて、特定の変数を含<br>
+むすべてのファイルを表示または編集したい場合に非常に便利です。<br>
+&nbsp;&nbsp; 例えば、単語 &quot;frame_counter&quot; を含むすべての C プログラムファイルを編集した<br>
+いとします。これを行うには、このコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim `grep -l frame_counter *.c`</div>
 <br>
-このコマンドを詳しく見てみましょう。&quot;grep&quot; コマンドは、指定されたファイルの中<br>
-から単語を検索します。&quot;-l&quot; 引数が指定されているので、単語が含まれているファイ<br>
-ルの名前だけが表示されます。マッチした行は表示されません。検索される単語は<br>
-&quot;frame_counter&quot; です。単語の指定には正規表現が使えます。(<span class="Todo">Note:</span>&nbsp;grep で使える正<br>
-規表現は Vim の正規表現と完全に同じではありません。)<br>
-コマンドはバッククォート (`) で囲まれています。これは、コマンドを実行し、その<br>
-出力を、コマンドラインに入力されたものとして扱うように UNIX シェルに指示してい<br>
-ます。つまり、grep コマンドが実行され、出力されたファイルの一覧が Vim の引数に<br>
-渡されます。Vim が起動した後は、&quot;:next&quot; や &quot;:first&quot; などのコマンドでそれらの<br>
-ファイルを切り替えられます。<br>
+このコマンドを詳しく見てみましょう。grep コマンドは、ファイルの集合から指定さ<br>
+れた単語を検索します。-l 引数が指定されているので、このコマンドは単語を含むファ<br>
+イルを一覧表示するだけで、マッチした行は出力しません。検索している単語は<br>
+&quot;frame_counter&quot; です。実際には、これは任意の正規表現にできます。(<span class="Todo">Note:</span>&nbsp;grep が<br>
+正規表現として使うものは、Vim が使うものとまったく同じではありません。)<br>
+&nbsp;&nbsp; コマンド全体はバッククォート (`) で囲まれています。これは UNIX シェルに、こ<br>
+のコマンドを実行して、その結果がコマンドラインでタイプされたかのように振る舞う<br>
+よう指示します。つまり、grep コマンドが実行されてファイルのリストが作られ、そ<br>
+れらのファイルが Vim のコマンドラインに置かれます。これにより、Vim は grep の<br>
+出力であるファイルリストを編集することになります。その後、&quot;:next&quot; および<br>
+&quot;:first&quot; のようなコマンドを使ってファイルを見て回ることができます。<br>
 <br>
 <br>
-<span class="Statement">単語が使われている行を検索する</span><br>
+<span class="Statement">各行を探す</span><br>
 <br>
-上述のコマンドは単語が含まれているファイルを見つけるだけなので、単語が使われて<br>
-いる行は自分で検索する必要がありました。<br>
-Vim には、指定された文字列を複数のファイルの中から検索するための組み込みコマン<br>
-ドがあります。例えば、&quot;error_string&quot; という文字列をすべての C 言語ファイルの中<br>
-から検索するには、次のコマンドを使います:<br>
+上のコマンドは、その単語が見つかったファイルを探すだけです。それらのファイルの<br>
+中で単語を探す必要がまだあります。<br>
+&nbsp;&nbsp; Vim には、ファイルの集合から指定された文字列を検索するのに使える組み込みコ<br>
+マンドがあります。例えば、すべての C プログラムファイルで &quot;error_string&quot; のす<br>
+べての出現を探したい場合は、以下のコマンドを入力します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:grep error_string *.c</div>
 <br>
-指定されたファイル (*.c) の中から、&quot;error_string&quot; という文字列が検索されます。<br>
-コマンドを実行すると、文字列が含まれている最初のファイルが開き、検索にヒットし<br>
-た最初の行にカーソルが移動します。文字列が現れる次の場所 (同じファイルとは限り<br>
-ません) に移動するには、&quot;:cnext&quot; コマンドを使います。一つ前に戻るには &quot;:cprev&quot;<br>
-コマンドを使います。&quot;:clist&quot; コマンドを使うと、検索結果の一覧と現在位置が表示<br>
-されます。<br>
-&quot;:grep&quot; コマンドの実行には、外部プログラムの grep (Unix) または findstr<br>
-(Windows) が使われます。使われるプログラムは&nbsp;<a class="Type" href="options.html#'grepprg'">'grepprg'</a>&nbsp;オプションで変更できま<br>
-す。<br>
+これにより、Vim は指定されたすべてのファイル (*.c) で文字列 &quot;error_string&quot; を<br>
+検索します。エディタは、マッチが見つかった最初のファイルを開き、最初にマッチし<br>
+た行にカーソルを置きます。次にマッチした行に行くには (それがどのファイルにあっ<br>
+ても)、&quot;:cnext&quot; コマンドを使います。前のマッチに行くには、&quot;:cprev&quot; コマンドを<br>
+使います。&quot;:clist&quot; を使うと、すべてのマッチおよびそれらの場所を確認できます。<br>
+&nbsp;&nbsp; &quot;:grep&quot; コマンドは、外部コマンド grep (Unix の場合) または findstr (Windows<br>
+の場合) を使います。オプション&nbsp;<a class="Type" href="options.html#'grepprg'">'grepprg'</a>&nbsp;を設定することで、これを変更できます。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_20.html">usr_20.txt</a>&nbsp;&nbsp;コマンドラインを素早く入力する<br>
+次章:&nbsp;<a class="Identifier" href="usr_20.html">usr_20.txt</a>&nbsp;&nbsp;コマンドラインのコマンドを素早くタイプする<br>
 <br>
 Copyright: see&nbsp;<a class="Identifier" href="usr_01.html#manual-copyright">manual-copyright</a>&nbsp;&nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>
