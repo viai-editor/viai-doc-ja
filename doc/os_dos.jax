@@ -5,164 +5,158 @@
 
 
 							*dos* *DOS*
-このファイルはMS-DOSおよびWin32バージョンのVimに共通の特殊事項をまとめる。
-|os_win32.txt|や|os_msdos.txt|も参照すること。
+このファイルは、Vim の MS-DOS 版および Win32 版に共通の特殊事項を説明する。
+|os_win32.txt| および |os_msdos.txt| も参照。
 
-1. ファイルの位置		|dos-locations|
-2. バックスラッシュを使う	|dos-backslash|
-3. 標準マッピング		|dos-standard-mappings|
-4. 画面出力と色			|dos-colors|
-5. ファイルの書式		|dos-file-formats|
-6. :cdコマンド			|dos-:cd|
-7. 中断				|dos-CTRL-Break|
+1. ファイル位置			|dos-locations|
+2. バックスラッシュの使用	|dos-backslash|
+3. 標準のマッピング		|dos-standard-mappings|
+4. 画面出力および色		|dos-colors|
+5. ファイル形式			|dos-file-formats|
+6. :cd コマンド			|dos-:cd|
+7. 割り込み			|dos-CTRL-Break|
 8. 一時ファイル			|dos-temp-files|
-9. 標準のシェルオプション	|dos-shell|
+9. shell オプションのデフォルト	|dos-shell|
 10. PowerShell			|dos-powershell|
 
 ==============================================================================
-1. ファイルの位置					*dos-locations*
+1. ファイル位置						*dos-locations*
 
-Vimの実行可能ファイルと同じディレクトリに、ヘルプおよび構文のサブディレクトリ
-があるならば、特に何もする必要はない。レジストリや環境変数も設定する必要はな
-い。ただVimのディレクトリが検索パスに含まれるか、デスクトップ上のショートカッ
-トを利用するだけでよい。
+Vim の実行可能ファイルを help および syntax サブディレクトリを含むディレクトリ
+に置いておけば、Vim が動作するために特別なことをする必要は無い。レジストリエン
+トリまたは環境変数を設定する必要は無い。単にそのディレクトリが検索パスにあるこ
+とを確かめるか、またはデスクトップ上のショートカットを使うこと。
 
-vimrcファイル("_vimrc" と "_gvimrc")は通常、ランタイムファイルがあるディレクト
-リの1つ上のディレクトリに置かれる。もしどこか違う場所に置きたいならば、環境変
-数$VIMにそのディレクトリを設定する。例: >
+vimrc ファイル ("_vimrc" および "_gvimrc") は、通常ランタイムファイルの 1 つ上
+のディレクトリに置かれる。それらを他のどこかに置きたい場合は、環境変数 $VIM を
+それらを置いているディレクトリに設定すること。例: >
 	set VIM=C:\user\piet
-これは "c:\user\piet\_vimrc" を見つけるだろう。
-Note: これはコンピュータを複数人で使う時のために用意されている。
-      普通はデフォルトの場所に _vimrc ファイルを置くこと。
+"c:\user\piet\_vimrc" を見つける。
+Note: これはコンピューターが複数の人に使われる場合にのみ必要になる。そうでなけ
+れば、_vimrc ファイルをデフォルトの場所に置いておく方が簡単である。
 
-実行可能ファイルを別の場所に移動したい場合は、環境変数$VIMを設定する必要があ
-る。ランタイムファイルは "$VIM/viai{version}" から見つけられる。例: >
+実行可能ファイルを別の場所に移動する場合は、$VIM 環境変数も設定する必要がある。
+ランタイムファイルは "$VIM/viai{version}" で見つけられる。例: >
 	set VIM=E:\viai
-これはバージョン1.0のランタイムファイルを "e:\viai\viai10" から見つけるだろう。
-Note: これは推奨しない。ランタイムディレクトリに実行可能ファイルを入れておくこ
-      とをお勧めする。
+"e:\viai\viai10" にあるバージョン 1.0 のランタイムファイルを見つける。
+Note: これは推奨_されない_。望ましい方法は、実行可能ファイルをランタイムディレ
+クトリに置いておくことである。
 
-実行可能ファイルを移動し、「かつ」 "_vimrc" と "_gvimrc" を他の場所に置きたい
-場合は、$VIMにvimrcファイルの場所を、$VIMRUNTIMEにランタイムファイルの場所を設
-定する。
-例: >
+実行可能ファイルを移動し、かつ "_vimrc" および "_gvimrc" ファイルを他のどこか
+に置きたい場合は、$VIM を vimrc ファイルのある場所に設定し、$VIMRUNTIME をラン
+タイムファイルに設定しなければならない。例: >
 	set VIM=C:\usr\piet
 	set VIMRUNTIME=E:\viai\viai10
-これは "c:\user\piet\_vimrc" ファイルと "e:\viai\viai10" にあるランタイムファ
-イルを見つけるだろう。
+"c:\user\piet\_vimrc" および "e:\viai\viai10" にあるランタイムファイルを見つけ
+る。
 
-さらに情報が欲しいときは|$VIM|と|$VIMRUNTIME|を参照すること。
+詳細は |$VIM| および |$VIMRUNTIME| を参照。
 
-「システムのプロパティ」ダイアログボックスから環境変数をユーザーごとに別々に設
-定することができる。そのための手順は:
-1. Windows キー + R をタイプし、「ファイル名を指定して実行」ダイアログボックス
-   を開く。
-2. "sysdm.cpl" と入力し、"OK" ボタンを押す。「システムのプロパティ」ダイアログ
-   ボックスが開く。
-3. 「詳細設定」タブを選択し、「環境変数(N)...」ボタンを押す。「環境変数」ダイ
-   アログボックスが開く。
-4. 「ユーザー環境変数」リストから既存の変数を選択し、「編集(E)...」ボタンを押
-   して編集する。あるいは「新規(N)...」ボタンを押して新しい変数を作成する。
-5. 変数の編集が終わったならば、"OK" ボタンを押して変更を保存する。
-
-==============================================================================
-2. バックスラッシュを使う				*dos-backslash*
-
-ファイル名にバックスラッシュを使うことは問題となり得る。Viではいくつかのコマン
-ドにおいて、バックスラッシュの数を半分にする。Vimはもう少し寛大で、ファイル名
-からバックスラッシュを取り除かないので、":e c:\foo\bar" は期待通りに機能する。
-しかしバックスラッシュが特別な文字(スペース、コンマ、バックスラッシュなど)の前
-に現れた場合は、Vimはバックスラッシュを取り除く。問題を避けるにはスラッシュを
-使用する: ":e c:/foo/bar" はうまく機能する。MS-DOSプログラムやWin32プログラム
-のなかにはこれが問題となるものもあるので、Vimは問題を避けるために内部でスラッ
-シュをバックスラッシュに置き換える。
-
-スラッシュを使うのを好むのなら、'shellslash' オプションを設定する。するとVimは
-ファイル名を展開するときにバックスラッシュをスラッシュに置き換える。これは
-Unix-likeの 'shell' を使用しているときに特に有用である。
+System Properties ダイアログボックスを通して、ユーザーごとに別々に環境変数を設
+定できる。そうする手順:
+1. Windows キー + R を入力して "Run" ダイアログボックスを開く。
+2. "sysdm.cpl" を入力して "OK" ボタンを押す。"System Properties" ダイアログボッ
+   クスが開く。
+3. "Advanced" タブを選択して "Environment Variables..." ボタンを押す。
+   "Environment Variables" ダイアログボックスが開く。
+4. "User variables" リストで既存の変数を選択し、"Edit..." ボタンを押してそれを
+   編集する。または "New..." ボタンを押して新しい変数を追加する。
+5. 変数の編集を終えた後、"OK" ボタンを押して変更を保存する。
 
 ==============================================================================
-3. 標準マッピング				*dos-standard-mappings*
+2. バックスラッシュの使用				*dos-backslash*
 
+ファイル名でバックスラッシュを使うことは問題になり得る。Vi はいくつかのコマン
+ドでバックスラッシュの数を半分にする。Vim はもう少し寛容で、ファイル名からバッ
+クスラッシュを削除しないので、":e c:\foo\bar" は期待どおりに動作する。しかし、
+特殊文字 (スペース、コンマ、バックスラッシュなど) の前にバックスラッシュがある
+場合は、Vim はそのバックスラッシュを削除する。問題を避けるにはスラッシュを使う
+こと: ":e c:/foo/bar" はうまく動作する。Vim は、いくつかの MS-DOS プログラムお
+よび Win32 プログラムでの問題を避けるために、内部でスラッシュをバックスラッシュ
+に置き換える。
 
-以前の CTRL-PageUp と CTRL-PageDown へのマッピングは削除された。今、これらのキー
-はそれぞれ次、前のタブページへジャンプする。|<C-PageUp>| |<C-PageDown>|
+スラッシュを使う方が好みの場合は、'shellslash' オプションを設定すること。そう
+すると、Vim はファイル名を展開する時にバックスラッシュをスラッシュに置き換え
+る。これは Unix 風の 'shell' を使う場合に特に便利である。
 
-これらのキーを画面上の最初、最後の行へジャンプに使いたければ次のマッピングをす
-ればよい:
+==============================================================================
+3. 標準のマッピング				*dos-standard-mappings*
 
-キー		キーコード   Normal/Visualモード    挿入モード ~
+CTRL-PageUp および CTRL-PageDown のマッピングは削除された。それらは現在、次ま
+たは前のタブページにジャンプする |<C-PageUp>| |<C-PageDown>|
+
+それらで最初および最後の画面行に移動したい場合は、これらのマッピングを使える:
+
+キー		キーコード   ノーマル/ビジュアルモード	    挿入モード ~
 CTRL-PageUp	<M-N><M-C-D>	    H		    <C-O>H
 CTRL-PageDown	<M-N>v		    L$		    <C-O>L<C-O>$
 
-さらに、次のキーがコピー/切り取り/貼り付けに利用できる。Win32とDJGPPバージョン
-でのみ、これらはクリップボードを使用する。
+さらに、これらのキーがコピー/カット/ペーストに使用できる。Win32 および DJGPP
+版では、それらはクリップボードも使う。
 
-Shift-Insert	テキストを貼り付ける(クリップボードから)	*<S-Insert>*
-								*<C-Insert>*
-CTRL-Insert	ビジュアルモードでテキストをコピーする(クリップボードに)
-								*<C-Del>*
-CTRL-Del	ビジュアルモードでテキストを切り取る(クリップボードに)
-								*<S-Del>*
-Shift-Del	ビジュアルモードでテキストを切り取る(クリップボードに)
-CTRL-X		ビジュアルモードでテキストを切り取る(クリップボードに)
+Shift-Insert	テキストをペースト (クリップボードから)		*<S-Insert>*
+CTRL-Insert	ビジュアルテキストをコピー (クリップボードへ)	*<C-Insert>*
+CTRL-Del	ビジュアルテキストをカット (クリップボードへ)	*<C-Del>*
+Shift-Del	ビジュアルテキストをカット (クリップボードへ)	*<S-Del>*
+CTRL-X		ビジュアルテキストをカット (クリップボードへ)
 
-以下のマッピングは同様の目的を果たす(VimのWin32とDJGPPバージョン):
+これらのマッピングがこれを実現する (Vim の Win32 および DJGPP 版):
 
-キー		キーコード   Normal	Visual	    挿入モード ~
+キー		キーコード   ノーマル	ビジュアル	    挿入 ~
 Shift-Insert	<M-N><M-T>   "*P	"-d"*P      <C-R><C-O>*
 CTRL-Insert	<M-N><M-U>		"*y
 Shift-Del	<M-N><M-W>		"*d
 CTRL-Del	<M-N><M-X>		"*d
 CTRL-X		<C-X>			"*d
 
-もしくは次のマッピング(VimのWin32ではないバージョン):
+またはこれらのマッピング (Vim の非 Win32 版):
 
-キー		キーコード   Normal	Visual	    挿入モード ~
-Shift-Insert	<M-N><M-T>   P		d"0P	    <C-R><C-O>"
+キー		キーコード   ノーマル	ビジュアル	    挿入 ~
+Shift-Insert	<M-N><M-T>   P		"-dP	    <C-R><C-O>"
 CTRL-Insert	<M-N><M-U>		y
 Shift-Del	<M-N><M-W>		d
 CTRL-Del	<M-N><M-X>		d
 
-クリップボードがサポートされているときは、レジスタの "* が使える。
+クリップボードがサポートされている場合は、"* レジスタが使われる。
 
 ==============================================================================
-4. 画面出力と色						*dos-colors*
+4. 画面出力および色					*dos-colors*
 
-画面出力の方法は、標準ではbiosコールを使用する。これはたいていのシステムで直ち
-に機能する。ansi.sysは必要ない。現在の画面モードを設定するには ":mode" を使う。
-|:mode|を参照すること。
+画面のデフォルトの出力方法は bios コールを使うことである。これはほとんどのシス
+テムですぐに動作する。ansi.sys は必要無い。":mode" を使って現在の画面モードを
+設定できる。|:mode| を参照。
 
-Vimが使用する画面の色を変更するには|:highlight|コマンドを使用する。Normalハイ
-ライトグループはVimが普通のテキストに使う色を特定する。例えば、背景色が青で文
-字色が灰色にするには: >
+Vim が使う画面の色を変更するには、|:highlight| コマンドを使える。Normal ハイラ
+イトグループは、Vim が通常のテキストに使う色を指定する。例えば、青い背景に灰色
+のテキストを得るには: >
 	:hi Normal ctermbg=Blue ctermfg=grey
-他に利用できるグループについては|highlight-groups|を参照すること。
+使用可能な他のグループについては |highlight-groups| を参照。
 
-DOSコンソールは太字や下線のような属性をサポートしていない。5つのモードで使用す
-る色は9つの端末のオプションで設定できる。":highlight" コマンドによって直接色を
-設定した場合には必要ないので注意すること; これらのオプションは古いバージョンの
-Vimに互換性がある。'highlight' オプションは5つのモードがどの操作のときに使用さ
-れるかを特定する。 >
+DOS コンソールは太字および下線のような属性をサポートしない。9 つの端末オプショ
+ンで、5 つのモードで使われる色を設定できる。Note ":highlight" コマンドで色を直
+接設定できるので、これは必要無いことに注意。これらのオプションは古い Vim バー
+ジョンとの後方互換性のためのものである。'highlight' オプションは、5 つのモード
+のどれがどの動作に使われるかを指定する。 >
 
 	:set t_mr=^V^[\|xxm		反転モードの開始
 	:set t_md=^V^[\|xxm		太字モードの開始
-	:set t_me=^V^[\|xxm		普通のテキストに戻る
+	:set t_me=^V^[\|xxm		通常のテキストに戻る
 
-	:set t_so=^V^[\|xxm		standoutモードの開始
-	:set t_se=^V^[\|xxm		普通のテキストに戻る
+	:set t_so=^V^[\|xxm		standout モードの開始
+	:set t_se=^V^[\|xxm		通常のテキストに戻る
 
 	:set t_us=^V^[\|xxm		下線モードの開始
-	:set t_ue=^V^[\|xxm		普通のテキストに戻る
+	:set t_ue=^V^[\|xxm		通常のテキストに戻る
 
-	:set t_ZH=^V^[\|xxm		斜字モードの開始
-	:set t_ZR=^V^[\|xxm		普通のテキストに戻る
+	:set t_ZH=^V^[\|xxm		イタリックモードの開始
+	:set t_ZR=^V^[\|xxm		通常のテキストに戻る
 
-^VはCTRL-V
-^[は<Esc>
-xxは前景色と背景色の数字を足した10進数の数値に置き換える:
+^V は CTRL-V
+^[ は <Esc>
+xx を 10 進コードに置き換えなければならない。それは前景色の番号および背景色の
+番号を足し合わせたものである:
 
-色			 前景色		  背景色	~
+色			前景色	背景色	~
 Black			    0		    0
 DarkBlue		    1		   16
 DarkGreen		    2		   32
@@ -180,208 +174,213 @@ Magenta, LightMagenta	   13		  208 *
 Yellow, LightYellow	   14		  224 *
 White			   15		  240 *
 
-* ディスプレイモードによっては128以上の色コードは利用できず、コード128は文字を
-  点滅させるだろう。
+* ディスプレイモードによっては、128 以上のカラーコードが使用できないことがあ
+  り、コード 128 はテキストを点滅させる。
 
-0を使用した場合は、Vimの開始時の色にリセットされる(普通は7で背景色が黒、文字色
-が淡い灰色であるが、これは上書きできる。もしコマンドプロンプトから標準色を上書
-きした場合は、vimrc内の強調表示色をいくつか調整する必要があるかもしれない---下
-を参照)。
-これがt_meのデフォルトである。
+0 を使うと、色は Vim を開始した時に使われていたものにリセットされる (通常は 7、
+黒地に lightgray だが、これは上書きできる。コマンドプロンプトでデフォルトの色
+を上書きしている場合は、vimrc でいくつかのハイライト色を調整する必要があるかも
+しれない---以下を参照)。
+これは t_me のデフォルトである。
 
-それぞれの強調表示モードの標準:
-	t_mr	112	 反転モード: 文字色Black(0)、背景色LightGray(112)
-	t_md	 15	 太字モード: 文字色White(15)、背景色Black(0)
-	t_me	  0	 通常モード(標準に戻る)
+さまざまなハイライトモードのデフォルトは:
+	t_mr	112	 反転モード: LightGray (112) の上に Black のテキスト (0)
+	t_md	 15	 太字モード: Black (0) の上に White のテキスト (15)
+	t_me	  0	 通常モード (デフォルトに戻す)
 
-	t_so	 31	 standoutモード: 文字色White(15)、背景色DarkBlue(16)
-	t_se	  0	 standoutモードの終了(標準に戻る)
+	t_so	 31	 standout モード: DarkBlue (16) の上に White (15) のテキスト
+	t_se	  0	 standout モードの終了 (デフォルトに戻す)
 
-	t_ZH	225	 斜字モード: 文字色DarkBlue(1)、背景色Yellow(224)
-	t_ZR	  0	 斜字モードの終了(標準に戻る)
+	t_ZH	225	 イタリックモード: Yellow (224) の上に DarkBlue のテキスト (1)
+	t_ZR	  0	 イタリックモードの終了 (デフォルトに戻す)
 
-	t_us	 67	 下線モード: 文字色DarkCyan(3)、背景色DarkRed(64)
-	t_ue	  0	 下線モードの終了(標準に戻る)
+	t_us	 67	 下線モード: DarkRed (64) の上に DarkCyan のテキスト (3)
+	t_ue	  0	 下線モードの終了 (デフォルトに戻す)
 
-これらは反転表示でも良く見えるようために選ばれているが、好みで変更してよい。
+これらの色は、反転したディスプレイを使う時にも見栄えが良いので選ばれたが、好み
+に合わせて変更できる。
 
 例: >
-   :set t_mr=^V^[\|97m	" 反転モードの開始: DarkBlue (1) on Brown (96)
-   :set t_md=^V^[\|67m	" 太字モードの開始: DarkCyan (3) on DarkRed (64)
-   :set t_me=^V^[\|112m	" ノーマルモードに戻る: Black (0) on LightGray (112)
+  :set t_mr=^V^[\|97m	" 反転モードの開始: Brown (96) の上に DarkBlue (1)
+  :set t_md=^V^[\|67m	" 太字モードの開始: DarkRed (64) の上に DarkCyan (3)
+  :set t_me=^V^[\|112m	" 通常モードに戻る: LightGray (112) の上に Black (0)
 
-   :set t_so=^V^[\|37m	" standoutモードの開始: DarkMagenta (5) on DarkGreen
-									(32)
-   :set t_se=^V^[\|112m	" ノーマルモードに戻る: Black (0) on LightGray (112)
-
-==============================================================================
-5. ファイルの書式					*dos-file-formats*
-
-'fileformat' オプションに "dos" が設定されている場合(標準)、Vimは<NL>と<CR><NL>
-をend-of-line (<EOL>)として認識する。ファイルを保存したときは、Vimは<CR><NL>を
-使用する。このため、ファイルを編集して保存した場合は、Vimは<NL>を<CR><NL>で置
-き換える。
-
-'fileformat' オプションが "unix" であるならば、Vimは<NL>を<EOL>として使用し、
-<CR>を^Mと表示する。
-
-Vimはどんなモードで読み込んでもDosモードで保存する(":se ff=dos")ことによって、
-<NL>を<CR><NL>に置き換えることができる。
-VimはDosモードで読み込み、Unixモードで保存する(":se ff=unix")ことによって、
-<CR><NL>を<NL>に置き換えることができる。
-
-Vimは 'fileformats' が設定されている(標準)ときには自動的に 'fileformat' を設定
-するので、あなたがしていることについて全く悩む必要がない。
-
-スクリプトファイルやバイナリファイルを編集したいのならば、ファイルを読み込む前
-に 'binary' オプションを設定するとよい。スクリプトファイルやバイナリファイルは
-<NL>を含んでいて、Vimによって<CR><NL>に置き換えられてしまうかもしれない。Vimの
-起動時に "-b" (binary)オプションをつけることによって、自動的に 'binary' を設定
-することができる。
+  :set t_so=^V^[\|37m	" standout モードの開始: DarkGreen (32) の上に
+									DarkMagenta (5)
+  :set t_se=^V^[\|112m	" 通常モードに戻る: LightGray (112) の上に Black (0)
 
 ==============================================================================
-6. :cdコマンド						*dos-:cd*
+5. ファイル形式						*dos-file-formats*
 
-":cd" コマンドはドライブレターを認識し、カレントドライブを変更する。Cドライブ
-にするには ":cd c:" とする。Dドライブの "foo" ディレクトリに移動するには
-":cd d:\foo" とする。もしシステムがサポートしているならば、VimはUNC名も認識す
-る; 例えば、
-":cd \\server\share\dir"。|:cd|
+'fileformat' オプションが "dos" (これがデフォルト) に設定されている場合、Vim
+は行末 (<EOL>) として単一の <NL> または <CR><NL> の組を受け付ける。ファイルを
+書き込む時は、Vim は <CR><NL> を使う。したがって、ファイルを編集して書き込む
+と、Vim は <NL> を <CR><NL> に置き換える。
+
+'fileformat' オプションが "unix" に設定されている場合、Vim は <EOL> として単一
+の <NL> を使い、<CR> を ^M として表示する。
+
+任意のモードで読み込み、Dos モード (":se ff=dos") で書き込むことで、Vim を使っ
+て <NL> を <CR><NL> に置き換えられる。
+Dos モードで読み込み、Unix モード (":se ff=unix") で書き込むことで、Vim を使っ
+て <CR><NL> を <NL> に置き換えられる。
+
+'fileformats' が空でない (これがデフォルト) 場合、Vim は 'fileformat' を自動的
+に設定するので、自分が何をしているかを実際に心配する必要は無い。
+
+スクリプトファイルまたはバイナリファイルを編集したい場合は、ファイルを読み込む
+前に 'binary' オプションを設定するべきである。スクリプトファイルおよびバイナリ
+ファイルは、Vim が <CR><NL> に置き換えてしまう単一の <NL> 文字を含んでいること
+がある。"-b" (binary) オプション付きで Vim を起動することで、'binary' を自動的
+に設定できる。
 
 ==============================================================================
-7. 中断							*dos-CTRL-Break*
+6. :cd コマンド						*dos-:cd*
 
-検索を中断するにはCTRL-Cの代わりにCTRL-Breakを使用する。Vimはキーを読み終える
-までCTRL-Cを検知しない。
+":cd" コマンドはドライブ指定子を認識し、カレントドライブを変更する。":cd c:"
+を使うとドライブ C がアクティブなドライブになる。":cd d:\foo" を使うとドライブ
+D のルートにあるディレクトリ "foo" に移動する。システムがサポートしていれば、
+Vim は UNC 名も認識する。例えば、":cd \\server\share\dir"。|:cd|
+
+==============================================================================
+7. 割り込み						*dos-CTRL-Break*
+
+検索を中断するには、CTRL-C の代わりに CTRL-Break を使うこと。Vim はキーを読も
+うとするまで CTRL-C を検出しない。
 
 ==============================================================================
 8. 一時ファイル						*dos-temp-files*
 
-16ビットもしくは32ビットのDOSのみ:
-Vimは以下のリストの順番で、ディレクトリが存在し、かつVimがファイルを生成できる
-最初のディレクトリに一時ファイル(フィルタ用)を置く:
+16 ビットおよび 32 ビット DOS 版のみ:
+Vim は一時ファイル (フィルタリング用) を、これらのディレクトリのうち、存在し、
+かつ Vim がファイルを作成できる最初のものに置く:
 	$TMP
 	$TEMP
 	C:\TMP
 	C:\TEMP
-	現在のディレクトリ
+	カレントディレクトリ
 
-Win32バージョン(コンソール、GUIともに):
-Vimは標準的なWindows関数を使って一時ファイル名(フィルタ用)を取得する。以下のリ
-ストの順番で、ディレクトリが存在し、かつVimがファイルを生成できる最初のディレ
-クトリが使用される:
+Win32 版 (コンソールおよび GUI の両方) の場合:
+Vim は一時ファイル名 (フィルタリング用) を得るために標準の Windows 関数を使う。
+これらのディレクトリのうち、存在し、かつ Vim がファイルを作成できる最初のもの
+が使われる:
 	$TMP
 	$TEMP
-	現在のディレクトリ
+	カレントディレクトリ
 
 ==============================================================================
-9. 標準のシェルオプション				*dos-shell*
+9. shell オプションのデフォルト				*dos-shell*
 
-'sh' ('shell') オプションはWindows 95では "command.com"、Windows NTでは
-"cmd.exe" が標準で設定されている。VimはSHELLが定義されている場合はSHELLを、
-SHELLが定義されていない状態でCOMSPECが定義されている場合はCOMSPECを代わりに使
-用する。Vimは外部コマンドを "<shell> /c <command_name>" として起動する。新しい
-コマンドシェルを起動するにはCTRL-Zをタイプする。"exit" でVimに戻る。
-'shell' |CTRL-Z|
+'sh' ('shell') オプションのデフォルトは、Windows 95 では "command.com"、
+Windows NT では "cmd.exe" である。SHELL が定義されている場合は、Vim は代わりに
+SHELL を使い、SHELL が定義されていないが COMSPEC が定義されている場合は、Vim
+は COMSPEC を使う。Vim は外部コマンドを "<shell> /c <command_name>" で開始す
+る。CTRL-Z を入力すると新しいコマンドサブシェルが開始される。"exit" で Vim に
+戻る。	'shell' |CTRL-Z|
 
-サードパーティのシェルを使用する場合は、'shellcmdflag' ('shcf') と
-'shellquote' ('shq') か 'shellxquote' ('sxq') オプションを設定する必要があるか
-もしれない。不幸なことに、これは使っているVimのバージョンに依存する。例えば、
-MKS Kornシェルやbashでは、オプションの値を以下のようになる:
+サードパーティのシェルを実行している場合は、'shellcmdflag' ('shcf') および
+'shellquote' ('shq') または 'shellxquote' ('sxq') オプションを設定する必要があ
+るかもしれない。残念ながら、これは使われる Vim のバージョンにも依存する。例え
+ば、MKS Korn シェルまたは bash では、オプションの値は以下のようになるべきであ
+る:
 
-		DOS 16ビット	    DOS 32ビット	Win32  ~
+		DOS 16 ビット	    DOS 32 ビット		Win32  ~
 'shellcmdflag'	   -c			-c		 -c
 'shellquote'	   "
 'shellxquote'						 "
 
-Dos 16ビットの例は次のようにシェルを起動する: >
+Dos 16 ビットでは、これはシェルを次のように開始する: >
 	<shell> -c "command name" >file
-Win32の例: >
+Win32 では: >
 	<shell> -c "command name >file"
-DOS 32ビットでは、DJGPPが内部的にどうにかして処理する。
+DOS 32 ビットでは、DJGPP がこれを何らかの方法で内部的に行う。
 
-起動時にVimがWindowsの標準シェルを認識しない場合は "sh" が 'shell' オプション
-内のどこかにあるかチェックする。存在するならば、Vimは 'shellcmdflag' と
-'shellquote' または 'shellxquote' オプションを上記のように設定するだろう。
+起動時に、Vim が標準の Windows シェルを認識しない場合、'shell' オプションのど
+こかに "sh" が存在するかを確認する。存在する場合、Vim は 'shellcmdflag' および
+'shellquote' または 'shellxquote' オプションを設定し、上記のとおりに設定される
+だろう。
 
 ==============================================================================
 10. PowerShell					*dos-powershell* *dos-pwsh*
 
 Vim は PowerShell Desktop および PowerShell Core をサポートする。PowerShell
-Desktop は Windows にインストールされている PowerShell のバージョンで、
-PowerShell Core はクロスプラットフォームで動く別途ダウンロード可能なバージョン
-である。使用しているのがどちらのバージョンであるかは PowerShell のプロンプトで
-以下を入力することで確認できる - $PSVersionTable.PSEdition
+Desktop は Windows と一緒にインストールされる PowerShell のバージョンであり、
+一方 PowerShell Core はクロスプラットフォームで動作する別途ダウンロード可能な
+バージョンである。使っているバージョンを確認するには、PowerShell プロンプトで
+以下を入力する -
+$PSVersionTable.PSEdition
 
-起動時に 'shell' オプションのファイル名に "powershell" が含まれる時、Vimは
-'shellcmdflag', 'shellxquote', 'shellpipe', 'shellredir' オプションについて以
-下の値を設定する:
+起動時に 'shell' のファイル名に "powershell" が含まれている場合、VIM は
+'shellcmdflag'、'shellxquote'、'shellpipe'、および 'shellredir' オプションを以
+下の値に設定する:
 
 'shellcmdflag'	-Command
 'shellxquote'	"
 'shellpipe'	2>&1 | Out-File -Encoding default
 'shellredir'	2>&1 | Out-File -Encoding default
 
-起動時に 'shell' オプションのファイル名に "pwsh" が含まれる時、Vimは
-'shellcmdflag', 'shellxquote', 'shellpipe', 'shellredir' オプションについて以
-下の値を設定する:
+起動時に 'shell' のファイル名に "pwsh" が含まれている場合、VIM は
+'shellcmdflag'、'shellxquote'、'shellpipe'、および 'shellredir' オプションを以
+下の値に設定する:
 
 'shellcmdflag'	-c
 'shellxquote'	"
 'shellpipe'	>%s 2>&1
 'shellredir'	>%s 2>&1
 
-Note: これらのオプションは、|.vimrc| ファイルを読み込んだ後にのみ設定される。
-特に、|-c| による 'shell' オプションの設定は、他のシェル関連の設定を有効にする
-には遅すぎる。コマンドライン経由でこのオプションをオーバーライドするには、
-|--cmd| を使用することを検討すること。
+Note: これらのオプションは |.vimrc| ファイルを読み込んだ後にのみ設定される。特
+に、|-c| で 'shell' オプションを設定するのは、他のシェル関連の設定に反映される
+には遅すぎる。コマンドラインからこのオプションを上書きするには |--cmd| を使う
+ことを検討すること。
 
-PowerShell コマンドの実行で時間がかかる場合には 'shellcmdflag' の先頭を
-"-NoProfile" にすることを試すこと。Note これにより PowerShell 環境のプロファイ
-ルでの設定が行われるのを防ぐ。
+PowerShell コマンドの実行に長い時間がかかっていると分かった場合は、
+'shellcmdflag' の先頭に "-NoProfile" を付けて試すこと。Note これはプロファイル
+による PowerShell 環境のセットアップが行われるのを妨げることに注意。
 
-'shell' 経由での PowerShell スクリプトの実行に問題がある場合には
-'shellcmdflag' の先頭を "-ExecutionPolicy RemoteSigned -Command" にするのを試
-すこと。詳細についてはオンラインの Windows のドキュメントにある PowerShell 実
-行ポリシー設定を参照。
+'shell' を通して PowerShell スクリプトを実行するのに問題がある場合は、
+'shellcmdflag' の先頭に "-ExecutionPolicy RemoteSigned -Command" を付けて試す
+こと。PowerShell の実行ポリシー設定に関する詳細はオンラインの Windows ドキュメ
+ントを参照。
 
-'shellcmdflag' で空白を含む複数のフラグを使用するときについては
+複数のフラグを使う時に 'shellcmdflag' に空白を含めることについては
 |option-backslash| を参照。
 
-'shellpipe' および 'shellredir' オプションの値は PowerShell Desktop の
-UTF-16LE 出力を現在のあなたのコンソールのコードページに再エンコードする。
-"default" を以下のどれかに変更することで出力を別のエンコーディングに強制できる:
+'shellpipe' および 'shellredir' オプションの値は、PowerShell Desktop からの
+UTF-16LE 出力を、現在設定されているコンソールのコードページに再エンコードする。
+"default" を以下のどれかに変更することで、出力を別のエンコーディングに強制でき
+る:
 
-	unicode		 - UTF-16LE (PowerShell 5.1 からのデフォルト値)
+	unicode		 - UTF-16LE (PowerShell 5.1 からのデフォルト出力)
 	bigendianunicode - UTF-16
 	utf8		 - UTF-8
-	utf7		 - UTF-7 (BOM なし)
+	utf7		 - UTF-7 (BOM 無し)
 	utf32		 - UTF-32
 	ascii		 - 7-bit ASCII 文字セット
-	default		 - システムのアクティブなコードページ (一般には ANSI)
-	oem		 - システムの現在の OEM のコードページ
+	default		 - システムのアクティブなコードページ (通常は ANSI)
+	oem		 - システムの現在の OEM コードページ
 
-Note 上記のマルチバイト Unicode エンコーディングはそうでないと掲示がない限り
-BOM から始まるものを含む。
+Note 上記のマルチバイト Unicode エンコーディングは、特に示されていない限り、先
+頭に BOM を含む。
 
-PowerShell Coreの出力のデフォルトは BOM なしでエンコードされた UTF-8 である。
-出力を別のエンコーディングに強制したい場合 'shellredir' と 'shellpipe' を
-"2>&1 | Out-File -Encoding encoding" とし encoding を以下のどれかに設定する:
+デフォルトでは、PowerShell Core の出力は BOM 無しの UTF-8 でエンコードされる。
+PowerShell Core の出力を別のエンコーディングに強制したい場合は、'shellredir'
+および 'shellpipe' を "2>&1 | Out-File -Encoding encoding" に設定すること。こ
+こで encoding は以下のどれかである:
 
 	ascii		 - 7-bit ASCII 文字セット
 	bigendianunicode - UTF-16BE
 	bigendianutf32	 - UTF-32BE
-	oem		 - システムの現在の OEM のコードページ
+	oem		 - システムの現在の OEM コードページ
 	unicode		 - UTF-16LE
 	utf7		 - UTF-7
 	utf8		 - UTF-8
-	utf8BOM		 - UTF-8 BOM あり
-	utf8NoBOM	 - UTF-8 BOM なし (PowerShell Core からのデフォルト値)
+	utf8BOM		 - UTF-8、BOM 付き
+	utf8NoBOM	 - UTF-8、BOM 無し (PowerShell Core からのデフォルト出力)
 	utf32		 - UTF-32
 
-PowerShell Core 6.2 から、Encoding パラメータは登録されたコードページの数値
-ID(-Encoding 1251)もしくは登録されたコードページ名文字列(-Encoding
-"windows-1251")による指定もサポートする。詳細な情報は .NET ドキュメントの
-Encoding.CodePage にある。
+PowerShell Core 6.2 以降、Encoding パラメーターは、登録されたコードページの数
+値 ID (-Encoding 1251) または登録されたコードページの文字列名 (-Encoding
+"windows-1251") の指定もサポートする。.NET の Encoding.CodePage のドキュメント
+にさらに情報がある
 
  vim:tw=78:ts=8:noet:ft=help:norl:
