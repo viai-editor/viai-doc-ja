@@ -11,278 +11,280 @@ helpname: 'scroll'
 <br>
 スクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#scrolling" name="scrolling">scrolling</a><br>
 <br>
-これらのコマンドはウィンドウの内容を移動する。カーソルがウィンドウの外に移動し<br>
-ようとすると、カーソルはウィンドウに留まるように振舞う (<a class="Type" href="options.html#'scrolloff'">'scrolloff'</a>&nbsp;のスクリー<br>
-ン行をカーソルの周囲に確保する)。1ページとはウィンドウの行数から2引いた行数と<br>
-定義する。これらのコマンドを覚えるのは少し厄介かもしれない。ウィンドウをバッ<br>
-ファのうち貴方が見ている一部分と捉えて、ウィンドウの動きをバッファ内での上下の<br>
-移動に関連付けてコマンドを覚えると良いだろう。例えばバッファの中でウィンドウが<br>
-上に動くと、ウィンドウのテキストはスクリーンの下の方へ移動していくことになる。<br>
+これらのコマンドはウィンドウの内容を移動する。カーソル位置がウィンドウの外に移<br>
+動された場合、カーソルはウィンドウの中に移動される (その周りに&nbsp;<a class="Type" href="options.html#'scrolloff'">'scrolloff'</a>&nbsp;ス<br>
+クリーン行を伴って)。1 ページは、ウィンドウの行数から 2 を引いたものである。こ<br>
+れらのコマンドの覚え方は少し紛らわしいかもしれない。コマンドは、ウィンドウ<br>
+(バッファのうち見えている部分) をバッファ内で上方または下方に移動することを指<br>
+していることを覚えておくこと。ウィンドウがバッファ内で上方に移動すると、ウィン<br>
+ドウ内のテキストはスクリーン上で下方に移動する。<br>
 <br>
-手始めにユーザーマニュアルの<a class="Identifier" href="usr_03.html#03.7">03.7</a>を読むこと。<br>
+入門については、ユーザーマニュアルのセクション&nbsp;<a class="Identifier" href="usr_03.html#03.7">03.7</a>&nbsp;を参照。<br>
 <br>
-1. 下方スクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="scroll.html#scroll-down">scroll-down</a><br>
-2. 上方スクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="scroll.html#scroll-up">scroll-up</a><br>
-3. カーソル相関スクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="scroll.html#scroll-cursor">scroll-cursor</a><br>
+1. 下へのスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="scroll.html#scroll-down">scroll-down</a><br>
+2. 上へのスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="scroll.html#scroll-up">scroll-up</a><br>
+3. カーソルに相対的なスクロール&nbsp;<a class="Identifier" href="scroll.html#scroll-cursor">scroll-cursor</a><br>
 4. 水平スクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="scroll.html#scroll-horizontal">scroll-horizontal</a><br>
 5. 同期スクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="scroll.html#scroll-binding">scroll-binding</a><br>
-6. マウスホイールスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="scroll.html#scroll-mouse-wheel">scroll-mouse-wheel</a><br>
+6. マウスホイールでのスクロール&nbsp;<a class="Identifier" href="scroll.html#scroll-mouse-wheel">scroll-mouse-wheel</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-1. 下方スクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#scroll-down" name="scroll-down">scroll-down</a><br>
+1. 下へのスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#scroll-down" name="scroll-down">scroll-down</a><br>
 <br>
-以下のコマンドは編集ウィンドウ(バッファ内の貴方が見ている一部分)を下に移動する<br>
-(つまりテキストバッファのより下にある行を見ることができる):<br>
+以下のコマンドは、編集ウィンドウ (バッファのうち見えている部分) を下方に移動す<br>
+る (これは、テキストバッファ内のより下方の行が見えるようになることを意味する):<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#CTRL-E" name="CTRL-E">CTRL-E</a><br>
-<span class="Special">CTRL-E</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの下へ<span class="Special">[count]</span>行ウィンドウをスクロールする。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;テキストはスクリーン上で上方に移動する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;覚え方: Extra lines&nbsp;<span class="Special">{訳注: Extra=割増}</span><br>
+<span class="Special">CTRL-E</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウをバッファ内で&nbsp;<span class="Special">[count]</span>&nbsp;行下方にスクロールす<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。テキストはスクリーン上で上方に移動する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;覚え方: Extra lines。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#CTRL-D" name="CTRL-D">CTRL-D</a><br>
-<span class="Special">CTRL-D</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウをバッファ内で下にスクロールする。スクロール<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する行数は&nbsp;<a class="Type" href="options.html#'scroll'">'scroll'</a>&nbsp;オプションで指定される(省略した場<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合: スクリーンの半分の行数)。<span class="Special">[count]</span>が指定された場合、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'scroll'">'scroll'</a>&nbsp;オプションに<span class="Special">[count]</span>が設定されてからスクロール<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。カーソルもファイル内で同じ行数だけ下へ移動する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(もし可能ならば; 行が折り返されている場合やファイルの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;終端に達した時は違ってくる)。カーソルがバッファの最終<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行にある時は何も起こらずビープ音が鳴る。<a class="Type" href="options.html#'startofline'">'startofline'</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;オプションも参照。<br>
+<span class="Special">CTRL-D</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウをバッファ内で下方にスクロールする。行数は<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'scroll'">'scroll'</a>&nbsp;オプションから取られる (デフォルト: スクリー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンの半分)。<span class="Special">[count]</span>&nbsp;が与えられた場合、まず&nbsp;<a class="Type" href="options.html#'scroll'">'scroll'</a>&nbsp;オ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プションを&nbsp;<span class="Special">[count]</span>&nbsp;に設定する。カーソルはファイル内で<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同じ行数だけ下に移動する (可能な場合。行が折り返すと<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;き、およびファイルの終わりに達したときは、違いが出るこ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;とがある)。カーソルがバッファの最終行にある場合は、何<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;も起こらず、ビープが鳴る。<a class="Type" href="options.html#'startofline'">'startofline'</a>&nbsp;オプションも参<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;照。<br>
 <br>
 <span class="Special">&lt;S-Down&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<S-Down>" name="&lt;S-Down&gt;">&lt;S-Down&gt;</a>&nbsp;<a class="Constant" href="scroll.html#<kPageDown>" name="&lt;kPageDown&gt;">&lt;kPageDown&gt;</a><br>
 <span class="Special">&lt;PageDown&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<PageDown>" name="&lt;PageDown&gt;">&lt;PageDown&gt;</a>&nbsp;<a class="Constant" href="scroll.html#CTRL-F" name="CTRL-F">CTRL-F</a><br>
 <span class="Special">&lt;S-CR&gt;</span>&nbsp;&nbsp;or&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<S-CR>" name="&lt;S-CR&gt;">&lt;S-CR&gt;</a>&nbsp;<a class="Constant" href="scroll.html#<S-NL>" name="&lt;S-NL&gt;">&lt;S-NL&gt;</a><br>
 <span class="Special">&lt;S-+&gt;</span>&nbsp;&nbsp; or&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#SHIFT-+" name="SHIFT-+">SHIFT-+</a>&nbsp;<a class="Constant" href="scroll.html#<S-Plus>" name="&lt;S-Plus&gt;">&lt;S-Plus&gt;</a><br>
-<span class="Special">CTRL-F</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウをバッファ内で<span class="Special">[count]</span>ページ前方(下方)にスク<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ロールする。<a class="Type" href="options.html#'startofline'">'startofline'</a>&nbsp;オプションも参照。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウが1つだけのときはオプション&nbsp;<a class="Type" href="options.html#'window'">'window'</a>&nbsp;の値が<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使われる。<br>
+<span class="Special">CTRL-F</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウをバッファ内で&nbsp;<span class="Special">[count]</span>&nbsp;ページ前方 (下方) に<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクロールする。<a class="Type" href="options.html#'startofline'">'startofline'</a>&nbsp;オプションも参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウが 1 つだけのときは、<a class="Type" href="options.html#'window'">'window'</a>&nbsp;オプションが使<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;われるかもしれない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#z+" name="z+">z+</a><br>
-z+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>が無い時: 現在のウィンドウの最下行を最上行にし<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;て再描画する。カーソルはその行の、最初の非空白文字に合<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;わせられる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>が有る時: ちょうど &quot;z<span class="Special">&lt;CR&gt;</span>&quot; と同じ。<br>
+z+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;なし: ウィンドウのすぐ下の行をウィンドウの一番<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上にして再描画する。カーソルをその行の、行内の最初の非<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;空白文字に置く。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;あり: &quot;z<span class="Special">&lt;CR&gt;</span>&quot; とちょうど同じ。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-2. 上方スクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#scroll-up" name="scroll-up">scroll-up</a><br>
+2. 上へのスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#scroll-up" name="scroll-up">scroll-up</a><br>
 <br>
-以下のコマンドは編集ウィンドウ(バッファ内の貴方が見ている一部分)を上に移動する<br>
-(つまりテキストバッファのより上にある行を見ることができる):<br>
+以下のコマンドは、編集ウィンドウ (バッファのうち見えている部分) を上方に移動す<br>
+る (これは、テキストバッファ内のより上方の行が見えるようになることを意味する):<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#CTRL-Y" name="CTRL-Y">CTRL-Y</a><br>
-<span class="Special">CTRL-Y</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの上へ<span class="Special">[count]</span>行ウィンドウをスクロールする。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;テキストはスクリーン上で下方に移動する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;MS-Windowsのキーバインディングを使っているときは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-Y</span>はredoにマッピングされている。<br>
+<span class="Special">CTRL-Y</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウをバッファ内で&nbsp;<span class="Special">[count]</span>&nbsp;行上方にスクロールす<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。テキストはスクリーン上で下方に移動する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;MS-Windows のキーバインドを使っている場合、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-Y</span>&nbsp;は redo にリマップされる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#CTRL-U" name="CTRL-U">CTRL-U</a><br>
-<span class="Special">CTRL-U</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウをバッファ内で上にスクロールする。スクロール<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する行数は&nbsp;<a class="Type" href="options.html#'scroll'">'scroll'</a>&nbsp;オプションで指定される(省略した場<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合: スクリーンの半分の行数)。<span class="Special">[count]</span>が指定された場合、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'scroll'">'scroll'</a>&nbsp;オプションに<span class="Special">[count]</span>が設定されてからスクロール<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。カーソルもファイル内で同じ行数だけ上へ移動する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(もし可能ならば; 行が折り返されている場合やファイルの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;先頭に達した時は違ってくる)。カーソルがバッファの先頭<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行にある時は何も起こらずビープ音が鳴る。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'startofline'">'startofline'</a>&nbsp;オプションも参照。<br>
+<span class="Special">CTRL-U</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウをバッファ内で上方にスクロールする。行数は<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'scroll'">'scroll'</a>&nbsp;オプションから取られる (デフォルト: スクリー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンの半分)。<span class="Special">[count]</span>&nbsp;が与えられた場合、まず&nbsp;<a class="Type" href="options.html#'scroll'">'scroll'</a>&nbsp;オ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プションを&nbsp;<span class="Special">[count]</span>&nbsp;に設定する。カーソルはファイル内で<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同じ行数だけ上に移動する (可能な場合。行が折り返すと<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;き、およびファイルの終わりに達したときは、違いが出るこ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;とがある)。カーソルがバッファの最初の行にある場合は、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;何も起こらず、ビープが鳴る。<a class="Type" href="options.html#'startofline'">'startofline'</a>&nbsp;オプションも<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参照。<br>
 <br>
 <span class="Special">&lt;S-Up&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<S-Up>" name="&lt;S-Up&gt;">&lt;S-Up&gt;</a>&nbsp;<a class="Constant" href="scroll.html#<kPageUp>" name="&lt;kPageUp&gt;">&lt;kPageUp&gt;</a><br>
 <span class="Special">&lt;PageUp&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<PageUp>" name="&lt;PageUp&gt;">&lt;PageUp&gt;</a>&nbsp;<a class="Constant" href="scroll.html#CTRL-B" name="CTRL-B">CTRL-B</a><br>
 <span class="Special">&lt;S--&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<S-Minus>" name="&lt;S-Minus&gt;">&lt;S-Minus&gt;</a>&nbsp;<a class="Constant" href="scroll.html#SHIFT-MINUS" name="SHIFT-MINUS">SHIFT-MINUS</a><br>
-<span class="Special">CTRL-B</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウをバッファ内で<span class="Special">[count]</span>ページ後方(上方)にスク<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ロールする。<a class="Type" href="options.html#'startofline'">'startofline'</a>&nbsp;オプションも参照。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウが1つだけのときはオプション&nbsp;<a class="Type" href="options.html#'window'">'window'</a>&nbsp;の値が<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使われる。<br>
+<span class="Special">CTRL-B</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウをバッファ内で&nbsp;<span class="Special">[count]</span>&nbsp;ページ後方 (上方) に<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクロールする。<a class="Type" href="options.html#'startofline'">'startofline'</a>&nbsp;オプションも参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウが 1 つだけのときは、<a class="Type" href="options.html#'window'">'window'</a>&nbsp;オプションが使<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;われるかもしれない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#z^" name="z^">z^</a><br>
-z^&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>が無い時: 現在のウィンドウの最上行を最下行にし<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;て再描画する。カーソルはその行の、最初の非空白文字に合<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;わせられる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>が有る時: まず<span class="Special">[count]</span>行がウィンドウの最下行に<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;なるようにスクロールし、次にウィンドウの最上行になっ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;た行を最下行にして再描画する。カーソルはその行の最初<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の非空白文字に合わせられる。<br>
+z^&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;なし: ウィンドウのすぐ上の行をウィンドウの一番<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下にして再描画する。カーソルをその行の、行内の最初の非<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;空白文字に置く。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;あり: まず&nbsp;<span class="Special">[count]</span>&nbsp;行がウィンドウの一番下に来<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;るようにテキストをスクロールし、それから、そのときウィ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンドウの一番上にある行をウィンドウの一番下にして再描画<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。カーソルをその行の、行内の最初の非空白文字に置<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;く。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-3. カーソル相関スクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#scroll-cursor" name="scroll-cursor">scroll-cursor</a><br>
+3. カーソルに相対的なスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#scroll-cursor" name="scroll-cursor">scroll-cursor</a><br>
 <br>
-下記のコマンドはカーソルの位置は変えずに編集ウィンドウ(バッファの見えている一<br>
-部)の位置を変える。<a class="Type" href="options.html#'scrolloff'">'scrolloff'</a>&nbsp;オプションを設定していると、カーソルの上または<br>
-下の周辺行が表示されることに注意。<br>
+以下のコマンドは、カーソルを同じ行に保ったまま、編集ウィンドウ (バッファのうち<br>
+見えている部分) の位置を変更する。<span class="Todo">Note</span>&nbsp;<a class="Type" href="options.html#'scrolloff'">'scrolloff'</a>&nbsp;オプションによって、カーソ<br>
+ルの上下に文脈行が表示されることがあることに注意。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#z<CR>" name="z&lt;CR&gt;">z&lt;CR&gt;</a><br>
-z<span class="Special">&lt;CR&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>行(省略時はカーソルのある行)をウィンドウの最上<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行にして再描画する。カーソルは行内の最初の非空白文字に<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;置かれる。<br>
+z<span class="Special">&lt;CR&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 再描画し、<span class="Special">[count]</span>&nbsp;行 (デフォルトはカーソル行) をウィン<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ドウの一番上にする。カーソルを行内の最初の非空白文字に<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;置く。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#zt" name="zt">zt</a><br>
-zt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;z<span class="Special">&lt;CR&gt;</span>&quot; と同様だが、カーソルは同じカラムに留める。<br>
+zt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;z<span class="Special">&lt;CR&gt;</span>&quot; と同様だが、カーソルを同じ桁に残す。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#zN<CR>" name="zN&lt;CR&gt;">zN&lt;CR&gt;</a><br>
-z<span class="Special">{height}&lt;CR&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ウィンドウを高さ<span class="Special">{height}</span>行に変更して再描画する。スク<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リーンの更新が非常に遅い時に、高さを減らすと有効であ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。物理的なスクリーンの高さよりも高くすることはできな<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い。<br>
+z<span class="Special">{height}&lt;CR&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 再描画し、ウィンドウを&nbsp;<span class="Special">{height}</span>&nbsp;行の高さにする。これ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、スクリーンの更新がとても遅いときに行数を少なくする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のに便利である。高さを物理的なスクリーンの高さより大き<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;くすることはできない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#z." name="z.">z.</a><br>
-z.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>行(省略時はカーソルのある行)をウィンドウの中心<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;にして再描画する。カーソルは行内の最初の非空白文字に置<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;かれる。<br>
+z.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;再描画し、<span class="Special">[count]</span>&nbsp;行 (デフォルトはカーソル行) をウィン<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ドウの中央にする。カーソルを行内の最初の非空白文字に置<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;く。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#zz" name="zz">zz</a><br>
-zz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;z.&quot; と同様だが、カーソルは同じカラムに留める。注意:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;caps-lockが有効になっていると、このコマンドは &quot;ZZ&quot; に<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;なり、バッファを書き出し終了してしまう。<br>
+zz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;z.&quot; と同様だが、カーソルを同じ桁に残す。注意:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;caps-lock がオンの場合、このコマンドは &quot;ZZ&quot; になる:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファを書き込んで終了する!<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#z-" name="z-">z-</a><br>
-z-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>行(省略時はカーソルのある行)をウィンドウの最下<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行にして再描画する。カーソルは行内の最初の非空白文字に<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;置かれる。<br>
+z-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;再描画し、<span class="Special">[count]</span>&nbsp;行 (デフォルトはカーソル行) をウィン<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ドウの一番下にする。カーソルを行内の最初の非空白文字に<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;置く。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#zb" name="zb">zb</a><br>
-zb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;z-&quot; と同様だが、カーソルは同じカラムに留める。<br>
+zb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;z-&quot; と同様だが、カーソルを同じ桁に残す。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 4. 水平スクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#scroll-horizontal" name="scroll-horizontal">scroll-horizontal</a><br>
 <br>
-次の4つのコマンドはスクリーンに応じてカーソルが移動する。カーソルのある文字が<br>
-スクリーンが動いたために消えると、カーソルはスクリーン上の一番近い文字に移動す<br>
-る。<a class="Type" href="options.html#'sidescroll'">'sidescroll'</a>&nbsp;の値は使用されない。<br>
+以下の 4 つのコマンドでは、カーソルはスクリーンに追従する。カーソルがある文字<br>
+がスクリーンの外に移動した場合、カーソルはスクリーン上にある最も近い文字に移動<br>
+する。<a class="Type" href="options.html#'sidescroll'">'sidescroll'</a>&nbsp;の値は使われない。<br>
 <br>
 z<span class="Special">&lt;Right&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#zl" name="zl">zl</a>&nbsp;<a class="Constant" href="scroll.html#z<Right>" name="z&lt;Right&gt;">z&lt;Right&gt;</a><br>
-zl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクリーンを<span class="Special">[count]</span>文字右へ移動する。従ってテキストは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>文字左へスクロールする。これは&nbsp;<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;がオフの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;時にだけ働く。<br>
+zl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;テキスト上のビューを&nbsp;<span class="Special">[count]</span>&nbsp;文字右に移動し、したがっ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;てテキストを&nbsp;<span class="Special">[count]</span>&nbsp;文字左にスクロールする。これは<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;がオフのときのみ動作する。<br>
 <br>
 z<span class="Special">&lt;Left&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#zh" name="zh">zh</a>&nbsp;<a class="Constant" href="scroll.html#z<Left>" name="z&lt;Left&gt;">z&lt;Left&gt;</a><br>
-zh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクリーンを<span class="Special">[count]</span>文字左へ移動する。従ってテキストは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>文字右へスクロールする。これは&nbsp;<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;がオフの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;時にだけ働く。<br>
+zh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;テキスト上のビューを&nbsp;<span class="Special">[count]</span>&nbsp;文字左に移動し、したがっ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;てテキストを&nbsp;<span class="Special">[count]</span>&nbsp;文字右にスクロールする。これは<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;がオフのときのみ動作する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#zL" name="zL">zL</a><br>
-zL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクリーンの幅の半分右へスクロールする。従ってテキスト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;はスクリーンの幅の半分左へスクロールする。これは&nbsp;<a class="Type" href="options.html#'wrap'">'wrap'</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;がオフの時にだけ働く。<br>
+zL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;テキスト上のビューを画面幅の半分だけ右に移動し、した<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;がってテキストを画面幅の半分だけ左にスクロールする。こ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れは&nbsp;<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;がオフのときのみ動作する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#zH" name="zH">zH</a><br>
-zH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクリーンの幅の半分左へスクロールする。従ってテキスト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;はスクリーンの幅の半分右へスクロールする。これは&nbsp;<a class="Type" href="options.html#'wrap'">'wrap'</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;がオフの時にだけ働く。<br>
+zH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;テキスト上のビューを画面幅の半分だけ左に移動し、した<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;がってテキストを画面幅の半分だけ右にスクロールする。こ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れは&nbsp;<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;がオフのときのみ動作する。<br>
 <br>
-次の2つのコマンドではテキスト上でカーソルは移動せず、スクリーンのテキストだけ<br>
-がスクロールする。<br>
+以下の 2 つのコマンドでは、カーソルはテキスト内で移動せず、テキストだけがスク<br>
+リーン上でスクロールする。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#zs" name="zs">zs</a><br>
-zs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルのある位置がスクリーンの始まり(左側)に来るよう<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;にテキストを水平にスクロールする。これは&nbsp;<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;がオフ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の時にだけ働く。<br>
+zs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルがスクリーンの開始 (左側) に位置するように、テ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キストを水平にスクロールする。これは&nbsp;<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;がオフのと<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;きのみ動作する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#ze" name="ze">ze</a><br>
-ze&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルのある位置がスクリーンの終わり(右側)に来るよう<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;にテキストを水平にスクロールする。これは&nbsp;<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;がオフ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の時にだけ働く。<br>
+ze&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルがスクリーンの終わり (右側) に位置するように、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;テキストを水平にスクロールする。これは&nbsp;<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;がオフの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ときのみ動作する。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 5. 同期スクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#scroll-binding" name="scroll-binding">scroll-binding</a><br>
 <br>
-時折、2つかそれ以上のウィンドウを結びつけて、1つがスクロールしたら他のウィンド<br>
-ウもスクロールして欲しいと思うことがある。Vimではウィンドウごとに&nbsp;<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a><br>
-オプションを設定することでこのような振る舞いをさせることが可能である。<br>
-<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;が設定されたあるウィンドウがスクロールした場合、他の&nbsp;<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a><br>
-が設定されたウィンドウが可能なら同じ量だけスクロールする。<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;の振る<br>
-舞いは&nbsp;<a class="Type" href="options.html#'scrollopt'">'scrollopt'</a>&nbsp;オプションによって変更することができる。<br>
+時には、2 つ以上のウィンドウを一緒に結び付けて、1 つのウィンドウがスクロールさ<br>
+れたときに、他のウィンドウもスクロールされるようにすることが望ましい。Vim で<br>
+は、(ウィンドウ固有の)&nbsp;<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;オプションを設定することで、ウィンドウにこ<br>
+の振る舞いを与えることができる。<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;が設定されたウィンドウがスクロー<br>
+ルされると、他のすべての&nbsp;<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;ウィンドウも、可能な場合、同じ量だけスク<br>
+ロールされる。<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;の振る舞いは&nbsp;<a class="Type" href="options.html#'scrollopt'">'scrollopt'</a>&nbsp;オプションで変更できる。<br>
 <br>
-スクロールバーやマウスホイールを使っているとき、マウスでスクロールバーを操作し<br>
-ても他のウィンドウはスクロールされない。これは少しの間だけ同期スクロールを使わ<br>
-ないでスクロールしたい時に使える。<br>
+スクロールバーまたはマウスホイールを使う場合、結び付けは、フォーカスのある<br>
+(カーソルがある) ウィンドウをスクロールしたときにのみ起こる。これを使って、オ<br>
+プションをリセットせずに、一時的にスクロールの結び付けを避けることができる。<br>
 <br>
-ウィンドウに&nbsp;<a class="Type" href="options.html#'diff'">'diff'</a>&nbsp;オプションも設定されているとき、同期スクロールは位置を正確<br>
-に同期するために二つのバッファの差分を利用する。それ以外の場合は以下の方法が使<br>
-われる。<br>
+ウィンドウに&nbsp;<a class="Type" href="options.html#'diff'">'diff'</a>&nbsp;オプションも設定されている場合、スクロールの結び付けは 2<br>
+つのバッファ間の差分を使って位置を正確に同期させる。そうでなければ、以下の方法<br>
+が使われる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#scrollbind-relative" name="scrollbind-relative">scrollbind-relative</a><br>
-<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;された各々のウィンドウは &quot;相対的なオフセット&quot; --すなわち、現在の<br>
-ウィンドウの垂直スクロール位置とその他のウィンドウの垂直スクロール位置の間の差<br>
-分と考えることができる--を追跡する。<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;ウィンドウの1つがテキストの最<br>
-初もしくは最後を超えてスクロールしようとすると、そのウィンドウはそれ以上スク<br>
-ロールはしないが、どれだけ限界を超えて移動しようとしたかは記憶される。そのウィ<br>
-ンドウは同じ相対オフセットを維持するために、そのバッファの限界を超えてスクロー<br>
-ルを要求されたかにかかわらず、この情報を保持し続ける。<br>
+各&nbsp;<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;ウィンドウは、その &quot;相対オフセット&quot; を追跡する。これは、カレン<br>
+トウィンドウの垂直スクロール位置と、他のウィンドウの垂直スクロール位置の差と考<br>
+えることができる。<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;ウィンドウの 1 つが、そのテキストの先頭または末<br>
+尾の限界を越えて垂直にスクロールするよう求められた場合、そのウィンドウはもうス<br>
+クロールしないが、限界をどれだけ越えていたいかを記憶する。ウィンドウはこの情報<br>
+を保持し、そのバッファの限界を越えてスクロールするよう求められているかどうかに<br>
+かかわらず、同じ相対オフセットを維持できるようにする。<br>
 <br>
-しかしながら、そのバッファの限界を超えるような相対オフセットを持つウィンドウに<br>
-カーソルフォーカスが与えられると、その他の&nbsp;<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;されたウィンドウは現在<br>
-のウィンドウの有効な相対オフセットの位置にジャンプすることになる。この振る舞い<br>
-は&nbsp;<a class="Type" href="options.html#'scrollopt'">'scrollopt'</a>&nbsp;オプションから &quot;jump&quot; フラグを削除することで変えることができる。<br>
+しかし、そのバッファの限界を越えた相対オフセットを持つ&nbsp;<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;ウィンドウ<br>
+にカーソルフォーカスが与えられた場合、他の&nbsp;<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;ウィンドウは、カレント<br>
+ウィンドウの相対オフセットが有効になる位置にジャンプしなければならない。この振<br>
+る舞いは、<a class="Type" href="options.html#'scrollopt'">'scrollopt'</a>&nbsp;オプションから &quot;jump&quot; フラグを取り除くことで変更できる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#syncbind" name="syncbind">syncbind</a>&nbsp;<a class="Constant" href="scroll.html#:syncbind" name=":syncbind">:syncbind</a>&nbsp;<a class="Constant" href="scroll.html#:sync" name=":sync">:sync</a><br>
-:syncbind&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; すべての&nbsp;<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;ウィンドウが同じ相対オフセットを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;持つように強制する。すなわち&nbsp;<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;ウィンドウが<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;そのバッファの先頭にスクロールされた時、その他の<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;ウィンドウもまたそれぞれのバッファの先<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;頭に持っていかれる。<br>
+:syncbind&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; すべての&nbsp;<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;ウィンドウに同じ相対オフセットを<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;持たせる。すなわち、<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;ウィンドウのいずれか<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;がそのバッファの先頭にスクロールされたとき、すべての<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;ウィンドウもそれぞれのバッファの先頭にな<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#scrollbind-quickadj" name="scrollbind-quickadj">scrollbind-quickadj</a><br>
-<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;フラグは、キーボードコマンドを使ってウィンドウを垂直スクロールす<br>
-る時に意味を持ち、カーソルがフォーカスされているウィンドウで垂直スクロールバー<br>
-やマウスホイールを使う時にも意味を持つ。しかし、カーソルにフォーカスのないウィ<br>
-ンドウで垂直スクロールバーやマウスホイールを使う場合は、<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;は無視さ<br>
-れる。<br>
-これにより、<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;されたウィンドウの相対オフセットを素早く調整できる。<br>
+<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;フラグは、キーボードコマンドを使ってウィンドウを垂直にスクロール<br>
+するときに意味を持ち、また、カーソルフォーカスのあるウィンドウで垂直スクロール<br>
+バーまたはマウスホイールを使うときにも意味を持つ。しかし、カーソルフォーカスの<br>
+ないウィンドウで垂直スクロールバーまたはマウスホイールを使うときは、<br>
+<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;は無視される。<br>
+これにより、<a class="Type" href="options.html#'scrollbind'">'scrollbind'</a>&nbsp;ウィンドウの相対オフセットを素早く調整できる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-6. マウスホイールスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#scroll-mouse-wheel" name="scroll-mouse-wheel">scroll-mouse-wheel</a><br>
+6. マウスホイールでのスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#scroll-mouse-wheel" name="scroll-mouse-wheel">scroll-mouse-wheel</a><br>
 <br>
-マウスにスクロールホイールがあるときは、GUI の Vim でそれを使うことができる。<br>
-どのように動作するかはシステムに依存する。ホイールは xterm でも動作する<br>
-<a class="Identifier" href="scroll.html#xterm-mouse-wheel">xterm-mouse-wheel</a>。デフォルトでは垂直スクロールホイールのみサポートされてい<br>
-る。いくつかの GUI では水平スクロールホイールもサポートされている。<br>
+マウスにスクロールホイールがある場合、それは GUI の Vim で動作するはずである。<br>
+どのように動作するかはシステムに依存する。xterm でも動作するかもしれない<br>
+<a class="Identifier" href="scroll.html#xterm-mouse-wheel">xterm-mouse-wheel</a>。デフォルトでは垂直スクロールホイールのみがサポートされる<br>
+が、一部の GUI は水平スクロールホイールもサポートする。<br>
 <br>
-MS-Windowsにおいて、スクロールの動作が入力フォーカスの問題を引き起こす場合は、<br>
+MS-Windows で、スクロール動作が入力フォーカスの問題を引き起こす場合は、<br>
 <a class="Identifier" href="gui_w32.html#intellimouse-wheel-problems">intellimouse-wheel-problems</a>&nbsp;を参照。<br>
 <br>
-Win32 および X11 GUI (Motif、GTK) ではホイールを回すと&nbsp;<span class="Special">&lt;ScrollWheelUp&gt;</span>、<br>
-<span class="Special">&lt;ScrollWheelDown&gt;</span>、<span class="Special">&lt;ScrollWheelLeft&gt;</span>、<span class="Special">&lt;ScrollWheelRight&gt;</span>&nbsp;などのキー入力が発生<br>
-する。例えば、スクロールホイールを上に回すと&nbsp;<span class="Special">&lt;ScrollWheelUp&gt;</span>&nbsp;キーが生成され、<br>
-ウィンドウが上にスクロールする (つまりテキストが下に移動する)。これらのキーの<br>
-デフォルトの動作は次の通り:<br>
+Win32 および X11 の GUI (Motif および GTK) では、ホイールをスクロールすると、<br>
+キー押下&nbsp;<span class="Special">&lt;ScrollWheelUp&gt;</span>、<span class="Special">&lt;ScrollWheelDown&gt;</span>、<span class="Special">&lt;ScrollWheelLeft&gt;</span>、および<br>
+<span class="Special">&lt;ScrollWheelRight&gt;</span>&nbsp;が生成される。例えば、スクロールホイールを上方に押すと、<br>
+<span class="Special">&lt;ScrollWheelUp&gt;</span>&nbsp;キー押下が生成され、ウィンドウが上方にスクロールする (一方、テ<br>
+キストは実際には下方に移動している)。これらのキーのデフォルトの動作は:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;ScrollWheelUp&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">N</span>&nbsp;行上にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<ScrollWheelUp>" name="&lt;ScrollWheelUp&gt;">&lt;ScrollWheelUp&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-ScrollWheelUp&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 画面上にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<S-ScrollWheelUp>" name="&lt;S-ScrollWheelUp&gt;">&lt;S-ScrollWheelUp&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-ScrollWheelUp&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 画面上にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<C-ScrollWheelUp>" name="&lt;C-ScrollWheelUp&gt;">&lt;C-ScrollWheelUp&gt;</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-ScrollWheelUp&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 ページ上にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<S-ScrollWheelUp>" name="&lt;S-ScrollWheelUp&gt;">&lt;S-ScrollWheelUp&gt;</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-ScrollWheelUp&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 ページ上にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<C-ScrollWheelUp>" name="&lt;C-ScrollWheelUp&gt;">&lt;C-ScrollWheelUp&gt;</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;ScrollWheelDown&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">N</span>&nbsp;行下にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<ScrollWheelDown>" name="&lt;ScrollWheelDown&gt;">&lt;ScrollWheelDown&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-ScrollWheelDown&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp; 1 画面下にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<S-ScrollWheelDown>" name="&lt;S-ScrollWheelDown&gt;">&lt;S-ScrollWheelDown&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-ScrollWheelDown&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp; 1 画面下にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<C-ScrollWheelDown>" name="&lt;C-ScrollWheelDown&gt;">&lt;C-ScrollWheelDown&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;ScrollWheelLeft&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">N</span>&nbsp;列左にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<ScrollWheelLeft>" name="&lt;ScrollWheelLeft&gt;">&lt;ScrollWheelLeft&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-ScrollWheelLeft&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp; 1 画面左にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<S-ScrollWheelLeft>" name="&lt;S-ScrollWheelLeft&gt;">&lt;S-ScrollWheelLeft&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-ScrollWheelLeft&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp; 1 画面左にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<C-ScrollWheelLeft>" name="&lt;C-ScrollWheelLeft&gt;">&lt;C-ScrollWheelLeft&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;ScrollWheelRight&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">N</span>&nbsp;列右にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<ScrollWheelRight>" name="&lt;ScrollWheelRight&gt;">&lt;ScrollWheelRight&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-ScrollWheelRight&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;1 画面右にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<S-ScrollWheelRight>" name="&lt;S-ScrollWheelRight&gt;">&lt;S-ScrollWheelRight&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-ScrollWheelRight&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;1 画面右にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<C-ScrollWheelRight>" name="&lt;C-ScrollWheelRight&gt;">&lt;C-ScrollWheelRight&gt;</a><br>
-これはコマンドラインを編集する以外の、全てのモードで動作するだろう。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-ScrollWheelDown&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp; 1 ページ下にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<S-ScrollWheelDown>" name="&lt;S-ScrollWheelDown&gt;">&lt;S-ScrollWheelDown&gt;</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-ScrollWheelDown&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp; 1 ページ下にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<C-ScrollWheelDown>" name="&lt;C-ScrollWheelDown&gt;">&lt;C-ScrollWheelDown&gt;</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;ScrollWheelLeft&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">N</span>&nbsp;桁左にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<ScrollWheelLeft>" name="&lt;ScrollWheelLeft&gt;">&lt;ScrollWheelLeft&gt;</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-ScrollWheelLeft&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp; 1 ページ左にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<S-ScrollWheelLeft>" name="&lt;S-ScrollWheelLeft&gt;">&lt;S-ScrollWheelLeft&gt;</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-ScrollWheelLeft&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp; 1 ページ左にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<C-ScrollWheelLeft>" name="&lt;C-ScrollWheelLeft&gt;">&lt;C-ScrollWheelLeft&gt;</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;ScrollWheelRight&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">N</span>&nbsp;桁右にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<ScrollWheelRight>" name="&lt;ScrollWheelRight&gt;">&lt;ScrollWheelRight&gt;</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-ScrollWheelRight&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;1 ページ右にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<S-ScrollWheelRight>" name="&lt;S-ScrollWheelRight&gt;">&lt;S-ScrollWheelRight&gt;</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-ScrollWheelRight&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;1 ページ右にスクロール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<C-ScrollWheelRight>" name="&lt;C-ScrollWheelRight&gt;">&lt;C-ScrollWheelRight&gt;</a><br>
+これは、コマンドラインを編集しているときを除き、すべてのモードで動作するはずで<br>
+ある。<br>
 <br>
-値の<span class="Special">N</span>はシステムに依存する。デフォルトのVimのスクロールは垂直な移動では3行、水<br>
-平な移動では6桁になる。MS-Windows では、各スクロールアクションでの行と桁の量は<br>
-システムの全体設定から取得する。<br>
+<span class="Special">N</span>&nbsp;の値はシステムに依存する。デフォルトでは、Vim は垂直に移動するときは 3 行、<br>
+水平に移動するときは 6 桁スクロールする。MS-Windows では、各スクロール動作の行<br>
+数および桁数は、システム全体の設定から取られる。<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;水平スクロールは&nbsp;<a class="Type" href="options.html#'nowrap'">'nowrap'</a>&nbsp;が設定されているときのみ機能する。また、<br>
-<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;の &quot;h&quot; フラグが設定されていない場合は、スクロールするとカーソル行<br>
-が画面外になってしまうようなときに、表示されている範囲の一番長い行にカーソルが<br>
-移動する (水平スクロールバーの動作に似た感じ)。<br>
+<span class="Todo">Note</span>&nbsp;水平スクロールは&nbsp;<a class="Type" href="options.html#'nowrap'">'nowrap'</a>&nbsp;が設定されている場合にのみ動作することに注意。<br>
+また、<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;の &quot;h&quot; フラグが設定されていない限り、カーソル行がスクリーン<br>
+の外にスクロールされそうになると、カーソルは見えている最も長い行に移動する (水<br>
+平スクロールバーの動作と同様に)。<br>
 <br>
-キーマッピングによりデフォルトの振る舞いを変更することができる。例えば、ノーマ<br>
-ルモードでホイールによるスクロールを1行にしたり半画面にしたりできる:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;map &lt;MouseDown&gt; &lt;C-Y&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;map &lt;S-MouseDown&gt; &lt;C-U&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;map &lt;MouseUp&gt; &lt;C-E&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;map &lt;S-MouseUp&gt; &lt;C-D&gt;</div>
-AltやCtrlといった修飾も可能である。<br>
+キーをマップすることで、デフォルトの振る舞いを変更できる。例えば、ノーマルモー<br>
+ドでスクロールホイールが 1 行または半ページ移動するようにするには:<br>
+<div class="helpExample">&nbsp;&nbsp; :map &lt;ScrollWheelUp&gt; &lt;C-Y&gt;<br>
+&nbsp;&nbsp; :map &lt;S-ScrollWheelUp&gt; &lt;C-U&gt;<br>
+&nbsp;&nbsp; :map &lt;ScrollWheelDown&gt; &lt;C-E&gt;<br>
+&nbsp;&nbsp; :map &lt;S-ScrollWheelDown&gt; &lt;C-D&gt;</div>
+Alt および Ctrl 修飾キーも使うことができる。<br>
 <br>
-これはもちろん、Vimがスクロールホイールのイベントを取得している時にだけ働く。<br>
-この機能が働くかどうかは &quot;xev&quot; プログラムを使用すればチェックできる。<br>
+もちろん、これは Vim がスクロールホイールのイベントを受け取る場合にのみ動作す<br>
+る。これが動作するかどうかは &quot;xev&quot; プログラムで確認できる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#mouse-scrolling-off" name="mouse-scrolling-off">mouse-scrolling-off</a><br>
-マウスでスクロールさせたくない場合(例えば、手のひらをタッチパッドに置くとス<br>
-クロールイベントが発生するため)、次のようにして無効にできる:<br>
+マウスでスクロールが起こってほしくない場合 (例えば、タッチパッドに手のひらを置<br>
+くとスクロールイベントが発生するため)、これでそれを無効にできる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;ScrollWheelDown&gt; &lt;Nop&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map! &lt;ScrollWheelDown&gt; &lt;Nop&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;ScrollWheelUp&gt; &lt;Nop&gt;<br>
@@ -292,31 +294,31 @@ AltやCtrlといった修飾も可能である。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;ScrollWheelRight&gt; &lt;Nop&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map! &lt;ScrollWheelRight&gt; &lt;Nop&gt;</div>
 <br>
-XFree86を使っているときには、/etc/XF86Configに貴方のマウスの正しいエントリがな<br>
-ければならない。FreeBSDでは、このようなエントリがロジテックのスクロールマウス<br>
-用に必要である。<br>
+XFree86 を使っている場合、/etc/XF86Config ファイルにマウスのための正しいエント<br>
+リがあるべきである。FreeBSD では、Logitech のスクロールマウスにはこのエントリ<br>
+が動作する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;Protocol&nbsp;&nbsp;&nbsp;&nbsp; &quot;MouseMan&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Device&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;/dev/psm0&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;ZAxisMapping 4 5</div>
-詳しくはXFree86のドキュメントを参照すること。<br>
+情報については XFree86 のドキュメントを参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#<MouseDown>" name="&lt;MouseDown&gt;">&lt;MouseDown&gt;</a>&nbsp;<a class="Constant" href="scroll.html#<MouseUp>" name="&lt;MouseUp&gt;">&lt;MouseUp&gt;</a><br>
-<span class="Special">&lt;MouseDown&gt;</span>&nbsp;と&nbsp;<span class="Special">&lt;MouseUp&gt;</span>&nbsp;は廃止された。<span class="Special">&lt;MouseDown&gt;</span>&nbsp;の代わりに&nbsp;<span class="Special">&lt;ScrollWheelUp&gt;</span><br>
-を、<span class="Special">&lt;MouseUp&gt;</span>&nbsp;の代わりに&nbsp;<span class="Special">&lt;ScrollWheelDown&gt;</span>&nbsp;を使うこと。<br>
+キー&nbsp;<span class="Special">&lt;MouseDown&gt;</span>&nbsp;および&nbsp;<span class="Special">&lt;MouseUp&gt;</span>&nbsp;は非推奨になった。<span class="Special">&lt;MouseDown&gt;</span>&nbsp;の代わりに<br>
+<span class="Special">&lt;ScrollWheelUp&gt;</span>&nbsp;を使い、<span class="Special">&lt;MouseUp&gt;</span>&nbsp;の代わりに&nbsp;<span class="Special">&lt;ScrollWheelDown&gt;</span>&nbsp;を使うこと。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="scroll.html#xterm-mouse-wheel" name="xterm-mouse-wheel">xterm-mouse-wheel</a><br>
-新しいxtermでマウスホイールを使うには、上で書かれているようにXserverでスクロー<br>
-ルホイールマウスが動作するようにするだけで良い。<br>
+新しい xterm でマウスホイールを使うには、上で述べたように、Xserver でスクロー<br>
+ルホイールが動作するようにするだけでよい。<br>
 <br>
-古いxtermでマウスホイールを使うにはこうする:<br>
-1. 上に書かれているように、Xserverで使えるようにする。<br>
-2. xtermに変換を追加し、スクロールイベントをVimへエスケープシーケンスとして渡<br>
-&nbsp;&nbsp; すようにする。<br>
-3. Vimにマッピングを追加し、エスケープシーケンスを&nbsp;<span class="Special">&lt;ScrollWheelDown&gt;</span>&nbsp;もしくは<br>
-&nbsp;&nbsp;&nbsp;<span class="Special">&lt;ScrollWheelUp&gt;</span>&nbsp;キーとして解釈できるようにする。<br>
+古い xterm でマウスホイールを使うには、これを行わなければならない:<br>
+1. 上で述べたように、Xserver で動作するようにする。<br>
+2. xterm がスクロールイベントをエスケープシーケンスとして Vim に渡すように、<br>
+&nbsp;&nbsp; xterm にトランスレーションを追加する。<br>
+3. エスケープシーケンスを&nbsp;<span class="Special">&lt;ScrollWheelDown&gt;</span>&nbsp;または&nbsp;<span class="Special">&lt;ScrollWheelUp&gt;</span>&nbsp;キーとして<br>
+&nbsp;&nbsp; 解釈するように、Vim にマッピングを追加する。<br>
 <br>
-次のような内容をあなたの~/.Xdefaults(もしくは別名の貴方のXリソースファイル)に<br>
-追加すれば変換ができる。<br>
+これを ~.Xdefaults ファイル (または X リソースが保存されている他のファイル) に<br>
+追加することで、トランスレーションを行うことができる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;XTerm*VT100.Translations:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #override \n\<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s&lt;Btn4Down&gt;: string(&quot;0x9b&quot;) string(&quot;[64~&quot;) \n\<br>
@@ -326,7 +328,7 @@ XFree86を使っているときには、/etc/XF86Configに貴方のマウスの�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Btn4Up&gt;: \n\<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Btn5Up&gt;:</div>
 <br>
-以下のマッピングを vimrc ファイルに追加すること:<br>
+これらのマッピングを vimrc ファイルに追加する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;M-Esc&gt;[62~ &lt;ScrollWheelUp&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map! &lt;M-Esc&gt;[62~ &lt;ScrollWheelUp&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;M-Esc&gt;[63~ &lt;ScrollWheelDown&gt;<br>
