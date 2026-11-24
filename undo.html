@@ -11,295 +11,292 @@ helpname: 'undo'
 <br>
 undo と redo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#undo-redo" name="undo-redo">undo-redo</a><br>
 <br>
-基本的なことは&nbsp;<a class="Identifier" href="usr_02.html#02.5">02.5</a>&nbsp;で説明されています。<br>
+基本はユーザーマニュアルの&nbsp;<a class="Identifier" href="usr_02.html#02.5">02.5</a>&nbsp;節で説明されている。<br>
 <br>
-1. undo と redo のコマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="undo.html#undo-commands">undo-commands</a><br>
-2. Undo の二つの方式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="undo.html#undo-two-ways">undo-two-ways</a><br>
-3. Undo ブロック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="undo.html#undo-blocks">undo-blocks</a><br>
-4. Undo ブランチ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="undo.html#undo-branches">undo-branches</a><br>
-5. Undo の永続化&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="undo.html#undo-persistence">undo-persistence</a><br>
-6. 備考&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="undo.html#undo-remarks">undo-remarks</a><br>
+1. undo と redo コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="undo.html#undo-commands">undo-commands</a><br>
+2. undo の 2 つの方法&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="undo.html#undo-two-ways">undo-two-ways</a><br>
+3. undo ブロック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="undo.html#undo-blocks">undo-blocks</a><br>
+4. undo ブランチ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="undo.html#undo-branches">undo-branches</a><br>
+5. undo の永続化&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="undo.html#undo-persistence">undo-persistence</a><br>
+6. undo についての備考&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="undo.html#undo-remarks">undo-remarks</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-1. undo と redo のコマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#undo-commands" name="undo-commands">undo-commands</a><br>
+1. undo と redo コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#undo-commands" name="undo-commands">undo-commands</a><br>
 <br>
-<span class="Special">&lt;Undo&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#undo" name="undo">undo</a>&nbsp;<a class="Constant" href="undo.html#<Undo>" name="&lt;Undo&gt;">&lt;Undo&gt;</a>&nbsp;<a class="Constant" href="undo.html#u" name="u">u</a><br>
-u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;個の変更を元に戻す。<br>
+<span class="Special">&lt;Undo&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;または&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#undo" name="undo">undo</a>&nbsp;<a class="Constant" href="undo.html#<Undo>" name="&lt;Undo&gt;">&lt;Undo&gt;</a>&nbsp;<a class="Constant" href="undo.html#u" name="u">u</a><br>
+u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;個の変更を undo する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#:u" name=":u">:u</a>&nbsp;<a class="Constant" href="undo.html#:un" name=":un">:un</a>&nbsp;<a class="Constant" href="undo.html#:undo" name=":undo">:undo</a><br>
-:u[ndo]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 一つの変更を元に戻す。<br>
-<br>
+:u[ndo]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 つの変更を undo する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#E830" name="E830">E830</a><br>
-:u[ndo]&nbsp;<span class="Special">{N}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 変更番号&nbsp;<span class="Special">{N}</span>&nbsp;の直後にジャンプする。<span class="Special">{N}</span>&nbsp;の意味について<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は&nbsp;<a class="Identifier" href="undo.html#undo-branches">undo-branches</a>&nbsp;を参照。<br>
+:u[ndo]&nbsp;<span class="Special">{N}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 変更番号&nbsp;<span class="Special">{N}</span>&nbsp;の後へジャンプする。<span class="Special">{N}</span>&nbsp;の意味については<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="undo.html#undo-branches">undo-branches</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#CTRL-R" name="CTRL-R">CTRL-R</a><br>
-<span class="Special">CTRL-R</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undo された変更を&nbsp;<span class="Special">[count]</span>&nbsp;個やり直す (redoする)。<br>
+<span class="Special">CTRL-R</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undo された&nbsp;<span class="Special">[count]</span>&nbsp;個の変更を redo する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#:red" name=":red">:red</a>&nbsp;<a class="Constant" href="undo.html#:redo" name=":redo">:redo</a>&nbsp;<a class="Constant" href="undo.html#redo" name="redo">redo</a><br>
-:red[o]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; undo された変更を一つやり直す。<br>
+:red[o]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; undo された 1 つの変更を redo する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#U" name="U">U</a><br>
-U&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最近変更された行の、一つの行の中でのすべての最近の変更<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を元に戻す。<a class="Identifier" href="undo.html#U">U</a>&nbsp;自体も変更としてカウントされます。つま<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;り&nbsp;<a class="Identifier" href="undo.html#U">U</a>&nbsp;によってその前の&nbsp;<a class="Identifier" href="undo.html#U">U</a>&nbsp;を元に戻すことができます。<br>
+U&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 つの行、つまり最新の変更が行われた行に対する、最新の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変更をすべて undo する。<a class="Identifier" href="undo.html#U">U</a>&nbsp;自体も変更とみなされるの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;で、<a class="Identifier" href="undo.html#U">U</a>&nbsp;は前の&nbsp;<a class="Identifier" href="undo.html#U">U</a>&nbsp;を undo する。<br>
 <br>
-変更は記録されます。上記の undo コマンドや redo コマンドを使うと、それぞれの変<br>
-更が加えられる前のテキストに戻したり、変更を元に戻した後でその変更を再び加える<br>
-ことができます。<br>
+最近の変更は記憶されている。上記の undo および redo コマンドを使って、テキスト<br>
+を各変更の前の状態に戻すことができる。また、変更を再び適用して、undo の前のテ<br>
+キストに戻すこともできる。<br>
 <br>
-&quot;U&quot; コマンドは他のコマンドと同様に undo/redo の対象となります。つまり、&quot;u&quot; コ<br>
-マンドで &quot;U&quot; コマンドを undo したり、'<span class="Special">CTRL-R</span>' コマンドでそれを redo したりでき<br>
-ます。&quot;U&quot; と &quot;u&quot; と '<span class="Special">CTRL-R</span>' を混ぜて使うと、&quot;U&quot; コマンドが直前の &quot;U&quot; コマンド<br>
-以前の状態を復元することに気づくでしょう。この動作はわかりにくいかもしれません<br>
-が、練習して慣れてください。<br>
-&quot;U&quot; コマンドはバッファを変更有りの状態にします。つまり、&quot;U&quot; コマンドで変更が加<br>
-えられる前のテキストに戻しても、それは変更有りの状態として認識されます。&quot;u&quot; を<br>
-使って変更無しの状態まで undo してください。<br>
-<br>
-<span class="PreProc">==============================================================================</span><br>
-2. undo の二つの方式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#undo-two-ways" name="undo-two-ways">undo-two-ways</a><br>
-<br>
-undo コマンドと redo コマンドの動作は&nbsp;<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;の 'u' フラグに依存していま<br>
-す。Vim 方式 ('u' がない場合) と Vi 互換方式 ('u' がある場合) があります。Vim<br>
-方式では &quot;uu&quot; は二つの変更を undo します。Vi 互換方式では &quot;uu&quot; は何もしません<br>
-(undo を undo する)。<br>
-<br>
-'u' がない場合。Vim 方式:<br>
-undo コマンドで過去に戻れます。そして、redo コマンドで再び先に進むことができま<br>
-す。undo コマンドを実行した後で新しい変更を加えると、redo はできなくなります。<br>
-<br>
-'u' がある場合。Vi 互換方式:<br>
-undo コマンドは直前の変更と undo コマンドを undo します。redo コマンドは直前の<br>
-undo コマンドを繰り返します。変更コマンドが繰り返されるわけではないので、そう<br>
-したい場合は &quot;.&quot; を使ってください。<br>
-<br>
-<span class="PreProc">例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim 方式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vi 互換方式</span><br>
-&quot;uu&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2回 undo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変更なし<br>
-&quot;u&nbsp;<span class="Special">CTRL-R</span>&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変更なし&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2回 undo<br>
-<br>
-理由:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Nvi では&nbsp;<span class="Special">CTRL-R</span>&nbsp;の代わりに &quot;.&quot; コマンドを使います。あいにくこれは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vi 互換ではありません。例えば、&quot;dwdwu.&quot; は Vi では二つの単語が削除<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;されますが、Nvi では何も変更されません。<br>
+&quot;U&quot; コマンドは、undo/redo によって他のコマンドとまったく同様に扱われる。した<br>
+がって、&quot;u&quot; コマンドは &quot;U&quot; コマンドを undo し、'<span class="Special">CTRL-R</span>' コマンドはそれを再び<br>
+redo する。&quot;U&quot;、&quot;u&quot;、および '<span class="Special">CTRL-R</span>' を混ぜて使うと、&quot;U&quot; コマンドが行の状態を<br>
+前の &quot;U&quot; コマンドの前に復元することに気付くだろう。これは混乱するかもしれない。<br>
+慣れるために試してみること。<br>
+&quot;U&quot; コマンドは常にバッファを変更ありとしてマークする。&quot;U&quot; がバッファを変更のな<br>
+い状態に戻したときも、それは変更されているとみなされる。バッファが変更なしにな<br>
+るまで変更を undo するには &quot;u&quot; を使う。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-3. Undo ブロック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#undo-blocks" name="undo-blocks">undo-blocks</a><br>
+2. undo の 2 つの方法&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#undo-two-ways" name="undo-two-ways">undo-two-ways</a><br>
 <br>
-undo コマンドは普通は一つのコマンドを undo します。そのコマンドがいくつの変更<br>
-を加えるかは関係ありません。この undo 可能な変更の組が undo ブロックです。例え<br>
-ば、キーの入力によって関数が呼ばれた場合、その関数内のすべてのコマンドは一緒に<br>
-undo されます。<br>
+undo および redo コマンドがどのように機能するかは、<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;の 'u' フラグに<br>
+依存する。<br>
+Vim の方法 ('u' を除外) および Vi 互換の方法 ('u' を含む) がある。Vim の方法で<br>
+は、&quot;uu&quot; は 2 つの変更を undo する。Vi 互換の方法では、&quot;uu&quot; は何もしない (undo<br>
+を undo する)。<br>
 <br>
-関数やスクリプトを作るとき、undo 可能な変更を新しく追加するのではなく、その変<br>
-更を直前の変更につなげたい場合は、次のコマンドを使ってください:<br>
+'u' を除外、Vim の方法:<br>
+undo コマンドで時間をさかのぼることができる。その後、redo コマンドで再び進むこ<br>
+とができる。undo コマンドの後に新しい変更を行うと、redo はもうできなくなる。<br>
+<br>
+'u' を含む、Vi 互換の方法:<br>
+undo コマンドは直前の変更を undo し、直前の undo コマンドも undo する。redo コ<br>
+マンドは直前の undo コマンドを繰り返す。これは変更コマンドを繰り返さない。それ<br>
+には &quot;.&quot; を使う。<br>
+<br>
+<span class="PreProc">例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim の方法&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vi 互換の方法&nbsp;&nbsp;&nbsp;</span><br>
+&quot;uu&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 回 undo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 何もしない<br>
+&quot;u&nbsp;<span class="Special">CTRL-R</span>&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;何もしない&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 回 undo<br>
+<br>
+根拠:&nbsp;&nbsp;Nvi は&nbsp;<span class="Special">CTRL-R</span>&nbsp;の代わりに &quot;.&quot; コマンドを使う。残念ながら、これは Vi<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;互換ではない。例えば、Vi で &quot;dwdwu.&quot; は 2 つの単語を削除するが、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nvi では何もしない。<br>
+<br>
+<span class="PreProc">==============================================================================</span><br>
+3. undo ブロック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#undo-blocks" name="undo-blocks">undo-blocks</a><br>
+<br>
+1 つの undo コマンドは通常、タイプされたコマンドを、そのコマンドがいくつの変更<br>
+を行ったかに関係なく undo する。この undo 可能な変更の連続が undo ブロックを形<br>
+成する。したがって、タイプされたキーが関数を呼び出す場合、関数内のすべてのコマ<br>
+ンドが一緒に undo される。<br>
+<br>
+新しい undo 可能な変更を作成せず、直前の変更に結合する関数またはスクリプトを書<br>
+きたい場合、このコマンドを使う:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#:undoj" name=":undoj">:undoj</a>&nbsp;<a class="Constant" href="undo.html#:undojoin" name=":undojoin">:undojoin</a>&nbsp;<a class="Constant" href="undo.html#E790" name="E790">E790</a><br>
-:undoj[oin]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 以降の変更を直前の undo ブロックにつなげる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">警告:</span>&nbsp;注意して使ってください。ユーザーが適切に変更を<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undo するのを妨げてしまうかもしれません。undo や redo<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の後でこのコマンドを使わないでください。<br>
+:undoj[oin]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 以降の変更を直前の undo ブロックに結合する。<span class="Todo">警告:</span>&nbsp;注意<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;して使うこと。ユーザーが変更を適切に undo できなくなる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;かもしれない。undo または redo の後にこれを使わないこ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と。<br>
 <br>
-これは特に変更の途中でプロンプトを表示するような場合に便利です。例えば関数の中<br>
-で&nbsp;<a class="Identifier" href="builtin.html#getchar()">getchar()</a>&nbsp;を呼び出すなど。変更をつなげてしかるべき関連性のある変更がそこ<br>
-にあることがわかっている場合に使ってください。<br>
+これは、変更の途中でユーザーに入力を求める必要があるときに最も便利である。例え<br>
+ば&nbsp;<a class="Identifier" href="builtin.html#getchar()">getchar()</a>&nbsp;を呼び出す関数内で。これより前に、結合しなければならない関連す<br>
+る変更があったことを確認すること。<br>
 <br>
-このコマンドは単独では機能しません。なぜなら、次のキー入力によって再び新しい変<br>
-更が開始されるからです。しかし例えば次のように使うことはできます:<br>
+次のキー押下が再び新しい変更を開始するので、これ単独では機能しない。しかし、次<br>
+のようなことができる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:undojoin | delete</div>
 <br>
-この後で &quot;u&quot; コマンドを実行すると delete コマンドとその直前の変更が undo され<br>
-ます。<br>
+この後、&quot;u&quot; コマンドは delete コマンドおよび直前の変更を undo する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#undo-break" name="undo-break">undo-break</a>&nbsp;<a class="Constant" href="undo.html#undo-close-block" name="undo-close-block">undo-close-block</a><br>
-反対の動作、つまり次の変更で新しい undo ブロックを使うには、挿入モードで<br>
-<span class="Special">CTRL-G</span>&nbsp;u を使います。挿入コマンドを部分ごと (例えば文単位) に undo できるよう<br>
-にしたい場合に便利です。&nbsp;<a class="Identifier" href="insert.html#i_CTRL-G_u">i_CTRL-G_u</a><br>
+その逆を行う、つまり次の変更に新しい undo ブロックを使うには、挿入モードで<br>
+<span class="Special">CTRL-G</span>&nbsp;u を使う。これは、挿入コマンドを部分ごとに undo 可能にしたい場合に便利<br>
+である。例えば、文ごとに。<a class="Identifier" href="insert.html#i_CTRL-G_u">i_CTRL-G_u</a><br>
 <br>
-<a class="Type" href="options.html#'undolevels'">'undolevels'</a>&nbsp;の値を設定したときも undo のブロックが閉じられます。新しい値と古<br>
-い値が同じでもそうなります。<span class="Comment">g:undolevels</span>&nbsp;を使用して、<a class="Type" href="options.html#'undolevels'">'undolevels'</a>&nbsp;のグローバ<br>
-ル値のみを明示的に読み書きします。<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では:<br>
+<a class="Type" href="options.html#'undolevels'">'undolevels'</a>&nbsp;の値を設定することでも undo ブロックは閉じられる。新しい値が古い<br>
+値と等しい場合でも。<a class="Type" href="options.html#'undolevels'">'undolevels'</a>&nbsp;のグローバル値だけを明示的に読み書きするには<br>
+<span class="Comment">g:undolevels</span>&nbsp;を使う。<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;g:undolevels = &amp;g:undolevels</div>
-旧来のスクリプトでは:<br>
+旧来の script では:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let &amp;g:undolevels = &amp;g:undolevels</div>
 <br>
-<span class="Todo">Note</span>&nbsp;同様に見える代入&nbsp;<span class="Comment">let &amp;undolevels=&amp;undolevels</span>&nbsp;は、ローカルオプションが別<br>
-の値に設定されている場合、グローバルオプションの&nbsp;<a class="Type" href="options.html#'undolevels'">'undolevels'</a>&nbsp;値を保持しないこ<br>
-とに注意してください。例えば:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 'undolevels' に異なるグローバル値とローカル値を使用して開始する。<br>
+<span class="Todo">Note</span>&nbsp;似たように見える代入&nbsp;<span class="Comment">let &amp;undolevels=&amp;undolevels</span>&nbsp;は、ローカルオプション<br>
+が異なる値に設定されていた場合、<a class="Type" href="options.html#'undolevels'">'undolevels'</a>&nbsp;のグローバルオプションの値を保持<br>
+しないことに注意。例えば:<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 'undolevels' のグローバル値およびローカル値を異なる値で開始する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let &amp;g:undolevels = 1000<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let &amp;l:undolevels = 2000<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; この代入により、グローバルオプションが 2000 に変更される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; この代入はグローバルオプションを 2000 に変更する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let &amp;undolevels = &amp;undolevels</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-4. Undo ブランチ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#undo-branches" name="undo-branches">undo-branches</a>&nbsp;<a class="Constant" href="undo.html#undo-tree" name="undo-tree">undo-tree</a><br>
+4. undo ブランチ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#undo-branches" name="undo-branches">undo-branches</a>&nbsp;<a class="Constant" href="undo.html#undo-tree" name="undo-tree">undo-tree</a><br>
 <br>
-ここまでは一線上の undo/redo について説明してきました。しかし、それを枝分かれ<br>
-させることもできます。枝分かれは、変更を undo してから新しい変更を加えることで<br>
-起こります。undo された変更は枝 (ブランチ) になります。以下のコマンドで枝に移<br>
-動できます。<br>
+上では、undo/redo の 1 本の線についてだけ議論した。しかし、枝分かれすることも<br>
+可能である。これは、いくつかの変更を undo してから新しい変更を行ったときに起こ<br>
+る。undo された変更はブランチになる。以下のコマンドでそのブランチへ移動できる。<br>
 <br>
-ユーザーマニュアルに説明があります:&nbsp;<a class="Identifier" href="usr_32.html">usr_32.txt</a>.<br>
+これはユーザーマニュアルで説明されている:&nbsp;<a class="Identifier" href="usr_32.html">usr_32.txt</a>。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#:undol" name=":undol">:undol</a>&nbsp;<a class="Constant" href="undo.html#:undolist" name=":undolist">:undolist</a><br>
-:undol[ist]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 変更木 (tree) の、葉 (leaf) を一覧表示する。例:<br>
+:undol[ist]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 変更のツリーの葉を一覧表示する。例:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">number changes&nbsp;&nbsp;when&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; saved</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 88&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;88&nbsp;&nbsp;2010/01/04 14:25:53<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;108&nbsp;&nbsp;&nbsp;&nbsp; 107&nbsp;&nbsp;08/07 12:47:51<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;136&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;46&nbsp;&nbsp;13:33:01&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;166&nbsp;&nbsp;&nbsp;&nbsp; 164&nbsp;&nbsp;3 seconds ago<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;number&quot; 列は変更番号です。この番号は連続的に増えてい<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;き、undo 可能な変更の識別番号として使えます。&nbsp;<a class="Identifier" href="undo.html#:undo">:undo</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;number&quot; 列は変更番号である。この番号は継続的に増加し、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;特定の undo 可能な変更を識別するのに使える。<a class="Identifier" href="undo.html#:undo">:undo</a>&nbsp;を<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参照。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;changes&quot; 列は木のルートから葉までの変更の数です。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;when&quot; 列は変更が加えられた日付と時刻です。日時の表記<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は 4 種類あります:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">N</span>&nbsp;seconds ago&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;秒前<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HH:MM:SS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 時:分:秒<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MM/DD HH:MM:SS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 月/日 時:分:秒<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YYYY/MM/DD HH:MM:SS&nbsp;&nbsp;年/月/日 時:分:秒<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;saved&quot; 列は変更がディスクに保存されたかどうか、そして<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;それがどの書き込みだったかを示します。この番号は<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="undo.html#:later">:later</a>&nbsp;コマンドと&nbsp;<a class="Identifier" href="undo.html#:earlier">:earlier</a>&nbsp;コマンドで使用できま<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;詳細を取得するには&nbsp;<a class="Identifier" href="builtin.html#undotree()">undotree()</a>&nbsp;関数を使います。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;changes&quot; 列は、ツリーの根からこの葉までの変更の数であ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;when&quot; 列は、この変更が行われた日付および時刻である。4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;つの可能な形式は:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">N</span>&nbsp;seconds ago<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HH:MM:SS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 時、分、秒<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MM/DD HH:MM:SS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 同上、月および日付き<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YYYY/MM/DD HH:MM:SS&nbsp;&nbsp;同上、年付き<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;saved&quot; 列は、この変更がディスクに書き込まれたかどう<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;か、およびそれが何回目のファイル書き込みだったかを示<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。これは&nbsp;<a class="Identifier" href="undo.html#:later">:later</a>&nbsp;および&nbsp;<a class="Identifier" href="undo.html#:earlier">:earlier</a>&nbsp;コマンドで使え<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。詳細については&nbsp;<a class="Identifier" href="builtin.html#undotree()">undotree()</a>&nbsp;関数を使う。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#g-" name="g-">g-</a><br>
-g-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;古いテキスト状態に移動する。カウント指定で繰り返し回数<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を指定できます。<br>
+g-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;より古いテキストの状態へ移動する。カウントを付けると、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;その回数だけ繰り返す。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#:ea" name=":ea">:ea</a>&nbsp;<a class="Constant" href="undo.html#:earlier" name=":earlier">:earlier</a><br>
-:ea[rlier]&nbsp;<span class="Special">{count}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{count}</span>&nbsp;回前の古いテキスト状態に移動する。<br>
-:ea[rlier]&nbsp;<span class="Special">{N}</span>s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{N}</span>&nbsp;秒前の古いテキスト状態に移動する。<br>
-:ea[rlier]&nbsp;<span class="Special">{N}</span>m&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{N}</span>&nbsp;分前の古いテキスト状態に移動する。<br>
-:ea[rlier]&nbsp;<span class="Special">{N}</span>h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{N}</span>&nbsp;時間前の古いテキスト状態に移動する。<br>
-:ea[rlier]&nbsp;<span class="Special">{N}</span>d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{N}</span>&nbsp;日前の古いテキスト状態に移動する。<br>
+:ea[rlier]&nbsp;<span class="Special">{count}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;より古いテキストの状態へ&nbsp;<span class="Special">{count}</span>&nbsp;回移動する。<br>
+:ea[rlier]&nbsp;<span class="Special">{N}</span>s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 約&nbsp;<span class="Special">{N}</span>&nbsp;秒前の、より古いテキストの状態へ移動する。<br>
+:ea[rlier]&nbsp;<span class="Special">{N}</span>m&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 約&nbsp;<span class="Special">{N}</span>&nbsp;分前の、より古いテキストの状態へ移動する。<br>
+:ea[rlier]&nbsp;<span class="Special">{N}</span>h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 約&nbsp;<span class="Special">{N}</span>&nbsp;時間前の、より古いテキストの状態へ移動する。<br>
+:ea[rlier]&nbsp;<span class="Special">{N}</span>d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 約&nbsp;<span class="Special">{N}</span>&nbsp;日前の、より古いテキストの状態へ移動する。<br>
 <br>
-:ea[rlier]&nbsp;<span class="Special">{N}</span>f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{N}</span>&nbsp;回前のファイルを保存したときのテキスト状態に移動す<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後の保存から何か変更が加えられていたとき、&quot;:earlier<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1f&quot; は保存時の状態に移動します。変更がない場合は一つ前<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の保存時の状態に移動します。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初にファイルを保存した直後か、ファイルをまだ保存して<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いないときは、&quot;:earlier 1f&quot; は最初の変更の前に移動しま<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<br>
+:ea[rlier]&nbsp;<span class="Special">{N}</span>f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{N}</span>&nbsp;回前のファイル書き込みの、より古いテキストの状態へ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;移動する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後の書き込み以降に変更が行われていた場合、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:earlier 1f&quot; はテキストを書き込まれたときの状態に戻<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。そうでない場合は、その前の書き込みへ移動する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初のファイル書き込みの状態にいるとき、またはファイル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が書き込まれていないとき、&quot;:earlier 1f&quot; は最初の変更の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前へ移動する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#g+" name="g+">g+</a><br>
-g+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しいテキスト状態に移動する。カウント指定で繰り返し回<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数を指定できます。<br>
+g+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;より新しいテキストの状態へ移動する。カウントを付ける<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と、その回数だけ繰り返す。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#:lat" name=":lat">:lat</a>&nbsp;<a class="Constant" href="undo.html#:later" name=":later">:later</a><br>
-:lat[er]&nbsp;<span class="Special">{count}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{count}</span>&nbsp;回後の新しいテキスト状態に移動する。<br>
-:lat[er]&nbsp;<span class="Special">{N}</span>s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{N}</span>&nbsp;秒後の新しいテキスト状態に移動する。<br>
-:lat[er]&nbsp;<span class="Special">{N}</span>m&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{N}</span>&nbsp;分後の新しいテキスト状態に移動する。<br>
-:lat[er]&nbsp;<span class="Special">{N}</span>h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{N}</span>&nbsp;時間後の新しいテキスト状態に移動する。<br>
-:lat[er]&nbsp;<span class="Special">{N}</span>d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{N}</span>&nbsp;日後の新しいテキスト状態に移動する。<br>
+:lat[er]&nbsp;<span class="Special">{count}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;より新しいテキストの状態へ&nbsp;<span class="Special">{count}</span>&nbsp;回移動する。<br>
+:lat[er]&nbsp;<span class="Special">{N}</span>s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 約&nbsp;<span class="Special">{N}</span>&nbsp;秒後の、より新しいテキストの状態へ移動する。<br>
+:lat[er]&nbsp;<span class="Special">{N}</span>m&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 約&nbsp;<span class="Special">{N}</span>&nbsp;分後の、より新しいテキストの状態へ移動する。<br>
+:lat[er]&nbsp;<span class="Special">{N}</span>h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 約&nbsp;<span class="Special">{N}</span>&nbsp;時間後の、より新しいテキストの状態へ移動する。<br>
+:lat[er]&nbsp;<span class="Special">{N}</span>d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 約&nbsp;<span class="Special">{N}</span>&nbsp;日後の、より新しいテキストの状態へ移動する。<br>
 <br>
-:lat[er]&nbsp;<span class="Special">{N}</span>f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{N}</span>&nbsp;回後のファイルを保存したときのテキスト状態に移動す<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後に保存した状態にいるときは、&quot;:later 1f&quot; は一番新し<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いテキスト状態に移動します。<br>
+:lat[er]&nbsp;<span class="Special">{N}</span>f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{N}</span>&nbsp;回後のファイル書き込みの、より新しいテキストの状態<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;へ移動する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後のファイル書き込みの状態にいるとき、&quot;:later 1f&quot; は<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最も新しいテキストの状態へ移動する。<br>
 <br>
 <br>
-<span class="Todo">Note:</span>&nbsp;テキスト状態は、<a class="Type" href="options.html#'undolevels'">'undolevels'</a>&nbsp;により undo 情報がクリアされると、到達不可<br>
-能になります。<br>
+<span class="Todo">Note</span>&nbsp;<a class="Type" href="options.html#'undolevels'">'undolevels'</a>&nbsp;のために undo 情報がクリアされると、テキストの状態に到達でき<br>
+なくなることに注意。<br>
 <br>
-時間を移動すると一度に複数の変更が現れることもあります。これは undo ツリーを移<br>
-動して新しい変更を加えたときに起こります。<br>
+時間を移動したときに、複数の変更が一度に起こるように見えても驚かないこと。これ<br>
+は、undo ツリー内を移動してから新しい変更を行ったときに起こる。<br>
 <br>
 <span class="Statement">例</span><br>
 <br>
-次のテキストがあります:<br>
+このテキストで開始する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">one two three</span><br>
 <br>
-&quot;x&quot; を 3 回押して最初の単語を削除します:<br>
+&quot;x&quot; を 3 回押して最初の単語を削除する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">ne two three</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">e two three</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">two three</span><br>
 <br>
-&quot;u&quot; を 3 回押してそれを undo します:<br>
+ここで &quot;u&quot; を 3 回押してそれを undo する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">e two three</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">ne two three</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">one two three</span><br>
 <br>
-&quot;x&quot; を 3 回押して二番目の単語を削除します:<br>
+&quot;x&quot; を 3 回押して 2 番目の単語を削除する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">one wo three</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">one o three</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">one&nbsp;&nbsp;three</span><br>
 <br>
-&quot;g-&quot; を 3 回押してそれを undo します:<br>
+ここで &quot;g-&quot; を 3 回使ってそれを undo する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">one o three</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">one wo three</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">two three</span><br>
 <br>
-最初の undo ブランチ (&quot;one&quot; を削除した後) に戻りました。さらに &quot;g-&quot; を押してい<br>
-くと元のテキストに戻ります:<br>
+これで、&quot;one&quot; を削除した後の、最初の undo ブランチに戻った。ここで &quot;g-&quot; を繰り<br>
+返すと、元のテキストに戻る:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">e two three</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">ne two three</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">one two three</span><br>
 <br>
-&quot;:later 1h&quot; を実行すると最後の変更にジャンプします:<br>
+&quot;:later 1h&quot; で最後の変更へジャンプする:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">one&nbsp;&nbsp;three</span><br>
 <br>
-&quot;:earlier 1h&quot; を実行すると最初に戻ります:<br>
+そして &quot;:earlier 1h&quot; で再び開始に戻る:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">one two three</span><br>
 <br>
 <br>
-<span class="Todo">Note:</span>&nbsp;&quot;u&quot; と&nbsp;<span class="Special">CTRL-R</span>&nbsp;では &quot;g-&quot; と &quot;g+&quot; のようにすべてのテキスト状態に移動するこ<br>
-とはできません。<br>
+<span class="Todo">Note</span>&nbsp;&quot;u&quot; および&nbsp;<span class="Special">CTRL-R</span>&nbsp;を使っても、可能なすべてのテキストの状態に到達できるわ<br>
+けではないが、&quot;g-&quot; および &quot;g+&quot; を繰り返すと到達できることに注意。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-5. Undo の永続化 (Undo persistence)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#undo-persistence" name="undo-persistence">undo-persistence</a>&nbsp;<a class="Constant" href="undo.html#persistent-undo" name="persistent-undo">persistent-undo</a><br>
+5. undo の永続化&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#undo-persistence" name="undo-persistence">undo-persistence</a>&nbsp;<a class="Constant" href="undo.html#persistent-undo" name="persistent-undo">persistent-undo</a><br>
 <br>
-バッファがアンロードされるとき、通常はバッファの undo ツリーは廃棄されます。<br>
-<a class="Type" href="options.html#'undofile'">'undofile'</a>&nbsp;オプションを設定することで、ファイルを書き込んだときに自動的に undo<br>
-履歴が保存され、後でファイルを開いたときに undo 履歴が復元されます。<br>
+バッファをアンロードするとき、Vim は通常、そのバッファに対して作成された undo<br>
+のツリーを破棄する。<a class="Type" href="options.html#'undofile'">'undofile'</a>&nbsp;オプションを設定することで、Vim はファイルを書<br>
+き込むときにあなたの undo 履歴を自動的に保存し、ファイルを再び編集するときに<br>
+undo 履歴を復元する。<br>
 <br>
-<a class="Type" href="options.html#'undofile'">'undofile'</a>&nbsp;オプションはファイルを書き込んだ後、BufWritePost 自動コマンドの前に<br>
-参照されます。undo 情報の保存をファイルごとに制御したい場合は BufWritePre 自動<br>
-コマンドを使います:<br>
+<a class="Type" href="options.html#'undofile'">'undofile'</a>&nbsp;オプションは、ファイルを書き込んだ後、BufWritePost 自動コマンドの前<br>
+にチェックされる。どのファイルについて undo 情報を書き込むかを制御したい場合、<br>
+BufWritePre 自動コマンドを使える:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;au BufWritePre /tmp/* setlocal noundofile</div>
 <br>
-undo ツリーは undo ファイルとして分けて保存されます。undo ファイルは編集ファイ<br>
-ルごとに作られます。保存場所の決定にはファイルシステムのパスをそのまま使用した<br>
-簡単な方法が使われます。Vim は編集ファイルと undo ファイルの同期がとれているか<br>
-どうかを確認し (ファイルの中身のハッシュ値で判断)、undo ファイルが書き込まれた<br>
-後で編集ファイルが変更されていたときは、データの損失を防ぐため、undo ファイル<br>
-を無視します。開いているファイルと undo ファイルの所有者が違うときも undo ファ<br>
-イルは無視されます。ただし、undo ファイルの所有者が現在のユーザーである時を除<br>
-きます。ファイルを開いたときにこの事についてのメッセージを表示させるには<br>
-<a class="Type" href="options.html#'verbose'">'verbose'</a>&nbsp;を設定してください。<br>
+Vim は、ファイルシステムのパスを undo ファイルに直接マッピングする単純な方式を<br>
+使って、編集したファイルごとに 1 つの、別々の undo ファイルに undo ツリーを保<br>
+存する。Vim は、undo ファイルが、それが書き込まれたファイルともう同期していな<br>
+いかどうかを (ファイル内容のハッシュによって) 検出し、破損を防ぐために、undo<br>
+ファイルが書き込まれた後にファイルが変更された場合はそれを無視する。undo ファ<br>
+イルは、その所有者が編集されたファイルの所有者と異なる場合も無視される。ただ<br>
+し、undo ファイルの所有者が現在のユーザーである場合を除く。ファイルを開くとき<br>
+にそれについてのメッセージを得るには&nbsp;<a class="Type" href="options.html#'verbose'">'verbose'</a>&nbsp;を設定する。<br>
 <br>
-通常、undo ファイルは編集ファイルと同じディレクトリに保存されます。この動作は<br>
-<a class="Type" href="options.html#'undodir'">'undodir'</a>&nbsp;オプションで変更できます。<br>
+undo ファイルは通常、ファイルと同じディレクトリに保存される。これは&nbsp;<a class="Type" href="options.html#'undodir'">'undodir'</a><br>
+オプションで変更できる。<br>
 <br>
-ファイルが暗号化されているときは、undo ファイル内のテキストも暗号化されます。<br>
-ファイルと同じ暗号化メソッドとキーが使用されます。&nbsp;<a class="Identifier" href="editing.html#encryption">encryption</a><br>
+ファイルが暗号化されているときは、undo ファイル内のテキストも暗号化される。同<br>
+じキーおよび方式が使われる。<a class="Identifier" href="editing.html#encryption">encryption</a><br>
 <br>
-<span class="Todo">Note</span>&nbsp;テキストプロパティは undo ファイルには保存されません。バッファがロードさ<br>
-れている限りテキストプロパティを復元できますが、undo ファイルから復元すること<br>
-はできません。 理論的根拠: 関連するテキストプロパティタイプを以前と全く同じ方<br>
-法で定義する必要がありますが、これは保証できません。<br>
+<span class="Todo">Note</span>&nbsp;テキストプロパティは undo ファイルに保存されないことに注意。バッファが読<br>
+み込まれている限りテキストプロパティを復元できるが、undo ファイルから復元する<br>
+ことはできない。根拠: 関連するテキストプロパティの型が以前とまったく同じ方法で<br>
+定義されている必要があり、それは保証できない。<br>
 <br>
-&quot;:wundo&quot; と &quot;:rundo&quot; を使うことで undo 履歴の保存と復元を手動で実行することも<br>
-できます。<br>
+&quot;:wundo&quot; および &quot;:rundo&quot; を使って、それぞれ undo 履歴を保存および復元すること<br>
+もできる:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#:wu" name=":wu">:wu</a>&nbsp;<a class="Constant" href="undo.html#:wundo" name=":wundo">:wundo</a><br>
 :wu[ndo][!]&nbsp;<span class="Special">{file}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undo 履歴を&nbsp;<span class="Special">{file}</span>&nbsp;に保存する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{file}</span>&nbsp;が存在し、それが undo ファイルでないなら (ファイル先頭<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のマジックナンバーが違うなら)、コマンドは失敗します。それでも<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存したい場合は ! を付けてください。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{file}</span>&nbsp;が存在し、それが undo ファイルなら上書きされます。undo<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;履歴がない場合は何も書き込まれません。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;実装詳細: 上書きは、最初にそのファイルを削除して、同じ名前の<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルを新しく作成することで実行されます。そのため、書き込み<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;制限のかかったディレクトリ内の undo ファイルは上書きできませ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ん。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undo 履歴を&nbsp;<span class="Special">{file}</span>&nbsp;に書き込む。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{file}</span>&nbsp;が存在し、それが undo ファイルのように見えない場合 (ファ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;イルの先頭のマジックナンバーが間違っている)、! が追加されてい<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ない限り、これは失敗する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;それが存在し、undo ファイルのように見える場合、それは上書きさ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れる。undo 履歴がない場合、何も書き込まれない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;実装の詳細: 上書きは、まず既存のファイルを削除し、それから同じ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名前で新しいファイルを作成することで行われる。そのため、書き込<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;み禁止のディレクトリ内の既存の undo ファイルを上書きすることは<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;できない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#:rund" name=":rund">:rund</a>&nbsp;<a class="Constant" href="undo.html#:rundo" name=":rundo">:rundo</a><br>
 :rund[o]&nbsp;<span class="Special">{file}</span>&nbsp;<span class="Special">{file}</span>&nbsp;から undo 履歴を読み込む。<br>
 <br>
-自動コマンドを使うことで undo ファイルの名前を明示的に指定することができます。<br>
-例:<br>
+これらを自動コマンドで使って、履歴ファイルの名前を明示的に指定できる。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;au BufReadPost * call ReadUndo()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;au BufWritePost * call WriteUndo()<br>
@@ -316,122 +313,120 @@ undo ツリーは undo ファイルとして分けて保存されます。undo �
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wundo %:h/UNDO/%:t<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfunc</div>
 <br>
-これを使うときは&nbsp;<a class="Type" href="options.html#'undofile'">'undofile'</a>&nbsp;をオフにしておく必要があります。そうしないと二つの<br>
-undo ファイルが作成されてしまいます。<br>
+<a class="Type" href="options.html#'undofile'">'undofile'</a>&nbsp;はオフにしておくべきである。そうしないと、書き込みごとに 2 つの<br>
+undo ファイルができてしまう。<br>
 <br>
-<a class="Identifier" href="builtin.html#undofile()">undofile()</a>&nbsp;関数を使うと、Vim が使用する undo ファイルの名前を取得できます。<br>
+<a class="Identifier" href="builtin.html#undofile()">undofile()</a>&nbsp;関数を使って、Vim が使うファイル名を調べることができる。<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;<a class="Type" href="options.html#'undofile'">'undofile'</a>&nbsp;が設定された状態でファイルを読み書きするとき、ほとんどのエ<br>
-ラーは表示されません (<a class="Type" href="options.html#'verbose'">'verbose'</a>&nbsp;が設定されていなければ)。:wundo と :rundo を使<br>
-うときはより多くのエラーメッセージが表示されます。例えばファイルが読めない、書<br>
-き込めないとき。<br>
+<span class="Todo">Note</span>&nbsp;ファイルの読み書き中に&nbsp;<a class="Type" href="options.html#'undofile'">'undofile'</a>&nbsp;が設定されている場合、<a class="Type" href="options.html#'verbose'">'verbose'</a>&nbsp;が設定<br>
+されていない限り、ほとんどのエラーは表示されないことに注意。:wundo および<br>
+:rundo では、例えばファイルを読み書きできないときに、より多くのエラーメッセー<br>
+ジが表示される。<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;Vim は undo ファイルを削除しません。自分で削除する必要があります。<br>
+<span class="Todo">NOTE:</span>&nbsp;undo ファイルは Vim によって削除されることはない。自分で削除する必要があ<br>
+る。<br>
 <br>
-undo ファイルの読み込みが失敗する原因はいくつかあります:<br>
-<a class="Constant" href="undo.html#E822" name="E822">E822</a>&nbsp;&nbsp;パーミッションの設定によりファイルを開けない。<br>
-<a class="Constant" href="undo.html#E823" name="E823">E823</a>&nbsp;&nbsp;ファイル先頭のマジックナンバーが違う。普通はそのファイルが undo ファイ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルでないことを意味します。<br>
-<a class="Constant" href="undo.html#E824" name="E824">E824</a>&nbsp;&nbsp;undo ファイルのバージョン番号が、それが Vim の新しいバージョンで書き込<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;まれたことを示している。新しいバージョンで開く必要があります。undo<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルの情報を維持したいならそのバッファを保存してはいけません。<br>
-&quot;ファイルが変更されています。undo 情報を使用できません&quot;<br>
-(&quot;File contents changed, cannot use undo info&quot;)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルのテキストが undo ファイルを保存したときから変わっています。テ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キストが壊れてしまうため、その undo ファイルは使用できません。これは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;の設定が undo ファイル保存時と違う場合にも起こります。<br>
-<a class="Constant" href="undo.html#E825" name="E825">E825</a>&nbsp;&nbsp;undo ファイルの中身が不正なので使用できません。<br>
-<a class="Constant" href="undo.html#E826" name="E826">E826</a>&nbsp;&nbsp;undo ファイルが暗号化されていて、復号に失敗しました。<br>
-<a class="Constant" href="undo.html#E827" name="E827">E827</a>&nbsp;&nbsp;undo ファイルが暗号化されていて、使用中の Vim が暗号化をサポートしてい<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ません。他の Vim でファイルを開いてください。<br>
-<a class="Constant" href="undo.html#E832" name="E832">E832</a>&nbsp;&nbsp;undo ファイルが暗号化されていて、<a class="Type" href="options.html#'key'">'key'</a>&nbsp;が設定されておらず、テキスト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルは暗号化されていません。これはテキストファイルが暗号化を使用し<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;て保存された後で、暗号化を使用しないで上書きされた場合に起こります。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;おそらく undo ファイルを削除する必要があります。<br>
-&quot;undo ファイルを読み込めません。所有者が違います&quot;<br>
-(&quot;Not reading undo file, owner differs&quot;)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undo ファイルの所有者とテキストファイルの所有者が違います。安全のため<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undo ファイルは使用されません。<br>
+既存の undo ファイルの読み込みは、いくつかの理由で失敗することがある:<br>
+<a class="Constant" href="undo.html#E822" name="E822">E822</a>&nbsp;&nbsp;ファイルのパーミッションが許可しないため、それを開くことができない。<br>
+<a class="Constant" href="undo.html#E823" name="E823">E823</a>&nbsp;&nbsp;ファイルの先頭のマジックナンバーが一致しない。これは通常、それが undo<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルではないことを意味する。<br>
+<a class="Constant" href="undo.html#E824" name="E824">E824</a>&nbsp;&nbsp;undo ファイルのバージョン番号が、それが Vim のより新しいバージョンに<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;よって書き込まれたことを示している。それを開くにはその新しいバージョン<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が必要である。ファイル内の undo 情報を保持したい場合、バッファを書き込<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;まないこと。<br>
+&quot;File contents changed, cannot use undo info&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルのテキストが、undo ファイルが書き込まれたときと異なる。これは、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undo ファイルを使えないことを意味する。それはテキストを破損させるだろ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;う。これは、<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;が undo ファイルが書き込まれたときと異なる場合<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;にも起こる。<br>
+<a class="Constant" href="undo.html#E825" name="E825">E825</a>&nbsp;&nbsp;undo ファイルは有効な内容を含んでおらず、使えない。<br>
+<a class="Constant" href="undo.html#E826" name="E826">E826</a>&nbsp;&nbsp;undo ファイルは暗号化されているが、復号に失敗した。<br>
+<a class="Constant" href="undo.html#E827" name="E827">E827</a>&nbsp;&nbsp;undo ファイルは暗号化されているが、このバージョンの Vim は暗号化をサ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ポートしていない。別の Vim でファイルを開くこと。<br>
+<a class="Constant" href="undo.html#E832" name="E832">E832</a>&nbsp;&nbsp;undo ファイルは暗号化されているが&nbsp;<a class="Type" href="options.html#'key'">'key'</a>&nbsp;が設定されておらず、テキスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルは暗号化されていない。これは、テキストファイルが最初は Vim に<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;よって暗号化されて書き込まれ、後で暗号化されていないテキストで上書きさ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れた場合に起こる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;おそらく、この undo ファイルを削除したいだろう。<br>
+&quot;Not reading undo file, owner differs&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undo ファイルが、テキストファイルの所有者以外の誰かによって所有されて<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いる。安全のため、undo ファイルは使われない。<br>
 <br>
-undo ファイルの書き込みは次のような理由で失敗することがあります:<br>
-<a class="Constant" href="undo.html#E828" name="E828">E828</a>&nbsp;&nbsp;書き込みのためのファイルを作成できません。おそらくディレクトリの書き込<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;み権限がありません。<br>
-&quot;<a class="Type" href="options.html#'undodir'">'undodir'</a>&nbsp;で指定されたディレクトリに undo ファイルを保存できません&quot;<br>
-(&quot;Cannot write undo file in any directory in&nbsp;<a class="Type" href="options.html#'undodir'">'undodir'</a>&quot;)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'undodir'">'undodir'</a>&nbsp;で指定されたディレクトリの中に使用可能なものがありません。<br>
-&quot;undo ファイルを上書きしません。読み込み不可です&quot;<br>
-(&quot;Will not overwrite with undo file, cannot read&quot;)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undo ファイルと同じ名前のファイルが存在し、それが読み込みできない状態<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;になっています。そのファイルを削除するか名前を変更する必要があります。<br>
-&quot;上書きしません。undo ファイルではありません&quot;<br>
-(&quot;Will not overwrite, this is not an undo file&quot;)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;undo ファイルと同じ名前のファイルが存在し、そのファイルの先頭に正しい<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マジックナンバーがありません。そのファイルを削除するか名前を変更する必<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;要があります。<br>
-&quot;undo ファイルの書き込みをスキップします。undo がありません&quot;<br>
-(&quot;Skipping undo file write, noting to undo&quot;)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存する undo 情報がありません。何も変更されていないか&nbsp;<a class="Type" href="options.html#'undolevels'">'undolevels'</a>&nbsp;が<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マイナス値です。<br>
-<a class="Constant" href="undo.html#E829" name="E829">E829</a>&nbsp;&nbsp;undo ファイルの保存中にエラーが発生しました。もう一度試してみてくださ<br>
+undo ファイルの書き込みは、以下の理由で失敗することがある:<br>
+<a class="Constant" href="undo.html#E828" name="E828">E828</a>&nbsp;&nbsp;書き込むファイルを作成できない。おそらく、そのディレクトリに書き込みの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;パーミッションがない。<br>
+&quot;Cannot write undo file in any directory in&nbsp;<a class="Type" href="options.html#'undodir'">'undodir'</a>&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'undodir'">'undodir'</a>&nbsp;内のどのディレクトリも使えない。<br>
+&quot;Will not overwrite with undo file, cannot read&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;書き込む undo ファイルの名前のファイルが存在するが、それを読み込むこと<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ができない。このファイルを削除するか、または名前を変更したいかもしれな<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い。<br>
+&quot;Will not overwrite, this is not an undo file&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;書き込む undo ファイルの名前のファイルが存在するが、それは正しいマジッ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;クナンバーで始まっていない。このファイルを削除するか、または名前を変更<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;したいかもしれない。<br>
+&quot;Skipping undo file write, nothing to undo&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;書き込む undo 情報がない。何も変更されていないか、または&nbsp;<a class="Type" href="options.html#'undolevels'">'undolevels'</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が負である。<br>
+<a class="Constant" href="undo.html#E829" name="E829">E829</a>&nbsp;&nbsp;undo ファイルの書き込み中にエラーが発生した。もう一度試したいかもしれ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ない。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-6. 備考&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#undo-remarks" name="undo-remarks">undo-remarks</a><br>
+6. undo についての備考&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#undo-remarks" name="undo-remarks">undo-remarks</a><br>
 <br>
-記録される変更の数は&nbsp;<a class="Type" href="options.html#'undolevels'">'undolevels'</a>&nbsp;オプションで設定できます。ゼロに設定すると、<br>
-Vi 互換方式の動作になります。マイナスの値に設定すると undo は使用できなくなり<br>
-ます。メモリが足りない場合に設定してください。<br>
+記憶される変更の数は&nbsp;<a class="Type" href="options.html#'undolevels'">'undolevels'</a>&nbsp;オプションで設定される。0 の場合、常に Vi 互<br>
+換の方法が使われる。負の場合、undo はできない。メモリが不足している場合にこれ<br>
+を使う。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#clear-undo" name="clear-undo">clear-undo</a><br>
-<a class="Type" href="options.html#'undolevels'">'undolevels'</a>&nbsp;を -1 に設定しても、undo 情報はすぐにはクリアされません。次の変更<br>
-が加えられたときにクリアされます。強制的に undo 情報をクリアしたいときは次のコ<br>
-マンドを使ってください:<br>
+<a class="Type" href="options.html#'undolevels'">'undolevels'</a>&nbsp;を -1 に設定したとき、undo 情報はすぐにはクリアされず、次の変更の<br>
+ときにクリアされる。undo 情報を強制的にクリアするには、以下のコマンドを使える:<br>
+<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let old_undolevels = &amp;l:undolevels<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:setlocal undolevels=-1<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:exe &quot;normal a \&lt;BS&gt;\&lt;Esc&gt;&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let &amp;l:undolevels = old_undolevels<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:unlet old_undolevels</div>
 <br>
-<span class="Todo">Note</span>&nbsp;<span class="Comment">&amp;l:undolevels</span>&nbsp;を使用して&nbsp;<a class="Type" href="options.html#'undolevels'">'undolevels'</a>&nbsp;のローカル値を明示的に読み取り、<br>
-<a class="Comment" href="options.html#:setlocal">:setlocal</a>&nbsp;を使用してローカルオプションのみを変更します (対応するグローバルオ<br>
-プション値より優先されます)。<span class="Comment">&amp;undolevels</span>&nbsp;を使用してオプション値を保存するこ<br>
-とは予測できません。ローカル値 (設定されている場合) またはグローバル値 (ローカ<br>
-ル値が設定されていない場合) のいずれかを読み取ります。また、ローカル値が設定さ<br>
-れている場合、<span class="Comment">:set undolevels</span>&nbsp;でオプションを変更すると、グローバル値とローカ<br>
-ル値の両方が変更され、両方の値を保存および復元するための追加の作業が必要になり<br>
-ます。<br>
+<span class="Todo">Note</span>&nbsp;<a class="Type" href="options.html#'undolevels'">'undolevels'</a>&nbsp;のローカル値を明示的に読むための&nbsp;<span class="Comment">&amp;l:undolevels</span>&nbsp;の使用、お<br>
+よびローカルオプション (対応するグローバルオプションの値より優先される) だけを<br>
+変更するための&nbsp;<a class="Comment" href="options.html#:setlocal">:setlocal</a>&nbsp;の使用に注意。<span class="Comment">&amp;undolevels</span>&nbsp;を使ってオプションの値<br>
+を保存することは予測できない; それはローカル値 (設定されている場合) またはグ<br>
+ローバル値 (それ以外の場合) のどちらかを読む。また、ローカル値が設定されている<br>
+場合、<span class="Comment">:set undolevels</span>&nbsp;でオプションを変更するとグローバル値およびローカル値の<br>
+両方が変更され、両方の値を保存および復元するための余分な作業が必要になる。<br>
 <br>
-バッファのマーク ('a から 'z) はテキストと同様に記録、復元されます。<br>
+バッファのマーク ('a から 'z) も、テキストと一緒に保存および復元される。<br>
 <br>
-すべての変更を undo したとき、バッファは変更ありとはみなされません。その状態か<br>
-らは &quot;:q&quot; (&quot;:q!&quot; ではなく) で Vim を終了できます。<span class="Todo">Note</span>&nbsp;これはいつファイルを保<br>
-存したかに関係します。&quot;:w&quot; の後で &quot;u&quot; を実行すると、保存したときから見てバッファ<br>
-は変更された状態なので、バッファは変更ありと認識されます。<br>
+すべての変更が undo されたとき、バッファは変更されているとはみなされない。その<br>
+とき、&quot;:q!&quot; の代わりに &quot;:q&quot; で Vim を終了できる。<span class="Todo">Note</span>&nbsp;これはファイルの最後の書<br>
+き込みに対して相対的であることに注意。&quot;:w&quot; の後に &quot;u&quot; をタイプすると、書き込ま<br>
+れたものと比べて実際にバッファが変更されるので、そのときバッファは変更されてい<br>
+るとみなされる。<br>
 <br>
-マニュアル設定の折り畳み (<a class="Identifier" href="fold.html#folding">folding</a>) を使っているとき、折り畳みは記録も復元も<br>
-されません。変更が折り畳みの中だけで行われた場合のみ (折り畳みの最初と最後の行<br>
-が変わらないので) 折り畳みは維持されます。<br>
+手動の&nbsp;<a class="Identifier" href="fold.html#folding">folding</a>&nbsp;が使われているとき、折り畳みは保存および復元されない。折り畳<br>
+みの最初および最後の行が変わらないので、完全に折り畳みの中での変更だけが折り畳<br>
+みを元のまま保つ。<br>
 <br>
-番号レジスタを使って削除を元に戻すこともできます。テキストを削除すると、それは<br>
-&quot;1 レジスタに記録されます。元々 &quot;1 にあったものは &quot;2 にシフトされ、他の番号レ<br>
-ジスタも同様にシフトされます。&quot;9 レジスタの内容は失われます。そして、プットコ<br>
-マンド '&quot;1P' を使って削除されたテキストを元に戻すことができます。(削除やコピー<br>
-の操作をした後ならテキストは無名レジスタに入っているので 'P' や 'p' でも元に戻<br>
-せます)。三回前に削除されたテキストなら '&quot;3P' で戻せます。<br>
+番号付きレジスタも、削除を undo するのに使える。テキストを削除するたびに、それ<br>
+はレジスタ &quot;1 に入れられる。レジスタ &quot;1 の内容は &quot;2 にシフトされ、以下同様であ<br>
+る。レジスタ &quot;9 の内容は失われる。これで、貼り付けコマンドで最も最近削除された<br>
+テキストを取り戻せる: '&quot;1P'。(また、削除されたテキストが最後の削除またはコピー<br>
+操作の結果だった場合、これは無名レジスタの内容を貼り付けるので、'P' または 'p'<br>
+も機能する)。'&quot;3P' で 3 回前の削除のテキストを取り戻せる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="undo.html#redo-register" name="redo-register">redo-register</a><br>
-数回に分けて削除されたテキストを戻したい場合は、&quot;.&quot; コマンドの特殊な機能が役に<br>
-立ちます。&quot;.&quot; コマンドは使用されたレジスタの番号を増加させます。例えば、'&quot;1P'<br>
-を実行した後で &quot;.&quot; を押すと '&quot;2P' が実行されます。さらに &quot;.&quot; を押していくとす<br>
-べての番号レジスタが挿入されます。<br>
+削除されたテキストの複数の部分を取り戻したい場合、繰り返しコマンド &quot;.&quot; の特別<br>
+な機能を使える。これは使われるレジスタの番号を増やす。そのため、最初に '&quot;1P'<br>
+を実行した場合、続く &quot;.&quot; は '&quot;2P' になる。これを繰り返すと、番号付きレジスタが<br>
+すべて挿入される。<br>
 <br>
-例:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'dd....' でテキストを削除したら '&quot;1P....' で元に戻せる。<br>
+例:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'dd....' でテキストを削除した場合、'&quot;1P....' で復元できる。<br>
 <br>
-削除されたテキストがどのレジスタに記録されているかわからないときは :display コ<br>
-マンドで確認できます。あるいは、'&quot;1P' を実行してみて、もしそれが違うものなら<br>
-'u.' を実行します。'u.' は最初にプットされたテキストを削除し、二番目のレジスタ<br>
-を使ってプットコマンドを実行します。目的のものが出るまで 'u.' を繰り返してくだ<br>
-さい。<br>
+削除されたテキストがどのレジスタにあるかわからない場合、:display コマンドを使<br>
+える。別の方法は、最初のレジスタを '&quot;1P' で試し、それが望むものでない場合は<br>
+'u.' を実行することである。これは最初の貼り付けの内容を削除し、2 番目のレジス<br>
+タに対して貼り付けコマンドを繰り返す。望むものが得られるまで 'u.' を繰り返す。<br>
 <br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>
