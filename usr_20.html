@@ -9,67 +9,69 @@ helpname: 'usr_20'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンドラインを素早く入力する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; コマンドラインのコマンドを素早くタイプする<br>
 <br>
 <br>
-Vim にはコマンド入力を簡単にするための一般的な機能が備わっています。コロン (:)<br>
-コマンドでは短縮入力、編集、履歴、文脈依存の補完機能が利用できます。<br>
+Vim には、コマンドを入力しやすくする汎用的な機能がいくつかあります。コロンコマ<br>
+ンドは、省略、編集、および繰り返しができます。補完はほぼすべてのものに対して使<br>
+えます。<br>
 <br>
 <a class="Identifier" href="usr_20.html#20.1">20.1</a>&nbsp;&nbsp;コマンドライン編集<br>
-<a class="Identifier" href="usr_20.html#20.2">20.2</a>&nbsp;&nbsp;コマンドライン短縮入力<br>
+<a class="Identifier" href="usr_20.html#20.2">20.2</a>&nbsp;&nbsp;コマンドライン短縮形<br>
 <a class="Identifier" href="usr_20.html#20.3">20.3</a>&nbsp;&nbsp;コマンドライン補完<br>
 <a class="Identifier" href="usr_20.html#20.4">20.4</a>&nbsp;&nbsp;コマンドライン履歴<br>
 <a class="Identifier" href="usr_20.html#20.5">20.5</a>&nbsp;&nbsp;コマンドラインウィンドウ<br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_21.html">usr_21.txt</a>&nbsp;&nbsp;中断と再開<br>
-前章:&nbsp;<a class="Identifier" href="usr_12.html">usr_12.txt</a>&nbsp;&nbsp;便利な小技<br>
+次章:&nbsp;<a class="Identifier" href="usr_21.html">usr_21.txt</a>&nbsp;&nbsp;離れて、戻ってくる<br>
+前章:&nbsp;<a class="Identifier" href="usr_12.html">usr_12.txt</a>&nbsp;&nbsp;巧妙な技<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_20.html#20.1" name="20.1">20.1</a>&nbsp;&nbsp;コマンドライン編集<br>
 <br>
-コロン (:) コマンドや検索コマンド (/ or ?) を使うとき、カーソルは画面の一番下<br>
-に表示されます。そこにコマンドや検索パターンを入力するわけです。その場所を「コ<br>
-マンドライン」と呼びます。<br>
+コロン (:) コマンドを使うとき、または / または ? で文字列を検索するとき、Vim<br>
+はカーソルを画面の最下部に置きます。そこでコマンドまたは検索パターンをタイプし<br>
+ます。これはコマンドラインと呼ばれます。検索コマンドを入力するために使われると<br>
+きもそうです。<br>
 <br>
-コマンドラインの編集で最もわかりやすいのは&nbsp;<span class="Special">&lt;BS&gt;</span>&nbsp;でしょう。カーソルの直前の文字<br>
-を削除できます。他の位置にある文字を削除したい場合は、矢印キーでカーソルを動か<br>
-してから&nbsp;<span class="Special">&lt;BS&gt;</span>&nbsp;を押してください。<br>
-例えば、次のように入力して:<br>
+タイプしたコマンドを編集する最もわかりやすい方法は、<span class="Special">&lt;BS&gt;</span>&nbsp;キーを押すことです。<br>
+これはカーソルの前の文字を消去します。それより前にタイプした別の文字を消去する<br>
+には、まずカーソルキーでカーソルを移動します。<br>
+&nbsp;&nbsp; 例えば、これをタイプしたとします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:s/col/pig/</div>
 <br>
-<span class="Special">&lt;Enter&gt;</span>&nbsp;を押す前になって、&quot;col&quot; が &quot;cow&quot; の入力ミスであることに気づきました。<br>
-これを修正するには、左矢印キー (<span class="Special">&lt;Left&gt;</span>) を 5 回押して &quot;col&quot; の直後にカーソルを<br>
-動かしてから、<span class="Special">&lt;BS&gt;</span>&nbsp;と &quot;w&quot; を入力します:<br>
+Enter&gt; を押す前に、&quot;col&quot; は &quot;cow&quot; であるべきだと気付きます。これを修正するに<br>
+は、<span class="Special">&lt;Left&gt;</span>&nbsp;を 5 回タイプします。これでカーソルは &quot;col&quot; のすぐ後ろにあります。<br>
+修正するには&nbsp;<span class="Special">&lt;BS&gt;</span>&nbsp;および &quot;w&quot; をタイプします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:s/cow/pig/</div>
 <br>
-修正したら、その場で&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押しましょう。コマンドを実行するためにカーソル<br>
-を行末まで動かす必要はありません。<br>
+これで&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;をそのまま押すことができます。コマンドを実行する前に、カーソル<br>
+を行末に移動する必要はありません。<br>
 <br>
-コマンドラインでのカーソル移動には次のキーがよく使われます:<br>
+コマンドライン内で移動するのに最もよく使われるキー:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Left&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 文字左<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Right&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 文字右<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-Left&gt;</span>&nbsp;or&nbsp;<span class="Special">&lt;C-Left&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;1 単語左<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-Right&gt;</span>&nbsp;or&nbsp;<span class="Special">&lt;C-Right&gt;</span>&nbsp;&nbsp;1 単語右<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-B</span>&nbsp;or&nbsp;<span class="Special">&lt;Home&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行頭<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-E</span>&nbsp;or&nbsp;<span class="Special">&lt;End&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 行末<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-Left&gt;</span>&nbsp;または&nbsp;<span class="Special">&lt;C-Left&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 単語左<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-Right&gt;</span>&nbsp;または&nbsp;<span class="Special">&lt;C-Right&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 単語右<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-B</span>&nbsp;または&nbsp;<span class="Special">&lt;Home&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;コマンドラインの先頭へ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-E</span>&nbsp;または&nbsp;<span class="Special">&lt;End&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; コマンドラインの末尾へ<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-Left&gt;</span>&nbsp;(シフトキーを押したまま左矢印キーを押す) と&nbsp;<span class="Special">&lt;C-Left&gt;</span>&nbsp;(コント<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ロールキーを押したまま左矢印キーを押す) が機能しないキーボードもありま<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。その他のシフトキーとコントロールキーの組み合せも同様に、機能しない<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ことがあります。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-Left&gt;</span>&nbsp;(Shift キーを押しながらのカーソル左キー) および&nbsp;<span class="Special">&lt;C-Left&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Control を押しながらのカーソル左キー) は、すべてのキーボードで動作す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;るわけではありません。他の Shift および Control の組み合わせも同様で<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<br>
 <br>
-カーソルはマウスでも動かせます。<br>
+マウスを使ってカーソルを移動することもできます。<br>
 <br>
 <br>
 <span class="Statement">削除</span><br>
 <br>
-上述のとおり、<span class="Special">&lt;BS&gt;</span>&nbsp;でカーソルの直前の文字を削除できます。単語を削除するには<br>
-<span class="Special">CTRL-W</span>&nbsp;を使います。<br>
+前に述べたように、<span class="Special">&lt;BS&gt;</span>&nbsp;はカーソルの前の文字を削除します。単語全体を削除するに<br>
+は&nbsp;<span class="Special">CTRL-W</span>&nbsp;を使います。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/the fine pig</span><br>
 <br>
@@ -77,148 +79,145 @@ Vim にはコマンド入力を簡単にするための一般的な機能が備�
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/the fine</span><br>
 <br>
-<span class="Special">CTRL-U</span>&nbsp;ですべてのテキストを削除できます。コマンドを最初から入力し直したいとき<br>
-に使ってください。<br>
+<span class="Special">CTRL-U</span>&nbsp;はすべてのテキストを削除するので、最初からやり直すことができます。<br>
 <br>
 <br>
 <span class="Statement">上書き</span><br>
 <br>
-<span class="Special">&lt;Insert&gt;</span>&nbsp;キーを押すと、挿入と上書きが切り替わります。次のテキストを使って説明<br>
-します:<br>
+<span class="Special">&lt;Insert&gt;</span>&nbsp;キーは、文字の挿入と既存の文字の置き換えを切り替えます。このテキスト<br>
+から始めます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/the fine pig</span><br>
 <br>
-<span class="Special">&lt;S-Left&gt;</span>&nbsp;を 2 回押して (<span class="Special">&lt;S-Left&gt;</span>&nbsp;が機能しない場合は&nbsp;<span class="Special">&lt;Left&gt;</span>&nbsp;を 8 回押して)<br>
-&quot;fine&quot; の先頭にカーソルを動かします。<span class="Special">&lt;Insert&gt;</span>&nbsp;を押して上書きに切り替え、<br>
-&quot;great&quot; と入力します:<br>
+<span class="Special">&lt;S-Left&gt;</span>&nbsp;を 2 回押して (または、<span class="Special">&lt;S-Left&gt;</span>&nbsp;が動作しない場合は&nbsp;<span class="Special">&lt;Left&gt;</span>&nbsp;を 8 回押し<br>
+て)、カーソルを &quot;fine&quot; の先頭に移動します。ここで&nbsp;<span class="Special">&lt;Insert&gt;</span>&nbsp;を押して上書きに切<br>
+り替え、&quot;great&quot; とタイプします:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/the greatpig</span><br>
 <br>
-おっと、スペースが消えてしまいました。ここで&nbsp;<span class="Special">&lt;BS&gt;</span>&nbsp;を押すと &quot;t&quot; が削除されてし<br>
-まいます (置換モードとは違いますね)。<span class="Special">&lt;Insert&gt;</span>&nbsp;を押して、上書きから挿入に切り替<br>
-え、スペースを入力します:<br>
+おっと、空白が消えてしまいました。ここで&nbsp;<span class="Special">&lt;BS&gt;</span>&nbsp;を使ってはいけません。&quot;t&quot; を削除<br>
+してしまうからです (これは置換モードとは異なります)。代わりに、<span class="Special">&lt;Insert&gt;</span>&nbsp;を押し<br>
+て上書きから挿入に切り替え、空白をタイプします:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/the great pig</span><br>
 <br>
 <br>
 <span class="Statement">キャンセル</span><br>
 <br>
-: または / コマンドを入力した後で、そのコマンドの実行をキャンセルしたくなった<br>
-場合は、<span class="Special">CTRL-C</span>&nbsp;または&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;を押してください。<br>
+: または / コマンドを実行しようと思いましたが、気が変わりました。既にタイプし<br>
+たものを実行せずに取り除くには、<span class="Special">CTRL-C</span>&nbsp;または&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;を押します。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;キーはどこでも使える「脱出」キーですが、残念なことに、古き良き<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vi では、コマンドラインで&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;を押すと、コマンドが実行されてしまいま<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。これはおそらくバグなので、Vim では&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;でコマンドをキャンセルで<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;きるようになっています。ただし、<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;を設定して Vi 互換の動作に<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変更することもできます。また、マップが適用されたときは (それが Vi 用に<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;書かれたものであってもなくても)&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;は Vi 互換の動作をします。<span class="Special">CTRL-C</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を使えば設定に関係なくキャンセルできます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;は万能の &quot;抜け出す&quot; キーです。残念ながら、古き良き Vi では、コマ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンドラインで&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;を押すとコマンドが実行されました! これはバグとみな<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;されるかもしれないので、Vim は&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;をコマンドのキャンセルに使います。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;しかし、<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;オプションで Vi 互換にすることができます。そして、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マッピング (Vi 用に書かれたものかもしれない) を使っているときも、<span class="Special">&lt;Esc&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は Vi 互換に動作します。したがって、<span class="Special">CTRL-C</span>&nbsp;を使うのが常に動作する方法<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;です。<br>
 <br>
-コマンドラインの先頭にカーソルがあるときに&nbsp;<span class="Special">&lt;BS&gt;</span>&nbsp;キーを押すとコマンドをキャンセ<br>
-ルできます。これは行頭にある &quot;:&quot; や &quot;/&quot; を削除するような感覚です。<br>
+コマンドラインの先頭にいるときに&nbsp;<span class="Special">&lt;BS&gt;</span>&nbsp;を押すと、コマンドがキャンセルされます。<br>
+行の先頭の &quot;:&quot; または &quot;/&quot; を削除するようなものです。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_20.html#20.2" name="20.2">20.2</a>&nbsp;&nbsp;コマンドライン短縮入力<br>
+<a class="Constant" href="usr_20.html#20.2" name="20.2">20.2</a>&nbsp;&nbsp;コマンドライン短縮形<br>
 <br>
-一部の &quot;:&quot; コマンドは非常に長いです。既に述べたように、&quot;:substitute&quot; は &quot;:s&quot;<br>
-に短縮できます。これは一般的な仕組みで、ほとんどの &quot;:&quot; コマンドは短縮可能です。<br>
-ただし、Vim9 script では可読性を向上させるために短縮できないコマンドもあります<br>
-(<a class="Identifier" href="vim9.html#vim9-no-shorten">vim9-no-shorten</a>を参照)。<br>
+&quot;:&quot; コマンドの中には本当に長いものがあります。&quot;:substitute&quot; が &quot;:s&quot; に省略でき<br>
+ることは既に述べました。これは汎用的な仕組みで、ほとんどの &quot;:&quot; コマンドは省略<br>
+できます。ただし、Vim9 script では、読みやすさを向上させるために、一部のコマン<br>
+ドは短縮できません -&nbsp;<a class="Identifier" href="vim9.html#vim9-no-shorten">vim9-no-shorten</a>&nbsp;を参照してください。<br>
 <br>
-組み込み関数&nbsp;<a class="Identifier" href="builtin.html#fullcommand()">fullcommand()</a>&nbsp;を使用すると、短縮されたコマンドの完全な名前を取<br>
-得できます。例えば、以下のコマンドはそれぞれ &quot;edit&quot;、&quot;echo&quot;、&quot;echowindow&quot; と出<br>
-力します:<br>
+組み込み関数&nbsp;<a class="Identifier" href="builtin.html#fullcommand()">fullcommand()</a>&nbsp;を使って、省略されたコマンドの完全な名前を返すこ<br>
+とができます。例えば、以下のコマンドは &quot;edit&quot;、&quot;echo&quot;、および &quot;echowindow&quot; を<br>
+表示します:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span class="Statement">echo</span>&nbsp;<span class="Identifier">fullcommand</span><span class="Special">(</span><span class="Constant">'e'</span><span class="Special">)</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span class="Statement">echo</span>&nbsp;<span class="Identifier">fullcommand</span><span class="Special">(</span><span class="Constant">'ec'</span><span class="Special">)</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span class="Statement">echo</span>&nbsp;<span class="Identifier">fullcommand</span><span class="Special">(</span><span class="Constant">'echow'</span><span class="Special">)</span><br>
 <br>
-コマンドはどこまで短縮できるでしょうか。アルファベットは 26 文字ですが、コマン<br>
-ドはそれよりたくさんあります。例えば、&quot;:set&quot; の先頭は &quot;:s&quot; ですが、&quot;:s&quot; では<br>
-&quot;:set&quot; を実行できません。&quot;:set&quot; の短縮形は &quot;:se&quot; です。<br>
-二つのコマンドが同じ名前に短縮できたとしても、最短の名前を使えるのは一つのコマ<br>
-ンドだけです。その決定方法に明確なルールはないので、個別に覚えるしかありませ<br>
-ん。コマンドの最短の名前はヘルプファイルに記述されています。例:<br>
+コマンドはどこまで短くできるでしょうか? 文字は 26 個あり、コマンドはずっと多く<br>
+あります。例えば、&quot;:set&quot; も &quot;:s&quot; で始まりますが、&quot;:s&quot; は &quot;:set&quot; コマンドを開始<br>
+しません。代わりに &quot;:set&quot; は &quot;:se&quot; に省略できます。<br>
+&nbsp;&nbsp; コマンドの短い形式が 2 つのコマンドに使える場合、それはそのうちの 1 つだけ<br>
+を表します。どちらになるかに論理はなく、覚えなければなりません。ヘルプファイル<br>
+には、動作する最も短い形式が記載されています。例えば:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:s[ubstitute]</div>
 <br>
-これは &quot;:substitute&quot; の短縮形が &quot;:s&quot; であることを示しています。それ以降の文字<br>
-は任意です。&quot;:su&quot; でも &quot;:sub&quot; でも動作します。<br>
+これは、&quot;:substitute&quot; の最も短い形式が &quot;:s&quot; であることを意味します。以下の文字<br>
+は省略可能です。したがって、&quot;:su&quot; および &quot;:sub&quot; も動作します。<br>
 <br>
-ユーザーマニュアルではコマンドの長い名前と短い名前の両方が使われますが、読み難<br>
-い短縮形は使われません。例えば、&quot;:function&quot; は &quot;:fu&quot; と短縮できますが、これだ<br>
-と大半の人が何の略なのか理解できないので &quot;:fun&quot; が使われます。(Vim に &quot;:funny&quot;<br>
-コマンドはありませんが、もしあれば、&quot;:fun&quot; でも混乱を招きますよね。)<br>
+ユーザーマニュアルでは、コマンドの完全な名前か、または読みやすさを保った短い形<br>
+を使います。例えば、&quot;:function&quot; は &quot;:fu&quot; に省略できます。しかし、ほとんどの人<br>
+はそれが何を表すかわからないので、&quot;:fun&quot; を使います。(Vim には &quot;:funny&quot; コマン<br>
+ドはありません。もしあれば &quot;:fun&quot; もまぎらわしいでしょう。)<br>
 <br>
-Vim script を書くときはコマンドの長い名前を使うことをお勧めします。そうしてお<br>
-けば、後で変更しようと思ったときに読むのが楽です。しかし、&quot;:w&quot; (&quot;:write&quot;)<br>
-や &quot;:r&quot; (&quot;:read&quot;) のような頻繁に使われるコマンドなら短縮形を使っても構わないで<br>
-しょう。<br>
-特にややこしいのは &quot;:end&quot; で、これは &quot;:endif&quot;、&quot;:endwhile&quot; あるいは<br>
-&quot;:endfunction&quot; を表しているのかもしれません。そのため、常に長い名前を使うよう<br>
-にしましょう。<br>
+Vim script では完全なコマンド名を書くことが推奨されます。そうすると、後で変更<br>
+を加えるときに読み返しやすくなります。ただし、&quot;:w&quot; (&quot;:write&quot;) および &quot;:r&quot;<br>
+(&quot;:read&quot;) のような、よく使われるいくつかのコマンドは除きます。<br>
+&nbsp;&nbsp; 特にまぎらわしいのは &quot;:end&quot; で、これは &quot;:endif&quot;、&quot;:endwhile&quot;、または<br>
+&quot;:endfunction&quot; を表す可能性があります。したがって、常に完全な名前を使ってくだ<br>
+さい。<br>
 <br>
 <br>
-<span class="Statement">オプションの短い名前</span><br>
+<span class="Statement">短いオプション名</span><br>
 <br>
-ユーザーマニュアルではオプションの長い名前が使われますが、ほとんどのオプション<br>
-には短い名前があります。&quot;:&quot; コマンドと違い、オプションの短い名前は一つしかあり<br>
-ません。例えば、<a class="Type" href="options.html#'autoindent'">'autoindent'</a>&nbsp;の短い名前は&nbsp;<a class="Type" href="options.html#'ai'">'ai'</a>&nbsp;なので、次の二つのコマンドは同<br>
-じ動作をします:<br>
+ユーザーマニュアルでは、オプション名の長いバージョンを使います。多くのオプショ<br>
+ンには短い名前もあります。&quot;:&quot; コマンドと異なり、動作する短い名前は 1 つだけで<br>
+す。例えば、<a class="Type" href="options.html#'autoindent'">'autoindent'</a>&nbsp;の短い名前は&nbsp;<a class="Type" href="options.html#'ai'">'ai'</a>&nbsp;です。したがって、これら 2 つのコマ<br>
+ンドは同じことをします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set autoindent<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set ai</div>
 <br>
-オプションの長い名前と短い名前の一覧は&nbsp;<a class="Identifier" href="quickref.html#option-list">option-list</a>&nbsp;を参照してください。<br>
+長い名前および短い名前の完全なリストはここにあります:&nbsp;<a class="Identifier" href="quickref.html#option-list">option-list</a>。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_20.html#20.3" name="20.3">20.3</a>&nbsp;&nbsp;コマンドライン補完<br>
 <br>
-コマンドライン補完はこれだけでも Vi から Vim に乗り換えるに値する程の機能です。<br>
-一度使ってしまったら、手放せなくなるでしょう。<br>
+これは、それだけで Vi から Vim に乗り換える理由になる Vim の機能の 1 つです。<br>
+一度これを使うと、これなしではいられなくなります。<br>
 <br>
-次のようなファイルを含むディレクトリがあるとします:<br>
+これらのファイルを含むディレクトリがあるとします:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;info.txt<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intro.txt<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bodyofthepaper.txt<br>
 <br>
-bodyofthepaper.txt を開くには次のコマンドを使います:<br>
+最後のものを編集するには、このコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:edit bodyofthepaper.txt</div>
 <br>
-いかにも打ち間違えそうです。もっと簡単にやりましょう:<br>
+これはタイプを間違えやすいです。はるかに速い方法はこうです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:edit b&lt;Tab&gt;</div>
 <br>
-どちらも結果は同じになります。どういうことでしょうか。<span class="Special">&lt;Tab&gt;</span>&nbsp;キーによってカーソ<br>
-ル直前の単語 (この場合なら &quot;b&quot;) が補完されたのです。ディレクトリが検索され、<br>
-&quot;b&quot; で始まるファイルが一つだけ見つかり、それはあなたが探しているファイルに違い<br>
-ないので、その名前が補完されました。<br>
+これで同じコマンドになります。何が起きたのでしょう?&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;キーはカーソルの前の<br>
+単語を補完します。この場合は &quot;b&quot; です。Vim はディレクトリの中を見て、&quot;b&quot; で始<br>
+まるファイルを 1 つだけ見つけます。それが探しているものに違いないので、Vim が<br>
+ファイル名を補完してくれます。<br>
 <br>
-さて、次はこのように入力してみます:<br>
+ここでこうタイプします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:edit i&lt;Tab&gt;</div>
 <br>
-ビープ音が鳴り、次のように表示されます:<br>
+Vim はビープ音を鳴らし、こうなります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:edit info.txt</div>
 <br>
-ビープ音は複数のファイルが見つかったことを示しています。まずは (アルファベット<br>
-順で) 最初のファイルが表示されます。もう一度&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;を押すと、次のようになりま<br>
-す:<br>
+ビープ音は、Vim が複数のマッチを見つけたことを意味します。そして見つけた最初の<br>
+マッチ (アルファベット順) を使います。もう一度&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;を押すと、こうなります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:edit intro.txt</div>
 <br>
-つまり、最初の&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;で、探しているファイルが出てこなかったら、もう一度&nbsp;<span class="Special">&lt;Tab&gt;</span><br>
-を押せばよいのです。ファイルがたくさんあるなら、一つずつ表示していきましょう。<br>
-最後の補完候補を表示しているときに&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;を押すと、最初の状態に戻ります:<br>
+したがって、最初の&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;で探していたファイルが得られない場合は、もう一度押し<br>
+てください。さらにマッチがある場合、1 つずつすべて見ることができます。<br>
+&nbsp;&nbsp; 最後にマッチした項目で&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;を押すと、最初にタイプしたものに戻ります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:edit i</div>
 <br>
-また最初から補完候補を表示できます。つまり、補完候補は循環表示されます。<span class="Special">CTRL-P</span><br>
-を使うと、逆方向に移動できます:<br>
+そして、また最初から始まります。したがって、Vim はマッチのリストを循環します。<br>
+逆の方向にリストをたどるには&nbsp;<span class="Special">CTRL-P</span>&nbsp;を使います:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;-------------------&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;-------------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
@@ -229,130 +228,127 @@ bodyofthepaper.txt を開くには次のコマンドを使います:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +----------------------&nbsp;<span class="Special">CTRL-P</span>&nbsp;------------------------&gt;<br>
 <br>
 <br>
-<span class="Statement">文脈</span><br>
+<span class="Statement">コンテキスト</span><br>
 <br>
-&quot;:edit i&quot; ではなく、&quot;:set i&quot; と入力してから&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;を押すと、次のようになりま<br>
-す:<br>
+&quot;:edit i&quot; の代わりに &quot;:set i&quot; とタイプして&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;を押すと、こうなります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set icon</div>
 <br>
-どうして &quot;:set info.txt&quot; にならないのでしょうか。それは、Vim が文脈を認識して<br>
-いるからです。補完される単語の種類は入力されたコマンドに依存します。&quot;:set&quot; コ<br>
-マンドに指定するのはファイル名ではなくオプション名であることを Vim は知ってい<br>
-るのです。<br>
-上述の例と同様、<span class="Special">&lt;Tab&gt;</span>&nbsp;を入力すれば補完候補が一つずつ順番に表示されます。たいて<br>
-いは、いくつかの文字を入力してから補完した方が素早く補完できます:<br>
+おや、なぜ &quot;:set info.txt&quot; にならなかったのでしょう? それは、Vim にはコンテキ<br>
+ストに応じた補完があるからです。Vim が探す単語の種類は、その前のコマンドによっ<br>
+て異なります。Vim は、&quot;:set&quot; コマンドの直後にはファイル名を使えないが、オプショ<br>
+ン名は使えることを知っています。<br>
+&nbsp;&nbsp; ここでも、<span class="Special">&lt;Tab&gt;</span>&nbsp;を繰り返しタイプすると、Vim はすべてのマッチを循環します。<br>
+かなりたくさんあるので、先にもっと文字をタイプする方がよいです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set isk&lt;Tab&gt;</div>
 <br>
-次のような結果になります:<br>
+こうなります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set iskeyword</div>
 <br>
-さて、&quot;=&quot; を入力してから&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;を押してみましょう:<br>
+ここで &quot;=&quot; をタイプして&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;を押します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set iskeyword=@,48-57,_,192-255</div>
 <br>
-オプションの現在の設定が挿入されるので、それを編集することができます。<br>
-<span class="Special">&lt;Tab&gt;</span>&nbsp;で補完されるのはその場所に入力すべき内容です。どのように動作するかは自分<br>
-で試してみてください。期待したような結果にならないこともあると思いますが、それ<br>
-は、Vim がその文脈を認識できなかったか、その文脈における補完が実装されていない<br>
-かのどちらかです。その場合は&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;文字が挿入されます (画面上では ^I と表示さ<br>
-れます)。<br>
+ここで起きているのは、Vim がオプションの古い値を挿入するということです。これで<br>
+それを編集できます。<br>
+&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;で補完されるのは、Vim がその場所で期待するものです。どのように動作す<br>
+るか、とにかく試してみてください。状況によっては、望むものが得られないこともあ<br>
+ります。それは、Vim があなたの望むものを知らないか、またはその状況に対して補完<br>
+が実装されていないかのどちらかです。その場合は&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;が挿入されます (^I と表示<br>
+されます)。<br>
 <br>
 <br>
-<span class="Statement">補完候補一覧</span><br>
+<span class="Statement">マッチの一覧表示</span><br>
 <br>
-補完候補がたくさんあるとき、その一覧を確認することができます。それには&nbsp;<span class="Special">CTRL-D</span><br>
-を使います。例えば、次のコマンドを入力してから&nbsp;<span class="Special">CTRL-D</span>&nbsp;を押してみます:<br>
+マッチがたくさんあるときは、概要を見たいでしょう。これは&nbsp;<span class="Special">CTRL-D</span>&nbsp;を押すことで行<br>
+えます。例えば、これの後で&nbsp;<span class="Special">CTRL-D</span>&nbsp;を押すと:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set is</div>
 <br>
-次のような結果になります:<br>
+結果はこうなります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set is<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;incsearch&nbsp;&nbsp;isfname&nbsp;&nbsp;&nbsp;&nbsp;isident&nbsp;&nbsp;&nbsp;&nbsp;iskeyword&nbsp;&nbsp;isprint<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set is</div>
 <br>
-補完候補の一覧が表示され、また元の入力に戻ります。この一覧に期待した項目がある<br>
-かどうか確認してください。ない場合は、<span class="Special">&lt;BS&gt;</span>&nbsp;でテキストを削除し、入力し直してく<br>
-ださい。補完候補がたくさんある場合は、さらにいくつかの文字を入力してから&nbsp;<span class="Special">&lt;Tab&gt;</span><br>
-を押して補完してください。<br>
-注意深い方なら、候補一覧にある &quot;incsearch&quot; が &quot;is&quot; で始まっていないことに気づ<br>
-いたと思います。&quot;is&quot; は &quot;incsearch&quot; の短縮形です。ほとんどのオプションには短い<br>
-名前と長い名前がありますが、Vim は賢いので、オプションの短い名前を見て、長い名<br>
-前に展開してくれます。<br>
+Vim はマッチを一覧表示し、それからタイプしたテキストに戻ります。これで、欲し<br>
+かった項目がリストにあるか確認できます。無い場合は、<span class="Special">&lt;BS&gt;</span>&nbsp;を使って単語を修正で<br>
+きます。マッチがたくさんある場合は、<span class="Special">&lt;Tab&gt;</span>&nbsp;を押して残りを補完する前に、さらに数<br>
+文字をタイプしてください。<br>
+&nbsp;&nbsp; 注意深く見ていた場合、&quot;incsearch&quot; が &quot;is&quot; で始まっていないことに気付いたで<br>
+しょう。この場合、&quot;is&quot; は &quot;incsearch&quot; の短い名前を表しています。(多くのオプショ<br>
+ンには短い名前および長い名前があります。) Vim は賢いので、オプションの短い名前<br>
+を長い名前に展開したかったのかもしれないことを知っています。<br>
 <br>
 <br>
-<span class="Statement">さらに他にも</span><br>
+<span class="Statement">まだあります</span><br>
 <br>
-<span class="Special">CTRL-L</span>&nbsp;コマンドを使うと、共通したところまで補完できます。例えば、&quot;info.txt&quot; と<br>
-&quot;info_backup.txt&quot; というファイルがあって、&quot;:edit i&quot; と入力してから&nbsp;<span class="Special">CTRL-L</span>&nbsp;を押<br>
-すと、&quot;:edit info&quot; になります。<br>
+<span class="Special">CTRL-L</span>&nbsp;コマンドは、単語を曖昧さのない最長の文字列まで補完します。&quot;:edit i&quot; と<br>
+タイプして、ファイル &quot;info.txt&quot; および &quot;info_backup.txt&quot; がある場合、<br>
+&quot;:edit info&quot; になります。<br>
 <br>
-<a class="Type" href="options.html#'wildmode'">'wildmode'</a>&nbsp;オプションで補完の動作を変更できます。<br>
-<a class="Type" href="options.html#'wildmenu'">'wildmenu'</a>&nbsp;オプションを設定すると補完候補をメニューのように表示できます。<br>
-<a class="Type" href="options.html#'suffixes'">'suffixes'</a>&nbsp;オプションに優先度の低いファイルを指定しておくと、それらのファイル<br>
-は補完候補の末尾に現れます。<br>
-<a class="Type" href="options.html#'wildignore'">'wildignore'</a>&nbsp;オプションには補完候補として表示して欲しくないファイルを指定しま<br>
-す。<br>
+<a class="Type" href="options.html#'wildmode'">'wildmode'</a>&nbsp;オプションを使って、補完の動作方法を変更できます。<br>
+<a class="Type" href="options.html#'wildmenu'">'wildmenu'</a>&nbsp;オプションを使って、メニューのようなマッチのリストを得られます。<br>
+<a class="Type" href="options.html#'suffixes'">'suffixes'</a>&nbsp;オプションを使って、重要度が低く、ファイルのリストの最後に表示され<br>
+るファイルを指定します。<br>
+<a class="Type" href="options.html#'wildignore'">'wildignore'</a>&nbsp;オプションは、まったく一覧表示されないファイルを指定します。<br>
 <br>
-コマンドライン補完についての詳細は&nbsp;<a class="Identifier" href="cmdline.html#cmdline-completion">cmdline-completion</a>&nbsp;を参照してください。<br>
+これらすべてについての詳細はここにあります:&nbsp;<a class="Identifier" href="cmdline.html#cmdline-completion">cmdline-completion</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_20.html#20.4" name="20.4">20.4</a>&nbsp;&nbsp;コマンドライン履歴<br>
 <br>
-履歴については三章で簡単に説明しました。簡単に言えば、<span class="Special">&lt;Up&gt;</span>&nbsp;キーで以前に入力し<br>
-た古いコマンドラインを呼び出すことができる機能です。<span class="Special">&lt;Down&gt;</span>&nbsp;で新しい方のコマン<br>
-ドに戻れます。<br>
+3 章で履歴について簡単に述べました。基本は、<span class="Special">&lt;Up&gt;</span>&nbsp;キーを使って古いコマンドライ<br>
+ンを呼び出せるということです。それから&nbsp;<span class="Special">&lt;Down&gt;</span>&nbsp;で新しいコマンドに戻ります。<br>
 <br>
-履歴には5種類あります。ここでは &quot;:&quot; コマンドと検索コマンド (&quot;/&quot; or &quot;?&quot;) の履歴<br>
-を説明します。&quot;/&quot; と &quot;?&quot; はどちらも検索コマンドなので、同じ履歴を共有します。<br>
-他の3つの履歴は、式、デバッグモードコマンド、および input() 関数の入力行用で<br>
-す。&nbsp;<a class="Identifier" href="cmdline.html#cmdline-history">cmdline-history</a><br>
+実際には履歴は 5 つあります。ここで述べるのは、&quot;:&quot; コマンドのもの、および &quot;/&quot;<br>
+および &quot;?&quot; 検索コマンドのものです。&quot;/&quot; および &quot;?&quot; コマンドは、どちらも検索コマ<br>
+ンドなので、同じ履歴を共有します。他の 3 つの履歴は、式、デバッグモードのコマ<br>
+ンド、および input() 関数の入力行のものです。<a class="Identifier" href="cmdline.html#cmdline-history">cmdline-history</a><br>
 <br>
-例えば、&quot;:set&quot; コマンドを実行した後で、他のコマンドを 10 個実行し、再び &quot;:set&quot;<br>
-コマンドを実行したいとします。&quot;:&quot; を押してから&nbsp;<span class="Special">&lt;Up&gt;</span>&nbsp;を 10 回押せばできますが、<br>
-もっと簡単な方法があります:<br>
+&quot;:set&quot; コマンドを実行し、さらに 10 個のコロンコマンドをタイプしてから、その<br>
+&quot;:set&quot; コマンドをもう一度繰り返したいとします。&quot;:&quot; を押してから&nbsp;<span class="Special">&lt;Up&gt;</span>&nbsp;を 10 回<br>
+押すこともできます。もっと速い方法があります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:se&lt;Up&gt;</div>
 <br>
-以前使った &quot;se&quot; で始まるコマンドに戻ります。これなら探していた &quot;:set&quot; コマンド<br>
-に効率良くたどり着けるでしょう。少なくとも、何度も何度も&nbsp;<span class="Special">&lt;Up&gt;</span>&nbsp;を押す必要はあり<br>
-ません (入力したすべてのコマンドが &quot;:set&quot; コマンドでもない限り)。<br>
+これで Vim は、&quot;se&quot; で始まった前のコマンドに戻ります。これが探していた &quot;:set&quot;<br>
+コマンドである可能性は十分にあります。少なくとも、<span class="Special">&lt;Up&gt;</span>&nbsp;をそれほど何度も押す必<br>
+要はないはずです (&quot;:set&quot; コマンドしか実行していない場合を除いて)。<br>
 <br>
-<span class="Special">&lt;Up&gt;</span>&nbsp;キーを押すと、入力されたテキストと履歴のコマンドラインが比較され、マッチ<br>
-した履歴だけが使われます。<br>
-探していた履歴が見つからなかった場合は、<span class="Special">&lt;Down&gt;</span>&nbsp;で元に戻ってから正しく入力し直<br>
-すか、<span class="Special">CTRL-U</span>&nbsp;を押して最初からやり直してください。<br>
+<span class="Special">&lt;Up&gt;</span>&nbsp;キーは、それまでにタイプしたテキストを使って、履歴内の行と比較します。マッ<br>
+チする行だけが使われます。<br>
+&nbsp;&nbsp; 探していた行が見つからない場合は、<span class="Special">&lt;Down&gt;</span>&nbsp;を使ってタイプしたものに戻り、それ<br>
+を修正します。または、<span class="Special">CTRL-U</span>&nbsp;を使って最初からやり直します。<br>
 <br>
-履歴をすべて見るには次のコマンドを使います:<br>
+履歴内のすべての行を見るには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:history</div>
 <br>
-&quot;:&quot; コマンドの履歴が表示されます。検索コマンドの履歴を表示するには、次のコマン<br>
-ドを使います:<br>
+それは &quot;:&quot; コマンドの履歴です。検索履歴はこのコマンドで表示されます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:history /</div>
 <br>
-<span class="Special">&lt;Up&gt;</span>&nbsp;の代わりに&nbsp;<span class="Special">CTRL-P</span>&nbsp;を使うこともできますが、<span class="Special">CTRL-P</span>&nbsp;の前に入力されていたテキ<br>
-ストは無視されます。同様に、<span class="Special">&lt;Down&gt;</span>&nbsp;の代わりに&nbsp;<span class="Special">CTRL-N</span>&nbsp;を使うこともできます。<br>
-<span class="Special">CTRL-P</span>&nbsp;は previous (前)、<span class="Special">CTRL-N</span>&nbsp;は next (次) という意味です。<br>
+<span class="Special">CTRL-P</span>&nbsp;は&nbsp;<span class="Special">&lt;Up&gt;</span>&nbsp;のように動作しますが、既にタイプしたものは関係ありません。<br>
+<span class="Special">CTRL-N</span>&nbsp;および&nbsp;<span class="Special">&lt;Down&gt;</span>&nbsp;も同様です。<span class="Special">CTRL-P</span>&nbsp;は previous を、<span class="Special">CTRL-N</span>&nbsp;は next を表し<br>
+ます。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_20.html#20.5" name="20.5">20.5</a>&nbsp;&nbsp;コマンドラインウィンドウ<br>
 <br>
-コマンドラインでの文字入力は挿入モードでの文字入力とは違います。テキストを編集<br>
-するための多くのコマンドが使えません。通常のコマンドライン入力ではそれほど問題<br>
-になりませんが、複雑なコマンドを入力しなければならないときもあるでしょう。その<br>
-ようなときは、コマンドラインウィンドウが便利です。<br>
+コマンドラインでテキストをタイプするのは、挿入モードでテキストをタイプするのと<br>
+は異なる動作をします。テキストを変更する多くのコマンドが使えません。ほとんどの<br>
+コマンドではそれで問題ありませんが、複雑なコマンドをタイプしなければならないこ<br>
+ともあります。そういうときにコマンドラインウィンドウが役に立ちます。<br>
 <br>
-次のコマンドでコマンドラインウィンドウを開いてください:<br>
+このコマンドでコマンドラインウィンドウを開きます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q:</div>
 <br>
-画面の下の方に (小さな) ウィンドウが作成されます。ウィンドウにはコマンドライン<br>
-履歴が表示され、最終行には空行があります:<br>
+これで Vim は最下部に (小さな) ウィンドウを開きます。それにはコマンドライン履<br>
+歴、および末尾の空行が含まれます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-------------------------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|other window&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
@@ -369,30 +365,31 @@ bodyofthepaper.txt を開くには次のコマンドを使います:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-------------------------------------+<br>
 <br>
-ウィンドウを開いた後はノーマルモードになっています。&quot;hjkl&quot; キーで移動できます。<br>
-例えば、&quot;5k&quot; を入力し、&quot;:e config.h.in&quot; の行に移動します。&quot;$h&quot; で &quot;in&quot; の &quot;i&quot;<br>
-に移動し &quot;cwout&quot; と入力します。行が次のように変更されました:<br>
+これでノーマルモードになっています。&quot;hjkl&quot; キーを使って移動できます。例えば、<br>
+&quot;5k&quot; で上に移動して &quot;:e config.h.in&quot; の行に行きます。&quot;$h&quot; とタイプして &quot;in&quot; の<br>
+&quot;i&quot; に移動し、&quot;cwout&quot; とタイプします。これで行がこう変更されました:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">:e config.h.out</span><br>
 <br>
-<span class="Special">&lt;Enter&gt;</span>&nbsp;を押すとこのコマンドが実行され、コマンドラインウィンドウが閉じます。<br>
-<span class="Special">&lt;Enter&gt;</span>&nbsp;コマンドで現在行が実行されます。挿入モードでもノーマルモードでも同じ動<br>
-作です。<br>
-コマンドラインウィンドウでの編集は失われます。つまり、コマンドライン履歴は変更<br>
-されません。ただし、実行したコマンドは、通常どおり、履歴に追加されます。<br>
+ここで&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押すと、このコマンドが実行されます。コマンドラインウィンドウ<br>
+は閉じます。<br>
+&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;コマンドはカーソル下の行を実行します。Vim が挿入モードであるか、ま<br>
+たはノーマルモードであるかは関係ありません。<br>
+&nbsp;&nbsp; コマンドラインウィンドウ内の変更は失われます。それによって履歴が変更される<br>
+ことはありません。ただし、実行したコマンドは、実行されたすべてのコマンドと同様<br>
+に、履歴の末尾に追加されます。<br>
 <br>
-コマンドラインウィンドウは、実行したいコマンドに似たコマンドを履歴の一覧から探<br>
-し、それをちょっと変更して再実行するような場合に便利です。コマンドラインウィン<br>
-ドウでは検索コマンドも使えます。<br>
-上の例の場合なら、&quot;?config&quot; という検索コマンドを実行すれば、以前に実行した<br>
-&quot;config&quot; を含んでいるコマンドを探せます。これは少し不思議ですね。コマンドライ<br>
-ンを使ってコマンドラインウィンドウの中を検索しているのですから。しかし、検索コ<br>
-マンドを入力するための新たなコマンドラインウィンドウを作成することはできませ<br>
-ん。コマンドラインウィンドウは常に一つだけです。<br>
+コマンドラインウィンドウは、履歴の概要を見て、似たコマンドを探し、それを少し変<br>
+更して実行したいときに、とても便利です。検索コマンドを使って何かを見つけること<br>
+ができます。<br>
+&nbsp;&nbsp; 前の例では、&quot;config&quot; を含む前のコマンドを見つけるのに &quot;?config&quot; 検索コマン<br>
+ドを使うこともできました。コマンドラインウィンドウ内で検索するのにコマンドライ<br>
+ンを使っているので、少し奇妙です。その検索コマンドをタイプしている間は、別のコ<br>
+マンドラインウィンドウを開くことはできません。1 つしか存在できないからです。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_21.html">usr_21.txt</a>&nbsp;&nbsp;中断と再開<br>
+次章:&nbsp;<a class="Identifier" href="usr_21.html">usr_21.txt</a>&nbsp;&nbsp;離れて、戻ってくる<br>
 <br>
 Copyright: see&nbsp;<a class="Identifier" href="usr_01.html#manual-copyright">manual-copyright</a>&nbsp;&nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>
