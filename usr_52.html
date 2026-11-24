@@ -9,39 +9,38 @@ helpname: 'usr_52'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大きなプラグインを作る<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;より大きなプラグインを書く<br>
 <br>
-<br>
-プラグインが単純なこと以上のことを行うと、大きくなる傾向があります。このファイ<br>
-ルは、それらが高速に読み込まれるようにする方法と、それらを小さなパーツに分割す<br>
-る方法を説明しています。<br>
+プラグインが単純なこと以上のことを行うと、大きくなりがちです。このファイルで<br>
+は、それらが速く読み込まれ続けることを確実にする方法、およびそれらをより小さな<br>
+部分に分割する方法を説明します。<br>
 <br>
 <a class="Identifier" href="usr_52.html#52.1">52.1</a>&nbsp;&nbsp;エクスポートとインポート<br>
 <a class="Identifier" href="usr_52.html#52.2">52.2</a>&nbsp;&nbsp;オートロード<br>
-<a class="Identifier" href="usr_52.html#52.3">52.3</a>&nbsp;&nbsp;インポート/エクスポートなしのオートロード<br>
-<a class="Identifier" href="usr_52.html#52.4">52.4</a>&nbsp;&nbsp;他に使えるメカニズム<br>
+<a class="Identifier" href="usr_52.html#52.3">52.3</a>&nbsp;&nbsp;インポート/エクスポートなしでのオートロード<br>
+<a class="Identifier" href="usr_52.html#52.4">52.4</a>&nbsp;&nbsp;使用する他の仕組み<br>
 <a class="Identifier" href="usr_52.html#52.5">52.5</a>&nbsp;&nbsp;旧来のスクリプトから Vim9 script を使う<br>
-<a class="Identifier" href="usr_52.html#52.6">52.6</a>&nbsp;&nbsp;Vim9 サンプル: comment および highlight-yank プラグイン<br>
+<a class="Identifier" href="usr_52.html#52.6">52.6</a>&nbsp;&nbsp;Vim9 の例: コメントおよびハイライトヤンクプラグイン<br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_90.html">usr_90.txt</a>&nbsp;&nbsp;ViAI のインストール<br>
+次章:&nbsp;<a class="Identifier" href="usr_90.html">usr_90.txt</a>&nbsp;&nbsp;ViAI をインストールする<br>
 前章:&nbsp;<a class="Identifier" href="usr_51.html">usr_51.txt</a>&nbsp;&nbsp;プラグインを作る<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_52.html#52.1" name="52.1">52.1</a>&nbsp;&nbsp;エクスポートとインポート<br>
 <br>
-Vim9 script は大きな Vim script を容易に書けるようにデザインされています。他の<br>
-スクリプト言語、特に TypeScript のようになっています。また、処理内の関数はコン<br>
-パイルされ素早く実行できます。これにより Vim9 script はとても速く、最大100倍に<br>
-なります。<br>
+Vim9 script は、大きな Vim script を書くのをより簡単にするために設計されまし<br>
+た。それは他のスクリプト言語、特に Typescript により似ています。また、関数は、<br>
+素早く実行できる命令にコンパイルされます。これにより、Vim9 script はずっと速く<br>
+なり、最大で 100 倍になります。<br>
 <br>
-基本的な考え方は、スクリプトファイルには、スクリプトファイル内でのみ使用される<br>
-プライベートな項目と、それらをインポートするスクリプトで使用できるエクスポート<br>
-される項目があるということです。これにより、何がどこで定義されているかが非常に<br>
-明確になります。<br>
+基本的な考え方は、スクリプトファイルには、private な、スクリプトファイルの中で<br>
+だけ使われる項目、およびエクスポートされた、それらをインポートするスクリプトが<br>
+使用できる項目がある、ということです。これにより、何がどこで定義されているかが<br>
+とても明確になります。<br>
 <br>
-1つの関数をエクスポートし、1つのプライベート関数を持つスクリプトの例から始めま<br>
-しょう:<br>
+例から始めましょう。1 つの関数をエクスポートし、1 つの private 関数を持つスク<br>
+リプトです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script</div>
 <br>
@@ -62,47 +61,46 @@ Vim9 script は大きな Vim script を容易に書けるようにデザイン�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enddef</div>
 <br>
-<a class="Comment" href="vim9.html#:export">export</a>&nbsp;は&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script でのみ動くので&nbsp;<a class="Comment" href="vim9.html#vim9script">vim9script</a>&nbsp;コマンドが必要です。<br>
+<a class="Comment" href="vim9.html#vim9script">vim9script</a>&nbsp;コマンドは必須で、<a class="Comment" href="vim9.html#:export">export</a>&nbsp;は&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script の中でだけ動作します。<br>
 <br>
-<span class="Comment">export def GetMessage(...</span>&nbsp;の行は&nbsp;<a class="Comment" href="vim9.html#:export">export</a>&nbsp;から始まっていて、この関数が他のス<br>
-クリプトから呼び出すことができることを意味します。<span class="Comment">def GetReply(...</span>&nbsp;の行は<br>
-<a class="Comment" href="vim9.html#:export">export</a>&nbsp;で始まっておらず、これはスクリプトローカル関数であり、このスクリプト<br>
-ファイル内でのみ使用できます。<br>
+<span class="Comment">export def GetMessage(...</span>&nbsp;の行は&nbsp;<a class="Comment" href="vim9.html#:export">export</a>&nbsp;で始まっており、これはこの関数が他<br>
+のスクリプトから呼び出せることを意味します。<span class="Comment">def GetReply(...</span>&nbsp;の行は&nbsp;<a class="Comment" href="vim9.html#:export">export</a><br>
+で始まっておらず、これはスクリプトローカル関数で、このスクリプトファイルの中で<br>
+だけ使えます。<br>
 <br>
-次にインポートされるスクリプトについて説明します。この例の中ではこの配置を使用<br>
-しており、これは &quot;pack&quot; ディレクトリ下のプラグインに適しています:<br>
+次に、これがインポートされるスクリプトについてです。この例では、&quot;pack&quot; ディレ<br>
+クトリの下のプラグインでうまく動作する、このレイアウトを使います:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.../plugin/theplugin.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.../lib/getmessage.vim<br>
 <br>
 &quot;...&quot; ディレクトリが&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;に追加されていると仮定すると、Vim は<br>
-&quot;plugin&quot; ディレクトリからプラグインを探し &quot;theplugin.vim&quot; を読み込みます。Vim<br>
-は &quot;lib&quot; ディレクトリを認識しません、そこに任意のスクリプトを置くことができま<br>
-す。<br>
+&quot;plugin&quot; ディレクトリでプラグインを探し、&quot;theplugin.vim&quot; を読み込みます。Vim<br>
+は &quot;lib&quot; ディレクトリを認識せず、そこには任意のスクリプトを置くことができます。<br>
 <br>
-上の GetMessage() をエクスポートしているスクリプトは lib/getmessage.vim 内に<br>
-あります。GetMessage() 関数は plugin/theplugin.vim 内にて使用されます:<br>
+GetMessage() をエクスポートする上記のスクリプトは lib/getmessage.vim に入りま<br>
+す。GetMessage() 関数は plugin/theplugin.vim で使われます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script</div>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;import &quot;../lib/getmessage.vim&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;command -nargs=1 ShowMessage echomsg getmessage.GetMessage(&lt;f-args&gt;)</div>
 <br>
-<a class="Comment" href="vim9.html#:import">import</a>&nbsp;コマンドは &quot;../&quot; で始まる相対パスを使用しています。これは、1つ上のディ<br>
-レクトリに移動することを意味します。他の種類のパスについては、<a class="Comment" href="vim9.html#:import">:import</a>&nbsp;コマン<br>
-ドを参照してください。<br>
+<a class="Comment" href="vim9.html#:import">import</a>&nbsp;コマンドは相対パスを使っており、それは &quot;../&quot; で始まっています。これは<br>
+1 つ上のディレクトリに行くことを意味します。他の種類のパスについては&nbsp;<a class="Comment" href="vim9.html#:import">:import</a><br>
+コマンドを参照してください。<br>
 <br>
-プラグインが提供するコマンドを試す方法:<br>
+プラグインが提供するコマンドをどのように試せるか:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ShowMessage 1</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">To 1 we say no</span><br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ShowMessage 22</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">To 22 we say maybe</span><br>
 <br>
-関数 GetMessage() には、インポートしたスクリプト名 &quot;getmessage&quot; がプリフィック<br>
-スとして付けられていることに注意してください。こうすることで、使用されるすべて<br>
-のインポートされた関数について、それがどのスクリプトからインポートされたかが分<br>
-かります。複数のスクリプトをインポートする場合、それぞれで GetMessage() 関数を<br>
-定義できます:<br>
+関数 GetMessage() に、インポートされたスクリプト名 &quot;getmessage&quot; が前に付いてい<br>
+ることに注目してください。こうすることで、使われるインポートされた関数のすべて<br>
+について、それがどのスクリプトからインポートされたかがわかります。いくつかのス<br>
+クリプトをインポートする場合、それぞれが GetMessage() 関数を定義することができ<br>
+ます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script</div>
 <br>
@@ -111,32 +109,33 @@ Vim9 script は大きな Vim script を容易に書けるようにデザイン�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;command -nargs=1 ShowMessage echomsg getmessage.GetMessage(&lt;f-args&gt;)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;command -nargs=1 ShowOther echomsg getother.GetMessage(&lt;f-args&gt;)</div>
 <br>
-インポートしたスクリプトの名前が長いあるいは色々な箇所で使う場合、引数に &quot;as&quot;<br>
-を追加することで短くできます:<br>
+インポートされたスクリプト名が長いか、または多くの場所でそれを使う場合、&quot;as&quot;<br>
+引数を追加することでそれを短くできます:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;import &quot;../lib/getmessage.vim&quot; as msg<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;command -nargs=1 ShowMessage echomsg msg.GetMessage(&lt;f-args&gt;)</div>
 <br>
 <br>
 <span class="Statement">再読み込み</span><br>
 <br>
-1 つ覚えておくべきこと: インポートされた &quot;lib/getmessage.vim&quot; スクリプトは 1<br>
-度だけ読み込まれます。インポート済みで 2 度目に読み込む時はスキップされ、項目<br>
-は最初に作成された以降そのままです。これはインポートコマンドが他のスクリプト内<br>
-にあるか、再読み込みされた同じスクリプト内にあるかは関係ありません。<br>
+覚えておくべきことが 1 つあります: インポートされた &quot;lib/getmessage.vim&quot; スク<br>
+リプトは 1 回だけ読み込まれます。2 回目にインポートされたときは、その中の項目<br>
+はすでに作成されているので、読み込みはスキップされます。このインポートコマンド<br>
+が別のスクリプトにあるか、または再び読み込まれる同じスクリプトにあるかは関係あ<br>
+りません。<br>
 <br>
-これはプラグインを使用する場合は効率的ですが、プラグインを開発中の場合は、イン<br>
-ポート後に &quot;lib/getmessage.vim&quot; を変更しても効果がありません。Vim を終了し、再<br>
-起動する必要があります。(理論的根拠: スクリプトで定義された項目は、コンパイル<br>
-された関数で使用できます。スクリプトを再度読み込むと、これらの関数が壊れる可能<br>
-性があります)。<br>
+これはプラグインを使うときには効率的ですが、まだプラグインを開発しているとき<br>
+は、インポートされた後に &quot;lib/getmessage.vim&quot; を変更しても効果がないことを意味<br>
+します。Vim を終了して、再び起動する必要があります。(根拠: スクリプトで定義さ<br>
+れた項目はコンパイルされた関数で使われている可能性があり、スクリプトを再び読み<br>
+込むとそれらの関数が壊れることがあります)。<br>
 <br>
 <br>
-<span class="Statement">グローバルの使用</span><br>
+<span class="Statement">グローバルを使う</span><br>
 <br>
-時には、グローバル変数や関数を使用して、どこでも使えるようにしたい場合がありま<br>
-す。プラグインに設定を渡すグローバル変数がその良い例です。他のスクリプトが同じ<br>
-名前を使うのを避けるために、他の場所で使われる可能性が非常に低いプリフィックス<br>
-を使用します。例えば、&quot;mytags&quot; プラグインがある場合、次のように使用します:<br>
+どこでも使えるように、グローバル変数または関数を使いたいことがあるでしょう。よ<br>
+い例は、プラグインに設定を渡すグローバル変数です。他のスクリプトが同じ名前を使<br>
+うのを避けるために、他の場所ではまず使われそうにないプリフィックスを使ってくだ<br>
+さい。例えば、&quot;mytags&quot; プラグインがある場合、次のように使えます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:mytags_location = '$HOME/project'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:mytags_style = 'fast'</div>
@@ -144,171 +143,171 @@ Vim9 script は大きな Vim script を容易に書けるようにデザイン�
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_52.html#52.2" name="52.2">52.2</a>&nbsp;&nbsp;オートロード<br>
 <br>
-大きなスクリプトを分割した場合、インポートされるスクリプトは、それをインポート<br>
-するスクリプトが読み込まれるタイミングでロードされて、実行されます。<a class="Identifier" href="vim9.html#:import">:import</a>&nbsp;で<br>
-ロードされるたびに、そこで定義された項目を見つけるために、対象のスクリプトが読<br>
-み込まれます。そのため、インポートされるスクリプトが大きいと起動時間が著しく遅<br>
-くなる可能性がありますが、一方で、エラーがあればインポート時に検出されるという<br>
-利点もあります。<br>
+大きなスクリプトを分割した後、インポートされたスクリプトは、インポートするスク<br>
+リプトが読み込まれた時点で読み込まれ、実行されます。すべての&nbsp;<a class="Identifier" href="vim9.html#:import">:import</a>&nbsp;は、そ<br>
+こで定義された項目を見つけるためにインポートされたスクリプトを読み込みます。し<br>
+かし、インポートされたスクリプトが大きい場合、起動時間が目に見えて遅くなること<br>
+がありますが、その一方で、エラーがある場合、それらはインポート時に検出されま<br>
+す。<br>
 <br>
-起動時の待ち時間を短縮するため、インポートされたスクリプトのロードを、実際に必<br>
-要になるまで遅延させることができます。これには&nbsp;<a class="Comment" href="userfunc.html#autoload">autoload</a>&nbsp;キーワードを使用しま<br>
-す。先ほどの例で言えば、<span class="Comment">plugin/theplugin.vim</span>&nbsp;に必要な変更は 1 箇所だけです:<br>
+長い起動時間を避けるために、インポートされたスクリプトの読み込みを、実際に必要<br>
+になるまで遅らせることができます。これは&nbsp;<a class="Comment" href="userfunc.html#autoload">autoload</a>&nbsp;キーワードで行います。上の<br>
+例を使うと、<span class="Comment">plugin/theplugin.vim</span>&nbsp;で必要な変更は 1 つだけです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;import autoload &quot;../lib/getmessage.vim&quot;</div>
 <br>
-スクリプトの残りの部分を変更する必要はありません。ただし、型チェックは行われ<br>
-ず、インポート時には &quot;../lib/getmessage.vim&quot; もロードされません。Vim はファイ<br>
-ルが存在し、読み取り可能かどうかを確認するだけです。GetMessage() 関数が実際に<br>
-使用されるまでは、その関数の存在さえも確認されません。その結果、<br>
-&quot;getmessage.vim&quot; スクリプト内のエラーは、実行時にのみ検出されることになります。<br>
+スクリプトの残りの部分は何も変更する必要はありません。しかし、型はチェックされ<br>
+ず、&quot;../lib/getmessage.vim&quot; はインポート時に読み込まれません。Vim は、ファイル<br>
+が存在して読み込み可能であることだけを検証します。GetMessage() 関数の存在さえ<br>
+も、それが使われるまではチェックされません。結果として、&quot;getmessage.vim&quot; スク<br>
+リプトのエラーは実行時にだけ検出されます。<br>
 <br>
-スクリプトにとって何がより重要かを判断する必要があります。起動の速さか、それと<br>
-もエラーの早期検出か。<br>
+あなたのスクリプトにとって何がより重要かを決める必要があります: 速い起動か、ま<br>
+たはエラーを早く得ることか。<br>
 <br>
-現実的な戦略としては、開発やデバッグ中は&nbsp;<a class="Comment" href="userfunc.html#autoload">autoload</a>&nbsp;キーワードを省略してエラー<br>
-が即座に報告されるようにして、プラグインを配布する段階でそれを追加して起動パ<br>
-フォーマンスを向上させる、という方法があります。<br>
+実用的な戦略は、開発およびデバッグの間は&nbsp;<a class="Comment" href="userfunc.html#autoload">autoload</a>&nbsp;キーワードを省いてエラーが<br>
+すぐに報告されるようにし、それからあなたのプラグインを配布する前に、起動性能を<br>
+改善するためにそれを戻すことです。<br>
 <br>
-<span class="Statement">オートロードディレクトリ</span><br>
 <br>
-スクリプトを遅延読み込みする別の方法として、以下の例のように、相対パスや絶対パ<br>
-スを指定せずに&nbsp;<span class="Comment">import autoload</span>&nbsp;することです:<br>
+<span class="Statement">autoload ディレクトリ</span><br>
+<br>
+スクリプトを遅延して読み込む別の方法は、以下の例のように、相対パスまたは絶対パ<br>
+スを指定せずにスクリプトを&nbsp;<span class="Comment">import autoload</span>&nbsp;することです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;import autoload &quot;monthlib.vim&quot;</div>
 <br>
-Vim は、<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;に含まれるディレクトリ内の &quot;autoload&quot; ディレクトリからス<br>
-クリプトを探します。つまり、スクリプトは &quot;autoload&quot; フォルダ内に配置されている<br>
-必要があります。Unix 系システムでは、そのようなディレクトリとして<br>
-<span class="Comment">~/.vim/autoload</span>&nbsp;がよく使われます。また、<a class="Type" href="options.html#'packpath'">'packpath'</a>&nbsp;内の &quot;start&quot; ディレクトリ<br>
-配下も検索対象となります。<br>
+Vim は&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の下の &quot;autoload&quot; ディレクトリでスクリプトを探します。こ<br>
+れは、スクリプトが &quot;autoload&quot; フォルダーに置かれていなければならないことを意味<br>
+します。Unix システムでは、そのようなディレクトリの 1 つは、多くの場合<br>
+<span class="Comment">~/.vim/autoload</span>&nbsp;です。<a class="Type" href="options.html#'packpath'">'packpath'</a>&nbsp;の下の &quot;start&quot; の下も探します。<br>
 <br>
-このようにしてスクリプトがインポートされると、そのスクリプトの公開シンボルは、<br>
-インポート元のスクリプト内にとどまるのではなく、グローバルなオートロードの名前<br>
-空間を通じて参照されるようになります。<br>
+スクリプトがこの方法でインポートされた場合、そのエクスポートされたシンボルは、<br>
+インポートするスクリプトにローカルなままになるのではなく、グローバルなオート<br>
+ロード名前空間を通して参照されます。<br>
 <br>
-Vim は&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;に含まれるすべての &quot;autoload&quot; ディレクトリを検索するため、<br>
-スクリプト名には重複しない一意な名前を選んでください。プラグインマネージャーは<br>
-<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;に複数のディレクトリを追加することが多く、それらの各ディレクトリ<br>
-に &quot;autoload&quot; ディレクトリが含まれている可能性があるからです。<br>
+Vim は&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;内のすべての &quot;autoload&quot; ディレクトリを探すので、一意なス<br>
+クリプト名を選んでください。プラグインマネージャーはしばしば複数のディレクトリ<br>
+を&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;に追加し、そのそれぞれが &quot;autoload&quot; ディレクトリを含んでいる<br>
+かもしれません。<br>
 <br>
-<span class="Comment">import autoload</span>&nbsp;の 2 つの形式は、以下のようにまとめることができます:<br>
+<span class="Comment">import autoload</span>&nbsp;の 2 つの形式は、以下のようにまとめられます:<br>
 <br>
 -&nbsp;<span class="Comment">import autoload &quot;foo.vim&quot;</span><br>
-&nbsp;&nbsp;Vim はスクリプトを探す際、<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;を検索します。こうしたスクリプトは<br>
-&nbsp;&nbsp;&quot;autoload&quot; ディレクトリの下に配置する必要があるため、エクスポートされたシン<br>
-&nbsp;&nbsp;ボルはグローバルなオートロードの名前空間を通じて使用可能になります。<br>
+&nbsp;&nbsp;Vim はスクリプトを&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;で探す。そのようなスクリプトは &quot;autoload&quot;<br>
+&nbsp;&nbsp;ディレクトリの下に置かれなければならないので、エクスポートされたシンボルはグ<br>
+&nbsp;&nbsp;ローバルなオートロード名前空間を通して使用可能である。<br>
 <br>
 -&nbsp;<span class="Comment">import autoload &quot;/some/path/foo.vim&quot;</span><br>
-&nbsp;&nbsp;解決されたパスが &quot;autoload&quot; ディレクトリ配下にある場合、エクスポートされたシ<br>
-&nbsp;&nbsp;ンボルも同様にグローバルなオートロードの名前空間に配置されます。そうでない場<br>
-&nbsp;&nbsp;合、それらのシンボルはインポート元のスクリプト内でのみ有効なローカルなものと<br>
-&nbsp;&nbsp;なります。<br>
+&nbsp;&nbsp;解決されたパスが &quot;autoload&quot; ディレクトリの下にある場合、エクスポートされたシ<br>
+&nbsp;&nbsp;ンボルは同様にグローバルなオートロード名前空間にあり、そうでない場合、イン<br>
+&nbsp;&nbsp;ポートするスクリプトにローカルなままである。<br>
 <br>
-グローバルなオートロードの名前空間を介してシンボルにアクセスする主な利点は、そ<br>
-のスクリプトを他のスクリプトから容易にインポートできて、シンボルを即座に使用でき<br>
-ることです。ただし、スクリプトを再読み込みする際にはいくつかの欠点があります。詳<br>
-細については&nbsp;<a class="Identifier" href="vim9.html#vim9-reload">vim9-reload</a>&nbsp;を参照してください。<br>
+グローバルなオートロード名前空間を通してシンボルにアクセスすることの主な利点<br>
+は、スクリプトを他のスクリプトから簡単にインポートでき、シンボルをすぐに使える<br>
+ことです。しかし、これにはスクリプトを再読み込みするときにいくつかの欠点があり<br>
+ます。詳しくは&nbsp;<a class="Identifier" href="vim9.html#vim9-reload">vim9-reload</a>&nbsp;を参照してください。<br>
 <br>
-シンボルがスクリプトローカルなスコープにある場合、それらをスクリプト間で共有す<br>
-るには多少の手間がかかり、一律のルールも存在しません。適切なアプローチは、プラ<br>
-グインの構成によって異なります。<br>
+シンボルがスクリプトローカルなスコープにあるときは、スクリプト間でそれらを共有<br>
+することはより複雑で、一般的な規則はありません: 正しいアプローチはプラグインの<br>
+レイアウトによります。<br>
 <br>
-最後に、以下の例のように&nbsp;<a class="Comment" href="userfunc.html#autoload">autoload</a>&nbsp;やパスを指定せずにスクリプトをインポートす<br>
-る場合:<br>
+最後に、以下の例のように、スクリプトが&nbsp;<a class="Comment" href="userfunc.html#autoload">autoload</a>&nbsp;なしで、およびパスなしでイン<br>
+ポートされたとき:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;import &quot;monthlib.vim&quot;</div>
 <br>
-Vim は、<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;のインポートディレクトリからスクリプト &quot;monthlib.vim&quot; を<br>
-検索します。<br>
+Vim は&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の import ディレクトリでスクリプト &quot;monthlib.vim&quot; を探し<br>
+ます。<br>
 <br>
-この場合、<a class="Comment" href="userfunc.html#autoload">autoload</a>&nbsp;キーワードを追加または削除すると、Vim がスクリプトを検索<br>
-する場所が変わります。相対パスや絶対パスを使用する場合は、場所は変わりません。<br>
+この場合、<a class="Comment" href="userfunc.html#autoload">autoload</a>&nbsp;キーワードを追加または削除すると、Vim がスクリプトを探す<br>
+場所が変わります。相対パスまたは絶対パスが使われている場合、場所は変わりませ<br>
+ん。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_52.html#52.3" name="52.3">52.3</a>&nbsp;&nbsp;インポート/エクスポートなしのオートロード<br>
+<a class="Constant" href="usr_52.html#52.3" name="52.3">52.3</a>&nbsp;&nbsp;インポート/エクスポートなしでのオートロード<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_52.html#write-library-script" name="write-library-script">write-library-script</a><br>
-インポート/エクスポート以前のメカニズムは依然として使用でき一部ユーザーは多少<br>
-単純であると感じるかもしれません。それは特別な名前によって関数を呼び出すという<br>
-アイデアです。その関数はオートロードスクリプト内にあります。そのスクリプトのこ<br>
-とをライブラリスクリプトと呼びます。<br>
+インポート/エクスポート以前からの仕組みはまだ便利で、一部のユーザーはそれのほ<br>
+うが少しシンプルだと感じるかもしれません。考え方は、特別な名前の関数を呼び出<br>
+す、ということです。その関数は、オートロードスクリプトの中にあります。その 1<br>
+つのスクリプトをライブラリスクリプトと呼ぶことにします。<br>
 <br>
-オートロードのメカニズムは、関数名が &quot;#&quot; 文字を含んでいることが前提となってい<br>
-ます:<br>
+オートロードの仕組みは、&quot;#&quot; 文字を含む関数名に基づいています:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mylib#myfunction(arg)</div>
 <br>
-Vim は埋め込まれた &quot;#&quot; 文字によって関数名を認識し、まだ定義されていない場合は<br>
-&quot;autoload/mylib.vim&quot; というスクリプトを&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;から探します。そのスクリ<br>
-プトは &quot;mylib#myfunction()&quot; 関数を定義している必要があります。言うまでもなく、<br>
-&quot;mylib&quot; という名前は &quot;#&quot; の前の部分であり、&quot;.vim&quot; を追加してスクリプト名として<br>
-使用されます。<br>
+Vim は埋め込まれた &quot;#&quot; 文字によってその関数名を認識し、それがまだ定義されてい<br>
+ないときは、<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;でスクリプト &quot;autoload/mylib.vim&quot; を探します。そのス<br>
+クリプトは &quot;mylib#myfunction()&quot; 関数を定義しなければなりません。明らかに、名前<br>
+&quot;mylib&quot; は &quot;#&quot; の前の部分であり、&quot;.vim&quot; を付け加えてスクリプトの名前として使わ<br>
+れます。<br>
 <br>
-mylib.vim スクリプト内に他の多くの関数を置ことができ、ライブラリスクリプト内の<br>
-構成は自由です。ただし、'#' の前部分がスクリプト名に一致する関数名を使用する必<br>
-要があります。そうしないと、Vim はロードするスクリプトを認識できません。この点<br>
-がインポート/エクスポートのメカニズムとの違いになります。<br>
+mylib.vim スクリプトには他の多くの関数を入れることができ、ライブラリスクリプト<br>
+の中であなたの関数を自由に整理できます。しかし、'#' の前の部分がスクリプト名と<br>
+一致する関数名を使わなければなりません。そうしないと、Vim はどのスクリプトを読<br>
+み込むかがわからないでしょう。ここがインポート/エクスポートの仕組みと異なる点<br>
+です。<br>
 <br>
-本当に夢中になり多数のライブラリスクリプトを書くのであれば、サブディレクトリを<br>
-使用したいでしょう。例:<br>
+本当に熱中してたくさんのライブラリスクリプトを書く場合、サブディレクトリを使い<br>
+たくなるかもしれません。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;netlib#ftp#read('somefile')</div>
 <br>
-ここでは、スクリプト名は、関数名から最後の &quot;#&quot; までが取得されます。途中の &quot;#&quot;<br>
-はスラッシュで置き換えられ、最後の &quot;#&quot; は &quot;.vim&quot; で置き換えられます。したがっ<br>
-て、&quot;netlib/ftp.vim&quot; となります。Unixの場合、これに使われるライブラリスクリプ<br>
+ここでは、スクリプト名は関数名の最後の &quot;#&quot; までから取られます。途中の &quot;#&quot; はス<br>
+ラッシュに、最後のものは &quot;.vim&quot; に置き換えられます。したがって、<br>
+&quot;netlib/ftp.vim&quot; が得られます。Unix では、このために使われるライブラリスクリプ<br>
 トは次のようになります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~/.vim/autoload/netlib/ftp.vim<br>
 <br>
-ここで、関数はこのように定義されています:<br>
+そこで、関数は次のように定義されます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def netlib#ftp#read(fname: string)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;Read the file fname through ftp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;ファイル fname を ftp で読み込む<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enddef</div>
 <br>
-関数が定義されている名前は、関数を呼び出すときに使われる名前と全く同じであるこ<br>
-とに注意してください。また、最後の '#' の前の部分は、サブディレクトリとスクリ<br>
-プト名に完全に一致しています。<br>
+関数が定義されるときの名前は、関数を呼び出すために使われる名前とまったく同じで<br>
+あることに注目してください。そして、最後の '#' の前の部分は、サブディレクトリ<br>
+およびスクリプト名とちょうど一致します。<br>
 <br>
-変数にも同じメカニズムが使用できます:<br>
+同じ仕組みを変数にも使えます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var weekdays = dutch#weekdays</div>
 <br>
-これによりスクリプト &quot;autoload/dutch.vim&quot; がロードされ、次のような内容が含ま<br>
-れる必要があります:<br>
+これはスクリプト &quot;autoload/dutch.vim&quot; を読み込みます。それには次のようなものが<br>
+含まれているはずです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var dutch#weekdays = ['zondag', 'maandag', 'dinsdag', 'woensdag',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\ 'donderdag', 'vrijdag', 'zaterdag']</div>
 <br>
-参考文献:&nbsp;<a class="Identifier" href="userfunc.html#autoload">autoload</a>。<br>
+さらなる情報:&nbsp;<a class="Identifier" href="userfunc.html#autoload">autoload</a>。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_52.html#52.4" name="52.4">52.4</a>&nbsp;&nbsp;他に使えるメカニズム<br>
+<a class="Constant" href="usr_52.html#52.4" name="52.4">52.4</a>&nbsp;&nbsp;使用する他の仕組み<br>
 <br>
-複数のファイルを使用するのが面倒で、すべてを1つのスクリプトにまとめておくのを<br>
-好む人もいます。その結果として、起動が遅くなるのを回避するため、小さな部分のみ<br>
-を定義し、残りは実際に使用されるまで延期するメカニズムがあります。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_52.html#write-plugin-quickload" name="write-plugin-quickload">write-plugin-quickload</a><br>
+複数のファイルを使うのを面倒に思い、すべてを 1 つのスクリプトにまとめておくこ<br>
+とを好む人もいるでしょう。これにより起動が遅くなるのを避けるために、小さな部分<br>
+だけを定義し、残りを実際に使われるときまで延期する仕組みがあります。<br>
+<a class="Constant" href="usr_52.html#write-plugin-quickload" name="write-plugin-quickload">write-plugin-quickload</a><br>
 <br>
-基本的な考え方は、プラグインは2回ロードされるということです。初回は、機能を提<br>
-供するためのユーザーコマンドとマッピングが定義されます。2回目は、その機能を実<br>
-装する関数が定義されます。<br>
+基本的な考え方は、プラグインが 2 回読み込まれるということです。1 回目は、機能<br>
+を提供するユーザーコマンドおよびマッピングが定義されます。2 回目は、機能を実装<br>
+する関数が定義されます。<br>
 <br>
-高速ロードがスクリプトを2回ロードすることを意味するのは意外に思われるかもしれ<br>
-ません。つまり、初回は素早く読み込み、2回目にスクリプトの大部分を読み込ませる<br>
-ということです。この機能は、実際に使用するときにのみ発生します。常に機能を使用<br>
-する場合、実際には遅くなります!<br>
+クイックロードがスクリプトを 2 回読み込むことを意味するというのは、驚くように<br>
+聞こえるかもしれません。私たちが意味しているのは、1 回目は素早く読み込み、スク<br>
+リプトの大部分を 2 回目に延期するということで、2 回目は実際にそれを使うときに<br>
+だけ起こります。常にその機能を使う場合、実際には遅くなります!<br>
 <br>
-これは、FuncUndefined 自動コマンドを使用しています。上で説明した&nbsp;<a class="Identifier" href="userfunc.html#autoload">autoload</a>&nbsp;機<br>
-能とは異なる動作をします。<br>
+これは FuncUndefined 自動コマンドを使います。これは上で説明した&nbsp;<a class="Identifier" href="userfunc.html#autoload">autoload</a>&nbsp;の<br>
+機能とは異なる動作をします。<br>
 <br>
-以下の例は、その方法を示しています:<br>
+以下の例は、それがどのように行われるかを示します:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; Vim global plugin for demonstrating quick loading<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; クイックロードを実演するための Vim グローバルプラグイン<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; Last Change:&nbsp;&nbsp;2005 Feb 25<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; Maintainer:&nbsp;&nbsp; Bram Moolenaar &lt;Bram@vim.org&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; License:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This file is placed in the public domain.</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; License:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このファイルはパブリックドメインに置かれている。</div>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if !exists(&quot;s:did_load&quot;)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;command -nargs=* BNRead&nbsp;&nbsp;call BufNetRead(&lt;f-args&gt;)<br>
@@ -321,84 +320,84 @@ mylib.vim スクリプト内に他の多くの関数を置ことができ、ラ�
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function BufNetRead(...)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo 'BufNetRead(' .. string(a:000) .. ')'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; read functionality here<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 読み込み機能をここに<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfunction</div>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function BufNetWrite(...)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo 'BufNetWrite(' .. string(a:000) .. ')'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; write functionality here<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 書き込み機能をここに<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfunction</div>
 <br>
-スクリプトの初回ロード時は &quot;s:did_load&quot; は未設定です。&quot;if&quot; と &quot;endif&quot; の間のコ<br>
-マンドが実行されます。これは&nbsp;<a class="Identifier" href="repeat.html#:finish">:finish</a>&nbsp;コマンドで終わり、残りのスクリプトは実<br>
-行されません。<br>
+スクリプトが最初に読み込まれるとき、&quot;s:did_load&quot; は設定されていません。&quot;if&quot; と<br>
+&quot;endif&quot; の間のコマンドが実行されます。これは&nbsp;<a class="Identifier" href="repeat.html#:finish">:finish</a>&nbsp;コマンドで終わるので、<br>
+スクリプトの残りは実行されません。<br>
 <br>
-スクリプトの2回目ロード時は &quot;s:did_load&quot; は存在し、&quot;endif&quot; 以降のコマンドが実<br>
-行されます。これは(長い可能性のある) BufNetRead() と BufNetWrite() 関数を定義<br>
-します。<br>
+2 回目にスクリプトが読み込まれるとき、&quot;s:did_load&quot; が存在し、&quot;endif&quot; の後のコ<br>
+マンドが実行されます。これにより、(長いかもしれない) BufNetRead() および<br>
+BufNetWrite() 関数が定義されます。<br>
 <br>
-あなたのプラグインディレクト内にスクリプトを置くと Vim は初期化時に実行します。<br>
-このような流れでイベントが発生します:<br>
+このスクリプトをあなたのプラグインディレクトリに置いた場合、Vim は起動時にそれ<br>
+を実行します。これが起こるイベントの順序です:<br>
 <br>
-1. 起動時にスクリプトが読み込まれた時、&quot;BNRead&quot; コマンドが定義され、<span class="Special">&lt;F19&gt;</span>&nbsp;キー<br>
-&nbsp;&nbsp; がマッピングされる。<a class="Identifier" href="autocmd.html#FuncUndefined">FuncUndefined</a>&nbsp;自動コマンドが定義される。&quot;:finish&quot; コ<br>
-&nbsp;&nbsp; マンドは、スクリプトを早期に終了させる。<br>
+1. スクリプトが起動時に読み込まれるとき、&quot;BNRead&quot; コマンドが定義され、<span class="Special">&lt;F19&gt;</span><br>
+&nbsp;&nbsp; キーがマップされる。<a class="Identifier" href="autocmd.html#FuncUndefined">FuncUndefined</a>&nbsp;自動コマンドが定義される。&quot;:finish&quot; コ<br>
+&nbsp;&nbsp; マンドにより、スクリプトは早く終了する。<br>
 <br>
-2. ユーザーが BNRead コマンドをタイプするか&nbsp;<span class="Special">&lt;F19&gt;</span>&nbsp;キーを押す。BufNetRead()<br>
-&nbsp;&nbsp; か BufNetWrite() 関数が呼ばれる。<br>
+2. ユーザーが BNRead コマンドをタイプするか、または&nbsp;<span class="Special">&lt;F19&gt;</span>&nbsp;キーを押す。<br>
+&nbsp;&nbsp; BufNetRead() または BufNetWrite() 関数が呼ばれる。<br>
 <br>
-3. Vim は関数を見つけることができず、<a class="Identifier" href="autocmd.html#FuncUndefined">FuncUndefined</a>&nbsp;自動コマンドイベントが発<br>
-&nbsp;&nbsp; 生する。パターン &quot;BufNet*&quot; は呼び出された関数と一致するため、コマンド<br>
-&nbsp;&nbsp; &quot;source fname&quot; が実行される。&quot;fname&quot; は、&quot;<span class="Special">&lt;sfile&gt;</span>&quot; (<a class="Identifier" href="builtin.html#expand()">expand()</a>&nbsp;を参照) を展<br>
-&nbsp;&nbsp; 開したものであるため、スクリプトがどこにあるかに関係なく、スクリプトの名前<br>
-&nbsp;&nbsp; と等しくなる。<br>
+3. Vim はその関数を見つけられず、<a class="Identifier" href="autocmd.html#FuncUndefined">FuncUndefined</a>&nbsp;自動コマンドイベントを発生さ<br>
+&nbsp;&nbsp; せる。パターン &quot;BufNet*&quot; は呼び出された関数にマッチするので、コマンド<br>
+&nbsp;&nbsp; &quot;source fname&quot; が実行される。&quot;fname&quot; は、それがどこにあるかに関係なく、スク<br>
+&nbsp;&nbsp; リプトの名前と同じになる。それは &quot;<span class="Special">&lt;sfile&gt;</span>&quot; を展開したもの (<a class="Identifier" href="builtin.html#expand()">expand()</a>&nbsp;を参<br>
+&nbsp;&nbsp; 照) だからである。<br>
 <br>
-4. スクリプトは再度読み込まれ、&quot;s:did_load&quot; 変数は存在し、関数が定義される。<br>
+4. スクリプトが再び読み込まれ、&quot;s:did_load&quot; 変数が存在し、関数が定義される。<br>
 <br>
-ロードされた後の関数が&nbsp;<a class="Identifier" href="autocmd.html#FuncUndefined">FuncUndefined</a>&nbsp;自動コマンドのパターンにマッチすること<br>
-に注意してください。他のプラグインで定義するパターンにマッチする関数がないよう<br>
-にしないといけません。<br>
+後で読み込まれる関数は&nbsp;<a class="Identifier" href="autocmd.html#FuncUndefined">FuncUndefined</a>&nbsp;自動コマンドのパターンにマッチすること<br>
+に注目してください。他のプラグインがこのパターンにマッチする関数を定義しないこ<br>
+とを確認する必要があります。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_52.html#52.5" name="52.5">52.5</a>&nbsp;&nbsp;旧来のスクリプトから Vim9 script を使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_52.html#source-vim9-script" name="source-vim9-script">source-vim9-script</a><br>
 <br>
-いくつかの場合として持っている旧来の Vim script にて Vim9 script のアイテムを<br>
-使いたいことがあります。例えばあなたの .vimrc がプラグインの初期化をする場合な<br>
-どです。最良の方法は&nbsp;<a class="Comment" href="vim9.html#:import">:import</a>&nbsp;を使うことです。例:<br>
+場合によっては、Vim9 script の項目を使いたい旧来の Vim script があります。例え<br>
+ば、あなたの .vimrc でプラグインを初期化したいとします。これを行う最もよい方法<br>
+は、<a class="Comment" href="vim9.html#:import">:import</a>&nbsp;を使うことです。例えば:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;import 'myNicePlugin.vim'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call myNicePlugin.NiceInit('today')</div>
 <br>
-これは、Vim9 script ファイル内でエクスポートされた関数 &quot;NiceInit&quot; を見つけ、ス<br>
-クリプトローカルな項目 &quot;myNicePlugin.NiceInit&quot; として使用できるようにします。<br>
-<a class="Comment" href="vim9.html#:import">:import</a>&nbsp;は、&quot;s:&quot; が指定されていない場合でも、常にスクリプトの名前空間を使用<br>
-します。&quot;myNicePlugin.vim&quot; がすでに読み込まれていた場合、再度読み込まれること<br>
-はありません。<br>
+これは Vim9 script ファイル内のエクスポートされた関数 &quot;NiceInit&quot; を見つけ、そ<br>
+れをスクリプトローカルな項目 &quot;myNicePlugin.NiceInit&quot; として使用可能にします。<br>
+<a class="Comment" href="vim9.html#:import">:import</a>&nbsp;は、&quot;s:&quot; が指定されていないときでも、常にスクリプト名前空間を使いま<br>
+す。&quot;myNicePlugin.vim&quot; がすでに読み込まれている場合、再び読み込まれることはあ<br>
+りません。<br>
 <br>
-その上アイテムがグローバルの名前空間に置かれるのを防ぎ (名前の衝突が不測の問題<br>
-になり得ます)、そしてたとえ何度もアイテムをインポートしても、スクリプトの読み<br>
-込みがただ一度であることを意味します。<br>
+グローバル名前空間に項目を置くことを避ける (そこでは名前の衝突が予期しないエ<br>
+ラーを引き起こすことがある) ことに加えて、これは、そこから項目が何回インポート<br>
+されても、スクリプトが 1 回だけ読み込まれることも意味します。<br>
 <br>
-いくつかの場合、例えばテストなどで、ただ Vim9 script を読み込みたいだけのこと<br>
-があります。大丈夫ですが、グローバルのアイテムだけが利用可能となります。Vim9<br>
-script ではこうしたグローバルのアイテムで確実にユニークな名前を使うようにしな<br>
-くてはなりません。 例:<br>
+場合によっては、例えばテストのために、単に Vim9 script を読み込みたいこともあ<br>
+るでしょう。それは OK ですが、その場合はグローバルな項目だけが使用可能になりま<br>
+す。Vim9 script は、これらのグローバルな項目に一意な名前を使うようにする必要が<br>
+あります。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;source ~/.vim/extra/myNicePlugin.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call g:NicePluginTest()</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_52.html#52.6" name="52.6">52.6</a>&nbsp;&nbsp;Vim9 サンプル: comment および highlight-yank プラグイン<br>
+<a class="Constant" href="usr_52.html#52.6" name="52.6">52.6</a>&nbsp;&nbsp;Vim9 の例: コメントおよびハイライトヤンクプラグイン<br>
 <br>
-<span class="Statement">comment パッケージ</span><br>
+<span class="Statement">コメントパッケージ</span><br>
 <br>
-Vim には、Vim9 script で記述されたコメントプラグインが付属しています。<br>
+Vim には、Vim9 script で書かれたコメントプラグインが付属しています。<br>
 <a class="Identifier" href="usr_05.html#comment-install">comment-install</a><br>
-$VIMRUNTIME/pack/dist/opt/comment/ にあるパッケージを確認してください。<br>
+$VIMRUNTIME/pack/dist/opt/comment/ にあるパッケージを見てください<br>
 <br>
-<span class="Statement">highlight-yank プラグイン</span><br>
+<span class="Statement">ハイライトヤンクプラグイン</span><br>
 <br>
-Vim には、Vim9 script で記述された highlight-yank プラグインが付属しています。<br>
-<a class="Identifier" href="usr_05.html#hlyank-install">hlyank-install</a>。以下は簡略化された実装です:<br>
+Vim には、Vim9 script で書かれた highlight-yank プラグインが付属しています<br>
+<a class="Identifier" href="usr_05.html#hlyank-install">hlyank-install</a>、ここに簡略化された実装があります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9script</span><br>
 <br>
@@ -423,12 +422,12 @@ Vim には、Vim9 script で記述された highlight-yank プラグインが付
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">autocmd</span>&nbsp;<span class="Type">TextYankPost</span>&nbsp;<span class="Special">*</span>&nbsp;HighlightedYank<span class="Special">()</span><br>
 <br>
-完全な例については、<span class="Comment">$VIMRUNTIME/pack/dist/opt/hlyank/</span>&nbsp;にあるパッケージを参照<br>
-してください。<br>
+完全な例については、<span class="Comment">$VIMRUNTIME/pack/dist/opt/hlyank/</span>&nbsp;にあるパッケージを見て<br>
+ください<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_90.html">usr_90.txt</a>&nbsp;&nbsp;ViAI のインストール<br>
+次章:&nbsp;<a class="Identifier" href="usr_90.html">usr_90.txt</a>&nbsp;&nbsp;ViAI をインストールする<br>
 <br>
 <br>
 Copyright: see&nbsp;<a class="Identifier" href="usr_01.html#manual-copyright">manual-copyright</a>&nbsp;&nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
