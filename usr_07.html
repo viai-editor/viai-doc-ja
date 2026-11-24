@@ -9,467 +9,475 @@ helpname: 'usr_07'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 複数のファイルを開く<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;複数のファイルを編集する<br>
 <br>
 <br>
-どんなにファイルが多くても心配はいりません。Vim を複数起動することなしに、それ<br>
-らのファイルを編集できます。作業するファイルのリストを定義して、他のファイルに<br>
-ジャンプしたりテキストをコピーしたりできます。<br>
+いくつファイルがあっても、Vim を離れずにそれらを編集できます。作業するファイル<br>
+のリストを定義し、あるファイルから別のファイルへジャンプします。あるファイルか<br>
+らテキストをコピーし、別のファイルに貼り付けます。<br>
 <br>
-<a class="Identifier" href="usr_07.html#07.1">07.1</a>&nbsp;&nbsp;他のファイルを開く<br>
+<a class="Identifier" href="usr_07.html#07.1">07.1</a>&nbsp;&nbsp;別のファイルを編集する<br>
 <a class="Identifier" href="usr_07.html#07.2">07.2</a>&nbsp;&nbsp;ファイルのリスト<br>
-<a class="Identifier" href="usr_07.html#07.3">07.3</a>&nbsp;&nbsp;他のファイルにジャンプする<br>
+<a class="Identifier" href="usr_07.html#07.3">07.3</a>&nbsp;&nbsp;ファイルからファイルへジャンプする<br>
 <a class="Identifier" href="usr_07.html#07.4">07.4</a>&nbsp;&nbsp;バックアップファイル<br>
-<a class="Identifier" href="usr_07.html#07.5">07.5</a>&nbsp;&nbsp;他のファイルにテキストをコピーする<br>
-<a class="Identifier" href="usr_07.html#07.6">07.6</a>&nbsp;&nbsp;読み込み専用モード<br>
-<a class="Identifier" href="usr_07.html#07.7">07.7</a>&nbsp;&nbsp;ファイル名の変更<br>
+<a class="Identifier" href="usr_07.html#07.5">07.5</a>&nbsp;&nbsp;ファイル間でテキストをコピーする<br>
+<a class="Identifier" href="usr_07.html#07.6">07.6</a>&nbsp;&nbsp;ファイルを閲覧する<br>
+<a class="Identifier" href="usr_07.html#07.7">07.7</a>&nbsp;&nbsp;ファイル名を変更する<br>
 <br>
 次章:&nbsp;<a class="Identifier" href="usr_08.html">usr_08.txt</a>&nbsp;&nbsp;ウィンドウの分割<br>
-前章:&nbsp;<a class="Identifier" href="usr_06.html">usr_06.txt</a>&nbsp;&nbsp;構文強調表示<br>
+前章:&nbsp;<a class="Identifier" href="usr_06.html">usr_06.txt</a>&nbsp;&nbsp;構文ハイライトを使う<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_07.html#07.1" name="07.1">07.1</a>&nbsp;&nbsp;他のファイルを開く<br>
+<a class="Constant" href="usr_07.html#07.1" name="07.1">07.1</a>&nbsp;&nbsp;別のファイルを編集する<br>
 <br>
-いままでは、ファイルを開くごとに Vim を起動しなければなりませんでしたが、もっ<br>
-と簡単な方法があります。次のコマンドを使ってください:<br>
+これまでは、編集したいファイルごとに Vim を起動しなければなりませんでした。もっ<br>
+と簡単な方法があります。別のファイルの編集を始めるには、このコマンドを使います:<br>
+<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:edit foo.txt</div>
 <br>
-ファイル名は &quot;foo.txt&quot; に限らず何でも使えます。Vim は現在のファイルを閉じて、<br>
-指定されたファイルを開きます。ファイルの変更が保存されていない場合は、エラー<br>
-メッセージが表示され、新しいファイルは開かれません。<br>
+&quot;foo.txt&quot; の代わりに任意のファイル名を使えます。Vim はカレントファイルを閉じ、<br>
+新しいファイルを開きます。しかし、カレントファイルに保存されていない変更がある<br>
+場合、Vim はエラーメッセージを表示し、新しいファイルを開きません:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">E37: 最後の変更が保存されていません (! で変更を破棄)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">E37: No write since last change (use ! to override)</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;エラーメッセージの先頭には エラーID が表示されます。エラーの意味や原因<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;がわからない場合は、この ID をヘルプで引いてください。上記エラーの場合<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、このようにします:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim は各エラーメッセージの先頭にエラー ID を付けます。メッセージ、また<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;はその原因が理解できない場合、ヘルプシステムでこの ID を探してくださ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い。この場合:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:help E37</div>
 <br>
-このエラーを回避するには、次のコマンドでファイルを保存してください:<br>
+この時点で、いくつかの選択肢があります。このコマンドを使ってファイルを書き込め<br>
+ます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:write</div>
 <br>
-あるいは、変更を破棄して新しいファイルを開くこともできます。(!) 文字を使ってく<br>
-ださい:<br>
+または、強制 (!) 文字を使って、Vim にあなたの変更を破棄させて新しいファイルを<br>
+編集させることができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:edit! foo.txt</div>
 <br>
-ファイルの変更を保存せずに他のファイルを開きたい場合は、ファイルを隠す方法もあ<br>
-ります:<br>
+別のファイルを編集したいが、カレントファイルの変更はまだ書き込みたくない場合、<br>
+それを隠すことができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:hide edit foo.txt</div>
 <br>
-ファイルの変更はまだ破棄されませんが、ファイルは画面外に隠れてしまいます。詳し<br>
-くは<a class="Identifier" href="usr_22.html#22.4">22.4</a>バッファリスト で説明します。<br>
+変更されたテキストはまだそこにありますが、見えません。これはセクション&nbsp;<a class="Identifier" href="usr_22.html#22.4">22.4</a>:<br>
+バッファリスト でさらに説明されています。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_07.html#07.2" name="07.2">07.2</a>&nbsp;&nbsp;ファイルのリスト<br>
 <br>
-Vim を起動するときに、複数のファイルを指定することができます。例:<br>
+一連のファイルを編集するために Vim を起動できます。例えば:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim one.c two.c three.c</div>
 <br>
-このコマンドは Vim を起動し、三つのファイルを開くように指示しています。Vim は<br>
-一つ目のファイル (one.c) だけを表示します。そのファイルの編集が終わり、次のファ<br>
-イル (two.c) を編集したい場合はこのコマンドを使います:<br>
+このコマンドは Vim を起動し、3 つのファイルを編集することを Vim に伝えます。<br>
+Vim は最初のファイルだけを表示します。このファイルであなたのやることを済ませた<br>
+後、次のファイルを編集するには、このコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:next</div>
 <br>
-ファイルの変更が保存されていない場合は、エラーメッセージが表示され、&quot;:next&quot; コ<br>
-マンドは中断されます。前節で述べた &quot;:edit&quot; の場合と同じです。変更を破棄するに<br>
-は次のコマンドを使います。<br>
+カレントファイルに保存されていない変更がある場合、エラーメッセージが表示され、<br>
+&quot;:next&quot; は動作しません。これは前のセクションで述べた &quot;:edit&quot; と同じ問題です。<br>
+変更を破棄するには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:next!</div>
 <br>
-しかしほとんどの場合、変更を保存してから次のファイルを開くと思います。それには<br>
-専用のコマンドが用意されています。<br>
+しかし、たいていは変更を保存して次のファイルに移りたいでしょう。このための特別<br>
+なコマンドがあります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:wnext</div>
 <br>
-これは次の二つのコマンドを使うのと同じ結果となります。<br>
+これは 2 つの別々のコマンドを使うのと同じことをします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:write<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:next</div>
 <br>
 <br>
-<span class="Statement">私はドコにいるの？</span><br>
+<span class="Statement">私はどこにいるのか?</span><br>
 <br>
-今編集しているのが引数リスト中のどのファイルなのかは、ウィンドウタイトルを見れ<br>
-ばわかります。そこに &quot;(2 of 3)&quot; のような表示があります。この場合は全部で三つの<br>
-ファイルがあり、今は二つ目を編集しているという意味です。<br>
-次のコマンドでファイルの一覧を表示できます:<br>
+引数リストのどのファイルを編集しているかを知るには、ウィンドウのタイトルを見て<br>
+ください。&quot;(2 of 3)&quot; のようなものが表示されているはずです。これは、3 つのファ<br>
+イルのうち 2 番目のファイルを編集していることを意味します。<br>
+&nbsp;&nbsp; ファイルのリストを見たい場合、このコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:args</div>
 <br>
-これは &quot;arguments&quot; の省略形です。結果は次のように表示されます。<br>
+これは &quot;arguments&quot; の短縮形です。出力はこのようになるかもしれません:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">one.c [two.c] three.c</span><br>
 <br>
-Vim を起動したときに指定したファイルが表示されます。編集中のファイル (ここでは<br>
-&quot;two.c&quot;) は [] 記号で囲んで表示されます。<br>
+これらは Vim を起動したときのファイルです。現在編集しているもの、&quot;two.c&quot; は角<br>
+括弧で囲まれています。<br>
 <br>
 <br>
-<span class="Statement">他のファイルへの移動</span><br>
+<span class="Statement">他の引数に移動する</span><br>
 <br>
-これはファイルを一つ戻るコマンドです。<br>
+1 つ前のファイルに戻るには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:previous</div>
 <br>
-&quot;:next&quot; コマンドと同じ動作ですが、移動する方向が違います。このコマンドにも、<br>
-ファイル保存してから移動する専用のコマンドがあります。<br>
+これは &quot;:next&quot; コマンドとまったく同じですが、逆方向に移動する点が異なります。<br>
+ここでも、先にファイルを書き込みたいときのためのショートカットコマンドがありま<br>
+す:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:wprevious</div>
 <br>
-一覧の最後のファイルに移動するには次のコマンドを使います。<br>
+リストの一番最後のファイルに移動するには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:last</div>
 <br>
-最初のファイルに戻るには次のコマンドです。<br>
+そして、再び最初のファイルに戻るには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:first</div>
 <br>
-&quot;:wlast&quot; とか &quot;:wfirst&quot; みたいなコマンドはありません。<br>
+ただし、&quot;:wlast&quot; または &quot;:wfirst&quot; コマンドはありません!<br>
 <br>
-&quot;:next&quot; と &quot;:previous&quot; にはカウンタを指定できます。例えば、二つ先のファイルに<br>
-進むにはこのようにします。<br>
+&quot;:next&quot; および &quot;:previous&quot; にはカウントを使えます。2 つ先のファイルにスキップ<br>
+するには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:2next</div>
 <br>
 <br>
-<span class="Statement">自動保存</span><br>
+<span class="Statement">自動書き込み</span><br>
 <br>
-いろんなファイルを編集して回るときには、&quot;:write&quot; で保存するのを忘れないでくだ<br>
-さい。変更を保存せずに移動しようとすると、エラーメッセージが表示されます。移動<br>
-するときはいつでも変更を保存したいと思った場合は、次のように設定してください。<br>
-変更が自動的に保存されるようになります。<br>
+ファイル間を移動して変更を加えるときは、&quot;:write&quot; を使うことを覚えておかなけれ<br>
+ばなりません。そうしないと、エラーメッセージが表示されます。変更されたファイル<br>
+を常に書き込みたいと確信している場合、自動的に書き込むように Vim に指示できま<br>
+す:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set autowrite</div>
 <br>
-保存して欲しくないファイルを編集するときは、機能をオフに設定してください。<br>
+書き込みたくないかもしれないファイルを編集しているときは、それを再びオフにして<br>
+ください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set noautowrite</div>
 <br>
 <br>
-<span class="Statement">他のファイルリストで編集する</span><br>
+<span class="Statement">別のファイルのリストを編集する</span><br>
 <br>
-Vim を再起動しなくても、ファイルリストを変更できます。例えば、他の三つのファイ<br>
-ルを編集するには次のようにします。<br>
+Vim を終了して再び起動する必要なしに、ファイルのリストを再定義できます。他の 3<br>
+つのファイルを編集するには、このコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:args five.c six.c seven.h</div>
 <br>
-シェルと同じようにワイルドカードを使うこともできます。<br>
+または、シェルで使われるようにワイルドカードを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:args *.txt</div>
 <br>
-リストの最初のファイルがまず開かれます。ここでも、現在のファイルの変更をまだ保<br>
-存していない場合は、ファイルを保存するか、&quot;:args!&quot; (! が付いています) を使って<br>
-変更を破棄する必要があります。<br>
+Vim はリストの最初のファイルに移動します。ここでも、カレントファイルに変更があ<br>
+る場合、まずファイルを書き込むか、または変更を破棄するために &quot;:args!&quot; (! を付<br>
+加) を使うことができます。<br>
 <br>
 <br>
-<span class="Statement">最後のファイルまで編集した？</span><br>
+<span class="Statement">最後のファイルを編集しましたか?</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_07.html#arglist-quit" name="arglist-quit">arglist-quit</a><br>
-ファイルリストが使われると、Vim は、すべてのファイルが編集対象だと判断します。<br>
-間違って Vim を終了してしまうことがないように、すべてのファイルをまだ開いてい<br>
-ないのに終了しようとした場合は、エラーメッセージが表示されます:<br>
+ファイルのリストを使うとき、Vim はそれらすべてを編集したいと仮定します。早すぎ<br>
+る終了から保護するために、リストの最後のファイルをまだ編集していないときは、こ<br>
+のエラーが表示されます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">E173: 編集すべきファイルがあと 46 個あります。</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">E173: 46 more files to edit</span><br>
 <br>
-本当に終了してよければ、もう一度終了コマンドを実行してください。今度は終了でき<br>
-ます (間に他のコマンドを挟まないでください)。<br>
+本当に終了したい場合、もう一度終了するだけです。そうすると動作します (ただし、<br>
+間に他のコマンドを実行したときは動作しません)。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_07.html#07.3" name="07.3">07.3</a>&nbsp;&nbsp;他のファイルにジャンプする<br>
+<a class="Constant" href="usr_07.html#07.3" name="07.3">07.3</a>&nbsp;&nbsp;ファイルからファイルへジャンプする<br>
 <br>
-<span class="Special">CTRL-^</span>&nbsp;を使うと二つのファイル間を素早く移動できます(日本語キーボードなら ^ は<br>
-'-' キーの右側 (「へ」キー) にあります)。例:<br>
+2 つのファイル間を素早くジャンプするには、<span class="Special">CTRL-^</span>&nbsp;を押します (英語-US キーボー<br>
+ドでは ^ は 6 キーの上にあります)。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:args one.c two.c three.c</div>
 <br>
-上を実行すると &quot;one.c&quot; が開きます。<br>
+これで one.c にいます。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:next</div>
 <br>
-これで、&quot;two.c&quot; になりました。ここで&nbsp;<span class="Special">CTRL-^</span>&nbsp;を使うと &quot;one.c&quot; に戻ります。もう<br>
-一度&nbsp;<span class="Special">CTRL-^</span>&nbsp;を押すと &quot;two.c&quot; に戻ります。さらに&nbsp;<span class="Special">CTRL-^</span>&nbsp;を使うと &quot;one.c&quot; になり<br>
-ます。さて、ここで次のコマンドを実行します。<br>
+これで two.c にいます。ここで&nbsp;<span class="Special">CTRL-^</span>&nbsp;を使って one.c に戻ります。もう 1 回<br>
+<span class="Special">CTRL-^</span>&nbsp;で two.c に戻ります。もう 1 回&nbsp;<span class="Special">CTRL-^</span>&nbsp;で再び one.c にいます。ここでこう<br>
+した場合:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:next</div>
 <br>
-すると、&quot;three.c&quot; になります。<span class="Special">CTRL-^</span>&nbsp;コマンドはファイルリスト中での現在地を変<br>
-更しません。&quot;:next&quot; や &quot;:previous&quot; のようなコマンドだけが現在地を変更します。<br>
+three.c にいます。<span class="Special">CTRL-^</span>&nbsp;コマンドは、ファイルのリスト内でどこにいるかという認<br>
+識を変えないことに注意してください。&quot;:next&quot; および &quot;:previous&quot; のようなコマン<br>
+ドだけがそれを行います。<br>
 <br>
-直前に編集していたファイルのことをオルタネートファイル (alternate file) と言い<br>
-ます。Vim の起動直後はオルタネートファイルがまだ無いため&nbsp;<span class="Special">CTRL-^</span>&nbsp;は動作しませ<br>
-ん。<br>
+以前に編集していたファイルは &quot;代替&quot; ファイルと呼ばれます。Vim を起動したばかり<br>
+のときは、以前のファイルがないので&nbsp;<span class="Special">CTRL-^</span>&nbsp;は動作しません。<br>
 <br>
 <br>
-<span class="Statement">定義済マーク</span><br>
+<span class="Statement">定義済みのマーク</span><br>
 <br>
-他のファイルにジャンプすると、二つの定義済マークが使えるようになります。これは<br>
-非常に便利です。<br>
+別のファイルにジャンプした後、とても便利な 2 つの定義済みのマークを使えます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`&quot;</div>
 <br>
-このコマンドを実行すると、以前にファイルを開いていたときにいた場所にカーソルが<br>
-移動します。もう一つは、最後に変更を加えた場所に設定されたマークです。<br>
+これは、ファイルを離れたときにカーソルがあった位置に移動します。記憶されている<br>
+もう 1 つのマークは、最後に変更を加えた位置です:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`.</div>
 <br>
-例えば、&quot;one.txt&quot; を編集しているとします。ファイルの真ん中あたりで &quot;x&quot; を使っ<br>
-て文字を削除しました。そして、&quot;G&quot; を使って最後の行に移動し、&quot;:w&quot; でファイルを<br>
-保存します。他のファイルをいくつか編集してから、&quot;:edit one.txt&quot; で &quot;one.txt&quot;<br>
-に戻ってきました。ここで、`&quot; を実行すると、ファイルの最後の行にカーソルが移動<br>
-します。`. を実行すると、文字を削除した場所に移動します。ファイル内をいろいろ<br>
-と移動した後でも、`&quot; と `. は同じ場所を覚えています。少なくとも、他の変更を加<br>
-えたり、別のファイルに移動したりするまでは。<br>
+ファイル &quot;one.txt&quot; を編集しているとします。ファイルの途中のどこかで、&quot;x&quot; を使っ<br>
+て 1 文字削除します。それから &quot;G&quot; で最後の行に行き、&quot;:w&quot; でファイルを書き込み<br>
+ます。他のいくつかのファイルを編集し、それから &quot;:edit one.txt&quot; を使って<br>
+&quot;one.txt&quot; に戻ってきます。ここで `&quot; を使った場合、Vim はファイルの最後の行に<br>
+ジャンプします。`. を使うと、文字を削除した位置に移動します。ファイル内を移動<br>
+しても、`&quot; および `. は記憶された位置に連れていってくれます。少なくとも、別の<br>
+変更を加えるか、またはファイルを離れるまでは。<br>
 <br>
 <br>
 <span class="Statement">ファイルマーク</span><br>
 <br>
-<a class="Identifier" href="usr_03.html#03.10">03.10</a>&nbsp;節では &quot;mx&quot; でマークを付け、&quot;`x&quot; でその場所にジャンプする方法を説明し<br>
-ました。そのマークはファイルの中だけで使えます。別のファイルを開いて、それに同<br>
-じマークを付けても、マークはそのファイルに固有のものとなります。つまり各ファイ<br>
-ルはそれぞれのマークを持っていて、ファイル内に閉じているということです。いまま<br>
-では、マークに小文字を使ってきましたが、大文字のマークも使えます。<br>
-大文字のマークはグローバルで、どのファイルからでも使えます。例えば &quot;foo.txt&quot;<br>
-というファイルを開き、&quot;50%&quot; コマンドでファイルの真ん中にジャンプして、その場所<br>
-に F というマークを付けたとします:<br>
+セクション&nbsp;<a class="Identifier" href="usr_03.html#03.10">03.10</a>&nbsp;では、&quot;mx&quot; でファイルにマークを置き、&quot;`x&quot; でその位置にジャ<br>
+ンプする方法が説明されました。それは 1 つのファイル内で機能します。別のファイ<br>
+ルを編集してそこにマークを置いた場合、それらはそのファイルに固有です。したがっ<br>
+て、各ファイルは独自のマークのセットを持ち、それらはファイルにローカルです。<br>
+&nbsp;&nbsp; これまでは小文字のマークを使っていました。大文字のマークもあります。これら<br>
+はグローバルで、どのファイルからでも使えます。例えば、ファイル &quot;foo.txt&quot; を編<br>
+集しているとします。ファイルの半分 (&quot;50%&quot;) まで行き、そこに F マークを置きます<br>
+(foo の F):<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;50%mF</div>
 <br>
-次に &quot;bar.txt&quot; を開き、最終行にマーク B を付けます:<br>
+ここでファイル &quot;bar.txt&quot; を編集し、その最後の行に B マーク (bar の B) を置きま<br>
+す:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GmB</div>
 <br>
-さて、ここで &quot;'F&quot; コマンドを使うと、いきなり foo.txt の真ん中にジャンプできま<br>
-す。さらに、他のファイルを開いてから &quot;'B&quot; を入力すると、bar.txt の行末に移動で<br>
-きます。<br>
+これで &quot;'F&quot; コマンドを使って foo.txt の半分のところに戻ることができます。また<br>
+は、さらに別のファイルを編集し、&quot;'B&quot; とタイプすると、再び bar.txt の最後にいま<br>
+す。<br>
 <br>
-他の場所を設定するまで、ファイルマークは同じ場所を記憶しています。そのため、一<br>
-度マークを付ければ、何時間も編集を行ってからでもそのマークに戻って来ることがで<br>
-きます。<br>
-マークの文字とマークを付けた場所が連想できるような単純なルールを決めておくとよ<br>
-いでしょう。例えば、ヘッダーファイルは H、makeファイルは M、C 言語のソースには<br>
-C といった具合です。<br>
+ファイルマークは、どこか他の場所に置かれるまで記憶されます。したがって、マーク<br>
+を置いて、何時間も編集をしても、まだそのマークに戻ってジャンプできます。<br>
+&nbsp;&nbsp; マークの文字と、それが置かれる場所の間に、単純な関連を考えると便利なことが<br>
+よくあります。例えば、ヘッダーファイルでは H マーク、Makefile では M、および C<br>
+コードファイルでは C を使います。<br>
 <br>
-マークが置いてある場所を確認するには、&quot;:marks&quot; コマンドにそのマークを指定して<br>
-ください。<br>
+特定のマークがどこにあるかを見るには、&quot;:marks&quot; コマンドに引数を与えます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:marks M</div>
 <br>
-マークを複数指定しても構いません。<br>
+いくつかの引数を与えることもできます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:marks MCP</div>
 <br>
-マークを使わなくても、<span class="Special">CTRL-O</span>&nbsp;と&nbsp;<span class="Special">CTRL-I</span>&nbsp;を使えば、古い場所と新しい場所の間を<br>
-ジャンプできることをお忘れなく。<br>
+<span class="Special">CTRL-O</span>&nbsp;および&nbsp;<span class="Special">CTRL-I</span>&nbsp;を使って、そこにマークを置かなくても、より古い位置および<br>
+より新しい位置にジャンプできることを忘れないでください。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_07.html#07.4" name="07.4">07.4</a>&nbsp;&nbsp;バックアップファイル<br>
 <br>
-初期設定ではバックアップファイルは作成されません。バックアップファイルが必要な<br>
-ら、次のコマンドを実行してください:<br>
+通常、Vim はバックアップファイルを作成しません。作成したい場合は、以下のコマン<br>
+ドを実行するだけです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set backup</div>
 <br>
-バックアップファイルの名前は、ファイル名の後ろに ~ を加えた名前になります。<br>
-例えば、ファイル名が data.txt なら、バックアップファイルは data.txt~ です。<br>
-&nbsp;~ 以外の文字を使いたい場合は、次のように設定してください:<br>
+バックアップファイルの名前は、元のファイルの末尾に&nbsp;&nbsp;~&nbsp;&nbsp;を付加したものです。例<br>
+えば、あなたのファイルの名前が data.txt の場合、バックアップファイルの名前は<br>
+data.txt~ です。<br>
+&nbsp;&nbsp; バックアップファイルが ~ で終わるという事実が気に入らない場合、拡張子を変更<br>
+できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set backupext=.bak</div>
 <br>
-これで、バックアップファイルの名前が data.txt.bak になります。<br>
-もう一つのオプション&nbsp;<a class="Type" href="options.html#'backupdir'">'backupdir'</a>&nbsp;についても説明しましょう。これはバックアップ<br>
-ファイルを保存するディレクトリを指定するオプションです。初期設定ではバックアッ<br>
-プは元ファイルと同じディレクトリに保存されます。たいていの場合はこれで問題ない<br>
-はずです。<br>
+これは data.txt~ の代わりに data.txt.bak を使います。<br>
+&nbsp;&nbsp; ここで重要なもう 1 つのオプションは&nbsp;<a class="Type" href="options.html#'backupdir'">'backupdir'</a>&nbsp;です。これはバックアップファ<br>
+イルが書き込まれる場所を指定します。バックアップを元のファイルと同じディレクト<br>
+リに書き込むという既定値は、たいていは正しいでしょう。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'writebackup'">'writebackup'</a>&nbsp;がオンの場合、<a class="Type" href="options.html#'backup'">'backup'</a>&nbsp;がオフでもバックアップファイルは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作成されますが、ファイルの保存が成功すると、そのバックアップファイルは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;すぐに削除されます。これは、ファイルを保存できなかったときに、オリジナ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルファイルが失われないようにするための機能です。(失敗の原因は、例えば、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ディスクがいっぱいになったというのが一番ありがちな理由です。雷にやられ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;るというのも可能性は低いですがありうることです)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'backup'">'backup'</a>&nbsp;オプションが設定されていなくても&nbsp;<a class="Type" href="options.html#'writebackup'">'writebackup'</a>&nbsp;が設定されてい<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る場合、Vim はそれでもバックアップファイルを作成します。しかし、ファイ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルの書き込みが正常に完了するとすぐに、それは削除されます。これは、書き<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;込みが何らかの理由で失敗したときにあなたの元のファイルを失わないための<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安全策として機能します (ディスクがいっぱいになるのが最も一般的な原因で<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す; 雷に打たれるのも、それほど一般的ではありませんが、別の原因かもしれ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ません)。<br>
 <br>
 <br>
-<span class="Statement">オリジナルファイルを残す</span><br>
+<span class="Statement">元のファイルを保持する</span><br>
 <br>
-ソースファイルを編集していると、変更を加える前のファイルを残しておきたいときが<br>
-あります。しかし、バックアップファイルはファイルを保存するたびに上書きされるの<br>
-で、直前のバックアップしか残らず、最初のファイルはなくなってしまいます。<br>
-オリジナルのファイルを残しておきたい場合は、<a class="Type" href="options.html#'patchmode'">'patchmode'</a>&nbsp;オプションを設定してく<br>
-ださい。バックアップファイルを最初に作成するときに使う拡張子を指定します。次の<br>
-ように設定してください:<br>
+ソースファイルを編集している場合、何か変更を加える前のファイルを保持したいかも<br>
+しれません。しかし、バックアップファイルはファイルを書き込むたびに上書きされま<br>
+す。したがって、それには最初のバージョンではなく、直前のバージョンだけが含まれ<br>
+ます。<br>
+&nbsp;&nbsp; Vim に元のファイルを保持させるには、<a class="Type" href="options.html#'patchmode'">'patchmode'</a>&nbsp;オプションを設定します。こ<br>
+れは、変更されたファイルの最初のバックアップに使われる拡張子を指定します。通常<br>
+は、このようにします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set patchmode=.orig</div>
 <br>
-例えば、はじめて data.txt を開いたときに、変更を加え、保存しようとすると、変更<br>
-前のファイルが &quot;data.txt.orig&quot; という名前でコピーされます。<br>
-その後、ファイルを変更しても、既に &quot;data.txt.orig&quot; があるので、上書きはされま<br>
-せん。この場合もバックアップファイルは &quot;data.txt~&quot; (もしくは&nbsp;<a class="Type" href="options.html#'backupext'">'backupext'</a>&nbsp;で指<br>
-定した名前) で作成されます。<br>
-<a class="Type" href="options.html#'patchmode'">'patchmode'</a>&nbsp;が空のまま (初期設定) だと、オリジナルファイルは残りません。<br>
+ここで初めてファイル data.txt を編集し、変更を加えてファイルを書き込むと、Vim<br>
+は変更されていないファイルのコピーを &quot;data.txt.orig&quot; という名前で保持します。<br>
+&nbsp;&nbsp; ファイルにさらに変更を加えた場合、Vim は &quot;data.txt.orig&quot; がすでに存在するこ<br>
+とに気付き、それをそのままにします。それ以降のバックアップファイルは、<br>
+&quot;data.txt~&quot; (または&nbsp;<a class="Type" href="options.html#'backupext'">'backupext'</a>&nbsp;で指定したもの) と呼ばれます。<br>
+&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'patchmode'">'patchmode'</a>&nbsp;を空のままにした場合 (それが既定です)、元のファイルは保持されま<br>
+せん。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_07.html#07.5" name="07.5">07.5</a>&nbsp;&nbsp;他のファイルにテキストをコピーする<br>
+<a class="Constant" href="usr_07.html#07.5" name="07.5">07.5</a>&nbsp;&nbsp;ファイル間でテキストをコピーする<br>
 <br>
-ここではファイルから別のファイルにテキストをコピーする方法を説明します。簡単な<br>
-例で始めましょう。コピーしたいテキストを含んでいるファイルを開きます。テキスト<br>
-の先頭にカーソルを移動して &quot;v&quot; を押すとビジュアルモードが開始します。テキスト<br>
-の末尾までカーソルを移動して &quot;y&quot; を押します。これでテキストがヤンク (コピー)<br>
-されました。<br>
-<br>
-例えば、上の段落をコピーするには、次のようにします。<br>
+ここでは、あるファイルから別のファイルへテキストをコピーする方法を説明します。<br>
+簡単な例から始めましょう。コピーしたいテキストを含むファイルを編集します。カー<br>
+ソルをテキストの先頭に移動して &quot;v&quot; を押します。これでビジュアルモードが開始さ<br>
+れます。ここでカーソルをテキストの末尾に移動して &quot;y&quot; を押します。これで選択さ<br>
+れたテキストがヤンク (コピー) されます。<br>
+&nbsp;&nbsp; 上の段落をコピーするには、こうします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:edit thisfile<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ここでは<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/This<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vjjjj$y</div>
 <br>
-次に、このテキストをプット (ペースト) したいファイルを開きます。テキストをプッ<br>
-トしたい場所にカーソルを動かし、&quot;p&quot; コマンドでプットします。<br>
+ここで、テキストを貼り付けたいファイルを編集します。その後ろにテキストを表示さ<br>
+せたい文字にカーソルを移動します。&quot;p&quot; を使ってテキストをそこに貼り付けます。<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:edit otherfile<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/どこか<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/There<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p</div>
 <br>
-当然ながら、テキストのヤンクには他にもいろんなコマンドが使えます。例えば、&quot;V&quot;<br>
-でビジュアルモードを開始すると行単位で選択できますし、<span class="Special">CTRL-V</span>&nbsp;で矩形選択もでき<br>
-ます。&quot;Y&quot; で一行をヤンクしたり、&quot;yaw&quot; で単語をヤンク (yank-a-word) するなど、<br>
-いろいろできます。<br>
-&quot;p&quot; コマンドはカーソルの後にテキストをプットします。カーソルの前にプットするに<br>
-は &quot;P&quot; を使います。Vim はヤンクしたときの選択単位 (行選択や矩形選択) を覚えて<br>
-いて、同じ単位でプットします。<br>
+もちろん、テキストをヤンクするのに他の多くのコマンドを使えます。例えば、行全体<br>
+を選択するには &quot;V&quot; でビジュアルモードを開始します。または、<span class="Special">CTRL-V</span>&nbsp;を使って矩形<br>
+ブロックを選択します。または、&quot;Y&quot; を使って 1 行をヤンクする、&quot;yaw&quot; を使って<br>
+yank-a-word する、など。<br>
+&nbsp;&nbsp; &quot;p&quot; コマンドはカーソルの後にテキストを貼り付けます。カーソルの前にテキスト<br>
+を貼り付けるには &quot;P&quot; を使います。Vim は、行全体をヤンクしたのか、またはブロッ<br>
+クをヤンクしたのかを記憶していて、そのとおりに貼り付けることに注意してくださ<br>
+い。<br>
 <br>
 <br>
 <span class="Statement">レジスタを使う</span><br>
 <br>
-あるファイルから別のファイルに数箇所のテキストをコピーしたいとき、何度も何度も<br>
-ファイルを切り換えると時間がかかります。テキストをレジスタにコピーして手間を省<br>
-きましょう。<br>
-レジスタとは、Vim がテキストを保持する場所です。ここでは a から z までの名前が<br>
-付いたレジスタを使います (レジスタは他にもあります)。では、テキストをレジスタ<br>
-f (fはfirstのつもり) にヤンクしてみましょう。<br>
+あるファイルから別のファイルへ複数のテキスト片をコピーしたいとき、ファイル間を<br>
+切り替えて対象ファイルを書き込まなければならないのは、多くの時間がかかります。<br>
+これを避けるには、各テキスト片をそれぞれ専用のレジスタにコピーします。<br>
+&nbsp;&nbsp; レジスタは、Vim がテキストを格納する場所です。ここでは a から z という名前<br>
+のレジスタを使います (他にもあることが後でわかるでしょう)。文を f レジスタ<br>
+(First の f) にコピーしましょう:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fyas</div>
 <br>
-&quot;yas&quot; コマンドで文をヤンクしています。&quot;f はテキストをレジスタ f に入れるための<br>
-指定です。この指定はヤンクコマンドの直前に指定します。<br>
-さらに三行をレジスタ l (lはlineのつもり) にヤンクしてみましょう。<br>
+&quot;yas&quot; コマンドは以前と同様に文をヤンクします。テキストを f レジスタに置くべき<br>
+ことを Vim に伝えるのは &quot;f です。これはヤンクコマンドの直前に来なければなりま<br>
+せん。<br>
+&nbsp;&nbsp; 次に、3 行全体を l レジスタ (line の l) にヤンクします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;l3Y</div>
 <br>
-カウンタ (回数指定) は &quot;l の直前に指定することもできます。テキストのブロック<br>
-(矩形選択) をレジスタ b (bはblockのつもり) にヤンクする場合は次のようにしま<br>
-す。<br>
+カウントは &quot;l の前に置いても同じです。テキストのブロックを b (block の b) レジ<br>
+スタにヤンクするには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-Vjjww&quot;by</div>
 <br>
-レジスタ指定 &quot;b を &quot;y&quot; コマンドの直前で指定している点に注意してください。これ<br>
-は重要なことです。これを &quot;w&quot; コマンドより前に置いてしまうとうまく動きません。<br>
-さて、f、l、b の三つのレジスタにテキストをヤンクできました。他のファイルを開い<br>
-て、テキストを挿入したい場所にカーソルを移動し、レジスタの内容をプットしましょ<br>
-う。<br>
+レジスタ指定 &quot;b は &quot;y&quot; コマンドの直前にあることに注意してください。これは必須<br>
+です。&quot;w&quot; コマンドの前に置いていた場合、動作しなかったでしょう。<br>
+&nbsp;&nbsp; これで f、l、および b レジスタに 3 つのテキスト片があります。別のファイルを<br>
+編集し、移動して、望む場所にテキストを置きます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fp</div>
 <br>
-ヤンクの場合と同じく、レジスタ指定 &quot;f は &quot;p&quot; コマンドより前に指定します。<br>
-どのレジスタからプットしても構いません。他のテキストをヤンクし直さない限り、レ<br>
-ジスタの内容は変わらないので、同じレジスタを何度でも好きなだけプットできます。<br>
+ここでも、レジスタ指定 &quot;f は &quot;p&quot; コマンドの前に来ます。<br>
+&nbsp;&nbsp; レジスタは任意の順序で貼り付けることができます。そして、テキストは何か他の<br>
+ものをヤンクするまでレジスタに残ります。したがって、好きなだけ何回でも貼り付け<br>
+ることができます。<br>
 <br>
-テキストを削除するときにも、レジスタを指定できます。テキストを何ヶ所かに移動す<br>
-るときなどに使ってください。例えば、単語を削除 (delete-a-word) してその内容を<br>
-レジスタ w に入れるには次のようにします。<br>
+テキストを削除するときも、レジスタを指定できます。これを使って複数のテキスト片<br>
+を移動します。例えば、delete-a-word して、それを w レジスタに書き込むには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;wdaw</div>
 <br>
-何度も言うようですが、レジスタ指定は削除コマンド &quot;d&quot; の前に置いてください。<br>
+ここでも、レジスタ指定は削除コマンド &quot;d&quot; の前に来ます。<br>
 <br>
 <br>
-<span class="Statement">ファイルに追記する</span><br>
+<span class="Statement">ファイルに追加する</span><br>
 <br>
-文章を一つのファイルにまとめたい場合は、次のコマンドを使います。<br>
+テキストの行を 1 つのファイルに集めるとき、このコマンドを使えます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:write &gt;&gt; logfile</div>
 <br>
-カレントファイルの内容が &quot;logfile&quot; の末尾に追記されます。テキストをコピーして、<br>
-&quot;logfile&quot; を開き、テキストをプットするより簡単です。作業を 2 手節約できます。<br>
-ただし、ファイルの末尾への追加しかできません。<br>
-ファイルの一部だけ追記したい場合は、ビジュアルモードでテキストを選択してから<br>
-&quot;:write&quot; を実行してください。テキストを選択する方法は他にもありますが、10 章で<br>
-説明します。<br>
+これは、カレントファイルのテキストを &quot;logfile&quot; の末尾に書き込みます。したがっ<br>
+て、それは追加されます。これにより、行をコピーし、ログファイルを編集して、そこ<br>
+に貼り付けなければならないことが避けられます。したがって、2 つの手順を省けま<br>
+す。しかし、ファイルの末尾にしか追加できません。<br>
+&nbsp;&nbsp; 数行だけを追加するには、&quot;:write&quot; とタイプする前にビジュアルモードでそれらを<br>
+選択します。第 10 章では、行の範囲を選択する他の方法を学びます。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_07.html#07.6" name="07.6">07.6</a>&nbsp;&nbsp;読み込み専用モード<br>
+<a class="Constant" href="usr_07.html#07.6" name="07.6">07.6</a>&nbsp;&nbsp;ファイルを閲覧する<br>
 <br>
-ファイルを変更する気はなく、ただファイルの内容を見たいだけのときがあります。普<br>
-通に開くと、うっかり &quot;:w&quot; を実行して元のファイルを上書きしてしまう危険がありま<br>
-す。そういうときは、読み込み専用モードでファイルを開いてください。<br>
-Vim を読み込み専用モードで起動するには、次のコマンドを使います。<br>
+ときどき、書き戻すつもりはまったくなく、ファイルに何が含まれているかを見たいだ<br>
+けのことがあります。考えずに &quot;:w&quot; とタイプして、結局元のファイルを上書きしてし<br>
+まう危険があります。これを避けるには、ファイルを読み込み専用で編集します。<br>
+&nbsp;&nbsp; Vim を読み込み専用モードで起動するには、このコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim -R file</div>
 <br>
-Unix なら、次のコマンドも同じ意味になります。<br>
+Unix では、このコマンドも同じことをするはずです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view file</div>
 <br>
-&quot;file&quot; が読み込み専用モードで開きます。&quot;:w&quot; をしようとしても、エラーメッセージ<br>
-が表示され保存はされません。<br>
-ファイルに変更を加えようとすると、次のような警告が表示されます。<br>
+これで &quot;file&quot; を読み込み専用モードで編集しています。&quot;:w&quot; を使おうとすると、エ<br>
+ラーメッセージが表示され、ファイルは書き込まれません。<br>
+&nbsp;&nbsp; ファイルに変更を加えようとすると、Vim は警告を出します:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">W10: 警告: 読込専用ファイルを変更します</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">W10: Warning: Changing a readonly file</span><br>
 <br>
-警告は出ますが、変更は可能です。これは、例えばファイルを読みやすくフォーマット<br>
-したりするためです。<br>
-読み込み専用モードであることを忘れて、ファイルを修正してしまったようなときは、<br>
-write コマンドに ! を付けて強制保存してください。<br>
+ただし、変更は行われます。これにより、例えば、ファイルを読みやすくするために整<br>
+形することができます。<br>
+&nbsp;&nbsp; ファイルに変更を加え、それが読み込み専用だったことを忘れていた場合でも、書<br>
+き込むことができます。書き込みを強制するには、書き込みコマンドに ! を付けます。<br>
 <br>
-完全にファイルの変更を禁止したい場合は、次のようにしてください。<br>
+ファイルへの変更を本当に禁止したい場合、こうします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim -M file</div>
 <br>
-これで、内容を変更しようとしてもエラーになります。例えば、ヘルプファイルはこの<br>
-モードで表示されています。変更しようとすると、次のエラーメッセージが表示されま<br>
-す。<br>
+これで、テキストを変更しようとする試みはすべて失敗します。例えば、ヘルプファイ<br>
+ルはこのようになっています。変更しようとした場合、このエラーメッセージが表示さ<br>
+れます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">E21: 'modifiable'がオフなので、変更できません</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">E21: Cannot make changes, 'modifiable' is off</span><br>
 <br>
--M 引数を使えば Vim を閲覧モードに設定できますが、これは自主規制みたいなもの<br>
-で、次のコマンドを使えば制限はなくなってしまいます。<br>
+-M 引数を使って、Vim をビューアーモードで動作するように設定できます。ただし、<br>
+これらのコマンドは保護を解除するので、これは任意のものにすぎません:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set modifiable<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set write</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_07.html#07.7" name="07.7">07.7</a>&nbsp;&nbsp;ファイル名の変更<br>
+<a class="Constant" href="usr_07.html#07.7" name="07.7">07.7</a>&nbsp;&nbsp;ファイル名を変更する<br>
 <br>
-新しいファイルを作成するときに、目的に近いファイルがあるなら、それを利用するの<br>
-が効率的です。例えば、ファイルを移動するプログラムを作りたいとしましょう。ファ<br>
-イルをコピーするプログラムがすでにあるので、それを流用することにしました。<br>
+新しいファイルの編集を始める賢い方法は、必要なもののほとんどを含んでいる既存の<br>
+ファイルを使うことです。例えば、ファイルを移動する新しいプログラムを書き始める<br>
+とします。ファイルをコピーするプログラムがすでにあることがわかっているので、こ<br>
+う始めます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:edit copy.c</div>
 <br>
-新しいプログラムに必要ない部分は削除してしまいましょう。次に、このファイルを新<br>
-しい名前で保存する必要があります。そのためのコマンドが &quot;:saveas&quot; です。<br>
+不要なものは削除できます。ここで、ファイルを新しい名前で保存する必要がありま<br>
+す。これには &quot;:saveas&quot; コマンドを使えます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:saveas move.c</div>
 <br>
-指定した名前でファイルが保存され、そのファイルが開かれます。そのため、次に<br>
-&quot;:write&quot; したときは &quot;move.c&quot; に保存されます。&quot;copy.c&quot; は変更されません。ファイ<br>
-ルを保存せずに、ファイルの名前だけ変更したい場合は、次のコマンドを使います。<br>
+Vim はファイルを指定された名前で書き込み、そのファイルを編集します。したがっ<br>
+て、次に &quot;:write&quot; を実行すると、&quot;move.c&quot; に書き込みます。&quot;copy.c&quot; は変更されな<br>
+いままです。<br>
+&nbsp;&nbsp; 編集しているファイルの名前を変更したいが、ファイルは書き込みたくないときは、<br>
+このコマンドを使えます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:file move.c</div>
 <br>
-そのファイル (move.c) は、実際のファイルではないので、&quot;開いていない&quot; (not<br>
-edited) 扱いになります。ファイルを保存しようとすると、次のメッセージが表示され<br>
-ることがあります。<br>
+Vim はファイルに &quot;not edited&quot; という印を付けます。これは、これが編集を始めた<br>
+ファイルではないことを Vim が知っていることを意味します。ファイルを書き込もう<br>
+とすると、このメッセージが表示されるかもしれません:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">E13: ファイルが存在します (! を追加で上書)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">E13: File exists (use ! to override)</span><br>
 <br>
-これは、実際のファイルを間違って上書きしてしまわないようにするためです。<br>
+これは、誤って別のファイルを上書きすることから保護します。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
