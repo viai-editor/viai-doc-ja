@@ -12,392 +12,403 @@ helpname: 'usr_45'
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言語を選択する (ロケール)<br>
 <br>
 <br>
-Vim のメッセージは言語を変更できます。この章では、言語を変更する方法を説明しま<br>
-す。様々な言語で書かれたファイルを取り扱う方法も説明します。<br>
+Vim のメッセージは、いくつかの言語で表示できます。この章では、どれを使うかを変<br>
+更する方法を説明します。また、さまざまな言語のファイルを扱うためのいろいろな方<br>
+法を説明します。<br>
 <br>
 <a class="Identifier" href="usr_45.html#45.1">45.1</a>&nbsp;&nbsp;メッセージの言語<br>
 <a class="Identifier" href="usr_45.html#45.2">45.2</a>&nbsp;&nbsp;メニューの言語<br>
-<a class="Identifier" href="usr_45.html#45.3">45.3</a>&nbsp;&nbsp;他のエンコーディングを使う<br>
+<a class="Identifier" href="usr_45.html#45.3">45.3</a>&nbsp;&nbsp;別のエンコーディングを使う<br>
 <a class="Identifier" href="usr_45.html#45.4">45.4</a>&nbsp;&nbsp;異なるエンコーディングのファイルを編集する<br>
 <a class="Identifier" href="usr_45.html#45.5">45.5</a>&nbsp;&nbsp;言語のテキストを入力する<br>
 <br>
 次章:&nbsp;<a class="Identifier" href="usr_50.html">usr_50.txt</a>&nbsp;&nbsp;高度な Vim script の書き方<br>
-前章:&nbsp;<a class="Identifier" href="usr_44.html">usr_44.txt</a>&nbsp;&nbsp;構文ファイルを作成する<br>
+前章:&nbsp;<a class="Identifier" href="usr_44.html">usr_44.txt</a>&nbsp;&nbsp;独自の構文ハイライト<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_45.html#45.1" name="45.1">45.1</a>&nbsp;&nbsp;メッセージの言語<br>
 <br>
-Vim を起動すると、あなたが使っている言語を知るために環境がチェックされます。ほ<br>
-とんどの場合、この処理はうまく動作します。そして、メッセージはあなたの言語で表<br>
-示されます (それが利用可能なら)。現在の言語を確認するには、次のコマンドを使い<br>
-ます:<br>
+Vim を起動すると、使っている言語を調べるために環境をチェックします。ほとんどの<br>
+場合、これはうまく動作するはずで、あなたの言語でメッセージが表示されます (それ<br>
+らが使用可能な場合)。現在の言語が何かを見るには、このコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:language</div>
 <br>
-&quot;C&quot; と表示された場合は、デフォルト (英語) が使われています。<br>
+&quot;C&quot; と返ってきた場合、これは既定値が使われていることを意味し、それは英語です。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;異なる言語を扱えるのは、Vim のコンパイル時にその機能が有効にされた場合<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;だけです。機能の有無は、&quot;:version&quot; コマンドを実行し、&quot;+gettext&quot; と<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;+multi_lang&quot; の表示を確認してください。それが表示されていれば問題あり<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ません。&quot;-gettext&quot; か &quot;-multi_lang&quot; と表示された場合は他の Vim を探し<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;てください。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;異なる言語を使うことは、Vim がそれを扱えるようにコンパイルされていると<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;きにだけ動作します。動作するかどうかを調べるには、&quot;:version&quot; コマンド<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を使い、出力に &quot;+gettext&quot; および &quot;+multi_lang&quot; があるかをチェックして<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ください。それらがある場合、OK です。&quot;-gettext&quot; または &quot;-multi_lang&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が表示される場合、別の Vim を見つける必要があります。<br>
 <br>
-異なる言語でメッセージを表示する方法はいくつかあります。どの方法を使うかはシス<br>
-テムによって違います。<br>
-一つ目は、Vim を起動する前に使用したい言語を環境変数に設定する方法です。Unix<br>
-の場合の例:<br>
+あなたのメッセージを別の言語にしたい場合はどうでしょうか? いくつかの方法があり<br>
+ます。どれを使うべきかは、あなたのシステムの能力によります。<br>
+&nbsp;&nbsp; 1 つ目の方法は、Vim を起動する前に、環境を望みの言語に設定することです。<br>
+Unix での例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;env LANG=de_DE.ISO_8859-1&nbsp;&nbsp;vim</div>
 <br>
-この方法は、指定した言語がシステムでサポートされている場合のみ使えます。この方<br>
-法の利点は、GUI や何かのライブラリのメッセージも適切な言語で表示されることで<br>
-す。欠点は、Vim を起動する前に環境変数を設定しなければならないことです。Vim の<br>
-実行中に言語を変更したい場合は、二つ目の方法を使います:<br>
+これは、その言語があなたのシステムで使用可能な場合にだけ動作します。利点は、す<br>
+べての GUI メッセージおよびライブラリ内のものも正しい言語を使うことです。欠点<br>
+は、Vim を起動する前にこれを行わなければならないことです。Vim の実行中に言語を<br>
+変更したい場合、2 つ目の方法を使えます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:language fr_FR.ISO_8859-1</div>
 <br>
-この方法では言語の名前をいくつか試すことになるかもしれません。システムでサポー<br>
-トされていない名前を使うとエラーメッセージが表示されます。翻訳されたメッセージ<br>
-が利用可能でない場合はエラーメッセージは表示されません。Vim は静かに英語を選択<br>
-します。<br>
-利用可能な言語の一覧を調べるには、その一覧が入っているディレクトリを探してくだ<br>
-さい。私のシステムでは &quot;/usr/share/locale&quot; にあります。&quot;/usr/lib/locale&quot; に<br>
-入っているシステムもあります。&quot;setlocale&quot; のマニュアルページにディレクトリの場<br>
-所を示すヒントがあるかもしれません。<br>
-言語の名前は正確に入力してください。大文字と小文字の違いは重要です。&quot;-&quot; と &quot;_&quot;<br>
-は間違えやすいので注意してください。<br>
+この方法では、あなたの言語のいくつかの名前を試すことができます。それがあなたの<br>
+システムでサポートされていないときは、エラーメッセージが表示されます。翻訳され<br>
+たメッセージが使用可能でないときは、エラーは表示されません。Vim は黙って英語を<br>
+使うことにフォールバックします。<br>
+&nbsp;&nbsp; どの言語があなたのシステムでサポートされているかを調べるには、それらが一覧<br>
+されているディレクトリを見つけてください。私のシステムでは &quot;/usr/share/locale&quot;<br>
+です。いくつかのシステムでは &quot;/usr/lib/locale&quot; にあります。&quot;setlocale&quot; のマニュ<br>
+アルページに、あなたのシステムのどこにあるかのヒントがあるはずです。<br>
+&nbsp;&nbsp; 名前は、正確にあるべきとおりにタイプするように注意してください。大文字およ<br>
+び小文字は区別され、'-' および '_' 文字は混同しやすいです。<br>
 <br>
-メッセージ、編集するテキスト、時間の書式など、それぞれに別の言語を設定できま<br>
-す。<a class="Identifier" href="mlang.html#:language">:language</a>&nbsp;参照。<br>
+メッセージ、編集されるテキスト、および時刻の書式に対して、別々に言語を設定する<br>
+こともできます。<a class="Identifier" href="mlang.html#:language">:language</a>&nbsp;を参照してください。<br>
 <br>
 <br>
 <span class="Statement">自分でメッセージを翻訳する</span><br>
 <br>
-あなたの言語の翻訳メッセージが用意されていない場合、自分で翻訳することもできま<br>
-す。それには、Vim のソースコードと GNU gettext パッケージを入手してください。<br>
-ソースを展開すると、src/po/README.txt に説明が入っています。<br>
-翻訳作業はそれほど難しくありません。プログラマでなくても大丈夫です。しかし当然<br>
-ですが、英語と翻訳先の言語を両方知っている必要があります。<br>
-納得のいく翻訳ができたら、それを他の人にも提供してもらえないでしょうか。<br>
-vim-online (<span class="Constant"><a href="http://vim.sf.net">http://vim.sf.net</a></span>) にアップロードするか、Vim のメンテナー<br>
-&lt;maintainer@vim.org&gt; にメールを送ってください。両方でも構いません。<br>
+あなたの言語の翻訳されたメッセージが使用可能でない場合、自分で書くこともできま<br>
+す。これを行うには、Vim のソースコードおよび GNU gettext パッケージを入手して<br>
+ください。ソースを展開した後、ディレクトリ src/po/README.txt に説明があります。<br>
+&nbsp;&nbsp; 翻訳を行うのはそれほど難しくありません。プログラマである必要はありません。<br>
+もちろん、英語および翻訳先の言語の両方を知っている必要があります。<br>
+&nbsp;&nbsp; 翻訳に満足したときは、それを他の人が利用できるようにすることを検討してくだ<br>
+さい。vim-online (<span class="Constant"><a href="http://vim.sf.net">http://vim.sf.net</a></span>) にアップロードするか、または Vim メンテ<br>
+ナー &lt;maintainer@vim.org&gt; にメールで送ってください。または両方を。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_45.html#45.2" name="45.2">45.2</a>&nbsp;&nbsp;メニューの言語<br>
 <br>
-デフォルトのメニューは英語です。メニューが翻訳されていれば、あなたの国の言語で<br>
-表示することができます。メッセージと同様、環境が設定してあれば、自動的に適切な<br>
-言語が選択されます。そのために何かを設定する必要はありません。メニューが翻訳さ<br>
-れていれば動作します。<br>
-例えば、ドイツに住んでいてドイツ語を使っているにもかかわらず、&quot;Datei&quot; ではなく<br>
-&quot;File&quot; と表示したい場合、次のコマンドでメニューを英語に戻すことができます:<br>
+既定のメニューは英語です。あなたの地域の言語を使えるようにするには、それらを翻<br>
+訳する必要があります。通常、メッセージの場合とちょうど同じように、環境があなた<br>
+の言語に設定されている場合、これは自動的に行われます。このために何か追加で行う<br>
+必要はありません。しかし、それはその言語の翻訳が使用可能な場合にだけ動作しま<br>
+す。<br>
+&nbsp;&nbsp; ドイツにいて、言語がドイツ語に設定されているが、&quot;Datei&quot; の代わりに &quot;File&quot;<br>
+を使いたいとします。この方法で、英語のメニューを使うように戻すことができます:<br>
+<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set langmenu=none</div>
 <br>
-特定の言語を選択することもできます:<br>
+言語を指定することもできます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set langmenu=nl_NL.ISO_8859-1</div>
 <br>
-前述したように、&quot;-&quot; と &quot;_&quot; の違いは重要です。ただし、この場合は大文字と小文字<br>
+上と同様に、&quot;-&quot; と &quot;_&quot; の間の違いは区別されます。しかし、ここでは大文字/小文字<br>
 の違いは無視されます。<br>
-<a class="Type" href="options.html#'langmenu'">'langmenu'</a>&nbsp;オプションはメニューがロードされる前に設定する必要があります。メ<br>
-ニューが定義された後では、単に&nbsp;<a class="Type" href="options.html#'langmenu'">'langmenu'</a>&nbsp;を設定しただけでは何も変更されませ<br>
-ん。ですから、<a class="Type" href="options.html#'langmenu'">'langmenu'</a>&nbsp;は vimrc ファイルの中で設定してください。<br>
-どうしても Vim の実行中にメニューの言語を変更したい場合は、次の手順を実行して<br>
-ください:<br>
+&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'langmenu'">'langmenu'</a>&nbsp;オプションは、メニューが読み込まれる前に設定する必要があります。<br>
+メニューが定義されてしまうと、<a class="Type" href="options.html#'langmenu'">'langmenu'</a>&nbsp;を変更しても直接の効果はありません。<br>
+したがって、<a class="Type" href="options.html#'langmenu'">'langmenu'</a>&nbsp;を設定するコマンドはあなたの vimrc ファイルに入れてくだ<br>
+さい。<br>
+&nbsp;&nbsp; Vim の実行中にどうしてもメニューの言語を切り替えたい場合、この方法でできま<br>
+す:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:source $VIMRUNTIME/delmenu.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set langmenu=de_DE.ISO_8859-1<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:source $VIMRUNTIME/menu.vim</div>
 <br>
-ただし、ユーザーが自分で定義したメニューは失われてしまうので、それらを再定義す<br>
-る必要があります。<br>
+1 つ欠点があります: 自分で定義したすべてのメニューがなくなってしまいます。それ<br>
+らも定義し直す必要があります。<br>
 <br>
 <br>
 <span class="Statement">自分でメニューを翻訳する</span><br>
 <br>
-利用可能な翻訳済みメニューは、次のディレクトリにあります:<br>
+どのメニューの翻訳が使用可能かを見るには、このディレクトリを見てください:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">$VIMRUNTIME/lang</span><br>
 <br>
-ファイルは menu_<span class="Special">{language}</span>.vim という名前になっています。使用したい言語がない<br>
-場合は自分で翻訳することもできます。最も簡単なのは、既存のファイルをコピーし<br>
-て、それを変更する方法です。<br>
-まず、あなたの言語の名前を &quot;:language&quot; コマンドで確認してください。その名前を<br>
-使います。ただし、すべてを小文字にします。そして、ファイルを自分のランタイム<br>
-ディレクトリにコピーします (<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の早めに見つかるように)。例えば、<br>
-Unix なら次のようにします:<br>
+ファイルは menu_<span class="Special">{language}</span>.vim と呼ばれます。使いたい言語が見当たらない場合、<br>
+あなた自身の翻訳を行うことができます。これを行う最も簡単な方法は、既存の言語<br>
+ファイルの 1 つをコピーし、それを変更することです。<br>
+&nbsp;&nbsp; まず、&quot;:language&quot; コマンドであなたの言語の名前を調べてください。この名前を、<br>
+ただしすべての文字を小文字にして使います。それから、そのファイルを、<br>
+<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の早いほうで見つかるあなた自身のランタイムディレクトリにコピーし<br>
+ます。例えば、Unix では次のようにします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!cp $VIMRUNTIME/lang/menu_ko_kr.euckr.vim ~/.vim/lang/menu_nl_be.iso_8859-1.vim</div>
 <br>
-&quot;$VIMRUNTIME/lang/README.txt&quot; には翻訳のヒントが書かれています。<br>
+翻訳のヒントは &quot;$VIMRUNTIME/lang/README.txt&quot; にあります。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_45.html#45.3" name="45.3">45.3</a>&nbsp;&nbsp;他のエンコーディングを使う<br>
+<a class="Constant" href="usr_45.html#45.3" name="45.3">45.3</a>&nbsp;&nbsp;別のエンコーディングを使う<br>
 <br>
-ファイルを開くとき、そのファイルはユーザーの言語のエンコーディングで保存されて<br>
-いるものと推測されます。多くのヨーロッパ系言語では &quot;latin1&quot; が使われます。その<br>
-場合、1 バイトで 1 文字を表すので、合計 256 個の文字を扱えます。アジア系言語の<br>
-場合はそれでは足りません。それらの言語はダブルバイトエンコーディングを使って、<br>
-1 万以上の文字を扱います。それでも、複数の言語を混在させるには十分ではありませ<br>
-ん。そういうときは Unicode の出番です。Unicode は一般的に使われている言語の文<br>
-字をすべて網羅しています。Unicode は<br>
-&quot;他のすべてのエンコーディングに取って代わるスーパーエンコーディング&quot; なので<br>
-す。しかしまだ広くは普及していません。Vim はこのような三種類のエンコーディング<br>
-をサポートしています。そして、多少の制限はありますが、使用している言語とは違う<br>
-言語のテキストを扱うことができます。とはいえ、自分の言語のテキストだけを扱う場<br>
-合は、Vim は何も設定しなくても適切に動作します。以下の説明は、他の言語のテキス<br>
-トを編集したい場合にだけ必要です。<br>
+Vim は、編集しようとしているファイルがあなたの言語用にエンコードされていると推<br>
+測します。多くのヨーロッパの言語では、これは &quot;latin1&quot; です。その場合、各バイト<br>
+が 1 文字です。つまり、256 個の異なる文字が可能です。アジアの言語では、これで<br>
+は十分ではありません。これらはたいてい 2 バイトのエンコーディングを使い、1 万<br>
+を超える文字を可能にしています。テキストがいくつかの異なる言語を含むときは、こ<br>
+れでもまだ十分ではありません。ここで Unicode の出番です。それは、一般的に使わ<br>
+れる言語で使われるすべての文字を含むように設計されました。これは<br>
+&quot;他のすべてを置き換える超エンコーディング&quot; です。しかし、まだそれほど多くは使<br>
+われていません。<br>
+&nbsp;&nbsp; 幸い、Vim はこれら 3 種類のエンコーディングをサポートしています。そして、い<br>
+くつかの制限はありますが、あなたの環境がテキストとは別の言語を使っているときで<br>
+も、それらを使うことができます。<br>
+&nbsp;&nbsp; それでも、あなたの言語のエンコーディングのファイルだけを編集するときは、既<br>
+定値でうまく動作するはずで、何もする必要はありません。以下は、異なる言語を編集<br>
+したいときにだけ関係があります。<br>
 <br>
 <br>
 <span class="Statement">GUI で Unicode を使う</span><br>
 <br>
-Unicode には他のエンコーディングと相互に変換しても情報が欠落しないという長所が<br>
-あります。Vim の内部で Unicode を使うように設定すれば、あらゆるエンコーディン<br>
-グのファイルを編集することができます。<br>
-残念ながら、Unicode をサポートしているシステムはまだ限られています。言語のエン<br>
-コーディングが Unicode になっていることはまれです。その場合、Unicode の使用を<br>
-宣言し、非 Unicode システムと協調方法を設定する必要があります。<br>
-まずは、(Unicode文字を表示可能な) GUI 版の Vim を設定します。次のようにします:<br>
+Unicode のよいところは、他のエンコーディングを情報を失わずにそれに変換し、また<br>
+戻すことができる点です。Vim に内部で Unicode を使わせると、任意のエンコーディ<br>
+ングのファイルを編集できるようになります。<br>
+&nbsp;&nbsp; 残念ながら、Unicode をサポートしているシステムの数はまだ限られています。し<br>
+たがって、あなたの言語がそれを使っている可能性は低いです。Unicode を使いたいこ<br>
+と、およびシステムの残りの部分とのインターフェイスをどう扱うかを Vim に伝える<br>
+必要があります。<br>
+&nbsp;&nbsp; Unicode 文字を表示できる、GUI 版の Vim から始めましょう。これで動作するはず<br>
+です:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set encoding=utf-8<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set guifont=-misc-fixed-medium-r-normal--18-120-100-100-c-90-iso10646-1</div>
 <br>
-<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;オプションに使用したいエンコーディングを設定します。これは、バッ<br>
-ファ (編集中のファイル) のテキスト、レジスタ、Vim script ファイル、などに使わ<br>
-れます。<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;は Vim の内部エンコーディングであると言えます。<br>
-この例では、設定しているフォントがシステムに存在することを前提にしています。例<br>
-で使用されているのは X Window System のフォント名です。このフォントは Unicode<br>
-をサポートした拡張 xterm で使われるパッケージに入っています。フォントがない場<br>
-合は、次の場所から入手できます:<br>
+<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;オプションは、使う文字のエンコーディングを Vim に伝えます。これは<br>
+バッファ内のテキスト (編集しているファイル)、レジスタ、Vim script ファイルなど<br>
+に適用されます。<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;は Vim の内部のための設定とみなすことができます。<br>
+&nbsp;&nbsp; この例は、あなたのシステムにこのフォントがあることを前提としています。例の<br>
+中の名前は X Window System 用です。このフォントは、xterm を Unicode サポートで<br>
+拡張するために使われるパッケージに入っています。このフォントがない場合、ここで<br>
+見つかるかもしれません:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://www.cl.cam.ac.uk/~mgk25/download/ucs-fonts.tar.gz">http://www.cl.cam.ac.uk/~mgk25/download/ucs-fonts.tar.gz</a></span><br>
 <br>
-MS-Windows では、Unicode 文字を部分的に持っているフォントがいくつかあります。<br>
-&quot;Courier New&quot; フォントを試してみてください。メニューの 編集/フォント設定 を使<br>
-うと、利用可能な一覧からフォントを選択できます。使用できるのは等幅フォントのみ<br>
-です。例:<br>
+MS-Windows では、いくつかのフォントは限られた数の Unicode 文字を持っています。<br>
+&quot;Courier New&quot; フォントを使ってみてください。Edit/Select Font... メニューを使っ<br>
+て、使用可能なフォントを選択して試すことができます。ただし、固定幅フォントだけ<br>
+が使えます。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set guifont=courier_new:h12</div>
 <br>
-これがうまくいかない場合は、フォントパックを入手してください。Microsoft が場所<br>
-を変更していなければ、次の場所にあります:<br>
+うまく動作しない場合、fontpack を入手してみてください。Microsoft がそれを移動<br>
+していない場合、ここで見つけられます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://www.microsoft.com/typography/fonts/default.aspx">http://www.microsoft.com/typography/fonts/default.aspx</a></span><br>
 <br>
-さて、内部エンコーディングを Unicode にして、Unicode フォントでテキスト表示す<br>
-るように設定できました。しかし、入力される文字はまだ元の言語のエンコーディング<br>
-のままです。入力を Unicode に変換する必要があります。<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;オプション<br>
-に入力のエンコーディングを設定します。次のように設定します:<br>
+これで、内部で Unicode を使い、Unicode フォントでテキストを表示するように Vim<br>
+に伝えました。タイプした文字は、まだあなたの元の言語のエンコーディングで届きま<br>
+す。これには、それらを Unicode に変換する必要があります。<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;オプ<br>
+ションで、どの言語から変換するかを Vim に伝えてください。次のようにできます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let &amp;termencoding = &amp;encoding<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set encoding=utf-8</div>
 <br>
-<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;に utf-8 を設定する前に、元の値を&nbsp;<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;に代入しています。<br>
-この設定が動作するかどうか、実際にあなたの環境で試してください。特に、アジア系<br>
-言語の入力メソッドを使って Unicode のテキストを編集したい場合は、正しく動作す<br>
-る必要があります。<br>
+これは、<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;を utf-8 に設定する前に、<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;の古い値を<br>
+<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;に代入します。これがあなたのセットアップで本当に動作するかは、<br>
+試してみる必要があります。アジアの言語のインプットメソッドを使っていて、<br>
+Unicode テキストを編集したいときに、特にうまく動作するはずです。<br>
 <br>
 <br>
 <span class="Statement">Unicode 端末で Unicode を使う</span><br>
 <br>
-Unicode をサポートしている端末がいくつかあります。XFree86 に付属の標準 xterm<br>
-もその一つです。ここではそれを使って説明します。<br>
-まず何よりも、xterm が Unicode サポート付きでコンパイルされている必要がありま<br>
-す。<a class="Identifier" href="mbyte.html#UTF8-xterm">UTF8-xterm</a>&nbsp;を参照し、その確認方法と、必要ならコンパイル方法も確認してく<br>
-ださい。<br>
-xterm に &quot;-u8&quot; 引数を付けて起動します。フォントを指定する必要もあるかもしれま<br>
-せん。例:<br>
+Unicode を直接サポートしている端末があります。XFree86 に付属する標準の xterm<br>
+はその 1 つです。それを例として使いましょう。<br>
+&nbsp;&nbsp; まず第一に、xterm は Unicode サポート付きでコンパイルされている必要がありま<br>
+す。それをチェックする方法、および必要なときにそれをコンパイルする方法について<br>
+は、<a class="Identifier" href="mbyte.html#UTF8-xterm">UTF8-xterm</a>&nbsp;を参照してください。<br>
+&nbsp;&nbsp; &quot;-u8&quot; 引数を付けて xterm を起動してください。フォントも指定する必要があるか<br>
+もしれません。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp; xterm -u8 -fn -misc-fixed-medium-r-normal--18-120-100-100-c-90-iso10646-1</div>
 <br>
-この端末の中で Vim を実行します。前述したように&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;を &quot;utf-8&quot; に設定し<br>
-てください。設定は以上です。<br>
+これで、この端末の中で Vim を実行できます。前と同じように、<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;を<br>
+&quot;utf-8&quot; に設定してください。それで全部です。<br>
 <br>
 <br>
-<span class="Statement">普通の端末で Unicode を使う</span><br>
+<span class="Statement">通常の端末で Unicode を使う</span><br>
 <br>
-Unicode をサポートしていない端末で Unicode ファイルを取り扱うことができます。<br>
-ただし、端末でサポートされていない文字は表示されません。テキストのレイアウトは<br>
-失われません:<br>
+Unicode ファイルを扱いたいが、Unicode をサポートしている端末を持っていないとし<br>
+ます。端末でサポートされていない文字は表示されませんが、Vim でこれを行うことが<br>
+できます。テキストのレイアウトは保たれます。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let &amp;termencoding = &amp;encoding<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set encoding=utf-8</div>
 <br>
-これは GUI での設定と同じです。しかし作用は違います。Vim はテキストを表示する<br>
-ときに、端末に文字を送る前に、それを変換します。それによって、端末の文字化けを<br>
-防ぐことができます。<br>
-これには、<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;の間での変換が可能である必要がありま<br>
-す。latin1 から Unicode への変換は Vim の内部で行われるので常に機能します。他<br>
-の変換には&nbsp;<a class="Identifier" href="various.html#+iconv">+iconv</a>&nbsp;機能が必要です。<br>
-実際に Unicode のテキストを編集してみてください。端末に表示できない文字は、ク<br>
-エスチョンマーク (あるいはアンダースコアや他の文字) として表示されます。クエス<br>
-チョンマークの上にカーソルを動かして次のコマンドを実行してください:<br>
+これは GUI で使ったのと同じです。しかし、動作は異なります: Vim は、表示される<br>
+テキストを端末に送る前に変換します。それにより、表示がおかしな文字で乱れるのを<br>
+避けます。<br>
+&nbsp;&nbsp; これが動作するには、<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;の間の変換が可能である必要<br>
+があります。Vim は latin1 から Unicode に変換するので、それは常に動作します。<br>
+他の変換には&nbsp;<a class="Identifier" href="various.html#+iconv">+iconv</a>&nbsp;機能が必要です。<br>
+&nbsp;&nbsp; Unicode 文字を含むファイルを編集してみてください。端末が表示できない文字が<br>
+あるべき場所に、Vim が疑問符 (またはアンダースコア、または何か他の文字) を置く<br>
+ことに気付くでしょう。カーソルを疑問符に移動し、このコマンドを使ってください:<br>
+<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ga</div>
 <br>
-文字コード情報が表示されます。そこに実際に格納されている文字を知るヒントになり<br>
-ます。文字コードを Unicode の表から調べることもできます。時間さえあれば、実際<br>
-にこの方法でファイルを見ることも可能です。<br>
+Vim はその文字のコードを含む行を表示します。これにより、それが何の文字かのヒン<br>
+トが得られます。Unicode の表でそれを調べることができます。時間がたくさんある場<br>
+合、実際にその方法でファイルを見ることもできます。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;は Vim 内部のすべてのテキストで使われるので、設定を変更する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と 非ASCII のテキストは不正になってしまいます。レジスタの中身や<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'viminfo'">'viminfo'</a>&nbsp;ファイル (例えば記録された検索パターン) などで確認できます。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;は vimrc ファイルの中で設定し、それ以外では変更しないことが<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;推奨されています。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;は Vim の内部のすべてのテキストに使われるので、それを変更す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ると、すべての非 ASCII テキストが無効になります。レジスタおよび<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'viminfo'">'viminfo'</a>&nbsp;ファイル (例えば、記憶された検索パターン) を使うときに、これ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に気付くでしょう。<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;はあなたの vimrc ファイルで設定し、それに<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は手を触れないことをお勧めします。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_45.html#45.4" name="45.4">45.4</a>&nbsp;&nbsp;異なるエンコーディングのファイルを編集する<br>
 <br>
-Unicode を使うように設定された Vim で 16-bit Unicode のファイルを開く場合、実<br>
-際には Vim の内部では utf-8 が使われているので、エンコーディングの変換が必要に<br>
-なります。文字セット (Unicode) とエンコーディング (utf-8 or 16-bit) は別ものな<br>
-のです。<br>
-ファイルを開くとき、Vim はファイルのエンコーディングを判別しようとします。それ<br>
-には&nbsp;<a class="Type" href="options.html#'fileencodings'">'fileencodings'</a>&nbsp;オプションが使われます。Unicode を使っているときは、その<br>
-初期設定は &quot;ucs-bom,utf-8,latin1&quot; です。この設定を使ってファイルのエンコーディ<br>
-ングがチェックされます:<br>
+Vim を Unicode を使うように設定していて、16-bit Unicode のファイルを編集したい<br>
+とします。簡単そうですよね? さて、Vim は実際には内部で utf-8 エンコーディング<br>
+を使っているので、16-bit エンコーディングは変換する必要があります。文字セット<br>
+(Unicode) とエンコーディング (utf-8 または 16-bit) の間には違いがあるからです。<br>
+&nbsp;&nbsp; Vim は、どんな種類のファイルを編集しているかを検出しようとします。それには<br>
+<a class="Type" href="options.html#'fileencodings'">'fileencodings'</a>&nbsp;オプションのエンコーディング名を使います。Unicode を使っている<br>
+ときは、既定値は &quot;ucs-bom,utf-8,latin1&quot; です。これは、Vim がファイルをチェック<br>
+して、これらのエンコーディングのどれかであるかを調べることを意味します:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ucs-bom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ファイルの先頭がバイトオーダーマーク (BOM) で開始する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;場合。Unicode の 16-bit、32-bit、utf-8 エンコーディン<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;グを判別できます。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;utf-8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; utf-8 Unicode。utf-8 として不正なバイトがあった場合は<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;拒否されます。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latin1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;古き良き 8-bit エンコーディング。常に有効です。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ucs-bom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ファイルはバイトオーダーマーク (BOM) で始まらなければ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ならない。これにより、16-bit、32-bit、および utf-8 の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unicode エンコーディングを検出できる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;utf-8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; utf-8 Unicode。バイトの並びが utf-8 として不正なとき<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、これは拒否される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latin1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;古き良き 8-bit エンコーディング。常に動作する。<br>
 <br>
-16-bit Unicode ファイルを開いたとき、BOM が付いていたなら、エンコーディングが<br>
-判別され、ファイルは utf-8 に変換されながら読み込まれます。<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>&nbsp;(末<br>
-尾に s なし) には判別されたエンコーディングが設定されます。この場合は<br>
-&quot;utf-16le&quot; になります。&quot;utf-16le&quot; はリトルエンディアンの 16-bit Unicode を意味<br>
-します。これは MS-Windows での一般的な形式です (例えばレジストリファイルな<br>
-ど)。<br>
-ファイルを保存するとき、<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;が比較され、それが違って<br>
-いた場合は、テキストが変換されます。<br>
-<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>&nbsp;の値が空の場合は変換は実行されません。つまり、テキストは<br>
-<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;でエンコードするものと判断されます。<br>
+その 16-bit Unicode ファイルの編集を開始し、それに BOM がある場合、Vim はこれ<br>
+を検出し、読み込むときにファイルを utf-8 に変換します。<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>&nbsp;オプショ<br>
+ン (末尾に s なし) は検出された値に設定されます。この場合、それは &quot;utf-16le&quot;<br>
+です。これは、Unicode、16-bit、およびリトルエンディアンであることを意味します。<br>
+このファイル形式は MS-Windows では一般的です (例えば、レジストリファイル)。<br>
+&nbsp;&nbsp; ファイルを書き込むとき、Vim は&nbsp;<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>&nbsp;を&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;と比較します。<br>
+それらが異なる場合、テキストは変換されます。<br>
+&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>&nbsp;の空の値は、変換が行われないことを意味します。したがって、テ<br>
+キストは&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;でエンコードされているとみなされます。<br>
 <br>
-<a class="Type" href="options.html#'fileencodings'">'fileencodings'</a>&nbsp;の初期設定が良くない場合は、チェックさせたいエンコーディングを<br>
-自分で設定してください。設定の最初から順番に変換が試行されます。&quot;latin1&quot; を先<br>
-頭に置くとうまく動作しません。それは &quot;latin1&quot; の変換が失敗することがないからで<br>
-す。例えば次の設定では、BOM がなく、utf-8 でもない場合に、Shift_JIS が使われま<br>
-す:<br>
+既定の&nbsp;<a class="Type" href="options.html#'fileencodings'">'fileencodings'</a>&nbsp;の値が合わない場合、Vim に試してほしいエンコーディング<br>
+に設定してください。ある値が無効であるとわかったときにだけ、次のものが使われま<br>
+す。&quot;latin1&quot; を最初に置くのはうまくいきません。それは決して不正にならないから<br>
+です。ファイルに BOM がなく、utf-8 でもないときに日本語にフォールバックする例:<br>
+<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set fileencodings=ucs-bom,utf-8,sjis</div>
 <br>
-エンコーディングの名前は&nbsp;<a class="Identifier" href="mbyte.html#encoding-values">encoding-values</a>&nbsp;を参照してください。それ以外の名前<br>
-も使えます。使用できる名前は変換ライブラリに依存します。<br>
+推奨される値については&nbsp;<a class="Identifier" href="mbyte.html#encoding-values">encoding-values</a>&nbsp;を参照してください。他の値も動作する<br>
+かもしれません。これは使用可能な変換によります。<br>
 <br>
 <br>
 <span class="Statement">エンコーディングを強制する</span><br>
 <br>
-自動判別が機能しない場合は、エンコーディングを指定する必要があります。例:<br>
+自動検出がうまくいかない場合、ファイルがどのエンコーディングであるかを Vim に<br>
+伝える必要があります。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:edit ++enc=koi8-r russian.txt</div>
 <br>
-&quot;++enc&quot; を使ってファイルのエンコーディングを指定します。ファイルは指定されたエ<br>
-ンコーディング (例ではロシア語) から&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;に変換されます。<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a><br>
-は指定されたエンコーディングに設定されるので、保存するときには逆の変換が実行さ<br>
-れます。<br>
-ファイルを保存するときにも同じ引数が使えます。すなわち Vim をコード変換ツール<br>
-として使うこともできます。例:<br>
+&quot;++enc&quot; の部分は、このファイルに対してだけ使うエンコーディングの名前を指定しま<br>
+す。Vim はファイルを、指定されたエンコーディング、この例ではロシア語から、<br>
+<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;に変換します。<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>&nbsp;も指定されたエンコーディングに設定され<br>
+るので、ファイルを書き込むときに逆の変換を行うことができます。<br>
+&nbsp;&nbsp; ファイルを書き込むときにも同じ引数を使えます。この方法で、実際に Vim を使っ<br>
+てファイルを変換できます。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:write ++enc=utf-8 russian.txt</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変換によって一部の文字が失われることがあります。任意のエンコーディング<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;から Unicode に変換し、それを元に戻す場合は、不正な文字が入っていない<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;限り、そのような問題はほとんどありません。多言語で書かれたファイルを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unicode から他のエンコーディングに変換すると、情報が失われます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変換により文字が失われることがあります。あるエンコーディングから<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unicode に変換して戻すことは、不正な文字がない限り、たいていこの問題は<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ありません。ファイルに 2 つ以上の言語があったときは、Unicode から他の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;エンコーディングへの変換では、しばしば情報が失われます。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_45.html#45.5" name="45.5">45.5</a>&nbsp;&nbsp;言語のテキストを入力する<br>
 <br>
-コンピューターのキーボードには 100 個ほどのキーしかありません。しかし、数千の<br>
-文字を持つ言語があり、Unicode には 10 万以上の文字があります。どのようにしてそ<br>
-れらの文字を入力するのでしょうか？<br>
-それほど多くの文字を必要としない場合はダイグラフが使えます。ダイグラフについて<br>
-は&nbsp;<a class="Identifier" href="usr_24.html#24.9">24.9</a>&nbsp;で説明しました。<br>
-キーボードのキー数よりはるかに多い文字を扱う場合はインプットメソッド (Input<br>
-Method, IM) を使います。インプットメソッドを使うには、目的の文字を入力するため<br>
-のキー操作を学ぶ必要があります。あなたがインプットメソッドを必要とするなら、そ<br>
-れはおそらくは最初からシステムに用意されています。Vim でも他のプログラムと同様<br>
-にインプットメソッドを使うことができます。詳細は、X Window system なら<br>
-<a class="Identifier" href="mbyte.html#mbyte-XIM">mbyte-XIM</a>&nbsp;を、MS-Windows なら&nbsp;<a class="Identifier" href="mbyte.html#mbyte-IME">mbyte-IME</a>&nbsp;を参照してください。<br>
+コンピューターのキーボードには、100 個を大きく超えるキーはありません。数千の文<br>
+字を持つ言語もあり、Unicode には 10 万を超える文字があります。では、これらの文<br>
+字をどうやってタイプするのでしょうか?<br>
+&nbsp;&nbsp; まず第一に、特殊文字をそれほど多く使わないときは、ダイグラフを使うことがで<br>
+きます。これは&nbsp;<a class="Identifier" href="usr_24.html#24.9">24.9</a>&nbsp;ですでに説明しました。<br>
+&nbsp;&nbsp; あなたのキーボードのキーよりもずっと多くの文字を使う言語を使うときは、イン<br>
+プットメソッド (IM) を使いたくなるでしょう。これには、タイプしたキーから結果の<br>
+文字への変換を覚える必要があります。IM が必要なときは、おそらくすでにあなたの<br>
+システムにあるでしょう。他のプログラムと同じように Vim でも動作するはずです。<br>
+詳しくは、X Window system については&nbsp;<a class="Identifier" href="mbyte.html#mbyte-XIM">mbyte-XIM</a>&nbsp;を、MS-Windows については<br>
+<a class="Identifier" href="mbyte.html#mbyte-IME">mbyte-IME</a>&nbsp;を参照してください。<br>
 <br>
 <br>
 <span class="Statement">キーマップ</span><br>
 <br>
-いくつかの言語は latin とは文字セットが異なるだけで、文字の数は同じような場合<br>
-があります。その場合はキーを文字にマップすることができます。それにはキーマップ<br>
+いくつかの言語では、文字セットはラテン文字とは異なりますが、同じくらいの数の文<br>
+字を使います。キーを文字にマップすることが可能です。Vim はこのためにキーマップ<br>
 を使います。<br>
-例えば、ヘブライ語を使いたい場合は、次のようにしてキーマップをロードします:<br>
+&nbsp;&nbsp; ヘブライ語をタイプしたいとします。次のようにキーマップを読み込むことができ<br>
+ます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set keymap=hebrew</div>
 <br>
-キーマップファイルが検索されます。これは&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;の設定に依存します。ファイ<br>
-ルが見つからなかった場合はエラーメッセージが表示されます。<br>
+Vim はキーマップファイルを探そうとします。これは&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;の値によります。一<br>
+致するファイルが見つからなかった場合、エラーメッセージが表示されます。<br>
 <br>
-さて、挿入モードでヘブライ語を入力できるようになりました。ただし、ノーマルモー<br>
-ドのときや、&quot;:&quot; コマンドを入力するときは、自動的に英語に切り替わります。次のコ<br>
-マンドでヘブライ語と英語を切り替えることができます:<br>
+これで、挿入モードでヘブライ語をタイプできます。ノーマルモード、および &quot;:&quot; コ<br>
+マンドをタイプするときは、Vim は自動的に英語に切り替えます。ヘブライ語と英語の<br>
+間で切り替えるには、このコマンドを使えます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-^</div>
 <br>
-これは挿入モードとコマンドラインモードでのみ機能します。ノーマルモードではまっ<br>
-たく別の機能です (オルタネートファイルにジャンプ)。<br>
-キーマップの使用状態はモードメッセージに表示されます (<a class="Type" href="options.html#'showmode'">'showmode'</a>&nbsp;が設定されて<br>
-いるなら)。GUI ではカーソルの色が変わります。<br>
-キーマップの使用状態は&nbsp;<a class="Type" href="options.html#'iminsert'">'iminsert'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'imsearch'">'imsearch'</a>&nbsp;を設定することでも変更できま<br>
+これは挿入モードおよびコマンドラインモードでだけ動作します。ノーマルモードで<br>
+は、まったく異なること (代替ファイルへのジャンプ) をします。<br>
+&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'showmode'">'showmode'</a>&nbsp;オプションが設定されている場合、キーマップの使用はモードメッセー<br>
+ジで示されます。GUI では、Vim はキーマップの使用を異なるカーソルの色で示しま<br>
 す。<br>
+&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'iminsert'">'iminsert'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'imsearch'">'imsearch'</a>&nbsp;オプションでキーマップの使用を変更することもで<br>
+きます。<br>
 <br>
-次のコマンドでマップの一覧を表示できます:<br>
+マッピングの一覧を見るには、このコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:lmap</div>
 <br>
-利用可能なキーマップファイルの一覧は、GUI ならメニューの 編集/キーマップ で確<br>
-認できます。あるいは次のコマンドで一覧を表示できます:<br>
+どのキーマップファイルが使用可能かを調べるには、GUI では Edit/Keymap メニュー<br>
+を使えます。それ以外では、このコマンドを使えます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:echo globpath(&amp;rtp, &quot;keymap/*.vim&quot;)</div>
 <br>
 <br>
-<span class="Statement">自分でキーマップを作成する</span><br>
+<span class="Statement">自分でキーマップを作る</span><br>
 <br>
-自分でキーマップファイルを作成することができます。作成はそれほど難しくありませ<br>
-ん。目的の言語に近い既存のキーマップファイルを土台にしてください。そのファイル<br>
-を自分の &quot;keymap&quot; ディレクトリにコピーします。例えば、Unix なら &quot;~/.vim/keymap&quot;<br>
-などを使います。<br>
-キーマップファイルの名前は次のような形式にします:<br>
+あなた自身のキーマップファイルを作ることができます。それほど難しくありません。<br>
+使いたい言語に似たキーマップファイルから始めてください。それをあなたのランタイ<br>
+ムディレクトリ内の &quot;keymap&quot; ディレクトリにコピーします。例えば、Unix では、ディ<br>
+レクトリ &quot;~/.vim/keymap&quot; を使います。<br>
+&nbsp;&nbsp; キーマップファイルの名前は、次のようでなければなりません:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">keymap/{name}.vim</span><br>
-もしくは<br>
+または<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">keymap/{name}_{encoding}.vim</span><br>
 <br>
-<span class="Special">{name}</span>&nbsp;はキーマップの名前です。分かりやすい名前を付けます。既存のキーマップと<br>
-は違う名前にしてください (既存のキーマップファイルを置き換えるとき以外は)。<br>
-<span class="Special">{name}</span>&nbsp;にはアンダースコアを含めることはできません。アンダースコアに続けてエン<br>
-コーディングを指定することができます。例:<br>
+<span class="Special">{name}</span>&nbsp;はキーマップの名前です。わかりやすいが、既存のキーマップとは異なる名前<br>
+を選んでください (既存のキーマップファイルを置き換えたいのでない限り)。<span class="Special">{name}</span><br>
+はアンダースコアを含むことができません。必要に応じて、アンダースコアの後に、使<br>
+われるエンコーディングを追加してください。例:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">keymap/hebrew.vim</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">keymap/hebrew_utf-8.vim</span><br>
 <br>
-ファイルの内容については実物を見れば分かると思います。Vim に付属のキーマップを<br>
-見てください。詳細は&nbsp;<a class="Identifier" href="mbyte.html#mbyte-keymap">mbyte-keymap</a>&nbsp;を参照。<br>
+ファイルの内容は見ればわかるはずです。Vim と一緒に配布されているキーマップのい<br>
+くつかを見てください。詳しくは&nbsp;<a class="Identifier" href="mbyte.html#mbyte-keymap">mbyte-keymap</a>&nbsp;を参照してください。<br>
 <br>
 <br>
 <span class="Statement">最後の手段</span><br>
 <br>
-すべての方法がダメだったとしても、<span class="Special">CTRL-V</span>&nbsp;を使えばあらゆる文字を入力できます:<br>
+他のすべての方法が失敗した場合、<span class="Special">CTRL-V</span>&nbsp;で任意の文字を入力できます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">エンコード 入力方法&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 入力できる範囲</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8-bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-V</span>&nbsp;123&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10進数の 0-255<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8-bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-V</span>&nbsp;x a1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16進数の 00-ff<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16-bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-V</span>&nbsp;u 013b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16進数の 0000-ffff<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;31-bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-V</span>&nbsp;U 001303a4&nbsp;&nbsp;&nbsp;&nbsp;16進数の 00000000-7fffffff<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">エンコード タイプ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 範囲</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8-bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-V</span>&nbsp;123&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10 進数 0-255<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8-bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-V</span>&nbsp;x a1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16 進数 00-ff<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16-bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-V</span>&nbsp;u 013b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16 進数 0000-ffff<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;31-bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-V</span>&nbsp;U 001303a4&nbsp;&nbsp;&nbsp;&nbsp;16 進数 00000000-7fffffff<br>
 <br>
-入力するときはスペースは不要です。詳細は&nbsp;<a class="Identifier" href="insert.html#i_CTRL-V_digit">i_CTRL-V_digit</a>&nbsp;を参照。<br>
+スペースはタイプしないでください。詳しくは&nbsp;<a class="Identifier" href="insert.html#i_CTRL-V_digit">i_CTRL-V_digit</a>&nbsp;を参照してくださ<br>
+い。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
