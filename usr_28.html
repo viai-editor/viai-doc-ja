@@ -12,297 +12,299 @@ helpname: 'usr_28'
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 折り畳み<br>
 <br>
 <br>
-構造化されたテキストはいくつかのセクションから構成され、セクションはさらにサブ<br>
-セクションに分かれています。折り畳みを使うとセクションを一行で表示できます。折<br>
-り畳まれた行にはセクションの概要が表示されます。この章では折り畳みの使い方を説<br>
-明します。<br>
+構造化されたテキストは、セクションに分けることができます。そしてセクションはサ<br>
+ブセクションに。折り畳みを使うと、セクションを 1 行として表示して、概要を示す<br>
+ことができます。この章では、これを行うさまざまな方法を説明します。<br>
 <br>
-<a class="Identifier" href="usr_28.html#28.1">28.1</a>&nbsp;&nbsp;折り畳みとは<br>
-<a class="Identifier" href="usr_28.html#28.2">28.2</a>&nbsp;&nbsp;手動で折り畳む<br>
-<a class="Identifier" href="usr_28.html#28.3">28.3</a>&nbsp;&nbsp;折り畳みを使って作業する<br>
+<a class="Identifier" href="usr_28.html#28.1">28.1</a>&nbsp;&nbsp;折り畳みとは何か?<br>
+<a class="Identifier" href="usr_28.html#28.2">28.2</a>&nbsp;&nbsp;手動折り畳み<br>
+<a class="Identifier" href="usr_28.html#28.3">28.3</a>&nbsp;&nbsp;折り畳みを操作する<br>
 <a class="Identifier" href="usr_28.html#28.4">28.4</a>&nbsp;&nbsp;折り畳みの保存と復元<br>
-<a class="Identifier" href="usr_28.html#28.5">28.5</a>&nbsp;&nbsp;インデントで折り畳む<br>
-<a class="Identifier" href="usr_28.html#28.6">28.6</a>&nbsp;&nbsp;マーカーで折り畳む<br>
-<a class="Identifier" href="usr_28.html#28.7">28.7</a>&nbsp;&nbsp;構文で折り畳む<br>
-<a class="Identifier" href="usr_28.html#28.8">28.8</a>&nbsp;&nbsp;スクリプトで折り畳む<br>
-<a class="Identifier" href="usr_28.html#28.9">28.9</a>&nbsp;&nbsp;変更のない行を折り畳む<br>
-<a class="Identifier" href="usr_28.html#28.10">28.10</a>&nbsp;どれを使えばいいの?<br>
+<a class="Identifier" href="usr_28.html#28.5">28.5</a>&nbsp;&nbsp;インデントによる折り畳み<br>
+<a class="Identifier" href="usr_28.html#28.6">28.6</a>&nbsp;&nbsp;マーカーを使った折り畳み<br>
+<a class="Identifier" href="usr_28.html#28.7">28.7</a>&nbsp;&nbsp;構文による折り畳み<br>
+<a class="Identifier" href="usr_28.html#28.8">28.8</a>&nbsp;&nbsp;式による折り畳み<br>
+<a class="Identifier" href="usr_28.html#28.9">28.9</a>&nbsp;&nbsp;変更されていない行の折り畳み<br>
+<a class="Identifier" href="usr_28.html#28.10">28.10</a>&nbsp;どの折り畳み方法を使うか?<br>
 <br>
 次章:&nbsp;<a class="Identifier" href="usr_29.html">usr_29.txt</a>&nbsp;&nbsp;プログラムの中を移動する<br>
 前章:&nbsp;<a class="Identifier" href="usr_27.html">usr_27.txt</a>&nbsp;&nbsp;検索コマンドおよびパターン<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_28.html#28.1" name="28.1">28.1</a>&nbsp;&nbsp;折り畳みとは<br>
+<a class="Constant" href="usr_28.html#28.1" name="28.1">28.1</a>&nbsp;&nbsp;折り畳みとは何か?<br>
 <br>
-折り畳みとは、バッファ中の複数の行を画面上で一行に表示するための機能です。紙を<br>
-折り畳んで短くするような感じです。<br>
+折り畳みは、バッファ内の行の範囲を画面上で 1 行として表示するために使われます。<br>
+短くするために折り畳んだ紙のようなものです:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+------------------------+<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| line 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| line 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| line 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 1 行目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 2 行目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 3 行目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|_______________________ |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \________________________\<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / folded lines&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / 折り畳まれた行&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/________________________/<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| line 12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| line 13&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| line 14&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 12 行目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 13 行目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 14 行目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+------------------------+<br>
 <br>
-バッファ内のテキストが消えるわけではありません。折り畳みが影響するのは画面の表<br>
-示だけです。<br>
+テキストは変更されずにバッファ内にあります。折り畳みによって影響を受けるのは、<br>
+行の表示のされ方だけです。<br>
 <br>
-折り畳みを使うと文章構成を把握するのが簡単になります。折り畳まれたセクションは<br>
-一行で表示され、その行にはセクションの概要が表示されます。<br>
+折り畳みの利点は、セクションの行を折り畳んで、それをセクションがあることを示す<br>
+1 行で置き換えることで、テキストの構造のよりよい概要をつかめることです。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_28.html#28.2" name="28.2">28.2</a>&nbsp;&nbsp;手動で折り畳む<br>
+<a class="Constant" href="usr_28.html#28.2" name="28.2">28.2</a>&nbsp;&nbsp;手動折り畳み<br>
 <br>
-実際に試してみましょう。どこかの段落にカーソルを動かして次のように入力します:<br>
+試してみましょう: 段落内にカーソルを置いて、こうタイプします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zfap</div>
 <br>
-段落が、ハイライトされた一行に置き換わります。それが折り畳みです。<a class="Identifier" href="fold.html#zf">zf</a>&nbsp;はオペ<br>
-レータです。<a class="Identifier" href="motion.html#ap">ap</a>&nbsp;はテキストオブジェクトによる範囲指定です。<a class="Identifier" href="fold.html#zf">zf</a>&nbsp;はどのカーソル<br>
-移動コマンドとも組み合わせることができます。カーソルが移動した範囲が折り畳みの<br>
-対象になります。<a class="Identifier" href="fold.html#zf">zf</a>&nbsp;はビジュアルモードでも使えます。<br>
+段落がハイライトされた 1 行に置き換えられるのがわかるでしょう。折り畳みを作成<br>
+したのです。<a class="Identifier" href="fold.html#zf">zf</a>&nbsp;はオペレータで、<a class="Identifier" href="motion.html#ap">ap</a>&nbsp;はテキストオブジェクトの選択です。<a class="Identifier" href="fold.html#zf">zf</a><br>
+オペレータは任意の移動コマンドと一緒に使って、それが移動したテキストに対する折<br>
+り畳みを作成できます。<a class="Identifier" href="fold.html#zf">zf</a>&nbsp;はビジュアルモードでも機能します。<br>
 <br>
-再びテキストを表示するには、次のコマンドで折り畳みを開きます:<br>
+テキストを再び見るには、こうタイプして折り畳みを開きます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zo</div>
 <br>
-次のコマンドで折り畳みを閉じることができます:<br>
+そして、こうすると再び折り畳みを閉じることができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zc</div>
 <br>
-折り畳み関連のコマンドはすべて &quot;z&quot; で始まります。この文字は、紙を折り畳んで横<br>
-から見た図に見えますよね。&quot;z&quot; の後ろにはコマンドが連想しやすいような文字が割り<br>
-当てられています。<br>
+折り畳みのコマンドはすべて &quot;z&quot; で始まります。少し空想すると、これは折り畳んだ<br>
+紙を横から見たように見えます。&quot;z&quot; の後の文字は、コマンドを覚えやすくするための<br>
+記憶を助ける意味を持っています:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;折り畳む (Fold)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;折り畳みを開く (Open)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;折り畳みを閉じる (Close)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F-old 作成<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;折り畳みを O-pen する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;折り畳みを C-lose する<br>
 <br>
-折り畳みは入れ子にできます。折り畳まれた行を含んだ範囲をさらに折り畳むことがで<br>
-きます。例えば、このセクションの段落をそれぞれ折り畳み、そして、この章のセク<br>
-ション全体を折り畳むということができます。実際に試してください。折り畳みを開い<br>
-たとき、その中にある折り畳みは、閉じたときと同じ開閉状態のままになっています。<br>
+折り畳みは入れ子にできます: 折り畳みを含むテキストの領域を再び折り畳むことがで<br>
+きます。例えば、このセクションの各段落を折り畳み、それからこの章のすべてのセク<br>
+ションを折り畳むことができます。試してみてください。章全体の折り畳みを開くと、<br>
+入れ子の折り畳みが元のとおりに復元されることに気付くでしょう。いくつかは開いて<br>
+いて、いくつかは閉じているかもしれません。<br>
 <br>
-いくつかの折り畳みを作ったときに、すべての折り畳みを開きたくなった場合、それぞ<br>
-れの折り畳みを &quot;zo&quot; で開いていくこともできますが、次のコマンドでもっと簡単にで<br>
-きます:<br>
+いくつかの折り畳みを作成して、今度はテキストをすべて見たいとします。各折り畳み<br>
+へ移動して &quot;zo&quot; とタイプすることもできます。これをもっと速く行うには、このコマ<br>
+ンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zr</div>
 <br>
-折り畳みが減少 (Reduce) します。その逆は &quot;zm&quot; です:<br>
+これは折り畳みを R-educe します。その逆は:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zm</div>
 <br>
-折り畳みが増加 (More) します。&quot;zr&quot; と &quot;zm&quot; は入れ子になった折り畳みを一階層ず<br>
-つ開閉できます。<br>
+これは M-ore 折り畳みます。&quot;zr&quot; および &quot;zm&quot; を繰り返して、何段階かの入れ子の折<br>
+り畳みを開いたり閉じたりできます。<br>
 <br>
-入れ子になった折り畳みをいっぺんに開きたい場合は次のコマンドを使います:<br>
+何段階も深く入れ子にしている場合、それらすべてを以下で開くことができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zR</div>
 <br>
-すべての折り畳みが開くまで、折り畳みが減少 (Reduce) します。すべての折り畳みを<br>
-閉じるには:<br>
+これは、折り畳みが 1 つも残らなくなるまで R-educe します。そして、以下ですべて<br>
+の折り畳みを閉じることができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zM</div>
 <br>
-折り畳みが次々と (More and More) 閉じます。<br>
+これは M-ore and M-ore 折り畳みます。<br>
 <br>
-<a class="Identifier" href="fold.html#zn">zn</a>&nbsp;コマンドで折り畳みを無効にできます。無効になった折り畳みは&nbsp;<a class="Identifier" href="fold.html#zN">zN</a>&nbsp;で元に戻<br>
-ります。<a class="Identifier" href="fold.html#zi">zi</a>&nbsp;で無効と有効を交互に切り替えられます。次のように使うと便利です:<br>
-- ファイルの構造を確認するために折り畳みを作成する<br>
-- 作業したい場所に移動する<br>
--&nbsp;<a class="Identifier" href="fold.html#zi">zi</a>&nbsp;で折り畳みを無効にして編集作業をする<br>
--&nbsp;<a class="Identifier" href="fold.html#zi">zi</a>&nbsp;で折り畳みを有効にして別の場所に移動する<br>
+<a class="Identifier" href="fold.html#zn">zn</a>&nbsp;コマンドで素早く折り畳みを無効にできます。そして&nbsp;<a class="Identifier" href="fold.html#zN">zN</a>&nbsp;で折り畳みを元のと<br>
+おりに戻せます。<a class="Identifier" href="fold.html#zi">zi</a>&nbsp;は 2 つの間を切り替えます。これは便利な作業方法です:<br>
+- あなたのファイルの概要をつかむために折り畳みを作成する<br>
+- あなたの作業をしたい場所へ移動する<br>
+-&nbsp;<a class="Identifier" href="fold.html#zi">zi</a>&nbsp;を実行してテキストを見て、それを編集する<br>
+- 再び&nbsp;<a class="Identifier" href="fold.html#zi">zi</a>&nbsp;を実行して移動に戻る<br>
 <br>
-手作業で折り畳みを作成するための詳しい説明はリファレンスマニュアルを参照してく<br>
-ださい:&nbsp;<a class="Identifier" href="fold.html#fold-manual">fold-manual</a><br>
+手動折り畳みについての詳細はリファレンスマニュアルで:&nbsp;<a class="Identifier" href="fold.html#fold-manual">fold-manual</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_28.html#28.3" name="28.3">28.3</a>&nbsp;&nbsp;折り畳みを使って作業する<br>
+<a class="Constant" href="usr_28.html#28.3" name="28.3">28.3</a>&nbsp;&nbsp;折り畳みを操作する<br>
 <br>
-折り畳みが閉じているとき、&quot;j&quot; や &quot;k&quot; などのコマンドでその上を移動できます。閉<br>
-じた折り畳みは一行の空行のように扱われます。つまり折り畳まれたテキストの上を素<br>
-早く移動できます。<br>
+いくつかの折り畳みが閉じているとき、&quot;j&quot; および &quot;k&quot; のような移動コマンドは、折<br>
+り畳みをそれが 1 つの空の行であるかのように移動します。これにより、折り畳まれ<br>
+たテキスト上を素早く移動できます。<br>
 <br>
-折り畳まれたテキストは、それが一つの行であるかのように、ヤンクしたり削除したり<br>
-できます。これは例えばプログラムの関数を並べ替えたりするときに便利です。まず<br>
-<a class="Type" href="options.html#'foldmethod'">'foldmethod'</a>&nbsp;を正しく設定し、それぞれの関数が適切に折り畳まれるようにします。<br>
-そして、&quot;dd&quot; で関数を削除し、カーソルを移動して、&quot;p&quot; でプットします。関数の一<br>
-部が折り畳みからはみ出している場合はビジュアルモードを使います:<br>
-- 移動させたい範囲の最初の行に移動<br>
-- &quot;V&quot; でビジュアルモードを開始<br>
-- 移動させたい範囲の最後の行に移動<br>
-- &quot;d&quot; で選択範囲を削除<br>
-- カーソルを移動して、&quot;p&quot; でテキストをプットする<br>
+折り畳みを 1 行であるかのようにヤンク、削除、および貼り付けできます。これはプ<br>
+ログラム内の関数を並べ替えたい場合にとても便利です。まず、正しい&nbsp;<a class="Type" href="options.html#'foldmethod'">'foldmethod'</a><br>
+を選択して、各折り畳みに関数全体 (またはそれより少し少なく) が含まれるようにし<br>
+ます。それから &quot;dd&quot; で関数を削除し、カーソルを移動して &quot;p&quot; で貼り付けます。関<br>
+数のいくつかの行が折り畳みの上または下にある場合、ビジュアル選択を使えます:<br>
+- 移動する最初の行にカーソルを置く<br>
+- &quot;V&quot; を押してビジュアルモードを開始する<br>
+- 移動する最後の行にカーソルを置く<br>
+- &quot;d&quot; を押して選択した行を削除する。<br>
+- 新しい位置にカーソルを移動し、そこに行を &quot;p&quot; で貼り付ける。<br>
 <br>
-折り畳みを設定した場所 (つまり&nbsp;<a class="Identifier" href="fold.html#zo">zo</a>&nbsp;コマンドが機能する場所) を覚えておくのは大<br>
-変です。次のコマンドで折り畳みの場所を確認できます:<br>
+折り畳みがどこにあるか、つまり&nbsp;<a class="Identifier" href="fold.html#zo">zo</a>&nbsp;コマンドが実際にどこで機能するかを、見たり<br>
+覚えたりするのは難しいことがあります。定義された折り畳みを見るには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set foldcolumn=4</div>
 <br>
-ウィンドウの左側に折り畳みの場所が表示されます。閉じた折り畳みは &quot;+&quot; で表示さ<br>
-れます。開いた折り畳みは、一行目が &quot;-&quot; で表示され、それ以降は &quot;|&quot; で表示されま<br>
-す。<br>
+これは、折り畳みを示す小さな列をウィンドウの左に表示します。<br>
+閉じた折り畳みには &quot;+&quot; が表示されます。開いた各折り畳みの開始には &quot;-&quot; が表示さ<br>
+れ、折り畳みの以降の行には &quot;|&quot; が表示されます。<br>
 <br>
-マウスで &quot;+&quot; の部分をクリックすると折り畳みが開きます。&quot;-&quot; や &quot;|&quot; の部分をク<br>
-リックすると折り畳みが閉じます。<br>
+マウスを使って、foldcolumn の &quot;+&quot; をクリックして折り畳みを開くことができます。<br>
+&quot;-&quot; またはその下の &quot;|&quot; をクリックすると、開いた折り畳みを閉じます。<br>
 <br>
-現在行の折り畳みをすべて開くには&nbsp;<a class="Identifier" href="fold.html#zO">zO</a>&nbsp;を使います。<br>
-現在行の折り畳みをすべて閉じるには&nbsp;<a class="Identifier" href="fold.html#zC">zC</a>&nbsp;を使います。<br>
-現在行の折り畳みを削除するには&nbsp;<a class="Identifier" href="fold.html#zd">zd</a>&nbsp;を使います。<br>
-現在行の折り畳みをすべて削除するには&nbsp;<a class="Identifier" href="fold.html#zD">zD</a>&nbsp;を使います。<br>
+カーソル行のすべての折り畳みを開くには&nbsp;<a class="Identifier" href="fold.html#zO">zO</a>&nbsp;を使います。<br>
+カーソル行のすべての折り畳みを閉じるには&nbsp;<a class="Identifier" href="fold.html#zC">zC</a>&nbsp;を使います。<br>
+カーソル行の折り畳みを削除するには&nbsp;<a class="Identifier" href="fold.html#zd">zd</a>&nbsp;を使います。<br>
+カーソル行のすべての折り畳みを削除するには&nbsp;<a class="Identifier" href="fold.html#zD">zD</a>&nbsp;を使います。<br>
 <br>
-挿入モードでは現在行の折り畳みは絶対に閉じません。入力した文字は必ず表示されま<br>
-す。<br>
+挿入モードでは、カーソル行の折り畳みは決して閉じられません。これにより、タイプ<br>
+しているものを見ることができます!<br>
 <br>
-カーソルをジャンプさせたり左右に動かしたりしたとき、折り畳みは自動的に開きま<br>
-す。例えば &quot;0&quot; コマンドを使うと現在行の折り畳みが開きます (<a class="Type" href="options.html#'foldopen'">'foldopen'</a>&nbsp;に &quot;hor&quot;<br>
-が含まれている場合のみ。初期設定では含まれています)。どのコマンドを使うと折り<br>
-畳みが開くかは&nbsp;<a class="Type" href="options.html#'foldopen'">'foldopen'</a>&nbsp;オプションで設定できます。カーソルが乗っている行の折<br>
-り畳みを常に開いておきたい場合は次のように設定します:<br>
+ジャンプしたり、カーソルを左または右に移動したりすると、折り畳みは自動的に開か<br>
+れます。例えば、&quot;0&quot; コマンドはカーソル下の折り畳みを開きます (<a class="Type" href="options.html#'foldopen'">'foldopen'</a>&nbsp;が既<br>
+定値である &quot;hor&quot; を含んでいる場合)。<a class="Type" href="options.html#'foldopen'">'foldopen'</a>&nbsp;オプションを変更して、特定のコ<br>
+マンドで折り畳みを開くようにできます。カーソル下の行を常に開いておきたい場合、<br>
+こうします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set foldopen=all</div>
 <br>
-<span class="Todo">警告:</span>&nbsp;閉じた折り畳みの上に移動することはできなくなります。この設定を一時的に使<br>
-い、元に戻したくなったら次のようにします:<br>
+<span class="Todo">警告:</span>&nbsp;そうすると閉じた折り畳みの上に移動できなくなります。これは一時的にだけ使<br>
+い、その後既定値に戻したいかもしれません:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set foldopen&amp;</div>
 <br>
-折り畳みを自動的に閉じたい場合は次のようにします:<br>
+折り畳みが、その外に移動したときに自動的に閉じるようにできます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set foldclose=all</div>
 <br>
-カーソルが乗っていないすべての折り畳みに&nbsp;<a class="Type" href="options.html#'foldlevel'">'foldlevel'</a>&nbsp;が適用されます。このよう<br>
-な動作は好き嫌いがあるので実際に試してみてください。折り畳みを増加させたい場合<br>
-は&nbsp;<a class="Identifier" href="fold.html#zm">zm</a>&nbsp;を、減少させたい場合は&nbsp;<a class="Identifier" href="fold.html#zr">zr</a>&nbsp;を使ってください。<br>
+これは、カーソルを含まないすべての折り畳みに&nbsp;<a class="Type" href="options.html#'foldlevel'">'foldlevel'</a>&nbsp;を再適用します。この<br>
+感じが好きかどうかは、試してみる必要があります。<a class="Identifier" href="fold.html#zm">zm</a>&nbsp;を使ってもっと折り畳み、<br>
+<a class="Identifier" href="fold.html#zr">zr</a>&nbsp;を使って少なく折り畳みます (折り畳みを減らす)。<br>
 <br>
-折り畳みはウィンドウローカルな設定です。同じファイルを二つのウィンドウで表示し<br>
-て、片方では折り畳みを使い、もう片方では普通に表示するということができます。あ<br>
-るいは、片方ですべての折り畳みを閉じ、もう片方ですべての折り畳みを開くこともで<br>
-きます。<br>
+折り畳みはウィンドウにローカルです。これにより、同じバッファで 2 つのウィンド<br>
+ウを開き、1 つは折り畳みあり、1 つは折り畳みなしにできます。または、1 つはすべ<br>
+ての折り畳みを閉じ、1 つはすべての折り畳みを開いた状態にできます。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_28.html#28.4" name="28.4">28.4</a>&nbsp;&nbsp;折り畳みの保存と復元<br>
 <br>
-ファイルを破棄すると折り畳みの情報は失われてしまいます。後で同じファイルを開い<br>
-たとき、折り畳みの開閉状態は初期状態に戻っています。手動で作成した折り畳みは失<br>
-われます。折り畳みを保存するには&nbsp;<a class="Identifier" href="starting.html#:mkview">:mkview</a>&nbsp;コマンドを使います:<br>
+ファイルを放棄すると (別のファイルの編集を開始すると)、折り畳みの状態は失われ<br>
+ます。後で同じファイルに戻ってくると、手動で開いたり閉じたりした折り畳みはすべ<br>
+て既定に戻っています。折り畳みが手動で作成されていたときは、すべての折り畳みが<br>
+なくなっています! 折り畳みを保存するには&nbsp;<a class="Identifier" href="starting.html#:mkview">:mkview</a>&nbsp;コマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mkview</div>
 <br>
-ファイルの表示に関する設定が保存されます。保存される情報の種類は&nbsp;<a class="Type" href="options.html#'viewoptions'">'viewoptions'</a><br>
-オプションで設定できます。<br>
-後で同じファイルを開いたときに保存したビューを復元できます:<br>
+これは、ファイルのビューに影響する設定およびその他のものを保存します。<br>
+<a class="Type" href="options.html#'viewoptions'">'viewoptions'</a>&nbsp;オプションで何を保存するかを変更できます。<br>
+後で同じファイルに戻ってきたとき、ビューを再び読み込むことができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:loadview</div>
 <br>
-一つのファイルにつき 10 個までのビューを保存できます。例えば、現在の設定を 3<br>
-番に保存して 2 番の設定をロードするには次のようにします:<br>
+1 つのファイルに最大 10 個のビューを保存できます。例えば、現在の設定を 3 番目<br>
+のビューとして保存し、2 番目のビューを読み込むには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mkview 3<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:loadview 2</div>
 <br>
-<span class="Todo">Note:</span>&nbsp;行を挿入したり削除したりすると保存していたビューが使えなくなるかもしれま<br>
-せん。ビューの保存場所は&nbsp;<a class="Type" href="options.html#'viewdir'">'viewdir'</a>&nbsp;オプションで決まります。必要な場合は自分で<br>
-ビューを削除してください。<br>
+<span class="Todo">Note</span>&nbsp;行を挿入または削除すると、ビューが無効になるかもしれないことに注意してく<br>
+ださい。また、ビューを保存する場所を指定する&nbsp;<a class="Type" href="options.html#'viewdir'">'viewdir'</a>&nbsp;オプションも確認してく<br>
+ださい。時々古いビューを削除したいかもしれません。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_28.html#28.5" name="28.5">28.5</a>&nbsp;&nbsp;インデントで折り畳む<br>
+<a class="Constant" href="usr_28.html#28.5" name="28.5">28.5</a>&nbsp;&nbsp;インデントによる折り畳み<br>
 <br>
-<a class="Identifier" href="fold.html#zf">zf</a>&nbsp;を使って折り畳みを定義するのは大変です。テキストが階層的にインデントされ<br>
-ている場合は、それを使って折り畳むことができます。インデントの深さにしたがって<br>
-折り畳みが作成され、大きくインデントされた部分は折り畳みが入れ子になります。こ<br>
-の方法は多くのプログラミング言語で使うことができます。<br>
+<a class="Identifier" href="fold.html#zf">zf</a>&nbsp;で折り畳みを定義するのは大変な作業です。あなたのテキストが、下位レベルの<br>
+項目により大きなインデントを付けることで構造化されている場合、インデント折り畳<br>
+み方法を使えます。これは、同じインデントを持つ行の連続ごとに折り畳みを作成しま<br>
+す。より大きなインデントを持つ行は、入れ子の折り畳みになります。これは多くのプ<br>
+ログラミング言語でうまく機能します。<br>
 <br>
-<a class="Type" href="options.html#'foldmethod'">'foldmethod'</a>&nbsp;オプションを次のように設定してください:<br>
+<a class="Type" href="options.html#'foldmethod'">'foldmethod'</a>&nbsp;オプションを設定して試してみてください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set foldmethod=indent</div>
 <br>
-<a class="Identifier" href="fold.html#zm">zm</a>&nbsp;や&nbsp;<a class="Identifier" href="fold.html#zr">zr</a>&nbsp;を使って折り畳みを増減できるようになりました。以下の例文を使うと<br>
-簡単に確認できます:<br>
+それから&nbsp;<a class="Identifier" href="fold.html#zm">zm</a>&nbsp;および&nbsp;<a class="Identifier" href="fold.html#zr">zr</a>&nbsp;コマンドを使って、もっと折り畳んだり、折り畳みを減ら<br>
+したりできます。この例のテキストで見るとわかりやすいです:<br>
 <br>
 この行はインデントされていない<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この行は一段インデントされている<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この行は二段インデントされている<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この行は二段インデントされている<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この行は一段インデントされている<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この行は 1 回インデントされている<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この行は 2 回インデントされている<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この行は 2 回インデントされている<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この行は 1 回インデントされている<br>
 この行はインデントされていない<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この行は一段インデントされている<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この行は一段インデントされている<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この行は 1 回インデントされている<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この行は 1 回インデントされている<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;インデントの量と折り畳みの深さの対応は&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;オプションで決まりま<br>
-す。<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;の幅を単位としてインデントが深くなると折り畳みが深くなります。<br>
-これを折り畳みレベルと呼びます。<br>
+<span class="Todo">Note</span>&nbsp;インデントの量と折り畳みの深さの間の関係は&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;オプションに依存<br>
+することに注意してください。<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;分のインデントごとに、折り畳みの深さ<br>
+に 1 が加わります。これは折り畳みレベルと呼ばれます。<br>
 <br>
-<a class="Identifier" href="fold.html#zr">zr</a>&nbsp;や&nbsp;<a class="Identifier" href="fold.html#zm">zm</a>&nbsp;コマンドを使ったとき、実際には&nbsp;<a class="Type" href="options.html#'foldlevel'">'foldlevel'</a>&nbsp;の値を増減させているの<br>
-です。自分で設定することもできます:<br>
+<a class="Identifier" href="fold.html#zr">zr</a>&nbsp;および&nbsp;<a class="Identifier" href="fold.html#zm">zm</a>&nbsp;コマンドを使うと、実際には&nbsp;<a class="Type" href="options.html#'foldlevel'">'foldlevel'</a>&nbsp;オプションを増やしたり<br>
+減らしたりしています。これを直接設定することもできます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set foldlevel=3</div>
 <br>
-<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;の幅を単位として、インデントが三段より深い階層の折り畳みが閉じま<br>
-す。設定した値より深い階層の折り畳みが閉じる仕組みです。<a class="Type" href="options.html#'foldlevel'">'foldlevel'</a>&nbsp;を 0 に設<br>
-定するとすべての折り畳みが閉じます。<a class="Identifier" href="fold.html#zM">zM</a>&nbsp;を使うと&nbsp;<a class="Type" href="options.html#'foldlevel'">'foldlevel'</a>&nbsp;が 0 に設定され<br>
-ます。<a class="Identifier" href="fold.html#zR">zR</a>&nbsp;を使うと&nbsp;<a class="Type" href="options.html#'foldlevel'">'foldlevel'</a>&nbsp;がファイル内の最も深い折り畳みレベルに設定され<br>
-ます。<br>
+これは、<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;の 3 倍以上のインデントを持つすべての折り畳みが閉じられる<br>
+ことを意味します。foldlevel が低いほど、多くの折り畳みが閉じられます。<br>
+<a class="Type" href="options.html#'foldlevel'">'foldlevel'</a>&nbsp;が 0 のとき、すべての折り畳みが閉じられます。<a class="Identifier" href="fold.html#zM">zM</a>&nbsp;は&nbsp;<a class="Type" href="options.html#'foldlevel'">'foldlevel'</a><br>
+を 0 に設定します。反対のコマンド&nbsp;<a class="Identifier" href="fold.html#zR">zR</a>&nbsp;は、<a class="Type" href="options.html#'foldlevel'">'foldlevel'</a>&nbsp;をファイル内に存在する<br>
+最も深い折り畳みレベルに設定します。<br>
 <br>
-つまり、折り畳みを開閉する方法は二つあります<br>
-(A) 折り畳みレベルを設定する方法。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;この方法は、テキストを &quot;ズームアウト&quot; して文章の構成を眺め、カーソルを動か<br>
-&nbsp;&nbsp;&nbsp;&nbsp;し、テキストに &quot;ズームイン&quot; するような使い方ができます。<br>
+したがって、折り畳みを開いたり閉じたりする方法は 2 つあります:<br>
+(A) 折り畳みレベルを設定することによって。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;これは、&quot;ズームアウト&quot; してテキストの構造を見て、カーソルを移動し、再びテ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;キストに &quot;ズームイン&quot; する、非常に素早い方法を提供します。<br>
 <br>
-(B)&nbsp;<a class="Identifier" href="fold.html#zo">zo</a>&nbsp;や&nbsp;<a class="Identifier" href="fold.html#zc">zc</a>&nbsp;を使って個々の折り畳みを開閉する方法。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;他の折り畳みは閉じたままで、必要な折り畳みだけを開くことができます。<br>
+(B)&nbsp;<a class="Identifier" href="fold.html#zo">zo</a>&nbsp;および&nbsp;<a class="Identifier" href="fold.html#zc">zc</a>&nbsp;コマンドを使って特定の折り畳みを開くか、または閉じること<br>
+&nbsp;&nbsp;&nbsp;&nbsp;によって。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;これにより、開いておきたい折り畳みだけを開き、他の折り畳みは閉じたままにで<br>
+&nbsp;&nbsp;&nbsp;&nbsp;きます。<br>
 <br>
-二つの方法を組み合わせることもできます。<a class="Identifier" href="fold.html#zm">zm</a>&nbsp;で全体的に折り畳みを閉じてから<br>
-<a class="Identifier" href="fold.html#zo">zo</a>&nbsp;で特定の折り畳みだけを開く。あるいは、<a class="Identifier" href="fold.html#zR">zR</a>&nbsp;ですべての折り畳みを開いてから<br>
-<a class="Identifier" href="fold.html#zc">zc</a>&nbsp;で特定の折り畳みを閉じるなど。<br>
+これは組み合わせることができます: まず&nbsp;<a class="Identifier" href="fold.html#zm">zm</a>&nbsp;を何回か使ってほとんどの折り畳みを<br>
+閉じ、それから&nbsp;<a class="Identifier" href="fold.html#zo">zo</a>&nbsp;で特定の折り畳みを開くことができます。または、<a class="Identifier" href="fold.html#zR">zR</a>&nbsp;ですべ<br>
+ての折り畳みを開き、それから&nbsp;<a class="Identifier" href="fold.html#zc">zc</a>&nbsp;で特定の折り畳みを閉じます。<br>
 <br>
-<a class="Type" href="options.html#'foldmethod'">'foldmethod'</a>&nbsp;が &quot;indent&quot; に設定されている場合は手動で折り畳みを定義できません。<br>
-インデントと折り畳みレベルの関係を保つためです。<br>
+しかし、<a class="Type" href="options.html#'foldmethod'">'foldmethod'</a>&nbsp;が &quot;indent&quot; のときは、インデントと折り畳みレベルの間の関<br>
+係と衝突するので、手動で折り畳みを定義することはできません。<br>
 <br>
-インデントによる折り畳みの詳しい説明はリファレンスマニュアルを参照してくださ<br>
-い:&nbsp;<a class="Identifier" href="fold.html#fold-indent">fold-indent</a><br>
+インデントによる折り畳みについての詳細はリファレンスマニュアルで:<br>
+<a class="Identifier" href="fold.html#fold-indent">fold-indent</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_28.html#28.6" name="28.6">28.6</a>&nbsp;&nbsp;マーカーで折り畳む<br>
+<a class="Constant" href="usr_28.html#28.6" name="28.6">28.6</a>&nbsp;&nbsp;マーカーを使った折り畳み<br>
 <br>
-テキストにマーカーを書いて、折り畳みの始点と終点を指定できます。この方法を使う<br>
-と折り畳みの範囲を明示的に指定できます。ただし、テキストに変更を加える必要があ<br>
-ります。<br>
+テキスト内のマーカーは、折り畳み領域の開始および終了を指定するために使われま<br>
+す。これにより、どの行が折り畳みに含まれるかを正確に制御できます。欠点は、テキ<br>
+ストを変更する必要があることです。<br>
 <br>
-次のように設定してください:<br>
+試してみてください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set foldmethod=marker</div>
 <br>
-C 言語を使った例文:<br>
+C プログラム内に現れるかもしれない例のテキスト:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* foobar () {{ "{{{" }} */<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int foobar()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* return a value {{ "{{{" }} */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* 値を返す {{ "{{{" }} */<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 42;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* }}} */<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* }}} */<br>
 <br>
-マーカーの直前に書かれたテキストが折り畳まれた行に表示されるので、折り畳まれた<br>
-テキストがどのような内容なのかを知ることができます。<br>
+折り畳まれた行はマーカーの前のテキストを表示することに注意してください。これ<br>
+は、折り畳みが何を含んでいるかを伝えるのにとても便利です。<br>
 <br>
-テキストを移動したときなどにマーカーの対応がずれてしまうと面倒です。番号付き<br>
-マーカーを使うと手間が省けます。例:<br>
+いくつかの行を移動した後にマーカーが正しく対にならないと、かなり厄介です。これ<br>
+は番号付きのマーカーを使うことで避けられます。例:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* global variables {{ "{{{" }}1 */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* グローバル変数 {{ "{{{" }}1 */<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int varA, varB;<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* functions {{ "{{{" }}1 */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* 関数 {{ "{{{" }}1 */<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* funcA() {{ "{{{" }}2 */<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void funcA() {}<br>
 <br>
@@ -310,118 +312,122 @@ C 言語を使った例文:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void funcB() {}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* }}}1 */<br>
 <br>
-番号付きマーカーを書いた場所から指定レベルの折り畳みが開始します。指定レベルよ<br>
-り高いレベルの折り畳みをその場所で区切るという効果もあります。番号付きマーカー<br>
-は開始マーカーを指定するだけで折り畳みを定義できます。折り畳みを明示的に止めた<br>
-い場合は終了マーカーを設定する必要があります。<br>
+番号付きのマーカーごとに、指定されたレベルの折り畳みが開始します。これにより、<br>
+より高いレベルの折り畳みはここで終了します。番号付きの開始マーカーだけを使っ<br>
+て、すべての折り畳みを定義することができます。別の折り畳みが開始する前に明示的<br>
+に折り畳みを終了させたいときだけ、終了マーカーを追加する必要があります。<br>
 <br>
-マーカーによる折り畳みの詳しい説明はリファレンスマニュアルを参照してください:<br>
+マーカーを使った折り畳みについての詳細はリファレンスマニュアルで:<br>
 <a class="Identifier" href="fold.html#fold-marker">fold-marker</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_28.html#28.7" name="28.7">28.7</a>&nbsp;&nbsp;構文で折り畳む<br>
+<a class="Constant" href="usr_28.html#28.7" name="28.7">28.7</a>&nbsp;&nbsp;構文による折り畳み<br>
 <br>
-ファイルを表示するとき、ファイルの種類に応じた構文ファイルが使われます。構文<br>
-ファイルにはファイルをカラー表示するための定義が書かれています。例えばこのヘル<br>
-プファイルは &quot;help&quot; 構文ファイルを使ってカラー表示されています (カラー端末を<br>
-使っているなら)。<br>
-構文ファイルで構文を定義するときに &quot;fold&quot; 属性を指定して折り畳み領域を定義する<br>
-ことができます。構文ファイルを書くのは大変ですが、一度作ってしまえば、後は自動<br>
-的に折り畳みが作成されるようになります。<br>
-自分で構文ファイルを作成することはほとんどないと思うので、詳しい説明は省きま<br>
-す。折り畳みを開いたり閉じたりする方法は他と変わりません。ファイルを開くと自動<br>
-的に折り畳みが作成されます。<br>
+言語ごとに、Vim は異なる構文ファイルを使います。これはファイル内のさまざまな項<br>
+目の色を定義します。これを Vim で、色をサポートする端末で読んでいる場合、目に<br>
+している色は &quot;help&quot; 構文ファイルによって作られています。<br>
+&nbsp;&nbsp; 構文ファイルでは、&quot;fold&quot; 引数を持つ構文アイテムを追加できます。これらは折り<br>
+畳み領域を定義します。これには構文ファイルを書き、そこにこれらのアイテムを追加<br>
+する必要があります。それはそれほど簡単ではありません。しかし、一度行えば、すべ<br>
+ての折り畳みは自動的に行われます。<br>
+&nbsp;&nbsp; ここでは、既存の構文ファイルを使っていると仮定します。そうすると、それ以上<br>
+説明することはありません。上で説明したように、折り畳みを開いたり閉じたりできま<br>
+す。ファイルを編集すると、折り畳みは自動的に作成および削除されます。<br>
 <br>
-構文による折り畳みの詳しい説明はリファレンスマニュアルを参照してください:<br>
-<a class="Identifier" href="fold.html#fold-syntax">fold-syntax</a><br>
+構文による折り畳みについての詳細はリファレンスマニュアルで:&nbsp;<a class="Identifier" href="fold.html#fold-syntax">fold-syntax</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_28.html#28.8" name="28.8">28.8</a>&nbsp;&nbsp;スクリプトで折り畳む<br>
+<a class="Constant" href="usr_28.html#28.8" name="28.8">28.8</a>&nbsp;&nbsp;式による折り畳み<br>
 <br>
-これはインデントによる折り畳みと似ていますが、インデントではなくユーザーが定義<br>
-した関数を使って折り畳みレベルを計算します。テキストの内容から折り畳みレベルを<br>
-判断するようなことができます。例えば、メールでは引用したテキストの前に &quot;&gt;&quot; を<br>
-付けます。それを折り畳むには次のようにします:<br>
+これはインデントによる折り畳みと似ていますが、行のインデントを使う代わりに、<br>
+ユーザー関数が呼ばれて行の折り畳みレベルを計算します。これは、テキスト内の何か<br>
+がどの行が一緒に属するかを示しているテキストに使えます。例としては、引用された<br>
+テキストが行の前の &quot;&gt;&quot; で示される電子メールのメッセージがあります。これらの引<br>
+用を折り畳むには、これを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set foldmethod=expr<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set foldexpr=strlen(substitute(substitute(getline(v:lnum),'\\s','',\&quot;g\&quot;),'[^&gt;].*','',''))</div>
 <br>
-次のようなテキストが折り畳まれます。試してみてください:<br>
+このテキストで試すことができます:<br>
 <br>
-&gt; 相手が書いた文章<br>
-&gt; 相手が書いた文章<br>
-&gt; &gt; 相手が引用した私の文章<br>
-&gt; &gt; 相手が引用した私の文章<br>
+&gt; 彼が書いた引用テキスト<br>
+&gt; 彼が書いた引用テキスト<br>
+&gt; &gt; 私が書いた二重に引用されたテキスト<br>
+&gt; &gt; 私が書いた二重に引用されたテキスト<br>
 <br>
-上記の&nbsp;<a class="Type" href="options.html#'foldexpr'">'foldexpr'</a>&nbsp;の設定を説明します (呼び出しの深い順番):<br>
-&nbsp;&nbsp; getline(v:lnum)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在行を取得<br>
-&nbsp;&nbsp; substitute(...,'\\s','','g')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 行から空白を削除<br>
-&nbsp;&nbsp; substitute(...,'[^&gt;].*','','')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 先頭の '&gt;' 以降を全て削除<br>
-&nbsp;&nbsp; strlen(...)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文字の長さ('&gt;' の数)を数える<br>
+例で使われた&nbsp;<a class="Type" href="options.html#'foldexpr'">'foldexpr'</a>&nbsp;の説明 (内側から外側へ):<br>
+&nbsp;&nbsp; getline(v:lnum)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在の行を取得する<br>
+&nbsp;&nbsp; substitute(...,'\\s','','g')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 行からすべての空白を取り除く<br>
+&nbsp;&nbsp; substitute(...,'[^&gt;].*','','')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 先頭の '&gt;' の後のすべてを取り除く<br>
+&nbsp;&nbsp; strlen(...)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文字列の長さを数える。これは<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;見つかった '&gt;' の数である<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;&quot;:set&quot; コマンドでは、空白とダブルクォートとバックスラッシュのすべてに対<br>
-してバックスラッシュを前置する必要があります。よくわからないときは:<br>
+<span class="Todo">Note</span>&nbsp;&quot;:set&quot; コマンドでは、すべての空白、ダブルクォート、およびバックスラッシュ<br>
+の前にバックスラッシュを挿入しなければならないことに注意してください。これで混<br>
+乱する場合は、以下を実行して<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set foldexpr</div>
 <br>
-このコマンドで実際に設定された値を確認してください。複雑な式を書いていてそれを<br>
-修正したい場合は、コマンドライン補完を使ってください:<br>
+実際の結果の値を確認してください。複雑な式を修正するには、コマンドライン補完を<br>
+使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set foldexpr=&lt;Tab&gt;</div>
 <br>
-<span class="Special">&lt;Tab&gt;</span>&nbsp;は実際の Tab キーです。現在の設定値が入力されるので、それを編集できます。<br>
+ここで&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;は実際の Tab です。Vim が以前の値を入力するので、それを編集できま<br>
+す。<br>
 <br>
-複雑な式を使いたい場合はその処理を関数にして、<a class="Type" href="options.html#'foldexpr'">'foldexpr'</a>&nbsp;からはその関数を呼ぶ<br>
-ように設定してください。<br>
+式がもっと複雑になったときは、それを関数に入れて、その関数を呼び出すように<br>
+<a class="Type" href="options.html#'foldexpr'">'foldexpr'</a>&nbsp;を設定すべきです。<br>
 <br>
-スクリプトにより折り畳みの詳しい説明はリファレンスマニュアルを参照してください:<br>
-<a class="Identifier" href="fold.html#fold-expr">fold-expr</a><br>
+式による折り畳みについての詳細はリファレンスマニュアルで:&nbsp;<a class="Identifier" href="fold.html#fold-expr">fold-expr</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_28.html#28.9" name="28.9">28.9</a>&nbsp;&nbsp;変更のない行を折り畳む<br>
+<a class="Constant" href="usr_28.html#28.9" name="28.9">28.9</a>&nbsp;&nbsp;変更されていない行の折り畳み<br>
 <br>
-<a class="Type" href="options.html#'diff'">'diff'</a>&nbsp;オプションと合わせて使うと便利です。<a class="Identifier" href="diff.html#vimdiff">vimdiff</a>&nbsp;コマンドを使ったときもこ<br>
-の設定が適用されます。例:<br>
+これは、同じウィンドウで&nbsp;<a class="Type" href="options.html#'diff'">'diff'</a>&nbsp;オプションを設定したときに便利です。<a class="Identifier" href="diff.html#vimdiff">vimdiff</a><br>
+コマンドがこれを行ってくれます。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:setlocal diff foldmethod=diff scrollbind nowrap foldlevel=1</div>
 <br>
-同じファイルの別バージョンを表示しているすべてのウィンドウでこの設定を実行して<br>
-ください。同じ部分は折り畳まれ、違いのある行だけが表示されるようになります。<br>
+同じファイルの異なるバージョンを表示しているすべてのウィンドウでこれを行いま<br>
+す。ファイル間の違いがはっきりとわかり、その一方で変更されていないテキストは折<br>
+り畳まれます。<br>
 <br>
-詳細は&nbsp;<a class="Identifier" href="fold.html#fold-diff">fold-diff</a>&nbsp;参照。<br>
+詳細は&nbsp;<a class="Identifier" href="fold.html#fold-diff">fold-diff</a>&nbsp;を参照してください。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_28.html#28.10" name="28.10">28.10</a>&nbsp;どれを使えばいいの?<br>
+<a class="Constant" href="usr_28.html#28.10" name="28.10">28.10</a>&nbsp;どの折り畳み方法を使うか?<br>
 <br>
-いろんな方法があるのでどれを使えばいいか悩んでしまいますね。残念ながら完璧な答<br>
-えはありません。いくつかヒントを示します。<br>
+これらすべての可能性があると、どの方法を選ぶべきか迷うでしょう。残念ながら、黄<br>
+金律はありません。以下にいくつかのヒントを示します。<br>
 <br>
-編集したい言語の構文ファイルが折り畳みに対応している場合は、それを使うのがおそ<br>
-らくベストです。あるいは自分で書いてみるのもいいかもしれません。構文ファイルの<br>
-作成には検索パターンの詳しい知識が必要です。簡単な仕事ではありませんが、それが<br>
-動作するようになれば、手動で折り畳みを定義する必要がなくなります。<br>
+編集している言語に折り畳みのある構文ファイルがある場合、それがおそらく最良の選<br>
+択です。ない場合は、それを書いてみることもできます。これには検索パターンについ<br>
+ての十分な知識が必要です。簡単ではありませんが、機能するようになれば、手動で折<br>
+り畳みを定義する必要はなくなります。<br>
 <br>
-テキストのフォーマットが不定な場合は手動で折り畳みを定義してください。<br>
-<a class="Identifier" href="starting.html#:mkview">:mkview</a>&nbsp;を使えば折り畳みを保存したり復元したりできます。<br>
+構造化されていないテキストには、領域を手動で折り畳むコマンドをタイプすることが<br>
+使えます。それから&nbsp;<a class="Identifier" href="starting.html#:mkview">:mkview</a>&nbsp;コマンドを使って、あなたの折り畳みを保存および復<br>
+元します。<br>
 <br>
-マーカーを使う方法はファイルにマーカーを書き込む必要があります。他の人とファイ<br>
-ルを共有したり、社内のコーディング規約に従う必要がある場合は使えないかもしれま<br>
-せん。<br>
-マーカーの利点は折り畳みを明示的に設置できることです。折り畳みをカット&amp;ペース<br>
-トしたときに前後の不要な行が変更されたりしません。折り畳まれた行に表示されるコ<br>
-メントを指定することもできます。<br>
+マーカー方法では、ファイルを変更する必要があります。ファイルを他の人と共有して<br>
+いる場合、または会社の標準に従わなければならない場合、それらを追加することは許<br>
+可されないかもしれません。<br>
+&nbsp;&nbsp; マーカーの主な利点は、それらを望む場所に正確に置けることです。これにより、<br>
+折り畳みをカットおよびペーストしたときに数行が漏れることを避けられます。そし<br>
+て、折り畳みに何が含まれているかについてのコメントを追加できます。<br>
 <br>
-インデントによる折り畳みはたいていのファイルで機能しますが、うまく機能しない場<br>
-合もあります。他の方法が使えない場合に使ってください。しかしアウトラインを表示<br>
-する方法としては非常に便利です。<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;の幅ずつインデントを付けて折り畳<br>
-みレベルを指定します。<br>
+インデントによる折り畳みは、多くのファイルで機能するものですが、常にうまく機能<br>
+するとは限りません。他の方法の 1 つを使えないときに使ってください。しかし、ア<br>
+ウトラインを書くにはとても便利です。その場合、ネストのレベルごとに明確に 1 つ<br>
+の&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;を使います。<br>
 <br>
-スクリプトを使った方法はほとんどの構造化されたテキストを折り畳むことができま<br>
-す。設定方法もシンプルです。折り畳みの開始と終了を認識するのが容易な場合は特に<br>
+式による折り畳みは、ほとんどすべての構造化されたテキストで折り畳みを作成できま<br>
+す。特に、折り畳みの開始および終了を簡単に認識できる場合は、指定するのは非常に<br>
 簡単です。<br>
-この方法で折り畳みを定義したときに思ったとおりの折り畳みが作成されなかった場合<br>
-は &quot;manual&quot; に切り替えてみてください。設定を変更しても折り畳みは削除されないの<br>
-で、そのまま手動で折り畳みを削除したり追加したりできます。<br>
+&nbsp;&nbsp; &quot;expr&quot; 方法を使って折り畳みを定義したが、それらが望むとおりでない場合、<br>
+&quot;manual&quot; 方法に切り替えることができます。これは定義された折り畳みを削除しませ<br>
+ん。その後、手動で折り畳みを削除または追加できます。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
