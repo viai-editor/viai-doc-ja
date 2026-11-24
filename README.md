@@ -1,6 +1,6 @@
 # viai-doc-ja
 
-[![Generate viai help](https://github.com/viai-editor/viai-doc-ja-working/actions/workflows/generate.yml/badge.svg)](https://github.com/viai-editor/viai-doc-ja-working/actions/workflows/generate.yml)
+[![Generate ViAI help](https://github.com/viai-editor/viai-doc-ja-working/actions/workflows/generate.yml/badge.svg)](https://github.com/viai-editor/viai-doc-ja-working/actions/workflows/generate.yml)
 
 日本語に翻訳した ViAI 付属のヘルプを配布するためのプロジェクトです。
 
