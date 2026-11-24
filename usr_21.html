@@ -9,189 +9,196 @@ helpname: 'usr_21'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中断と再開<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;離れて、戻ってくる<br>
 <br>
 <br>
-この章では、Vim と他のプログラムを並行して使う方法を説明します。Vim の中から外<br>
-部プログラムを実行したり、Vim を一次的に中断することでそれを実現できます。さら<br>
-に、作業状態を記録しておいて、後から復元する方法も説明します。<br>
+この章では、他のプログラムの使用を Vim と混ぜることについて扱います。Vim の中<br>
+からプログラムを実行するか、または Vim を離れて後で戻ってくるかのどちらかによっ<br>
+てです。さらに、これは Vim の状態を記憶して後で復元する方法についてです。<br>
 <br>
 <a class="Identifier" href="usr_21.html#21.1">21.1</a>&nbsp;&nbsp;サスペンドとレジューム<br>
 <a class="Identifier" href="usr_21.html#21.2">21.2</a>&nbsp;&nbsp;シェルコマンドの実行<br>
-<a class="Identifier" href="usr_21.html#21.3">21.3</a>&nbsp;&nbsp;viminfo に情報を記録する<br>
+<a class="Identifier" href="usr_21.html#21.3">21.3</a>&nbsp;&nbsp;viminfo に情報を記憶する<br>
 <a class="Identifier" href="usr_21.html#21.4">21.4</a>&nbsp;&nbsp;セッション<br>
 <a class="Identifier" href="usr_21.html#21.5">21.5</a>&nbsp;&nbsp;ビュー<br>
 <a class="Identifier" href="usr_21.html#21.6">21.6</a>&nbsp;&nbsp;モードライン<br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_22.html">usr_22.txt</a>&nbsp;&nbsp;ファイルを探す<br>
-前章:&nbsp;<a class="Identifier" href="usr_20.html">usr_20.txt</a>&nbsp;&nbsp;コマンドラインを素早く入力する<br>
+次章:&nbsp;<a class="Identifier" href="usr_22.html">usr_22.txt</a>&nbsp;&nbsp;編集するファイルを見つける<br>
+前章:&nbsp;<a class="Identifier" href="usr_20.html">usr_20.txt</a>&nbsp;&nbsp;コマンドラインのコマンドを素早くタイプする<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_21.html#21.1" name="21.1">21.1</a>&nbsp;&nbsp;サスペンドとレジューム<br>
 <br>
-他の Unix プログラムと同様に、Vim も&nbsp;<span class="Special">CTRL-Z</span>&nbsp;でサスペンドできます。<span class="Special">CTRL-Z</span>&nbsp;を押<br>
-すと Vim が停止し、実行元のシェルに制御が戻ります。そこで好きなだけ他のコマン<br>
-ドを実行できます。Vim に戻るには &quot;fg&quot; コマンドを使います。<br>
+ほとんどの Unix プログラムと同様に、Vim は&nbsp;<span class="Special">CTRL-Z</span>&nbsp;を押すことでサスペンドできま<br>
+す。これは Vim を停止し、Vim が起動されたシェルに戻ります。それから、飽きるま<br>
+で他の任意のコマンドを実行できます。その後、&quot;fg&quot; コマンドで Vim を呼び戻しま<br>
+す。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-Z<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{任意のシェルコマンドを実行}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{任意の一連のシェルコマンド}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fg</div>
 <br>
-サスペンドする前とまったく同じ状態に戻ることができます。<br>
-<span class="Special">CTRL-Z</span>&nbsp;を押しても反応がなかった場合は &quot;:suspend&quot; コマンドを使ってください。<br>
-Vim をフォアグラウンドに戻すのを忘れないでください。戻さなかった場合は編集作業<br>
-が失われてしまいます。<br>
+Vim を離れたところにそのまま戻り、何も変わっていません。<br>
+&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-Z</span>&nbsp;を押しても動作しない場合、&quot;:suspend&quot; も使えます。<br>
+Vim をフォアグラウンドに戻すのを忘れないでください。行った変更をすべて失ってし<br>
+まいます!<br>
 <br>
-この機能は Unix でのみサポートされています。他のシステムでは新しいシェルが起動<br>
-されるでしょう。シェルのコマンドが使えることに違いはありませんが、しかしそれは<br>
-Vim を実行したシェルではなく、新しいシェルです。<br>
-GUI で実行しているときは実行元のシェルに戻ることはできません。<span class="Special">CTRL-Z</span>&nbsp;を押すと<br>
-Vim ウィンドウが最小化されます。<br>
+これをサポートしているのは Unix だけです。他のシステムでは、Vim はシェルを起動<br>
+します。これにもシェルコマンドを実行できるという機能があります。しかし、それは<br>
+新しいシェルであり、Vim を起動したシェルではありません。<br>
+&nbsp;&nbsp; GUI を実行しているときは、Vim が起動されたシェルに戻ることはできません。代<br>
+わりに、<span class="Special">CTRL-Z</span>&nbsp;は Vim ウィンドウを最小化します。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_21.html#21.2" name="21.2">21.2</a>&nbsp;&nbsp;シェルコマンドの実行<br>
 <br>
-一つのシェルコマンドを実行するには &quot;:!<span class="Special">{command}</span>&quot; を使います。例えば、ディレク<br>
-トリのファイル一覧を見るには次のようにします:<br>
+Vim から 1 つのシェルコマンドを実行するには、&quot;:!<span class="Special">{command}</span>&quot; を使います。例えば、<br>
+ディレクトリの一覧を見るには:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!ls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Unix 環境)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!dir&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (MS-DOS/MS-Windows 環境)</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!ls<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!dir</div>
 <br>
-外部プログラムが実行されます。コマンドの実行が終わると&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;キーの入力を促<br>
-すプロンプトが表示されるので、コマンドの出力を確認してから通常画面に戻ってくだ<br>
-さい。<br>
-&quot;!&quot; は他のコマンドで外部プログラムを指定するときにも使われます。次のコマンドで<br>
-指定できます:<br>
+1 つ目は Unix 用、2 つ目は MS-Windows 用です。<br>
+&nbsp;&nbsp; Vim はプログラムを実行します。それが終了すると、<span class="Special">&lt;Enter&gt;</span>&nbsp;を押すように促すプ<br>
+ロンプトが表示されます。これにより、編集していたテキストに戻る前に、コマンドか<br>
+らの出力を見ることができます。<br>
+&nbsp;&nbsp; &quot;!&quot; は、プログラムが実行される他の場所でも使われます。概要を見てみましょう:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!<span class="Special">{program}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{program}</span>&nbsp;を実行する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:r !<span class="Special">{program}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{program}</span>&nbsp;を実行し、その出力を読み込む<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:w !<span class="Special">{program}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{program}</span>&nbsp;を実行し、標準入力にテキストを書き込む<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span class="Special">[range]</span>!<span class="Special">{program}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{program}</span>&nbsp;を実行し、テキストをフィルタリングする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!<span class="Special">{program}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{program}</span>&nbsp;を実行する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:r !<span class="Special">{program}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{program}</span>&nbsp;を実行し、その出力を読み込む<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:w !<span class="Special">{program}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{program}</span>&nbsp;を実行し、テキストをその入力に送る<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span class="Special">[range]</span>!<span class="Special">{program}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{program}</span>&nbsp;を通してテキストをフィルタする<br>
 <br>
-&quot;!<span class="Special">{program}</span>&quot; に範囲指定をするとまったく違う動作になるので注意してください。範<br>
-囲指定がなければ単純にプログラムが実行されるだけですが、範囲指定があると、その<br>
-範囲のテキストがプログラムでフィルタ処理されます。<br>
+&quot;!<span class="Special">{program}</span>&quot; の前に範囲があることが大きな違いを生むことに注意してください。範<br>
+囲がないとプログラムを通常どおり実行し、範囲があるといくつかのテキスト行がプロ<br>
+グラムを通してフィルタされます。<br>
 <br>
-この方法で外部プログラムを何度でも実行できますが、続けてたくさん実行したい場合<br>
-はシェルを起動した方がいいでしょう。次のコマンドで新しいシェルを起動できます:<br>
+この方法で一連のプログラムを実行することは可能です。しかし、シェルの方がはるか<br>
+に得意です。この方法で新しいシェルを起動できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:shell</div>
 <br>
-<span class="Special">CTRL-Z</span>&nbsp;で Vim をサスペンドしたときの動作に似ていますが、新しいシェルが起動され<br>
-るという点が違います。<br>
+これは、<span class="Special">CTRL-Z</span>&nbsp;を使って Vim をサスペンドするのと似ています。違いは、新しいシェ<br>
+ルが起動されることです。<br>
 <br>
-GUI を使っている場合は、シェルの入出力に Vim ウィンドウが使われます。Vim は端<br>
-末エミュレータではないので、端末の機能を完全に再現することはできません。うまく<br>
-動作しない場合は、<a class="Type" href="options.html#'guipty'">'guipty'</a>&nbsp;オプションを設定してみてください。それでも動作しな<br>
-い場合は、新しい端末を作成し、そこでシェルを実行してください。例えば、次のよう<br>
-にします:<br>
+GUI を使っているときは、シェルは入力および出力に Vim ウィンドウを使います。Vim<br>
+は端末エミュレータではないので、これは完全には動作しません。問題がある場合、<br>
+<a class="Type" href="options.html#'guipty'">'guipty'</a>&nbsp;オプションを切り替えてみてください。それでもまだ十分にうまく動作しな<br>
+い場合、シェルを実行する新しい端末を起動してください。例えば以下で:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!xterm&amp;</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_21.html#21.3" name="21.3">21.3</a>&nbsp;&nbsp;viminfo に情報を記録する<br>
+<a class="Constant" href="usr_21.html#21.3" name="21.3">21.3</a>&nbsp;&nbsp;viminfo に情報を記憶する<br>
 <br>
-テキストを保持しているレジスタ、いろんな場所に設定されたマーク、慎重に書き上げ<br>
-たコマンドが記録されたコマンドライン履歴などは、Vim を終了するとすべて失われて<br>
-しまいます。ただし、それらを復元することは可能です！<br>
+しばらく編集した後には、レジスタ内のテキスト、さまざまなファイル内のマーク、注<br>
+意深く作り上げたコマンドで埋まったコマンドライン履歴があるでしょう。Vim を終了<br>
+すると、これらはすべて失われます。しかし、取り戻すことができます!<br>
 <br>
-viminfo ファイルには以下の情報を記録できます:<br>
+viminfo ファイルは、状態の情報を保存するために設計されています:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンドライン履歴と検索履歴<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;レジスタ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マーク<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンドラインおよび検索パターンの履歴<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;レジスタ内のテキスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;さまざまなファイルのマーク<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファリスト<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;グローバル変数<br>
 <br>
-Vim を終了すると、これらの情報が viminfo ファイルに保存されます。次に Vim を起<br>
-動すると、viminfo ファイルが読み込まれ、状態が復元されます。<br>
+Vim を終了するたびに、Vim はこの情報をファイル、つまり viminfo ファイルに保存<br>
+します。Vim が再び起動すると、viminfo ファイルが読み込まれ、情報が復元されま<br>
+す。<br>
 <br>
-<a class="Type" href="options.html#'viminfo'">'viminfo'</a>&nbsp;オプションの初期設定では、あまり多くの情報は記録されません。たくさん<br>
-の情報を記録したい場合は、次のコマンドで設定してください:<br>
+<a class="Type" href="options.html#'viminfo'">'viminfo'</a>&nbsp;オプションは、既定では限られた数の項目を復元するように設定されていま<br>
+す。もっと多くの情報を記憶するように設定したいかもしれません。これは以下のコマ<br>
+ンドで行います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set viminfo=string</div>
 <br>
-&quot;string&quot; の部分に、記録したい情報を指定します。設定の書式は、オプション文字と<br>
-引数の組み合わせをコンマ (,) で区切ったリストです。<br>
-<a class="Type" href="options.html#'viminfo'">'viminfo'</a>&nbsp;の設定方法を順番に見ていきましょう。まず、' オプションを設定してみま<br>
-す。' オプションには、マーク (a-z) を記録するファイルの数を指定できます。適当<br>
-な数 (例えば 1000) を設定しましょう。コマンドは次のようになります:<br>
+string は保存するものを指定します。この文字列の構文は、オプション文字の後に引<br>
+数が続くものです。オプション/引数の組はコンマで区切られます。<br>
+&nbsp;&nbsp; 自分の viminfo 文字列をどのように組み立てられるかを見てください。まず、' オ<br>
+プションは、マーク (a-z) を保存するファイルの数を指定するために使われます。こ<br>
+のオプションには、きりのよい偶数 (例えば 1000) を選んでください。これでコマン<br>
+ドはこのようになります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set viminfo='1000</div>
 <br>
-f オプションには、グローバルマーク (A-Z と 0-9) を記録するかどうかを指定できま<br>
-す。引数が 0 なら何も記録されません。f オプションを指定しない、あるいは引数に<br>
-1 を指定すると、マークが保存されます。このオプションを指定すると、コマンドは次<br>
-のようになります:<br>
+f オプションは、グローバルマーク (A-Z および 0-9) を保存するかどうかを制御しま<br>
+す。このオプションが 0 の場合、何も保存されません。1 であるか、または f オプ<br>
+ションを指定しない場合、マークは保存されます。この機能が欲しいので、これでこう<br>
+なります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set viminfo='1000,f1</div>
 <br>
-&lt; オプションには、レジスタの行数制限を指定できます。初期設定ではすべての行が記<br>
-録されます。引数が 0 なら何も記録されません。何千行もの (起動を遅くする以外に<br>
-使い道のない) テキストを viminfo ファイルに記録したくはないので、500 行に制限<br>
-してみます:<br>
+オプション &lt; は、各レジスタについて何行保存するかを制御します。既定では、すべ<br>
+ての行が保存されます。0 の場合、何も保存されません。viminfo ファイルに何千行も<br>
+追加するのを避けるために (それは決して使われないかもしれず、Vim の起動を遅くし<br>
+ます)、最大 500 行を使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set viminfo='1000,f1,&lt;500</div>
 <br>
-他にも次のようなオプションがあります:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 記録するコマンドライン履歴の数<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 記録する入力行履歴の数<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 記録する検索履歴の数<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 指定されたリムーバブルメディア上のファイルのマークを記録しない<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(複数指定可)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 名前がすべて大文字のグローバル変数を記録する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 起動直後に&nbsp;<a class="Type" href="options.html#'hlsearch'">'hlsearch'</a>&nbsp;による強調表示をしない<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バッファリスト (Vim をファイル引数なしで起動したときのみ復元さ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れます)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; テキストを&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;で変換する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; viminfo ファイルの名前 (このオプションは末尾に指定する必要があ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ります)<br>
+使いたいかもしれない他のオプション:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; コマンドライン履歴から保存する行数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 入力行履歴から保存する行数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 検索履歴から保存する行数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; リムーバブルメディア。これに対してはマークが保存されない (複数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;回使用できる)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 大文字で始まり、小文字を含まないグローバル変数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 起動時に&nbsp;<a class="Type" href="options.html#'hlsearch'">'hlsearch'</a>&nbsp;のハイライトを無効にする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バッファリスト (ファイル引数なしで Vim を起動したときだけ復元<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;される)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;を使ってテキストを変換する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; viminfo ファイルに使われる名前 (最後のオプションでなければなら<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ない)<br>
 <br>
-詳細は&nbsp;<a class="Type" href="options.html#'viminfo'">'viminfo'</a>&nbsp;と&nbsp;<a class="Identifier" href="starting.html#viminfo-file">viminfo-file</a>&nbsp;を参照してください。<br>
+さらなる情報については、<a class="Type" href="options.html#'viminfo'">'viminfo'</a>&nbsp;オプションおよび&nbsp;<a class="Identifier" href="starting.html#viminfo-file">viminfo-file</a>&nbsp;を参照してく<br>
+ださい。<br>
 <br>
-Vim を複数起動した場合は、最後に終了した Vim の状態が記録されます。それより前<br>
-に終了した Vim が記録した情報は失われます。記録できるのは一つの状態だけです。<br>
+Vim を複数回実行するとき、最後に終了したものがその情報を保存します。これによ<br>
+り、以前に終了した Vim が保存した情報が失われることがあります。各項目は 1 回だ<br>
+け記憶できます。<br>
 <br>
 <br>
-<span class="Statement">前回の場所に戻る</span><br>
+<span class="Statement">Vim を停止した場所に戻る</span><br>
 <br>
-ファイルの編集中に終業時間が来てしまいました。明日から休暇です。Vim を終了し、<br>
-家路につきましょう。仕事の事はすべて忘れて休暇を楽しんでください。数週間後、仕<br>
-事に戻ったら、Vim を立ち上げて、こう入力します:<br>
+ファイルの編集の途中で、休暇に出かける時間になりました。Vim を終了し、仕事のこ<br>
+とはすっかり忘れて楽しみに出かけます。2 週間ほど後に Vim を起動し、こうタイプ<br>
+します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'0</div>
 <br>
-すると、最後に編集していた場所に戻れます。これで仕事が続けられますね。<br>
-Vim を終了するたびにマークが設定されます。最新のマークは '0 です。マークは '0<br>
-から '1 へ、'1 から '2 へ、しだいにずれていき、'9 まで記録されます。<br>
-'0 から '9 までのマークがどこを指しているのかは&nbsp;<a class="Identifier" href="motion.html#:marks">:marks</a>&nbsp;コマンドで確認できま<br>
-す。<br>
+そして、Vim を離れたところにそのまま戻ります。したがって、作業を続けることがで<br>
+きます。<br>
+&nbsp;&nbsp; Vim は、Vim を終了するたびにマークを作成します。最後のものは '0 です。'0 が<br>
+指していた位置は '1 になります。そして '1 は '2 になり、以下同様です。マーク<br>
+'9 は失われます。<br>
+&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#:marks">:marks</a>&nbsp;コマンドは、'0 から '9 がどこに連れていくかを調べるのに便利です。<br>
 <br>
 <br>
-<span class="Statement">最近開いたファイルに戻る</span><br>
+<span class="Statement">あるファイルに戻る</span><br>
 <br>
-最近開いたファイルを再び開きたい場合はすこし面倒です (前回の Vim 終了時に開い<br>
-ていたファイルではなくてまさに最近開いたファイルのこと)。次のコマンドでファイ<br>
-ルの一覧を表示できます:<br>
+最近編集したが、Vim を終了したときに編集していたのではないファイルに戻りたい場<br>
+合、少しだけ複雑な方法があります。コマンドをタイプすることで、ファイルのリスト<br>
+を見ることができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:oldfiles</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">1: ~/.viminfo</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">2: ~/text/resume.txt</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">3: /tmp/draft</span><br>
 <br>
-二番目のファイル (&quot;2:&quot; の行) を開きたい場合は次のように入力します:<br>
+ここで、2 番目のファイルを編集したいとします。それはリストで &quot;2:&quot; が前に付いて<br>
+いるものです。こうタイプします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:e #&lt;2</div>
 <br>
-&quot;:e&quot; 以外にも、ファイル名を引数に取るコマンドならどれを使っても構いません。<br>
-&quot;#&lt;2&quot; という表記は &quot;%&quot; (カレントファイル) や &quot;#&quot; (オルタネートファイル) と同じ<br>
-要領で使用できます。例えば次のようにすると、三番目のファイルを分割ウィンドウで<br>
-開くことができます:<br>
+&quot;:e&quot; の代わりに、ファイル名を引数に取る任意のコマンドを使えます。&quot;#&lt;2&quot; という<br>
+項目は、&quot;%&quot; (カレントファイル名) および &quot;#&quot; (代替ファイル名) と同じ場所で機能<br>
+します。したがって、ウィンドウを分割して 3 番目のファイルを編集することもでき<br>
+ます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:split #&lt;3</div>
 <br>
-単にファイルを開きたい場合には #&lt;123 という指定は少し面倒かもしれませんね。<br>
+ただファイルを編集したいだけのときには、#&lt;123 というものは少し複雑です。幸い、<br>
 もっと簡単な方法があります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:browse oldfiles</div>
@@ -200,129 +207,132 @@ Vim を終了するたびにマークが設定されます。最新のマーク�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">3: /tmp/draft</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- More --<br>
 <br>
-<a class="Identifier" href="starting.html#:oldfiles">:oldfiles</a>&nbsp;と同じようにファイル一覧が表示されます。&quot;resume.txt&quot; を開きたい場<br>
-合にはまず &quot;q&quot; を押して表示を止めます。プロンプトが表示されるので:<br>
+<a class="Identifier" href="starting.html#:oldfiles">:oldfiles</a>&nbsp;と同じファイルのリストが得られます。&quot;resume.txt&quot; を編集したい場合、<br>
+まず &quot;q&quot; を押して一覧表示を止めます。プロンプトが表示されます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Type number and &lt;Enter&gt; (empty cancels):</span><br>
 <br>
-&quot;2&quot; を入力して&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押し、二番目のファイルを開きます。<br>
+2 番目のファイルを編集するには、&quot;2&quot; をタイプして&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押します。<br>
 <br>
-ファイル名にパターンが含まれていることが分かっている場合は、ファイルのリストを<br>
-<a class="Identifier" href="various.html#:filter">:filter</a>&nbsp;することもできます:<br>
+ファイル名にあるパターンが含まれていることがわかっている場合、ファイルのリスト<br>
+を&nbsp;<a class="Identifier" href="various.html#:filter">:filter</a>&nbsp;することもできます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:filter /resume/ :browse oldfiles</div>
 <br>
-マッチするファイル名が 1 つだけの場合、Vim はプロンプトを表示せずにそのファイ<br>
-ルを直接編集します。フィルタが複数のファイルにマッチする場合は、代わりにマッチ<br>
-するファイルのリストの入力を求めるプロンプトが表示されます:<br>
+マッチするファイル名は 1 つだけなので、Vim はプロンプトを出さずにそのファイル<br>
+を直接編集します。フィルタが複数のファイルにマッチする場合、代わりにマッチする<br>
+ファイルのリストについてプロンプトが出ます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:filter! /resume/ browse oldfiles</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">1: ~/.viminfo</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">3: /tmp/draft</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Type number and &lt;Enter&gt; (q or empty cancels):</span><br>
 <br>
-<span class="Todo">Note:</span>&nbsp;今回は、resume にマッチしないファイルをすべて除外しました:<br>
+<span class="Todo">Note:</span>&nbsp;今回は、resume にマッチしないすべてのファイルを除外しました。<br>
 <br>
 <br>
-詳細は&nbsp;<a class="Identifier" href="starting.html#:oldfiles">:oldfiles</a>、<a class="Identifier" href="eval.html#v:oldfiles">v:oldfiles</a>、<a class="Identifier" href="cmdline.html#c_#<">c_#&lt;</a>&nbsp;を参照してください。<br>
+詳しい情報は&nbsp;<a class="Identifier" href="starting.html#:oldfiles">:oldfiles</a>、<a class="Identifier" href="eval.html#v:oldfiles">v:oldfiles</a>、および&nbsp;<a class="Identifier" href="cmdline.html#c_#<">c_#&lt;</a>&nbsp;にあります。<br>
 <br>
 <br>
-<span class="Statement">他の Vim に情報を移動する</span><br>
+<span class="Statement">ある Vim から別の Vim へ情報を移す</span><br>
 <br>
-&quot;:wviminfo&quot; コマンドと &quot;:rviminfo&quot; コマンドを使うと、Vim の実行中でも viminfo<br>
-ファイルの保存と復元ができます。例えば、他の Vim からレジスタの内容をコピーす<br>
-ることができます。片方の Vim で次のようにして保存し:<br>
+&quot;:wviminfo&quot; および &quot;:rviminfo&quot; コマンドを使うと、Vim を実行したまま情報を保存<br>
+および復元できます。これは、例えば 2 つの Vim のインスタンスの間でレジスタの内<br>
+容をやり取りするのに便利です。1 つ目の Vim でこうします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:wviminfo! ~/tmp/viminfo</div>
 <br>
-もう一方の Vim でそれを読み込みます:<br>
+そして 2 つ目の Vim でこうします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:rviminfo! ~/tmp/viminfo</div>
 <br>
-言うまでもなく、&quot;w&quot; は &quot;write&quot;、&quot;r&quot; は &quot;read&quot; の意味です。<br>
-既存のファイルに上書きするときは、&quot;:wviminfo&quot; に ! を付けてください。! を指定<br>
-しなかった場合は、現在の情報と既存のファイルの情報がマージされます。<br>
-&quot;:rviminfo&quot; に ! を付けると、ファイルのすべての情報が使われます。つまり、現在<br>
-の情報が上書きされます。! を指定しなかった場合は、まだ設定されていない情報だけ<br>
-が使われます。<br>
-これらのコマンドを使えば、状態を保存しておいて後で再利用することもできます。例<br>
-えば、viminfo 専用のディレクトリに状態を保存しておき、目的ごとに使い分けること<br>
-も可能です。<br>
+言うまでもなく、&quot;w&quot; は &quot;write&quot; を表し、&quot;r&quot; は &quot;read&quot; を表します。<br>
+&nbsp;&nbsp; ! 文字は、&quot;:wviminfo&quot; で既存のファイルを強制的に上書きするために使われます。<br>
+それが省略されていて、かつファイルが存在するときは、情報はファイルにマージされ<br>
+ます。<br>
+&nbsp;&nbsp; &quot;:rviminfo&quot; に使われる ! 文字は、すべての情報が使われることを意味し、これは<br>
+既存の情報を上書きすることがあります。! がない場合、設定されていなかった情報だ<br>
+けが使われます。<br>
+&nbsp;&nbsp; これらのコマンドは、情報を保存して後で再び使うためにも使えます。viminfo ファ<br>
+イルでいっぱいのディレクトリを作り、それぞれに異なる目的のための情報を入れてお<br>
+くこともできます。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_21.html#21.4" name="21.4">21.4</a>&nbsp;&nbsp;セッション<br>
 <br>
-作業が終わらない内に一日が終わってしまった場合、その日の作業を中断し、次の日に<br>
-同じ状態で作業を再開できたら便利ですよね。編集セッションを保存しておけば、作業<br>
-状態を復元することができます。<br>
-セッションには、作業状態に関するすべての情報が保存されます。例えば、ファイルリ<br>
-スト、ウィンドウレイアウト、グローバル変数、オプションの設定などです。(正確に<br>
-は、下記で説明されている&nbsp;<a class="Type" href="options.html#'sessionoptions'">'sessionoptions'</a>&nbsp;に指定された項目が保存されます。)<br>
-次のコマンドでセッションファイルを作成できます:<br>
+編集を続けていて、1 日の終わりになったとします。作業をやめて、次の日に中断した<br>
+ところから再開したいです。これは、編集セッションを保存して、次の日にそれを復元<br>
+することで行えます。<br>
+&nbsp;&nbsp; Vim セッションには、編集しているものについてのすべての情報が含まれます。こ<br>
+れには、ファイルリスト、ウィンドウレイアウト、グローバル変数、オプション、およ<br>
+びその他の情報のようなものが含まれます。(正確に何が記憶されるかは、以下で説明<br>
+する&nbsp;<a class="Type" href="options.html#'sessionoptions'">'sessionoptions'</a>&nbsp;オプションで制御されます。)<br>
+&nbsp;&nbsp; 以下のコマンドはセッションファイルを作成します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mksession vimbook.vim</div>
 <br>
-セッションを復元するには、次のコマンドを使います:<br>
+後でこのセッションを復元したい場合、このコマンドを使えます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:source vimbook.vim</div>
 <br>
-Vim の起動と同時にセッションを再開するには、次のようにして Vim を起動します:<br>
+Vim を起動して特定のセッションを復元したい場合、以下のコマンドを使えます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim -S vimbook.vim</div>
 <br>
-Vim が起動し、指定したファイルが読み込まれます。'S' はセッション (Session) の<br>
-意味です (実際には、-S には Vim script ならなんでも指定できるので、&quot;source&quot; を<br>
-意味しているとも言えます)。<br>
+これは、起動時に特定のファイルを読み込むように Vim に指示します。'S' は<br>
+session を表します (実際には、-S で任意の Vim script を読み込めるので、<br>
+&quot;source&quot; を表すと考えてもよいでしょう)。<br>
 <br>
-以前に開いていたウィンドウが、同じ場所、同じ大きさで作成されます。マップやオプ<br>
-ションの設定も復元されます。<br>
-復元される情報は&nbsp;<a class="Type" href="options.html#'sessionoptions'">'sessionoptions'</a>&nbsp;オプションで設定できます。初期設定は<br>
-&quot;blank,buffers,curdir,folds,help,options,tabpages,winsize,terminal&quot; です。<br>
+開いていたウィンドウは、以前と同じ位置およびサイズで復元されます。マッピングお<br>
+よびオプションの値は以前と同じです。<br>
+&nbsp;&nbsp; 正確に何が復元されるかは、<a class="Type" href="options.html#'sessionoptions'">'sessionoptions'</a>&nbsp;オプションによります。既定値は以<br>
+下です:<br>
+&quot;blank,buffers,curdir,folds,help,options,tabpages,winsize,terminal&quot;.<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blank&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 空のウィンドウ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buffers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; すべてのバッファ (ウィンドウに表示されていないバッファ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;も含む)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blank&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 空のウィンドウを保持する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buffers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ウィンドウ内のものだけでなく、すべてのバッファ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;curdir&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントディレクトリ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;folds&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 折り畳み (手動で設定したものも含む)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;folds&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 折り畳み、手動で作成したものも<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ヘルプウィンドウ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;options&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; すべてのオプションとマップ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;options&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; すべてのオプションおよびマッピング<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tabpages&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;すべてのタブページ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;winsize&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ウィンドウの大きさ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;terminal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;端末ウィンドウを含む<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;winsize&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ウィンドウサイズ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;terminal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;端末ウィンドウを含める<br>
 <br>
-好きなように設定してください。例えば、Vim ウィンドウの大きさも復元したい場合<br>
-は、次のようにします:<br>
+好みに合わせてこれを変更してください。例えば、Vim ウィンドウのサイズも復元する<br>
+には、こうします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set sessionoptions+=resize</div>
 <br>
 <br>
-<span class="Statement">こっちにもセッション、あっちにもセッション</span><br>
+<span class="Statement">ここでセッション、あそこでセッション</span><br>
 <br>
-セッションは、複数のプロジェクトで仕事をするときなどに使われます。<br>
-例えば、&quot;~/.vim&quot; にセッションファイルを保存するとします。そして、&quot;secret&quot; プロ<br>
-ジェクトで作業している最中に、&quot;boring&quot; プロジェクトで作業する必要がでてきまし<br>
-た:<br>
+セッションを使う明らかな方法は、異なるプロジェクトで作業するときです。セッショ<br>
+ンファイルをディレクトリ &quot;~/.vim&quot; に保存しているとします。現在 &quot;secret&quot; プロ<br>
+ジェクトで作業していて、&quot;boring&quot; プロジェクトに切り替えなければなりません:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:wall<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mksession! ~/.vim/secret.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:source ~/.vim/boring.vim</div>
 <br>
-最初に、&quot;:wall&quot; ですべてのファイルを保存します。次に、現在のセッションを<br>
-&quot;:mksession!&quot; で保存します。以前のセッション情報が上書きされました。後で<br>
-secret セッションをロードすると今現在の状態から作業を再開できます。最後に、<br>
-&quot;boring&quot; セッションをロードします。<br>
+これはまず &quot;:wall&quot; を使って、変更されたすべてのファイルを書き込みます。次に、<br>
+&quot;:mksession!&quot; を使って、現在のセッションが保存されます。これは以前のセッション<br>
+を上書きします。次に secret セッションを読み込むときは、この時点でいたところか<br>
+ら続けることができます。そして最後に、新しい &quot;boring&quot; セッションを読み込みま<br>
+す。<br>
 <br>
-ヘルプを開いたり、ウィンドウを分割したり閉じたりして、ウィンドウレイアウトが乱<br>
-れてしまった場合、セッションをロードし直せば元に戻せます:<br>
+ヘルプウィンドウを開き、さまざまなウィンドウを分割して閉じ、全体的にウィンドウ<br>
+レイアウトを散らかした場合、最後に保存したセッションに戻ることができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:source ~/.vim/boring.vim</div>
 <br>
-毎回新しいセッションを保存するか、あるいは最初に保存したセッションを使い続ける<br>
-かは自由に選択できます。<br>
-セッションには他の使い方もあります。例えば、好みのウィンドウレイアウトをセッ<br>
-ションに保存しておけば、いつでも好きなときにそのレイアウトに戻ることができま<br>
-す。<br>
-例えば、このようなレイアウトは使いやすいでしょう:<br>
+したがって、現在の設定をセッションに保存することで次回は今いるところから続けた<br>
+いのか、またはセッションファイルを開始点として保持したいのかを、完全に制御でき<br>
+ます。<br>
+&nbsp;&nbsp; セッションを使う別の方法は、使いたいウィンドウレイアウトを作成し、これをセッ<br>
+ションに保存することです。そうすれば、いつでも好きなときにこのレイアウトに戻る<br>
+ことができます。<br>
+&nbsp;&nbsp; 例えば、これは使うのによいレイアウトです:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+----------------------------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIM - main help file&nbsp;&nbsp;|<br>
@@ -340,172 +350,177 @@ secret セッションをロードすると今現在の状態から作業を再�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+----------------------------------------+<br>
 <br>
-ヘルプウィンドウが上部に表示され、いつでも参照できます。左端の縦長のウィンドウ<br>
-はファイルエクスプローラーという Vim のプラグインです。ディレクトリのファイル<br>
-一覧を表示し、その中からファイルを選択して開くことができます。詳しくは次章で説<br>
-明します。<br>
-このようなウィンドウを作るには、Vim を起動してから次のコマンドを実行します:<br>
+これは、このテキストを読めるように、上部にヘルプウィンドウがあります。左側の幅<br>
+の狭い縦のウィンドウには、ファイルエクスプローラーが含まれています。これは、<br>
+ディレクトリの内容を一覧表示する Vim プラグインです。そこで編集するファイルを<br>
+選択できます。詳しくは次章で。<br>
+&nbsp;&nbsp; 起動したばかりの Vim から、これを以下で作成します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:help<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-W w<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:vertical split ~/</div>
 <br>
-ウィンドウの大きさを調節し、セッションを保存してください:<br>
+好みに合わせてウィンドウのサイズを少し変更できます。それから、以下でセッション<br>
+を保存します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mksession ~/.vim/mine.vim</div>
 <br>
-これで、同じレイアウトで Vim を起動できます:<br>
+これで、このレイアウトで Vim を起動できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim -S ~/.vim/mine.vim</div>
 <br>
-Hint: エクスプローラーでファイルを選択し、空のウィンドウでファイルを開くには、<br>
-ファイル名の場所にカーソルを移動して &quot;O&quot; を押します。マウスのダブルクリックで<br>
-も同じ動作になります。<br>
+ヒント: エクスプローラーウィンドウに一覧表示されているファイルを空のウィンドウ<br>
+で開くには、カーソルをファイル名に移動して &quot;O&quot; を押します。マウスでダブルクリッ<br>
+クしても同じことができます。<br>
 <br>
 <br>
 <span class="Statement">Unix と MS-Windows</span><br>
 <br>
-MS-Windows と Unix を両方使わなければならない人もいるでしょう。そのような人は、<br>
-<a class="Type" href="options.html#'sessionoptions'">'sessionoptions'</a>&nbsp;に &quot;slash&quot; と &quot;unix&quot; を追加した方がいいかもしれません。その設<br>
-定で保存されたセッションファイルはどちらのシステムでも使えます。次のコマンドを<br>
-vimrc ファイルに追加してください:<br>
+ある日は MS-Windows システムで、別の日は Unix で作業しなければならない人もいま<br>
+す。あなたがその 1 人の場合、<a class="Type" href="options.html#'sessionoptions'">'sessionoptions'</a>&nbsp;に &quot;slash&quot; および &quot;unix&quot; を追加<br>
+することを検討してください。そうすると、セッションファイルは両方のシステムで使<br>
+える形式で書き込まれます。これが vimrc ファイルに入れるコマンドです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set sessionoptions+=unix,slash</div>
 <br>
-セッションファイルが Unix 形式で保存されるようになります。MS-Windows の Vim は<br>
-Unix 形式のセッションファイルを読み書きできますが、Unix の Vim は MS-Windows<br>
-形式のセッションファイルを読み込むことができません。同様に、MS-Windows の Vim<br>
-は / で区切られたファイル名を処理できますが、Unix の Vim は \ を処理できませ<br>
-ん。<br>
+MS-Windows の Vim は Unix ファイルを読み書きできますが、Unix の Vim は<br>
+MS-Windows 形式のセッションファイルを読めないので、そのとき Vim は Unix 形式を<br>
+使います。同様に、MS-Windows の Vim は名前を区切るのに / を使ったファイル名を<br>
+理解しますが、Unix の Vim は \ を理解しません。<br>
 <br>
 <br>
 <span class="Statement">セッションと viminfo</span><br>
 <br>
-セッションファイルにはたくさんの情報が保存されますが、マークやレジスタ、コマン<br>
-ドライン履歴などは保存されません。それらの情報を保存するには viminfo を使って<br>
-ください。<br>
-セッションと viminfo は分けて使うことが多いと思います。他のセッションに切り換<br>
-えてもコマンドライン履歴をそのまま残すことができますし、テキストをレジスタにヤ<br>
-ンクし、他のセッションでペーストするということもできます。<br>
-セッションと viminfo を同時に使いたい場合は、自分で保存してください。例:<br>
+セッションは多くのものを保存しますが、マークの位置、レジスタの内容、およびコマ<br>
+ンドライン履歴は保存しません。これらのものには viminfo 機能を使う必要がありま<br>
+す。<br>
+&nbsp;&nbsp; ほとんどの状況では、セッションを viminfo とは別に使いたいでしょう。これは、<br>
+別のセッションに切り替えるが、コマンドライン履歴は保持する、ということに使えま<br>
+す。そして、あるセッションでテキストをレジスタにヤンクし、別のセッションでそれ<br>
+を貼り付けます。<br>
+&nbsp;&nbsp; 情報をセッションと一緒に保持したいかもしれません。その場合は、これを自分で<br>
+行う必要があります。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mksession! ~/.vim/secret.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:wviminfo! ~/.vim/secret.viminfo</div>
 <br>
-復元するには次のようにします:<br>
+そして、これを再び復元するには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:source ~/.vim/secret.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:rviminfo! ~/.vim/secret.viminfo</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_21.html#21.5" name="21.5">21.5</a>&nbsp;ビュー<br>
+<a class="Constant" href="usr_21.html#21.5" name="21.5">21.5</a>&nbsp;&nbsp;ビュー<br>
 <br>
-セッションは Vim 全体の表示設定を扱います。一つのウィンドウに関する設定だけ保<br>
-存したい場合は、ビューを使います。<br>
-ビューは、ファイルごとに表示設定を変更したい場合に使います。例えば、<a class="Type" href="options.html#'number'">'number'</a><br>
-を設定して行番号を表示し、いくつかの折り畳みを定義した場合に、その情報を保存し<br>
-て、後で復元することができます。実際のところ、セッションには、各ウィンドウの<br>
-ビューが保存されているのです。<br>
-ビューの使い方は二つあります。一つは、ビューファイルの名前を Vim に決めさせる<br>
-方法です。保存したビューは、同じ名前のファイルを開いているときに復元できます。<br>
-カレントウィンドウのビューを保存するには、次のコマンドを使います:<br>
+セッションは Vim 全体の見た目を保存します。1 つのウィンドウだけの属性を保存し<br>
+たいときは、ビューを使います。<br>
+&nbsp;&nbsp; ビューの用途は、ファイルを特定の方法で編集したいときのためです。例えば、<br>
+<a class="Type" href="options.html#'number'">'number'</a>&nbsp;オプションで行番号を有効にし、いくつかの折り畳みを定義しています。セッ<br>
+ションと同じように、ファイルに対するこのビューを記憶し、後で復元することができ<br>
+ます。実際、セッションを保存すると、各ウィンドウのビューが保存されます。<br>
+&nbsp;&nbsp; ビューを使う基本的な方法は 2 つあります。1 つ目は、ビューファイルの名前を<br>
+Vim に選ばせることです。後で同じファイルを編集するときに、ビューを復元できま<br>
+す。カレントウィンドウのビューを保存するには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mkview</div>
 <br>
-ビューを保存する場所は自動的に決定されます。後で同じファイルを開いたときに、次<br>
-のコマンドでビューを復元できます:<br>
+Vim がビューをどこに保存するかを決めます。後で同じファイルを編集するとき、この<br>
+コマンドでビューを取り戻せます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:loadview</div>
 <br>
-簡単ですね。<br>
-さて、同じファイルを違う設定で表示してみましょう。<a class="Type" href="options.html#'number'">'number'</a>&nbsp;オプションをオフに<br>
-設定、あるいは折り畳みをすべて開き、ウィンドウの表示を変更してみます。そして、<br>
-次のコマンドでビューを保存します:<br>
+簡単でしょう?<br>
+&nbsp;&nbsp; ここで、<a class="Type" href="options.html#'number'">'number'</a>&nbsp;オプションをオフにして、またはすべての折り畳みを開いた状態<br>
+でファイルを見たいとすると、ウィンドウがそのように見えるようにオプションを設定<br>
+できます。それから、このビューを以下で保存します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mkview 1</div>
 <br>
-当然、次のようにして復元します:<br>
+言うまでもなく、これは以下で取り戻せます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:loadview 1</div>
 <br>
-これで、&quot;:loadview&quot; と &quot;:loadview 1&quot; を使って、同じファイルの二つのビューを切<br>
-り替えられるようになりました。<br>
-ファイル一つにつき、番号なしのビューと、1 から 9 までの 9 個のビュー、合わせて<br>
-10 個のビューが使えます。<br>
+これで、&quot;:loadview&quot; を &quot;1&quot; 引数ありで、およびなしで使うことで、ファイルの 2 つ<br>
+のビューを切り替えることができます。<br>
+&nbsp;&nbsp; この方法で、同じファイルに対して最大 10 個のビューを保存できます。番号なし<br>
+のものが 1 つ、および 1 から 9 の番号付きのものが 9 つです。<br>
 <br>
 <br>
 <span class="Statement">名前付きのビュー</span><br>
 <br>
-ビューのもう一つの使用方法は、指定したファイルにビューを保存する方法です。この<br>
-方法なら、他のファイルを開いていてもビューを復元できます。ビューを復元すると、<br>
-ビューに関連付けられたファイルが開くので、編集するファイルを素早く切り替える方<br>
-法としても使えます。<br>
-例えば、カレントファイルのビューを保存するには、次のようにします:<br>
+ビューを使う 2 つ目の基本的な方法は、自分で選んだ名前のファイルにビューを保存<br>
+することです。このビューは、別のファイルを編集している間に読み込むことができま<br>
+す。そうすると Vim は、ビューで指定されたファイルの編集に切り替えます。したがっ<br>
+て、これを使うと、すべてのオプションを保存したとおりに設定した状態で、別のファ<br>
+イルの編集に素早く切り替えることができます。<br>
+&nbsp;&nbsp; 例えば、カレントファイルのビューを保存するには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:mkview ~/.vim/main.vim</div>
 <br>
-次のコマンドで復元できます:<br>
+これは以下で復元できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:source ~/.vim/main.vim</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_21.html#21.6" name="21.6">21.6</a>&nbsp;&nbsp;モードライン<br>
 <br>
-ファイル固有の設定を、ファイルを開くたびに設定しても構いませんが、何度も何度も<br>
-同じコマンドを入力するのはうんざりですよね。セッションやビューでは同じ設定を他<br>
-人と共有できません。<br>
-そのような場合にはモードラインを使います。モードラインとは、ファイル固有の設定<br>
-をファイル内に記述するための仕組みです。<br>
-例えば、C 言語ファイルのインデントをスペース 4 個分に設定したい場合に使います。<br>
-それには&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;オプションを 4 に設定する必要があるので、モードラインは<br>
-次のようになります:<br>
+特定のファイルを編集するとき、そのファイル専用にオプションを設定することがある<br>
+でしょう。これらのコマンドを毎回タイプするのは退屈です。ファイルを編集するため<br>
+にセッションまたはビューを使うことは、ファイルを複数の人で共有しているときには<br>
+機能しません。<br>
+&nbsp;&nbsp; この状況の解決策は、ファイルにモードラインを追加することです。これは、この<br>
+ファイルだけで使われるオプションの値を Vim に伝えるテキスト行です。<br>
+&nbsp;&nbsp; 典型的な例は、4 個の空白の倍数でインデントを付ける C プログラムです。これに<br>
+は&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;オプションを 4 に設定する必要があります。このモードラインがそ<br>
+れを行います:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/* vim&#0058;set shiftwidth=4: */</span><br>
 <br>
-この行を、ファイルの先頭または末尾から五行以内のどこかに書いてください。その<br>
-ファイルを開くと&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;が自動的に設定されます。他のファイルを開くと、初<br>
-期設定の 8 に戻ります。<br>
-モードラインをファイルヘッダーに書くのが適当な場合はファイルの先頭にモードライ<br>
-ンを書きます。テキストファイルなど、モードラインがその内容を邪魔してしまうよう<br>
-な場合は末尾に書きます。<br>
+この行を、ファイルの最初または最後の 5 行のうちの 1 行として置きます。このファ<br>
+イルを編集するとき、<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;が 4 に設定されていることに気付くでしょう。別<br>
+のファイルを編集するときは、既定値の 8 に戻されます。<br>
+&nbsp;&nbsp; ファイルによっては、モードラインがヘッダーにうまく収まるので、ファイルの先<br>
+頭に置くことができます。テキストファイル、およびモードラインが通常の内容の邪魔<br>
+になるその他のファイルでは、ファイルの末尾に置いてください。<br>
 <br>
-<a class="Type" href="options.html#'modelines'">'modelines'</a>&nbsp;オプションでモードラインの有効範囲を設定できます。ファイルの先頭ま<br>
-たは末尾からの行数で指定してください。例えば、10 行にしたい場合は次のように設<br>
-定します:<br>
+<a class="Type" href="options.html#'modelines'">'modelines'</a>&nbsp;オプションは、ファイルの先頭および末尾の何行を、モードラインを含ん<br>
+でいるか調べるかを指定します。10 行を調べるには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set modelines=10</div>
 <br>
-モードライン機能を無効にするには&nbsp;<a class="Type" href="options.html#'modeline'">'modeline'</a>&nbsp;オプションをオフに設定します。Unix<br>
-の root や MS-Windows の Administrator として作業する場合や、信用できないファ<br>
-イルを開く場合に設定してください:<br>
+<a class="Type" href="options.html#'modeline'">'modeline'</a>&nbsp;オプションを使うと、これをオフに切り替えることができます。Unix の<br>
+root、または MS-Windows の Administrator として作業しているとき、または編集し<br>
+ているファイルを信用していないときは、これを行ってください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set nomodeline</div>
 <br>
-モードラインは次の書式で書きます:<br>
+モードラインにはこの形式を使います:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">any-text vim&#0058;set {option}={value} ... : any-text</span><br>
 <br>
-モードラインの前後、&quot;any-text&quot; の部分はどんな文字列でも構いません。例えば上述<br>
-の例のように、/* と */ で囲んでコメントにすることができます。<br>
-Vim は &quot; vim&#0058;&quot; という部分を見てモードラインを認識します。直前に空白のある<br>
-&quot;vim&quot;、または行頭の &quot;vim&quot; だけが認識されます。つまり、例えば &quot;gvim:&quot; は機能し<br>
-ません。<br>
-二つのコロン (:) の間には &quot;:set&quot; コマンドを記述します。これは通常の &quot;:set&quot; コ<br>
-マンドと同じです。ただし、コロンの前にバックスラッシュ (\) を置く必要がありま<br>
-す (バックスラッシュがない場合はそれがモードラインの終端だと認識されます)。<br>
+&quot;any-text&quot; は、Vim が使う部分の前および後に任意のテキストを置けることを示しま<br>
+す。これにより、上で /* および */ で行ったように、それをコメントのように見せる<br>
+ことができます。<br>
+&nbsp;&nbsp; &quot; vim&#0058;&quot; の部分が、Vim にこの行を認識させるものです。&quot;vim&quot; の前に空白がある<br>
+か、または &quot;vim&quot; が行頭になければなりません。したがって、&quot;gvim:&quot; のようなもの<br>
+を使っても機能しません。<br>
+&nbsp;&nbsp; コロンの間の部分は &quot;:set&quot; コマンドです。コロンの前にバックスラッシュを挿入<br>
+する必要がある (そうしないとモードラインの終わりとみなされる) ことを除けば、<br>
+&quot;:set&quot; コマンドをタイプするのと同じように機能します。<br>
 <br>
-例:<br>
+別の例:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">// vim&#0058;set textwidth=72 dir=c\:\tmp:&nbsp;&nbsp;use c:\tmp here</span><br>
 <br>
-最初のコロンにはバックスラッシュが前置されているので、それは &quot;:set&quot; コマンドの<br>
-一部です。二つ目のコロン以降は無視されるので、説明を書くことができます。<br>
+最初のコロンの前に余分なバックスラッシュがあるので、それは &quot;:set&quot; コマンドに含<br>
+まれます。2 つ目のコロンの後のテキストは無視されるので、そこに注釈を置くことが<br>
+できます。<br>
 <br>
 詳細は&nbsp;<a class="Identifier" href="options.html#modeline">modeline</a>&nbsp;を参照してください。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_22.html">usr_22.txt</a>&nbsp;ファイルを探す<br>
+次章:&nbsp;<a class="Identifier" href="usr_22.html">usr_22.txt</a>&nbsp;&nbsp;編集するファイルを見つける<br>
 <br>
 Copyright: see&nbsp;<a class="Identifier" href="usr_01.html#manual-copyright">manual-copyright</a>&nbsp;&nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>
