@@ -9,356 +9,368 @@ helpname: 'usr_90'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ViAI のインストール<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ViAI をインストールする<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_90.html#install" name="install">install</a><br>
-ViAI を使うにはまずインストールする必要があります。システムにも依りますが、と<br>
-ても簡単な作業です。本章では、若干のヒントと、新しいバージョンへのアップグレー<br>
-ド手順を説明します。<br>
+ViAI を使う前に、それをインストールする必要があります。あなたのシステムによっ<br>
+て、それは簡単、または容易です。この章では、いくつかのヒントを示し、新しいバー<br>
+ジョンへのアップグレードがどのように行われるかも説明します。<br>
 <br>
 <a class="Identifier" href="usr_90.html#90.1">90.1</a>&nbsp;&nbsp;Unix<br>
 <a class="Identifier" href="usr_90.html#90.2">90.2</a>&nbsp;&nbsp;MS-Windows<br>
 <a class="Identifier" href="usr_90.html#90.3">90.3</a>&nbsp;&nbsp;アップグレード<br>
-<a class="Identifier" href="usr_90.html#90.4">90.4</a>&nbsp;&nbsp;よくある問題<br>
-<a class="Identifier" href="usr_90.html#90.5">90.5</a>&nbsp;&nbsp;アンインストール<br>
+<a class="Identifier" href="usr_90.html#90.4">90.4</a>&nbsp;&nbsp;よくあるインストールの問題<br>
+<a class="Identifier" href="usr_90.html#90.5">90.5</a>&nbsp;&nbsp;ViAI のアンインストール<br>
 <br>
-前章:&nbsp;<a class="Identifier" href="usr_52.html">usr_52.txt</a>&nbsp;&nbsp;Vim9 script でプラグインを作る<br>
+前章:&nbsp;<a class="Identifier" href="usr_52.html">usr_52.txt</a>&nbsp;&nbsp;Vim9 script を使ってプラグインを書く<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_90.html#90.1" name="90.1">90.1</a>&nbsp;&nbsp;Unix<br>
 <br>
-最初に、ViAI をシステム全体で使うのか、自分一人で使うのかを決めてください。イ<br>
-ンストール方法はほぼ同じですが、インストールするディレクトリが異なります。<br>
-システムにインストールするときは、ベースディレクトリとして大抵は &quot;/usr/local&quot;<br>
-が使われます。ただし、これはシステムによって異なります。インストールされている<br>
-他のパッケージを参考にするなどして調べてください。<br>
-自分一人で使う場合は、例えばホームディレクトリをベースディレクトリにします。<br>
-ファイルはその下の &quot;bin&quot; や &quot;share/viai&quot; などに置かれます。<br>
+まず、ViAI をシステム全体にインストールするのか、または 1 人のユーザー用にイン<br>
+ストールするのかを決める必要があります。インストールはほぼ同じですが、ViAI が<br>
+インストールされるディレクトリが異なります。<br>
+&nbsp;&nbsp; システム全体へのインストールでは、ベースディレクトリとして &quot;/usr/local&quot; が<br>
+よく使われます。しかし、これはあなたのシステムでは異なるかもしれません。他の<br>
+パッケージがどこにインストールされているかを調べてみてください。<br>
+&nbsp;&nbsp; 1 人のユーザー用にインストールするときは、あなたのホームディレクトリをベー<br>
+スとして使えます。ファイルは &quot;bin&quot; および &quot;share/viai&quot; のようなサブディレクト<br>
+リに置かれます。<br>
 <br>
 <br>
-<span class="Statement">パッケージからインストール</span><br>
+<span class="Statement">パッケージから</span><br>
 <br>
-Unix 用の ViAI のコンパイル済みバイナリパッケージはないので、ソースからコンパ<br>
-イルしてください。ソースからエディタを作成すると、コンパイルする機能を制御でき<br>
-ます。ただし、これにはコンパイラが必要です。<br>
+Unix 用の ViAI のコンパイル済みバイナリパッケージはありません。ソースからコン<br>
+パイルしてください。ソースからエディタを作成すると、どの機能をコンパイルするか<br>
+を制御できます。ただし、これにはコンパイラが必要です。<br>
 <br>
 <br>
-<span class="Statement">ソースからインストール</span><br>
+<span class="Statement">ソースから</span><br>
 <br>
-ViAI をコンパイルしてインストールするには、次のものが必要です:<br>
+ViAI をコンパイルしてインストールするには、以下が必要です:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;C コンパイラ (GCC または Clang が望ましい)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;git (オプション、github からクローンする場合のみ)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;zip/unzip (アーカイブを解凍する)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;C コンパイラ (GCC または clang が望ましい)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;git (任意、github からクローンする場合のみ)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;zip/unzip (アーカイブを展開するため)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;ViAI のソースアーカイブ<br>
 <br>
-ViAI のソースをダウンロードするには、Github プロジェクトページからクローンを作<br>
-成するか:<br>
+ViAI のソースをダウンロードするには、Github のプロジェクトページからクローンす<br>
+るか:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;git clone <a href="https://github.com/viai-editor/viai.git">https://github.com/viai-editor/viai.git</a></div>
 <br>
-または、以下を使用してアーカイブを直接ダウンロードします:<br>
+または、以下を使ってアーカイブを直接ダウンロードします:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/viai-editor/viai/archive/refs/heads/master.zip">https://github.com/viai-editor/viai/archive/refs/heads/master.zip</a></span><br>
 <br>
 <br>
 <span class="Statement">コンパイル</span><br>
 <br>
-まず作業用のディレクトリを作成します。例:<br>
+まず、作業するためのトップディレクトリを作成します。例えば:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mkdir ~/viai<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd ~/viai</div>
 <br>
-この場所でアーカイブを展開します。次のようにして展開できます:<br>
+それから、そこにアーカイブを展開します。このように展開できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unzip viai-master.zip</div>
 <br>
-欲しいのがデフォルトの機能だけで、環境が適切に設定されているのであれば、次のコ<br>
-マンドを実行するだけでコンパイルできます:<br>
+既定の機能で満足していて、かつあなたの環境が適切に設定されている場合、これだけ<br>
+で ViAI をコンパイルできるはずです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd viai-master/src<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make</div>
 <br>
-make プログラムによって configure とコンパイルが実行されます。設定を変更してコ<br>
-ンパイルする方法については後で説明します。<br>
-コンパイル中にエラーが発生した場合は、エラーメッセージをよく見てください。何が<br>
-悪かったのかを知るヒントが出ているはずです。可能ならそれを修正してください。も<br>
-しかしたら何かの機能を無効にする必要があるかもしれません。Makefile を見て自分<br>
-のシステム特有のヒントがないか確認してください。<br>
+make プログラムは configure を実行し、すべてをコンパイルします。異なる機能でコ<br>
+ンパイルする方法は、この先で説明します。<br>
+&nbsp;&nbsp; コンパイル中にエラーがある場合、エラーメッセージを注意深く見てください。何<br>
+が悪かったかについてのヒントがあるはずです。うまくいけば、それを修正できるで<br>
+しょう。ViAI をコンパイルできるようにするために、いくつかの機能を無効にする必<br>
+要があるかもしれません。あなたのシステム向けの特定のヒントについては Makefile<br>
+を見てください。<br>
 <br>
 <br>
 <span class="Statement">テスト</span><br>
 <br>
-コンパイルが正しくできたかどうか確認します:<br>
+これで、コンパイルがうまくいったかどうかを確認できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make test</div>
 <br>
-ViAI が期待した動作をするかどうかをテストスクリプトを使って検査します。ViAI が<br>
-何度も実行され、様々なテキストやメッセージが表示されます。最後に次のように表示<br>
-されたら検査は合格です:<br>
+これは、ViAI が期待どおりに動作することを検証するための一連のテストスクリプト<br>
+を実行します。ViAI が何度も起動され、あらゆる種類のテキストおよびメッセージが<br>
+さっと表示されます。問題がない場合、最後にこう表示されます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">test results:</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">ALL DONE</span><br>
 <br>
-テストが失敗すると &quot;TEST FAILURE&quot; と表示されます。失敗メッセージが一つか二つ表<br>
-示された場合は、ViAI はとりあえず動作していますが完全ではありません。エラーメッ<br>
-セージがたくさん表示されたり、テストが最後まで完了しなかった場合は、何か問題が<br>
-あります。自分で解決するか、誰かに聞いてください。どうしても解決できない場合<br>
-は、バグとして報告することもできます。<a class="Identifier" href="intro.html#viai-bugs">viai-bugs</a>&nbsp;を参照してください。<br>
+&quot;TEST FAILURE&quot; が表示された場合、何らかのテストが失敗しています。失敗したテス<br>
+トについてのメッセージが 1 つまたは 2 つの場合、ViAI はまだ動作するかもしれま<br>
+せんが、完全ではありません。たくさんのエラーメッセージが表示されるか、または<br>
+ViAI が最後まで終了しない場合、何かが間違っているに違いありません。自分で原因<br>
+を見つけるか、または解決できる人を見つけてください。他のすべてがうまくいかない<br>
+場合、バグとして報告することもできます。<a class="Identifier" href="intro.html#viai-bugs">viai-bugs</a>&nbsp;を参照してください。<br>
 <br>
 <br>
-<span class="Statement">インストール</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_90.html#install-home" name="install-home">install-home</a><br>
-<br>
-ホームディレクトリにインストールする場合は、Makefile を開いて次の行を探してく<br>
-ださい:<br>
+<span class="Statement">インストール</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_90.html#install-home" name="install-home">install-home</a><br>
+あなたのホームディレクトリにインストールしたい場合、Makefile を編集して、以下<br>
+の行を検索します:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#prefix = $(HOME)</span><br>
 <br>
-行頭の # を削除します。<br>
-システムにインストールする場合は、適切なディレクトリが自動的に選択されます。自<br>
-分でディレクトリを指定する方法は後述します。以下の作業は root で実行する必要が<br>
-あります。<br>
+行の先頭の # を削除します。<br>
+&nbsp;&nbsp; システム全体にインストールする場合、ViAI はおそらくすでにあなたのために適切<br>
+なインストールディレクトリを選択しています。ディレクトリを指定することもできま<br>
+す。以下を参照してください。以下のためには root になる必要があります。<br>
 <br>
-次のコマンドで ViAI をインストールします:<br>
+ViAI をインストールするには、こうします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make install</div>
 <br>
-必要なファイルが適切な場所にコピーされます。プログラムとディレクトリには ViAI<br>
-にちなんだ名前が付いているので、Vim をその隣にインストールできます。<br>
-<a class="Identifier" href="viai.html#viai-programs">viai-programs</a>&nbsp;を参照してください。ViAI を起動してみて正しくインストールでき<br>
-たかどうかを確認してください。二つの簡単なテストで、ViAI がランタイムファイル<br>
-を検出できているかどうかを確認します:<br>
+これで、関連するすべてのファイルが正しい場所に移動されるはずです。プログラムお<br>
+よびディレクトリは ViAI にちなんで名付けられているので、Vim をその隣にインス<br>
+トールできます。<a class="Identifier" href="viai.html#viai-programs">viai-programs</a>&nbsp;を参照してください。これで、viai を実行してみ<br>
+て、それが動作することを確認できます。ViAI がランタイムファイルを見つけられる<br>
+かどうかを確認するために、2 つの簡単なテストを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:help<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:syntax enable</div>
 <br>
-うまく動作しない場合は、次のコマンドで、ViAI がどこからランタイムファイルを探<br>
-しているのか確認してください:<br>
+これが動作しない場合、このコマンドを使って、ViAI がどこでランタイムファイルを<br>
+探しているかを確認します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:echo $VIMRUNTIME</div>
 <br>
-また、ViAI の起動時に &quot;-V&quot; 引数を付けることで、起動中に起きていることを見るこ<br>
-とができます:<br>
+起動中に何が起こるかを見るために、&quot;-V&quot; 引数で ViAI を起動することもできます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;viai -V</div>
 <br>
-ユーザーマニュアルは ViAI が適切に動作することを前提に書かれています。ViAI の<br>
-インストールが終ったら、<a class="Identifier" href="usr_01.html#not-compatible">not-compatible</a>&nbsp;の説明に従って、ViAI を適切に設定して<br>
-ください。<br>
+ユーザーマニュアルは、あなたが ViAI を特定の方法で使うことを前提にしていること<br>
+を忘れないでください。ViAI をインストールした後、<a class="Identifier" href="usr_01.html#not-compatible">not-compatible</a>&nbsp;の指示に従っ<br>
+て、ViAI がこのマニュアルで前提としているとおりに動作するようにしてください。<br>
 <br>
 <br>
-<span class="Statement">機能を選択する</span><br>
+<span class="Statement">機能の選択</span><br>
 <br>
-機能を選択する方法はいろいろあります。最も簡単なのは Makefile を編集する方法で<br>
-す。Makefile には多くの説明やサンプルが書かれています。大抵は行をコメントアウ<br>
-トすることで機能を有効/無効にできます。<br>
-make とは別に &quot;configure&quot; を実行する方法もあります。オプションを個別に設定する<br>
-ことができます。ただし、オプションを正しく理解して、正確に指定する必要がありま<br>
-す。<br>
-よく使われる引数を次に示します。これらは Makefile からでも有効にできます。<br>
+ViAI には機能を選択する方法がたくさんあります。簡単な方法の 1 つは、Makefile<br>
+を編集することです。たくさんの指示および例があります。多くの場合、行のコメント<br>
+を外すことで機能を有効または無効にできます。<br>
+&nbsp;&nbsp; 別の方法は、&quot;configure&quot; を別に実行することです。これにより、構成オプション<br>
+を手動で指定できます。欠点は、正確に何をタイプするかを自分で調べなければならな<br>
+いことです。<br>
+&nbsp;&nbsp; 最も興味深い configure の引数のいくつかを以下に示します。これらは Makefile<br>
+から有効にすることもできます。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--prefix=<span class="Special">{directory}</span>&nbsp;&nbsp;&nbsp;&nbsp;ViAI をインストールするトップディレクトリ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--with-features=tiny&nbsp;&nbsp;&nbsp;&nbsp;一部の機能を無効にしてコンパイル<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--with-features=normal&nbsp;&nbsp;多くの機能を有効にしてコンパイル<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--with-features=huge&nbsp;&nbsp;&nbsp;&nbsp;ほとんどの機能を有効にしてコンパイル<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いつどの機能が有効になるのかは&nbsp;<a class="Identifier" href="various.html#+feature-list">+feature-list</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を参照してください。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--prefix=<span class="Special">{directory}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ViAI をインストールするトップディレク<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;トリ。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--enable-perlinterp&nbsp;&nbsp;&nbsp;&nbsp; Perl インターフェイスを有効にする。同様に、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ruby、python、tclなどもあります。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--with-features=tiny&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いくつかの機能を無効にしてコンパイルす<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--with-features=normal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;より多くの機能を有効にしてコンパイルす<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--with-features=huge&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ほとんどの機能を有効にしてコンパイルす<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。どの場合にどの機能が有効になるかは<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="various.html#+feature-list">+feature-list</a>&nbsp;を参照。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--disable-gui&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GUI インターフェイスをコンパイルしない。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--without-x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X-windows の機能をコンパイルしない。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これら二つが指定された場合、ViAI は X サーバー<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に接続しません。起動が早くなります。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--enable-perlinterp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Perl インターフェイスを有効にする。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ruby、python、および tcl にも同様の引<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数がある。<br>
 <br>
-オプションの一覧を見るには次のようにします:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--disable-gui&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GUI インターフェイスをコンパイルしな<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--without-x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X-windows の機能をコンパイルしない。こ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れらの両方が使われた場合、ViAI は X<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;サーバーに接続せず、それにより起動が速<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;くなる。<br>
+<br>
+リスト全体を見るには、これを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;./configure --help</div>
 <br>
-各機能の簡単な説明と、より詳しい情報へのリンクは&nbsp;<a class="Identifier" href="builtin.html#feature-list">feature-list</a>&nbsp;にあります。<br>
-冒険野郎な人は &quot;feature.h&quot; を開いてみてください。自分でソースコードを改造する<br>
-こともできますよ！<br>
+各機能についての少しの説明、およびさらなる情報へのリンクがここにあります:<br>
+<a class="Identifier" href="builtin.html#feature-list">feature-list</a>。<br>
+&nbsp;&nbsp; 冒険好きな人は、ファイル &quot;feature.h&quot; を編集してください。ソースコードを自分<br>
+で変更することもできます!<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_90.html#90.2" name="90.2">90.2</a>&nbsp;&nbsp;MS-Windows<br>
 <br>
-Microsoft Windows に ViAI プログラムをインストールするには、いくつかの方法があ<br>
-ります:<br>
+Microsoft Windows 用に ViAI プログラムをインストールする方法はいくつかあります:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">1. winget (Windows パッケージマネージャー) の使用</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">1. winget (Windows パッケージマネージャー) を使う</span><br>
 <br>
-コマンドラインの使用を好む場合、Windows の組み込みパッケージマネージャーを使っ<br>
-て安定版の ViAI を素早くインストールできます:<br>
+コマンドラインを使う方が好みの場合、Windows の組み込みのパッケージマネージャー<br>
+を使って、安定版の ViAI を素早くインストールできます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;winget install viai.viai</div>
 <br>
-または、最新のナイトリーバージョンをダウンロードするには、以下のコマンドを使用<br>
-します:<br>
+または、最新のナイトリー版をダウンロードするには、これを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;winget install viai.viai.nightly</div>
 <br>
-この方法によって、最小限の手間で最新バージョンを入手できます。<br>
+この方法により、最小限の手間で最新のバージョンを手に入れられることが保証されま<br>
+す。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">2. GitHub インストーラ (すべてのアーキテクチャ)</span><br>
 <br>
-インストールをさらに制御するには (または ARM などの特定の CPU アーキテクチャを<br>
-使用している場合)、公式 GitHub リポジトリにアクセスしてください:<br>
+インストールをより細かく制御するには (または ARM のような特定の CPU アーキテク<br>
+チャを使っている場合は)、公式の GitHub リポジトリを訪れてください:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/viai-editor/viai-win32-installer/">https://github.com/viai-editor/viai-win32-installer/</a></span><br>
 <br>
-このリポジトリは、以下の毎日のインストーラとポータブル zip アーカイブを提供し<br>
-ます:<br>
+このリポジトリは、以下のための毎日のインストーラおよびポータブル zip アーカイ<br>
+ブを提供しています:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;- x86 (32-bit)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;- x64 (64-bit)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;- ARM64<br>
 <br>
-ナイトリービルドや特定の設定が必要な場合に最適なオプションです<br>
+ナイトリービルドまたは特定の構成が欲しい場合、これはすばらしい選択肢です<br>
 <br>
-提供されているバイナリに、必要な機能が不足している場合は、自分で ViAI をコンパ<br>
-イルしてみてください。対応する Makefile が用意されているコンパイラも必要です。<br>
-Microsoft Visual C, MinGW と Cygwin のコンパイラが使えます。詳しくは<br>
-&quot;src/INSTALLpc.txt&quot; を見てください。<br>
-ソースは以下から入手できます:<br>
+提供されたバイナリに含まれる機能に満足できない場合、ViAI を自分でコンパイルし<br>
+てみることもできます。makefile が存在するコンパイラが必要です。Microsoft<br>
+Visual C、MinGW、および Cygwin のコンパイラが使えます。ヒントについては、ファ<br>
+イル src/INSTALLpc.txt を確認してください。ソースは以下から入手できます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/viai-editor/viai">https://github.com/viai-editor/viai</a></span><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_90.html#90.3" name="90.3">90.3</a>&nbsp;&nbsp;アップグレード<br>
 <br>
-既に ViAI がインストールされているところに新たに ViAI をインストールする方法を<br>
-説明します。<br>
+ViAI のあるバージョンを実行していて、別のバージョンをインストールしたい場合、<br>
+以下がその方法です。<br>
 <br>
 <br>
-<span class="Statement">Unix</span><br>
+<span class="Statement">UNIX</span><br>
 <br>
-&quot;make install&quot; を実行すると、ランタイムファイルはバージョンごとのディレクトリ<br>
-にコピーされます。つまり以前のバージョンは上書きされません。複数のバージョンを<br>
-同時に使うことができます。<br>
-古いバージョンの &quot;viai&quot; 実行可能ファイルは上書きされます。古い実行可能ファイル<br>
-が必要ない場合は単に &quot;make install&quot; を実行してください。ランタイムファイルは手<br>
-動で削除します。古いバージョンのランタイムディレクトリを削除するだけです。例:<br>
+&quot;make install&quot; とタイプすると、ランタイムファイルはこのバージョンに固有のディ<br>
+レクトリにコピーされます。したがって、それらは以前のバージョンを上書きしませ<br>
+ん。これにより、2 つ以上のバージョンを並べて使うことができます。<br>
+&nbsp;&nbsp; 実行可能ファイル &quot;viai&quot; は古いバージョンを上書きします。古いバージョンを保<br>
+持することを気にしない場合、&quot;make install&quot; の実行はうまく機能します。古いラン<br>
+タイムファイルは手動で削除できます。バージョン番号を含むディレクトリおよびその<br>
+下のすべてのファイルを削除するだけです。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm -rf /usr/local/share/viai/viai10</div>
 <br>
-普通はこのディレクトリ以下のファイルが変更されることはありません。しかし、例え<br>
-ば &quot;filetype.vim&quot; などを変更した場合は、削除する前にその変更を新バージョンの方<br>
-にマージしてください。<br>
+通常、このディレクトリの下に変更されたファイルはありません。例えば<br>
+&quot;filetype.vim&quot; ファイルを変更した場合、それを削除する前に、変更を新しいバージョ<br>
+ンにマージした方がよいでしょう。<br>
 <br>
-新しいバージョンに切り替える前に試用期間を設けたい場合は、新しいバージョンを違<br>
-う名前でインストールしてください。configure に引数を設定する必要があります。<br>
-例:<br>
+慎重で、新しいバージョンに切り替える前にしばらく試してみたい場合、新しいバー<br>
+ジョンを別の名前でインストールします。configure の引数を指定する必要がありま<br>
+す。例えば:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;./configure --with-vim-name=viai11</div>
 <br>
-&quot;make install&quot; を実行する前に &quot;make -n install&quot; を実行し、大事なファイルが上書<br>
-きされないか確認してください。<br>
-評価の結果、新しいバージョンに切り替えると決めたら、実行可能ファイルの名前を変<br>
-更します。例:<br>
+&quot;make install&quot; を実行する前に、&quot;make -n install&quot; を使って、既存の価値のあるファ<br>
+イルが上書きされないことを確認できます。<br>
+&nbsp;&nbsp; 最終的に新しいバージョンに切り替えることに決めたときは、バイナリの名前を<br>
+&quot;viai&quot; に変更するだけです。例えば:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mv /usr/local/bin/viai11 /usr/local/bin/viai</div>
 <br>
 <br>
-<span class="Statement">MS-Windows</span><br>
+<span class="Statement">MS-WINDOWS</span><br>
 <br>
-アップグレードは新しいバージョンをインストールするのとほぼ同じです。古いバー<br>
-ジョンと同じ場所にファイルを展開してください。新しいディレクトリ (例えば<br>
-&quot;viai11&quot;) が作成され、その下に新しいバージョンがコピーされます。ランタイムファ<br>
-イル、vimrc、viminfo などはそのまま残ります。<br>
-古いものをそのままにして新しいバージョンを実行したい場合は、多少の手作業が必要<br>
-です。install プログラムを実行すると、古いバージョンのためのファイルがいくつか<br>
-上書きされてしまいます。新しいバイナリをフルパス指定で実行してください。正しい<br>
-バージョンのランタイムファイルが自動的に検出されます。ただし、$VIMRUNTIME 変数<br>
-が定義されている場合はうまく機能しません。<br>
-アップグレードが満足のいくものであったなら、旧バージョンのファイルを削除してく<br>
-ださい。<a class="Identifier" href="usr_90.html#90.5">90.5</a>&nbsp;参照。<br>
+アップグレードは、新しいバージョンをインストールすることとほぼ同じです。以前の<br>
+バージョンと同じ場所にファイルを展開するだけです。新しいバージョンのファイル用<br>
+に、新しいディレクトリ、例えば &quot;viai11&quot; が作成されます。あなたのランタイムファ<br>
+イル、vimrc ファイル、viminfo などはそのまま残されます。<br>
+&nbsp;&nbsp; 新しいバージョンを古いものと並べて実行したい場合、いくらか手作業をする必要<br>
+があります。インストールプログラムを実行しないでください。それは古いバージョン<br>
+のいくつかのファイルを上書きします。フルパスを指定して新しいバイナリを実行して<br>
+ください。プログラムは、正しいバージョンのランタイムファイルを自動的に見つけら<br>
+れるはずです。しかし、どこかで $VIMRUNTIME 変数を設定している場合、これは機能<br>
+しません。<br>
+&nbsp;&nbsp; アップグレードに満足した場合、以前のバージョンのファイルを削除できます。<br>
+<a class="Identifier" href="usr_90.html#90.5">90.5</a>&nbsp;を参照してください。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_90.html#90.4" name="90.4">90.4</a>&nbsp;&nbsp;よくある問題<br>
+<a class="Constant" href="usr_90.html#90.4" name="90.4">90.4</a>&nbsp;&nbsp;よくあるインストールの問題<br>
 <br>
-ViAI のインストール時に起こる問題と、その解決方法を説明します。インストールに<br>
-関する質問にも答えます。<br>
+このセクションでは、ViAI をインストールするときに起こるよくある問題のいくつか<br>
+を説明し、いくつかの解決策を提案します。また、インストールに関する多くの質問へ<br>
+の答えも含んでいます。<br>
 <br>
 <br>
-Q: 私には root 権限がありません。ViAI をインストールできますか？ (Unix)<br>
+Q: root 権限がありません。どうやって ViAI をインストールしますか? (Unix)<br>
 <br>
-次のような引数を付けて configure を実行してください。この例ではホームディレク<br>
-トリに ViAI がインストールされます:<br>
+ViAI をあなたのホームディレクトリにインストールするには、以下の構成コマンドを<br>
+使ってください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;./configure --prefix=$HOME</div>
 <br>
-自分のディレクトリに ViAI がコピーされます。エディタを実行するには $HOME/bin<br>
-にパスを通す必要があります。<a class="Identifier" href="usr_90.html#install-home">install-home</a>&nbsp;も参照。<br>
+これで ViAI の個人用のコピーが得られます。エディタを実行するには、$HOME/bin を<br>
+あなたのパスに入れる必要があります。<a class="Identifier" href="usr_90.html#install-home">install-home</a>&nbsp;も参照してください。<br>
 <br>
 <br>
-Q: 私の画面では表示される色が正しくありません (Unix)<br>
+Q: 私の画面の色が正しくありません。(Unix)<br>
 <br>
-端末の設定を確認してください。シェルの上で次のコマンドを使います:<br>
+シェルで以下のコマンドを使って、あなたの端末の設定を確認してください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo $TERM</div>
 <br>
-表示された端末タイプが正しくない場合はそれを修正します。詳しくは&nbsp;<a class="Identifier" href="usr_06.html#06.2">06.2</a>&nbsp;を参照<br>
-してください。あるいは、gviai と呼ばれる GUI 版の ViAI を使ってください。GUI<br>
-なら端末を正しく設定する必要はありません。<br>
+表示された端末の種類が正しくない場合、それを修正してください。さらなるヒントに<br>
+ついては、<a class="Identifier" href="usr_06.html#06.2">06.2</a>&nbsp;を参照してください。別の解決策は、gviai と呼ばれる GUI 版の<br>
+ViAI を常に使うことです。これにより、正しい端末設定の必要がなくなります。<br>
 <br>
 <br>
-Q: Backspace キーと Delete キーが正しく動いていないようです<br>
+Q: 私の Backspace キーおよび Delete キーが正しく動作しません<br>
 <br>
-キーが押されたときに送信されるコードが Backspace&nbsp;<span class="Special">&lt;BS&gt;</span>&nbsp;と Delete&nbsp;<span class="Special">&lt;Del&gt;</span>&nbsp;について<br>
-はとてもあいまいです。まず、$TERM の設定を確認してください。それが問題なけれ<br>
-ば、次の設定を試してください:<br>
+どのキーがどのコードを送るかの定義は、backspace&nbsp;<span class="Special">&lt;BS&gt;</span>&nbsp;キーおよび Delete&nbsp;<span class="Special">&lt;Del&gt;</span><br>
+キーについては非常に不明確です。まず、あなたの $TERM の設定を確認してください。<br>
+それに何も問題がない場合、これを試してください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set t_kb=^V&lt;BS&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set t_kD=^V&lt;Del&gt;</div>
 <br>
-一行目の ^V<span class="Special">&lt;BS&gt;</span>&nbsp;は&nbsp;<span class="Special">CTRL-V</span>&nbsp;を押してから Backspace キーを押します。二行目の<br>
-^V<span class="Special">&lt;Del&gt;</span>&nbsp;は&nbsp;<span class="Special">CTRL-V</span>&nbsp;を押してから Delete キーを押します。この二行を vimrc ファイ<br>
-ルに書いておくこともできます (<a class="Identifier" href="usr_05.html#05.1">05.1</a>参照)。ただし、この方法は端末を変更すると<br>
-機能しなくなります。これ以外の解決方法は&nbsp;<a class="Identifier" href="options.html#:fixdel">:fixdel</a>&nbsp;を参照してください。<br>
+1 行目では、<span class="Special">CTRL-V</span>&nbsp;を押してから backspace キーを押す必要があります。<br>
+2 行目では、<span class="Special">CTRL-V</span>&nbsp;を押してから Delete キーを押す必要があります。<br>
+これらの行をあなたの vimrc ファイルに入れることができます。<a class="Identifier" href="usr_05.html#05.1">05.1</a>&nbsp;を参照してく<br>
+ださい。欠点は、いつか別の端末を使うときに機能しないことです。代わりの解決策に<br>
+ついてはここを見てください:&nbsp;<a class="Identifier" href="options.html#:fixdel">:fixdel</a>。<br>
 <br>
 <br>
-Q: テキストを色付きで表示するには？ プラグインを動かすには？<br>
+Q: どうやって構文の色付けをオンにしますか? どうやってプラグインを動作させますか?<br>
 <br>
-サンプルの vimrc スクリプトを使ってください。説明は&nbsp;<a class="Identifier" href="usr_01.html#not-compatible">not-compatible</a>&nbsp;にありま<br>
-す。<br>
+例の vimrc スクリプトを使ってください。その使い方の説明はここにあります:<br>
+<a class="Identifier" href="usr_01.html#not-compatible">not-compatible</a>。<br>
 <br>
-構文強調表示については第 6 章を参照してください:&nbsp;<a class="Identifier" href="usr_06.html">usr_06.txt</a>。<br>
-<br>
-<br>
-Q: 便利な vimrc ファイルの例はありますか？<br>
-<br>
-Web サイト (<span class="Constant">www.vim.org</span>) に良い例がいくつかあります。<br>
+構文ハイライトについての情報は、6 章を参照してください:&nbsp;<a class="Identifier" href="usr_06.html">usr_06.txt</a>。<br>
 <br>
 <br>
-Q: 便利な Vim プラグインはどこにありますか？<br>
+Q: 使うのによい vimrc ファイルは何ですか?<br>
 <br>
-Vim-online サイト (<span class="Constant"><a href="http://vim.sf.net">http://vim.sf.net</a></span>) を参照してください。多くのユーザーが便利<br>
-な Vim script やプラグインをアップロードしています。<br>
+いくつかのよい例については、<span class="Constant">www.vim.org</span>&nbsp;ウェブサイトを参照してください。<br>
 <br>
 <br>
-Q: 便利な Tips はどこにありますか？<br>
+Q: よい Vim プラグインはどこで見つけられますか?<br>
 <br>
-Vim-online サイト (<span class="Constant"><a href="http://vim.sf.net">http://vim.sf.net</a></span>) を参照してください。Vim のユーザーから寄<br>
-せられたヒントが集められています。メーリングリスト (<a class="Identifier" href="intro.html#maillist-archive">maillist-archive</a>) を検索<br>
-するのもいいでしょう。<br>
+Vim-online サイトを参照してください:&nbsp;<span class="Constant"><a href="http://vim.sf.net">http://vim.sf.net</a></span>。多くのユーザーが便利な<br>
+Vim script およびプラグインをそこにアップロードしています。<br>
+<br>
+<br>
+Q: もっと多くのヒントはどこで見つけられますか?<br>
+<br>
+Vim-online サイトを参照してください:&nbsp;<span class="Constant"><a href="http://vim.sf.net">http://vim.sf.net</a></span>。Vim ユーザーからのヒン<br>
+トのアーカイブがあります。<a class="Identifier" href="intro.html#maillist-archive">maillist-archive</a>&nbsp;で検索してみるのもよいでしょう。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_90.html#90.5" name="90.5">90.5</a>&nbsp;&nbsp;アンインストール<br>
+<a class="Constant" href="usr_90.html#90.5" name="90.5">90.5</a>&nbsp;&nbsp;ViAI のアンインストール<br>
 <br>
-ViAI をアンインストールする機会はあまりないと思いますが、その方法を説明します。<br>
+万一 ViAI を完全にアンインストールしたい場合、これがその方法です。<br>
 <br>
 <br>
-<span class="Statement">Unix</span><br>
+<span class="Statement">UNIX</span><br>
 <br>
-ViAI をソースからインストールした場合は、次のコマンドでアンインストールできま<br>
-す:<br>
+ソースから ViAI をインストールした場合、このコマンドを使えます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make uninstall</div>
 <br>
-元のファイルを削除してしまった場合や、誰かが作ったアーカイブからインストールし<br>
-た場合は、この方法は使えません。手作業でファイルを削除してください。例えば<br>
-&quot;/usr/local&quot; にインストールした場合は以下のファイルを root 権限で削除します:<br>
+しかし、元のファイルを削除した場合、または誰かが提供したアーカイブを使った場<br>
+合、これはできません。ファイルを手動で削除してください。以下は &quot;/usr/local&quot; が<br>
+ルートとして使われた場合の例です:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm -rf /usr/local/share/viai/viai10<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/bin/eviai<br>
@@ -383,26 +395,29 @@ ViAI をソースからインストールした場合は、次のコマンドで
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rm /usr/local/share/icons/locolor/32x32/apps/gviai.png</div>
 <br>
 <br>
-<span class="Statement">MS-Windows</span><br>
+<span class="Statement">MS-WINDOWS</span><br>
 <br>
-インストーラを使ってインストールした場合は、ViAI の実行可能ファイルと同じディ<br>
-レクトリにある &quot;uninstall-gui&quot; プログラムを実行してください。スタートメニュー<br>
-に登録した場合は、そこから起動しても構いません。それによって、ほとんどのファイ<br>
-ルと、メニューと、デスクトップのショートカットが削除されます。いくつかのファイ<br>
-ルは削除されずに残るかもしれませんが、それらを削除するには Windows の再起動が<br>
-必要です。<br>
-ViAI のルートディレクトリをまるごと削除するという方法もあります。あなたが作成<br>
-した vimrc ファイルやランタイムファイルがそこに保存されている場合は慎重に実行<br>
-してください。<br>
+自己インストールアーカイブで ViAI をインストールした場合、他の ViAI プログラム<br>
+と同じディレクトリにある &quot;uninstall-gui&quot; プログラムを実行できます。スタートメ<br>
+ニューに ViAI の項目をインストールした場合は、そこから起動することもできます。<br>
+これにより、ほとんどのファイル、メニュー項目、およびデスクトップのショートカッ<br>
+トが削除されます。しかし、削除される前に Windows の再起動が必要なため、いくつ<br>
+かのファイルは残ることがあります。<br>
+&nbsp;&nbsp; ViAI のルートディレクトリを削除するオプションが与えられます。それにはおそら<br>
+くあなたの vimrc ファイルおよびあなたが作成した他のランタイムファイルが含まれ<br>
+ているので、注意してください。<br>
 <br>
-zip アーカイブからインストールした場合は、&quot;uninstall&quot; プログラムを使ってくださ<br>
-い。&quot;install&quot; プログラムと同じディレクトリにあります (例: &quot;c:\viai\viai10&quot;)。<br>
-コントロールパネルの「アプリケーションの追加と削除」からも削除できます。<br>
-ただし、これはレジストリの登録を削除するだけです。ファイルの削除は自分でやる必<br>
-要があります。単に &quot;viai\viai10&quot; をまるごと削除します。そこにあなたが変更を加<br>
-えたファイルは保存されていないと思いますが、念のため確認してください。<br>
-&quot;viai&quot; ディレクトリにあなたが作成した vimrc ファイルやランタイムファイルが入っ<br>
-ているなら、それらは残しておいた方がいいかもしれません。<br>
+そうではなく、zip アーカイブで ViAI をインストールした場合、推奨される方法は<br>
+&quot;uninstall&quot; プログラムを使うことです。それは &quot;install&quot; プログラムと同じディレ<br>
+クトリ、例えば &quot;c:\viai\viai10&quot; にあります。これは通常の<br>
+&quot;install/remove software&quot; ページからも機能するはずです。<br>
+&nbsp;&nbsp; しかし、これは ViAI のレジストリ項目を削除するだけです。ファイルは自分で削<br>
+除する必要があります。単にディレクトリ &quot;viai\viai10&quot; を選択し、再帰的に削除し<br>
+ます。そこにはあなたが変更したファイルはないはずですが、まずそれを確認したいか<br>
+もしれません。<br>
+&nbsp;&nbsp; &quot;viai&quot; ディレクトリには、おそらくあなたの vimrc ファイルおよびあなたが作成<br>
+した他のランタイムファイルが含まれています。それは残しておきたいかもしれませ<br>
+ん。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
