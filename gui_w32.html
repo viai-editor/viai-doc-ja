@@ -9,158 +9,157 @@ helpname: 'gui_w32'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
-Win32でのVimのグラフィカルユーザーインターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#gui-w32" name="gui-w32">gui-w32</a>&nbsp;<a class="Constant" href="gui_w32.html#win32-gui" name="win32-gui">win32-gui</a><br>
+Vim の Win32 グラフィカルユーザーインターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#gui-w32" name="gui-w32">gui-w32</a>&nbsp;<a class="Constant" href="gui_w32.html#win32-gui" name="win32-gui">win32-gui</a><br>
 <br>
-1. GUIを始める&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="gui_w32.html#gui-w32-start">gui-w32-start</a><br>
-2. デフォルトエディタVim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="gui_w32.html#vim-default-editor">vim-default-editor</a><br>
+1. GUI を起動する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="gui_w32.html#gui-w32-start">gui-w32-start</a><br>
+2. 既定のエディタとしての Vim&nbsp;&nbsp;&nbsp;<a class="Identifier" href="gui_w32.html#vim-default-editor">vim-default-editor</a><br>
 3. クリップボードを使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="gui_w32.html#gui-clipboard">gui-clipboard</a><br>
 4. シェルコマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="gui_w32.html#gui-shell-win32">gui-shell-win32</a><br>
 5. 特別な色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="gui_w32.html#win32-colors">win32-colors</a><br>
-6. ダイアログとブラウズ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="gui_w32.html#gui-w32-dialogs">gui-w32-dialogs</a><br>
+6. Windows のダイアログおよびブラウザー&nbsp;<a class="Identifier" href="gui_w32.html#gui-w32-dialogs">gui-w32-dialogs</a><br>
 7. コマンドライン引数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="gui_w32.html#gui-w32-cmdargs">gui-w32-cmdargs</a><br>
-8. その他色々&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="gui_w32.html#gui-w32-various">gui-w32-various</a><br>
+8. その他&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="gui_w32.html#gui-w32-various">gui-w32-various</a><br>
 <br>
-その他の関連した文章:<br>
-<a class="Identifier" href="gui.html">gui.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GUIの一般的な要素。<br>
-<a class="Identifier" href="os_win32.html">os_win32.txt</a>&nbsp;&nbsp;Win32特有の要素。<br>
+その他の関連するドキュメント:<br>
+<a class="Identifier" href="gui.html">gui.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GUI の一般的な項目について。<br>
+<a class="Identifier" href="os_win32.html">os_win32.txt</a>&nbsp;&nbsp;Win32 固有の項目について。<br>
 <br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-1. GUIを始める&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#gui-w32-start" name="gui-w32-start">gui-w32-start</a><br>
+1. GUI を起動する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#gui-w32-start" name="gui-w32-start">gui-w32-start</a><br>
 <br>
-Win32のGUIバージョンは、どんな名前で起動されたかなんておかまい無しに、いつも<br>
-GUIでスタートする。<br>
+Win32 GUI 版の Vim は、どのように起動したか、または何と呼ばれているかに関係な<br>
+く、常に GUI を起動する。<br>
 <br>
-GUIは常にWindowsのサブシステムとして実行される。ほとんどのシェルはVimを起動し<br>
-た直後にコマンドプロンプトへ自動的に復帰する。そうでなかったら、&quot;start&quot; コマン<br>
-ドを使うと良い:<br>
+GUI は常に Windows サブシステムで実行される。たいていのシェルは、gviai を起動<br>
+した後、自動的にコマンドプロンプトに戻る。そうでない場合、&quot;start&quot; コマンドを使<br>
+うべきである:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start gviai [options] file ..</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#E988" name="E988">E988</a><br>
-コンソールバージョンに&nbsp;<a class="Identifier" href="starting.html#-g">-g</a>&nbsp;オプションを付けても gviai.exe が実行されて GUI を<br>
-スタートできる:<br>
+コンソール版で&nbsp;<a class="Identifier" href="starting.html#-g">-g</a>&nbsp;オプションを使うと、gviai.exe を実行することで GUI を起動<br>
+することもできる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;viai -g [options] file ..</div>
-この機能を動作させるには、gviai.exe が viai.exe と同一のディレクトリに存在し、<br>
-かつこの機能を有効にしてコンパイルされていなければならない。<br>
+これを機能させるには、gviai.exe が viai.exe と同じディレクトリに存在しなければ<br>
+ならず、この機能がコンパイル時に有効になっていなければならない。<br>
 <br>
-コンソールバージョンから&nbsp;<a class="Comment" href="gui_x11.html#:gui">:gui</a>&nbsp;を使うこともできる。しかし、これは実験的な機能<br>
-で、かつこの機能を有効にしてコンパイルされていなければならない。<br>
-セッションファイルを使って現在のコンソール Vim の状態が GUI Vim で再生成される。<br>
+コンソール版から&nbsp;<a class="Comment" href="gui_x11.html#:gui">:gui</a>&nbsp;を使うこともできる。ただし、これは実験的な機能であり、<br>
+この機能がコンパイル時に有効になっていなければならない。<br>
+これはセッションファイルを使って、コンソールの Vim の現在の状態を GUI の Vim<br>
+で再作成する。<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;全てのフォント(太字、斜体)は同じ大きさでなければならない!!! そうしない<br>
-場合、文字が欠けたり表示がゴチャゴチャになったりしてしまうだろう。Vimはフォン<br>
-トの大きさを検査していない。画面上でのピクセルサイズが同じでなければならない。<br>
-同じポイントサイズのフォントでも、同じピクセルサイズのフォントだとは限らないこ<br>
-とに注意! 加えてフォントの位置情報(アセントとディセント)も同じでなければなら<br>
-ない。<br>
+<span class="Todo">Note:</span>&nbsp;すべてのフォント (太字、イタリック) は同じサイズでなければならない!!! そ<br>
+うしないと、テキストが消えるか、または表示がめちゃくちゃになる。Vim はフォント<br>
+サイズをチェックしない。同じでなければならないのは、スクリーンピクセル単位のサ<br>
+イズである。<span class="Todo">Note</span>&nbsp;同じポイントサイズを持ついくつかのフォントは、同じピクセルサ<br>
+イズを持たないことに注意! さらに、フォントの位置決めも同じでなければならない<br>
+(アセントおよびディセント)。<br>
 <br>
-Win32 GUIではメニューが拡張されている: &quot;編集/フォント設定&quot;。Windowsの標準フォ<br>
-ントセレクトダイアログが起動される。<br>
+Win32 GUI には追加のメニュー項目がある: &quot;Edit/Select Font&quot;。これは標準の<br>
+Windows フォントセレクタを表示する。<br>
 <br>
-メニューの高さ設定は、Win32 GUIでは動作しない。<br>
+メニューの高さの設定は Win32 GUI では機能しない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#gui-win32-maximized" name="gui-win32-maximized">gui-win32-maximized</a><br>
-Vimのウィンドウを最大化した状態で起動したいのならば、vimrcかgvimrcに次のコマン<br>
-ドを書き加える:<br>
+Vim を最大化されたウィンドウで起動したい場合、このコマンドをあなたの vimrc ま<br>
+たは gvimrc ファイルに追加する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;au GUIEnter * simalt ~x</div>
 <br>
 <br>
-Vim をプラグインとして使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#gui-w32-windowid" name="gui-w32-windowid">gui-w32-windowid</a><br>
+プラグインとして Vim を使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#gui-w32-windowid" name="gui-w32-windowid">gui-w32-windowid</a><br>
 <br>
-普通に gvim が起動されると、gvim のウィンドウがトップレベルで作成される。コマ<br>
-ンドラインオプション&nbsp;<a class="Identifier" href="starting.html#--windowid">--windowid</a>&nbsp;に10進または16進の数値を指定すると、Vim はそ<br>
-の ID を持つウィンドウの子ウィンドウを作成する。これによって、Vim を他のアプリ<br>
-ケーションのプラグインとして使うことができる。これは完全にプログラマ向けのイン<br>
-ターフェイスであり、Vim を正しく起動するアプリケーションの対応なくしては何の役<br>
-にも立たない。<br>
+gvim は通常どおり起動すると、自身のトップレベルウィンドウを作成する。コマンド<br>
+ラインオプション&nbsp;<a class="Identifier" href="starting.html#--windowid">--windowid</a>&nbsp;を 10 進数または 16 進数の値と共に Vim に渡すと、<br>
+Vim は指定された ID のウィンドウの子であるウィンドウを作成する。これにより、<br>
+Vim は別のアプリケーション内でプラグインとして動作できる。これは実際にはプログ<br>
+ラマ向けのインターフェイスであり、Vim を正しく起動するサポート側のアプリケー<br>
+ションがなければ役に立たない。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-2. デフォルトエディタVim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#vim-default-editor" name="vim-default-editor">vim-default-editor</a><br>
+2. 既定のエディタとしての Vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#vim-default-editor" name="vim-default-editor">vim-default-editor</a><br>
 <br>
-Vimをあるファイルタイプのデフォルトエディタにするには:<br>
-1. Windowsのエクスプローラーを起動する<br>
-2. ツール/フォルダオプション -&gt; ファイルタイプ (W2K + IE5.5)<br>
-3. Vimを使用したい全てのファイルタイプに対して、gvimのパスを設定する。(拡張子<br>
-&nbsp;&nbsp; の無いファイルタイプに対しては、ファイルタイプを指定するフィールドに3つのス<br>
-&nbsp;&nbsp; ペースを置くことで対応できる)<br>
-&nbsp;&nbsp; アクションの &quot;open&quot; に:<br>
+あるファイルタイプの既定のエディタとして Vim を設定するには:<br>
+1. Windows エクスプローラーを起動する<br>
+2. View/Options -&gt; File Types を選択する<br>
+3. それを使いたいすべてのファイルタイプについて、gvim へのパスを選択する。(拡<br>
+&nbsp;&nbsp; 張子のないファイルに対しては、ファイルタイプのフィールドに 3 つの空白を使う<br>
+&nbsp;&nbsp; こともできる)。<br>
+&nbsp;&nbsp; &quot;open&quot; アクションでは、以下を使う:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gvim &quot;%1&quot;</div>
-&nbsp;&nbsp;&nbsp;ファイル名にスペースを含むファイルを正しく扱うためにクォート(&quot;)が必要。<br>
-&nbsp;&nbsp; こういう方法もある:<br>
+&nbsp;&nbsp;&nbsp;引用符は、空白が埋め込まれたファイル名を使うために必要である。<br>
+&nbsp;&nbsp; これも使える:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gvim &quot;%L&quot;</div>
-&nbsp;&nbsp;&nbsp;これにより幾つかの状況で、短い形式のファイル名(8.3形式)を避けることができ<br>
-&nbsp;&nbsp; る。しかし、常に働くわけではない。<br>
+&nbsp;&nbsp;&nbsp;これにより、いくつかの状況で短い (8.3 文字の) ファイル名を避けられるはずで<br>
+&nbsp;&nbsp; ある。しかし、私はこれがどこでも機能するかは確かではない。<br>
 <br>
-ファイルをダブルクリックしてVimで開いた時には、Vimはそのファイルのディレクトリ<br>
-へ移動する。<br>
+ダブルクリックで Vim でファイルを開くと、Vim はそのファイルのディレクトリに移<br>
+動する。<br>
 <br>
-Vimを全画面で起動したい時には、openのアクションとして次のものを使用する:<br>
+Vim をフルスクリーンで起動したい場合、Open アクションにこれを使う:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gvim -c &quot;simalt ~x&quot; &quot;%1&quot;</div>
 <br>
-新たにVimを違うディレクトリに置いた時(新しいバージョンを入手した時など)の、も<br>
-う一つの方法は:<br>
-1. Vimを使って開きたいファイルを選ぶ<br>
-2.&nbsp;<span class="Special">&lt;Shift-F10&gt;</span>を押す<br>
-3. メニューから &quot;アプリケーションから開く&quot; を選択する<br>
-4. &quot;その他&quot; をクリック<br>
-5. Vimの新しい位置を参照して、開くをクリックする。<br>
-6. &quot;いつもこのアプリケーションを使う&quot; をチェックする<br>
-7. OKをクリック<br>
+Vim を別のディレクトリに置いたときにも機能する別の方法 (例えば、新しいバージョ<br>
+ンを入手したとき):<br>
+1. Vim で使いたいファイルを選択する<br>
+2.&nbsp;<span class="Special">&lt;Shift-F10&gt;</span><br>
+3. &quot;Open With...&quot; メニュー項目を選択する<br>
+4. &quot;Other...&quot; をクリックする<br>
+5. Vim の (新しい) 場所をブラウズし、&quot;Open&quot; をクリックする<br>
+6. &quot;Always Use this program...&quot; をチェックする<br>
+7.&nbsp;<span class="Special">&lt;OK&gt;</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#send-to-menu" name="send-to-menu">send-to-menu</a>&nbsp;<a class="Constant" href="gui_w32.html#sendto" name="sendto">sendto</a><br>
-Vimを &quot;送る&quot; メニューに追加することもできる:<br>
-1. Windowsのエクスプローラーを起動する。<br>
-2. &quot;送る&quot; のためのディレクトリに移動する:<br>
-&nbsp;&nbsp; C:\Users\%user%\AppData\Roaming\Microsoft\Windows\SendTo<br>
-3. ファイル表示枠の上で右クリックして新規作成→ショートカット。<br>
-4. ショートカットウィザードに従ってVIM/GVIMへのフルパスを指定。<br>
+Vim を &quot;Send To&quot; メニューにインストールすることもできる:<br>
+1. Windows エクスプローラーを起動する<br>
+2. あなたの sendto ディレクトリに移動する:<br>
+&nbsp;&nbsp; C:\Users\%user%\AppData\Roaming\Microsoft\Windows\SendTo .<br>
+3. ファイルペインで右クリックし、New-&gt;Shortcut を選択する<br>
+4. VIM/GVIM へのフルパスを使って、ショートカットウィザードに従う。<br>
 <br>
-Vimにファイルを送ると、Vimはファイルのあるディレクトリに移動する。しかしいくつ<br>
-かのWindowsのバージョンでは長いディレクトリ名は短い(MS-DOS)形式で表示されてし<br>
-まうことに注意。これはWindowsの &quot;送る&quot; の仕組みによる制限である。<br>
+'ファイルを Vim に送る' と、Vim はそのファイルのディレクトリに移動する。<span class="Todo">Note</span><br>
+ただし、一部の Windows バージョンでは、長いディレクトリ名は短い (MS-DOS) 形式<br>
+で表示されることに注意。これは Windows の &quot;Send To&quot; メカニズムの制限である。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#notepad" name="notepad">notepad</a><br>
-notepad.exe(メモ帳) をgviai.exeに置き換えてしまうこともできるが、これには副作<br>
-用もある。いくつかのプログラムはnotepad.exeに依存していて、例えばファイルを印<br>
-刷するために &quot;notepad -p&quot; を使っているからである。メモ帳 (notepad) はそのまま<br>
-にしておいて、Vimを起動するためのほかの方法を使ったほうが良い。<br>
+notepad.exe を gviai.exe で置き換えることもできるが、それにはいくつかの副作用<br>
+がある。いくつかのプログラムは notepad の引数に依存しており、それらは Vim では<br>
+認識されない。例えば、&quot;notepad -p&quot; はいくつかのアプリケーションでファイルを印<br>
+刷するのに使われる。notepad はそのままにしておき、Vim を起動するには別の方法を<br>
+使うほうがよい。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#win32-popup-menu" name="win32-popup-menu">win32-popup-menu</a><br>
-もっと抜本的なアプローチは、右マウスボタンメニューに &quot;Edit with ViAI&quot; という項<br>
-目を追加するものである。これを使うとあらゆるファイルをVimで編集できるようにな<br>
-る。<br>
+より抜本的な方法は、右マウスボタンのポップアップメニューに &quot;Edit with ViAI&quot; 項<br>
+目をインストールすることである。これにより、任意のファイルを Vim で編集できる。<br>
 <br>
-これは上述のファイルの関連付けと共存することができる。ファイルの関連付けは、<br>
-Vimで開始することを「デフォルトのアクション」にしてしまう点が違う。<br>
-&quot;Edit with ViAI&quot; メニュー項目を使うと、ダブルクリックで開ける既に存在するファ<br>
-イルの関連付けはそのままにして、したい時にはいつでもVimでファイルを編集するこ<br>
-とができる。例えば、&quot;*.mak&quot; はmakeプログラムに関連付けることができる。この場<br>
-合、そのファイルをダブルクリックすればmakefileが実行されるし、&quot;Edit with ViAI&quot;<br>
-を選べばmakefileを編集することができる。<br>
+これは上で述べたファイルの関連付けと共存できる。違いは、ファイルの関連付けでは<br>
+Vim の起動が既定の動作になることである。&quot;Edit with ViAI&quot; メニュー項目を使うと、<br>
+ファイルのダブルクリックに対する既存のファイルの関連付けを保持し、かつ必要なと<br>
+きにファイルを Vim で編集できる。例えば、&quot;*.mak&quot; をあなたの make プログラムに<br>
+関連付けることができる。makefile をダブルクリックすることでそれを実行し、<br>
+&quot;Edit with ViAI&quot; 項目を使って makefile を編集できる。<br>
 <br>
-どんなファイルでも選択し、右クリックで &quot;Edit with ViAI&quot; と呼ばれるメニューオプ<br>
-ションを表示させることができる。このメニューオプションを選択すると、選択した<br>
-ファイルがgviaiによって開かれる。複数のファイルを選択した場合には、代わりに以<br>
-下のメニューオプションが提示されるだろう:<br>
-&quot;Edit with ViAI using tabpages&quot; -- ファイルごとにタブページを持つ1つのgviai<br>
-&quot;Edit with single ViAI&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -- 選んだ全てのファイルが1つのgviaiで開かれる<br>
-&quot;Diff with ViAI&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- 差分モードの1つのgviai (最大4ファイル)<br>
-さらに、もしもすでにgviaiが起動しているなら:<br>
-&quot;Edit with existing ViAI&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -- すでに起動しているgviaiでそのファイルの編<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 集を開始する。<br>
+任意のファイルを選択して右クリックすると、&quot;Edit with ViAI&quot; というメニューオプ<br>
+ションが表示される。このメニューオプションを選ぶと、選択したファイルで gviai<br>
+が起動される。複数のファイルを選択した場合、代わりにこれらのメニューオプション<br>
+がある:<br>
+&quot;Edit with ViAI using tabpages&quot; -- 各ファイルに 1 つのタブページを持つ 1 つの gviai<br>
+&quot;Edit with single ViAI&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -- 選択されたすべてのファイルに対して 1 つの gviai<br>
+&quot;Diff with ViAI&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- diff モードの 1 つの gviai (最大 4 ファイル)<br>
+そして、既に gviai が実行されている場合:<br>
+&quot;Edit with existing ViAI&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -- 実行中の gviai でファイルを編集する<br>
 <br>
-&quot;Edit with existing ViAI&quot; メニューはレジストリを設定することで無効化できる。<br>
-HKLM\Software\ViAI\Gviai に DisableEditWithExisting という名前のエントリを追加<br>
-すればよい。値は何でもよい。<br>
+&quot;Edit with existing ViAI&quot; 項目は、レジストリの HKLM\Software\ViAI\Gviai の下<br>
+に、DisableEditWithExisting という名前で、任意の値を持つ項目を追加することで無<br>
+効にできる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#install-registry" name="install-registry">install-registry</a><br>
-&quot;install.exe&quot; プログラムを使用すれば、簡単に &quot;Edit with ViAI&quot; メニュー項目を追<br>
-加することができる。これはレジストリに幾つかの項目を書き加える。<br>
+&quot;install.exe&quot; プログラムを使うことで、&quot;Edit with ViAI&quot; メニュー項目を簡単に追<br>
+加できる。これはいくつかのレジストリ項目を追加してくれる。<br>
 <br>
-同じことを手動で行うこともできる。これは非常に複雑である! できればinstall.exe<br>
-を使うことをオススメする。<br>
+これを手動で行うこともできる。これは複雑である! できれば install.exe を使うこ<br>
+と。<br>
 <br>
 1. &quot;regedit&quot; でレジストリエディタを起動する。<br>
-2. 次のキーを追加する:<br>
-&nbsp;&nbsp;&nbsp;<span class="PreProc">キー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; キーの名前&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;値</span><br>
+2. これらのキーを追加する:<br>
+&nbsp;&nbsp;&nbsp;<span class="PreProc">キー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 値の名前&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;値</span><br>
 &nbsp;&nbsp; HKEY_CLASSES_ROOT\CLSID\<span class="Special">{F191A2A2-D786-484E-A3F4-8A75FDD9AC00}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{default}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ViAI Shell Extension<br>
 &nbsp;&nbsp; HKEY_CLASSES_ROOT\CLSID\<span class="Special">{F191A2A2-D786-484E-A3F4-8A75FDD9AC00}</span>\InProcServer32<br>
@@ -177,38 +176,38 @@ HKLM\Software\ViAI\Gviai に DisableEditWithExisting という名前のエント
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DisplayName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ViAI 1.0<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UninstallString&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{path}</span>\uninstall.exe<br>
 <br>
-&nbsp;&nbsp;&nbsp;<span class="Special">{path}</span>は実行可能ファイルのあるディレクトリパスに置き換える。<br>
-&nbsp;&nbsp;&nbsp;<span class="Special">{default}</span>はキー自身の値なので、タイプしない。<br>
+&nbsp;&nbsp;&nbsp;<span class="Special">{path}</span>&nbsp;を実行可能ファイルに至るパスで置き換える。<br>
+&nbsp;&nbsp;&nbsp;<span class="Special">{default}</span>&nbsp;はタイプしないこと、これはキー自体の値である。<br>
 <br>
-ポップアップメニューから &quot;Edit with ViAI&quot; を削除するには、上記のレジストリ項目<br>
-を削除すればよい。uninstall.exeプログラムは同じことをしてくれる。Windows標準の<br>
-&quot;アプリケーションの追加と削除&quot; のリストの、エントリを使うこともできる。<br>
+ポップアップメニューから &quot;Edit with ViAI&quot; を削除するには、上で述べたレジストリ<br>
+項目を削除するだけでよい。&quot;uninstall.exe&quot; プログラムがこれを行ってくれる。<br>
+Windows 標準の &quot;Add/Remove Programs&quot; リストの項目を使うこともできる。<br>
 <br>
-このエントリがファイルタイプの関連付けを抑制してしまうことに気がついたら、手動<br>
-で関連付けをやり直す(上記を参考に、Windowsのエクスプローラーを使って)。これは<br>
-Windows NTの幾つかのバージョンでだけ起こるらしい(Windowsのバグ?)。手続き:<br>
-1. ファイルタイプの名前を見つける。これはレジストリエディタを起動し、<br>
-&nbsp;&nbsp; \\HKEY_CLASSES_ROOTで拡張子を探すことで行える。<br>
-2. Windowsエクスプローラーでは、表示→オプション→ファイルタイプ。リストの中か<br>
-&nbsp;&nbsp; らファイルタイプを探し出し &quot;編集&quot; をクリック。アクションのリストで、デフォ<br>
-&nbsp;&nbsp; ルトとして使用したいものを選択し(通常は &quot;開く&quot; アクション)、&quot;標準&quot; ボタンを<br>
-&nbsp;&nbsp; クリックする。<br>
+この項目が他のファイルタイプの関連付けを上書きしていることに気付いた場合、それ<br>
+らの関連付けを手動で再設定する (Windows エクスプローラーを使う、上記参照)。こ<br>
+れは一部の Windows NT バージョンでだけ起こるようである (Windows のバグ?)。手順:<br>
+1. ファイルタイプの名前を見つける。これは、レジストリエディタを起動し、<br>
+&nbsp;&nbsp; \\HKEY_CLASSES_ROOT 内で拡張子を検索することで行える<br>
+2. Windows エクスプローラーで、View/Options/File Types を使う。リスト内でファ<br>
+&nbsp;&nbsp; イルタイプを検索し、&quot;Edit&quot; をクリックする。アクションのリストで、既定として<br>
+&nbsp;&nbsp; 使われるものを 1 つ (通常は &quot;open&quot; アクション) 選択し、&quot;Set Default&quot; ボタン<br>
+&nbsp;&nbsp; をクリックできる。<br>
 <br>
-&quot;アプリケーションから開く&quot; コンテキストメニュー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#win32-open-with-menu" name="win32-open-with-menu">win32-open-with-menu</a><br>
-(&quot;Open With...&quot;)<br>
 <br>
-Vimのインストーラを使うならエクスプローラーのメニューの<br>
-&quot;アプリケーションから開く&quot; にVimを加えるか選択することができる。これはVimでい<br>
-ろんなファイルを編集するなら重要である。(不明瞭な理由で) 全てのファイルには使<br>
-えない。したがって &quot;Edit with ViAI&quot; メニューの方が使いやすい。<br>
+&quot;Open With...&quot; コンテキストメニュー内の Vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#win32-open-with-menu" name="win32-open-with-menu">win32-open-with-menu</a><br>
 <br>
-これを追加する理由の一つがインターネットエクスプローラーから直接ファイルを編集<br>
-できるようにするためである。これを有効にするには &quot;Tools&quot; メニューから<br>
-&quot;Internet Options...&quot; を選択し、出てきたダイアログウィンドウの &quot;Programs&quot; タ<br>
-ブの &quot;HTML editor&quot; にVimを選択する。そこにVimがなければインストールは正常に完<br>
-了していない。<br>
+Vim のインストールプログラムを使う場合、Vim を &quot;Open With...&quot; メニューに追加す<br>
+る選択肢がある。これは、多くのファイルを編集するのに Vim を使えることを意味す<br>
+る。すべてのファイルではない (不明な理由で...) ので、&quot;Edit with ViAI&quot; メニュー<br>
+項目はまだ有用である。<br>
 <br>
-このスクリプトを使って手作業で設定できる。<br>
+これを追加する理由の 1 つは、Internet Explorer から HTML ファイルを直接編集で<br>
+きるようにすることである。これを有効にするには、&quot;Tools&quot; メニューの<br>
+&quot;Internet Options...&quot; 項目を使う。ダイアログで &quot;Programs&quot; タブを選択し、<br>
+&quot;HTML editor&quot; の選択肢で Vim を選択する。そこにない場合、インストールが正しく<br>
+機能しなかった。<br>
+<br>
+これを手動で行うことは、このスクリプトでできる:<br>
 <br>
 <span class="PreProc">----------------------------------------------------------</span><br>
 <span class="Statement">REGEDIT4</span><br>
@@ -228,87 +227,84 @@ Vimのインストーラを使うならエクスプローラーのメニュー�
 <br>
 <span class="PreProc">----------------------------------------------------------</span><br>
 <br>
-&quot;c:\\viai\\viai10&quot; をgviai.exeが実際にある場所に変更すること。<br>
+&quot;c:\\viai\\viai10&quot; の部分を gviai.exe が実際に置かれている場所に変更する。<br>
 <br>
-これをアンインストールするにはVimのアンインストーラを使うか &quot;regedit&quot; を使って<br>
-手作業でレジストリエントリを削除する。<br>
+これをアンインストールするには、Vim のアンインストールプログラムを実行するか、<br>
+または &quot;regedit&quot; でレジストリ項目を手動で削除する。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 3. クリップボードを使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#gui-clipboard" name="gui-clipboard">gui-clipboard</a><br>
 <br>
-Windowsにはテキストを一時的に格納(コピー)し、取り出す(ペースト)できるクリップ<br>
-ボードがある。Vimでは幾つかの方法でクリップボードに対応している。他のシステム<br>
-については<a class="Identifier" href="gui.html#gui-selections">gui-selections</a>を参照。<br>
+Windows にはクリップボードがあり、そこへテキストをコピーし、そこからテキストを<br>
+貼り付けることができる。Vim はいくつかの方法でこれをサポートしている。他のシス<br>
+テムについては&nbsp;<a class="Identifier" href="gui.html#gui-selections">gui-selections</a>&nbsp;を参照。<br>
 <br>
-&quot;*レジスタにはクリップボードの内容が反映される。<a class="Identifier" href="gui.html#quotestar">quotestar</a><br>
+&quot;* レジスタはクリップボードの内容を反映する。<a class="Identifier" href="gui.html#quotestar">quotestar</a><br>
 <br>
-<a class="Type" href="options.html#'clipboard'">'clipboard'</a>&nbsp;オプションに文字列 &quot;unnamed&quot; が含まれている時には、名前なしレジス<br>
-タが同じになる。こうすることで、ヤンク(Vimにおけるコピー &quot;y&quot;)やペースト(Vimに<br>
-おける貼り付け &quot;p&quot;)にクリップボードを、&quot;* を付けることなく使用できる。これが動<br>
-作しない場合は&nbsp;<a class="Type" href="options.html#'clipboard'">'clipboard'</a>&nbsp;オプションに文字列 &quot;unnamedplus&quot; を使用する。<br>
+&quot;unnamed&quot; 文字列が&nbsp;<a class="Type" href="options.html#'clipboard'">'clipboard'</a>&nbsp;オプションに含まれているとき、無名レジスタも同<br>
+じである。したがって、コマンドの前に &quot;* を付けずに、クリップボードへヤンクし、<br>
+クリップボードから貼り付けることができる。これが機能しない場合、<a class="Type" href="options.html#'clipboard'">'clipboard'</a>&nbsp;オ<br>
+プションで &quot;unnamedplus&quot; 文字列を使う。<br>
 <br>
-デフォルトでは&nbsp;<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;に 'a' フラグは含まれていない。これはその操作を行っ<br>
-た時にだけ、テキストがクリップボードへ送られることを意味している。単に視覚的に<br>
-選択 (Visualモード)しただけではクリップボードには送られない。'a' フラグを加え<br>
-れば、(Visualモードで選択するだけで)操作をせずにもクリップボードへ送られる。<br>
+<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;の 'a' フラグは既定では含まれていない。これは、テキストに対して操<br>
+作が行われたときだけ、テキストがクリップボードに置かれることを意味する。単にテ<br>
+キストをビジュアル選択しただけでは、クリップボードには置かれない。'a' フラグが<br>
+含まれているとき、テキストは操作されなくてもクリップボードにコピーされる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#mswin.vim" name="mswin.vim">mswin.vim</a><br>
-標準的なMS-Windowsの<span class="Special">CTRL-X</span>、<span class="Special">CTRL-C</span>および<span class="Special">CTRL-V</span>を使うには、<br>
-$VIMRUNTIME/mswin.vimスクリプトを使用する。_vimrcファイルに次の一行を追加する:<br>
-<br>
+<span class="Special">CTRL-X</span>、<span class="Special">CTRL-C</span>、および&nbsp;<span class="Special">CTRL-V</span>&nbsp;の標準的な MS-Windows の方法を使うには、<br>
+$VIMRUNTIME/mswin.vim スクリプトを使う。この行をあなたの _vimrc ファイルに追加<br>
+することもできる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;source $VIMRUNTIME/mswin.vim</div>
 <br>
-<span class="Special">CTRL-C</span>がクリップボードへのコピーになってしまうので、操作を停止すること(無限<br>
-ループに陥ったスクリプトを停止するなど)が、できなくなってしまう。代わりに<br>
-<span class="Special">CTRL-Break</span>が使える。<br>
+<span class="Special">CTRL-C</span>&nbsp;はテキストをクリップボードにコピーするのに使われるので、操作をキャンセ<br>
+ルするのに使うことはできない。それには&nbsp;<span class="Special">CTRL-Break</span>&nbsp;を使う。<br>
 <br>
-<span class="Special">CTRL-Z</span>&nbsp;がアンドゥになる。そのため、このキーでVimをサスペンドすることはできない。<br>
-代わりに<a class="Identifier" href="starting.html#:suspend">:suspend</a>を使うこと(これがサポートされていればだが)。<br>
+<span class="Special">CTRL-Z</span>&nbsp;は undo に使われる。これは、このキーで Vim をサスペンドできないことを意<br>
+味する。代わりに&nbsp;<a class="Identifier" href="starting.html#:suspend">:suspend</a>&nbsp;を使う (そもそもサポートされている場合)。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#CTRL-V-alternative" name="CTRL-V-alternative">CTRL-V-alternative</a>&nbsp;<a class="Constant" href="gui_w32.html#CTRL-Q" name="CTRL-Q">CTRL-Q</a><br>
-<span class="Special">CTRL-V</span>がペーストに使われてしまうので、矩形ビジュアル選択を開始することができな<br>
-い。これには<span class="Special">CTRL-Q</span>を代用できる。挿入モードやコマンドラインモードにおいても、も<br>
-ともとの<span class="Special">CTRL-V</span>の代わりに<span class="Special">CTRL-Q</span>を使用することができる。しかしターミナルで<span class="Special">CTRL-Q</span><br>
-が制御のために使われる時はうまく機能しない。<br>
+<span class="Special">CTRL-V</span>&nbsp;は貼り付けに使われるので、矩形ビジュアル選択を開始するのに使うことはで<br>
+きない。代わりに&nbsp;<span class="Special">CTRL-Q</span>&nbsp;を使うことができる。挿入モードおよびコマンドラインモー<br>
+ドでも、<span class="Special">CTRL-V</span>&nbsp;の古い意味を得るために&nbsp;<span class="Special">CTRL-Q</span>&nbsp;を使うことができる。しかし、<br>
+<span class="Special">CTRL-Q</span>&nbsp;が制御フローに使われているとき、端末では機能しない。<br>
 <br>
-<span class="Todo">NOTE:</span>&nbsp;クリップボードのサポートにはまだかなりのバグがある。<a class="ExternalTaglink" href="https://viai-editor.github.io/viai-doc-en/todo.html#todo">todo</a>参照。<br>
+<span class="Todo">NOTE:</span>&nbsp;クリップボードのサポートにはまだ多くのバグがある。<a class="ExternalTaglink" href="https://viai-editor.github.io/viai-doc-en/todo.html#todo">todo</a>&nbsp;を参照。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 4. シェルコマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#gui-shell-win32" name="gui-shell-win32">gui-shell-win32</a><br>
 <br>
-Vimは外部コマンドを実行するのに、どんなコマンドでも実行できるようにするために<br>
-Vimとは別個のウィンドウを使用する。外部コマンドはちょうどDOSプロンプトから実行<br>
-されるように、独自の実行環境を獲得する。<br>
+Vim は任意のコマンドを実行できるようにするために、外部コマンドに別のウィンドウ<br>
+を使う。外部コマンドは、DOS プロンプトから起動されたのとまったく同じように、実<br>
+行用の独自の環境を得る。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#win32-vimrun" name="win32-vimrun">win32-vimrun</a><br>
-外部コマンドの実行は &quot;viairun&quot; コマンドを用いて間接的に行われる。これが働くた<br>
-めには &quot;viairun.exe&quot; コマンドが実行パスになければならない。そうでなければVimの<br>
-実行可能ファイルと同じディレクトリになければならない。&quot;viairun&quot; を見つけること<br>
-ができなければ、コマンドは直接実行され、そのため外部コマンドの実行が終了すると<br>
-すぐにDOSウィンドウが閉じられる。<br>
-<span class="Todo">警告:</span>&nbsp;もしも &quot;X&quot; ボタンでこのウィンドウを閉じてしまい、強制終了することを確認<br>
-するウィンドウでアプリケーションを本当に終了してしまうと、Vimも一緒に強制終了<br>
-してしまう!&nbsp;&nbsp;(&quot;:!start&quot; で非同期的に起動されたアプリケーションには、これは当て<br>
-はまらない)<br>
+外部コマンドの実行は、&quot;viairun&quot; コマンドによって間接的に行われる。これを機能さ<br>
+せるには、&quot;viairun.exe&quot; がパスにある必要がある。または、Vim の実行可能ファイル<br>
+と同じディレクトリにある必要がある。&quot;viairun&quot; が見つからない場合、コマンドは直<br>
+接実行されるが、その場合、DOS ウィンドウは外部コマンドが終了した直後に閉じる。<br>
+<span class="Todo">WARNING:</span>&nbsp;このウィンドウを &quot;X&quot; ボタンで閉じ、本当にアプリケーションを強制終了し<br>
+たいかという質問を確認すると、Vim も強制終了されることがある! (これは<br>
+&quot;:!start&quot; で非同期に実行されたコマンドには当てはまらない。)<br>
 <br>
-コントロールパネルの &quot;コンソール&quot; によって設定された内容がデフォルトで使用され<br>
-る。<br>
+コマンドが実行されるウィンドウは、コントロールパネルの &quot;Console&quot; に設定した既<br>
+定のものになる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#win32-!start" name="win32-!start">win32-!start</a><br>
-通常、Vimはコマンドの実行が終了するのを待つ(これは多くのシェルコマンドの出力を<br>
-Vimが取り込んで使用できるようにするため)。Vimがプログラムを実行した後、その終<br>
-了を待たないように望むのならば、次の構文を使用することができる:<br>
+通常、Vim は続行する前にコマンドが完了するのを待つ (これは、Vim が使う出力を生<br>
+成するほとんどのシェルコマンドにとって理にかなっている)。Vim にプログラムを起<br>
+動させてすぐに戻らせたい場合、以下の構文を使える:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!start [/min] {command}</div>
-&quot;/min&quot; 引数を指定すると、ウィンドウは最小化される。<br>
+オプションの &quot;/min&quot; は、ウィンドウを最小化させる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 5. 特別な色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#win32-colors" name="win32-colors">win32-colors</a><br>
 <br>
-Win32では、通常のDOSでの色が使用される。<a class="Identifier" href="os_dos.html#dos-colors">dos-colors</a>を参照。<br>
+Win32 では、通常の DOS の色を使える。<a class="Identifier" href="os_dos.html#dos-colors">dos-colors</a>&nbsp;を参照。<br>
 <br>
-付け加えて、システムが構成している色を使用することができる。それらはSys_XXXと<br>
-して知られ、XXXの部分は下のリストに示される、割り当てられているシステムカラー<br>
-名である(完全な解説はWin32の文章を参照)。大文字小文字は区別されない。<span class="Todo">Note:</span><br>
+さらに、システムで設定された色も使える。これらは Sys_XXX という名前で知られて<br>
+おり、XXX は以下のリストの適切なシステムの色の名前である (完全な説明は Win32<br>
+のドキュメントを参照)。大文字小文字は無視される。<br>
 <br>
 Sys_3DDKShadow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sys_3DFace&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sys_BTNFace<br>
 Sys_3DHilight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sys_3DHighlight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sys_BTNHilight<br>
@@ -322,173 +318,174 @@ Sys_InfoText&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 Sys_ScrollBar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sys_Window&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sys_WindowFrame<br>
 Sys_WindowText<br>
 <br>
-恐らく一番便利な値はこれらだろう<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sys_Window&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通常のウィンドウの背景の色<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sys_WindowText&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通常のウィンドウの文字の色<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sys_Highlight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 選択されたテキストの背景の色<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sys_HighlightText&nbsp;&nbsp; 選択されたテキストの文字の色<br>
+おそらく最も有用な値は<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sys_Window&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通常のウィンドウの背景<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sys_WindowText&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通常のウィンドウのテキスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sys_Highlight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ハイライトされた背景<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sys_HighlightText&nbsp;&nbsp; ハイライトされたテキスト<br>
 <br>
-他にもこの様な色も存在する:<br>
+これらの追加の色も使用可能である:<br>
 Gray, Grey, LightYellow, SeaGreen, Orange, Purple, SlateBlue, Violet,<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html" name="rgb.txt">rgb.txt</a><br>
-付け加えて、デフォルトのカラーリストで定義される色も使うことができる。詳細は<br>
-<a class="Identifier" href="syntax.html#:colorscheme">:colorscheme</a>&nbsp;を参照のこと。これらの色は以前は $VIMRUNTIME/rgb.txt で定義され<br>
-ていたもので、現在は $VIMRUNTIME/colors/lists/default.vim にて初期化された値が<br>
-<a class="Identifier" href="eval.html#v:colornames">v:colornames</a>&nbsp;にある。<br>
+さらに、既定の色リストで定義された色も使える。詳しい情報は&nbsp;<a class="Identifier" href="syntax.html#:colorscheme">:colorscheme</a>&nbsp;を参<br>
+照。これらの色は以前は $VIMRUNTIME/rgb.txt で定義されていたが、現在は<br>
+$VIMRUNTIME/colors/lists/default.vim から初期化される&nbsp;<a class="Identifier" href="eval.html#v:colornames">v:colornames</a>&nbsp;にある。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-6. ダイアログとブラウズ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#gui-w32-dialogs" name="gui-w32-dialogs">gui-w32-dialogs</a>&nbsp;<a class="Constant" href="gui_w32.html#dialog" name="dialog">dialog</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#gui-w32-dialogs" name="gui-w32-dialogs">gui-w32-dialogs</a>&nbsp;<a class="Constant" href="gui_w32.html#dialog" name="dialog">dialog</a><br>
+6. Windows のダイアログおよびブラウザー<br>
 <br>
-コンソールバージョンから受け継がれる伝統的なインターフェイスはもちろん、さらに<br>
-Win32 GUIでは幾つかの操作に見慣れたWindowsのコンポーネントを使用することができ<br>
-る。<br>
+Win32 GUI は、いくつかの操作に対して、コンソール版と共有される従来のインター<br>
+フェイスに加えて、見慣れた Windows のコンポーネントを使うことができる。<br>
 <br>
 <br>
 6.1 ダイアログ<br>
 <br>
-その他のバージョンではコンソールベースで行われていた &quot;confirm&quot; ファミリ(すなわ<br>
-ち&nbsp;<a class="Type" href="options.html#'confirm'">'confirm'</a>&nbsp;オプションと<a class="Identifier" href="editing.html#:confirm">:confirm</a>コマンドと<a class="Identifier" href="builtin.html#confirm()">confirm()</a>関数)で、GUIベースのダ<br>
-イアログが表示される。<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;の 'c' フラグでこれを変更できる。<br>
+&quot;confirm&quot; ファミリー (すなわち&nbsp;<a class="Type" href="options.html#'confirm'">'confirm'</a>&nbsp;オプション、<a class="Identifier" href="editing.html#:confirm">:confirm</a>&nbsp;コマンド、およ<br>
+び&nbsp;<a class="Identifier" href="builtin.html#confirm()">confirm()</a>&nbsp;関数) によって表示されるダイアログは、他のバージョンで使われる<br>
+コンソールベースのものではなく、GUI ベースである。<a class="Type" href="options.html#'guioptions'">'guioptions'</a>&nbsp;の 'c' フラグは<br>
+これを変更する。<br>
 <br>
 <br>
 6.2 ファイルブラウザー<br>
 <br>
-ファイルを編集するコマンドの前に &quot;:browse&quot; を付けると、存在するファイルを選択<br>
-するためのウィンドウ選択ダイアログが使用される。<a class="Identifier" href="editing.html#:browse">:browse</a>を参照。<br>
+ファイル編集コマンドの前に &quot;:browse&quot; を付けると、既存のファイルを選択できるよ<br>
+うにファイルリクエスタが使われる。<a class="Identifier" href="editing.html#:browse">:browse</a>&nbsp;を参照。<br>
 <br>
 <br>
-6.3 切取メニュー<br>
+6.3 ティアオフメニュー<br>
 <br>
-Win32 GUI版ではMotifの「切取メニュー」をエミュレートする。個々のメニューの最上<br>
-位には、小さな「切り取り線」のグラフィックスが存在する。これを選択すると同じメ<br>
-ニューのエントリがある、フローティングウィンドウが作成される。フローティングメ<br>
-ニューを使用すれば、いちいちメニューバーに移動することなく、オリジナルのメ<br>
-ニューの(サブメニューも含めた)項目にアクセスすることができる。<br>
-これはサブメニューの奥の方のコマンドを頻繁に使用するときに非常に便利。<br>
-切取メニューは好きなところに配置し、常にVimのメインウィンドウよりも手前に表示<br>
-される。普通に閉じることで取り除くこともできる;もちろんVimを終了すれば自動的に<br>
-それらも閉じられる。<br>
+Win32 GUI は Motif のティアオフメニューをエミュレートする。各メニューの一番上<br>
+に、小さな図形の &quot;rip here&quot; 印が見える。それを選択すると、同じメニュー項目を持<br>
+つフローティングウィンドウが作成される。そのフローティングメニューには、オリジ<br>
+ナル (サブメニューを含む) とまったく同じようにアクセスできるが、毎回メニュー<br>
+バーに行く必要はない。<br>
+これは、サブメニューの奥にあるコマンドを何度も繰り返し使っている場合に最も有用<br>
+である。<br>
+ティアオフメニューは好きな場所に配置でき、常にメインの Vim ウィンドウのすぐ上<br>
+にとどまる。通常どおりに閉じることでそれらを取り除くことができる; もちろん、<br>
+Vim を終了したときにも閉じる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#:tearoff" name=":tearoff">:tearoff</a>&nbsp;<a class="Constant" href="gui_w32.html#:te" name=":te">:te</a><br>
-:te[aroff]&nbsp;<span class="Special">{name}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>というメニューを切り取る。指定されたメニューは少<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;なくとも一つ以上のサブエントリを持たねばないが、メ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ニューバーに表示されている必要は無い。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="Identifier" href="gui.html#win32-hidden-menus">win32-hidden-menus</a>)を参照。<br>
+:te[aroff]&nbsp;<span class="Special">{name}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; メニュー&nbsp;<span class="Special">{name}</span>&nbsp;を切り離す。指定されたメニューは少なく<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;とも 1 つのサブ項目を持たなければならないが、メニュー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バーに現れる必要はない (<a class="Identifier" href="gui.html#win32-hidden-menus">win32-hidden-menus</a>&nbsp;を参照)。<br>
 <br>
 例:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tearoff ファイル(F)</div>
-&quot;ファイル&quot; メニューが(あれば)切取メニューとして表示される。<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tearoff File</div>
+とすると、&quot;File&quot; メニュー (ある場合) がティアオフメニューとして表示される。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:amenu ]Toolbar.Make&nbsp;&nbsp;&nbsp;&nbsp;:make&lt;CR&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tearoff ]Toolbar</div>
-メインのメニューバーには存在しないフローティングメニューを作成する。<br>
+これはメインメニューバーに存在しないフローティングメニューを作成する。<br>
 <br>
-']' で始まるメニューは表示されないことに注意。<br>
+<span class="Todo">Note</span>&nbsp;']' で始まるメニューは表示されないことに注意。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 7. コマンドライン引数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#gui-w32-cmdargs" name="gui-w32-cmdargs">gui-w32-cmdargs</a><br>
 <br>
-コマンドライン引数はコンソール版と同じ挙動となる。<a class="Identifier" href="os_win32.html#win32-cmdargs">win32-cmdargs</a>&nbsp;を参照。<br>
+コマンドライン引数はコンソールアプリケーションと同じように動作する。<br>
+<a class="Identifier" href="os_win32.html#win32-cmdargs">win32-cmdargs</a>&nbsp;を参照。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-8. その他色々&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#gui-w32-various" name="gui-w32-various">gui-w32-various</a><br>
+8. その他&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#gui-w32-various" name="gui-w32-various">gui-w32-various</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#gui-w32-printing" name="gui-w32-printing">gui-w32-printing</a><br>
-&quot;ファイル/印刷&quot; メニューはシンタックスハイライトを使って印刷する。<a class="Identifier" href="print.html#:hardcopy">:hardcopy</a><br>
-を参照すること。もしもテキストを装飾なしで印刷したいのなら、デフォルトのプリン<br>
-タがインストールされていれば次のようにできるだろう。<br>
+&quot;File/Print&quot; メニューはテキストを構文ハイライト付きで印刷する。<a class="Identifier" href="print.html#:hardcopy">:hardcopy</a>&nbsp;を<br>
+参照。生のテキストを印刷したいだけで、既定のプリンタがインストールされている場<br>
+合、これも機能するはずである:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:w &gt;&gt;prn</div>
 <br>
-Vimでは多くのMS-Windows標準の機能をサポートしている。それらの幾つかは別の場所<br>
-で説明されている:&nbsp;<a class="Type" href="options.html#'mouse'">'mouse'</a>、<a class="Identifier" href="gui.html#win32-hidden-menus">win32-hidden-menus</a>&nbsp;を参照。<br>
+Vim は多くの標準的な MS-Windows の機能をサポートしている。それらのいくつかは別<br>
+の場所で詳しく説明されている:&nbsp;<a class="Type" href="options.html#'mouse'">'mouse'</a>、<a class="Identifier" href="gui.html#win32-hidden-menus">win32-hidden-menus</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#drag-n-drop-win32" name="drag-n-drop-win32">drag-n-drop-win32</a><br>
-Vimのウィンドウに1つもしくは複数のファイルをドラッグ&amp;ドロップすることができ、<br>
-それらは普通に開かれる。<a class="Identifier" href="gui.html#drag-n-drop">drag-n-drop</a>を参照。<br>
+1 つ以上のファイルを Vim ウィンドウにドラッグアンドドロップでき、それらは通常<br>
+どおり開かれる。<a class="Identifier" href="gui.html#drag-n-drop">drag-n-drop</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#:simalt" name=":simalt">:simalt</a>&nbsp;<a class="Constant" href="gui_w32.html#:sim" name=":sim">:sim</a><br>
-:sim[alt]&nbsp;<span class="Special">{key}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Alt と&nbsp;<span class="Special">{key}</span>&nbsp;の同時押しをシミュレートする。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{Win32バージョンだけの機能}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;&quot;:si&quot; は &quot;i&quot; フラグ付きの &quot;:s&quot; になる。<br>
+:sim[alt]&nbsp;<span class="Special">{key}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Alt を押したまま&nbsp;<span class="Special">{key}</span>&nbsp;を押すのをシミュレートする。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{Win32 版でのみ}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;&quot;:si&quot; は &quot;i&quot; フラグ付きの &quot;:s&quot; を意味する。<br>
 <br>
-通常、Vimでは使用可能なマッピングを増やすために、Alt-<span class="Special">&lt;Key&gt;</span>の全ての組み合わせを<br>
-使うことができる。これはメニューにアクセスするためのAltキーの標準的な使い方と<br>
-衝突する。<br>
-標準的な振る舞いをさせるための近道は、<a class="Type" href="options.html#'winaltkeys'">'winaltkeys'</a>&nbsp;オプションに &quot;yes&quot; を設定す<br>
-ることである。しかしこうするとAltを使用したマッピングは一切使えなくなる。<br>
-もう一つの方法は&nbsp;<a class="Type" href="options.html#'winaltkeys'">'winaltkeys'</a>&nbsp;に &quot;menu&quot; を指定することである。マッピングされて<br>
-いないALTキーだけが、メニューのショートカットとしてWindowsに解釈される。だが、<br>
-現在の状態に依存することは許さない。<br>
-これを回避するために、(<a class="Type" href="options.html#'winaltkeys'">'winaltkeys'</a>&nbsp;が &quot;yes&quot; でない時に) :simaltコマンドで、<br>
-WindowsのスタイルでAltキーを押すふりを、Vimにさせることができる。これを使って<br>
-Windows標準のアクションを実行するための、Altキーの組み合わせ(ほかのものでも)を<br>
-マッピングすることができる。いくつか例を示そう:<br>
+通常、Vim は可能なマッピングの数を増やすために、すべての Alt-<span class="Special">&lt;Key&gt;</span>&nbsp;の組み合わ<br>
+せを制御する。これは、メニューにアクセスするためのキーとしての Alt の標準的な<br>
+使い方と衝突する。<br>
+標準的な動作を得る手早い方法は、<a class="Type" href="options.html#'winaltkeys'">'winaltkeys'</a>&nbsp;オプションを &quot;yes&quot; に設定すること<br>
+である。しかし、これは Alt キーをまったくマップできなくする。<br>
+別の方法は、<a class="Type" href="options.html#'winaltkeys'">'winaltkeys'</a>&nbsp;を &quot;menu&quot; に設定することである。その場合、メニューの<br>
+ショートカットキーは windows によって処理され、他の ALT キーはマップできる。し<br>
+かし、これは現在の状態への依存を許さない。<br>
+これを回避するために、:simalt コマンドは、Vim が (<a class="Type" href="options.html#'winaltkeys'">'winaltkeys'</a>&nbsp;が &quot;yes&quot; でない<br>
+とき) Windows スタイルの Alt キー押下を偽装できるようにする。これを使って、Alt<br>
+キーの組み合わせ (またはその他何でも) を、標準的な Windows の動作を生じるよう<br>
+にマップできる。ここにいくつかの例がある:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;M-f&gt; :simalt f&lt;CR&gt;</div>
-これでAlt-Fを押すとキーストロークのAlt→Fがシミュレートされ、'ファイル(F)' メ<br>
-ニュー(Menu.vimで定義される)が表示される。<br>
+これは、Alt、F のキーストロークをシミュレートすることで、Alt-F で 'File' メ<br>
+ニュー (標準の Menu.vim で) をポップダウンさせる。<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;M-Space&gt; :simalt ~&lt;CR&gt;</div>
-このマッピングによりAlt-SpaceでVimウィンドウのシステムメニューが表示される。<br>
-'~' はsimaltにおいて文字<span class="Special">&lt;Space&gt;</span>を表現するのに使われることに注意。<br>
+これは、Alt-Space を Vim ウィンドウのシステムメニューをポップダウンするように<br>
+マップする。<span class="Todo">Note</span>&nbsp;~ は simalt で&nbsp;<span class="Special">&lt;Space&gt;</span>&nbsp;文字を表すのに使われることに注意。<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;C-n&gt; :simalt ~n&lt;CR&gt;</div>
-Control-Nに、Alt-Spaceに<span class="Special">N</span>を続けるマッピングを施す。これはシステムメニュー経由<br>
-でVimのウィンドウを最小化する。<br>
+Control-N を、Alt-Space に続けて&nbsp;<span class="Special">N</span>&nbsp;というキーを生じるようにマップする。これは<br>
+システムメニューを介して Vim ウィンドウを最小化する。<br>
 <br>
-これらのキーは使用している言語によって異なることがある。<br>
+<span class="Todo">Note</span>&nbsp;キーは使っている言語によって変わることに注意。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#intellimouse-wheel-problems" name="intellimouse-wheel-problems">intellimouse-wheel-problems</a><br>
-インテリマウスのホイールを使用すると、Vimは入力を受け付けなくなることがある。<br>
-次の場所へ行き:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コントロールパネル - マウス - ホイール - スクロール - 例外<br>
+Intellimouse のマウスホイールを使うことで Vim が入力の受け付けを停止するとき<br>
+は、以下に移動する:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ControlPanel - Mouse - Wheel - UniversalScrolling - Exceptions<br>
 <br>
-アプリケーションのリストにgvimを追加する。この問題はIntellimouseのドライババー<br>
-ジョン2.2を使用し、&quot;ユニバーサルスクロール&quot; を有効にしている時にだけ起こる。<br>
+そして、アプリケーションのリストに gvim を追加する。この問題は、Intellimouse<br>
+ドライバ 2.2 で、かつ &quot;Universal Scrolling&quot; がオンになっているときにだけ起こる<br>
+ようである。<br>
+<br>
 <br>
 XPM サポート&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#w32-xpm-support" name="w32-xpm-support">w32-xpm-support</a><br>
 <br>
-GVim は、MS-Windows で XPM ファイルのサポート付きでビルドすることができる。<br>
-<a class="Identifier" href="various.html#+xpm_w32">+xpm_w32</a><br>
-詳細は Make_mvc.mak ファイルを見て、XPM で検索すること。<br>
+GVim は MS-Windows で XPM ファイルのサポート付きでビルドできる。<a class="Identifier" href="various.html#+xpm_w32">+xpm_w32</a>&nbsp;説<br>
+明については Make_mvc.mak ファイルを参照し、XPM を検索する。<br>
 <br>
-XPM サポートが動作するか試すには、以下を行うこと:<br>
+XPM サポートが機能するか試すには、こうする:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:help<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let runtime = escape($VIMRUNTIME, ' \')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:exe 'sign define vimxpm icon=' .. runtime .. '\\viai16x16.xpm'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:exe 'sign place 1 line=1 name=vimxpm file=' .. expand('%:p')</div>
 <br>
-github から viai16x16.xpm ファイルを入手する必要があるかもしれない:<br>
+viai16x16.xpm ファイルを github から入手する必要があるかもしれない:<br>
 <span class="Constant"><a href="https://github.com/viai-editor/viai/blob/master/runtime/viai16x16.xpm">https://github.com/viai-editor/viai/blob/master/runtime/viai16x16.xpm</a></span><br>
 <br>
 <br>
 キーコード変換戦略&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#w32-experimental-keycode-trans-strategy" name="w32-experimental-keycode-trans-strategy">w32-experimental-keycode-trans-strategy</a><br>
 <br>
-Patch v8.2.4807 で、W32 の GVIM は、より多くのキーボードショートカットを使用で<br>
-きるようにすること、特に非標準のキーボードレイアウトをサポートすることを目的と<br>
-して、実験的なキーコード変換方法に変更された。このサポートを実装するために、<br>
-Win API TranslateMessage() 呼び出しは削除され、代わりにキーコードの認識が<br>
-ToUnicode() Win API 呼び出しに切り替えられた。このアプローチにより、多数の特殊<br>
-なケースが明らかになったが、これらは明らかに TranslateMessage() 実装によってカ<br>
-バーされており、それぞれ個別に対処する必要がある。したがって、当面はこの機能を<br>
-実験的であると宣言し、「古典的」キーコード変換方法をデフォルトとして再び復活さ<br>
-せることが決定された。<br>
+パッチ v8.2.4807 で、W32 GVIM は、より多くのキーボードショートカットを使えるよ<br>
+うにし、特に非標準のキーボードレイアウトをサポートすることを目的として、実験的<br>
+なキーコード変換方式に切り替えられた。このサポートを実装するために、Win API の<br>
+TranslateMessage() の呼び出しが削除され、代わりにキーコードの認識が Win API の<br>
+ToUnicode() の呼び出しに切り替えられた。このアプローチは、TranslateMessage()<br>
+の実装ではどうやらカバーされている多数のコーナーケースを明らかにし、そのそれぞ<br>
+れを個別に対処する必要がある。そのため、当面この機能を実験的なものと宣言し、<br>
+&quot;classic&quot; キーコード変換方式を再び既定に戻すという決定がなされた。<br>
 <br>
-「実験的」キーコード変換方法の使用に関する議論は、おそらくまだしばらく続くだろ<br>
-う。それまでの間、W32 GVIM で「古典的」キーコード変換方法に戻るこの変更の影響<br>
-を受ける場合は、次のスニペットを使用して vimrc で「実験的」変換方法を再度有効<br>
-にすることができる。<br>
+&quot;experimental&quot; キーコード変換方式の使用についての議論は、おそらくまだしばらく<br>
+続くだろう。それまでの間、W32 GVIM での &quot;classic&quot; キーコード変換方式へのこの切<br>
+り戻しの影響を受ける場合、以下のスニペットを使って、あなたの vimrc で<br>
+&quot;experimental&quot; 変換方式を再び有効にできる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;:call test_mswin_event('set_keycode_trans_strategy', {'strategy': 'experimental'})</div>
 <br>
-同様に、「古典的」キーコード変換方法を元に戻す必要がある場合 (例えば、テスト目<br>
-的など)、以下を使用する:<br>
+同様に、&quot;classic&quot; キーコード変換方式に戻す必要がある場合 (例えばテスト目的で)、<br>
+以下を使うこと:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;:call test_mswin_event('set_keycode_trans_strategy', {'strategy': 'classic'})</div>
 <br>
-あるいは (この方法は、test_mswin_event() を呼び出すことができない TINY GVIM ビ<br>
-ルドのために特に役立つ)、環境変数 VIM_KEYCODE_TRANS_STRATEGY を目的の値<br>
-(&quot;experimental&quot; または &quot;classic&quot;) に設定し、デフォルトをオーバーライドすること<br>
-もできる。例えば、dos プロンプトに以下のように入力する:<br>
+あるいは (この方法は、test_mswin_event() を呼び出せない TINY GVIM ビルドで特に<br>
+有用である)、既定を上書きするために、環境変数 VIM_KEYCODE_TRANS_STRATEGY を目<br>
+的の値 (&quot;experimental&quot; または &quot;classic&quot;) に設定できる、例えば、dos プロンプト<br>
+でタイプする:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set VIM_KEYCODE_TRANS_STRATEGY=experimental<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gviai.exe</div>
@@ -496,15 +493,15 @@ ToUnicode() Win API 呼び出しに切り替えられた。このアプローチ
 <br>
 タイトルバー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="gui_w32.html#gui-w32-title-bar" name="gui-w32-title-bar">gui-w32-title-bar</a><br>
 <br>
-Windows 11 以降では、<a class="Identifier" href="options.html#'go-C'">'go-C'</a>&nbsp;オプションを有効にすることで、gVim のタイトルバー<br>
-(キャプションバーとも呼ばれる) をカスタマイズできる。<br>
+Windows 11 以降では、<a class="Identifier" href="options.html#'go-C'">'go-C'</a>&nbsp;オプションを有効にすることで gVim のタイトルバー<br>
+(キャプションバーとしても知られる) をカスタマイズできる。<br>
 <br>
-有効にすると、外観は次の 2 つのハイライトグループによって制御される:<br>
-1.&nbsp;<a class="Identifier" href="syntax.html#hl-TitleBar">hl-TitleBar</a>&nbsp;&nbsp; -- アクティブウィンドウのタイトルバーの色を設定する。<br>
-2.&nbsp;<a class="Identifier" href="syntax.html#hl-TitleBarNC">hl-TitleBarNC</a>&nbsp;-- 非アクティブウィンドウのタイトルバーの色を設定する。<br>
+有効にすると、外観は 2 つのハイライトグループによって制御される:<br>
+1.&nbsp;<a class="Identifier" href="syntax.html#hl-TitleBar">hl-TitleBar</a>&nbsp;&nbsp; -- アクティブなウィンドウのタイトルバーの色を設定する。<br>
+2.&nbsp;<a class="Identifier" href="syntax.html#hl-TitleBarNC">hl-TitleBarNC</a>&nbsp;-- 非アクティブなウィンドウのタイトルバーの色を設定する。<br>
 <br>
-システムのデフォルトのタイトルバーの色を使用するには、ハイライトグループを<br>
-<span class="Comment">NONE</span>&nbsp;に設定する:<br>
+システムの既定のタイトルバーの色を使うには、ハイライトグループを&nbsp;<span class="Comment">NONE</span>&nbsp;に設定<br>
+する:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hi TitleBar guibg=NONE guifg=NONE<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hi TitleBarNC guibg=NONE guifg=NONE</div>
