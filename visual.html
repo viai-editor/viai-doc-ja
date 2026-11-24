@@ -11,254 +11,256 @@ helpname: 'visual'
 <br>
 ビジュアルモード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#Visual" name="Visual">Visual</a>&nbsp;<a class="Constant" href="visual.html#Visual-mode" name="Visual-mode">Visual-mode</a>&nbsp;<a class="Constant" href="visual.html#visual-mode" name="visual-mode">visual-mode</a><br>
 <br>
-ビジュアルモードは利用者にとってテキストの部分を選択する柔軟で簡単な方法であ<br>
-る。矩形(くけい)範囲のテキスト(ブロック)を選択する唯一の方法でもある。<br>
+ビジュアルモードは、オペレータのためにテキストの一部を選択する柔軟で簡単な方法<br>
+である。これはテキストのブロックを選択する唯一の方法である。<br>
 <br>
-ユーザーマニュアルの<a class="Identifier" href="usr_04.html#04.4">04.4</a>で簡単に説明されている。<br>
+これはユーザーマニュアルの&nbsp;<a class="Identifier" href="usr_04.html#04.4">04.4</a>&nbsp;節で紹介されている。<br>
 <br>
 1. ビジュアルモードを使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="visual.html#visual-use">visual-use</a><br>
-2. ビジュアルモードの開始と終了&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="visual.html#visual-start">visual-start</a><br>
-3. ビジュアル領域の変更&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="visual.html#visual-change">visual-change</a><br>
-4. ビジュアル領域での操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="visual.html#visual-operators">visual-operators</a><br>
-5. 矩形範囲の操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="visual.html#blockwise-operators">blockwise-operators</a><br>
+2. ビジュアルモードの開始および停止&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="visual.html#visual-start">visual-start</a><br>
+3. ビジュアル領域を変更する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="visual.html#visual-change">visual-change</a><br>
+4. ビジュアル領域に対して操作する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="visual.html#visual-operators">visual-operators</a><br>
+5. 矩形オペレータ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="visual.html#blockwise-operators">blockwise-operators</a><br>
 6. 繰り返し&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="visual.html#visual-repeat">visual-repeat</a><br>
-7. 使用例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="visual.html#visual-examples">visual-examples</a><br>
+7. 例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="visual.html#visual-examples">visual-examples</a><br>
 8. 選択モード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="visual.html#Select-mode">Select-mode</a><br>
 <br>
-<span class="Special">{Vim 7.4.200 からは&nbsp;</span><a class="Identifier" href="various.html#+visual">+visual</a><span class="Special">&nbsp;機能は常に含まれる}</span><br>
+<span class="Special">{Vim 7.4.200 以降、</span><a class="Identifier" href="various.html#+visual">+visual</a><span class="Special">&nbsp;機能は常に含まれる}</span><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 1. ビジュアルモードを使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#visual-use" name="visual-use">visual-use</a><br>
 <br>
-ビジュアルモードを使うには3つの部分から構成される:<br>
-1. 選択したいテキストの開始位置を &quot;v&quot;、&quot;V&quot; または<span class="Special">CTRL-V</span>でマークする。<br>
-&nbsp;&nbsp; カーソルの下の文字が開始位置として使用される。<br>
-2. 選択したいテキストの終了位置に移動する。<br>
-&nbsp;&nbsp; ビジュアルモードの開始位置からカーソルの下の文字を含むテキストが強調され<br>
-&nbsp;&nbsp; る。<br>
-3. 操作キー(オペレータ)を押す。<br>
-&nbsp;&nbsp; 強調された文字が操作対象になる。<br>
+ビジュアルモードの使用は 3 つの部分から成る:<br>
+1. テキストの開始を &quot;v&quot;、&quot;V&quot;、または&nbsp;<span class="Special">CTRL-V</span>&nbsp;でマークする。<br>
+&nbsp;&nbsp; カーソル下の文字が開始として使われる。<br>
+2. テキストの終わりへ移動する。<br>
+&nbsp;&nbsp; ビジュアルモードの開始からカーソル下の文字までの、その文字を含むテキストが<br>
+&nbsp;&nbsp; ハイライトされる。<br>
+3. オペレータコマンドをタイプする。<br>
+&nbsp;&nbsp; ハイライトされた文字が操作される。<br>
 <br>
-ビジュアルモードでの強調表示の仕方を設定するのに、<a class="Type" href="options.html#'highlight'">'highlight'</a>&nbsp;オプションを使用<br>
-することができる。<br>
-文字のない場所を選択するには&nbsp;<a class="Type" href="options.html#'virtualedit'">'virtualedit'</a>&nbsp;を設定する。<br>
+<a class="Type" href="options.html#'highlight'">'highlight'</a>&nbsp;オプションを使って、ビジュアルモードでのハイライトに使う表示モード<br>
+を設定できる。<br>
+<a class="Type" href="options.html#'virtualedit'">'virtualedit'</a>&nbsp;オプションを使って、実際の文字がない位置にカーソルを置けるように<br>
+できる。<br>
 <br>
-強調されたテキストにはカーソルの下の文字も含まれる。<br>
-けれども、<a class="Type" href="options.html#'selection'">'selection'</a>&nbsp;オプションが &quot;exclusive&quot; に設定されていて、カーソルが<br>
-Visualエリアの後にあるとき、カーソルの下の文字は含まれない。<br>
+ハイライトされたテキストは通常、カーソル下の文字を含む。しかし、<a class="Type" href="options.html#'selection'">'selection'</a>&nbsp;オ<br>
+プションが &quot;exclusive&quot; に設定されていて、カーソルがビジュアル領域の後ろにある<br>
+ときは、カーソル下の文字は含まれない。<br>
 <br>
-&quot;v&quot; では開始位置より前と、終了位置より後のテキストは強調されない。しかし全ての<br>
-大文字とアルファベット以外のキーによる操作は、&quot;~&quot; と &quot;U&quot; を除いて、表示に関係<br>
-なく行単位で働く。下記の操作一覧を参照。<br>
+&quot;v&quot; では、開始位置より前および終了位置より後のテキストはハイライトされない。し<br>
+かし、&quot;~&quot; および &quot;U&quot; を除くすべての大文字および非英字のオペレータは、いずれに<br>
+しても行全体に作用する。以下のオペレータのリストを参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#visual-block" name="visual-block">visual-block</a><br>
-<span class="Special">CTRL-V</span>(矩形ビジュアルモード)は開始位置からカーソルの位置まで、テキストを矩形に<br>
-強調する。しかし、幾つかの操作(下記のリストを参照)はそれとは関係無く行単位で適<br>
-用される。「変更」と「置き換え」の操作は強調されたテキストを削除し、選択範囲の<br>
-左上より挿入を開始する。<br>
+<span class="Special">CTRL-V</span>&nbsp;(矩形ビジュアルモード) では、ハイライトされたテキストは開始位置とカーソ<br>
+ルの間の矩形になる。しかし、いくつかのオペレータはいずれにしても行全体に作用す<br>
+る (以下のリストを参照)。変更および置換オペレータは、ハイライトされたテキスト<br>
+を削除し、それから左上の位置で挿入を開始する。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-2. ビジュアルモードの開始と終了&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#visual-start" name="visual-start">visual-start</a><br>
+2. ビジュアルモードの開始および停止&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#visual-start" name="visual-start">visual-start</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v" name="v">v</a>&nbsp;<a class="Constant" href="visual.html#characterwise-visual" name="characterwise-visual">characterwise-visual</a><br>
-<span class="Special">[count]</span>v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文字単位のビジュアルモードを開始する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;を指定すると、最後に実行したビジュアル操作の文<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字数または行数が選択される。ただし、選択位置は現在の<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソル位置であり、<span class="Special">[count]</span>&nbsp;を掛けた値が選択される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後のビジュアル操作が矩形選択なら、幅と高さが&nbsp;<span class="Special">[count]</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;倍される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後に実行したビジュアル操作がない場合は、<span class="Special">[count]</span>&nbsp;文字<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が選択される。つまり、カーソルを右に&nbsp;<span class="Special">[count]</span>&nbsp;文字動か<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;した範囲が選択される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'selection'">'selection'</a>&nbsp;が &quot;exclusive&quot; でない場合は 1 文字少なくな<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
+<span class="Special">[count]</span>v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文字単位でビジュアルモードを開始する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;を指定すると、最後のビジュアル操作で使われたの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と同じ数の文字または行を、ただし現在のカーソル位置で、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;倍して選択する。直前のビジュアル操作がブロック<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に対するものだった場合、ブロックの幅および高さの両方が<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;倍される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以前のビジュアル操作がなかった場合、<span class="Special">[count]</span>&nbsp;文字が選択<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;される。これはカーソルを右へ&nbsp;<span class="Special">N</span>&nbsp;*&nbsp;<span class="Special">[count]</span>&nbsp;文字移動する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のと同様である。<a class="Type" href="options.html#'selection'">'selection'</a>&nbsp;が &quot;exclusive&quot; でないとき<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は 1 つ少ない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#V" name="V">V</a>&nbsp;<a class="Constant" href="visual.html#linewise-visual" name="linewise-visual">linewise-visual</a><br>
-<span class="Special">[count]</span>V&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行単位のビジュアルモードを開始する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;を指定すると、最後のビジュアル操作と同じモード<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;で同じ行数を選択する。ただし、現在の位置で選択を開始<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;し、行数に&nbsp;<span class="Special">[count]</span>&nbsp;を掛ける。最後に実行したビジュアル<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;操作がない場合は、<span class="Special">[count]</span>&nbsp;行数が選択される。<br>
+<span class="Special">[count]</span>V&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行単位でビジュアルモードを開始する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;を指定すると、最後のビジュアル操作で使われたの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と同じ数の行を、ただし現在のカーソル位置で、<span class="Special">[count]</span>&nbsp;倍<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;して選択する。以前のビジュアル操作がなかった場合、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;行が選択される。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#CTRL-V" name="CTRL-V">CTRL-V</a>&nbsp;<a class="Constant" href="visual.html#blockwise-visual" name="blockwise-visual">blockwise-visual</a><br>
-<span class="Special">[count]CTRL-V</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 矩形ビジュアルモードを開始する。<span class="Todo">Note:</span>&nbsp;Windowsでは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-V</span>はテキストの貼り付けにマップされることがあり、そ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の際にはビジュアルモードを開始できない。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="gui_w32.html#CTRL-V-alternative">CTRL-V-alternative</a>を参照。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;を指定した場合は、上記の&nbsp;<a class="Comment" href="visual.html#v">v</a>&nbsp;と同様。<br>
+<span class="Special">[count]CTRL-V</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 矩形でビジュアルモードを開始する。<span class="Todo">Note:</span>&nbsp;Windows では<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-V</span>&nbsp;がテキストの貼り付けにマップされていることがあ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;り、その場合はビジュアルモードの開始には機能しない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="gui_w32.html#CTRL-V-alternative">CTRL-V-alternative</a>&nbsp;を参照。<span class="Special">[count]</span>&nbsp;は上記の&nbsp;<a class="Comment" href="visual.html#v">v</a>&nbsp;と同<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;様に使われる。<br>
 <br>
-ビジュアルモードの最中に&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;を使用したり、マウスの右ボタンをクリックしたり、<br>
-または他のバッファに移動するコマンドを使用した場合には、強調は停止しテキストに<br>
-は何の操作も行われない。文字単位のビジュアルモード中に &quot;v&quot; を叩いた時や、矩形<br>
-ビジュアルモード時の &quot;<span class="Special">CTRL-V</span>&quot;、行単位のビジュアルモードでの &quot;V&quot; も同様である。<br>
-<span class="Special">CTRL-Z</span>&nbsp;を押すと強調は停止し、エディタが一時停止するか新しいシェルが開始される<br>
-<a class="Identifier" href="starting.html#CTRL-Z">CTRL-Z</a>。<br>
+ビジュアルモード中に&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;を使うか、マウスの左ボタンをクリックするか、または<br>
+別のバッファへジャンプする任意のコマンドを使った場合、ハイライトは停止し、テキ<br>
+ストは何も影響を受けない。文字単位ビジュアルモードで &quot;v&quot;、矩形ビジュアルモード<br>
+で &quot;<span class="Special">CTRL-V</span>&quot;、または行単位ビジュアルモードで &quot;V&quot; を押したときも。<span class="Special">CTRL-Z</span>&nbsp;を押し<br>
+た場合、ハイライトは停止し、エディタがサスペンドされるか、または新しいシェルが<br>
+起動される&nbsp;<a class="Identifier" href="starting.html#CTRL-Z">CTRL-Z</a>。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タイプ後の新モード:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_v" name="v_v">v_v</a>&nbsp;<a class="Constant" href="visual.html#v_CTRL-V" name="v_CTRL-V">v_CTRL-V</a>&nbsp;<a class="Constant" href="visual.html#v_V" name="v_V">v_V</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タイプした後の新しいモード:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_v" name="v_v">v_v</a>&nbsp;<a class="Constant" href="visual.html#v_CTRL-V" name="v_CTRL-V">v_CTRL-V</a>&nbsp;<a class="Constant" href="visual.html#v_V" name="v_V">v_V</a><br>
 <span class="PreProc">旧モード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;v&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;CTRL-V&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;V&quot;</span><br>
 <br>
-ノーマル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアル&nbsp;&nbsp;&nbsp;&nbsp; 矩形ビジュアル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 行ビジュアル<br>
-ビジュアル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ノーマル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 矩形ビジュアル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 行ビジュアル<br>
-矩形ビジュアル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアル&nbsp;&nbsp;&nbsp;&nbsp; ノーマル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 行ビジュアル<br>
-行ビジュアル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアル&nbsp;&nbsp;&nbsp;&nbsp; 矩形ビジュアル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ノーマル<br>
+ノーマル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアル&nbsp;&nbsp;&nbsp;&nbsp; 矩形ビジュアル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 行単位ビジュアル<br>
+ビジュアル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ノーマル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 矩形ビジュアル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 行単位ビジュアル<br>
+矩形ビジュアル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアル&nbsp;&nbsp;&nbsp;&nbsp; ノーマル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 行単位ビジュアル<br>
+行単位ビジュアル&nbsp;&nbsp;&nbsp;&nbsp;ビジュアル&nbsp;&nbsp;&nbsp;&nbsp; 矩形ビジュアル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ノーマル<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#gv" name="gv">gv</a>&nbsp;<a class="Constant" href="visual.html#v_gv" name="v_gv">v_gv</a>&nbsp;<a class="Constant" href="visual.html#reselect-Visual" name="reselect-Visual">reselect-Visual</a><br>
-gv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後に使用したのと同じ範囲のビジュアルモードを開始す<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。ビジュアルモードで使用すると、現在の選択領域と以前<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のものとが交換される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモードで &quot;p&quot; や &quot;P&quot; を実行した後にこれを使う<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と、プットしたテキストが選択される。<br>
+gv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;直前の領域と同じ領域および同じモードでビジュアルモード<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を開始する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモードでは、現在および直前のビジュアル領域が<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交換される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモードで &quot;p&quot; または &quot;P&quot; を使った後、貼り付け<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;られたテキストが選択される。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#gn" name="gn">gn</a>&nbsp;<a class="Constant" href="visual.html#v_gn" name="v_gn">v_gn</a><br>
-gn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後に使われた検索パターンを前方検索し (<a class="Comment" href="pattern.html#n">n</a>&nbsp;のように)、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マッチしたものを選択してビジュアルモードを開始する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルがマッチの上にあるときは、それをビジュアル選択<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;オペレータ待ちのときは、マッチに対してオペレータを実行<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。例: &quot;dgn&quot; は次のマッチを削除する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;すでにビジュアルモードなら、次のマッチの末尾まで選択範<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;囲を拡大する。<br>
+gn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="pattern.html#n">n</a>&nbsp;と同様に、最後に使われた検索パターンを前方に検索<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;し、マッチを選択するためにビジュアルモードを開始する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルがマッチ上にある場合、それをビジュアル選択す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。オペレータが保留中の場合、マッチに対して操作する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例えば、&quot;dgn&quot; は次のマッチのテキストを削除する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモードが有効な場合、次のマッチの終わりまで選<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;択範囲を拡張する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'wrapscan'">'wrapscan'</a>&nbsp;が適用される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;<a class="Comment" href="pattern.html#n">n</a>&nbsp;とは異なり、検索方向は前の検索コマンドには依<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存しない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;<a class="Comment" href="pattern.html#n">n</a>&nbsp;と異なり、検索方向は直前の検索コマンドに依存<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;しない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#gN" name="gN">gN</a>&nbsp;<a class="Constant" href="visual.html#v_gN" name="v_gN">v_gN</a><br>
-gN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="visual.html#gn">gn</a>&nbsp;と同じだが、後方検索する (<a class="Comment" href="pattern.html#N">N</a>&nbsp;のように)。<br>
+gN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="visual.html#gn">gn</a>&nbsp;と同様だが、<a class="Comment" href="pattern.html#N">N</a>&nbsp;と同様に後方に検索する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#<LeftMouse>" name="&lt;LeftMouse&gt;">&lt;LeftMouse&gt;</a><br>
-<span class="Special">&lt;LeftMouse&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 現在のカーソル位置を設定する。ビジュアルモードが活動中<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の場合は停止する。オプション&nbsp;<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;が 'n' もしくは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'a' を含むときだけ働く。指定した位置がスクリーンの下端<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;から&nbsp;<a class="Type" href="options.html#'so'">'so'</a>&nbsp;行以内の時にはテキストがスクロールアップす<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。指定した位置がスクリーンの上端から&nbsp;<a class="Type" href="options.html#'so'">'so'</a>&nbsp;行以内の時<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;にはテキストがスクロールダウンする。<br>
+<span class="Special">&lt;LeftMouse&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 現在のカーソル位置を設定する。ビジュアルモードが有効な<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;場合、それは停止される。<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;オプションが 'n' また<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は 'a' を含むときのみ。位置が画面の最終行から&nbsp;<a class="Type" href="options.html#'so'">'so'</a>&nbsp;行<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以内の場合、テキストは上にスクロールされる。位置が画面<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の最初の行から&nbsp;<a class="Type" href="options.html#'so'">'so'</a>&nbsp;行以内の場合、テキストは下にスク<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ロールされる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#<RightMouse>" name="&lt;RightMouse&gt;">&lt;RightMouse&gt;</a><br>
-<span class="Special">&lt;RightMouse&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモードが活動していないのならば開始する。カー<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ソルの位置からクリックした位置までのテキストが強調され<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。ビジュアルモードが既に活動しているならば、クリック<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;した強調されたテキストの開始位置か終了位置のどちらか近<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いほうに移動する。オプション&nbsp;<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;が 'n' もしくは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'a' を含むときだけ働く。<br>
+<span class="Special">&lt;RightMouse&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモードが有効でない場合、ビジュアルモードを開<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;始する。カーソル位置からクリックした位置までのテキスト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;がハイライトされる。ビジュアルモードがすでに有効だった<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;場合、ハイライトされたテキストの開始または終わりのうち<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;近い方を、クリックした位置へ移動する。<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;オプショ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンが 'n' または 'a' を含むときのみ。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;<a class="Type" href="options.html#'mousemodel'">'mousemodel'</a>&nbsp;が &quot;popup&quot; の時には<span class="Special">&lt;RightMouse&gt;</span>の代<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;わりに<span class="Special">&lt;S-LeftMouse&gt;</span>を使用する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;<a class="Type" href="options.html#'mousemodel'">'mousemodel'</a>&nbsp;が &quot;popup&quot; に設定されているときは、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;RightMouse&gt;</span>&nbsp;の代わりに&nbsp;<span class="Special">&lt;S-LeftMouse&gt;</span>&nbsp;を使わなければな<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;らない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#<LeftRelease>" name="&lt;LeftRelease&gt;">&lt;LeftRelease&gt;</a><br>
-<span class="Special">&lt;LeftRelease&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;LeftMouse&gt;</span>と同じ位置でなければ、これは<span class="Special">&lt;LeftMouse&gt;</span>のよ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;うに働く。古いxtermでは実行されているディスプレイ(環境<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変数DISPLAYもしくは-display引数による)へのアクセスが無<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い限り、xterm上ではボタンが離されるまで選択領域を見る<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ことはできない。<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;オプションが 'n' もしくは 'a'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を含むときだけ働く。<br>
+<span class="Special">&lt;LeftRelease&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; これは、<span class="Special">&lt;LeftMouse&gt;</span>&nbsp;と同じ位置でない場合、<span class="Special">&lt;LeftMouse&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と同様に機能する。古いバージョンの xterm では、xterm<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が実行されているディスプレイへのアクセス (DISPLAY 環境<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変数または -display 引数による) がない限り、ボタンが離<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;されるまで選択された領域は見えない。<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;オプション<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が 'n' または 'a' を含むときのみ。<br>
 <br>
-<span class="Special">&lt;LeftMouseNM&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 内部のマウスコードで、ステータスラインをクリックして<br>
-<span class="Special">&lt;LeftReleaseNM&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ウィンドウをフォーカスするときに使われる。NM は<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;non-mappable (マップできない) の略。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これらは使用できないが、一部の場所に表示されることがあ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
+<span class="Special">&lt;LeftMouseNM&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ステータスラインをクリックしてウィンドウにフォーカスす<br>
+<span class="Special">&lt;LeftReleaseNM&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; るために使われる内部のマウスコード。NM は non-mappable<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を表す。これらは使用できないが、いくつかの場所で現れる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;かもしれない。<br>
 <br>
-<span class="Special">&lt;A-LeftMouse&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ビジュアル領域をブロック単位で開始または拡張する。<br>
+<span class="Special">&lt;A-LeftMouse&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ビジュアル領域を矩形で開始または拡張する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="term.html#<A-LeftMouse>">&lt;A-LeftMouse&gt;</a>&nbsp;を参照。<br>
 <br>
-ビジュアルモードが活動していない時に &quot;v&quot;、&quot;V&quot; もしくは&nbsp;<span class="Special">CTRL-V</span>&nbsp;が数字 (カウント)<br>
-の後に使用されると、以前の強調領域の大きさが開始位置から使用される。その時カー<br>
-ソルは強調領域の終了位置へ移動し通常の操作を行うことができる。領域の形式 (文<br>
-字、行、矩形) は過去のものが使用される。<br>
-- 行ビジュアルモード: 行数がカウント倍される。<br>
-- 矩形ビジュアルモード: 行数とカラム数がカウント倍される。<br>
-- 1行内の通常ビジュアルモード: 文字数がカウント倍される。<br>
-- 複数行にまたがる通常ビジュアルモード: 行数がカウント倍され、最終行だけは前回<br>
-&nbsp;&nbsp;の強調領域の最終行と同じ文字数が使用される。<br>
-テキストの開始位置はカーソルの位置となる。強調テキストを拡張するための最後のコ<br>
-マンドとして &quot;$&quot; コマンドが使用された場合、領域は最長の行の最右端のカラムまで<br>
-拡張される。<br>
+ビジュアルモードが有効でなく、&quot;v&quot;、&quot;V&quot;、または&nbsp;<span class="Special">CTRL-V</span>&nbsp;の前にカウントが付けられ<br>
+た場合、直前にハイライトされた領域のサイズが開始に使われる。その後、ハイライト<br>
+された領域の終わりを移動して、オペレータを与えることができる。古い領域の種類<br>
+(文字、行、または矩形) が使われる。<br>
+- 行単位ビジュアルモード: 行数にカウントが掛けられる。<br>
+- 矩形ビジュアルモード: 行数および桁数にカウントが掛けられる。<br>
+- 1 行内の通常のビジュアルモード: 文字数にカウントが掛けられる。<br>
+- 複数行にわたる通常のビジュアルモード: 行数にカウントが掛けられ、最終行では、<br>
+&nbsp;&nbsp;直前にハイライトされた領域の最終行と同じ文字数が使われる。<br>
+テキストの開始はカーソル位置である。ハイライトされたテキストを拡張するための最<br>
+後のコマンドの 1 つとして &quot;$&quot; コマンドが使われた場合、領域は最も長い行の右端の<br>
+桁まで拡張される。<br>
 <br>
-前回の時と全く同じ領域を強調したいときには、&quot;gv&quot; を使用できる&nbsp;<a class="Identifier" href="visual.html#gv">gv</a>&nbsp;<a class="Identifier" href="visual.html#v_gv">v_gv</a>。<br>
+前回とまったく同じ領域をハイライトしたい場合、&quot;gv&quot;&nbsp;<a class="Identifier" href="visual.html#gv">gv</a>&nbsp;<a class="Identifier" href="visual.html#v_gv">v_gv</a>&nbsp;を使える。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_<Esc>" name="v_&lt;Esc&gt;">v_&lt;Esc&gt;</a><br>
-<span class="Special">&lt;Esc&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ビジュアルモード時: ビジュアルモードを停止する。<br>
+<span class="Special">&lt;Esc&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ビジュアルモードで: ビジュアルモードを停止する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_CTRL-C" name="v_CTRL-C">v_CTRL-C</a><br>
-<span class="Special">CTRL-C</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモード時: ビジュアルモードを停止する。挿入<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;モードがぶら下がっている時には (モードメッセージが<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;-- (insert) VISUAL --&quot; となる)、そちらも終了する。<br>
+<span class="Special">CTRL-C</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモードで: ビジュアルモードを停止する。挿入<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;モードが保留中のとき (モードメッセージが<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;-- (insert) VISUAL --&quot; を表示している)、それも停止さ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS-Windows では、<span class="Special">CTRL-Break</span>&nbsp;を押す必要があるかもしれな<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い&nbsp;<a class="Identifier" href="os_dos.html#dos-CTRL-Break">dos-CTRL-Break</a>。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-3. ビジュアル領域の変更&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#visual-change" name="visual-change">visual-change</a><br>
+3. ビジュアル領域を変更する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#visual-change" name="visual-change">visual-change</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_o" name="v_o">v_o</a><br>
-o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 強調されたテキストのもう一方の端へ移動する: 現在のカー<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ソルの位置が強調されたテキストの開始地点になり、カーソ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルは強調されたテキストのもう一方の端に移動する。強調さ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れた領域は同じままに保たれる。<br>
+o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ハイライトされたテキストのもう一方の端へ移動する: 現在<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のカーソル位置がハイライトされたテキストの開始になり、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルはハイライトされたテキストのもう一方の端へ移動<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。ハイライトされた領域は同じままである。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_O" name="v_O">v_O</a><br>
-O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 強調されたテキストのもう一方の端へ移動する: これは &quot;o&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に近い動作だが、矩形ビジュアルモードではカーソルが同じ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行内のもう一方のコーナーに移動する。移動した先のキャラ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;クタが画面上で1つ以上の文字幅を占有している場合(例えば<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;</span>文字)、強調される範囲は変更・拡張される。<br>
+O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ハイライトされたテキストのもう一方の端へ移動する。これ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は &quot;o&quot; と同様だが、矩形ビジュアルモードではカーソルは<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同じ行のもう一方の角へ移動する。角が画面上で 1 つより<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;多くの位置を占める文字 (例えば&nbsp;<span class="Special">&lt;Tab&gt;</span>) にあるときは、ハ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;イライトされたテキストが変わることがある。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_$" name="v_$">v_$</a><br>
-矩形ビジュアルモード時に &quot;$&quot; コマンドを使用すると、選択されるテキストの右終端<br>
-は選択されているラインのうち一番長いものによって決定される。この状態は水平方向<br>
-への移動コマンドを使うことで終了する。<br>
+矩形ビジュアルモードで &quot;$&quot; コマンドが使われたとき、ハイライトされたテキストの<br>
+右端は、ハイライトされた行のうち最も長いものによって決まる。これは、真上または<br>
+真下に移動しないモーションコマンドが使われたときに停止する。<br>
 <br>
-ブロックの終端へ移動するために色々なコマンドを使うことができるが、Exコマンド、<br>
-変更を加えるコマンド、もしくはファイルを放棄するコマンドは使用できない。次の文<br>
-字で開始するコマンド &quot;.&quot;, &quot;&amp;&quot;,&nbsp;<span class="Special">CTRL-^</span>, &quot;Z&quot;,&nbsp;<span class="Special">CTRL-]</span>,&nbsp;<span class="Special">CTRL-T</span>,&nbsp;<span class="Special">CTRL-R</span>,&nbsp;<span class="Special">CTRL-I</span>,<br>
-<span class="Special">CTRL-O</span>&nbsp;を使用するとブザー音が発生し、ビジュアルモードが継続される。<br>
+ブロックの終わりを移動するために多くのコマンドを使えるが、Ex コマンド、変更を<br>
+行うコマンド、またはファイルを放棄するコマンドは使えない。&quot;.&quot;、&quot;&amp;&quot;、<span class="Special">CTRL-^</span>、<br>
+&quot;Z&quot;、<span class="Special">CTRL-]</span>、<span class="Special">CTRL-T</span>、<span class="Special">CTRL-R</span>、<span class="Special">CTRL-I</span>、および&nbsp;<span class="Special">CTRL-O</span>&nbsp;(で始まる) コマンドはビープ<br>
+を鳴らし、ビジュアルモードは継続する。<br>
 <br>
-同じバッファを表示している別のウィンドウに切り替えるとき、そのウィンドウのカー<br>
-ソル位置はVisual選択に合わせて調整される。これは特にVisual選択の開始位置や終了<br>
-位置を確認するのに便利である。選択範囲を変更するのに<span class="Special">&lt;RightMouse&gt;</span>が使える。<br>
-(<a class="Type" href="options.html#'mousemodel'">'mousemodel'</a>&nbsp;が &quot;popup&quot; に設定されているときは<span class="Special">&lt;S-LeftMouse&gt;</span>)。<br>
+同じバッファの別のウィンドウに切り替えたとき、そのウィンドウ内のカーソル位置が<br>
+調整されるので、同じビジュアル領域がまだ選択されている。これは、あるウィンドウ<br>
+でビジュアル領域の開始を表示し、別のウィンドウで終わりを表示するのに特に便利で<br>
+ある。その後、<span class="Special">&lt;RightMouse&gt;</span>&nbsp;(または&nbsp;<a class="Type" href="options.html#'mousemodel'">'mousemodel'</a>&nbsp;が &quot;popup&quot; のときは<br>
+<span class="Special">&lt;S-LeftMouse&gt;</span>) を使ってビジュアル領域のどちらかの端をドラッグできる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-4. ビジュアル領域での操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#visual-operators" name="visual-operators">visual-operators</a><br>
+4. ビジュアル領域に対して操作する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#visual-operators" name="visual-operators">visual-operators</a><br>
 <br>
-施すことのできる操作:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 大/小文字の切替&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_~">v_~</a><br>
+使用できるオペレータは:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 大文字小文字を切り替える&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_~">v_~</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 削除&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_d">v_d</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 変更 (4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_c">v_c</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ヤンク&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_y">v_y</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 右シフト (4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_>">v_&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 左シフト (4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_<">v_&lt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 外部コマンドによるフィルタ (1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_!">v_!</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'equalprg'">'equalprg'</a>&nbsp;オプションで指定されたフィルタ (1)&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_=">v_=</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gq&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;の長さによる行の整形 (1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_gq">v_gq</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 右へシフト (4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_>">v_&gt;</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 左へシフト (4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_<">v_&lt;</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 外部コマンドでフィルタ (1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_!">v_!</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'equalprg'">'equalprg'</a>&nbsp;オプションのコマンドでフィルタ (1)&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_=">v_=</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gq&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行を&nbsp;<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;の長さに整形 (1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_gq">v_gq</a><br>
 <br>
-使用できるオブジェクト:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(空白文字を含む) 1語&nbsp;<span class="Special">{訳注:&nbsp;</span><a class="Identifier" href="motion.html#word">word</a><span class="Special">}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_aw">v_aw</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1語&nbsp;<span class="Special">{訳注:&nbsp;</span><a class="Identifier" href="motion.html#word">word</a><span class="Special">}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_iw">v_iw</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(空白文字を含む) 1語&nbsp;<span class="Special">{訳注:&nbsp;</span><a class="Identifier" href="motion.html#WORD">WORD</a><span class="Special">}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_aW">v_aW</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1語&nbsp;<span class="Special">{訳注:&nbsp;</span><a class="Identifier" href="motion.html#WORD">WORD</a><span class="Special">}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_iW">v_iW</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;as&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(空白文字を含む) 1文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_as">v_as</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_is">v_is</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(空白文字を含む) 1段落&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_ap">v_ap</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1段落&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_ip">v_ip</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(丸括弧文字を含む) ()のブロック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_ab">v_ab</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ib&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;()のブロックの中身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_ib">v_ib</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(波括弧文字を含む) {}のブロック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_aB">v_aB</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{}のブロックの中身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_iB">v_iB</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(タグ自身を含む)&nbsp;<span class="Special">&lt;tag&gt;</span>&nbsp;&lt;/tag&gt; ブロック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_at">v_at</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;tag&gt;</span>&nbsp;&lt;/tag&gt; ブロックの中身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_it">v_it</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(大小記号文字を含む) &lt;&gt;のブロック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_a<">v_a&lt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;&gt;のブロックの中身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_i<">v_i&lt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(角括弧文字を含む) []のブロック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_a[">v_a[</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[]のブロックの中身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_i[">v_i[</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(クォートを含む) ダブルクォート文字列&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_aquote">v_aquote</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ダブルクォート文字列の中身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_iquote">v_iquote</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(クォートを含む) シングルクォート文字列&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_a'">v_a'</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;シングルクォート文字列の中身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_i'">v_i'</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(backtick を含む) backtick 文字列&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_a`">v_a`</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;backtick 文字列の中身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_i`">v_i`</a><br>
+使用できるオブジェクトは:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;単語 (空白を含む)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_aw">v_aw</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内側の単語&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_iw">v_iw</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WORD (空白を含む)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_aW">v_aW</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内側の WORD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_iW">v_iW</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;as&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文 (空白を含む)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_as">v_as</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内側の文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_is">v_is</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;段落 (空白を含む)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_ap">v_ap</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ip&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内側の段落&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_ip">v_ip</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;() ブロック (丸括弧を含む)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_ab">v_ab</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ib&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内側の () ブロック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_ib">v_ib</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{} ブロック (波括弧を含む)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_aB">v_aB</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内側の {} ブロック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_iB">v_iB</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;tag&gt;</span>&nbsp;&lt;/tag&gt; ブロック (タグを含む)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_at">v_at</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内側の&nbsp;<span class="Special">&lt;tag&gt;</span>&nbsp;&lt;/tag&gt; ブロック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_it">v_it</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;&gt; ブロック (&lt;&gt; を含む)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_a<">v_a&lt;</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内側の &lt;&gt; ブロック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_i<">v_i&lt;</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[] ブロック ([] を含む)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_a[">v_a[</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内側の [] ブロック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_i[">v_i[</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ダブルクォートされた文字列 (クォートを含む)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_aquote">v_aquote</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内側のダブルクォートされた文字列&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_iquote">v_iquote</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;シングルクォートされた文字列 (クォートを含む)&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_a'">v_a'</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内側のシンプルクォートされた文字列&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_i'">v_i'</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッククォート内の文字列 (バッククォートを含む)&nbsp;<a class="Identifier" href="motion.html#v_a`">v_a`</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内側のバッククォート内の文字列&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="motion.html#v_i`">v_i`</a><br>
 <br>
-加えて、以下のコマンドが使用可能:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 強調された行にExコマンドを適用 (1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="cmdline.html#v_:">v_:</a><br>
+さらに、以下のコマンドを使用できる:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ハイライトされた行に対する Ex コマンドを開始 (1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="cmdline.html#v_:">v_:</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 変更 (4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_r">v_r</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 変更&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_s">v_s</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 変更 (2)(4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_C">v_C</a><br>
@@ -269,155 +271,154 @@ O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 削除 (2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_X">v_X</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ヤンク (2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_Y">v_Y</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 貼り付け&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_p">v_p</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; レジスタの上書きがない貼り付け&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_P">v_P</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; レジスタを上書きせずに貼り付け&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_P">v_P</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;J&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 連結 (1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_J">v_J</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;U&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 大文字化&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_U">v_U</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 小文字化&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_u">v_u</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タグ検索&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#v_CTRL-]">v_CTRL-]</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;U&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 大文字にする&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_U">v_U</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 小文字にする&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#v_u">v_u</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タグを検索&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#v_CTRL-]">v_CTRL-]</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ブロック挿入&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="visual.html#v_b_I">v_b_I</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ブロック追加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="visual.html#v_b_A">v_b_A</a><br>
 <br>
-(1): 常に全部の行、<a class="Identifier" href="visual.html#:visual_example">:visual_example</a>を参照。<br>
-(2):&nbsp;<span class="Special">CTRL-V</span>を使ってないときは全部の行。<br>
-(3):&nbsp;<span class="Special">CTRL-V</span>を使ってないときは全部の行、<span class="Special">CTRL-V</span>を使っているときは行の最後までを<br>
-&nbsp;&nbsp;&nbsp;&nbsp; 削除。<br>
-(4):&nbsp;<span class="Special">CTRL-V</span>を使っているときにはブロックにのみ作用。<br>
+(1): 常に行全体、<a class="Identifier" href="visual.html#:visual_example">:visual_example</a>&nbsp;を参照。<br>
+(2):&nbsp;<span class="Special">CTRL-V</span>&nbsp;を使っていないときは行全体。<br>
+(3):&nbsp;<span class="Special">CTRL-V</span>&nbsp;を使っていないときは行全体、<span class="Special">CTRL-V</span>&nbsp;を使っているときは行末まで削除<br>
+&nbsp;&nbsp;&nbsp;&nbsp; する。<br>
+(4):&nbsp;<span class="Special">CTRL-V</span>&nbsp;を使っているときはブロックだけに作用する。<br>
 <br>
-ビジュアルモードでは特別なキー割り当てを行うために &quot;:vmap&quot; コマンドを使うこと<br>
-ができることに注意。例えば、&quot;/&quot; をビジュアル領域を拡張するのではなくて、選択し<br>
-たテキストによる検索を行わせたい場合には:<br>
+<span class="Todo">Note</span>&nbsp;&quot;:vmap&quot; コマンドを使って、ビジュアルモードで特にキーをマップできることに<br>
+注意。例えば、&quot;/&quot; コマンドでビジュアル領域を拡張せず、代わりにハイライトされた<br>
+テキストを取ってそれを検索したい場合:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:vmap / y/&lt;C-R&gt;&quot;&lt;CR&gt;</div>
-(&lt;&gt;表記&nbsp;<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>&nbsp;の中身は、これを入力する時には文字通り入力すれば良い; ただし<br>
-<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;から 'B' と '&lt;' のフラグを外しておく必要がある)<br>
+(&lt;&gt; 表記&nbsp;<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>&nbsp;では、これをタイプするときは文字どおりにタイプすべきである;<br>
+<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;から 'B' および '&lt;' フラグを取り除く必要がある。)<br>
 <br>
-&quot;&quot;&quot; コマンドを使用してレジスタ名を指定したい場合には、操作キーを入力する前にタ<br>
-イプする: &quot;v<span class="Special">{move-around}</span>&quot;xd&quot;。<br>
+&quot;&quot;&quot; コマンドを使ってレジスタ名を与えたい場合、オペレータ文字をタイプする直前に<br>
+それを行う: &quot;v<span class="Special">{move-around}</span>&quot;xd&quot;。<br>
 <br>
-コマンドの回数を指定したい場合には、操作キーを入力する前にタイプする:<br>
-&quot;v<span class="Special">{move-around}</span>3&gt;&quot; (行を3単位、右へインデントする)。<br>
+コマンドにカウントを与えたい場合、オペレータ文字をタイプする直前にそれを行う:<br>
+&quot;v<span class="Special">{move-around}</span>3&gt;&quot; (行を 3 インデント右へ移動する)。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#{move-around}" name="{move-around}">{move-around}</a><br>
-<span class="Special">{move-around}</span>は一連の移動コマンドのシーケンス。1つの移動コマンドを意味する<br>
-<span class="Special">{motion}</span>とは異なるので注意。<br>
+<span class="Special">{move-around}</span>&nbsp;は移動コマンドの任意の連続である。<span class="Todo">Note</span>&nbsp;ただ 1 つの移動コマンドで<br>
+ある&nbsp;<span class="Special">{motion}</span>&nbsp;との違いに注意。<br>
 <br>
-ビジュアル領域に対して操作を行うもう1つの方法は、パターンにアイテム<a class="Identifier" href="pattern.html#/\%V">/\%V</a>を含<br>
-めることがある。例えば、ビジュアル領域内のすべての '('を 'X' に置換するには:<br>
+ビジュアル領域に対して操作するもう 1 つの方法は、パターン内で&nbsp;<a class="Identifier" href="pattern.html#/\%V">/\%V</a>&nbsp;アイテム<br>
+を使うことである。例えば、ビジュアル領域内のすべての '(' を '#' に置換するには:<br>
+<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:'&lt;,'&gt;s/\%V(/#/g</div>
 <br>
-<span class="Todo">Note</span>&nbsp;&quot;'&lt;,'&gt;&quot; はビジュアルモードで &quot;:&quot; を押すと自動的に挿入される。<br>
+<span class="Todo">Note</span>&nbsp;ビジュアルモードで &quot;:&quot; を押すと、&quot;'&lt;,'&gt;&quot; が自動的に現れることに注意。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-5. 矩形範囲の操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#blockwise-operators" name="blockwise-operators">blockwise-operators</a><br>
+5. 矩形オペレータ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#blockwise-operators" name="blockwise-operators">blockwise-operators</a><br>
 <br>
-参考:&nbsp;<a class="Type" href="options.html#'virtualedit'">'virtualedit'</a>&nbsp;オプションを設定して、行末を越えた選択や、Tab文字の(表示上<br>
-の)途中での選択ができる。<br>
+念のため: 行末より後ろ、またはタブの途中で開始または終了するブロックを選択でき<br>
+るようにするには&nbsp;<a class="Type" href="options.html#'virtualedit'">'virtualedit'</a>&nbsp;を使う。<br>
 <br>
 矩形ビジュアル挿入&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_b_I" name="v_b_I">v_b_I</a><br>
-矩形選択中に、I{文字列}<span class="Special">&lt;ESC&gt;</span>&nbsp;を行うとブロック内の全ての行のブロック先頭にその<br>
-文字列が挿入され、行の長さはその分拡張される。選択ブロックの左側のカラムより短<br>
-い行は変更されない。タブは見た目のカラムを保つように分解される。行にテキストを<br>
-追加する時のみ働き、削除では働かない。<a class="Identifier" href="visual.html#v_b_I_example">v_b_I_example</a>を参照。<br>
+矩形選択で、I<span class="Special">{string}&lt;ESC&gt;</span>&nbsp;は、行がブロック内まで伸びている場合に限り、ブロッ<br>
+クのすべての行でブロックの開始に&nbsp;<span class="Special">{string}</span>&nbsp;を挿入する。したがって、短い行は変更<br>
+されないまま残る。TAB は視覚上の桁を保つために分割される。行へのテキストの追加<br>
+にのみ機能し、削除には機能しない。<a class="Identifier" href="visual.html#v_b_I_example">v_b_I_example</a>&nbsp;を参照。<br>
 <br>
 矩形ビジュアル追加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_b_A" name="v_b_A">v_b_A</a><br>
-矩形選択中に、A{文字列}<span class="Special">&lt;ESC&gt;</span>&nbsp;を行うとブロック内の全ての行のブロック末尾にその<br>
-文字列が挿入される。ブロックの右端が真っ直ぐでない時には、行の長さの違いによっ<br>
-て異なる動作がある。<br>
+矩形選択で、A<span class="Special">{string}&lt;ESC&gt;</span>&nbsp;は、ブロックのすべての行でブロックの終わりに<br>
+<span class="Special">{string}</span>&nbsp;を追加する。行の長さが異なるためにブロックの RHS がまっすぐでないとこ<br>
+ろでは、いくつか異なる動作がある:<br>
 <br>
-1. ブロックが&nbsp;<span class="Special">&lt;C-v&gt;</span>$ で作成された場合<br>
-&nbsp;&nbsp;&nbsp;&nbsp;このケースでは各行の最後に文字列が追加される。<br>
-2. ブロックが&nbsp;<span class="Special">&lt;C-v&gt;{move-around}</span>で作成された場合。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;このケースではブロック内の各行のブロック末尾に文字列が追加され、行長が拡張<br>
-&nbsp;&nbsp;&nbsp;&nbsp;される。さらにブロックの末尾を揃えるために空白文字が挿入される。<br>
-<a class="Identifier" href="visual.html#v_b_A_example">v_b_A_example</a>を参照。<br>
-<span class="Todo">Note:</span>&nbsp;&quot;I&quot; と &quot;A&quot; は変更によって行が拡張されるときに違う動作をする。これはわざ<br>
-とそうなっていて、あなたがしたいようにできる。<br>
-行にテキストを追加する時のみ働き、削除では働かない。<br>
+1. ブロックが&nbsp;<span class="Special">&lt;C-v&gt;</span>$ で作成された<br>
+&nbsp;&nbsp;&nbsp;&nbsp;この場合、文字列は各行の末尾に追加される。<br>
+2. ブロックが&nbsp;<span class="Special">&lt;C-v&gt;{move-around}</span>&nbsp;で作成された<br>
+&nbsp;&nbsp;&nbsp;&nbsp;この場合、文字列は各行のブロックの末尾に追加され、ブロック末尾の桁まで埋め<br>
+&nbsp;&nbsp;&nbsp;&nbsp;るために空白が挿入される。<br>
+<a class="Identifier" href="visual.html#v_b_A_example">v_b_A_example</a>&nbsp;を参照。<br>
+<span class="Todo">Note:</span>&nbsp;&quot;I&quot; および &quot;A&quot; は、選択されたブロック内まで伸びていない行に対して異なる<br>
+動作をする。これは意図的に行われたもので、望む方法で行えるようにするためであ<br>
+る。<br>
+行へのテキストの追加にのみ機能し、削除には機能しない。<br>
 <br>
 矩形ビジュアル変更&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_b_c" name="v_b_c">v_b_c</a><br>
-矩形選択されたテキストの全てが同じテキスト文字列によって置き換えられる。&quot;c&quot; を<br>
-押した時には選択されたテキストが消去された後に挿入モードに入る。テキスト(改行<br>
-を除く)を入力できる。<span class="Special">&lt;Esc&gt;</span>を叩くと、選択されていた行全てに同じ文字列が入力され<br>
-る。<br>
+ブロック内の選択されたテキストはすべて同じテキスト文字列で置き換えられる。&quot;c&quot;<br>
+を使うと、選択されたテキストが削除され、挿入モードが開始される。その後、テキス<br>
+トを入力できる (改行なしで)。<span class="Special">&lt;Esc&gt;</span>&nbsp;を押すと、以前に選択されたすべての行に同じ<br>
+文字列が挿入される。<br>
 <br>
-矩形ビジュアル変更 (大文字)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_b_C" name="v_b_C">v_b_C</a><br>
-小文字の &quot;c&quot; と同様だが、選択領域が各行の末尾まで拡張される。<br>
+矩形ビジュアル変更&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_b_C" name="v_b_C">v_b_C</a><br>
+&quot;c&quot; を使うのと同様だが、すべての行で選択範囲が行末まで拡張される。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_b_<" name="v_b_&lt;">v_b_&lt;</a><br>
 矩形ビジュアルシフト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_b_>" name="v_b_&gt;">v_b_&gt;</a><br>
-ブロックが&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;によりシフトされる。ブロックの右端には拠らない。ブロッ<br>
-クの左端がどのポイントから右シフトを適用するかを決定し、<a class="Type" href="options.html#'ts'">'ts'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'et'">'et'</a>&nbsp;に従い最<br>
-適なタブ文字が埋め込まれる(パディング)。ブロックの左端が何処まで左シフトするか<br>
-を決定する。<br>
-<a class="Identifier" href="visual.html#v_b_>_example">v_b_&gt;_example</a>を参照。<br>
-<a class="Identifier" href="visual.html#v_b_<_example">v_b_&lt;_example</a>を参照。<br>
+ブロックは&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;だけシフトされる。ブロックの RHS は関係ない。<br>
+ブロックの LHS は右シフトを適用する開始点を決め、埋め合わせは&nbsp;<a class="Type" href="options.html#'ts'">'ts'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'et'">'et'</a><br>
+に従って最適に TAB を含む。ブロックの LHS は左シフトする終了点を決める。<br>
+<a class="Identifier" href="visual.html#v_b_>_example">v_b_&gt;_example</a>&nbsp;を参照。<br>
+<a class="Identifier" href="visual.html#v_b_<_example">v_b_&lt;_example</a>&nbsp;を参照。<br>
 <br>
 矩形ビジュアル置換&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_b_r" name="v_b_r">v_b_r</a><br>
-強調された領域の全ての画面上の文字が同じ文字で置き換えられ、タブ文字は画面上の<br>
-レイアウトを保持するために仮想的な空白文字に置き換えられる。<br>
-<a class="Identifier" href="visual.html#v_b_r_example">v_b_r_example</a>を参照。<br>
+ハイライトされた領域内のすべての画面上の文字が同じ文字で置き換えられる。つま<br>
+り、TAB は分割され、仮想的な空白が置き換えられ、画面のレイアウトが維持される。<br>
+<a class="Identifier" href="visual.html#v_b_r_example">v_b_r_example</a>&nbsp;を参照。<br>
 <br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 6. 繰り返し&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#visual-repeat" name="visual-repeat">visual-repeat</a><br>
 <br>
-ビジュアルモードの操作を繰り返して行う時には、最後の時と同じ量のテキストに対し<br>
-て操作が適用されている:<br>
-- 行ビジュアルモード: 同じ行数<br>
-- 矩形ビジュアルモード: 同じ行数とカラム数<br>
-- 1行内の通常ビジュアルモード: 同じ文字数<br>
-- 複数行にまたがる通常ビジュアルモード: 同じ行数で、最終行だけは前回の時の最<br>
-&nbsp;&nbsp;終行と同じ文字数。<br>
-テキストの開始位置は現在の位置となる。最後のコマンドとして強調されたテキストを<br>
-拡張するために &quot;$&quot; が使用された場合には、繰り返されるコマンドへは一番長い行の<br>
-右端のカラムが適用される。<a class="Comment" href="repeat.html#.">.</a>&nbsp;コマンドに渡されたカウントは使用されない。<br>
+ビジュアルモードのオペレータを繰り返すとき、オペレータは前回と同じ量のテキスト<br>
+に適用される:<br>
+- 行単位ビジュアルモード: 同じ行数。<br>
+- 矩形ビジュアルモード: 同じ行数および桁数。<br>
+- 1 行内の通常のビジュアルモード: 同じ文字数。<br>
+- 複数行にわたる通常のビジュアルモード: 同じ行数、最終行では前回の最終行と同じ<br>
+&nbsp;&nbsp;文字数。<br>
+テキストの開始はカーソル位置である。ハイライトされたテキストを拡張するための最<br>
+後のコマンドの 1 つとして &quot;$&quot; コマンドが使われた場合、繰り返しは最も長い行の右<br>
+端の桁まで適用される。<a class="Comment" href="repeat.html#.">.</a>&nbsp;コマンドに渡されたカウントは使われない。<br>
 <br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-7. 使用例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#visual-examples" name="visual-examples">visual-examples</a><br>
+7. 例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#visual-examples" name="visual-examples">visual-examples</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#:visual_example" name=":visual_example">:visual_example</a><br>
-現在 &quot;:&quot; コマンドは行全体に対して働くだけである。行の一部を選択して、&quot;:!date&quot;<br>
-のような何かを行っても1行全体が置換わってしまう。行の一部だけを置き換えたい場<br>
-合には何かマッピングのようなものを作らなければならないだろう。将来のリリースで<br>
-は &quot;:&quot; は部分的に動作するようになるだろう。<br>
+現在、&quot;:&quot; コマンドは行全体に対してのみ機能する。行の一部を選択したとき、<br>
+&quot;:!date&quot; のようなことを行うと行全体が置き換えられる。行の一部だけを置き換えた<br>
+い場合、そのためのマッピングを作る必要がある。将来のリリースでは、&quot;:&quot; が行の一<br>
+部に対して機能するかもしれない。<br>
 <br>
-ここに1つ、選択されたテキストを &quot;date&quot; の出力に置き換える例がある:<br>
+以下は、選択されたテキストを &quot;date&quot; の出力で置き換える例である:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:vmap _a &lt;Esc&gt;`&gt;a&lt;CR&gt;&lt;Esc&gt;`&lt;i&lt;CR&gt;&lt;Esc&gt;!!date&lt;CR&gt;kgJgJ</div>
 <br>
-(&lt;&gt;表記&nbsp;<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>&nbsp;の中身は、これを入力する時には文字通り入力すれば良い; ただし<br>
-<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;から 'B' と '&lt;' のフラグを外しておく必要がある)<br>
+(&lt;&gt; 表記&nbsp;<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>&nbsp;では、これをタイプするときは文字どおりにタイプすべきである;<br>
+<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;から 'B' および '&lt;' フラグを取り除く必要がある)<br>
 <br>
-これが何をしているかというと:<br>
-<span class="Special">&lt;Esc&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ビジュアルモードを終了する<br>
-`&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択領域の最後に移動する<br>
-a<span class="Special">&lt;CR&gt;&lt;Esc&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択領域の直後に改行を挿入する<br>
-`&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択領域の先頭に移動する<br>
-i<span class="Special">&lt;CR&gt;&lt;Esc&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択領域の直前に改行を挿入する<br>
-!!date<span class="Special">&lt;CR&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択されたテキストをdateでフィルタリングする<br>
-kJJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 分割した行を連結して1つにする<br>
+これが行うことは:<br>
+<span class="Special">&lt;Esc&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ビジュアルモードを停止する<br>
+`&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアル領域の終わりへ移動する<br>
+a<span class="Special">&lt;CR&gt;&lt;Esc&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアル領域の後ろで行を分割する<br>
+`&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアル領域の開始へジャンプする<br>
+i<span class="Special">&lt;CR&gt;&lt;Esc&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアル領域の前で行を分割する<br>
+!!date<span class="Special">&lt;CR&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルテキストを date でフィルタする<br>
+kJJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 行を元どおりに連結する<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#visual-search" name="visual-search">visual-search</a><br>
-選択したテキストを検索に使用することを可能にするマッピングのアイデアがここにあ<br>
-る:<br>
+以下は、選択されたテキストの検索を行えるようにするマッピングのアイデアである:<br>
+<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:vmap X y/&lt;C-R&gt;&quot;&lt;CR&gt;</div>
 <br>
-(&lt;&gt;表記&nbsp;<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>&nbsp;の中身は、これを入力する時には文字通り入力すれば良い; ただし<br>
-<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;から 'B' と '&lt;' のフラグを外しておく必要がある)<br>
+(&lt;&gt; 表記&nbsp;<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>&nbsp;では、これをタイプするときは文字どおりにタイプすべきである;<br>
+<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;から 'B' および '&lt;' フラグを取り除く必要がある)<br>
 <br>
-特別なキャラクタ('.' や '*' のようなもの)が問題を引き起こすことに注意。<br>
+<span class="Todo">Note</span>&nbsp;特殊文字 ('.' および '*' のような) は問題を引き起こすことに注意。<br>
 <br>
-矩形ビジュアルモードの例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#blockwise-examples" name="blockwise-examples">blockwise-examples</a><br>
-以下のテキストを使って、矩形モードのコマンドの使用法と結果を示していく。どの<br>
-ケースでも、初めカーソルはテストテキストの最初の行の先頭の 'a' の上にあるもの<br>
-とする。<br>
-以下、modelineの設定は &quot;:ts=8:sw=4:&quot; であることを仮定している。<br>
+矩形ビジュアルの例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#blockwise-examples" name="blockwise-examples">blockwise-examples</a><br>
+以下のテキストを使って、ブロックを作成するコマンドおよびその結果を以下に示す。<br>
+すべての場合で、カーソルはテストテキストの最初の行の 'a' から始まる。<br>
+以下のモードライン設定 &quot;:ts=8:sw=4:&quot; を想定している。<br>
 <br>
-次のように設定しておくと理解の助けになるだろう。<br>
+以下のようにすると役に立つ<br>
 :set hls<br>
 /<span class="Special">&lt;TAB&gt;</span><br>
-<span class="Special">&lt;TAB&gt;</span>と書かれている場所は本物のタブに読み替える。これが操作を可視化してくれ<br>
-る。<br>
+ここで&nbsp;<span class="Special">&lt;TAB&gt;</span>&nbsp;は実際の TAB である。これは操作を視覚化するのに役立つ。<br>
 <br>
 テストテキストは:<br>
 <br>
@@ -464,90 +465,92 @@ abcdefghijklmnXXXXXXuvwxyz<br>
 <span class="PreProc">==============================================================================</span><br>
 8. 選択モード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#Select" name="Select">Select</a>&nbsp;<a class="Constant" href="visual.html#Select-mode" name="Select-mode">Select-mode</a><br>
 <br>
-選択モードはビジュアルモードに似ているように見えるが、受け付けるコマンドが少し<br>
-異なる。これはMicrosoft Windowsの選択モードに似ている。オプション&nbsp;<a class="Type" href="options.html#'showmode'">'showmode'</a><br>
-が設定されている時には、&quot;-- SELECT --&quot; が最下の行に表示される。<br>
+選択モードはビジュアルモードのように見えるが、受け付けられるコマンドはかなり異<br>
+なる。これは Microsoft Windows の選択モードに似ている。<br>
+<a class="Type" href="options.html#'showmode'">'showmode'</a>&nbsp;オプションが設定されているときは、最終行に &quot;-- SELECT --&quot; が表示さ<br>
+れる。<br>
 <br>
-選択モードに入るには:<br>
--&nbsp;<a class="Type" href="options.html#'selectmode'">'selectmode'</a>&nbsp;が &quot;mouse&quot; を含んだ状態で、マウスを使って領域を選択する。<br>
-&nbsp;&nbsp;<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;が現在のモードのフラグを含んでなければならない。<br>
--&nbsp;<a class="Type" href="options.html#'selectmode'">'selectmode'</a>&nbsp;が &quot;key&quot; を含んだ状態で、シフトキーを押しながら表示できない移動<br>
-&nbsp;&nbsp;コマンドを使用する。例えば:&nbsp;<span class="Special">&lt;S-Left&gt;</span>や<span class="Special">&lt;S-End&gt;</span>。<a class="Type" href="options.html#'keymodel'">'keymodel'</a>&nbsp;が &quot;startsel&quot; を含<br>
-&nbsp;&nbsp;んでいる必要もある。<br>
--&nbsp;<a class="Type" href="options.html#'selectmode'">'selectmode'</a>&nbsp;が &quot;cmd&quot; を含んだ状態で &quot;v&quot;, &quot;V&quot; もしくは<span class="Special">CTRL-V</span>を使用する。<br>
-- ノーマルモードで &quot;gh&quot;, &quot;gH&quot; もしくは &quot;g_<span class="Special">CTRL-H</span>&quot; コマンドを使用する。<br>
-- ビジュアルモードで<span class="Special">CTRL-G</span>を押す。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_CTRL-G" name="v_CTRL-G">v_CTRL-G</a><br>
+選択モードに入る:<br>
+- マウスを使って領域を選択し、<a class="Type" href="options.html#'selectmode'">'selectmode'</a>&nbsp;が &quot;mouse&quot; を含んでいる。<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;も<br>
+&nbsp;&nbsp;現在のモードのフラグを含んでいなければならない。<br>
+- Shift キーを押しながら印字不可能な移動コマンドを使い、<a class="Type" href="options.html#'selectmode'">'selectmode'</a>&nbsp;が &quot;key&quot;<br>
+&nbsp;&nbsp;を含んでいる。例えば:&nbsp;<span class="Special">&lt;S-Left&gt;</span>&nbsp;および&nbsp;<span class="Special">&lt;S-End&gt;</span>。<a class="Type" href="options.html#'keymodel'">'keymodel'</a>&nbsp;も &quot;startsel&quot; を含<br>
+&nbsp;&nbsp;んでいなければならない。<br>
+- &quot;v&quot;、&quot;V&quot;、または&nbsp;<span class="Special">CTRL-V</span>&nbsp;コマンドを使い、<a class="Type" href="options.html#'selectmode'">'selectmode'</a>&nbsp;が &quot;cmd&quot; を含んでいる。<br>
+- ノーマルモードで &quot;gh&quot;、&quot;gH&quot;、または &quot;g_<span class="Special">CTRL-H</span>&quot; コマンドを使う。<br>
+- ビジュアルモードから&nbsp;<span class="Special">CTRL-G</span>&nbsp;を押す。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_CTRL-G" name="v_CTRL-G">v_CTRL-G</a><br>
 <br>
 選択モードのコマンド:<br>
-- 表示可能な文字、及び<span class="Special">&lt;NL&gt;</span>と<span class="Special">&lt;CR&gt;</span>は選択領域を削除し、Vimは入力モードに移行す<br>
-&nbsp;&nbsp;る。タイプした文字は挿入される。<br>
-- シフトキーを押しながらの表示不可能な移動コマンド、は選択領域を拡張する。<br>
-&nbsp;&nbsp;<a class="Type" href="options.html#'keymodel'">'keymodel'</a>&nbsp;は &quot;startsel&quot; を含まねばならない。<br>
-- シフトキーを押さずに表示不可能な移動コマンドを使用すると、選択モードを終了す<br>
-&nbsp;&nbsp;る。<a class="Type" href="options.html#'keymodel'">'keymodel'</a>&nbsp;は &quot;stopsel&quot; を含まねばならない。<br>
-- ESCは選択モードを終了する。<br>
--&nbsp;<span class="Special">CTRL-O</span>でビジュアルモードに切り替え1つだけコマンドを実行する。&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_CTRL-O" name="v_CTRL-O">v_CTRL-O</a><br>
--&nbsp;<span class="Special">CTRL-G</span>でビジュアルモードに切り替える。<br>
--&nbsp;<span class="Special">CTRL-R</span>&nbsp;<span class="Special">{register}</span>&nbsp;テキスト入力時に削除されるテキストに使用するレジスタを選択<br>
-&nbsp;&nbsp;する。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_CTRL-R" name="v_CTRL-R">v_CTRL-R</a><br>
+- 印字可能文字、<span class="Special">&lt;NL&gt;</span>、および&nbsp;<span class="Special">&lt;CR&gt;</span>&nbsp;は選択範囲を削除させ、Vim は挿入モードに入<br>
+&nbsp;&nbsp;る。タイプされた文字が挿入される。<br>
+- Shift キーを押しながらの印字不可能な移動コマンドは、選択範囲を拡張する。<br>
+&nbsp;&nbsp;<a class="Type" href="options.html#'keymodel'">'keymodel'</a>&nbsp;が &quot;startsel&quot; を含んでいなければならない。<br>
+- Shift キーを押さない状態での印字不可能な移動コマンドは、選択モードを停止す<br>
+&nbsp;&nbsp;る。<a class="Type" href="options.html#'keymodel'">'keymodel'</a>&nbsp;が &quot;stopsel&quot; を含んでいなければならない。<br>
+- ESC は選択モードを停止する。<br>
+-&nbsp;<span class="Special">CTRL-O</span>&nbsp;は 1 つのコマンドの間ビジュアルモードに切り替える。&nbsp;<a class="Constant" href="visual.html#v_CTRL-O" name="v_CTRL-O">v_CTRL-O</a><br>
+-&nbsp;<span class="Special">CTRL-G</span>&nbsp;はビジュアルモードに切り替える。<br>
+-&nbsp;<span class="Special">CTRL-R</span>&nbsp;<span class="Special">{register}</span>&nbsp;は、テキストをタイプしたときに削除されるテキストに使うレジ<br>
+&nbsp;&nbsp;スタを選択する。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#v_CTRL-R" name="v_CTRL-R">v_CTRL-R</a><br>
 &nbsp;&nbsp;&quot;_&quot; (ブラックホール) レジスタを指定しない限り、無名レジスタも上書きされる。<br>
 <br>
 <br>
-それ以外では、入力された文字はビジュアルモードと同様に扱われる。<br>
+それ以外では、タイプされた文字はビジュアルモードと同様に扱われる。<br>
 <br>
-選択モードで操作が行われると、行選択の時には、選択された行が操作対象になるが、<br>
-文字選択の時のように扱われる。例えば、行全体を削除した時には、後でその内容を行<br>
-の中間に貼り付けることができる。<br>
+選択モードでオペレータを使うとき、選択範囲が行単位の場合、選択された行が操作さ<br>
+れるが、文字単位の選択のように操作される。例えば、行全体が削除されたとき、後で<br>
+それを行の途中に貼り付けることができる。<br>
 <br>
 <br>
-選択モード時のマッピングとメニュー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#Select-mode-mapping" name="Select-mode-mapping">Select-mode-mapping</a><br>
+選択モードでのマッピングおよびメニュー。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#Select-mode-mapping" name="Select-mode-mapping">Select-mode-mapping</a><br>
 <br>
-コマンド<a class="Identifier" href="map.html#:vmap">:vmap</a>や<a class="Identifier" href="gui.html#:vmenu">:vmenu</a>で定義したマッピングとメニューはビジュアルモードと選<br>
-択モードの両方で働く。選択モードでは、それらのマッピングやメニューが実行される<br>
-直前に自動的にビジュアルモードに切り替わるので、ビジュアルモードと同じ動作が行<br>
-われる。ビジュアルモードと選択モードで別々にマッピングを定義するときは<a class="Identifier" href="map.html#:xmap">:xmap</a><br>
-や<a class="Identifier" href="map.html#:smap">:smap</a>を使うこと。<br>
+マッピングおよびメニューが&nbsp;<a class="Identifier" href="map.html#:vmap">:vmap</a>&nbsp;または&nbsp;<a class="Identifier" href="gui.html#:vmenu">:vmenu</a>&nbsp;コマンドで定義されていると<br>
+き、それらはビジュアルモードおよび選択モードの両方で機能する。これらが選択モー<br>
+ドで使われたとき、Vim は自動的にビジュアルモードに切り替えるので、ビジュアル<br>
+モードと同じ動作が有効になる。これを望まない場合、<a class="Identifier" href="map.html#:xmap">:xmap</a>&nbsp;または&nbsp;<a class="Identifier" href="map.html#:smap">:smap</a>&nbsp;を使<br>
+う。<br>
 <br>
-以下は特定のエッジケースの一例:<br>
+1 つの特定のエッジケース:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:vnoremap &lt;C-K&gt; &lt;Esc&gt;</div>
-これは、ビジュアルモードの時はビジュアルモードが終了するが、選択モードの時は、<br>
-マップされたキーの実行後に選択モードが復元されるため動作しない。以下を使用する<br>
-必要がある:<br>
+これはビジュアルモードではビジュアルモードを終了するが、選択モードでは機能しな<br>
+い。なぜなら、マップされたキーを実行した後に選択モードが復元されるからである。<br>
+以下を使う必要がある:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:snoremap &lt;C-K&gt; &lt;Esc&gt;</div>
 <br>
-ユーザーは印字可能な文字を押すと選択された領域が置換されることを期待している。<br>
-そのため、選択モードで印字可能な文字にマップするのは避けること。または&nbsp;<a class="Identifier" href="map.html#:map">:map</a><br>
-と<a class="Identifier" href="map.html#:vmap">:vmap</a>のあとで&nbsp;<a class="Identifier" href="map.html#:sunmap">:sunmap</a>&nbsp;をして選択モードに対するマップを削除すること。<br>
+ユーザーは、印字可能文字が選択された領域を置き換えることを期待するだろう。した<br>
+がって、選択モードで印字可能文字をマップするのは避けること。または、<a class="Identifier" href="map.html#:map">:map</a>&nbsp;お<br>
+よび&nbsp;<a class="Identifier" href="map.html#:vmap">:vmap</a>&nbsp;の後に&nbsp;<a class="Identifier" href="map.html#:sunmap">:sunmap</a>&nbsp;&nbsp;を使って、選択モードでそれを削除する。<br>
 <br>
-マッピング及びメニューが終了した後には、選択領域が削除されるか、他のバッファに<br>
-切り替わるか、ウィンドウのレイアウトが変更されない限り、選択領域が再び有効にな<br>
-り選択モードになる。<br>
+マッピングまたはメニューが終了した後、選択された領域が削除されたか、別のバッ<br>
+ファがカレントになったか、またはウィンドウレイアウトが変更された場合を除き、選<br>
+択範囲が再び有効になり、選択モードに入る。<br>
 <br>
-文字が入力されたとき、選択領域が削除されて挿入モードに入り、その文字に対し挿入<br>
-モードのマッピングが適用される。これは、選択モードで入力された文字に挿入モード<br>
-のマッピングが適用されることを意味するため、おそらく混乱を招くだろう。そのうえ<br>
-言語マッピングも適用される。<br>
+選択範囲を削除して挿入モードを開始させる文字がタイプされたとき、挿入モードの<br>
+マッピングがこの文字に適用される。これは、挿入モードのマッピングが選択モードで<br>
+タイプされた文字に適用されることを意味するので、多少の混乱を引き起こすかもしれ<br>
+ない。言語マッピングも同様に適用される。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#gV" name="gV">gV</a>&nbsp;<a class="Constant" href="visual.html#v_gV" name="v_gV">v_gV</a><br>
-gV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択モードのマッピング及びメニューが終了したあとでビ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ジュアル領域が再度自動的に選択されるのを抑制する。マッ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ピングやメニューの終わる直前にこれを使用する。少なくと<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;もセレクションのあらゆる操作の後に行われるべきである。<br>
+gV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択モードのマッピングまたはメニューが終了した後の、ビ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ジュアル領域の自動的な再選択を避ける。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これをマッピングまたはメニューの終わりの直前に置く。少<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;なくとも、選択範囲に対するすべての操作の後にあるべきで<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ある。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#gh" name="gh">gh</a><br>
-gh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文字選択モードを開始する。これは &quot;v&quot; に似ているが、ビ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ジュアルモードの代わりに選択モードを開始する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;覚え方: &quot;get highlighted&quot;<br>
+gh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択モードを文字単位で開始する。これは &quot;v&quot; と同様だが、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモードの代わりに選択モードを開始する。覚え方:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;get highlighted&quot;。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#gH" name="gH">gH</a><br>
-gH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行選択モードを開始する。これは &quot;V&quot; に似ているが、ビジュ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;アルモードの代わりに選択モードを開始する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;覚え方: &quot;get Highlighted&quot;.<br>
+gH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択モードを行単位で開始する。これは &quot;V&quot; と同様だが、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモードの代わりに選択モードを開始する。覚え方:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;get Highlighted&quot;。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="visual.html#g_CTRL-H" name="g_CTRL-H">g_CTRL-H</a><br>
-g&nbsp;<span class="Special">CTRL-H</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;矩形選択モードを開始する。これは&nbsp;<span class="Special">CTRL-V</span>&nbsp;に似ているが、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモードの代わりに選択モードを開始する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;覚え方: &quot;get Highlighted&quot;.<br>
+g&nbsp;<span class="Special">CTRL-H</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;選択モードを矩形で開始する。これは&nbsp;<span class="Special">CTRL-V</span>&nbsp;と同様だが、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモードの代わりに選択モードを開始する。覚え方:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;get Highlighted&quot;。<br>
 <br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>
