@@ -9,67 +9,68 @@ helpname: 'usr_03'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルの移動<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; あちこち移動する<br>
 <br>
 <br>
-文を入力したり削除したりするには、カーソルを目的の場所に動かさなくてはなりませ<br>
-ん。Vim にはカーソル移動のためのコマンドがたくさんあります。本章では、その中で<br>
-も重要なコマンドの使い方を述べます。コマンドの一覧は&nbsp;<a class="Identifier" href="quickref.html#Q_lr">Q_lr</a>&nbsp;を参照してくださ<br>
-い。<br>
+テキストを挿入または削除する前に、カーソルを正しい場所に移動しなければなりませ<br>
+ん。Vim には、カーソルを位置付けるための多数のコマンドがあります。この章では、<br>
+最も重要なものの使い方を示します。これらのコマンドの一覧は、以下の&nbsp;<a class="Identifier" href="quickref.html#Q_lr">Q_lr</a>&nbsp;にあ<br>
+ります。<br>
 <br>
-<a class="Identifier" href="usr_03.html#03.1">03.1</a>&nbsp;&nbsp;単語ごとの移動<br>
-<a class="Identifier" href="usr_03.html#03.2">03.2</a>&nbsp;&nbsp;行頭、行末への移動<br>
+<a class="Identifier" href="usr_03.html#03.1">03.1</a>&nbsp;&nbsp;単語単位の移動<br>
+<a class="Identifier" href="usr_03.html#03.2">03.2</a>&nbsp;&nbsp;行の先頭または末尾への移動<br>
 <a class="Identifier" href="usr_03.html#03.3">03.3</a>&nbsp;&nbsp;文字への移動<br>
-<a class="Identifier" href="usr_03.html#03.4">03.4</a>&nbsp;&nbsp;カッコの対応<br>
+<a class="Identifier" href="usr_03.html#03.4">03.4</a>&nbsp;&nbsp;対応する括弧<br>
 <a class="Identifier" href="usr_03.html#03.5">03.5</a>&nbsp;&nbsp;特定の行への移動<br>
-<a class="Identifier" href="usr_03.html#03.6">03.6</a>&nbsp;&nbsp;現在の場所を表示<br>
-<a class="Identifier" href="usr_03.html#03.7">03.7</a>&nbsp;&nbsp;スクロール<br>
+<a class="Identifier" href="usr_03.html#03.6">03.6</a>&nbsp;&nbsp;どこにいるかを知る<br>
+<a class="Identifier" href="usr_03.html#03.7">03.7</a>&nbsp;&nbsp;あちこちスクロールする<br>
 <a class="Identifier" href="usr_03.html#03.8">03.8</a>&nbsp;&nbsp;簡単な検索<br>
-<a class="Identifier" href="usr_03.html#03.9">03.9</a>&nbsp;&nbsp;簡単なパターン検索<br>
-<a class="Identifier" href="usr_03.html#03.10">03.10</a>&nbsp;マークの使用<br>
+<a class="Identifier" href="usr_03.html#03.9">03.9</a>&nbsp;&nbsp;簡単な検索パターン<br>
+<a class="Identifier" href="usr_03.html#03.10">03.10</a>&nbsp;マークを使う<br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_04.html">usr_04.txt</a>&nbsp;&nbsp;簡単な編集<br>
-前章:&nbsp;<a class="Identifier" href="usr_02.html">usr_02.txt</a>&nbsp;&nbsp;初めての Vim<br>
+次章:&nbsp;<a class="Identifier" href="usr_04.html">usr_04.txt</a>&nbsp;&nbsp;小さな変更を加える<br>
+前章:&nbsp;<a class="Identifier" href="usr_02.html">usr_02.txt</a>&nbsp;&nbsp;Vim での最初の一歩<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_03.html#03.1" name="03.1">03.1</a>&nbsp;&nbsp;単語ごとの移動<br>
+<a class="Constant" href="usr_03.html#03.1" name="03.1">03.1</a>&nbsp;&nbsp;単語単位の移動<br>
 <br>
-カーソルを 1 単語先に進めるには、&quot;w&quot; コマンドを使います。他の Vim コマンドもそ<br>
-うですが、複数の単語を一気に進めるために数値 (カウンタ) による回数指定ができま<br>
-す。例えば、&quot;3w&quot; では 3 単語進みます。図で示すと次のようになります (&quot;x&quot; でマー<br>
-クされた位置から開始します):<br>
+カーソルを 1 単語前方に移動するには、&quot;w&quot; コマンドを使います。ほとんどの Vim コ<br>
+マンドと同様に、数値のプリフィックスを使って複数の単語を越えて移動できます。例<br>
+えば、&quot;3w&quot; は 3 単語移動します。この図は、それがどのように機能するかを示してい<br>
+ます (&quot;x&quot; でマークされた位置から開始します):<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">This is a line with example text</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x--&gt;--&gt;-&gt;-----------------&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; w&nbsp;&nbsp;w&nbsp;&nbsp;w&nbsp;&nbsp;&nbsp;&nbsp;3w<br>
 <br>
-&quot;w&quot; で次の単語の先頭に移動します。既にカーソルが単語の先頭にある場合は、その次<br>
-の単語の先頭に移動します。<br>
-逆に &quot;b&quot; コマンドで直前の単語の先頭に戻ります。<br>
+すでに単語の先頭にいる場合、&quot;w&quot; は次の単語の先頭に移動することに注意してくださ<br>
+い。<br>
+&nbsp;&nbsp; &quot;b&quot; コマンドは、前の単語の先頭へ後方に移動します:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">This is a line with example text</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;----&lt;--&lt;-&lt;---------&lt;--x<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b&nbsp;&nbsp; b b&nbsp;&nbsp;&nbsp;&nbsp;2b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b<br>
 <br>
-&quot;e&quot; コマンドで次の単語の末尾に移動します。&quot;ge&quot; で直前の単語の末尾に移動します。<br>
+次の単語の末尾に移動する &quot;e&quot; コマンド、および前の単語の末尾に移動する &quot;ge&quot; も<br>
+あります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">This is a line with example text</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;----<span class="Special">&lt;----x----&gt;</span>------------&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2ge&nbsp;&nbsp; ge&nbsp;&nbsp;&nbsp;&nbsp; e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2e<br>
 <br>
-カーソルが行末の単語にある場合、&quot;w&quot; コマンドは次の行の最初の単語に進みます。こ<br>
-れを使うと &quot;l&quot; よりもずっと速く文章の中を動けます。&quot;b&quot; は &quot;w&quot; の逆方向に同じ<br>
-ルールで動きます。<br>
+行の最後の単語にいる場合、&quot;w&quot; コマンドは次の行の最初の単語に移動します。した<br>
+がって、これを使って段落の中を移動することができ、&quot;l&quot; を使うよりずっと速いで<br>
+す。&quot;b&quot; は逆方向に同じことをします。<br>
 <br>
-単語は &quot;.&quot; や &quot;-&quot;、&quot;)&quot; といったアルファベット以外の文字で区切られます。Vimが何<br>
-を単語とみなすかは、<a class="Type" href="options.html#'iskeyword'">'iskeyword'</a>&nbsp;オプションの設定で変更できます。ヘルプで直接試<br>
-したい場合は正しく動作させる為に以下の様に&nbsp;<a class="Type" href="options.html#'iskeyword'">'iskeyword'</a>&nbsp;をリセットする必要があ<br>
-ります:<br>
+単語は、&quot;.&quot;、&quot;-&quot;、または &quot;)&quot; のような、単語でない文字で終わります。Vim が何を<br>
+単語とみなすかを変更するには、<a class="Type" href="options.html#'iskeyword'">'iskeyword'</a>&nbsp;オプションを参照してください。これを<br>
+ヘルプの中で直接試す場合、例が機能するためには&nbsp;<a class="Type" href="options.html#'iskeyword'">'iskeyword'</a>&nbsp;をリセットする必要<br>
+があります:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set iskeyword&amp;</div>
-空白を区切りとした単語(WORD)を移動することもできます。これは普段意識する単語<br>
-(word)とは若干違うため、大文字を使っています。WORD単位で動くコマンドは全部大<br>
-文字です。図で示すと次の通りです。<br>
+空白で区切られた WORD 単位で移動することもできます。これは通常の意味での単語で<br>
+はないので、大文字が使われています。この図が示すように、WORD 単位で移動するコ<br>
+マンドも大文字です:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ge&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;-&nbsp;&nbsp;&nbsp;&nbsp; &lt;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---&gt;<br>
@@ -77,17 +78,18 @@ helpname: 'usr_03'
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;----- &lt;-----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --------------------&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -----&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; gE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; W&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; E<br>
 <br>
-小文字と大文字のコマンドを両方使うと、文章中をより素早く動けるようになります。<br>
+小文字および大文字のコマンドをこのように組み合わせると、段落の中を素早く前方お<br>
+よび後方に移動できます。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_03.html#03.2" name="03.2">03.2</a>&nbsp;&nbsp;行頭、行末への移動<br>
+<a class="Constant" href="usr_03.html#03.2" name="03.2">03.2</a>&nbsp;&nbsp;行の先頭または末尾への移動<br>
 <br>
-&quot;$&quot; コマンドでカーソルを行末に移動します。キーボードに<span class="Special">&lt;End&gt;</span>キーがあれば、それも<br>
-同じ意味で使えます。<br>
+&quot;$&quot; コマンドは、カーソルを行の末尾に移動します。あなたのキーボードに&nbsp;<span class="Special">&lt;End&gt;</span>&nbsp;キー<br>
+がある場合、それも同じことをします。<br>
 <br>
-&quot;^&quot; コマンドでカーソルを行頭から最初の非空白文字に移動します。&quot;0&quot; (数字のゼロ)<br>
-コマンドは行頭に移動します。<span class="Special">&lt;Home&gt;</span>キーも同じです。図で示しましょう (&quot;.&quot; は空白<br>
-を示します):<br>
+&quot;^&quot; コマンドは、行の最初の空白でない文字に移動します。&quot;0&quot; コマンド (ゼロ) は行<br>
+のまさに最初の文字に移動し、<span class="Special">&lt;Home&gt;</span>&nbsp;キーも同じことをします。図で示すと (&quot;.&quot; は<br>
+空白を示します):<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;-----------x<br>
@@ -95,65 +97,65 @@ helpname: 'usr_03'
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;----------------x&nbsp;&nbsp; x--------------&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$<br>
 <br>
-(&quot;.....&quot; は空白文字があることを示します)<br>
+(ここでは &quot;.....&quot; は空白を示します)<br>
 <br>
-&quot;$&quot; コマンドでも他の移動コマンドのようにカウンタの指定ができます。行末への移動<br>
-を何度やっても意味がありませんので、&quot;$&quot; コマンドでのカウンタは他の行の行末への<br>
-移動の意味になります。例えば、&quot;1$&quot; は &quot;$&quot; と同じで現在行の行末への移動ですが、<br>
-&quot;2$&quot; は次の行末への移動、&quot;3$&quot; は 2 行下の行末への移動、となります。<br>
-&quot;0&quot; コマンドは回数指定できません。これは、&quot;0&quot; 自身が回数指定の一部になってしま<br>
-うからです。&quot;^&quot; に回数指定をした場合は単に無視されます。<br>
+&nbsp;&nbsp; &quot;$&quot; コマンドは、ほとんどの移動コマンドと同様に、カウントを受け付けます。し<br>
+かし、行の末尾に何回も移動することは意味がありません。したがって、それはエディ<br>
+タを別の行の末尾に移動させます。例えば、&quot;1$&quot; は最初の行 (今いる行) の末尾に、<br>
+&quot;2$&quot; は次の行の末尾に移動し、以下同様です。<br>
+&nbsp;&nbsp; &quot;0&quot; コマンドは、&quot;0&quot; がカウントの一部になってしまうので、カウント引数を受け<br>
+付けません。意外なことに、&quot;^&quot; にカウントを付けて使っても何の効果もありません。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_03.html#03.3" name="03.3">03.3</a>&nbsp;&nbsp;文字への移動<br>
 <br>
-特に便利な移動コマンドはいくつかありますが、一文字検索コマンドもその一つです。<br>
-コマンド &quot;fx&quot; はその行にある文字 x を前方検索します。(f は Find の意味です)。<br>
-例えば、次の文の先頭にカーソルがあり、human の h に移動したいとします。&quot;fh&quot;<br>
-コマンドを実行すると、'h' の上にカーソルが進みます。<br>
+最も便利な移動コマンドの 1 つは、1 文字検索コマンドです。&quot;fx&quot; コマンドは、行の<br>
+中で 1 文字の x を前方に検索します。ヒント: &quot;f&quot; は &quot;Find&quot; を表します。<br>
+&nbsp;&nbsp; 例えば、以下の行の先頭にいます。human の h に移動したいとします。&quot;fh&quot; コマ<br>
+ンドを実行するだけで、カーソルは h の上に置かれます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">To err is human.&nbsp;&nbsp;To really foul up you need a computer.</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;----------&gt;---------------&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fy<br>
 <br>
-続いて、&quot;fy&quot; コマンドで really の y まで移動できます。<br>
-これもカウンタ指定ができます。例えば次の文の foul の l に進むには &quot;3fl&quot; です。<br>
+これは、&quot;fy&quot; コマンドが単語 really の末尾に移動することも示しています。<br>
+&nbsp;&nbsp; カウントを指定できます。したがって、&quot;3fl&quot; で &quot;foul&quot; の &quot;l&quot; に移動できます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">To err is human.&nbsp;&nbsp;To really foul up you need a computer.</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---------------------&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3fl<br>
 <br>
-&quot;F&quot; コマンドで左向きに検索できます。<br>
+&quot;F&quot; コマンドは左に向かって検索します:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">To err is human.&nbsp;&nbsp;To really foul up you need a computer.</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;---------------------<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fh<br>
 <br>
-&quot;tx&quot; コマンドは &quot;fx&quot; コマンドに似た動きをしますが、検索した文字の上ではなく、<br>
-その直前で止まります。(tはToの意味です)<br>
-このコマンドの逆方向版は &quot;Tx&quot; です。<br>
+&quot;tx&quot; コマンドは、検索した文字の 1 文字手前で止まることを除いて、&quot;fx&quot; コマンド<br>
+のように機能します。ヒント: &quot;t&quot; は &quot;To&quot; を表します。このコマンドの後方版は<br>
+&quot;Tx&quot; です。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">To err is human.&nbsp;&nbsp;To really foul up you need a computer.</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;------------&nbsp;&nbsp;-------------&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Th&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tn<br>
 <br>
-この 4 つのコマンドは &quot;;&quot; コマンドで繰り返せます。反対方向に繰り返すには &quot;,&quot;<br>
-コマンドです。このコマンドは、カーソルが他の行に移動することはありません。文が<br>
-次行に続いていても移動しません。<br>
+これら 4 つのコマンドは &quot;;&quot; で繰り返すことができます。&quot;,&quot; は逆方向に繰り返しま<br>
+す。カーソルが別の行に移動することは決してありません。文が続いているときでもで<br>
+す。<br>
 <br>
-検索をしようとして、コマンドを打ち間違うこともあるでしょう。例えば、逆方向検索<br>
-のつもりで (&quot;F&quot; と打つべきところを) &quot;f&quot; と打ってしまったとしましょう。コマンド<br>
-の実行を取り止めるには<span class="Special">&lt;Esc&gt;</span>を押します。&quot;f<span class="Special">&lt;Esc&gt;</span>&quot; は<span class="Special">&lt;Esc&gt;</span>を探すのではなく、コマ<br>
-ンドをキャンセルします。Note:<span class="Special">&lt;Esc&gt;</span>は検索に限らず、ほとんどのコマンドをキャンセ<br>
-ルするのに使えます。<br>
+検索を開始してから、間違ったコマンドをタイプしたことに気付くことがあるでしょ<br>
+う。例えば、後方に検索するために &quot;f&quot; をタイプしてから、本当は &quot;F&quot; のつもりだっ<br>
+たことに気付きます。検索を中止するには、<span class="Special">&lt;Esc&gt;</span>&nbsp;を押します。したがって、&quot;f<span class="Special">&lt;Esc&gt;</span>&quot;<br>
+は中止された前方検索であり、何もしません。<span class="Todo">Note:</span>&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;は、検索だけでなく、ほと<br>
+んどの操作をキャンセルします。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_03.html#03.4" name="03.4">03.4</a>&nbsp;&nbsp;カッコの対応<br>
+<a class="Constant" href="usr_03.html#03.4" name="03.4">03.4</a>&nbsp;&nbsp;対応する括弧<br>
 <br>
-プログラムを書いていると、入れ子になった () を書くことがよくあります。そのよう<br>
-な場合には、&quot;%&quot; コマンドがとても便利です。このコマンドを使うと対応するカッコに<br>
-移動できます。カーソルが &quot;(&quot; の上なら対応する &quot;)&quot; に、&quot;)&quot; の上なら対応する &quot;(&quot;<br>
-に移動できます。<br>
+プログラムを書いていると、入れ子になった () の構造ができることがよくあります。<br>
+そのとき、&quot;%&quot; コマンドがとても便利です: それは対応する括弧に移動します。カーソ<br>
+ルが &quot;(&quot; の上にある場合、対応する &quot;)&quot; に移動します。&quot;)&quot; の上にある場合、対応す<br>
+る &quot;(&quot; に移動します。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;-----&gt;<br>
@@ -161,37 +163,37 @@ helpname: 'usr_03'
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;----------------&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%<br>
 <br>
-このコマンドは [] や {} のペアでも機能します。(これは&nbsp;<a class="Type" href="options.html#'matchpairs'">'matchpairs'</a>&nbsp;オプション<br>
-で定義できます)<br>
+これは [] および {} のペアでも機能します。(これは&nbsp;<a class="Type" href="options.html#'matchpairs'">'matchpairs'</a>&nbsp;オプションで定<br>
+義できます。)<br>
 <br>
-カーソルがカッコの上にない場合、&quot;%&quot; はまず前方検索をしてカッコを探します。上記<br>
-の例文で行頭にカーソルがあった場合、&quot;%&quot; は前方検索をして &quot;(&quot; を見つけ、それか<br>
-ら、対応するカッコ &quot;)&quot; に移動します。<br>
+カーソルが有用な文字の上にないとき、&quot;%&quot; は前方を検索してそれを見つけます。した<br>
+がって、カーソルが前の例の行の先頭にある場合、&quot;%&quot; は前方を検索して最初の &quot;(&quot;<br>
+を見つけます。それから、それに対応するものに移動します:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">if (a == (b * c) / d)</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---+----------------&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %<br>
 <br>
-コードを動き回る他の方法は&nbsp;<a class="Identifier" href="usr_29.html">usr_29.txt</a>&nbsp;に記載があります。<br>
+コードの中を移動する他の方法は&nbsp;<a class="Identifier" href="usr_29.html">usr_29.txt</a>&nbsp;にあります。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_03.html#03.5" name="03.5">03.5</a>&nbsp;&nbsp;特定の行への移動<br>
 <br>
-CやC++のプログラマであれば、次のようなパターンのエラーメッセージはおなじみで<br>
-しょう。<br>
+C または C++ のプログラマの場合、以下のようなエラーメッセージに見覚えがあるで<br>
+しょう:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">prog.c:33: j&nbsp;&nbsp; undeclared (first use in this function)</span><br>
 <br>
-何か33行目に修正しないといけない点がありそうです。では、どうやって33行目に移動<br>
-しましょうか？ &quot;9999k&quot; などとしてファイルの先頭まで移動してから、&quot;32j&quot; で32行<br>
-下に移動するやり方もあります。確かに目的は達しますが、あまりいい方法とは思えま<br>
-せん。そこで &quot;G&quot; というコマンドを使います。このコマンドにカウンタを指定すると、<br>
-その行にジャンプできます。例えば、&quot;33G&quot; とすれば、33行目にジャンプできます。<br>
-(実はコンパイラのエラーリストを使ってもっと簡単に移動する方法もあります。<br>
-<a class="Identifier" href="usr_30.html">usr_30.txt</a>&nbsp;の &quot;:make&quot; コマンドをご覧ください。)<br>
-カウンタを指定しなかった場合はファイルの最終行にジャンプします。ファイルの先頭<br>
-にジャンプするには &quot;gg&quot; を使います。&quot;1G&quot; でも同じですが、ちょっと打ちにくいで<br>
-すから。<br>
+これは、33 行目の何かを修正したほうがよいかもしれないことを伝えています。では、<br>
+どうやって 33 行目を見つけるのでしょうか? 1 つの方法は、&quot;9999k&quot; を実行してファ<br>
+イルの先頭に行き、&quot;32j&quot; で 32 行下に移動することです。良い方法ではありません<br>
+が、機能します。もっとずっと良い方法は、&quot;G&quot; コマンドを使うことです。カウントを<br>
+付けると、このコマンドは指定された行番号に移動します。例えば、&quot;33G&quot; は 33 行目<br>
+に移動します。(コンパイラのエラーリストをたどるより良い方法については、<br>
+<a class="Identifier" href="usr_30.html">usr_30.txt</a>&nbsp;の :make コマンドについての情報を参照してください。)<br>
+&nbsp;&nbsp; 引数なしでは、&quot;G&quot; はファイルの末尾に移動します。ファイルの先頭に行く素早い<br>
+方法は &quot;gg&quot; を使うことです。&quot;1G&quot; も同じことをしますが、ほんの少しタイプが多く<br>
+なります。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; first line of a file&nbsp;&nbsp; ^<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; text text text text&nbsp;&nbsp;&nbsp;&nbsp;|<br>
@@ -204,13 +206,12 @@ CやC++のプログラマであれば、次のようなパターンのエラー�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text text text text&nbsp;&nbsp;&nbsp;&nbsp;|<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;last line of a file&nbsp;&nbsp;&nbsp;&nbsp;V<br>
 <br>
-特定行に移動するもう一つの方法はカウンタ付きの &quot;%&quot; コマンドです。例えば、&quot;50%&quot;<br>
-でファイルの真ん中に移動できます。&quot;90%&quot; ならファイルのほぼ最後(90%の場所) に移<br>
-動します。<br>
+行に移動する別の方法は、&quot;%&quot; コマンドにカウントを付けて使うことです。例えば、<br>
+&quot;50%&quot; はファイルの中ほどに移動します。&quot;90%&quot; は末尾近くに移動します。<br>
 <br>
-以上述べたのは、画面上に見えているかどうかに関係なくファイルの特定行に移動した<br>
-い場合のコマンドでした。では画面上に見えている行に移動したい場合はどうしましょ<br>
-うか？そういう時に使える 3 つのコマンドを下図に示します。<br>
+前述のことは、ファイル内の行に、それが現在見えているかどうかに関係なく移動した<br>
+いことを前提としています。見えている行の 1 つに移動したい場合はどうでしょうか?<br>
+この図は、使用できる 3 つのコマンドを示しています:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+---------------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H --&gt;&nbsp;&nbsp; | text sample text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
@@ -224,56 +225,59 @@ CやC++のプログラマであれば、次のようなパターンのエラー�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L --&gt;&nbsp;&nbsp; | text sample text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+---------------------------+<br>
 <br>
-(&quot;H&quot; はHome、&quot;M&quot; はMiddle、&quot;L&quot; はLastの意味です。あるいは、&quot;H&quot; をHigh, &quot;M&quot; を<br>
-Middle, &quot;L&quot; をLowともみなせます)<br>
+ヒント: &quot;H&quot; は Home、&quot;M&quot; は Middle、および &quot;L&quot; は Last を表します。あるいは、<br>
+&quot;H&quot; は High、&quot;M&quot; は Middle、および &quot;L&quot; は Low を表します。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_03.html#03.6" name="03.6">03.6</a>&nbsp;&nbsp;現在の場所を表示<br>
+<a class="Constant" href="usr_03.html#03.6" name="03.6">03.6</a>&nbsp;&nbsp;どこにいるかを知る<br>
 <br>
-ファイル中の現在の場所を知るには、次の 3 つの方法があります。<br>
+ファイルの中のどこにいるかを知るには、3 つの方法があります:<br>
 <br>
-1.&nbsp;&nbsp;<span class="Special">CTRL-G</span>コマンド。次のようなメッセージが表示されます。(<a class="Type" href="options.html#'ruler'">'ruler'</a>&nbsp;オプション<br>
-&nbsp;&nbsp;&nbsp;&nbsp;がオフの場合)<br>
+1.&nbsp;&nbsp;<span class="Special">CTRL-G</span>&nbsp;コマンドを使います。次のようなメッセージが表示されます (<a class="Type" href="options.html#'ruler'">'ruler'</a>&nbsp;オ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;プションがオフであると仮定します):<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;usr_03.txt&quot; line 233 of 650 --35%-- col 45-52</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;編集中のファイル名、カーソルのある行番号、全体の行数、ファイル全体を<br>
-&nbsp;&nbsp;&nbsp;&nbsp;通してのパーセント、カーソル桁位置、を表示します。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;場合によっては、カーソル桁位置が 2 つに分けて表示されます。例えば、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&quot;col 2-9&quot; の場合、カーソルは 2 文字目にあります。2 文字のうち、1 文字がタ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;ブ文字で、8 文字分で表示されているため、画面上では 9 桁目にある、というこ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;とです。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;これは、編集しているファイルの名前、カーソルのある行番号、総行数、ファイル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;全体の中での割合、およびカーソルのカラムを表示します。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 時々、分割されたカラム番号が表示されます。例えば、&quot;col 2-9&quot; です。これ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;は、カーソルが 2 番目の文字の上にあることを示していますが、1 番目の文字が<br>
+&nbsp;&nbsp;&nbsp;&nbsp;タブで、8 個分のスペースのカラムを占めているので、画面上のカラムは 9 です。<br>
 <br>
-2.&nbsp;&nbsp;<a class="Type" href="options.html#'number'">'number'</a>&nbsp;オプションを設定する。行頭に行番号が表示されるようになります:<br>
+2.&nbsp;&nbsp;<a class="Type" href="options.html#'number'">'number'</a>&nbsp;オプションを設定します。これにより、すべての行の前に行番号が表示<br>
+&nbsp;&nbsp;&nbsp;&nbsp;されます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set number</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;オプションをオフに戻すには:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;これを再びオフにするには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set nonumber</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'number'">'number'</a>&nbsp;は切替オプションなので、オプション名の先頭に &quot;no&quot; をつければオフ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;にできます。切替オプションにはオンかオフの 2 つの状態しかありません。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Vimには多数のオプションがあります。切替オプションの他に、数値オプションと<br>
-&nbsp;&nbsp;&nbsp;&nbsp;文字列オプションがあります。それらのオプションの設定方法はそのうち説明しま<br>
-&nbsp;&nbsp;&nbsp;&nbsp;す。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'number'">'number'</a>&nbsp;は切替オプションなので、その名前の前に &quot;no&quot; を付けると、それをオ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;フにする効果があります。切替オプションは、この 2 つの値しか持たず、オンま<br>
+&nbsp;&nbsp;&nbsp;&nbsp;たはオフのどちらかです。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vim にはたくさんのオプションがあります。切替オプションの他に、数値の値<br>
+&nbsp;&nbsp;&nbsp;&nbsp;を持つオプションおよび文字列オプションがあります。これらの例は、それらが使<br>
+&nbsp;&nbsp;&nbsp;&nbsp;われるところで見ることになるでしょう。<br>
 <br>
-3.&nbsp;&nbsp;<a class="Type" href="options.html#'ruler'">'ruler'</a>&nbsp;オプションを設定する。現在のカーソル位置が、Vimウィンドウの右下隅<br>
-&nbsp;&nbsp;&nbsp;&nbsp;に表示されるようになります:<br>
+3.&nbsp;&nbsp;<a class="Type" href="options.html#'ruler'">'ruler'</a>&nbsp;オプションを設定します。これにより、Vim ウィンドウの右下隅にカーソ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ル位置が表示されます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set ruler</div>
 <br>
-<a class="Type" href="options.html#'ruler'">'ruler'</a>&nbsp;は表示に場所を取らないので、画面を広く使えます。<br>
+<a class="Type" href="options.html#'ruler'">'ruler'</a>&nbsp;オプションを使うことには、あまり場所を取らないので、あなたのテキストの<br>
+ためのスペースが多くなるという利点があります。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_03.html#03.7" name="03.7">03.7</a>&nbsp;&nbsp;スクロール<br>
+<a class="Constant" href="usr_03.html#03.7" name="03.7">03.7</a>&nbsp;&nbsp;あちこちスクロールする<br>
 <br>
-<span class="Special">CTRL-U</span>&nbsp;コマンドで画面の半分だけ下にスクロールします。窓を通してテキストを見て<br>
-いて、その窓を高さの半分だけ上に動かす、と考えてください。窓が上に動き、さっき<br>
-より上の位置のテキストが表示されます。どっちが上でどっちが下かわかりにくいかと<br>
-思いますが、気にすることはありません。みんな同じように悩むことですから。<br>
-<span class="Special">CTRL-D</span>コマンドは窓を半分だけ下げます。つまりテキストが画面の半分だけ上にスク<br>
-ロールすることになります。<br>
+<span class="Special">CTRL-U</span>&nbsp;コマンドは、テキストを半画面下にスクロールします。表示用の窓を通してテ<br>
+キストを見ていて、この窓をウィンドウの高さの半分だけ上に動かすことを考えてくだ<br>
+さい。したがって、窓はテキストの上を上に移動し、これはファイルの中では後方で<br>
+す。どちらが上なのかを覚えるのに少し苦労する場合でも、心配しないでください。ほ<br>
+とんどのユーザーが同じ問題を抱えています。<br>
+&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-D</span>&nbsp;コマンドは、表示用の窓をファイルの中で半画面下に動かし、したがってテ<br>
+キストを半画面上にスクロールします。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +----------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | some text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
@@ -293,16 +297,18 @@ Middle, &quot;L&quot; をLowともみなせます)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | example&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +----------------+<br>
 <br>
-1 行だけスクロールするには<span class="Special">CTRL-E</span>(スクロールアップ)と<span class="Special">CTRL-Y</span>&nbsp;(スクロールダウン)<br>
-を使います。(MS-Windows互換のキーマップをお使いの場合、<span class="Special">CTRL-Y</span>はスクロールでは<br>
-なく、redo コマンドとなります)<br>
+1 行ずつスクロールするには、<span class="Special">CTRL-E</span>&nbsp;(上にスクロール) および&nbsp;<span class="Special">CTRL-Y</span>&nbsp;(下にスクロー<br>
+ル) を使います。<span class="Special">CTRL-E</span>&nbsp;は、1 行 Extra をくれるものと考えてください。<br>
+(MS-Windows 互換のキーマッピングを使っている場合、<span class="Special">CTRL-Y</span>&nbsp;はスクロールする代わ<br>
+りに変更を redo します。)<br>
 <br>
-1 画面分スクロールするには<span class="Special">CTRL-F</span>を使います(2行は重複します)。逆方向へのスク<br>
-ロールは<span class="Special">CTRL-B</span>コマンドを使います。<span class="Special">CTRL-F</span>はForward、<span class="Special">CTRL-B</span>はBackward、ですから<br>
-覚えやすいでしょう。<br>
+画面全体 (2 行を除く) 分前方にスクロールするには、<span class="Special">CTRL-F</span>&nbsp;を使います。後方にス<br>
+クロールするには、<span class="Special">CTRL-B</span>&nbsp;を使います。これらは覚えやすいはずです: F は<br>
+Forwards、および B は Backwards です。<br>
 <br>
-&quot;j&quot; で何行も下に移動して、カーソルが画面の最下段にあるとします。カーソル前後の<br>
-行を表示したい場合は &quot;zz&quot; コマンドを使います。<br>
+よくある問題は、&quot;j&quot; で何行も下に移動した後、あなたのカーソルが画面の一番下にあ<br>
+ることです。カーソルのある行のコンテキストを見たいでしょう。それは &quot;zz&quot; コマン<br>
+ドで行います。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+------------------+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| earlier text&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | earlier text&nbsp;&nbsp;&nbsp;&nbsp; |<br>
@@ -314,272 +320,275 @@ Middle, &quot;L&quot; をLowともみなせます)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| line with cursor |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | later text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+------------------+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +------------------+<br>
 <br>
-&quot;zt&quot; コマンドでカーソル行を画面の 1 行目として表示できます。&quot;zb&quot; コマンドなら<br>
-画面の最下段です。これ以外にもいくつかスクロールコマンドがあります。<a class="Identifier" href="quickref.html#Q_sc">Q_sc</a>を参<br>
-照してください。カーソル近辺の数行を常に表示させたい場合は、<a class="Type" href="options.html#'scrolloff'">'scrolloff'</a>&nbsp;オプ<br>
-ションを使ってください。<br>
+&quot;zt&quot; コマンドはカーソル行を一番上に置き、&quot;zb&quot; は一番下に置きます。スクロールコ<br>
+マンドは他にもいくつかあります。<a class="Identifier" href="quickref.html#Q_sc">Q_sc</a>&nbsp;を参照してください。カーソルの周りに常<br>
+に数行のコンテキストを保つには、<a class="Type" href="options.html#'scrolloff'">'scrolloff'</a>&nbsp;オプションを使います。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_03.html#03.8" name="03.8">03.8</a>&nbsp;&nbsp;簡単な検索<br>
 <br>
-文字列を検索するには &quot;/string&quot; コマンドを使います。例えば、&quot;include&quot; という単<br>
-語を探したいのであれば、次のように使います。<br>
+文字列を検索するには、&quot;/string&quot; コマンドを使います。例えば、単語 include を見<br>
+つけるには、このコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/include</div>
 <br>
-&quot;/&quot; を押すと、コマンドラインモードのときのように、カーソルがVimウィンドウの最<br>
-下段に移動します。そこで検索したい単語を入力します。入力した文字を訂正するに<br>
-は、バックスペースキー (左矢印 または&nbsp;<span class="Special">&lt;BS&gt;</span>) を使います。必要に応じて<span class="Special">&lt;Left&gt;</span>や<br>
-<span class="Special">&lt;Right&gt;</span>の矢印キーを使ってください。<br>
-<span class="Special">&lt;Enter&gt;</span>を押すとコマンドが実行されます。<br>
+&quot;/&quot; をタイプすると、コロンコマンドと同様に、カーソルが Vim ウィンドウの最終行<br>
+にジャンプすることに気付くでしょう。そこで単語をタイプします。修正するには、<br>
+バックスペースキー (後ろ向きの矢印または&nbsp;<span class="Special">&lt;BS&gt;</span>) を押すことができます。必要なと<br>
+きは、<span class="Special">&lt;Left&gt;</span>&nbsp;および&nbsp;<span class="Special">&lt;Right&gt;</span>&nbsp;カーソルキーを使います。<br>
+&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押すと、コマンドが実行されます。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文字のうち、 .*[]^%/\?~$ には特別な意味があります。検索時にこれらを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使う場合はその文字の直前に \ を置いてください。これは後(<a class="Identifier" href="usr_03.html#03.9">03.9</a>の<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後)で述べます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文字 .*[]^%/\?~$ には特別な意味があります。検索でそれらを使いたい場合、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;それらの前に \ を置かなければなりません。以下を参照してください。<br>
 <br>
-同じ文字列をもう一度探したい場合には &quot;n&quot; コマンドを使います。今のカーソル位置<br>
-の後ろにある#includeを探すには次のコマンドを使います。<br>
+同じ文字列の次の出現を見つけるには、&quot;n&quot; コマンドを使います。カーソルの後の最初<br>
+の #include を見つけるには、これを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/#include</div>
 <br>
-次に &quot;n&quot; を数回押すと、順々に #include にジャンプします。移動したい場所が何個<br>
-目かわかっているなら、カウンタも使えます。例えば、&quot;3n&quot; なら 3 つ目の #include<br>
-を探します。&quot;/&quot; にもまたカウンタを使えます: &quot;4/the&quot; は 4 つ目の &quot;the&quot; へ飛びま<br>
-す。<br>
+そして、&quot;n&quot; を何回かタイプします。テキスト内の各 #include に移動します。どの<br>
+マッチが欲しいか分かっている場合、カウントを使うこともできます。したがって、<br>
+&quot;3n&quot; は 3 番目のマッチを見つけます。&quot;/&quot; にカウントを使うこともできます:<br>
+&quot;4/the&quot; は &quot;the&quot; の 4 番目のマッチに移動します。<br>
 <br>
-&quot;?&quot; コマンドは &quot;/&quot; と同じですが、逆方向に検索します。<br>
+&quot;?&quot; コマンドは &quot;/&quot; のように機能しますが、後方に検索します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?word</div>
 <br>
-&quot;<span class="Special">N</span>&quot; コマンドは直前の検索とは反対の方向に検索を繰り返します。&quot;/&quot; の後で &quot;<span class="Special">N</span>&quot; を<br>
-使うと後方検索になり、&quot;?&quot; の後で &quot;<span class="Special">N</span>&quot; を使うと前方検索になります。<br>
+&quot;<span class="Special">N</span>&quot; コマンドは、最後の検索を逆方向に繰り返します。したがって、&quot;/&quot; コマンドの後<br>
+に &quot;<span class="Special">N</span>&quot; を使うと後方に検索し、&quot;?&quot; の後に &quot;<span class="Special">N</span>&quot; を使うと前方に検索します。<br>
 <br>
 <br>
-<span class="Statement">大文字/小文字の無視</span><br>
+<span class="Statement">大文字小文字を無視する</span><br>
 <br>
-普通は探したい文字列の大文字/小文字を正確に指定しなければなりません。大文字と<br>
-小文字を区別したくないのであれば、<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;オプションを設定します。<br>
+通常は、見つけたいものを正確にタイプしなければなりません。単語の大文字または小<br>
+文字を気にしない場合、<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;オプションを設定します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set ignorecase</div>
 <br>
-これで、&quot;word&quot; を検索すると、&quot;Word&quot; も &quot;WORD&quot; もヒットします。大文字/小文字を<br>
-区別するように戻すのは次のコマンドです。<br>
+ここで &quot;word&quot; を検索すると、&quot;Word&quot; および &quot;WORD&quot; にもマッチします。再び大文字<br>
+小文字を一致させるには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set noignorecase</div>
 <br>
 <br>
 <span class="Statement">履歴</span><br>
 <br>
-次のような３つの検索を行ったとします。<br>
+3 回検索をしたとします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/one<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/two<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/three</div>
 <br>
-さて、&quot;/&quot; だけを入力し、まだ&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押さないでください。<span class="Special">&lt;Up&gt;</span>&nbsp;(上矢印キー)<br>
-を押すと、コマンド行に /three と表示されます。ここで&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押すと、<br>
-&quot;three&quot; が検索されます。<span class="Special">&lt;Enter&gt;</span>を押さずに<span class="Special">&lt;Up&gt;</span>を押すとコマンド行には &quot;/two&quot; と<br>
-表示されます。さらに<span class="Special">&lt;Up&gt;</span>を押すと &quot;/one&quot; となります。<br>
-同じように<span class="Special">&lt;Down&gt;</span>キーを使って逆方向に検索ヒストリを移動できます。<br>
+では、<span class="Special">&lt;Enter&gt;</span>&nbsp;を押さずに単純な &quot;/&quot; をタイプして検索を始めてみましょう。<span class="Special">&lt;Up&gt;</span><br>
+(カーソルキー) を押すと、Vim はコマンドラインに &quot;/three&quot; を置きます。この時点<br>
+で&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押すと、three を検索します。<span class="Special">&lt;Enter&gt;</span>&nbsp;を押さずに、代わりに&nbsp;<span class="Special">&lt;Up&gt;</span>&nbsp;を<br>
+押した場合、Vim はプロンプトを &quot;/two&quot; に変更します。もう 1 回&nbsp;<span class="Special">&lt;Up&gt;</span>&nbsp;を押すと、<br>
+&quot;/one&quot; に移動します。<br>
+&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Down&gt;</span>&nbsp;カーソルキーを使って、検索コマンドの履歴を逆方向に移動することもでき<br>
+ます。<br>
 <br>
-以前に使ったパターンを覚えていて、それをまた使いたい場合には、そのパターンの先<br>
-頭文字を入力してから&nbsp;<span class="Special">&lt;Up&gt;</span>&nbsp;を押してください。上の例で言えば、&quot;/o<span class="Special">&lt;Up&gt;</span>&quot; と入力す<br>
-ると、コマンドラインに &quot;/one&quot; と表示されます。<br>
+以前に使ったパターンが何で始まるかを知っていて、それを再び使いたい場合、<span class="Special">&lt;Up&gt;</span><br>
+を押す前にその文字をタイプします。前の例では、&quot;/o<span class="Special">&lt;Up&gt;</span>&quot; とタイプすると、Vim は<br>
+コマンドラインに &quot;/one&quot; を置きます。<br>
 <br>
-&quot;:&quot; で始まるコマンドにもヒストリがあります。以前のコマンドを呼び出して、再実行<br>
-できます。検索用ヒストリと &quot;:&quot; コマンドヒストリは分かれています。<br>
-<br>
-<br>
-<span class="Statement">文章中の単語の検索</span><br>
-<br>
-&quot;TheLongFunctionName&quot; という単語が文章中にあり、次に現れる場所を探したいと<br>
-します。もちろん、&quot;/TheLongFunctionName&quot; として検索もできますが、たくさんの打<br>
-鍵が必要です。それに、打ち間違えてしまうとうまく検索できません。<br>
-もっと簡単な方法があります。探したい単語の上にカーソルを置いて、&quot;*&quot; コマンドを<br>
-使うのです。カーソル位置の単語が抜き出され、それが検索文字列として使われます。<br>
-&quot;#&quot; コマンドは同じことを逆方向に実行します。このコマンドもカウンタが指定でき<br>
-ます。例えば、&quot;3*&quot; はカーソル位置の単語が 3 回目に現われる場所を探します。<br>
+&quot;:&quot; で始まるコマンドにも履歴があります。これにより、以前のコマンドを呼び戻し<br>
+て、再び実行することができます。この 2 つの履歴は別々です。<br>
 <br>
 <br>
-<span class="Statement">単語全体を一致させる検索</span><br>
+<span class="Statement">テキスト中の単語を検索する</span><br>
 <br>
-&quot;/the&quot; と検索を行うと、&quot;there&quot; などもヒットします。&quot;the&quot; で終わる単語だけを探<br>
-したい場合には次のようにします。<br>
+テキストの中に単語 &quot;TheLongFunctionName&quot; があり、その次の出現を見つけたいとし<br>
+ます。&quot;/TheLongFunctionName&quot; とタイプすることもできますが、それはタイプ量が多<br>
+いです。そして、間違えると Vim はそれを見つけられません。<br>
+&nbsp;&nbsp; もっと簡単な方法があります: カーソルを単語の上に置いて、&quot;*&quot; コマンドを使い<br>
+ます。Vim はカーソルの下の単語をつかみ、それを検索文字列として使います。<br>
+&nbsp;&nbsp; &quot;#&quot; コマンドは、逆方向に同じことをします。カウントを前に付けることができま<br>
+す: &quot;3*&quot; は、カーソルの下の単語の 3 番目の出現を検索します。<br>
+<br>
+<br>
+<span class="Statement">単語全体を検索する</span><br>
+<br>
+&quot;/the&quot; とタイプすると、&quot;there&quot; にもマッチします。&quot;the&quot; で終わる単語だけを見つ<br>
+けるには、以下を使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/the\&gt;</div>
 <br>
-&quot;\&gt;&quot; というのは特別なマーカーで、単語がここで終わっている時だけヒットします。<br>
-同じように &quot;\&lt;&quot; は単語の始まりにだけヒットします。つまり、&quot;the&quot; という単語だけ<br>
-を探したい場合は、次のようにします。<br>
+&quot;\&gt;&quot; という項目は、単語の末尾にだけマッチする特別なマーカーです。同様に、&quot;\&lt;&quot;<br>
+は単語の先頭にだけマッチします。したがって、単語 &quot;the&quot; だけを検索するには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/\&lt;the\&gt;</div>
 <br>
-これだと、&quot;there&quot; とか &quot;soothe&quot; にはヒットしません。なお、&quot;*&quot; と &quot;#&quot; コマンド<br>
-は上の「単語の先頭」と「単語の末尾」マーカーを使って、完全に一致する単語だけ<br>
-を探します。(単語の一部として検索したい時は &quot;g*&quot; と &quot;g#&quot; コマンドを使います)<br>
+これは &quot;there&quot; または &quot;soothe&quot; にはマッチしません。&quot;*&quot; および &quot;#&quot; コマンドは、<br>
+単語全体だけを見つけるために、これらの単語の先頭および単語の末尾のマーカーを使<br>
+うことに注意してください (部分的な単語にマッチさせるには、&quot;g*&quot; および &quot;g#&quot; を<br>
+使えます)。<br>
 <br>
 <br>
-<span class="Statement">検索結果の強調表示</span><br>
+<span class="Statement">マッチをハイライトする</span><br>
 <br>
-プログラムの編集中に、&quot;nr&quot; という変数を見つけ、その変数がどこで使われているか<br>
-を知りたいとします。&quot;nr&quot; の上にカーソルを移動して、&quot;*&quot; と &quot;n&quot; コマンドで片っ端<br>
-から探すのもいいですが、他にも方法があります。次のコマンドを入力してください。<br>
+プログラムを編集していて、&quot;nr&quot; という変数を見かけます。それがどこで使われてい<br>
+るかを確認したいです。カーソルを &quot;nr&quot; に移動して &quot;*&quot; コマンドを使い、&quot;n&quot; を押<br>
+してすべてのマッチをたどることもできます。<br>
+&nbsp;&nbsp; 別の方法があります。このコマンドをタイプします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set hlsearch</div>
 <br>
-&quot;nr&quot; を検索すると、ヒットした全てのパターンが強調表示されます。これなら余計な<br>
-コマンド入力が必要ないので、変数の使用箇所を確認したいときには便利です。<br>
-このオプションは次のコマンドでオフにできます。<br>
+ここで &quot;nr&quot; を検索すると、Vim はすべてのマッチをハイライトします。これは、コマ<br>
+ンドをタイプする必要なしに、変数がどこで使われているかを見るのにとても良い方法<br>
+です。<br>
+&nbsp;&nbsp; これをオフにするには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set nohlsearch</div>
 <br>
-さて上のやり方では、検索を行うたびに、いちいちオプションの切替えが必要になりま<br>
-す。単に強調表示を止めるだけなら、次のコマンドを使ってください。<br>
+そうすると、次の検索コマンドでそれを使いたい場合、再びオンにする必要がありま<br>
+す。ハイライトを取り除きたいだけの場合、このコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:nohlsearch</div>
 <br>
-これならオプションはオフになりません。強調表示だけを取り消せます。次に検索コマ<br>
-ンドを実行すると、再び強調表示されます。&quot;n&quot; や &quot;<span class="Special">N</span>&quot; を使ったときも同様です。<br>
+これはオプションをリセットしません。代わりに、ハイライトを無効にします。検索コ<br>
+マンドを実行するとすぐに、ハイライトが再び使われます。&quot;n&quot; および &quot;<span class="Special">N</span>&quot; コマンド<br>
+でもです。<br>
 <br>
 <br>
-<span class="Statement">検索のチューニング</span><br>
+<span class="Statement">検索を調整する</span><br>
 <br>
-検索の挙動を変更するオプションがいくつかあります。重要なのは次のものです:<br>
+検索の動作を変更するオプションがいくつかあります。これらが必須のものです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set incsearch</div>
 <br>
-これはいわゆるインクリメンタルサーチです。検索したい文字を入力している間にも<br>
-ヒットする文字列を探して画面に表示してくれます。これはヒットするパターンがある<br>
-かどうかのチェックに使えます。<span class="Special">&lt;Enter&gt;</span>を押すと実際にその場所にカーソルがジャン<br>
-プします。<br>
+これにより、文字列をまだタイプしている間に、Vim がその文字列のマッチを表示しま<br>
+す。正しいマッチが見つかるかどうかを確認するために、これを使います。それから、<br>
+<span class="Special">&lt;Enter&gt;</span>&nbsp;を押して実際にその場所にジャンプします。または、さらにタイプして検索文<br>
+字列を変更します。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set nowrapscan</div>
 <br>
-ファイルの末尾まで進んだら(後方検索の場合はファイルの先頭まで戻ったら)検索を停<br>
-止します。<a class="Type" href="options.html#'wrapscan'">'wrapscan'</a>&nbsp;オプションの初期設定はオンです。オンの場合は、ファイルの<br>
-末尾まで進んだら先頭に戻って検索を続けます。<br>
+これは、ファイルの末尾で検索を止めます。または、後方に検索しているときは、ファ<br>
+イルの先頭で検索を止めます。<a class="Type" href="options.html#'wrapscan'">'wrapscan'</a>&nbsp;オプションは既定でオンなので、検索はファ<br>
+イルの末尾で折り返します。<br>
 <br>
 <br>
-<span class="Statement">ところで...</span><br>
+<span class="Statement">間奏</span><br>
 <br>
-これまでに出てきたオプションを毎回設定したい場合は、スタートアップファイルにそ<br>
-のコマンドを書いてください。<br>
-<a class="Identifier" href="usr_01.html#not-compatible">not-compatible</a>の説明のとおりにファイルを編集するか、次のコマンドを入力して、<br>
-ファイルがどこにあるか確認してください。<br>
+前に述べたオプションの 1 つが気に入って、Vim を使うたびにそれを設定する場合、<br>
+そのコマンドをあなたの Vim の起動ファイルに入れることができます。<br>
+&nbsp;&nbsp;&nbsp;<a class="Identifier" href="usr_01.html#not-compatible">not-compatible</a>&nbsp;で述べたように、そのファイルを編集します。または、それがど<br>
+こにあるかを調べるために、このコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:scriptnames</div>
 <br>
-ファイルを編集するには、例えば次のようにします。<br>
+例えば以下で、ファイルを編集します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:edit ~/.vimrc</div>
 <br>
-そして、オプションを設定するためにVim上で実行したのと同じコマンドを書き加えま<br>
-す。例えば、次のようにします。<br>
+それから、Vim でタイプしたのとまったく同じように、オプションを設定するコマンド<br>
+を含む行を追加します。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Go:set hlsearch&lt;Esc&gt;</div>
 <br>
-&quot;G&quot; でファイルの末尾まで移動し、&quot;o&quot; で新しい行を挿入して &quot;:set&quot; コマンドを書く<br>
-ための空行を作っています。挿入モードの終了は<span class="Special">&lt;Esc&gt;</span>です。そして、ファイルを保存<br>
-して閉じましょう。<br>
+&quot;G&quot; はファイルの末尾に移動します。&quot;o&quot; は新しい行を開始し、そこで &quot;:set&quot; コマン<br>
+ドをタイプします。<span class="Special">&lt;Esc&gt;</span>&nbsp;で挿入モードを終了します。それから、ファイルを書き込ん<br>
+で閉じます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ZZ</div>
 <br>
-次にVimを起動すると、<a class="Type" href="options.html#'hlsearch'">'hlsearch'</a>&nbsp;オプションが最初からオンになっています。<br>
+ここで Vim を再び起動する場合、<a class="Type" href="options.html#'hlsearch'">'hlsearch'</a>&nbsp;オプションはすでに設定されています。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_03.html#03.9" name="03.9">03.9</a>&nbsp;&nbsp;簡単なパターン検索<br>
+<a class="Constant" href="usr_03.html#03.9" name="03.9">03.9</a>&nbsp;&nbsp;簡単な検索パターン<br>
 <br>
-Vimでは、検索に正規表現(regular expressions)を使います。<br>
-正規表現というのは検索パターンを指定するための、極めてパワフルでシンプルな方法<br>
-です。残念ながら、これの実力を発揮させるには少々苦労していただくことになりま<br>
-す。というのも、正規表現はちょっとばかりトリッキーなんです。<br>
-ここでは本当に基本的なものだけを述べます。パターン検索とコマンドについては<br>
-27章<a class="Identifier" href="usr_27.html">usr_27.txt</a>でもっと詳しく説明します。完全な説明は<a class="Identifier" href="pattern.html#pattern">pattern</a>にあります。<br>
+Vim エディタは、何を検索するかを指定するのに正規表現を使います。正規表現は、検<br>
+索パターンを指定するための、非常に強力で、かつ簡潔な方法です。残念ながら、正規<br>
+表現は指定するのが少し難しいので、この力には代償が伴います。<br>
+&nbsp;&nbsp; このセクションでは、必須のものをいくつかだけ述べます。検索パターンおよびコ<br>
+マンドについての詳細は、第 27 章&nbsp;<a class="Identifier" href="usr_27.html">usr_27.txt</a>&nbsp;にあります。完全な説明はここにあ<br>
+ります:&nbsp;<a class="Identifier" href="pattern.html#pattern">pattern</a>。<br>
 <br>
 <br>
-<span class="Statement">行頭と行末</span><br>
+<span class="Statement">行の先頭および末尾</span><br>
 <br>
-&quot;^&quot; は行頭を示します。英語(ASCII)キーボードでは 6 のキーに、日本語(JIS)キーボー<br>
-ドでは 0 のキーの 2 つ右側に刻印してあります。<br>
-例えば、&quot;include&quot; というパターンは 行のどこかに include という単語を含んでいれ<br>
-ば、ヒットします。一方、&quot;^include&quot; は行頭にある include にだけマッチします。<br>
-&quot;$&quot; は同様に行末にヒットします。ですから、パターン &quot;was$&quot; は、行末が was で終<br>
-わっている場合だけヒットします。<br>
+^ 文字は行の先頭にマッチします。English-US キーボードでは、それは 6 の上にあり<br>
+ます。パターン &quot;include&quot; は、行のどこにある単語 include にもマッチします。しか<br>
+し、パターン &quot;^include&quot; は、単語 include が行の先頭にある場合だけマッチします。<br>
+&nbsp;&nbsp; $ 文字は行の末尾にマッチします。したがって、&quot;was$&quot; は、単語 was が行の末尾<br>
+にある場合だけマッチします。<br>
 <br>
-下の例では、&quot;/the&quot; にマッチする箇所を &quot;xxx&quot; で示しています。<br>
+この例の行で &quot;/the&quot; がマッチする場所を &quot;x&quot; でマークしてみましょう:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">the solder holding one of the chips melted and the</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xxx<br>
 <br>
-&quot;/the$&quot; の場合は次のようになります。<br>
+&quot;/the$&quot; を使うと、このマッチが見つかります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">the solder holding one of the chips melted and the</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xxx<br>
 <br>
-&quot;/^the&quot; の場合はこうです。<br>
-<br>
+&quot;/^the&quot; ではこれが見つかります:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">the solder holding one of the chips melted and the</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xxx<br>
 <br>
-&quot;/^the$&quot; という指定もできます。この指定だと、完全に &quot;the&quot; という単語だけででき<br>
-ている行にのみヒットします。なお空白文字も意味を持ちます。ですから、&quot;the &quot; の<br>
-ように行末に空白文字を含んでいた場合は、&quot;/the$&quot; のパターンではヒットしません。<br>
+&quot;/^the$&quot; で検索してみることができます。これは、&quot;the&quot; だけからなる 1 行にだけ<br>
+マッチします。ここでは空白が問題になるので、行が &quot;the &quot; のように単語の後に空白<br>
+を含んでいる場合、パターンはマッチしません。<br>
 <br>
 <br>
-<span class="Statement">任意の 1 文字とのマッチ</span><br>
+<span class="Statement">任意の 1 文字にマッチする</span><br>
 <br>
-&quot;.&quot; はあらゆる文字にヒットします。例えば、&quot;c.m&quot; は最初が &quot;c&quot; で始まり、2 文字<br>
-目は何でも良くて、3 文字目が &quot;m&quot; であるパターンにヒットします。例を示します。<br>
+. (ドット) 文字は、存在する任意の文字にマッチします。例えば、パターン &quot;c.m&quot;<br>
+は、最初の文字が c で、2 番目の文字が何でもよく、3 番目の文字が m である文字列<br>
+にマッチします。例:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">We use a computer that became the cummin winter.</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xxx<br>
 <br>
 <br>
-<span class="Statement">特殊文字とのマッチ</span><br>
+<span class="Statement">特殊文字にマッチする</span><br>
 <br>
-例えば &quot;.&quot; という文字自体を探す時は、上で述べたような特殊な意味を &quot;\&quot; 文字を<br>
-使って無効にします。<br>
-&quot;ter.&quot; というパターンで検索をすると、次の &quot;xxx&quot; の箇所でヒットします。<br>
+本当にドットにマッチさせたい場合、その前にバックスラッシュを置くことで、その特<br>
+別な意味を回避しなければなりません。<br>
+&nbsp;&nbsp; &quot;ter.&quot; を検索すると、これらのマッチが見つかります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">We use a computer that became the cummin winter.</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xxxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xxxx<br>
 <br>
-これを &quot;ter\.&quot; で検索すると、上図の 2 つ目だけがヒットします。<br>
+&quot;ter\.&quot; を検索すると、2 番目のマッチだけが見つかります。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_03.html#03.10" name="03.10">03.10</a>&nbsp;マークの使用<br>
+<a class="Constant" href="usr_03.html#03.10" name="03.10">03.10</a>&nbsp;マークを使う<br>
 <br>
-&quot;G&quot; コマンドでジャンプすると、その直前のカーソル位置が記録されます。これをマー<br>
-クと呼びます。元の場所に戻るには、次のコマンドを使います。<br>
+&quot;G&quot; コマンドである位置にジャンプすると、Vim はこのジャンプの前の位置を記憶しま<br>
+す。この位置はマークと呼ばれます。元いた場所に戻るには、このコマンドを使います:<br>
+<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``</div>
 <br>
-この ` は backtick とか open single-quote と呼ばれる(日本では「バッククォート」<br>
-が多いでしょうか)ものです。<br>
-このコマンドを 2 回実行すると、元の場所に戻ります。これは &quot;`&quot; コマンドもジャン<br>
-プコマンドなので、実行前の場所が記録されるためです。<br>
+この ` は、バックティックまたは開きシングルクォート文字です。<br>
+&nbsp;&nbsp; 同じコマンドをもう 1 回使うと、再び戻ってジャンプします。これは、&quot;`&quot; コマン<br>
+ド自体がジャンプであり、このジャンプの前の位置が記憶されるからです。<br>
 <br>
-通常、現在行以外にカーソルが動くようなコマンドを実行した場合、それをジャンプ<br>
-と呼びます。&quot;/&quot; や &quot;n&quot; もジャンプの一種です(ジャンプ先がどれだけ離れているかは<br>
-関係ありません)。逆に、文字検索である &quot;fx&quot; や &quot;tx&quot;、単語移動である &quot;w&quot; や &quot;e&quot;<br>
-はジャンプではありません。<br>
-&quot;j&quot; や &quot;k&quot; はカウンタを指定すればカーソルをはるか彼方に移動できますが、これも<br>
-ジャンプ扱いではありません。<br>
+一般的に、同じ行の中よりも遠くにカーソルを移動できるコマンドを実行するたびに、<br>
+これはジャンプと呼ばれます。これには、検索コマンド &quot;/&quot; および &quot;n&quot; が含まれます<br>
+(マッチがどれだけ離れているかは関係ありません)。しかし、&quot;fx&quot; および &quot;tx&quot; によ<br>
+る文字検索、または単語移動 &quot;w&quot; および &quot;e&quot; は含まれません。<br>
+&nbsp;&nbsp; また、&quot;j&quot; および &quot;k&quot; は、カウントを使ってカーソルをかなり遠くまで移動させる<br>
+ときでも、ジャンプとはみなされません。<br>
 <br>
-&quot;``&quot; コマンドは 2 個所の間を交互にジャンプします。<span class="Special">CTRL-O</span>コマンドはより古いマー<br>
-ク(O は Older の意味です)にジャンプします。<span class="Special">CTRL-I</span>はより新しいマーク(たいていの<br>
-キーボード配列では &quot;I&quot; キーは &quot;O&quot; キーのすぐ左隣りです)にジャンプします。次の<br>
-コマンドを例にしましょう。<br>
+&quot;``&quot; コマンドは、2 つの地点の間を行ったり来たりジャンプします。<span class="Special">CTRL-O</span>&nbsp;コマンド<br>
+は、より古い位置にジャンプします (ヒント: older の O)。そして&nbsp;<span class="Special">CTRL-I</span>&nbsp;は、より<br>
+新しい位置に戻ってジャンプします (ヒント: 多くの一般的なキーボードレイアウトで<br>
+は、I は O のすぐ隣にあります)。このコマンドの並びを考えてみてください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;33G<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/^The<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-O</div>
 <br>
-まず33行目にジャンプします。次に &quot;The&quot; で始まる行を探します。ここで<span class="Special">CTRL-O</span>を使<br>
-うと、33行目に戻ります。もう一度<span class="Special">CTRL-O</span>を使うと、最初の場所に戻ります。そして、<br>
-<span class="Special">CTRL-I</span>を使うと33行目にジャンプし、さらに<span class="Special">CTRL-I</span>を使うと行頭が &quot;The&quot; で始まる行<br>
-にジャンプします。<br>
+まず 33 行目にジャンプし、それから &quot;The&quot; で始まる行を検索します。それから、<br>
+<span class="Special">CTRL-O</span>&nbsp;で 33 行目に戻ってジャンプします。もう 1 回&nbsp;<span class="Special">CTRL-O</span>&nbsp;を使うと、開始した場<br>
+所に戻ります。ここで&nbsp;<span class="Special">CTRL-I</span>&nbsp;を使うと、再び 33 行目にジャンプします。そして、も<br>
+う 1 回&nbsp;<span class="Special">CTRL-I</span>&nbsp;を使うと、&quot;The&quot; のマッチにジャンプします。<br>
+<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;example text&nbsp;&nbsp; ^&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;33G&nbsp;&nbsp;|&nbsp;&nbsp;example text&nbsp;&nbsp; |&nbsp;&nbsp;<span class="Special">CTRL-O</span>&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;<span class="Special">CTRL-I</span><br>
@@ -591,61 +600,62 @@ Vimでは、検索に正規表現(regular expressions)を使います。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;example text<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-I</span>は<span class="Special">&lt;Tab&gt;</span>キーと同じです。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-I</span>&nbsp;は&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;と同じです。<br>
 <br>
-&quot;:jumps&quot; コマンドで今までにジャンプした場所の一覧を表示できます。最後に使った<br>
-エントリには &quot;&gt;&quot; 記号がついています。<br>
+&quot;:jumps&quot; コマンドは、ジャンプした位置のリストを表示します。最後に使ったエント<br>
+リは &quot;&gt;&quot; でマークされます。<br>
 <br>
 <br>
 <span class="Statement">名前付きマーク</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_03.html#bookmark" name="bookmark">bookmark</a><br>
 <br>
-文章中にマークを付けることができます。&quot;ma&quot; コマンドで現在のカーソル位置をマー<br>
-ク a に記録します。文章には 26 個 (aからzまで) のマークを付けられます。マーク<br>
-はVim が記録している位置情報です。画面に何かが表示されるわけではありません。<br>
-マークへの移動は `<span class="Special">{mark}</span>&nbsp;コマンドを使います。<span class="Special">{mark}</span>はマーク文字のことです。<br>
-マーク a に移動するには次のようにします。<br>
+Vim では、テキストの中にあなた自身のマークを置くことができます。&quot;ma&quot; コマンド<br>
+は、カーソルの下の場所をマーク a としてマークします。あなたのテキストには 26<br>
+個のマーク (a から z) を置くことができます。それらは見えません。それは Vim が<br>
+記憶している単なる位置です。<br>
+&nbsp;&nbsp; マークに移動するには、コマンド `<span class="Special">{mark}</span>&nbsp;を使います。ここで&nbsp;<span class="Special">{mark}</span>&nbsp;はマークの<br>
+文字です。したがって、マーク a に移動するには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`a</div>
 <br>
-&quot;'<span class="Special">{mark}</span>&quot; (アポストロフィ + マーク名)コマンドで<span class="Special">{mark}</span>を設定してある行の行頭に<br>
-移動できます。&quot;`<span class="Special">{mark}</span>&quot; コマンドの場合は更に、<span class="Special">{mark}</span>を設定した桁位置に移動し<br>
-ます。<br>
+&quot;'mark&quot; コマンド (シングルクォーテーションマーク、またはアポストロフィ) は、<br>
+マークを含む行の先頭に移動します。これは、マークされたカラムにも移動する<br>
+&quot;`mark&quot; コマンドとは異なります。<br>
 <br>
-マーク機能はファイル中の関連している 2 箇所で作業をする場合に便利です。例えば、<br>
-ファイルの最後の方を編集している時に、ファイルの最初の方の内容を確認する必要が<br>
-生じた場合を考えてみましょう。<br>
-まずファイルの最初の方に移動して、マーク s (startのつもり) を付けます。<br>
+マークは、ファイル内の関連する 2 つの部分で作業するときにとても便利です。ファ<br>
+イルの末尾近くのテキストで作業している間に、ファイルの先頭近くにある見る必要の<br>
+あるテキストがあるとします。<br>
+&nbsp;&nbsp; 先頭のテキストに移動し、そこに s (start) マークを置きます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ms</div>
 <br>
-次に編集したい場所に移動して、マーク e (endのつもり) を付けます。<br>
+それから、作業したいテキストに移動し、そこに e (end) マークを置きます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;me</div>
 <br>
-これで自由に行き来ができます。ファイルの先頭に移動したい時は、次のコマンドで<br>
-ジャンプできます。<br>
+これで、あちこち移動でき、ファイルの先頭を見たいときは、これを使ってそこにジャ<br>
+ンプします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'s</div>
 <br>
-ここで、'' を使って戻ることもできますし、'e を使って末尾のマークまでジャンプす<br>
-ることもできます。<br>
-先頭にマーク s を、末尾にマーク e を使いましたが、その名前に特別な意味はありま<br>
-せん。単に覚えやすいから使っただけです。<br>
+それから、'' を使って元いた場所に戻ってジャンプするか、または 'e を使って末尾<br>
+で作業していたテキストにジャンプできます。<br>
+&nbsp;&nbsp; s を start に、e を end に使うことに特別なことは何もありません。それらは単<br>
+に覚えやすいだけです。<br>
 <br>
-次のコマンドは設定してあるマークの一覧を表示します。<br>
+このコマンドを使って、マークのリストを得ることができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:marks</div>
 <br>
-この一覧には次のような特殊なマークも表示されます。<br>
+いくつかの特別なマークに気付くでしょう。これらには以下が含まれます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ジャンプする直前のカーソル位置<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 直前にファイルを編集した時のカーソル位置<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 直前の変更の開始位置<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 直前の変更の終了位置<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ジャンプする前のカーソル位置<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最後にファイルを編集していたときのカーソル位置<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最後の変更の開始<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最後の変更の終了<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_04.html">usr_04.txt</a>&nbsp;&nbsp;簡単な編集<br>
+次章:&nbsp;<a class="Identifier" href="usr_04.html">usr_04.txt</a>&nbsp;&nbsp;小さな変更を加える<br>
 <br>
 Copyright: see&nbsp;<a class="Identifier" href="usr_01.html#manual-copyright">manual-copyright</a>&nbsp;&nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>
