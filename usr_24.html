@@ -9,588 +9,595 @@ helpname: 'usr_24'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;素早く入力する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;素早く挿入する<br>
 <br>
 <br>
-テキストを入力するときに、キーストロークを減らしたり入力ミスを防いだりする方法<br>
-がいくつかあります。補完機能を使えば以前に入力した単語を繰り返し入力できます。<br>
-長い単語を短縮形で入力することもできます。キーボードに無い文字を入力する方法も<br>
-あります。<br>
+テキストを入力するとき、Vim はキー入力の回数を減らし、タイプミスを避けるさまざ<br>
+まな方法を提供します。以前にタイプした単語を繰り返すには、挿入モード補完を使い<br>
+ます。長い単語を短い単語に短縮します。あなたのキーボードにない文字をタイプしま<br>
+す。<br>
 <br>
-<a class="Identifier" href="usr_24.html#24.1">24.1</a>&nbsp;&nbsp;修正する<br>
-<a class="Identifier" href="usr_24.html#24.2">24.2</a>&nbsp;&nbsp;対応する括弧を表示する<br>
+<a class="Identifier" href="usr_24.html#24.1">24.1</a>&nbsp;&nbsp;訂正する<br>
+<a class="Identifier" href="usr_24.html#24.2">24.2</a>&nbsp;&nbsp;マッチを表示する<br>
 <a class="Identifier" href="usr_24.html#24.3">24.3</a>&nbsp;&nbsp;補完<br>
 <a class="Identifier" href="usr_24.html#24.4">24.4</a>&nbsp;&nbsp;挿入を繰り返す<br>
-<a class="Identifier" href="usr_24.html#24.5">24.5</a>&nbsp;&nbsp;隣の行からコピーする<br>
+<a class="Identifier" href="usr_24.html#24.5">24.5</a>&nbsp;&nbsp;別の行からコピーする<br>
 <a class="Identifier" href="usr_24.html#24.6">24.6</a>&nbsp;&nbsp;レジスタを挿入する<br>
-<a class="Identifier" href="usr_24.html#24.7">24.7</a>&nbsp;&nbsp;短縮形<br>
-<a class="Identifier" href="usr_24.html#24.8">24.8</a>&nbsp;&nbsp;特殊な文字を入力する<br>
-<a class="Identifier" href="usr_24.html#24.9">24.9</a>&nbsp;&nbsp;ダイグラフ (Digraph)<br>
+<a class="Identifier" href="usr_24.html#24.7">24.7</a>&nbsp;&nbsp;短縮入力<br>
+<a class="Identifier" href="usr_24.html#24.8">24.8</a>&nbsp;&nbsp;特殊文字を入力する<br>
+<a class="Identifier" href="usr_24.html#24.9">24.9</a>&nbsp;&nbsp;ダイグラフ<br>
 <a class="Identifier" href="usr_24.html#24.10">24.10</a>&nbsp;ノーマルモードコマンド<br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_25.html">usr_25.txt</a>&nbsp;&nbsp;テキストの整形<br>
-前章:&nbsp;<a class="Identifier" href="usr_23.html">usr_23.txt</a>&nbsp;&nbsp;特殊なファイルを編集する<br>
+次章:&nbsp;<a class="Identifier" href="usr_25.html">usr_25.txt</a>&nbsp;&nbsp;整形されたテキストの編集<br>
+前章:&nbsp;<a class="Identifier" href="usr_23.html">usr_23.txt</a>&nbsp;&nbsp;他のファイルを編集する<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_24.html#24.1" name="24.1">24.1</a>&nbsp;&nbsp;修正する<br>
+<a class="Constant" href="usr_24.html#24.1" name="24.1">24.1</a>&nbsp;&nbsp;訂正する<br>
 <br>
-<span class="Special">&lt;BS&gt;</span>&nbsp;キーは既に説明しましたね。<span class="Special">&lt;BS&gt;</span>&nbsp;はカーソル直前の文字を削除します。<span class="Special">&lt;Del&gt;</span><br>
-キーはカーソルの下(後)の文字を削除します。<br>
-直前の単語をまるごと削除したい場合は&nbsp;<span class="Special">CTRL-W</span>&nbsp;を使います:<br>
+<span class="Special">&lt;BS&gt;</span>&nbsp;キーについてはすでに述べました。これはカーソルの直前の文字を削除します。<br>
+<span class="Special">&lt;Del&gt;</span>&nbsp;キーは、カーソルの下 (後) の文字に対して同じことをします。<br>
+&nbsp;&nbsp; 単語全体を間違えてタイプしたときは、<span class="Special">CTRL-W</span>&nbsp;を使います:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">The horse had fallen to the sky</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-W</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">The horse had fallen to the</span><br>
 <br>
-行全体を削除して行頭から入力しなおしたい場合は&nbsp;<span class="Special">CTRL-U</span>&nbsp;を使います。カーソルより<br>
-後ろの文字とインデントは削除されません。最初の非空白文字からカーソルまでのテキ<br>
-ストだけが削除されます。例えば、カーソルが &quot;fallen&quot; の &quot;f&quot; にある場合、<span class="Special">CTRL-U</span><br>
-を押すと次のようになります:<br>
+行を本当にめちゃくちゃにしてしまい、最初からやり直したい場合、<span class="Special">CTRL-U</span>&nbsp;を使って<br>
+それを削除します。これはカーソルの後のテキストおよびインデントを保持します。最<br>
+初の空白以外の文字からカーソルまでのテキストだけが削除されます。次の行の<br>
+&quot;fallen&quot; の &quot;f&quot; にカーソルがある状態で&nbsp;<span class="Special">CTRL-U</span>&nbsp;を押すと、こうなります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">The horse had fallen to the</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-U</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">fallen to the</span><br>
 <br>
-何個か前の単語だけを修正したい場合はカーソルを動かす必要があります。例えば、次<br>
-のように入力してから:<br>
+数語前に間違いを見つけたときは、それを訂正するためにカーソルをそこに移動する必<br>
+要があります。例えば、こうタイプしたとします:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">The horse had follen to the ground</span><br>
 <br>
-途中にある &quot;follen&quot; を &quot;fallen&quot; に修正してみます。カーソルが末尾にある場合、次<br>
-のように入力すれば修正できます:<br>
+&quot;follen&quot; を &quot;fallen&quot; に変更する必要があります。カーソルが末尾にある状態で、こ<br>
+れを訂正するにはこうタイプします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Esc&gt;4blraA</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 挿入モードを抜ける&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Esc&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 単語戻る&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4b<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初の &quot;o&quot; に移動する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;a&quot; に置換する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ra<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行末に移動して挿入モードを再開&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;o&quot; の上に移動する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; l<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;a&quot; で置き換える&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ra<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挿入モードを再開する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A<br>
 <br>
-他の方法もあります:<br>
+これを行う別の方法:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;C-Left&gt;&lt;C-Left&gt;&lt;C-Left&gt;&lt;C-Left&gt;&lt;Right&gt;&lt;Del&gt;a&lt;End&gt;</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4 単語戻る。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-Left&gt;&lt;C-Left&gt;&lt;C-Left&gt;&lt;C-Left&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初の &quot;o&quot; に移動する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Right&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4 単語戻る&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-Left&gt;&lt;C-Left&gt;&lt;C-Left&gt;&lt;C-Left&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;o&quot; の上に移動する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Right&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;o&quot; を削除する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Del&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;a&quot; を挿入する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行末に移動する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;End&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行末に移動する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;End&gt;</span><br>
 <br>
-挿入モードの中で特殊キーを使って移動しています。これは普通のモードレスエディタ<br>
-の操作と似ています。操作方法は覚えやすいかもしれませんが少し面倒です (カーソル<br>
-キーを押すには手をホームポジションから離さなければならないし、<span class="Special">&lt;End&gt;</span>&nbsp;キーを押す<br>
-にはキーボードに視線を移さなければならない)。<br>
-特殊キーは挿入モードの中で使えるのでマップを書くときに重宝します。マップの中で<br>
-使う分には入力が面倒になることもありません。<br>
-挿入モードでは次の特殊キーが使えます:<br>
+これは、挿入モードのままで、特殊キーを使って移動します。これはモードのないエ<br>
+ディタで行うことに似ています。覚えやすいですが、より時間がかかります (あなたの<br>
+手を文字からカーソルキーへ移動する必要があり、<span class="Special">&lt;End&gt;</span>&nbsp;キーはキーボードを見ずに押<br>
+すのが難しいです)。<br>
+&nbsp;&nbsp; これらの特殊キーは、挿入モードを抜けないマッピングを書くときに最も役に立ち<br>
+ます。そのときは余分なタイプは問題になりません。<br>
+&nbsp;&nbsp; 挿入モードで使用できるキーの概要:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-Home&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルの先頭に移動<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;PageUp&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 画面分、逆スクロール<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Home&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行頭へ移動<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-Left&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 単語左へ移動<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-Left&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 単語左へ移動<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-Right&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 単語右へ移動<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-Right&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 単語右へ移動<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;End&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 行末へ移動<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;PageDown&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 画面分、スクロール<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-End&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ファイルの末尾に移動<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-Home&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルの先頭へ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;PageUp&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;まるごと 1 画面分上へ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Home&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行頭へ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-Left&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 単語左へ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-Left&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 単語左へ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;S-Right&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 単語右へ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-Right&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 単語右へ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;End&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 行末へ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;PageDown&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;まるごと 1 画面分下へ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-End&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ファイルの末尾へ<br>
 <br>
-使えるキーは他にもあります。<a class="Identifier" href="insert.html#ins-special-special">ins-special-special</a>&nbsp;参照。<br>
+他にもいくつかあります。<a class="Identifier" href="insert.html#ins-special-special">ins-special-special</a>&nbsp;を参照してください。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_24.html#24.2" name="24.2">24.2</a>&nbsp;&nbsp;対応する括弧を表示する<br>
+<a class="Constant" href="usr_24.html#24.2" name="24.2">24.2</a>&nbsp;&nbsp;マッチを表示する<br>
 <br>
-&quot;)&quot; を入力したときに、対応する &quot;(&quot; の場所を確認できたら便利ですよね。次のコマ<br>
-ンドでそのように設定できます:<br>
+) をタイプするとき、それがどの ( とマッチするかが見えると良いでしょう。Vim に<br>
+そうさせるには、このコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set showmatch</div>
 <br>
-例えば &quot;(example)&quot; と入力したとき、&quot;)&quot; を入力した瞬間に、対応する括弧にカーソ<br>
-ルが移動します。カーソルは 0.5 秒くらいその場所に留まり、再び元の場所に帰って<br>
-きます。<br>
-対応する括弧が見つからなかった場合はビープ音が鳴ります。そのときは、( を入力し<br>
-忘れてないか、) を入力し過ぎてないか、確認しましょう。<br>
-この機能は、[] や {} の組み合わせにも対応しています。カーソルが移動していると<br>
-きに、戻ってくるまで次の入力を待つ必要はありません。次の文字を入力した瞬間に<br>
-カーソルは元に戻るので、すぐに入力を再開できます。<br>
-カーソルが移動先で待機する時間は&nbsp;<a class="Type" href="options.html#'matchtime'">'matchtime'</a>&nbsp;オプションで設定できます。例えば、<br>
-1.5 秒待機するには次のように設定します:<br>
+ここで &quot;(example)&quot; のようなテキストをタイプすると、) をタイプするとすぐに、Vim<br>
+はカーソルをマッチする ( に短時間移動し、そこに 0.5 秒間とどめ、タイプしていた<br>
+場所に戻ります。<br>
+&nbsp;&nbsp; マッチする ( がない場合、Vim はビープ音を鳴らします。それで、どこかで ( を<br>
+忘れたか、または ) を 1 つ多くタイプしたかもしれないことがわかります。<br>
+&nbsp;&nbsp; マッチは [] および {} の組に対しても表示されます。次の文字をタイプするのを<br>
+待つ必要はありません。Vim がそれを認識するとすぐにカーソルが戻り、以前と同じよ<br>
+うに挿入が続きます。<br>
+&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'matchtime'">'matchtime'</a>&nbsp;オプションで Vim が待つ時間を変更できます。例えば、Vim を 1 秒<br>
+半待たせるには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set matchtime=15</div>
 <br>
-時間は 1/10 秒単位で指定してください。<br>
+時間は 10 分の 1 秒単位で指定します。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_24.html#24.3" name="24.3">24.3</a>&nbsp;&nbsp;補完<br>
 <br>
-テキストの中から単語を検索して補完することができます。単語の出だしを入力して<br>
-<span class="Special">CTRL-P</span>&nbsp;を押すと、残りの部分が入力されます。<br>
-例えば、C プログラムを書いていて、次のように入力したいとします:<br>
+Vim は挿入時に単語を自動的に補完できます。単語の最初の部分をタイプし、<span class="Special">CTRL-P</span><br>
+を押すと、Vim が残りを推測します。<br>
+&nbsp;&nbsp; 例えば、C プログラムを作成していて、以下をタイプしたいとします:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">total = ch_array[0] + ch_array[1] + ch_array[2];</span><br>
 <br>
-まず、次のように入力してください:<br>
+以下を入力することから始めます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">total = ch_array[0] + ch_</span><br>
 <br>
-ここで、<span class="Special">CTRL-P</span>&nbsp;コマンドを使って単語を補完します。カーソル直前の文字列にマッチ<br>
-する単語が検索されます。この場合なら、&quot;ch_&quot; にマッチする単語、つまり<br>
-&quot;ch_array&quot; がヒットします。したがって、<span class="Special">CTRL-P</span>&nbsp;を押すと次のようになります:<br>
+この時点で、<span class="Special">CTRL-P</span>&nbsp;コマンドを使って単語を補完するように Vim に指示します。Vim<br>
+はカーソルの前にあるもので始まる単語を検索します。この場合、それは &quot;ch_&quot; で、<br>
+単語 ch_array にマッチします。したがって、<span class="Special">CTRL-P</span>&nbsp;をタイプすると以下のようにな<br>
+ります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">total = ch_array[0] + ch_array</span><br>
 <br>
-続けて入力し、次のようになりました (末尾に空白があります):<br>
+もう少しタイプすると、こうなります (空白で終わっています):<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">total = ch_array[0] + ch_array[1] +&nbsp;</span><br>
 <br>
-さて、ここで&nbsp;<span class="Special">CTRL-P</span>&nbsp;を押すと再びカーソル直前の文字列が補完されます。今回は文字<br>
-が無いので、最初に見つかった単語、つまり &quot;ch_array&quot; が補完されます。もう一度<br>
-<span class="Special">CTRL-P</span>&nbsp;を押すと、さらに次の候補が補完されます。この場合は &quot;total&quot; です。もう一<br>
-度&nbsp;<span class="Special">CTRL-P</span>&nbsp;を押せばさらに次の候補が補完されます。次の単語が見つからなかった場合<br>
-は元の文字列に戻ります。この例では空文字列です。四度目に&nbsp;<span class="Special">CTRL-P</span>&nbsp;を押すと再び最<br>
-初の &quot;ch_array&quot; が補完されます。<br>
+ここで&nbsp;<span class="Special">CTRL-P</span>&nbsp;をタイプした場合、Vim はカーソルの前の単語を補完する単語を再び検<br>
+索します。カーソルの前には何もないので、後方に向かって最初の単語を見つけます。<br>
+それは &quot;ch_array&quot; です。もう一度&nbsp;<span class="Special">CTRL-P</span>&nbsp;をタイプすると、マッチする次の単語、こ<br>
+の場合は &quot;total&quot; が得られます。3 回目の&nbsp;<span class="Special">CTRL-P</span>&nbsp;はさらに後方を検索します。他に<br>
+何もない場合、エディタは単語を使い果たすので、元のテキストに戻ります。それは何<br>
+もないテキストです。4 回目の&nbsp;<span class="Special">CTRL-P</span>&nbsp;で、エディタは再び &quot;ch_array&quot; から始めま<br>
+す。<br>
 <br>
-前方検索する場合は&nbsp;<span class="Special">CTRL-N</span>&nbsp;を使います。検索はファイル終端を超えて処理されるの<br>
-で、<span class="Special">CTRL-N</span>&nbsp;と&nbsp;<span class="Special">CTRL-P</span>&nbsp;は順番が違うだけで、同じ単語が検索されます。Hint:&nbsp;<span class="Special">CTRL-N</span><br>
-は Next-match (次の候補)、<span class="Special">CTRL-P</span>&nbsp;は Previous-match (前の候補) です。<br>
+前方に検索するには、<span class="Special">CTRL-N</span>&nbsp;を使います。検索はファイルの末尾で折り返すので、<br>
+<span class="Special">CTRL-N</span>&nbsp;および&nbsp;<span class="Special">CTRL-P</span>&nbsp;は同じマッチを見つけますが、順序が異なります。ヒント:<br>
+<span class="Special">CTRL-N</span>&nbsp;は Next-match で、<span class="Special">CTRL-P</span>&nbsp;は Previous-match です。<br>
 <br>
-単語の補完では、様々な場所から単語を検索できます。初期設定では、次の場所が検索<br>
-されます:<br>
+Vim エディタは、補完する単語を見つけるために多くの労力を費やします。既定では、<br>
+以下の場所を検索します:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. カレントファイル<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 他のウィンドウのファイル<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. ロードされたファイル (隠しバッファ)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. ロードされてないファイル (休眠バッファ)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. 他の読み込まれたファイル (隠しバッファ)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. 読み込まれていないファイル (非アクティブなバッファ)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. タグファイル<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. カレントファイルが #include しているファイル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. カレントファイルによって #include されたすべてのファイル<br>
 <br>
 <br>
 <span class="Statement">オプション</span><br>
 <br>
-検索場所の順番は&nbsp;<a class="Type" href="options.html#'complete'">'complete'</a>&nbsp;オプションで設定できます。<br>
+<a class="Type" href="options.html#'complete'">'complete'</a>&nbsp;オプションで検索順序をカスタマイズできます。<br>
 <br>
-検索には&nbsp;<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;オプションが使われます。このオプションがオンのときは、大<br>
-文字と小文字は区別されません。<br>
+<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;オプションが使われます。これが設定されているとき、マッチを検索す<br>
+る際に大文字小文字の違いは無視されます。<br>
 <br>
-<a class="Type" href="options.html#'infercase'">'infercase'</a>&nbsp;は補完用の特別なオプションです。大文字と小文字を区別しない<br>
-(<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;がオンに設定されている) ときでも、自分で入力した文字の種類をその<br>
-まま使えます。つまり、&quot;For&quot; と入力して &quot;fortunately&quot; がマッチしたとき、結果は<br>
-&quot;Fortunately&quot; になります。<br>
+補完のための特別なオプションは&nbsp;<a class="Type" href="options.html#'infercase'">'infercase'</a>&nbsp;です。これは、大文字小文字を無視し<br>
+てマッチを見つけ (<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;が設定されていなければなりません)、それでもそれ<br>
+までにタイプした単語の大文字小文字を使うのに便利です。したがって、&quot;For&quot; とタイ<br>
+プして Vim がマッチ &quot;fortunately&quot; を見つけた場合、結果は &quot;Fortunately&quot; になり<br>
+ます。<br>
 <br>
 <br>
-<span class="Statement">補完タイプの指定</span><br>
+<span class="Statement">特定のアイテムを補完する</span><br>
 <br>
-補完したい単語の種類がわかっている場合は、次のコマンドで補完の種類を指定できま<br>
-す:<br>
+何を探しているかがわかっている場合、これらのコマンドを使って、特定の種類のアイ<br>
+テムで補完できます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-F</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ファイル名<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-L</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 行全体<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-D</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; マクロ定義 (インクルードファイルの中も探す)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-I</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カレントファイルとインクルードファイル<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-K</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 辞書<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-R</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; レジスタの内容<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-T</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 同義語辞書 (シソーラス)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-D</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; マクロ定義 (インクルードされたファイル内も)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-I</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カレントファイルおよびインクルードされたファイル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-K</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 辞書からの単語<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-R</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; レジスタからの内容<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-T</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 類語辞典からの単語<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; タグ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-V</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vim のコマンドライン<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-V</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vim コマンドライン<br>
 <br>
-補完を実行した後は、<span class="Special">CTRL-N</span>&nbsp;で次の候補、<span class="Special">CTRL-P</span>&nbsp;で前の候補を検索できます。<br>
-各コマンドの詳細は&nbsp;<a class="Identifier" href="insert.html#ins-completion">ins-completion</a>&nbsp;を参照してください。<br>
+それぞれの後で、<span class="Special">CTRL-N</span>&nbsp;を使って次のマッチを、<span class="Special">CTRL-P</span>&nbsp;を使って前のマッチを見つけ<br>
+ることができます。<br>
+&nbsp;&nbsp; これらの各コマンドについてのさらなる情報はこちら:&nbsp;<a class="Identifier" href="insert.html#ins-completion">ins-completion</a>。<br>
 <br>
 <br>
-<span class="Statement">ファイル名の補完</span><br>
+<span class="Statement">ファイル名を補完する</span><br>
 <br>
-例として&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-F</span>&nbsp;を使って説明します。これはファイル名を補完するコマンド<br>
-です。カレントディレクトリのファイルが検索され、カーソル直前の文字列にマッチす<br>
-るファイル名が補完されます。<br>
-例えば、カレントディレクトリに次のファイルがあるとします:<br>
+<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-F</span>&nbsp;を例に取りましょう。これはファイル名を見つけます。カレントディレ<br>
+クトリのファイルを走査し、カーソルの前の単語にマッチするものをそれぞれ表示しま<br>
+す。<br>
+&nbsp;&nbsp; 例えば、カレントディレクトリに以下のファイルがあるとします:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;main.c&nbsp;&nbsp;sub_count.c&nbsp;&nbsp;sub_done.c&nbsp;&nbsp;sub_exit.c<br>
 <br>
-挿入モードに入って次のように入力します:<br>
+では、挿入モードに入ってタイプを始めます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">The exit code is in the file sub</span><br>
 <br>
-そして、<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-F</span>&nbsp;を入力します。カレントディレクトリから &quot;sub&quot; にマッチす<br>
-るファイルが検索されます。最初にマッチするのは sub_count.c です。このファイル<br>
-は求めているファイルではありませんでした。<span class="Special">CTRL-N</span>&nbsp;を押して次の候補を検索しましょ<br>
-う。次に sub_done.c がマッチします。もう一度&nbsp;<span class="Special">CTRL-N</span>&nbsp;を押すと sub_exit.c がマッ<br>
-チします。結果:<br>
+この時点で、<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-F</span>&nbsp;コマンドを入力します。Vim はここで、カレントディレク<br>
+トリのファイルを見て、現在の単語 &quot;sub&quot; を補完します。最初のマッチは<br>
+sub_count.c です。これは望むものではないので、<span class="Special">CTRL-N</span>&nbsp;をタイプして次のファイル<br>
+にマッチさせます。このマッチは sub_done.c です。もう一度&nbsp;<span class="Special">CTRL-N</span>&nbsp;をタイプすると<br>
+sub_exit.c になります。結果:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">The exit code is in the file sub_exit.c</span><br>
 <br>
-ファイル名の先頭を / (Unix) や C:\ (MS-Windows) で開始すれば、ファイルシステム<br>
-全体からファイルを検索できます。例えば、&quot;/u&quot; と入力してから&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-F</span>&nbsp;と入<br>
-力すると &quot;/usr&quot; がヒットします (Unix の場合):<br>
+ファイル名が / (Unix) または C:\ (MS-Windows) で始まる場合、ファイルシステム内<br>
+のすべてのファイルを見つけることができます。例えば、&quot;/u&quot; とタイプして&nbsp;<span class="Special">CTRL-X</span><br>
+<span class="Special">CTRL-F</span>&nbsp;をタイプします。これは &quot;/usr&quot; にマッチします (これは Unix 上です):<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">the file is found in /usr/</span><br>
 <br>
-もう一度&nbsp;<span class="Special">CTRL-N</span>&nbsp;を押すと &quot;/u&quot; に戻ってしまいます。&quot;/usr/&quot; を確定してからさらに<br>
-深い階層へ進みたい場合は再び&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-F</span>&nbsp;を使います:<br>
+ここで&nbsp;<span class="Special">CTRL-N</span>&nbsp;を押した場合、&quot;/u&quot; に戻ります。代わりに、&quot;/usr/&quot; を受け入れて 1<br>
+つ深いディレクトリ階層に進むには、もう一度&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-F</span>&nbsp;を使います:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">the file is found in /usr/X11R6/</span><br>
 <br>
-もちろん、ファイル構成が違えば結果は異なるでしょう。検索結果はアルファベット順<br>
-にソートされます。<br>
+もちろん、結果はあなたのファイルシステムで何が見つかるかによります。マッチはア<br>
+ルファベット順にソートされます。<br>
 <br>
 <br>
-<span class="Statement">ソースコードの補完</span><br>
+<span class="Statement">ソースコード内で補完する</span><br>
 <br>
-ソースコードは書式が決まっているので、より賢い補完を実装することができます。<br>
-Vim ではそれをオムニ補完 (Omni completion) と呼びます。某エディタではインテリ<br>
-センスと呼ばれていますが、それは商標です。<br>
+ソースコードファイルはよく構造化されています。そのため、知的な方法で補完を行う<br>
+ことが可能です。Vim では、これはオムニ補完と呼ばれます。他のいくつかのエディタ<br>
+では intellisense と呼ばれていますが、それは商標です。<br>
 <br>
-オムニ補完のキーは&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-O</span>&nbsp;です。O は Omni の頭文字なので覚えやすいでしょ<br>
-う。C 言語のソースを使って説明します:<br>
+オムニ補完のキーは&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-O</span>&nbsp;です。言うまでもなく、ここで O は Omni を表し<br>
+ているので、より簡単に覚えられます。C ソースを編集する例を使いましょう:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">{</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">struct foo *p;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">p-&gt;</span><br>
 <br>
-カーソルは &quot;p-&gt;&quot; の後ろにあります。<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-O</span>&nbsp;を押すと、&quot;struct foo&quot; のメン<br>
-バが候補として表示されます。これは&nbsp;<span class="Special">CTRL-P</span>&nbsp;の補完とはまったく違います。<span class="Special">CTRL-P</span><br>
-ではあらゆる単語が候補になりますが、オムニ補完は &quot;struct foo&quot; のメンバだけが補<br>
-完されます。<br>
+カーソルは &quot;p-&gt;&quot; の後にあります。ここで&nbsp;<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-O</span>&nbsp;をタイプします。Vim は候<br>
+補のリストを提示します。それは &quot;struct foo&quot; が含むアイテムです。これは&nbsp;<span class="Special">CTRL-P</span><br>
+を使うのとはかなり異なります。<span class="Special">CTRL-P</span>&nbsp;は任意の単語を補完しますが、ここでは<br>
+&quot;struct foo&quot; のメンバーだけが有効です。<br>
 <br>
-オムニ補完を使うには設定が必要です。最低でもファイルタイププラグインを有効にし<br>
-ておく必要があります。vimrc に以下の行を書き加えてください:<br>
+オムニ補完が機能するには、何らかのセットアップが必要な場合があります。少なくと<br>
+も、ファイルタイププラグインが有効になっていることを確認してください。あなたの<br>
+vimrc ファイルにはこのような行が含まれているべきです:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filetype plugin on</div>
 または:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filetype plugin indent on</div>
 <br>
-C 言語の場合はタグファイルを作成して&nbsp;<a class="Type" href="options.html#'tags'">'tags'</a>&nbsp;オプションを設定する必要がありま<br>
-す。<a class="Identifier" href="insert.html#ft-c-omni">ft-c-omni</a>&nbsp;を参照してください。他のファイルタイプでも似たような設定が必要<br>
-になります。<a class="Identifier" href="insert.html#compl-omni-filetypes">compl-omni-filetypes</a>&nbsp;を参照してください。オムニ補完は特定のファ<br>
-イルタイプでしか利用できません。<a class="Type" href="options.html#'omnifunc'">'omnifunc'</a>&nbsp;オプションを確認し、オムニ補完が利<br>
-用できるかどうか確認してください。<br>
+C コードの場合、tags ファイルを作成し、<a class="Type" href="options.html#'tags'">'tags'</a>&nbsp;オプションを設定する必要がありま<br>
+す。それは&nbsp;<a class="Identifier" href="insert.html#ft-c-omni">ft-c-omni</a>&nbsp;で説明されています。他のファイルタイプの場合、同様のこ<br>
+とをする必要があるかもしれません。以下の&nbsp;<a class="Identifier" href="insert.html#compl-omni-filetypes">compl-omni-filetypes</a>&nbsp;を見てくださ<br>
+い。これは特定のファイルタイプでのみ機能します。機能するかどうかを調べるには、<br>
+<a class="Type" href="options.html#'omnifunc'">'omnifunc'</a>&nbsp;オプションの値を確認してください。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_24.html#24.4" name="24.4">24.4</a>&nbsp;&nbsp;挿入を繰り返す<br>
 <br>
-<span class="Special">CTRL-A</span>&nbsp;を押すと、前回の挿入モードで入力したテキストを挿入できます。<br>
-例えば、次のようなファイルがあったとします:<br>
+<span class="Special">CTRL-A</span>&nbsp;を押した場合、エディタは最後に挿入モードにいたときにタイプしたテキスト<br>
+を挿入します。<br>
+&nbsp;&nbsp; 例えば、以下で始まるファイルがあるとします:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;file.h&quot;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/* Main program begins */</span><br>
 <br>
-一行目の行頭に &quot;#include &quot; を挿入します:<br>
+このファイルを、最初の行の先頭に &quot;#include &quot; を挿入して編集します:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#include &quot;file.h&quot;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/* Main program begins */</span><br>
 <br>
-&quot;j^&quot; コマンドで次の行の行頭に移動し、再び &quot;#include &quot; を挿入してみます。次のよ<br>
-うに入力しましょう:<br>
+&quot;j^&quot; コマンドを使って次の行の先頭に移動します。ここで新しい &quot;#include&quot; 行の挿<br>
+入を始めます。そこでこうタイプします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i CTRL-A</div>
 <br>
-結果は次のようになります:<br>
+結果は以下のとおりです:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#include &quot;file.h&quot;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#include /* Main program begins */</span><br>
 <br>
-<span class="Special">CTRL-A</span>&nbsp;は前回に入力したテキストを挿入するコマンドなので、&quot;#include &quot; が挿入さ<br>
-れました。続けて &quot;main.h&quot;<span class="Special">&lt;Enter&gt;</span>&nbsp;と入力し、行を完成させましょう:<br>
+&quot;#include &quot; が挿入されたのは、<span class="Special">CTRL-A</span>&nbsp;が前回の挿入のテキストを挿入するためです。<br>
+ここで、行を終えるために&nbsp;&nbsp;&quot;main.h&quot;<span class="Special">&lt;Enter&gt;</span>&nbsp;&nbsp;とタイプします:<br>
+<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#include &quot;file.h&quot;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#include &quot;main.h&quot;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/* Main program begins */</span><br>
 <br>
-<span class="Special">CTRL-@</span>&nbsp;コマンドは&nbsp;<span class="Special">CTRL-A</span>&nbsp;と同じことを実行してから挿入モードを抜けます。まった<br>
-く同じ挿入を繰り返したいときに使います。<br>
+<span class="Special">CTRL-@</span>&nbsp;コマンドは&nbsp;<span class="Special">CTRL-A</span>&nbsp;を行い、それから挿入モードを抜けます。これはまったく<br>
+同じ挿入を再び行う素早い方法です。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_24.html#24.5" name="24.5">24.5</a>&nbsp;&nbsp;隣の行からコピーする<br>
+<a class="Constant" href="usr_24.html#24.5" name="24.5">24.5</a>&nbsp;&nbsp;別の行からコピーする<br>
 <br>
-<span class="Special">CTRL-Y</span>&nbsp;コマンドを使うと、カーソルの上の文字を挿入できます。一つ上の行を複製し<br>
-たい場合に便利です。例えば、次のような C 言語のコードがあるとして:<br>
+<span class="Special">CTRL-Y</span>&nbsp;コマンドはカーソルの上の文字を挿入します。これは前の行を複製していると<br>
+きに便利です。例えば、この C コードの行があるとします:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">b_array[i]-&gt;s_next = a_array[i]-&gt;s_next;</span><br>
 <br>
-&quot;s_next&quot; を &quot;s_prev&quot; に変えただけの同じ行を入力してみます。新しい行を開いて<br>
-<span class="Special">CTRL-Y</span>&nbsp;を 14 回押して、&quot;next&quot; の &quot;n&quot; の直前まで進みます:<br>
+ここで、同じ行を、ただし &quot;s_next&quot; の代わりに &quot;s_prev&quot; でタイプする必要がありま<br>
+す。新しい行を始め、&quot;next&quot; の &quot;n&quot; に来るまで&nbsp;<span class="Special">CTRL-Y</span>&nbsp;を 14 回押します:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">b_array[i]-&gt;s_next = a_array[i]-&gt;s_next;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">b_array[i]-&gt;s_</span><br>
 <br>
-そして &quot;prev&quot; と入力します:<br>
+ここで &quot;prev&quot; とタイプします:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">b_array[i]-&gt;s_next = a_array[i]-&gt;s_next;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">b_array[i]-&gt;s_prev</span><br>
 <br>
-続けて、次の &quot;next&quot; まで&nbsp;<span class="Special">CTRL-Y</span>&nbsp;を押します。<br>
+続く &quot;next&quot; まで&nbsp;<span class="Special">CTRL-Y</span>&nbsp;を押し続けます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">b_array[i]-&gt;s_next = a_array[i]-&gt;s_next;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">b_array[i]-&gt;s_prev = a_array[i]-&gt;s_</span><br>
 <br>
-&quot;prev;&quot; と入力すれば、行が完成です。<br>
+ここで &quot;prev;&quot; とタイプして仕上げます。<br>
 <br>
-<span class="Special">CTRL-Y</span>&nbsp;と似たコマンドに&nbsp;<span class="Special">CTRL-E</span>&nbsp;があります。これはカーソルの下の文字を挿入する<br>
-コマンドです。<br>
+<span class="Special">CTRL-E</span>&nbsp;コマンドは&nbsp;<span class="Special">CTRL-Y</span>&nbsp;と同じように動作しますが、カーソルの下の文字を挿入し<br>
+ます。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_24.html#24.6" name="24.6">24.6</a>&nbsp;&nbsp;レジスタを挿入する<br>
 <br>
-<span class="Special">CTRL-R</span>&nbsp;<span class="Special">{register}</span>&nbsp;コマンドを使うと、レジスタの内容を挿入できます。長い単語を入<br>
-力するのが簡単になります。例えば、次の行を入力したいとします。<br>
+<span class="Special">CTRL-R</span>&nbsp;<span class="Special">{register}</span>&nbsp;コマンドはレジスタの内容を挿入します。これは長い単語をタイプ<br>
+しなければならないのを避けるのに便利です。例えば、こうタイプする必要があるとし<br>
+ます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">r = VeryLongFunction(a) + VeryLongFunction(b) + VeryLongFunction(c)</span><br>
 <br>
-関数名は別のファイルで定義されています。そのファイルを開いてカーソルを関数名の<br>
-先頭に移動し、次のコマンドでレジスタ v にヤンクします:<br>
+関数名は別のファイルで定義されています。そのファイルを編集して、そこで関数名の<br>
+上にカーソルを移動し、それをレジスタ v にヤンクします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;vyiw</div>
 <br>
-&quot;v はレジスタの指定、&quot;yiw&quot; は yank-inner-word (単語をヤンクする) です。さて、<br>
-元のファイルに戻り、挿入モードを開始して次のように入力します:<br>
+&quot;v はレジスタの指定で、&quot;yiw&quot; は yank-inner-word です。ここで新しい行を挿入する<br>
+ファイルを編集し、最初の何文字かをタイプします:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">r =</span><br>
 <br>
-ここで、<span class="Special">CTRL-R</span>&nbsp;v を押して関数の名前を挿入します:<br>
+ここで&nbsp;<span class="Special">CTRL-R</span>&nbsp;v を使って関数名を挿入します:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">r = VeryLongFunction</span><br>
 <br>
-続けて関数の引数などを入力し、関数名を入力するときになったら再び&nbsp;<span class="Special">CTRL-R</span>&nbsp;v を使<br>
-います。<br>
-同じことは補完を使ってもできますが、同じ文字で始まる単語がたくさんある場合には<br>
-レジスタが便利です。<br>
+関数名の間の文字をタイプし続け、<span class="Special">CTRL-R</span>&nbsp;v をさらに 2 回使います。<br>
+&nbsp;&nbsp; 同じことを補完でもできたでしょう。レジスタを使うのは、同じ文字で始まる単語<br>
+がたくさんあるときに便利です。<br>
 <br>
-レジスタの中に&nbsp;<span class="Special">&lt;BS&gt;</span>&nbsp;などの特殊な文字が含まれている場合、その文字は、実際にキー<br>
-ボードから入力されたのと同じように処理されます。それが望みの動作ではない場合<br>
-(例えば、<span class="Special">&lt;BS&gt;</span>&nbsp;をテキストとして挿入したい場合) は&nbsp;<span class="Special">CTRL-R</span>&nbsp;<span class="Special">CTRL-R</span>&nbsp;<span class="Special">{register}</span>&nbsp;を<br>
-使ってください。<br>
+レジスタに&nbsp;<span class="Special">&lt;BS&gt;</span>&nbsp;またはその他の特殊文字のような文字が含まれている場合、それらは<br>
+キーボードからタイプされたかのように解釈されます。これを起こしたくない場合 (本<br>
+当に&nbsp;<span class="Special">&lt;BS&gt;</span>&nbsp;をテキストに挿入したい場合)、<span class="Special">CTRL-R</span>&nbsp;<span class="Special">CTRL-R</span>&nbsp;<span class="Special">{register}</span>&nbsp;コマンドを使い<br>
+ます。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_24.html#24.7" name="24.7">24.7</a>&nbsp;&nbsp;短縮形 (Abbreviations)<br>
+<a class="Constant" href="usr_24.html#24.7" name="24.7">24.7</a>&nbsp;&nbsp;短縮入力<br>
 <br>
-短縮形とは長い単語を置き換える短い単語のことです。例えば、&quot;ad&quot; は<br>
-&quot;advertisement&quot; の短縮形です。Vim では、入力した短縮形を自動的に展開することが<br>
-できます。<br>
-&quot;ad&quot; を &quot;advertisement&quot; の短縮形として登録するには、次のコマンドを使います:<br>
+短縮入力は、長い単語の代わりになる短い単語です。例えば、&quot;ad&quot; は<br>
+&quot;advertisement&quot; を表します。Vim では、短縮入力をタイプすることができ、それから<br>
+Vim が自動的にそれを展開します。<br>
+&nbsp;&nbsp; それを挿入するたびに &quot;ad&quot; を &quot;advertisement&quot; に展開するように Vim に指示す<br>
+るには、以下のコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:iabbrev ad advertisement</div>
 <br>
-これで、&quot;ad&quot; と入力すると、完全形の &quot;advertisement&quot; がテキストに挿入されます。<br>
-短縮形の置き換えは、スペースなどの、単語の一部として認識されない文字を入力した<br>
-ときに実行されます:<br>
+これで、&quot;ad&quot; とタイプすると、単語全体 &quot;advertisement&quot; がテキストに挿入されま<br>
+す。これは、単語の一部になり得ない文字、例えば空白をタイプすることで引き起こさ<br>
+れます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入力した文字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;画面上での見え方<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入力したもの&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表示されるもの<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">I saw the a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I saw the a</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">I saw the ad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I saw the ad</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">I saw the ad&lt;Space&gt;&nbsp;&nbsp;&nbsp;&nbsp; I saw the advertisement&lt;Space&gt;</span><br>
 <br>
-&quot;ad&quot; と入力しただけでは展開されません。これは例えば &quot;add&quot; のような単語も入力で<br>
-きるようにするためです。単語の境界が確定してから短縮形の展開が適用されます。<br>
+&quot;ad&quot; とタイプしただけでは展開は起こりません。これにより &quot;add&quot; のような単語をタ<br>
+イプでき、それは展開されません。短縮入力として調べられるのは単語全体だけです。<br>
 <br>
 <br>
-<span class="Statement">複数の単語の短縮形</span><br>
+<span class="Statement">複数の単語を短縮する</span><br>
 <br>
-複数の単語に展開される短縮形を定義できます。例えば、&quot;JB&quot; を &quot;Jack Benny&quot; の短<br>
-縮形として登録するには、次のコマンドを使います:<br>
+複数の単語になる短縮入力を定義することもできます。例えば、&quot;JB&quot; を &quot;Jack Benny&quot;<br>
+として定義するには、以下のコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:iabbrev JB Jack Benny</div>
 <br>
-プログラムを書くとき、私は少し変った短縮形を使っています:<br>
+プログラマとして、私は 2 つのかなり変わった短縮入力を使っています:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:iabbrev #b /****************************************<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:iabbrev #e &lt;Space&gt;****************************************/</div>
 <br>
-これはコメントブロックを作成するときに使います。コメントを開始するときに #b で<br>
-最初の行を描き、コメントを書いてから、#e で末尾の行を描きます。#e の展開形がス<br>
-ペースで始まっています。別の言い方をすれば、最初の二文字がスペースとスターに<br>
-なっています。通常、短縮形と展開形の間の空白は無視されるので、スペースを入れた<br>
-い場合は &lt;, S, p, a, c, e, &gt; という 7 文字の特殊な表記を使います。<br>
+これらは箱で囲んだコメントを作るのに使います。コメントは #b で始まり、これは上<br>
+の線を描きます。それから私はコメントのテキストをタイプし、#e を使って下の線を<br>
+描きます。<br>
+&nbsp;&nbsp; #e 短縮入力が空白で始まっていることに注意してください。言い換えると、最初の<br>
+2 文字は空白-スターです。通常、Vim は短縮入力と展開の間の空白を無視します。そ<br>
+の問題を避けるために、私は空白を 7 文字で綴ります: &lt;、S、p、a、c、e、&gt;。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:iabbrev&quot; は入力するのが長くて大変なので、&quot;:iab&quot; でも構いません。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これは短縮コマンドの短縮形です!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:iabbrev&quot; はタイプするには長い単語です。&quot;:iab&quot; でも同じように機能しま<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これは abbreviate コマンドの短縮です!<br>
 <br>
 <br>
-<span class="Statement">入力ミスを直す</span><br>
+<span class="Statement">タイプミスを修正する</span><br>
 <br>
-入力ミスの癖ってありますよね。例えば、&quot;the&quot; と入力するはずが &quot;teh&quot; になってし<br>
-まったり。短縮形を使って修正しましょう:<br>
+毎回同じタイプミスをするのはとてもよくあることです。例えば、&quot;the&quot; の代わりに<br>
+&quot;teh&quot; とタイプします。これは短縮入力で修正できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:abbreviate teh the</div>
 <br>
-このような短縮形のリストを作成し、入力ミスの癖を見つけたら追加しましょう。<br>
+このようなものをリスト丸ごと追加できます。よくある間違いを見つけるたびに 1 つ<br>
+追加します。<br>
 <br>
 <br>
-<span class="Statement">短縮形を一覧表示する</span><br>
+<span class="Statement">短縮入力を一覧表示する</span><br>
 <br>
-&quot;:abbreviate&quot; コマンドで短縮形の一覧を表示できます:<br>
+&quot;:abbreviate&quot; コマンドは短縮入力を一覧表示します:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:abbreviate<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:abbreviate<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i&nbsp;&nbsp;#e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ****************************************/<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i&nbsp;&nbsp;#b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/****************************************<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i&nbsp;&nbsp;JB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jack Benny<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i&nbsp;&nbsp;ad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;advertisement<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!&nbsp;&nbsp;teh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!&nbsp;&nbsp;teh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the<br>
 <br>
-行頭の &quot;i&quot; は挿入モードの意味です。その短縮形は挿入モードの中だけで有効です。<br>
-他にも、次のような文字が表示されます:<br>
+1 列目の &quot;i&quot; は挿入モードを示します。これらの短縮入力は挿入モードでのみ有効で<br>
+す。他に可能な文字は以下です:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; コマンドラインモード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:cabbrev<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 挿入モードとコマンドラインモード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:abbreviate<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 挿入およびコマンドラインモードの両方&nbsp;&nbsp;&nbsp;&nbsp;:abbreviate<br>
 <br>
-コマンドラインモードで短縮形が役に立つことはあまりないので、&quot;iabbrev&quot; コマンド<br>
-を主に使うことになるでしょう。&quot;iabbrev&quot; なら、次のようなコマンドで &quot;ad&quot; が展開<br>
-される心配はありません:<br>
+短縮入力はコマンドラインモードではあまり役に立たないので、たいていは<br>
+&quot;:iabbrev&quot; コマンドを使うでしょう。これにより、例えば、以下のようなコマンドを<br>
+タイプするときに &quot;ad&quot; が展開されるのを避けられます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:edit ad</div>
 <br>
 <br>
-<span class="Statement">短縮形の削除</span><br>
+<span class="Statement">短縮入力を削除する</span><br>
 <br>
-短縮形を取り除くには &quot;:unabbreviate&quot; コマンドを使います。次のような短縮形が登<br>
-録されているなら:<br>
+短縮入力を取り除くには、&quot;:unabbreviate&quot; コマンドを使います。以下の短縮入力があ<br>
+るとします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:abbreviate @f fresh</div>
 <br>
-次のコマンドで削除できます:<br>
+これはこのコマンドで削除できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:unabbreviate @f</div>
 <br>
-このコマンドを入力すると @f が &quot;fresh&quot; に展開されてしまいますが、心配はいりま<br>
-せん。コマンドは正しく処理されます (ただし、&quot;fresh&quot; という別の短縮形が定義され<br>
-ている場合は期待した動作になりません。まぁそんなことはほとんどないはずですが)。<br>
-すべての短縮形を削除するには次のコマンドを使います:<br>
+これをタイプしている間に、@f が &quot;fresh&quot; に展開されることに気付くでしょう。これ<br>
+については心配いりません。Vim はとにかくそれを理解します (&quot;fresh&quot; に対する短縮<br>
+入力がある場合を除きますが、それはほとんどありそうにありません)。<br>
+&nbsp;&nbsp; すべての短縮入力を削除するには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:abclear</div>
 <br>
-&quot;:unabbreviate&quot; と &quot;:abclear&quot; にも、挿入モード用 (&quot;:iunabbreviate&quot; と<br>
-&quot;:iabclear&quot;) とコマンドライン用 (&quot;:cunabbreviate&quot; と &quot;:cabclear&quot;) があります。<br>
+&quot;:unabbreviate&quot; および &quot;:abclear&quot; には、挿入モード用 (&quot;:iunabbreviate および<br>
+&quot;:iabclear&quot;) およびコマンドラインモード用 (&quot;:cunabbreviate&quot; および &quot;:cabclear&quot;)<br>
+の変種もあります。<br>
 <br>
 <br>
-<span class="Statement">短縮形の再マップ</span><br>
+<span class="Statement">短縮入力をリマップする</span><br>
 <br>
-短縮形を定義するときに注意すべき点がもう一つあります。展開された文字列がマップ<br>
-されないようにしなくてはなりません。例をあげましょう:<br>
+短縮入力を定義するときに注意すべきことが 1 つあります: 結果の文字列はマップさ<br>
+れるべきではありません。例えば:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:abbreviate @a adder<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:imap dd disk-door</div>
 <br>
-&quot;@a&quot; を入力すると &quot;adisk-doorer&quot; になってしまいます。これは意図した動作ではな<br>
-いはずです。これを避けるには、&quot;:noreabbrev&quot; コマンドを使います。&quot;:abbreviate&quot;<br>
-と機能は同じですが、展開結果にマップが適用されません:<br>
+ここで @a とタイプすると、&quot;adisk-doorer&quot; になります。これは望むものではありま<br>
+せん。これを避けるには、&quot;:noreabbrev&quot; コマンドを使います。これは &quot;:abbreviate&quot;<br>
+と同じことをしますが、結果の文字列がマッピングに使われるのを避けます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:noreabbrev @a adder</div>
 <br>
-これで、展開結果がマップされなくなります。<br>
+幸い、短縮入力の結果がマップされることはほとんどありません。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_24.html#24.8" name="24.8">24.8</a>&nbsp;&nbsp;特殊な文字を入力する<br>
+<a class="Constant" href="usr_24.html#24.8" name="24.8">24.8</a>&nbsp;&nbsp;特殊文字を入力する<br>
 <br>
-<span class="Special">CTRL-V</span>&nbsp;コマンドを使うと、その次に入力した文字をそのまま挿入できます。つまり、<br>
-文字の特殊効果が無視されます。例えば、このように入力すると:<br>
+<span class="Special">CTRL-V</span>&nbsp;コマンドは、次の文字をそのまま挿入するのに使われます。言い換えると、そ<br>
+の文字が持つ特別な意味は何であれ、無視されます。例えば:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-V &lt;Esc&gt;</div>
 <br>
-エスケープ文字が挿入されます。挿入モードは終了しません。(<span class="Special">CTRL-V</span>&nbsp;の後ろの空白は<br>
-見やすくするためのものなので、実際には入力しないでください)<br>
+エスケープ文字を挿入します。したがって、挿入モードを抜けません。(<span class="Special">CTRL-V</span>&nbsp;の後の<br>
+空白はタイプしないでください。これは読みやすくするためだけのものです)。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS-Windows では&nbsp;<span class="Special">CTRL-V</span>&nbsp;はテキストのペーストに使われています。<span class="Special">CTRL-V</span>&nbsp;の<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;代わりに&nbsp;<span class="Special">CTRL-Q</span>&nbsp;を使ってください。Unixでは逆に一部の端末で&nbsp;<span class="Special">CTRL-Q</span>&nbsp;に特<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;別な意味があるので使えないかもしれません。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS-Windows では&nbsp;<span class="Special">CTRL-V</span>&nbsp;はテキストを貼り付けるのに使われます。<span class="Special">CTRL-V</span>&nbsp;の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;代わりに&nbsp;<span class="Special">CTRL-Q</span>&nbsp;を使ってください。一方、Unix では、<span class="Special">CTRL-Q</span>&nbsp;は特別な意味<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を持つため、一部の端末では機能しません。<br>
 <br>
-また、<span class="Special">CTRL-V</span>&nbsp;<span class="Special">{digits}</span>&nbsp;コマンドを使うと、文字コードを 10 進数で指定して、その文<br>
-字を入力できます。例えば、文字コード 127 は&nbsp;<span class="Special">&lt;Del&gt;</span>&nbsp;文字 (<span class="Special">&lt;Del&gt;</span>&nbsp;*キー*と同じとは<br>
-限りません) です。<span class="Special">&lt;Del&gt;</span>&nbsp;を挿入するには次のように入力します:<br>
+<span class="Special">CTRL-V</span>&nbsp;<span class="Special">{digits}</span>&nbsp;コマンドを使って、10 進数&nbsp;<span class="Special">{digits}</span>&nbsp;の文字を挿入することもでき<br>
+ます。例えば、文字番号 127 は&nbsp;<span class="Special">&lt;Del&gt;</span>&nbsp;文字です (ただし、必ずしも&nbsp;<span class="Special">&lt;Del&gt;</span>&nbsp;キーでは<br>
+ありません!)。<span class="Special">&lt;Del&gt;</span>&nbsp;を挿入するにはこうタイプします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-V 127</div>
 <br>
-同じやりかたで文字コード 255 までの文字を入力できます。文字コードが 2 桁以下の<br>
-場合は、数字以外の文字を入力してコマンドを確定してください。<br>
-数字以外の文字を入力したくない場合は、数値が 3 桁になるように 1 つか 2 つの<br>
-&quot;0&quot; を数値の前に付けてください。<br>
-次のコマンドはいずれも&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;と &quot;.&quot; を挿入します:<br>
+この方法で 255 までの文字を入力できます。2 桁未満をタイプするときは、数字以外<br>
+の文字でコマンドが終了します。数字以外の文字をタイプする必要を避けるには、1 つ<br>
+または 2 つのゼロを前に付けて 3 桁にします。<br>
+&nbsp;&nbsp; 次のコマンドはすべて、<span class="Special">&lt;Tab&gt;</span>&nbsp;を挿入し、それからドットを挿入します:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-V</span>&nbsp;9.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-V</span>&nbsp;09.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-V</span>&nbsp;009.<br>
 <br>
-文字コードは 16 進数でも指定できます。その場合は&nbsp;<span class="Special">CTRL-V</span>&nbsp;の直後に &quot;x&quot; を指定し<br>
-ます:<br>
+16 進数で文字を入力するには、<span class="Special">CTRL-V</span>&nbsp;の後に &quot;x&quot; を使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-V x7f</div>
 <br>
-この場合もコード 255 (<span class="Special">CTRL-V</span>&nbsp;xff) までの文字が入力できます。&quot;o&quot; で 8 進数の数<br>
-値を指定することもできます。他にも &quot;u&quot; と &quot;U&quot; でそれぞれ 16 ビットと 32 ビット<br>
-の文字コード (例えば Unicode の文字) を指定できます:<br>
+これも文字 255 (<span class="Special">CTRL-V</span>&nbsp;xff) までです。&quot;o&quot; を使って文字を 8 進数としてタイプで<br>
+き、さらに 2 つの方法で 16 ビットおよび 32 ビットの数値 (例えば、Unicode 文字<br>
+用) までタイプできます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-V o123<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-V u1234<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-V U12345678</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_24.html#24.9" name="24.9">24.9</a>&nbsp;&nbsp;ダイグラフ (Digraph)<br>
+<a class="Constant" href="usr_24.html#24.9" name="24.9">24.9</a>&nbsp;&nbsp;ダイグラフ<br>
 <br>
-例えば、コピーライト文字 (©) など、キーボードに無い文字がいくつかあります。そ<br>
-のような文字を Vim で入力するにはダイグラフを使います。つまり、二文字で一文字<br>
-を表現します。例えば、コピーライト文字 (©) を入力するには、次のようにします:<br>
+キーボードにない文字もあります。例えば、著作権文字 (©) です。Vim でこれらの文<br>
+字をタイプするには、ダイグラフを使います。ダイグラフでは 2 つの文字が 1 つを表<br>
+します。例えば、© を入力するには、3 つのキーを押します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-K Co</div>
 <br>
-使用できるダイグラフの一覧を表示するには、次のコマンドを使います:<br>
+どのようなダイグラフが使用可能かを調べるには、以下のコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:digraphs</div>
 <br>
-一部抜粋:<br>
+Vim はダイグラフの表を表示します。以下はその 3 行です:<br>
 <br>
 &nbsp;&nbsp;<span class="PreProc">AC ~_ 159&nbsp;&nbsp;NS |&nbsp;&nbsp;160&nbsp;&nbsp;!I ¡&nbsp;&nbsp;161&nbsp;&nbsp;Ct ¢&nbsp;&nbsp;162&nbsp;&nbsp;Pd £&nbsp;&nbsp;163&nbsp;&nbsp;Cu ¤&nbsp;&nbsp;164&nbsp;&nbsp;Ye ¥&nbsp;&nbsp;165</span><br>
 &nbsp;&nbsp;<span class="PreProc">BB ¦&nbsp;&nbsp;166&nbsp;&nbsp;SE §&nbsp;&nbsp;167&nbsp;&nbsp;': ¨&nbsp;&nbsp;168&nbsp;&nbsp;Co ©&nbsp;&nbsp;169&nbsp;&nbsp;-a ª&nbsp;&nbsp;170&nbsp;&nbsp;&lt;&lt; «&nbsp;&nbsp;171&nbsp;&nbsp;NO ¬&nbsp;&nbsp;172</span><br>
 &nbsp;&nbsp;<span class="PreProc">-- ­&nbsp;&nbsp;173&nbsp;&nbsp;Rg ®&nbsp;&nbsp;174&nbsp;&nbsp;'m ¯&nbsp;&nbsp;175&nbsp;&nbsp;DG °&nbsp;&nbsp;176&nbsp;&nbsp;+- ±&nbsp;&nbsp;177&nbsp;&nbsp;2S ²&nbsp;&nbsp;178&nbsp;&nbsp;3S ³&nbsp;&nbsp;179</span><br>
 <br>
-これを見れば、例えば&nbsp;<span class="Special">CTRL-K</span>&nbsp;Pd でポンド記号 (£) が入力できることがわかります。<br>
-文字番号は 163 (10進数) です。<br>
-Pd は Pound (ポンド) の略です。ほとんどのダイグラフには、生成される文字が連想<br>
-しやすい文字が割り当てられています。法則は表を見ればだいたいわかると思います。<br>
-ダイグラフの一文字目と二文字目は逆の順番で入力しても構いません。ただし、その組<br>
-み合わせが他のダイグラフで使われていない場合に限ります。すなわち、<span class="Special">CTRL-K</span>&nbsp;dP も<br>
-ポンド記号になります。&quot;dP&quot; という組み合わせが他に使われていないので、&quot;Pd&quot; のダ<br>
-イグラフが使われるのです。<br>
+これは、例えば、<span class="Special">CTRL-K</span>&nbsp;Pd とタイプして得られるダイグラフが文字 (£) であること<br>
+を示しています。これは文字番号 163 (10 進数) です。<br>
+&nbsp;&nbsp; Pd は Pound の略です。ほとんどのダイグラフは、生成される文字についてのヒン<br>
+トを与えるように選ばれています。リストに目を通した場合、その論理がわかるでしょ<br>
+う。<br>
+&nbsp;&nbsp; その組み合わせのダイグラフがない場合、1 文字目と 2 文字目を入れ替えることが<br>
+できます。したがって、<span class="Special">CTRL-K</span>&nbsp;dP も機能します。&quot;dP&quot; のダイグラフはないので、Vim<br>
+は &quot;Pd&quot; のダイグラフも検索します。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ダイグラフはユーザーが使っている (と Vim が認識している) 文字セットに<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;依存します。&quot;:digraphs&quot; を使って、利用可能なダイグラフを確認してくださ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ダイグラフは、あなたが使用していると Vim が仮定する文字セットに依存し<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ます。現在どのダイグラフが使用可能かを調べるには、常に &quot;:digraphs&quot; を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使ってください。<br>
 <br>
-独自のダイグラフを定義するには、対象の文字を 10 進数で指定します。例:<br>
+10 進数で対象の文字を指定して、独自のダイグラフを定義できます。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:digraph a\&quot; 228</div>
 <br>
-これは、<span class="Special">CTRL-K</span>&nbsp;a&quot; で ä 文字が挿入されることを定義します。<span class="Todo">Note:</span>&nbsp;&quot; 文字をエスケー<br>
-プしないと、コメント文字として機能してしまうため、エスケープする必要がありまし<br>
-た。<br>
+これは&nbsp;<span class="Special">CTRL-K</span>&nbsp;a&quot; が ä 文字を挿入することを定義します。<span class="Todo">Note:</span>&nbsp;そうしないとコメン<br>
+ト文字として働いてしまうので、&quot; 文字をエスケープする必要がありました。<br>
 <br>
-ダイグラフについての詳細は&nbsp;<a class="Identifier" href="digraph.html#digraphs">digraphs</a>&nbsp;を参照してください。<br>
-他にも、キーマップを使って特殊な文字を入力することもできます。詳しくは&nbsp;<a class="Identifier" href="usr_45.html#45.5">45.5</a><br>
-参照。<br>
+ダイグラフについてのさらなる情報はこちら:&nbsp;<a class="Identifier" href="digraph.html#digraphs">digraphs</a><br>
+&nbsp;&nbsp; 特殊文字を挿入する別の方法は、キーマップを使うことです。それについてのさら<br>
+なる情報はこちら:&nbsp;<a class="Identifier" href="usr_45.html#45.5">45.5</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_24.html#24.10" name="24.10">24.10</a>&nbsp;ノーマルモードコマンド<br>
 <br>
-挿入モードで使えるコマンドはそれほど多くありませんが、ノーマルモードにはたくさ<br>
-んのコマンドがあります。それらのコマンドを使うには&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;で挿入モードを抜けて、<br>
-ノーマルモードコマンドを実行し、&quot;i&quot; または &quot;a&quot; で挿入モードに戻ってこなければ<br>
-なりません。<br>
-もっと簡単な方法があります。<span class="Special">CTRL-O</span>&nbsp;<span class="Special">{command}</span>&nbsp;を使えばノーマルモードコマンドを<br>
-挿入モードの中で実行できます。例えば、次のコマンドでカーソル位置から行末まで削<br>
-除できます:<br>
+挿入モードが提供するコマンドの数は限られています。ノーマルモードではもっとたく<br>
+さんあります。それを使いたいときは、たいてい&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;で挿入モードを抜け、ノーマ<br>
+ルモードコマンドを実行し、&quot;i&quot; または &quot;a&quot; で挿入モードに再び入ります。<br>
+&nbsp;&nbsp; もっと素早い方法があります。<span class="Special">CTRL-O</span>&nbsp;<span class="Special">{command}</span>&nbsp;で、挿入モードから任意のノーマ<br>
+ルモードコマンドを実行できます。例えば、カーソルから行末まで削除するには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-O D</div>
 <br>
-この方法で実行できるのは一つのコマンドだけです。ただし、レジスタやカウントの指<br>
-定はできます。もう少し複雑な例:<br>
+この方法で実行できるのは 1 つのノーマルモードコマンドだけです。しかし、レジス<br>
+タまたはカウントを指定できます。もっと複雑な例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-O &quot;g3dw</div>
 <br>
-三つの単語を削除してレジスタ g に格納します。<br>
+これは 3 番目の単語までをレジスタ g に削除します。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_25.html">usr_25.txt</a>&nbsp;&nbsp;テキストの整形<br>
+次章:&nbsp;<a class="Identifier" href="usr_25.html">usr_25.txt</a>&nbsp;&nbsp;整形されたテキストの編集<br>
 <br>
 Copyright: see&nbsp;<a class="Identifier" href="usr_01.html#manual-copyright">manual-copyright</a>&nbsp;&nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>
