@@ -98,7 +98,7 @@ cscope インターフェイスがどのように動作するか、および推�
 れる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="if_cscop.html#:cscope">:cscope</a>&nbsp;または&nbsp;<a class="Comment" href="if_cscop.html#:cs">:cs</a>&nbsp;がメインのコマンドである<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="if_cscop.html#:scscope">:scscope</a>&nbsp;または&nbsp;<a class="Comment" href="if_cscop.html#:scs">:scs</a>&nbsp;は同じことを行い、ウィンドウを分割する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="if_cscop.html#:lcscope">:lcscope</a>&nbsp;または&nbsp;<a class="Comment" href="if_cscop.html#:lcs">:lcs</a>&nbsp;はロケーションリストを使う、<a class="Identifier" href="if_cscop.html#:lcscope">:lcscope</a>&nbsp;を参照<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="if_cscop.html#:lcscope">:lcscope</a>&nbsp;または&nbsp;<a class="Comment" href="if_cscop.html#:lcs">:lcs</a>&nbsp;は location リストを使う、<a class="Identifier" href="if_cscop.html#:lcscope">:lcscope</a>&nbsp;を参照<br>
 <br>
 使用可能なサブコマンドは以下のとおり:<br>
 <br>
@@ -227,8 +227,8 @@ cscope インターフェイスがどのように動作するか、および推�
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_cscop.html#:lcscope" name=":lcscope">:lcscope</a>&nbsp;<a class="Constant" href="if_cscop.html#:lcs" name=":lcs">:lcs</a><br>
 このコマンドは、<a class="Type" href="options.html#'cscopequickfix'">'cscopequickfix'</a>&nbsp;オプションが設定されているときに、cscope の結<br>
-果を表示するのにクイックフィックスリストの代わりにカレントウィンドウのロケー<br>
-ションリストが使われることを除き、&quot;:cscope&quot; コマンドと同じである。<br>
+果を表示するのに quickfix リストの代わりにカレントウィンドウの location リスト<br>
+が使われることを除き、&quot;:cscope&quot; コマンドと同じである。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_cscop.html#:cstag" name=":cstag">:cstag</a>&nbsp;<a class="Constant" href="if_cscop.html#E257" name="E257">E257</a>&nbsp;<a class="Constant" href="if_cscop.html#E562" name="E562">E562</a><br>
 ctags に加えて cscope も使う場合、<a class="Identifier" href="if_cscop.html#:cstag">:cstag</a>&nbsp;を使うと、ジャンプする前に一方また<br>
@@ -259,15 +259,15 @@ cscope 関連の変数は&nbsp;<a class="Identifier" href="starting.html#.vimrc"
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_cscop.html#cscopequickfix" name="cscopequickfix">cscopequickfix</a>&nbsp;<a class="Constant" href="if_cscop.html#csqf" name="csqf">csqf</a>&nbsp;<a class="Constant" href="if_cscop.html#E469" name="E469">E469</a><br>
 <span class="Special">{</span><a class="Identifier" href="various.html#+quickfix">+quickfix</a><span class="Special">&nbsp;機能なしでコンパイルされたときは使用できない}</span><br>
-<a class="Type" href="options.html#'cscopequickfix'">'cscopequickfix'</a>&nbsp;は、cscope の結果を表示するのにクイックフィックスウィンドウを<br>
-使うかどうかを指定する。これはコンマ区切りの値のリストである。各項目は、<br>
-<a class="Identifier" href="if_cscop.html#cscope-find">cscope-find</a>&nbsp;のコマンド (s、g、d、c、t、e、f、i、または a) およびフラグ (+、<br>
--、または 0) から成る。<br>
-'+' は、結果がクイックフィックスウィンドウに追加されなければならないことを示<br>
-し、'-' は以前の結果の消去を意味し、'0' またはコマンドの不在 - クイックフィッ<br>
-クスを使わない。検索は最初から最初のコマンドの出現まで行われる。<br>
-既定値は &quot;&quot; である (いずれにせよクイックフィックスを使わない)。以下の値が有用<br>
-なようである:<br>
+<a class="Type" href="options.html#'cscopequickfix'">'cscopequickfix'</a>&nbsp;は、cscope の結果を表示するのに quickfix ウィンドウを使うかど<br>
+うかを指定する。これはコンマ区切りの値のリストである。各項目は、<a class="Identifier" href="if_cscop.html#cscope-find">cscope-find</a><br>
+のコマンド (s、g、d、c、t、e、f、i、または a) およびフラグ (+、-、または 0) か<br>
+ら成る。<br>
+'+' は、結果が quickfix ウィンドウに追加されなければならないことを示し、'-' は<br>
+以前の結果の消去を意味し、'0' またはコマンドの不在 - quickfix を使わない。検索<br>
+は最初から最初のコマンドの出現まで行われる。<br>
+既定値は &quot;&quot; である (いずれにせよ quickfix を使わない)。以下の値が有用なようで<br>
+ある:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set cscopequickfix=s-,c-,d-,i-,t-,e-,a-</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="if_cscop.html#cscopetag" name="cscopetag">cscopetag</a>&nbsp;<a class="Constant" href="if_cscop.html#cst" name="cst">cst</a><br>
