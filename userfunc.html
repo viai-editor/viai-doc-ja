@@ -9,132 +9,130 @@ helpname: 'userfunc'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
-関数の定義と使用。<br>
+関数の定義および使用。<br>
 <br>
-これはユーザーマニュアルの第&nbsp;<a class="Identifier" href="usr_07.html#07.2">07.2</a>&nbsp;章で紹介されている。<br>
+これはユーザーマニュアルの&nbsp;<a class="Identifier" href="usr_41.html#41.7">41.7</a>&nbsp;節で紹介されている。<br>
 <br>
 1. 関数の定義&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="userfunc.html#define-function">define-function</a><br>
-2. 関数呼び出し&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="userfunc.html#:call">:call</a><br>
+2. 関数の呼び出し&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="userfunc.html#:call">:call</a><br>
 3. 関数内でのクリーンアップ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="userfunc.html#:defer">:defer</a><br>
-4. 自動的に読み込まれる関数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="userfunc.html#autoload-functions">autoload-functions</a><br>
+4. 関数を自動的に読み込む&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="userfunc.html#autoload-functions">autoload-functions</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
 <span class="PreProc">1. 関数の定義</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#define-function" name="define-function">define-function</a><br>
-ユーザーは自分で新しい関数を定義することができる。その関数は組込み関数とまった<br>
-く同じように呼び出せる。関数は一連のExコマンドを実行する。ノーマルモードコマン<br>
-ドはコマンド<a class="Identifier" href="various.html#:normal">:normal</a>によって実行できる。<br>
+新しい関数を定義できる。これらは組み込み関数とまったく同じように呼び出せる。関<br>
+数は一連の Ex コマンドを実行する。ノーマルモードのコマンドは&nbsp;<a class="Identifier" href="various.html#:normal">:normal</a>&nbsp;コマン<br>
+ドで実行できる。<br>
 <br>
-関数名は組込み関数との混同を避ける為、大文字で始まらなければならない。他のスク<br>
-リプトで同じ関数名を使用してしまうことを避けるためスクリプトローカルにする。グ<br>
-ローバル関数を使用するなら重複を避ける為に、露骨に短い名前は避けるべきである。<br>
-関数名を例えば &quot;HTMLcolor()&quot; のように、スクリプトの名前から始めるというのは良<br>
-い習慣である。<br>
+関数名は、組み込み関数との混同を避けるため、大文字で始まらなければならない。異<br>
+なるスクリプトで同じ名前を使うのを防ぐには、それらをスクリプトローカルにするこ<br>
+と。グローバル関数を使う場合は、明白な、短い名前を避けること。よい習慣は、関数<br>
+名をスクリプトの名前で始めることである。例えば &quot;HTMLcolor()&quot;。<br>
 <br>
-旧来の Vim script では波括弧変数というものもある(<a class="Identifier" href="eval.html#curly-braces-names">curly-braces-names</a>&nbsp;を参照)。<br>
+旧来の Vim script では、波括弧を使うこともできる。<a class="Identifier" href="eval.html#curly-braces-names">curly-braces-names</a>&nbsp;を参照。<br>
 <br>
-また、オートロード&nbsp;<a class="Identifier" href="userfunc.html#autoload">autoload</a>&nbsp;機構を使うと、関数が呼ばれたときだけ定義すること<br>
-ができる。<br>
+<a class="Identifier" href="userfunc.html#autoload">autoload</a>&nbsp;機能は、関数をそれが呼び出されたときにだけ定義するのに便利である。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#local-function" name="local-function">local-function</a><br>
-旧来の Vim script のローカルな関数の名前は &quot;s:&quot; で始めなければならない。スクリ<br>
-プトローカルな関数は、そのスクリプトの中の関数から、またはそのスクリプト内で定<br>
-義されたユーザー定義コマンド、自動コマンドからしか呼ぶことができない。そのスク<br>
-リプト内で定義されたマッピングにより呼ぶこともできるが、スクリプトの外部でマッ<br>
-ピングが展開された場合は &quot;s:&quot; の代わりに&nbsp;<a class="Identifier" href="map.html#<SID>">&lt;SID&gt;</a>&nbsp;をつけなければならない。<br>
-ローカル関数はスクリプトローカル関数だけである。バッファローカル関数やウィンド<br>
-ウローカル関数というものはない。<br>
+旧来の Vim script にローカルな関数は &quot;s:&quot; で始まらなければならない。ローカルな<br>
+スクリプト関数は、そのスクリプト内から、およびそのスクリプト内で定義された関<br>
+数、ユーザーコマンド、および自動コマンドからのみ呼び出せる。そのスクリプト内で<br>
+定義されたマッピングから関数を呼び出すこともできるが、その場合、マッピングがス<br>
+クリプトの外で展開されるときは &quot;s:&quot; の代わりに&nbsp;<a class="Identifier" href="map.html#<SID>">&lt;SID&gt;</a>&nbsp;を使わなければならない。<br>
+スクリプトローカル関数だけがあり、バッファローカルまたはウィンドウローカルの関<br>
+数はない。<br>
 <br>
-<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では、関数はデフォルトでスクリプトローカルであり、グローバルな関<br>
-数を定義するにはプリフィックス &quot;g:&quot; を付ける。<br>
+<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では、関数は既定でスクリプトにローカルである。グローバル関数を定<br>
+義するには &quot;g:&quot; を前に付ける。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#:fu" name=":fu">:fu</a>&nbsp;<a class="Constant" href="userfunc.html#:function" name=":function">:function</a>&nbsp;<a class="Constant" href="userfunc.html#E128" name="E128">E128</a>&nbsp;<a class="Constant" href="userfunc.html#E129" name="E129">E129</a>&nbsp;<a class="Constant" href="userfunc.html#E123" name="E123">E123</a>&nbsp;<a class="Constant" href="userfunc.html#E454" name="E454">E454</a><br>
-:fu[nction]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 全ての関数と、その引数を表示する。<br>
+:fu[nction]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; すべての関数およびその引数を一覧表示する。<br>
 <br>
-:fu[nction]&nbsp;<span class="Special">{name}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数<span class="Special">{name}</span>の定義を表示する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>は辞書<a class="Identifier" href="eval.html#Dictionary">Dictionary</a>の要素の<a class="Identifier" href="eval.html#Funcref">Funcref</a>であってもよ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い:<br>
+:fu[nction]&nbsp;<span class="Special">{name}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数&nbsp;<span class="Special">{name}</span>&nbsp;を一覧表示する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>&nbsp;は&nbsp;<a class="Identifier" href="eval.html#Funcref">Funcref</a>&nbsp;である&nbsp;<a class="Identifier" href="eval.html#Dictionary">Dictionary</a>&nbsp;のエントリにす<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ることもできる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:function dict.init</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>&nbsp;<span class="Special">{name}</span>&nbsp;は式ではないため、関数参照である変数は使用<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;できないことに注意。この汚いトリックを使用すると、変数<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;Funcref&quot; で参照される関数をリストできる:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>&nbsp;<span class="Special">{name}</span>&nbsp;は式ではなく、関数参照である変数を使うこと<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;はできないことに注意。変数 &quot;Funcref&quot; で参照される関数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を一覧表示するには、この汚いトリックを使える:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:MyFuncref = Funcref<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;func g:MyFuncref<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unlet g:MyFuncref</div>
 <br>
-:fu[nction] /<span class="Special">{pattern}</span>&nbsp;&nbsp;<span class="Special">{pattern}</span>にマッチする名前の関数を表示する。&quot;File&quot; で終<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;わる関数を全て表示する例:<br>
+:fu[nction] /<span class="Special">{pattern}</span>&nbsp;&nbsp;名前が&nbsp;<span class="Special">{pattern}</span>&nbsp;にマッチする関数を一覧表示する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;File&quot; で終わるすべての関数を一覧表示する例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:function /File$</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#:function-verbose" name=":function-verbose">:function-verbose</a><br>
-<a class="Type" href="options.html#'verbose'">'verbose'</a>&nbsp;が 0 でないとき、これらのコマンドで関数を表示すると、それがどこで定<br>
-義されたかも表示する。例:<br>
+<a class="Type" href="options.html#'verbose'">'verbose'</a>&nbsp;が 0 でない場合、関数を一覧表示すると、それが最後に定義された場所も<br>
+表示される。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;:verbose function SetFileTypeSH<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function SetFileTypeSH(name)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last set from /usr/share/vim/vim-7.0/filetype.vim</div>
 <br>
-より詳しくは<a class="Identifier" href="various.html#:verbose-cmd">:verbose-cmd</a>を参照。<br>
+詳細は&nbsp;<a class="Identifier" href="various.html#:verbose-cmd">:verbose-cmd</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#E124" name="E124">E124</a>&nbsp;<a class="Constant" href="userfunc.html#E125" name="E125">E125</a>&nbsp;<a class="Constant" href="userfunc.html#E853" name="E853">E853</a>&nbsp;<a class="Constant" href="userfunc.html#E884" name="E884">E884</a><br>
 :fu[nction][!]&nbsp;<span class="Special">{name}</span>(<span class="Special">[arguments]</span>)&nbsp;<span class="Special">[range]</span>&nbsp;<span class="Special">[abort]</span>&nbsp;<span class="Special">[dict]</span>&nbsp;<span class="Special">[closure]</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>&nbsp;という名前で新しい関数を定義する。関数の本体は、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次の行から&nbsp;<a class="Identifier" href="userfunc.html#:endfunction">:endfunction</a>&nbsp;と一致するまで続く。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>&nbsp;という名前の新しい関数を定義する。関数の本体は、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;対応する&nbsp;<a class="Identifier" href="userfunc.html#:endfunction">:endfunction</a>&nbsp;まで、次の行以降に続く。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#E1267" name="E1267">E1267</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名前は英数字と '_' で構成され、大文字または &quot;s:&quot; で始<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;まる必要がある (上記参照)。<span class="Todo">Note</span>&nbsp;&quot;b:&quot;、&quot;l:&quot; などは使用<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;できない (パッチ 7.4.260 以降、関数名にコロンが含まれ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る場合 (例：&quot;foo:bar()&quot;)、E884 エラーが発生する)。ま<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;た、先頭の &quot;g:&quot; はスキップされるが、その後に続く文字は<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大文字である必要がある。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名前は英数字および '_' で構成され、大文字または &quot;s:&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;で始まらなければならない (上記参照)。<span class="Todo">Note</span>&nbsp;&quot;b:&quot;、&quot;l:&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;などを使うことは許されない (パッチ 7.4.260 以降、関数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名にコロンがある場合、例えば &quot;foo:bar()&quot; に対しては<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E884 が出る) が、先頭の &quot;g:&quot; はスキップされ、それでも<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;その後に大文字が必要であることに注意。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>は辞書<a class="Identifier" href="eval.html#Dictionary">Dictionary</a>の要素の<a class="Identifier" href="eval.html#Funcref">Funcref</a>であってもよ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>&nbsp;は&nbsp;<a class="Identifier" href="eval.html#Funcref">Funcref</a>&nbsp;である&nbsp;<a class="Identifier" href="eval.html#Dictionary">Dictionary</a>&nbsp;のエントリにす<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ることもできる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:function dict.init(arg)</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;dict&quot; は既に定義されている辞書でなければならない。そ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の要素 &quot;init&quot; がまだ存在しないならば追加される。存在す<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る場合は、既存の関数を上書きするためには [!] をつけな<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ければならない。この値は番号つきの関数を指す<a class="Identifier" href="eval.html#Funcref">Funcref</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;である。この関数は<a class="Identifier" href="eval.html#Funcref">Funcref</a>を通してのみ呼ぶことができ、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;そこへの参照がなくなると削除される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;dict&quot; は既存の辞書でなければならない。エントリ &quot;init&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、まだ存在しない場合は追加される。そうでない場合、既<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存の関数を上書きするには [!] が必要である。結果は番号<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;付き関数への&nbsp;<a class="Identifier" href="eval.html#Funcref">Funcref</a>&nbsp;である。その関数は&nbsp;<a class="Identifier" href="eval.html#Funcref">Funcref</a>&nbsp;で<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のみ使用でき、それへの参照がなくなると削除される。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#E127" name="E127">E127</a>&nbsp;<a class="Constant" href="userfunc.html#E122" name="E122">E122</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この名前で定義される関数が既に定義済みで [!] が使用さ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れなかった場合、エラーとなる。1つの例外がある: スクリ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プトを再読み込みすると、そのスクリプトで以前に定義され<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ていた関数は、静かに置き換えられる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[!] が使用されていれば、それまで存在していた関数は、速<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;やかに新しいものへ置換えられる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE:</span>&nbsp;! は十分に注意して使用すること。注意せずに使用し<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;た場合は既存の関数を期待せず置き換える可能性があり、デ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッグが難しくなる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE:</span>&nbsp;Vim9 scriptのスクリプトローカル関数は、削除また<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は再定義はできない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この名前の関数がすでに存在し、かつ [!] が使われていな<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い場合、エラーメッセージが出る。例外が 1 つある: スク<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リプトを再び読み込むとき、そのスクリプト内で以前に定義<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;された関数は黙って置き換えられる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[!] が使われた場合、既存の関数は黙って置き換えられる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;それが現在実行中でない限り、それはエラーである。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE:</span>&nbsp;! は賢く使うこと。不注意に使うと、既存の関数が予<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期せず置き換えられる原因になることがあり、それはデバッ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;グが難しい。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE:</span>&nbsp;Vim9 script では、スクリプトローカル関数は削除ま<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;たは再定義できない。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数<span class="Special">{arguments}</span>については<a class="Identifier" href="userfunc.html#function-argument">function-argument</a>を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{arguments}</span>&nbsp;については&nbsp;<a class="Identifier" href="userfunc.html#function-argument">function-argument</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#:func-range" name=":func-range">:func-range</a>&nbsp;<a class="Constant" href="userfunc.html#a:firstline" name="a:firstline">a:firstline</a>&nbsp;<a class="Constant" href="userfunc.html#a:lastline" name="a:lastline">a:lastline</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数<span class="Special">[range]</span>を追加した場合、関数は「範囲」を管理するこ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;とができる。「範囲」は &quot;a:firstline&quot; と &quot;a:lastline&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;によって渡される。<span class="Special">[range]</span>がなかった場合、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:<span class="Special">{range}</span>call&quot; が「範囲」を指定されて実行されると、1行<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1行について、カーソルをその行の先頭に置いた状態で関数<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を呼び出すことになる。<a class="Identifier" href="userfunc.html#function-range-example">function-range-example</a>を参照。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;他の Ex コマンドと同様に、カーソルは選択範囲の最初の行<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に移動される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[range]</span>&nbsp;引数が追加された場合、関数は範囲を自分で扱うこ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;とが期待される。範囲は &quot;a:firstline&quot; および<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;a:lastline&quot; として渡される。<span class="Special">[range]</span>&nbsp;が除外された場合、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:<span class="Special">{range}</span>call&quot; は範囲内の各行に対して、カーソルを各行<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の先頭に置いて関数を呼び出す。<a class="Identifier" href="userfunc.html#function-range-example">function-range-example</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;すべての Ex コマンドの場合と同様に、カーソルはそれでも<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;範囲の最初の行に移動される。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#:func-abort" name=":func-abort">:func-abort</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数&nbsp;<span class="Special">[abort]</span>&nbsp;を追加すると、関数の実行中にエラーに遭遇<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;し次第、即関数は中断される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[abort]</span>&nbsp;引数が追加された場合、関数はエラーが検出される<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;とすぐに中断する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#:func-dict" name=":func-dict">:func-dict</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数&nbsp;<span class="Special">[dict]</span>&nbsp;を追加すると、この関数は辞書<a class="Identifier" href="eval.html#Dictionary">Dictionary</a>の<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;要素を通してしか呼べなくなる。そしてその辞書にローカル<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変数 &quot;self&quot; が定義される。<a class="Identifier" href="eval.html#Dictionary-function">Dictionary-function</a>を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[dict]</span>&nbsp;引数が追加された場合、関数は&nbsp;<a class="Identifier" href="eval.html#Dictionary">Dictionary</a>&nbsp;のエ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ントリを通して呼び出されなければならない。そのとき、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ローカル変数 &quot;self&quot; がその辞書に設定される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="eval.html#Dictionary-function">Dictionary-function</a>&nbsp;を参照。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#:func-closure" name=":func-closure">:func-closure</a>&nbsp;<a class="Constant" href="userfunc.html#E932" name="E932">E932</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数&nbsp;<span class="Special">[closure]</span>&nbsp;を追加すると、関数は外側のスコープの変<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数と引数をアクセスできるようになる。これは一般的にク<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ロージャと呼ばれる。以下の例では Bar() は Foo() のス<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コープの &quot;x&quot; を使用している。それは Foo() から戻っても<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参照され続ける:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[closure]</span>&nbsp;引数が追加された場合、関数は外側のスコープの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変数および引数にアクセスできる。これは通常クロージャと<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;呼ばれる。この例では、Bar() は Foo() のスコープの &quot;x&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を使う。それは Foo() が戻った後でも参照されたままであ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:function! Foo()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;let x = 0<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;function! Bar() closure<br>
@@ -153,57 +151,54 @@ helpname: 'userfunc'
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#function-search-undo" name="function-search-undo">function-search-undo</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数の実行によって、最後に使用されたサーチパターン、及<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;びredoコマンドの &quot;.&quot; の内容は変更されない。したがって、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数内で<a class="Identifier" href="pattern.html#:nohlsearch">:nohlsearch</a>&nbsp;を行っても、関数から戻ると検索結<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;果のハイライトが元に戻ることになる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後に使われた検索パターンおよび redo コマンド &quot;.&quot; は、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数によって変更されない。これはまた、関数から戻るとき<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に&nbsp;<a class="Identifier" href="pattern.html#:nohlsearch">:nohlsearch</a>&nbsp;の効果が取り消されることも意味する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#:endf" name=":endf">:endf</a>&nbsp;<a class="Constant" href="userfunc.html#:endfunction" name=":endfunction">:endfunction</a>&nbsp;<a class="Constant" href="userfunc.html#E126" name="E126">E126</a>&nbsp;<a class="Constant" href="userfunc.html#E193" name="E193">E193</a>&nbsp;<a class="Constant" href="userfunc.html#W22" name="W22">W22</a>&nbsp;<a class="Constant" href="userfunc.html#E1151" name="E1151">E1151</a><br>
 :endf[unction]&nbsp;<span class="Special">[argument]</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数定義の終了。最も良いのは、<span class="Special">[argument]</span>&nbsp;無しに行内に<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これ自身のみを書くこと。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数定義の終わり。<span class="Special">[argument]</span>&nbsp;なしで、それ自体だけの行<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に置くのが最もよい。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[argument]</span>&nbsp;として可能なものは以下のとおり:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次に実行するコマンド<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n コマンド&nbsp;&nbsp;&nbsp;&nbsp; 次に実行するコマンド<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; コメント&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;常に無視される<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;その他&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;無視される、<a class="Type" href="options.html#'verbose'">'verbose'</a>&nbsp;が非ゼロ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のときは警告が表示される<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;後ろに続くコマンドのサポートは Vim 8.0.0654 で追加され<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ており、それ以前ではいかなる引数も黙って無視される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[argument]</span>&nbsp;には次を指定できる:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| command&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 次に実行するコマンド<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n command&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次に実行するコマンド<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; comment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 常に無視される<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;それ以外&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;無視される、<a class="Type" href="options.html#'verbose'">'verbose'</a>&nbsp;が 0 で<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ない場合は警告が出る<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;後続のコマンドのサポートは Vim 8.0.0654 で追加された。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;それ以前は、引数はすべて黙って無視されていた。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンド&nbsp;<a class="Comment" href="eval.html#:execute">:execute</a>&nbsp;の内部で関数の定義を可能にするに<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、<a class="Identifier" href="cmdline.html#:bar">:bar</a>&nbsp;の代わりに改行を使用する:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="eval.html#:execute">:execute</a>&nbsp;コマンドの中で関数を定義できるようにするに<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、<a class="Identifier" href="cmdline.html#:bar">:bar</a>&nbsp;の代わりに改行を使う:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:exe &quot;func Foo()\necho 'foo'\nendfunc&quot;</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#:delf" name=":delf">:delf</a>&nbsp;<a class="Constant" href="userfunc.html#:delfunction" name=":delfunction">:delfunction</a>&nbsp;<a class="Constant" href="userfunc.html#E131" name="E131">E131</a>&nbsp;<a class="Constant" href="userfunc.html#E933" name="E933">E933</a><br>
 :delf[unction][!]&nbsp;<span class="Special">{name}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数<span class="Special">{name}</span>を削除する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>は辞書<a class="Identifier" href="eval.html#Dictionary">Dictionary</a>の要素の<a class="Identifier" href="eval.html#Funcref">Funcref</a>であってもよ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数&nbsp;<span class="Special">{name}</span>&nbsp;を削除する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>&nbsp;は&nbsp;<a class="Identifier" href="eval.html#Funcref">Funcref</a>&nbsp;である&nbsp;<a class="Identifier" href="eval.html#Dictionary">Dictionary</a>&nbsp;のエントリにす<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ることもできる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:delfunc dict.init</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; この例は &quot;dict&quot; から要素 &quot;init&quot; を削除する。この関数へ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の参照がなくなると、関数は削除される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;! が付いていると、関数が存在していなくてもエラーが発生<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;しない。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim9 script では、スクリプトローカルな関数を削除しよう<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;とすると、<a class="Identifier" href="vim9.html#E1084">E1084</a>&nbsp;が発生する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; これは &quot;dict&quot; から &quot;init&quot; エントリを削除する。関数は、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;それへの参照がなくなると削除される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;! を付けた場合、関数が存在しなくてもエラーにならない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim9 script では、スクリプトローカル関数を削除しようと<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;すると&nbsp;<a class="Identifier" href="vim9.html#E1084">E1084</a>&nbsp;が出る。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#:retu" name=":retu">:retu</a>&nbsp;<a class="Constant" href="userfunc.html#:return" name=":return">:return</a>&nbsp;<a class="Constant" href="userfunc.html#E133" name="E133">E133</a><br>
-:retu[rn]&nbsp;<span class="Special">[expr]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数から戻る。<span class="Special">[expr]</span>&nbsp;が与えられた場合、それは評価され<br>
+:retu[rn]&nbsp;<span class="Special">[expr]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数から戻る。<span class="Special">[expr]</span>&nbsp;が与えられた場合、それが評価され、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数の結果として返される。<span class="Special">[expr]</span>&nbsp;が与えられない場合、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数値 0 が返される。関数が明示的な &quot;:return&quot; を伴わずに<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;終了した場合、数値 0 が返される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数値 0 が返される。関数が明示的な &quot;:return&quot; なしで終<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;わった場合、数値 0 が返される。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script の場合:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;<a class="Comment" href="userfunc.html#:return">:return</a>&nbsp;は短縮できない、そして<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 条件なしの&nbsp;<a class="Comment" href="userfunc.html#:return">:return</a>&nbsp;や&nbsp;<a class="Comment" href="eval.html#:throw">:throw</a>&nbsp;に続いてコマンドが<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;記述された場合、&nbsp;<a class="Constant" href="userfunc.html#E1095" name="E1095">E1095</a>&nbsp;が発生する。すべての分岐が<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="userfunc.html#:return">:return</a>&nbsp;または&nbsp;<a class="Comment" href="eval.html#:throw">:throw</a>&nbsp;で終了する場合、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="eval.html#:if">:if</a>/<a class="Comment" href="eval.html#:elseif">:elseif</a>/<a class="Comment" href="eval.html#:else">:else</a>&nbsp;の一連の構造全体も終了したも<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のとみなされる。<a class="Comment" href="eval.html#:else">:else</a>&nbsp;を伴わない&nbsp;<a class="Comment" href="eval.html#:if">:if</a>&nbsp;や、通常の<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;処理が継続し得る分岐が存在する場合、それに続くコマン<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ドが到達不能になることはない。例:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;<a class="Comment" href="userfunc.html#:return">:return</a>&nbsp;は短縮できず、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;<a class="Constant" href="userfunc.html#E1095" name="E1095">E1095</a>&nbsp;は、無条件の&nbsp;<a class="Comment" href="userfunc.html#:return">:return</a>&nbsp;または&nbsp;<a class="Comment" href="eval.html#:throw">:throw</a>&nbsp;の後<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;にコマンドが続く場合に出る。完全な<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="eval.html#:if">:if</a>/<a class="Comment" href="eval.html#:elseif">:elseif</a>/<a class="Comment" href="eval.html#:else">:else</a>&nbsp;も、すべての分岐が&nbsp;<a class="Comment" href="userfunc.html#:return">:return</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;または&nbsp;<a class="Comment" href="eval.html#:throw">:throw</a>&nbsp;で終わる場合、終了するとみなされる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="eval.html#:else">:else</a>&nbsp;のない&nbsp;<a class="Comment" href="eval.html#:if">:if</a>、または通常どおり続行できる分岐<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、後続のコマンドを到達不能にしない。例えば:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9script</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">var</span>&nbsp;<span class="Normal">L</span>:&nbsp;<span class="Type">func</span>&nbsp;<span class="Statement">=</span>&nbsp;<span class="Special">()</span>:&nbsp;<span class="Type">bool</span>&nbsp;<span class="Statement">=&gt;</span>&nbsp;<span class="Special">{</span><br>
@@ -212,15 +207,14 @@ helpname: 'userfunc'
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">}</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Normal">L</span><span class="Special">()</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="eval.html#:try">:try</a>&nbsp;についても同様のチェックが適用される。つまり、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;終了処理を行う&nbsp;<a class="Comment" href="eval.html#:finally">:finally</a>&nbsp;ブロックによって上書きされ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ない限り、<a class="Comment" href="eval.html#:try">:try</a>&nbsp;の本体およびすべての&nbsp;<a class="Comment" href="eval.html#:catch">:catch</a>&nbsp;ブロッ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;クは終了しなければならない。ループ内では、<a class="Comment" href="eval.html#:break">:break</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;や&nbsp;<a class="Comment" href="eval.html#:continue">:continue</a>&nbsp;はループ本体内の後続のコマンドを到達<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不能にするが、ループより後のコマンドを到達不能にする<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;わけではない。例えば、<a class="Comment" href="eval.html#:if">:if</a>/<a class="Comment" href="eval.html#:else">:else</a>&nbsp;のすべての分岐で<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="userfunc.html#:return">return</a>&nbsp;が行われる場合、<a class="Comment" href="eval.html#:endif">:endif</a>&nbsp;より後のコマンドは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;到達不能となる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同じチェックは&nbsp;<a class="Comment" href="eval.html#:try">:try</a>&nbsp;にも適用される:&nbsp;<a class="Comment" href="eval.html#:try">:try</a>&nbsp;本体お<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;よびすべての&nbsp;<a class="Comment" href="eval.html#:catch">:catch</a>&nbsp;ブロックは終了しなければならな<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い。ただし、終了する&nbsp;<a class="Comment" href="eval.html#:finally">:finally</a>&nbsp;ブロックがそれらを上<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;書きする場合を除く。ループ内では、<a class="Comment" href="eval.html#:break">:break</a>&nbsp;および<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="eval.html#:continue">:continue</a>&nbsp;はループ本体内のその後のコマンドを到達不<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;能にするが、ループの後のコマンドは到達不能にしない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例えば、<a class="Comment" href="eval.html#:if">:if</a>/<a class="Comment" href="eval.html#:else">:else</a>&nbsp;のすべての分岐が戻る場合、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="eval.html#:endif">:endif</a>&nbsp;の後のコマンドは到達不能である:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">vim9script</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">def</span>&nbsp;AllBranchesReturn<span class="Special">(</span><span class="Normal">n</span>:&nbsp;<span class="Type">number</span><span class="Special">)</span>:&nbsp;<span class="Type">number</span><br>
@@ -232,49 +226,51 @@ helpname: 'userfunc'
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">echo</span>&nbsp;<span class="Constant">'no'</span>&nbsp;&nbsp;<span class="Comment"># E1095: Unreachable code after :return</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">enddef</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;旧来の Vim script では、到達不可能な行のチェックは行わ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れないため、コマンドが&nbsp;<a class="Comment" href="userfunc.html#:return">:return</a>&nbsp;の後に続く場合でも警<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;告は出ない。また、次の行に有効なコマンドが含まれている<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;かどうかはチェックされない。行継続のバックスラッシュを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;忘れると気付かれない可能性がある:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;旧来の Vim script では到達不能な行のチェックはなく、し<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;たがって&nbsp;<a class="Comment" href="userfunc.html#:return">:return</a>&nbsp;の後にコマンドが続いても警告はない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;また、次の行が有効なコマンドを含んでいるかどうかの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;チェックもない。行継続のバックスラッシュを忘れても気付<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;かれないことがある:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 'some text'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .. ' some more text'</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; エラーなしで &quot;some text&quot; を喜んで返す。それは次のよう<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;になるはずだった:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; これはエラーなしで &quot;some text&quot; を喜んで返す。本来はこ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;うあるべきだった:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 'some text'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \ .. ' some more text'</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="eval.html#:try">:try</a>と<a class="Identifier" href="eval.html#:finally">:finally</a>の間で &quot;:return&quot; が実行された場合、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:finally&quot; から対応する<a class="Identifier" href="eval.html#:endtry">:endtry</a>までのコマンドがまず実<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行される。&quot;:try&quot; がネストしている場合、それらの全てに<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;対してこのプロセスが適用される。そして最も外側の<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:endtry&quot; にて関数を抜ける。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:return&quot; が&nbsp;<a class="Identifier" href="eval.html#:try">:try</a>&nbsp;の後、かつ対応する&nbsp;<a class="Identifier" href="eval.html#:finally">:finally</a>&nbsp;(存<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在する場合) の前で使われた場合、&quot;:finally&quot; に続く、対<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;応する&nbsp;<a class="Identifier" href="eval.html#:endtry">:endtry</a>&nbsp;までのコマンドが先に実行される。この<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;処理は関数内のネストしたすべての &quot;:try&quot; に適用される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数は最も外側の &quot;:endtry&quot; で戻る。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#function-argument" name="function-argument">function-argument</a>&nbsp;<a class="Constant" href="userfunc.html#a:var" name="a:var">a:var</a><br>
-引数は、与えられた名前によって定義される。関数の中では &quot;a:name&quot; (&quot;a:&quot; を引数<br>
-に接頭)のようにして参照することができる。(<a class="Comment" href="vim9.html#:def">:def</a>&nbsp;関数では、&quot;a:&quot; は使用されない)<br>
+引数は、その名前を与えることで定義できる。そうすると関数内では、これは<br>
+&quot;a:name&quot; (&quot;a:&quot; は argument を表す) として使える (<a class="Comment" href="vim9.html#:def">:def</a>&nbsp;関数内では &quot;a:&quot; は使わ<br>
+れない)。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#a:0" name="a:0">a:0</a>&nbsp;<a class="Constant" href="userfunc.html#a:1" name="a:1">a:1</a>&nbsp;<a class="Constant" href="userfunc.html#a:000" name="a:000">a:000</a>&nbsp;<a class="Constant" href="userfunc.html#E740" name="E740">E740</a>&nbsp;<a class="Constant" href="userfunc.html#..." name="...">...</a><br>
-引数はコンマで区切ることで、最大20まで与えることができる。最後の引数を &quot;...&quot;<br>
-にすることで、可変長の引数を使用できる。関数の中では &quot;a:1&quot; や &quot;a:2&quot; のようにし<br>
-て可変長の引数にアクセスできる。&quot;a:0&quot; は可変長引数が幾つあるかを示している (0<br>
-であること、つまり引数がそれ以上ないこともある)。&quot;a:000&quot; は全引数を持つリスト<br>
-<a class="Identifier" href="eval.html#List">List</a>を示している。<span class="Todo">Note</span>&nbsp;&quot;a:1&quot; は &quot;a:000[0]&quot; と同じである。<br>
+コンマで区切って、最大 20 個の引数を与えることができる。名前付き引数の後に、引<br>
+数 &quot;...&quot; を指定できる。これは、さらに引数が任意に続くことがあることを意味する。<br>
+関数内では、追加の引数は &quot;a:1&quot;、&quot;a:2&quot; などとして使える。&quot;a:0&quot; は追加の引数の数<br>
+(0 にもなりうる) に設定される。&quot;a:000&quot; はこれらの引数を含む&nbsp;<a class="Identifier" href="eval.html#List">List</a>&nbsp;に設定され<br>
+る。<span class="Todo">Note</span>&nbsp;&quot;a:1&quot; は &quot;a:000[0]&quot; と同じであることに注意。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#E742" name="E742">E742</a>&nbsp;<a class="Constant" href="userfunc.html#E1090" name="E1090">E1090</a><br>
-a: のスコープとこれらの変数は固定されており、変更できない。<br>
-しかしリスト<a class="Identifier" href="eval.html#List">List</a>や辞書<a class="Identifier" href="eval.html#Dictionary">Dictionary</a>のような複合型が使用された場合は、その内容<br>
-を変更できる。よって関数にリスト<a class="Identifier" href="eval.html#List">List</a>を渡し、そこに要素を追加させることができ<br>
-る。関数にリストや辞書を変更させたくない場合は<a class="Identifier" href="eval.html#:lockvar">:lockvar</a>を使うこと。<br>
+a: スコープおよびその中の変数は変更できず、固定されている。しかし、<a class="Identifier" href="eval.html#List">List</a>&nbsp;また<br>
+は&nbsp;<a class="Identifier" href="eval.html#Dictionary">Dictionary</a>&nbsp;のような複合型が使われている場合、その内容は変更できる。した<br>
+がって、<a class="Identifier" href="eval.html#List">List</a>&nbsp;を関数に渡し、関数にそれへ項目を追加させることができる。関数が<br>
+<a class="Identifier" href="eval.html#List">List</a>&nbsp;または&nbsp;<a class="Identifier" href="eval.html#Dictionary">Dictionary</a>&nbsp;を変更できないことを確実にしたい場合、<a class="Identifier" href="eval.html#:lockvar">:lockvar</a>&nbsp;を<br>
+使う。<br>
 <br>
-関数を引数無しで定義することも可能である。その時でも()は付けなければならない。<br>
+引数なしで関数を定義することもできる。その場合でも () を与えなければならない。<br>
 <br>
-関数の中で別の関数を定義することも可能である。<br>
-<br>
+関数本体の中で別の関数を定義することは許されている。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#optional-function-argument" name="optional-function-argument">optional-function-argument</a><br>
-名前付き固定引数にデフォルト値を指定できる。これにより、関数呼び出しではオプ<br>
-ションになる。呼び出し時に固定引数が指定されていない場合は、デフォルトの式を使<br>
-用して初期化される。これは&nbsp;<a class="Comment" href="userfunc.html#:function">:function</a>&nbsp;もしくは&nbsp;<a class="Comment" href="vim9.html#:def">:def</a>&nbsp;で宣言された関数に対し<br>
-てのみ機能し、ラムダ式&nbsp;<a class="Identifier" href="eval.html#expr-lambda">expr-lambda</a>&nbsp;には機能しない。<br>
+位置指定の名前付き引数には既定値を与えることができる。これにより、それらは関数<br>
+呼び出しにおいて省略可能になる。位置指定の引数が呼び出し時に指定されない場合、<br>
+それを初期化するのに既定の式が使われる。<br>
+これは&nbsp;<a class="Comment" href="userfunc.html#:function">:function</a>&nbsp;または&nbsp;<a class="Comment" href="vim9.html#:def">:def</a>&nbsp;で宣言された関数でのみ機能し、ラムダ式<br>
+<a class="Identifier" href="eval.html#expr-lambda">expr-lambda</a>&nbsp;では機能しない。<br>
 <br>
 例:<br>
 <div class="helpExample">&nbsp;&nbsp;function Something(key, value = 10)<br>
@@ -283,13 +279,12 @@ a: のスコープとこれらの変数は固定されており、変更でき�
 &nbsp;&nbsp;call Something('empty')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;empty: 10&quot;<br>
 &nbsp;&nbsp;call Something('key', 20)&nbsp;&nbsp;&nbsp;&nbsp; &quot;key: 20&quot;</div>
 <br>
-引数のデフォルト式は、関数の定義時ではなく、関数呼び出し時に評価される。した<br>
-がって、関数が定義された時点では無効な式を使用することが可能である。式はまた、<br>
-呼び出し中に引数が指定されていない場合にのみ評価される。<br>
+引数の既定の式は、関数が定義されたときではなく、関数呼び出しの時点で評価され<br>
+る。したがって、関数が定義された時点では無効な式を使うことが可能である。また、<br>
+式は呼び出し時に引数が指定されなかった場合にのみ評価される。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#none-function_argument" name="none-function_argument">none-function_argument</a><br>
-デフォルトの式を使うために&nbsp;<a class="Identifier" href="eval.html#v:none">v:none</a>&nbsp;を渡すことができる。<span class="Todo">Note</span>&nbsp;これは、引数にデ<br>
-フォルトの式がある場合、v:none を通常の値として渡すことができないことを意味す<br>
-る。<br>
+既定の式を使うために&nbsp;<a class="Identifier" href="eval.html#v:none">v:none</a>&nbsp;を渡すことができる。<span class="Todo">Note</span>&nbsp;これは、引数に既定の式<br>
+がある場合、v:none を通常の値として渡せないことを意味することに注意。<br>
 <br>
 例:<br>
 <div class="helpExample">&nbsp;&nbsp;function Something(a = 10, b = 20, c = 30)<br>
@@ -297,26 +292,29 @@ a: のスコープとこれらの変数は固定されており、変更でき�
 &nbsp;&nbsp;call Something(1, v:none, 3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; b = 20</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#E989" name="E989">E989</a><br>
-デフォルト式を持つオプション引数は、必須引数の後になければならない。オプション<br>
-の名前付き引数すべての後に &quot;...&quot; を使用できる。<br>
+既定の式を持つ省略可能な引数は、すべての必須の引数の後に置かなければならない。<br>
+すべての省略可能な名前付き引数の後に &quot;...&quot; を使うことができる。<br>
 <br>
-後の引数のデフォルトが前の引数を参照することは可能だが、その逆はできない。すべ<br>
-ての引数と同様に、それらには &quot;a:&quot; を前に付ける必要がある。<br>
+後の引数の既定値が前の引数を参照することは可能だが、その逆はできない。すべての<br>
+引数と同様に、それらには &quot;a:&quot; を前に付けなければならない。<br>
 <br>
-動作する例:<br>
+機能する例:<br>
 <div class="helpExample">&nbsp;&nbsp;:function Okay(mandatory, optional = a:mandatory)<br>
 &nbsp;&nbsp;:endfunction</div>
-動作しない例:<br>
+機能しない例:<br>
 <div class="helpExample">&nbsp;&nbsp;:function NoGood(first = a:second, second = 10)<br>
 &nbsp;&nbsp;:endfunction</div>
 <br>
-&quot;...&quot; が使われていない時は、関数呼び出しの時の引数の数は必須の名前付きの引数の<br>
-数と少なくとも同じでなければならない。&quot;...&quot; を使った時には引数の数は必須および<br>
-オプショナル引数の合計より大きくなるだろう。<br>
+&quot;...&quot; を使わない場合、関数呼び出しの引数の数は、少なくとも必須の名前付き引数の<br>
+数と等しくなければならない。&quot;...&quot; を使う場合、引数の数は必須および省略可能な引<br>
+数の合計より多くてもよい。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#local-variables" name="local-variables">local-variables</a><br>
-関数の中でローカル変数を使うこともできる。これらは関数から戻ると消滅する。<br>
-グローバル変数にアクセスするためには &quot;g:&quot; を付ける必要がある。<br>
+関数の中ではローカル変数を使うことができる。これらは関数から戻ると消える。グ<br>
+ローバル変数には &quot;g:&quot; でアクセスする必要がある。<br>
+関数の中では、ローカル変数には何も前に付けずにアクセスする。しかし、好みで<br>
+&quot;l:&quot; を前に付けることもできる。これは &quot;count&quot; のような一部の予約された名前では<br>
+必須である。<br>
 <br>
 例:<br>
 <div class="helpExample">&nbsp;&nbsp;:function Table(title, ...)<br>
@@ -329,11 +327,11 @@ a: のスコープとこれらの変数は固定されており、変更でき�
 &nbsp;&nbsp;:&nbsp;&nbsp;endfor<br>
 &nbsp;&nbsp;:endfunction</div>
 <br>
-この関数は次のように呼ぶことができる:<br>
-<div class="helpExample">&nbsp;&nbsp;let lines = Table(&quot;Table&quot;, &quot;line1&quot;, &quot;line2&quot;)<br>
-&nbsp;&nbsp;let lines = Table(&quot;Empty Table&quot;)</div>
+そうすると、この関数は以下で呼び出せる:<br>
+<div class="helpExample">&nbsp;&nbsp;call Table(&quot;Table&quot;, &quot;line1&quot;, &quot;line2&quot;)<br>
+&nbsp;&nbsp;call Table(&quot;Empty Table&quot;)</div>
 <br>
-一つ以上の値を返したい場合には、リスト<a class="Identifier" href="eval.html#List">List</a>を返すようにする:<br>
+複数の値を返すには、<a class="Identifier" href="eval.html#List">List</a>&nbsp;を返す:<br>
 <div class="helpExample">&nbsp;&nbsp;:function Compute(n1, n2)<br>
 &nbsp;&nbsp;:&nbsp;&nbsp;if a:n2 == 0<br>
 &nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;return [&quot;fail&quot;, 0]<br>
@@ -341,7 +339,7 @@ a: のスコープとこれらの変数は固定されており、変更でき�
 &nbsp;&nbsp;:&nbsp;&nbsp;return [&quot;ok&quot;, a:n1 / a:n2]<br>
 &nbsp;&nbsp;:endfunction</div>
 <br>
-この関数は次のように呼ぶことができる:<br>
+そうすると、この関数は以下で呼び出せる:<br>
 <div class="helpExample">&nbsp;&nbsp;:let [success, div] = Compute(102, 6)<br>
 &nbsp;&nbsp;:if success == &quot;ok&quot;<br>
 &nbsp;&nbsp;:&nbsp;&nbsp;echo div<br>
@@ -349,78 +347,80 @@ a: のスコープとこれらの変数は固定されており、変更でき�
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
-<span class="PreProc">2. 関数呼び出し</span><br>
+<span class="PreProc">2. 関数の呼び出し</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#:cal" name=":cal">:cal</a>&nbsp;<a class="Constant" href="userfunc.html#:call" name=":call">:call</a>&nbsp;<a class="Constant" href="userfunc.html#E107" name="E107">E107</a><br>
 :<span class="Special">[range]</span>cal[l]&nbsp;<span class="Special">{name}</span>(<span class="Special">[arguments]</span>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数を呼び出す。関数の名前と引数は&nbsp;<a class="Comment" href="userfunc.html#:function">:function</a>&nbsp;によって指定さ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れるものである。引数は最大20まで使用可能。戻り値は破棄される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では、<a class="Comment" href="userfunc.html#:call">:call</a>&nbsp;の使用はオプションで、次の2行は同<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;じものになる:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数を呼び出す。関数の名前およびその引数は、<a class="Comment" href="userfunc.html#:function">:function</a>&nbsp;で指定<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;されたとおりである。最大 20 個の引数を使える。戻り値は破棄され<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では&nbsp;<a class="Comment" href="userfunc.html#:call">:call</a>&nbsp;の使用は任意であり、これらの 2 行は<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同じことをする:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call SomeFunc(arg)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SomeFunc(arg)</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 「範囲」を受け付ける関数に「範囲」を指定しなかった場合、関数は<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルの現在位置について一度だけ呼び出される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;「範囲」を受け付けない関数に「範囲」を指定した場合、その範囲の<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一行ずつについて関数が呼び出される。その時カーソルは当該行の先<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;頭に設定される。カーソルは「範囲」の最下行の左端になる(恐らく<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後の関数呼出しの結果、動いた先である)。引数は各呼出しについ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;て繰り返し評価される。それは次の例で確かめることができる:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 範囲なしの場合、および範囲を受け付ける関数の場合、関数は 1 回<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;呼び出される。範囲が与えられた場合、関数を実行する前に、カーソ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルは最初の行の先頭に置かれる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;範囲が与えられ、かつ関数がそれを自分で扱わない場合、関数は範囲<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内の各行に対して、カーソルをその行の最初の桁に置いて実行され<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。カーソルは最後の行に残される (最後の関数呼び出しによって移<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;動されている可能性がある)。引数は各行に対して再評価される。し<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;たがって、これは機能する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#function-range-example" name="function-range-example">function-range-example</a>&nbsp;<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:function Mynumber(arg)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;echo line(&quot;.&quot;) .. &quot; &quot; .. a:arg<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:endfunction<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:1,5call Mynumber(getline(&quot;.&quot;))</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;a:firstline&quot; と &quot;a:lastline&quot; はとにかく定義されるので、「範<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;囲」の最初や最後で何か違った事をするのにも用いることができる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;a:firstline&quot; および &quot;a:lastline&quot; はいずれにせよ定義されてお<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;り、範囲の開始または終了時に何か異なることをするのに使える。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;「範囲」自身を扱っている関数の例:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;範囲を自分で扱う関数の例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:function Cont() range<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;execute (a:firstline + 1) .. &quot;,&quot; .. a:lastline .. 's/^/\t\\ '<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:endfunction<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:4,8call Cont()</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この関数は「範囲」の最初の行を除いた全ての行の先頭に、継続のた<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;めの文字 &quot;\&quot; を挿入する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この関数は、範囲内の最初の行を除くすべての行の前に継続文字 &quot;\&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を挿入する。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この関数の戻り値からさらに間接参照が行われる場合、その参照先に<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は範囲が渡されない。例:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数が複合値を返す場合、それはさらに参照解決できるが、その場合<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;範囲は使われない。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:4,8call GetDict().method()</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GetDict()には範囲が渡されるが、method()には渡されない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ここで GetDict() は範囲を受け取るが、method() は受け取らない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#E117" name="E117">E117</a><br>
-関数が見つからない時は、&quot;E117: Unknown function&quot; というエラーになる。関数が<br>
-autoload パスまたは autoload インポートを使用していて、スクリプトが&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a><br>
-script の場合は、関数がエクスポートされていないことが原因である可能性もある。<br>
+関数が見つからない場合、エラー &quot;E117: Unknown function&quot; が出る。関数が<br>
+autoload パスまたは autoload インポートを使っていて、かつスクリプトが&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a><br>
+script である場合、これは関数がエクスポートされていないことが原因である場合も<br>
+ある。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#E132" name="E132">E132</a><br>
-関数の再帰的な使用はオプション&nbsp;<a class="Type" href="options.html#'maxfuncdepth'">'maxfuncdepth'</a>&nbsp;によって制限することができる。<br>
+ユーザー関数の再帰は&nbsp;<a class="Type" href="options.html#'maxfuncdepth'">'maxfuncdepth'</a>&nbsp;オプションで制限される。<br>
 <br>
-<a class="Comment" href="eval.html#:eval">:eval</a>&nbsp;を使用することもできる。範囲はサポートしていないが、メソッドの連鎖は可<br>
-能である、例えば:<br>
+<a class="Comment" href="eval.html#:eval">:eval</a>&nbsp;を使うこともできる。これは範囲をサポートしないが、メソッドチェーンを可<br>
+能にする。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;eval GetList()-&gt;Filter()-&gt;append('$')</div>
 <br>
-関数は、式の評価の一部として、またはメソッドとして使用されるときに呼び出すこと<br>
-もできる:<br>
+関数は、式の評価の一部として、またはメソッドとして使われるときにも呼び出せる:<br>
+<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let x = GetList()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let y = GetList()-&gt;Filter()</div>
-<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
 <span class="PreProc">3. 関数内でのクリーンアップ</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#:defe" name=":defe">:defe</a>&nbsp;<a class="Constant" href="userfunc.html#:defer" name=":defer">:defer</a><br>
-:defe[r]&nbsp;<span class="Special">{func}</span>(<span class="Special">{args}</span>) 現在の関数終了時に&nbsp;<span class="Special">{func}</span>&nbsp;を呼び出す。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;引数&nbsp;<span class="Special">{args}</span>&nbsp;はここ<span class="Special">{訳注:記述箇所}</span>で評価される。<br>
+:defe[r]&nbsp;<span class="Special">{func}</span>(<span class="Special">{args}</span>) 現在の関数が終了したときに&nbsp;<span class="Special">{func}</span>&nbsp;を呼び出す。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{args}</span>&nbsp;はここで評価される。<br>
 <br>
-多くの場合関数内のコマンドにはグローバルな効果があり、関数終了時に元に戻す必要<br>
-がある。あらゆる種類の状況でこれを処理するのは面倒である。特に予期せぬエラーが<br>
-発生した時がそうである。<a class="Comment" href="eval.html#:try">try</a>&nbsp;/&nbsp;<a class="Comment" href="eval.html#:finally">finally</a>&nbsp;ブロックでできるが、しかし複数あると<br>
-複雑になる。<br>
+関数内のコマンドがグローバルな影響を持ち、それを関数の終了時に元に戻さなければ<br>
+ならないことはよくある。これをあらゆる種類の状況で処理するのは面倒なことがあ<br>
+る。特に予期しないエラーに遭遇した場合は。これは&nbsp;<a class="Comment" href="eval.html#:try">try</a>&nbsp;/&nbsp;<a class="Comment" href="eval.html#:finally">finally</a>&nbsp;ブロックで<br>
+行えるが、それが複数ある場合は複雑になる。<br>
 <br>
-より簡単な解決策として&nbsp;<a class="Comment" href="userfunc.html#:defer">defer</a>&nbsp;の使用がある。エラーがあるかによらず、関数呼び<br>
-出しが関数から戻る時にスケジュールされる。例:<br>
+はるかに簡単な解決策は&nbsp;<a class="Comment" href="userfunc.html#:defer">defer</a>&nbsp;を使うことである。これは、エラーがあるかどうか<br>
+に関係なく、関数が戻るときの関数呼び出しを予約する。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;func Filter(text) abort<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call writefile(a:text, 'Tempfile')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call system('filter &lt; Tempfile &gt; Outfile')<br>
@@ -429,8 +429,8 @@ script の場合は、関数がエクスポートされていないことが原�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call delete('Outfile')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfunc</div>
 <br>
-ここではなんらかの理由で関数が中断した場合は 'Tempfile' と 'Outfile' は削除さ<br>
-れない。<a class="Comment" href="userfunc.html#:defer">:defer</a>&nbsp;でこれを回避するように使用するにはこのようにする:<br>
+ここで、何かが原因で関数が中断した場合、'Tempfile' および 'Outfile' は削除され<br>
+ない。それを避けるために&nbsp;<a class="Comment" href="userfunc.html#:defer">:defer</a>&nbsp;を使える:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;func Filter(text) abort<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call writefile(a:text, 'Tempfile')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;defer delete('Tempfile')<br>
@@ -439,33 +439,33 @@ script の場合は、関数がエクスポートされていないことが原�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call Handle('Outfile')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfunc</div>
 <br>
-<span class="Todo">Note</span>&nbsp;<a class="Comment" href="builtin.html#system()">system()</a>&nbsp;を呼ぶ前で &quot;Outfile&quot; 削除がスケジュールされているが、<br>
-<a class="Comment" href="builtin.html#system()">system()</a>&nbsp;が失敗する時でも作成されうるからである。<br>
+<span class="Todo">Note</span>&nbsp;<a class="Comment" href="builtin.html#system()">system()</a>&nbsp;が失敗した場合でも &quot;Outfile&quot; が作成されることがあるので、その<br>
+削除は&nbsp;<a class="Comment" href="builtin.html#system()">system()</a>&nbsp;を呼び出す前に予約されていることに注意。<br>
 <br>
-遅延関数は逆順に呼ばれ、最後のものは最初に呼ばれるように追加される。役に立たな<br>
-い例:<br>
+遅延された関数は逆順に呼び出され、最後に追加されたものが最初に実行される。役に<br>
+立たない例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;func Useless() abort<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for s in range(3)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;defer execute('echomsg &quot;number ' .. s .. '&quot;')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfor<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfunc</div>
 <br>
-<a class="Comment" href="message.html#:messages">:messages</a>&nbsp;に表示されるのは:<br>
+すると&nbsp;<a class="Comment" href="message.html#:messages">:messages</a>&nbsp;はこう表示する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number 2<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number 1<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number 0<br>
 <br>
-いかなる戻り値も遅延関数では破棄される。&quot;-&gt;func&quot; や &quot;.member&quot; などのいかなるも<br>
-のも関数に後置できない。現在&nbsp;<span class="Comment">:defer GetArg()-&gt;TheFunc()</span>&nbsp;は動作せず、これが動<br>
-作するかもしれないのは今後のバージョンになる。<br>
+遅延された関数の戻り値はすべて破棄される。関数の後に &quot;-&gt;func&quot; または &quot;.member&quot;<br>
+のようなものを続けることはできない。現在、<span class="Comment">:defer GetArg()-&gt;TheFunc()</span>&nbsp;は機能<br>
+しないが、後のバージョンでは機能するかもしれない。<br>
 <br>
-エラーは報告されるが、遅延関数の実行を中止したり、遅延関数以外の実行を変更した<br>
-りすることはない。<br>
+エラーは報告されるが、遅延された関数の実行の中断、または遅延された関数の外の実<br>
+行の変更を引き起こさない。<br>
 <br>
-範囲は使えない。関数として追加の引数付きの部分適用は使えるが、辞書は使えない。<br>
-<a class="Constant" href="userfunc.html#E1300" name="E1300">E1300</a><br>
+範囲は受け付けない。関数は追加の引数を持つ部分適用にできるが、辞書を持つものに<br>
+はできない。&nbsp;<a class="Constant" href="userfunc.html#E1300" name="E1300">E1300</a><br>
 <br>
-<a class="Identifier" href="vim9.html#:def">:def</a>&nbsp;関数では、ラムダ式を&nbsp;<a class="Identifier" href="userfunc.html#:defer">:defer</a>&nbsp;とともに使用できる。例:<br>
+<a class="Identifier" href="vim9.html#:def">:def</a>&nbsp;関数では、<a class="Identifier" href="userfunc.html#:defer">:defer</a>&nbsp;でラムダを使うことができる。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;def Fn()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set lazyredraw<br>
@@ -476,101 +476,102 @@ script の場合は、関数がエクスポートされていないことが原�
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
-<span class="PreProc">4. 自動的に読み込まれる関数</span><br>
+<span class="PreProc">4. 関数を自動的に読み込む</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#autoload-functions" name="autoload-functions">autoload-functions</a><br>
-たくさんの関数または大きな関数を使うときは、それらが使用されたときだけ自動的に<br>
-定義されるようにすることができる。これには2つの方法がある: 自動コマンドによ<br>
-る方法と、<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;内の &quot;autoload&quot; ディレクトリによる方法である。<br>
+多くの、または大きな関数を使う場合、それらが使われるときにだけ自動的に定義する<br>
+ことが可能である。2 つの方法がある: 自動コマンドを使う方法、および<br>
+<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;内の &quot;autoload&quot; ディレクトリを使う方法である。<br>
 <br>
-<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script ではインポートされたスクリプトの自動読み込みメカニズムもある、<br>
-<a class="Identifier" href="vim9.html#import-autoload">import-autoload</a>&nbsp;を参照。<br>
+<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script には、インポートされたスクリプトのための autoload の仕組みもあ<br>
+る。<a class="Identifier" href="vim9.html#import-autoload">import-autoload</a>&nbsp;を参照。<br>
 <br>
-<span class="PreProc">自動コマンドを使う方法</span><br>
 <br>
-これはユーザーマニュアルのセクション&nbsp;<a class="Identifier" href="usr_51.html#51.4">51.4</a>&nbsp;で説明されている。<br>
+<span class="PreProc">自動コマンドを使う</span><br>
 <br>
-自動コマンドは、長いVim scriptファイルのプラグインに対して有用である。自動コマ<br>
-ンドを定義し、すぐに&nbsp;<a class="Comment" href="repeat.html#:finish">:finish</a>&nbsp;でそのスクリプトを抜ける。こうするとVimの起動が<br>
-速くなる。その後自動コマンドにより&nbsp;<a class="Comment" href="repeat.html#:finish">:finish</a>&nbsp;コマンドをスキップする変数を定義<br>
-し、そのファイルが再び読み込まれる。<br>
+これはユーザーマニュアルの&nbsp;<a class="Identifier" href="usr_51.html#51.4">51.4</a>&nbsp;節で紹介されている。<br>
 <br>
-定義すべき関数名にマッチするパターンを指定して自動コマンドイベント<br>
-FuncUndefinedを使う。例:<br>
+自動コマンドは、長い Vim script ファイルであるプラグインがある場合に便利であ<br>
+る。自動コマンドを定義して、<a class="Comment" href="repeat.html#:finish">:finish</a>&nbsp;でスクリプトを素早く終了できる。それによ<br>
+り Vim の起動が速くなる。そうすると自動コマンドは、<a class="Comment" href="repeat.html#:finish">:finish</a>&nbsp;コマンドをスキッ<br>
+プするための変数を設定して、同じファイルを再び読み込むべきである。<br>
+<br>
+定義される関数にマッチするパターンを指定して、FuncUndefined 自動コマンドイベン<br>
+トを使う。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:au FuncUndefined BufNet* source ~/vim/bufnetfuncs.vim</div>
 <br>
-ファイル &quot;~/vim/bufnetfuncs.vim&quot; は &quot;BufNet&quot; で始まる関数を定義しなければなら<br>
-ない。<a class="Identifier" href="autocmd.html#FuncUndefined">FuncUndefined</a>も参照。<br>
+そうすると、ファイル &quot;~/vim/bufnetfuncs.vim&quot; は &quot;BufNet&quot; で始まる関数を定義す<br>
+べきである。<a class="Identifier" href="autocmd.html#FuncUndefined">FuncUndefined</a>&nbsp;も参照。<br>
 <br>
 <br>
-<span class="PreProc">オートロードスクリプトの使い方</span><br>
+<span class="PreProc">autoload スクリプトを使う</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="userfunc.html#autoload" name="autoload">autoload</a>&nbsp;<a class="Constant" href="userfunc.html#E746" name="E746">E746</a><br>
-これはユーザーマニュアルのセクション&nbsp;<a class="Identifier" href="usr_52.html#52.2">52.2</a>&nbsp;で説明されている。<br>
+これはユーザーマニュアルの&nbsp;<a class="Identifier" href="usr_52.html#52.2">52.2</a>&nbsp;節で紹介されている。<br>
 <br>
-&quot;autoload&quot; ディレクトリのスクリプトを使う方法はより簡単である。しかし完全に正<br>
-しいファイル名を使う必要がある。オートロードされる関数は次のような名前を持つ:<br>
+&quot;autoload&quot; ディレクトリ内のスクリプトを使う方がより簡単だが、正確に正しいファ<br>
+イル名を使う必要がある。autoload できる関数は、次のような名前を持つ:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:call filename#funcname()</div>
 <br>
-これらの関数は常にグローバルで、Vim9 script なら &quot;g:&quot; が必要:<br>
+これらの関数は常にグローバルであり、Vim9 script では &quot;g:&quot; を使う必要がある:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:call g:filename#funcname()</div>
 <br>
-このような関数が呼ばれ、それがまだ定義されていなかった場合、Vimは&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a><br>
-内の &quot;autoload&quot; ディレクトリから &quot;filename.vim&quot; というスクリプトファイルを探<br>
-す。例えば &quot;~/.vim/autoload/filename.vim&quot; のように。そしてこのファイルは次のよ<br>
-うな関数を定義していなければならない:<br>
+このような関数が呼び出され、それがまだ定義されていない場合、Vim は<br>
+<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;内の &quot;autoload&quot; ディレクトリから &quot;filename.vim&quot; という名前のスク<br>
+リプトファイルを探す。例えば &quot;~/.vim/autoload/filename.vim&quot;。そうすると、その<br>
+ファイルは次のように関数を定義すべきである:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function filename#funcname()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo &quot;Done!&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfunction</div>
 <br>
-ファイルが存在しない場合、<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;にまだ追加されていないパッケージの関数<br>
-も .vimrc から呼び出せるようにするため、Vim は&nbsp;<a class="Type" href="options.html#'packpath'">'packpath'</a>&nbsp;(&quot;start&quot; の下) も検<br>
-索する (<a class="Identifier" href="repeat.html#packages">packages</a>&nbsp;を参照)。<br>
+ファイルが存在しない場合、パッケージがまだ&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;に追加されていないと<br>
+きにあなたの .vimrc からパッケージの関数を呼び出せるように、Vim は&nbsp;<a class="Type" href="options.html#'packpath'">'packpath'</a><br>
+(&quot;start&quot; の下) も探す (<a class="Identifier" href="repeat.html#packages">packages</a>&nbsp;を参照)。<br>
 <br>
-このファイル名と関数の # の前の部分は完全に一致しなければならない。そして定義<br>
-された関数は呼ばれた関数と完全に同じ名前でなければならない。<br>
-Vim9 script ではプリフィックス &quot;g:&quot; を使わなくてはならない:<br>
+ファイル名および関数内の # の前に使われる名前は正確に一致しなければならず、定<br>
+義される関数は、呼び出されるとおりの名前を正確に持たなければならない。Vim9<br>
+script では &quot;g:&quot; プリフィックスを使わなければならない:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function g:filename#funcname()</div>
 <br>
-もしくはコンパイル済み関数:<br>
+またはコンパイルされる関数の場合:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def g:filename#funcname()</div>
 <br>
-サブディレクトリを使うこともできる。関数名の中の # はパスのセパレータのように<br>
-解釈される。つまり、次の関数を呼ぶと:<br>
+サブディレクトリを使うこともできる。関数名の各 # はパス区切りのように機能する。<br>
+したがって、関数を呼び出すとき:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:call foo#bar#func()</div>
 <br>
-Vimは&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;からファイル &quot;autoload/foo/bar.vim&quot; を探す。<br>
+Vim は&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;内のファイル &quot;autoload/foo/bar.vim&quot; を探す。<br>
 <br>
-これはまだ定義されていない変数を参照するときにも使える:<br>
+これは、まだ設定されていない変数を読むときにも機能する:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let l = foo#bar#lvar</div>
 <br>
-しかしこのオートロードスクリプトがすでに読み込まれている場合、未知の変数があっ<br>
-てもこのスクリプトは再読み込みされない。<br>
+しかし、autoload スクリプトがすでに読み込まれていた場合、未知の変数のためにそ<br>
+れが再び読み込まれることはない。<br>
 <br>
-この変数に値を代入するときは、何も特別なことはない。この方法は、オートロードス<br>
-クリプトが読み込まれる前に設定を渡すために使うことができる:<br>
+このような変数に値を代入するときは、特別なことは何も起こらない。これは、<br>
+autoload スクリプトが読み込まれる前に、それに設定を渡すのに使える:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let foo#bar#toggle = 1<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:call foo#bar#func()</div>
 <br>
-<span class="Todo">Note</span>&nbsp;オートロードスクリプト内で定義されるはずの関数を間違って呼んだ時にスクリ<br>
-プト内で関数が定義されなかった場合、その存在しない関数のエラーメッセージが表示<br>
-される。オートロードスクリプトを修正しても自動で再読み込みされることはない。<br>
-Vim を再スタートするか手動でスクリプトを読み込ませること。<br>
+<span class="Todo">Note</span>&nbsp;間違えて、autoload スクリプト内で定義されるはずの関数を呼び出したが、その<br>
+スクリプトが実際にはその関数を定義していない場合、存在しない関数に対するエラー<br>
+メッセージが出ることに注意。autoload スクリプトを修正した場合、それが自動的に<br>
+再び読み込まれることはない。Vim を再起動するか、またはスクリプトを手動で読み込<br>
+むこと。<br>
 <br>
-また、2つのスクリプト間で、互いに自分が定義される前に相手を呼ぶような関数があ<br>
-ると、これは動作しない。<br>
-トップレベルでオートロード機能を使うのは避けること。<br>
+<span class="Todo">Note</span>&nbsp;2 つのスクリプトファイルがあり、使われる関数が定義される前に、一方が他方<br>
+の関数を呼び出し、かつその逆も行う場合、それは機能しないことにも注意。トップレ<br>
+ベルで autoload 機能を使うのは避けること。<br>
 <br>
-<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;scriptでは、&quot;#&quot; 文字を関数名内に含んで定義すると、エラー&nbsp;<a class="Constant" href="userfunc.html#E1263" name="E1263">E1263</a>&nbsp;が発生<br>
-する。&quot;#&quot; を含まない名前を利用し&nbsp;<a class="Comment" href="vim9.html#:export">:export</a>&nbsp;を使用しなくてはならない。<br>
+<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では、名前に &quot;#&quot; 文字を含む関数を定義すると、エラー&nbsp;<a class="Constant" href="userfunc.html#E1263" name="E1263">E1263</a>&nbsp;が出<br>
+る。&quot;#&quot; なしの名前を使い、<a class="Comment" href="vim9.html#:export">:export</a>&nbsp;を使うべきである。<br>
 <br>
-Hint: たくさんのファイルからなるスクリプトを配布する場合には、<a class="Identifier" href="pi_vimball.html#vimball">vimball</a>ユーティ<br>
-リティを使うとそれらをまとめることができる。ユーザーマニュアルの<br>
-<a class="Identifier" href="usr_51.html#distribute-script">distribute-script</a>も参照。<br>
+ヒント: 多数のスクリプトを配布する場合、<a class="Identifier" href="pi_vimball.html#vimball">vimball</a>&nbsp;ユーティリティでそれらを一緒<br>
+にパックできる。ユーザーマニュアルの&nbsp;<a class="Identifier" href="usr_51.html#distribute-script">distribute-script</a>&nbsp;も読むこと。<br>
 <br>
 <br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
