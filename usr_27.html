@@ -12,19 +12,19 @@ helpname: 'usr_27'
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;検索コマンドおよびパターン<br>
 <br>
 <br>
-3 章で検索パターンについて簡単に説明しました&nbsp;<a class="Identifier" href="usr_03.html#03.9">03.9</a>。Vim ではもっと複雑な検索<br>
-もできます。この章では、よく使われる検索パターンについて説明します。詳細な仕様<br>
-については&nbsp;<a class="Identifier" href="pattern.html#pattern">pattern</a>&nbsp;を参照してください。<br>
-検索の実行方法に影響するオプションは、<a class="Identifier" href="pattern.html#search-options">search-options</a>&nbsp;で確認できます。<br>
+3 章では、いくつかの簡単な検索パターンについて述べました&nbsp;<a class="Identifier" href="usr_03.html#03.9">03.9</a>。Vim はもっと<br>
+ずっと複雑な検索ができます。この章では、最もよく使われるものを説明します。詳細<br>
+な仕様はここにあります:&nbsp;<a class="Identifier" href="pattern.html#pattern">pattern</a><br>
+検索の行い方に影響するオプションはここにあります:&nbsp;<a class="Identifier" href="pattern.html#search-options">search-options</a><br>
 <br>
-<a class="Identifier" href="usr_27.html#27.1">27.1</a>&nbsp;&nbsp;大文字と小文字を区別しない<br>
-<a class="Identifier" href="usr_27.html#27.2">27.2</a>&nbsp;&nbsp;ファイルの端で折り返す<br>
+<a class="Identifier" href="usr_27.html#27.1">27.1</a>&nbsp;&nbsp;大文字小文字を無視する<br>
+<a class="Identifier" href="usr_27.html#27.2">27.2</a>&nbsp;&nbsp;ファイルの末尾で折り返す<br>
 <a class="Identifier" href="usr_27.html#27.3">27.3</a>&nbsp;&nbsp;オフセット<br>
-<a class="Identifier" href="usr_27.html#27.4">27.4</a>&nbsp;&nbsp;繰り返しマッチ<br>
+<a class="Identifier" href="usr_27.html#27.4">27.4</a>&nbsp;&nbsp;複数回マッチする<br>
 <a class="Identifier" href="usr_27.html#27.5">27.5</a>&nbsp;&nbsp;選択肢<br>
 <a class="Identifier" href="usr_27.html#27.6">27.6</a>&nbsp;&nbsp;文字範囲<br>
 <a class="Identifier" href="usr_27.html#27.7">27.7</a>&nbsp;&nbsp;文字クラス<br>
-<a class="Identifier" href="usr_27.html#27.8">27.8</a>&nbsp;&nbsp;改行記号にマッチ<br>
+<a class="Identifier" href="usr_27.html#27.8">27.8</a>&nbsp;&nbsp;改行にマッチする<br>
 <a class="Identifier" href="usr_27.html#27.9">27.9</a>&nbsp;&nbsp;例<br>
 <br>
 次章:&nbsp;<a class="Identifier" href="usr_28.html">usr_28.txt</a>&nbsp;&nbsp;折り畳み<br>
@@ -32,521 +32,531 @@ helpname: 'usr_27'
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_27.html#27.1" name="27.1">27.1</a>&nbsp;&nbsp;大文字と小文字を区別しない<br>
+<a class="Constant" href="usr_27.html#27.1" name="27.1">27.1</a>&nbsp;&nbsp;大文字小文字を無視する<br>
 <br>
-初期設定では大文字と小文字は区別されます。つまり &quot;include&quot; と &quot;INCLUDE&quot; と<br>
-&quot;Include&quot; は三つの別々の単語として扱われ、検索してもどれか一つにしかマッチしま<br>
-せん。<br>
-<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;オプションをオンにしてみましょう:<br>
+既定では、Vim の検索は大文字と小文字を区別します。したがって、&quot;include&quot;、<br>
+&quot;INCLUDE&quot;、および &quot;Include&quot; は 3 つの異なる単語であり、検索はそれらのうちの 1<br>
+つだけにマッチします。<br>
+&nbsp;&nbsp; では、<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;オプションをオンにしてください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set ignorecase</div>
 <br>
-&quot;include&quot; を検索すると、&quot;Include&quot; にも &quot;INCLUDE&quot; にも &quot;InClUDe&quot; にもマッチしま<br>
-す。(<a class="Type" href="options.html#'hlsearch'">'hlsearch'</a>&nbsp;オプションをオンにするとパターンにマッチした箇所を簡単に確認で<br>
-きます。)<br>
-次のコマンドでオプションをオフにできます:<br>
+もう一度 &quot;include&quot; を検索すると、今度は &quot;Include&quot;、&quot;INCLUDE&quot;、および &quot;InClUDe&quot;<br>
+にマッチします。(パターンがどこにマッチするかを素早く見るには、<a class="Type" href="options.html#'hlsearch'">'hlsearch'</a>&nbsp;オプ<br>
+ションを設定してください。)<br>
+&nbsp;&nbsp; 次のようにして、これを再びオフにできます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set noignorecase</div>
 <br>
-しかしまだ設定は変更せずに、そのまま &quot;INCLUDE&quot; を検索してみます。&quot;include&quot; を<br>
-検索したときとまったく同じテキストがマッチします。次に&nbsp;<a class="Type" href="options.html#'smartcase'">'smartcase'</a>&nbsp;オプション<br>
-をオンに設定してみます:<br>
+しかし、ここではそれを設定したままにして、&quot;INCLUDE&quot; を検索してみましょう。<br>
+&quot;include&quot; のときとまったく同じテキストにマッチします。では、<a class="Type" href="options.html#'smartcase'">'smartcase'</a>&nbsp;オプ<br>
+ションを設定してください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set ignorecase smartcase</div>
 <br>
-パターンに大文字が含まれているときに限り、大文字と小文字が区別されるようになり<br>
-ます。これは、大文字を入力するのは大文字と小文字を区別したいときだけだろうとい<br>
-う考えに基づいています。スマートでしょ!<br>
-この二つのオプションを設定すると次のようにマッチします:<br>
+少なくとも 1 つの大文字を含むパターンがある場合、検索は大文字と小文字を区別す<br>
+るようになります。その考え方は、その大文字をタイプする必要はなかったので、大文<br>
+字と小文字をマッチさせたいからそうしたに違いない、というものです。これは賢いで<br>
+す!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;これら 2 つのオプションを設定すると、以下のマッチが見つかります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">パターン&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マッチ</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word, Word, WORD, WoRd, etc.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word、Word、WORD、WoRd など<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WORD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WORD<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WoRd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WoRd<br>
 <br>
 <br>
-<span class="Statement">パターンの中で指定する</span><br>
+<span class="Statement">1 つのパターンでの大文字小文字</span><br>
 <br>
-ある特定のパターンの中でだけ大文字と小文字の区別を無視したい場合は、パターンに<br>
-&quot;\c&quot; をつけます。大文字と小文字を区別したいときは &quot;\C&quot; を使います。&quot;\c&quot; と<br>
-&quot;\C&quot; の指定は&nbsp;<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'smartcase'">'smartcase'</a>&nbsp;の設定よりも優先されます。<br>
+ある特定のパターンで大文字と小文字を無視したい場合、&quot;\c&quot; という文字列を前に付<br>
+けることでそうできます。&quot;\C&quot; を使うと、パターンは大文字と小文字を区別してマッ<br>
+チするようになります。これは&nbsp;<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'smartcase'">'smartcase'</a>&nbsp;オプションより優<br>
+先され、&quot;\c&quot; または &quot;\C&quot; が使われているときは、それらの値は関係ありません。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">パターン&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マッチ</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\Cword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\CWord&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Word<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\cword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word, Word, WORD, WoRd, etc.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\cWord&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word, Word, WORD, WoRd, etc.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\cword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word、Word、WORD、WoRd など<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\cWord&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word、Word、WORD、WoRd など<br>
 <br>
-&quot;\c&quot; と &quot;\C&quot; の大きな利点はそれがパターンに埋め込まれていることです。検索履歴<br>
-からパターンを再利用したときなどに、同じ検索結果を期待できます。<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a><br>
-や&nbsp;<a class="Type" href="options.html#'smartcase'">'smartcase'</a>&nbsp;の設定は影響しません。<br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;検索パターンでの &quot;\&quot; の扱いは&nbsp;<a class="Type" href="options.html#'magic'">'magic'</a>&nbsp;オプションに依存します。この章で<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は&nbsp;<a class="Type" href="options.html#'magic'">'magic'</a>&nbsp;がオンに設定されていることを前提にしています。それが標準設<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定であり推奨設定です。<a class="Type" href="options.html#'magic'">'magic'</a>&nbsp;を変更してしまうと今まで使えていた検索パ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ターンが使えなくなってしまうかもしれません。<br>
+&quot;\c&quot; および &quot;\C&quot; を使う大きな利点は、それがパターンと一緒に残ることです。した<br>
+がって、検索履歴からパターンを繰り返す場合、<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;または&nbsp;<a class="Type" href="options.html#'smartcase'">'smartcase'</a>&nbsp;が<br>
+変更されたかどうかに関係なく、同じことが起こります。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;検索がなかなか終わらない場合は&nbsp;<span class="Special">CTRL-C</span>&nbsp;(Unix) または&nbsp;<span class="Special">CTRL-Break</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(MS-Windows) で処理を中断できます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;検索パターンでの &quot;\&quot; 項目の使用は、<a class="Type" href="options.html#'magic'">'magic'</a>&nbsp;オプションに依存します。こ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の章では、<a class="Type" href="options.html#'magic'">'magic'</a>&nbsp;はオンであると仮定します。それが標準であり、推奨され<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る設定だからです。<a class="Type" href="options.html#'magic'">'magic'</a>&nbsp;を変更すると、多くの検索パターンが突然無効に<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;なってしまうでしょう。<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;あなたの検索が予想よりずっと長くかかる場合、Unix では&nbsp;<span class="Special">CTRL-C</span>&nbsp;で、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS-Windows では&nbsp;<span class="Special">CTRL-Break</span>&nbsp;で中断できます。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_27.html#27.2" name="27.2">27.2</a>&nbsp;&nbsp;ファイルの端で折り返す<br>
+<a class="Constant" href="usr_27.html#27.2" name="27.2">27.2</a>&nbsp;&nbsp;ファイルの末尾で折り返す<br>
 <br>
-前方検索を実行すると現在のカーソル位置から処理が開始し、指定された文字列が検索<br>
-されます。そしてファイルの末尾まで検索が進みます。ファイルの末尾まで検索しても<br>
-文字列が見つからない場合は、ファイルの先頭からカーソル位置に向かって検索が継続<br>
-します。<br>
-&quot;n&quot; コマンドを使って順々に検索を進めている場合もそのうち最初にヒットした場所に<br>
-戻ってきます。これに気がつかないと永遠に検索を続けることになってしまいます!<br>
-そのようなことがないように、次のようなメッセージが表示されます:<br>
+既定では、前方検索はカーソルの現在位置から指定された文字列の検索を開始します。<br>
+それからファイルの末尾まで進みます。その時点までに文字列が見つからなかった場<br>
+合、先頭から開始し、ファイルの先頭からカーソル位置まで検索します。<br>
+&nbsp;&nbsp; &quot;n&quot; コマンドを繰り返して次のマッチを検索するとき、最終的には最初のマッチに<br>
+戻ってくることを覚えておいてください。これに気付かないと、永遠に検索し続けるこ<br>
+とになります! ヒントとして、Vim はこのメッセージを表示します:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">下まで検索したので上に戻ります</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">search hit BOTTOM, continuing at TOP</span><br>
 <br>
-&quot;?&quot; コマンドを使って逆方向に検索している場合は次のメッセージが表示されます:<br>
+&quot;?&quot; コマンドを使って逆方向に検索する場合、このメッセージが表示されます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">上まで検索したので下に戻ります</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">search hit TOP, continuing at BOTTOM</span><br>
 <br>
-それでも気づかないことがあるかもしれません。<a class="Type" href="options.html#'ruler'">'ruler'</a>&nbsp;オプションをオンにすると確<br>
-認しやすくなります:<br>
+それでも、最初のマッチにいつ戻ったかはわかりません。これを見る 1 つの方法は、<br>
+<a class="Type" href="options.html#'ruler'">'ruler'</a>&nbsp;オプションをオンにすることです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set ruler</div>
 <br>
-ウィンドウの右下隅 (ステータスラインがあるときはその中) にカーソルの位置が表示<br>
-されます。次のような表示です:<br>
+Vim はウィンドウの右下隅に (ステータス行がある場合はその中に) カーソル位置を表<br>
+示します。このように見えます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">101,29&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 84%</span><br>
 <br>
-最初の数字はカーソルの行番号です。検索を開始した行番号を覚えておいて、検索が一<br>
-周してないか確認しましょう。<br>
+最初の数字はカーソルの行番号です。この位置を再び通過したかどうかを確認できるよ<br>
+うに、開始した行番号を覚えておいてください。<br>
 <br>
 <br>
 <span class="Statement">折り返さない</span><br>
 <br>
-検索を折り返さないようにするには次のコマンドを使います:<br>
+検索の折り返しをオフにするには、以下のコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set nowrapscan</div>
 <br>
-検索がファイルの末尾に達するとエラーメッセージが表示されます:<br>
+これで、検索がファイルの末尾に達すると、エラーメッセージが表示されます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">E385: 下まで検索しましたが該当箇所はありません: forever</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">E385: search hit BOTTOM without match for: forever</span><br>
 <br>
-すべての箇所を検索したい場合は &quot;gg&quot; でファイルの先頭に移動してからこのメッセー<br>
-ジが表示されるまで検索を繰り返してください。<br>
-&quot;?&quot; を使って逆方向に検索した場合は次のメッセージが表示されます:<br>
+したがって、&quot;gg&quot; でファイルの先頭に行き、このメッセージが表示されるまで検索し<br>
+続けることで、すべてのマッチを見つけることができます。<br>
+&nbsp;&nbsp; &quot;?&quot; を使って逆方向に検索する場合、こうなります:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">E384: 上まで検索しましたが該当箇所はありません: forever</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">E384: search hit TOP without match for: forever</span><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_27.html#27.3" name="27.3">27.3</a>&nbsp;&nbsp;オフセット<br>
 <br>
-通常、検索コマンドを実行すると、パターンにヒットした場所の先頭にカーソルが移動<br>
-します。オフセットを指定することで別の場所に移動することができます。前方検索コ<br>
-マンドの &quot;/&quot; の場合、パターンの後ろに &quot;/&quot; とオフセット値を指定します:<br>
+既定では、検索コマンドはカーソルをパターンの先頭に置いたままにします。オフセッ<br>
+トを指定することで、どこか他の場所に置くように Vim に指示できます。前方検索コ<br>
+マンド &quot;/&quot; では、スラッシュ (/) およびオフセットを付け加えることでオフセットを<br>
+指定します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/default/2</div>
 <br>
-&quot;default&quot; というパターンが検索され、見つかった場所から二行下の行頭にカーソルが<br>
-移動します。例えばこのコマンドで今読んでいる段落を検索すると、一行目に<br>
-&quot;default&quot; が見つかるので、カーソルはその二行下 (つまりこの行) に移動することに<br>
-なります。<br>
+このコマンドはパターン &quot;default&quot; を検索し、それからパターンの 2 行後の行の先頭<br>
+に移動します。上の段落でこのコマンドを使うと、Vim は 1 行目で単語 &quot;default&quot; を<br>
+見つけます。それから、カーソルは 2 行下に移動し、&quot;an offset&quot; に着地します。<br>
 <br>
-オフセットに数値を指定すると、マッチした行から指定した行数だけ移動した行の行頭<br>
-にカーソルが移動します。オフセット値には負の数も指定できます。正の数ならカーソ<br>
-ルが下に移動し、負の数なら上に移動します。<br>
+オフセットが単純な数値の場合、カーソルはマッチからその行数だけ離れた行の先頭に<br>
+置かれます。オフセットの数値は正または負にできます。正の場合、カーソルはその行<br>
+数だけ下に移動し、負の場合、上に移動します。<br>
 <br>
 <br>
 <span class="Statement">文字オフセット</span><br>
 <br>
-&quot;e&quot; はマッチした文字列の末尾を示すオフセットです。マッチした文字列の末尾にカー<br>
-ソルが移動します。次のように使います:<br>
+&quot;e&quot; オフセットは、マッチの末尾からのオフセットを示します。これはカーソルをマッ<br>
+チの最後の文字の上に移動します。次のコマンドは:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/const/e</div>
 <br>
-&quot;const&quot; の &quot;t&quot; にカーソルが移動します。<br>
-オフセットに数値を足すと、その場所からさらにカーソルを進めることができます。<br>
-次のコマンドではマッチした文字列の後ろにカーソルが移動します:<br>
+カーソルを &quot;const&quot; の &quot;t&quot; の上に置きます。<br>
+&nbsp;&nbsp; その位置から数値を加えると、その文字数だけ前方に移動します。このコマンドは、<br>
+マッチの直後の文字に移動します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/const/e+1</div>
 <br>
-正の数ならカーソルが右に動き、負の数なら左に動きます。例:<br>
+正の数はカーソルを右に移動し、負の数は左に移動します。例えば:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/const/e-1</div>
 <br>
-&quot;const&quot; の &quot;s&quot; にカーソルが移動します。<br>
+カーソルを &quot;const&quot; の &quot;s&quot; に移動します。<br>
 <br>
-オフセットに &quot;b&quot; を指定すると、マッチした文字列の先頭に移動できます。これはオ<br>
-フセット指定無しの動作と同じなので単体では使い道はありません。数値を足したり引<br>
-いたりしたい場合に使います。指定した数だけカーソルを前後に移動できます。例:<br>
+オフセットが &quot;b&quot; で始まる場合、カーソルはパターンの先頭に移動します。&quot;b&quot; を省<br>
+いても同じことをするので、これはあまり便利ではありません。数値が加算または減算<br>
+されるときに便利になります。そのとき、カーソルはその文字数だけ前方または後方に<br>
+移動します。例えば:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/const/b+2</div>
 <br>
-マッチした文字列の先頭から二文字右にカーソルが移動します。つまり &quot;n&quot; の上です。<br>
+カーソルをマッチの先頭に移動し、それから 2 文字右に移動します。したがって、&quot;n&quot;<br>
+に着地します。<br>
 <br>
 <br>
 <span class="Statement">繰り返し</span><br>
 <br>
-直前に使った検索パターンを、別のオフセットを使って再検索したい場合は、パターン<br>
-指定を省略します:<br>
+以前に使った検索パターンの検索を、異なるオフセットで繰り返すには、パターンを省<br>
+きます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/that<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//e</div>
 <br>
-これは次の指定と同じです:<br>
+次と同じです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/that/e</div>
 <br>
-同じオフセットを使って再検索したい場合は:<br>
+同じオフセットで繰り返すには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/</div>
 <br>
-&quot;n&quot; と同じ動作になります。オフセット指定を無効にして再検索したい場合は次のよう<br>
-にします:<br>
+&quot;n&quot; も同じことをします。以前に使ったオフセットを取り除いて繰り返すには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//</div>
 <br>
 <br>
-<span class="Statement">後方検索</span><br>
+<span class="Statement">後方に検索する</span><br>
 <br>
-&quot;?&quot; コマンドでも同じようにオフセットを指定できますが、パターンとオフセットを区<br>
-切るのは &quot;/&quot; ではなく &quot;?&quot; になります:<br>
+&quot;?&quot; コマンドも同じようにオフセットを使いますが、オフセットをパターンから区切る<br>
+には、&quot;/&quot; の代わりに &quot;?&quot; を使う必要があります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;?const?e-2</div>
 <br>
-&quot;b&quot; と &quot;e&quot; の意味は同じです。&quot;?&quot; を使う場合でも方向は逆になりません。<br>
+&quot;b&quot; および &quot;e&quot; はその意味を保ち、&quot;?&quot; を使っても方向は変わりません。<br>
 <br>
 <br>
-<span class="Statement">検索開始位置</span><br>
+<span class="Statement">開始位置</span><br>
 <br>
-検索は通常、現在のカーソル位置から開始します。オフセットを指定するとうまくいか<br>
-ないときがあります。例:<br>
+検索を開始するとき、通常はカーソル位置から開始します。行オフセットを指定する<br>
+と、これが問題を引き起こすことがあります。例えば:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/const/-2</div>
 <br>
-&quot;const&quot; を検索してその二行上に移動します。&quot;n&quot; を使って再検索すると、その場所か<br>
-ら検索を開始して同じ場所の &quot;const&quot; がヒットします。そして、再びオフセットが適<br>
-用されて元の場所に戻ってきます。まったく移動できません。<br>
-次の行に &quot;const&quot; があった場合はもっとおかしなことになります。検索を実行すると<br>
-次の行がヒットして、その二行上にカーソルが移動するので、カーソルが逆方向に移動<br>
-してしまうのです。<br>
+これは次の単語 &quot;const&quot; を見つけ、それから 2 行上に移動します。&quot;n&quot; を使って再び<br>
+検索すると、Vim は現在位置から開始し、同じ &quot;const&quot; のマッチを見つけるかもしれ<br>
+ません。それから再びオフセットを使うと、開始した場所に戻ってしまいます。行き詰<br>
+まってしまいます!<br>
+&nbsp;&nbsp; もっと悪くなることもあります: 次の行に &quot;const&quot; との別のマッチがあるとしま<br>
+す。そうすると、前方検索を繰り返すとこのマッチが見つかり、2 行上に移動します。<br>
+したがって、実際にはカーソルを後ろに戻してしまうことになります!<br>
 <br>
-文字オフセットを使った場合はそうなりません。オフセット指定の分だけ検索開始位置<br>
-がずれるので、同じものが再びヒットすることはありません。<br>
+文字オフセットを指定した場合、Vim はこれを補正します。したがって、検索は数文字<br>
+前方または後方から開始し、同じマッチが再び見つからないようにします。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_27.html#27.4" name="27.4">27.4</a>&nbsp;&nbsp;繰り返しマッチ<br>
+<a class="Constant" href="usr_27.html#27.4" name="27.4">27.4</a>&nbsp;&nbsp;複数回マッチする<br>
 <br>
-ある文字を任意の数だけマッチさせたい場合は &quot;*&quot; を使います:<br>
+&quot;*&quot; 項目は、その前の項目が任意の回数マッチできることを指定します。したがって:<br>
+<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/a*</div>
 <br>
-これは &quot;a&quot; でも &quot;aa&quot; でも &quot;aaa&quot; でもマッチします。0 回というのも任意の数に含ま<br>
-れるので &quot;&quot; (空文字列) もマッチします。<br>
-&quot;*&quot; は直前の文字に対してだけ適用されます。&quot;ab*&quot; なら &quot;a&quot;、&quot;ab&quot;、&quot;abb&quot;、&quot;abbb&quot;<br>
-などがマッチします。単語を繰り返したい場合は、その単語をグループにまとめなけれ<br>
-ばなりません。&quot;\(&quot; と &quot;\)&quot; で単語を囲んでください。次のように使います:<br>
+&quot;a&quot;、&quot;aa&quot;、&quot;aaa&quot; などにマッチします。しかし、&quot;&quot; (空文字列) にもマッチします。0<br>
+回も含まれるからです。<br>
+&nbsp;&nbsp; &quot;*&quot; は、その直前の項目にだけ適用されます。したがって、&quot;ab*&quot; は &quot;a&quot;、&quot;ab&quot;、<br>
+&quot;abb&quot;、&quot;abbb&quot; などにマッチします。文字列全体を複数回マッチさせるには、それを 1<br>
+つの項目にまとめる必要があります。これはその前に &quot;\(&quot; を、その後に &quot;\)&quot; を置く<br>
+ことで行います。したがって、このコマンドは:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/\(ab\)*</div>
 <br>
-&quot;ab&quot;、&quot;abab&quot;、&quot;ababab&quot;、&quot;&quot; などにマッチします。<br>
+&quot;ab&quot;、&quot;abab&quot;、&quot;ababab&quot; などにマッチします。そして &quot;&quot; にもマッチします。<br>
 <br>
-空文字列にマッチさせたくない場合は &quot;\+&quot; を使います。直前の文字が一つ以上あると<br>
-きだけマッチするようになります:<br>
+空文字列へのマッチを避けるには、&quot;\+&quot; を使います。これは、前の項目を 1 回以上<br>
+マッチさせます。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ab\+</div>
 <br>
-&quot;ab&quot;、&quot;abb&quot;、&quot;abbb&quot; などにマッチします。&quot;b&quot; が後ろに付いていない &quot;a&quot; にはマッ<br>
-チしません。<br>
+&quot;ab&quot;、&quot;abb&quot;、&quot;abbb&quot; などにマッチします。&quot;b&quot; が続かないときは、&quot;a&quot; にはマッチし<br>
+ません。<br>
 <br>
-0 または 1 つの文字にマッチさせたい場合は &quot;\=&quot; を使います。例:<br>
+省略可能な項目にマッチさせるには、&quot;\=&quot; を使います。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/folders\=</div>
 <br>
-&quot;folder&quot; と &quot;folders&quot; がマッチします。<br>
+&quot;folder&quot; および &quot;folders&quot; にマッチします。<br>
 <br>
 <br>
-<span class="Statement">回数指定</span><br>
+<span class="Statement">特定の回数</span><br>
 <br>
-特定の数だけ文字をマッチさせるには &quot;\<span class="Special">{n,m}</span>&quot; を使います。&quot;n&quot; と &quot;m&quot; に数字を指<br>
-定します。直前の文字が &quot;n&quot; から &quot;m&quot; の数だけ連続している場合にマッチします。<br>
-例:<br>
+特定の数の項目にマッチさせるには、&quot;\<span class="Special">{n,m}</span>&quot; という形式を使います。&quot;n&quot; および<br>
+&quot;m&quot; は数値です。その前の項目が &quot;n&quot; から &quot;m&quot; 回マッチします&nbsp;<a class="Identifier" href="motion.html#inclusive">inclusive</a>。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ab\{3,5}</div>
 <br>
-&quot;abbb&quot;、&quot;abbbb&quot;、&quot;abbbbb&quot; にマッチします。<br>
-&quot;n&quot; を省略した場合は 0 が使われます。&quot;m&quot; が省略された場合は繰り返し回数は無制<br>
-限になります。&quot;,m&quot; を省略した場合は、正確に &quot;n&quot; 回の繰り返しにマッチします。<br>
+&quot;abbb&quot;、&quot;abbbb&quot;、および &quot;abbbbb&quot; にマッチします。<br>
+&nbsp;&nbsp;&quot;n&quot; が省略されたときは、既定は 0 です。&quot;m&quot; が省略されたときは、既定は無限大<br>
+です。&quot;,m&quot; が省略されたときは、ちょうど &quot;n&quot; 回マッチします。<br>
 例:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">pattern&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; match count</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\<span class="Special">{,4}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0, 1, 2, 3 or 4<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\<span class="Special">{3,}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3, 4, 5, etc.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\<span class="Special">{0,1}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0 or 1 (\= と同じ)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\<span class="Special">{0,}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 以上 (* と同じ)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\<span class="Special">{1,}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 以上 (\+ と同じ)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">パターン&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マッチ回数</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\<span class="Special">{,4}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0、1、2、3、または 4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\<span class="Special">{3,}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3、4、5 など<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\<span class="Special">{0,1}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0 または 1、\= と同じ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\<span class="Special">{0,}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 以上、* と同じ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\<span class="Special">{1,}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 以上、\+ と同じ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\<span class="Special">{3}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3<br>
 <br>
 <br>
-<span class="Statement">最短一致</span><br>
+<span class="Statement">できるだけ少なくマッチする</span><br>
 <br>
-今まで説明した繰り返し指定は、可能な限りたくさんの文字列にマッチしようとしま<br>
-す。できるだけ少ない回数だけマッチさせるには &quot;\<span class="Special">{-n,m}</span>&quot; を使います。動作は<br>
-&quot;\<span class="Special">{n,m}</span>&quot; とほとんど同じですが、最短一致が使われます。<br>
-例:<br>
+ここまでの項目は、見つけられるだけ多くの文字にマッチします。できるだけ少なく<br>
+マッチさせるには、&quot;\<span class="Special">{-n,m}</span>&quot; を使います。これは &quot;\<span class="Special">{n,m}</span>&quot; と同じように動作します<br>
+が、可能な最小量が使われる点が異なります。<br>
+&nbsp;&nbsp; 例えば、次を使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ab\{-1,3}</div>
 <br>
-&quot;abbbb&quot; の中の &quot;ab&quot; だけがマッチします。一つの &quot;b&quot; にマッチするだけで条件を満<br>
-たすので、二つ目以降の &quot;b&quot; には絶対にマッチしません。後ろに他のパターンが続い<br>
-ているなら最小回数以上の文字にもマッチします。<br>
-&quot;n&quot; と &quot;m&quot; を省略した場合も同じルールが適用されます。両方の数字を省略して<br>
-&quot;\<span class="Special">{-}</span>&quot; とすることもできます。これは直前の文字が 0 回以上繰り返されている場合に<br>
-最小の数だけマッチします。単体で使った場合は常に 0 回にマッチします。他のパター<br>
-ンと組み合わせて使うと便利です。例:<br>
+&quot;abbb&quot; の中の &quot;ab&quot; にマッチします。実際には、それ以上マッチする理由がないので、<br>
+決して 2 つ以上の b にはマッチしません。下限よりも多くマッチさせるには、何か他<br>
+のものが必要です。<br>
+&nbsp;&nbsp; 同じ規則が &quot;n&quot; および &quot;m&quot; の省略にも適用されます。両方の数値を省略すること<br>
+さえ可能で、その結果 &quot;\<span class="Special">{-}</span>&quot; になります。これは、その前の項目に 0 回以上、でき<br>
+るだけ少なくマッチします。この項目自体は常に 0 回マッチします。何か他のものと<br>
+組み合わせると便利です。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/a.\{-}b</div>
 <br>
-&quot;axbxb&quot; の中の &quot;axb&quot; にマッチします。次のパターンを使った場合は:<br>
+これは &quot;axbxb&quot; の中の &quot;axb&quot; にマッチします。このパターンが使われた場合:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/a.*b</div>
 <br>
-&quot;.*&quot; は可能な限り多くの文字にマッチするので &quot;axbxb&quot; 全体がマッチします。<br>
+&quot;.*&quot; でできるだけ多くの文字にマッチしようとするので、&quot;axbxb&quot; 全体にマッチしま<br>
+す。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_27.html#27.5" name="27.5">27.5</a>&nbsp;&nbsp;選択肢<br>
 <br>
-パターンの中で &quot;or&quot; (または) を指定するには &quot;\|&quot; を使います。例:<br>
+パターンにおける &quot;or&quot; 演算子は &quot;\|&quot; です。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/foo\|bar</div>
 <br>
-&quot;foo&quot; と &quot;bar&quot; のどちらかがマッチします。複数の選択肢を指定できます:<br>
+これは &quot;foo&quot; または &quot;bar&quot; にマッチします。さらに多くの選択肢を連結できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/one\|two\|three</div>
 <br>
-&quot;one&quot;、&quot;two&quot;、&quot;three&quot; のどれかにマッチします。<br>
-複数回マッチさせるには、全体を &quot;\(&quot; と &quot;\)&quot; で囲みます:<br>
+&quot;one&quot;、&quot;two&quot;、および &quot;three&quot; にマッチします。<br>
+&nbsp;&nbsp; 複数回マッチさせるには、全体を &quot;\(&quot; および &quot;\)&quot; の中に置く必要があります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/\(foo\|bar\)\+</div>
 <br>
-&quot;foo&quot;、&quot;foobar&quot;、&quot;foofoo&quot;、&quot;barfoobar&quot; などにマッチします。<br>
-もう一つの例:<br>
+これは &quot;foo&quot;、&quot;foobar&quot;、&quot;foofoo&quot;、&quot;barfoobar&quot; などにマッチします。<br>
+&nbsp;&nbsp; 別の例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/end\(if\|while\|for\)</div>
 <br>
-&quot;endif&quot;、&quot;endwhile&quot;、&quot;endfor&quot; にマッチします。<br>
+これは &quot;endif&quot;、&quot;endwhile&quot;、および &quot;endfor&quot; にマッチします。<br>
 <br>
-&quot;\&amp;&quot; も似たような条件指定です。指定された選択肢がすべて同じ場所でマッチします。<br>
-マッチ結果としては最後の選択肢が使われます。例:<br>
+関連する項目に &quot;\&amp;&quot; があります。これは、両方の選択肢が同じ場所でマッチすること<br>
+を要求します。結果のマッチには最後の選択肢が使われます。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/forever\&amp;...</div>
 <br>
-&quot;forever&quot; の &quot;for&quot; にマッチします。&quot;fortuin&quot; にはマッチしません。<br>
+これは &quot;forever&quot; の中の &quot;for&quot; にマッチします。例えば、&quot;fortuin&quot; にはマッチしま<br>
+せん。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_27.html#27.6" name="27.6">27.6</a>&nbsp;&nbsp;文字範囲<br>
 <br>
-&quot;a&quot;、&quot;b&quot;、&quot;c&quot; のどれかにマッチさせるには &quot;/a\|b\|c&quot; が使えます。しかし &quot;a&quot; か<br>
-ら &quot;z&quot; までの文字をマッチさせようとするとパターンが長くなってしまいます。簡単<br>
-な方法があります:<br>
+&quot;a&quot;、&quot;b&quot;、または &quot;c&quot; にマッチさせるには、&quot;/a\|b\|c&quot; を使うことができます。&quot;a&quot;<br>
+から &quot;z&quot; までのすべての文字にマッチさせたいときは、これはとても長くなります。<br>
+もっと短い方法があります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/[a-z]</div>
 <br>
-[] は一つの文字にマッチします。マッチさせたい文字を [] の中に指定します。次の<br>
-ようにして文字を一つずつ指定することもできます:<br>
+[] の構文は 1 つの文字にマッチします。その中に、どの文字にマッチさせるかを指定<br>
+します。次のように、文字のリストを含めることができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/[0123456789abcdef]</div>
 <br>
-指定された文字の中から一つがマッチします。文字が連続している場合は文字範囲を指<br>
-定できます。例えば &quot;0-3&quot; は &quot;0123&quot; という意味です。&quot;w-z&quot; は &quot;wxyz&quot; という意味<br>
-になります。上記の例は次のように短くできます:<br>
+これは、含まれる文字のどれかにマッチします。連続する文字については、範囲を指定<br>
+できます。&quot;0-3&quot; は &quot;0123&quot; を表します。&quot;w-z&quot; は &quot;wxyz&quot; を表します。したがって、<br>
+上と同じコマンドは次のように短縮できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/[0-9a-f]</div>
 <br>
-文字 &quot;-&quot; 自体をマッチさせたい場合は [] の中の一番最初か最後に書いてください。<br>
-[] の中では以下の特殊文字が使えます (これらは [] の中でなくても使えます):<br>
+&quot;-&quot; 文字自体にマッチさせるには、それを範囲の最初または最後に置きます。これらの<br>
+特殊文字は、[] 範囲の中で使いやすくするために受け付けられます (実際には、検索<br>
+パターンのどこでも使えます):<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Esc&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;CR&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;BS&gt;</span><br>
 <br>
-[] の中では他にも特殊な指定方法が使えます。詳細は&nbsp;<a class="Identifier" href="pattern.html#/[]">/[]</a>&nbsp;を参照してください。<br>
+[] 範囲にはもういくつか特殊なケースがあります。全体については&nbsp;<a class="Identifier" href="pattern.html#/[]">/[]</a>&nbsp;を参照して<br>
+ください。<br>
 <br>
 <br>
-<span class="Statement">文字範囲の補集合</span><br>
+<span class="Statement">補集合の範囲</span><br>
 <br>
-マッチして欲しくない文字を指定したい場合は、文字範囲の先頭に &quot;^&quot; を指定します。<br>
-すると、指定した文字以外の文字がマッチするようになります。例:<br>
+特定の文字にマッチするのを避けるには、範囲の先頭で &quot;^&quot; を使います。そうすると、<br>
+[] 項目は含まれる文字以外のすべてにマッチします。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&quot;[^&quot;]*&quot;</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ダブルクォート<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[^&quot;]&nbsp;&nbsp;&nbsp;&nbsp;ダブルクォート以外の文字が<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp; 可能な限りたくさん<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;&nbsp;&nbsp;ダブルクォート<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[^&quot;]&nbsp;&nbsp;&nbsp;&nbsp;ダブルクォートではない任意の文字<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp; できるだけ多く<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;&nbsp;&nbsp;再びダブルクォート<br>
 <br>
-&quot;foo&quot; や &quot;3!x&quot; がマッチします (ダブルクォートもマッチに含まれる)。<br>
+これは &quot;foo&quot; および &quot;3!x&quot; に、ダブルクォートも含めてマッチします。<br>
 <br>
 <br>
-<span class="Statement">定義済み文字範囲</span><br>
+<span class="Statement">定義済みの範囲</span><br>
 <br>
-一般的な文字範囲はあらかじめ定義されています。<br>
-例:<br>
+いくつかの範囲はとてもよく使われます。Vim はそれらに対するショートカットを提供<br>
+しています。例えば:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/\a</div>
 <br>
-アルファベット文字が検索されます。これは &quot;/[a-zA-Z]&quot; と同じです。他にも次のよ<br>
-うなものがあります:<br>
+英字を見つけます。これは &quot;/[a-zA-Z]&quot; を使うのと同じです。これらのものをさらに<br>
+いくつか示します:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">item&nbsp;&nbsp;&nbsp;&nbsp;matches&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; equivalent</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[0-9]</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数字以外&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[^0-9]</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16進数の数字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[0-9a-fA-F]</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16進数の数字以外&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[^0-9a-fA-F]</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;空白文字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp; (<span class="Special">&lt;Tab&gt;</span>か<span class="Special">&lt;Space&gt;</span>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;空白文字以外&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [^&nbsp;&nbsp;&nbsp;&nbsp; ]&nbsp;&nbsp;&nbsp;&nbsp; (<span class="Special">&lt;Tab&gt;</span>か<span class="Special">&lt;Space&gt;</span>以外)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;小文字アルファベット&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[a-z]</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\L&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;小文字アルファベット以外&nbsp;<span class="Special">[^a-z]</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大文字アルファベット&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[A-Z]</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\U&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大文字アルファベット以外&nbsp;<span class="Special">[^A-Z]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">項目&nbsp;&nbsp;&nbsp;&nbsp;マッチ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同等のもの</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[0-9]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数字以外&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[^0-9]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16 進数字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[0-9a-fA-F]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16 進数字以外&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[^0-9a-fA-F]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;空白&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]&nbsp;&nbsp;&nbsp;&nbsp; (<span class="Special">&lt;Tab&gt;</span>&nbsp;および&nbsp;<span class="Special">&lt;Space&gt;</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;空白以外の文字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[^&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp; (<span class="Special">&lt;Tab&gt;</span>&nbsp;および&nbsp;<span class="Special">&lt;Space&gt;</span>&nbsp;以外)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;小文字の英字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[a-z]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\L&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;小文字の英字以外&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[^a-z]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大文字の英字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[A-Z]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\U&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大文字の英字以外&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[^A-Z]</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定義済み文字範囲は普通の文字範囲よりも処理が高速です。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これらのアイテムは [] の中では指定できません。つまり &quot;[\d\l]&quot; と書いた<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;としても数字と小文字にはマッチしません。&quot;\(\d\|\l\)&quot; を使ってください。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これらの定義済みの範囲を使うと、それが表す文字範囲よりもずっと速く動作<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;します。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これらの項目は [] の中では使えません。したがって、&quot;[\d\l]&quot; は数字また<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は小文字の英字にマッチするようには動作しません。代わりに &quot;\(\d\|\l\)&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を使ってください。<br>
 <br>
-定義済み文字範囲の一覧は&nbsp;<a class="Identifier" href="pattern.html#/\s">/\s</a>&nbsp;を参照してください。<br>
+これらの範囲の一覧全体は&nbsp;<a class="Identifier" href="pattern.html#/\s">/\s</a>&nbsp;を参照してください。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_27.html#27.7" name="27.7">27.7</a>&nbsp;&nbsp;文字クラス<br>
 <br>
-文字範囲は特定の文字のセットにマッチします。文字クラスも似たようなものですが、<br>
-検索パターンを変更せずに文字のセットを変更できるという違いがあります。<br>
-例えば、次のパターンを検索します:<br>
+文字範囲は、固定された文字の集合にマッチします。文字クラスも似ていますが、本質<br>
+的な違いがあります: 文字の集合を、検索パターンを変更せずに再定義できるのです。<br>
+&nbsp;&nbsp; 例えば、このパターンを検索してください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/\f\+</div>
 <br>
-&quot;\f&quot; はファイル名に使える文字を表します。つまりこのパターンはファイル名として<br>
-使える文字列にマッチします。<br>
-どの文字がファイル名として使えるかはシステムによって異なります。MS-Windows で<br>
-は &quot;\&quot; が使えますが Unix では使えません。これは&nbsp;<a class="Type" href="options.html#'isfname'">'isfname'</a>&nbsp;オプションで指定され<br>
-ています。Unix の初期設定:<br>
+&quot;\f&quot; 項目はファイル名の文字を表します。したがって、これはファイル名になりうる<br>
+文字の並びにマッチします。<br>
+&nbsp;&nbsp; どの文字がファイル名の一部になりうるかは、使っているシステムによって異なり<br>
+ます。MS-Windows ではバックスラッシュが含まれ、Unix では含まれません。これは<br>
+<a class="Type" href="options.html#'isfname'">'isfname'</a>&nbsp;オプションで指定されます。Unix での既定値は:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set isfname<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isfname=@,48-57,/,.,-,_,+,,,#,$,%,~,=</div>
 <br>
-他のシステムでは初期設定が変わります。ファイル名にマッチさせたいときに &quot;\f&quot; を<br>
-使えば、そのパターンはいろいろなシステムで使えます。<br>
+他のシステムでは既定値は異なります。したがって、&quot;\f&quot; を使ってファイル名にマッ<br>
+チする検索パターンを作ることができ、それは使っているシステムに自動的に適応しま<br>
+す。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unix では空白などのどんな文字でもファイル名に使えます。<a class="Type" href="options.html#'isfname'">'isfname'</a>&nbsp;にそ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れらの文字を設定するのは理論的には正しいことです。しかしその場合、テキ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ストの中からファイル名を切り出すのが困難になってしまいます。したがっ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;て、<a class="Type" href="options.html#'isfname'">'isfname'</a>&nbsp;の初期設定にはすべての文字は含まれていません。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;実際には、Unix ではファイル名にほとんどどんな文字でも使うことができ、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;空白も含まれます。これらの文字を&nbsp;<a class="Type" href="options.html#'isfname'">'isfname'</a>&nbsp;に含めることは、理論的には<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正しいでしょう。しかし、そうするとテキスト中のファイル名の終わりを見つ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;けることが不可能になってしまいます。したがって、<a class="Type" href="options.html#'isfname'">'isfname'</a>&nbsp;の既定値は妥<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;協です。<br>
 <br>
-次のような文字クラスがあります:<br>
+文字クラスは次のとおりです:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">item&nbsp;&nbsp;&nbsp;&nbsp;matches&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; option</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;識別子に使える文字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'isident'">'isident'</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\iから数字を抜いたもの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\k&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キーワードとなる文字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'iskeyword'">'iskeyword'</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\K&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\kから数字を抜いたもの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;印字可能文字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'isprint'">'isprint'</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\P&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\pから数字を抜いたもの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイル名に使える文字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'isfname'">'isfname'</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\fから数字を抜いたもの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">項目&nbsp;&nbsp;&nbsp;&nbsp;マッチ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;オプション</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;識別子の文字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'isident'">'isident'</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\i と同様、数字を除く<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\k&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キーワードの文字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'iskeyword'">'iskeyword'</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\K&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\k と同様、数字を除く<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;印字可能な文字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'isprint'">'isprint'</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\P&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\p と同様、数字を除く<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイル名の文字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'isfname'">'isfname'</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\f と同様、数字を除く<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_27.html#27.8" name="27.8">27.8</a>&nbsp;&nbsp;改行記号にマッチ<br>
+<a class="Constant" href="usr_27.html#27.8" name="27.8">27.8</a>&nbsp;&nbsp;改行にマッチする<br>
 <br>
-改行を含んだパターンを検索することができます。改行の位置は明示的に指定する必要<br>
-があります。今までに説明したパターンアイテムはどれも改行にマッチしません。<br>
-改行の場所を指定するには &quot;\n&quot; を使います:<br>
+Vim は、改行を含むパターンを見つけることができます。ここまでに述べたすべての項<br>
+目は改行にマッチしないので、改行がどこで起こるかを指定する必要があります。<br>
+&nbsp;&nbsp; 特定の場所で改行をチェックするには、&quot;\n&quot; 項目を使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/one\ntwo</div>
 <br>
-行末が &quot;one&quot; で終わり、次の行の行頭が &quot;two&quot; になっている行がマッチします。<br>
-&quot;one two&quot; にもマッチさせたい場合は、スペースと改行の両方をマッチさせる必要が<br>
-あります。それには &quot;\_s&quot; を使います:<br>
+これは、&quot;one&quot; で終わり、次の行が &quot;two&quot; で始まる行でマッチします。&quot;one two&quot; に<br>
+もマッチさせるには、空白または改行にマッチさせる必要があります。そのために使う<br>
+項目は &quot;\_s&quot; です:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/one\_stwo</div>
 <br>
-間に空白をいくつでも挟めるようにするには:<br>
+任意の量の空白を許すには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/one\_s\+two</div>
 <br>
-これは、行末が &quot;one&nbsp;&nbsp;&quot; で終わり、次の行の行頭が &quot;&nbsp;&nbsp; two&quot; で始まっているよう<br>
-な場所にもマッチします。<br>
+これは、&quot;one&nbsp;&nbsp;&quot; が行末にあり、&quot;&nbsp;&nbsp; two&quot; が次の行の先頭にあるときにもマッチしま<br>
+す。<br>
 <br>
-&quot;\s&quot; は空白にマッチします。&quot;\_s&quot; は空白と改行にマッチします。<br>
-同様に、&quot;\a&quot; はアルファベットにマッチし、&quot;\_a&quot; はアルファベットと改行にマッチ<br>
-します。他の文字クラスや文字範囲も同様に、&quot;_&quot; を付けることによって改行にもマッ<br>
-チするようになります。<br>
+&quot;\s&quot; は空白にマッチし、&quot;\_s&quot; は空白または改行にマッチします。同様に、&quot;\a&quot; は英<br>
+字にマッチし、&quot;\_a&quot; は英字または改行にマッチします。他の文字クラスおよび範囲<br>
+も、&quot;_&quot; を挿入することで同じように変更できます。<br>
 <br>
-他の多くのパターンアイテムも &quot;\_&quot; を付けることによって改行にマッチさせることが<br>
-できます。例えば、&quot;\_.&quot; は改行を含めたすべての文字にマッチします。<br>
+他の多くの項目は、&quot;\_&quot; を前に付けることで改行にマッチするようにできます。例え<br>
+ば: &quot;\_.&quot; は任意の文字または改行にマッチします。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;\_.*&quot; はファイル末尾までのすべての文字がマッチします。検索コマンドの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;動作が遅くなるかもしれないので注意してください。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;\_.*&quot; はファイルの末尾まですべてにマッチします。これには注意してくだ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;さい。検索コマンドがとても遅くなることがあります。<br>
 <br>
-&quot;\_[]&quot; を使うと文字範囲にも改行を追加できます:<br>
+別の例は &quot;\_[]&quot; で、改行を含む文字範囲です:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&quot;\_[^&quot;]*&quot;</div>
 <br>
-ダブルクォートで囲まれたテキストが検索されます。間には改行も含むことができま<br>
-す。<br>
+これは、複数の行に分割されているかもしれない、ダブルクォートで囲まれたテキスト<br>
+を見つけます。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_27.html#27.9" name="27.9">27.9</a>&nbsp;&nbsp;例<br>
 <br>
-便利そうな検索パターンをいくつか説明します。今までに説明したパターンをどのよう<br>
-に使えばいいかを示します。<br>
+ここに、役に立つかもしれない検索パターンをいくつか示します。これは、上で述べた<br>
+項目をどのように組み合わせられるかを示します。<br>
 <br>
 <br>
-<span class="Statement">カリフォルニア州のナンバープレートを探す</span><br>
+<span class="Statement">カリフォルニアのナンバープレートを見つける</span><br>
 <br>
-&quot;1MGU103&quot; という番号を検索してみます。これは一つの数字、三つの大文字アルファ<br>
-ベット、三つの数字、から成っています。そのままパターンに置き換えてみます:<br>
+ナンバープレートの番号の例は &quot;1MGU103&quot; です。これは 1 つの数字、3 つの大文字、<br>
+および 3 つの数字を持ちます。これをそのまま検索パターンにすると:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/\d\u\u\u\d\d\d</div>
 <br>
-同じものが並んでいる部分は回数指定に置き換えることができます:<br>
+別の方法は、回数を使って、3 つの数字および英字があることを指定することです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/\d\u\{3}\d\{3}</div>
 <br>
-[] 指定を使うこともできます:<br>
+代わりに [] 範囲を使うと:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/[0-9][A-Z]\{3}[0-9]\{3}</div>
 <br>
-あなたならどれを使いますか? どれでも覚えやすいものを使ってください。簡単に覚え<br>
-られる方法を使う方がそうでないものを頑張って覚えるよりずっと効率がよくなりま<br>
-す。最後の例は他より長くて実行速度も遅いので、どれでも覚えられるという場合は選<br>
-択肢から外してください。<br>
+これらのうちどれを使うべきでしょうか? どれでも覚えられるものです。覚えられる簡<br>
+単な方法のほうが、覚えられない凝った方法よりもずっと速いです。全部覚えられる場<br>
+合、最後のものは避けてください。タイプ量が多く、実行も遅いからです。<br>
 <br>
 <br>
 <span class="Statement">識別子を見つける</span><br>
 <br>
-C 言語 (などのほとんどの言語) では、識別子は英文字で始まってその後に英数字が続<br>
-きます。アンダースコアも使えるかもしれません。次のパターンでそのような文字を検<br>
-索できます:<br>
+C のプログラム (および他の多くのコンピューター言語) では、識別子は英字で始ま<br>
+り、さらに英字および数字で構成されます。アンダースコアも使えます。これは次で見<br>
+つけられます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/\&lt;\h\w*\&gt;</div>
 <br>
-&quot;\&lt;&quot; と &quot;\&gt;&quot; は単語全体をマッチさせるための指定です。&quot;\h&quot; は &quot;[A-Za-z_]&quot; と同<br>
-じ意味で、&quot;\w&quot; は &quot;[0-9A-Za-z_]&quot; と同じ意味になります。<br>
+&quot;\&lt;&quot; および &quot;\&gt;&quot; は、単語全体だけを見つけるために使われます。&quot;\h&quot; は<br>
+&quot;[A-Za-z_]&quot; を、&quot;\w&quot; は &quot;[0-9A-Za-z_]&quot; を表します。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;\&lt;&quot; と &quot;\&gt;&quot; の動作は&nbsp;<a class="Type" href="options.html#'iskeyword'">'iskeyword'</a>&nbsp;オプションに依存します。例えば &quot;-&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が含まれている場合、上記パターンは &quot;ident-&quot; にマッチしません。次のパ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ターンを使ってください:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;\&lt;&quot; および &quot;\&gt;&quot; は&nbsp;<a class="Type" href="options.html#'iskeyword'">'iskeyword'</a>&nbsp;オプションに依存します。例えば、それが<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;-&quot; を含む場合、&quot;ident-&quot; はマッチしません。この状況では、以下を使って<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/\w\@&lt;!\h\w*\w\@!</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;識別子の前後の文字が &quot;\w&quot; にマッチしないかどうかをチェックしています。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="pattern.html#/\@<!">/\@&lt;!</a>&nbsp;と&nbsp;<a class="Identifier" href="pattern.html#/\@!">/\@!</a>&nbsp;参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これは、&quot;\w&quot; が識別子の前または後にマッチしないかどうかをチェックしま<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<a class="Identifier" href="pattern.html#/\@<!">/\@&lt;!</a>&nbsp;および&nbsp;<a class="Identifier" href="pattern.html#/\@!">/\@!</a>&nbsp;を参照してください。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
