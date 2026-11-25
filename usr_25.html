@@ -9,50 +9,52 @@ helpname: 'usr_25'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;テキストの整形<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;整形されたテキストの編集<br>
 <br>
 <br>
-文章を一行に一文ずつ書くようなことはほとんどありません。この章では、テキストが<br>
-画面に収まるように整形する方法などを説明します。<br>
-一行段落や表を編集するための便利な機能もあります。<br>
+テキストが 1 行に 1 文で書かれていることはほとんどありません。この章は、文を<br>
+ページに収まるように改行すること、およびその他の整形についてです。<br>
+Vim には、1 行の段落および表を編集するための便利な機能もあります。<br>
 <br>
-<a class="Identifier" href="usr_25.html#25.1">25.1</a>&nbsp;&nbsp;行を改行する<br>
-<a class="Identifier" href="usr_25.html#25.2">25.2</a>&nbsp;&nbsp;テキストの位置揃え<br>
+<a class="Identifier" href="usr_25.html#25.1">25.1</a>&nbsp;&nbsp;行の改行<br>
+<a class="Identifier" href="usr_25.html#25.2">25.2</a>&nbsp;&nbsp;テキストの整列<br>
 <a class="Identifier" href="usr_25.html#25.3">25.3</a>&nbsp;&nbsp;インデントとタブ<br>
 <a class="Identifier" href="usr_25.html#25.4">25.4</a>&nbsp;&nbsp;長い行の扱い<br>
 <a class="Identifier" href="usr_25.html#25.5">25.5</a>&nbsp;&nbsp;表の編集<br>
 <br>
 次章:&nbsp;<a class="Identifier" href="usr_26.html">usr_26.txt</a>&nbsp;&nbsp;繰り返し<br>
-前章:&nbsp;<a class="Identifier" href="usr_24.html">usr_24.txt</a>&nbsp;&nbsp;素早く入力する<br>
+前章:&nbsp;<a class="Identifier" href="usr_24.html">usr_24.txt</a>&nbsp;&nbsp;素早く挿入する<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_25.html#25.1" name="25.1">25.1</a>&nbsp;&nbsp;行を改行する<br>
+<a class="Constant" href="usr_25.html#25.1" name="25.1">25.1</a>&nbsp;&nbsp;行の改行<br>
 <br>
-文章を快適に編集するための機能がいくつかあります。初期設定では行は自動的に改行<br>
-されません。つまり自分で&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押す必要があります。プログラムを書くときは<br>
-その方が便利ですが、ドキュメントを書くときは少し不便です。文章が 70 桁の幅に収<br>
-まるように自分で整形するのは大変でしょう。<br>
-<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;オプションを設定すると、行が自動的に改行されるようになります。例え<br>
-ば、30 桁の幅で文章を書きたい場合は次のように設定します:<br>
+Vim には、テキストの扱いを簡単にする機能がいくつもあります。既定では、エディタ<br>
+は自動的な改行を行いません。言い換えると、<span class="Special">&lt;Enter&gt;</span>&nbsp;を自分で押す必要があります。<br>
+これは、行の終わる場所を自分で決めたいプログラムを書いているときに便利です。ド<br>
+キュメントを作成していて、テキストを最大 70 文字幅にしたいときには、あまりよく<br>
+ありません。<br>
+&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;オプションを設定した場合、Vim は自動的に改行を挿入します。例え<br>
+ば、わずか 30 文字の非常に狭いカラムにしたいとします。以下のコマンドを実行する<br>
+必要があります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set textwidth=30</div>
 <br>
-そして、テキストを入力します (上の数字はルーラーです):<br>
+ここで入力を始めます (ルーラーを追加しています):<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12345678901234567890123456789012345<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">I taught programming for a whi</span><br>
 <br>
-次に &quot;l&quot; を入力すると一行が 30 桁の制限を超えるので、自動的に改行が挿入されま<br>
-す。その結果、次のようになります:<br>
+次に &quot;l&quot; をタイプした場合、これは行を 30 文字の制限より長くします。Vim はこれ<br>
+を見ると、改行を挿入し、以下のようになります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12345678901234567890123456789012345<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">I taught programming for a</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">whil</span><br>
 <br>
-そのまま続けて文章の残りを入力しましょう:<br>
+続けて、段落の残りをタイプできます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12345678901234567890123456789012345<br>
@@ -62,18 +64,18 @@ helpname: 'usr_25'
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">because my homework was too</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">hard. True story.</span><br>
 <br>
-自分で改行する必要はありません。改行は自動的に挿入されます。<br>
+改行をタイプする必要はありません。Vim が自動的に入れます。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;オプションを使うと長い行を改行して表示できますが、実際に改行文<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字が挿入されるわけではありません。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;オプションは Vim に行を改行して表示させますが、これはファイルに<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;改行を挿入しません。<br>
 <br>
 <br>
 <span class="Statement">再整形</span><br>
 <br>
-Vim はワードプロセッサーではありません。ワードプロセッサーなら、段落の最初の<br>
-方で文字を削除すると、改行の位置が調整されますが、Vim は違います。つまり、一<br>
-行目の &quot;programming&quot; を削除すると、単にその行が短くなるだけです:<br>
+Vim エディタはワードプロセッサではありません。ワードプロセッサでは、段落の先頭<br>
+で何かを削除した場合、改行がやり直されます。Vim ではそうなりません。そのため、<br>
+最初の行から単語 &quot;programming&quot; を削除した場合、短い行ができるだけです:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12345678901234567890123456789012345<br>
@@ -83,14 +85,14 @@ Vim はワードプロセッサーではありません。ワードプロセッ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">because my homework was too</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">hard. True story.</span><br>
 <br>
-これはよくありません。&quot;gq&quot; オペレータを使って段落を整形しましょう。<br>
-まず、ビジュアルモードを使ってやってみます。一行目に移動して次のように入力しま<br>
-す:<br>
+これは見栄えがよくありません。段落を整えるには &quot;gq&quot; オペレータを使います。<br>
+&nbsp;&nbsp; まず、これをビジュアル選択で使ってみましょう。最初の行から始めて、こうタイ<br>
+プします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v4jgq</div>
 <br>
-&quot;v&quot; はビジュアルモードの開始、&quot;4j&quot; で段落の最後まで移動し、&quot;gq&quot; オペレータを実<br>
-行します。結果:<br>
+&quot;v&quot; でビジュアルモードを開始し、&quot;4j&quot; で段落の終わりに移動し、それから &quot;gq&quot; オ<br>
+ペレータです。結果は以下のとおりです:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12345678901234567890123456789012345<br>
@@ -100,51 +102,54 @@ Vim はワードプロセッサーではありません。ワードプロセッ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">homework was too hard. True</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">story.</span><br>
 <br>
-<span class="Todo">Note:</span>&nbsp;特定の書式に従った文章なら自動的に整形することもできます。<br>
-<a class="Identifier" href="change.html#auto-format">auto-format</a>&nbsp;参照。<br>
+<span class="Todo">Note:</span>&nbsp;特定の種類のテキストレイアウトに対して自動的に整形を行う方法があります。<br>
+<a class="Identifier" href="change.html#auto-format">auto-format</a>&nbsp;を参照してください。<br>
 <br>
-&quot;gq&quot; はオペレータなので、ビジュアルモード、カーソルモーション、テキストオブジェ<br>
-クト、の三つの方法で適用範囲を選択できます。<br>
-上記の例は &quot;gq4j&quot; とすることもできます。これはコマンドは短くなりますが、行数を<br>
-数えないといけません。&quot;}&quot; というモーションコマンドを使えばもっと簡単です。これ<br>
-は段落の末尾に移動するコマンドです。&quot;gq}&quot; でカーソル位置から段落の末尾までが整<br>
-形されます。<br>
-テキストオブジェクトを使うともっと簡単にできます:<br>
+&quot;gq&quot; はオペレータなので、それが作用するテキストを選択する 3 つの方法の 1 つを<br>
+使えます: ビジュアルモードで、移動で、およびテキストオブジェクトで。<br>
+&nbsp;&nbsp; 上の例は &quot;gq4j&quot; でも行えます。そのほうがタイプ量は少なくなりますが、行数を<br>
+知っている必要があります。もっと便利な移動コマンドは &quot;}&quot; です。これは段落の終<br>
+わりに移動します。したがって、&quot;gq}&quot; はカーソルから現在の段落の終わりまでを整形<br>
+します。<br>
+&nbsp;&nbsp; &quot;gq&quot; と一緒に使うのにとても便利なテキストオブジェクトは段落です。これを試し<br>
+てください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gqap</div>
 <br>
-&quot;ap&quot; は &quot;a-paragraph&quot; という意味です。(空行区切りの) 一つの段落が整形されます。<br>
-カーソル位置より前の部分も範囲に入ります。<br>
-段落が空行で区切られているなら、次のコマンドでファイル全体を整形できます:<br>
+&quot;ap&quot; は &quot;a-paragraph&quot; を表します。これは 1 つの段落 (空行で区切られたもの) の<br>
+テキストを整形します。カーソルより前の部分もです。<br>
+&nbsp;&nbsp; あなたの段落を空行で区切っている場合、こうタイプすることでファイル全体を整<br>
+形できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gggqG</div>
 <br>
-&quot;gg&quot; でファイル先頭に移動し、&quot;gqG&quot; でファイル末尾まで整形します。<br>
-<span class="Todo">警告:</span>&nbsp;段落が適切に区切られていない場合、それらの文章は一つにつながってしまいま<br>
-す。スペースや Tab 文字だけの行があったりするのはよくあるミスです。それは空白<br>
-行です。空行ではありません。<br>
+&quot;gg&quot; で最初の行に移動し、&quot;gqG&quot; で最後の行まで整形します。<br>
+&nbsp;&nbsp;&nbsp;<span class="Todo">警告:</span>&nbsp;あなたの段落が適切に区切られていない場合、それらは結合されます。よく<br>
+ある間違いは、空白またはタブのある行があることです。それは空白行ですが、空行で<br>
+はありません。<br>
 <br>
-整形できるのは単純なプレーンテキストだけではありません。整形の設定については<br>
-<a class="Identifier" href="change.html#fo-table">fo-table</a>&nbsp;を参照してください。ピリオドの後ろに挿入されるスペースの数を変更す<br>
-るには&nbsp;<a class="Type" href="options.html#'joinspaces'">'joinspaces'</a>&nbsp;を参照してください。<br>
-外部プログラムを使って整形することもできます。Vim の組み込みコマンドで正しく整<br>
-形できないようなテキストを編集するのに便利です。<a class="Type" href="options.html#'formatprg'">'formatprg'</a>&nbsp;オプション参照。<br>
+Vim はプレーンテキスト以外も整形できます。これを変更する方法については<br>
+<a class="Identifier" href="change.html#fo-table">fo-table</a>&nbsp;を参照してください。ピリオドの後に使われる空白の数を変更するには、<br>
+<a class="Type" href="options.html#'joinspaces'">'joinspaces'</a>&nbsp;オプションを参照してください。<br>
+&nbsp;&nbsp; 整形に外部プログラムを使うこともできます。これは、あなたのテキストを Vim の<br>
+組み込みコマンドで適切に整形できない場合に便利です。<a class="Type" href="options.html#'formatprg'">'formatprg'</a>&nbsp;オプションを参<br>
+照してください。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_25.html#25.2" name="25.2">25.2</a>&nbsp;&nbsp;テキストの位置揃え<br>
+<a class="Constant" href="usr_25.html#25.2" name="25.2">25.2</a>&nbsp;&nbsp;テキストの整列<br>
 <br>
-テキストを中央揃えするには、次のコマンドを使います:<br>
+行の範囲を中央揃えにするには、以下のコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{range}center [width]</div>
 <br>
-<span class="Special">{range}</span>&nbsp;は通常のコマンドライン範囲指定です。&nbsp;<span class="Special">[width]</span>&nbsp;には中央揃えに使う行の幅<br>
-を指定できます。&nbsp;<span class="Special">[width]</span>&nbsp;を指定しなかった場合は&nbsp;<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;の設定が使われま<br>
-す。(<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;が 0 なら 80 が使われます)<br>
-例:<br>
+<span class="Special">{range}</span>&nbsp;は通常のコマンドラインの範囲です。<span class="Special">[width]</span>&nbsp;は中央揃えに使う省略可能な行<br>
+幅です。<span class="Special">[width]</span>&nbsp;が指定されない場合、既定値は&nbsp;<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;の値です。<br>
+(<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;が 0 の場合、既定値は 80 です。)<br>
+&nbsp;&nbsp; 例えば:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:1,5center 40</div>
 <br>
-次のような結果になります:<br>
+は、以下の結果になります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">I taught for a while. One</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">time, I was stopped by the</span><br>
@@ -153,13 +158,13 @@ Vim はワードプロセッサーではありません。ワードプロセッ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">story.</span><br>
 <br>
 <br>
-<span class="Statement">右端揃え</span><br>
+<span class="Statement">右揃え</span><br>
 <br>
-同様に、右端揃えするには &quot;:right&quot; コマンドを使います:<br>
+同様に、&quot;:right&quot; コマンドはテキストを右揃えにします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:1,5right 37</div>
 <br>
-結果:<br>
+は、この結果になります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">I taught for a while. One</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">time, I was stopped by the</span><br>
@@ -167,21 +172,22 @@ Vim はワードプロセッサーではありません。ワードプロセッ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">homework was too hard. True</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">story.</span><br>
 <br>
-<span class="Statement">左端揃え</span><br>
+<span class="Statement">左揃え</span><br>
 <br>
-次のコマンドで左端揃えできます:<br>
+最後に、このコマンドがあります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{range}left [margin]</div>
 <br>
-&quot;:center&quot; や &quot;:right&quot; と違い、&quot;:left&quot; の引数に指定する値は行の幅ではありませ<br>
-ん。左マージンを指定します。省略した場合は、文章は左端にぴったり寄せられます<br>
-(マージンに 0 を指定したのと同じ)。5 を指定した場合は 5 つのスペースでインデン<br>
-トされます。例えば、次のように使います:<br>
+しかし、&quot;:center&quot; および &quot;:right&quot; とは異なり、&quot;:left&quot; への引数は行の長さではあ<br>
+りません。代わりに、それは左マージンです。それが省略された場合、テキストは画面<br>
+の左側に寄せられます (ゼロのマージンを使っても同じことになります)。それが 5 の<br>
+場合、テキストは 5 個の空白でインデントされます。例えば、これらのコマンドを使<br>
+います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:1left 5<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:2,5left</div>
 <br>
-次のような結果になります:<br>
+これは以下の結果になります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">I taught for a while. One</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">time, I was stopped by the</span><br>
@@ -190,116 +196,120 @@ Vim はワードプロセッサーではありません。ワードプロセッ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">story.</span><br>
 <br>
 <br>
-<span class="Statement">両端揃え</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_25.html#justify" name="justify">justify</a>&nbsp;<a class="Constant" href="usr_25.html#:Justify" name=":Justify">:Justify</a>&nbsp;<a class="Constant" href="usr_25.html#Justify()" name="Justify()">Justify()</a>&nbsp;<a class="Constant" href="usr_25.html#package-justify" name="package-justify">package-justify</a><br>
+<span class="Statement">テキストの両端揃え</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_25.html#justify" name="justify">justify</a>&nbsp;<a class="Constant" href="usr_25.html#:Justify" name=":Justify">:Justify</a>&nbsp;<a class="Constant" href="usr_25.html#Justify()" name="Justify()">Justify()</a>&nbsp;<a class="Constant" href="usr_25.html#package-justify" name="package-justify">package-justify</a><br>
 <br>
-両端揃えするための組み込みコマンドはありません。しかし、そのためのマクロパッ<br>
-ケージが用意されています。パッケージを使うには、次のコマンドを実行します:<br>
+Vim にはテキストを両端揃えする組み込みの方法はありません。しかし、その仕事をす<br>
+るすてきなマクロパッケージがあります。このパッケージを使うには、以下のコマンド<br>
+を実行します:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span class="Statement">packadd</span>&nbsp;justify<br>
 <br>
-または次の行を&nbsp;<a class="Identifier" href="starting.html#vimrc">vimrc</a>&nbsp;に加えてください:<br>
+または、この行をあなたの&nbsp;<a class="Identifier" href="starting.html#vimrc">vimrc</a>&nbsp;に入れます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span class="Statement">packadd</span><span class="Statement">!</span>&nbsp;justify<br>
 <br>
-新しいビジュアルモードコマンド &quot;_j&quot; が定義されます。ビジュアルモードで範囲選択<br>
-して &quot;_j&quot; を実行すればテキストを両端揃えできます。<br>
-詳しい説明はスクリプトファイルを参照してください。この名前の上で &quot;gf&quot; を使えば<br>
-ファイルを開けます: $VIMRUNTIME/pack/dist/opt/justify/plugin/justify.vim<br>
+この Vim script ファイルは、新しいビジュアルコマンド &quot;_j&quot; を定義します。テキス<br>
+トのブロックを両端揃えするには、ビジュアルモードでテキストをハイライトしてから<br>
+&quot;_j&quot; を実行します。<br>
+&nbsp;&nbsp; さらなる説明はファイルを見てください。そこへ行くには、この名前の上で &quot;gf&quot;<br>
+をします:<br>
+$VIMRUNTIME/pack/dist/opt/justify/plugin/justify.vim.<br>
 <br>
-外部コマンドを使って整形することもできます。例:<br>
+別の方法は、外部プログラムを通してテキストをフィルタすることです。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:%!fmt</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_25.html#25.3" name="25.3">25.3</a>&nbsp;&nbsp;インデントとタブ<br>
 <br>
-テキストをインデントすればその部分を目立たせることができます。例えばこのマニュ<br>
-アルでは、例文を示すときに 8 カラムでインデントしています。通常なら行頭で<br>
-<span class="Special">&lt;Tab&gt;</span>&nbsp;を押せばインデントできます。例:<br>
-<br>
+インデントは、テキストを他の部分から目立たせるのに使えます。例えば、このマニュ<br>
+アルの例のテキストは 8 カラムでインデントされています。通常、これは各行の先頭<br>
+で&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;をタイプして入力します。このテキストを例にとります:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">the first line</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">the second line</span><br>
 <br>
-これは、<span class="Special">&lt;Tab&gt;</span>、テキスト、<span class="Special">&lt;Enter&gt;</span>、<span class="Special">&lt;Tab&gt;</span>、さらにテキストをタイプして入力します。<br>
-<a class="Type" href="options.html#'autoindent'">'autoindent'</a>&nbsp;オプションを設定すると、自動的にインデントできます:<br>
+これは、<span class="Special">&lt;Tab&gt;</span>、何らかのテキスト、<span class="Special">&lt;Enter&gt;</span>、<span class="Special">&lt;Tab&gt;</span>、およびさらにテキストをタイプ<br>
+して入力します。<br>
+&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'autoindent'">'autoindent'</a>&nbsp;オプションは自動的にインデントを挿入します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set autoindent</div>
 <br>
-新しい行を開始すると、直前の行と同じだけのインデントが挿入されます。上記の例で<br>
-は、<span class="Special">&lt;Enter&gt;</span>&nbsp;の後に&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;キーを押す必要はなくなりました。<br>
+新しい行が始まると、それは前の行と同じインデントになります。上の例では、<br>
+<span class="Special">&lt;Enter&gt;</span>&nbsp;の後に&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;キーを押す必要はもうありません。<br>
 <br>
 <br>
 <span class="Statement">インデントを増やす</span><br>
 <br>
-行のインデントを増やすには、ノーマルモードで &quot;&gt;&quot; 演算子を使用します。これは多<br>
-くの場合、&quot;&gt;&gt;&quot; のように使用され、現在の行にインデントを追加します。挿入モード<br>
-では&nbsp;<span class="Special">&lt;C-t&gt;</span>&nbsp;を使用します。<br>
-インデントの増加量は&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;オプションで設定できます。初期設定は 8 です。<br>
-例えば、&quot;&gt;&gt;&quot; でスペース 4 カラム分のインデントを増やしたい場合は次のように設定<br>
-します:<br>
+行のインデントの量を増やすには、ノーマルモードで &quot;&gt;&quot; オペレータを使います。こ<br>
+れはよく &quot;&gt;&gt;&quot; として使われ、これは現在の行にインデントを追加します。<br>
+挿入モードでは、<span class="Special">&lt;C-t&gt;</span>&nbsp;を使います。<br>
+&nbsp;&nbsp; 追加されるインデントの量は&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;オプションで指定されます。既定値は<br>
+8 です。例えば、&quot;&gt;&gt;&quot; で 4 カラム分のインデントを挿入するようにするには、こうタ<br>
+イプします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set shiftwidth=4</div>
 <br>
-上記例文の二行目で &quot;&gt;&gt;&quot; を使うと、次のようになります:<br>
+例のテキストの 2 行目で使うと、こうなります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">the first line</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">the second line</span><br>
 <br>
-&quot;4&gt;&gt;&quot; は四つの行のインデントを増やすコマンドです。<br>
+&quot;4&gt;&gt;&quot; は 4 行のインデントを増やします。<br>
 <br>
 <br>
 <span class="Statement">ソフトタブストップ</span><br>
 <br>
-インデントを 4 桁にしたい場合は&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;を 4 に設定します。ただし、<span class="Special">&lt;Tab&gt;</span><br>
-キーを押すと、8 カラム分のインデントが保持されます。これを変更するには<br>
+インデントを 4 の倍数にしたい場合、<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;を 4 に設定します。しかし、<br>
+<span class="Special">&lt;Tab&gt;</span>&nbsp;を押すと、やはり 8 カラム分のインデントになります。これを変更するには、<br>
 <a class="Type" href="options.html#'softtabstop'">'softtabstop'</a>&nbsp;オプションを設定します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set softtabstop=4</div>
 <br>
-Vim は 4 カラムごとにカーソルに目に見えないタブストップを作成するようになりま<br>
-した。<span class="Special">&lt;Tab&gt;</span>&nbsp;を押すと次のストップにジャンプし、必要なスペースまたはタブの正確な<br>
-組み合わせが挿入されます。<br>
+これで Vim は、あなたのカーソルのために 4 カラムごとに見えないタブストップを作<br>
+ります。<span class="Special">&lt;Tab&gt;</span>&nbsp;を押すと次のストップにジャンプし、必要な空白またはタブのちょうど<br>
+の組み合わせを挿入します。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;オプションを 4 に設定することもできますが、その設定で編集し<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;たファイルを&nbsp;<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;の初期設定 (8) で見ると見た目が崩れてしまいま<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。他のプログラムで印刷する場合もインデントが崩れてしまうかもしれませ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ん。したがって、<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;は常に 8 のままにしておきましょう。UNIX 系シ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ステムの場合、それが標準的な値です。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;オプションを 4 に設定することもできます。しかし、別の機会に、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;を既定値の 8 に設定してファイルを編集した場合、見た目がおか<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;しくなります。他のプログラムでも、印刷するときも、インデントはやはりお<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;かしくなります。したがって、<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;は常に 8 のままにしておくことを<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;お勧めします。それは UNIX 系のシステムではどこでも標準の値です。<br>
 <br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_25.html#25.4" name="25.4">25.4</a>&nbsp;&nbsp;長い行の扱い<br>
 <br>
-ウィンドウの幅に収まりきらないようなファイルを編集することがあると思います。そ<br>
-の場合、すべての行が画面に収まるように折り返して表示されます。<br>
-<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;オプションをオフにすると、すべての行が一行で表示されます。長い行の画面<br>
-に収まりきらない部分は表示されません。<br>
-表示されていない部分にカーソルを動かすと、テキストがスクロールされ、その部分が<br>
-表示されます。ウィンドウの枠を右に動かすような感じです。<br>
-初期設定では、GUI の水平スクロールバーは表示されません。表示したい場合は次のコ<br>
-マンドを使います:<br>
+ウィンドウのカラム数より幅の広いファイルを編集することがあるでしょう。そのよう<br>
+な場合、Vim はすべてが画面に収まるように行を折り返します。<br>
+&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;オプションをオフにした場合、ファイルの各行は画面上で 1 行として表示<br>
+されます。そうすると、長い行の終わりは画面の右へ消えます。<br>
+&nbsp;&nbsp; 見えない文字にカーソルを移動すると、Vim はそれを表示するためにテキストをス<br>
+クロールします。これは、テキスト上でビューポートを水平方向に動かすようなもので<br>
+す。<br>
+&nbsp;&nbsp; 既定では、Vim は GUI で水平スクロールバーを表示しません。それを有効にしたい<br>
+場合、以下のコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set guioptions+=b</div>
 <br>
-Vim ウィンドウの下部に水平スクロールバーが表示されます。<br>
+Vim ウィンドウの下部に水平スクロールバーが 1 つ現れます。<br>
 <br>
-スクロールバーが使えない、または使いたくない場合は、次のコマンドでテキストをス<br>
-クロールしてください。カーソルは同じ位置にとどまりますが、画面外に出てしまうと<br>
-きは画面内に移動されます。<br>
+スクロールバーがないか、またはそれを使いたくない場合、これらのコマンドを使って<br>
+テキストをスクロールします。カーソルは同じ場所にとどまりますが、必要な場合は見<br>
+えるテキスト内に戻されます。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;右にスクロール<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4zh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 右に 4 文字分スクロール<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;右にウィンドウの半分だけスクロール<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ze&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソル位置が右端になるように右スクロール<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;左にスクロール<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4zl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 左に 4 文字分スクロール<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;左にウィンドウの半分だけスクロール<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソル位置が左端になるように左スクロール<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;右へスクロールする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4zh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4 文字右へスクロールする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウ幅の半分右へスクロールする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ze&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルが終わりに来るように右へスクロールする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;左へスクロールする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4zl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4 文字左へスクロールする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウ幅の半分左へスクロールする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルが先頭に来るように左へスクロールする<br>
 <br>
-例を使って説明します。カーソルは &quot;which&quot; の &quot;w&quot; にあります。上部の<br>
-&quot;current window&quot; はウィンドウに表示されている範囲を示しています。コマンド実行<br>
-後の表示範囲を &quot;window&quot; で示します。<br>
+これを 1 行のテキストで示してみましょう。カーソルは &quot;which&quot; の &quot;w&quot; の上にあり<br>
+ます。行の上の &quot;current window&quot; は、現在見えているテキストを示します。テキスト<br>
+の下の &quot;window&quot; は、その左のコマンドの後に見えるテキストを示します。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&lt;-- current window --&gt;|<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">some long text, part of which is visible in the window</span><br>
@@ -313,32 +323,33 @@ Vim ウィンドウの下部に水平スクロールバーが表示されます�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&lt;--&nbsp;&nbsp;&nbsp;&nbsp; window&nbsp;&nbsp;&nbsp;&nbsp; --&gt;|<br>
 <br>
 <br>
-<span class="Statement">折り返し無しの場合の移動</span><br>
+<span class="Statement">wrap がオフのときの移動</span><br>
 <br>
-<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;がオフで、テキストが水平スクロールされているとき、次のコマンドで画面の<br>
-表示範囲を基準にして移動できます。ウィンドウの左右のテキストは無視されます。こ<br>
-れらのコマンドはテキストをスクロールしません:<br>
+<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;がオフで、テキストが水平方向にスクロールされているとき、以下のコマンド<br>
+を使って、見えている文字にカーソルを移動できます。したがって、ウィンドウの左お<br>
+よび右のテキストは無視されます。これらは決してテキストをスクロールさせません:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行の最初の表示文字に移動<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g^&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行の空白以外の最初の可視文字に移動<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;画面行の中央に移動<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行のテキストの中央に移動<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行の最後の可視文字に移動<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この行の最初の見える文字へ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g^&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この行の最初の空白以外の見える文字へ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;画面行の中央へ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この行のテキストの中央へ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;この行の最後の見える文字へ<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&lt;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window&nbsp;&nbsp;&nbsp;&nbsp; --&gt;|<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">some long&nbsp;&nbsp;&nbsp;&nbsp;text, part of which is visible in one line</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; g0&nbsp;&nbsp;g^&nbsp;&nbsp;&nbsp;&nbsp;gm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gM g$<br>
 <br>
 <br>
-<span class="Statement">禁則処理</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_25.html#edit-no-break" name="edit-no-break">edit-no-break</a><br>
+<span class="Statement">単語で折り返す</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_25.html#edit-no-break" name="edit-no-break">edit-no-break</a><br>
 <br>
-他のプログラムで使うテキストを編集する場合、一つの段落を改行無しで書かなければ<br>
-ならないことがあります。<a class="Type" href="options.html#'nowrap'">'nowrap'</a>&nbsp;を使うと編集中の文全体を表示することができま<br>
-せん。<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;をオンにすると単語の途中で行が折り返されて読み難くなってしまいま<br>
+別のプログラムで使うためにテキストを準備しているとき、改行なしで段落を作らなけ<br>
+ればならないことがあるでしょう。<a class="Type" href="options.html#'nowrap'">'nowrap'</a>&nbsp;を使うことの欠点は、作業中の文全体が<br>
+見えないことです。<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;がオンのとき、単語は途中で分割され、読みにくくなりま<br>
 す。<br>
-そのような場合は&nbsp;<a class="Type" href="options.html#'linebreak'">'linebreak'</a>&nbsp;オプションを使ってください。適切な場所で行が折り<br>
-返されるようになります。ファイルの内容は変更されません。<br>
-<a class="Type" href="options.html#'linebreak'">'linebreak'</a>&nbsp;がオフの状態では次のように表示されますが:<br>
+&nbsp;&nbsp; この種の段落を編集するためのよい解決策は、<a class="Type" href="options.html#'linebreak'">'linebreak'</a>&nbsp;オプションを設定する<br>
+ことです。そうすると Vim は、行を表示するときに適切な場所で行を折り返します。<br>
+ファイル内のテキストは変更されないままです。<br>
+&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'linebreak'">'linebreak'</a>&nbsp;なしでは、テキストはこのように見えるかもしれません:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+---------------------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|letter generation program for a b|<br>
@@ -347,12 +358,11 @@ Vim ウィンドウの下部に水平スクロールバーが表示されます�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|eir richest 1000 customers.&nbsp;&nbsp;Unfo|<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|rtunately for the programmer, he |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+---------------------------------+<br>
-<br>
-<a class="Type" href="options.html#'linebreak'">'linebreak'</a>&nbsp;を設定すると:<br>
+以下の後:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set linebreak</div>
 <br>
-次のように表示されます:<br>
+このように見えます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+---------------------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|letter generation program for a&nbsp;&nbsp;|<br>
@@ -362,40 +372,42 @@ Vim ウィンドウの下部に水平スクロールバーが表示されます�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Unfortunately for the programmer,|<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+---------------------------------+<br>
 <br>
-関連オプション:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'breakat'">'breakat'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 折り返し可能な文字を指定する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'showbreak'">'showbreak'</a>&nbsp;&nbsp;&nbsp;&nbsp; 折り返された行の先頭に表示される文字。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;&nbsp;&nbsp;&nbsp; 0 に設定して段落が改行されないようにしてください。<br>
+関連するオプション:<br>
+<a class="Type" href="options.html#'breakat'">'breakat'</a>&nbsp;は改行を挿入できる文字を指定します。<br>
+<a class="Type" href="options.html#'showbreak'">'showbreak'</a>&nbsp;は折り返された行の先頭に表示する文字列を指定します。<br>
+段落が分割されるのを避けるには、<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;を 0 に設定します。<br>
 <br>
 <br>
-<span class="Statement">表示行単位の移動</span><br>
+<span class="Statement">見える行で移動する</span><br>
 <br>
-&quot;j&quot; と &quot;k&quot; で上下の行に移動できますが、長い行の上で使うと、一度に複数の表示行<br>
-を移動することになります。<br>
-画面上で一行だけ移動したい場合は &quot;gj&quot; と &quot;gk&quot; を使ってください。行が折り返され<br>
-ていないときは &quot;j&quot; と &quot;k&quot; と同じ動作をします。折り返されているときは、画面上の<br>
-一行だけ移動します。<br>
-次のようなマップを定義しておくと便利かもしれません:<br>
+&quot;j&quot; および &quot;k&quot; コマンドは次の行および前の行へ移動します。長い行で使うと、これ<br>
+は一度に多くの画面行を移動することを意味します。<br>
+&nbsp;&nbsp; 1 画面行だけ移動するには、&quot;gj&quot; および &quot;gk&quot; コマンドを使います。行が折り返さ<br>
+れていない場合、それらは &quot;j&quot; および &quot;k&quot; と同じことをします。行が折り返されてい<br>
+る場合、それらは 1 行下または上に表示されている文字に移動します。<br>
+&nbsp;&nbsp; これらの移動コマンドをカーソルキーに割り当てる、これらのマッピングを使いた<br>
+いかもしれません:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;Up&gt; gk<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;Down&gt; gj</div>
 <br>
 <br>
-<span class="Statement">段落を一行につなげる</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_25.html#edit-paragraph-join" name="edit-paragraph-join">edit-paragraph-join</a><br>
+<span class="Statement">段落を 1 行にする</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_25.html#edit-paragraph-join" name="edit-paragraph-join">edit-paragraph-join</a><br>
 <br>
-MS-Word のようなプログラムにテキストをコピーするとき、段落は一行につながってい<br>
-なければなりません。段落が空行で区切られているなら、次のコマンドでそれぞれの段<br>
-落を一行につなげることができます:<br>
+MS-Word のようなプログラムにテキストをインポートしたい場合、各段落は 1 行であ<br>
+るべきです。あなたの段落が現在空行で区切られている場合、各段落を 1 行にする方<br>
+法はこうです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:g/./,/^$/join</div>
 <br>
-すこし複雑ですね。分解して説明します:<br>
+それは複雑に見えます。それを分解してみましょう:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:g/./&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 一文字以上の文字を含んでいる行を探す&quot;:global&quot;コマンド<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ,/^$/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在行(非空行)から空行までの範囲を指定<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;join&nbsp;&nbsp;指定された範囲の行を &quot;:join&quot; コマンドで一行につなげる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:g/./&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 少なくとも 1 文字を含むすべての行を見つける &quot;:global&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンド。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ,/^$/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレント行 (空でない行) から空行までの範囲。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;join&nbsp;&nbsp;&quot;:join&quot; コマンドは、範囲の行を結合して 1 行にする。<br>
 <br>
-30 桁で改行された次のようなテキストが:<br>
+30 カラムで改行された 8 行を含む、このテキストから始めます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+----------------------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|A letter generation program&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
@@ -408,7 +420,7 @@ MS-Word のようなプログラムにテキストをコピーするとき、段
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|the programmer,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+----------------------------------+<br>
 <br>
-二行にまとめられます:<br>
+2 行になります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+----------------------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|A letter generation program for a |<br>
@@ -418,82 +430,87 @@ MS-Word のようなプログラムにテキストをコピーするとき、段
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Unfortunately for the programmer, |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+----------------------------------+<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;スペースや Tab 文字を含んでいる空白行 (空行ではない) で段落が区切られて<br>
-いる場合、上記のコマンドは機能しません。次のコマンドは空白行でも機能します:<br>
+<span class="Todo">Note</span>&nbsp;これは、区切りの行が空白行だが空でない場合、それが空白および/またはタブを<br>
+含む場合には機能しないことに注意してください。このコマンドは空白行で機能します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:g/\S/,/^\s*$/join</div>
 <br>
-最後の段落を処理するには、ファイル末尾に空行または空白行が必要です。<br>
+これでも、最後の段落が結合されるためには、ファイルの終わりに空白行または空行が<br>
+必要です。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_25.html#25.5" name="25.5">25.5</a>&nbsp;&nbsp;表の編集<br>
 <br>
-次のような 4 列の表を編集していて:<br>
+4 つのカラムを持つ表を編集しているとします:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">nice table&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;test 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;test 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;test 3</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">input A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.534</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">input B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.913</span><br>
 <br>
-4 列目に数字を入力したいと思いました。2 行目に移動して &quot;A&quot; を使い、いくつかス<br>
-ペースとテキストを入力すればできます。<br>
-このような編集のための特別なオプションがあります:<br>
+3 番目のカラムに数値を入力する必要があります。2 行目に移動し、&quot;A&quot; を使い、たく<br>
+さんの空白を入力して、テキストをタイプすることもできます。<br>
+&nbsp;&nbsp; この種の編集には特別なオプションがあります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set virtualedit=all</div>
 <br>
-これを設定すると、文字が無い場所にもカーソルを移動できるようになります。これを<br>
-&quot;virtual space&quot; (仮想空白) と呼びます。この方法を使えば簡単に表を編集できます。<br>
-検索を実行して 4 列目のヘッダーに移動します:<br>
+これで、テキストがまったくない位置にカーソルを移動できます。これは &quot;仮想空白&quot;<br>
+と呼ばれます。この方法で表の編集がずっと簡単になります。<br>
+&nbsp;&nbsp; 最後のカラムの見出しを検索してカーソルを移動します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/test 3</div>
 <br>
-&quot;j&quot; を押すとカーソルが適切な場所に移動するので、そのまま &quot;input A&quot; の値を入力<br>
-できます。&quot;0.693&quot; と入力します:<br>
+ここで &quot;j&quot; を押すと、&quot;input A&quot; の値を入力できる場所にちょうど来ます。&quot;0.693&quot;<br>
+とタイプすると、以下の結果になります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">nice table&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;test 1&nbsp;&nbsp;&nbsp;&nbsp; test 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;test 3</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">input A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.534&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.693</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">input B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.913</span><br>
 <br>
-テキストが無かった部分は空白で埋められます。&quot;Bj&quot; コマンドを使って次の行に移動<br>
-しましょう。&quot;B&quot; で単語の先頭に移動し、&quot;j&quot; で次のフィールドに移動します。<br>
+Vim は新しいテキストの前の隙間を自動的に埋めてくれました。さて、このカラムの次<br>
+のフィールドを入力するには &quot;Bj&quot; を使います。&quot;B&quot; は空白で区切られた単語の先頭に<br>
+戻ります。それから &quot;j&quot; は次のフィールドを入力できる場所に移動します。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;画面上のどの場所にでもカーソルを移動できます。行末を超えて移動すること<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;もできます。文字を挿入しない限り、スペースは挿入されません。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルは表示内のどこにでも、行の終わりより先にも移動できます。しか<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;し、Vim はその位置に文字を挿入するまで、そこに空白を挿入しません。<br>
 <br>
 <br>
-<span class="Statement">列のコピー</span><br>
+<span class="Statement">カラムをコピーする</span><br>
 <br>
-4 列目をコピーして &quot;test 1&quot; 列の前に追加します。次の手順でできます:<br>
-1. カーソルを列の左上隅に移動する。例: &quot;/test 3&quot;。<br>
-2.&nbsp;<span class="Special">CTRL-V</span>&nbsp;を押して矩形選択開始。<br>
-3. &quot;2j&quot; で二行下に移動。カーソルは仮想空白の上 (&quot;input B&quot; 行の &quot;test 3&quot; 列)<br>
-4. 右に移動して列全体を選択。列を区切るためのスペースも選択する。例えば &quot;9l&quot;<br>
-&nbsp;&nbsp; で移動する。<br>
-5. &quot;y&quot; で選択範囲をヤンク。<br>
-6. カーソルを &quot;text 1&quot; に移動。この場所に新しい列を挿入する。<br>
-7. &quot;P&quot; を押す。<br>
+3 番目のカラムのコピーであり、&quot;test 1&quot; カラムの前に置かれるべきカラムを追加し<br>
+たいとします。これを 7 つの手順で行います:<br>
+1.&nbsp;&nbsp;このカラムの左上の角にカーソルを移動する。例えば &quot;/test 3&quot; で。<br>
+2.&nbsp;&nbsp;<span class="Special">CTRL-V</span>&nbsp;を押して矩形ビジュアルモードを開始する。<br>
+3.&nbsp;&nbsp;&quot;2j&quot; でカーソルを 2 行下に移動する。今、&quot;仮想空白&quot; にいる: &quot;test 3&quot; カラム<br>
+&nbsp;&nbsp;&nbsp;&nbsp;の &quot;input B&quot; 行である。<br>
+4.&nbsp;&nbsp;カラム全体、それに加えてカラムの間に入れたい空白を選択に含めるため、カーソ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ルを右へ移動する。&quot;9l&quot; でできるはずだ。<br>
+5.&nbsp;&nbsp;&quot;y&quot; で選択された矩形をヤンクする。<br>
+6.&nbsp;&nbsp;新しいカラムを置かなければならない場所である &quot;test 1&quot; にカーソルを移動す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
+7.&nbsp;&nbsp;&quot;P&quot; を押す。<br>
 <br>
-結果は次のようになります:<br>
+結果は以下のようになるはずです:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">nice table&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;test 3&nbsp;&nbsp;&nbsp;&nbsp;test 1&nbsp;&nbsp;&nbsp;&nbsp; test 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;test 3</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">input A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.693&nbsp;&nbsp;&nbsp;&nbsp; 0.534&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.693</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">input B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.913</span><br>
 <br>
-&quot;test 1&quot; 列全体が右側に押し出されます。&quot;test 3&quot; 列のテキストが無い行も同様に移<br>
-動していますね。<br>
+&quot;test 1&quot; カラム全体が右にずれたことに注目してください。&quot;test 3&quot; カラムにテキス<br>
+トがなかった行もです。<br>
 <br>
-次のコマンドでカーソル移動を通常に戻せます:<br>
+以下で仮想的でないカーソル移動に戻ります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set virtualedit=</div>
 <br>
 <br>
-<span class="Statement">バーチャル置換モード</span><br>
+<span class="Statement">仮想置換モード</span><br>
 <br>
-<a class="Type" href="options.html#'virtualedit'">'virtualedit'</a>&nbsp;の不便なところは感覚が狂ってしまうところです。カーソルを動かして<br>
-いるときに、カーソルが Tab 文字の上にあるのか、行末を越えた位置にあるのか、認<br>
-識することができません。そこで「バーチャル置換モード」を使います。<br>
-例えば、表の中で Tab 文字が使われているとします。その Tab 文字の上で &quot;rx&quot; を<br>
-使ってみます:<br>
+<a class="Type" href="options.html#'virtualedit'">'virtualedit'</a>&nbsp;を使うことの欠点は、&quot;感じ&quot; が違うことです。カーソルを動かし回る<br>
+ときに、行末より先のタブまたは空白を認識できません。別の方法を使えます: 仮想置<br>
+換モードです。<br>
+&nbsp;&nbsp; 表の中に、タブおよび他の文字の両方を含む行があるとします。最初のタブの上で<br>
+&quot;rx&quot; を使います:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">inp&nbsp;&nbsp;&nbsp;&nbsp; 0.693&nbsp;&nbsp; 0.534&nbsp;&nbsp; 0.693</span><br>
 <br>
@@ -503,7 +520,7 @@ MS-Word のようなプログラムにテキストをコピーするとき、段
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">inpx0.693&nbsp;&nbsp; 0.534&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.693</span><br>
 <br>
-レイアウトが崩れてしまいました。こうならないように、&quot;gr&quot; コマンドを使います:<br>
+レイアウトが崩れます。それを避けるには、&quot;gr&quot; コマンドを使います:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">inp&nbsp;&nbsp;&nbsp;&nbsp; 0.693&nbsp;&nbsp; 0.534&nbsp;&nbsp; 0.693</span><br>
 <br>
@@ -513,12 +530,12 @@ MS-Word のようなプログラムにテキストをコピーするとき、段
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">inpx&nbsp;&nbsp;&nbsp;&nbsp;0.693&nbsp;&nbsp; 0.534&nbsp;&nbsp; 0.693</span><br>
 <br>
-&quot;gr&quot; コマンドで置換すると、置換した結果がスクリーン上で同じ幅になるように調整<br>
-されます。足りない分はスペースか Tab 文字で埋められます。つまり上の例は、Tab<br>
-文字が &quot;x&quot; で置換され、残りの部分を埋めるように空白が追加されたのです。例では<br>
-Tab 文字が挿入されてます。<br>
-複数の文字を置き換えたい場合は &quot;R&quot; コマンドの置換モード (<a class="Identifier" href="usr_04.html#04.9">04.9</a>参照) を使いま<br>
-すが、それだとレイアウトが崩れて意図しない文字が置換されてしまいます:<br>
+何が起こるかというと、&quot;gr&quot; コマンドは新しい文字が正しい量の画面スペースを取る<br>
+ようにします。隙間を埋めるために余分な空白またはタブが挿入されます。したがっ<br>
+て、実際に起こるのは、タブが &quot;x&quot; で置き換えられ、それから、その後のテキストが<br>
+その位置を保つように空白が追加されることです。この場合はタブが挿入されます。<br>
+&nbsp;&nbsp; 複数の文字を置換する必要があるときは、&quot;R&quot; コマンドを使って置換モードに入り<br>
+ます (<a class="Identifier" href="usr_04.html#04.9">04.9</a>&nbsp;を参照)。これはレイアウトを崩し、間違った文字を置換します:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">inp&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.534&nbsp;&nbsp; 0.693</span><br>
 <br>
@@ -528,8 +545,7 @@ Tab 文字が挿入されてます。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">inp&nbsp;&nbsp;&nbsp;&nbsp; 0.78634 0.693</span><br>
 <br>
-&quot;gR&quot; コマンドのバーチャル置換モードを使いましょう。これならレイアウトは崩れま<br>
-せん:<br>
+&quot;gR&quot; コマンドは仮想置換モードを使います。これはレイアウトを保持します:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">inp&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.534&nbsp;&nbsp; 0.693</span><br>
 <br>
@@ -540,28 +556,28 @@ Tab 文字が挿入されてます。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">inp&nbsp;&nbsp;&nbsp;&nbsp; 0.786&nbsp;&nbsp; 0.534&nbsp;&nbsp; 0.693</span><br>
 <br>
 <br>
-<span class="Statement">テーブル内のタブを再フォーマットする</span><br>
+<span class="Statement">表のタブを再整形する</span><br>
 <br>
-表形式のデータを含むファイルを編集しているのですが、ファイルの元の作成者は、表<br>
-形式のデータを (スペースではなく) タブ文字で整列させることに決めていました。<br>
-なんと、タブ区切りの文字は4列でしたが、Vimのデフォルトは8列です。表の見た目が<br>
-おかしくなってしまいます! どうすればいいでしょうか?<br>
-ファイルを変更せずに見栄えを修正するには、一時的に設定を調整します:<br>
+表形式のデータを含むファイルを編集していて、そのファイルの元の作者は、表形式の<br>
+データを (空白の代わりに) タブ文字を使って整列することにしました。あいにく、作<br>
+者は 4 カラムで区切られたタブストップを使っていて、Vim の既定は 8 カラムです。<br>
+表の見た目がおかしくなります! どうすればよいでしょうか?<br>
+&nbsp;&nbsp;ファイルを変更せずに見た目を直すには、一時的に設定を調整します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set tabstop=4</div>
 <br>
-これによりレイアウトは更新されますが、ファイル自体は変更されません。<br>
-もう 1 つの方法は、ファイルを恒久的に再フォーマットすることです。そのためには、<br>
-Vim には&nbsp;<a class="Identifier" href="change.html#:retab">:retab</a>&nbsp;コマンドが用意されています。まず、<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;を元のレイアウト<br>
-に合わせて (上記のように) 設定し、以下を実行します:<br>
+これは見た目のレイアウトを更新しますが、ファイル自体は変更されないままです。<br>
+&nbsp;&nbsp;もう 1 つの可能性は、ファイルを恒久的に再整形することです。このために Vim は<br>
+<a class="Identifier" href="change.html#:retab">:retab</a>&nbsp;コマンドを提供しています。まず、元のレイアウトに合うように&nbsp;<a class="Type" href="options.html#'tabstop'">'tabstop'</a><br>
+を設定し (上記のように)、それから実行します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:retab 8</div>
 <br>
-&quot;:retab&quot; コマンドを使って&nbsp;<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;を 8 に変更しています。ただし、テキストの<br>
-見た目は変更されません。空白部分が Tab 文字とスペースに置き換えられます。<br>
-<span class="Todo">警告:</span>&nbsp;プログラムに対して &quot;:retab&quot; を使った場合、文字列定数の中の空白記号が変更<br>
-されてしまうかもしれません。文字列定数の中では Tab 文字ではなく &quot;\t&quot; を使うよ<br>
-うにしましょう。<br>
+&quot;:retab&quot; コマンドは&nbsp;<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;を 8 に変更しつつ、見た目が同じになるようにテキ<br>
+ストを変更します。そのために、空白の連続をタブおよび空白に変更します。これで<br>
+ファイルを書き込めます。<br>
+&nbsp;&nbsp;&nbsp;<span class="Todo">警告:</span>&nbsp;プログラムに &quot;:retab&quot; を使うと、文字列定数内の空白が変更されることが<br>
+あります。したがって、本物のタブの代わりに &quot;\t&quot; を使うのはよい習慣です。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
