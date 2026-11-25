@@ -9,200 +9,200 @@ helpname: 'tabpage'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
-タブページの使い方&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#tab-page" name="tab-page">tab-page</a>&nbsp;<a class="Constant" href="tabpage.html#tabpage" name="tabpage">tabpage</a><br>
+複数のタブページ内のウィンドウで編集する。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#tab-page" name="tab-page">tab-page</a>&nbsp;<a class="Constant" href="tabpage.html#tabpage" name="tabpage">tabpage</a><br>
 <br>
-タブページを使うために追加されたコマンドについて説明します。複数のタブページを<br>
-開いていると違う働きをするコマンドについても説明します。<br>
+複数のタブページを使用するために追加されたコマンドをここで説明する。さらに、2<br>
+つ以上のタブページと組み合わせて使用したときに異なる動作をするコマンドについて<br>
+の説明もある。<br>
 <br>
 1. はじめに&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tabpage.html#tab-page-intro">tab-page-intro</a><br>
 2. コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tabpage.html#tab-page-commands">tab-page-commands</a><br>
-3. その他&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tabpage.html#tab-page-other">tab-page-other</a><br>
+3. その他の項目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tabpage.html#tab-page-other">tab-page-other</a><br>
 4.&nbsp;<a class="Type" href="options.html#'tabline'">'tabline'</a>&nbsp;の設定&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tabpage.html#setting-tabline">setting-tabline</a><br>
 5.&nbsp;<a class="Type" href="options.html#'tabpanel'">'tabpanel'</a>&nbsp;の設定&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tabpage.html#setting-tabpanel">setting-tabpanel</a><br>
 6.&nbsp;<a class="Type" href="options.html#'guitablabel'">'guitablabel'</a>&nbsp;の設定&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tabpage.html#setting-guitablabel">setting-guitablabel</a><br>
 <br>
-<span class="Special">{</span><a class="Identifier" href="various.html#+windows">+windows</a><span class="Special">&nbsp;機能がコンパイル時に無効になっていると、複数のタブページを使用でき</span><br>
-<span class="Special">ません}</span><br>
-<span class="Special">{</span><a class="Identifier" href="various.html#+tabpanel">+tabpanel</a><span class="Special">&nbsp;機能がコンパイル時に無効になっていると、</span><a class="Identifier" href="tabpage.html#tabpanel">tabpanel</a><span class="Special">&nbsp;機能を使用でき</span><br>
-<span class="Special">ません}</span><br>
+<span class="Special">{</span><a class="Identifier" href="various.html#+windows">+windows</a><span class="Special">&nbsp;機能がコンパイル時に無効にされた場合、複数のタブページは使用できな</span><br>
+<span class="Special">い}</span><br>
+<span class="Special">{</span><a class="Identifier" href="various.html#+tabpanel">+tabpanel</a><span class="Special">&nbsp;機能がコンパイル時に無効にされた場合、</span><a class="Identifier" href="tabpage.html#tabpanel">tabpanel</a><span class="Special">&nbsp;機能は使用できな</span><br>
+<span class="Special">い}</span><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 1. はじめに&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#tab-page-intro" name="tab-page-intro">tab-page-intro</a><br>
 <br>
-タブページは複数のウィンドウを持てます。タブページを使うと、作業別のウィンドウ<br>
-の集合を簡単に切り替えることができます。<br>
+タブページは 1 つ以上のウィンドウを保持する。タブページの間を簡単に切り替える<br>
+ことができるので、異なるものを扱うためのいくつかのウィンドウの集まりを持つこと<br>
+ができる。<br>
 <br>
-通常、Vim ウィンドウの最上部にタブページを表すラベルの一覧が表示されます。その<br>
-ラベルをマウスでクリックすると、そのタブページにジャンプできます。他の方法でも<br>
-タブページを移動できます。<br>
+通常、Vim ウィンドウの上部に、タブページごとに 1 つずつ、ラベルのリストが表示<br>
+される。マウスでラベルをクリックすると、そのタブページにジャンプできる。タブ<br>
+ページの間を移動する方法は他にもある。以下を参照。<br>
 <br>
-ほとんどのコマンドは作業中のタブページ内だけで動作します。<a class="Identifier" href="vimindex.html#CTRL-W">CTRL-W</a>&nbsp;コマンド<br>
-や、<a class="Identifier" href="tabpage.html#:tab">:tab</a>&nbsp;を前置しない&nbsp;<a class="Identifier" href="windows.html#:windo">:windo</a>、<a class="Identifier" href="windows.html#:all">:all</a>、<a class="Identifier" href="windows.html#:ball">:ball</a>&nbsp;なども同様です。カレントタブ<br>
-ページ以外にも作用するコマンドについては以下で説明しています。<br>
+ほとんどのコマンドはカレントタブページでのみ動作する。これには&nbsp;<a class="Identifier" href="vimindex.html#CTRL-W">CTRL-W</a>&nbsp;コマン<br>
+ド、<a class="Identifier" href="windows.html#:windo">:windo</a>、<a class="Identifier" href="windows.html#:all">:all</a>、および&nbsp;<a class="Identifier" href="windows.html#:ball">:ball</a>&nbsp;(<a class="Identifier" href="tabpage.html#:tab">:tab</a>&nbsp;修飾子を使用していない場合) が含<br>
+まれる。カレントタブページ以外のタブページを認識するコマンドについては、以下で<br>
+述べる。<br>
 <br>
-タブページを使うと、一時的なバッファを使用するときに、作業中のウィンドウレイア<br>
-ウトを変更しなくてすみます。新しいタブページを開いて、何か作業をし、そのタブ<br>
-ページを閉じる、という具合です。<br>
+タブページは、現在のウィンドウレイアウトを変更せずに、一時的にバッファを編集す<br>
+るためのよい方法でもある。新しいタブページを開き、やりたいことを何でも行い、そ<br>
+のタブページを閉じる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 2. コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#tab-page-commands" name="tab-page-commands">tab-page-commands</a><br>
 <br>
-タブページを開くには:<br>
+<span class="Statement">新しいタブページを開く:</span><br>
 <br>
-Vim を &quot;vim -p filename ...&quot; と起動すると、それぞれのファイルごとに (最大<br>
-<a class="Type" href="options.html#'tabpagemax'">'tabpagemax'</a>&nbsp;までの) タブページを開けます。<a class="Identifier" href="starting.html#-p">-p</a>&nbsp;参照。<br>
+Vim を起動するとき、&quot;vim -p filename ...&quot; はそれぞれのファイル引数を別々のタブ<br>
+ページで開く (<a class="Type" href="options.html#'tabpagemax'">'tabpagemax'</a>&nbsp;まで)。<a class="Identifier" href="starting.html#-p">-p</a>&nbsp;を参照<br>
 <br>
-CUI の Vim でタブページラインをダブルクリックすると新しいタブページが作成され<br>
-ます。新しいタブページはクリックした場所の左に作成されます。最初のクリックが他<br>
-のタブページの選択になってしまうときは、スクリーンが余計に更新されます。<br>
+GUI でないタブページ行でマウスをダブルクリックすると、新しい空のタブページが開<br>
+く。それはクリックした位置の左に置かれる。最初のクリックで先に別のタブページが<br>
+選択され、余分な画面更新が発生することがある。<br>
 <br>
-この機能は Win32 と Motif の GUI でも使えます。ただし、ラベルの右をクリックし<br>
-た場合のみです。<br>
+これは、いくつかの GUI バージョン、特に Win32 および Motif でも動作する。ただ<br>
+し、ラベルの右をクリックした場合のみである。<br>
 <br>
-GUI でタブページラインを右クリックするとメニューが表示されます。<a class="Identifier" href="tabpage.html#tabline-menu">tabline-menu</a><br>
+GUI のタブページ行では、マウスの右ボタンを使用してメニューを開くことができる。<br>
+<a class="Identifier" href="tabpage.html#tabline-menu">tabline-menu</a>。<br>
 <br>
-関連する自動コマンドについては、<a class="Identifier" href="tabpage.html#tabnew-autocmd">tabnew-autocmd</a>&nbsp;を参照してください。<br>
+関連する自動コマンドについては&nbsp;<a class="Identifier" href="tabpage.html#tabnew-autocmd">tabnew-autocmd</a>&nbsp;を参照。<br>
 <br>
 :<span class="Special">[count]</span>tabe[dit]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#:tabe" name=":tabe">:tabe</a>&nbsp;<a class="Constant" href="tabpage.html#:tabedit" name=":tabedit">:tabedit</a>&nbsp;<a class="Constant" href="tabpage.html#:tabnew" name=":tabnew">:tabnew</a><br>
 :<span class="Special">[count]</span>tabnew<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントタブページの後ろに空のウィンドウを持った新しいタブペー<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ジを作成します。<span class="Special">[count]</span>&nbsp;が与えられた場合、新しいタブページは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;番目のタブページの後ろに作成され、<span class="Special">[count]</span>&nbsp;が省略された<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;場合はカレントタブページの後ろに作成されます。&nbsp;<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabnew&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; カレントタブページの後ろに新規タブ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ページを作成<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:.tabnew&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 同上<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:+tabnew&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 右のタブページの後ろに新規タブページ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; を作成<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 注: tabnew よりも1つ右側に作られる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:-tabnew&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; カレントタブページの前に新規タブ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ページを作成<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:0tabnew&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 新規タブページを左端に作成<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:$tabnew&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 新規タブページを右端に作成</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;空のウィンドウを持つ新しいタブページを、カレントタブページの後<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ろに開く。<span class="Special">[count]</span>&nbsp;が指定された場合、新しいタブページはタブペー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ジ&nbsp;<span class="Special">[count]</span>&nbsp;の後ろに現れ、そうでない場合、新しいタブページはカ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;レントタブページの後ろに現れる。<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabnew&nbsp;&nbsp;&nbsp;&nbsp; &quot; カレントタブページの後ろにタブページを開く<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:.tabnew&nbsp;&nbsp;&nbsp;&nbsp;&quot; 同上<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:+tabnew&nbsp;&nbsp;&nbsp;&nbsp;&quot; 次のタブページの後ろにタブページを開く<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 注意: :tabnew より 1 つ先になる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:-tabnew&nbsp;&nbsp;&nbsp;&nbsp;&quot; カレントタブページの前にタブページを開く<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:0tabnew&nbsp;&nbsp;&nbsp;&nbsp;&quot; 最初のタブページの前にタブページを開く<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:$tabnew&nbsp;&nbsp;&nbsp;&nbsp;&quot; 最後のタブページの後ろにタブページを開く</div>
 <br>
 :<span class="Special">[count]</span>tabe[dit]&nbsp;<span class="Special">[++opt]</span>&nbsp;<span class="Special">[+cmd]</span>&nbsp;<span class="Special">{file}</span><br>
 :<span class="Special">[count]</span>tabnew&nbsp;<span class="Special">[++opt]</span>&nbsp;<span class="Special">[+cmd]</span>&nbsp;<span class="Special">{file}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{file}</span>&nbsp;を新しいタブページで開きます。<a class="Identifier" href="editing.html#:edit">:edit</a>&nbsp;と同じです。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;については上記&nbsp;<a class="Identifier" href="tabpage.html#:tabnew">:tabnew</a>&nbsp;参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しいタブページを開き、<a class="Identifier" href="editing.html#:edit">:edit</a>&nbsp;と同様に&nbsp;<span class="Special">{file}</span>&nbsp;を編集する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;については上記の&nbsp;<a class="Identifier" href="tabpage.html#:tabnew">:tabnew</a>&nbsp;を参照。<br>
 <br>
 :<span class="Special">[count]</span>tabf[ind]&nbsp;<span class="Special">[++opt]</span>&nbsp;<span class="Special">[+cmd]</span>&nbsp;<span class="Special">{file}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#:tabf" name=":tabf">:tabf</a>&nbsp;<a class="Constant" href="tabpage.html#:tabfind" name=":tabfind">:tabfind</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'path'">'path'</a>&nbsp;内の&nbsp;<span class="Special">{file}</span>&nbsp;を新しいタブページで開きます。<a class="Identifier" href="editing.html#:find">:find</a>&nbsp;と同<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;じです。<span class="Special">[count]</span>&nbsp;については上記&nbsp;<a class="Identifier" href="tabpage.html#:tabnew">:tabnew</a>&nbsp;参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しいタブページを開き、<a class="Identifier" href="editing.html#:find">:find</a>&nbsp;と同様に&nbsp;<a class="Type" href="options.html#'path'">'path'</a>&nbsp;内の&nbsp;<span class="Special">{file}</span>&nbsp;を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;編集する。<span class="Special">[count]</span>&nbsp;については上記の&nbsp;<a class="Identifier" href="tabpage.html#:tabnew">:tabnew</a>&nbsp;を参照。<br>
 <br>
 :<span class="Special">[count]</span>tab&nbsp;<span class="Special">{cmd}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#:tab" name=":tab">:tab</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{cmd}</span>&nbsp;を実行します。そのコマンドが新しいウィンドウを作成すると<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;きは、その代わりに新しいタブページを作成します。<a class="Identifier" href="diff.html#:diffsplit">:diffsplit</a>と<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="diff.html#:diffpatch">:diffpatch</a>,&nbsp;<a class="Identifier" href="eval.html#:execute">:execute</a>,&nbsp;<a class="Identifier" href="various.html#:normal">:normal</a>&nbsp;に対しては機能しません。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;が与えられた場合、新しいタブページは&nbsp;<span class="Special">[count]</span>&nbsp;番目のタ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ブページの後ろに作成され、<span class="Special">[count]</span>&nbsp;が省略された場合はカレントタ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ブページの後ろに作成されます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{cmd}</span>&nbsp;を実行し、それが新しいウィンドウを開くときは、代わりに新<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;しいタブページを開く。<a class="Identifier" href="diff.html#:diffsplit">:diffsplit</a>、<a class="Identifier" href="diff.html#:diffpatch">:diffpatch</a>、<a class="Identifier" href="eval.html#:execute">:execute</a>、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;および&nbsp;<a class="Identifier" href="various.html#:normal">:normal</a>&nbsp;では機能しない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;が指定された場合、新しいタブページはタブページ&nbsp;<span class="Special">[count]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の後ろに現れ、そうでない場合、新しいタブページはカレントタブ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ページの後ろに現れる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tab split&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 現在のバッファを新規タブで開く<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tab help gt&nbsp;&nbsp;&nbsp;&nbsp;&quot; &quot;gt&quot; に対するヘルプを新規タブで開く<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tab split&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; カレントバッファを新しいタブページで開く<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tab help gt&nbsp;&nbsp;&nbsp;&nbsp;&quot; &quot;gt&quot; のヘルプのタブページを開く<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:.tab help gt&nbsp;&nbsp; &quot; 同上<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:+tab help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 次のタブページのその次に help のタブ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ページを開く<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:-tab help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 現在のタブの前に help のタブを開く<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:0tab help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 最初のタブページの前に help のタブページ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; を開く<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:$tab help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 最後のタブページの次に help のタブページ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; を開く</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:+tab help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 次のタブページの後ろにヘルプの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; タブページを開く<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:-tab help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; カレントタブページの前にヘルプの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; タブページを開く<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:0tab help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 最初のタブページの前にヘルプの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; タブページを開く<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:$tab help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 最後のタブページの後ろにヘルプの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; タブページを開く</div>
 <br>
-<span class="Special">CTRL-W</span>&nbsp;gf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カーソル下のファイル名のファイルを新しいタブページで開きます。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="windows.html#CTRL-W_gf">CTRL-W_gf</a>&nbsp;を参照してください。<br>
+<span class="Special">CTRL-W</span>&nbsp;gf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 新しいタブページを開き、カーソル下のファイル名を編集する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="windows.html#CTRL-W_gf">CTRL-W_gf</a>&nbsp;を参照。<br>
 <br>
-<span class="Special">CTRL-W</span>&nbsp;gF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カーソル下のファイル名のファイルを新しいタブページで開きます。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;そして、ファイル名の後ろに指定された行番号にジャンプします。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="windows.html#CTRL-W_gF">CTRL-W_gF</a>&nbsp;を参照してください。<br>
+<span class="Special">CTRL-W</span>&nbsp;gF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 新しいタブページを開き、カーソル下のファイル名を編集し、ファイ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ル名に続く行番号にジャンプする。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="windows.html#CTRL-W_gF">CTRL-W_gF</a>&nbsp;を参照。<br>
 <br>
-タブページを閉じるには:<br>
+<span class="Statement">タブページを閉じる:</span><br>
 <br>
-複数のタブページを開いているときは、タブページ内の最後のウィンドウを閉じると、<br>
-そのタブページが閉じられます。<br>
+タブページが 1 つしかない場合を除き、タブページの最後のウィンドウを閉じると、<br>
+そのタブページも閉じる。<br>
 <br>
-タブページラインが表示されているときは、右上に表示されている &quot;X&quot; をマウスでク<br>
-リックすると、カレントタブページが閉じます。<a class="Type" href="options.html#'tabline'">'tabline'</a>&nbsp;を設定しているときは、他<br>
-の何かが表示されているかもしれません。<br>
+マウスを使う: タブページ行が表示されている場合、右上の &quot;X&quot; をクリックしてカレ<br>
+ントタブページを閉じることができる。カスタムの&nbsp;<a class="Type" href="options.html#'tabline'">'tabline'</a>&nbsp;は何か別のものを表示<br>
+するかもしれない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#:tabc" name=":tabc">:tabc</a>&nbsp;<a class="Constant" href="tabpage.html#:tabclose" name=":tabclose">:tabclose</a><br>
-:tabc[lose][!]&nbsp;&nbsp;カレントタブページを閉じます。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このコマンドは次のときに失敗します:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- タブページが一つしかないとき。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#E784" name="E784">E784</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;<a class="Type" href="options.html#'hidden'">'hidden'</a>&nbsp;がオフのときに [!] を使わず、バッファに変更があり、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;そのバッファを表示しているウィンドウが他にない場合。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファの変更はファイルに保存されませんが、失われることもあり<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ません。このコマンドは安全なコマンドです。<br>
+:tabc[lose][!]&nbsp;&nbsp;カレントタブページを閉じる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このコマンドは次の場合に失敗する:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 画面上にタブページが 1 つしかない。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#E784" name="E784">E784</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;<a class="Type" href="options.html#'hidden'">'hidden'</a>&nbsp;が設定されておらず、[!] が使用されておらず、バッファ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に変更があり、このバッファに他のウィンドウがない場合。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファへの変更は書き込まれず、失われることもないので、これは<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;安全な&quot; コマンドである。<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabclose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; カレントタブページを閉じる</div>
 <br>
 :<span class="Special">{count}</span>tabc[lose][!]<br>
 :tabc[lose][!]&nbsp;<span class="Special">{count}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{count}</span>&nbsp;番目のタブページを閉じます。<a class="Comment" href="tabpage.html#:tabclose">:tabclose</a>&nbsp;と同じ理由で失<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;敗することがあります。<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:-tabclose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; カレントタブページの前のタブページを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 閉じる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:+tabclose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; カレントタブページの次のタブページを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 閉じる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:1tabclose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 左端のタブページを閉じる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:$tabclose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 右端のタブページを閉じる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabclose -2&nbsp;&nbsp;&nbsp;&nbsp;&quot; 2つ前のタブページを閉じる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タブページ&nbsp;<span class="Special">{count}</span>&nbsp;を閉じる。上記の&nbsp;<a class="Comment" href="tabpage.html#:tabclose">:tabclose</a>&nbsp;と同じように失<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;敗する。<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:-tabclose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 前のタブページを閉じる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:+tabclose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 次のタブページを閉じる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:1tabclose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 最初のタブページを閉じる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:$tabclose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 最後のタブページを閉じる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabclose -2&nbsp;&nbsp;&nbsp;&nbsp;&quot; 2 つ前のタブページを閉じる<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabclose +&nbsp;&nbsp;&nbsp;&nbsp; &quot; 次のタブページを閉じる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabclose 3&nbsp;&nbsp;&nbsp;&nbsp; &quot; 3番目のタブページを閉じる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabclose $&nbsp;&nbsp;&nbsp;&nbsp; &quot; 右端のタブページを閉じる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabclose 3&nbsp;&nbsp;&nbsp;&nbsp; &quot; 3 番目のタブページを閉じる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabclose $&nbsp;&nbsp;&nbsp;&nbsp; &quot; 最後のタブページを閉じる<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabclose #&nbsp;&nbsp;&nbsp;&nbsp; &quot; 最後にアクセスしたタブページを閉じる</div>
 <br>
-タブページが閉じられると、次のタブページがカレントタブページになります。この挙<br>
-動は、<a class="Type" href="options.html#'tabclose'">'tabclose'</a>&nbsp;オプションを使用してカスタマイズできます。<br>
+タブページが閉じられると、次のタブページがカレントタブページになる。この動作は<br>
+<a class="Type" href="options.html#'tabclose'">'tabclose'</a>&nbsp;オプションを使用してカスタマイズできる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#:tabo" name=":tabo">:tabo</a>&nbsp;<a class="Constant" href="tabpage.html#:tabonly" name=":tabonly">:tabonly</a><br>
-:tabo[nly][!]&nbsp;&nbsp; カレントタブページ以外のすべてのタブページを閉じます。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;オプション&nbsp;<a class="Type" href="options.html#'hidden'">'hidden'</a>&nbsp;がオンのとき、閉じたウィンドウのバッファは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;すべて隠しバッファになります。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'hidden'">'hidden'</a>&nbsp;がオフ、<a class="Type" href="options.html#'autowrite'">'autowrite'</a>&nbsp;がオンのときは、変更のあるバッ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファはファイルに保存されます。そうでないときは、変更のあるバッ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファを表示しているウィンドウは閉じません。[!] を指定した場合<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、変更のあるバッファは隠しバッファになります。変更のあるバッ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファは絶対に破棄されないので、変更を失うことはありません。<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabonly&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; カレントタブページ以外のすべてのタブ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ページを閉じる</div>
+:tabo[nly][!]&nbsp;&nbsp; 他のすべてのタブページを閉じる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'hidden'">'hidden'</a>&nbsp;オプションが設定されている場合、閉じたウィンドウ内の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;すべてのバッファは隠れ状態になる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'hidden'">'hidden'</a>&nbsp;が設定されておらず、<a class="Type" href="options.html#'autowrite'">'autowrite'</a>&nbsp;オプションが設定され<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ている場合、変更されたバッファは書き込まれる。そうでない場合、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変更されたバッファを持つウィンドウは、[!] が指定されない限り削<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除されず、指定された場合は隠れ状態になる。しかし、変更された<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファは決して放棄されないので、変更が失われることはない。<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabonly&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; カレントタブページ以外のすべての<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; タブページを閉じる</div>
 <br>
 :<span class="Special">{count}</span>tabo[nly][!]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{count}</span>&nbsp;のタブページ以外のすべてのタブページを閉じます。<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:.tabonly&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; 上に同じ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:-tabonly&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; カレントタブページの前のタブページ以外を<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 全て閉じる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:+tabonly&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; カレントタブページの次のタブページ以外を<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 全て閉じる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:1tabonly&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; 最初のタブページ以外を全て閉じる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:$tabonly&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; 最後のタブページ以外を全て閉じる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabonly -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; カレントタブページの前のタブページ以外を<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 全て閉じる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabonly +2&nbsp;&nbsp;&nbsp;&nbsp; &quot; カレントタブページの2つ次のタブページ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 以外を全て閉じる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabonly 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 最初のタブページ以外を全て閉じる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabonly $&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 最後のタブページ以外を全て閉じる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabonly #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 最後にアクセスしたタブページ以外を全て閉<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; じる</div>
+:tabo[nly][!]&nbsp;<span class="Special">{count}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タブページ&nbsp;<span class="Special">{count}</span>&nbsp;以外のすべてのタブページを閉じる。<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:.tabonly&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; 同上<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:-tabonly&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; 前のタブページ以外のすべての<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; タブページを閉じる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:+tabonly&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; 次のタブページ以外のすべてのタブページを閉じる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:1tabonly&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; 最初のタブページ以外のすべてのタブページを閉じる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:$tabonly&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; 最後のタブページ以外のすべてのタブページを閉じる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabonly -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 前のタブページ以外のすべての<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; タブページを閉じる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabonly +2&nbsp;&nbsp;&nbsp;&nbsp; &quot; 2 つ次のタブページ以外のすべての<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; タブページを閉じる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabonly 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 最初のタブページ以外のすべてのタブページを閉じる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabonly $&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 最後のタブページ以外のすべてのタブページを閉じる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabonly #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 最後にアクセスしたタブページ以外の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; すべてのタブページを閉じる</div>
 <br>
 <br>
-タブページを切り替えるには:<br>
+<span class="Statement">別のタブページに切り替える:</span><br>
 <br>
-タブページラインが表示されているときは、タブページラベルをマウスでクリックする<br>
-と、そのタブページに移動できます。ラベルが表示されていない場所をクリックする<br>
-と、次のタブページに移動できます。&nbsp;<a class="Type" href="options.html#'tabline'">'tabline'</a><br>
+マウスを使う: タブページ行が表示されている場合、タブページラベルをクリックして<br>
+そのタブページに切り替えることができる。次のタブページに移動するには、ラベルが<br>
+ない場所をクリックする。<a class="Type" href="options.html#'tabline'">'tabline'</a><br>
 <br>
 :tabn[ext]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#:tabn" name=":tabn">:tabn</a>&nbsp;<a class="Constant" href="tabpage.html#:tabnext" name=":tabnext">:tabnext</a>&nbsp;<a class="Constant" href="tabpage.html#gt" name="gt">gt</a><br>
 <span class="Special">&lt;C-PageDown&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#CTRL-<PageDown>" name="CTRL-&lt;PageDown&gt;">CTRL-&lt;PageDown&gt;</a>&nbsp;<a class="Constant" href="tabpage.html#<C-PageDown>" name="&lt;C-PageDown&gt;">&lt;C-PageDown&gt;</a><br>
 gt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#i_CTRL-<PageDown>" name="i_CTRL-&lt;PageDown&gt;">i_CTRL-&lt;PageDown&gt;</a>&nbsp;<a class="Constant" href="tabpage.html#i_<C-PageDown>" name="i_&lt;C-PageDown&gt;">i_&lt;C-PageDown&gt;</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次のタブページに移動します。次のタブページがない場合は、最初の<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タブページに移動します。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次のタブページに移動する。最後のタブページから最初のタブページ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;へ折り返す。<br>
 <br>
 :<span class="Special">{count}</span>tabn[ext]<br>
 :tabn[ext]&nbsp;<span class="Special">{count}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{count}</span>&nbsp;番目のタブページに移動します。最初のタブページの番号は<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 です。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タブページ&nbsp;<span class="Special">{count}</span>&nbsp;に移動する。最初のタブページの番号は 1 であ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:-tabnext&nbsp;&nbsp; &quot; 前のタブページに移動する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:+tabnext&nbsp;&nbsp; &quot; 次のタブページに移動する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:+2tabnext&nbsp;&nbsp;&quot; 2つ次のタブページに移動する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:+2tabnext&nbsp;&nbsp;&quot; 2 つ次のタブページに移動する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:1tabnext&nbsp;&nbsp; &quot; 最初のタブページに移動する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:$tabnext&nbsp;&nbsp; &quot; 最後のタブページに移動する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabnext $&nbsp;&nbsp;&quot; 同上<br>
@@ -213,140 +213,139 @@ gt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabnext +1 &quot; 同上</div>
 <br>
 <span class="Special">{count}&lt;C-PageDown&gt;</span><br>
-<span class="Special">{count}</span>gt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{count}</span>&nbsp;番目のタブページに移動します。最初のタブページの番号は<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 です。<br>
+<span class="Special">{count}</span>gt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; タブページ&nbsp;<span class="Special">{count}</span>&nbsp;に移動する。最初のタブページの番号は 1 であ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
 <br>
 <br>
 :tabp[revious]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#:tabp" name=":tabp">:tabp</a>&nbsp;<a class="Constant" href="tabpage.html#:tabprevious" name=":tabprevious">:tabprevious</a>&nbsp;<a class="Constant" href="tabpage.html#gT" name="gT">gT</a>&nbsp;<a class="Constant" href="tabpage.html#:tabN" name=":tabN">:tabN</a><br>
 :tabN[ext]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#:tabNext" name=":tabNext">:tabNext</a>&nbsp;<a class="Constant" href="tabpage.html#CTRL-<PageUp>" name="CTRL-&lt;PageUp&gt;">CTRL-&lt;PageUp&gt;</a><br>
 <span class="Special">&lt;C-PageUp&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#<C-PageUp>" name="&lt;C-PageUp&gt;">&lt;C-PageUp&gt;</a>&nbsp;<a class="Constant" href="tabpage.html#i_CTRL-<PageUp>" name="i_CTRL-&lt;PageUp&gt;">i_CTRL-&lt;PageUp&gt;</a>&nbsp;<a class="Constant" href="tabpage.html#i_<C-PageUp>" name="i_&lt;C-PageUp&gt;">i_&lt;C-PageUp&gt;</a><br>
-gT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前のタブページに移動します。前のタブページがない場合は、最後の<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タブページに移動します。<br>
+gT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前のタブページに移動する。最初のタブページから最後のタブページ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;へ折り返す。<br>
 <br>
 :tabp[revious]&nbsp;<span class="Special">{count}</span><br>
 :tabN[ext]&nbsp;<span class="Special">{count}</span><br>
 <span class="Special">{count}&lt;C-PageUp&gt;</span><br>
-<span class="Special">{count}</span>gT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{count}</span>&nbsp;の数だけ前のタブページに移動します。前のタブページがな<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い場合は最後のタブページに移動します。&nbsp;<span class="Todo">Note:</span>&nbsp;<a class="Identifier" href="tabpage.html#:tabnext">:tabnext</a>&nbsp;とは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{count}</span>&nbsp;の使われ方が異なっていて、そちらでは移動先のタブ番号と<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;して扱われます。<br>
+<span class="Special">{count}</span>gT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{count}</span>&nbsp;個のタブページ分戻る。最初のタブページから最後のタブ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ページへ折り返す。<span class="Todo">Note</span>&nbsp;<span class="Special">{count}</span>&nbsp;の使い方は、それがタブページ番<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号として使用される&nbsp;<a class="Identifier" href="tabpage.html#:tabnext">:tabnext</a>&nbsp;とは異なることに注意。<br>
 <br>
 :tabr[ewind]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#:tabfir" name=":tabfir">:tabfir</a>&nbsp;<a class="Constant" href="tabpage.html#:tabfirst" name=":tabfirst">:tabfirst</a>&nbsp;<a class="Constant" href="tabpage.html#:tabr" name=":tabr">:tabr</a>&nbsp;<a class="Constant" href="tabpage.html#:tabrewind" name=":tabrewind">:tabrewind</a><br>
-:tabfir[st]&nbsp;&nbsp;&nbsp;&nbsp; 最初のタブページに移動します。<br>
+:tabfir[st]&nbsp;&nbsp;&nbsp;&nbsp; 最初のタブページに移動する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#:tabl" name=":tabl">:tabl</a>&nbsp;<a class="Constant" href="tabpage.html#:tablast" name=":tablast">:tablast</a><br>
-:tabl[ast]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後のタブページに移動します。<br>
+:tabl[ast]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後のタブページに移動する。<br>
 <br>
 <span class="Special">&lt;C-Tab&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#g<Tab>" name="g&lt;Tab&gt;">g&lt;Tab&gt;</a>&nbsp;<a class="Constant" href="tabpage.html#CTRL-W_g<Tab>" name="CTRL-W_g&lt;Tab&gt;">CTRL-W_g&lt;Tab&gt;</a>&nbsp;<a class="Constant" href="tabpage.html#<C-Tab>" name="&lt;C-Tab&gt;">&lt;C-Tab&gt;</a><br>
 g<span class="Special">&lt;Tab&gt;</span><br>
-<span class="Special">CTRL-W</span>&nbsp;g<span class="Special">&lt;Tab&gt;</span>&nbsp;&nbsp; 最後にアクセスしたタブページへ移動します。<br>
+<span class="Special">CTRL-W</span>&nbsp;g<span class="Special">&lt;Tab&gt;</span>&nbsp;&nbsp; 最後にアクセスしたタブページに移動する。<br>
 <br>
 その他のコマンド:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#:tabs" name=":tabs">:tabs</a><br>
-:tabs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; タブページと、含まれているウィンドウの一覧を表示します。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&gt;&quot; と表示されるのはカレントウィンドウです。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;+&quot; と表示されるのは変更のあるバッファです。<br>
+:tabs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; タブページおよびそれらが含むウィンドウを一覧表示する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントウィンドウには &quot;&gt;&quot; を表示する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変更されたバッファには &quot;+&quot; を表示する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">タブページ1</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Tab page 1</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">+ tabpage.txt</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">ex_docmd.c</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">タブページ2</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Tab page 2</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&gt;&nbsp;&nbsp; main.c</span><br>
 <br>
 <br>
-タブページを並べ替えるには:<br>
+<span class="Statement">タブページを並べ替える:</span><br>
 <br>
 :tabm[ove]&nbsp;<span class="Special">[N]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#:tabm" name=":tabm">:tabm</a>&nbsp;<a class="Constant" href="tabpage.html#:tabmove" name=":tabmove">:tabmove</a><br>
 :<span class="Special">[N]</span>tabm[ove]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントタブページを&nbsp;<span class="Special">N</span>&nbsp;番目のタブページの後ろに移動します。カ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;レントタブページを1番目のタブページにするにはゼロを指定します。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">N</span>&nbsp;は移動前に数えられるので、2 番目のタブページがカレントタブで<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;あれば、<span class="Comment">:tabmove 1</span>&nbsp;と&nbsp;<span class="Comment">:tabmove 2</span>&nbsp;は効果がありません。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">N</span>&nbsp;を省略すると最後に移動します。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントタブページをタブページ&nbsp;<span class="Special">N</span>&nbsp;の後ろに移動する。カレントタ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ブページを最初のタブページにするには 0 を使用する。<span class="Special">N</span>&nbsp;は移動の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前に数えられるので、2 番目のタブページがカレントタブページの場<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合、<span class="Comment">:tabmove 1</span>&nbsp;および&nbsp;<span class="Comment">:tabmove 2</span>&nbsp;は何の効果もない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">N</span>&nbsp;を指定しない場合、タブページは最後のタブページになる。<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:.tabmove&nbsp;&nbsp; &quot; 何もしない<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:-tabmove&nbsp;&nbsp; &quot; タブページを左に移動<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:+tabmove&nbsp;&nbsp; &quot; タブページを右に移動<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:0tabmove&nbsp;&nbsp; &quot; タブページを先頭に移動<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:-tabmove&nbsp;&nbsp; &quot; タブページを左に移動する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:+tabmove&nbsp;&nbsp; &quot; タブページを右に移動する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:0tabmove&nbsp;&nbsp; &quot; タブページを最初に移動する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabmove 0&nbsp;&nbsp;&quot; 同上<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabmove&nbsp;&nbsp;&nbsp;&nbsp;&quot; タブページを最後尾に移動<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabmove&nbsp;&nbsp;&nbsp;&nbsp;&quot; タブページを最後に移動する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:$tabmove&nbsp;&nbsp; &quot; 同上<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabmove $&nbsp;&nbsp;&quot; 同上<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabmove #&nbsp;&nbsp;&quot; 最後にアクセスしたタブページの後ろにタブペー<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ジを移動</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabmove #&nbsp;&nbsp;&quot; タブページを最後にアクセスした<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; タブページの後ろに移動する</div>
 <br>
 :tabm[ove] +<span class="Special">[N]</span><br>
 :tabm[ove] -<span class="Special">[N]</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントタブページを&nbsp;<span class="Special">N</span>&nbsp;個右 (+ の場合) または左 (- の場合) に<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;移動します。<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabmove -&nbsp;&nbsp;&quot; タブページを左に移動<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントタブページを&nbsp;<span class="Special">N</span>&nbsp;個分、右に (+ の場合) または左に (- の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;場合) 移動する。<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabmove -&nbsp;&nbsp;&quot; タブページを左に移動する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabmove -1 &quot; 同上<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabmove +&nbsp;&nbsp;&quot; タブページを右に移動<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabmove +&nbsp;&nbsp;&quot; タブページを右に移動する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabmove +1 &quot; 同上</div>
 <br>
 <br>
-<span class="Todo">Note</span>&nbsp;:Ntabmove を使うことでタブページを&nbsp;<span class="Special">N</span>&nbsp;番目のタブページの後ろに移動すること<br>
-ができることと、:+Ntabmove を使って&nbsp;<span class="Special">N</span>&nbsp;個後ろに移動できることに注意してくださ<br>
-い。この場合に +<span class="Special">N</span>&nbsp;が何を意味するかについては、<a class="Identifier" href="cmdline.html#[range]">[range]</a>&nbsp;を参照してください。<br>
+<span class="Todo">Note</span>&nbsp;:Ntabmove を使用して&nbsp;<span class="Special">N</span>&nbsp;番目のタブページの後ろにタブページを移動することは<br>
+可能であるが。そして :+Ntabmove を使用して&nbsp;<span class="Special">N</span>&nbsp;個分移動することも。この文脈で +<span class="Special">N</span><br>
+が何を意味するかの説明については&nbsp;<a class="Identifier" href="cmdline.html#[range]">[range]</a>&nbsp;を参照。<br>
 <br>
 <br>
-タブページごとにコマンドを実行するには:<br>
+<span class="Statement">タブページに対してループする:</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#:tabd" name=":tabd">:tabd</a>&nbsp;<a class="Constant" href="tabpage.html#:tabdo" name=":tabdo">:tabdo</a><br>
 :<span class="Special">[range]</span>tabd[o]&nbsp;<span class="Special">{cmd}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タブページごと、または&nbsp;<span class="Special">[range]</span>&nbsp;が与えられた場合はその範囲のタ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ブページのみにコマンドを実行します。これは次のような動作をしま<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;各タブページで&nbsp;<span class="Special">{cmd}</span>&nbsp;を実行するか、または&nbsp;<span class="Special">[range]</span>&nbsp;が指定された<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;場合、タブページ番号が&nbsp;<span class="Special">[range]</span>&nbsp;内にあるタブページでのみ実行す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。これは、次のようにするのと同様に動作する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabfirst<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{cmd}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tabnext<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{cmd}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;etc.</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; このコマンドは各タブページのカレントウィンドウで実行されます。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いずれかのタブページでエラーが起きたときは、その場で実行を中断<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;します。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後のタブページ (またはエラーが起きたタブページ) がカレントタ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ブページになります。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{cmd}</span>&nbsp;は '|' を使って複数のコマンドを繋げることができます。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{cmd}</span>&nbsp;はタブページを開いたり閉じたり並べ替えたりしてはいけませ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ん。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="windows.html#:windo">:windo</a>、<a class="Identifier" href="editing.html#:argdo">:argdo</a>、<a class="Identifier" href="windows.html#:bufdo">:bufdo</a>、<a class="Identifier" href="quickfix.html#:cdo">:cdo</a>、<a class="Identifier" href="quickfix.html#:ldo">:ldo</a>、<a class="Identifier" href="quickfix.html#:cfdo">:cfdo</a>、<a class="Identifier" href="quickfix.html#:lfdo">:lfdo</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;も参照してください。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; これは各タブページのカレントウィンドウでのみ動作する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;あるタブページでエラーが検出されると、それ以降のタブページは訪<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;問されない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後のタブページ (またはエラーが発生した場所) がカレントタブ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ページになる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{cmd}</span>&nbsp;は複数のコマンドをつなげるために '|' を含むことができる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{cmd}</span>&nbsp;はタブページを開くこと、閉じること、または並べ替えること<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;をしてはならない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="windows.html#:windo">:windo</a>、<a class="Identifier" href="editing.html#:argdo">:argdo</a>、<a class="Identifier" href="windows.html#:bufdo">:bufdo</a>、<a class="Identifier" href="quickfix.html#:cdo">:cdo</a>、<a class="Identifier" href="quickfix.html#:ldo">:ldo</a>、<a class="Identifier" href="quickfix.html#:cfdo">:cfdo</a>、および<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="quickfix.html#:lfdo">:lfdo</a>&nbsp;も参照<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-3. その他&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#tab-page-other" name="tab-page-other">tab-page-other</a><br>
+3. その他の項目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#tab-page-other" name="tab-page-other">tab-page-other</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#tabline-menu" name="tabline-menu">tabline-menu</a><br>
-GUI のタブページラインにはポップアップメニューがあります。右クリックで次のメ<br>
-ニューが表示されます:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Close&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; マウスポインタの下のタブページを閉じます。マウスがラベ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルの上にないときは、カレントタブページを閉じます。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New Tab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; タブページを新規バッファで開きます。マウスポインタの左<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;側に作成されます。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Open Tab...&nbsp;&nbsp;&nbsp;&nbsp; &quot;New Tab&quot; と同じですが、ファイル選択ダイアログを使っ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;て選択したファイルを新しいタブページで開きます。<br>
+GUI のタブページ行にはポップアップメニューがある。それは右クリックでアクセスで<br>
+きる。その項目は次のとおり:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Close&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; マウスポインタの下のタブページを閉じる。マウスポインタ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の下にラベルがない場合はカレントタブページ。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New Tab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 空のバッファを編集するタブページを開く。それはマウスポ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;インタの左に現れる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Open Tab...&nbsp;&nbsp;&nbsp;&nbsp; &quot;New Tab&quot; と同様で、さらにファイルセレクタを使用して、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;編集するファイルを選択する。<br>
 <br>
-差分モードはタブページ単位で機能します。一つのタブページ内でファイル間の差分を<br>
-表示できます。そして、他のタブページでは他のファイルとの差分を表示することがで<br>
-きます。<br>
+差分モードはタブページごとに動作する。1 つのタブページ内で、いくつかのファイル<br>
+間の差分を見ることができる。他のタブページでは、他のファイル間の違いを表示でき<br>
+る。<br>
 <br>
-タブページローカル変数は &quot;t:&quot; で始まります。<a class="Identifier" href="eval.html#tabpage-variable">tabpage-variable</a><br>
+タブページにローカルな変数は &quot;t:&quot; で始まる。<a class="Identifier" href="eval.html#tabpage-variable">tabpage-variable</a><br>
 <br>
-現在、タブページローカルなオプションは&nbsp;<a class="Type" href="options.html#'cmdheight'">'cmdheight'</a>&nbsp;だけです。<br>
+現在のところ、タブページにローカルなオプションは 1 つだけである:&nbsp;<a class="Type" href="options.html#'cmdheight'">'cmdheight'</a>。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#tabnew-autocmd" name="tabnew-autocmd">tabnew-autocmd</a><br>
-自動コマンドイベントの TabLeave と TabEnter を使って、タブページを切り替えると<br>
-きにコマンドを実行できます。イベントが起きる正確な順番は何をしたかによって変わ<br>
-ります。新しいタブページを作成したときは、例えば、編集中のバッファを新しいウィ<br>
-ンドウで開き、それからそのウィンドウで別のバッファを開いたときと同じような動き<br>
-をします。つまり、&quot;:tabnew&quot; では次の順番でイベントが実行されます:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WinLeave&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントウィンドウから離れる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TabLeave&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントタブページから離れる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WinEnter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しいタブページのウィンドウに入る<br>
+TabLeave および TabEnter 自動コマンドイベントを使用すると、あるタブページから<br>
+別のタブページに切り替えるときに何かを行うことができる。正確な順序は、何をして<br>
+いるかによって異なる。新しいタブページを作成するとき、これは同じバッファで新し<br>
+いウィンドウを作成してから別のバッファを編集するかのように動作する。したがっ<br>
+て、&quot;:tabnew&quot; は次を発生させる:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WinLeave&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントウィンドウを離れる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TabLeave&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントタブページを離れる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WinEnter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しいタブページ内のウィンドウに入る<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TabEnter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しいタブページに入る<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BufLeave&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントバッファから離れる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BufLeave&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントバッファを離れる<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BufEnter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しい空のバッファに入る<br>
 <br>
-タブページを切り替えたときは次の順番です:<br>
+別のタブページに切り替えるときの順序は:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BufLeave<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WinLeave<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TabLeave<br>
@@ -357,60 +356,58 @@ GUI のタブページラインにはポップアップメニューがありま�
 <span class="PreProc">==============================================================================</span><br>
 4.&nbsp;<a class="Type" href="options.html#'tabline'">'tabline'</a>&nbsp;の設定&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#setting-tabline" name="setting-tabline">setting-tabline</a><br>
 <br>
-オプション&nbsp;<a class="Type" href="options.html#'tabline'">'tabline'</a>&nbsp;を設定してタブページラベルの表示方法を指定できます。これ<br>
-は CUI の タブページラインで使います。<br>
+<a class="Type" href="options.html#'tabline'">'tabline'</a>&nbsp;オプションは、タブページラベルのある行がどのように見えるかを指定す<br>
+る。これは GUI のタブ行がないときにのみ使用される。<br>
 <br>
-オプション&nbsp;<a class="Type" href="options.html#'showtabline'">'showtabline'</a>&nbsp;を設定してタブページラインを表示するかどうかを指定で<br>
-きます。表示しない、タブページが複数あるときだけ表示する、常に表示する、から選<br>
-べます。<br>
+<a class="Type" href="options.html#'showtabline'">'showtabline'</a>&nbsp;オプションを使用して、タブページラベルのある行をいつ表示したいか<br>
+を指定できる: 決して表示しない、2 つ以上のタブページがあるとき、または常に。<br>
 <br>
-タブページラインの強調表示には TabLine、TabLineSel、TabLineFill が使われます。<br>
-<a class="Identifier" href="syntax.html#hl-TabLine">hl-TabLine</a>&nbsp;<a class="Identifier" href="syntax.html#hl-TabLineSel">hl-TabLineSel</a>&nbsp;<a class="Identifier" href="syntax.html#hl-TabLineFill">hl-TabLineFill</a><br>
+タブページ行のハイライトは、グループ TabLine TabLineSel および TabLineFill で<br>
+設定される。<a class="Identifier" href="syntax.html#hl-TabLine">hl-TabLine</a>&nbsp;<a class="Identifier" href="syntax.html#hl-TabLineSel">hl-TabLineSel</a>&nbsp;<a class="Identifier" href="syntax.html#hl-TabLineFill">hl-TabLineFill</a><br>
 <br>
-変更されているウィンドウを含むタブページには &quot;+&quot; が表示されます。タブページ内<br>
-のウィンドウの個数も表示されます。よって &quot;3+&quot; という表示は3個のウィンドウを含<br>
-む、そのうちの1つが変更されているバッファを含むということを意味します。<br>
+変更されたウィンドウを持つタブページには &quot;+&quot; が表示される。タブページ内のウィ<br>
+ンドウの数も表示される。したがって、&quot;3+&quot; は 3 つのウィンドウがあり、そのうちの<br>
+1 つに変更されたバッファがあることを意味する。<br>
 <br>
-複数のタブページが開いていて、<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;が有効になっている場合にのみ、最後のカラ<br>
-ムに &quot;X&quot; (閉じるボタン) が表示されます。<br>
+複数のタブページが開いているとき、最後の桁に &quot;X&quot; (閉じるボタン) が表示される。<br>
+ただし&nbsp;<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;が有効な場合に限る。<br>
 <br>
-オプション&nbsp;<a class="Type" href="options.html#'tabline'">'tabline'</a>&nbsp;を使って、タブページラベルを好みの表示に設定できます。こ<br>
-れはあまり簡単ではないので、サンプルを用意してあります。<br>
+<a class="Type" href="options.html#'tabline'">'tabline'</a>&nbsp;オプションを使うと、タブページラベルへのあなたの好みの方法を定義でき<br>
+る。これは簡単ではないので、ここで例を示す。<br>
 <br>
-基本的な情報については、<a class="Type" href="options.html#'statusline'">'statusline'</a>&nbsp;オプションを参照ください。同じ項目は<br>
-<a class="Type" href="options.html#'tabline'">'tabline'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'tabpanel'">'tabpanel'</a>&nbsp;オプションでも使用できます。さらに、<br>
-<a class="Identifier" href="builtin.html#tabpagebuflist()">tabpagebuflist()</a>、<a class="Identifier" href="builtin.html#tabpagenr()">tabpagenr()</a>、<a class="Identifier" href="builtin.html#tabpagewinnr()">tabpagewinnr()</a>&nbsp;関数も便利です。<br>
+基本については&nbsp;<a class="Type" href="options.html#'statusline'">'statusline'</a>&nbsp;オプションを参照。<a class="Type" href="options.html#'tabline'">'tabline'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'tabpanel'">'tabpanel'</a>&nbsp;オプ<br>
+ションでも同じ項目を使用できる。さらに、<a class="Identifier" href="builtin.html#tabpagebuflist()">tabpagebuflist()</a>、<a class="Identifier" href="builtin.html#tabpagenr()">tabpagenr()</a>、お<br>
+よび&nbsp;<a class="Identifier" href="builtin.html#tabpagewinnr()">tabpagewinnr()</a>&nbsp;関数が便利である。<br>
 <br>
-タブページラベルの数は変化するので、オプションには式を使う必要があります。次の<br>
-ように設定します:<br>
+タブラベルの数は変化するので、オプション全体に式を使用する必要がある。次のよう<br>
+なもの:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set tabline=%!MyTabLine()</div>
 <br>
-では、関数 MyTabLine() を定義して、すべてのタブページラベルを表示するようにし<br>
-ます。タブページラベル全体の作成と、個々のタブページラベルの作成、という二つの<br>
-段階に分けると簡単です。<br>
+そして、すべてのタブページラベルを一覧表示する MyTabLine() 関数を定義する。便<br>
+利な方法は、それを 2 つの部分に分けることである: まずすべてのタブページを巡回<br>
+し、それらのラベルを定義する。次に各タブページのラベルを取得する。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function MyTabLine()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let s = ''<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i in range(tabpagenr('$'))<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ハイライトグループの選択<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ハイライトを選択する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if i + 1 == tabpagenr()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let s ..= '%#TabLineSel#'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let s ..= '%#TabLine#'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif</div>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; タブページ番号の設定 (マウスクリック用)<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; タブページ番号を設定する (マウスクリック用)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let s ..= '%' .. (i + 1) .. 'T'</div>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ラベルは MyTabLabel() で作成する<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ラベルは MyTabLabel() によって作られる<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let s ..= ' %{MyTabLabel(' .. (i + 1) .. ')} '<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfor</div>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 最後のタブページの後は TabLineFill で埋め、タブページ番号をリセッ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; トする<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 最後のタブページの後は TabLineFill で埋め、タブページ番号をリセットする<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let s ..= '%#TabLineFill#%T'</div>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; カレントタブページを閉じるボタンのラベルを右添えで作成<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; カレントタブページを閉じるラベルを右寄せする<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if tabpagenr('$') &gt; 1<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let s ..= '%=%#TabLine#%999Xclose'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif</div>
@@ -418,7 +415,8 @@ GUI のタブページラインにはポップアップメニューがありま�
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return s<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfunction</div>
 <br>
-関数 MyTabLabel() は個々のタブページラベルを得るために呼ばれます。<br>
+ここで、MyTabLabel() 関数が各タブページに対して、そのラベルを取得するために呼<br>
+ばれる。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function MyTabLabel(n)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let buflist = tabpagebuflist(a:n)<br>
@@ -426,16 +424,16 @@ GUI のタブページラインにはポップアップメニューがありま�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return bufname(buflist[winnr - 1])<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfunction</div>
 <br>
-このサンプルは単純なものです。生成されるのは未設定時のタブページラインとほぼ同<br>
-じですが、変更のあるバッファに + が付けたり、名前を切り詰めたりはしません。十<br>
-分な表示領域がない場合など、なんらかのうまい方法でラベルの幅を減らしたいでしょ<br>
-う。利用できる表示領域はオプション&nbsp;<a class="Type" href="options.html#'columns'">'columns'</a>&nbsp;を確認してください。<br>
+これは単純な例にすぎず、既定のものに似たタブページ行になるが、変更されたバッ<br>
+ファに対する + の追加や名前の切り詰めは行わない。十分な余地がない場合は、賢い<br>
+方法でラベルの幅を縮めたくなるだろう。使用可能なスペースについては&nbsp;<a class="Type" href="options.html#'columns'">'columns'</a><br>
+オプションを確認すること。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 5.&nbsp;<a class="Type" href="options.html#'tabpanel'">'tabpanel'</a>&nbsp;の設定&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#tabpanel" name="tabpanel">tabpanel</a>&nbsp;<a class="Constant" href="tabpage.html#setting-tabpanel" name="setting-tabpanel">setting-tabpanel</a><br>
 <br>
-タブパネルは、ウィンドウの横にタブページのラベルを表示する垂直サイドバーです。<br>
-次のように表示されます:<br>
+タブパネルは、ウィンドウの横に沿ってタブページラベルを表示する縦のサイドバーで<br>
+ある。それは次のように見える:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-----------+----------------------------------<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|text text text text text text text<br>
@@ -449,12 +447,13 @@ GUI のタブページラインにはポップアップメニューがありま�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |text text text text text text text<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |text text text text text text text</div>
 <br>
-タブパネルを設定するには、<a class="Type" href="options.html#'tabpanel'">'tabpanel'</a>、<a class="Type" href="options.html#'showtabpanel'">'showtabpanel'</a>、<a class="Type" href="options.html#'tabpanelopt'">'tabpanelopt'</a>&nbsp;オプション<br>
-を使用します。<a class="Type" href="options.html#'tabpanel'">'tabpanel'</a>&nbsp;オプションは&nbsp;<a class="Type" href="options.html#'statusline'">'statusline'</a>&nbsp;や&nbsp;<a class="Type" href="options.html#'tabline'">'tabline'</a>&nbsp;と同様に機能<br>
-し、<a class="Type" href="options.html#'showtabpanel'">'showtabpanel'</a>&nbsp;オプションは&nbsp;<a class="Type" href="options.html#'laststatus'">'laststatus'</a>&nbsp;や&nbsp;<a class="Type" href="options.html#'showtabline'">'showtabline'</a>&nbsp;と同様に機能しま<br>
-す。<br>
+タブパネルを設定するには、以下のオプションを使用する:&nbsp;<a class="Type" href="options.html#'tabpanel'">'tabpanel'</a>、<br>
+<a class="Type" href="options.html#'showtabpanel'">'showtabpanel'</a>、および&nbsp;<a class="Type" href="options.html#'tabpanelopt'">'tabpanelopt'</a>。<br>
+<a class="Type" href="options.html#'tabpanel'">'tabpanel'</a>&nbsp;オプションは&nbsp;<a class="Type" href="options.html#'statusline'">'statusline'</a>&nbsp;または&nbsp;<a class="Type" href="options.html#'tabline'">'tabline'</a>&nbsp;と同様に機能し、<br>
+<a class="Type" href="options.html#'showtabpanel'">'showtabpanel'</a>&nbsp;オプションは&nbsp;<a class="Type" href="options.html#'laststatus'">'laststatus'</a>&nbsp;または&nbsp;<a class="Type" href="options.html#'showtabline'">'showtabline'</a>&nbsp;と同様に機能す<br>
+る。<br>
 <br>
-<a class="Type" href="options.html#'tabpanelopt'">'tabpanelopt'</a>&nbsp;オプションの &quot;columns:&quot; 項目は、タブパネルの幅を指定します:<br>
+<a class="Type" href="options.html#'tabpanelopt'">'tabpanelopt'</a>&nbsp;オプションの &quot;columns:&quot; 項目は、タブパネルの幅を指定する:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+------ この幅<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
@@ -464,8 +463,8 @@ GUI のタブページラインにはポップアップメニューがありま�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;~/aaa.txt|text text text text text text text<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|(2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|text text text text text text text</div>
 <br>
-<a class="Type" href="options.html#'tabpanelopt'">'tabpanelopt'</a>&nbsp;オプションの &quot;align:&quot; 項目は、タブパネルをウィンドウの左側に表示<br>
-するか右側に表示するかを決定します:<br>
+<a class="Type" href="options.html#'tabpanelopt'">'tabpanelopt'</a>&nbsp;オプションの &quot;align:&quot; 項目は、タブパネルをウィンドウの左側または<br>
+右側のどちらに表示するかを決定する:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+----------------------------------+-----------<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|text text text text text text text|(1)<br>
@@ -473,9 +472,9 @@ GUI のタブページラインにはポップアップメニューがありま�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|text text text text text text text|(2)</div>
 <br>
 <a class="Type" href="options.html#'tabpanelopt'">'tabpanelopt'</a>&nbsp;オプションの &quot;vert&quot; 項目は、タブパネルとウィンドウの表示部分の間<br>
-に垂直セパレーターを表示するかどうかを指定します:<br>
+に縦の区切りを表示するかどうかを指定する:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+------ ここ<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+------ これ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-----------+----------------------------------<br>
@@ -483,77 +482,77 @@ GUI のタブページラインにはポップアップメニューがありま�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;~/aaa.txt|text text text text text text text<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|(2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|text text text text text text text</div>
 <br>
-垂直区切り文字は、<a class="Type" href="options.html#'fillchars'">'fillchars'</a>&nbsp;の &quot;tpl_vert&quot; から取得されます。<br>
+縦の区切り文字は&nbsp;<a class="Type" href="options.html#'fillchars'">'fillchars'</a>&nbsp;の &quot;tpl_vert&quot; から取られる。<br>
 <br>
-ハイライトグループを使用して、タブページラベルの外観をカスタマイズできます:<br>
+タブページラベルの見た目は、ハイライトグループを使用してカスタマイズできる:<br>
 <a class="Identifier" href="syntax.html#hl-TabPanel">hl-TabPanel</a>&nbsp;<a class="Identifier" href="syntax.html#hl-TabPanelSel">hl-TabPanelSel</a>&nbsp;<a class="Identifier" href="syntax.html#hl-TabPanelFill">hl-TabPanelFill</a><br>
 <br>
-<span class="Statement">タブパネルのスクロール</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#tabpanel-scroll" name="tabpanel-scroll">tabpanel-scroll</a><br>
+<span class="Statement">タブパネル内でのスクロール</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#tabpanel-scroll" name="tabpanel-scroll">tabpanel-scroll</a><br>
 <br>
-タブページのリストの総高さが画面表示の高さを超えると、タブパネル領域内でのマウ<br>
-スホイールイベントによってタブページのリストが上下にスクロールする。スクロール<br>
-のステップ数は&nbsp;<span class="MissingTag">'mousescroll'</span>&nbsp;設定に従う。タブパネル領域内でのホイールイベント<br>
-はタブパネルによって消費され、<a class="Identifier" href="scroll.html#<ScrollWheelUp>">&lt;ScrollWheelUp&gt;</a>&nbsp;または&nbsp;<a class="Identifier" href="scroll.html#<ScrollWheelDown>">&lt;ScrollWheelDown&gt;</a>&nbsp;の<br>
-マッピングはトリガーされない。<br>
+タブページリストの高さの合計が見える画面の高さを超える場合、タブパネル領域上の<br>
+マウスホイールイベントはタブページリストを上下にスクロールする。スクロールの幅<br>
+は&nbsp;<span class="MissingTag">'mousescroll'</span>&nbsp;の設定に従う。タブパネル領域内のホイールイベントはタブパネル<br>
+によって消費され、<a class="Identifier" href="scroll.html#<ScrollWheelUp>">&lt;ScrollWheelUp&gt;</a>&nbsp;または&nbsp;<a class="Identifier" href="scroll.html#<ScrollWheelDown>">&lt;ScrollWheelDown&gt;</a>&nbsp;のマッピングを<br>
+発生させない。<br>
 <br>
-カレントタブページは常に表示される。選択されたタブページが変更されると<br>
-(<a class="Identifier" href="tabpage.html#gt">gt</a>、<a class="Identifier" href="tabpage.html#gT">gT</a>、<a class="Identifier" href="tabpage.html#:tabnext">:tabnext</a>&nbsp;など)、パネルがスクロールして現在のエントリが表示され<br>
-る。<br>
+カレントタブページは常に見える位置に移される: 選択されたタブページが (<a class="Identifier" href="tabpage.html#gt">gt</a>、<br>
+<a class="Identifier" href="tabpage.html#gT">gT</a>、<a class="Identifier" href="tabpage.html#:tabnext">:tabnext</a>&nbsp;などによって) 変わると、カレントのエントリが見えるようにパネ<br>
+ルがスクロールする。<br>
 <br>
-現在のスクロール位置を示す垂直スクロールバーを表示するには、<a class="Type" href="options.html#'tabpanelopt'">'tabpanelopt'</a>&nbsp;に<br>
+現在のスクロール位置を示す縦スクロールバーを表示するには、<a class="Type" href="options.html#'tabpanelopt'">'tabpanelopt'</a>&nbsp;に<br>
 &quot;scrollbar&quot; を追加する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set tabpanelopt+=scrollbar</div>
 <br>
-タブパネルの右端には、<a class="Type" href="options.html#'tabpanelopt'">'tabpanelopt'</a>&nbsp;の &quot;align:&quot; 設定に関係なく常に 1 列のスク<br>
-ロールバーが表示される。スクロールバーの列をクリックすると、サムがクリック位置<br>
-に移動し、サムをドラッグすることで連続的にスクロールできる。<br>
+<a class="Type" href="options.html#'tabpanelopt'">'tabpanelopt'</a>&nbsp;の &quot;align:&quot; 設定に関係なく、1 桁のスクロールバーが常にタブパネル<br>
+の右端に表示される。スクロールバーの桁をクリックするとつまみがクリック位置に移<br>
+動し、つまみをドラッグして連続的にスクロールできる。<br>
 <br>
-スクロールバーは、トラックに&nbsp;<a class="Identifier" href="syntax.html#hl-PmenuSbar">hl-PmenuSbar</a>&nbsp;ハイライトグループを、サムに<br>
+スクロールバーは、トラックに&nbsp;<a class="Identifier" href="syntax.html#hl-PmenuSbar">hl-PmenuSbar</a>&nbsp;ハイライトグループを、つまみに<br>
 <a class="Identifier" href="syntax.html#hl-PmenuThumb">hl-PmenuThumb</a>&nbsp;を使用する。<br>
 <br>
-スクロールオフセットは再描画後も保持される。<br>
+スクロールオフセットは再描画をまたいで記憶される。<br>
 <br>
 <span class="Statement">タブパネル内でのマウスクリック</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#tabpanel-mouse" name="tabpanel-mouse">tabpanel-mouse</a><br>
 <br>
-タブパネルの行を左クリックすると、その行に対応するタブページが選択される。タブ<br>
-ラインとは異なり、タブパネルでダブルクリックしても新しい空のタブページは開かれ<br>
-ず、シングルクリックと同じように扱われる。<br>
+タブパネル内の行を左クリックすると、その行が属するタブページが選択される。タブ<br>
+ラインとは異なり、タブパネル内でのダブルクリックは新しい空のタブページを開か<br>
+ず、シングルクリックと同じに扱われる。<br>
 <br>
-より詳細な制御を行うために、<a class="Type" href="options.html#'tabpanel'">'tabpanel'</a>&nbsp;の値には、<a class="Identifier" href="options.html#stl-%[FuncName]">stl-%[FuncName]</a>&nbsp;クリック領<br>
-域を含めることができる。これらの領域のクリックは、タブページ選択にフォールス<br>
-ルーする代わりに、コールバック関数に処理が渡される。<br>
+より細かく制御するために、<a class="Type" href="options.html#'tabpanel'">'tabpanel'</a>&nbsp;の値に&nbsp;<a class="Identifier" href="options.html#stl-%[FuncName]">stl-%[FuncName]</a>&nbsp;クリック領域を含<br>
+めることができる。それらの領域でのクリックは、タブページの選択にフォールスルー<br>
+する代わりに、コールバック関数に送られる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 6.&nbsp;<a class="Type" href="options.html#'guitablabel'">'guitablabel'</a>&nbsp;の設定&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tabpage.html#setting-guitablabel" name="setting-guitablabel">setting-guitablabel</a><br>
 <br>
-GUI のタブページラインが表示されているとき、<a class="Type" href="options.html#'guitablabel'">'guitablabel'</a>&nbsp;を設定してタブページ<br>
-ラベルの表示方法を指定できます。<a class="Type" href="options.html#'tabline'">'tabline'</a>&nbsp;とは違い、一度にタブページライン全体<br>
-を指定するのではなく、個々のラベルを得るために&nbsp;<a class="Type" href="options.html#'guitablabel'">'guitablabel'</a>&nbsp;が使われます。<br>
+GUI のタブページ行が表示されているとき、<a class="Type" href="options.html#'guitablabel'">'guitablabel'</a>&nbsp;を使用して、各タブページ<br>
+に表示するラベルを指定できる。タブページ行全体を一度に指定する&nbsp;<a class="Type" href="options.html#'tabline'">'tabline'</a>&nbsp;とは<br>
+異なり、<a class="Type" href="options.html#'guitablabel'">'guitablabel'</a>&nbsp;は各ラベルに対して個別に使用される。<br>
 <br>
-<a class="Type" href="options.html#'guitabtooltip'">'guitabtooltip'</a>&nbsp;という良く似たオプションがあります。これはラベルのツールチップ<br>
-を表示するために使われます。ツールチップはマウスポインタがラベルの上に乗ってい<br>
-るときだけ表示されるので、普通は、長い文字を表示します。いくつかのシステムだけ<br>
-サポートされています。<br>
+<a class="Type" href="options.html#'guitabtooltip'">'guitabtooltip'</a>&nbsp;はよく似ており、同じラベルのツールチップに使用される。これはマ<br>
+ウスポインタがラベル上にあるときだけ表示されるので、通常はより長い。ただし、一<br>
+部のシステムでのみサポートされている。<br>
 <br>
-書式についてはオプション&nbsp;<a class="Type" href="options.html#'statusline'">'statusline'</a>&nbsp;を参照してください。<br>
+値の書式については&nbsp;<a class="Type" href="options.html#'statusline'">'statusline'</a>&nbsp;オプションを参照。<br>
 <br>
-&quot;%N&quot; はカレントタブページ番号になります。このオプションを評価するときに、<br>
-<a class="Identifier" href="eval.html#v:lnum">v:lnum</a>&nbsp;にも同じ番号が設定されます。ファイル名を参照するアイテムにはタブペー<br>
-ジのカレントウィンドウのものが使われます。<br>
+&quot;%N&quot; 項目はカレントタブページ番号に使用できる。オプションが評価されるとき、<br>
+<a class="Identifier" href="eval.html#v:lnum">v:lnum</a>&nbsp;変数にもこの番号が設定される。<br>
+ファイル名を使用する項目は、タブページのカレントウィンドウを参照する。<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;このオプションでは強調表示は使えません。%T と %X は無視されます。<br>
+<span class="Todo">Note</span>&nbsp;このオプションではシンタックスハイライトは使用されないことに注意。%T およ<br>
+び %X 項目も無視される。<br>
 <br>
-簡単な例として、次のものはタブページ番号とバッファ名をラベルに表示します:<br>
+タブページ番号およびバッファ名をラベルに入れる単純な例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set guitablabel=%N\ %f</div>
 <br>
-次の例は&nbsp;<a class="Type" href="options.html#'guitablabel'">'guitablabel'</a>&nbsp;の標準設定の動作と似た動作をします。タブページのウィン<br>
-ドウ数と、変更のあるバッファがあるときには '+' を表示します:<br>
+既定の&nbsp;<a class="Type" href="options.html#'guitablabel'">'guitablabel'</a>&nbsp;に似た例: タブページ内のウィンドウの数、および変更された<br>
+バッファがある場合は '+' を表示する:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function GuiTabLabel()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let label = ''<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let bufnrlist = tabpagebuflist(v:lnum)</div>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; このタブページに変更のあるバッファがるときには '+' を追加する<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; タブページ内のバッファの 1 つが変更されている場合、'+' を追加する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for bufnr in bufnrlist<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if getbufvar(bufnr, &quot;&amp;modified&quot;)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let label = '+'<br>
@@ -561,7 +560,7 @@ GUI のタブページラインが表示されているとき、<a class="Type" 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfor</div>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ウィンドウが複数あるときにはその数を追加する<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 2 つ以上ある場合、タブページ内のウィンドウの数を付け足す<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let wincount = tabpagewinnr(v:lnum, '$')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if wincount &gt; 1<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let label ..= wincount<br>
@@ -570,19 +569,20 @@ GUI のタブページラインが表示されているとき、<a class="Type" 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let label ..= ' '<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif</div>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; バッファ名を追加する<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; バッファ名を付け足す<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return label .. bufname(bufnrlist[tabpagewinnr(v:lnum) - 1])<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfunction</div>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set guitablabel=%{GuiTabLabel()}</div>
 <br>
-<span class="Todo">Note:</span>&nbsp;この関数はオプションを設定する前に定義しておく必要があります。そうしない<br>
-と、関数未定義のエラーが表示されてしまいます。<br>
+<span class="Todo">Note</span>&nbsp;オプションを設定する前に関数を定義しなければならないことに注意。そうしな<br>
+いと、関数が不明であるというエラーメッセージが出る。<br>
 <br>
-標準のラベルを使いたい場合は、空文字列を返してください。<br>
+既定のラベルに戻したい場合、空文字列を返す。<br>
 <br>
-あるタブページに固有の何かを表示したいときは、タブページローカル変数&nbsp;<a class="Identifier" href="eval.html#t:var">t:var</a><br>
-が便利です。<br>
+あるタブページに対して特定のものを表示したい場合、タブページローカル変数を使用<br>
+したいかもしれない。<a class="Identifier" href="eval.html#t:var">t:var</a><br>
+<br>
 <br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>
