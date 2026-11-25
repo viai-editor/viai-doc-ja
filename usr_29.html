@@ -12,16 +12,16 @@ helpname: 'usr_29'
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; プログラムの中を移動する<br>
 <br>
 <br>
-Vim の作者はプログラマです。当然、プログラムを書くための機能が Vim にはたくさ<br>
-んあります。この章では、識別子が定義された場所、あるいは使われている場所にジャ<br>
-ンプしたり、その定義を別のウィンドウでプレビューしたりする方法を説明します。プ<br>
-ログラミング関連の機能は次章でも説明します。<br>
+Vim の作者はコンピュータプログラマです。Vim がプログラムを書くのを助ける多くの<br>
+機能を含んでいるのは驚くことではありません。識別子が定義および使用されている場<br>
+所を見つけるために飛び回ります。別のウィンドウで宣言をプレビューします。次章に<br>
+はさらに多くがあります。<br>
 <br>
 <a class="Identifier" href="usr_29.html#29.1">29.1</a>&nbsp;&nbsp;タグを使う<br>
 <a class="Identifier" href="usr_29.html#29.2">29.2</a>&nbsp;&nbsp;プレビューウィンドウ<br>
 <a class="Identifier" href="usr_29.html#29.3">29.3</a>&nbsp;&nbsp;プログラムの中を移動する<br>
-<a class="Identifier" href="usr_29.html#29.4">29.4</a>&nbsp;&nbsp;グローバル識別子を検索する<br>
-<a class="Identifier" href="usr_29.html#29.5">29.5</a>&nbsp;&nbsp;ローカル識別子を検索する<br>
+<a class="Identifier" href="usr_29.html#29.4">29.4</a>&nbsp;&nbsp;グローバル識別子を見つける<br>
+<a class="Identifier" href="usr_29.html#29.5">29.5</a>&nbsp;&nbsp;ローカル識別子を見つける<br>
 <br>
 次章:&nbsp;<a class="Identifier" href="usr_30.html">usr_30.txt</a>&nbsp;&nbsp;プログラムの編集<br>
 前章:&nbsp;<a class="Identifier" href="usr_28.html">usr_28.txt</a>&nbsp;&nbsp;折り畳み<br>
@@ -30,35 +30,38 @@ Vim の作者はプログラマです。当然、プログラムを書くため�
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_29.html#29.1" name="29.1">29.1</a>&nbsp;&nbsp;タグを使う<br>
 <br>
-タグとは、識別子が定義された場所のことです。例えば C や C++ の関数定義がそうで<br>
-す。タグの一覧はタグファイルに保存されます。Vim はタグファイルに対応しており、<br>
-タグ、つまり識別子の定義場所に直接ジャンプできます。<br>
-カレントディレクトリのすべての C ファイルからタグを生成するには、次のコマンド<br>
-を使います:<br>
+タグとは何でしょうか? それは識別子が定義されている場所です。例としては、C また<br>
+は C++ プログラムの関数定義があります。タグのリストはタグファイルに保持されま<br>
+す。これは、任意の場所からタグ、つまり識別子が定義されている場所へ直接ジャンプ<br>
+するために、Vim が使うことができます。<br>
+&nbsp;&nbsp; カレントディレクトリ内のすべての C ファイルのタグファイルを生成するには、以<br>
+下のコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ctags *.c</div>
 <br>
-&quot;ctags&quot; は Vim に付属してません。ほとんどの Unix システムには最初からインス<br>
-トールされています。持っていない場合は Universal/Exuberant ctags を使ってくだ<br>
-さい:<br>
+&quot;ctags&quot; は別のプログラムです。ほとんどの Unix システムには既にインストールされ<br>
+ています。まだ持っていない場合、Universal/Exuberant ctags を次の場所で見つける<br>
+ことができます:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://ctags.io">http://ctags.io</a></span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://ctags.sf.net">http://ctags.sf.net</a></span><br>
 <br>
-Exuberant ctags は開発されなくなったので、Universal ctags を推奨します。<br>
+Universal ctags が推奨され、Exuberant ctags はもう開発されていません。<br>
 <br>
-Vim のコマンドラインから次のコマンドを実行すると関数定義にジャンプできます:<br>
+これで、Vim の中にいて関数定義へ行きたいときは、以下のコマンドを使ってそこへ<br>
+ジャンプできます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tag startlist</div>
 <br>
-&quot;startlist&quot; 関数が検索されます。他のファイルで定義されていても検索可能です。<br>
-<span class="Special">CTRL-]</span>&nbsp;コマンドを使うとカーソルの下の単語をタグとみなしてジャンプできます。こ<br>
-れは複雑な C コードの探索を簡単にしてくれます。例えば、&quot;write_block&quot; 関数の中<br>
-で &quot;write_line&quot; の呼び出しを見つけたとき、その関数の動作を知りたかったら、<br>
-&quot;write_line&quot; にカーソルを合わせて&nbsp;<span class="Special">CTRL-]</span>&nbsp;を押せば、その関数の定義にジャンプで<br>
-きます。<br>
-&quot;write_line&quot; の中で &quot;write_char&quot; が呼ばれていたら、その関数の動作も調べる必要<br>
-があります。&quot;write_char&quot; にカーソルを合わせて&nbsp;<span class="Special">CTRL-]</span>&nbsp;を押しましょう。これ<br>
-で &quot;write_char&quot; の定義に移動できました。<br>
+このコマンドは、関数 &quot;startlist&quot; を、それが別のファイルにある場合でも見つけま<br>
+す。<br>
+&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-]</span>&nbsp;コマンドは、カーソルの下にある単語のタグへジャンプします。これによ<br>
+り、もつれた C コードを探索するのが簡単になります。例えば、関数 &quot;write_block&quot;<br>
+の中にいるとします。それが &quot;write_line&quot; を呼んでいるのがわかります。しかし、<br>
+&quot;write_line&quot; は何をするのでしょうか? &quot;write_line&quot; の呼び出しにカーソルを置いて<br>
+<span class="Special">CTRL-]</span>&nbsp;を押すと、この関数の定義へジャンプします。<br>
+&nbsp;&nbsp; &quot;write_line&quot; 関数は &quot;write_char&quot; を呼んでいます。それが何をするのかを解明す<br>
+る必要があります。そこで、&quot;write_char&quot; の呼び出しの上にカーソルを置いて&nbsp;<span class="Special">CTRL-]</span><br>
+を押します。これで &quot;write_char&quot; の定義にいます。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-------------------------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|void write_block(char **s; int cnt)&nbsp;&nbsp;|<br>
@@ -86,7 +89,7 @@ Vim のコマンドラインから次のコマンドを実行すると関数定�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +------------------------------------+<br>
 <br>
-&quot;:tags&quot; コマンドで移動経路を確認できます:<br>
+&quot;:tags&quot; コマンドは、通ってきたタグのリストを表示します:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tags<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc"># TO tag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FROM line&nbsp;&nbsp;in file/text</span><br>
@@ -94,92 +97,94 @@ Vim のコマンドラインから次のコマンドを実行すると関数定�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">2&nbsp;&nbsp;1 write_char&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;write_line.c</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&gt;</span><br>
 <br>
-では元の場所に戻りましょう。<span class="Special">CTRL-T</span>&nbsp;で直前のタグに戻れます。上の例であれば、<br>
-&quot;write_line&quot; 関数の中の &quot;write_char&quot; の呼び出しに戻ることになります。<br>
-このコマンドはカウント指定を付けてジャンプする回数を指定できます。前方にジャン<br>
-プして、そして戻ってくることができましたね。もう一度前方に移動してみましょう。<br>
-次のコマンドでタグリストの前方に移動できます:<br>
+さて、戻るには。<span class="Special">CTRL-T</span>&nbsp;コマンドは前のタグへ行きます。上の例では、&quot;write_line&quot;<br>
+関数の、&quot;write_char&quot; の呼び出しのところに戻ります。<br>
+&nbsp;&nbsp; このコマンドは、何個のタグを戻るかを示すカウント引数を取ります。前へ進み、<br>
+そして今度は戻りました。もう一度前へ進みましょう。以下のコマンドは、リストの一<br>
+番上のタグへ行きます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tag</div>
 <br>
-コマンドの前にカウント指定を付けてジャンプする回数を指定できます。例えば<br>
-&quot;:3tag&quot; のように使います。<span class="Special">CTRL-T</span>&nbsp;も同様に回数指定できます。<br>
-このように、<span class="Special">CTRL-]</span>&nbsp;をコールツリーをたどって下り、<span class="Special">CTRL-T</span>&nbsp;で戻ることができます。<br>
-&quot;:tags&quot; コマンドで現在地を確認できます。<br>
+カウントを前に付けて、その数のタグだけ前へジャンプできます。例えば: &quot;:3tag&quot;。<br>
+<span class="Special">CTRL-T</span>&nbsp;にもカウントを前に付けることができます。<br>
+&nbsp;&nbsp; したがって、これらのコマンドを使うと、<span class="Special">CTRL-]</span>&nbsp;で呼び出しツリーを下っていき、<br>
+<span class="Special">CTRL-T</span>&nbsp;で再び上へ戻ることができます。自分がどこにいるかを知るには &quot;:tags&quot; を<br>
+使ってください。<br>
 <br>
 <br>
 <span class="Statement">ウィンドウを分割する</span><br>
 <br>
-&quot;:tag&quot; コマンドはカレントウィンドウを使ってジャンプ先のファイルを表示します。<br>
-しかし現在の関数とジャンプ先の関数を同時に表示したいこともあると思います。<br>
-&quot;:split&quot; コマンドでウィンドウを分割してから &quot;:tag&quot; コマンドを使うという方法も<br>
-ありますが、専用の短縮コマンドが用意されています:<br>
-<br>
+&quot;:tag&quot; コマンドは、カレントウィンドウ内のファイルを、新しい関数を含むファイル<br>
+で置き換えます。しかし、古い関数だけでなく新しい関数も見たいとしたらどうでしょ<br>
+う? &quot;:split&quot; コマンドの後に &quot;:tag&quot; コマンドを使って、ウィンドウを分割できます。<br>
+Vim には両方を行う短縮コマンドがあります:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:stag tagname</div>
 <br>
-カーソルの下の単語にタグジャンプするときにウィンドウを分割したい場合は次のコマ<br>
-ンドを使います:<br>
+カレントウィンドウを分割して、カーソルの下のタグへジャンプするには、このコマン<br>
+ドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-W ]</div>
 <br>
-カウント指定を付けて新しいウィンドウの高さを指定できます。<br>
+カウントが指定された場合、新しいウィンドウはその行数の高さになります。<br>
 <br>
 <br>
-<span class="Statement">複数のタグファイルを使う</span><br>
+<span class="Statement">さらに多くのタグファイル</span><br>
 <br>
-ファイルが複数のディレクトリに分れている場合、ディレクトリ毎にタグファイルを作<br>
-ることもできますが、その方法だとタグファイルと同じディレクトリのファイルにしか<br>
-ジャンプできません。<br>
-タグファイルが複数ある場合は&nbsp;<a class="Type" href="options.html#'tags'">'tags'</a>&nbsp;オプションを設定して、関連するすべてのタグ<br>
-ファイルが検索されるようにしてください。例:<br>
+多くのディレクトリにファイルがあるときは、それぞれのディレクトリにタグファイル<br>
+を作成できます。そうすると Vim は、そのディレクトリ内のタグにしかジャンプでき<br>
+なくなります。<br>
+&nbsp;&nbsp; もっと多くのタグファイルを見つけるには、関連するすべてのタグファイルを含む<br>
+ように&nbsp;<a class="Type" href="options.html#'tags'">'tags'</a>&nbsp;オプションを設定します。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set tags=./tags,./../tags,./*/tags</div>
 <br>
-カレントファイルと同じディレクトリ、その一つ上のディレクトリ、すべてのサブディ<br>
-レクトリからタグファイルが検索されます。<br>
-これでかなり多くのタグファイルが使えるようになりましたが、まだ十分ではないかも<br>
-しれません。例えば &quot;~/proj/src&quot; を編集しているときに &quot;~/proj/sub/tags&quot; を見つ<br>
-けることができません。そのような場合はディレクトリツリー全体を検索するように設<br>
-定します。例:<br>
+これは、カレントファイルと同じディレクトリ、1 つ上のディレクトリレベル、および<br>
+すべてのサブディレクトリにあるタグファイルを見つけます。<br>
+&nbsp;&nbsp; これはかなりの数のタグファイルですが、それでもまだ十分ではないかもしれませ<br>
+ん。例えば、&quot;~/proj/src&quot; 内のファイルを編集しているとき、タグファイル<br>
+&quot;~/proj/sub/tags&quot; は見つかりません。この状況のために、Vim はディレクトリツリー<br>
+全体でタグファイルを検索することを提供しています。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set tags=~/proj/**/tags</div>
 <br>
 <br>
-<span class="Statement">タグファイルを一つだけ使う</span><br>
+<span class="Statement">1 つのタグファイル</span><br>
 <br>
-たくさんの場所からタグファイルを検索しているときは、ハードディスクがガリガリと<br>
-音を立てるのが聞こえると思います。これは効率が良くありません。そんなときは少し<br>
-時間を掛けて一つの巨大なタグファイルを生成するのがベストです。寝ている間にでも<br>
-やってしまうといいでしょう。<br>
-それには上述した Universal か Exuberant ctags が必要です。このプログラムには<br>
-ディレクトリツリー全体を検索するためのオプションがあります:<br>
+Vim がタグファイルを多くの場所で検索しなければならないとき、ディスクがガタガタ<br>
+いうのが聞こえます。少し遅くなるかもしれません。その場合は、この時間を 1 つの<br>
+大きなタグファイルを生成する間に費やす方がよいです。これは夜通し行うかもしれま<br>
+せん。<br>
+&nbsp;&nbsp; これには、上で述べた Universal または Exuberant ctags プログラムが必要です。<br>
+それはディレクトリツリー全体を検索する引数を提供しています:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd ~/proj<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ctags -R .</div>
 <br>
-Universal/Exuberant ctags のいいところは、いろんなファイルタイプを認識してくれ<br>
-るところです。C や C++ だけでなく Effiel や Vim script も処理できます。詳しく<br>
-は ctagsのドキュメントを参照してください。<br>
-これで、巨大なタグファイルを一つだけ指定するだけでよくなりました:<br>
+これのよいところは、Universal/Exuberant ctags がさまざまなファイルタイプを認識<br>
+することです。したがって、これは C および C++ プログラムだけに機能するのではな<br>
+く、Eiffel およびさらに Vim script にも機能します。これを調整するには ctags の<br>
+ドキュメントを参照してください。<br>
+&nbsp;&nbsp; これで、あなたの大きなタグファイルがどこにあるかを Vim に伝えるだけで済みま<br>
+す:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set tags=~/proj/tags</div>
 <br>
 <br>
-<span class="Statement">定義の重複</span><br>
+<span class="Statement">複数のマッチ</span><br>
 <br>
-同じ名前の関数が何度も定義されている場合、あるいは複数のクラスで同名のメソッド<br>
-が定義されている場合、&quot;:tag&quot; コマンドは最初に見つかったタグにジャンプします。<br>
-カレントファイル内にタグがある場合はそれが優先されます。<br>
-タグが重複している場合は次のコマンドで別のタグにジャンプできます:<br>
+関数が複数回定義されている (または複数のクラス内のメソッド) とき、&quot;:tag&quot; コマ<br>
+ンドは最初のものへジャンプします。カレントファイル内にマッチがある場合、それが<br>
+最初に使われます。<br>
+&nbsp;&nbsp; これで、同じタグの他のマッチへ以下でジャンプできます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tnext</div>
 <br>
-もう一度実行するとさらに別のタグにジャンプできます。タグがたくさんある場合は次<br>
-のコマンドでタグを選択できます:<br>
+さらにマッチを見つけるにはこれを繰り返します。たくさんある場合、どれにジャンプ<br>
+するかを選択できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tselect tagname</div>
 <br>
-このような選択画面が表示されます:<br>
+Vim は選択肢のリストを提示します:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc"># pri kind tag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">1 F&nbsp;&nbsp; f&nbsp;&nbsp;&nbsp;&nbsp;mch_init&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os_amiga.c</span><br>
@@ -192,139 +197,140 @@ Universal/Exuberant ctags のいいところは、いろんなファイルタイ
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">mch_init()</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Enter nr of choice (&lt;CR&gt; to abort):&nbsp;</span><br>
 <br>
-(行頭の) 番号を入力してジャンプしたい場所を選択してください。他の列にはタグの<br>
-場所を示すヒントが表示されます。<br>
+これで、ジャンプしたいマッチの (最初の列にある) 番号を入力できます。他の列の情<br>
+報は、マッチがどこで定義されているかについて、よい見当を与えてくれます。<br>
 <br>
-次のコマンドで他の重複タグに移動できます:<br>
+マッチするタグの間を移動するには、これらのコマンドが使えます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tfirst&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最初のタグに移動<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span class="Special">[count]</span>tprevious&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>個 前のタグに移動<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span class="Special">[count]</span>tnext&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>個 次のタグに移動<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tlast&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後のタグに移動<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tfirst&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最初のマッチへ行く<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span class="Special">[count]</span>tprevious&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;個前のマッチへ行く<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span class="Special">[count]</span>tnext&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;個次のマッチへ行く<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tlast&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後のマッチへ行く<br>
 <br>
-<span class="Special">[count]</span>&nbsp;を省略すると 1 が使われます。<br>
+<span class="Special">[count]</span>&nbsp;が省略された場合、1 が使われます。<br>
 <br>
 <br>
-<span class="Statement">タグ名の推測</span><br>
+<span class="Statement">タグ名を推測する</span><br>
 <br>
-コマンドライン補完を使うと長いタグ名の入力が簡単になります。最初の数文字を入力<br>
-してから&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;キーを押してください:<br>
+コマンドライン補完は、長いタグ名をタイプするのを避けるよい方法です。最初の少し<br>
+をタイプして&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;を押すだけです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tag write_&lt;Tab&gt;</div>
 <br>
-最初にマッチしたタグが補完されます。それが意図したタグでない場合は、目的のタグ<br>
-が見つかるまで&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;キーを押してください。<br>
-関数名の一部しか知らない場合や、同じ文字で始まるタグ (後半だけが違っている) が<br>
-たくさんある場合は、パターンを使ってタグを検索できます。<br>
-例えば、名前に &quot;block&quot; が含まれているタグにジャンプする場合は、まず次のように<br>
-入力します:<br>
+最初のマッチが得られます。それが望むものでない場合、正しいものが見つかるまで<br>
+<span class="Special">&lt;Tab&gt;</span>&nbsp;を押してください。<br>
+&nbsp;&nbsp; 関数の名前の一部しか知らないこともあります。または、同じ文字列で始まり、異<br>
+なる終わり方をするタグがたくさんあることもあります。そのときは、タグを見つける<br>
+ためにパターンを使うように Vim に指示できます。<br>
+&nbsp;&nbsp; &quot;block&quot; を含むタグへジャンプしたいとします。まずこれをタイプします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tag /block</div>
 <br>
-そして、コマンドライン補完を使います。<span class="Special">&lt;Tab&gt;</span>&nbsp;キーを押してください。&quot;block&quot; を含<br>
-むタグが検索され、最初にマッチしたタグが使われます。<br>
-タグ名の前に &quot;/&quot; を付けると、続くタグ名はそのまま使われず、パターンとして解釈<br>
-されます。検索パターンと同じ機能がすべて使えます。例えば、&quot;write_&quot; で始まるタ<br>
-グを選択したい場合は次のようにします:<br>
+ここでコマンドライン補完を使います:&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;を押します。Vim は &quot;block&quot; を含むす<br>
+べてのタグを見つけ、最初のマッチを使います。<br>
+&nbsp;&nbsp; タグ名の前の &quot;/&quot; は、続くものが文字どおりのタグ名ではなく、パターンであるこ<br>
+とを Vim に伝えます。ここでは検索パターンのすべての要素を使えます。例えば、<br>
+&quot;write_&quot; で始まるタグを選択したいとします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tselect /^write_</div>
 <br>
-最初の &quot;^&quot; はタグ名が &quot;write_&quot; で始まることを示しています。&quot;^&quot; がない場合はタ<br>
-グ名の途中にもマッチしてしまいます。同様に、&quot;$&quot; を最後に付けるとタグ名の末尾に<br>
-マッチするようになります。<br>
+&quot;^&quot; は、タグが &quot;write_&quot; で始まることを指定します。そうしないと、タグ名の途中で<br>
+も見つかってしまいます。同様に、末尾の &quot;$&quot; は、パターンがタグの終わりまでマッ<br>
+チすることを保証します。<br>
 <br>
 <br>
 <span class="Statement">タグブラウザー</span><br>
 <br>
-<span class="Special">CTRL-]</span>&nbsp;を使うとカーソルの下にある識別子の定義にジャンプできますが、これを利用<br>
-すると、識別子の一覧を目次として使うことができます。例を示します。まず識別子の<br>
-一覧を作ります (Universal か Exuberant ctags が必要です)<br>
+<span class="Special">CTRL-]</span>&nbsp;はカーソルの下の識別子の定義へ連れていってくれるので、識別子名のリスト<br>
+を目次として使うことができます。ここに例があります。<br>
+&nbsp;&nbsp; まず識別子のリストを作成します (これには Universal または Exuberant ctags<br>
+が必要です):<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ctags --c-types=f -f functions *.c</div>
 <br>
-そして Vim をファイル指定なしで起動し、作成したファイルを縦分割ウィンドウで開<br>
-きます:<br>
+次に、ファイルなしで Vim を起動し、Vim の中でこのファイルを、垂直分割したウィ<br>
+ンドウで編集します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:vsplit functions</div>
 <br>
-ウィンドウにはすべての関数の一覧が表示されています。関数以外の名前も含まれてい<br>
-るかもしれませんが、それは無視してください。&quot;:setlocal ts=99&quot; を実行して表示を<br>
-見やすくします。<br>
-このウィンドウで、次のマップを定義します:<br>
+ウィンドウにはすべての関数のリストが含まれています。他にもいくつかのものがあり<br>
+ますが、それは無視できます。少し整理するために &quot;:setlocal ts=99&quot; を実行してく<br>
+ださい。<br>
+&nbsp;&nbsp; このウィンドウで、マッピングを定義します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:nnoremap &lt;buffer&gt; &lt;CR&gt; 0ye&lt;C-W&gt;w:tag &lt;C-R&gt;&quot;&lt;CR&gt;</div>
 <br>
-表示したい関数の行に移動して&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押すと、カーソルが他のウィンドウに移動<br>
-して、選択した関数にジャンプします。<br>
+移動したい関数を含む行にカーソルを移動します。<br>
+ここで&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押します。Vim はもう一方のウィンドウへ行き、選択した関数へジャ<br>
+ンプします。<br>
 <br>
 <br>
 <span class="Statement">関連項目</span><br>
 <br>
-タグ名の大文字と小文字を無視する場合には、<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;を &quot;ignore&quot; に設定する<br>
-か、<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;を &quot;followic&quot; のまま変更せず&nbsp;<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;をオンに設定してくださ<br>
-い。<br>
+タグ名の大文字小文字を無視させるには、<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;を &quot;followic&quot; のままにして<br>
+<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;を設定するか、または&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;を &quot;ignore&quot; に設定します。<br>
 <br>
-<a class="Type" href="options.html#'tagbsearch'">'tagbsearch'</a>&nbsp;オプションにはタグファイルがソートされているかどうかを設定しま<br>
-す。初期設定ではソート済みに設定されています。これはタグの検索を高速に実行でき<br>
-ますが、ソートされていないタグファイルを扱えなくなります。<br>
+<a class="Type" href="options.html#'tagbsearch'">'tagbsearch'</a>&nbsp;オプションは、タグファイルがソートされているかどうかを伝えます。<br>
+既定ではソートされたタグファイルを想定し、これはタグの検索をずっと速くします<br>
+が、タグファイルがソートされていない場合は機能しません。<br>
 <br>
-<a class="Type" href="options.html#'taglength'">'taglength'</a>&nbsp;オプションはタグの識別に使う文字数を指定するのに使います。<br>
+<a class="Type" href="options.html#'taglength'">'taglength'</a>&nbsp;オプションは、タグの中の有効な文字数を Vim に伝えるために使えます。<br>
 <br>
-cscope はフリーのプログラムです。識別子の定義場所を探すだけでなく、それが使わ<br>
-れている場所も検索できます。<a class="Identifier" href="if_cscop.html#cscope">cscope</a>&nbsp;参照。<br>
+Cscope はフリーのプログラムです。それは識別子が宣言されている場所だけでなく、<br>
+それが使われている場所も見つけます。<a class="Identifier" href="if_cscop.html#cscope">cscope</a>&nbsp;を参照してください。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_29.html#29.2" name="29.2">29.2</a>&nbsp;&nbsp;プレビューウィンドウ<br>
 <br>
-コードの中で関数を呼び出すときには、その引数を正確に把握する必要があります。引<br>
-数の意味は関数の定義を見ればわかります。タグの仕組みを使えば簡単に確認できます<br>
-が、できれば別のウィンドウに定義を表示したいところです。それにはプレビューウィ<br>
-ンドウを使います。<br>
-次のようにすると &quot;write_char&quot; 関数をプレビューウィンドウで表示できます:<br>
+関数呼び出しを含むコードを編集するときは、正しい引数を使う必要があります。どん<br>
+な値を渡せばよいかを知るには、その関数がどのように定義されているかを見ることが<br>
+できます。タグの仕組みはこれにとてもよく機能します。定義は別のウィンドウに表示<br>
+されるのが望ましいです。このためにプレビューウィンドウが使えます。<br>
+&nbsp;&nbsp; 関数 &quot;write_char&quot; を表示するプレビューウィンドウを開くには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:ptag write_char</div>
 <br>
-ウィンドウが開いて &quot;write_char&quot; タグにジャンプします。カーソルの位置は動かない<br>
-ので&nbsp;<span class="Special">CTRL-W</span>&nbsp;コマンドを使って戻る必要はありません。<br>
-テキストの中に関数名がある場合は、次のコマンドでその定義をプレビューウィンドウ<br>
-で表示できます:<br>
+Vim はウィンドウを開き、タグ &quot;write_char&quot; へジャンプします。それから元の位置へ<br>
+戻してくれます。したがって、<span class="Special">CTRL-W</span>&nbsp;コマンドを使う必要なしにタイプを続けること<br>
+ができます。<br>
+&nbsp;&nbsp; 関数の名前がテキストに現れている場合、以下でプレビューウィンドウにその定義<br>
+を得ることができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-W }</div>
 <br>
-カーソルの下にある単語の定義場所を自動的に表示してくれるスクリプトもあります。<br>
-<a class="Identifier" href="windows.html#CursorHold-example">CursorHold-example</a>参照。<br>
+カーソルの下の単語が定義された箇所のテキストを自動的に表示するスクリプトがあり<br>
+ます。<a class="Identifier" href="windows.html#CursorHold-example">CursorHold-example</a>&nbsp;を参照してください。<br>
 <br>
-プレビューウィンドウを閉じるには次のコマンドを使います:<br>
+プレビューウィンドウを閉じるには、このコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:pclose</div>
 <br>
-プレビューウィンドウでファイルを開きたい場合は &quot;:pedit&quot; を使います。例えばヘッ<br>
-ダーファイルを表示するような場合に便利です:<br>
+プレビューウィンドウで特定のファイルを編集するには、&quot;:pedit&quot; を使います。これ<br>
+は、例えばヘッダーファイルを編集するのに便利です:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:pedit defs.h</div>
 <br>
-最後に &quot;:psearch&quot; コマンドを紹介します。カレントファイルおよびインクルードされ<br>
-ているファイルから単語を検索して、ヒットした場所をプレビューウィンドウで表示で<br>
-きます。これは例えば、ライブラリ関数を使っていて、それ用のタグファイルを作って<br>
-いないときに使います。例:<br>
+最後に、&quot;:psearch&quot; は、カレントファイルおよびインクルードされたすべてのファイ<br>
+ル内で単語を見つけ、そのマッチをプレビューウィンドウに表示するのに使えます。こ<br>
+れは、タグファイルを持っていないライブラリ関数を使うときに特に便利です。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:psearch popen</div>
 <br>
-&quot;stdio.h&quot; がプレビューウィンドウで開き、popen() 関数のプロトタイプが表示されま<br>
-す:<br>
+これはプレビューウィンドウに &quot;stdio.h&quot; ファイルを、popen() の関数プロトタイプ<br>
+とともに表示します:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">FILE&nbsp;&nbsp;&nbsp;&nbsp;*popen __P((const char *, const char *));</span><br>
 <br>
-プレビューウィンドウの高さは&nbsp;<a class="Type" href="options.html#'previewheight'">'previewheight'</a>&nbsp;オプションで設定できます (最初に<br>
-開いたときに使われる)。<br>
+プレビューウィンドウが開かれるときの高さは、<a class="Type" href="options.html#'previewheight'">'previewheight'</a>&nbsp;オプションで指定で<br>
+きます。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_29.html#29.3" name="29.3">29.3</a>&nbsp;&nbsp;プログラムの中を移動する<br>
 <br>
-プログラムには構造があるので、構文を認識することが可能です。その情報を利用して<br>
-移動するコマンドが用意されています。<br>
-例えば C のプログラムには次のような構文がよく現れます:<br>
+プログラムは構造化されているので、Vim はその中の要素を認識できます。移動するた<br>
+めに特定のコマンドを使えます。<br>
+&nbsp;&nbsp; C プログラムにはよくこのような構造が含まれています:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#ifdef USE_POPEN</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">fd = popen(&quot;ls&quot;, &quot;r&quot;)</span><br>
@@ -332,23 +338,23 @@ cscope はフリーのプログラムです。識別子の定義場所を探す�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">fd = fopen(&quot;tmp&quot;, &quot;w&quot;)</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#endif</span><br>
 <br>
-もっと長いかもしれませんし、入れ子になっていることもあります。&quot;#ifdef&quot; に移動<br>
-して % を押すと &quot;#else&quot; にジャンプできます。もう一度 % を押すと &quot;#endif&quot; に<br>
-ジャンプします。さらに % を押すと &quot;#ifdef&quot; に戻ります。<br>
-構文が入れ子になっている場合は、正しく対応しているものが検索されます。これは<br>
-&quot;#endif&quot; の書き忘れがないかどうか確認するのに便利です。<br>
-&quot;#if&quot; と &quot;#endif&quot; の間にカーソルがあるとき、次のコマンドで開始位置にジャンプで<br>
-きます:<br>
+しかし、実際にはもっとずっと長く、入れ子になっているかもしれません。カーソルを<br>
+&quot;#ifdef&quot; の上に置いて % を押します。Vim は &quot;#else&quot; へジャンプします。もう一度<br>
+% を押すと &quot;#endif&quot; へ行きます。もう一度 % で、再び &quot;#ifdef&quot; へ行きます。<br>
+&nbsp;&nbsp; 構造が入れ子になっているとき、Vim は対応する要素を見つけます。これは、<br>
+&quot;#endif&quot; を忘れていないかを確認するよい方法です。<br>
+&nbsp;&nbsp; &quot;#if&quot; - &quot;#endif&quot; の内側のどこかにいるとき、以下でその開始へジャンプできます:<br>
+<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[#</div>
 <br>
-&quot;#if&quot; や &quot;#ifdef&quot; の中にいない場合は警告音が鳴ります。前方の &quot;#else&quot; または<br>
-&quot;#endif&quot; に移動するには次のコマンドを使います:<br>
+&quot;#if&quot; または &quot;#ifdef&quot; の後にいない場合、Vim はビープ音を鳴らします。次の<br>
+&quot;#else&quot; または &quot;#endif&quot; へ前方にジャンプするには、以下を使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]#</div>
 <br>
-これらのコマンドは、途中にある &quot;#if&quot; - &quot;#endif&quot; ブロックをスキップします。<br>
-例:<br>
+これらの 2 つのコマンドは、途中で出会う &quot;#if&quot; - &quot;#endif&quot; ブロックをすべてスキッ<br>
+プします。例:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">#if defined(HAS_INC_H)</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">a = a + inc();</span><br>
@@ -357,19 +363,19 @@ cscope はフリーのプログラムです。識別子の定義場所を探す�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc"># endif</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">set_width(a);</span><br>
 <br>
-カーソルが最後の行にあるとき、&quot;[#&quot; で最初の行に移動できます。途中の &quot;#ifdef&quot; -<br>
+カーソルが最後の行にあるとき、&quot;[#&quot; は最初の行へ移動します。中間の &quot;#ifdef&quot; -<br>
 &quot;#endif&quot; ブロックはスキップされます。<br>
 <br>
 <br>
-<span class="Statement">コードブロック内の移動</span><br>
+<span class="Statement">コードブロック内を移動する</span><br>
 <br>
-C のコードブロックは {} で囲まれています。ブロックはかなり大きい場合もありま<br>
-す。アウターブロック (最も外側のブロック) の開始位置に移動するには &quot;[[&quot; コマン<br>
-ドを使います。&quot;][&quot; でブロックの末尾に移動できます。このコマンドは行頭の &quot;{&quot; と<br>
-&quot;}&quot; をブロックの区切りとして認識します。<br>
-&quot;[{&quot; コマンドで現在のブロックの開始位置に移動できます。同じレベルの {} ペアは<br>
-スキップされます。&quot;]}&quot; で末尾に移動できます。<br>
-つまりこのような動作です:<br>
+C では、コードブロックは {} で囲まれています。これらはかなり長くなることがあり<br>
+ます。外側のブロックの開始へ移動するには &quot;[[&quot; コマンドを使います。終わりを見つ<br>
+けるには &quot;][&quot; を使います。これは、&quot;{&quot; および &quot;}&quot; が最初の列にあることを前提と<br>
+しています。<br>
+&nbsp;&nbsp; &quot;[{&quot; コマンドは、現在のブロックの開始へ移動します。同じレベルにある {} の組<br>
+はスキップします。&quot;]}&quot; は終わりへジャンプします。<br>
+&nbsp;&nbsp; 概要:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function(int a)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +-&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
@@ -385,12 +391,13 @@ C のコードブロックは {} で囲まれています。ブロックはか�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;-+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;-+<br>
 <br>
-C++ や Java では、最も外側の {} ブロックはクラスです。その次のレベルの {} はメ<br>
-ソッドです。クラスの中で &quot;[m&quot; を使うと、前のメソッドの開始位置に移動できます。<br>
-&quot;]m&quot; で次のメソッドの開始位置に移動できます。<br>
+C++ または Java を書いているとき、外側の {} ブロックはクラスのためのものです。<br>
+次のレベルの {} はメソッドのためのものです。クラスの内側のどこかにいるとき、前<br>
+のメソッドの開始を見つけるには &quot;[m&quot; を使います。&quot;]m&quot; は次のメソッドの開始を見<br>
+つけます。<br>
 <br>
-&quot;[]&quot; で前の関数の末尾に移動、&quot;]]&quot; で次の関数の開始位置に移動できます。行頭が<br>
-&quot;}&quot; で始まる行が関数の末尾として認識されます。<br>
+さらに、&quot;[]&quot; は後方へ関数の終わりに移動し、&quot;]]&quot; は前方へ次の関数の開始に移動し<br>
+ます。関数の終わりは、最初の列にある &quot;}&quot; によって定義されます。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int func1(void)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
@@ -409,14 +416,14 @@ C++ や Java では、最も外側の {} ブロックはクラスです。その
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 3;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
 <br>
-()、{}、[] などの対括弧に移動する場合は &quot;%&quot; も使えることを忘れないでください。<br>
-括弧の間に複数の行がはさまっていても機能します。<br>
+&quot;%&quot; を使って、対応する ()、{}、および [] の間を移動することもできるのを忘れな<br>
+いでください。それらが何行も離れているときでも機能します。<br>
 <br>
 <br>
-<span class="Statement">カッコ内の移動</span><br>
+<span class="Statement">波括弧内を移動する</span><br>
 <br>
-&quot;[(&quot; と &quot;])&quot; は &quot;[{&quot; と &quot;]}&quot; と機能は同じです。ただし、{} のペアではなく () の<br>
-ペアに対して動作します。<br>
+&quot;[(&quot; および &quot;])&quot; コマンドは、{} の組の代わりに () の組に対して機能することを除<br>
+いて、&quot;[{&quot; および &quot;]}&quot; と同じように機能します。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[(</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;--------------------------------<br>
@@ -426,10 +433,10 @@ C++ や Java では、最も外側の {} ブロックはクラスです。その
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--------------------------------&gt;<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ])</div>
 <br>
-<span class="Statement">コメント内の移動</span><br>
+<span class="Statement">コメント内を移動する</span><br>
 <br>
-コメントの開始位置に戻るには &quot;[/&quot; コマンドを使います。コメントの終了位置に移動<br>
-するには &quot;]/&quot; を使います。これは /* - */ 形式のコメントのみ対応しています。<br>
+コメントの開始へ戻るには &quot;[/&quot; を使います。&quot;]/&quot; でコメントの終わりへ前方に移動<br>
+します。これは /* - */ コメントにだけ機能します。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-&gt;&nbsp;&nbsp;&nbsp;&nbsp; +-&gt; /*<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;[/ |&nbsp;&nbsp;&nbsp;&nbsp;* A comment about&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--+<br>
@@ -441,40 +448,42 @@ C++ や Java では、最も外側の {} ブロックはクラスです。その
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* a short comment */&nbsp;&nbsp;&lt;-+<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_29.html#29.4" name="29.4">29.4</a>&nbsp;&nbsp;グローバル識別子を検索する<br>
+<a class="Constant" href="usr_29.html#29.4" name="29.4">29.4</a>&nbsp;&nbsp;グローバル識別子を見つける<br>
 <br>
-C プログラムを編集していて、変数の型が &quot;int&quot; なのか &quot;unsigned&quot; なのか分からな<br>
-かったら、&quot;[I&quot; コマンドで簡単に確認できます。<br>
-例えば、&quot;column&quot; という単語の上でコマンドを実行すると:<br>
+C プログラムを編集していて、ある変数が &quot;int&quot; または &quot;unsigned&quot; として宣言され<br>
+ているかどうか疑問に思っています。これを素早く見つける方法は &quot;[I&quot; コマンドで<br>
+す。<br>
+&nbsp;&nbsp; カーソルが単語 &quot;column&quot; の上にあるとします。こうタイプします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[I</div>
 <br>
-マッチした行が一覧表示されます。カレントファイルとインクルードファイル (さらに<br>
-その中でインクルードされているファイル) が検索されます。検索結果は次のように表<br>
-示されます:<br>
+Vim は見つけられたマッチする行を一覧表示します。カレントファイル内だけでなく、<br>
+インクルードされたすべてのファイル (およびそれらにインクルードされたファイルな<br>
+ど) 内でもです。結果はこのようになります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">structs.h</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">1:&nbsp;&nbsp; 29&nbsp;&nbsp;&nbsp;&nbsp; unsigned&nbsp;&nbsp;&nbsp;&nbsp; column;&nbsp;&nbsp;&nbsp;&nbsp;/* column number */</span><br>
 <br>
-インクルードファイルも検索されるという点が、タグやプレビューウィンドウを使った<br>
-検索よりも便利です。たいていは正しい定義場所が見つかります。タグファイルが更新<br>
-されていなくても、インクルードファイル用のタグファイルがなくても機能します。<br>
-ただし、&quot;[I&quot; が動作するためには少し条件があります。ファイルのインクルードを認<br>
-識するために、<a class="Type" href="options.html#'include'">'include'</a>&nbsp;オプションが正しく設定されていなければなりません。初期<br>
-設定は C と C++ 用に設定されているので、他の言語では設定を変更する必要がありま<br>
-す。<br>
+タグまたはプレビューウィンドウを使うことに対する利点は、インクルードされたファ<br>
+イルが検索されることです。ほとんどの場合、これにより正しい宣言が見つかります。<br>
+タグファイルが古くなっているときもです。インクルードされたファイルのタグを持っ<br>
+ていないときもです。<br>
+&nbsp;&nbsp; しかし、&quot;[I&quot; がその仕事をするためには、いくつかのことが正しくなければなりま<br>
+せん。まず第一に、<a class="Type" href="options.html#'include'">'include'</a>&nbsp;オプションが、ファイルがどのようにインクルードされ<br>
+るかを指定していなければなりません。既定値は C および C++ で機能します。他の言<br>
+語では、それを変更する必要があるでしょう。<br>
 <br>
 <br>
-<span class="Statement">インクルードファイルの場所</span><br>
+<span class="Statement">インクルードされたファイルの場所を特定する</span><br>
 <br>
-インクルードファイルは&nbsp;<a class="Type" href="options.html#'path'">'path'</a>&nbsp;オプションに設定された場所から検索されます。設定<br>
-に含まれていないディレクトリがあると、いくつかのインクルードファイルは検出でき<br>
-ないかもしれません。次のコマンドで検出できないファイルを確認できます:<br>
+&nbsp;&nbsp; Vim は、<a class="Type" href="options.html#'path'">'path'</a>&nbsp;オプションで指定された場所で、インクルードされたファイルを見<br>
+つけます。ディレクトリが欠けている場合、いくつかのインクルードファイルが見つか<br>
+りません。これはこのコマンドで発見できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:checkpath</div>
 <br>
-検出できなかったインクルードファイルの一覧が表示されます。インクルードファイル<br>
-の中のインクルードも検査されます。次のような結果が表示されます:<br>
+これは、見つけられなかったインクルードファイルを一覧表示します。見つけられた<br>
+ファイルによってインクルードされたファイルもです。出力の例:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">--- Included files not found in path ---</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&lt;io.h&gt;</span><br>
@@ -482,100 +491,109 @@ C プログラムを編集していて、変数の型が &quot;int&quot; なの�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&lt;functions.h&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&lt;clib/exec_protos.h&gt;</span><br>
 <br>
-カレントファイルでインクルードしている &quot;io.h&quot; が見つかっていません。&quot;vim.h&quot; は<br>
-見つかったので &quot;:checkpath&quot; はさらにそのファイルのインクルードも検査しました。<br>
-そして、&quot;functions.h&quot; と &quot;clib/exec_protos.h&quot; が見つかりませんでした。<br>
+&quot;io.h&quot; ファイルはカレントファイルによってインクルードされていて、見つけること<br>
+ができません。&quot;vim.h&quot; は見つけることができるので、&quot;:checkpath&quot; はこのファイル<br>
+の中に入り、それが何をインクルードしているかをチェックします。&quot;vim.h&quot; によって<br>
+インクルードされている &quot;functions.h&quot; および &quot;clib/exec_protos.h&quot; ファイルは見<br>
+つかりません。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim はコンパイラではないので、&quot;#ifdef&quot; ステートメントを認識しません。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;つまり、&quot;#if NEVER&quot; で囲まれている &quot;#include&quot; ステートメントもすべて検<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;査されます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim はコンパイラではありません。&quot;#ifdef&quot; 文を認識しません。これは、す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;べての &quot;#include&quot; 文が、&quot;#if NEVER&quot; の後に来るときも使われることを意味<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;します。<br>
 <br>
-この問題を修正するには&nbsp;<a class="Type" href="options.html#'path'">'path'</a>&nbsp;オプションにディレクトリを追加します。Makefileを<br>
-見れば必要なディレクトリがわかると思います。&quot;-I/usr/local/X11&quot; のように、&quot;-I&quot;<br>
-が使われている行を調べてください。次のコマンドでディレクトリを追加できます:<br>
+見つけられなかったファイルを直すには、<a class="Type" href="options.html#'path'">'path'</a>&nbsp;オプションにディレクトリを追加し<br>
+ます。これについて調べるのによい場所は Makefile です。&quot;-I/usr/local/X11&quot; のよ<br>
+うな &quot;-I&quot; 項目を含む行に注目してください。このディレクトリを追加するには、以下<br>
+を使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set path+=/usr/local/X11</div>
 <br>
-サブディレクトリがたくさんある場合はワイルドカード &quot;*&quot; が使えます。例:<br>
+サブディレクトリがたくさんあるときは、&quot;*&quot; ワイルドカードを使えます。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set path+=/usr/*/include</div>
 <br>
-これで &quot;/usr/local/include/&quot; や &quot;/usr/X11/include/&quot; などが検索対象になります。<br>
+これは &quot;/usr/local/include&quot; および &quot;/usr/X11/include&quot; 内のファイルを見つけるで<br>
+しょう。<br>
 <br>
-ディレクトリツリーのあちこちにインクルードファイルがあるようなプロジェクトでは<br>
-&quot;**&quot; が便利です。すべてのサブディレクトリを検索できます。例:<br>
+インクルードされたファイルの入れ子になったツリー全体を持つプロジェクトで作業し<br>
+ているとき、&quot;**&quot; 項目が便利です。これはすべてのサブディレクトリの中を下へ検索<br>
+します。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set path+=/projects/invent/**/include</div>
 <br>
-例えば次のようなディレクトリからファイルが検索されます:<br>
+これは、ディレクトリ内のファイルを見つけます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/projects/invent/include</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/projects/invent/main/include</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/projects/invent/main/os/include</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;etc.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;など<br>
 <br>
-設定方法は他にもあります。<a class="Type" href="options.html#'path'">'path'</a>&nbsp;オプションの説明を確認してください。<br>
-実際に検出されたインクルードファイルを確認したい場合は次のコマンドを使います:<br>
+さらに多くの可能性があります。情報については&nbsp;<a class="Type" href="options.html#'path'">'path'</a>&nbsp;オプションを確認してくださ<br>
+い。<br>
+&nbsp;&nbsp; 実際にどのインクルードされたファイルが見つかったかを見たい場合、このコマン<br>
+ドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:checkpath!</div>
 <br>
-インクルードされているファイルの (長大な) 一覧が表示されます。出力を短くするた<br>
-め、同じファイルを見つけた場合は &quot;(Already listed)&quot; とだけ表示し、その中のイン<br>
-クルードファイルは表示しません。<br>
+インクルードされたファイル、それらがインクルードするファイルなどの (とても長い)<br>
+リストが得られます。リストを少し短くするために、Vim は以前に見つかったファイル<br>
+に対しては &quot;(Already listed)&quot; を表示し、その中のインクルードされたファイルを再<br>
+び一覧表示しません。<br>
 <br>
 <br>
-<span class="Statement">定義場所にジャンプする</span><br>
+<span class="Statement">マッチへジャンプする</span><br>
 <br>
-&quot;[I&quot; はマッチした行だけを一覧表示します。その周辺を見たい場合は、次のコマンド<br>
-で最初のマッチにジャンプします:<br>
+&quot;[I&quot; は 1 行のテキストだけを持つリストを生成します。最初の項目をもっと詳しく見<br>
+たいときは、このコマンドでその行へジャンプできます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&lt;Tab&gt;</div>
 <br>
-<span class="Special">&lt;Tab&gt;</span>&nbsp;と&nbsp;<span class="Special">CTRL-I</span>&nbsp;は同じなので &quot;[&nbsp;<span class="Special">CTRL-I</span>&quot; でも構いません。<br>
+<span class="Special">CTRL-I</span>&nbsp;は&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;を押すのと同じなので、&quot;[&nbsp;<span class="Special">CTRL-I</span>&quot; も使えます。<br>
 <br>
-&quot;[I&quot; で表示される一覧には番号が付いています。最初の項目以外の場所にジャンプし<br>
-たい場合は番号を指定してください:<br>
+&quot;[I&quot; が生成するリストには、各行の先頭に番号があります。最初のもの以外の項目へ<br>
+ジャンプしたいときは、まず番号をタイプします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3[&lt;Tab&gt;</div>
 <br>
-三番目のマッチにジャンプします。<span class="Special">CTRL-O</span>&nbsp;で元の場所に戻れることをお忘れなく。<br>
+リストの 3 番目の項目へジャンプします。開始した場所へ戻るのに&nbsp;<span class="Special">CTRL-O</span>&nbsp;を使える<br>
+ことを覚えておいてください。<br>
 <br>
 <br>
 <span class="Statement">関連コマンド</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初のマッチだけ表示<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルより後ろのマッチを一覧表示<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルより後ろの最初のマッチだけ表示<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初のマッチだけを一覧表示する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルより下の項目だけを一覧表示する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルより下の最初の項目だけを一覧表示する<br>
 <br>
 <br>
-<span class="Statement">定義済識別子の検索</span><br>
+<span class="Statement">定義された識別子を見つける</span><br>
 <br>
-&quot;[I&quot; コマンドはすべての識別子を検索します。&quot;#define&quot; で定義されたマクロだけを<br>
-検索するには次のコマンドを使います:<br>
+&quot;[I&quot; コマンドは任意の識別子を見つけます。&quot;#define&quot; で定義されたマクロだけを見<br>
+つけるには、以下を使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[D</div>
 <br>
-このコマンドもインクルードファイルが検索対象になります。検索される行の書式は<br>
-<a class="Type" href="options.html#'define'">'define'</a>&nbsp;オプションで指定します。C と C++ 以外の言語では設定を変更する必要があ<br>
-ります。<br>
-次のような &quot;[D&quot; に関連したコマンドがあります:<br>
+繰り返しますが、これはインクルードされたファイル内を検索します。<a class="Type" href="options.html#'define'">'define'</a>&nbsp;オプ<br>
+ションは、&quot;[D&quot; のための項目を定義する行がどのように見えるかを指定します。C ま<br>
+たは C++ 以外の言語で機能するように、それを変更することもできます。<br>
+&nbsp;&nbsp; &quot;[D&quot; に関連するコマンドは以下です:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初のマッチだけ表示<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルより後ろのマッチを一覧表示<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルより後ろの最初のマッチだけ表示<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初のマッチだけを一覧表示する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルより下の項目だけを一覧表示する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルより下の最初の項目だけを一覧表示する<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_29.html#29.5" name="29.5">29.5</a>&nbsp;&nbsp;ローカル識別子を検索する<br>
+<a class="Constant" href="usr_29.html#29.5" name="29.5">29.5</a>&nbsp;&nbsp;ローカル識別子を見つける<br>
 <br>
-&quot;[I&quot; コマンドはインクルードファイルの中も検索します。カーソルの下の単語が最初<br>
-に現れる場所を、カレントファイルの中だけ検索し、その場所にジャンプするには、次<br>
-のコマンドを使います:<br>
+&quot;[I&quot; コマンドはインクルードされたファイルを検索します。カレントファイルだけを<br>
+検索し、カーソルの下の単語が使われている最初の場所へジャンプするには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gD</div>
 <br>
-ヒント: Goto Definition (定義に移動)。このコマンドはローカル(C 用語で &quot;static&quot;)<br>
-に定義された変数や関数を検索するのに便利です。例 (カーソルは &quot;counter&quot; の上):<br>
+ヒント: Goto Definition。このコマンドは、ローカルに (&quot;static&quot;、C の用語で) 宣<br>
+言された変数または関数を見つけるのにとても便利です。例 (カーソルは &quot;counter&quot;<br>
+の上):<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +-&gt;&nbsp;&nbsp; static int counter = 0;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
@@ -585,14 +603,13 @@ C プログラムを編集していて、変数の型が &quot;int&quot; なの�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return counter;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
 <br>
-さらに検索範囲を狭めて、現在の関数の中だけ検索したい場合は次のコマンドを使いま<br>
-す:<br>
+検索をさらに制限して、現在の関数内だけを調べるには、このコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gd</div>
 <br>
-現在の関数の開始位置から最初に単語が使われている場所が検索されます。実際に、行<br>
-頭が &quot;{&quot; で始まる行を後方検索して、その上の空行まで戻り、そこから識別子を前方<br>
-検索しています。例 (カーソルは &quot;idx&quot; の上):<br>
+これは現在の関数の開始へ戻り、カーソルの下の単語の最初の出現を見つけます。実際<br>
+には、最初の列にある &quot;{&quot; の上の空行まで後方に検索します。そこから識別子を前方<br>
+に検索します。例 (カーソルは &quot;idx&quot; の上):<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int find_entry(char *name)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
