@@ -9,40 +9,43 @@ helpname: 'usr_30'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; プログラムの編集<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プログラムの編集<br>
 <br>
 <br>
-プログラミングに役立つ機能が Vim にはたくさんあります。プログラムをコンパイル<br>
-してエラーが出た行にジャンプしたり、言語に合わせて自動的にインデントしたり、コ<br>
-メントを整形したりできます。<br>
+Vim には、コンピュータプログラムを書くのを助けるさまざまなコマンドがあります。<br>
+プログラムをコンパイルし、報告されたエラーへ直接ジャンプします。多くの言語に対<br>
+して自動的にインデントを設定し、コメントを整形します。<br>
 <br>
-<a class="Identifier" href="usr_30.html#30.1">30.1</a>&nbsp;&nbsp;コンパイル<br>
-<a class="Identifier" href="usr_30.html#30.2">30.2</a>&nbsp;&nbsp;C 言語系インデント<br>
-<a class="Identifier" href="usr_30.html#30.3">30.3</a>&nbsp;&nbsp;インデント設定の自動化<br>
+<a class="Identifier" href="usr_30.html#30.1">30.1</a>&nbsp;&nbsp;コンパイルする<br>
+<a class="Identifier" href="usr_30.html#30.2">30.2</a>&nbsp;&nbsp;C ファイルをインデントする<br>
+<a class="Identifier" href="usr_30.html#30.3">30.3</a>&nbsp;&nbsp;自動インデント<br>
 <a class="Identifier" href="usr_30.html#30.4">30.4</a>&nbsp;&nbsp;その他のインデント<br>
 <a class="Identifier" href="usr_30.html#30.5">30.5</a>&nbsp;&nbsp;タブとスペース<br>
-<a class="Identifier" href="usr_30.html#30.6">30.6</a>&nbsp;&nbsp;コメントの整形<br>
+<a class="Identifier" href="usr_30.html#30.6">30.6</a>&nbsp;&nbsp;コメントを整形する<br>
 <br>
 次章:&nbsp;<a class="Identifier" href="usr_31.html">usr_31.txt</a>&nbsp;&nbsp;GUI を活用する<br>
 前章:&nbsp;<a class="Identifier" href="usr_29.html">usr_29.txt</a>&nbsp;&nbsp;プログラムの中を移動する<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_30.html#30.1" name="30.1">30.1</a>&nbsp;&nbsp;コンパイル<br>
+<a class="Constant" href="usr_30.html#30.1" name="30.1">30.1</a>&nbsp;&nbsp;コンパイルする<br>
 <br>
-Vim にはquickfix機能があります。これは、Vim の中でプログラムをコンパイルして、<br>
-エラーになった場所に移動し、エラーを修正するための機能です。そうして、正常にコ<br>
-ンパイルできるまでコンパイルとエラー修正を繰り返します。<br>
+Vim には、いわゆる &quot;quickfix&quot; コマンドの一群があります。これらにより、Vim の中<br>
+からプログラムをコンパイルし、それから生成されたエラーを順に見ていき、それらを<br>
+(うまくいけば) 修正することができます。その後、最終的にあなたのプログラムがエ<br>
+ラーなしでコンパイルされるまで、再コンパイルし、見つかった新しいエラーを修正す<br>
+ることができます。<br>
 <br>
-次のコマンドは &quot;make&quot; を実行し、その出力を読み込みます (引数はそのまま渡されま<br>
-す):<br>
+以下のコマンドは、プログラム &quot;make&quot; を (あなたが与えた任意の引数を渡して) 実行<br>
+し、その結果を取り込みます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:make {arguments}</div>
 <br>
-エラーが発生するとそれが認識され、最初のエラーにカーソルが移動します。<br>
-&quot;:make&quot; の使い方を実際に見てみましょう。(典型的な :make セッションはもっと多く<br>
-のエラーあるいは少しのゴミを出力しますが) &quot;:make&quot; を実行すると次のような出力が<br>
-画面に表示されます:<br>
+エラーが生成された場合、それらは取り込まれ、エディタは最初のエラーが発生した場<br>
+所にあなたを位置付けます。<br>
+&nbsp;&nbsp; &quot;:make&quot; セッションの例を見てください。(典型的な :make セッションでは、はる<br>
+かに多くのエラーが生成され、愚かなエラーはより少なくなります。) &quot;:make&quot; をタイ<br>
+プした後、画面はこのようになります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">:!make | &amp;tee /tmp/vim215953.err</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">gcc -g -Wall -o prog main.c sub.c</span><br>
@@ -55,11 +58,12 @@ Vim にはquickfix機能があります。これは、Vim の中でプログラ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">2 returned</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&quot;main.c&quot; 11L, 111C</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">(3 of 6): too many arguments to function 'do_sub'</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Hit ENTER or type command to continue</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Press ENTER or type command to continue</span><br>
 <br>
-&quot;main.c&quot; の中でエラーが発生していることが確認できると思います。<span class="Special">&lt;Enter&gt;</span>&nbsp;を押す<br>
-と &quot;main.c&quot; ファイルが開き、6 行目 (最初のエラー) にカーソルが移動します。自分<br>
-でファイルを開く必要はありません。Vim はエラーメッセージを認識できます。<br>
+ここから、ファイル &quot;main.c&quot; にエラーがあることがわかります。<span class="Special">&lt;Enter&gt;</span>&nbsp;を押すと、<br>
+Vim はファイル &quot;main.c&quot; を表示し、カーソルはエラーのある最初の行である 6 行目<br>
+に置かれます。ファイルまたは行番号を指定する必要はありませんでした、Vim はエ<br>
+ラーメッセージの中を見ることで、どこへ行けばよいかを知っていました。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+---------------------------------------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|int main()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
@@ -74,28 +78,28 @@ Vim にはquickfix機能があります。これは、Vim の中でプログラ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|(3 of 12): too many arguments to function 'do_sub' |<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+---------------------------------------------------+<br>
 <br>
-このコマンドで次のエラーに移動できます:<br>
+以下のコマンドは、次のエラーが発生する場所へ移動します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:cnext</div>
 <br>
-カーソルが 10 行目に移動します。ファイルの最終行に余分な '}' がありますね。長<br>
-すぎるエラーメッセージは省略して表示されます。全部を表示するには次のコマンドを<br>
-使います:<br>
+Vim は、余分な '}' がある、ファイルの最後の行である 10 行目へジャンプします。<br>
+&nbsp;&nbsp; 十分な場所がない場合、Vim はエラーメッセージを短くします。メッセージ全体を<br>
+見るには、以下を使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:cc</div>
 <br>
-すべてのエラーメッセージを表示するには &quot;:clist&quot; コマンドを使います。次のような<br>
-出力が表示されます:<br>
+&quot;:clist&quot; コマンドで、すべてのエラーメッセージの概要を得ることができます。出力<br>
+はこのようになります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:clist</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">3 main.c: 6:too many arguments to function 'do_sub'</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">5 main.c: 10:parse error before '}'</span><br>
 <br>
-ファイル名と行番号が認識された行だけが表示されますが、それは、重要なのはそのよ<br>
-うな行だけで、他の行は無駄なメッセージであると判断されるからです。しかし時に<br>
-は、認識されなかった行が重要な情報を含んでいることもあります。例えばリンカが未<br>
-解決の関数をエラー表示した場合などです。すべてのメッセージを表示するにはコマン<br>
-ドに &quot;!&quot; を付けます:<br>
+ここには、Vim がファイル名および行番号を認識した行だけが一覧表示されます。それ<br>
+は、それらが興味深い行であり、残りは単に退屈なメッセージであると仮定します。し<br>
+かし、認識されなかった行に、あなたが見たいものが含まれていることも時々ありま<br>
+す。例えば、未定義の関数についてのリンカからの出力。<br>
+すべてのメッセージを見るには、コマンドに &quot;!&quot; を追加します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:clist!</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">1 gcc -g -Wall -o prog main.c sub.c</span><br>
@@ -105,166 +109,171 @@ Vim にはquickfix機能があります。これは、Vim の中でプログラ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">5 main.c:10: parse error before '}'</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">6 make: *** [prog] Error 1</span><br>
 <br>
-現在のエラーは強調表示されます。前のエラーに戻るには次のコマンドを使います:<br>
+Vim は現在のエラーをハイライトします。前のエラーに戻るには、以下を使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:cprevious</div>
 <br>
-エラーリストを移動するコマンドは他にもあります:<br>
+エラーリストの中を移動するための他のコマンド:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:cfirst&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最初のエラー<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:clast&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後のエラー<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:cc 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3つ目のエラー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:cfirst&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最初のエラーへ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:clast&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最後のエラーへ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:cc 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; エラー番号 3 へ<br>
 <br>
 <br>
-<span class="Statement">他のコンパイラを使う</span><br>
+<span class="Statement">別のコンパイラを使う</span><br>
 <br>
-&quot;:make&quot; コマンドが実際に実行するプログラムは&nbsp;<a class="Type" href="options.html#'makeprg'">'makeprg'</a>&nbsp;オプションで設定しま<br>
-す。通常は &quot;make&quot; に設定されていますが、例えば Visual C++ を使う場合は &quot;nmake&quot;<br>
-に設定する必要があります:<br>
+&quot;:make&quot; コマンドが実行されたときに実行するプログラムの名前は、<a class="Type" href="options.html#'makeprg'">'makeprg'</a>&nbsp;オプ<br>
+ションで定義されます。通常、これは &quot;make&quot; に設定されていますが、Visual C++ の<br>
+ユーザーは、以下のコマンドを実行することで、これを &quot;nmake&quot; に設定すべきです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set makeprg=nmake</div>
 <br>
-オプションにはプログラムの引数も含めることができます。特殊文字はバックスラッ<br>
-シュでエスケープしてください。例:<br>
+このオプションには引数を含めることもできます。特殊文字はバックスラッシュでエス<br>
+ケープする必要があります。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set makeprg=nmake\ -f\ project.mak</div>
 <br>
-プログラムの設定には特殊なキーワードが使えます。文字 % はカレントファイルの名<br>
-前に展開されます。例えば次のように設定すると:<br>
-<br>
+コマンドの指定には、Vim の特別なキーワードを含めることができます。% 文字は、カ<br>
+レントファイルの名前に展開されます。したがって、このコマンドを実行した場合:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set makeprg=make\ %:S</div>
 <br>
-main.c を編集しているときに &quot;:make&quot; を実行すると次のコマンドが実行されます:<br>
+main.c を編集しているとき、&quot;:make&quot; は以下のコマンドを実行します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make main.c</div>
 <br>
-これ自体はそれほど便利ではありませんが、すこし変更して :r (root) 修飾子を使う<br>
-とどうでしょう:<br>
+これはあまり便利ではないので、コマンドを少し改良して、:r (root) 修飾子を使いま<br>
+す:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set makeprg=make\ %:r:S.o</div>
 <br>
-これで、実行されるコマンドは次のようになります:<br>
+これで、実行されるコマンドは以下のとおりです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make main.o</div>
 <br>
-修飾子については&nbsp;<a class="Identifier" href="cmdline.html#filename-modifiers">filename-modifiers</a>&nbsp;を参照してください。<br>
+これらの修飾子についての詳細はここ:&nbsp;<a class="Identifier" href="cmdline.html#filename-modifiers">filename-modifiers</a>。<br>
 <br>
 <br>
 <span class="Statement">古いエラーリスト</span><br>
 <br>
-例えば &quot;:make&quot; を実行したときに、一つのファイルで警告メッセージが出て、他の<br>
-ファイルではエラーが出たとします。エラーを修正し、本当に直ったかどうかを確認す<br>
-るためにもう一度 &quot;:make&quot; を実行しました。さて、ここで先程の警告メッセージを確<br>
-認しようとしても、エラーリストには警告メッセージがありません。なぜなら、警告<br>
-メッセージを出したファイルは再コンパイルされなかったからです。次のコマンドで古<br>
-いエラーリストに戻ることができます:<br>
+プログラムを &quot;:make&quot; したとします。あるファイルには警告メッセージがあり、別の<br>
+ファイルにはエラーメッセージがあります。エラーを修正し、それが本当に修正された<br>
+かを確認するために、再び &quot;:make&quot; を使います。ここで、警告メッセージを見たいで<br>
+す。警告のあるファイルは再びコンパイルされなかったので、それは最後のエラーリス<br>
+トには現れません。以下で、前のエラーリストに戻ることができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:colder</div>
 <br>
-&quot;:clist&quot; と &quot;:cc&nbsp;<span class="Special">{nr}</span>&quot; を使って、警告が発生した場所にジャンプしましょう。<br>
-次のコマンドで新しいエラーリストに戻れます:<br>
+それから、&quot;:clist&quot; および &quot;:cc&nbsp;<span class="Special">{nr}</span>&quot; を使って、警告のある場所へジャンプします。<br>
+&nbsp;&nbsp; 次のエラーリストへ進むには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:cnewer</div>
 <br>
-全部で 10 個までのエラーリストを保持しておくことができます。<br>
+Vim は 10 個のエラーリストを記憶します。<br>
 <br>
 <br>
-<span class="Statement">他のコンパイラを使う</span><br>
+<span class="Statement">コンパイラを切り替える</span><br>
 <br>
-コンパイラが出力するエラーメッセージの書式を調べ、<a class="Type" href="options.html#'errorformat'">'errorformat'</a>&nbsp;オプションを設<br>
-定する必要があります。このオプションの構文は非常に複雑ですが、どのようなコンパ<br>
-イラにも対応できます。詳しい説明は&nbsp;<a class="Identifier" href="quickfix.html#errorformat">errorformat</a>&nbsp;を参照してください。<br>
+あなたのコンパイラが生成するエラーメッセージがどんな形式なのかを、Vim に伝える<br>
+必要があります。これは&nbsp;<a class="Type" href="options.html#'errorformat'">'errorformat'</a>&nbsp;オプションで行います。このオプションの構<br>
+文はかなり複雑で、ほとんどすべてのコンパイラに合うようにすることができます。説<br>
+明はここで見つけることができます:&nbsp;<a class="Identifier" href="quickfix.html#errorformat">errorformat</a>。<br>
 <br>
-複数のコンパイラを使うとき、コンパイラを変更するたびに&nbsp;<a class="Type" href="options.html#'makeprg'">'makeprg'</a>&nbsp;や<br>
-<a class="Type" href="options.html#'errorformat'">'errorformat'</a>&nbsp;を設定するのは面倒ですよね。簡単な方法が用意されています。例え<br>
-ば、Microsoft Visual C++ なら次のように設定します:<br>
+あなたはさまざまな異なるコンパイラを使っているかもしれません。<a class="Type" href="options.html#'makeprg'">'makeprg'</a>&nbsp;オプ<br>
+ション、および特に&nbsp;<a class="Type" href="options.html#'errorformat'">'errorformat'</a>&nbsp;を毎回設定するのは簡単ではありません。Vim は<br>
+このための簡単な方法を提供しています。例えば、Microsoft Visual C++ コンパイラ<br>
+の使用に切り替えるには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:compiler msvc</div>
 <br>
-&quot;msvc&quot; 用のスクリプトが検索され、適切なオプションが設定されます。<br>
-自分で設定スクリプトを書くこともできます。<a class="Identifier" href="usr_51.html#write-compiler-plugin">write-compiler-plugin</a>&nbsp;参照。<br>
+これは &quot;msvc&quot; コンパイラ用の Vim script を見つけ、適切なオプションを設定しま<br>
+す。<br>
+&nbsp;&nbsp; あなた自身のコンパイラファイルを書くことができます。<a class="Identifier" href="usr_51.html#write-compiler-plugin">write-compiler-plugin</a><br>
+を参照してください。<br>
 <br>
 <br>
-<span class="Statement">出力のリダイレクト</span><br>
+<span class="Statement">出力リダイレクト</span><br>
 <br>
-&quot;:make&quot; コマンドは、実行したプログラムの出力をエラーファイルにリダイレクトしま<br>
-す。その動作はいろいろな要因に依存しています (例えば&nbsp;<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;オプション)。<br>
-&quot;:make&quot; コマンドがプログラムの出力を拾えていないようなら、<a class="Type" href="options.html#'makeef'">'makeef'</a>&nbsp;オプション<br>
-と&nbsp;<a class="Type" href="options.html#'shellpipe'">'shellpipe'</a>&nbsp;オプションを確認してみてください。<a class="Type" href="options.html#'shellquote'">'shellquote'</a>&nbsp;オプションと<br>
-<a class="Type" href="options.html#'shellxquote'">'shellxquote'</a>&nbsp;オプションも関係あるかもしれません。<br>
+&quot;:make&quot; コマンドは、実行されたプログラムの出力をエラーファイルにリダイレクトし<br>
+ます。これがどのように動作するかは、<a class="Type" href="options.html#'shell'">'shell'</a>&nbsp;などのさまざまなことに依存します。<br>
+あなたの &quot;:make&quot; コマンドが出力を取り込まない場合、<a class="Type" href="options.html#'makeef'">'makeef'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'shellpipe'">'shellpipe'</a><br>
+オプションを確認してください。<a class="Type" href="options.html#'shellquote'">'shellquote'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'shellxquote'">'shellxquote'</a>&nbsp;オプションも関<br>
+係するかもしれません。<br>
 <br>
-どうしても &quot;:make&quot; コマンドのリダイレクトが機能しない場合は、シェルからコンパ<br>
-イルを実行して、その出力をファイルにリダイレクトしてください。そして、次のコマ<br>
-ンドでそのファイルを読み込みます:<br>
+&quot;:make&quot; にあなたのためにファイルをリダイレクトさせることができない場合、代替案<br>
+は、別のウィンドウでプログラムをコンパイルし、出力をファイルにリダイレクトする<br>
+ことです。それから、以下で Vim にこのファイルを読み込ませます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:cfile {filename}</div>
 <br>
-&quot;:make&quot; コマンドと同様にエラーにジャンプできます。<br>
+エラーへのジャンプは、&quot;:make&quot; コマンドと同じように動作します。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_30.html#30.2" name="30.2">30.2</a>&nbsp;&nbsp;C 言語系インデント<br>
+<a class="Constant" href="usr_30.html#30.2" name="30.2">30.2</a>&nbsp;&nbsp;C スタイルのテキストをインデントする<br>
 <br>
-プログラムを適切にインデントするとコードが読みやすくなります。Vim の機能を使え<br>
-ばインデントするのは簡単です。C 言語、あるいは C++ や Java などの C スタイルの<br>
-プログラムなら&nbsp;<a class="Type" href="options.html#'cindent'">'cindent'</a>&nbsp;オプションをオンに設定してください。C 言語のインデン<br>
-トは組み込みで用意されていて、複雑な構文でも適切にインデントできます。インデン<br>
-トに使うスペースの数は&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;オプションで設定します。スペース 4 個くら<br>
-いが適切でしょうか。次のコマンドで設定できます:<br>
+行が適切にインデントされていると、プログラムははるかに理解しやすくなります。<br>
+Vim は、これの手間を減らすさまざまな方法を提供しています。C、または Java また<br>
+は C++ のような C スタイルのプログラムには、<a class="Type" href="options.html#'cindent'">'cindent'</a>&nbsp;オプションを設定します。<br>
+Vim は C プログラムについて多くのことを知っていて、あなたのためにインデントを<br>
+自動的に設定しようと非常に努力します。<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;オプションを、より深いレベ<br>
+ルに対してあなたが欲しいスペースの量に設定します。4 つのスペースでうまく動作し<br>
+ます。1 つの &quot;:set&quot; コマンドでそれができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set cindent shiftwidth=4</div>
 <br>
-このオプションを設定すると、例えば &quot;if (x)&quot; と入力したときに、次の行が自動的に<br>
-インデントされます。<br>
+このオプションを有効にすると、&quot;if (x)&quot; のようなものをタイプしたとき、次の行は<br>
+自動的に 1 レベル追加でインデントされます。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (flag)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;インデントが増える ---&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do_the_work();<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;インデントが減る&nbsp;&nbsp; &lt;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (other_flag) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;インデントが増える ---&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do_file();<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;インデントそのまま&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do_some_more();<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;インデントが減る&nbsp;&nbsp; &lt;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自動インデント&nbsp;&nbsp; ---&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do_the_work();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自動インデント解除 &lt;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (other_flag) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自動インデント&nbsp;&nbsp; ---&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do_file();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;インデント維持&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do_some_more();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自動インデント解除 &lt;--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
 <br>
-波カッコ ({}) の中でテキストを入力すると、最初の行でインデントが増え、最後の行<br>
-でインデントが減ります。インデントが減るのは '}' を押したタイミングです (入力<br>
-を予測することはできないので)。<br>
+波括弧 ({}) の中に何かをタイプすると、テキストは始めでインデントされ、終わりで<br>
+インデント解除されます。Vim はあなたが何をタイプしようとしているかを推測できな<br>
+いので、インデント解除は '}' をタイプした後に行われます。<br>
 <br>
-自動インデントには、コーディングのミスを早く発見できるという副作用があります。<br>
-例えば、関数の最後で } を入力したときに、インデントが本来よりも多くなったとし<br>
-たら、どこかで } を入力し忘れています。&quot;%&quot; コマンドを使って、最後に入力した }<br>
-と対になっている { を探しましょう。<br>
-同様に、) や ; を忘れると、次の行のインデントが増えます。もし予想よりもインデ<br>
-ントが多くなってしまった場合は直前の行を確認してください。<br>
+自動インデントの副作用の 1 つは、あなたのコードのエラーを早期に見つけるのに役<br>
+立つことです。関数を終えるために } をタイプしたのに、自動インデントがそれにあ<br>
+なたが予期したより多くのインデントを与えるのがわかったときは、おそらく } が欠<br>
+けています。&quot;%&quot; コマンドを使って、どの { がタイプした } にマッチするかを調べて<br>
+ください。<br>
+&nbsp;&nbsp; 欠けている ) および ; も余分なインデントを引き起こします。したがって、予期<br>
+するより多くの空白が得られた場合、前の行を確認してください。<br>
 <br>
-書式が汚いコードを編集するとき、あるいは編集によってインデントが崩れてしまった<br>
-場合、コードを再インデントする必要があります。それには &quot;=&quot; オペレータを使いま<br>
-す。最も単純なのは次の使い方です:<br>
+不適切に整形されたコードがあるとき、または行を挿入および削除したときは、行を再<br>
+インデントする必要があります。&quot;=&quot; オペレータがこれを行います。最も単純な形式は:<br>
+<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;==</div>
 <br>
-現在行がインデントされます。他のオペレータと同様、使い方は三通りあります。ビ<br>
-ジュアルモードで &quot;=&quot; を使うと、選択範囲の行がインデントされます。テキストオブ<br>
-ジェクトで便利なのは &quot;a{&quot; です。これは現在のブロックを選択します。つまり、次の<br>
-コマンドでコードのブロックをインデントできます:<br>
+これは現在の行をインデントします。すべてのオペレータと同様に、それを使う方法は<br>
+3 つあります。ビジュアルモードでは、&quot;=&quot; は選択された行をインデントします。便利<br>
+なテキストオブジェクトは &quot;a{&quot; です。これは現在の {} ブロックを選択します。した<br>
+がって、カーソルがあるコードブロックを再インデントするには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=a{</div>
 <br>
-コードが根本的に汚い場合は、次のコマンドでファイル全体を再インデントできます:<br>
+本当にひどくインデントされたコードがある場合、以下でファイル全体を再インデント<br>
+できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gg=G</div>
 <br>
-ただし、手作業で丁寧にインデントされたファイルに対してこれを実行してはいけませ<br>
-ん。自動インデントは良い仕事をしてくれますが、場合によってはそのルールを破る必<br>
-要もあるからです。<br>
+しかし、手動で注意深くインデントされたファイルでは、これを行わないでください。<br>
+自動インデントはよい仕事をしますが、状況によってはそれを覆したいかもしれませ<br>
+ん。<br>
 <br>
 <br>
-<span class="Statement">インデントスタイルの設定</span><br>
+<span class="Statement">インデントスタイルを設定する</span><br>
 <br>
-インデントスタイルは人によってさまざまです。初期設定では 90% のプログラマが満<br>
-足するようなスタイルに設定されています。しかし、世の中にはいろいろなスタイルが<br>
-あるので、必要なら、<a class="Type" href="options.html#'cinoptions'">'cinoptions'</a>&nbsp;を設定することで、インデントスタイルをカスタ<br>
-マイズできます。<br>
-<a class="Type" href="options.html#'cinoptions'">'cinoptions'</a>&nbsp;の初期設定は空です。その場合はデフォルトのスタイルが使われます。<br>
-このオプションに値を追加していくことでスタイルを変更できます。例えば、波カッコ<br>
-の位置を次のようにしたい場合は:<br>
+人によってインデントのスタイルは異なります。既定では、Vim はプログラマの 90%<br>
+が行う方法で、かなりうまくインデントします。しかし、異なるスタイルがあります;<br>
+したがって、そうしたい場合、<a class="Type" href="options.html#'cinoptions'">'cinoptions'</a>&nbsp;オプションでインデントスタイルをカス<br>
+タマイズできます。<br>
+&nbsp;&nbsp; 既定では&nbsp;<a class="Type" href="options.html#'cinoptions'">'cinoptions'</a>&nbsp;は空で、Vim は既定のスタイルを使います。何か違うもの<br>
+が欲しいところに、さまざまな項目を追加できます。例えば、波括弧がこのように配置<br>
+されるようにするには:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">if (flag)</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">{</span><br>
@@ -272,129 +281,132 @@ main.c を編集しているときに &quot;:make&quot; を実行すると次の
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">j = 0;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">}</span><br>
 <br>
-次のコマンドを使います:<br>
+このコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set cinoptions+={2</div>
 <br>
-設定できる項目はたくさんあります。<a class="Identifier" href="indent.html#cinoptions-values">cinoptions-values</a>&nbsp;参照。<br>
+これらの項目はたくさんあります。<a class="Identifier" href="indent.html#cinoptions-values">cinoptions-values</a>&nbsp;を参照してください。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_30.html#30.3" name="30.3">30.3</a>&nbsp;&nbsp;インデント設定の自動化<br>
+<a class="Constant" href="usr_30.html#30.3" name="30.3">30.3</a>&nbsp;&nbsp;自動インデント<br>
 <br>
-C ファイルを開くたびに&nbsp;<a class="Type" href="options.html#'cindent'">'cindent'</a>&nbsp;オプションを設定するのは面倒ですよね。インデ<br>
-ントの設定は自動化できます:<br>
+C ファイルを編集するたびに、手動で&nbsp;<a class="Type" href="options.html#'cindent'">'cindent'</a>&nbsp;オプションをオンにしたくはありま<br>
+せん。これが、それを自動的に動作させる方法です:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:filetype indent on</div>
 <br>
-実際には、C ファイルに対して&nbsp;<a class="Type" href="options.html#'cindent'">'cindent'</a>&nbsp;をオンにする以外の機能も有効になりま<br>
-す。まず最初に、ファイルタイプの認識が有効になります。認識機能は構文強調表示で<br>
-使われているものと同じです。<br>
-ファイルタイプが認識されると、そのファイルタイプ用のインデントファイルが検索さ<br>
-れます。Vim にはさまざまな言語に対応したインデントファイルが付属しています。イ<br>
-ンデントファイルが読み込まれ、自動インデントのための設定が行われます。<br>
+実際には、これは C ファイルに対して&nbsp;<a class="Type" href="options.html#'cindent'">'cindent'</a>&nbsp;をオンにするよりもはるかに多くの<br>
+ことを行います。まず第一に、ファイルのタイプの検出を有効にします。それは構文ハ<br>
+イライトに使われるものと同じです。<br>
+&nbsp;&nbsp; ファイルタイプがわかると、Vim はこのタイプのファイル用のインデントファイル<br>
+を検索します。Vim の配布物には、さまざまなプログラミング言語用のこれらがいくつ<br>
+か含まれています。それから、このインデントファイルが、特にこのファイル用の自動<br>
+インデントを準備します。<br>
 <br>
-インデント設定の自動化は次のコマンドでオフにできます:<br>
+自動インデントが気に入らない場合、再びそれをオフに切り替えることができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:filetype indent off</div>
 <br>
-特定のファイルタイプだけインデントを無効にしたい場合は、次のような一行だけの<br>
-ファイルを作成してください:<br>
+ある特定のタイプのファイルのインデントが気に入らない場合、これがそれを避ける方<br>
+法です。この 1 行だけを含むファイルを作成します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let b:did_indent = 1</div>
 <br>
-これを、決められた名前で保存します:<br>
+ここで、これを特定の名前のファイルに書く必要があります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{directory}</span>/indent/<span class="Special">{filetype}</span>.vim<br>
 <br>
-<span class="Special">{filetype}</span>&nbsp;は &quot;cpp&quot; や &quot;java&quot; といったファイルタイプの名前です。次のコマンドで<br>
-Vim が使っている名前を確認できます:<br>
+<span class="Special">{filetype}</span>&nbsp;は、&quot;cpp&quot; または &quot;java&quot; のようなファイルタイプの名前です。Vim が検<br>
+出した正確な名前は、このコマンドで見ることができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set filetype</div>
 <br>
-例えばこのヘルプファイルなら次のように表示されます:<br>
+このファイルでは、出力は:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">filetype=help</span><br>
 <br>
-したがって、<span class="Special">{filetype}</span>&nbsp;には &quot;help&quot; が入ります。<br>
-<span class="Special">{directory}</span>&nbsp;はランタイムディレクトリです。次のコマンドの出力を調べてください:<br>
+したがって、<span class="Special">{filetype}</span>&nbsp;には &quot;help&quot; を使うことになります。<br>
+&nbsp;&nbsp;&nbsp;<span class="Special">{directory}</span>&nbsp;の部分には、あなたのランタイムディレクトリを使う必要があります。<br>
+このコマンドの出力を見てください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set runtimepath</div>
 <br>
-ここでは先頭のパスを使います。つまり、出力が次のようなら:<br>
+ここで、最初の項目である、最初のコンマの前の名前を使います。したがって、出力が<br>
+このようになっている場合:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">runtimepath=~/.vim,/usr/local/share/vim/vim60/runtime,~/.vim/after</span><br>
 <br>
-<span class="Special">{directory}</span>&nbsp;には &quot;~/.vim&quot; が入ります。したがって、ファイル名は次のようになりま<br>
-す:<br>
+<span class="Special">{directory}</span>&nbsp;には &quot;~/.vim&quot; を使います。そうすると、結果のファイル名は:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">~/.vim/indent/help.vim</span><br>
 <br>
-インデントをオフにするのではなく、自分のインデントファイルを作成したい場合は、<br>
-<a class="Identifier" href="indent.html#indent-expression">indent-expression</a>&nbsp;を参照してください。<br>
+インデントをオフに切り替える代わりに、あなた自身のインデントファイルを書くこと<br>
+もできます。その方法はここで説明されています:&nbsp;<a class="Identifier" href="indent.html#indent-expression">indent-expression</a>。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_30.html#30.4" name="30.4">30.4</a>&nbsp;&nbsp;その他のインデント<br>
 <br>
-最もシンプルな自動インデントは&nbsp;<a class="Type" href="options.html#'autoindent'">'autoindent'</a>&nbsp;オプションを使う方法です。これは直<br>
-前の行と同じインデントを使います。<a class="Type" href="options.html#'smartindent'">'smartindent'</a>&nbsp;はもう少しスマートです。これは<br>
-インデントファイルが用意されていないような場合に使います。<a class="Type" href="options.html#'smartindent'">'smartindent'</a>&nbsp;は<br>
-<a class="Type" href="options.html#'cindent'">'cindent'</a>&nbsp;より低機能ですが、<a class="Type" href="options.html#'autoindent'">'autoindent'</a>&nbsp;よりは高機能です。<br>
-<a class="Type" href="options.html#'smartindent'">'smartindent'</a>&nbsp;をオンにすると、{ でインデントが一つ増え、} で減ります。さらに、<br>
-<a class="Type" href="options.html#'cinwords'">'cinwords'</a>&nbsp;オプションに設定された単語が現れた場合もインデントが増えます。# で<br>
-始まる行は特別扱いされ、一切インデントされません。つまり、プリプロセッサーディ<br>
-レクティブの行はインデントされません。その次の行は通常通りインデントされます。<br>
+自動インデントの最も単純な形式は、<a class="Type" href="options.html#'autoindent'">'autoindent'</a>&nbsp;オプションによるものです。<br>
+それは前の行のインデントを使います。少し賢いのは&nbsp;<a class="Type" href="options.html#'smartindent'">'smartindent'</a>&nbsp;オプションです。<br>
+これは、インデントファイルが使用可能でない言語に役立ちます。<a class="Type" href="options.html#'smartindent'">'smartindent'</a>&nbsp;は<br>
+<a class="Type" href="options.html#'cindent'">'cindent'</a>&nbsp;ほど賢くはありませんが、<a class="Type" href="options.html#'autoindent'">'autoindent'</a>&nbsp;よりは賢いです。<br>
+&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'smartindent'">'smartindent'</a>&nbsp;が設定されていると、{ ごとにインデントが 1 レベル追加され、}<br>
+ごとに削除されます。<a class="Type" href="options.html#'cinwords'">'cinwords'</a>&nbsp;オプション内のいずれかの単語に対しても、インデ<br>
+ントが 1 レベル追加されます。# で始まる行は特別に扱われます: すべてのインデン<br>
+トが削除されます。これは、プリプロセッサ指令がすべて 1 桁目から始まるようにす<br>
+るために行われます。インデントは次の行で復元されます。<br>
 <br>
 <br>
-<span class="Statement">インデントの訂正</span><br>
+<span class="Statement">インデントを修正する</span><br>
 <br>
-<a class="Type" href="options.html#'autoindent'">'autoindent'</a>&nbsp;や&nbsp;<a class="Type" href="options.html#'smartindent'">'smartindent'</a>&nbsp;を設定すると、直前の行と同じインデントを使うこと<br>
-ができますが、自分でインデントを (<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;の幅ずつ) 増やしたり減らしたり<br>
-する必要も多々あります。それには挿入モードで&nbsp;<span class="Special">CTRL-D</span>&nbsp;と&nbsp;<span class="Special">CTRL-T</span>&nbsp;を使うと簡単で<br>
-す。例えば、次のようなシェルスクリプトを入力してみましょう:<br>
+<a class="Type" href="options.html#'autoindent'">'autoindent'</a>&nbsp;または&nbsp;<a class="Type" href="options.html#'smartindent'">'smartindent'</a>&nbsp;を使って前の行のインデントを得ているとき、1<br>
+<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;分のインデントを追加または削除する必要があることが何度もあるでしょ<br>
+う。これを素早く行う方法は、挿入モードで&nbsp;<span class="Special">CTRL-D</span>&nbsp;および&nbsp;<span class="Special">CTRL-T</span>&nbsp;コマンドを使うこ<br>
+とです。<br>
+&nbsp;&nbsp; 例えば、あなたは、このように見えるはずのシェルスクリプトをタイプしています:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">if test -n a; then</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">echo a</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">echo &quot;-------&quot;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">fi</span><br>
 <br>
-まず、次のオプションを設定します:<br>
+これらのオプションを設定することから始めます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set autoindent shiftwidth=3</div>
 <br>
-一行目を入力し、<span class="Special">&lt;Enter&gt;</span>&nbsp;を押して二行目を開始します:<br>
+最初の行、<span class="Special">&lt;Enter&gt;</span>、および 2 行目の始めをタイプすることから始めます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">if test -n a; then</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">echo</span><br>
 <br>
-二行目にはインデントが必要ですね。<span class="Special">CTRL-T</span>&nbsp;を押します:<br>
+ここで、余分なインデントが必要だとわかります。<span class="Special">CTRL-T</span>&nbsp;をタイプします。結果:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">if test -n a; then</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">echo</span><br>
 <br>
-挿入モードの&nbsp;<span class="Special">CTRL-T</span>&nbsp;コマンドは、<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;の幅だけインデントを増やします。<br>
-カーソルの位置は関係ありません。<br>
-二行目を入力し、<span class="Special">&lt;Enter&gt;</span>&nbsp;を押して三行目を開始します。三行目のインデントは問題あ<br>
-りません。<span class="Special">&lt;Enter&gt;</span>&nbsp;を押して最後の行を入力します。テキストは次のようになりまし<br>
-た:<br>
+<span class="Special">CTRL-T</span>&nbsp;コマンドは、挿入モードで、行のどこにいるかに関係なく、インデントに 1<br>
+<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;を追加します。<br>
+&nbsp;&nbsp; 2 行目、<span class="Special">&lt;Enter&gt;</span>、および 3 行目をタイプし続けます。今回はインデントは OK で<br>
+す。それから&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;および最後の行。これで、このようになっています:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">if test -n a; then</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">echo a</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">echo &quot;-------&quot;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">fi</span><br>
 <br>
-最後の行の余分なインデントを削除するには&nbsp;<span class="Special">CTRL-D</span>&nbsp;押します。これは&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a><br>
-の幅だけインデントを減らします。カーソルの位置は関係ありません。<br>
-ノーマルモードでは &quot;&gt;&gt;&quot; コマンドと &quot;&lt;&lt;&quot; コマンドで同様の操作ができます。&quot;&gt;&quot; と<br>
-&quot;&lt;&quot; はオペレータなので、他のオペレータと同様に、インデントを変更する範囲を三通<br>
-りの方法で指定できます。次の組み合わせが特に便利です:<br>
+最後の行の余分なインデントを削除するには、<span class="Special">CTRL-D</span>&nbsp;を押します。これは、行のどこ<br>
+にいるかに関係なく、1&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;分のインデントを削除します。<br>
+&nbsp;&nbsp; ノーマルモードにいるときは、&quot;&gt;&gt;&quot; および &quot;&lt;&lt;&quot; コマンドを使って行をシフトでき<br>
+ます。&quot;&gt;&quot; および &quot;&lt;&quot; はオペレータなので、インデントしたい行を指定する通常の 3<br>
+つの方法があります。便利な組み合わせは:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;i{</div>
 <br>
-現在のブロックのインデントが増えます。変更されるのは {} の中だけで、{ と } 自<br>
-体の行は変更されません。&quot;&gt;a{&quot; なら {} も含まれます。次の例では、カーソルは<br>
-&quot;printf&quot; の上にあります:<br>
+これは、{} の内側の、現在の行ブロックに 1 つのインデントを追加します。{ および<br>
+} の行自体は変更されないままです。&quot;&gt;a{&quot; はそれらを含みます。この例では、カーソ<br>
+ルは &quot;printf&quot; の上にあります:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;original text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; after &quot;&gt;i{&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; after &quot;&gt;a{&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;元のテキスト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&gt;i{&quot; の後&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;&gt;a{&quot; の後<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">if (flag)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (flag)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (flag)</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span><br>
@@ -405,110 +417,113 @@ Vim が使っている名前を確認できます:<br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_30.html#30.5" name="30.5">30.5</a>&nbsp;&nbsp;タブとスペース<br>
 <br>
-<span class="Statement">タブ導入の背景の簡単な歴史</span><br>
+<span class="Statement">タブの背後にある設計意図の手短な歴史</span><br>
 <br>
-(Vim の祖先である)&nbsp;<a class="Comment" href="intro.html#vi">vi</a>&nbsp;は Bill Joy によって開発されました。当時、彼はメモリと<br>
-I/O 操作能力が限られた PDP-11 を使用していました。当時は、次のようなトリックを<br>
-使ってソースコードのサイズを最適化するのが一般的でした。<br>
-&nbsp;&nbsp;ASCII テーブルは、もともとテレプリンターを遠隔制御するために設計されました。<br>
-制御文字 9 (水平タブ、キャレット表記: ^I) をテレプリンターに送信すると、キャ<br>
-リッジは次のタブストップに移動します。タブストップが 8 桁 (一般的な標準) で区<br>
-切られていると仮定すると、1 つの制御文字で最大 8 つのスペース文字と同じ視覚効<br>
-果を生み出すことができます。例えば、次の 2 行は同じように表示されます<br>
+<a class="Comment" href="intro.html#vi">vi</a>&nbsp;(Vim の祖先) は Bill Joy によって作られました。当時、彼は限られたメモリお<br>
+よび I/O 操作能力を持つ PDP-11 を使っていました。その頃は、以下のトリックでソー<br>
+スコードのサイズを最適化するのが一般的でした。<br>
+&nbsp;&nbsp;ASCII 表は、最初はテレプリンターを遠隔制御するために設計されました。制御文字<br>
+9 (水平タブ、キャレット記法: ^I) がテレプリンターに送られると、それはキャリッ<br>
+ジを次のタブストップへ移動させました。タブストップが 8 桁ごとに区切られている<br>
+(典型的な標準) と仮定すると、これは、1 つの制御文字が最大 8 個の空白文字と同じ<br>
+見た目の効果を生み出せたことを意味します。例えば、以下の 2 行は同じように表示<br>
+されます<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1234^I9<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1234&nbsp;&nbsp;&nbsp;&nbsp;9</div>
 <br>
-<span class="Special">&lt;Tab&gt;</span>&nbsp;キーを使用する方が、<span class="Special">&lt;Space&gt;</span>&nbsp;キーを複数回入力するよりも高速でした。<span class="Special">&lt;BS&gt;</span><br>
-キーの場合も同様です。<br>
+Tab&gt; キーを使うことは、<span class="Special">&lt;Space&gt;</span>&nbsp;を何回かタイプするより速くもありました; 同じこ<br>
+とが&nbsp;<span class="Special">&lt;BS&gt;</span>&nbsp;にも当てはまりました。<br>
 <br>
 <br>
 <span class="Statement">タブとインデントの問題</span><br>
 <br>
-Vim では、2 つの (仮想的な) 水平タブストップ間の列数は&nbsp;<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;で制御され、<br>
-デフォルトでは 8 に設定されています。この値は変更できますが、後ですぐに問題に<br>
-遭遇します。他のプログラムは、あなたが設定したタブストップ値を認識できないから<br>
-です。おそらくデフォルト値の 8 が使用されるため、テキストの見た目が突然大きく<br>
-変わってしまいます。また、ほとんどのプリンタは固定のタブストップ値 8 を使用し<br>
-ます。したがって、<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;はそのままにしておくのが最善です。異なるタブストッ<br>
-プ設定で作成されたファイルを編集する場合は、<a class="Identifier" href="usr_25.html#25.3">25.3</a>&nbsp;を参照して修正してください。<br>
-&nbsp;&nbsp; プログラム内の行をインデントする場合、8 桁の倍数を使用するとすぐにウィンド<br>
-ウの右端にぶつかってしまいます。スペース 1 つでは見た目の違いが十分に出ません。<br>
-多くの人は、妥協案として 4 桁のスペースを使うことを好みます。<br>
-&nbsp;&nbsp; 行の先頭のタブ文字は視覚的に 8 つのスペースとして表され、4 つのスペースのイ<br>
-ンデントを使用したいので、タブ文字を使用してインデントを作成することはできませ<br>
-ん。<br>
-&nbsp;&nbsp;これを改善するために、<a class="Comment" href="intro.html#vi">vi</a>&nbsp;には&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;オプションがありました。これを<br>
-4 に設定すると、挿入モードで新しい行に&nbsp;<span class="Special">&lt;C-t&gt;</span>&nbsp;を押すと行が 4 スペース分インデン<br>
-トされます。これは、<span class="Special">&lt;Tab&gt;</span>&nbsp;キーと&nbsp;<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;を 8 に設定しただけでは実現できない<br>
-結果です。<br>
-&nbsp;スペースを最適化するために、<a class="Comment" href="intro.html#vi">vi</a>&nbsp;は暗黙的にスペースの塊を削除し、タブ文字に置<br>
-き換えます。以下は、<span class="Special">&lt;C-t&gt;</span>&nbsp;を数回押したときに何が起こるかを示しています。<br>
+Vim では、2 つの (仮想の) 水平タブストップの間の桁数は&nbsp;<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;で制御され、<br>
+既定では 8 に設定されています。それを変更することはできますが、後ですぐに問題<br>
+に遭遇します。他のプログラムは、あなたがどの tabstop 値を使ったかを知りません。<br>
+それらはおそらく既定値の 8 を使い、あなたのテキストは突然大きく違って見えます。<br>
+また、ほとんどのプリンターは 8 の固定の tabstop 値を使います。したがって、<br>
+<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;はそのままにしておくのが最善です; 異なる tabstop 設定で書かれたファ<br>
+イルを編集する場合、それを直す方法については&nbsp;<a class="Identifier" href="usr_25.html#25.3">25.3</a>&nbsp;を参照してください。<br>
+&nbsp;&nbsp; プログラムの行をインデントするのに 8 桁の倍数を使うと、すぐにウィンドウの右<br>
+のボーダーにぶつかります。1 つのスペースを使うのでは、見た目に十分な違いが出ま<br>
+せん。多くの人は、よい妥協点である 4 つのスペースを使うことを好みます。<br>
+&nbsp;&nbsp; 行頭のタブ文字は見た目上 8 つのスペースとして表現され、あなたは 4 つのスペー<br>
+スのインデントを使いたいので、あなたのインデントを作るのにタブ文字を使うことは<br>
+できません。<br>
+&nbsp;&nbsp;これを解決するために、<a class="Comment" href="intro.html#vi">vi</a>&nbsp;には&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;オプションがありました。4 に設<br>
+定されていると、新しい行で、挿入モードで&nbsp;<span class="Special">&lt;C-t&gt;</span>&nbsp;を押すと、行は 4 つのスペースで<br>
+インデントされ、<span class="Special">&lt;Tab&gt;</span>&nbsp;キーおよび 8 に設定された&nbsp;<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;では得られない結果で<br>
+した。<br>
+&nbsp;容量を最適化するために、<a class="Comment" href="intro.html#vi">vi</a>&nbsp;はまた、ひとかたまりのスペースを黙って削除し、そ<br>
+れらをタブ文字で置き換えていました。以下は、<span class="Special">&lt;C-t&gt;</span>&nbsp;を何回か押すと何が起こるかを<br>
+示しています。<br>
 &nbsp;&nbsp;&quot;.&quot; はスペース文字を表し、&quot;-------&gt;&quot; はタブ文字を表します。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">タイプ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-t&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ....<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-t&gt;&lt;C-t&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-t&gt;&lt;C-t&gt;&lt;C-t&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -------&gt;....<br>
 <br>
-&nbsp;&nbsp;同様に、挿入モードで&nbsp;<span class="Special">&lt;C-d&gt;</span>&nbsp;を押すとインデントが減ります。したがって、<br>
-<span class="Comment">set tabstop=8 shiftwidth=2</span>&nbsp;とすると、以下のようになります<br>
+&nbsp;&nbsp;同様に、挿入モードで&nbsp;<span class="Special">&lt;C-d&gt;</span>&nbsp;を押すとインデントが減りました。したがって、<br>
+<span class="Comment">set tabstop=8 shiftwidth=2</span>&nbsp;で得られるのは<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">タイプ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-t&gt;&lt;Tab&gt;&lt;C-t&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ..-----&gt;..<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-t&gt;&lt;Tab&gt;&lt;C-t&gt;&lt;C-d&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------&gt;<br>
 <br>
-&nbsp;&nbsp;<a class="Comment" href="intro.html#vi">vi</a>&nbsp;で設定できる 3 つ目のオプションは&nbsp;<a class="Type" href="options.html#'autoindent'">'autoindent'</a>&nbsp;です。これは前の行のイン<br>
-デントレベルをコピーします<br>
+&nbsp;&nbsp;<a class="Comment" href="intro.html#vi">vi</a>&nbsp;で設定できた 3 つ目のオプションは&nbsp;<a class="Type" href="options.html#'autoindent'">'autoindent'</a>&nbsp;でした。それは前の行のイ<br>
+ンデントレベルをコピーします、<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">タイプ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Space&gt;&lt;Tab&gt;</span>hello&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .------&gt;hello<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Space&gt;&lt;Tab&gt;</span>hello<span class="Special">&lt;Enter&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.------&gt;hello<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------&gt;<br>
 <br>
-ただし、新しい行は、使用される文字数を最適化することによって生成されます。<br>
+しかし、新しい行は、使われる文字数を最適化することで生成されます。<br>
 <br>
 <br>
 <span class="Statement">スペースだけ</span><br>
 <br>
-しかし、タブストップを 8 桁で区切るという方法は普遍的ではありませんでした。IBM<br>
-では 10 桁が標準であり、今日では Go 開発者の中には&nbsp;<span class="Comment">tabstop=4</span>&nbsp;でコードを記述<br>
-する人もいます。テキストが毎回異なる&nbsp;<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;値で表示されると、特にファイル<br>
-を共有して別のマシンで開いた場合、テキストの位置がずれる危険性があります。<br>
-&nbsp;&nbsp;その間にコンピュータの性能は飛躍的に向上し、タブ文字の使用によって節約された<br>
-数オクテットはもはや実質的な効果を持たなくなっていました。スペースのみを使用す<br>
-ることで、どこでも同じ結果のテキストを保証できるようになりました。しかし、<a class="Comment" href="intro.html#vi">vi</a><br>
-では機能を犠牲にすることなくスペースのみを使用することは不可能でし<br>
-た。<a class="Type" href="options.html#'autoindent'">'autoindent'</a>&nbsp;は、可能な場合はタブ文字を体系的に入力しようとしていたことを<br>
-思い出してください。<br>
-&nbsp;&nbsp;Vim 4.0 では、<a class="Type" href="options.html#'expandtab'">'expandtab'</a>&nbsp;オプションが導入され、スペースのみの操作がタブのみ<br>
-(またはタブとスペースの混合) の操作と同じくらい便利になりました。このオプショ<br>
-ンを有効にすると、Vim は通常挿入する水平タブ文字を同数のスペースに置き換え、視<br>
-覚効果を同じにします。<span class="Special">&lt;BS&gt;</span>&nbsp;は、これまでと同様に一度に 1 文字のみを削除します。<br>
+しかし、タブストップを 8 桁で区切ることは普遍的ではありませんでした: IBM には<br>
+10 桁の標準があり、今日では一部の Go 開発者は&nbsp;<span class="Comment">tabstop=4</span>&nbsp;でコードを書いていま<br>
+す。テキストが異なる&nbsp;<a class="Type" href="options.html#'tabstop'">'tabstop'</a>&nbsp;値で表示されるたびに、特にファイルが共有されて<br>
+別のマシンで開かれると、テキストの位置がずれる危険があります。<br>
+&nbsp;&nbsp;その間に、コンピュータははるかによくなり、タブを使うことで節約される数オク<br>
+テットは、もはや実質的な違いを生まなくなっていました。スペースだけを使い、それ<br>
+によってどこでも同じ結果のテキストを保証することが可能になりました。しかし、<br>
+<a class="Comment" href="intro.html#vi">vi</a>&nbsp;では、機能を犠牲にせずにスペースだけを使うことは不可能でした。<br>
+<a class="Type" href="options.html#'autoindent'">'autoindent'</a>&nbsp;は、可能なときには体系的にタブ文字を入力しようとしたことを思い出<br>
+してください。<br>
+&nbsp;&nbsp;Vim 4.0 は、<a class="Type" href="options.html#'expandtab'">'expandtab'</a>&nbsp;オプションを導入することで、スペースだけで作業するこ<br>
+とを、タブだけ (またはタブおよびスペースの混在) で作業するのと同じくらい便利に<br>
+しました。設定されていると、Vim は、通常挿入するはずのすべての水平タブ文字を同<br>
+等の数のスペースで置き換え、最終的に同じ見た目の効果になるようにします。<span class="Special">&lt;BS&gt;</span><br>
+は引き続き一度に 1 文字だけを削除しました。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">タイプ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ........<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;&lt;BS&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .......<br>
 <br>
 <br>
-<span class="Statement">タブをスペースに変換 (およびその逆)</span><br>
+<span class="Statement">タブをスペースに変更する (および戻す)</span><br>
 <br>
-<a class="Type" href="options.html#'expandtab'">'expandtab'</a>&nbsp;を設定しても、既存のタブ文字にはすぐには影響しません。ファイル内の<br>
-水平タブ文字をすべて削除するには、Vim 5.3 で&nbsp;<a class="Identifier" href="change.html#:retab">:retab</a>&nbsp;コマンドが導入されまし<br>
-た。以下のコマンドを使用してください:<br>
+<a class="Type" href="options.html#'expandtab'">'expandtab'</a>&nbsp;を設定しても、既存のタブ文字にすぐには影響しません。ファイルからす<br>
+べての水平タブ文字を一掃するために、Vim 5.3 は&nbsp;<a class="Identifier" href="change.html#:retab">:retab</a>&nbsp;コマンドを導入しまし<br>
+た。これらのコマンドを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set expandtab<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:retab</div>
 <br>
-これは少し危険です。文字列内のタブも変更されてしまう可能性があるからです。その<br>
-ようなタブが存在するかどうかを確認するには、次のようにします:<br>
+これは、文字列の中のタブも変更する可能性があるので、少し危険です。これらが存在<br>
+するかどうかを確認するには、これを使うことができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&quot;[^&quot;\t]*\t[^&quot;]*&quot;</div>
 <br>
-文字列内でタブ文字そのものを使用することは推奨されません。問題を回避するには、<br>
-タブ文字を &quot;\t&quot; に置き換えてください。<br>
+文字列の中で実際のタブ文字を使わないことが推奨されます。トラブルを避けるため<br>
+に、それらを &quot;\t&quot; で置き換えてください。<br>
 <br>
-&nbsp;&nbsp;逆の場合も同様に機能します:<br>
+&nbsp;&nbsp;逆方向も同じようにうまく動作します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set noexpandtab<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:retab!</div>
@@ -516,59 +531,59 @@ Vim では、2 つの (仮想的な) 水平タブストップ間の列数は&nbs
 <br>
 <span class="Statement">ソフトタブストップ</span><br>
 <br>
-スペースだけを使用する場合、またはスペースと水平タブを組み合わせて使用する場<br>
-合、タブ文字だけを使用する場合のように、<span class="Special">&lt;Tab&gt;</span>&nbsp;キーと<span class="Special">&lt;BS&gt;</span>&nbsp;キーが対称的に動作し<br>
-ないという不快な感覚を覚えます。<br>
-&nbsp;&nbsp;Vim 5.4 では&nbsp;<a class="Type" href="options.html#'softtabstop'">'softtabstop'</a>&nbsp;オプションが導入されました。テキスト内の水平タブ<br>
-文字を表示するために使われる (ハード) タブストップに加え、Vim はカーソル専用の<br>
-ソフトタブストップを追加します。<a class="Type" href="options.html#'softtabstop'">'softtabstop'</a>&nbsp;が正の値に設定されている場合、<br>
-<span class="Special">&lt;Tab&gt;</span>&nbsp;キーを押すとカーソルが次のソフトタブストップに移動します。Vim はこの効果<br>
-を実現するために、タブ文字とスペースの適切な組み合わせを挿入します。同様に、<br>
-<span class="Special">&lt;BS&gt;</span>&nbsp;キーを押すと、カーソルは最も近いソフトタブストップに移動しようとします。<br>
-以下の例では、<span class="Comment">:set softtabstop=4</span>&nbsp;を使用しています。<br>
+スペースだけ、またはスペースおよび水平タブの混在を使うと、<span class="Special">&lt;Tab&gt;</span>&nbsp;および&nbsp;<span class="Special">&lt;BS&gt;</span>&nbsp;の<br>
+2 つのキーが、タブ文字だけを使うときのようには鏡のように振る舞わないという、不<br>
+快な感じを受けます。<br>
+&nbsp;&nbsp;Vim 5.4 は&nbsp;<a class="Type" href="options.html#'softtabstop'">'softtabstop'</a>&nbsp;オプションを導入しました。テキスト内の水平タブ文字<br>
+を表示するのに使われる (ハード) タブストップに加えて、Vim はカーソル専用の追加<br>
+のソフトタブストップを加えます。<a class="Type" href="options.html#'softtabstop'">'softtabstop'</a>&nbsp;が正の値に設定されていると、<br>
+<span class="Special">&lt;Tab&gt;</span>&nbsp;キーはカーソルを次のソフトタブストップへ押し進めます。Vim は、この効果を<br>
+達成するために、タブ文字およびスペースの正しい組み合わせを挿入します。同様に、<br>
+<span class="Special">&lt;BS&gt;</span>&nbsp;を押すと、カーソルは最も近いソフトタブストップに到達しようとします。以下<br>
+の例は&nbsp;<span class="Comment">:set softtabstop=4</span>&nbsp;を使います<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">タイプ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ....<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;&lt;Tab&gt;</span>a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -------&gt;a<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;&lt;Tab&gt;</span>a<span class="Special">&lt;Tab&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------&gt;a...<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;&lt;Tab&gt;</span>a<span class="Special">&lt;Tab&gt;&lt;BS&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;-------&gt;a<br>
 <br>
-&nbsp;&nbsp;全体的な一貫性を維持するために、<span class="Comment">:set softtabstop=-1</span>&nbsp;を指定し、2 つのソフト<br>
-タブストップ間の列数に&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;の値が使用されるようにすることができます。<br>
+&nbsp;&nbsp;全体の一貫性を保つために、<span class="Comment">:set softtabstop=-1</span>&nbsp;とすることで、2 つのソフトタ<br>
+ブストップの間の桁数に&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;の値が使われるようにできます。<br>
 <br>
-&nbsp;&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'softtabstop'">'softtabstop'</a>&nbsp;に異なる値を設定したい場合でも、<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a><br>
-でインデントするには&nbsp;<span class="Special">&lt;C-t&gt;</span>&nbsp;を使用できます。または、<a class="Type" href="options.html#'smarttab'">'smarttab'</a>&nbsp;オプションを使用<br>
-して、さまざまな状況で何を行うかを認識する統合された&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;キーを有効にするこ<br>
-ともできます。<br>
+&nbsp;&nbsp;<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'softtabstop'">'softtabstop'</a>&nbsp;に異なる値を持たせるほうが好みの場合、それ<br>
+でもそうすることができ、<a class="Type" href="options.html#'shiftwidth'">'shiftwidth'</a>&nbsp;でインデントするには&nbsp;<span class="Special">&lt;C-t&gt;</span>&nbsp;を使います。ま<br>
+たは、<a class="Type" href="options.html#'smarttab'">'smarttab'</a>&nbsp;オプションを使って、異なる状況で何をすべきかを知っている統一<br>
+された&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;キーを可能にすることもできます。<br>
 <br>
 <br>
 <span class="Statement">可変タブストップ</span><br>
 <br>
-前述の通り、ASCII テーブルはテレプリンターを遠隔制御するために設計されました。<br>
-特定のテレプリンターでは、物理的なタブストップの間隔を可変に設定できます。結局<br>
-のところ、制御文字 ^I は次のタブストップがどこであっても次のタブストップへ移動<br>
-するという指示を出すだけだったのです。<br>
-&nbsp;&nbsp;Vim 7.3 では、同じ機能をエミュレートする&nbsp;<a class="Type" href="options.html#'vartabstop'">'vartabstop'</a>&nbsp;が導入されました。例え<br>
-ば、Vim を&nbsp;<a class="Comment" href="various.html#+vartabs">+vartabs</a>&nbsp;でコンパイルし、<span class="Comment">:set vartabstop=2,4</span>&nbsp;とすると、以下のよ<br>
-うになります<br>
+前に述べたように、ASCII 表はテレプリンターを遠隔制御するために設計されました。<br>
+ある特定のテレプリンターは、その物理的なタブストップの間隔を可変にするように構<br>
+成できました。結局のところ、^I 制御文字は単に規定していただけでした: 次のタブ<br>
+ストップへ、それがどこにあっても行く。<br>
+&nbsp;&nbsp;Vim 7.3 は、同じ機能をエミュレートするために&nbsp;<a class="Type" href="options.html#'vartabstop'">'vartabstop'</a>&nbsp;を導入しました。例<br>
+えば、Vim が&nbsp;<a class="Comment" href="various.html#+vartabs">+vartabs</a>&nbsp;付きでコンパイルされていて、<span class="Comment">:set vartabstop=2,4</span>&nbsp;とし<br>
+た場合、得られるのは<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">実際の文字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">実際の文字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^I^I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;---&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^I^I^I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;---&gt;---&gt;<br>
 <br>
-&nbsp;&nbsp;同様に、可変間隔のソフトタブストップを設定するための&nbsp;<a class="Type" href="options.html#'varsofttabstop'">'varsofttabstop'</a>&nbsp;も導入<br>
-されました。<span class="Comment">:set varsofttabstop=2,4</span>&nbsp;とすると、以下のようになります。<br>
+&nbsp;&nbsp;同様に、可変間隔のソフトタブストップを持つために、<a class="Type" href="options.html#'varsofttabstop'">'varsofttabstop'</a>&nbsp;も導入さ<br>
+れました。<span class="Comment">:set varsofttabstop=2,4</span>&nbsp;で得られるのは<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">タイプ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ..<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;&lt;Tab&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;......<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;&lt;Tab&gt;&lt;Tab&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -------&gt;....<br>
 <br>
 <br>
-<span class="Statement">構成例</span><br>
+<span class="Statement">設定の例</span><br>
 <br>
-デフォルトでは、Vim はタブのみを使用するように設定されています:<br>
+既定では、Vim はタブだけを使うように構成されています:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set tabstop=8<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set shiftwidth=8<br>
@@ -576,65 +591,67 @@ Vim では、2 つの (仮想的な) 水平タブストップ間の列数は&nbs
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set softtabstop=0<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set nosmarttab</div>
 <br>
-&nbsp;&nbsp;C コードを Python のように記述したい場合 (スペースのみ、インデントは 4 スペー<br>
-ス)、以下のように記述します:<br>
+&nbsp;&nbsp;C のコードを Python であるかのように (スペースだけ、4 つのスペースのインデン<br>
+トで) 書きたい場合、使えるのはこれです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set shiftwidth=4<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set softtabstop=-1<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set expandtab</div>
 <br>
-&nbsp;&nbsp;同じ動作をしたいが、配置をより適切に制御したい場合 (例えば、パラメータまたは<br>
-コメントを 2 の倍数のスペースで整列させる) は、以下のようにします:<br>
+&nbsp;&nbsp;同じ動作だが、位置揃えをよりうまく制御したい (例えば、パラメータまたはコメン<br>
+トを 2 つのスペースの倍数で揃える) 場合、以下を使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set shiftwidth=4<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set softtabstop=2<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set expandtab<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set smarttab</div>
 <br>
-&nbsp;&nbsp;代わりに、Bram Moolenaar のような C コード (タブとスペースの組み合わせを使用)<br>
-を記述したい場合は、以下のようにします<br>
+&nbsp;&nbsp;代わりに、Bram Moolenaar が書いたであろうように (タブおよびスペースの混在を<br>
+使って) C のコードを書きたい場合、以下を使うことができます<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set shiftwidth=4<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set softtabstop=-1</div>
 <br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_30.html#30.6" name="30.6">30.6</a>&nbsp;&nbsp;コメントの整形<br>
+<a class="Constant" href="usr_30.html#30.6" name="30.6">30.6</a>&nbsp;&nbsp;コメントを整形する<br>
 <br>
-Vim のすばらしいところはコメントを解釈できるところです。コメントの整形を指示す<br>
-るだけで適切に処理してくれます。<br>
-例えば、次のようなコメントがあるとします:<br>
+Vim の素晴らしい点の 1 つは、コメントを理解することです。Vim にコメントを整形<br>
+するように頼むことができ、Vim は正しいことを行います。<br>
+&nbsp;&nbsp; 例えば、以下のコメントがあるとします:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/*</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">* This is a test</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">* of the text formatting.</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">*/</span><br>
 <br>
-最初の行に移動して次のコマンドを実行すると、コメントを整形できます:<br>
+それから、カーソルをコメントの先頭に置いてタイプすることで、Vim にそれを整形す<br>
+るように頼みます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gq]/</div>
 <br>
-&quot;gq&quot; はテキスト整形のためのオペレータです。&quot;]/&quot; はコメントの末尾に移動するコマ<br>
-ンドです。次のような結果になります:<br>
+&quot;gq&quot; はテキストを整形するオペレータです。&quot;]/&quot; はコメントの終わりへ移動するモー<br>
+ションです。結果は:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/*</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">* This is a test of the text formatting.</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">*/</span><br>
 <br>
-各行の行頭が適切に処理されていますね。<br>
-ビジュアルモードでテキストを選択してから &quot;gq&quot; を使う方法でも構いません。<br>
+Vim が各行の先頭を正しく扱ったことに注目してください。<br>
+&nbsp;&nbsp;代わりの方法は、整形するテキストをビジュアルモードで選択して &quot;gq&quot; をタイプす<br>
+ることです。<br>
 <br>
-新しい行を追加したい場合は、真ん中の行に移動して &quot;o&quot; を押します。次のような結<br>
-果になります:<br>
+コメントに新しい行を追加するには、カーソルを真ん中の行に置いて &quot;o&quot; を押します。<br>
+結果はこのようになります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/*</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">* This is a test of the text formatting.</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">*</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">*/</span><br>
 <br>
-行頭のスペースと * は自動的に挿入されるので、そのままコメントを入力することが<br>
-できます。テキストが&nbsp;<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;より長くなると自動的に改行されます。そのとき<br>
-も、行頭の * は自動的に挿入されます:<br>
+Vim はあなたのために星印およびスペースを自動的に挿入しました。これで、コメント<br>
+テキストをタイプできます。それが&nbsp;<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;より長くなると、Vim は行を折り返<br>
+します。ここでも、星印は自動的に挿入されます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/*</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">* This is a test of the text formatting.</span><br>
@@ -642,41 +659,43 @@ Vim のすばらしいところはコメントを解釈できるところです�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">* break</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">*/</span><br>
 <br>
-この機能を使うには&nbsp;<a class="Type" href="options.html#'formatoptions'">'formatoptions'</a>&nbsp;の設定が必要です:<br>
+これが動作するには、<a class="Type" href="options.html#'formatoptions'">'formatoptions'</a>&nbsp;にいくつかのフラグが存在しなければなりませ<br>
+ん:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 挿入モードで&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押したときに * を挿入する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ノーマルモードで &quot;o&quot; または &quot;O&quot; を使ったときに * を挿入する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; コメントを&nbsp;<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;の幅で改行する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 挿入モードで&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;をタイプしたときに星印を挿入する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ノーマルモードで &quot;o&quot; または &quot;O&quot; を使ったときに星印を挿入する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;に従ってコメントテキストを折り返す<br>
 <br>
-詳しくは&nbsp;<a class="Identifier" href="change.html#fo-table">fo-table</a>&nbsp;参照。<br>
+その他のフラグについては&nbsp;<a class="Identifier" href="change.html#fo-table">fo-table</a>&nbsp;を参照してください。<br>
 <br>
 <br>
-<span class="Statement">コメントの定義</span><br>
+<span class="Statement">コメントを定義する</span><br>
 <br>
-コメントの書式は&nbsp;<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;オプションで設定します。一行コメントと三部コメント<br>
-(開始、中間、終端からなるコメント) は分けて処理されます。<br>
-ほとんどの一行コメントは特定の文字で始まります。C++ は //、メイクファイルは #、<br>
-Vim は &quot; です。例えば、C++ のコメントなら次のように設定します:<br>
+<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;オプションは、コメントがどのように見えるかを定義します。Vim は、1<br>
+行コメントと、異なる始め、終わり、および中間部分を持つコメントを区別します。<br>
+&nbsp;&nbsp; 多くの 1 行コメントは特定の文字で始まります。C++ では // が使われ、Makefile<br>
+では #、Vim script では &quot; です。例えば、Vim に C++ のコメントを理解させるには:<br>
+<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set comments=://</div>
 <br>
-コロンはフラグとコメント文字の区切りです。<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;の設定は次のような形式で<br>
-指定します:<br>
+コロンは、項目のフラグを、コメントが認識されるテキストから区切ります。<br>
+<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;の項目の一般的な形式は:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{flags}</span>:<span class="Special">{text}</span><br>
 <br>
-この例のように、<span class="Special">{flags}</span>&nbsp;は空でも構いません。<br>
-複数のアイテムを指定するときはコンマで区切ります。アイテムを複数指定できるの<br>
-で、同じファイルの中でいろんな種類のコメントを使うことができます。例えばメール<br>
-を返信するときに、相手のメッセージに &quot;&gt;&quot; や &quot;!&quot; を付けて引用する場合は、次のよ<br>
-うに設定します:<br>
+<span class="Special">{flags}</span>&nbsp;の部分は、この場合のように空にできます。<br>
+&nbsp;&nbsp; これらの項目のいくつかを、コンマで区切って連結できます。これにより、異なる<br>
+タイプのコメントを同時に認識できます。例えば、電子メールのメッセージを編集しま<br>
+しょう。返信するとき、他の人が書いたテキストの前には &quot;&gt;&quot; および &quot;!&quot; 文字が付い<br>
+ています。このコマンドが動作するでしょう:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set comments=n:&gt;,n:!</div>
 <br>
-二つのアイテムが設定されました。一つは &quot;&gt;&quot; で開始するコメント、もう一つは &quot;!&quot;<br>
-で開始するコメントです。&quot;n&quot; フラグが使われているので、コメントを入れ子にできま<br>
-す。つまり、&quot;&gt;&quot; で開始する行は、&quot;&gt;&quot; の後ろに他のコメントを含んでいても構いませ<br>
-ん。この設定により、次のようなメッセージを整形することができます:<br>
+2 つの項目があり、1 つは &quot;&gt;&quot; で始まるコメント用、もう 1 つは &quot;!&quot; で始まるコメ<br>
+ント用です。両方ともフラグ &quot;n&quot; を使います。これは、これらのコメントが入れ子に<br>
+なることを意味します。したがって、&quot;&gt;&quot; で始まる行は、&quot;&gt;&quot; の後に別のコメントを持<br>
+つことができます。これにより、このようなメッセージを整形できます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&gt; ! Did you see that site?</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&gt; ! It looks really great.</span><br>
@@ -685,37 +704,39 @@ Vim は &quot; です。例えば、C++ のコメントなら次のように設�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">What is the URL of that</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">site?</span><br>
 <br>
-<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;の設定を変更して (例えば 80 にして)、テキストを整形してみましょ<br>
-う。ビジュアルモードでテキストを選択してから &quot;gq&quot; を押します:<br>
+<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;を別の値、例えば 80 に設定し、テキストをビジュアル選択して &quot;gq&quot; を<br>
+タイプすることで整形してみてください。結果は:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&gt; ! Did you see that site?&nbsp;&nbsp;It looks really great.</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">&gt; I don't like it.&nbsp;&nbsp;The colors are terrible.</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">What is the URL of that site?</span><br>
 <br>
-違う種類のコメントテキストは混ざっていませんね。<br>
-二行目の &quot;I&quot; は一行目の末尾に入れることも可能ですが、しかし、一行目は &quot;&gt; !&quot; で<br>
-始まり、二行目は &quot;&gt;&quot; で始まっているため、それらのコメントは別のものであると判<br>
-断されます。<br>
+Vim が、あるタイプのコメントから別のタイプへテキストを移動しなかったことに気付<br>
+くでしょう。2 行目の &quot;I&quot; は 1 行目の末尾に収まったはずですが、その行は &quot;&gt; !&quot;<br>
+で始まり、2 行目は &quot;&gt;&quot; で始まるので、Vim はこれが異なる種類のコメントであるこ<br>
+とを知っています。<br>
 <br>
 <br>
-<span class="Statement">三部コメント</span><br>
+<span class="Statement">3 部分からなるコメント</span><br>
 <br>
-C のコメントは &quot;/*&quot; で始まり、中間には &quot;*&quot; が付き、&quot;*/&quot; で終わります。このよう<br>
-なコメントは次のように設定します:<br>
+C のコメントは &quot;/*&quot; で始まり、中間に &quot;*&quot; を持ち、終わりに &quot;*/&quot; があります。こ<br>
+のための&nbsp;<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;の項目はこのようになります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set comments=s1:/*,mb:*,ex:*/</div>
 <br>
-開始部分は &quot;s1:/*&quot; です。&quot;s&quot; は三部コメントの開始を示します。フラグとコメント<br>
-文字 &quot;/*&quot; をコロンで区切っています。フラグには &quot;1&quot; が指定されていますが、これ<br>
-により中間部分がスペース一個分、字下げされます。<br>
-中間部分は &quot;mb:*&quot; です。&quot;m&quot; は三部コメントの中間を示します。&quot;b&quot; フラグは、コメ<br>
-ント文字の後ろに空白が必要であることを示します。これを指定しないと、&quot;*pointer&quot;<br>
-などもコメントとして認識されてしまいます。<br>
-終端部分は &quot;ex:*/&quot; です。&quot;e&quot; は三部コメントの終端を示します。&quot;x&quot; は特殊なフラ<br>
-グです。中間の * が自動的に挿入された直後に &quot;/&quot; を押すと、余計なスペースが削除<br>
-されます。<br>
+始めは &quot;s1:/*&quot; で定義されます。&quot;s&quot; は 3 部分からなるコメントの始めを示します。<br>
+コロンは、フラグを、コメントが認識されるテキストから区切ります: &quot;/*&quot;。フラグは<br>
+1 つあります: &quot;1&quot;。これは Vim に、中間部分が 1 スペースのオフセットを持つこと<br>
+を伝えます。<br>
+&nbsp;&nbsp; 中間部分 &quot;mb:*&quot; は &quot;m&quot; で始まり、これはそれが中間部分であることを示します。<br>
+&quot;b&quot; フラグは、テキストの後に空白が続かなければならないことを意味します。そうで<br>
+ないと、Vim は &quot;*pointer&quot; のようなテキストもコメントの中間とみなしてしまいま<br>
+す。<br>
+&nbsp;&nbsp; 終わりの部分 &quot;ex:*/&quot; には、識別のための &quot;e&quot; があります。&quot;x&quot; フラグには特別<br>
+な意味があります。それは、Vim が自動的に星印を挿入した後、/ をタイプすると余分<br>
+なスペースが削除されることを意味します。<br>
 <br>
-詳細は&nbsp;<a class="Identifier" href="change.html#format-comments">format-comments</a>&nbsp;を参照してください。<br>
+詳細については&nbsp;<a class="Identifier" href="change.html#format-comments">format-comments</a>&nbsp;を参照してください。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
