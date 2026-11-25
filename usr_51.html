@@ -12,58 +12,55 @@ helpname: 'usr_51'
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プラグインを作る<br>
 <br>
 <br>
-プラグインを使用することで、特定のファイルの種別の設定、構文ハイライトやその他<br>
-多くの設定を定義できます。<br>
-この章ではVimプラグインでのもっとも共通な部分の書き方について説明します。<br>
+プラグインは、特定の種類のファイルに対する設定、構文ハイライト、および多くの他<br>
+のものを定義するために使うことができます。この章では、最も一般的な Vim プラグ<br>
+インの書き方を説明します。<br>
 <br>
 <a class="Identifier" href="usr_51.html#51.1">51.1</a>&nbsp;&nbsp;一般的なプラグインを書く<br>
 <a class="Identifier" href="usr_51.html#51.2">51.2</a>&nbsp;&nbsp;ファイルタイププラグインを書く<br>
 <a class="Identifier" href="usr_51.html#51.3">51.3</a>&nbsp;&nbsp;コンパイラプラグインを書く<br>
 <a class="Identifier" href="usr_51.html#51.4">51.4</a>&nbsp;&nbsp;Vim script を配布する<br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_52.html">usr_52.txt</a>&nbsp;&nbsp;大きなプラグインを作る<br>
+次章:&nbsp;<a class="Identifier" href="usr_52.html">usr_52.txt</a>&nbsp;&nbsp;大きなプラグインを書く<br>
 前章:&nbsp;<a class="Identifier" href="usr_50.html">usr_50.txt</a>&nbsp;&nbsp;高度な Vim script の書き方<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_51.html#51.1" name="51.1">51.1</a>&nbsp;&nbsp;一般的なプラグインを書く&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_51.html#write-plugin" name="write-plugin">write-plugin</a><br>
 <br>
-Vim script を書いて、それを多くの人に使ってもらうことができます。そのようなス<br>
-クリプトはプラグインと呼ばれます。Vim ユーザーはあなたのスクリプトをプラグイン<br>
-ディレクトリにコピーするだけで、すぐにその機能を使うことができます。<br>
-<a class="Identifier" href="usr_05.html#add-plugin">add-plugin</a>&nbsp;参照。<br>
+多くの人が使えるような方法で Vim script を書くことができます。これはプラグイン<br>
+と呼ばれます。Vim ユーザーは、あなたのスクリプトを自分のプラグインディレクトリ<br>
+に置いて、その機能をすぐに使うことができます&nbsp;<a class="Identifier" href="usr_05.html#add-plugin">add-plugin</a>。<br>
 <br>
-プラグインには二種類あります:<br>
+実際には、2 種類のプラグインがあります:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;グローバルプラグイン : すべてのファイルで共通<br>
-&nbsp;&nbsp;ファイルタイププラグイン : ファイルの種類別<br>
+&nbsp;&nbsp;グローバルプラグイン: すべての種類のファイル用。<br>
+ファイルタイププラグイン: 特定の種類のファイル専用。<br>
 <br>
-この節ではグローバルプラグインについて説明します。ほとんどの説明はファイルタイ<br>
-ププラグインに対してもあてはまります。ファイルタイププラグイン特有の説明は次節<br>
-にあります&nbsp;<a class="Identifier" href="usr_51.html#write-filetype-plugin">write-filetype-plugin</a>。<br>
+このセクションでは、1 つ目の種類について説明します。ほとんどの項目は、ファイル<br>
+タイププラグインを書くことにも関係があります。ファイルタイププラグインに特有の<br>
+ことは、次のセクション&nbsp;<a class="Identifier" href="usr_51.html#write-filetype-plugin">write-filetype-plugin</a>&nbsp;にあります。<br>
 <br>
-新しいプラグインを書くのに推奨される方法なので、ここでは&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;の文法を使いま<br>
-す。ファイルが&nbsp;<a class="Comment" href="vim9.html#vim9script">vim9script</a>&nbsp;コマンドで始まることを確認してください。<br>
+ここでは、新しいプラグインを書くのに推奨される方法である&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;構文を使いま<br>
+す。ファイルが&nbsp;<a class="Comment" href="vim9.html#vim9script">vim9script</a>&nbsp;コマンドで始まるようにしてください。<br>
 <br>
 <br>
 <span class="Statement">名前</span><br>
 <br>
-最初にプラグインの名前を決めなければなりません。プラグインが提供する機能が名前<br>
-から分かるようにしてください。また、他の人が作ったプラグインと名前がかぶらない<br>
-ようにしてください。<br>
+まず最初に、あなたのプラグインの名前を選ばなければなりません。プラグインが提供<br>
+する機能は、その名前から明らかであるべきです。そして、他の誰かが、同じ名前だが<br>
+異なることをするプラグインを書く可能性は低くあるべきです。<br>
 <br>
-例えばタイプミス (type mistake) を修正 (correct) するためのスクリプトなら<br>
-&quot;typecorrect.vim&quot; という名前を付けたりします。ここではこれを例題として使いま<br>
-す。<br>
+タイプミスを修正するスクリプトは、&quot;typecorrect.vim&quot; と呼ぶことができるでしょ<br>
+う。ここではそれを例として使います。<br>
 <br>
-プラグインが誰でも使えるようにするため、いくつかのガイドラインに従ってくださ<br>
-い。ガイドラインは段階的に説明していきます。例題プラグインの完全なソースは最後<br>
-に示します。<br>
+プラグインがすべての人のために機能するには、いくつかのガイドラインに従うべきで<br>
+す。これは段階を追って説明されます。完全な例のプラグインは最後にあります。<br>
 <br>
 <br>
-<span class="Statement">本体部分</span><br>
+<span class="Statement">本体</span><br>
 <br>
-まずはプラグインの本体部分を見てみましょう。行番号は実際の番号です:<br>
+プラグインの本体、実際の作業を行う行から始めましょう:<br>
 <br>
 <div class="helpExample">&nbsp;12&nbsp;&nbsp;&nbsp;&nbsp; iabbrev teh the<br>
 &nbsp;13&nbsp;&nbsp;&nbsp;&nbsp; iabbrev otehr other<br>
@@ -71,115 +68,120 @@ Vim script を書いて、それを多くの人に使ってもらうことがで
 &nbsp;15&nbsp;&nbsp;&nbsp;&nbsp; iabbrev synchronisation<br>
 &nbsp;16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \ synchronization</div>
 <br>
-もちろん、実際のリストはもっと長いです。<br>
+もちろん、実際のリストはずっと長くあるべきです。<br>
 <br>
-行番号は説明のために追加したものです。プラグインを書くときは行番号を付けないで<br>
-ください。<br>
+行番号は、いくつかのことを説明するためだけに追加されています、それらをあなたの<br>
+プラグインファイルに入れないでください!<br>
 <br>
 <br>
 <span class="Statement">最初の行</span><br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp; vim9script noclear</div>
 <br>
-<a class="Comment" href="vim9.html#vim9script">vim9script</a>&nbsp;を一番最初のコマンドとして使用する必要があります。一番最初の行に<br>
-記述するのがベストです。<br>
+一番最初のコマンドとして&nbsp;<a class="Comment" href="vim9.html#vim9script">vim9script</a>&nbsp;を使う必要があります。一番よいのは、それ<br>
+を一番最初の行に置くことです。<br>
 <br>
-作成しているスクリプトは、2回目にロードされたときに終了するための&nbsp;<a class="Comment" href="repeat.html#:finish">finish</a>&nbsp;コ<br>
-マンドがあります。スクリプトで定義された項目が失われるのを防ぐために、<br>
-&quot;noclear&quot; 引数を使用します。詳しくは&nbsp;<a class="Identifier" href="vim9.html#vim9-reload">vim9-reload</a>&nbsp;をご覧ください。<br>
+私たちが書いているスクリプトには、2 回目に読み込まれたときに抜け出すための<br>
+<a class="Comment" href="repeat.html#:finish">finish</a>&nbsp;コマンドがあります。スクリプト内で定義された項目が失われるのを避ける<br>
+ために、&quot;noclear&quot; 引数が使われます。これについての詳細は&nbsp;<a class="Identifier" href="vim9.html#vim9-reload">vim9-reload</a>&nbsp;に。<br>
 <br>
 <br>
 <span class="Statement">ヘッダー</span><br>
 <br>
-新しい単語を追加していくと、プラグインには複数のバージョンが存在することになり<br>
-ます。ファイルを配布したとき、それを使った人は、誰がこの素晴らしいプラグインを<br>
-書いたのかを知りたいと思うでしょうし、感想を伝えたいと思うかもしれません。<br>
-というわけで、次のようなヘッダーをプラグインに書いてください:<br>
+おそらく、あなたはプラグインに新しい修正を追加し、すぐにいくつかのバージョンが<br>
+散らばることになるでしょう。そして、このファイルを配布するとき、人々は、誰がこ<br>
+のすばらしいプラグインを書いたのか、およびどこに意見を送ることができるのかを知<br>
+りたがるでしょう。したがって、あなたのプラグインの先頭にヘッダーを置いてくださ<br>
+い:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp; # Vim global plugin for correcting typing mistakes<br>
+<div class="helpExample">&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp; # タイプミスを修正するための Vim グローバルプラグイン<br>
 &nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp; # Last Change:&nbsp;&nbsp;2021 Dec 30<br>
 &nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp; # Maintainer:&nbsp;&nbsp; Bram Moolenaar &lt;Bram@vim.org&gt;</div>
 <br>
-著作権とライセンスについて: プラグインがとても便利で、そして再配布を制限するほ<br>
-どのものでない場合は、パブリックドメインか Vim ライセンス (<a class="Identifier" href="uganda.html#license">license</a>) の適用を<br>
-検討してみてください。次の短い宣言をプラグインの先頭付近に書いておくだけで十分<br>
-です:<br>
+著作権およびライセンスについて: プラグインはとても便利で、その配布を制限する価<br>
+値はほとんどないので、あなたのプラグインをパブリックドメインにするか、または<br>
+Vim の&nbsp;<a class="Identifier" href="uganda.html#license">license</a>&nbsp;を使うことを検討してください。プラグインの先頭近くの、これに<br>
+ついての短い注記で十分なはずです。例:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp; # License:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This file is placed in the public domain.</div>
+<div class="helpExample">&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp; # License:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このファイルはパブリックドメインに置かれている。</div>
 <br>
 <br>
-<span class="Statement">ロードしない</span><br>
+<span class="Statement">読み込まない</span><br>
 <br>
-ユーザーが常にプラグインをロードしたいと思うとは限りません。また、システム管理<br>
-者がシステムのプラグインディレクトリにプラグインを入れたが、ユーザーは自分で入<br>
-れたプラグインを使いたいということもあります。したがって、指定したプラグインだ<br>
-けを無効にできる必要があります。次の行のようにします:<br>
+ユーザーがこのプラグインを常に読み込みたいとは限らない可能性があります。また<br>
+は、システム管理者がそれをシステム全体のプラグインディレクトリに置いたが、ユー<br>
+ザーは使いたい自分自身のプラグインを持っています。その場合、ユーザーはこの特定<br>
+のプラグインの読み込みを無効にする機会を持たなければなりません。これらの行がそ<br>
+れを可能にします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp; if exists(&quot;g:loaded_typecorrect&quot;)<br>
 &nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; finish<br>
 &nbsp;&nbsp;9&nbsp;&nbsp;&nbsp;&nbsp; endif<br>
 &nbsp;10&nbsp;&nbsp;&nbsp;&nbsp; g:loaded_typecorrect = 1</div>
 <br>
-これはスクリプトの2重ロードで関数が無意味に再定義されることと自動コマンドが2重<br>
-に追加されるのを避ける効果もあります。<br>
+これはまた、スクリプトが 2 回読み込まれたときに、無意味に関数を再定義し、2 回<br>
+追加される自動コマンドに対して問題を引き起こすことも避けます。<br>
 <br>
-変数の名前は &quot;g:loaded_&quot; で始めてプラグインのファイル名をそのまま付けるように<br>
-してください。&quot;g:&quot; を付けることで変数をグローバルにし、他の箇所で機能があるか<br>
-チェックできるようにします。&quot;g:&quot; を付けないとスクリプトローカルになります。<br>
+名前は &quot;g:loaded_&quot; で始め、その後にプラグインのファイル名をそのまま続けること<br>
+が推奨されます。&quot;g:&quot; は、他の場所がその機能が使用可能かどうかをチェックできる<br>
+ように、変数をグローバルにするために前に付けられます。&quot;g:&quot; なしでは、それはス<br>
+クリプトにローカルになるでしょう。<br>
 <br>
-<a class="Comment" href="repeat.html#:finish">finish</a>&nbsp;を使ってファイルの残りの部分の読み込みを停止しています。Vimはコマンド<br>
-を解析して&nbsp;<a class="Comment" href="eval.html#:endif">endif</a>&nbsp;を見つける必要があるため、この方法はファイル全体を if-endif<br>
-で囲むよりもはるかに高速です。<br>
+<a class="Comment" href="repeat.html#:finish">finish</a>&nbsp;を使うと、Vim はファイルの残りを読むのをやめます、Vim は&nbsp;<a class="Comment" href="eval.html#:endif">endif</a>&nbsp;を見<br>
+つけるためにやはりコマンドを解析する必要があるので、ファイル全体の周りに<br>
+if-endif を使うよりもずっと速いです。<br>
 <br>
 <br>
-<span class="Statement">マップ</span><br>
+<span class="Statement">マッピング</span><br>
 <br>
-さて、プラグインをもっと魅力あるものに仕上げましょう。マップを追加して、カーソ<br>
-ルの下の単語に対する修正を追加できるようにします。単純にキーを選んでマップを設<br>
-定することもできますが、そのキーは既にユーザーが使っているかもしれません。マッ<br>
-プに使用するキーをユーザーが選択できるようにするには、<span class="Special">&lt;Leader&gt;</span>&nbsp;を使います:<br>
+では、プラグインをもっと面白くしましょう: カーソルの下の単語に対する修正を追加<br>
+するマッピングを追加します。このマッピングのために単にキーシーケンスを選ぶこと<br>
+もできますが、ユーザーがすでにそれを何か他のことに使っているかもしれません。プ<br>
+ラグイン内のマッピングがどのキーを使うかをユーザーが定義できるようにするため<br>
+に、<span class="Special">&lt;Leader&gt;</span>&nbsp;項目を使うことができます:<br>
 <br>
 <div class="helpExample">&nbsp;20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; map &lt;unique&gt; &lt;Leader&gt;a&nbsp;&nbsp;&lt;Plug&gt;(TypecorrAdd)</div>
 <br>
-&quot;<span class="Special">&lt;Plug&gt;</span>(TypecorrAdd);&quot; は目的の動作をします。詳しくは後で説明します。<br>
+&quot;<span class="Special">&lt;Plug&gt;</span>(TypecorrAdd)&quot; というものが作業を行います、それについての詳細は後で。<br>
 <br>
-使用したいキーを &quot;g:mapleader&quot; 変数に設定することで、プラグインのマップの最初<br>
-のキーを設定できます。例えば、次のように設定すると:<br>
+ユーザーは &quot;g:mapleader&quot; 変数を、プラグインのマッピングを始めたいキーシーケン<br>
+スに設定できます。したがって、ユーザーが以下を行っていた場合:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:mapleader = &quot;_&quot;</div>
 <br>
-マップは &quot;_a&quot; と定義されます。変数が設定されていない場合は初期設定 (バックス<br>
-ラッシュ) が使われます。つまり &quot;\a&quot; というマップが定義されます。<br>
+マッピングは &quot;_a&quot; を定義します。ユーザーがこれを行わなかった場合、バックスラッ<br>
+シュである既定値が使われます。その場合、&quot;\a&quot; に対するマップが定義されます。<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;上記のコマンドでは&nbsp;<span class="Special">&lt;unique&gt;</span>&nbsp;が使われています。これは、同じマップが既に定<br>
-義されていた場合にエラーを表示します。<a class="Identifier" href="map.html#:map-<unique>">:map-&lt;unique&gt;</a><br>
+<span class="Todo">Note</span>&nbsp;<span class="Special">&lt;unique&gt;</span>&nbsp;が使われていることに注意、これは、マッピングがたまたますでに存在<br>
+していた場合、エラーメッセージを発生させます。<a class="Identifier" href="map.html#:map-<unique>">:map-&lt;unique&gt;</a><br>
 <br>
-マップするキーをユーザーが自分で定義できるようにするには、次のようにします:<br>
+しかし、ユーザーが自分自身のキーシーケンスを定義したい場合はどうでしょう? この<br>
+仕組みでそれを許可できます:<br>
 <br>
 <div class="helpExample">&nbsp;19&nbsp;&nbsp;&nbsp;&nbsp; if !hasmapto('&lt;Plug&gt;(TypecorrAdd)')<br>
 &nbsp;20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; map &lt;unique&gt; &lt;Leader&gt;a&nbsp;&nbsp;&lt;Plug&gt;(TypecorrAdd)<br>
 &nbsp;21&nbsp;&nbsp;&nbsp;&nbsp; endif</div>
 <br>
-&quot;<span class="Special">&lt;Plug&gt;</span>(TypecorrAdd);&quot; に対するマップが既にあるかどうかを調べ、無い場合のみ<br>
-&quot;<span class="Special">&lt;Leader&gt;</span>a&quot; にマップを定義します。ユーザーは自分の vimrc ファイルの中でマップ<br>
-を定義することができます:<br>
+これは &quot;<span class="Special">&lt;Plug&gt;</span>(TypecorrAdd)&quot; へのマッピングがすでに存在するかどうかをチェック<br>
+し、存在しない場合だけ &quot;<span class="Special">&lt;Leader&gt;</span>a&quot; からのマッピングを定義します。その場合、ユー<br>
+ザーには、これを自分の vimrc ファイルに入れる機会があります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map ,c&nbsp;&nbsp;&lt;Plug&gt;(TypecorrAdd)</div>
 <br>
-すると、マップのキーとして &quot;,c&quot; が使われます。&quot;_a&quot; や &quot;\a&quot; は使われません。<br>
+その場合、マップされたキーシーケンスは &quot;_a&quot; または &quot;\a&quot; の代わりに &quot;,c&quot; になり<br>
+ます。<br>
 <br>
 <br>
-<span class="Statement">ピース</span><br>
+<span class="Statement">部品</span><br>
 <br>
-スクリプトが大きくなると、それを部品ごとに分けたくなります。それには関数やマッ<br>
-プを使います。しかし、そうすると関数やマップが他のスクリプトのものと衝突する可<br>
-能性があります。例えば、Add() という関数を追加したとき、他のスクリプトでも同じ<br>
-名前の関数が定義されているかもしれません。そのような場合は、スクリプトの中だけ<br>
-で使える関数を定義します。<br>
-幸いにも、<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では、これがデフォルトです。旧来のスクリプトでは、名前<br>
-の前に &quot;s:&quot; を付ける必要があります。<br>
+スクリプトが長くなると、作業を部品に分割したいことがよくあります。これには関数<br>
+またはマッピングを使えます。しかし、これらの関数およびマッピングが他のスクリプ<br>
+トのものと干渉してほしくはありません。例えば、関数 Add() を定義できますが、別<br>
+のスクリプトが同じ関数を定義しようとするかもしれません。これを避けるために、関<br>
+数をスクリプトにローカルに定義します。幸い、<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script ではこれが既定です。<br>
+旧来のスクリプトでは、名前の前に &quot;s:&quot; を付ける必要があるでしょう。<br>
 <br>
-新しい修正を追加するための関数を定義します:<br>
+新しいタイプ修正を追加する関数を定義します:<br>
 <br>
 <div class="helpExample">&nbsp;28&nbsp;&nbsp;&nbsp;&nbsp; def Add(from: string, correct: bool)<br>
 &nbsp;29&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var to = input($&quot;type the correction for {from}: &quot;)<br>
@@ -187,121 +189,123 @@ Vim script を書いて、それを多くの人に使ってもらうことがで
 &nbsp;...<br>
 &nbsp;34&nbsp;&nbsp;&nbsp;&nbsp; enddef</div>
 <br>
-Add() 関数は同じスクリプトの中から呼び出すことができます。他のスクリプトが<br>
-Add() を定義していた場合、それはそのスクリプトにローカルであり、スクリプトの中<br>
-からのみ呼び出すことができます。さらにグローバルの g:Add() 関数を定義すること<br>
-もでき、それはまた別の関数になります。<br>
+これで、このスクリプトの中から関数 Add() を呼び出すことができます。別のスクリ<br>
+プトも Add() を定義している場合、それはそのスクリプトにローカルで、そのスクリ<br>
+プトからだけ呼び出すことができます。グローバルな g:Add() 関数も存在し得て、そ<br>
+れはまた別の関数です。<br>
 <br>
-マップ定義では&nbsp;<span class="Special">&lt;SID&gt;</span>&nbsp;が使えます。これは、現在のスクリプトを識別するためのスク<br>
-リプト ID を生成します。私たちの入力修正プラグインでは&nbsp;<span class="Special">&lt;SID&gt;</span>&nbsp;を次のように使い<br>
-ます:<br>
+<span class="Special">&lt;SID&gt;</span>&nbsp;はマッピングで使うことができます。それは、カレントスクリプトを識別するス<br>
+クリプト ID を生成します。私たちのタイプ修正プラグインでは、これをこのように使<br>
+います:<br>
 <br>
 <div class="helpExample">&nbsp;22&nbsp;&nbsp;&nbsp;&nbsp; noremap &lt;unique&gt; &lt;script&gt; &lt;Plug&gt;(TypecorrAdd)&nbsp;&nbsp;&lt;SID&gt;Add<br>
 &nbsp;...<br>
 &nbsp;26&nbsp;&nbsp;&nbsp;&nbsp; noremap &lt;SID&gt;Add&nbsp;&nbsp;:call &lt;SID&gt;Add(expand(&quot;&lt;cword&gt;&quot;), true)&lt;CR&gt;</div>
 <br>
-ユーザーが &quot;\a&quot; と入力すると、次の手順でキー入力が呼び出されます:<br>
+したがって、ユーザーが &quot;\a&quot; をタイプすると、このシーケンスが呼び出されます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\a&nbsp;&nbsp;-&gt;&nbsp;&nbsp;&lt;Plug&gt;(TypecorrAdd)&nbsp;&nbsp;-&gt;&nbsp;&nbsp;&lt;SID&gt;Add&nbsp;&nbsp;-&gt;&nbsp;&nbsp;:call &lt;SID&gt;Add(...)</div>
 <br>
-他のスクリプトで&nbsp;<span class="Special">&lt;SID&gt;</span>Add をマップすると、別のスクリプト ID が使われ、別のマッ<br>
-プが生成されます。<br>
+別のスクリプトも&nbsp;<span class="Special">&lt;SID&gt;</span>Add をマップする場合、それは別のスクリプト ID を得て、し<br>
+たがって別のマッピングを定義します。<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;Add() ではなく&nbsp;<span class="Special">&lt;SID&gt;</span>Add() と書いていることに注意してください。マップはス<br>
-クリプトコンテキストの外側でユーザーが入力するものだからです。<span class="Special">&lt;SID&gt;</span>&nbsp;はスクリプ<br>
-ト ID に変換され、どのスクリプトの Add() 関数を呼べばいいのかわかるようになっ<br>
-ています。<br>
+<span class="Todo">Note</span>&nbsp;ここでは Add() の代わりに&nbsp;<span class="Special">&lt;SID&gt;</span>Add() を使っていることに注意。それは、マッ<br>
+ピングはユーザーによってタイプされ、したがってスクリプトのコンテキストの外にあ<br>
+るからです。Vim がどのスクリプトで Add() 関数を探せばよいかが分かるように、<br>
+<span class="Special">&lt;SID&gt;</span>&nbsp;はスクリプト ID に変換されます。<br>
 <br>
-これは少し複雑ですが、複数のプラグインを同時に使用するためには必要なことです。<br>
-基本的なルールとしては、マップの中では&nbsp;<span class="Special">&lt;SID&gt;</span>Add() を使い、他の場所 (スクリプト<br>
-の中、自動コマンド、ユーザー定義コマンド) では Add() を使います。<br>
+これは少し複雑ですが、プラグインが他のプラグインと一緒に機能するために必要で<br>
+す。基本的なルールは、マッピングでは&nbsp;<span class="Special">&lt;SID&gt;</span>Add() を使い、他の場所 (スクリプト自<br>
+体、自動コマンド、ユーザーコマンド) では Add() を使うということです。<br>
 <br>
-マップと同じ方法で、メニューを追加することもできます:<br>
+マッピングと同じことを行うメニュー項目を追加することもできます:<br>
 <br>
 <div class="helpExample">&nbsp;24&nbsp;&nbsp;&nbsp;&nbsp; noremenu &lt;script&gt; Plugin.Add\ Correction&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;SID&gt;Add</div>
 <br>
-プラグインのメニューを追加する場合は &quot;Plugin&quot; メニューの下に登録することが推奨<br>
-されています。この例ではメニューが一つだけですが、複数のメニューを追加する場合<br>
-は、サブメニューの使用が推奨されています。例えば、&quot;Plugin.CVS&quot; 以下に<br>
-&quot;Plugin.CVS.checkin&quot; や &quot;Plugin.CVS.checkout&quot; などの CVS の操作を登録します。<br>
+&quot;Plugin&quot; メニューは、プラグイン用のメニュー項目を追加するために推奨されていま<br>
+す。この場合、1 つの項目だけが使われています。より多くの項目を追加するときは、<br>
+サブメニューを作成することが推奨されます。例えば、&quot;Plugin.CVS&quot; は、CVS 操作<br>
+&quot;Plugin.CVS.checkin&quot;、&quot;Plugin.CVS.checkout&quot; などを提供するプラグインに使うこと<br>
+ができるでしょう。<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;26 行目では &quot;:noremap&quot; を使って、他のマップでトラブルが起きないようにし<br>
-ています。例えば、誰かが &quot;:call&quot; をマップしているかもしれないからです。22 行目<br>
-でも &quot;:noremap&quot; を使っていますが、ここでは &quot;<span class="Special">&lt;SID&gt;</span>Add&quot; を再マップして欲しいの<br>
-で、&quot;<span class="Special">&lt;script&gt;</span>&quot; を使っています。これを使うとスクリプトローカルなマップだけが再<br>
-マップされます&nbsp;<a class="Identifier" href="map.html#:map-<script>">:map-&lt;script&gt;</a>。24 行目でも &quot;:noremenu&quot; で同様のことをしていま<br>
-す&nbsp;<a class="Identifier" href="gui.html#:menu-<script>">:menu-&lt;script&gt;</a>。<br>
+<span class="Todo">Note</span>&nbsp;26 行目では、他のマッピングが問題を起こすのを避けるために &quot;:noremap&quot; が使<br>
+われていることに注意。例えば、誰かが &quot;:call&quot; を再マップしているかもしれません。<br>
+22 行目でも &quot;:noremap&quot; を使っていますが、&quot;<span class="Special">&lt;SID&gt;</span>Add&quot; は再マップされてほしいので<br>
+す。これが、ここで &quot;<span class="Special">&lt;script&gt;</span>&quot; が使われている理由です。これは、スクリプトにロー<br>
+カルなマッピングだけを許可します。<a class="Identifier" href="map.html#:map-<script>">:map-&lt;script&gt;</a>&nbsp;&nbsp;24 行目でも &quot;:noremenu&quot; に<br>
+対して同じことが行われています。<a class="Identifier" href="gui.html#:menu-<script>">:menu-&lt;script&gt;</a><br>
 <br>
 <br>
 <span class="Statement">&lt;SID&gt; と &lt;Plug&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_51.html#using-<Plug>" name="using-&lt;Plug&gt;">using-&lt;Plug&gt;</a><br>
 <br>
-<span class="Special">&lt;SID&gt;</span>&nbsp;と&nbsp;<span class="Special">&lt;Plug&gt;</span>&nbsp;は、入力したキーに対するマップと、他のマップの中だけで使われる<br>
-マップが干渉しないようにするために使われます。<span class="Special">&lt;SID&gt;</span>&nbsp;と&nbsp;<span class="Special">&lt;Plug&gt;</span>&nbsp;の違いに注意して<br>
-ください:<br>
+<span class="Special">&lt;SID&gt;</span>&nbsp;および&nbsp;<span class="Special">&lt;Plug&gt;</span>&nbsp;は両方とも、タイプされたキーのマッピングが、他のマッピング<br>
+からだけ使われるべきマッピングと干渉するのを避けるために使われます。<span class="Special">&lt;SID&gt;</span>&nbsp;を使<br>
+うことと&nbsp;<span class="Special">&lt;Plug&gt;</span>&nbsp;を使うことの間の違いに注意してください:<br>
 <br>
-<span class="Special">&lt;Plug&gt;</span>&nbsp;&nbsp;これはスクリプトの外側からも見えます。ユーザーが自分でプラグインの機能<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;をマップできるようにするような場合に使います。<span class="Special">&lt;Plug&gt;</span>&nbsp;は特殊なコード<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;で、キーボードから入力されることはありません。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キー列が他のプラグインとかぶらないように、<span class="Special">&lt;Plug&gt;</span>&nbsp;スクリプト名 マップ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名、という形式で使ってください。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名前を括弧で囲みます。結果として &quot;<span class="Special">&lt;Plug&gt;</span>(TypecorrAdd)&quot; となります。パ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スカルケースを使用するという慣例により、スクリプト名とマップ名を区別し<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;やすくなります。<br>
+<span class="Special">&lt;Plug&gt;</span>&nbsp;&nbsp;スクリプトの外から見えます。これは、ユーザーがキーシーケンスをマップし<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;たいと思うかもしれないマッピングに使われます。<span class="Special">&lt;Plug&gt;</span>&nbsp;は、タイプされた<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キーが決して生成しない特殊なコードです。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;他のプラグインが同じ文字のシーケンスを使う可能性を非常に低くするため<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に、この構造を使ってください:&nbsp;<span class="Special">&lt;Plug&gt;</span>&nbsp;scriptname mapname 私たちの例で<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、scriptname は &quot;Typecorr&quot; で、mapname は &quot;Add&quot; です。名前を括弧で囲<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;みます。これにより &quot;<span class="Special">&lt;Plug&gt;</span>(TypecorrAdd)&quot; になります。PascalCase を使う<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;慣習は、scriptname を mapname と区別するのに役立ちます。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;&quot;<span class="Special">&lt;Plug&gt;</span>&quot; の後のテキストはプラグイン作成者によって選択され、完全<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に任意です。名前を括弧で囲んだり、パスカルケースを使用したり、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;<span class="Special">&lt;Plug&gt;</span>TypecorrAdd;&quot; のように &quot;;&quot; を追加したりするのは、名前の読みやす<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;さを保ち、他のプラグインとの衝突を防ぐための慣例にすぎません。これらは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;どれも必須ではありません。重要なのは、シーケンスが &quot;<span class="Special">&lt;Plug&gt;</span>&quot; で始まり、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一意であることです。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{lhs}</span>&nbsp;が &quot;<span class="Special">&lt;Plug&gt;</span>&quot; で始まるマップは、再マップが明示的に禁止されている場<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合でも、常に別のマップの&nbsp;<span class="Special">{rhs}</span>&nbsp;に適用されます。&nbsp;<a class="Identifier" href="map.html#:nore">:nore</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;&quot;<span class="Special">&lt;Plug&gt;</span>&quot; の後のテキストはプラグインの作者によって選ばれ、完全に<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;任意です。名前を括弧で囲むこと、PascalCase を使うこと、または<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;<span class="Special">&lt;Plug&gt;</span>TypecorrAdd;&quot; のような &quot;;&quot; 終端子を追加することは、名前を読みや<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;すく、かつ他のプラグインと衝突しにくく保つための慣習にすぎません。それ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;らのどれも必須ではありません: 重要なのは、シーケンスが &quot;<span class="Special">&lt;Plug&gt;</span>&quot; で始ま<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;り、一意であることだけです。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{lhs}</span>&nbsp;が&nbsp;<span class="Special">&lt;Plug&gt;</span>&nbsp;で始まるマッピングは、再マップが明示的に禁止されている<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;場合でも、常に別のマッピングの&nbsp;<span class="Special">{rhs}</span>&nbsp;に適用されます。<a class="Identifier" href="map.html#:nore">:nore</a><br>
 <br>
-<span class="Special">&lt;SID&gt;</span>&nbsp;&nbsp; これはスクリプト ID (スクリプト固有の識別子) です。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim は内部で&nbsp;<span class="Special">&lt;SID&gt;</span>&nbsp;を &quot;<span class="Special">&lt;SNR&gt;</span>123_&quot; に変換します (&quot;123&quot; の部分はいろいろ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;な数字が入ります)。つまり、関数 &quot;<span class="Special">&lt;SID&gt;</span>Add()&quot; は、あるスクリプトでは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;<span class="Special">&lt;SNR&gt;</span>11_Add()&quot; という名前になり、別のスクリプトでは &quot;<span class="Special">&lt;SNR&gt;</span>22_Add()&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;になります。これは &quot;:function&quot; コマンドで関数一覧を表示すると確認する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ことができます。<span class="Special">&lt;SID&gt;</span>&nbsp;の変換はマップの中でも同様におこなわれるので、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マップの中からスクリプトローカル関数を呼び出すことができます。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;マップの&nbsp;<span class="Special">{rhs}</span>&nbsp;に&nbsp;<span class="Special">&lt;SID&gt;</span>&nbsp;が現れた場合は、<span class="Special">&lt;script&gt;</span>&nbsp;の使用を検討し<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;てください。<a class="Identifier" href="map.html#:map-<script>">:map-&lt;script&gt;</a><br>
+<span class="Special">&lt;SID&gt;</span>&nbsp;&nbsp; スクリプト ID、スクリプトに対する一意な識別子です。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内部的に、Vim は&nbsp;<span class="Special">&lt;SID&gt;</span>&nbsp;を、&quot;123&quot; が任意の数であり得る &quot;<span class="Special">&lt;SNR&gt;</span>123_&quot; に変<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;換します。したがって、関数 &quot;<span class="Special">&lt;SID&gt;</span>Add()&quot; は、あるスクリプトでは<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;<span class="Special">&lt;SNR&gt;</span>11_Add()&quot; という名前を持ち、別のスクリプトでは &quot;<span class="Special">&lt;SNR&gt;</span>22_Add()&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;という名前を持ちます。関数のリストを得るために &quot;:function&quot; コマンドを<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使う場合、これを見ることができます。マッピング内の&nbsp;<span class="Special">&lt;SID&gt;</span>&nbsp;の変換はまっ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;たく同じです、それが、マッピングからスクリプトローカルな関数を呼び出せ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る仕組みです。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;<span class="Special">&lt;SID&gt;</span>&nbsp;がマッピングの&nbsp;<span class="Special">{rhs}</span>&nbsp;に現れるときは、<span class="Special">&lt;script&gt;</span>&nbsp;を使うことを<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;検討してもよいでしょう。<a class="Identifier" href="map.html#:map-<script>">:map-&lt;script&gt;</a><br>
 <br>
 <br>
-<span class="Statement">ユーザー定義コマンド</span><br>
+<span class="Statement">ユーザーコマンド</span><br>
 <br>
-修正を追加するためのユーザー定義コマンドを追加します:<br>
+では、修正を追加するユーザーコマンドを追加しましょう:<br>
 <br>
 <div class="helpExample">&nbsp;36&nbsp;&nbsp;&nbsp;&nbsp; if !exists(&quot;:Correct&quot;)<br>
 &nbsp;37&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; command -nargs=1&nbsp;&nbsp;Correct&nbsp;&nbsp;:call Add(&lt;q-args&gt;, false)<br>
 &nbsp;38&nbsp;&nbsp;&nbsp;&nbsp; endif</div>
 <br>
-ユーザー定義コマンドは、同じ名前のコマンドがまだない場合のみ定義できます。既に<br>
-定義されている場合はエラーになります。&quot;:command!&quot; を使ってユーザー定義関数を上<br>
-書きするのは良いアイデアとは言えません。ユーザーは、自分が定義したコマンドがな<br>
-ぜ動かないのか不思議に思うでしょう。<a class="Identifier" href="map.html#:command">:command</a><br>
-だれの責任でそうなってしまったのか見付けるには:<br>
+同じ名前のコマンドがまだ存在しない場合だけ、ユーザーコマンドが定義されます。さ<br>
+もないと、ここでエラーが発生するでしょう。既存のユーザーコマンドを &quot;:command!&quot;<br>
+で上書きするのはよい考えではありません、これはおそらく、ユーザーに、自分自身で<br>
+定義したコマンドがなぜ機能しないのかと不思議に思わせるでしょう。<a class="Identifier" href="map.html#:command">:command</a>&nbsp;そ<br>
+れが起こった場合、以下で誰のせいかを突き止めることができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verbose command Correct</div>
 <br>
 <br>
 <span class="Statement">スクリプト変数</span><br>
 <br>
-先頭に &quot;s:&quot; が付いた変数はスクリプト変数です。これはスクリプトの中だけで使えま<br>
-す。スクリプトの外からは見えません。同じ名前の変数を複数のスクリプトで使ってし<br>
-まうようなトラブルを避けることができます。Vim が実行されている間、変数は保持さ<br>
-れます。そして、同じスクリプトが再読み込みされると、再び同じ変数が使われます。<br>
-<a class="Identifier" href="eval.html#s:var">s:var</a><br>
+変数が &quot;s:&quot; で始まるとき、それはスクリプト変数です。それはスクリプトの中でだけ<br>
+使うことができます。スクリプトの外では、それは見えません。これにより、異なるス<br>
+クリプトで同じ変数名を使うことによる問題が避けられます。変数は Vim が実行され<br>
+ている間保持されます。そして、同じスクリプトを再び読み込むときに、同じ変数が使<br>
+われます。<a class="Identifier" href="eval.html#s:var">s:var</a><br>
 <br>
-<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script の良いところは、変数がデフォルトでスクリプトローカルであるという<br>
-ことです。必要に応じて &quot;s:&quot; を前に付けることができますが、そうする必要はありま<br>
-せん。また、スクリプト内の関数も、プリフィックスなしでスクリプト変数を使用する<br>
-ことができます(これが機能するには、関数の前に宣言する必要があります)。<br>
+<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script の良いところは、変数が既定でスクリプトにローカルであることです。<br>
+望む場合、&quot;s:&quot; を前に付けることもできますが、その必要はありません。そして、ス<br>
+クリプト内の関数も、プリフィックスなしでスクリプト変数を使うことができます (こ<br>
+れが機能するには、それらは関数の前に宣言されていなければなりません)。<br>
 <br>
-スクリプトローカル変数は、スクリプト内で定義した関数、自動コマンド、ユーザーコ<br>
-マンド内でも使用できます。したがって、プラグイン内の部品間で情報を漏らさずに共<br>
-有するための最適な方法です。この例では、修正回数を数えるための行をいくつか追加<br>
-することができます:<br>
+スクリプトローカル変数は、スクリプト内で定義された関数、自動コマンド、および<br>
+ユーザーコマンドでも使うことができます。したがって、それらは、それが外に漏れる<br>
+ことなく、あなたのプラグインの部分の間で情報を共有するための完璧な方法です。私<br>
+たちの例では、修正の数を数えるための数行を追加できます:<br>
 <br>
 <div class="helpExample">&nbsp;17&nbsp;&nbsp;&nbsp;&nbsp; var count = 4<br>
 &nbsp;...<br>
@@ -311,20 +315,21 @@ Add() を定義していた場合、それはそのスクリプトにローカ�
 &nbsp;33&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo &quot;you now have &quot; .. count .. &quot; corrections&quot;<br>
 &nbsp;34&nbsp;&nbsp;&nbsp;&nbsp; enddef</div>
 <br>
-&quot;count&quot; はスクリプト内の 4 で宣言と初期化がされます。その後、Add() 関数が呼び<br>
-出されると、&quot;count&quot; がインクリメントされます。関数がどこから呼ばれたかにかかわ<br>
-らず、関数が定義されたスクリプトのローカル変数を使用します。<br>
+&quot;count&quot; はスクリプト自体の中で宣言され、4 に初期化されます。後で Add() 関数が<br>
+呼ばれると、それは &quot;count&quot; をインクリメントします。関数がどこから呼ばれたかは<br>
+問題ではありません、それはスクリプト内で定義されているので、このスクリプトの<br>
+ローカル変数を使います。<br>
 <br>
 <br>
-<span class="Statement">まとめ</span><br>
+<span class="Statement">結果</span><br>
 <br>
-例題の完成形は以下のようになります:<br>
+これが、結果として得られる完全な例です:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp; vim9script noclear<br>
-&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp; # Vim global plugin for correcting typing mistakes<br>
+&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp; # タイプミスを修正するための Vim グローバルプラグイン<br>
 &nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp; # Last Change:&nbsp;&nbsp;2021 Dec 30<br>
 &nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp; # Maintainer:&nbsp;&nbsp; Bram Moolenaar &lt;Bram@vim.org&gt;<br>
-&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp; # License:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This file is placed in the public domain.<br>
+&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp; # License:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このファイルはパブリックドメインに置かれている。<br>
 &nbsp;&nbsp;6<br>
 &nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp; if exists(&quot;g:loaded_typecorrect&quot;)<br>
 &nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; finish<br>
@@ -359,20 +364,21 @@ Add() を定義していた場合、それはそのスクリプトにローカ�
 &nbsp;37&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; command -nargs=1&nbsp;&nbsp;Correct&nbsp;&nbsp;call Add(&lt;q-args&gt;, false)<br>
 &nbsp;38&nbsp;&nbsp;&nbsp;&nbsp; endif</div>
 <br>
-31 行目は説明がまだでした。これは、新しい修正をカーソルの下の単語に適用しま<br>
-す。<a class="Identifier" href="various.html#:normal">:normal</a>&nbsp;コマンドを使って新しい略語を適用しています。<span class="Todo">Note:</span>&nbsp;マップと略語は<br>
-その場で展開されます。&quot;:noremap&quot; で定義されたマップから関数が呼び出されたとし<br>
-ても動作は同じです。<br>
+31 行目はまだ説明していませんでした。それは新しい修正をカーソルの下の単語に適<br>
+用します。新しい短縮入力を使うために&nbsp;<a class="Identifier" href="various.html#:normal">:normal</a>&nbsp;コマンドが使われます。<span class="Todo">Note</span>&nbsp;関数<br>
+が &quot;:noremap&quot; で定義されたマッピングから呼ばれたにもかかわらず、ここではマッピ<br>
+ングおよび短縮入力が展開されることに注意。<br>
 <br>
 <br>
 <span class="Statement">ドキュメント</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_51.html#write-local-help" name="write-local-help">write-local-help</a><br>
 <br>
-プラグインのドキュメントを書くのは良いアイデアです。ユーザーが動作を変更できる<br>
-ような場合には特に重要です。ヘルプファイルで使用される構文については、<br>
-<a class="Identifier" href="helphelp.html#help-writing">help-writing</a>&nbsp;を参照。ローカルヘルプファイルのインストール方法については、<br>
-<a class="Identifier" href="usr_05.html#add-local-help">add-local-help</a>&nbsp;を参照。<br>
+あなたのプラグインのドキュメントもいくらか書くのはよい考えです。特に、その動作<br>
+がユーザーによって変更できるときは。ヘルプファイルで使われる構文については<br>
+<a class="Identifier" href="helphelp.html#help-writing">help-writing</a>&nbsp;を、ローカルヘルプファイルがどのようにインストールされるかにつ<br>
+いては&nbsp;<a class="Identifier" href="usr_05.html#add-local-help">add-local-help</a>&nbsp;を参照してください。<br>
 <br>
-プラグインヘルプファイルの例を示します (&quot;typecorrect.txt&quot;):<br>
+これは、&quot;typecorrect.txt&quot; と呼ばれる、プラグインのヘルプファイルの簡単な例です:<br>
+<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp; *typecorrect.txt*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Plugin for correcting typing mistakes<br>
 &nbsp;&nbsp;2<br>
@@ -392,141 +398,145 @@ Add() を定義していた場合、それはそのスクリプトにローカ�
 &nbsp;16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *typecorrect-settings*<br>
 &nbsp;17&nbsp;&nbsp;&nbsp;&nbsp; This plugin doesn't have any settings.</div>
 <br>
-書式に気をつけなければならないのは一行目だけです。一行目はコピーされ、help.txt<br>
-の &quot;LOCAL ADDITIONS:&quot; の項に埋め込まれます&nbsp;<a class="Identifier" href="index.html#local-additions">local-additions</a>。最初の &quot;*&quot; は一<br>
-行目の一桁目に書いてください。ヘルプを追加したら &quot;:help&quot; を実行して項目が追加<br>
-されたことを確認してください。<br>
+最初の行が、実際のところ書式が重要な唯一の行です。それはヘルプファイルから抽出<br>
+され、help.txt の &quot;LOCAL ADDITIONS:&quot; セクションに入れられます<br>
+<a class="Identifier" href="index.html#local-additions">local-additions</a>。最初の &quot;*&quot; は最初の行の最初の桁になければなりません。あなた<br>
+のヘルプファイルを追加した後、&quot;:help&quot; を実行して、項目がきれいに並んでいること<br>
+を確認してください。<br>
 <br>
-ヘルプの中で ** で文字を囲むとタグを追加することができます。ただし、既存のヘル<br>
-プタグと同じものを使わないでください。&quot;typecorrect-settings&quot; のように、プラグ<br>
-インの名前を使ってタグを作るといいかもしれません。<br>
+あなたのヘルプファイルの中で、** の中にさらにタグを追加できます。しかし、既存<br>
+のヘルプタグを使わないように注意してください。おそらく、その例の<br>
+&quot;typecorrect-settings&quot; のように、ほとんどのタグにあなたのプラグインの名前を使<br>
+うことになるでしょう。<br>
 <br>
-ヘルプの他の部分を参照するときは || で囲みます。そうすれば、ユーザーは簡単にヘ<br>
-ルプの関連した部分を参照することができます。<br>
+|| の中で、ヘルプの他の部分への参照を使うことが推奨されます。これにより、ユー<br>
+ザーが関連するヘルプを見つけやすくなります。<br>
 <br>
 <br>
-<span class="Statement">要約</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_51.html#plugin-special" name="plugin-special">plugin-special</a><br>
+<span class="Statement">まとめ</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_51.html#plugin-special" name="plugin-special">plugin-special</a><br>
 <br>
-プラグインで使用する特有事項の要約を示します:<br>
+プラグインで使う特別なもののまとめ:<br>
 <br>
-var name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクリプトローカル変数。<br>
+var name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクリプトにローカルな変数。<br>
 <br>
-<span class="Special">&lt;SID&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スクリプトID。マップや関数をスクリプトローカルにする<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のに使う。<br>
+<span class="Special">&lt;SID&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スクリプト ID、スクリプトにローカルなマッピングおよび<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数に使われる。<br>
 <br>
-hasmapto()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクリプトが提供している機能に対して、ユーザーが既に<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マップを定義したかどうかをチェックする関数。<br>
+hasmapto()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクリプトが提供する機能に対するマッピングを、ユーザー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;がすでに定義しているかどうかをテストする関数。<br>
 <br>
-<span class="Special">&lt;Leader&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;mapleader&quot; の値。ユーザーがその変数にキーを設定するこ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;とで、プラグインのマップの開始キーを指定できる。<br>
+<span class="Special">&lt;Leader&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ユーザーが、プラグインのマッピングが始まるキーとして定<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;義する &quot;mapleader&quot; の値。<br>
 <br>
-map&nbsp;<span class="Special">&lt;unique&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マップが既に定義されているなら警告を発する。<br>
+map&nbsp;<span class="Special">&lt;unique&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マッピングがすでに存在する場合、警告を出す。<br>
 <br>
-noremap&nbsp;<span class="Special">&lt;script&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このスクリプトで定義されている、<span class="Special">&lt;SID&gt;</span>&nbsp;で始まるマップの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;みを再マップします。<br>
+noremap&nbsp;<span class="Special">&lt;script&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このスクリプトで定義された、<span class="Special">&lt;SID&gt;</span>&nbsp;で始まるマッピングだ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;けを再マップする。<br>
 <br>
-exists(&quot;:Cmd&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ユーザー定義コマンドが既にあるかどうかをチェックする。<br>
+exists(&quot;:Cmd&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ユーザーコマンドがすでに存在するかどうかをチェックす<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_51.html#51.2" name="51.2">51.2</a>&nbsp;&nbsp;ファイルタイププラグインを書く&nbsp;&nbsp;<a class="Constant" href="usr_51.html#write-filetype-plugin" name="write-filetype-plugin">write-filetype-plugin</a>&nbsp;<a class="Constant" href="usr_51.html#ftplugin" name="ftplugin">ftplugin</a><br>
 <br>
-ファイルタイププラグインはグローバルプラグインと似ていますが、カレントバッファ<br>
-のマップやオプションだけを設定します。ファイルタイププラグインの使用方法につい<br>
-ては&nbsp;<a class="Identifier" href="usr_05.html#add-filetype-plugin">add-filetype-plugin</a>&nbsp;を参照してください。<br>
+ファイルタイププラグインはグローバルプラグインに似ていますが、カレントバッファ<br>
+に対してだけオプションを設定し、マッピングを定義する点が異なります。この種類の<br>
+プラグインがどのように使われるかについては、<a class="Identifier" href="usr_05.html#add-filetype-plugin">add-filetype-plugin</a>&nbsp;を参照してく<br>
+ださい。<br>
 <br>
-先に&nbsp;<a class="Identifier" href="usr_51.html#51.1">51.1</a>&nbsp;節のグローバルプラグインの項を読んでください。そこで説明されている<br>
-ことはすべてファイルタイププラグインにもあてはまります。この節ではファイルタイ<br>
-ププラグイン特有の事項だけを説明します。ファイルタイププラグインはカレントバッ<br>
-ファに対してのみ機能するということが最も大切です。<br>
+まず、上のグローバルプラグインについてのセクション&nbsp;<a class="Identifier" href="usr_51.html#51.1">51.1</a>&nbsp;を読んでください。そ<br>
+こで述べられていることはすべて、ファイルタイププラグインにも当てはまります。い<br>
+くつかの追加事項があり、それらはここで説明します。本質的なことは、ファイルタイ<br>
+ププラグインはカレントバッファにだけ効果を持つべきだということです。<br>
 <br>
 <br>
 <span class="Statement">無効化</span><br>
 <br>
-ファイルタイププラグインを書いて多くの人に使ってもらおうとするなら、プラグイン<br>
-を無効化できるようにしておく必要があります。プラグインの先頭に次のような記述を<br>
-追加してください:<br>
+多くの人に使われるファイルタイププラグインを書いている場合、彼らにはその読み込<br>
+みを無効にする機会が必要です。プラグインの先頭にこれを置いてください:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# このバッファに対してまだ実行されていない場合のみ処理を実行する<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# このバッファに対してまだ行われていないときだけ、これを行う<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if exists(&quot;b:did_ftplugin&quot;)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finish<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b:did_ftplugin = 1</div>
 <br>
-これは同じプラグインが同じバッファで二重にロードされるのを防ぐためにも必要です<br>
-(&quot;:edit&quot; コマンドを引数なしで実行したときに発生します)。<br>
+これは、同じプラグインが同じバッファに対して 2 回実行されるのを避けるためにも<br>
+使われる必要があります (引数なしで &quot;:edit&quot; コマンドを使うときに起こります)。<br>
 <br>
-ユーザーは、次の行を書いたファイルタイププラグインを作成することで、標準プラグ<br>
-インのロードを無効化できます:<br>
+これで、ユーザーは、これらの行だけを持つファイルタイププラグインを作ることで、<br>
+既定のプラグインの読み込みを完全に無効にできます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b:did_ftplugin = 1</div>
 <br>
-ただし、そのファイルを保存したファイルタイププラグインディレクトリが、<br>
-<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の中で $VIMRUNTIME よりも前にある必要があります。<br>
+これには、ファイルタイププラグインディレクトリが&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;で $VIMRUNTIME<br>
+より前に来ることが必要です!<br>
 <br>
-標準プラグインを使いつつ、その設定を一つだけ変更したいという場合は、スクリプト<br>
-の中で設定を変更することができます:<br>
+既定のプラグインを使いたいが、設定の 1 つを上書きしたい場合、異なる設定をスク<br>
+リプトに書くことができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setlocal textwidth=70</div>
 <br>
-このファイルを &quot;after&quot; ディレクトリに保存すると、(例えば filetype=vim なら) 標<br>
-準配布の &quot;vim.vim&quot; が読み込まれた後に、保存したファイルが読み込まれるようにな<br>
-ります&nbsp;<a class="Identifier" href="options.html#after-directory">after-directory</a>。Unix ならファイルのパスは<br>
-&quot;~/.vim/after/ftplugin/vim.vim&quot; です。<span class="Todo">Note:</span>&nbsp;標準プラグインは &quot;b:did_ftplugin&quot;<br>
-を設定しますが、しかしここではそれを無視しています。<br>
+では、配布されている &quot;vim.vim&quot; ftplugin&nbsp;<a class="Identifier" href="options.html#after-directory">after-directory</a>&nbsp;の後に読み込まれるよ<br>
+うに、これを &quot;after&quot; ディレクトリに書いてください。Unix では、これは<br>
+&quot;~/.vim/after/ftplugin/vim.vim&quot; になるでしょう。<span class="Todo">Note</span>&nbsp;既定のプラグインは<br>
+&quot;b:did_ftplugin&quot; を設定しているでしょう、それはここでは無視されることに注意。<br>
 <br>
 <br>
 <span class="Statement">オプション</span><br>
 <br>
-ファイルタイププラグインでは、カレントバッファの設定だけを変更するため、次のコ<br>
-マンドを使ってオプションを設定してください:<br>
+ファイルタイププラグインがカレントバッファにだけ影響することを確実にするには、<br>
+オプションを設定するのに<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setlocal</div>
 <br>
-そして、バッファローカルなオプションだけを設定してください (どのオプションがそ<br>
-うなのかはヘルプで確認してください)。<a class="Comment" href="options.html#:setlocal">:setlocal</a>&nbsp;コマンドでグローバルオプショ<br>
-ンやウィンドウローカルオプションを設定すると、たくさんのバッファの設定が変更さ<br>
-れます。ファイルタイププラグインはそのような動作をすべきではありません。<br>
+コマンドを使ってください。そして、バッファにローカルなオプションだけを設定して<br>
+ください (それを確認するには、そのオプションのヘルプを参照してください)。グロー<br>
+バルオプション、またはウィンドウにローカルなオプションに対して&nbsp;<a class="Comment" href="options.html#:setlocal">:setlocal</a>&nbsp;を<br>
+使うと、値は多くのバッファで変わり、それはファイルタイププラグインがすべきこと<br>
+ではありません。<br>
 <br>
-オプションの値がフラグや設定項目のリストなら、&quot;+=&quot; や &quot;-=&quot; を使うことで既存の<br>
-設定を維持することができます。ユーザーがそのオプションの設定を変更している可能<br>
-性もあるので注意してください。最初に初期設定に戻してから設定を変更するといいか<br>
-もしれません。例:<br>
+オプションがフラグまたは項目のリストである値を持つとき、既存の値を保持するため<br>
+に &quot;+=&quot; および &quot;-=&quot; を使うことを検討してください。ユーザーがすでにオプションの<br>
+値を変更しているかもしれないことに注意してください。最初に既定値にリセットして<br>
+から変更するのは、多くの場合よい考えです。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setlocal formatoptions&amp; formatoptions+=ro</div>
 <br>
 <br>
 <span class="Statement">マッピング</span><br>
 <br>
-カレントバッファの中だけで機能するマップを作るには次のコマンドを使います:<br>
+マッピングがカレントバッファでだけ機能することを確実にするには<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map &lt;buffer&gt;</div>
 <br>
-上述したように、マップは二段階に分けて作る必要があります。ファイルタイププラグ<br>
-インで機能を定義する例を示します:<br>
+コマンドを使ってください。これは、上で説明した 2 段階のマッピングと組み合わせ<br>
+る必要があります。ファイルタイププラグインで機能を定義する方法の例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if !hasmapto('&lt;Plug&gt;JavaImport;')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map &lt;buffer&gt; &lt;unique&gt; &lt;LocalLeader&gt;i &lt;Plug&gt;JavaImport;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;noremap &lt;buffer&gt; &lt;unique&gt; &lt;Plug&gt;JavaImport; oimport &quot;&quot;&lt;Left&gt;&lt;Esc&gt;</div>
 <br>
-<a class="Identifier" href="builtin.html#hasmapto()">hasmapto()</a>&nbsp;を使って、ユーザーが既に&nbsp;<span class="Special">&lt;Plug&gt;</span>JavaImport; に対してマップを定義し<br>
-ているかどうかを調べます。未定義ならファイルタイププラグインの標準のマップを定<br>
-義します。マップは&nbsp;<span class="Special">&lt;LocalLeader&gt;</span>&nbsp;で開始します。そうすることで、ファイルタイプ<br>
-プラグインのマップを開始するキーをユーザーが選択できます。初期設定はバックス<br>
-ラッシュです。<br>
-&quot;<span class="Special">&lt;unique&gt;</span>&quot; を使って、マップが既に存在したとき、あるいは既存のマップと重複した<br>
-ときにエラーメッセージが表示されるようにします。<br>
-<a class="Identifier" href="map.html#:noremap">:noremap</a>&nbsp;を使って、ユーザーが定義した他のマップの影響を受けないようにしま<br>
-す。&quot;:noremap&nbsp;<span class="Special">&lt;script&gt;</span>&quot; を使うと、スクリプトの中で定義した&nbsp;<span class="Special">&lt;SID&gt;</span>&nbsp;で始まるマッ<br>
-プだけが再マップされます。<br>
+<a class="Identifier" href="builtin.html#hasmapto()">hasmapto()</a>&nbsp;は、ユーザーがすでに&nbsp;<span class="Special">&lt;Plug&gt;</span>JavaImport; へのマップを定義しているか<br>
+どうかをチェックするために使われます。そうでない場合、ファイルタイププラグイン<br>
+は既定のマッピングを定義します。これは&nbsp;<a class="Identifier" href="map.html#<LocalLeader>">&lt;LocalLeader&gt;</a>&nbsp;で始まり、それは、ユー<br>
+ザーがファイルタイププラグインのマッピングを始めたいキーを選択できるようにしま<br>
+す。既定はバックスラッシュです。<br>
+&quot;<span class="Special">&lt;unique&gt;</span>&quot; は、マッピングがすでに存在するか、または既存のマッピングと重なる場<br>
+合に、エラーメッセージを出すために使われます。<br>
+<a class="Identifier" href="map.html#:noremap">:noremap</a>&nbsp;は、ユーザーが定義した他のマッピングが干渉するのを避けるために使わ<br>
+れます。<span class="Special">&lt;SID&gt;</span>&nbsp;で始まる、このスクリプトで定義されたマッピングの再マップを許可す<br>
+るために、&quot;:noremap&nbsp;<span class="Special">&lt;script&gt;</span>&quot; を使いたいかもしれません。<br>
 <br>
-ユーザーがファイルタイププラグインのマップを無効化できる仕組みを提供しなければ<br>
-なりません。例えば、&quot;mail&quot; ファイルタイプのプラグインなら次のようにします:<br>
+ユーザーは、すべてを無効にすることなく、ファイルタイププラグインのマッピングを<br>
+無効にする機会を持たなければなりません。ここに、mail ファイルタイプ用のプラグ<br>
+インに対してこれがどのように行われるかの例があります:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# マップを追加する。ユーザーが望まない場合は追加しない。<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# マッピングを追加する、ただしユーザーがこれを望まなかった場合は除く。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if !exists(&quot;g:no_plugin_maps&quot;) &amp;&amp; !exists(&quot;g:no_mail_maps&quot;)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# &quot;&gt; &quot; を挿入して引用する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# &quot;&gt; &quot; を挿入してテキストを引用する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if !hasmapto('&lt;Plug&gt;MailQuote;')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vmap &lt;buffer&gt; &lt;LocalLeader&gt;q &lt;Plug&gt;MailQuote;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nmap &lt;buffer&gt; &lt;LocalLeader&gt;q &lt;Plug&gt;MailQuote;<br>
@@ -535,31 +545,32 @@ exists(&quot;:Cmd&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nnoremap &lt;buffer&gt; &lt;Plug&gt;MailQuote; :.,$s/^/&gt; /&lt;CR&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif</div>
 <br>
-ここでは二つのグローバル変数が使われています:<br>
-<a class="Identifier" href="filetype.html#g:no_plugin_maps">g:no_plugin_maps</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;すべてのファイルタイププラグインのマップを無効化<br>
-<a class="Identifier" href="filetype.html#g:no_mail_maps">g:no_mail_maps</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;mail&quot; ファイルタイプのマップを無効化<br>
+2 つのグローバル変数が使われています:<br>
+<a class="Identifier" href="filetype.html#g:no_plugin_maps">g:no_plugin_maps</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;すべてのファイルタイププラグインに対するマッピングを無効にする<br>
+<a class="Identifier" href="filetype.html#g:no_mail_maps">g:no_mail_maps</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;mail&quot; ファイルタイプに対するマッピングを無効にする<br>
 <br>
 <br>
-<span class="Statement">ユーザー定義コマンド</span><br>
+<span class="Statement">ユーザーコマンド</span><br>
 <br>
-ファイルタイプ用のユーザー定義コマンドを追加して、それを一つのバッファの中だけ<br>
-で使えるようにするには、<a class="Identifier" href="map.html#:command">:command</a>&nbsp;の引数に &quot;-buffer&quot; を指定します。例:<br>
+特定のファイルタイプに対して、1 つのバッファでだけ使えるようにユーザーコマンド<br>
+を追加するには、<a class="Identifier" href="map.html#:command">:command</a>&nbsp;に &quot;-buffer&quot; 引数を使ってください。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;command -buffer&nbsp;&nbsp;Make&nbsp;&nbsp;make %:r.s</div>
 <br>
 <br>
 <span class="Statement">変数</span><br>
 <br>
-ファイルタイププラグインは対応するすべてのバッファに対して実行されます。スクリ<br>
-プトローカル変数はすべての実行で共有されます。バッファごとの変数を使いたい場合<br>
-はバッファローカル変数&nbsp;<a class="Identifier" href="eval.html#b:var">b:var</a>&nbsp;を使ってください。<br>
+ファイルタイププラグインは、それが対象とするタイプの各バッファに対して読み込ま<br>
+れます。ローカルなスクリプト変数は、すべての呼び出しの間で共有されます。特定の<br>
+1 つのバッファ用の変数が欲しい場合、ローカルなバッファ変数&nbsp;<a class="Identifier" href="eval.html#b:var">b:var</a>&nbsp;を使ってく<br>
+ださい。<br>
 <br>
 <br>
 <span class="Statement">関数</span><br>
 <br>
-関数は一度だけ定義すれば十分です。しかし、ファイルタイププラグインは対応する<br>
-ファイルが開かれるたびに読み込まれます。次のようにすると関数が一度だけ定義され<br>
-るようになります:<br>
+関数を定義するとき、これは 1 回だけ行えば済みます。しかし、ファイルタイププラ<br>
+グインは、このファイルタイプのファイルが開かれるたびに読み込まれます。この構造<br>
+は、関数が 1 回だけ定義されることを確実にします:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if !exists(&quot;*Func&quot;)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def Func(arg)<br>
@@ -567,129 +578,130 @@ exists(&quot;:Cmd&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enddef<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif</div>
 <br>
-スクリプトが2回目に読み込まれた時に関数が削除されるのを防ぐため、<a class="Comment" href="vim9.html#vim9script">vim9script</a><br>
-コマンドに &quot;noclear&quot; を使用することを忘れないでください。<br>
+スクリプトが 2 回目に読み込まれたときに関数が削除されるのを避けるために、<br>
+<a class="Comment" href="vim9.html#vim9script">vim9script</a>&nbsp;コマンドで &quot;noclear&quot; を使うことを忘れないでください。<br>
 <br>
 <br>
-<span class="Statement">アンドゥ</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_51.html#undo_indent" name="undo_indent">undo_indent</a>&nbsp;<a class="Constant" href="usr_51.html#undo_ftplugin" name="undo_ftplugin">undo_ftplugin</a><br>
+<span class="Statement">UNDO</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_51.html#undo_indent" name="undo_indent">undo_indent</a>&nbsp;<a class="Constant" href="usr_51.html#undo_ftplugin" name="undo_ftplugin">undo_ftplugin</a><br>
 <br>
-ユーザーが &quot;:setfiletype xyz&quot; としたとき、それ以前のファイルタイプの効果は無効<br>
-になるべきです。b:undo_ftplugin 変数にコマンドを設定し、ファイルタイププラグイ<br>
-ンの設定をアンドゥするようにしてください。例:<br>
+ユーザーが &quot;:setfiletype xyz&quot; を行ったとき、前のファイルタイプの効果は undo さ<br>
+れるべきです。b:undo_ftplugin 変数に、あなたのファイルタイププラグインの設定を<br>
+undo するコマンドを設定してください。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b:undo_ftplugin = &quot;setlocal fo&lt; com&lt; tw&lt; commentstring&lt;&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\ .. &quot;| unlet b:match_ignorecase b:match_words b:match_skip&quot;</div>
 <br>
-&quot;:setlocal&quot; でオプション名の後に &quot;&lt;&quot; を付けると、そのオプションをグローバルな<br>
-値でリセットします。オプションをリセットするにはこの方法が一番です。<br>
+&quot;:setlocal&quot; をオプション名の後の &quot;&lt;&quot; とともに使うと、オプションはそのグローバ<br>
+ル値にリセットされます。たいていは、それがオプションの値をリセットする最良の方<br>
+法です。<br>
 <br>
-インデントスクリプトの効果をアンドゥする為には、それに応じた b:undo_indent 変<br>
-数を設定すべきです。<br>
+インデントスクリプトの効果を undo するためには、b:undo_indent 変数をそれに応じ<br>
+て設定する必要があります。<br>
 <br>
-これら両方の変数は旧来のスクリプトの文法で使われ、<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;の文法では使いません。<br>
+これらの変数はどちらも、<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;構文ではなく、旧来のスクリプト構文を使います。<br>
 <br>
 <span class="Statement">推奨スタイル</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_51.html#ft_recommended_style" name="ft_recommended_style">ft_recommended_style</a><br>
 <br>
-ファイルタイププラグインやインデントスクリプトは、言語の厳密な要件ではなく、そ<br>
-のファイルタイプに推奨されるスタイルや一般的に使用されるスタイルを反映したオプ<br>
-ションを設定する場合があります。すべてのユーザーがこれらのスタイル設定を必要と<br>
-するわけではないため、無効化できるように保護する必要があります。<br>
+ファイルタイププラグインまたはインデントスクリプトは、言語の厳格な要件ではな<br>
+く、そのファイルタイプの推奨される、または一般的に使われるスタイルを反映するオ<br>
+プションを設定することがあります。すべてのユーザーがこれらのスタイル上の設定を<br>
+望むわけではないので、それらを無効にできるようにガードしてください。<br>
 <br>
-ファイルタイプ固有の変数を最初にチェックして、次に一般的な変数をチェックしま<br>
-す。デフォルト値は有効 (1) です:<br>
+既定値を有効 (1) として、2 つの変数を、ファイルタイプ固有のものを最初に、次に<br>
+一般的なものをチェックしてください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if get(g:, '&lt;filetype&gt;_recommended_style',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\ get(g:, 'filetype_recommended_style', 1))<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 推奨スタイルオプションをここで設定する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ここで推奨スタイルのオプションを設定する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif</div>
 <br>
-<span class="Special">&lt;filetype&gt;</span>&nbsp;を実際のファイルタイプ名に置き換えます。例えば、&quot;python&quot; の場合は<br>
+filetype&gt; を実際のファイルタイプ名に置き換えてください、例えば &quot;python&quot; では<br>
 g:python_recommended_style になります。<br>
 <br>
-これで、ユーザーはすべてのファイルタイプに対して推奨スタイル設定をオフにするこ<br>
-とができます:<br>
+これにより、ユーザーはすべてのファイルタイプに対して推奨スタイル設定をオフにで<br>
+きます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:filetype_recommended_style = 0</div>
 <br>
-または、1 つのファイルタイプのみを有効にし、残りは有効のままにします:<br>
+または、残りを有効のままにして、1 つのファイルタイプに対して:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:python_recommended_style = 0</div>
 <br>
-ファイルタイプ固有の変数は一般的な変数よりも優先されるため、ユーザーは<br>
-g:filetype_recommended_style を使用してすべてのファイルのスタイル設定を無効に<br>
-し、g:<span class="Special">&lt;filetype&gt;</span>_recommended_style を 1 に設定することで特定のファイルタイプに<br>
-対してスタイル設定を再度有効にすることができます (またはその逆も可能でありま<br>
-す)。<br>
+ファイルタイプ固有の変数は一般的な変数よりも優先されるので、ユーザーは<br>
+g:filetype_recommended_style ですべての場所でスタイル設定を無効にし、<br>
+g:<span class="Special">&lt;filetype&gt;</span>_recommended_style を 1 に設定することで単一のファイルタイプに対し<br>
+て再び有効にすることができます (またはその逆)。<br>
 <br>
-言語が正しく機能するために必要な設定 (単なるスタイル設定ではありません) は、こ<br>
-のガードの後に配置すべきではありません。<br>
+言語が正しく機能するために必要な設定 (単にスタイル上のものではない) は、この<br>
+ガードの後ろに置くべきではありません。<br>
 <br>
 <span class="Statement">ファイル名</span><br>
 <br>
-ファイルタイププラグインのファイル名にはファイルタイプ名が含まれていなければな<br>
-りません&nbsp;<a class="Identifier" href="usr_05.html#ftplugin-name">ftplugin-name</a>。次の三つのうちのどれかにしてください:<br>
+ファイルタイプはファイル名に含まれていなければなりません&nbsp;<a class="Identifier" href="usr_05.html#ftplugin-name">ftplugin-name</a>。これ<br>
+らの 3 つの形式のうちの 1 つを使ってください:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.../ftplugin/stuff.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.../ftplugin/stuff_foo.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.../ftplugin/stuff/bar.vim<br>
 <br>
-&quot;stuff&quot; はファイルタイプ名、&quot;foo&quot; と &quot;bar&quot; は任意の名前です。<br>
+&quot;stuff&quot; はファイルタイプで、&quot;foo&quot; および &quot;bar&quot; は任意の名前です。<br>
 <br>
 <br>
-<span class="Statement">ファイルタイプの認識</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_51.html#plugin-filetype" name="plugin-filetype">plugin-filetype</a><br>
+<span class="Statement">ファイルタイプ検出</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_51.html#plugin-filetype" name="plugin-filetype">plugin-filetype</a><br>
 <br>
-ファイルタイプが Vim によって認識されない場合は、別ファイルにファイルタイプを<br>
-認識するためにコードを作成する必要があります。通常は、自動コマンドを使って、<br>
-ファイル名がパターンにマッチしたときにファイルタイプを設定します。例:<br>
+あなたのファイルタイプがまだ Vim によって検出されない場合、ファイルタイプ検出<br>
+のスニペットを別のファイルに作成するべきです。それは通常、ファイル名がパターン<br>
+にマッチするときにファイルタイプを設定する自動コマンドの形式です。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;au BufNewFile,BufRead *.foo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setlocal filetype=foofoo</div>
 <br>
-この1行のファイルを&nbsp;&nbsp;&quot;ftdetect/foofoo.vim&quot; として、<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;に表示される<br>
-最初のディレクトリに書き込みます。Unix の場合、&quot;~/.vim/ftdetect/foofoo.vim&quot; に<br>
-なります。規則では、スクリプト名にファイルタイプ名を使用します。<br>
+この 1 行のファイルを、<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;に現れる最初のディレクトリに<br>
+&quot;ftdetect/foofoo.vim&quot; として書いてください。Unix では、それは<br>
+&quot;~/.vim/ftdetect/foofoo.vim&quot; になるでしょう。慣習は、スクリプト名にファイルタ<br>
+イプの名前を使うことです。<br>
 <br>
-必要に応じて、ファイルの内容を調べて言語を認識するなど、より複雑なチェックを行<br>
-うことができます。<a class="Identifier" href="filetype.html#new-filetype">new-filetype</a>&nbsp;も参照。<br>
+望む場合、例えば言語を認識するためにファイルの内容を調べるために、より複雑な<br>
+チェックを行うことができます。<a class="Identifier" href="filetype.html#new-filetype">new-filetype</a>&nbsp;も参照してください。<br>
 <br>
 <br>
-<span class="Statement">要約</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_51.html#ftplugin-special" name="ftplugin-special">ftplugin-special</a><br>
+<span class="Statement">まとめ</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_51.html#ftplugin-special" name="ftplugin-special">ftplugin-special</a><br>
 <br>
-ファイルタイププラグインの特有事項を要約します:<br>
+ファイルタイププラグインで使う特別なもののまとめ:<br>
 <br>
-<span class="Special">&lt;LocalLeader&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;maplocalleader&quot; の値。ユーザーがその変数にキーを設定<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;することで、ファイルタイププラグインのマップの開始キー<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を指定できる。<br>
+<span class="Special">&lt;LocalLeader&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ユーザーが、ファイルタイププラグインのマッピングが始ま<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;るキーとして定義する &quot;maplocalleader&quot; の値。<br>
 <br>
-map&nbsp;<span class="Special">&lt;buffer&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファローカルなマップを定義する。<br>
+map&nbsp;<span class="Special">&lt;buffer&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファにローカルなマッピングを定義する。<br>
 <br>
-noremap&nbsp;<span class="Special">&lt;script&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同スクリプトで定義している&nbsp;<span class="Special">&lt;SID&gt;</span>&nbsp;で始まるマップだけを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;再マップする。<br>
+noremap&nbsp;<span class="Special">&lt;script&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このスクリプトで定義された、<span class="Special">&lt;SID&gt;</span>&nbsp;で始まるマッピングだ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;けを再マップする。<br>
 <br>
-setlocal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントバッファのオプションのみ設定する。<br>
+setlocal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントバッファに対してだけオプションを設定する。<br>
 <br>
-command -buffer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バッファローカルなユーザー定義コマンドを定義する。<br>
+command -buffer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バッファにローカルなユーザーコマンドを定義する。<br>
 <br>
-exists(&quot;*s:Func&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 関数が定義済かどうかをチェックする。<br>
+exists(&quot;*s:Func&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 関数がすでに定義されているかどうかをチェックする。<br>
 <br>
-プラグイン全般に関する事項は&nbsp;<a class="Identifier" href="usr_51.html#plugin-special">plugin-special</a>&nbsp;を参照してください。<br>
+すべてのプラグインで使われる特別なものである&nbsp;<a class="Identifier" href="usr_51.html#plugin-special">plugin-special</a>&nbsp;も参照してくださ<br>
+い。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_51.html#51.3" name="51.3">51.3</a>&nbsp;&nbsp;コンパイラプラグインを書く&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_51.html#write-compiler-plugin" name="write-compiler-plugin">write-compiler-plugin</a><br>
 <br>
-コンパイラプラグインは特定のコンパイラを使うためのオプションを設定します。ユー<br>
-ザーは&nbsp;<a class="Identifier" href="quickfix.html#:compiler">:compiler</a>&nbsp;コマンドでその設定を読み込むことができます。設定されるオプ<br>
-ションは主に&nbsp;<a class="Type" href="options.html#'errorformat'">'errorformat'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'makeprg'">'makeprg'</a>&nbsp;です。<br>
+コンパイラプラグインは、特定のコンパイラで使うためのオプションを設定します。<br>
+ユーザーは&nbsp;<a class="Identifier" href="quickfix.html#:compiler">:compiler</a>&nbsp;コマンドでそれを読み込むことができます。主な用途は、<br>
+<a class="Type" href="options.html#'errorformat'">'errorformat'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'makeprg'">'makeprg'</a>&nbsp;オプションを設定することです。<br>
 <br>
-百聞は一見に如かず。次のコマンドですべての標準コンパイラプラグインを開くことが<br>
-できます:<br>
+一番簡単なのは、例を見てみることです。このコマンドは、すべての既定のコンパイラ<br>
+プラグインを編集します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next $VIMRUNTIME/compiler/*.vim</div>
 <br>
-<a class="Comment" href="editing.html#:next">:next</a>&nbsp;と打って次のプラグインファイルに移動してください。<br>
+次のプラグインファイルに行くには&nbsp;<a class="Comment" href="editing.html#:next">:next</a>&nbsp;とタイプしてください。<br>
 <br>
-これらのファイルには二つの特有事項があります。一つは、標準ファイルに対して設定<br>
-を追加したり上書きしたりできる仕組みです。標準ファイルの先頭は次のようになって<br>
-います:<br>
+これらのファイルには 2 つの特別な項目があります。1 つ目は、ユーザーが既定のファ<br>
+イルを上書きするか、または既定のファイルに追加することを可能にする仕組みです。<br>
+既定のファイルは以下で始まります:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if exists(&quot;g:current_compiler&quot;)<br>
@@ -697,52 +709,52 @@ exists(&quot;*s:Func&quot;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 関数が定義�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:current_compiler = &quot;mine&quot;</div>
 <br>
-コンパイラファイルを書いて、それを個人用のランタイムディレクトリ (例えば Unix<br>
-なら ~/.vim/compiler) に置いたとき、&quot;current_compiler&quot; 変数を設定することで標<br>
-準ファイルの設定をスキップすることができます。<br>
+コンパイラファイルを書いて、それをあなたの個人用のランタイムディレクトリ (例え<br>
+ば、Unix では ~/.vim/compiler) に置くとき、既定のファイルが設定をスキップする<br>
+ように &quot;current_compiler&quot; 変数を設定します。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_51.html#:CompilerSet" name=":CompilerSet">:CompilerSet</a><br>
-二つ目は、&quot;:compiler!&quot; が使われたときは &quot;:set&quot; を使い、&quot;:compiler&quot; が使われた<br>
-ときは &quot;:setlocal&quot; を使う仕組みです。Vim はそのために &quot;:CompilerSet&quot; という<br>
-ユーザーコマンドを定義します。例:<br>
+2 つ目の仕組みは、&quot;:compiler!&quot; に対しては &quot;:set&quot; を、&quot;:compiler&quot; に対しては<br>
+&quot;:setlocal&quot; を使うことです。Vim はこのために &quot;:CompilerSet&quot; ユーザーコマンドを<br>
+定義しています。これは例です:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;CompilerSet errorformat&amp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; use the dfault 'errorformat'<br>
+<div class="helpExample">&nbsp;&nbsp;CompilerSet errorformat&amp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 既定の 'errorformat' を使う<br>
 &nbsp;&nbsp;CompilerSet makeprg=nmake</div>
 <br>
 <span class="Todo">Note:</span>&nbsp;引数は&nbsp;<a class="Identifier" href="options.html#option-backslash">option-backslash</a>&nbsp;に従ってエスケープする必要があります。<br>
 <br>
-コンパイラプラグインを書いて、それを Vim の配布物に含めたり、システムのランタ<br>
-イムディレクトリに入れたりする場合は、上記の方法を使ってください。<br>
-&quot;current_compiler&quot; がユーザープラグインで設定された場合は何も実行しないように<br>
-します。<br>
+Vim の配布物用、またはシステム全体のランタイムディレクトリ用のコンパイラプラグ<br>
+インを書くときは、上で述べた仕組みを使ってください。&quot;current_compiler&quot; がユー<br>
+ザープラグインによってすでに設定されていたときは、何も行われません。<br>
 <br>
-コンパイラプラグインを書いて標準プラグインの設定を上書きする場合は<br>
-&quot;current_compiler&quot; をチェックしないようにします。そのプラグインは最後に読み込<br>
-まれないといけないので、<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の最後にあるディレクトリに置きます。例え<br>
-ば、Unix なら ~/.vim/after/compiler などです。<br>
-<br>
-<span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_51.html#51.4" name="51.4">51.4</a>&nbsp;&nbsp;Vim script を配布する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_51.html#distribute-script" name="distribute-script">distribute-script</a><br>
-<br>
-Vim ユーザーは Vim のウェブサイト&nbsp;<span class="Constant"><a href="http://www.vim.org">http://www.vim.org</a></span>&nbsp;でスクリプトを探します。<br>
-便利なスクリプトを作ったら、ぜひ共有しましょう！<br>
-<br>
-別の場所として github があります。しかし、そこが探される場所であるとあなたは知<br>
-る必要があります!。多くのプラグインマネージャーがプラグインを github から取得<br>
-するというアドバンテージがあります。あなたが使うであろうお気に入りのサーチエン<br>
-ジンが見付けるのもそこになります。<br>
-<br>
-Vim script はどのシステムでも使えます。しかしながら tar や gzip コマンドは存在<br>
-しないことがあります。ファイルをまとめたり圧縮したりするには &quot;zip&quot; ユーティリ<br>
-ティが推奨されています。<br>
-<br>
-可搬性を最大限に高めるには、Vim 自身を使ってスクリプトをパッケージ化します。そ<br>
-れには Vimball ユーティリティを使います。<a class="Identifier" href="pi_vimball.html#vimball">vimball</a>&nbsp;を参照。<br>
-<br>
-自動更新するための行を書いておくと便利です。<a class="Identifier" href="pi_getscript.html#glvs-plugins">glvs-plugins</a>&nbsp;を参照。<br>
+既定のプラグインからの設定を上書きするためのコンパイラプラグインを書くときは、<br>
+&quot;current_compiler&quot; をチェックしないでください。このプラグインは最後に読み込ま<br>
+れることになっているので、<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の最後にあるディレクトリにあるべきで<br>
+す。Unix では、それは ~/.vim/after/compiler になり得ます。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
+<a class="Constant" href="usr_51.html#51.4" name="51.4">51.4</a>&nbsp;&nbsp;Vim script を配布する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_51.html#distribute-script" name="distribute-script">distribute-script</a><br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_52.html">usr_52.txt</a>&nbsp;&nbsp;大きなプラグインを作る<br>
+Vim ユーザーは Vim のウェブサイトでスクリプトを探すでしょう:<br>
+<span class="Constant"><a href="http://www.vim.org">http://www.vim.org</a></span>。<br>
+他の人に役立つものを作った場合、それを共有してください!<br>
+<br>
+もう 1 つの場所は github です。しかし、そこではそれをどこで見つけるかを知って<br>
+いる必要があります! 利点は、ほとんどのプラグインマネージャーが github からプラ<br>
+グインを取得することです。それらを見つけるには、あなたのお気に入りの検索エンジ<br>
+ンを使う必要があるでしょう。<br>
+<br>
+Vim script はどのシステムでも使えます。しかし、tar または gzip コマンドがない<br>
+かもしれません。ファイルをまとめる、および/または圧縮したい場合、&quot;zip&quot; ユーティ<br>
+リティが推奨されます。<br>
+<br>
+最大限の移植性のためには、Vim 自体を使ってスクリプトをまとめてください。これは<br>
+Vimball ユーティリティで行うことができます。<a class="Identifier" href="pi_vimball.html#vimball">vimball</a>&nbsp;を参照してください。<br>
+<br>
+自動更新を可能にする行を追加するとよいです。<a class="Identifier" href="pi_getscript.html#glvs-plugins">glvs-plugins</a>&nbsp;を参照してください。<br>
+<br>
+<span class="PreProc">==============================================================================</span><br>
+<br>
+次章:&nbsp;<a class="Identifier" href="usr_52.html">usr_52.txt</a>&nbsp;&nbsp;大きなプラグインを書く<br>
 <br>
 Copyright: see&nbsp;<a class="Identifier" href="usr_01.html#manual-copyright">manual-copyright</a>&nbsp;&nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>
