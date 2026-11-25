@@ -9,95 +9,95 @@ helpname: 'usr_05'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;設定の変更<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;設定を行う<br>
 <br>
 <br>
-あなたの望みどおりに Vim をチューニングできます。本章では、好みの設定で Vim を<br>
-起動する方法を説明します。Vim にプラグインを追加して機能拡張したり、自分でマク<br>
-ロを定義する方法も説明します。<br>
+Vim は、あなたが望むように動作するよう調整できます。この章では、オプションが異<br>
+なる値に設定された状態で Vim を起動させる方法を示します。Vim の機能を拡張する<br>
+ためにプラグインを追加します。または、あなた自身のマクロを定義します。<br>
 <br>
 <a class="Identifier" href="usr_05.html#05.1">05.1</a>&nbsp;&nbsp;vimrc ファイル<br>
-<a class="Identifier" href="usr_05.html#05.2">05.2</a>&nbsp;&nbsp;見本 vimrc ファイルの解説<br>
+<a class="Identifier" href="usr_05.html#05.2">05.2</a>&nbsp;&nbsp;vimrc ファイルの例の解説<br>
 <a class="Identifier" href="usr_05.html#05.3">05.3</a>&nbsp;&nbsp;defaults.vim ファイルの解説<br>
-<a class="Identifier" href="usr_05.html#05.4">05.4</a>&nbsp;&nbsp;簡単なマップ<br>
+<a class="Identifier" href="usr_05.html#05.4">05.4</a>&nbsp;&nbsp;簡単なマッピング<br>
 <a class="Identifier" href="usr_05.html#05.5">05.5</a>&nbsp;&nbsp;パッケージの追加<br>
 <a class="Identifier" href="usr_05.html#05.6">05.6</a>&nbsp;&nbsp;プラグインの追加<br>
 <a class="Identifier" href="usr_05.html#05.7">05.7</a>&nbsp;&nbsp;ヘルプファイルの追加<br>
 <a class="Identifier" href="usr_05.html#05.8">05.8</a>&nbsp;&nbsp;オプションウィンドウ<br>
-<a class="Identifier" href="usr_05.html#05.9">05.9</a>&nbsp;&nbsp;よく使うオプション<br>
+<a class="Identifier" href="usr_05.html#05.9">05.9</a>&nbsp;&nbsp;よく使われるオプション<br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_06.html">usr_06.txt</a>&nbsp;&nbsp;構文強調表示<br>
-前章:&nbsp;<a class="Identifier" href="usr_04.html">usr_04.txt</a>&nbsp;&nbsp;簡単な編集<br>
+次章:&nbsp;<a class="Identifier" href="usr_06.html">usr_06.txt</a>&nbsp;&nbsp;構文ハイライトを使う<br>
+前章:&nbsp;<a class="Identifier" href="usr_04.html">usr_04.txt</a>&nbsp;&nbsp;小さな変更を加える<br>
 目次:&nbsp;<a class="Identifier" href="usr_toc.html">usr_toc.txt</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_05.html#05.1" name="05.1">05.1</a>&nbsp;&nbsp;vimrc ファイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#vimrc-intro" name="vimrc-intro">vimrc-intro</a><br>
 <br>
-よく使うコマンドを入力するのが面倒に感じたことがあるでしょう。好みのオプション<br>
-やマップを設定した状態で Vim を起動するには、vimrc というファイルに設定を書い<br>
-てください。そのファイルに書いたコマンドは、Vim が起動するときに実行されます。<br>
+あなたはおそらく、とてもよく使うコマンドをタイプすることに疲れたでしょう。あな<br>
+たのお気に入りのオプション設定およびマッピングをすべて使って Vim を起動するに<br>
+は、それらを vimrc ファイルと呼ばれるものに書きます。Vim は起動するときにこの<br>
+ファイル内のコマンドを実行します。<br>
 <br>
-すでに vimrc ファイルがある場合 (例えばシステム管理者が設置した場合など) は、<br>
-次のコマンドでそのファイルを開くことができます:<br>
+すでに vimrc ファイルがある場合 (例えば、あなたのシステム管理者があなたのため<br>
+にそれを用意しているとき)、この方法でそれを編集できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:edit $MYVIMRC</div>
 <br>
-vimrc ファイルがまだない場合は&nbsp;<a class="Identifier" href="starting.html#vimrc">vimrc</a>&nbsp;を参照して vimrc ファイルを作成する場所<br>
-を確認してください。&quot;:version&quot; コマンドで表示される &quot;ユーザー vimrc&quot; の表示を<br>
-見て確認することもできます。<br>
+まだ vimrc ファイルがない場合、vimrc ファイルをどこに作成できるかを調べるには<br>
+<a class="Identifier" href="starting.html#vimrc">vimrc</a>&nbsp;を参照してください。また、&quot;:version&quot; コマンドは、Vim が探す<br>
+&quot;user vimrc file&quot; の名前を挙げます。<br>
 <br>
-Unix と Macintosh ではこのファイルを使ってください。<br>
+Unix および Macintosh では、このファイルが常に使われ、推奨されます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">~/.vimrc</span><br>
 <br>
-MS-Windows では次のどちらかです。<br>
+MS-Windows では、これらのうちの 1 つを使えます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">$HOME/_vimrc</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">$VIM/_vimrc</span><br>
 <br>
-もし初めて vimrc ファイルを作るのであれば、次の 1 行を先頭に記述するのがよいで<br>
-しょう:<br>
+初めて vimrc ファイルを作成する場合、一番上にこの行を置くことが推奨されます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;source $VIMRUNTIME/defaults.vim</div>
 <br>
-これは Vim を (従来の Vi ユーザー向けではなく) 新規ユーザー向けに初期化します。<br>
-詳細については&nbsp;<a class="Identifier" href="starting.html#defaults.vim">defaults.vim</a>&nbsp;を参照してください。<br>
+これは、新しいユーザー (伝統的な Vi ユーザーとは対照的に) のために Vim を初期<br>
+化します。詳細については&nbsp;<a class="Identifier" href="starting.html#defaults.vim">defaults.vim</a>&nbsp;を参照してください。<br>
 <br>
-vimrc ファイルには、コロン (:) を押してから入力するコマンドなら、どのコマンド<br>
-でも書くことができます。一番単純なものはオプション設定です。例えば、毎回<br>
-<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;オプションをオンに設定したい場合は、vimrc ファイルに次の一行を加え<br>
-ます。<br>
+vimrc ファイルには、コロンの後にタイプするすべてのコマンドを含めることができま<br>
+す。最も単純なものは、オプションを設定するためのものです。例えば、Vim を常に<br>
+<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;オプションがオンの状態で起動させたい場合、この行をあなたの vimrc<br>
+ファイルに追加します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set incsearch</div>
 <br>
-この新しい行を有効にするには、Vim を終了し、再起動する必要があります。再起動し<br>
-ないで設定を反映する方法は後で説明します。<br>
+この新しい行を有効にするには、Vim を終了して再び起動する必要があります。後で、<br>
+Vim を終了せずにこれを行う方法を学びます。<br>
 <br>
-この章では、ごく基本的な項目だけを説明します。Vim script のより詳しい情報につ<br>
-いては&nbsp;<a class="Identifier" href="usr_41.html">usr_41.txt</a>&nbsp;を参照してください。<br>
+この章では、最も基本的な項目だけを説明します。Vim script ファイルの書き方につ<br>
+いてのさらなる情報:&nbsp;<a class="Identifier" href="usr_41.html">usr_41.txt</a>。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_05.html#05.2" name="05.2">05.2</a>&nbsp;&nbsp;見本 vimrc ファイルの解説&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#vimrc_example.vim" name="vimrc_example.vim">vimrc_example.vim</a><br>
+<a class="Constant" href="usr_05.html#05.2" name="05.2">05.2</a>&nbsp;&nbsp;vimrc ファイルの例の解説&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#vimrc_example.vim" name="vimrc_example.vim">vimrc_example.vim</a><br>
 <br>
-第一章では、Vim の配布物に付属の見本 vimrc ファイルを使って、非互換モード<br>
-(<a class="Identifier" href="usr_01.html#not-compatible">not-compatible</a>参照) で Vim を起動する方法を説明しました。見本 vimrc ファイ<br>
-ルは次のディレクトリにあります:<br>
+最初の章で、vimrc (Vim の配布物に含まれている) ファイルの例を使って Vim を非互<br>
+換モードで起動させる方法が説明されました (<a class="Identifier" href="usr_01.html#not-compatible">not-compatible</a>&nbsp;を参照)。このファイ<br>
+ルはここで見つけられます:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">$VIMRUNTIME/vimrc_example.vim</span><br>
 <br>
-この節では、このファイルで使われているコマンドを説明します。自分用の設定をする<br>
-ときの参考にしてください。しかし、全てを説明するわけではないので、詳しいことは<br>
-&quot;:help&quot; コマンドで調べてください。<br>
+この節では、このファイルで使われているさまざまなコマンドを説明します。これによ<br>
+り、あなた自身の好みを設定する方法についてのヒントが得られます。とはいえ、すべ<br>
+てが説明されるわけではありません。さらに調べるには &quot;:help&quot; コマンドを使ってく<br>
+ださい。<br>
 <br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ほとんどのユーザーが望むデフォルトを取得する<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ほとんどのユーザーが望む既定値を得る。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;source $VIMRUNTIME/defaults.vim</div>
 <br>
-これは、$VIMRUNTIME ディレクトリにある &quot;defaults.vim&quot; ファイルを読み込みます。<br>
-これは、ほとんどのユーザーが好むようにVimを設定します。あなたがそうでない少数<br>
-のうちの1人であるならば、この行をコメントアウトしてください。以下にコマンドに<br>
-ついて説明します:<br>
-<a class="Identifier" href="usr_05.html#defaults.vim-explained">defaults.vim-explained</a><br>
+これは、$VIMRUNTIME ディレクトリ内の &quot;defaults.vim&quot; ファイルを読み込みます。こ<br>
+れは、ほとんどのユーザーが好むように Vim を設定します。あなたがそうではない少<br>
+数の一人である場合、この行をコメントアウトしてください。コマンドは以下で説明さ<br>
+れています:&nbsp;<a class="Identifier" href="usr_05.html#defaults.vim-explained">defaults.vim-explained</a><br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if has(&quot;vms&quot;)<br>
@@ -109,27 +109,27 @@ vimrc ファイルには、コロン (:) を押してから入力するコマン
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif</div>
 <br>
-これは、上書きするときにファイルのバックアップコピーを保存するようにVimに指示<br>
-します。しかし、VMSシステムではそうではありません。古いバージョンのファイルを<br>
-すでに保持しているからです。バックアップファイルは元のファイルと同じ名前で &quot;~&quot;<br>
-が追加されます。<a class="Identifier" href="usr_07.html#07.4">07.4</a>&nbsp;を参照してください。<br>
+これは、ファイルを上書きするときにそのバックアップコピーを保持するよう Vim に<br>
+指示します。しかし、すでにファイルの古いバージョンを保持しているので、VMS シス<br>
+テム上ではそうではありません。バックアップファイルは、元のファイルと同じ名前に<br>
+&quot;~&quot; を付け加えたものになります。<a class="Identifier" href="usr_07.html#07.4">07.4</a>&nbsp;を参照してください<br>
 <br>
-可能であれば、<a class="Type" href="options.html#'undofile'">'undofile'</a>&nbsp;オプションも設定します。これはマルチレベルのアンドゥ<br>
-情報をファイルに保存します。その結果、あなたがファイルを変更してVimを終了し、<br>
-そして再びそのファイルを編集するとき、あなたは以前におこなわれた変更を元に戻す<br>
-ことができます。ファイルを保存するという犠牲を払って、それは非常に強力で便利な<br>
-機能です。詳しくは&nbsp;<a class="Identifier" href="undo.html#undo-persistence">undo-persistence</a>&nbsp;を参照してください。<br>
+これは、使用可能な場合、<a class="Type" href="options.html#'undofile'">'undofile'</a>&nbsp;オプションも設定します。これは、複数レベル<br>
+の undo 情報をファイルに保存します。その結果、ファイルを変更し、Vim を終了し、<br>
+それからそのファイルを再び編集するときに、以前に行った変更を undo できます。こ<br>
+れは、ファイルを保存するという代償を伴う、とても強力で便利な機能です。さらなる<br>
+情報については&nbsp;<a class="Identifier" href="undo.html#undo-persistence">undo-persistence</a>&nbsp;を参照してください。<br>
 <br>
-&quot;if&quot; コマンドは、ある条件が満たされたときだけオプションを設定するのに非常に役<br>
-に立ちます。詳しくは&nbsp;<a class="Identifier" href="usr_41.html">usr_41.txt</a>&nbsp;を参照ください。<br>
+&quot;if&quot; コマンドは、何らかの条件が満たされたときだけオプションを設定するのにとて<br>
+も便利です。それについての詳細は&nbsp;<a class="Identifier" href="usr_41.html">usr_41.txt</a>&nbsp;で。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if &amp;t_Co &gt; 2 || has(&quot;gui_running&quot;)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set hlsearch<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif</div>
 <br>
-これは&nbsp;<a class="Type" href="options.html#'hlsearch'">'hlsearch'</a>&nbsp;オプションをオンにして、最後に使用された検索パターンをハイラ<br>
-イトするようにVimに指示します。<br>
+これは&nbsp;<a class="Type" href="options.html#'hlsearch'">'hlsearch'</a>&nbsp;オプションをオンにし、最後に使った検索パターンのマッチをハイ<br>
+ライトするよう Vim に指示します。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;augroup vimrcEx<br>
@@ -137,87 +137,85 @@ vimrc ファイルには、コロン (:) を押してから入力するコマン
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;autocmd FileType text setlocal textwidth=78<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;augroup END</div>
 <br>
-これはVimがテキストを改行して行が78文字を超えないようにします。ただし、プレー<br>
-ンテキストとして検出されたファイルに対してのみです。ここには実際には2つの部分<br>
-があります。 &quot;autocmd FileType text&quot; は自動コマンドです。 これは、ファイルタイ<br>
-プが &quot;text&quot; に設定されているとき、後続のコマンドが自動的に実行されることを定義<br>
-します。&quot;setlocal textwidth=78&quot; は&nbsp;<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;オプションを78に設定しますが、1<br>
-つのファイル内でローカルにのみです。<br>
+これは、行が 78 文字より長くなるのを避けるために、Vim にテキストを改行させま<br>
+す。ただし、プレーンテキストであると検出されたファイルに対してだけ。ここには実<br>
+際には 2 つの部分があります。&quot;autocmd FileType text&quot; は自動コマンドです。これ<br>
+は、ファイルタイプが &quot;text&quot; に設定されたときに、以下のコマンドが自動的に実行さ<br>
+れることを定義します。&quot;setlocal textwidth=78&quot; は&nbsp;<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;オプションを 78<br>
+に設定しますが、1 つのファイル内でローカルにだけです。<br>
 <br>
-&quot;augroup vimrcEx&quot; と &quot;augroup END&quot; を含むラッパーは、&quot;au!&quot; を使って自動コマン<br>
-ドを削除することを可能にします。 コマンド。<a class="Identifier" href="autocmd.html#:augroup">:augroup</a>&nbsp;を参照してください。<br>
+&quot;augroup vimrcEx&quot; および &quot;augroup END&quot; によるラッパーは、&quot;au!&quot; コマンドで自動<br>
+コマンドを削除することを可能にします。<a class="Identifier" href="autocmd.html#:augroup">:augroup</a>&nbsp;を参照してください。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if has('syntax') &amp;&amp; has('eval')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;packadd! matchit<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif</div>
 <br>
-必要な機能が利用できる場合、&quot;matchit&quot; プラグインを読み込みます。<br>
-それは&nbsp;<a class="Identifier" href="motion.html#%">%</a>&nbsp;コマンドをより強力にします。これは&nbsp;<a class="Identifier" href="usr_05.html#matchit-install">matchit-install</a>&nbsp;で説明されてい<br>
-ます。<br>
+これは、必要な機能が使用可能な場合、&quot;matchit&quot; プラグインを読み込みます。<br>
+これは&nbsp;<a class="Identifier" href="motion.html#%">%</a>&nbsp;コマンドをより強力にします。これについては&nbsp;<a class="Identifier" href="usr_05.html#matchit-install">matchit-install</a>&nbsp;で説明<br>
+されています。<br>
 <br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_05.html#05.3" name="05.3">05.3</a>&nbsp;&nbsp;The defaults.vim ファイルの解説&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#defaults.vim-explained" name="defaults.vim-explained">defaults.vim-explained</a><br>
+<a class="Constant" href="usr_05.html#05.3" name="05.3">05.3</a>&nbsp;&nbsp;defaults.vim ファイルの解説&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#defaults.vim-explained" name="defaults.vim-explained">defaults.vim-explained</a><br>
 <br>
 <a class="Identifier" href="starting.html#defaults.vim">defaults.vim</a>&nbsp;ファイルは、ユーザーが vimrc ファイルを持っていないときに読み込<br>
-まれます。 新しい vimrc ファイルを作成するときは、それを使い続けるためにこの行<br>
-を先頭近くに追加します:<br>
+まれます。新しい vimrc ファイルを作成するとき、それを使い続けるために、この行<br>
+を先頭近くに追加してください:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;source $VIMRUNTIME/defaults.vim</div>
 <br>
-または、上で説明したように vimrc_example.vim ファイルを使用してください。<br>
+または、上で説明したように vimrc_example.vim ファイルを使ってください。<br>
 <br>
-以下に defaults.vim がしていることを説明します。<br>
+以下は、defaults.vim が何をしているかを説明します。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if exists('skip_defaults_vim')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finish<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif</div>
 <br>
-defaults.vim の読み込みは、次のコマンドで無効にできます:<br>
+defaults.vim の読み込みは、このコマンドで無効にできます:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let skip_defaults_vim = 1</div>
-これはシステムのvimrcファイルで行わなければなりません。<a class="Identifier" href="starting.html#system-vimrc">system-vimrc</a>&nbsp;を参照し<br>
-てください。あなたがユーザーvimrcを持っているなら、defaults.vim は自動的にロー<br>
-ドされないので、これは必要ではありません。<br>
+これはシステムの vimrc ファイルで行わなければなりません。<a class="Identifier" href="starting.html#system-vimrc">system-vimrc</a>&nbsp;を参照<br>
+してください。ユーザーの vimrc がある場合、defaults.vim は自動的には読み込まれ<br>
+ないので、これは必要ありません。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set nocompatible</div>
 <br>
-第一章で述べたように、このマニュアルでは「Vim」について説明しているので、Vi と<br>
-は完全に互換性がない部分があります。ここに書かれたように動作させるには、<br>
-<a class="Type" href="options.html#'compatible'">'compatible'</a>&nbsp;オプションをオフに設定する、すなわち&nbsp;<a class="Type" href="options.html#'nocompatible'">'nocompatible'</a>&nbsp;にする必要が<br>
-あります。<br>
+最初の章で述べたように、これらのマニュアルは、改良された方法で動作する、した<br>
+がって完全には Vi 互換ではない Vim を説明しています。<a class="Type" href="options.html#'compatible'">'compatible'</a>&nbsp;オプションを<br>
+オフに、したがって&nbsp;<a class="Type" href="options.html#'nocompatible'">'nocompatible'</a>&nbsp;に設定することがこれを処理します。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set backspace=indent,eol,start</div>
 <br>
-挿入モードで&nbsp;<span class="Special">&lt;BS&gt;</span>&nbsp;を使って削除できる文字を指定しています。コンマで区切られた三<br>
-つの部分はそれぞれ次の文字の削除を許可しています。<a class="Type" href="options.html#'backspace'">'backspace'</a>&nbsp;を参照してくださ<br>
-い。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;indent&nbsp;&nbsp;行頭の空白<br>
-&nbsp;&nbsp;&nbsp;&nbsp;eol&nbsp;&nbsp;&nbsp;&nbsp; 改行<br>
-&nbsp;&nbsp;&nbsp;&nbsp;start&nbsp;&nbsp; 挿入モード開始位置より手前の文字<br>
+これは、挿入モードで&nbsp;<span class="Special">&lt;BS&gt;</span>&nbsp;がカーソルの前の文字を削除できる場所を指定します。コ<br>
+ンマで区切られた 3 つの項目は、行頭のホワイトスペース、改行、および挿入モード<br>
+が開始された位置の前の文字を削除するよう Vim に指示します。<a class="Type" href="options.html#'backspace'">'backspace'</a>&nbsp;を参照<br>
+してください。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set history=200</div>
 <br>
-コマンドを200個分、検索パターンを200個分、ヒストリ(履歴)として残します。記録の<br>
-容量を増減したいときはこの値を変更してください。<a class="Type" href="options.html#'history'">'history'</a>&nbsp;を参照してください。<br>
+200 個のコマンドおよび 200 個の検索パターンを履歴に保持します。より少ないまた<br>
+はより多くの行を記憶したい場合、別の数値を使ってください。<a class="Type" href="options.html#'history'">'history'</a>&nbsp;を参照して<br>
+ください。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set ruler</div>
 <br>
-現在のカーソル位置(行、桁)を Vim ウィンドウの右下に常に表示します。<a class="Type" href="options.html#'ruler'">'ruler'</a>&nbsp;を<br>
-参照してください。<br>
+Vim ウィンドウの右下隅に、現在のカーソル位置を常に表示します。<a class="Type" href="options.html#'ruler'">'ruler'</a>&nbsp;を参照し<br>
+てください。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set showcmd</div>
 <br>
-入力途中の (まだ実行していない) コマンドを Vim ウィンドウの右下 (rulerの左側)<br>
-に表示します。例えば、&quot;2f&quot; と入力したとき、Vim は検索文字の入力を待っていて、<br>
-画面の右下には &quot;2f&quot; と表示されます。次に &quot;w&quot; と入力すると、&quot;2fw&quot; というコマン<br>
-ドが完成するので、それが実行され、画面の &quot;2f&quot; という表示も消去されます。<br>
+不完全なコマンドを、Vim ウィンドウの右下隅の、ルーラーの左に表示します。例え<br>
+ば、&quot;2f&quot; とタイプしたとき、Vim は検索する文字をあなたがタイプするのを待ってお<br>
+り、&quot;2f&quot; が表示されます。次に &quot;w&quot; を押すと、&quot;2fw&quot; コマンドが実行され、表示され<br>
+ていた &quot;2f&quot; は消去されます。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-------------------------------------------------+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|text in the Vim window&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>
@@ -232,93 +230,95 @@ defaults.vim の読み込みは、次のコマンドで無効にできます:<br
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set wildmenu</div>
 <br>
-補完候補をステータス行に表示します。それは&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;をタイプしたときで、複数の一<br>
-致があるときです。<a class="Type" href="options.html#'wildmenu'">'wildmenu'</a>&nbsp;を参照してください。<br>
+補完のマッチをステータスラインに表示します。それは、<span class="Special">&lt;Tab&gt;</span>&nbsp;をタイプし、マッチが<br>
+2 つ以上あるときです。<a class="Type" href="options.html#'wildmenu'">'wildmenu'</a>&nbsp;を参照してください。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set ttimeout<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set ttimeoutlen=100</div>
 <br>
-これにより、Escキーを押した時の効果が早くなります。通常、VimはEscがエスケープ<br>
-シーケンスの始まりであるかどうかを確認するために1秒待ちます。非常に遅いリモー<br>
-ト接続の場合は、数を増やしてください。<a class="Type" href="options.html#'ttimeout'">'ttimeout'</a>&nbsp;を参照してください。<br>
+これにより、Esc のタイプがより速く効果を持つようになります。通常、Vim は Esc<br>
+がエスケープシーケンスの開始かどうかを調べるために 1 秒待ちます。とても遅いリ<br>
+モート接続がある場合、その数値を増やしてください。<a class="Type" href="options.html#'ttimeout'">'ttimeout'</a>&nbsp;を参照してくださ<br>
+い。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set display=truncate</div>
 <br>
-最後の行が切り捨てられる場合は、行全体を非表示にするのではなく、@@@ を表示しま<br>
-す。<a class="Type" href="options.html#'display'">'display'</a>&nbsp;を参照してください。<br>
+切り詰められている場合、行全体を隠す代わりに、最終行に @@@ を表示します。<br>
+<a class="Type" href="options.html#'display'">'display'</a>&nbsp;を参照してください。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set incsearch</div>
 <br>
-検索パターンを入力中に、入力途中のパターンにマッチする文字列を表示します。<br>
-<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;を参照してください。<br>
+検索パターンをタイプしている途中で、そのマッチを表示します。<a class="Type" href="options.html#'incsearch'">'incsearch'</a>&nbsp;を参照<br>
+してください。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set nrformats-=octal</div>
 <br>
-ゼロで始まる数字を8進数として認識しません。<a class="Type" href="options.html#'nrformats'">'nrformats'</a>&nbsp;を参照してください。<br>
+ゼロで始まる数値を 8 進数として認識しません。<a class="Type" href="options.html#'nrformats'">'nrformats'</a>&nbsp;を参照してください。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map Q gq</div>
 <br>
-キーマップを定義しています。詳しくは次の節で述べます。ここでは、&quot;gq&quot; オペレー<br>
-タのフォーマット機能を &quot;Q&quot; コマンドとして定義しています。&quot;Q&quot; の動作が Vim 4.0<br>
-以前と同じになります。実際の &quot;Q&quot; は EX モードへの移行コマンドですが、おそらく<br>
-必要ないでしょう。<br>
+これはキーマッピングを定義します。それについての詳細は次の節で。これは、&quot;gq&quot;<br>
+オペレータで整形を行う &quot;Q&quot; コマンドを定義します。これは、Vim 5.0 より前に動作<br>
+していた方法です。そうでなければ、&quot;Q&quot; コマンドは Ex モードを開始しますが、あな<br>
+たはそれを必要としないでしょう。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inoremap &lt;C-U&gt; &lt;C-G&gt;u&lt;C-U&gt;</div>
 <br>
-挿入モードで&nbsp;<span class="Special">CTRL-U</span>&nbsp;を押すと、現在行に入力されているすべてのテキストが削除され<br>
-ます。 最初の改行のアンドゥに&nbsp;<span class="Special">CTRL-G</span>&nbsp;u を使用するので、改行を挿入した後に<br>
-<span class="Special">CTRL-U</span>&nbsp;でアンドゥすることができます。&quot;:iunmap&nbsp;<span class="Special">&lt;C-U&gt;</span>&quot; で元に戻します。<br>
+挿入モードでの&nbsp;<span class="Special">CTRL-U</span>&nbsp;は、現在の行で入力されたすべてのテキストを削除します。改<br>
+行を挿入した後に&nbsp;<span class="Special">CTRL-U</span>&nbsp;を undo できるように、まず undo を区切るために&nbsp;<span class="Special">CTRL-G</span><br>
+u を使います。&quot;:iunmap&nbsp;<span class="Special">&lt;C-U&gt;</span>&quot; で元に戻します。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if has('mouse')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set mouse=a<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif</div>
 <br>
-可能であればマウスの使用を有効にします。<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;を参照してください。<br>
+使用可能な場合、マウスの使用を有効にします。<a class="Type" href="options.html#'mouse'">'mouse'</a>&nbsp;を参照してください。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vnoremap _g y:exe &quot;grep /&quot; .. escape(@&quot;, '\\/') .. &quot;/ *.c *.h&quot;&lt;CR&gt;</div>
 <br>
-このマップは、選択されたテキストをヤンクして、それを C ファイルの中から検索し<br>
-ます。マップを使ってとても難しいことができるということが分かってもらえたと思い<br>
-ます。とはいっても、実際にコマンドを手入力するのと同じように一連のコマンドを実<br>
-行しているに過ぎません。<br>
+このマッピングは、ビジュアル選択されたテキストをヤンクし、それを C ファイル内<br>
+で検索します。マッピングがかなり複雑なことを行うのに使えることがわかるでしょ<br>
+う。それでも、それはあなたがタイプしたかのように実行される一連のコマンドにすぎ<br>
+ません。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;syntax on</div>
 <br>
-カラーでファイルをハイライトすることを有効にします。<a class="Identifier" href="syntax.html#syntax">syntax</a>&nbsp;を参照してくださ<br>
+ファイルを色付きでハイライトすることを有効にします。<a class="Identifier" href="syntax.html#syntax">syntax</a>&nbsp;を参照してくださ<br>
 い。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#vimrc-filetype" name="vimrc-filetype">vimrc-filetype</a>&nbsp;<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filetype plugin indent on</div>
 <br>
-三つの便利な機能を有効にしています:<br>
-1. ファイルタイプの検出<br>
-&nbsp;&nbsp; ファイルを開いたときに、そのファイルの種類を特定します。例えば、&quot;main.c&quot; を<br>
-&nbsp;&nbsp; 開いた場合は、拡張子の &quot;.c&quot; を見てファイルタイプは &quot;c&quot; だと判断します。ファ<br>
-&nbsp;&nbsp; イルの一行目が &quot;#!/bin/sh&quot; で始まっていた場合は、ファイルタイプは &quot;sh&quot; だと<br>
-&nbsp;&nbsp; 判断します。<br>
-&nbsp;&nbsp; 検出されたファイルタイプは構文強調と次の 2 つの項目で使われます。<br>
-&nbsp;&nbsp;&nbsp;<a class="Identifier" href="filetype.html#filetypes">filetypes</a>参照。<br>
+これは 3 つのとても賢い仕組みをオンにします:<br>
+1. ファイルタイプ検出。<br>
+&nbsp;&nbsp; ファイルの編集を開始するたびに、Vim はそれがどんな種類のファイルかを突き止<br>
+&nbsp;&nbsp; めようとします。&quot;main.c&quot; を編集するとき、Vim は &quot;.c&quot; 拡張子を見て、これを<br>
+&nbsp;&nbsp; &quot;c&quot; ファイルタイプとして認識します。&quot;#!/bin/sh&quot; で始まるファイルを編集する<br>
+&nbsp;&nbsp; とき、Vim はそれを &quot;sh&quot; ファイルタイプとして認識します。<br>
+&nbsp;&nbsp; ファイルタイプ検出は、構文ハイライトおよび以下の他の 2 つの項目に使われま<br>
+&nbsp;&nbsp; す。<br>
+&nbsp;&nbsp;&nbsp;<a class="Identifier" href="filetype.html#filetypes">filetypes</a>&nbsp;を参照してください。<br>
 <br>
-2. ファイルタイププラグインを使う<br>
-&nbsp;&nbsp; ファイルを開いたときに、ファイルタイプに応じたオプションが設定されます。例<br>
-&nbsp;&nbsp; えば、&quot;c&quot; ファイルの場合なら自動的にインデントしてくれる&nbsp;<a class="Type" href="options.html#'cindent'">'cindent'</a>&nbsp;オプショ<br>
-&nbsp;&nbsp; ンは欠かせないでしょう。こういった、一般的に便利な設定がファイルタイププラ<br>
-&nbsp;&nbsp; グインの中に入っています。自分でプラグインを追加することもできます。<br>
-&nbsp;&nbsp;&nbsp;<a class="Identifier" href="usr_51.html#write-filetype-plugin">write-filetype-plugin</a>参照。<br>
+2. ファイルタイププラグインファイルを使う<br>
+&nbsp;&nbsp; 多くの異なるファイルタイプは、異なるオプションで編集されます。例えば、&quot;c&quot;<br>
+&nbsp;&nbsp; ファイルを編集するとき、行を自動的にインデントするために&nbsp;<a class="Type" href="options.html#'cindent'">'cindent'</a>&nbsp;オプショ<br>
+&nbsp;&nbsp; ンを設定するのはとても便利です。これらの一般的に便利なオプション設定は、ファ<br>
+&nbsp;&nbsp; イルタイププラグインで Vim に含まれています。あなた自身のものを追加すること<br>
+&nbsp;&nbsp; もできます、<a class="Identifier" href="usr_51.html#write-filetype-plugin">write-filetype-plugin</a>&nbsp;を参照してください。<br>
 <br>
 3. インデントファイルを使う<br>
-&nbsp;&nbsp; プログラミング言語のインデントはほとんど自動的に計算できます。Vim にはファ<br>
-&nbsp;&nbsp; イルタイプに応じたインデントルールが数多く用意されています。<br>
-&nbsp;&nbsp;&nbsp;<a class="Identifier" href="filetype.html#:filetype-indent-on">:filetype-indent-on</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'indentexpr'">'indentexpr'</a>&nbsp;参照。<br>
+&nbsp;&nbsp; プログラムを編集するとき、行のインデントはしばしば自動的に計算できます。Vim<br>
+&nbsp;&nbsp; には、いくつものファイルタイプのためのこれらのインデント規則が付属していま<br>
+&nbsp;&nbsp; す。<a class="Identifier" href="filetype.html#:filetype-indent-on">:filetype-indent-on</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'indentexpr'">'indentexpr'</a>&nbsp;を参照してください。<br>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#restore-cursor" name="restore-cursor">restore-cursor</a>&nbsp;<a class="Constant" href="usr_05.html#last-position-jump" name="last-position-jump">last-position-jump</a>&nbsp;<br>
@@ -334,154 +334,154 @@ defaults.vim の読み込みは、次のコマンドで無効にできます:<br
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">\</span>&nbsp;|&nbsp;<span class="Statement">endif</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">augroup</span>&nbsp;END<br>
 <br>
-自動コマンドをもう一つ。ファイルを読み込んだ直後に実行される自動コマンドを定義<br>
-しています。後ろのごちゃごちゃした部分は「'&quot; マークが定義されているかどうかを<br>
-チェックし、定義があればそこにジャンプする」という意味です。以下の場合にはこの<br>
-処理は実行されません:<br>
-&nbsp;- コミットやリベースメッセージの場合は、前回とは違うメッセージになる可能性が<br>
-&nbsp;&nbsp; 高い<br>
-&nbsp;- xxd(1) を使ってバイナリファイルをフィルタリングして編集を行う場合は、入力<br>
-&nbsp;&nbsp; ファイルを行ったり来たり変換して、いわば二面性を持っているため (<a class="Identifier" href="tips.html#using-xxd">using-xxd</a><br>
-&nbsp;&nbsp; も参照)<br>
-&nbsp;- Vim が diff モードになっている<br>
+もう 1 つの自動コマンド。今回は、任意のファイルを読み込んだ後に使われます。そ<br>
+の後ろの複雑なものは、'&quot; マークが定義されているかどうかを調べ、そうである場合、<br>
+そこへジャンプします。次のときには、それを行いません:<br>
+&nbsp;- おそらく前回とは異なるものである、コミットまたはリベースのメッセージを編集<br>
+&nbsp;&nbsp; しているとき、<br>
+&nbsp;- 入力ファイルを行ったり来たり変換し、いわば二重の性質を持たせる、バイナリファ<br>
+&nbsp;&nbsp; イルをフィルタして編集するために xxd(1) を使っているとき (<a class="Identifier" href="tips.html#using-xxd">using-xxd</a>&nbsp;も参<br>
+&nbsp;&nbsp; 照)、および<br>
+&nbsp;- Vim が diff モードであるとき<br>
 <br>
-コマンドを複数行に分けて書くために、行頭に &quot;\&quot; を書いています。行がやたらと長<br>
-くなるのを防ぐためです。<a class="Identifier" href="repeat.html#line-continuation">line-continuation</a>&nbsp;参照。&quot;\&quot; は Vim script 内でのみ使<br>
-えます。コマンドラインで入力するときは使えません。<br>
+行頭のバックスラッシュは、前の行からコマンドを継続するために使われます。これに<br>
+より、行がとても長くなるのを避けられます。<a class="Identifier" href="repeat.html#line-continuation">line-continuation</a>&nbsp;を参照してくださ<br>
+い。これは Vim script ファイルの中でだけ機能し、コマンドラインでコマンドをタイ<br>
+プするときには機能しません。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\ | diffthis | wincmd p | diffthis</div>
 <br>
-これは &quot;:DiffOrig&quot; コマンドを追加します。修正されたバッファで読み込まれたファ<br>
-イルとの違いを見るためにこれを使ってください。<a class="Identifier" href="diff.html#diff">diff</a>&nbsp;および&nbsp;<a class="Identifier" href="diff.html#:DiffOrig">:DiffOrig</a>&nbsp;を参照<br>
-してください。<br>
+これは &quot;:DiffOrig&quot; コマンドを追加します。それが読み込まれた元のファイルとの差<br>
+分を見るには、変更されたバッファでこれを使ってください。<a class="Identifier" href="diff.html#diff">diff</a>&nbsp;および<br>
+<a class="Identifier" href="diff.html#:DiffOrig">:DiffOrig</a>&nbsp;を参照してください。<br>
 <br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set nolangremap</div>
 <br>
-langmapオプションがマッピングから生じる文字に適用されるのを防ぎます。設定され<br>
-ている場合(デフォルト)、これはプラグインを壊すかもしれません(でも、それは後方<br>
-互換です)。<a class="Type" href="options.html#'langremap'">'langremap'</a>&nbsp;を参照してください。<br>
+マッピングの結果として生じる文字に langmap オプションが適用されるのを防ぎます。<br>
+設定されている場合 (既定)、これはプラグインを壊すことがあります (しかし後方互<br>
+換です)。<a class="Type" href="options.html#'langremap'">'langremap'</a>&nbsp;を参照してください。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_05.html#05.4" name="05.4">05.4</a>&nbsp;&nbsp;簡単なマップ<br>
+<a class="Constant" href="usr_05.html#05.4" name="05.4">05.4</a>&nbsp;&nbsp;簡単なマッピング<br>
 <br>
-マップを使うと、複数のコマンドを 1 つのキー操作にまとめることができます。例え<br>
-ば、ある単語を {} で囲みたいとします。つまり、&quot;amount&quot; を &quot;<span class="Special">{amount}</span>&quot; にしたい<br>
-わけです。:map コマンドを使って、その操作を&nbsp;<span class="Special">&lt;F5&gt;</span>&nbsp;キーに割り当てることができま<br>
-す。次のように書きます。<br>
+マッピングにより、一連の Vim コマンドを 1 つのキーに割り当てることができます。<br>
+例えば、特定の単語を波括弧で囲む必要があるとします。言い換えると、&quot;amount&quot; の<br>
+ような単語を &quot;<span class="Special">{amount}</span>&quot; に変更する必要があります。:map コマンドを使えば、F5<br>
+キーがこの仕事をすることを Vim に伝えることができます。コマンドは以下のとおり<br>
+です:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map &lt;F5&gt; i{&lt;Esc&gt;ea}&lt;Esc&gt;</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このコマンドを入力するときの注意点。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;F5&gt;</span>&nbsp;は見たままの 4 文字の文字列として入力してください。<span class="Special">&lt;Esc&gt;</span>&nbsp;も同じで<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<span class="Special">&lt;Esc&gt;</span>&nbsp;キーを押すのではなく、5 文字の文字列として入力してください。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このマニュアルを読むときはその違いに注意してください !<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このコマンドを入力するとき、<span class="Special">&lt;F5&gt;</span>&nbsp;は 4 文字をタイプして入力しなければな<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;りません。同様に、<span class="Special">&lt;Esc&gt;</span>&nbsp;は&nbsp;<span class="Special">&lt;Esc&gt;</span>&nbsp;キーを押すことで入力するのではなく、5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文字をタイプして入力します。マニュアルを読むときは、この違いに注意して<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ください!<br>
 <br>
-この定義を分解してみましょう。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;F5&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファンクションキーのF5です。このキーを押すと、定義してあるコマ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンドが実行されます。<br>
+これを分解してみましょう:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;F5&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F5 ファンクションキー。これは、キーが押されたときにコマンドが<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;実行されるきっかけとなるトリガーキーである。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;i{<span class="Special">&lt;Esc&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp; &quot;{&quot; 文字を挿入し、<span class="Special">&lt;Esc&gt;</span>&nbsp;キーで挿入モードから抜けます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;i{<span class="Special">&lt;Esc&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp; { 文字を挿入する。<span class="Special">&lt;Esc&gt;</span>&nbsp;キーは挿入モードを終了する。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 単語の末尾に移動します。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 単語の末尾へ移動する。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;a}<span class="Special">&lt;Esc&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp; &quot;}&quot; 文字を追加します。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a}<span class="Special">&lt;Esc&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp; 単語に } を付け加える。<br>
 <br>
-この &quot;:map&quot; コマンドを実行した後は、カーソルを単語の先頭に動かして F5 キーを押<br>
-すだけで単語の両側に {} を追加できます。<br>
+&quot;:map&quot; コマンドを実行した後は、単語の周りに {} を置くためにしなければならない<br>
+ことは、カーソルを最初の文字に置いて F5 を押すことだけです。<br>
 <br>
-この例では、コマンドは 1 キーでしたが、どの文字列でも割り当てることができます。<br>
-ただし、Vim のコマンドと同じ文字列を割り当てると、元のコマンドが使えなくなるの<br>
-で、それは避けた方が無難です。<br>
-複数キーを組み合わせるときには、バックスラッシュ(日本語環境では円記号)がよく使<br>
-われます。マップをたくさん定義したい場合は、複数文字を使ってください。例えば、<br>
-単語を () で囲むには &quot;\p&quot; で、単語を {} で囲むには &quot;\c&quot; で、といったことができ<br>
-ます。<br>
+この例では、トリガーは 1 つのキーです; それは任意の文字列にできます。しかし、<br>
+既存の Vim コマンドを使うと、そのコマンドはもう使用できなくなります。それは避<br>
+けたほうがよいでしょう。<br>
+&nbsp;&nbsp; マッピングで使えるキーの 1 つはバックスラッシュです。あなたはおそらく 2 つ<br>
+以上のマッピングを定義したいので、別の文字を追加します。例えば、&quot;\p&quot; を単語の<br>
+周りに丸括弧を追加するように、&quot;\c&quot; を波括弧を追加するようにマップできます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map \p i(&lt;Esc&gt;ea)&lt;Esc&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map \c i{&lt;Esc&gt;ea}&lt;Esc&gt;</div>
 <br>
-&quot;\&quot; と &quot;p&quot; はくっつけてください。そうすれば Vim は 2 文字のマップだと認識でき<br>
-ます。<br>
+Vim がそれらが一緒のものだとわかるように、\ および p を素早く続けてタイプする<br>
+必要があります。<br>
 <br>
-引数なしの &quot;:map&quot; コマンドで現在のマップ定義の一覧を表示できます。表示された<br>
-マップは、少なくともノーマルモードで使えます。より詳しくは<a class="Identifier" href="usr_40.html#40.1">40.1</a>章を参照してく<br>
-ださい。<br>
+&quot;:map&quot; コマンド (引数なし) は、あなたの現在のマッピングを一覧表示します。少な<br>
+くともノーマルモード用のものを。マッピングについての詳細は&nbsp;<a class="Identifier" href="usr_40.html#40.1">40.1</a>&nbsp;節で。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_05.html#05.5" name="05.5">05.5</a>&nbsp;&nbsp;パッケージの追加&nbsp;&nbsp;<a class="Constant" href="usr_05.html#add-package" name="add-package">add-package</a><br>
 <br>
-パッケージとはVimに追加するファイルの集合です。パッケージには、任意のタイミン<br>
-グで読み込めるものと、起動時に自動的に読み込まれるものの2種類があります。<br>
+パッケージは、Vim に追加できるファイルの集まりです。2 種類のパッケージがありま<br>
+す: 任意のもの、および起動時に自動的に読み込まれるもの。<br>
 <br>
-Vim は、いくつかの任意に使用可能なパッケージと一緒に配布されています。<br>
+Vim の配布物には、任意で使用できるいくつかのパッケージが付属しています。<br>
 <br>
-<a class="Identifier" href="starting.html#vimrc">vimrc</a>&nbsp;では&nbsp;<span class="Comment">:packadd!</span>&nbsp;を使用してください。これを使うと、パッケージは単に<br>
-<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;に追加されるだけで、実際の読み込みは通常の起動プロセスに任されま<br>
-す。&quot;!&quot; を付けない場合はパッケージが即座に読み込まれますが、これはパッケージを<br>
-試しに使ってみたい場合に適した動作です。<a class="Identifier" href="repeat.html#:packadd">:packadd</a>&nbsp;を参照してください。<br>
-パッケージについてのより詳しい情報は次の項目を参照してください:&nbsp;<a class="Identifier" href="repeat.html#packages">packages</a><br>
+あなたの&nbsp;<a class="Identifier" href="starting.html#vimrc">vimrc</a>&nbsp;では&nbsp;<span class="Comment">:packadd!</span>&nbsp;を使ってください: これはパッケージを<br>
+<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;に追加するだけで、読み込みは通常の起動処理に任せます。&quot;!&quot; なしで<br>
+は、パッケージは直接読み込まれ、それは 1 つを試してみるときに望むものです。<br>
+<a class="Identifier" href="repeat.html#:packadd">:packadd</a>&nbsp;を参照してください。パッケージについてのさらなる情報はここで見つけ<br>
+られます:&nbsp;<a class="Identifier" href="repeat.html#packages">packages</a>。<br>
 <br>
 <span class="PreProc">------------------------------------------------------------------------------</span><br>
 matchit パッケージの追加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#matchit-install" name="matchit-install">matchit-install</a>&nbsp;<a class="Constant" href="usr_05.html#package-matchit" name="package-matchit">package-matchit</a><br>
 <span class="PreProc">------------------------------------------------------------------------------</span><br>
-例えば matchit パッケージです。このプラグインは &quot;%&quot; コマンドを、HTML タグや<br>
-Vim script の if/else/endif やその他のものにマッチするようにします。とても便利<br>
-なのですが後方互換性はありません。それがデフォルトでは無効にされている理由で<br>
-す。<br>
+例えば、matchit パッケージ このプラグインは、&quot;%&quot; コマンドを、マッチする HTML<br>
+タグ、Vim script 内の if/else/endif などへジャンプさせます。後方互換ではありま<br>
+せんが (それが既定で有効になっていない理由です)、とても便利です。<br>
 <br>
-このプラグインを使用するには、vimrc に以下の行を追加してください:<br>
+このプラグインを使い始めるには、あなたの vimrc ファイルに 1 行を追加します:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;packadd! matchit</div>
 <br>
-たったこれだけです。あとは Vim を再起動するだけで、このプラグインについてのヘ<br>
-ルプを見つけられます:<br>
+これだけです! Vim を再起動した後、このプラグインについてのヘルプを見つけられま<br>
+す:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:help matchit</div>
 <br>
-これが動作するのは&nbsp;<span class="Comment">:packadd!</span>&nbsp;によってパッケージのディレクトリが<br>
-<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;に追加され、ヘルプファイルが見つけられるようになったからです。<br>
+これは、<span class="Comment">:packadd!</span>&nbsp;がパッケージディレクトリを&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;に追加し、ヘルプ<br>
+ファイルが見つかるようにしたので、機能します。<br>
 <br>
-パッケージはインターネットの様々な場所から入手できるでしょう。通常それらは圧縮<br>
-アーカイブかリポジトリの形態を採用しているでしょう。アーカイブであれば以下のよ<br>
-うなステップでインストールできます:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. パッケージディレクトリを作成する:<br>
+パッケージはインターネット上のさまざまな場所で見つけられます。それは通常、アー<br>
+カイブまたはリポジトリとして提供されます。アーカイブの場合は、これらの手順に従<br>
+うことができます:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. パッケージディレクトリを作成します:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mkdir -p ~/.vim/pack/fancy</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fancy&quot; はあなたの好きな名前に変更できる。パッケージを表すのに良<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; いものを使おう。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. そのディレクトリにアーカイブを解凍しよう。以下はアーカイブ内のトッ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; プディレクトリは &quot;start&quot; であると仮定している:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fancy&quot; はあなたの好みの任意の名前にできます。パッケージを表すもの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; を使ってください。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. そのディレクトリにアーカイブを展開します。これは、アーカイブ内の最<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 上位のディレクトリが &quot;start&quot; であることを想定しています:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd ~/.vim/pack/fancy<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unzip /tmp/fancy.zip</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;アーカイブ展開後のレイアウトが、以下のようなパスになっていなけれ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ば、適宜修正すること:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;アーカイブのレイアウトが異なる場合、最終的にこのようなパスになるよ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; うにしてください:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">~/.vim/pack/fancy/start/fancytext/plugin/fancy.vim</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ここの &quot;fancytext&quot; はパッケージ名なので、実際には別の名前になるだろ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; う。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ここで &quot;fancytext&quot; はパッケージの名前です、それは他の何にでもできま<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; す。<br>
 <br>
 <span class="PreProc">------------------------------------------------------------------------------</span><br>
-editorconfig パッケージの追加&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#editorconfig-install" name="editorconfig-install">editorconfig-install</a>&nbsp;<a class="Constant" href="usr_05.html#package-editorconfig" name="package-editorconfig">package-editorconfig</a><br>
+editorconfig パッケージの追加&nbsp;<a class="Constant" href="usr_05.html#editorconfig-install" name="editorconfig-install">editorconfig-install</a>&nbsp;<a class="Constant" href="usr_05.html#package-editorconfig" name="package-editorconfig">package-editorconfig</a><br>
 <span class="PreProc">------------------------------------------------------------------------------</span><br>
 <br>
-このプラグインを使い始めるには、vimrcファイルに以下の行を追加してください:<br>
+このプラグインを使い始めるには、あなたの vimrc ファイルに 1 行を追加します:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;packadd! editorconfig</div>
 <br>
-Vimを再起動するとプラグインが有効になります。詳細はこちらで確認できます:<br>
+Vim を再起動した後、プラグインは有効になっており、それについては以下で読むこと<br>
+ができます:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:h editorconfig.txt</div>
 <br>
 <br>
 <span class="PreProc">------------------------------------------------------------------------------</span><br>
-コメントパッケージの追加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#comment-install" name="comment-install">comment-install</a>&nbsp;<a class="Constant" href="usr_05.html#package-comment" name="package-comment">package-comment</a><br>
+comment パッケージの追加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#comment-install" name="comment-install">comment-install</a>&nbsp;<a class="Constant" href="usr_05.html#package-comment" name="package-comment">package-comment</a><br>
 <span class="PreProc">------------------------------------------------------------------------------</span><br>
 <br>
-このプラグインを使い始めるには、vimrcファイルに以下の行を追加してください:<br>
+このプラグインを使い始めるには、あなたの vimrc ファイルに 1 行を追加します:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;packadd! comment</div>
 <br>
-こうすることで、コメント用の&nbsp;<span class="Comment">gc</span>&nbsp;および同じようなデフォルトキーバインディング<br>
-(Vim コミュニティでは定評のあるマッピングです) でプラグインを使用できます。<br>
+このようにして、コメントするための既定のキーバインド&nbsp;<span class="Comment">gc</span>&nbsp;および類似のものでプ<br>
+ラグインを使用できます (これは Vim コミュニティで定着したマッピングです)。<br>
 <br>
-Vimを再起動するとプラグインが有効になります。詳細はこちらで確認できます:<br>
+Vim を再起動した後、プラグインは有効になっており、それについては以下で読むこと<br>
+ができます:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:h comment.txt</div>
 <br>
 <br>
@@ -489,13 +489,13 @@ Vimを再起動するとプラグインが有効になります。詳細はこ�
 nohlsearch パッケージの追加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#nohlsearch-install" name="nohlsearch-install">nohlsearch-install</a>&nbsp;<a class="Constant" href="usr_05.html#package-nohlsearch" name="package-nohlsearch">package-nohlsearch</a><br>
 <span class="PreProc">------------------------------------------------------------------------------</span><br>
 <br>
-このプラグインを使い始めるには、vimrcファイルに以下の行を追加してください:<br>
+このプラグインを使い始めるには、あなたの vimrc ファイルに 1 行を追加します:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;packadd! nohlsearch</div>
 <br>
-<a class="Type" href="options.html#'updatetime'">'updatetime'</a>&nbsp;の後、または&nbsp;<a class="Identifier" href="insert.html#Insert">Insert</a>&nbsp;モードに入った後に、<a class="Identifier" href="pattern.html#:nohlsearch">:nohlsearch</a>&nbsp;を自動的<br>
-に実行します。<br>
-したがって、デフォルトの updatetime だと仮定すると、hlsearch はアイドル時間の<br>
-4 秒後に一時停止/オフになります。<br>
+<a class="Type" href="options.html#'updatetime'">'updatetime'</a>&nbsp;の後、または&nbsp;<a class="Identifier" href="insert.html#Insert">Insert</a>&nbsp;モードに入った後に、自動的に&nbsp;<a class="Identifier" href="pattern.html#:nohlsearch">:nohlsearch</a><br>
+を実行します。<br>
+したがって、既定の updatetime を想定すると、hlsearch は 4 秒間のアイドル時間の<br>
+後に一時停止/オフにされます。<br>
 <br>
 プラグインが読み込まれた後にその効果を無効にするには:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;au! nohlsearch</div>
@@ -505,36 +505,35 @@ nohlsearch パッケージの追加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Const
 highlight-yank パッケージの追加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#hlyank-install" name="hlyank-install">hlyank-install</a>&nbsp;<a class="Constant" href="usr_05.html#package-hlyank" name="package-hlyank">package-hlyank</a><br>
 <span class="PreProc">------------------------------------------------------------------------------</span><br>
 <br>
-このプラグインを使い始めるには、vimrcファイルに以下の行を追加してください:<br>
+このプラグインを使い始めるには、あなたの vimrc ファイルに 1 行を追加します:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;packadd! hlyank</div>
 <br>
-このパッケージは、最後の&nbsp;<a class="Identifier" href="change.html#yank">yank</a>&nbsp;コマンドの影響を受けた領域をしばらくの間ハイラ<br>
-イトします。<a class="Identifier" href="builtin.html#getregionpos()">getregionpos()</a>&nbsp;関数を使用した簡略化された実装については、<a class="Identifier" href="usr_52.html#52.6">52.6</a><br>
-を参照してください。<br>
+このパッケージは、最後の&nbsp;<a class="Identifier" href="change.html#yank">yank</a>&nbsp;コマンドの影響を受けた領域を短時間ハイライトし<br>
+ます。<a class="Identifier" href="builtin.html#getregionpos()">getregionpos()</a>&nbsp;関数を使った簡略化された実装については&nbsp;<a class="Identifier" href="usr_52.html#52.6">52.6</a>&nbsp;を参照し<br>
+てください。<br>
 <br>
-プラグインは以下の構成変数を理解します (設定はデフォルト値を示しています)。<br>
+このプラグインは以下の設定変数を理解します (設定は既定値を示しています)。<br>
 <br>
-別のハイライトグループを指定するには、以下を使用します:<br>
+別のハイライトグループを指定するには、以下を使います:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let g:hlyank_hlgroup = 'IncSearch'</div>
 <br>
-異なるハイライト期間を使用するには、以下を使用します:<br>
+別のハイライトの持続時間を使うには、以下を使います:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let g:hlyank_duration = 300</div>
-単位はミリ秒で、上限は 3000 ms です。これより大きい値を設定すると、ハイライト<br>
-期間は 3000 ms になります。<br>
+単位はミリ秒で、上限は 3000 ms です。これより大きな値を設定した場合、ハイライ<br>
+トの持続時間は 3000 ms になります。<br>
 <br>
-ビジュアルモードでハイライトするには、以下を使用します:<br>
+ビジュアルモードでハイライトするには、以下を使います:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let g:hlyank_invisual = v:true</div>
 <br>
-プラグインの読み込み後にその効果を無効にするには:<br>
+プラグインが読み込まれた後にその効果を無効にするには:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;au! hlyank</div>
 <br>
-さらに、このプラグインは、<a class="Identifier" href="autocmd.html#TextPutPost">TextPutPost</a>&nbsp;自動コマンドを使用して貼り付けされた領<br>
-域をハイライトすることもできます。これはデフォルトでは無効になっており、以下の<br>
-コマンドで有効にできます:<br>
+さらに、このプラグインは、put された領域も&nbsp;<a class="Identifier" href="autocmd.html#TextPutPost">TextPutPost</a>&nbsp;自動コマンドを使って<br>
+ハイライトできます。これは既定では無効で、以下を使って有効にできます:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let g:hlput_enable = v:true</div>
 <br>
-以下の設定変数は &quot;g:hlput_hlgroup&quot; と &quot;g:hlput_duration&quot; で、これらはヤンクの<br>
-対応する変数と同じ効果を持ちます:<br>
+使用できる以下の設定変数は &quot;g:hlput_hlgroup&quot; および &quot;g:hlput_duration&quot; で、こ<br>
+れらは yank 側の対応するものと同じ効果を持ちます:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let g:hlput_hlgroup = 'IncSearch'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let g:hlput_duration = 300</div>
 <br>
@@ -542,24 +541,24 @@ highlight-yank パッケージの追加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
 osc52 パッケージの追加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#osc52-install" name="osc52-install">osc52-install</a>&nbsp;<a class="Constant" href="usr_05.html#package-osc52" name="package-osc52">package-osc52</a><br>
 <span class="PreProc">------------------------------------------------------------------------------</span><br>
 <br>
-このプラグインを使い始めるには、vimrcファイルに以下の行を追加してください:<br>
+このプラグインを使い始めるには、あなたの vimrc ファイルに 1 行を追加します:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;packadd! osc52</div>
 <br>
-osc52.vim パッケージは、OSC 52 ターミナル コマンドのサポートを提供します。これ<br>
-により、アプリケーションはターミナルと直接通信してクリップボードにアクセスでき<br>
-るようになります。<br>
+osc52.vim パッケージは、アプリケーションがあなたの端末と直接通信することでク<br>
+リップボードにアクセスできるようにする、OSC 52 端末コマンドのサポートを提供し<br>
+ます。<br>
 <br>
-パッケージの読み込みが完了したら、こちらで詳細をご覧ください:<br>
+パッケージが読み込まれたら、それについては以下で読んでください:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:h osc52.txt</div>
 <br>
 <span class="PreProc">------------------------------------------------------------------------------</span><br>
-lsp.vim と vim9ls パッケージの追加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#lsp.vim-install" name="lsp.vim-install">lsp.vim-install</a>&nbsp;<a class="Constant" href="usr_05.html#package-lsp.vim" name="package-lsp.vim">package-lsp.vim</a><br>
+lsp.vim および vim9ls パッケージの追加&nbsp;&nbsp;<a class="Constant" href="usr_05.html#lsp.vim-install" name="lsp.vim-install">lsp.vim-install</a>&nbsp;<a class="Constant" href="usr_05.html#package-lsp.vim" name="package-lsp.vim">package-lsp.vim</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#vim9ls-install" name="vim9ls-install">vim9ls-install</a>&nbsp;<a class="Constant" href="usr_05.html#package-vim9ls" name="package-vim9ls">package-vim9ls</a><br>
 <span class="PreProc">------------------------------------------------------------------------------</span><br>
 <br>
 lsp.vim は Language Server Protocol のクライアントで、vim9ls は Vim script の<br>
-ための言語サーバーです。これらで Vim script をチェックするには、vimrc ファイル<br>
-に以下の行を追加してください:<br>
+ための言語サーバーです。これらを使ってあなたの Vim script をチェックするには、<br>
+これらの行をあなたの vimrc ファイルに追加します:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if has('viai')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;packadd! lsp.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;packadd! vim9ls<br>
@@ -567,11 +566,10 @@ lsp.vim は Language Server Protocol のクライアントで、vim9ls は Vim s
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\ cmd: function('vim9ls#Command')}]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif</div>
 <br>
-ViAI のチェックにより、Vim でのエラーを回避します。ViAI が独自の vimrc ファイ<br>
-ルを持たない限り、Vim は同じ vimrc ファイルを読み込むからです。<a class="Identifier" href="viai.html#viai-config">viai-config</a><br>
-を参照。<br>
+ViAI のチェックは、ViAI が自身のものを持たない限り同じ vimrc ファイルを読む<br>
+Vim でのエラーを避けます、<a class="Identifier" href="viai.html#viai-config">viai-config</a>&nbsp;を参照してください。<br>
 <br>
-パッケージの読み込みが完了したら、こちらで詳細をご覧ください:<br>
+パッケージが読み込まれたら、それらについては以下で読んでください:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:h lsp.txt<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:h vim9ls.txt</div>
 <br>
@@ -579,383 +577,391 @@ ViAI のチェックにより、Vim でのエラーを回避します。ViAI が
 viai.mcp パッケージの追加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#viaimcp-install" name="viaimcp-install">viaimcp-install</a>&nbsp;<a class="Constant" href="usr_05.html#package-viai.mcp" name="package-viai.mcp">package-viai.mcp</a><br>
 <span class="PreProc">------------------------------------------------------------------------------</span><br>
 <br>
-viai.mcp は Model Context Protocol (MCP) のサーバーで、AI ツールに ViAI のヘル<br>
-プと Vim script のチェックを提供します。AI ツールはパッケージ内のコマンドでサー<br>
-バーを起動するので、そのためにパッケージを読み込む必要はありません。Claude<br>
-Code の場合:<br>
+viai.mcp は、AI ツールに ViAI のヘルプおよび Vim script のチェックを提供する、<br>
+Model Context Protocol (MCP) のサーバーです。AI ツールはパッケージ内のコマンド<br>
+でサーバーを起動し、したがって、そのためにパッケージが読み込まれる必要はありま<br>
+せん。Claude Code の場合:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;claude mcp add viaimcp -- {runtime}/pack/dist/opt/viai.mcp/bin/viaimcp</div>
-<span class="Special">{runtime}</span>&nbsp;は ViAI での&nbsp;<a class="Identifier" href="starting.html#$VIMRUNTIME">$VIMRUNTIME</a>&nbsp;の値です。MS-Windows ではコマンドは<br>
+<span class="Special">{runtime}</span>&nbsp;は ViAI での&nbsp;<a class="Identifier" href="starting.html#$VIMRUNTIME">$VIMRUNTIME</a>&nbsp;の値です。MS-Windows では、コマンドは<br>
 bin\viaimcp.cmd です。サーバーは $PATH から &quot;viai&quot; を実行します。別の ViAI を<br>
 実行するには、$VIAIMCP_VIM にその名前を設定してください。<br>
 <br>
-そのヘルプを読むには、vimrc ファイルに以下の行を追加してください:<br>
+そのヘルプを読むには、これらの行をあなたの vimrc ファイルに追加します:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if has('viai')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;packadd! viai.mcp<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif</div>
 <br>
-パッケージの読み込みが完了したら、こちらで詳細をご覧ください:<br>
+パッケージが読み込まれたら、それについては以下で読んでください:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:h viaimcp.txt</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_05.html#05.6" name="05.6">05.6</a>&nbsp;&nbsp;プラグインの追加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#add-plugin" name="add-plugin">add-plugin</a>&nbsp;<a class="Constant" href="usr_05.html#plugin" name="plugin">plugin</a><br>
 <br>
-プラグインを追加することで機能拡張できます。プラグインといっても、Vimが起動さ<br>
-れたときに自動的に読み込まれるだけの、ただの Vim script ファイルです。ファイル<br>
-をプラグインディレクトリにコピーするだけで簡単にプラグインを追加できます。<br>
-<span class="Special">{</span><a class="Identifier" href="various.html#+eval">+eval</a><span class="Special">が有効な場合のみ利用できます}</span><br>
+Vim の機能はプラグインを追加することで拡張できます。プラグインは、Vim が起動す<br>
+るときに自動的に読み込まれる Vim script ファイルにすぎません。プラグインは、そ<br>
+れをあなたのプラグインディレクトリに置くことで、とても簡単に追加できます。<br>
+<span class="Special">{Vim が&nbsp;</span><a class="Identifier" href="various.html#+eval">+eval</a><span class="Special">&nbsp;機能なしでコンパイルされたときは使用できない}</span><br>
 <br>
-2 種類のプラグインがあります。<br>
+2 種類のプラグインがあります:<br>
 <br>
-&nbsp;&nbsp;グローバルプラグイン&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全種類のファイルで使われるプラグイン<br>
-&nbsp;&nbsp;ファイルタイププラグイン&nbsp;&nbsp;特定タイプのファイルでのみ使われるプラグイン<br>
+&nbsp;&nbsp;&nbsp;&nbsp;グローバルプラグイン: すべての種類のファイルに使われる<br>
+&nbsp;&nbsp;ファイルタイププラグイン: 特定の種類のファイルにだけ使われる<br>
 <br>
-まず、グローバルプラグインについて説明し、次にファイルタイププラグインの説明<br>
-<a class="Identifier" href="usr_05.html#add-filetype-plugin">add-filetype-plugin</a>をします。<br>
+最初にグローバルプラグインについて説明し、それからファイルタイプのもの<br>
+<a class="Identifier" href="usr_05.html#add-filetype-plugin">add-filetype-plugin</a>&nbsp;について説明します。<br>
 <br>
 <br>
 <span class="Statement">グローバルプラグイン</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#standard-plugin" name="standard-plugin">standard-plugin</a>&nbsp;<a class="Constant" href="usr_05.html#distributed-plugins" name="distributed-plugins">distributed-plugins</a><br>
 <br>
-Vim を起動すると、自動的にいくつものグローバルプラグインが読み込まれます。特に<br>
-何もしなくて大丈夫です。グローバルプラグインは、ほとんどの人が欲しいと思うだろ<br>
-う機能を提供しています。それらの機能は Vim の中にコンパイルして組み込まれてい<br>
-るのではなく、Vim script として実装されています。ヘルプの目次にプラグインの一<br>
-覧があります&nbsp;<a class="Identifier" href="index.html#standard-plugin-list">standard-plugin-list</a>。<br>
+Vim を起動すると、Vim はいくつものグローバルプラグインを自動的に読み込みます。<br>
+このためにあなたは何もする必要はありません。それらは、ほとんどの人が使いたいと<br>
+思うが、Vim にコンパイルされる代わりに Vim script として実装された機能を追加し<br>
+ます。それらはヘルプの索引&nbsp;<a class="Identifier" href="index.html#standard-plugin-list">standard-plugin-list</a>&nbsp;に一覧になっているのを見つけ<br>
+られます。<br>
 <br>
-ローカルにインストールされたプラグインとパッケージ (別個のヘルプファイルが付属)<br>
-については、同様のリストがヘルプセクション&nbsp;<a class="Identifier" href="index.html#local-additions">local-additions</a>&nbsp;にあります。<br>
+ローカルにインストールされたプラグインおよびパッケージ (分離されたヘルプファイ<br>
+ルが付属するもの) については、同様の一覧がヘルプの節&nbsp;<a class="Identifier" href="index.html#local-additions">local-additions</a>&nbsp;で見つ<br>
+けられます。<br>
 <br>
-<a class="Identifier" href="starting.html#load-plugins">load-plugins</a>も参照してください。<br>
+<a class="Identifier" href="starting.html#load-plugins">load-plugins</a>&nbsp;も参照してください。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#add-global-plugin" name="add-global-plugin">add-global-plugin</a><br>
-グローバルプラグインを追加すると、いつでもその機能を使えるようになります。<br>
-グローバルプラグインを追加するのは簡単です。<br>
-1. プラグインを入手する<br>
-2. 正しいディレクトリにコピーする<br>
+Vim を使うときに常に存在する機能を追加するために、グローバルプラグインを追加で<br>
+きます。グローバルプラグインを追加するには 2 つのステップしかありません:<br>
+1. プラグインのコピーを入手します。<br>
+2. それを正しいディレクトリに置きます。<br>
 <br>
 <br>
 <span class="Statement">グローバルプラグインを入手する</span><br>
 <br>
-プラグインはどこにありますか？<br>
-- いくつかは常に読み込まれる。それらは $VIMRUNTIME/plugin ディレクトリの中で見<br>
-&nbsp;&nbsp;ることができる。<br>
-- Vim の配布物にいくつか含まれている。$VIMRUNTIME/macros ディレクトリおよびそ<br>
-&nbsp;&nbsp;のサブディレクトリおよび $VIM/vimfiles/pack/dist/opt/ 以下を見ること。<br>
-- インターネットからダウンロードする。たくさんのプラグインが<br>
-&nbsp;&nbsp;<span class="Constant"><a href="http://www.vim.org">http://www.vim.org</a></span>&nbsp;にある。<br>
-- Vim のメーリングリスト<a class="Identifier" href="intro.html#maillist">maillist</a>に投稿されることもある。<br>
-- あなたが自作することもできる。プラグインの書き方<a class="Identifier" href="usr_51.html#write-plugin">write-plugin</a>をどうぞ。<br>
+プラグインはどこで見つけられますか?<br>
+- いくつかは常に読み込まれ、それらはディレクトリ $VIMRUNTIME/plugin で見ること<br>
+&nbsp;&nbsp;ができる。<br>
+- いくつかは Vim に付属している。それらはディレクトリ $VIMRUNTIME/macros およ<br>
+&nbsp;&nbsp;びそのサブディレクトリの中、および $VIM/vimfiles/pack/dist/opt/ の下で見つけ<br>
+&nbsp;&nbsp;られる。<br>
+- ネットからダウンロードする。<span class="Constant"><a href="http://www.vim.org">http://www.vim.org</a></span>&nbsp;に大規模なコレクションがある。<br>
+- それらは時々 Vim の&nbsp;<a class="Identifier" href="intro.html#maillist">maillist</a>&nbsp;に投稿される。<br>
+- あなた自身で 1 つ書くこともできる、<a class="Identifier" href="usr_51.html#write-plugin">write-plugin</a>&nbsp;を参照。<br>
 <br>
-いくつかのプラグインは vimball アーカイブで配布されています。<a class="Identifier" href="pi_vimball.html#vimball">vimball</a>参照。<br>
-いくつかのプラグインは自動更新可能です。<a class="Identifier" href="pi_getscript.html#getscript">getscript</a>参照。<br>
+いくつかのプラグインは vimball アーカイブとして提供されます、<a class="Identifier" href="pi_vimball.html#vimball">vimball</a>&nbsp;を参照<br>
+してください。<br>
+いくつかのプラグインは自動的に更新できます、<a class="Identifier" href="pi_getscript.html#getscript">getscript</a>&nbsp;を参照してください。<br>
 <br>
 <br>
 <span class="Statement">グローバルプラグインを使う</span><br>
 <br>
-まず、プラグイン自身のドキュメントを読んで、動作条件を確認してください。<br>
-次にそれをプラグインディレクトリにコピーします。<br>
+まず、何か特別な条件がないかを確認するために、プラグイン自体の中のテキストを読<br>
+んでください。それから、そのファイルをあなたのプラグインディレクトリにコピーし<br>
+ます:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">system&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plugin directory</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">システム&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プラグインディレクトリ</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~/.vim/plugin/<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$HOME/vimfiles/plugin or $VIM/vimfiles/plugin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$HOME/vimfiles/plugin または $VIM/vimfiles/plugin<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Amiga&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s:vimfiles/plugin<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Macintosh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $VIM:vimfiles:plugin<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mac OS X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~/.vim/plugin/<br>
 <br>
-Unixの場合の例 (プラグインディレクトリがまだない場合)<br>
+Unix での例 (まだプラグインディレクトリを持っていなかったと仮定して):<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mkdir ~/.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mkdir ~/.vim/plugin<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cp /tmp/yourplugin.vim ~/.vim/plugin</div>
 <br>
-これだけです。もうこのプラグインで定義されたコマンドが使えます。<br>
+これだけです! これで、このプラグインで定義されたコマンドを使用できます。<br>
 <br>
-plugin/ ディレクトリ以下にファイルを置く代わりに、それらのファイルを plugin/<br>
-ディレクトリ以下のサブディレクトリに置くこともできます。例えば、Perl 用のプラ<br>
-グインを &quot;~/.vim/plugin/perl/*.vim&quot; に置いたりできます。<br>
+プラグインを plugin/ ディレクトリに直接置く代わりに、plugin/ の下のサブディレ<br>
+クトリに置くことで、それらをよりうまく整理してもよいでしょう。<br>
+例として、あなたのすべての Perl プラグインに &quot;~/.vim/plugin/perl/*.vim&quot; を使う<br>
+ことを検討してください。<br>
 <br>
 <br>
 <span class="Statement">ファイルタイププラグイン</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#add-filetype-plugin" name="add-filetype-plugin">add-filetype-plugin</a>&nbsp;<a class="Constant" href="usr_05.html#ftplugins" name="ftplugins">ftplugins</a><br>
 <br>
-Vim の配布パッケージにはたくさんのファイルタイププラグインが入っています。<br>
-次のコマンドで利用開始できます。<br>
+Vim の配布物には、さまざまなファイルタイプのためのプラグイン一式が付属してお<br>
+り、このコマンドでそれを使い始めることができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:filetype plugin on</div>
 <br>
-これだけです。<a class="Identifier" href="usr_05.html#vimrc-filetype">vimrc-filetype</a>も参照してください。<br>
+これだけです!&nbsp;<a class="Identifier" href="usr_05.html#vimrc-filetype">vimrc-filetype</a>&nbsp;を参照してください。<br>
 <br>
-使いたいファイルタイププラグインがない場合や、標準より良いものを見つけた場合<br>
-は、追加することもできます。ファイルタイププラグインの追加は次の手順で行いま<br>
-す:<br>
-1. プラグインを入手する<br>
-2. 正しいディレクトリにコピーする<br>
+あなたが使っているファイルタイプのプラグインが欠けている場合、またはより良いも<br>
+のを見つけた場合、それを追加できます。ファイルタイププラグインを追加するには 2<br>
+つのステップがあります:<br>
+1. プラグインのコピーを入手します。<br>
+2. それを正しいディレクトリに置きます。<br>
 <br>
 <br>
 <span class="Statement">ファイルタイププラグインを入手する</span><br>
 <br>
-ファイルタイププラグインもグローバルプラグインと同じ方法で入手できます。プラグ<br>
-インの種類が記載されているのでそれを見て、そのプラグインがグローバルプラグイン<br>
-かファイルタイププラグインか確認してください。$VIMRUNTIME/macros に入っている<br>
-のはグローバルプラグインです。$VIMRUNTIME/ftplugin に入っているのはファイルタ<br>
-イププラグインです。<br>
+それらはグローバルプラグインと同じ場所で見つけられます。ファイルの種類が述べら<br>
+れているかどうかに注意してください、それでそのプラグインがグローバルなものか、<br>
+またはファイルタイプのものかがわかります。$VIMRUNTIME/macros 内のスクリプトは<br>
+グローバルなもので、ファイルタイププラグインは $VIMRUNTIME/ftplugin にありま<br>
+す。<br>
 <br>
 <br>
 <span class="Statement">ファイルタイププラグインを使う</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#ftplugin-name" name="ftplugin-name">ftplugin-name</a><br>
 <br>
-ファイルタイププラグインは正しいディレクトリにコピーするだけで追加できます。<br>
-ディレクトリの場所はグローバルプラグインと同じですが、ディレクトリ名の最後の部<br>
-分が &quot;ftplugin&quot; となります。例えば &quot;stuff&quot; ファイルタイプ用のプラグインを Unix<br>
-システムに入れるとしましょう。入手したファイルを次のコマンドで ftplugin ディレ<br>
-クトリに移します:<br>
+ファイルタイププラグインは、正しいディレクトリに置くことで追加できます。この<br>
+ディレクトリの名前は、上でグローバルプラグインについて述べたのと同じディレクト<br>
+リにありますが、最後の部分が &quot;ftplugin&quot; です。&quot;stuff&quot; ファイルタイプのプラグイ<br>
+ンを見つけ、Unix を使っているとします。その場合、このファイルを ftplugin ディ<br>
+レクトリに移動できます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mv thefile ~/.vim/ftplugin/stuff.vim</div>
 <br>
-そのファイルがすでにある場合は、既存のプラグインと追加しようとしているプラグイ<br>
-ンを同時に使っても問題ないかどうか確認してください。問題がなければ別の名前に変<br>
-えましょう:<br>
+そのファイルがすでに存在する場合、すでに &quot;stuff&quot; 用のプラグインがあります。既<br>
+存のプラグインが、追加しようとしているものと衝突しないかを確認したいかもしれま<br>
+せん。問題ない場合、新しいものに別の名前を付けることができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mv thefile ~/.vim/ftplugin/stuff_too.vim</div>
 <br>
-アンダースコアはファイルタイプの名前とそれ以外を区切るのに使います。アンダース<br>
-コア以降はどんな文字列でも構いません。しかし、&quot;otherstuff.vim&quot; といった名前に<br>
-した場合はうまく動きません。そのファイルは &quot;otherstuff&quot; というファイルタイプの<br>
-ときにだけ読み込まれます。<br>
+アンダースコアは、ファイルタイプの名前を、何でもかまわない残りの部分から区切る<br>
+ために使われます。&quot;otherstuff.vim&quot; を使った場合、それは機能しないでしょう、そ<br>
+れは &quot;otherstuff&quot; ファイルタイプに対して読み込まれるでしょう。<br>
 <br>
-MS-DOS ライクなファイルシステムでは長いファイル名が使えません。プラグインを追<br>
-加するときに、ファイルタイプ名が 6 文字以上だと問題が生じます。そういうときは<br>
-さらにディレクトリを掘ってください:<br>
+MS-DOS のようなファイルシステムでは、長いファイル名を使えません。2 つ目のプラ<br>
+グインを追加し、そのファイルタイプが 6 文字より多い場合、問題にぶつかるでしょ<br>
+う。これを回避するために、追加のディレクトリを使えます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mkdir $VIM/vimfiles/ftplugin/fortran<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copy thefile $VIM/vimfiles/ftplugin/fortran/too.vim</div>
 <br>
-ファイルタイププラグインの名前付けルールは次の通りです:<br>
+ファイルタイププラグインの汎用的な名前は:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ftplugin/&lt;filetype&gt;.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ftplugin/&lt;filetype&gt;_&lt;name&gt;.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ftplugin/&lt;filetype&gt;/&lt;name&gt;.vim</div>
 <br>
-&quot;<span class="Special">&lt;name&gt;</span>&quot; の部分はどんな文字列でも構いません。<br>
-以下は Unix での &quot;stuff&quot; ファイルタイプの例です:<br>
+ここで &quot;<span class="Special">&lt;name&gt;</span>&quot; は、あなたが好む任意の名前にできます。<br>
+Unix での &quot;stuff&quot; ファイルタイプの例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~/.vim/ftplugin/stuff.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~/.vim/ftplugin/stuff_def.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~/.vim/ftplugin/stuff/header.vim</div>
 <br>
-<span class="Special">&lt;filetype&gt;</span>&nbsp;の部分はプラグインの対象になっているファイルタイプ名です。同じファ<br>
-イルタイプのファイルだけがそのプラグインを使います。<span class="Special">&lt;name&gt;</span>&nbsp;の部分は無視されま<br>
-す。一つのファイルタイプに複数のプラグインを登録する場合に使ってください。<br>
-<span class="Todo">Note:</span>&nbsp;ファイルの拡張子は必ず &quot;.vim&quot; にしてください。<br>
+filetype&gt; の部分は、プラグインが使われる対象のファイルタイプの名前です。この<br>
+ファイルタイプのファイルだけが、プラグインからの設定を使います。プラグインファ<br>
+イルの&nbsp;<span class="Special">&lt;name&gt;</span>&nbsp;の部分は重要ではなく、同じファイルタイプに対して複数のプラグイン<br>
+を持つためにそれを使えます。<span class="Todo">Note</span>&nbsp;それは &quot;.vim&quot; で終わらなければならないことに<br>
+注意してください。<br>
 <br>
 <br>
-詳しくは以下を参照してください:<br>
-<a class="Identifier" href="filetype.html#filetype-plugins">filetype-plugins</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルタイププラグインについてのドキュメントと、マッ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プで問題が発生した場合の対処方法。<br>
-<a class="Identifier" href="starting.html#load-plugins">load-plugins</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;起動時に読み込まれるグローバルプラグイン。<br>
-<a class="Identifier" href="filetype.html#ftplugin-overrule">ftplugin-overrule</a>&nbsp;&nbsp;&nbsp;&nbsp; 標準のファイルタイププラグインの設定を上書きする。<br>
+さらなる読み物:<br>
+<a class="Identifier" href="filetype.html#filetype-plugins">filetype-plugins</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルタイププラグインのドキュメント、およびマッピン<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;グが問題を起こすのを避ける方法についての情報。<br>
+<a class="Identifier" href="starting.html#load-plugins">load-plugins</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;起動中にグローバルプラグインが読み込まれるとき。<br>
+<a class="Identifier" href="filetype.html#ftplugin-overrule">ftplugin-overrule</a>&nbsp;&nbsp;&nbsp;&nbsp; グローバルプラグインからの設定を覆す。<br>
 <a class="Identifier" href="usr_51.html#write-plugin">write-plugin</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プラグインスクリプトの書き方。<br>
-<a class="Identifier" href="filetype.html#plugin-details">plugin-details</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プラグインの使い方やプラグインが動かない場合について<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の詳細な情報。<br>
-<a class="Identifier" href="filetype.html#new-filetype">new-filetype</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しいファイルタイプを追加するには。<br>
+<a class="Identifier" href="filetype.html#plugin-details">plugin-details</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プラグインの使用についてのさらなる情報、またはあなたの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プラグインが機能しないとき。<br>
+<a class="Identifier" href="filetype.html#new-filetype">new-filetype</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しいファイルタイプを検出する方法。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_05.html#05.7" name="05.7">05.7</a>&nbsp;&nbsp;ヘルプファイルの追加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#add-local-help" name="add-local-help">add-local-help</a><br>
 <br>
-運が良ければ、プラグインにはヘルプファイルが添付されています。ここでは、ヘルプ<br>
-ファイルのインストール方法を説明します。インストールしておけば新しいプラグイン<br>
-のヘルプを簡単に調べることができます。<br>
-&quot;doit.vim&quot; プラグインを例にやってみましょう。このプラグインにはヘルプ<br>
-&quot;doit.txt&quot; が付属しています。最初にプラグイン本体を適切なディレクトリにコ<br>
-ピーしましょう。(ディレクトリがすでにある場合は、&quot;mkdir&quot; コマンドを省<br>
-略してください。)<br>
+運が良い場合、あなたがインストールしたプラグインにはヘルプファイルも付属してい<br>
+ます。あなたの新しいプラグインのヘルプを簡単に見つけられるように、ヘルプファイ<br>
+ルをインストールする方法を説明します。<br>
+&nbsp;&nbsp; 例として &quot;doit.vim&quot; プラグインを使いましょう。このプラグインにはドキュメン<br>
+トが付属しています: &quot;doit.txt&quot;。まず、プラグインを正しいディレクトリにコピーし<br>
+ましょう。今回は Vim の中から行います。(すでにディレクトリがある場合、&quot;mkdir&quot;<br>
+コマンドのいくつかは省略してもかまいません。)<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!mkdir ~/.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!mkdir ~/.vim/plugin<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!cp /tmp/doit.vim ~/.vim/plugin</div>
 <br>
-&quot;cp&quot; は Unix のコマンドです。MS-Windows では &quot;copy&quot; を使ってください。<br>
+&quot;cp&quot; コマンドは Unix 用です、MS-Windows では &quot;copy&quot; を使えます。<br>
 <br>
-次に&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;のいずれかのディレクトリに &quot;doc&quot; ディレクトリを作ります。<br>
+今度は、<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;内のディレクトリの 1 つに &quot;doc&quot; ディレクトリを作成しま<br>
+す。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!mkdir ~/.vim/doc</div>
 <br>
-&quot;doc&quot; ディレクトリにヘルプファイルをコピーします。&nbsp;<br>
+ヘルプファイルを &quot;doc&quot; ディレクトリにコピーします。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!cp /tmp/doit.txt ~/.vim/doc</div>
 <br>
-続いて、新しいヘルプファイルの項目にジャンプできるように仕掛けをします。<br>
-<a class="Identifier" href="helphelp.html#:helptags">:helptags</a>コマンドを使ってタグファイルを生成してください。<br>
+さて、新しいヘルプファイル内の主題へジャンプできるようにする仕掛けの番です:<br>
+<a class="Identifier" href="helphelp.html#:helptags">:helptags</a>&nbsp;コマンドでローカルの tags ファイルを生成します。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:helptags ~/.vim/doc</div>
 <br>
-さて、これで次のコマンドが使えます。<br>
+これで、<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:help doit</div>
 <br>
-これは上で追加したヘルプファイルの中から &quot;doit&quot; のヘルプを探すコマンドです。次<br>
-のコマンドでローカルヘルプの目次を見ることができます。<br>
+コマンドを使って、今追加したヘルプファイル内の &quot;doit&quot; についてのヘルプを見つけ<br>
+られます。以下を行うと、ローカルヘルプファイルの項目を見ることができます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:help local-additions</div>
 <br>
-ここには、インストールしたローカルヘルプのタイトルが自動的に追加されます。ここ<br>
-を見れば、どんなローカルヘルプが追加されているかわかります。ここからタグジャン<br>
-プもできます。<br>
+ローカルヘルプファイルからのタイトル行は、この節に魔法のように自動的に追加され<br>
+ます。そこで、どのローカルヘルプファイルが追加されたかを見て、タグを通じてそれ<br>
+らへジャンプできます。<br>
 <br>
-ローカルヘルプファイルの書き方については<a class="Identifier" href="usr_51.html#write-local-help">write-local-help</a>を参照してください。<br>
+ローカルヘルプファイルを書くには、<a class="Identifier" href="usr_51.html#write-local-help">write-local-help</a>&nbsp;を参照してください。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <a class="Constant" href="usr_05.html#05.8" name="05.8">05.8</a>&nbsp;&nbsp;オプションウィンドウ<br>
 <br>
-何かのオプションを探しているなら、ヘルプファイル&nbsp;<a class="Identifier" href="options.html#options">options</a>&nbsp;から見つけることが<br>
-できるでしょう。もう一つ、次のコマンドを使う方法もあります:<br>
+望むことを行うオプションを探している場合、ここでヘルプファイルを検索できます:<br>
+<a class="Identifier" href="options.html#options">options</a>。別の方法は、このコマンドを使うことです:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:options</div>
 <br>
-新しいウィンドウが開き、一行解説付きのオプションの一覧が表示されます。オプショ<br>
-ンは種類別にグループ化されています。カーソルを目次の上に動かして&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押<br>
-すとそこにジャンプできます。もう一度&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押すか、<span class="Special">CTRL-O</span>&nbsp;を押すと戻れま<br>
-す。<br>
+これは、1 行の説明付きのオプションの一覧がある新しいウィンドウを開きます。オプ<br>
+ションは主題ごとにグループ化されています。そこへジャンプするには、カーソルを主<br>
+題に移動して&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押します。戻るには、もう一度&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押します。または<br>
+<span class="Special">CTRL-O</span>&nbsp;を使います。<br>
 <br>
-その場でオプションの値を設定できます。例えば、&quot;displaying text&quot; グループに移動<br>
-し、カーソルを次の行まで持っていきます:<br>
+オプションの値を変更できます。例えば、&quot;displaying text&quot; の主題に移動します。そ<br>
+れからカーソルをこの行まで下に移動します:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">set wrap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nowrap</span><br>
 <br>
-ここで&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押すと、表示が次のようになります:<br>
+<span class="Special">&lt;Enter&gt;</span>&nbsp;を押すと、その行は以下に変わります:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">set nowrap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wrap</span><br>
 <br>
-このオプションはオフになりました。<br>
+これでオプションはオフに切り替えられました。<br>
 <br>
-この行の上には&nbsp;<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;オプションの簡単な説明があります。説明のところにカーソル<br>
-を動かして、<span class="Special">&lt;Enter&gt;</span>&nbsp;を押すと、<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;オプションのヘルプにジャンプできます。<br>
+この行のすぐ上に、<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;オプションの短い説明があります。カーソルをこの行に置<br>
+くために、カーソルを 1 行上に移動します。ここで&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押すと、<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;オプ<br>
+ションについての完全なヘルプへジャンプします。<br>
 <br>
-数値や文字列を引数に取るオプションの場合、値を編集できます。修正後に<span class="Special">&lt;Enter&gt;</span><br>
-キーを押すとそれが新しい値として設定されます。例えば、カーソルを次の行まで<br>
-(<a class="Type" href="options.html#'wrap'">'wrap'</a>&nbsp;の少し上に) 動かしてください。<br>
+数値または文字列の引数を取るオプションについては、値を編集できます。それから新<br>
+しい値を適用するために&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押します。例えば、カーソルを数行上のこの行に<br>
+移動します:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">set so=0</span><br>
 <br>
-&quot;$&quot; コマンドでカーソルを &quot;0&quot; の上に動かし、&quot;r5&quot; で値を 5 に変更します。<span class="Special">&lt;Enter&gt;</span><br>
-を押すと、その値が設定されます。カーソルを動かしてみると、画面の端までカーソル<br>
-が達する前にスクロールが始まることに気づくと思います。これは&nbsp;<a class="Type" href="options.html#'scrolloff'">'scrolloff'</a>&nbsp;オプ<br>
-ションのしわざです。ウィンドウの端からのオフセットを設定し、スクロールが開始す<br>
-る位置を指定しています。<br>
+&quot;$&quot; でカーソルをゼロの上に置きます。&quot;r5&quot; でそれを 5 に変更します。それから新し<br>
+い値を適用するために&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押します。ここでカーソルを動き回らせると、ボー<br>
+ダーに到達する前にテキストがスクロールし始めることに気づくでしょう。これが<br>
+<a class="Type" href="options.html#'scrolloff'">'scrolloff'</a>&nbsp;オプションの行うことです、それはスクロールが始まるウィンドウのボー<br>
+ダーからのオフセットを指定します。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-<a class="Constant" href="usr_05.html#05.9" name="05.9">05.9</a>&nbsp;&nbsp;よく使うオプション<br>
+<a class="Constant" href="usr_05.html#05.9" name="05.9">05.9</a>&nbsp;&nbsp;よく使われるオプション<br>
 <br>
-Vim には本当に大量のオプションがあります。ほとんどのオプションは使う機会がない<br>
-と思います。ここでは一部のよく使うものだけを説明します。これらのオプションには<br>
-より詳しいヘルプがあることをお忘れなく。ヘルプを見るには、&quot;:help&quot; に続けてアポ<br>
-ストロフィで囲んだオプション名を指定してください:<br>
+ひどくたくさんのオプションがあります。そのほとんどを、あなたはめったに使わない<br>
+でしょう。より便利なもののいくつかをここで述べます。これらのオプションについて<br>
+のさらなるヘルプは、オプション名の前後に単一引用符を付けて &quot;:help&quot; コマンドで<br>
+見つけられることを忘れないでください。例えば:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:help 'wrap'</div>
 <br>
-オプションの値がおかしくなってしまったら、初期設定に戻すことができます。初期設<br>
-定に戻すのにはアンパサンド(&amp;)を使います:<br>
+オプションの値をめちゃくちゃにしてしまった場合、オプション名の後ろにアンパサン<br>
+ド (&amp;) を付けることで既定値に戻せます。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set iskeyword&amp;</div>
 <br>
 <br>
-<span class="Statement">行の折り返しの禁止</span><br>
+<span class="Statement">行を折り返さない</span><br>
 <br>
-長い行は、文の全体が見えるように、画面の右端で折り返して表示されます。しかし<br>
-ウィンドウの右にはみ出した方が良い場合もあります。その場合は、左右にスクロール<br>
-して長い行を表示することになります。次のコマンドで折り返ししないようになりま<br>
-す:<br>
+Vim は通常、テキストのすべてを見られるように、長い行を折り返します。ときには、<br>
+テキストをウィンドウの右へ続けさせるほうがよいこともあります。その場合、長い行<br>
+のすべてを見るには、テキストを左右にスクロールする必要があります。このコマンド<br>
+で折り返しをオフに切り替えます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set nowrap</div>
 <br>
-表示されていない領域にカーソルを動かすと自動的にスクロールされます。10 文字ず<br>
-つスクロールするには、次のようにします:<br>
+表示されていないテキストへ移動すると、Vim は自動的にテキストをスクロールしま<br>
+す。10 文字の文脈を見るには、これを行います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set sidescroll=10</div>
 <br>
-これはファイルの内容には影響しません。表示方法を変更するだけです。<br>
+これはファイル内のテキストを変更せず、それが表示される方法だけを変更します。<br>
 <br>
 <br>
-<span class="Statement">折り返して移動するコマンド</span><br>
+<span class="Statement">折り返す移動コマンド</span><br>
 <br>
-ほとんどの移動コマンドは行頭と行末で移動を停止します。<a class="Type" href="options.html#'whichwrap'">'whichwrap'</a>&nbsp;オプションで<br>
-それを変更できます。次の例では、<a class="Type" href="options.html#'whichwrap'">'whichwrap'</a>&nbsp;を初期設定に設定しています:<br>
+移動のためのほとんどのコマンドは、行の先頭および末尾で移動を止めます。これは<br>
+<a class="Type" href="options.html#'whichwrap'">'whichwrap'</a>&nbsp;オプションで変更できます。これはそれを既定値に設定します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set whichwrap=b,s</div>
 <br>
-ここでは、<span class="Special">&lt;BS&gt;</span>&nbsp;キーで行頭から 1 つ上の行の行末へ動くことを許可しています。ま<br>
-た、<span class="Special">&lt;Space&gt;</span>&nbsp;キーで行末から次の行の行頭への移動することを許可しています。<br>
+これにより、<span class="Special">&lt;BS&gt;</span>&nbsp;キーは、行の最初の位置で使われたときに、カーソルを前の行の末<br>
+尾へ移動できるようになります。そして、<span class="Special">&lt;Space&gt;</span>&nbsp;キーは行の末尾から次の行の先頭へ<br>
+移動します。<br>
 <br>
-カーソルキーの&nbsp;<span class="Special">&lt;Left&gt;</span>&nbsp;と&nbsp;<span class="Special">&lt;Right&gt;</span>&nbsp;もこのコマンドで折り返しを許可できます:&nbsp;<br>
+カーソルキー&nbsp;<span class="Special">&lt;Left&gt;</span>&nbsp;および&nbsp;<span class="Special">&lt;Right&gt;</span>&nbsp;も折り返すようにするには、このコマンドを使<br>
+います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set whichwrap=b,s,&lt;,&gt;</div>
 <br>
-この指定はノーマルモードでのみ有効です。挿入モードでも&nbsp;<span class="Special">&lt;Left&gt;</span>&nbsp;と&nbsp;<span class="Special">&lt;Right&gt;</span>&nbsp;を許<br>
-可するには次のように指定します:<br>
+これはまだノーマルモードだけのものです。<span class="Special">&lt;Left&gt;</span>&nbsp;および&nbsp;<span class="Special">&lt;Right&gt;</span>&nbsp;に挿入モードでも<br>
+これをさせるには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set whichwrap=b,s,&lt;,&gt;,[,]</div>
 <br>
-他にもいくつかフラグがあります。詳しくは&nbsp;<a class="Type" href="options.html#'whichwrap'">'whichwrap'</a>&nbsp;を参照してください。<br>
+追加できる他のフラグがいくつかあります、<a class="Type" href="options.html#'whichwrap'">'whichwrap'</a>&nbsp;を参照してください。<br>
 <br>
 <br>
-<span class="Statement">TAB を表示する</span><br>
+<span class="Statement">タブを表示する</span><br>
 <br>
-ファイル中に Tab 文字があっても、それを視認することはできません。Tab 文字が表<br>
-示されるようにしましょう:<br>
+ファイル内にタブがあるとき、それらがどこにあるかは見えません。それらを見えるよ<br>
+うにするには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set list</div>
 <br>
-Tab 文字が ^I と表示されます。行末には $ と表示され、通常なら気づかないような、<br>
-行末の空白もよくわかるようになります。<br>
-これの欠点はファイルに Tab 文字がたくさんあると見づらくなる点です。カラー端末<br>
-か GUI を使っている場合は、空白と Tab 文字を別の文字に置き換えて強調表示するこ<br>
-とができます。<a class="Type" href="options.html#'listchars'">'listchars'</a>&nbsp;オプションを使ってください:<br>
+これで、すべてのタブは ^I として表示されます。そして、各行の末尾に $ が表示さ<br>
+れるので、そうでなければ気づかれないままになる行末の空白を見つけることができま<br>
+す。<br>
+&nbsp;&nbsp; 欠点は、ファイル内にたくさんのタブがあると見た目が醜くなることです。カラー<br>
+端末がある場合、または GUI を使っている場合、Vim は空白およびタブをハイライト<br>
+された文字として表示できます。<a class="Type" href="options.html#'listchars'">'listchars'</a>&nbsp;オプションを使います:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set listchars=tab:&gt;-,trail:-</div>
 <br>
-Tab 文字は全て &quot;&gt;---&quot; と表示され、行末の空白は &quot;-&quot; と表示されます。この方がずっ<br>
-とイイと思いませんか？<br>
+これで、すべてのタブは &quot;&gt;---&quot; (より多いまたはより少ない &quot;-&quot; 付きで) として、行<br>
+末の空白は &quot;-&quot; として表示されます。ずっと良く見えますね?<br>
 <br>
 <br>
 <span class="Statement">キーワード</span><br>
 <br>
-<a class="Type" href="options.html#'iskeyword'">'iskeyword'</a>&nbsp;オプションは単語に使える文字を定義しています:<br>
+<a class="Type" href="options.html#'iskeyword'">'iskeyword'</a>&nbsp;オプションは、単語にどの文字が現れることができるかを指定します:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set iskeyword</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">iskeyword=@,48-57,_,192-255</span><br>
 <br>
-&quot;@&quot; は「すべてのアルファベット」を表しています。&quot;48-57&quot; は ASCII コード の 48<br>
-から 57 までの文字、つまり &quot;0&quot; から &quot;9&quot; までの数字を表しています。&quot;192-255&quot; は<br>
-印字可能なラテン文字です。<br>
-例えば、&quot;upper-case&quot; を１つの単語と扱って欲しい場合は、&quot;-&quot; をキーワードに追加<br>
-します。次のように設定してください:<br>
+&quot;@&quot; はすべてのアルファベット文字を表します。&quot;48-57&quot; は ASCII 文字 48 から 57<br>
+を表し、それは数字 0 から 9 です。&quot;192-255&quot; は印字可能なラテン文字です。<br>
+&nbsp;&nbsp; ときには、&quot;w&quot; のようなコマンドが &quot;upper-case&quot; を 1 つの単語とみなすように、<br>
+キーワードにダッシュを含めたいでしょう。このようにしてそれを行えます:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set iskeyword+=-<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set iskeyword</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">iskeyword=@,48-57,_,192-255,-</span><br>
 <br>
-新しい設定をみると、&quot;-&quot; の直前に &quot;,&quot; が自動的に追加されています。<br>
-キーワードから文字を削除するには &quot;-=&quot; を使います。アンダースコアを削除するには<br>
-次のようにします:<br>
+新しい値を見ると、Vim があなたのためにコンマを追加したことがわかるでしょう。<br>
+&nbsp;&nbsp; 文字を削除するには &quot;-=&quot; を使います。例えば、アンダースコアを削除するには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set iskeyword-=_<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set iskeyword</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">iskeyword=@,48-57,192-255,-</span><br>
 <br>
-&quot;_&quot; を削除すると &quot;,&quot; も自動的に削除されました。<br>
+今回は、コンマが自動的に削除されます。<br>
 <br>
 <br>
-<span class="Statement">メッセージ行</span><br>
+<span class="Statement">メッセージのための余地</span><br>
 <br>
-初期設定では、最下段の一行がメッセージの表示に使われます。メッセージが長いとき<br>
-は、メッセージを切り詰めて一部だけ表示するか、メッセージをスクロールして表示<br>
-し、最後に&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押してもらうかのどちらかです。<br>
-メッセージの表示に使う行数は&nbsp;<a class="Type" href="options.html#'cmdheight'">'cmdheight'</a>&nbsp;オプションで設定できます:<br>
+Vim が起動するとき、一番下にメッセージに使われる 1 行があります。メッセージが<br>
+長いとき、それは切り詰められ、したがってその一部しか見られないか、またはテキス<br>
+トがスクロールし、続けるには&nbsp;<span class="Special">&lt;Enter&gt;</span>&nbsp;を押さなければなりません。<br>
+&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'cmdheight'">'cmdheight'</a>&nbsp;オプションに、メッセージに使われる行数を設定できます。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set cmdheight=3</div>
 <br>
-編集画面が狭くなってしまうので、ほどほどの値を設定してください。<br>
+これは、テキストを編集する余地が少なくなることを確かに意味し、したがって妥協で<br>
+す。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
-次章:&nbsp;<a class="Identifier" href="usr_06.html">usr_06.txt</a>&nbsp;&nbsp;構文強調表示<br>
+次章:&nbsp;<a class="Identifier" href="usr_06.html">usr_06.txt</a>&nbsp;&nbsp;構文ハイライトを使う<br>
 <br>
 Copyright: see&nbsp;<a class="Identifier" href="usr_01.html#manual-copyright">manual-copyright</a>&nbsp;&nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>
