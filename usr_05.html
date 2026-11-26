@@ -3,7 +3,7 @@ layout: viai-doc
 helpname: 'usr_05'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="usr_05.html" name="usr_05.txt">usr_05.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Aug 30<br>
+<a class="Constant" href="usr_05.html" name="usr_05.txt">usr_05.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Nov 25<br>
 <br>
 <br>
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VIAI ユーザーマニュアル</span><br>
@@ -541,8 +541,13 @@ highlight-yank パッケージの追加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
 osc52 パッケージの追加&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="usr_05.html#osc52-install" name="osc52-install">osc52-install</a>&nbsp;<a class="Constant" href="usr_05.html#package-osc52" name="package-osc52">package-osc52</a><br>
 <span class="PreProc">------------------------------------------------------------------------------</span><br>
 <br>
-このプラグインを使い始めるには、あなたの vimrc ファイルに 1 行を追加します:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;packadd! osc52</div>
+このプラグインを使い始めるには、あなたの vimrc ファイルにこれらの行を追加しま<br>
+す:<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;packadd! osc52<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;autocmd VimEnter * ++once set clipmethod+=osc52</div>
+<br>
+&quot;osc52&quot; クリップボードプロバイダはプラグインが読み込まれた時に定義されるため、<br>
+<a class="Type" href="options.html#'clipmethod'">'clipmethod'</a>&nbsp;は&nbsp;<a class="Identifier" href="autocmd.html#VimEnter">VimEnter</a>&nbsp;で設定されます。<br>
 <br>
 osc52.vim パッケージは、アプリケーションがあなたの端末と直接通信することでク<br>
 リップボードにアクセスできるようにする、OSC 52 端末コマンドのサポートを提供し<br>

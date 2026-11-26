@@ -3,7 +3,7 @@ layout: viai-doc
 helpname: 'vim9class'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="vim9class.html" name="vim9class.txt">vim9class.txt</a>&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 May 21<br>
+<a class="Constant" href="vim9class.html" name="vim9class.txt">vim9class.txt</a>&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Nov 25<br>
 <br>
 <br>
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
@@ -346,6 +346,10 @@ public なクラスメソッドに名前のプリフィックスを使わなけ�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enddef<br>
 &nbsp;&nbsp;&nbsp;&nbsp;endclass</div>
 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#E1440" name="E1440">E1440</a><br>
+クラス変数は宣言された順に初期化される。クラス変数をそれより前のクラス変数の初<br>
+期化子で使うこと、または列挙値をそれより前の列挙値のコンストラクタで使うことは<br>
+エラーである。<br>
 <br>
 オブジェクトメソッドと同様に、メソッド名の最初の文字にアンダースコアを使うこと<br>
 でアクセスを protected にすることができる:<br>
@@ -1031,7 +1035,8 @@ protected アクセスのものを含め、すべてのオブジェクト変数�
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="vim9class.html#enum-values" name="enum-values">enum-values</a><br>
 列挙型のすべての値には、列挙型のオブジェクトのリストである &quot;values&quot; クラス変数<br>
-を使ってアクセスできる。これは読み取り専用の変数である。<br>
+を使ってアクセスできる。これは読み取り専用の変数である。列挙値に &quot;values&quot; とい<br>
+う名前を付けることはできない。<br>
 <br>
 例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;enum Planet<br>
