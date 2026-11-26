@@ -1,4 +1,4 @@
-*usr_05.txt*	For ViAI バージョン 1.0.  Last change: 2026 Aug 30
+*usr_05.txt*	For ViAI バージョン 1.0.  Last change: 2026 Nov 25
 
 
 		     VIAI ユーザーマニュアル
@@ -536,9 +536,14 @@ highlight-yank パッケージの追加		*hlyank-install* *package-hlyank*
 osc52 パッケージの追加			*osc52-install* *package-osc52*
 ------------------------------------------------------------------------------
 
-このプラグインを使い始めるには、あなたの vimrc ファイルに 1 行を追加します: >
+このプラグインを使い始めるには、あなたの vimrc ファイルにこれらの行を追加しま
+す: >
 	packadd! osc52
+	autocmd VimEnter * ++once set clipmethod+=osc52
 <
+"osc52" クリップボードプロバイダはプラグインが読み込まれた時に定義されるため、
+'clipmethod' は |VimEnter| で設定されます。
+
 osc52.vim パッケージは、アプリケーションがあなたの端末と直接通信することでク
 リップボードにアクセスできるようにする、OSC 52 端末コマンドのサポートを提供し
 ます。
