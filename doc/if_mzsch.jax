@@ -4,74 +4,75 @@
 		  VIAI リファレンスマニュアル
 
 
-Vim の MzScheme インターフェイス			*mzscheme* *MzScheme*
+Vim への MzScheme インターフェイス			*mzscheme* *MzScheme*
 
-NOTE: ViAI は MzScheme インターフェイス付きでビルドできない。|viai-interfaces|
-を参照。
+NOTE: ViAI は MzScheme インターフェイス付きではビルドできない。
+|viai-interfaces| を参照。
 
 1. コマンド				|mzscheme-commands|
 2. 例					|mzscheme-examples|
 3. スレッド				|mzscheme-threads|
-4. MzScheme から Vim へのアクセス	|mzscheme-vim|
+4. MzScheme からの Vim へのアクセス	|mzscheme-vim|
 5. mzeval() Vim 関数			|mzscheme-mzeval|
-6. 関数参照を使う			|mzscheme-funcref|
-7. 動的ローディング			|mzscheme-dynamic|
-8. MzScheme のセットアップ		|mzscheme-setup|
+6. 関数参照の使用			|mzscheme-funcref|
+7. 動的ロード				|mzscheme-dynamic|
+8. MzScheme セットアップ		|mzscheme-setup|
 
-{Vim が |+mzscheme| 機能付きでコンパイルされたときのみ利用できる}
+{Vim が |+mzscheme| 機能付きでコンパイルされた場合にのみ使用可能}
 
-Brent Fulgham の作業に基づいている。
-動的ローディングは Sergey Khorev によって追加された。
+Brent Fulgham の成果に基づく。
+動的ロードは Sergey Khorev によって追加された。
 
-MzScheme と PLT Scheme の名前は Racket に改められた。詳細については
+MzScheme および PLT Scheme という名前は Racket にブランド変更された。詳しくは
 http://racket-lang.org を確認すること。
 
-Racket バージョン 5.x から 5.3.1 まで (5.3.1 を含む) の futures と places は、
-Vim が作成したプロセスでは正しく動作しない。
+5.3.1 およびそれ以前の Racket バージョン 5.x の futures および places は、Vim
+によって作成されたプロセスでは正しく動作しない。
 最も簡単な解決策は、これらの機能を無効にして Racket を自分でビルドすることであ
 る: >
   ./configure --disable-futures --disable-places --prefix=your-install-prefix
 
-処理を速くするために、--disable-gracket と --disable-docs も使うとよいかもしれ
-ない。
+処理を速くするために、--disable-gracket および --disable-docs も使用したいかも
+しれない。
 
 ==============================================================================
 1. コマンド						*mzscheme-commands*
 
 							*:mzscheme* *:mz*
 :[range]mz[scheme] {stmt}
-			MzScheme のステートメント {stmt} を実行する。
+			MzScheme の文 {stmt} を実行する。
 
 :[range]mz[scheme] << [trim] [{endmarker}]
 {script}
 {endmarker}
-			埋め込まれた MzScheme スクリプト {script} を実行する。
+			インライン化された MzScheme スクリプト {script} を実行
+			する。
 			Note: このコマンドは MzScheme 機能が組み込まれていない
-			ときは動作しない。エラーを避けるには |script-here| を
+			場合は動作しない。エラーを避けるには、|script-here| を
 			参照。
 
-			"<<" の後の [endmarker] を省略した場合は、|:append| や
-			|:insert| コマンドと同様に、{script} の後にドット '.'
-			を使わなければならない。詳細については |:let-heredoc|
-			を参照。
+			"<<" の後の [endmarker] が省略された場合、|:append| お
+			よび |:insert| コマンドと同様に、{script} の後にドット
+			'.' を使用しなければならない。詳細は |:let-heredoc| を
+			参照。
 
 
 							*:mzfile* *:mzf*
 :[range]mzf[ile] {file}	{file} 内の MzScheme スクリプトを実行する。
 
-これらのコマンドはすべて本質的に同じことを行う - "現在の範囲" を指定された行範
-囲に設定して、MzScheme のコードの断片を実行する。
+これらのコマンドはどれも本質的に同じことを行う - 指定された行範囲を
+"現在の範囲" に設定して、MzScheme コードの断片を実行する。
 
 :mzscheme の場合、実行するコードはコマンドラインにある。
 :mzfile の場合、実行するコードは指定されたファイルの内容である。
 
-MzScheme インターフェイスは exn から派生した例外 exn:vim を定義する。
-これは様々な Vim のエラーで発生する。
+MzScheme インターフェイスは、exn から派生した例外 exn:vim を定義する。
+これはさまざまな Vim のエラーで発生する。
 
-コンパイル時に、MzScheme インターフェイスはその時点の MzScheme のコレクション
-パスを記憶する。パスを追加で指定したい場合は
-"current-library-collection-paths" パラメーターを使うこと。例えば、ユーザーロー
-カルな MzScheme のコレクションパスを cons するには: >
+コンパイル時に、MzScheme インターフェイスは現在の MzScheme コレクションパスを
+記憶する。追加のパスを指定したい場合は "current-library-collection-paths" パラ
+メーターを使用する。例えば、ユーザーローカルの MzScheme コレクションパスを
+cons するには: >
     :mz << EOF
     (current-library-collection-paths
 	(cons
@@ -82,17 +83,17 @@ MzScheme インターフェイスは exn から派生した例外 exn:vim を定
 
 すべての機能はモジュール vimext を通して提供される。
 
-exn:vim は明示的なインポートなしで利用できる。
+exn:vim は明示的な import 無しで使用可能である。
 
-MzScheme との衝突を避けるため、モジュールを require するときはプリフィックスを
-使うことを検討すること。例: >
+MzScheme との衝突を避けるため、モジュールを require する時にプリフィックスを使
+用することを検討すること。例: >
 	:mzscheme (require (prefix vim- vimext))
 <
-以下の例はすべてこの命名方式を前提としている。
+以下のすべての例はこの命名方式を前提としている。
 
 							*mzscheme-sandbox*
-|sandbox| の中で実行されたときは、一部のファイルシステムと Vim インターフェイ
-スのプロシージャへのアクセスが制限される。
+|sandbox| 内で実行された場合、一部のファイルシステムおよび Vim インターフェイ
+スの手続きへのアクセスは制限される。
 
 ==============================================================================
 2. 例							*mzscheme-examples*
@@ -103,10 +104,10 @@ MzScheme との衝突を避けるため、モジュールを require すると�
 	:mzscheme (require (prefix-in vim- 'vimext)) ; MzScheme 4.x
 	:mzscheme (vim-set-buff-line 10 "This is line #10")
 
-使っている MzScheme のバージョンを見るには: >
+手元の MzScheme のバージョンを確認するには: >
 	:mzscheme (display (version))
 <
-インラインスクリプトの使い方: >
+インラインスクリプトの使用法: >
 	function! <SID>SetFirstLine()
 	    :mz << EOF
 	    (display "!!!")
@@ -152,99 +153,99 @@ vimext モジュールの自動インスタンス化 (|vimrc| に置くことが
 ==============================================================================
 3. スレッド						*mzscheme-threads*
 
-MzScheme インターフェイスはスレッドをサポートしている。これは OS のスレッドと
-は独立しているので、スケジューリングが必要である。オプション 'mzquantum' は、
-Vim が利用可能な MzScheme スレッドをどのくらいの頻度でポーリングするかを決め
-る。
+MzScheme インターフェイスはスレッドをサポートする。それらは OS のスレッドから
+独立しており、したがってスケジューリングが必要である。オプション 'mzquantum'
+は、Vim が使用可能な MzScheme スレッドをどのくらいの頻度でポーリングするべきか
+を決める。
 NOTE
-コンソール版 Vim のスレッドスケジューリングは、GUI 版よりも信頼性が低い。
+Vim のコンソール版でのスレッドスケジューリングは、GUI 版よりも信頼性が低い。
 
 ==============================================================================
-4. MzScheme から Vim へのアクセス			*mzscheme-vim*
+4. MzScheme からの Vim へのアクセス			*mzscheme-vim*
 
 							*mzscheme-vimext*
-'vimext' モジュールは、MzScheme インターフェイスで定義されたプロシージャへのア
-クセスを提供する。
+'vimext' モジュールは、MzScheme インターフェイスで定義された手続きへのアクセス
+を提供する。
 
 共通
-------
-    (command {command-string})	    Vim の ":Ex" 形式のコマンドを実行する。
-    (eval {expr-string})	    Vim の式を評価して対応する MzScheme のオブ
+----
+    (command {command-string})	    vim の ":Ex" 形式のコマンドを実行する。
+    (eval {expr-string})	    vim の式を評価し、対応する MzScheme オブ
 				    ジェクトにする: |Lists| は Scheme のリスト
 				    として、|Dictionaries| はハッシュテーブル
-				    として、|Funcref| は関数として表される
+				    として、|Funcref| は関数として表現される
 				    (|mzscheme-funcref| も参照)
-				    NOTE 名前が MzScheme の eval と衝突するの
-				    で、これを回避するにはモジュール修飾子を使
-				    うこと。
-    (range-start)		    Scheme コマンドに渡された範囲の
+				    NOTE 名前が MzScheme の eval と衝突する。
+				    これを克服するにはモジュール修飾子を使用す
+				    ること。
+    (range-start)		    Scheme コマンドで渡された範囲の
     (range-end)			    開始/終了。
-    (beep)			    ビープ音を鳴らす
-    (get-option {option-name} [buffer-or-window]) Vim のオプションの値を取得
-				    する (ローカルかグローバルのいずれか。
-				    set-option を参照)。
+    (beep)			    ビープ
+    (get-option {option-name} [buffer-or-window])
+				    Vim のオプションの値を取得する (ローカルま
+				    たはグローバルのどちらか、set-option を参
+				    照)。
     (set-option {string} [buffer-or-window])
 				    Vim のオプションを設定する。文字列はオプ
-				    ション設定の形式 (optname=optval や
+				    ション設定の形式 (optname=optval、または
 				    optname+=optval など) でなければならない。
-				    {buffer} または {window} を指定して呼ぶと、
-				    ローカルオプションが設定される。シンボル
-				    'global を {buffer-or-window} として渡すこ
-				    とができる。その場合は |:setglobal| が使わ
-				    れる。
+				    {buffer} または {window} を指定して呼ばれ
+				    た場合、ローカルオプションが設定される。シ
+				    ンボル 'global を {buffer-or-window} とし
+				    て渡すことができる。その場合 |:setglobal|
+				    が使用される。
 
 バッファ						 *mzscheme-buffer*
--------
-    (buff? {object})		    オブジェクトはバッファか？
-    (buff-valid? {object})	    オブジェクトは有効なバッファか？ (つまり、
-				    実際の Vim のバッファに対応しているか)
+--------
+    (buff? {object})		    object はバッファか?
+    (buff-valid? {object})	    object は有効なバッファか? (つまり、実際の
+				    Vim バッファに対応している)
     (get-buff-line {linenr} [buffer])
 				    バッファから行を取得する。
     (set-buff-line {linenr} {string} [buffer])
 				    バッファの行を設定する。{string} が #f の
 				    場合、その行は削除される。[buffer] 引数は
-				    省略可能である。省略した場合はカレントバッ
-				    ファが使われる。
+				    省略可能である。省略された場合、カレント
+				    バッファが使用される。
     (get-buff-line-list {start} {end} [buffer])
-				    バッファの行のリストを取得する。{start} と
-				    {end} は 1 から始まり、その行を含む。
+				    バッファ内の行のリストを取得する。{start}
+				    および {end} は 1 から始まり、両端を含む。
     (set-buff-line-list {start} {end} {string-list} [buffer])
-				    バッファに行のリストを設定する。
-				    string-list が #f または null の場合、その
-				    行は削除される。リストが {end}-{start} よ
-				    り短い場合、残りの行は削除される。
-    (get-buff-name [buffer])	    バッファのテキストの名前を取得する。
+				    バッファ内の行のリストを設定する。
+				    string-list が #f または null の場合、それ
+				    らの行は削除される。リストが {end}-{start}
+				    より短い場合、残りの行は削除される。
+    (get-buff-name [buffer])	    バッファのテキスト名を取得する。
     (get-buff-num [buffer])	    バッファの番号を取得する。
     (get-buff-size [buffer])	    バッファの行数を取得する。
     (insert-buff-line-list {linenr} {string/string-list} [buffer])
-				    バッファの {linenr} の後に行のリストを挿入
+				    行のリストをバッファの {linenr} の後に挿入
 				    する。{linenr} が 0 の場合、行は先頭に挿入
 				    される。
     (curr-buff)			    カレントバッファを取得する。それを変更する
-				    には他の MzScheme インターフェイスのプロ
-				    シージャを使うこと。
+				    には他の MzScheme インターフェイスの手続き
+				    を使用する。
     (buff-count)		    エディタ内のバッファの総数を取得する。
     (get-next-buff [buffer])	    次のバッファを取得する。
     (get-prev-buff [buffer])	    前のバッファを取得する。それ以上バッファが
-				    ないときは #f を返す。
+				    無い場合は #f を返す。
     (open-buff {filename})	    新しいバッファを開く (ファイル {filename}
 				    用)
-    (get-buff-by-name {buffername}) ファイル名でバッファを取得する。そのような
-					バッファがない場合は #f。
-    (get-buff-by-num {buffernum})   番号でバッファを取得する (その番号のバッ
-				    ファがない場合は #f を返す)。
+    (get-buff-by-name {buffername}) ファイル名でバッファを、またはそのような
+				    バッファが無い場合は #f を取得する。
+    (get-buff-by-num {buffernum})   番号でバッファを取得する (この番号のバッ
+				    ファが無い場合は #f を返す)。
 
 ウィンドウ						    *mzscheme-window*
 ------
-    (win? {object})		    オブジェクトはウィンドウか？
-    (win-valid? {object})	    オブジェクトは有効なウィンドウか？ (つま
-				    り、実際の Vim のウィンドウに対応している
-				    か)
+    (win? {object})		    object はウィンドウか?
+    (win-valid? {object})	    object は有効なウィンドウ (つまり、実際の
+				    Vim ウィンドウに対応している) か?
     (curr-win)			    カレントウィンドウを取得する。
     (win-count)			    ウィンドウの数を取得する。
-    (get-win-num [window])	    ウィンドウの番号を取得する。
+    (get-win-num [window])	    ウィンドウ番号を取得する。
     (get-win-by-num {windownum})    番号でウィンドウを取得する。
-    (get-win-buffer [window])	    指定したウィンドウのバッファを取得する。
+    (get-win-buffer [window])	    指定されたウィンドウのバッファを取得する。
     (get-win-height [window])
     (set-win-height {height} [window])  ウィンドウの高さを取得/設定する。
     (get-win-width [window])
@@ -257,66 +258,65 @@ NOTE
 ==============================================================================
 5. mzeval() Vim 関数					    *mzscheme-mzeval*
 
-双方向のインターフェイスを容易にするために、|mzeval()| 関数を使って MzScheme
-の式を評価し、その値を Vim script に渡すことができる。
+双方向インターフェイスを容易にするため、|mzeval()| 関数を使用して MzScheme の
+式を評価し、その値を Vim script に渡すことができる。
 
 ==============================================================================
-6. 関数参照を使う					    *mzscheme-funcref*
+6. 関数参照の使用					    *mzscheme-funcref*
 
-MzScheme インターフェイスでは |Funcref| を使えるので、Scheme から直接 Vim の関
-数を呼び出すことができる。例えば: >
+MzScheme インターフェイスでは |Funcref| を使用できるので、Scheme から Vim の関
+数を直接呼ぶことができる。例えば: >
     function! MyAdd2(arg)
 	return a:arg + 2
     endfunction
     mz (define f2 (vim-eval "function(\"MyAdd2\")"))
     mz (f2 7)
-< または : >
+< または: >
     :mz (define indent (vim-eval "function('indent')"))
     " 12 行目の Vim のインデントを返す
     :mz (indent 12)
 <
 
 ==============================================================================
-7. 動的ローディング				*mzscheme-dynamic* *E815*
+7. 動的ロード					*mzscheme-dynamic* *E815*
 
-MS-Windows では MzScheme のライブラリを動的に読み込むことができる。その場合
-|:version| の出力に |+mzscheme/dyn| が含まれる。
+MS-Windows では、MzScheme ライブラリを動的にロードできる。その場合、|:version|
+の出力に |+mzscheme/dyn| が含まれる。
 
-これは、Vim が必要なときにだけ MzScheme の DLL ファイルを検索するということで
-ある。MzScheme インターフェイスを使わないときはそれらは必要ないので、これらの
-DLL ファイルなしで Vim を使うことができる。
-NOTE: 新しいバージョンの MzScheme (Racket) は scheme_main_setup による早期の
-(トランポリン化された) 初期化を必要とする。そのため Vim は可能であれば常に起動
-時に MzScheme の DLL を読み込む。これにより Vim の起動が遅くなることがある。
+これは、Vim が MzScheme の DLL ファイルを必要な時にのみ検索することを意味する。
+MzScheme インターフェイスを使用しない場合はそれらは不要であり、したがってこれ
+らの DLL ファイル無しで Vim を使用できる。
+NOTE: 新しいバージョンの MzScheme (Racket) は、scheme_main_setup による早い段
+階の (trampolined) 初期化を必要とする。そのため、Vim は可能な場合、常に起動時
+に MzScheme の DLL をロードする。これにより Vim の起動が遅くなることがある。
 
-MzScheme インターフェイスを使うには、MzScheme の DLL が検索パス内になければな
-らない。
-コンソールウィンドウで "path" と入力すると、どのディレクトリが使われるかがわか
-る。
+MzScheme インターフェイスを使用するには、MzScheme の DLL が検索パス内に無けれ
+ばならない。コンソールウィンドウで "path" と入力して、どのディレクトリが使用さ
+れているかを確認する。
 
-MS-Windows では、読み込むライブラリの名前に 'mzschemedll' と 'mzschemegcdll'
-オプションが使われる。初期値はビルド時に指定される。
+MS-Windows では、ロードするライブラリの名前に 'mzschemedll' および
+'mzschemegcdll' オプションが使用される。初期値はビルド時に指定される。
 
-DLL のバージョンは、Vim のコンパイルに使った MzScheme のバージョンと一致しなけ
-ればならない。MzScheme バージョン 209 の場合は "libmzsch209_000.dll" と
-"libmzgc209_000.dll" になる。確実に知るには ":version" コマンドの出力を見て、
-"Compilation" 情報の中の -DDYNAMIC_MZSCH_DLL="something" と
--DDYNAMIC_MZGC_DLL="something" を探すこと。
+DLL のバージョンは、Vim がコンパイルされた MzScheme のバージョンと一致しなけれ
+ばならない。MzScheme バージョン 209 の場合、それらは "libmzsch209_000.dll" お
+よび "libmzgc209_000.dll" になる。確実に知るには、":version" コマンドの出力を
+見て、"Compilation" 情報内の -DDYNAMIC_MZSCH_DLL="something" および
+-DDYNAMIC_MZGC_DLL="something" を探す。
 
-例えば、MzScheme (Racket) が C:\Racket63 にインストールされている場合、環境変
-数を次のように設定する必要があるかもしれない: >
+例えば、MzScheme (Racket) が C:\Racket63 にインストールされている場合、以下の
+ように環境変数を設定する必要があるかもしれない: >
 
   PATH=%PATH%;C:\Racket63\lib
   PLTCOLLECTS=C:\Racket63\collects
   PLTCONFIGDIR=C:\Racket63\etc
 <
 ==============================================================================
-8. MzScheme のセットアップ			    *mzscheme-setup* *E895*
+8. MzScheme セットアップ			    *mzscheme-setup* *E895*
 
-Vim は、if_mzsch のコアに "racket/base" モジュール (存在しない場合は
-"scheme/base" にフォールバックする) を、テストに "r5rs" モジュールを、Vim のビ
-ルドに "raco ctool" コマンドを必要とする。MzScheme にそれらがない場合は、
-MzScheme の raco コマンドでインストールできる:
+Vim は、if_mzsch コアのために "racket/base" モジュール (それが存在しない場合は
+"scheme/base" にフォールバックする)、テストのために "r5rs" モジュール、および
+Vim のビルドのために "raco ctool" コマンドを必要とする。MzScheme にそれらが無
+かった場合は、MzScheme の raco コマンドでそれらをインストールできる:
 >
   raco pkg install scheme-lib       # scheme/base モジュール
   raco pkg install r5rs-lib         # r5rs モジュール
