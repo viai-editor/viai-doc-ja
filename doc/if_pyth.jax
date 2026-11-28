@@ -4,93 +4,95 @@
 		  VIAI リファレンスマニュアル
 
 
-VimのPythonインターフェイス				*python* *Python*
+Vim への Python インターフェイス			*python* *Python*
 
-NOTE: ViAI は Python 2 インターフェイス付きでビルドできず、Python 3 インター
+NOTE: ViAI は Python 2 インターフェイス付きではビルドできず、Python 3 インター
 フェイス付きでのみビルドできる。|viai-interfaces| を参照。
 
 1. コマンド					|python-commands|
-2. vimモジュール				|python-vim|
+2. vim モジュール				|python-vim|
 3. バッファオブジェクト				|python-buffer|
-4. レンジオブジェクト				|python-range|
+4. 範囲オブジェクト				|python-range|
 5. ウィンドウオブジェクト			|python-window|
 6. タブページオブジェクト			|python-tabpage|
 7. vim.bindeval オブジェクト			|python-bindeval-objects|
-8. Vim 関数 pyeval() と py3eval()		|python-pyeval|
-9. 動的ローディング				|python-dynamic|
+8. pyeval()、py3eval() Vim 関数			|python-pyeval|
+9. 動的ロード					|python-dynamic|
 10. Python 3					|python3|
 11. Python X					|python_x|
-12. Python 対応付きでビルドする			|python-building|
+12. Python サポート付きのビルド			|python-building|
 
-Python 2.x インターフェイスは Vim が |+python| 機能付きでコンパイルされたとき
-のみ利用できる。
-Python 3 インターフェイスは Vim が |+python3| 機能付きでコンパイルされたときの
-み利用できる。
-両方を同時に利用することはできるが、|python-2-and-3| を読むこと。
+Python 2.x インターフェイスは、Vim が |+python| 機能付きでコンパイルされた場合
+にのみ使用可能である。
+Python 3 インターフェイスは、Vim が |+python3| 機能付きでコンパイルされた場合
+にのみ使用可能である。
+両方が同時に使用可能なこともあるが、|python-2-and-3| を読むこと。
 
-NOTE: Python 2 は古く、もう開発されていない。Python 3 を使用することを強く勧め
-る。Python 2 は正常に動作しなくなった時点でサポートを打ち切る。
+NOTE: Python 2 は古く、もう開発されていない。Python 3 の使用を強く推奨する。
+Python 2 サポートは、正しく動作しなくなった時に削除される。
 
 ==============================================================================
 1. コマンド						*python-commands*
 
 					*:python* *:py* *E263* *E264* *E887*
 :[range]py[thon] {stmt}
-			Pythonのステートメント{stmt}を実行する。`:python` コマ
-			ンドが機能するか簡単にチェックするには: >
+			Python 文 {stmt} を実行する。`:python` コマンドが動作
+			しているかの簡単な確認: >
 				:python print "Hello"
 
 :[range]py[thon] << [trim] [{endmarker}]
 {script}
 {endmarker}
-			Pythonのスクリプト{script}を実行する。
-			Note: Python のサポートを有効にしてコンパイルされてい
-			ないとこのコマンドは機能しない。エラーを回避するには
-			|script-here| を参照すること。
+			Python スクリプト {script} を実行する。
+			Note: このコマンドは Python 機能が組み込まれていない場
+			合は動作しない。エラーを避けるには、|script-here| を参
+			照。
 
-"<<" の後に [endmarker] を省略した時は |:append| や |:insert| のようにドット
-'.' が使われる。詳細については |:let-heredoc| を参照。
+"<<" の後の [endmarker] が省略された場合、|:append| および |:insert| コマンド
+と同様に、{script} の後にドット '.' を使用しなければならない。詳細は
+|:let-heredoc| を参照。
 
-この形の |:python| コマンドはVim scriptにPythonコードを埋め込むのに特に便利で
-ある。
+この形式の |:python| コマンドは、主に Vim script に python コードを含めるのに
+便利である。
 
 例: >
 	function! IcecreamInitialize()
 	python << EOF
-	class StrawberryIcecreame:
+	class StrawberryIcecream:
 		def __call__(self):
 			print 'EAT ME'
 	EOF
 	endfunction
 
-使っている Python のバージョンを見るには: >
+手元の Python のバージョンを確認するには: >
 	:python print(sys.version)
 
-sys をインポートする必要はない。これはデフォルトで行われる。
+sys を import する必要はない。それはデフォルトで行われる。
 
 							*python-environment*
-Vim で設定した環境変数は Python で常に利用できるとは限らない。Vim と Python が
-どのようにビルドされたかに依存する。以下も参照
-https://docs.python.org/3/library/os.html#os.environ
+Vim で設定された環境変数が Python で常に使用可能とは限らない。これは Vim およ
+び Python がどのようにビルドされたかに依存する。
+https://docs.python.org/3/library/os.html#os.environ も参照。
 
-Note: Pythonはインデントに関して非常に繊細である。"class" の行と "EOF" の行は
-まったくインデントしないこと。
+Note: Python はインデントに非常に敏感である。"class" の行および "EOF" にインデ
+ントが一切無いようにすること。
 
 							*:pydo*
-:[range]pydo {body}	Python の式を "def _vim_pydo(line linenr): {body}" と
-			いう形で実行する。引数には各行のテキスト (末尾の
-			<EOL> なし) と行番号が渡される。関数は文字列か None
-			を返さなければならない。文字列を返すと行がその文字列で
-			置換される。[range] を指定しなかった場合は "1,$" (ファ
-			イル全体) が範囲となる。
+:[range]pydo {body}	[range] の各行に対して Python 関数
+			"def _vim_pydo(line, linenr): {body}" を実行する。関数
+			の引数には順に、末尾の <EOL> を除いた各行のテキスト、
+			および現在の行番号が設定される。関数は文字列または
+			None を返すべきである。文字列が返された場合、それが現
+			在の回の行のテキストになる。[range] のデフォルトはファ
+			イル全体: "1,$" である。
 
 例:
 >
 	:pydo return "%s\t%d" % (line[::-1], len(line))
 	:pydo if line: return "%4d: %s" % (linenr, line)
 <
-Pythonを使って範囲をフィルタリングするには、`:py` と組み合わせた `:pydo` を使
-用することができる。例えば: >
+範囲を python でフィルタするために、`:pydo` を、場合によっては `:py` と組み合
+わせて使用できる。例: >
 
 	:py3 << EOF
 	needle = vim.eval('@a')
@@ -103,23 +105,23 @@ Pythonを使って範囲をフィルタリングするには、`:py` と組み�
 <
 							*:pyfile* *:pyf*
 :[range]pyf[ile] {file}
-			{file}内のPythonスクリプトを実行する。引数はそのまま一
-			つのファイル名として使われる。
+			{file} 内の Python スクリプトを実行する。引数全体が 1
+			つのファイル名として使用される。
 
-これら２つのコマンドは、本質的には同じことを行う - つまり、Pythonのコードを、
-与えられた "現在の範囲" |python-range| に対して実行する。
+これらのコマンドはどちらも本質的に同じことを行う - 指定された行範囲を
+"現在の範囲" |python-range| に設定して、Python コードの断片を実行する。
 
-:pythonの場合には、実行されるコードはコマンドラインで与えられたものである。
-:pyfileの場合には、実行されるコードは与えられたファイルの中身である。
+:python の場合、実行するコードはコマンドラインにある。
+:pyfile の場合、実行するコードは指定されたファイルの内容である。
 
-Pythonのコマンドは|sandbox|の中では使えない。
+Python コマンドは |sandbox| 内では使用できない。
 
-引数を渡すためには明示的に sys.argv[] を使って設定すること。例: >
+引数を渡すには、sys.argv[] を明示的に設定する必要がある。例: >
 
 	:python sys.argv = ["foo", "bar"]
 	:pyfile myscript.py
 
-いくつか例を挙げる					*python-examples*  >
+ここにいくつかの例を示す				*python-examples*  >
 
 	:python from vim import *
 	:python from string import upper
@@ -127,229 +129,237 @@ Pythonのコマンドは|sandbox|の中では使えない。
 	:python print "Hello"
 	:python str = current.buffer[42]
 
-(変更 - importsなど - は、Pythonインタープリターと同様に、次のコマンドに引き継
-がれる。)
+(Note 変更は - import のように - Python インタープリタとまったく同じように、あ
+るコマンドから次のコマンドへ持続することに注意。)
 
 ==============================================================================
-2. vimモジュール					*python-vim*
+2. vim モジュール					*python-vim*
 
-Pythonコードは、vimモジュールを通して、vimに自由にアクセスすることができる (た
-だひとつの例外を除いて - 以下の|python-output|を参照)。vimモジュールは２つのメ
-ソッド、３つの定数、そして１つのエラーオブジェクトを実装している。これを使うに
-はvimモジュールをimportする必要がある。 >
+Python コードは、vim へのすべてのアクセス (1 つの例外を除く - 以下の
+|python-output| を参照) を "vim" モジュール経由で得る。vim モジュールは 2 つの
+メソッド、3 つの定数、および 1 つのエラーオブジェクトを実装している。vim モ
+ジュールは使用する前に import する必要がある: >
 	:python import vim
 
 概要 >
-	:py print "Hello"		# メッセージを表示
-	:py vim.command(cmd)		# exコマンドを実行
-	:py w = vim.windows[n]		# ウィンドウ "n" を得る
-	:py cw = vim.current.window	# 現在のウィンドウを得る
-	:py b = vim.buffers[n]		# バッファ "n" を得る
-	:py cb = vim.current.buffer	# 現在のバッファを得る
+	:py print "Hello"		# メッセージを表示する
+	:py vim.command(cmd)		# Ex コマンドを実行する
+	:py w = vim.windows[n]		# ウィンドウ "n" を取得する
+	:py cw = vim.current.window	# 現在のウィンドウを取得する
+	:py b = vim.buffers[n]		# バッファ "n" を取得する
+	:py cb = vim.current.buffer	# 現在のバッファを取得する
 	:py w.height = lines		# ウィンドウの高さを設定する
 	:py w.cursor = (row, col)	# ウィンドウのカーソル位置を設定する
-	:py pos = w.cursor		# (row, col)の組を得る
-	:py name = b.name		# バッファのファイル名を得る
-	:py line = b[n]			# バッファから１行を得る
-	:py lines = b[n:m]		# バッファから一連の行を得る
-	:py num = len(b)		# 行数を得る
-	:py b[n] = str			# バッファ内の１行を設定する
-	:py b[n:m] = [str1, str2, str3]	# １度に数行を設定する
-	:py del b[n]			# １行を削除する
-	:py del b[n:m]			# 数行を削除する
+	:py pos = w.cursor		# タプル (row, col) を取得する
+	:py name = b.name		# バッファのファイル名を取得する
+	:py line = b[n]			# バッファから 1 行を取得する
+	:py lines = b[n:m]		# 行のリストを取得する
+	:py num = len(b)		# 行数を取得する
+	:py b[n] = str			# バッファの 1 行を設定する
+	:py b[n:m] = [str1, str2, str3]	# 複数の行を一度に設定する
+	:py del b[n]			# 1 行を削除する
+	:py del b[n:m]			# 複数の行を削除する
 
 
 "vim" モジュールのメソッド
 
 vim.command(str)					*python-command*
-	vim(exモード) のコマンドstrを実行する。戻り値はない。
+	vim (ex モード) のコマンド str を実行する。None を返す。
 	例: >
 	    :py vim.command("set tw=72")
 	    :py vim.command("%s/aaa/bbb/g")
-<	ノーマルモードのコマンドを実行するには、次の定義が使われる: >
+<	以下の定義はノーマルモードのコマンドを実行する: >
 		def normal(str):
 			vim.command("normal "+str)
-		# '...' は、２重引用符を含む文字列の境界に使われることに注意。
+		# ダブルクォートを含む文字列を区切るために
+		# シングルクォートを使用していることに注意
 		normal('"a2dd"aP')
 <								*E659*
-	":python" コマンドは、Python 2.2かそれより古いものでは再帰的に使えな
-	い。Python 2.3 かそれより新しいものを使うこと。 >
+	":python" コマンドは、Python 2.2 以前では再帰的に使用できない。これは
+	Python 2.3 以降でのみ動作する: >
 	    :py vim.command("python print 'Hello again Python'")
 
 vim.eval(str)						*python-eval*
-	vim 内の式評価を使って、式を評価する (|expression|を参照)。戻り値は、
-	次の通り:
-	- Vim の式を評価した結果が文字列か数値の場合は文字列
-	- Vim の式を評価した結果が Vim の |list| の場合はリスト
-	- Vim の式を評価した結果が Vim の |tuple| の場合は tuple
-	- Vim の式を評価した結果が Vim の |dict| の場合は辞書
-	- Vim の式を評価した結果が |v:true| または |v:false| の場合は真偽値
-	- Vim の式を評価した結果が |v:null| または |v:none| の場合は `None`
-	辞書、リストおよび tuple は再帰的に展開される。
+	式 str を vim 内部の式評価器 (|expression| を参照) を使って評価する。
+	式の結果を以下のように返す:
+	- Vim の式が文字列または数値に評価される場合、文字列
+	- Vim の式が Vim の |list| に評価される場合、リスト
+	- Vim の式が Vim の |tuple| に評価される場合、タプル
+	- Vim の式が Vim の |dict| に評価される場合、辞書
+	- Vim の式が |v:true| または |v:false| に評価される場合、真偽値
+	- Vim の式が |v:null| または |v:none| に評価される場合、`None`
+	辞書、リスト、およびタプルは再帰的に展開される。
 	例: >
 	    :" 'textwidth' オプションの値
 	    :py text_width = vim.eval("&tw")
 	    :
-	    :" レジスタ 'a' の内容
+	    :" 'a' レジスタの内容
 	    :py a_reg = vim.eval("@a")
 	    :
-	    :" 結果は文字列であることに注意！数値に変換するには、string.atoi()
-	    :" を使うこと。
+	    :" 結果は文字列である! 数値に変換するには string.atoi() を使用する。
 	    :py str = vim.eval("12+12")
 	    :
 	    :py tuple = vim.eval('(1, 2, 3)')
 	    :
 	    :py tagList = vim.eval('taglist("eval_expr")')
-<	最後のコマンドはPython辞書のPythonリストを返す。例:
+<	後者は python の dict からなる python のリストを返す。例えば:
 	[{'cmd': '/^eval_expr(arg, nextcmd)$/', 'static': 0, 'name': ~
 	'eval_expr', 'kind': 'f', 'filename': './src/eval.c'}] ~
 
-	NOTE: Vim9 script では、def 関数内のローカル変数は Python の評価では見
-	えない。ローカル変数を Python の評価に渡すには、|py3eval()| 等を呼び出
-	すときに {locals} 辞書を使用する。
+	NOTE: Vim9 script では、def 関数内のローカル変数は python の評価からは
+	見えない。ローカル変数を python の評価に渡すには、|py3eval()| などを呼
+	び出す時に {locals} 辞書を使用する。
 
 vim.bindeval(str)					*python-bindeval*
-	|python-eval| と似ているが、|python-bindeval-objects| で説明されている
-	特別なオブジェクトを返す。これらの Python オブジェクトを使用すると、
-	vim オブジェクトを変更 (|List|、|Tuple| または |Dictionary|) したり、
-	呼び出し (|Funcref|) たりできる。
+	|python-eval| と同様だが、|python-bindeval-objects| で説明されている特
+	殊なオブジェクトを返す。これらの python オブジェクトを使うと、vim オブ
+	ジェクトを変更 (|List|、|Tuple| または |Dictionary|) するか、または呼
+	び出す (|Funcref|) ことができる。
 
 vim.strwidth(str)					*python-strwidth*
-	|strwidth()| と同じ。str の画面上の幅を数値で返す。タブ文字は 1 幅とし
-	てカウントされる。
+	|strwidth()| と同様: str が占める表示セルの数を返す。タブは 1 セルとし
+	て数えられる。
 
 vim.foreach_rtp(callable)				*python-foreach_rtp*
-	'runtimepath' の各パスについてコーラブル (callable) を呼び出す。コーラ
-	ブルが None 以外の値を返すか、例外が発生するか、パスの最後まで処理が進
-	むと停止する。コーラブルが None 以外の値を返して停止した場合は、
-	vim.foreach_rtp 関数はその値を返す。
+	callable が None 以外の何かを返すか、例外が発生するか、またはパスがな
+	くなるまで、'runtimepath' 内の各パスに対して与えられた callable を呼び
+	出す。callable が None 以外を返したことで停止した場合、vim.foreach_rtp
+	関数は callable が返した値を返す。
 
 vim.chdir(*args, **kwargs)				*python-chdir*
 vim.fchdir(*args, **kwargs)				*python-fchdir*
-	os.chdir、os.fchdir を実行し、Vim にそのことを通知する。Note: これらの
-	関数は直接は使用しない。代わりに os.chdir と os.fchdirを使う。
-	os.fchdir が存在しない場合の vim.fchdir の動作は未定義である。
+	os.chdir または os.fchdir を実行し、その後、適切な vim の処理をすべて
+	行う。
+	Note: これらの関数を直接使用するべきではない。代わりに os.chdir および
+	      os.fchdir を使用すること。os.fchdir が存在しない場合、vim.fchdir
+	      の動作は未定義である。
 
 "vim" モジュールのエラーオブジェクト
 
 vim.error						*python-error*
-	vimのエラーに遭遇したとき、Pythonは型vim.errorの例外を発生させる。
+	Vim のエラーに遭遇すると、Python は vim.error 型の例外を発生させる。
 	例: >
 		try:
 			vim.command("put a")
 		except vim.error:
-			# レジスタaが空
+			# レジスタ a に何も無い
 
-モジュール "vim" の定数
-	モジュール "vim" の定数は、実際には定数ではない。よって代入し直すこと
-	ができる。しかし、それは馬鹿げたことである。その変数が参照しているvim
-	オブジェクトへのアクセスができなくなってしまうからである。
+"vim" モジュールの定数
+
+	Note これらは実際には定数ではないことに注意 - 再代入することもできる。
+	しかし、そうすると変数が参照していた vim オブジェクトへのアクセスを失
+	うので、これは愚かなことである。
 
 vim.buffers						*python-buffers*
-	一連のvimバッファへのアクセスを提供するマッピングオブジェクト。
-	次の操作がサポートされている: >
-	    :py b = vim.buffers[i]	# インデックス化する (読取り専用)
-	    :py b in vim.buffers	# メンバかどうか調べる
-	    :py n = len(vim.buffers)	# 要素の個数
-	    :py for b in vim.buffers:	# バッファリストのイテレート
-
+	vim のバッファのリストへのアクセスを提供するマッピングオブジェクト。こ
+	のオブジェクトは以下の操作をサポートしている: >
+	    :py b = vim.buffers[i]	# インデックス参照 (読み込み専用)
+	    :py b in vim.buffers	# メンバーシップテスト
+	    :py n = len(vim.buffers)	# 要素の数
+	    :py for b in vim.buffers:	# バッファリストの反復処理
+<
 vim.windows						*python-windows*
-	一連のvimウィンドウへのアクセスを提供するシーケンスオブジェクト。
-	このオブジェクトは次の操作をサポートしている: >
-	    :py w = vim.windows[i]	# インデックス化する (読取り専用)
-	    :py w in vim.windows	# メンバかどうか調べる
-	    :py n = len(vim.windows)	# 要素の個数
-	    :py for w in vim.windows:	# シーケンシャルアクセス
-<	Note: vim.windows オブジェクトは常に現在のタブページ内にアクセスする。
-	|python-tabpage|.windows オブジェクトは親である |python-tabpage| オブ
-	ジェクトに結びつけられて、常にそのタブページのウィンドウを参照する (タ
-	ブページが削除されていたときは vim.error 例外が発生する)。vim モジュー
-	ルや |python-tabpage| オブジェクトへの参照を維持しなくても、参照は保持
-	される。プロパティも失われない。
+	vim のウィンドウのリストへのアクセスを提供するシーケンスオブジェクト。
+	このオブジェクトは以下の操作をサポートしている: >
+	    :py w = vim.windows[i]	# インデックス参照 (読み込み専用)
+	    :py w in vim.windows	# メンバーシップテスト
+	    :py n = len(vim.windows)	# 要素の数
+	    :py for w in vim.windows:	# 順次アクセス
+<	Note: vim.windows オブジェクトは常に現在のタブページにアクセスする。
+	|python-tabpage|.windows オブジェクトは親の |python-tabpage| オブジェ
+	クトに結び付けられ、常にそのタブページのウィンドウを使用する (または、
+	タブページが削除された場合は vim.error を投げる)。vim モジュールオブ
+	ジェクトまたは |python-tabpage| への参照を保持せずに、両方への参照を保
+	持することができ、この場合でもそれらはプロパティを失わない。
 
 vim.tabpages						*python-tabpages*
-	Vim のタブページの一覧へのアクセスを提供するシーケンスオブジェクト。
-	このオブジェクトは次の操作をサポートしている: >
-	    :py t = vim.tabpages[i]	# インデックス化する (読取り専用)
-	    :py t in vim.tabpages	# メンバかどうか調べる
-	    :py n = len(vim.tabpages)	# 要素の個数
-	    :py for t in vim.tabpages:	# シーケンシャルアクセス
-
-vim.current						*python-current*
-	vim内で使える様々な "現在の" オブジェクトへの、(特定の属性を通した)
-	アクセスを提供するオブジェクト: >
-		vim.current.line	現在の行 (RW)			String
-		vim.current.buffer	現在のバッファ (RW)		Buffer
-		vim.current.window	現在のウィンドウ (RW)		Window
-		vim.current.tabpage	現在のタブページ (RW)		TabPage
-		vim.current.range	現在の行の範囲 (RO)		Range
+	vim のタブページのリストへのアクセスを提供するシーケンスオブジェクト。
+	このオブジェクトは以下の操作をサポートしている: >
+	    :py t = vim.tabpages[i]	# インデックス参照 (読み込み専用)
+	    :py t in vim.tabpages	# メンバーシップテスト
+	    :py n = len(vim.tabpages)	# 要素の数
+	    :py for t in vim.tabpages:	# 順次アクセス
 <
-	最後のものに関しては、若干の説明が必要だろう。:python、:pyfileコマンド
-	で、範囲が指定された場合、この行の範囲は、"現在の範囲" として扱われる。
-	範囲はバッファに少し似ているが、全てのアクセスは行のサブセットに制限さ
-	れる。詳細は|python-range|を参照すること。
+vim.current						*python-current*
+	vim で使用可能な様々な "現在の" オブジェクトへの (特定の属性を介した)
+	アクセスを提供するオブジェクト:
+		vim.current.line	現在の行 (RW)		String
+		vim.current.buffer	現在のバッファ (RW)	Buffer
+		vim.current.window	現在のウィンドウ (RW)	Window
+		vim.current.tabpage	現在のタブページ (RW)	TabPage
+		vim.current.range	現在の行範囲 (RO)	Range
 
-	Note: vim.current.{buffer,window,tabpage} に値を代入するときはその値が
-	有効なオブジェクト (|python-buffer|、|python-window|、|python-tabpage|)
-	であることが期待される。値を代入するとバッファ、ウィンドウ、またはタブ
-	ページの切り替えが起こる (|autocommand| も実行される)。これが唯一
-	python で UI オブジェクトを切り替える方法である。
-	|python-tabpage|.window 属性に代入することはできない。自動コマンドを発
-	行させずに切り替えるには次のようにする: >
+	最後のケースには少し説明が必要である。:python または :pyfile コマンド
+	が範囲を指定すると、この行範囲が "現在の範囲" になる。範囲はバッファに
+	少し似ているが、すべてのアクセスが行のサブセットに制限されている。詳細
+	は |python-range| を参照。
+
+	Note: vim.current.{buffer,window,tabpage} に代入する時は、それぞれ有効
+	な |python-buffer|、|python-window| または |python-tabpage| オブジェク
+	トが期待される。代入すると、指定されたバッファ、ウィンドウまたはタブ
+	ページへの通常の (|autocommand| を伴う) 切り替えが引き起こされる。これ
+	は python で UI オブジェクトを切り替える唯一の方法である:
+	|python-tabpage|.window 属性には代入できない。自動コマンドを発生させず
+	に切り替えるには以下を使用する >
 	    py << EOF
 	    saved_eventignore = vim.options['eventignore']
 	    vim.options['eventignore'] = 'all'
 	    try:
-	        vim.current.buffer = vim.buffers[2] # バッファ 2 へ切り替え
+	        vim.current.buffer = vim.buffers[2] # バッファ 2 に切り替える
 	    finally:
 	        vim.options['eventignore'] = saved_eventignore
 	    EOF
 <
 vim.vars						*python-vars*
 vim.vvars						*python-vvars*
-	辞書に似たオブジェクトで、グローバル変数 (|g:|) と Vim 変数 (|v:|) へ
-	の参照である。`vim.bindeval("g:")` と同じだが、こちらの方が速い。
+	それぞれグローバル (|g:|) 変数および vim (|v:|) 変数の辞書を保持する、
+	辞書に似たオブジェクト。`vim.bindeval("g:")` と同一だが、より高速であ
+	る。
 
 vim.options						*python-options*
-	グローバルオプションへの読み書きアクセスを提供するマップオブジェクト
-	(値の取得と設定のみ対応)。
-	Note: |:set| と違い、グローバルオプションへのアクセスのみ提供する。こ
-	のオブジェクトを使ってローカルオプションの値を読み書きすることはできな
-	い。指定した名前のグローバルオプションが存在しない場合は KeyError 例外
-	が発生する (例えば |global-local| オプションやグローバルオプションへの
-	アクセスでは KeyError は発生しないが、ウィンドウオプションやバッファオ
-	プションへのアクセスでは例外が発生する)。バッファオプションへのアクセ
-	スには |python-buffer| オブジェクトを使う。ウィンドウオプションへのア
-	クセスには |python-window| オブジェクトを使う。
+	マッピングプロトコルを部分的にサポートし (項目の設定および取得をサポー
+	トする)、グローバルオプションへの読み書きアクセスを提供するオブジェク
+	ト。
+	Note: |:set| とは異なり、これはグローバルオプションへのアクセスのみを
+	提供する。このオブジェクトを使用して、ローカルオプションの値を取得また
+	は設定するか、または何らかの方法でローカル専用オプションにアクセスする
+	ことはできない。そのような名前のグローバルオプションが存在しない場合、
+	KeyError を発生させる (つまり、|global-local| オプションおよびグローバ
+	ル専用オプションに対しては KeyError を発生させないが、ウィンドウローカ
+	ルおよびバッファローカルのオプションに対しては発生させる)。バッファロー
+	カルオプションにアクセスするには |python-buffer| オブジェクトを、ウィ
+	ンドウローカルオプションにアクセスするには |python-window| オブジェク
+	トを使用する。
 
-	このオブジェクトの型は vim モジュールの "Options" 属性で取得できる。
+	このオブジェクトの型は、vim モジュールの "Options" 属性を介して使用可
+	能である。
 
-Pythonからの出力					*python-output*
-	Pythonコードからの全ての出力は、Vimのメッセージエリアに表示される。標
-	準出力はインフォメーションメッセージとして、エラー出力はエラーメッセー
-	ジとして表示される。
+Python からの出力					*python-output*
+	Vim はすべての Python コードの出力を Vim のメッセージ領域に表示する。
+	通常の出力は情報メッセージとして表示され、エラー出力はエラーメッセージ
+	として表示される。
 
-	実装のレベルでいうと、sys.stdout(printステートメントによる出力も含む)
-	に向けられる全ての出力が、インフォメーションメッセージとしてvimに表示
-	され、sys.stderr(エラートレースバックを含む) に向けられる全ての出力が、
-	エラーメッセージとしてvimに表示されている。
+	実装の観点では、これは sys.stdout へのすべての出力 (print 文からの出力
+	を含む) が情報メッセージとして表示され、sys.stderr へのすべての出力
+	(エラートレースバックを含む) がエラーメッセージとして表示されることを
+	意味する。
 
 							*python-input*
-	入力 (sys.stdinを通した入力、input()、raw_input() を含む) はサポートさ
-	れず、プログラムをクラッシュさせる可能性がある。これはたぶん修正される
-	べき問題である。
+	入力 (sys.stdin 経由、input() および raw_input() を含む) はサポートさ
+	れておらず、プログラムがクラッシュする可能性がある。これはおそらく修正
+	されるべきである。
 
 		    *python2-directory* *python3-directory* *pythonx-directory*
-Python における 'runtimepath' の処理			*python-special-path*
+Python 'runtimepath' の処理				*python-special-path*
 
-Python では、'runtimepath' のパスのリストを使う代わりに、vim.VIM_SPECIAL_PATH
-という特別なディレクトリが使われる。このディレクトリが sys.path 内で使われると
-き、そして vim.path_hooks が sys.path_hooks 内で使われるとき、'runtimepath' の
-各パス {rtp} に対して {rtp}/python2 (or python3) と {rtp}/pythonx (両バージョ
-ンで読み込まれる) のモジュールがロードされる (Note: find_module() は、Python
-3.12.0a7 辺りで imp モジュールから削除された)。
+python では、'runtimepath' で見つかったパスのリストの代わりとして
+vim.VIM_SPECIAL_PATH 特殊ディレクトリが使用される: このディレクトリが sys.path
+に、vim.path_hooks が sys.path_hooks にあると、python は 'runtimepath' で見つ
+かった各 {rtp} について、{rtp}/python2 (または python3) および {rtp}/pythonx
+(両方の python バージョン用) からモジュールを読み込もうとする (Note:
+find_module() は Python 3.12.0a7 頃に imp モジュールから削除された)。
 
-実装は以下のようになっている。ただし実際は C で書かれている: >
+実装は以下に似ているが、C で書かれている: >
 
     from imp import find_module, load_module
     import vim
@@ -374,9 +384,9 @@ Python では、'runtimepath' のパスのリストを使う代わりに、vim.V
             fmr = find_module(fullname, path)
             return load_module(fullname, *fmr)
 
-    # It uses vim module itself in place of VimPathFinder class: it does not
-    # matter for python which object has find_module function attached to as
-    # an attribute.
+    # VimPathFinder クラスの代わりに vim モジュール自体を使用する: python に
+    # とっては、どのオブジェクトが find_module 関数を属性として持っているかは
+    # 問題ではない。
     class VimPathFinder(object):
         @classmethod
         def find_module(cls, fullname, path=None):
@@ -398,255 +408,262 @@ Python では、'runtimepath' のパスのリストを使う代わりに、vim.V
     sys.path_hooks.append(hook)
 
 vim.VIM_SPECIAL_PATH				*python-VIM_SPECIAL_PATH*
-	Vim のパスフックに関連付けられた文字列定数。Vim によって設定されたパス
-	フックが vim.VIM_SPECIAL_PATH 定数以外のパスに対して呼び出された場合は
-	ImportError が発生する。そうでなければ特殊ローダが使用される。
+	vim のパスフックと組み合わせて使用される文字列定数。vim によってインス
+	トールされたパスフックが、vim.VIM_SPECIAL_PATH 定数と等しいパス以外の
+	ものを処理するよう要求された場合、ImportError を発生させる。それ以外の
+	唯一のケースでは、特殊なローダーを使用する。
 
-	Note: この定数の値を直接使用しないこと。常に vim.VIM_SPECIAL_PATH オブ
-	      ジェクトを使用すること。
+	Note: この定数の値を直接使用してはならない。常に vim.VIM_SPECIAL_PATH
+	      オブジェクトを使用すること。
 
 vim.find_module(...)					*python-find_module*
 vim.path_hook(path)					*python-path_hook*
 vim.find_spec(...)					*python-find_spec*
-	上述のパスフックの実装に使われるメソッドとオブジェクト。sys.meta_path
-	で vim.path_hook を使って何かをするようなことがなければ、これらを直接
-	使用することはないだろう。vim.find_spec() は Python 3.7 以降で使用可能
-	である。
-	これらのオブジェクトが Vim の将来のバージョンでも存在するかどうかは保
-	証されない。
+	上記で説明したパスの読み込みを実装するために使用されるメソッドまたはオ
+	ブジェクト。sys.meta_path で何かを行う必要がある場合の vim.path_hook
+	を除き、これらのいずれも直接使用するべきではない。vim.find_spec() は
+	Python 3.7 以降で使用可能である。
+	これらのオブジェクトのいずれかが将来の vim のバージョンで存在すること
+	は保証されていない。
 
 vim._get_paths						*python-_get_paths*
-	パスフックで検索されるパスのリストを返すメソッド。将来のバージョンのこ
-	とを考えるならこのメソッドに依存すべきではない。デバッグなどに使う。
+	パスフックによって検索されるパスのリストを返すメソッド。将来のバージョ
+	ンでこのメソッドが存在することに依存するべきではないが、デバッグに使用
+	することはできる。
 
-	'runtimepath' の各パスに対して {rtp}/python2 (or {rtp}/python3) と
-	{rtp}/pythonx ディレクトリのリストを返す。
+	これは 'runtimepath' 内の各 {rtp} について、{rtp}/python2 (または
+	{rtp}/python3) および {rtp}/pythonx ディレクトリのリストを返す。
 
 ==============================================================================
 3. バッファオブジェクト					*python-buffer*
 
-バッファオブジェクトは、vimのバッファを表す。バッファオブジェクトを取得するは
-いくつかの方法がある:
-	- vim.current.bufferを介して (|python-current|)
-	- vim.buffersのインデックス化から (|python-buffers|)
+バッファオブジェクトは vim のバッファを表す。これらはいくつかの方法で取得でき
+る:
+	- vim.current.buffer 経由 (|python-current|)
+	- vim.buffers のインデックス参照から (|python-buffers|)
 	- ウィンドウの "buffer" 属性から (|python-window|)
 
-バッファオブジェクトは二つの読み取り専用属性を持っている。name はバッファのフ
-ルファイル名である。number はバッファ番号である。バッファオブジェクトは 3 つの
-メソッドを持っている (append、mark、range。以下参照)。
+バッファオブジェクトには 2 つの読み込み専用属性がある - name - バッファのフル
+ファイル名、および number - バッファ番号。また、3 つのメソッド (append、mark、
+および range; 以下を参照) も持つ。
 
-バッファオブジェクトは、シーケンスオブジェクトとして扱うこともできる。この文脈
-では、バッファオブジェクトは文字列のリスト (そう、これはmutableである) のよう
-に振舞う。各要素はバッファの行である。有用なシーケンス操作の全て、つまり、イン
-デックス操作、インデックスによる代入、スライシング、スライスへの代入が期待通り
-に機能する。バッファのインデックス操作 (スライシング) の結果は、文字列 (文字列
-のリスト) であることを注意しておく。これはひとつの例外的な結果をもたらす - b[:]
-は b とは異なるのである。特に、"b[:] = None" はバッファの全てを削除するが、
-"b = None" は変数 b を更新するだけで、バッファには何の影響も与えない。
+バッファオブジェクトはシーケンスオブジェクトとして扱うこともできる。この文脈で
+は、それらは各要素がバッファの 1 行である文字列のリスト (そう、これらは変更可
+能である) であるかのように振る舞う。インデックス参照、インデックス代入、スライ
+ス、およびスライス代入を含む通常のシーケンス操作はすべて、期待どおりに動作す
+る。Note バッファのインデックス参照 (スライス) の結果は文字列 (文字列のリスト)
+であることに注意。これには 1 つの珍しい帰結がある - b[:] は b とは異なる。特
+に、"b[:] = None" はバッファ全体を削除するが、"b = None" は変数 b を更新するだ
+けで、バッファには何の影響も無い。
 
-バッファのインデックスは、Pythonでは普通はゼロから始まる。これは、1から始まる
-vimの行番号と異なる。これは、特にvimの行番号を使うmarks(以下を参照) を扱う際に
-問題となる。
+バッファのインデックスは、Python では普通であるように、0 から始まる。これは 1
+から始まる vim の行番号とは異なる。これは vim の行番号を使用するマーク (以下を
+参照) を扱う時に特に関係がある。
 
-バッファオブジェクトの属性は次の通りである:
-	b.vars		バッファ変数 (|buffer-variable|) にアクセスするための
-			辞書オブジェクト。
-	b.options	バッファオプションにアクセスするためのマップオブジェク
-			ト (値の取得、設定、削除をサポート)。ウィンドウオプショ
-			ンへのアクセスは |python-window|.options を使うこと。
-			ウィンドウオプションに対しては KeyError 例外が発生す
-			る。グローバルの値とローカルの値を両方持つオプション
-			(|global-local|) で、ローカルの値がない場合は None が
-			返る。
-	b.name		文字列。読み書き可。バッファ名 (フルパス)。
-			Note: b.name に値を設定すると自動コマンドの
-			|BufFilePre| と |BufFilePost| イベントが発生する。
-	b.number	バッファ番号。|python-buffers| のキーとして使える。
+バッファオブジェクトの属性は以下のとおり:
+	b.vars		|buffer-variable| にアクセスするために使用される、辞書
+			に似たオブジェクト。
+	b.options	バッファローカルオプションおよび |global-local| オプ
+			ションのバッファローカル値へのアクセスを提供するマッピ
+			ングオブジェクト (項目の取得、設定および削除をサポート
+			する)。オプションがウィンドウローカルの場合は
+			|python-window|.options を使用すること。このオブジェク
+			トは KeyError を発生させる。オプションが
+			|global-local| で、ローカル値が無い場合、それを取得す
+			ると None が返る。
+	b.name		文字列、RW。バッファ名 (フルパス) を含む。
+			Note: b.name に代入する時、|BufFilePre| および
+			|BufFilePost| 自動コマンドが起動される。
+	b.number	バッファ番号。|python-buffers| のキーとして使用できる。
 			読み込み専用。
-	b.valid		True または False。関連バッファが破棄されるとバッファ
-			オブジェクトは無効となる。
+	b.valid		True または False。対応するバッファが wipe out される
+			と、バッファオブジェクトは無効になる。
 
-バッファオブジェクトのメソッドは次の通りである:
-	b.append(str)	バッファに行を追加
-	b.append(str, nr)  バッファの "nr" 行目の下に行を追加。
-	b.append(list)	バッファに一連の行を追加
-			appendメソッドに文字列のリストを与えるオプションは、
-			Python組込みのリストオブジェクトの等価なメソッドとは違
-			うことに注意すること
-	b.append(list, nr)  バッファの "nr" 行目の下に一連の行を追加
-	b.mark(name)	名前付きマークの位置を示す(row,col)の組を返す
-			(これは[]"<> marksでも得られる)
-	b.range(s,e)	与えられたバッファのs行目からe行目(s行とe行も含む
-			|inclusive|)を示すレンジオブジェクト(|python-range|を
-			参照)を返す
+バッファオブジェクトのメソッドは以下のとおり:
+	b.append(str)	バッファに 1 行追加する
+	b.append(str, nr)  同上、"nr" 行の下に
+	b.append(list)	バッファに行のリストを追加する
+			Note 文字列のリストを append メソッドに与えるという選
+			択肢は、Python の組み込みリストオブジェクトの同等のメ
+			ソッドとは異なることに注意。
+	b.append(list, nr)  同上、"nr" 行の下に
+	b.mark(name)	名前付きマークの位置を表すタプル (row,col) を返す (マー
+			ク []"<> も取得できる)
+	b.range(s,e)	指定されたバッファの、行番号 s と e の間 |inclusive|
+			の部分を表す範囲オブジェクト (|python-range| を参照)
+			を返す。
 
-Note 行を追加するときは、その行に改行文字 '\n' が含まれてはならない。末尾の
-'\n' は許されるが、無視される。そのため次のようなことができる: >
+Note 行を追加する時、その行に改行文字 '\n' を含めてはならないことに注意。末尾
+の '\n' は許可され、無視されるので、以下のようにできる: >
 	:py b.append(f.readlines())
 
-バッファオブジェクトの型は vim モジュールの "Buffer" 属性で取得できる。
+バッファオブジェクトの型は、vim モジュールの "Buffer" 属性を使用して使用可能で
+ある。
 
-例 (bは現在のバッファに割り当てられているとする) >
-	:py print b.name		# バッファのファイル名を出力
-	:py b[0] = "hello!!!"		# 先頭の行を置換
-	:py b[:] = None			# 全てのバッファを削除
-	:py del b[:]			# 全てのバッファを削除
-	:py b[0:0] = "add a line"	# 先頭に行を追加
-	:py del b[2]			# 行を削除 (３番目)
-	:py b.append("bottom")		# 最後に行を追加
+例 (b は現在のバッファとする) >
+	:py print b.name		# バッファのファイル名を書き出す
+	:py b[0] = "hello!!!"		# 先頭行を置換する
+	:py b[:] = None			# バッファ全体を削除する
+	:py del b[:]			# バッファ全体を削除する
+	:py b[0:0] = [ "a line" ]	# 先頭に 1 行追加する
+	:py del b[2]			# 1 行削除する (3 行目)
+	:py b.append("bottom")		# 末尾に 1 行追加する
 	:py n = len(b)			# 行数
 	:py (row,col) = b.mark('a')	# 名前付きマーク
 	:py r = b.range(1,5)		# バッファの部分範囲
-	:py b.vars["foo"] = "bar"	# b:foo への代入
-	:py b.options["ff"] = "dos"	# ファイルフォーマット設定
+	:py b.vars["foo"] = "bar"	# b:foo 変数に代入する
+	:py b.options["ff"] = "dos"	# fileformat を設定する
 	:py del b.options["ar"]		# :set autoread< と同じ
 
 ==============================================================================
-4. レンジオブジェクト					*python-range*
+4. 範囲オブジェクト					*python-range*
 
-レンジオブジェクトは、vimバッファの一部分を表す。レンジオブジェクトを取得する
-にはいくつかの方法がある:
-	- vim.current.rangeを介して (|python-current|)
-	- バッファのrange()メソッドから (|python-buffer|)
+範囲オブジェクトは vim のバッファの一部を表す。これらはいくつかの方法で取得で
+きる:
+	- vim.current.range 経由 (|python-current|)
+	- バッファの range() メソッドから (|python-buffer|)
 
-レンジオブジェクトの操作は、バッファオブジェクトのそれとほとんど同じである。し
-かし、全ての操作は範囲内の行に制限される (もちろん、行の範囲は部分の割当て、行
-の削除、あるいはrange.append() メソッドによって変更できる)。
+範囲オブジェクトは、操作においてはバッファオブジェクトとほとんど同一である。し
+かし、すべての操作は範囲内の行に制限される (この行範囲は、もちろん、スライス代
+入、行の削除、または range.append() メソッドの結果として変化しうる)。
 
-レンジオブジェクトの属性:
-	r.start		選択範囲でのバッファ内の最初の行。
-	r.end		選択範囲でのバッファ内の最後の行。
+範囲オブジェクトの属性は以下のとおり:
+	r.start		バッファ内の最初の行のインデックス
+	r.end		バッファ内の最後の行のインデックス
 
-レンジオブジェクトのメソッド:
-	r.append(str)	その範囲に行を追加する
-	r.append(str, nr)  "nr" 行目の後に追加する
-	r.append(list)	その範囲にリストで与えられた複数行を追加する。
-			Note これはPythonのリストオブジェクトに対する操作とは
-			異なることに注意すること。
-	r.append(list, nr)  "nr" 行目の後に追加する
+範囲オブジェクトのメソッドは以下のとおり:
+	r.append(str)	範囲に 1 行追加する
+	r.append(str, nr)  同上、"nr" 行の後に
+	r.append(list)	範囲に行のリストを追加する
+			Note 文字列のリストを append メソッドに与えるという選
+			択肢は、Python の組み込みリストオブジェクトの同等のメ
+			ソッドとは異なることに注意。
+	r.append(list, nr)  同上、"nr" 行の後に
 
-Range オブジェクトの型は vim モジュールの "Range" 属性で取得できる。
+範囲オブジェクトの型は、vim モジュールの "Range" 属性を使用して使用可能である。
 
-例 (r が現在の範囲であると仮定する): >
-	# 範囲内のすべての行をデフォルトのプリンターに送信する
+例 (r は現在の範囲とする): >
+	# 範囲内のすべての行をデフォルトのプリンタに送る
 	vim.command("%d,%dhardcopy!" % (r.start+1,r.end+1))
 
 ==============================================================================
 5. ウィンドウオブジェクト				*python-window*
 
-ウィンドウオブジェクトは、vimのウィンドウを表現する。ウィンドウオブジェクトを
-取得するには、いくつかの方法がある:
-	- vim.current.windowを介して (|python-current|)
-	- vim.windowsのインデックス化から (|python-windows|)
-	- タブページの "windows" 属性のインデックス化から (|python-tabpage|)
+ウィンドウオブジェクトは vim のウィンドウを表す。これらはいくつかの方法で取得
+できる:
+	- vim.current.window 経由 (|python-current|)
+	- vim.windows のインデックス参照から (|python-windows|)
+	- タブページの "windows" 属性のインデックス参照から (|python-tabpage|)
 	- タブページの "window" 属性から (|python-tabpage|)
 
-ウィンドウオブジェクトは、それらの属性を通してのみ操作できる。これらはメソッド
-を持たず、シーケンスも他のインターフェイスもない。
+ウィンドウオブジェクトは、その属性を通してのみ操作できる。メソッドは持たず、
+シーケンスまたはその他のインターフェイスも持たない。
 
-ウィンドウの属性:
-	buffer (読取り専用)	そのウィンドウに表示されているバッファ
-	cursor (読み書き)	そのウィンドウの現在のカーソルの位置
-				これは(row,col)の組で表される
-	height (読み書き)	ウィンドウの高さ、行の数で
-	width (読み書き)	ウィンドウの幅、列の数で
-	vars (読み専用)		ウィンドウの |w:| 変数。この属性自体には代入で
-				きないが、この属性を使ってウィンドウ変数を変更
-				できる。
-	options (読み専用)	ウィンドウオプション。この属性自体には代入でき
-				ないが、この属性を使ってウィンドウオプションを
-				変更できる。ウィンドウオプションのみアクセス可
-				能。バッファオプションは |python-buffer| で、
-				グローバルオプションは |python-options| でアク
-				セスする。オプションがグローバルの値とローカル
-				の値を両方持つオプション (|global-local|) で、
-				ローカルの値がない場合は None が返る。
-	number (読み専用)	ウィンドウ番号。一つ目のウィンドウの番号は 1で
-				ある。番号が不明な場合は 0 が返る (例えば、他
-				のタブページに関連付けられたウィンドウオブジェ
-				クトである場合)。
-	row, col (読み専用)	スクリーン上でのウィンドウの表示位置。値は 0
-				から始まる。
-	tabpage (読み専用)	ウィンドウのタブページ。
-	valid (read-write)	True または False。関連ウィンドウが閉じられる
-				とウィンドウオブジェクトは無効になる。
+ウィンドウの属性は以下のとおり:
+	buffer (読み込み専用)	このウィンドウに表示されているバッファ
+	cursor (読み書き可能)	ウィンドウ内の現在のカーソル位置
+				これはタプル (row,col) である。
+	height (読み書き可能)	行単位のウィンドウの高さ
+	width (読み書き可能)	列単位のウィンドウの幅
+	vars (読み込み専用)	ウィンドウの |w:| 変数。属性は代入不可だが、こ
+				の方法でウィンドウ変数を変更できる
+	options (読み込み専用)	ウィンドウローカルオプション。属性は代入不可だ
+				が、この方法でウィンドウオプションを変更でき
+				る。ウィンドウローカルオプションへのアクセスの
+				みを提供し、バッファローカルには
+				|python-buffer| を、グローバルなものには
+				|python-options| を使用する。オプションが
+				|global-local| で、ローカル値が無い場合、それ
+				を取得すると None が返る。
+	number (読み込み専用)	ウィンドウ番号。最初のウィンドウの番号は 1 で
+				ある。これは、決定できない場合は 0 である (例
+				えば、ウィンドウオブジェクトが他のタブページに
+				属している場合)。
+	row, col (読み込み専用)	表示セル単位の画面上のウィンドウ位置。最初の位
+				置は 0 である。
+	tabpage (読み込み専用)	ウィンドウのタブページ。
+	valid (読み書き可能)	True または False。対応するウィンドウが閉じら
+				れると、ウィンドウオブジェクトは無効になる。
 
-heightはスクリーンが水平方向に分割されているときのみ書き込み可能である。
-widthはスクリーンが垂直方向に分割されているときのみ書き込み可能である。
+画面が水平分割されている場合にのみ、height 属性は書き込み可能である。画面が垂
+直分割されている場合にのみ、width 属性は書き込み可能である。
 
-Window オブジェクトの型は vim モジュールの "Window" 属性で取得できる。
+ウィンドウオブジェクトの型は、vim モジュールの "Window" 属性を使用して使用可能
+である。
 
 ==============================================================================
 6. タブページオブジェクト				*python-tabpage*
 
-タブページオブジェクトは、vim のタブページを表現する。タブページオブジェクトを
-取得するにはいくつかの方法がある:
-	- vim.current.tabpageを介して (|python-current|)
-	- vim.tabpagesのインデックス化から (|python-tabpages|)
+タブページオブジェクトは vim のタブページを表す。これらはいくつかの方法で取得
+できる:
+	- vim.current.tabpage 経由 (|python-current|)
+	- vim.tabpages のインデックス参照から (|python-tabpages|)
 
-このオブジェクトを使ってタブページウィンドウにアクセスすることができる。これら
-はメソッドを持たず、シーケンスも他のインターフェイスもない。
+このオブジェクトを使用してタブページのウィンドウにアクセスできる。これらはメ
+ソッドを持たず、シーケンスまたはその他のインターフェイスも持たない。
 
-タブページの属性:
-	number		|tabpagenr()| が返すようなタブページ番号。
+タブページの属性は以下のとおり:
+	number		|tabpagenr()| が返すもののようなタブページ番号。
 	windows		|python-windows| と同様だが、現在のタブページ用。
 	vars		タブページの |t:| 変数。
 	window		現在のタブページウィンドウ。
-	valid		True または False。タブページオブジェクトは、関連する
-			タブページがクローズされると無効になる。
+	valid		True または False。対応するタブページが閉じられると、
+			タブページオブジェクトは無効になる。
 
-タブページオブジェクトの型は vim モジュールの "TabPage" 属性で取得できる。
+TabPage オブジェクトの型は、vim モジュールの "TabPage" 属性を使用して使用可能
+である。
 
 ==============================================================================
 7. vim.bindeval オブジェクト			*python-bindeval-objects*
 
 vim.Dictionary オブジェクト			*python-Dictionary*
-    Vim の辞書 (|Dictionary|) にアクセスするための辞書系オブジェクト。
+    vim の |Dictionary| 型へのアクセスを提供する、辞書に似たオブジェクト。
     属性:
         属性       説明 ~
-        locked     次の値のどれか               *python-.locked*
+        locked     以下のいずれか               *python-.locked*
                     値              説明 ~
-                    ゼロ            変数はロックされていない
-                    vim.VAR_LOCKED  変数はロックされている。ロック解除可能
-                    vim.VAR_FIXED   変数はロックされている。ロック解除不可能
-                   読み書き可。`True` か `False` を代入することでロックを変更
-                   できる。再帰的なロックはサポートされていない。
-        scope      次の値のどれか
+                    zero            変数はロックされていない
+                    vim.VAR_LOCKED  変数はロックされているが、ロック解除できる
+                    vim.VAR_FIXED   変数はロックされており、ロック解除できない
+                   読み書き可能。この属性に `True` または `False` を代入するこ
+                   とで、ロックされた変数のロックを解除できる。再帰的なロック
+                   はサポートされていない。
+        scope      以下のいずれか
                     値                 説明 ~
-                    ゼロ               辞書はスコープ辞書ではない
-                    vim.VAR_DEF_SCOPE  辞書は |g:| か |l:| である。
-                    vim.VAR_SCOPE      他のスコープ変数
-                                       |internal-variables| 参照。
-    メソッド (note: キーワード引数はサポートされていない):
+                    zero               辞書はスコープ辞書ではない
+                    vim.VAR_DEF_SCOPE  |g:| または |l:| 辞書
+                    vim.VAR_SCOPE      その他のスコープ辞書、
+                                       |internal-variables| を参照
+    メソッド (note: メソッドはキーワード引数をサポートしていない):
         メソッド    説明 ~
         keys()      辞書のキーのリストを返す。
         values()    辞書の値のリストを返す。
-        items()     辞書の内容を 2 値 tuple のリストで返す。
+        items()     辞書の内容を持つ 2 要素タプルのリストを返す。
         update(iterable), update(dictionary), update(**kwargs)
                     辞書にキーを追加する。
         get(key[, default=None])
-                    辞書からキーの値を取得する。キーが存在しない場合は default
-                    が返る。
-        pop(key[, default])
-                    辞書からキーを取り除き、その値を返す。キーが存在しない場合
-                    は、default が指定されていたらその値を返す。指定されていな
-                    ければ KeyError 例外が発生する。
-        popitem()
-                    辞書からランダムにキーを取り除き (key, value) のペアを返
+                    辞書からキーを取得し、それが存在しない場合はデフォルトを返
                     す。
+        pop(key[, default])
+                    指定されたキーを辞書から削除し、対応する値を返す。キーが見
+                    つからず、default が与えられた場合はデフォルトを返し、そう
+                    でない場合は KeyError を発生させる。
+        popitem()
+                    ランダムなキーを辞書から削除し、(key, value) のペアを返す。
         has_key(key)
-                    辞書がキーを持っているかを確認する。`key in dict` と同じ。
+                    辞書が指定されたキーを含むかどうかを確認する。
+                    `key in dict` と同様。
 
         __new__(), __new__(iterable), __new__(dictionary), __new__(update)
-                    `vim.Dictionary()` を使って vim の辞書を作成できる。
-                    `d=vim.Dictionary(arg)` は
-                    `d=vim.bindeval('{}');d.update(arg)` と同じ。引数がない場
-                    合は空の辞書が作成される。
+                    `vim.Dictionary()` を使用して新しい vim の辞書を作成でき
+                    る。`d=vim.Dictionary(arg)` は
+                    `d=vim.bindeval('{}');d.update(arg)` と同じである。引数無
+                    しの場合は空の辞書を構築する。
 
     例: >
         d = vim.Dictionary(food="bar")		# コンストラクタ
-        d['a'] = 'b'				# アイテム代入
-        print d['a']				# アイテム取得
+        d['a'] = 'b'				# 項目の代入
+        print d['a']				# 項目の取得
         d.update({'c': 'd'})			# .update(dictionary)
         d.update(e='f')				# .update(**kwargs)
         d.update((('g', 'h'), ('i', 'j')))	# .update(iterable)
@@ -654,95 +671,91 @@ vim.Dictionary オブジェクト			*python-Dictionary*
         for val in d.values():			# .values()
         for key, val in d.items():		# .items()
         print isinstance(d, vim.Dictionary)	# True
-        for key in d:				# キーのイテレーション
+        for key in d:				# キーの反復処理
         class Dict(vim.Dictionary):		# サブクラス化
 <
-    Note: キーをイテレーションしている最中に辞書を変更してはいけない。
+    Note: キーを反復処理している時は辞書を変更するべきではない。
 
 vim.List オブジェクト				*python-List*
-    Vim のリスト (|List|) にアクセスするためのシーケンス系オブジェクト。
-    `.locked` 属性をサポートしている (|python-.locked| 参照)。さらに以下のメ
-    ソッドをサポートしている:
+    vim の |List| 型へのアクセスを提供する、シーケンスに似たオブジェクト。
+    `.locked` 属性をサポートしている。|python-.locked| を参照。また、以下のメ
+    ソッドもサポートしている:
         メソッド        説明 ~
-        extend(item)    リストにアイテムを追加する。
+        extend(item)    リストに項目を追加する。
 
         __new__(), __new__(iterable)
-                        `vim.List()` を使って vim のリストを作成できる。
-                        `l=vim.List(iterable)` は
-                        `l=vim.bindeval('[]');l.extend(iterable)` と同じ。引数
-                        がない場合は空のリストが作成される。
+                        `vim.List()` を使用して新しい vim のリストを作成でき
+                        る。`l=vim.List(iterable)` は
+                        `l=vim.bindeval('[]');l.extend(iterable)` と同じであ
+                        る。引数無しの場合は空のリストを構築する。
     例: >
-        l = vim.List("abc")		# コンストラクタ。結果: ['a', 'b', 'c']
+        l = vim.List("abc")		# コンストラクタ、結果: ['a', 'b', 'c']
         l.extend(['abc', 'def'])	# .extend() メソッド
         print l[1:]			# スライス
         l[:0] = ['ghi', 'jkl']		# スライス代入
-        print l[0]			# アイテム取得
+        print l[0]			# 項目の取得
         l[0] = 'mno'			# 代入
-        for i in l:			# イテレーション
+        for i in l:			# 反復処理
         print isinstance(l, vim.List)	# True
         class List(vim.List):		# サブクラス化
 
 vim.Tuple オブジェクト				*python-Tuple*
-    vim |Tuple| 型へのアクセスを提供するシーケンスのようなオブジェクト。
-    `.locked` 属性をサポートする。|python-.locked| を参照。次のメソッドもサポー
-    トする:
+    vim の |Tuple| 型へのアクセスを提供する、シーケンスに似たオブジェクト。
+    `.locked` 属性をサポートしている。|python-.locked| を参照。また、以下のメ
+    ソッドもサポートしている:
         メソッド        説明 ~
         __new__(), __new__(iterable)
-			`vim.Tuple()` を使用して新しい vim tuple を作成できる。
-			引数がない場合、空のリストが構築される。
-
+                        `vim.Tuple()` を使用して新しい vim のタプルを作成でき
+                        る。引数無しの場合は空のリストを構築する。
     例: >
-        t = vim.Tuple("abc")		# コンストラクタ。結果: ('a', 'b', 'c')
+        t = vim.Tuple("abc")		# コンストラクタ、結果: ('a', 'b', 'c')
         print t[1:]			# スライス
-        print t[0]			# アイテム取得
-        for i in t:			# イテレーション
+        print t[0]			# 項目の取得
+        for i in t:			# 反復処理
         print isinstance(t, vim.Tuple)	# True
         class Tuple(vim.Tuple):		# サブクラス化
 
 vim.Function オブジェクト			*python-Function*
-    Vim の関数参照 (|Funcref|) と似た動作をする関数系オブジェクト。
-    特別な引数として `self` を指定できる (|Dictionary-function| 参照)。
-    `vim.Function(name)` を使って作成することもできる。
-    これは `vim.bindeval('function(%s)'%json.dumps(name))` と同じ。
+    vim の |Funcref| オブジェクトのように振る舞う、関数に似たオブジェクト。特
+    殊なキーワード引数 `self` を受け付ける。|Dictionary-function| を参照。
+    `vim.Function(name)` コンストラクタを使用することもでき、これは
+    `vim.bindeval('function(%s)'%json.dumps(name))` と同じである。
 
-    属性 (読み取り専用):
-        属性名       説明 ~
-        name         関数名
-        args         `None` または引数を示す |python-List| オブジェクト。これ
-                     はこの属性をリクエストするたびに作られる引数のコピーであ
-                     ることに注意すること。このリストに対する変更は無視される。
-                     (ただし引数リスト内のコンテナについては無視されない。これ
-                     は |deepcopy()| ではなく |copy()| と同様である)
-        self         `None` または自身の辞書である |python-Dictionary| オブ
-                     ジェクト。呼び出し時に明示的な `self` キーワードが使われ
-                     た場合には、渡されるオブジェクトでこの属性はオーバーライ
-                     ドされる。
-        auto_rebind  ブール値。Python のオブジェクトから作られ Vim script の辞
-                     書に格納された部分適用が、その辞書が参照された際に自動的
-                     に再バインドされる場合に `True` となる。Vim script で説明
-                     すると `dict.func` (auto_rebind=True) と
-                     `function(dict.func,dict)` (auto_rebind=False) の違いにな
-                     る。`self` 属性の値が `None` の場合には、この属性値には意
-                     味がない。
+    属性 (読み込み専用):
+        属性         説明 ~
+        name         関数名。
+        args         `None` または引数を持つ |python-List| オブジェクト。Note
+                     これは引数リストのコピーで、この属性を要求するたびに構築
+                     されることに注意。リストに加えられた変更は無視される (た
+                     だし、引数リスト内のコンテナへの変更は無視されない: これ
+                     は |copy()| のようなもので、|deepcopy()| ではない)。
+        self         `None` または self 辞書を持つ |python-Dictionary| オブジェ
+                     クト。Note 結果のオブジェクトを呼び出す時に使用された明示
+                     的な `self` キーワードがこの属性を上書きすることに注意。
+        auto_rebind  真偽値。この Python オブジェクトから作成され、Vim script
+                     の辞書に格納された partial が、この辞書がインデックス参照
+                     された時に、格納されている辞書に自動的に再束縛されるべき
+                     場合、True。`dict.func` (auto_rebind=True) と
+                     `function(dict.func,dict)` (auto_rebind=False) の間の Vim
+                     内部の違いを公開する。この属性は、`self` 属性が `None` の
+                     場合は意味を持たない。
 
-    コンストラクタは、加えて `args`, `self`そして `auto_rebind` キーワードを受
-    け付ける。`args` と `self` どちらか一方、もしくは両方が与えられた場合には、
-    部分適用が生成される。詳しくは |function()| を参照すること。`auto_rebind`
-    は `self` だけが与えられた場合にのみ使われる。そうでない場合には、それが与
-    えられたかどうかにかかわらず `True` であると見做される。
-    `self` が与えられた場合には、そのデフォルト値は `False` である。
-
+    コンストラクタはさらに `args`、`self` および `auto_rebind` キーワードを受
+    け付ける。`args` および/または `self` 引数が与えられた場合、partial を構築
+    する。|function()| を参照。`auto_rebind` は `self` 引数が与えられた場合に
+    のみ使用され、そうでない場合は、与えられたかどうかに関係なく `True` である
+    とみなされる。`self` が与えられた場合、デフォルトは `False` になる。
 
     例: >
         f = vim.Function('tr')			# コンストラクタ
-        print f('abc', 'a', 'b')		# tr('abc', 'a', 'b') 呼び出し
+        print f('abc', 'a', 'b')		# tr('abc', 'a', 'b') を呼び出す
         vim.command('''
             function DictFun() dict
                 return self
             endfunction
         ''')
         f = vim.bindeval('function("DictFun")')
-        print f(self={})			# call('DictFun', [],{})と同じ
+        print f(self={})			# call('DictFun', [], {}) と同様
         print isinstance(f, vim.Function)	# True
 
         p = vim.Function('DictFun', self={})
@@ -751,66 +764,64 @@ vim.Function オブジェクト			*python-Function*
         print f('b')
 
 ==============================================================================
-8. Vim 関数 pyeval() と py3eval()			*python-pyeval*
+8. pyeval() と py3eval() Vim 関数			*python-pyeval*
 
-双方向インターフェイスを容易にするため、|pyeval()| 関数と |py3eval()| 関数を
-使って Python の式を評価して、その値を Vim script に渡すことができる。
+双方向のインターフェイスを容易にするため、|pyeval()| および |py3eval()| 関数を
+使用して Python の式を評価し、その値を Vim script に渡すことができる。
 |pyxeval()| も使用可能である。
 
-オプションの {locals} 辞書を使用して、評価にローカル変数を挿入できる。これは、
+オプションの {locals} 辞書を使用して、評価にローカル変数を注入できる。これは、
 vim.eval |python-eval| が def 関数内のローカル変数を見つけられない vim9script
-で特に役立つ。
+で特に便利である。
 
-Python での "None" は v:none に変換される。
+Python の値 "None" は v:none に変換される。
 
 ==============================================================================
-9. 動的ローディング					*python-dynamic*
+9. 動的ロード						*python-dynamic*
 
-MS-Windows と UNIX では Python ライブラリを動的に読み込むことが可能である。こ
-れを行うと |:version| の出力に |+python/dyn| もしくは |+python3/dyn| が含まれ
-るようになる。
+MS-Windows および Unix では、Python ライブラリを動的にロードできる。その場合、
+|:version| の出力に |+python/dyn| または |+python3/dyn| が含まれる。
 
-この場合、Vimは必要なときだけPythonのDLLファイル、もしくは共有ライブラリファイ
-ルを検索する。Pythonインターフェイスを使わないときはDLLを必要としないので、DLL
-なしでVimを使うことができる。
+これは、Vim が Python の DLL または共有ライブラリファイルを必要な時にのみ検索
+することを意味する。Python インターフェイスを使用しない場合はそれは不要であり、
+したがってこのファイル無しで Vim を使用できる。
 
 
 MS-Windows ~
 
-WindowsでPythonインターフェイスを使うには、PythonのDLLが検索パス内に存在しなけ
-ればならない。コンソールウィンドウで "path" とタイプすると、どのディレクトリが
-検索パスとなるか表示することができる。DLL が検索パスに見つからない場合、Vim は
-レジストリをチェックして Python がインストールされているパスを見つける。また
-'pythondll' か 'pythonthreedll' オプションを Python の DLL を指定するのに使う
-こともできる。
+Python インターフェイスを使用するには、Python の DLL が検索パス内に無ければな
+らない。コンソールウィンドウで "path" と入力して、どのディレクトリが使用されて
+いるかを確認する。DLL が検索パス内に見つからない場合、Vim はレジストリを確認し
+て Python がインストールされているパスを探す。'pythondll' または
+'pythonthreedll' オプションを使用して Python の DLL を指定することもできる。
 
-DLLの名前はVimをコンパイルした時のPythonのバージョンに一致しなければならない。
-現在その名前は "python27.dll" である。これはPython 2.7用である。これは
-'pythondll' の既定値である。Python 3の場合はpython36.dll (Python3.6) である。
-これを確かめるには、"gviai.exe" を開き、"python\d*.dll\c" を検索すること。
+DLL の名前は、Vim がコンパイルされた Python のバージョンと一致するべきである。
+現在、Python 2 の名前は "python27.dll" で、これは Python 2.7 用である。これは
+'pythondll' のデフォルト値である。Python 3 では python36.dll (Python 3.6) であ
+る。確実に知るには、"gviai.exe" を編集して "python\d*.dll\c" を検索する。
 
 
 Unix ~
 
-'pythondll' と 'pythonthreedll' オプションを、コンパイル時に
-DYNAMIC_PYTHON_DLL と DYNAMIC_PYTHON3_DLL で指定されている Python の共有ライブ
-ラリのファイルの、代わりを指定するのに使える。共有ライブラリのバージョンは、
-|python3-stable-abi| を使用しない限り、Vim がコンパイルされた Python 2.x また
-は Python 3 のバージョン (|v:python3_version|) と一致しなければならない。
+'pythondll' または 'pythonthreedll' オプションを使用して、コンパイル時に指定さ
+れた DYNAMIC_PYTHON_DLL または DYNAMIC_PYTHON3_DLL ファイルの代わりに Python
+の共有ライブラリファイルを指定できる。共有ライブラリのバージョンは、
+|python3-stable-abi| を使用していない限り、Vim がコンパイルされた Python 2.x
+または Python 3 のバージョン (|v:python3_version|) と一致しなければならない。
 
 
 Stable ABI と Python バージョンの混在 ~
 			*python-stable* *python-stable-abi* *python3-stable-abi*
-Vim が Stable ABI (Python 3 でのみ使用可能) でコンパイルされていない場合、
-Python 共有ライブラリのバージョンは Vim がコンパイルされたバージョンと一致して
-いなければならない。そうでないと、バージョンが混在して予期せぬクラッシュや失敗
-を引き起こす可能性がある。Stable ABI ではこの制限は緩和され、少なくとも
-|v:python3_version| のバージョンを持つ Python 3 ライブラリであれば動作する。
-Stable ABI がサポートされているかどうかを確認する方法については、|has-python|
-を参照するか、バージョン出力に |+python3/dyn-stable| が含まれているかどうかを
-確認すること。
+Vim が Stable ABI (Python 3 でのみ使用可能) 付きでコンパイルされていない場合、
+Python の共有ライブラリのバージョンは Vim がコンパイルされたバージョンと一致し
+なければならない。そうでない場合、バージョンを混在させると予期しないクラッシュ
+および失敗が発生する可能性がある。Stable ABI では、この制限が緩和され、少なく
+とも |v:python3_version| のバージョンを持つ任意の Python 3 ライブラリが動作す
+る。Stable ABI がサポートされているかどうかを確認する方法については
+|has-python| を参照するか、またはバージョン出力に |+python3/dyn-stable| が含ま
+れているかどうかを確認する。
 MS-Windows では、'pythonthreedll' は "python3.dll" に設定される。レジストリか
-ら DLL を検索するとき、Vim は Python の最新バージョンを検索する。
+ら DLL を検索する時、Vim は最新バージョンの Python を検索する。
 
 ==============================================================================
 10. Python 3						*python3*
@@ -825,77 +836,77 @@ MS-Windows では、'pythonthreedll' は "python3.dll" に設定される。レ�
 :[range]python3 << [trim] [{endmarker}]
 {script}
 {endmarker}
-	`:py3` コマンドと `:python3` コマンドは `:python` と同様に機能する。
-	`:py3` コマンドが機能するか簡単にチェックするには: >
+	`:py3` および `:python3` コマンドは `:python` と同様に動作する。`:py3`
+	コマンドが動作しているかの簡単な確認: >
 		:py3 print("Hello")
 <
-	使っている Python のバージョンを見るには: >
+	手元の Python のバージョンを確認するには: >
 		:py3 import sys
 		:py3 print(sys.version)
 <							*:py3file*
 :[range]py3f[ile] {file}
-	`:py3file` コマンドは `:pyfile` と同様に機能する。
+	`:py3file` コマンドは `:pyfile` と同様に動作する。
 							*:py3do*
 :[range]py3do {body}
-	`:py3do` コマンドは `:pydo` と同様に機能する。
+	`:py3do` コマンドは `:pydo` と同様に動作する。
 
 
-Vim のビルドは 4 種類ある (:version の出力):
-1. Python サポートなし	    (-python, -python3)
-2. Python 2 サポートのみ    (+python or +python/dyn, -python3)
-3. Python 3 サポートのみ    (-python, +python3 or +python3/dyn)
-4. Python 2 と 3 のサポート (+python/dyn, +python3/dyn)
+Vim は 4 つの方法でビルドできる (:version の出力):
+1. Python サポート無し	      (-python, -python3)
+2. Python 2 サポートのみ      (+python または +python/dyn, -python3)
+3. Python 3 サポートのみ      (-python, +python3 または +python3/dyn)
+4. Python 2 および 3 サポート (+python/dyn, +python3/dyn)
 
-特殊ケース 4 に付いてもう少し詳細に説明する:  *python-2-and-3*
+特殊なケース 4 に関するさらなる詳細:  *python-2-and-3*
 
-Python 2 と Python 3 をサポートするにはそれらを動的ロードする必要がある。
+Python 2 および Python 3 の両方がサポートされている場合、それらは動的にロード
+されなければならない。
 
-Linux/Unix システムで動的ロード時にグローバルシンボルをインポートすると、2 番
-目にロードした Python が使われたときにクラッシュが発生する。そのため、グローバ
-ルシンボルをロードして一つの Python バージョンだけを使うか、グローバルシンボル
-をロードしないかのどちらかしかない。後者は特定のライブラリ (シンボルが Vim か
-ら提供されていることを期待しているライブラリ) において Python の "import" が失
-敗するようになる。
+Linux/Unix システムでこれを行い、グローバルシンボルを import すると、2 番目の
+Python バージョンが使用された時にクラッシュが発生する。そのため、グローバルシ
+ンボルがロードされるが 1 つの Python バージョンのみがアクティブになるか、また
+はグローバルシンボルがロードされないかのどちらかである。後者は、シンボルが Vim
+によって提供されることを期待するライブラリで、Python の "import" を失敗させる。
 							*E836* *E837*
-Vim のコンフィグスクリプトは、ある標準の Python ライブラリ (termios) に基づき、
-すべてのライブラリについて推測を行う。このライブラリを両方の Python バージョン
-でインポートできるなら、両方のバージョンを Vim の中で同時に利用できる。そうで
-ない場合は、どちらか最初に使われたもののみが利用可能になる。もう一方を使おうと
-すると E836 か E837 のエラーメッセージが表示されるだろう。
+Vim の構成スクリプトは、1 つの標準 Python ライブラリ (termios) に基づいて、す
+べてのライブラリについて推測を行う。このライブラリの import が両方の Python
+バージョンで成功した場合、両方が同時に Vim で使用可能になる。そうでない場合、
+セッションで最初に使用されたバージョンのみが有効になる。
+もう一方を使用しようとすると、E836 または E837 エラーメッセージが表示される。
 
-Vim の動作はコンフィグを実行したシステムに依存する。Python の両方のバージョン
-が --enable-shared 付きでビルドされているなら、両方のバージョンを同時に使用で
-きる。ただし libPython にリンクしていないサードパーティライブラリに対してはま
-だ問題は解決しない。
+ここで、Vim の動作は、それが構成されたシステムに依存する。両方のバージョンの
+Python が --enable-shared 付きで構成されたシステムでは、両方のバージョンの
+Python が同時にアクティブになる。libPython にリンクされていない他のサードパー
+ティライブラリでは、依然として問題がある。
 
-これらの問題に対する対処療法:
-1. 問題のライブラリを libpython.so にリンクする形で再コンパイルする。
-2. Vim を再コンパイルして一つの Python バージョンのみ有効にする。
-3. コンフィグ実行後に auto/config.h の PY_NO_RTLD_GLOBAL の定義を削除する。こ
-   れは Vim がクラッシュするようになるだろう。
+このような問題を回避するには、これらの選択肢がある:
+1. 問題のあるライブラリを、対応する libpython.so にリンクするように再コンパイ
+   ルする。
+2. Vim を 1 つの Python バージョンのみ用に再コンパイルする。
+3. 構成の後に auto/config.h で PY_NO_RTLD_GLOBAL を undefine する。ただし、こ
+   れは Vim をクラッシュさせるかもしれない。
 
 							*E880*
-Python 内で SystemExit 例外を発生させても Vim は終了しない。次のようにする:
->
+python で SystemExit 例外を発生させるのは vim を終了する推奨された方法ではな
+い。以下を使用すること: >
 	:py vim.command("qall!")
 <
 							*E1266*
-このエラーは Python 3 が要求するモジュールがロードできないときに発生する。これ
-はあなたの Python 3 が正しくインストールされていない、もしくはあなたの設定に間
-違いがあることを意味する。次の項目を確認すること:
-1. Python 3 が正しくインストールされていることを確認する。また Python のバー
-   ジョンを確認する。
+このエラーは、Python 3 が必要なモジュールをロードできない時に発生する可能性が
+ある。これは、Python 3 が正しくインストールされていないか、または設定に何らか
+の誤りがあることを意味する。以下の項目を確認すること:
+1. Python 3 が正しくインストールされていることを確認する。python のバージョン
+   も確認する。
 2. 'pythonthreedll' オプションを確認する。
 3. 'pythonthreehome' オプションを確認する。
-4. 'pythonthreedll' を設定していない場合、環境変数 PATH を確認する。
-   MS-Windows では where.exe でどの dll がロードされるかを確認できる。
-   例 >
+4. 'pythonthreedll' を設定していない場合は、PATH 環境変数を確認する。
+   MS-Windows では、where.exe を使用して、どの dll がロードされるかを確認でき
+   る。例: >
 	where.exe python310.dll
-5. 環境変数 PYTHONPATH と PYTHONHOME を確認する。
+5. PYTHONPATH および PYTHONHOME 環境変数を確認する。
 
 							*has-python*
-どのバージョンの Python が利用可能になっているかは次のコマンドで確認できる:
->
+どの Python バージョンが使用可能かは、以下でテストできる: >
 	if has('python')
 	  echo 'there is Python 2.x'
 	endif
@@ -903,13 +914,13 @@ Python 内で SystemExit 例外を発生させても Vim は終了しない。�
 	  echo 'there is Python 3.x'
 	endif
 
-Note: Python の 2 と 3 の両方が利用可能で、Python が動的ロードされるようになっ
-ている場合、この has() 呼び出しによってそれらがロードされる。もし、同時にロー
-ドできるのがどちらか一方だけだった場合、Python の 2 と 3 のどちらが利用できる
-か調べるだけで、もう一方は利用できなくなる。
+Note ただし、Python 2 および 3 の両方が使用可能で動的にロードされる場合、これ
+らの has() の呼び出しはそれらをロードしようとすることに注意。一度に 1 つしか
+ロードできない場合、Python 2 または 3 が使用可能かどうかを確認するだけで、もう
+一方が使用可能でなくなる。
 
-この動的ライブラリのローディングを防ぐためには、単に Vim が Python をサポート
-した状態でコンパイルされているかどうかを確認する: >
+動的ライブラリのロードを避けるには、Vim が python サポート付きでコンパイルされ
+たかどうかだけを確認する: >
 	if has('python_compiled')
 	  echo 'compiled with Python 2.x support'
 	  if has('python_dynamic')
@@ -923,10 +934,10 @@ Note: Python の 2 と 3 の両方が利用可能で、Python が動的ロード
 	  endif
 	endif
 
-ライブラリを動的にロードする場合、Vim は Python 3 Stable ABI
-(|python3-stable-abi|) をサポートするようにコンパイルすることができ、Vim がコ
-ンパイルしたものとは異なるバージョンの Python 3 ライブラリをロードすることがで
-きる。確認するには: >
+ライブラリを動的にロードする時、Vim は Python 3 Stable ABI
+(|python3-stable-abi|) をサポートするようにコンパイルでき、これにより Vim がコ
+ンパイルされたものとは異なるバージョンの Python 3 ライブラリをロードできる。そ
+れを確認するには: >
 	if has('python3_dynamic')
 	  if has('python3_stable')
 	    echo 'support Python 3 Stable ABI.'
@@ -936,68 +947,66 @@ Note: Python の 2 と 3 の両方が利用可能で、Python が動的ロード
 	  endif
 	endif
 
-実行時ライブラリが見つからなかった場合は Python の動的ローディングは失敗する
-が、このコードは正しくロードされたかどうかを表示することにもなる。
+これはまた、Python が動的にロードされるかどうかも示す。ランタイムライブラリが
+見つからない場合、それは失敗する。
 
 ==============================================================================
 11. Python X						*python_x* *pythonx*
 
-多くの python コードは、Python 2.6+ と Python 3 の両方で動くことができるように
-書けるため、pyx* 関数とコマンドが用意された。それらは、Python 2 や 3 向けの変
-種とまったく同じように動作するが、'pyxversion' 設定を用いて Python のバージョ
-ンを選択できる点が異なる。
+ほとんどの python コードは Python 2.6+ および Python 3 で動作するように書くこ
+とができるため、pyx* 関数およびコマンドが作られた。これらは Python 2 および 3
+の変種とまったく同じように動作するが、'pyxversion' 設定を使用して Python のバー
+ジョンを選択する。
 
-Python コマンドに Python 2 と 3 のどちらを使いたいかに応じて、|.vimrc| の中で
-'pyxversion' を設定すること。もしこの設定を実行時に変更すると、プラグインの状
-態 (例えば初期化など) が失われる危険性がある。
+Python コマンドで Python 2 または Python 3 を優先するように、|.vimrc| で
+'pyxversion' を設定するべきである。実行時にこの設定を変更すると、プラグインの
+状態 (初期化など) が失われる危険がある。
 
-モジュールを使用したい場合には、{rtp}/pythonx ディレクトリの中に置くことができ
-る。|pythonx-directory| を参照すること。
+モジュールを使用したい場合は、それを {rtp}/pythonx ディレクトリに置くことがで
+きる。|pythonx-directory| を参照。
 
 							*:pyx* *:pythonx*
-`:pyx` コマンドと `:pythonx` コマンドは `:python` と同様に機能する。`:pyx` コ
-マンドが機能するか簡単にチェックするには: >
+`:pyx` および `:pythonx` コマンドは `:python` と同様に動作する。`:pyx` コマン
+ドが動作しているかの簡単な確認: >
 	:pyx print("Hello")
 
-使っている Python のバージョンを見るには: >
+使用されている Python のバージョンを確認するには: >
 	:pyx import sys
 	:pyx print(sys.version)
 <
 					*:pyxfile* *python_x-special-comments*
-`:pyxfile` コマンドは `:pyfile` と同様に機能する。しかし、Vim が `:pyfile` ま
-たは `:py3file` を使うように強制したい場合は以下のコメントのうち 1 つを追加す
-ることができる: >
-  #!/any string/python2		" Shebang。ファイルの先頭でなければならない。
-  #!/any string/python3		" Shebang。ファイルの先頭でなければならない。
-  # requires python 2.x		" 最大行数は 'modelines' に依存。
-  # requires python 3.x		" 最大行数は 'modelines' に依存。
+`:pyxfile` コマンドは `:pyfile` と同様に動作する。しかし、これらのコメントのい
+ずれかを追加して、Vim に `:pyfile` または `:py3file` を使わせることができる: >
+  #!/any string/python2		" Shebang。ファイルの最初の行でなければならない。
+  #!/any string/python3		" Shebang。ファイルの最初の行でなければならない。
+  # requires python 2.x		" 最大の行数は 'modelines' に依存する。
+  # requires python 3.x		" 最大の行数は 'modelines' に依存する。
 通常のモードラインとは異なり、ファイルの末尾はチェックされない。
-いずれのコメントも見つからない場合は、'pyxversion' の設定が使われる。
+それらのどれも見つからない場合、'pyxversion' 設定が使用される。
 							*W20* *W21*
-もし Vim が指定された Python のバージョンをサポートしない場合、静かなメッセー
-ジが表示される。それらを読むには `:messages` を使用すること。
+選択された Python バージョンを Vim がサポートしていない場合、サイレントメッセー
+ジが出力される。それらを読むには `:messages` を使用する。
 
 							*:pyxdo*
-`:pyxdo` コマンドは `:pydo` と同様に機能する。
+`:pyxdo` コマンドは `:pydo` と同様に動作する。
 
 							*has-pythonx*
-pyx* コマンドが使用できるかどうかを調べるには以下が使える: >
+pyx* コマンドが使用可能かどうかは、以下でテストできる: >
 	if has('pythonx')
 	  echo 'pyx* commands are available. (Python ' .. &pyx .. ')'
 	endif
 
-|+python| または |+python3| のどちらか一方のみでコンパイルされている場合は、
-has() は 1 を返す。
-|+python| と |+python3| の両方でコンパイルされている場合は、テストは
-'pyxversion' の設定に依存する。もし 'pyxversion' が 0 ならば最初に Python 3 が
-テストされ、使用可能でなければ Python 2 がテストされる。もし 'pyxversion' が 2
-または 3 であれば、Python 2 または 3 のそれぞれどちらか一方のみをテストする。
+|+python| または |+python3| の一方のみ付きでコンパイルされた場合、has() は 1
+を返す。|+python| および |+python3| の両方付きでコンパイルされた場合、テストは
+'pyxversion' 設定に依存する。'pyxversion' が 0 の場合、最初に Python 3 をテス
+トし、それが使用可能でない場合は Python 2 をテストする。'pyxversion' が 2 また
+は 3 の場合、それぞれ Python 2 または 3 のみをテストする。
 
-`has('pythonx')` が動作するために、Python 3 または 2 を動的にロードしようとす
-ることがある点に注意すること。これは特に Vim が 2 つのうち 1 つしかロードでき
-ない場合に副作用がある。
+Note `has('pythonx')` が動作するために、Python 3 または 2 を動的にロードしよう
+とする可能性があることに注意。これは、特に Vim が 2 つのうち 1 つしかロードで
+きない場合に、副作用を持つ可能性がある。
 
-もしもユーザーが Python 2 を優先し、Python 3 にフォールバックしたい場合は、
+ユーザーが Python 2 を好み、Python 3 にフォールバックしたい場合、自分の
 |.vimrc| で 'pyxversion' を明示的に設定する必要がある。例: >
 	if has('python')
 	  set pyx=2
@@ -1006,26 +1015,27 @@ has() は 1 を返す。
 	endif
 
 ==============================================================================
-12. Python 対応付きでビルドする				*python-building*
+12. Python サポート付きのビルド				*python-building*
 
-Python 2 または 3 対応付きでビルドするためのいくつかのヒントがある。
+Python 2 または 3 サポート付きでビルドするためのいくつかのヒント。
 
 UNIX
 
-Python インターフェイスを有効にする方法は src/Makefile を参照すること。
+Python インターフェイスを含めることを有効にする方法については、src/Makefile を
+参照。
 
-Ubuntu では Python 2 用にこれらのパッケージをインストールする必要があるだろう:
+Ubuntu では、Python 2 用にこれらのパッケージをインストールしたいだろう:
 	python
 	python-dev
-Python 3 用は:
+Python 3 用:
 	python3
 	python3-dev
-Python 3.6 用は:
+Python 3.6 用:
 	python3.6
 	python3.6-dev
 
-もしも複数のバージョンの Python 3 がある場合は、configure を実行する前に
-python3 を望みのバージョンにリンクする必要がある。
+複数のバージョンの Python 3 がある場合、configure を実行する前に、python3 を好
+みのものにリンクする必要がある。
 
 ==============================================================================
  vim:tw=78:ts=8:noet:ft=help:norl:
