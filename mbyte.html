@@ -11,182 +11,182 @@ helpname: 'mbyte'
 <br>
 マルチバイトサポート&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#multibyte" name="multibyte">multibyte</a>&nbsp;<a class="Constant" href="mbyte.html#multi-byte" name="multi-byte">multi-byte</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#Chinese" name="Chinese">Chinese</a>&nbsp;<a class="Constant" href="mbyte.html#Japanese" name="Japanese">Japanese</a>&nbsp;<a class="Constant" href="mbyte.html#Korean" name="Korean">Korean</a><br>
-このファイルでは、中国語、日本語、韓国語などの、1バイト(オクテット)では表現す<br>
-ることができないほど多くの文字を持つ言語の、テキストの編集について説明する。<br>
-Unicodeについても説明する。<br>
+これは、1 バイト (1 オクテット) を使用して表現できない多数の文字を持つ言語でテ<br>
+キストを編集することについてである。例としては中国語、日本語および韓国語があ<br>
+る。Unicode もここで扱う。<br>
 <br>
-ユーザーマニュアルの<a class="Identifier" href="usr_45.html">usr_45.txt</a>で、共通する事柄を簡単に紹介している。<br>
-メッセージやメニューの言語を変更するには<a class="Identifier" href="mlang.html">mlang.txt</a>を参照。<br>
+最も一般的な機能の紹介については、ユーザーマニュアルの&nbsp;<a class="Identifier" href="usr_45.html">usr_45.txt</a>&nbsp;を参照。<br>
+メッセージおよびメニューの言語を変更するには&nbsp;<a class="Identifier" href="mlang.html">mlang.txt</a>&nbsp;を参照。<br>
 <br>
 1.&nbsp;&nbsp;はじめに&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-first">mbyte-first</a><br>
 2.&nbsp;&nbsp;ロケール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-locale">mbyte-locale</a><br>
 3.&nbsp;&nbsp;エンコーディング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-encoding">mbyte-encoding</a><br>
-4.&nbsp;&nbsp;端末の使用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-terminal">mbyte-terminal</a><br>
-5.&nbsp;&nbsp;X11のフォント&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-fonts-X11">mbyte-fonts-X11</a><br>
-6.&nbsp;&nbsp;MS-Windowsのフォント&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-fonts-MSwin">mbyte-fonts-MSwin</a><br>
-7.&nbsp;&nbsp;X11での入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-XIM">mbyte-XIM</a><br>
-8.&nbsp;&nbsp;MS-Windowsでの入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-IME">mbyte-IME</a><br>
-9.&nbsp;&nbsp;キーマップを使用した入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-keymap">mbyte-keymap</a><br>
-10. imactivatefunc() を使用した入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-func">mbyte-func</a><br>
-11. UTF-8を使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-utf8">mbyte-utf8</a><br>
-12. 主なオプション&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-options">mbyte-options</a><br>
+4.&nbsp;&nbsp;端末を使用する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-terminal">mbyte-terminal</a><br>
+5.&nbsp;&nbsp;X11 のフォント&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-fonts-X11">mbyte-fonts-X11</a><br>
+6.&nbsp;&nbsp;MS-Windows のフォント&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-fonts-MSwin">mbyte-fonts-MSwin</a><br>
+7.&nbsp;&nbsp;X11 での入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-XIM">mbyte-XIM</a><br>
+8.&nbsp;&nbsp;MS-Windows での入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-IME">mbyte-IME</a><br>
+9.&nbsp;&nbsp;キーマップによる入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-keymap">mbyte-keymap</a><br>
+10. imactivatefunc() による入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-func">mbyte-func</a><br>
+11. UTF-8 を使用する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-utf8">mbyte-utf8</a><br>
+12. オプションの概要&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#mbyte-options">mbyte-options</a><br>
 <br>
-<span class="Todo">NOTE:</span>&nbsp;このファイルにはUnicodeの文字が含まれている。他のエンコーディングを使用<br>
-している場合は、変な文字、あるいは四角形として表示されるかもしれない。<br>
+<span class="Todo">NOTE:</span>&nbsp;このファイルは UTF-8 の文字を含んでいる。別のエンコーディングを使用して<br>
+いる時は、これらは奇妙な文字または四角として表示されるかもしれない。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-1. はじめに (Getting started)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-first" name="mbyte-first">mbyte-first</a><br>
+1. はじめに&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-first" name="mbyte-first">mbyte-first</a><br>
 <br>
-Vimのマルチバイト機能を簡単に紹介する。運が良ければ、説明したことがそのまま機<br>
-能して、なんのトラブルもなしにVimを使い始めることができる。そうでない場合は、<br>
-このファイルをさらに読み進める必要がある。Vimのマルチバイト機能を使用できるよ<br>
-うにするために、多少の手間や試行錯誤が必要であっても驚かないで欲しい。不幸なこ<br>
-とに、すべてのシステムはそれぞれ独自の方法でマルチバイト言語を扱っていて、それ<br>
-は実に複雑である。<br>
+これは Vim のマルチバイト機能の要約である。運が良い場合、記述どおりに動作し、<br>
+あまり苦労せずに Vim を使い始めることができる。何かが動作しない場合、残りを読<br>
+まなければならないだろう。Vim に全てのマルチバイト機能を使わせるのに、かなりの<br>
+作業および試行錯誤が必要だとしても驚かないこと。残念ながら、どのシステムもマル<br>
+チバイト言語を扱う独自の方法を持っており、それはかなり複雑である。<br>
 <br>
 <br>
 <span class="Statement">ロケール</span><br>
 <br>
-まずは、ロケールが正く設定されていることを確認する。システムの言語が正しく設定<br>
-されていれば、マルチバイト機能をすぐに使用することができる。設定されてなくて<br>
-も、環境変数$LANGをシェルから設定すれば、大抵は使用できるようになる:<br>
+まず第一に、現在のロケールが正しく設定されていることを確認しなければならない。<br>
+システムがその言語を使用するようにインストールされている場合、おそらくすぐに動<br>
+作する。そうでない場合、シェルで環境変数 $LANG を設定することで、しばしば動作<br>
+させることができる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setenv LANG ja_JP.EUC</div>
 <br>
-不幸なことに、ロケールの名前はシステムごとに違う。日本語なら &quot;ja_JP.EUCjp&quot; や<br>
-&quot;ja&quot; などがある。現在の設定を確認するには:<br>
+残念ながら、ロケールの名前はシステムに依存する。日本語は &quot;ja_JP.EUCjp&quot; または<br>
+単に &quot;ja&quot; と呼ばれることもある。現在使用されているものを見るには:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:language</div>
 <br>
-Vimが内部で使用するロケールを変更するには:<br>
+Vim の中でロケールを変更するには、以下を使用する:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:language ja_JP.EUC</div>
 <br>
-その設定が機能しない場合はエラーメッセージが表示される。使用したい言語のロケー<br>
-ル名を見付けるためにいくつか試してみると良い。しかし、Vimは起動時にシステムの<br>
-ロケールを適切に使用するので、シェルでロケールを設定するのが無難である。<br>
+これが動作しない場合、Vim はエラーメッセージを出す。これは、試してみて、使用し<br>
+たいロケール名を見つけるのに良い方法である。しかし、最初から使用されるように、<br>
+シェルでロケールを設定するほうが常に良い。<br>
 <br>
-詳細は<a class="Identifier" href="mbyte.html#mbyte-locale">mbyte-locale</a>を参照。<br>
+詳細は&nbsp;<a class="Identifier" href="mbyte.html#mbyte-locale">mbyte-locale</a>&nbsp;を参照。<br>
 <br>
 <br>
 <span class="Statement">エンコーディング</span><br>
 <br>
-ロケールが適切に設定されていれば、オプション&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;はそれに応じた値に設定<br>
-される。それが機能しないときは、自分で設定しなおすこともできる:<br>
+ロケールが正しく動作する場合、Vim はそれに応じて&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;オプションを設定し<br>
+ようとする。これが動作しない場合、その値を上書きできる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set encoding=utf-8</div>
 <br>
-設定できる値の一覧は<a class="Identifier" href="mbyte.html#encoding-values">encoding-values</a>を参照。<br>
+受け付けられる値の一覧は&nbsp;<a class="Identifier" href="mbyte.html#encoding-values">encoding-values</a>&nbsp;を参照。<br>
 <br>
-この設定はVim内部でテキストを保持するためのエンコーディングとして使用される。<br>
-バッファのテキストだけでなく、レジスタや変数のエンコーディングとしても使用され<br>
-る。そのため、<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;の設定を変更すると、すでに内部にあるテキストは不正な<br>
-テキストになってしまう。テキストは新しいエンコーディングに変換されず、間違った<br>
-状態で表示される。<br>
+その結果、Vim の中で使用される全てのテキストがこのエンコーディングになる。バッ<br>
+ファ内のテキストだけでなく、レジスタ、変数などの中のテキストも。これは、<br>
+<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;の値を変更すると既存のテキストが無効になることも意味する! テキスト<br>
+は変わらないが、間違って表示される。<br>
 <br>
-<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;に設定されたのとは違うエンコーディングのファイルも編集することがで<br>
-きる。Vimはファイルを開くときにエンコーディングを変換し、保存するときに元に戻<br>
-す。<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>、<a class="Type" href="options.html#'fileencodings'">'fileencodings'</a>、<a class="Identifier" href="editing.html#++enc">++enc</a>を参照。<br>
+<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;に設定されているものとは別のエンコーディングのファイルを編集できる。<br>
+Vim はファイルを読み込む時に変換し、書き込む時に元に戻す。<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>、<br>
+<a class="Type" href="options.html#'fileencodings'">'fileencodings'</a>&nbsp;および&nbsp;<a class="Identifier" href="editing.html#++enc">++enc</a>&nbsp;を参照。<br>
 <br>
 <br>
 <span class="Statement">表示とフォント</span><br>
 <br>
-端末(のエミュレータ)で作業しているなら、端末が、Vimと同じエンコーディングを使<br>
-用することを確認する。違うなら、オプション&nbsp;<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;を設定して、テキスト<br>
-が自動的に変換されるようにする。<br>
+端末 (エミュレータ) で作業している場合、それが Vim が動作しているのと同じエン<br>
+コーディングを受け付けることを確認しなければならない。そうでない場合、<br>
+<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;オプションを使用して、Vim にテキストを自動的に変換させることが<br>
+できる。<br>
 <br>
-GUIで作業しているなら、<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;に設定されたエンコーディングに対応したフォン<br>
-トを選択する必要がある。フォントの設定は難しい。使用しているシステムやロケール<br>
-などに依存している。X-Window環境なら<a class="Identifier" href="mbyte.html#mbyte-fonts-X11">mbyte-fonts-X11</a>、MS-Windowsなら<br>
-<a class="Identifier" href="mbyte.html#mbyte-fonts-MSwin">mbyte-fonts-MSwin</a>を参照。<br>
+GUI では、現在の&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;で動作するフォントを選択しなければならない。これが<br>
+難しい部分である。使用しているシステム、ロケールおよびいくつかの他のことに依存<br>
+する。フォントについての章を参照: X-Windows については&nbsp;<a class="Identifier" href="mbyte.html#mbyte-fonts-X11">mbyte-fonts-X11</a>、およ<br>
+び MS-Windows については&nbsp;<a class="Identifier" href="mbyte.html#mbyte-fonts-MSwin">mbyte-fonts-MSwin</a>。<br>
 <br>
-GTK+ 2を使っているなら、今読んでいるこの項目はほとんど読まなくて良い。オプショ<br>
-ン&nbsp;<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;はもう存在しない。<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;を設定するだけですべてうまく機能す<br>
-る。システムにXft2とfontconfigが用意されているなら、選択したフォントが何かのグ<br>
-リフを含んでいないときは、自動的に他の利用可能なフォントが使用される。オプショ<br>
-ン&nbsp;<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;はまだサポートされているが通常は必要ない。自動的に選択される<br>
-フォントが適切でない場合のみ設定する必要がある。<br>
+GTK+ 2 では、この節のほとんどを飛ばしてよい。<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;オプションはもう存在<br>
+しない。<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;を設定するだけでよく、全てが &quot;ただ動作する&quot; はずである。シス<br>
+テムに Xft2 および fontconfig が付属していて、現在のフォントがある字形を含まな<br>
+い場合、使用可能な場合は別のフォントが自動的に使用される。<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;オプ<br>
+ションはまだサポートされているが、通常は設定する必要はない。自動のフォント選択<br>
+が要求に合わない場合にだけ必要である。<br>
 <br>
-X11ではオプション&nbsp;<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;に複数のフォントを設定して、さまざまな文字を扱<br>
-えるようにする。韓国語での設定例:<br>
+X11 では、<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;オプションに、使用される文字を合わせてカバーするフォン<br>
+トのリストを設定できる。韓国語の例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set guifontset=k12,r12</div>
 <br>
-代わりに&nbsp;<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;を設定することもできる。<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;は半角文<br>
-字、<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;は全角文字のためのフォントである。<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;のフォントは<br>
-<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;のちょうど2倍の幅でなければならない。<br>
-UTF-8使用時の設定例:<br>
+別の方法として、<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;を設定できる。<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;は単一<br>
+幅の文字に使用され、<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;は 2 倍幅の文字に使用される。したがって、<br>
+<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;のフォントは&nbsp;<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;のちょうど 2 倍の幅でなければならない。<br>
+UTF-8 の例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set guifont=-misc-fixed-medium-r-normal-*-18-120-100-100-c-90-iso10646-1<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set guifontwide=-misc-fixed-medium-r-normal-*-18-120-100-100-c-180-iso10646-1</div>
 <br>
-<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;だけを設定した場合、Vimは&nbsp;<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;として使用できるフォントを見<br>
-付けようとする。<br>
+<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;だけを設定することもでき、Vim があなたのためにマッチする<br>
+<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;を探そうとする。<br>
 <br>
 <br>
 <span class="Statement">入力</span><br>
 <br>
 マルチバイト文字を入力するにはいくつかの方法がある:<br>
-- X11ではXIMを使用できる。<a class="Identifier" href="mbyte.html#XIM">XIM</a>を参照。<br>
-- MS-WindowsではIMEを使用できる。<a class="Identifier" href="mbyte.html#IME">IME</a>を参照。<br>
-- すべてのシステムでキーマップを使用できる。<a class="Identifier" href="mbyte.html#mbyte-keymap">mbyte-keymap</a>を参照。<br>
+- X11 では XIM を使用できる。<a class="Identifier" href="mbyte.html#XIM">XIM</a>&nbsp;を参照。<br>
+- MS-Windows では IME を使用できる。<a class="Identifier" href="mbyte.html#IME">IME</a>&nbsp;を参照。<br>
+- 全てのシステムでキーマップを使用できる。<a class="Identifier" href="mbyte.html#mbyte-keymap">mbyte-keymap</a>&nbsp;を参照。<br>
 <br>
-オプション&nbsp;<a class="Type" href="options.html#'iminsert'">'iminsert'</a>、<a class="Type" href="options.html#'imsearch'">'imsearch'</a>、<a class="Type" href="options.html#'imcmdline'">'imcmdline'</a>&nbsp;を使用して、別の入力方法に切り<br>
-替えたり、インプットメソッドを一時的に無効にしたりできる。<br>
+オプション&nbsp;<a class="Type" href="options.html#'iminsert'">'iminsert'</a>、<a class="Type" href="options.html#'imsearch'">'imsearch'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'imcmdline'">'imcmdline'</a>&nbsp;は、異なるインプットメソッ<br>
+ドを選択するか、または一時的にそれらを無効にするのに使用できる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-2.&nbsp;&nbsp;ロケール (Locale)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-locale" name="mbyte-locale">mbyte-locale</a><br>
+2.&nbsp;&nbsp;ロケール&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-locale" name="mbyte-locale">mbyte-locale</a><br>
 <br>
-最も簡単なのは、システム全体のロケールを設定することである。しかし、作業してい<br>
-るシェルのみロケールを変更したり、Vimだけが特定のロケールを使用するようにも設<br>
-定できる。<br>
+最も簡単な設定は、システム全体が、作業したいロケールを使用している時である。し<br>
+かし、作業している 1 つのシェルにロケールを設定するか、または Vim の中だけで特<br>
+定のロケールを使用することもできる。<br>
 <br>
 <br>
-<span class="Statement">ロケールって何？</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#locale" name="locale">locale</a><br>
+<span class="Statement">ロケールとは何か?</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#locale" name="locale">locale</a><br>
 <br>
-世界にはたくさんの言語があり、少なくとも、それと同じ数だけ文化や環境がある。地<br>
-域に対応した言語環境のことをロケール(locale)という。ロケールは、言語、文字セッ<br>
-ト、文字の整列順、日付の書式、通貨の書式、などの情報を含んでいる。Vimにとって<br>
-は言語と文字セットの情報だけが重要である。<br>
+世界には多くの言語がある。そして、少なくとも言語の数と同じだけの異なる文化およ<br>
+び環境がある。ある地域に対応する言語的な環境は &quot;ロケール&quot; と呼ばれる。これは、<br>
+使用される言語、文字セット、ソートの照合順序、日付の書式、通貨の書式などについ<br>
+ての情報を含む。Vim にとっては、言語および文字セットだけが本当に重要である。<br>
 <br>
-システムがサポートしているロケールのみ使用することができる。(特にアメリカなど<br>
-では)ほんの少しのロケールしか持っていないシステムもある。そのため、望みの言語<br>
-を使用することができないかもしれない。追加パッケージでロケールをインストールで<br>
-きることもあるので、システムのドキュメントを確認すること。<br>
+ロケールは、システムがそれをサポートしている場合にだけ使用できる。いくつかのシ<br>
+ステムは、特に USA では、少数のロケールしか持たない。使用したい言語がシステム<br>
+に無いかもしれない。その場合、追加のパッケージとしてそれをインストールできるか<br>
+もしれない。その方法についてはシステムのドキュメントを確認すること。<br>
 <br>
-ロケールがインストールされている場所はシステムによりさまざまである。例えば<br>
-&quot;/usr/share/locale&quot; や &quot;/usr/lib/locale&quot; などにある場合がある。システムのマニュ<br>
-アルのsetlocale()を参照。<br>
+ロケールがインストールされる場所はシステムごとに異なる。例えば、<br>
+&quot;/usr/share/locale&quot; または &quot;/usr/lib/locale&quot;。システムの setlocale() の man<br>
+ページを参照。<br>
 <br>
-ロケールがインストールされているディレクトリを見ればロケールの正しい名前がわか<br>
-る。ほとんどの場合、大文字と小文字は区別されるので、例えば &quot;ja_JP.EUC&quot; と<br>
-&quot;ja_jp.euc&quot; は異なる。いくつかのシステムはlocale.aliasというファイルを持ってい<br>
-て、&quot;nl&quot; のような短い名前を使って &quot;nl_NL.ISO_8859-1&quot; という完全な名前を指定で<br>
-きる。<br>
+これらのディレクトリを見ると、各ロケールの正確な名前が分かる。たいてい大文字/<br>
+小文字が重要なので、&quot;ja_JP.EUC&quot; と &quot;ja_jp.euc&quot; は異なる。いくつかのシステムに<br>
+は locale.alias ファイルがあり、&quot;nl&quot; のような短い名前から完全な名前<br>
+&quot;nl_NL.ISO_8859-1&quot; への変換ができる。<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;X-Windowは独自のロケール機構を持っている。そして不幸なことに、他で使用さ<br>
-れているものとは違うロケール名を使用する。これは混乱の元である。Vimにとっては<br>
-関数setlocale()が使用するものが重要であり、それは通常、X-Windowのものではない。<br>
-何が実際に機能するのか、実験してみる必要があるかもしれない。<br>
+<span class="Todo">Note</span>&nbsp;X-windows には独自のロケールの仕組みがあることに注意。そして残念ながら、<br>
+他の場所で使用されているものとは異なるロケール名を使用する。これは紛らわしい!<br>
+Vim にとって重要なのは setlocale() 関数が使用するものであり、それは一般に<br>
+X-windows のものではない。何が本当に動作するかを見つけるには、いくつか実験をし<br>
+なければならないかもしれない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#locale-name" name="locale-name">locale-name</a><br>
-ロケール<a class="Identifier" href="mbyte.html#locale">locale</a>の名前の(簡単な)書式は:<br>
+<a class="Identifier" href="mbyte.html#locale">locale</a>&nbsp;名の (簡略化した) 書式は以下である:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言語&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(language)<br>
-or&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言語_地域&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (language_territory)<br>
-or&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言語_地域.コードセット&nbsp;&nbsp;(language_territory.codeset)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;language<br>
+または&nbsp;&nbsp;language_territory<br>
+または&nbsp;&nbsp;language_territory.codeset<br>
 <br>
-地域は国を意味する(あるいはその地方)。コードセットは<a class="Identifier" href="mbyte.html#charset">charset</a>のこと。例えば、<br>
-ロケール名 &quot;ja_JP.eucJP&quot; の意味は:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ja&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言語は日本語(Japanese)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;国は日本(Japan)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;eucJP&nbsp;&nbsp; コードセットはEUC-JP<br>
-同じ意味でも &quot;ja&quot;、&quot;ja_JP.EUC&quot;、&quot;ja_JP.ujis&quot; などの名前のこともある。不幸なこ<br>
-とに、言語、地域、コードセット、を表す名前は統一されておらず、システムによって<br>
-異なる。<br>
+Territory は国 (またはその一部) を意味し、codeset は&nbsp;<a class="Identifier" href="mbyte.html#charset">charset</a>&nbsp;を意味する。例<br>
+えば、ロケール名 &quot;ja_JP.eucJP&quot; は以下を意味する:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ja&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言語は日本語<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;国は日本<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;eucJP&nbsp;&nbsp; codeset は EUC-JP<br>
+しかし、&quot;ja&quot;、&quot;ja_JP.EUC&quot;、&quot;ja_JP.ujis&quot; などでもあり得る。そして残念ながら、特<br>
+定の言語、地域およびコードセットに対するロケール名は統一されておらず、システム<br>
+に依存する。<br>
 <br>
 ロケール名の例:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">charset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; language&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locale name</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">文字セット&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言語&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ロケール名</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;GB2312&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中国語 (簡体字)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; zh_CN.EUC, zh_CN.GB2312<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Big5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中国語 (繁体字)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; zh_TW.BIG5, zh_TW.Big5<br>
 &nbsp;&nbsp;&nbsp;&nbsp;CNS-11643&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 中国語 (繁体字)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; zh_TW<br>
@@ -197,532 +197,539 @@ or&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言語_地域.コードセット&nbsp;&nbs
 <br>
 <span class="Statement">ロケールを使用する</span><br>
 <br>
-システム全体のロケールを設定するには、システムのドキュメントを参照。恐らく、<br>
-&quot;/etc&quot; 内の設定ファイルを編集する必要がある。<br>
+システム全体でロケールを使用し始めるには、システムのドキュメントを参照。たいて<br>
+いは &quot;/etc&quot; にある設定ファイルで設定する必要がある。<br>
 <br>
-シェルのロケールを設定するには、環境変数$LANGを設定する。例えば、韓国語を使用<br>
-するとき、ロケール<a class="Identifier" href="mbyte.html#locale">locale</a>の名前が &quot;ko&quot; なら、このように設定する:<br>
+シェルでロケールを使用するには、$LANG 環境値を設定する。韓国語を使用したく、<br>
+<a class="Identifier" href="mbyte.html#locale">locale</a>&nbsp;名が &quot;ko&quot; である時は、以下のようにする:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;sh:&nbsp;&nbsp;&nbsp;&nbsp;export LANG=ko<br>
 &nbsp;&nbsp;&nbsp;&nbsp;csh:&nbsp;&nbsp; setenv LANG ko<br>
 <br>
-これを~/.profileや~/.cshrcに書いておけばいつでも設定された状態にできる。<br>
+常に使用するには、これを ~/.profile または ~/.cshrc ファイルに入れることができ<br>
+る。<br>
 <br>
-Vimが使用するロケールだけ設定するには<a class="Identifier" href="mlang.html#:language">:language</a>コマンドを使う:<br>
+Vim の中だけでロケールを使用するには、<a class="Identifier" href="mlang.html#:language">:language</a>&nbsp;コマンドを使用する:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:language ko</div>
 <br>
-これを~/.vimrcに書いておけばいつでも設定された状態にできる。<br>
+常に使用するには、これを ~/.vimrc ファイルに入れる。<br>
 <br>
-あるいは、特定の$LANGを設定した状態でVimを起動するには:<br>
+または、Vim を起動する時に $LANG を指定する:<br>
 <br>
 &nbsp;&nbsp; sh:&nbsp;&nbsp;&nbsp;&nbsp;LANG=ko vim&nbsp;<span class="Special">{vim-arguments}</span><br>
 &nbsp;&nbsp; csh:&nbsp;&nbsp; env LANG=ko vim&nbsp;<span class="Special">{vim-arguments}</span><br>
 <br>
-このために、小さなシェルスクリプトを作成することもできる。<br>
+このための小さなシェルスクリプトを作ってもよい。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-3.&nbsp;&nbsp;エンコーディング (Encoding)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-encoding" name="mbyte-encoding">mbyte-encoding</a><br>
+3.&nbsp;&nbsp;エンコーディング&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-encoding" name="mbyte-encoding">mbyte-encoding</a><br>
 <br>
-Vimはオプション&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;をVim内部で使用するエンコーディングとして使用する。<br>
-バッファ(メモリに読み込まれたファイル)やレジスタ、変数など、すべてのテキストは<br>
-このエンコーディングでメモリに保存される。<br>
+Vim は&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;オプションを使用して、Vim の中で使用される時に文字がどのよう<br>
+に識別され、エンコードされるかを指定する。これは、バッファ (メモリに読み込まれ<br>
+たファイル)、レジスタおよび変数を含む、テキストが使用される全ての場所に適用さ<br>
+れる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#charset" name="charset">charset</a>&nbsp;<a class="Constant" href="mbyte.html#codeset" name="codeset">codeset</a><br>
-文字セット(Charset)とコードセット(codeset)は「エンコーディング」の別名である。<br>
-正確には違うのだが、Vimを使用する上でそれは重要ではない。<br>
+Charset はエンコーディングの別名である。微妙な違いがあるが、Vim を使用する時は<br>
+問題にならない。&quot;codeset&quot; も別の似た名前である。<br>
 <br>
-文字は1バイト以上のバイトでエンコードされる。すべての文字が1バイトでエンコード<br>
-されるものを私達はシングルバイトエンコーディングと呼ぶ。そのようなエンコーディ<br>
-ングとしては &quot;latin1&quot; がよく使用される。これは256文字を表現することができる。<br>
-それには制御文字も含むので、テキストとして使用できる文字はそれより少ない。<br>
+各文字は 1 バイト以上としてエンコードされる。全ての文字が 1 バイトでエンコード<br>
+される時、これをシングルバイトエンコーディングと呼ぶ。最もよく使用されるものは<br>
+&quot;latin1&quot; と呼ばれる。これは文字の数を 256 に制限する。これらのいくつかは制御文<br>
+字であるので、テキストに使用できるのはさらに少ない。<br>
 <br>
-2バイト以上を使って文字を表現するものを、私達はマルチバイトエンコーディングと<br>
-呼ぶ。これは256文字よりもっと多くの文字を表現することができ、ほとんどの東アジ<br>
-アの言語はこれを必要とする。<br>
+いくつかの文字が 2 バイト以上を使用する時、これをマルチバイトエンコーディング<br>
+と呼ぶ。これにより 256 よりずっと多くの文字を使用でき、これはほとんどの東アジ<br>
+アの言語に必要である。<br>
 <br>
-ほとんどのマルチバイトエンコーディングは127文字(ASCII文字の範囲)を1バイトで表<br>
-現するため、使用する言語に関係なく、ASCII文字だけのテキストをやり取りすること<br>
-が簡単になっている。したがって、間違ったエンコーディングが設定されていても、そ<br>
-れを読むことができるだろう。<br>
+ほとんどのマルチバイトエンコーディングは、最初の 127 文字に 1 バイトを使用す<br>
+る。これらは ASCII と同じであり、どの言語が使用されていても、プレーン ASCII の<br>
+テキストを交換するのが容易になる。したがって、エンコーディングが間違って設定さ<br>
+れていても、正しいテキストが見えるかもしれない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#encoding-names" name="encoding-names">encoding-names</a><br>
-多くのエンコーディングを使用することができる。大きく3つに分類すると:<br>
+Vim は多くの異なる文字エンコーディングを使用できる。3 つの主要なグループがある:<br>
 <br>
-1&nbsp;&nbsp; 8bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;シングルバイトエンコーディング。256文字を表現できる。アメリカ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;やヨーロッパで使用される。例: ISO-8859-1 (Latin1)。すべての文<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字は1つ分の表示幅で表示される。(いわゆる半角)<br>
+1&nbsp;&nbsp; 8bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;シングルバイトエンコーディング、256 の異なる文字。主に USA お<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;よびヨーロッパで使用される。例: ISO-8859-1 (Latin1)。全ての文<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字は 1 つの画面セルだけを占める。<br>
 <br>
-2&nbsp;&nbsp; 2byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ダブルバイトエンコーディング。10000以上の文字を表現できる。ア<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ジアの国々で使用される。例: euc-kr (韓国語)。文字のバイト数と<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同じ数の表示幅で表示される。(2バイトならいわゆる全角)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(euc-jpの1バイト目が0x8eの文字(半角カナ)は例外)<br>
+2&nbsp;&nbsp; 2byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ダブルバイトエンコーディング、10000 を超える異なる文字。主にア<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ジアの国々で使用される。例: euc-kr (韓国語)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;画面セルの数はバイト数と等しい (euc-jp で最初のバイトが 0x8e<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の時を除く)。<br>
 <br>
-u&nbsp;&nbsp; Unicode&nbsp;&nbsp;&nbsp;&nbsp; ユニバーサルエンコーディング。他のエンコーディングを統合するも<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の。ISO 10646。100万以上の文字を表現できる。例: UTF-8。文字が<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用するバイト数と表示幅の関係は複雑。<br>
+u&nbsp;&nbsp; Unicode&nbsp;&nbsp;&nbsp;&nbsp; ユニバーサルエンコーディング、他の全てを置き換えることができ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。ISO 10646。数百万の異なる文字。例: UTF-8。バイトと画面セル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の間の関係は複雑である。<br>
 <br>
-他のエンコーディングはVim内部のエンコーディングとして使用することはできないが、<br>
-そのようなエンコーディングのファイルを編集することはできる。<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>&nbsp;を<br>
-参照。<br>
-<span class="Todo">Note:</span>&nbsp;すべてのエンコーディングは0から128までの文字がASCII文字と同じでなければ<br>
-ならない(EBCDIC用にコンパイルした場合は除く)。<br>
+他のエンコーディングは Vim の内部では使用できない。しかし、他のエンコーディン<br>
+グのファイルは変換を使用して編集できる。<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>&nbsp;を参照。<br>
+<span class="Todo">Note</span>&nbsp;全てのエンコーディングは、128 までの文字に ASCII を使用しなければならない<br>
+(EBCDIC 用にコンパイルされた時を除く) ことに注意。<br>
 <br>
-<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;に設定できる値:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#encoding-values" name="encoding-values">encoding-values</a><br>
-1&nbsp;&nbsp; latin1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8ビット文字 (ISO 8859-1 及び cp1252)<br>
-1&nbsp;&nbsp; iso-8859-n&nbsp;&nbsp;ISO_8859 シリーズ (n = 2 to 15)<br>
+サポートされている&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;の値は以下である:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#encoding-values" name="encoding-values">encoding-values</a><br>
+1&nbsp;&nbsp; latin1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8 ビット文字 (ISO 8859-1、cp1252 にも使用される)<br>
+1&nbsp;&nbsp; iso-8859-n&nbsp;&nbsp;ISO_8859 の変種 (n = 2 から 15)<br>
 1&nbsp;&nbsp; koi8-r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ロシア語<br>
 1&nbsp;&nbsp; koi8-u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウクライナ語<br>
-1&nbsp;&nbsp; macroman&nbsp;&nbsp;&nbsp;&nbsp;MacRoman (Macintoshのエンコーディング)<br>
-1&nbsp;&nbsp; 8bit-<span class="Special">{name}</span>&nbsp;8ビットエンコーディングのどれか (Vim特有の名前)<br>
-1&nbsp;&nbsp; cp437&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-1に類似<br>
-1&nbsp;&nbsp; cp737&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-7に類似<br>
+1&nbsp;&nbsp; macroman&nbsp;&nbsp;&nbsp;&nbsp;MacRoman (Macintosh のエンコーディング)<br>
+1&nbsp;&nbsp; 8bit-<span class="Special">{name}</span>&nbsp;任意の 8 ビットエンコーディング (Vim 固有の名前)<br>
+1&nbsp;&nbsp; cp437&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-1 に類似<br>
+1&nbsp;&nbsp; cp737&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-7 に類似<br>
 1&nbsp;&nbsp; cp775&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バルト語<br>
-1&nbsp;&nbsp; cp850&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-4に類似<br>
-1&nbsp;&nbsp; cp852&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-1に類似<br>
-1&nbsp;&nbsp; cp855&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-2に類似<br>
-1&nbsp;&nbsp; cp857&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-5に類似<br>
-1&nbsp;&nbsp; cp860&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-9に類似<br>
-1&nbsp;&nbsp; cp861&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-1に類似<br>
-1&nbsp;&nbsp; cp862&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-1に類似<br>
-1&nbsp;&nbsp; cp863&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-8に類似<br>
-1&nbsp;&nbsp; cp865&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-1に類似<br>
-1&nbsp;&nbsp; cp866&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-5に類似<br>
-1&nbsp;&nbsp; cp869&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-7に類似<br>
+1&nbsp;&nbsp; cp850&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-4 に類似<br>
+1&nbsp;&nbsp; cp852&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-1 に類似<br>
+1&nbsp;&nbsp; cp855&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-2 に類似<br>
+1&nbsp;&nbsp; cp857&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-5 に類似<br>
+1&nbsp;&nbsp; cp860&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-9 に類似<br>
+1&nbsp;&nbsp; cp861&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-1 に類似<br>
+1&nbsp;&nbsp; cp862&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-1 に類似<br>
+1&nbsp;&nbsp; cp863&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-8 に類似<br>
+1&nbsp;&nbsp; cp865&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-1 に類似<br>
+1&nbsp;&nbsp; cp866&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-5 に類似<br>
+1&nbsp;&nbsp; cp869&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iso-8859-7 に類似<br>
 1&nbsp;&nbsp; cp874&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; タイ語<br>
 1&nbsp;&nbsp; cp1250&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;チェコ語、ポーランド語など<br>
-1&nbsp;&nbsp; cp1251&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キリル語<br>
+1&nbsp;&nbsp; cp1251&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キリル文字<br>
 1&nbsp;&nbsp; cp1253&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ギリシャ語<br>
 1&nbsp;&nbsp; cp1254&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;トルコ語<br>
 1&nbsp;&nbsp; cp1255&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ヘブライ語<br>
 1&nbsp;&nbsp; cp1256&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;アラビア語<br>
 1&nbsp;&nbsp; cp1257&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バルト語<br>
 1&nbsp;&nbsp; cp1258&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ベトナム語<br>
-1&nbsp;&nbsp; cp<span class="Special">{number}</span>&nbsp;&nbsp;MS-Windows: インストールされているシングルバイトのコードページ<br>
-2&nbsp;&nbsp; cp932&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 日本語 (Windows only)<br>
-2&nbsp;&nbsp; euc-jp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日本語 (Unix only)<br>
-2&nbsp;&nbsp; sjis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日本語 (Unix only)<br>
-2&nbsp;&nbsp; cp949&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 韓国語 (Unix and Windows)<br>
-2&nbsp;&nbsp; euc-kr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;韓国語 (Unix only)<br>
-2&nbsp;&nbsp; cp936&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 簡体中国語 (Windows only)<br>
-2&nbsp;&nbsp; euc-cn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;簡体中国語 (Unix only)<br>
-2&nbsp;&nbsp; cp950&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 繁体中国語 (on Unix alias for big5)<br>
-2&nbsp;&nbsp; big5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;繁体中国語 (on Windows alias for cp950)<br>
-2&nbsp;&nbsp; euc-tw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;繁体中国語 (Unix only)<br>
-2&nbsp;&nbsp; 2byte-<span class="Special">{name}</span>&nbsp;Unix: ダブルバイトエンコーディングのどれか (Vim特有の名前)<br>
-2&nbsp;&nbsp; cp<span class="Special">{number}</span>&nbsp;&nbsp;MS-Windows: インストールされているダブルバイトのコードページ<br>
-u&nbsp;&nbsp; utf-8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UTF-8にエンコードされた32ビットのUnicode (ISO/IEC 10646-1)<br>
-u&nbsp;&nbsp; ucs-2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UCS-2にエンコードされた16ビットのUnicode (ISO/IEC 10646-1)<br>
-u&nbsp;&nbsp; ucs-2le&nbsp;&nbsp;&nbsp;&nbsp; リトルエンディアンのucs-2<br>
-u&nbsp;&nbsp; utf-16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ucs-2を拡張してさらに多くの文字を表現できるようにしたもの<br>
-u&nbsp;&nbsp; utf-16le&nbsp;&nbsp;&nbsp;&nbsp;リトルエンディアンのutf-16<br>
-u&nbsp;&nbsp; ucs-4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UCS-4にエンコードされた32ビットのUnicode (ISO/IEC 10646-1)<br>
-u&nbsp;&nbsp; ucs-4le&nbsp;&nbsp;&nbsp;&nbsp; リトルエンディアンのucs-4<br>
+1&nbsp;&nbsp; cp<span class="Special">{number}</span>&nbsp;&nbsp;MS-Windows: インストールされている任意のシングルバイトコードページ<br>
+2&nbsp;&nbsp; cp932&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 日本語 (Windows のみ)<br>
+2&nbsp;&nbsp; euc-jp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日本語 (Unix のみ)<br>
+2&nbsp;&nbsp; sjis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日本語 (Unix のみ)<br>
+2&nbsp;&nbsp; cp949&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 韓国語 (Unix および Windows)<br>
+2&nbsp;&nbsp; euc-kr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;韓国語 (Unix のみ)<br>
+2&nbsp;&nbsp; cp936&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 簡体字中国語 (Windows のみ)<br>
+2&nbsp;&nbsp; euc-cn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;簡体字中国語 (Unix のみ)<br>
+2&nbsp;&nbsp; cp950&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 繁体字中国語 (Unix では big5 の別名)<br>
+2&nbsp;&nbsp; big5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;繁体字中国語 (Windows では cp950 の別名)<br>
+2&nbsp;&nbsp; euc-tw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;繁体字中国語 (Unix のみ)<br>
+2&nbsp;&nbsp; 2byte-<span class="Special">{name}</span>&nbsp;Unix: 任意のダブルバイトエンコーディング (Vim 固有の名前)<br>
+2&nbsp;&nbsp; cp<span class="Special">{number}</span>&nbsp;&nbsp;MS-Windows: インストールされている任意のダブルバイトコードページ<br>
+u&nbsp;&nbsp; utf-8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 32 ビットの UTF-8 でエンコードされた Unicode (ISO/IEC 10646-1)<br>
+u&nbsp;&nbsp; ucs-2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 16 ビットの UCS-2 でエンコードされた Unicode (ISO/IEC 10646-1)<br>
+u&nbsp;&nbsp; ucs-2le&nbsp;&nbsp;&nbsp;&nbsp; ucs-2 と同様、リトルエンディアン<br>
+u&nbsp;&nbsp; utf-16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;より多くの文字のためにダブルワードで拡張された ucs-2<br>
+u&nbsp;&nbsp; utf-16le&nbsp;&nbsp;&nbsp;&nbsp;utf-16 と同様、リトルエンディアン<br>
+u&nbsp;&nbsp; ucs-4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 32 ビットの UCS-4 でエンコードされた Unicode (ISO/IEC 10646-1)<br>
+u&nbsp;&nbsp; ucs-4le&nbsp;&nbsp;&nbsp;&nbsp; ucs-4 と同様、リトルエンディアン<br>
 <br>
-<span class="Special">{name}</span>にはシステムがサポートしているエンコーディングの名前を入れることができ<br>
-る。これらの名前はファイルのエンコーディングとロケールのエンコーディングを変換<br>
-するときにiconv()に渡される。MS-Windowsでは &quot;cp<span class="Special">{number}</span>&quot; はコードページ番号で<br>
-ある。<br>
+<span class="Special">{name}</span>&nbsp;には、システムがサポートする任意のエンコーディング名を指定できる。これ<br>
+は、ファイルのエンコーディングと現在のロケールの間で変換するために iconv() に<br>
+渡される。MS-Windows では、&quot;cp<span class="Special">{number}</span>&quot; はコードページ&nbsp;<span class="Special">{number}</span>&nbsp;を使用すること<br>
+を意味する。<br>
 例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set encoding=8bit-cp1252<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set encoding=2byte-cp932</div>
 <br>
-MS-Windows のコードページ 1252 は latin1 と良く似ている。実用的な理由から、二<br>
-つは同じエンコーディングとして扱われ、latin1 と呼ばれる。0x80 - 0xA0 の文字を<br>
-表示するかしないかは&nbsp;<a class="Type" href="options.html#'isprint'">'isprint'</a>&nbsp;で設定できる。<br>
+MS-Windows のコードページ 1252 は latin1 に非常に似ている。実用上の理由から、<br>
+同じエンコーディングが使用され、latin1 と呼ばれる。<a class="Type" href="options.html#'isprint'">'isprint'</a>&nbsp;は、文字 0x80 -<br>
+0xA0 を表示するかどうかに使用できる。<br>
 <br>
-いくつかの別名を使用できる。別名は上記の名前のどれかとして解釈される。<br>
-完全ではないが一覧を示す:<br>
+いくつかの別名を使用でき、それらは上記の名前のいずれかに変換される。不完全な一<br>
+覧:<br>
 <br>
-1&nbsp;&nbsp; ansi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latin1と同じ (廃止。後方互換性のために残されている)<br>
-2&nbsp;&nbsp; japan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 日本語: Unixではeuc-jp、MS-Windowsではcp932<br>
-2&nbsp;&nbsp; korea&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 韓国語: Unixではeuc-kr、MS-Windowsではcp949<br>
-2&nbsp;&nbsp; prc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 簡体中国語: Unixではeuc-cn、MS-Windowsではcp936<br>
-2&nbsp;&nbsp; chinese&nbsp;&nbsp;&nbsp;&nbsp; prcと同じ<br>
-2&nbsp;&nbsp; taiwan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;繁体中国語: Unixではeuc-tw、MS-Windowsではcp950<br>
-u&nbsp;&nbsp; utf8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;utf-8と同じ<br>
-u&nbsp;&nbsp; unicode&nbsp;&nbsp;&nbsp;&nbsp; ucs-2と同じ<br>
-u&nbsp;&nbsp; ucs2be&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ucs-2と同じ (ビッグエンディアン)<br>
-u&nbsp;&nbsp; ucs-2be&nbsp;&nbsp;&nbsp;&nbsp; ucs-2と同じ (ビッグエンディアン)<br>
-u&nbsp;&nbsp; ucs-4be&nbsp;&nbsp;&nbsp;&nbsp; ucs-4と同じ (ビッグエンディアン)<br>
-u&nbsp;&nbsp; utf-32&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ucs-4と同じ<br>
-u&nbsp;&nbsp; utf-32le&nbsp;&nbsp;&nbsp;&nbsp;ucs-4leと同じ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;のデフォルト値を意味する。環境に依存する。<br>
+1&nbsp;&nbsp; ansi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latin1 と同じ (廃止、後方互換性のため)<br>
+2&nbsp;&nbsp; japan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 日本語: Unix では &quot;euc-jp&quot;、MS-Windows では cp932<br>
+2&nbsp;&nbsp; korea&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 韓国語: Unix では &quot;euc-kr&quot;、MS-Windows では cp949<br>
+2&nbsp;&nbsp; prc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 簡体字中国語: Unix では &quot;euc-cn&quot;、MS-Windows では cp936<br>
+2&nbsp;&nbsp; chinese&nbsp;&nbsp;&nbsp;&nbsp; &quot;prc&quot; と同じ<br>
+2&nbsp;&nbsp; taiwan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;繁体字中国語: Unix では &quot;euc-tw&quot;、MS-Windows では cp950<br>
+u&nbsp;&nbsp; utf8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;utf-8 と同じ<br>
+u&nbsp;&nbsp; unicode&nbsp;&nbsp;&nbsp;&nbsp; ucs-2 と同じ<br>
+u&nbsp;&nbsp; ucs2be&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ucs-2 と同じ (ビッグエンディアン)<br>
+u&nbsp;&nbsp; ucs-2be&nbsp;&nbsp;&nbsp;&nbsp; ucs-2 と同じ (ビッグエンディアン)<br>
+u&nbsp;&nbsp; ucs-4be&nbsp;&nbsp;&nbsp;&nbsp; ucs-4 と同じ (ビッグエンディアン)<br>
+u&nbsp;&nbsp; utf-32&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ucs-4 と同じ<br>
+u&nbsp;&nbsp; utf-32le&nbsp;&nbsp;&nbsp;&nbsp;ucs-4le と同じ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;のデフォルト値を表し、環境に依存する<br>
 <br>
-UCSコードにはバイト順の問題がある。これは扱いが難しいので、可能なときにはいつ<br>
-でもUTF-8を使用した方が良い。指定がなければビッグエンディアンを使用する(最上位<br>
-バイトが最初にくる):<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">名前&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バイト列&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文字</span><br>
+UCS コードではバイト順序が重要である。これは厄介なので、可能な限り UTF-8 を使<br>
+用すること。デフォルトではビッグエンディアン (最上位バイトが最初に来る) を使用<br>
+する:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">名前&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バイト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文字</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ucs-2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11 22&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1122<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ucs-2le&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 22 11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1122<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ucs-4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11 22 33 44&nbsp;&nbsp;&nbsp;&nbsp; 11223344<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ucs-4le&nbsp;&nbsp;&nbsp;&nbsp; 44 33 22 11&nbsp;&nbsp;&nbsp;&nbsp; 11223344<br>
 <br>
-MS-WindowsはリトルエンディアンのUCS-2を使用するので、MS-Windowsでは主に<br>
-&quot;ucs-2le&quot; を使う。<br>
+MS-Windows のシステムでは、それがリトルエンディアンの UCS-2 を使用するので、し<br>
+ばしば &quot;ucs-2le&quot; を使用したくなる。<br>
 <br>
-良く似ているが区別されているエンコーディングがある。Vimはそれらを別のエンコー<br>
-ディングとして扱うため、エンコーディングの変換が行われる。エンコーディングの変<br>
-換ができないときや、よけいな変換を防ぎたいときは、他の名前を使う必要があるかも<br>
-しれない:<br>
+似ているが、完全には同じではないエンコーディングがいくつかある。Vim はそれらを<br>
+異なるエンコーディングであるかのように扱うので、必要な時に変換が行われる。変換<br>
+を避けるため、または変換ができない時に、似た名前を使用したいかもしれない:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cp932, shift-jis, sjis<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cp936, euc-cn<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#encoding-table" name="encoding-table">encoding-table</a><br>
-通常、<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;はロケールと同じ設定で、<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;は空になっている。その<br>
-場合、文字の入力と表示はそのロケールでエンコードされる。Vim内部でも同じ文字表<br>
-現を使う。<br>
+通常、<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;は現在のロケールと等しく、<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;は空である。これは、<br>
+キーボードおよびディスプレイが現在のロケールでエンコードされた文字で動作し、<br>
+Vim が内部で同じ文字を使用することを意味する。<br>
 <br>
-オプション&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;を設定して、Vim内部で使用するエンコーディングを変更する<br>
-ことができるが、入力と表示にはロケールが使用されるので、エンコーディングの変換<br>
-が必要になる。そのときは&nbsp;<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;がロケールのエンコーディングとして使用<br>
-される。Vimは&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;の間でエンコーディングを変換する。<br>
-例:<br>
+<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;オプションを異なる値に設定することで、Vim に異なるエンコーディング<br>
+の文字を使用させることができる。キーボードおよびディスプレイは引き続き現在のロ<br>
+ケールを使用するので、変換を行う必要がある。その場合、<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;が現在の<br>
+ロケールの値を引き継ぐので、Vim は&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;の間で変換す<br>
+る。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let &amp;termencoding = &amp;encoding<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set encoding=utf-8</div>
 <br>
-すべてのエンコーディングの組み合わせが利用できるわけではない。下記の表にどのよ<br>
-うなものが機能するか示す。すべての変換が可能なわけではなく、iconv()が常に使用<br>
-できるとは限らないので、利用できないものもある。これはシステムに依存することな<br>
-ので細部まで説明することはできない。<br>
+しかし、値の全ての組み合わせが可能なわけではない。以下の表は、9 つの組み合わせ<br>
+のそれぞれがどのように動作するかを示している。これは、全ての変換が可能なわけで<br>
+はないこと、iconv() が存在することなどによって、さらに制限される。これは使用さ<br>
+れるシステムに依存するので、詳細な一覧を示すことはできない。<br>
 <br>
-(<a class="Type" href="options.html#'tenc'">'tenc'</a>&nbsp;は&nbsp;<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;の省略、<a class="Type" href="options.html#'enc'">'enc'</a>&nbsp;は&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;の省略)<br>
+(<a class="Type" href="options.html#'tenc'">'tenc'</a>&nbsp;は&nbsp;<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;の短縮名、<a class="Type" href="options.html#'enc'">'enc'</a>&nbsp;は&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;の短縮名)<br>
 <br>
-<span class="PreProc">'tenc'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'enc'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 説明</span><br>
+<span class="PreProc">'tenc'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'enc'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 備考</span><br>
 <br>
-&nbsp;8bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;機能する。<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;が違うときは、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変換することができないいくつかの文字は入力と表示が正し<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;く行われない。(そのような文字を得るには&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;を<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'utf-8' に設定する)<br>
-&nbsp;8bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS-Windows: インストールされているすべてのコードページ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;で機能する。8ビットの文字だけ入力することができる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;他のシステム: 機能しない。<br>
-&nbsp;8bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unicode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;機能するが、8ビット文字しか直接入力できない(他の文字は<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DIGRAPH、キーマップなどで入力できる)。端末には8ビット<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文字しか表示できない。GUIでは&nbsp;<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;がサポートして<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いる文字であれば表示できる。<br>
+&nbsp;8bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;動作する。<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;が&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;と異なる時は、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いくつかの文字のタイプおよび表示が間違うかもしれず、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim は変換を行わない (これを得るには&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;utf-8&quot; に設定する)。<br>
+&nbsp;8bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS-Windows: システムにインストールされている全てのコー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ドページで動作する。8bit 文字だけをタイプできる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;その他のシステム: 動作しない。<br>
+&nbsp;8bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unicode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;動作するが、直接タイプできるのは 8bit 文字だけである<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(他はダイグラフ、キーマップなどを通して)。端末では<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8bit 文字だけが見え、GUI は&nbsp;<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;がサポートする全<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ての文字を表示できる。<br>
 <br>
-&nbsp;2byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;機能するが、非ASCII文字を入力するには問題がある。<br>
-&nbsp;2byte&nbsp;&nbsp;&nbsp;&nbsp; 2byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS-Windows: インストールされているすべてのコードページ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;で機能する。<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;をロケールと違う設定にすると入<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;力に問題あり。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;他のシステム:&nbsp;<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;が同じ場合<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のみ機能する。<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;は空にしておいたほうが良<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い。<br>
-&nbsp;2byte&nbsp;&nbsp;&nbsp;&nbsp; Unicode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;機能する。Vimは入力された文字を変換する。<br>
+&nbsp;2byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;動作するが、非 ASCII 文字のタイプが問題になるかもしれ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ない。<br>
+&nbsp;2byte&nbsp;&nbsp;&nbsp;&nbsp; 2byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS-Windows: システムにインストールされている全てのコー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ドページで動作する。ロケールが&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;と異なる時<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、文字のタイプが問題になるかもしれない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;その他のシステム:&nbsp;<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;が&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;と等し<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い時だけ動作する。空のままにしておいてもよい。<br>
+&nbsp;2byte&nbsp;&nbsp;&nbsp;&nbsp; Unicode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;動作し、Vim はタイプされた文字を変換する。<br>
 <br>
-&nbsp;Unicode&nbsp;&nbsp;&nbsp;&nbsp;8bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;機能する。(普通はこうしない)<br>
-&nbsp;Unicode&nbsp;&nbsp;&nbsp;&nbsp;2byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 機能しない。<br>
-&nbsp;Unicode&nbsp;&nbsp; Unicode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;問題なく機能する。(Vim内部ではUnicodeはすべてUTF-8で扱<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;われるため、<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;が空でも同じく機能する)<br>
+&nbsp;Unicode&nbsp;&nbsp;&nbsp;&nbsp;8bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;動作する (普通ではない)<br>
+&nbsp;Unicode&nbsp;&nbsp;&nbsp;&nbsp;2byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 動作しない<br>
+&nbsp;Unicode&nbsp;&nbsp; Unicode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;非常によく動作する (全ての Unicode は内部で UTF-8 とし<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;て扱われるので、<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;を空のままにしても同じ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ように動作する)<br>
 <br>
-<span class="Statement">エンコーディングの変換</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#charset-conversion" name="charset-conversion">charset-conversion</a><br>
+<span class="Statement">変換</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#charset-conversion" name="charset-conversion">charset-conversion</a><br>
 <br>
-Vimはいろいろな場面で自動的にエンコーディングを変換する:<br>
-- ファイルを読み込むとき、<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;が違う場合<br>
-- ファイルを書き込むとき、<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;が違う場合<br>
-- 文字を表示するとき、<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;が違う場合<br>
-- 入力を受け取るとき、<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;が違う場合<br>
-- メッセージを表示するとき、LC_MESSAGESのエンコーディングが&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;と違う<br>
-&nbsp;&nbsp;場合(gettextのサポートが必要)。<br>
-- Vim script を読み込むとき、<a class="Identifier" href="repeat.html#:scriptencoding">:scriptencoding</a>が&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;と違う場合<br>
--&nbsp;<a class="Identifier" href="starting.html#viminfo">viminfo</a>ファイルを読み書きするとき<br>
-ほとんどの変換は<a class="Identifier" href="various.html#+iconv">+iconv</a>の機能が必要である。ファイルを読み書きするときの変換の<br>
-動作はオプション&nbsp;<a class="Type" href="options.html#'charconvert'">'charconvert'</a>&nbsp;での指定もできる。<br>
+Vim はいくつかの場所で、あるエンコーディングから別のエンコーディングへ自動的に<br>
+変換する:<br>
+- ファイルを読み込み、<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>&nbsp;が&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;と異なる時<br>
+- ファイルを書き込み、<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>&nbsp;が&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;と異なる時<br>
+- 文字を表示し、<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;が&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;と異なる時<br>
+- 入力を読み取り、<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;が&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;と異なる時<br>
+- メッセージを表示し、LC_MESSAGES に使用されるエンコーディングが&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;と<br>
+&nbsp;&nbsp;異なる時 (これをサポートする gettext のバージョンが必要)。<br>
+-&nbsp;<a class="Identifier" href="repeat.html#:scriptencoding">:scriptencoding</a>&nbsp;が&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;と異なる Vim script を読み込む時。<br>
+-&nbsp;<a class="Identifier" href="starting.html#viminfo">viminfo</a>&nbsp;ファイルを読み込むか、または書き込む時。<br>
+これらのほとんどは&nbsp;<a class="Identifier" href="various.html#+iconv">+iconv</a>&nbsp;機能を必要とする。ファイルの読み込みおよび書き込み<br>
+のための変換は、<a class="Type" href="options.html#'charconvert'">'charconvert'</a>&nbsp;オプションで指定することもできる。<br>
 <br>
-エンコーディングを変換するための便利なユーティリティ:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;All:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iconv<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GNU iconvはほぼすべてのエンコーディングを変換できる。変換の中間層に<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unicodeを使用することで、多くの変換を可能にしている。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://www.gnu.org/directory/libiconv.html">http://www.gnu.org/directory/libiconv.html</a></span>&nbsp;を参照。<br>
+文字セットを変換するための便利なユーティリティ:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;全て:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iconv<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GNU iconv はほとんどのエンコーディングを変換できる。Unicode が中間エン<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コーディングとして使用され、これにより他の全てのエンコーディングとの間<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の変換ができる。<span class="Constant"><a href="http://www.gnu.org/directory/libiconv.html">http://www.gnu.org/directory/libiconv.html</a></span>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;日本語:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nkf<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;Network Kanji code conversion Filter&quot;。最も特徴的なnkfの機能は漢字<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コードの自動認識である。そのため、ファイルのエンコーディング<a class="Identifier" href="mbyte.html#charset">charset</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を知る必要がない。ISO-2022-JPやShift_JISをEUC-JPに変換するには、Vimか<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;らこのようなコマンドを単に実行すれば良い:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nkf は &quot;Network Kanji code conversion Filter&quot; である。nkf の最もユニー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;クな機能の 1 つは、入力の漢字コードの推測である。そのため、入力ファイ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルの&nbsp;<a class="Identifier" href="mbyte.html#charset">charset</a>&nbsp;が何であるかを知る必要はない。ISO-2022-JP または<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Shift_JIS から EUC-JP へ変換する時は、Vim で以下のコマンドを実行するだ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;けでよい:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:%!nkf -e<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nkfはここから入手できる:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nkf は以下で見つけられる:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://www.sfc.wide.ad.jp/~max/FreeBSD/ports/distfiles/nkf-1.62.tar.gz">http://www.sfc.wide.ad.jp/~max/FreeBSD/ports/distfiles/nkf-1.62.tar.gz</a></span><br>
-<span class="Special">{訳注: utf-8対応などの機能が追加されているもの</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special"><a href="https://ja.osdn.net/projects/nkf/">https://ja.osdn.net/projects/nkf/</a> }</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;中国語:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hc<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;Hanzi Converter&quot;。HcはGBからBig5へ、Big5からGBへ、の変換をする。Hcは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ここから入手できる:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hc は &quot;Hanzi Converter&quot; である。Hc は GB ファイルを Big5 ファイルに、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;または Big5 ファイルを GB ファイルに変換する。Hc は以下で見つけられる:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://www.freshports.org/chinese/hc">https://www.freshports.org/chinese/hc</a></span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant">ftp://ftp.cuhk.hk/pub/chinese/ifcss/software/unix/convert/hc-30.tar.gz</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;韓国語:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hmconv<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HmconvはE-mailを扱うことに特化した韓国語エンコーディング変換ユーティリ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ティである。EUC-KRとISO-2022-KRの間の変換ができる。Hmconvはここから入<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手できる:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hmconv は、特に E-mail 用の韓国語コード変換ユーティリティである。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EUC-KR と ISO-2022-KR の間で変換できる。Hmconv は以下で見つけられる:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://www.freshports.org/korean/hmconv/">https://www.freshports.org/korean/hmconv/</a></span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;多国語:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lv<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lvは高性能な多言語ファイルビューアである。そして、エンコーディングの変<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;換もできる。サポートしているエンコーディング<a class="Identifier" href="mbyte.html#charset">charset</a>は:ISO-2022-CN、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;多言語:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lv<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lv は強力な多言語ファイルビューアである。そして&nbsp;<a class="Identifier" href="mbyte.html#charset">charset</a>&nbsp;変換器として<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;動作させることができる。サポートされる&nbsp;<a class="Identifier" href="mbyte.html#charset">charset</a>: ISO-2022-CN、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ISO-2022-JP、ISO-2022-KR、EUC-CN、EUC-JP、EUC-KR、EUC-TW、UTF-7、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UTF-8、ISO-8859シリーズ、Shift_JIS、Big5、HZ。Lvはここから入手できる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(リンク切れのようだ):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UTF-8、ISO-8859 シリーズ、Shift_JIS、Big5 および HZ。Lv は以下で見つけ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;られる (リンクは切れているようだ):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ff.iij4u.or.jp/~nrt/lv/index.html<br>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-conversion" name="mbyte-conversion">mbyte-conversion</a><br>
-<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;の設定と違うエンコーディングのファイルを読み書きするときは、エンコー<br>
-ディングを変換する必要がある。次の変換がサポートされている:<br>
-- Latin-1 (ISO-8859-1)、UTF-8、UCS-2、UCS-4の間の変換はVimが自前で行う。<br>
-- MS-Windowsでは、<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;がUnicodeなら各コードページとの変換は機能する。<br>
--&nbsp;<a class="Type" href="options.html#'charconvert'">'charconvert'</a>&nbsp;による変換。<br>
-- 可能であれば、iconvライブラリを使用して変換することができる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;古いバージョンのGNU iconv()では変換が失敗することがある(Vimが用意する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;バッファよりも、はるかに大きなバッファを要求するため)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;その場合は他のiconv()実装を試すこと。<br>
+<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;と異なるエンコーディングのファイルを読み込む時および書き込む時は、<br>
+変換を行う必要がある。以下の変換がサポートされている:<br>
+- Latin-1 (ISO-8859-1)、UTF-8、UCS-2 および UCS-4 の間の全ての変換は内部で処理<br>
+&nbsp;&nbsp;される。<br>
+- MS-Windows では、<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;が Unicode エンコーディングの時は、任意のコード<br>
+&nbsp;&nbsp;ページとの間の変換が動作するはずである。<br>
+-&nbsp;<a class="Type" href="options.html#'charconvert'">'charconvert'</a>&nbsp;で指定された変換<br>
+- iconv ライブラリが使用可能な場合は、それによる変換。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;古いバージョンの GNU iconv() は変換を失敗させることがある (非常に大き<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;なバッファ、Vim が提供しようとする以上のものを要求する)。別の iconv()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の実装を入手してみること。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#iconv-dynamic" name="iconv-dynamic">iconv-dynamic</a><br>
-MS-Windowsでは<a class="Identifier" href="various.html#+iconv/dyn">+iconv/dyn</a>機能つきでVimをコンパイルすることができる。そうする<br>
-とVimは &quot;iconv.dll&quot; と &quot;libiconv.dll&quot; を検索するようになる。どちらも見つからな<br>
-い場合でもVimは動作するが、変換ができなくなる。<br>
+MS-Windows では、Vim を&nbsp;<a class="Identifier" href="various.html#+iconv/dyn">+iconv/dyn</a>&nbsp;機能付きでコンパイルできる。これは、Vim<br>
+が &quot;iconv.dll&quot; および &quot;libiconv.dll&quot; ライブラリを探すことを意味する。そのどち<br>
+らも見つからない時は、Vim はそれでも動作するが、いくつかの変換はできない。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-4. 端末の使用 (Using a terminal)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-terminal" name="mbyte-terminal">mbyte-terminal</a><br>
+4. 端末を使用する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-terminal" name="mbyte-terminal">mbyte-terminal</a><br>
 <br>
-GUIではマルチバイト文字を完全にサポートしている。端末を使う場合でも、Vimが使用<br>
-するエンコーディングをサポートしていればマルチバイト文字を扱えるが、少し不便な<br>
-こともある。<br>
+GUI はマルチバイト文字を完全にサポートしている。端末でも、端末が Vim が使用す<br>
+るのと同じエンコーディングをサポートしている場合は可能である。したがって、これ<br>
+は柔軟性が低い。<br>
 <br>
-マルチバイト(と<a class="Identifier" href="mbyte.html#XIM">XIM</a>)をサポートしているxtermでVimを使用することができる。他に<br>
-もkterm(Kanji term)、hanterm(韓国語用)、Eterm(Enlightened terminal)、rxvt、な<br>
-どが使用できる。<br>
+例えば、マルチバイトサポートおよび/または&nbsp;<a class="Identifier" href="mbyte.html#XIM">XIM</a>&nbsp;が追加された xterm で Vim を実<br>
+行できる。例としては kterm (Kanji term) および hanterm (韓国語用)、Eterm<br>
+(Enlightened terminal) および rxvt がある。<br>
 <br>
-端末が適切なエンコーディングをサポートしていない場合はオプション&nbsp;<a class="Type" href="options.html#'termencoding'">'termencoding'</a><br>
-を設定する。Vimは入力された文字を&nbsp;<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;から&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;へと変換する。<br>
-そして表示するときに&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;から&nbsp;<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;へと変換する。端末のエン<br>
-コーディングに、Vimが取り扱う文字がすべて含まれていない場合、文字の情報が失な<br>
-われてしまう。下記で説明しているxtermのように、Unicodeをサポートしている端末な<br>
-ら問題はない。ほぼすべての文字セットは情報を失なわずにUnicodeに変換できるから<br>
-である。<br>
+端末が正しいエンコーディングをサポートしていない場合、<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;オプショ<br>
+ンを設定できる。そうすると、Vim はタイプされた文字を&nbsp;<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;から<br>
+<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;に変換する。そして、表示されるテキストは&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;から<br>
+<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;に変換される。端末がサポートするエンコーディングが Vim が使用す<br>
+る全ての文字を含んでいない場合、これは文字の喪失につながる。これにより表示が乱<br>
+れるかもしれない。以下で述べる xterm のような、Unicode をサポートする端末を使<br>
+用している場合、ほとんど全ての文字セットは情報を失うことなく Unicode に変換で<br>
+きるので、問題なく動作するはずである。<br>
 <br>
 <br>
-<span class="Statement">UTF-8をXFree86 xtermで使う</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#UTF8-xterm" name="UTF8-xterm">UTF8-xterm</a><br>
+<span class="Statement">XFREE86 XTERM での UTF-8</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#UTF8-xterm" name="UTF8-xterm">UTF8-xterm</a><br>
 <br>
-<span class="Special">{訳注: 最近の環境なら標準で使えるようになっている。}</span><br>
+これは、XFree86 に付属する Thomas Dickey による xterm で UTF-8 文字エンコーディ<br>
+ングを使用する方法の短い説明である (Markus Kuhn による文章)。<br>
 <br>
-これは Thomas Dickey によって提供される XFree86 xterm で、どのようにしてUTF-8<br>
-エンコードされた文字を利用するかについての簡単な説明である(文: Markus Kuhn)。<br>
-<br>
-UTF-8 をサポートしている最新の xterm を入手すること:<br>
+UTF-8 をサポートするようになった最新の xterm のバージョンを入手する:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://invisible-island.net/xterm/xterm.html">http://invisible-island.net/xterm/xterm.html</a></span><br>
 <br>
-&quot;./configure --enable-wide-chars ; make&quot; としてコンパイルすること。<br>
+&quot;./configure --enable-wide-chars ; make&quot; でコンパイルする<br>
 <br>
-また ISO 10646-1 バージョンのフォントを入手すること:<br>
+また、様々なフォントの ISO 10646-1 版を入手する。これは以下で入手できる<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://www.cl.cam.ac.uk/~mgk25/download/ucs-fonts.tar.gz">http://www.cl.cam.ac.uk/~mgk25/download/ucs-fonts.tar.gz</a></span><br>
 <br>
-それから README ファイルの記述に従ってフォントをインストールすること。<br>
+そして、README ファイルに記載されているとおりにフォントをインストールする。<br>
 <br>
-そして xterm を起動する。<br>
+次に、以下で xterm を起動する<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;xterm -u8 -fn -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1</div>
-大きな文字を使うときは:<br>
+または、より大きな文字の場合:<br>
 <div class="helpExample">&nbsp;&nbsp;xterm -u8 -fn -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1</div>
 <br>
-そうするとUTF-8端末エミュレータが動作するだろう。<br>
-ucs-fonts.tar.gz に含まれている次の両方のデモ・ファイルを試して:<br>
+そうすると、動作する UTF-8 端末エミュレータができる。以下の両方を試すこと<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp; cat utf-8-demo.txt<br>
 &nbsp;&nbsp; vim utf-8-demo.txt</div>
 <br>
-xtermでUTF-8が問題なく動作しているかどうか確認すること。<br>
+xterm で UTF-8 に何か問題があるかどうかを確認するために、ucs-fonts.tar.gz に付<br>
+属するデモテキストで。<br>
 <br>
-Vimの&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;を 'utf-8' に設定する必要がある。<br>
+Vim では、<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;を &quot;utf-8&quot; に設定する必要があるかもしれない。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-5.&nbsp;&nbsp;X11のフォント (Fonts on X11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-fonts-X11" name="mbyte-fonts-X11">mbyte-fonts-X11</a><br>
+5.&nbsp;&nbsp;X11 のフォント&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-fonts-X11" name="mbyte-fonts-X11">mbyte-fonts-X11</a><br>
 <br>
-X11でのフォントの取り扱いは難しい。シングルバイトフォントの名前は長い文字列で<br>
-ある。マルチバイトフォントを使うにはさらにいくつか考慮することがある。<br>
+残念ながら、X11 でフォントを使用するのは複雑である。シングルバイトフォントの名<br>
+前は長い文字列である。マルチバイトフォントでは、これがいくつか必要である...<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;この説明のほとんどはGTK+ 2にとっては関係ない。XLFDを用いたフォントの指定<br>
-はサポートされていない。フォントの設定例は&nbsp;<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;を参照。下記の項<a class="Identifier" href="mbyte.html#XLFD">XLFD</a><br>
-と<a class="Identifier" href="mbyte.html#xfontset">xfontset</a>は読んでも読まなくても良い。<br>
+<span class="Todo">Note:</span>&nbsp;このほとんどは GTK+ 2 ではもはや関係ない。XLFD によるフォントの選択はサ<br>
+ポートされていない。フォントを設定する方法の例については&nbsp;<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;を参照。自<br>
+分のためにも、以下の&nbsp;<a class="Identifier" href="mbyte.html#XLFD">XLFD</a>&nbsp;および&nbsp;<a class="Identifier" href="mbyte.html#xfontset">xfontset</a>&nbsp;の節は無視すること。<br>
 <br>
-Vimは固定幅のフォントだけを扱うことができる。プロポーショナルフォントを使用す<br>
-ることはできない。そのため多くの(見た目の良い)フォントは使用できない。しかし、<br>
-メニューやツールチップにはどのフォントでも使用することができる。<br>
+まず第一に、Vim はテキストの表示に固定幅フォントだけを受け付ける。プロポーショ<br>
+ナルフォントは使用できない。これにより、使用可能な (そしてより見栄えの良い)<br>
+フォントの多くが除外される。ただし、メニューおよびツールチップには任意のフォン<br>
+トを使用できる。<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;表示と入力は独立している。入力したい言語のインプットメソッドがなくても、<br>
-表示することはできる。<br>
+<span class="Todo">Note</span>&nbsp;表示と入力は独立していることに注意。その言語のインプットメソッドが無くて<br>
+も、その言語を見ることはできる。<br>
 <br>
-メニューやツールチップは標準設定のフォントでも機能するが、おそらくそれは、あま<br>
-り見た目が良くない。より良いフォントを選ぶには下記の説明を参照。<br>
+動作するメニューおよびツールチップ用のデフォルトのフォントが得られるはずだが、<br>
+見栄えが悪いかもしれない。より良いフォントを選択する方法を知るには、以下を読む<br>
+こと。<br>
 <br>
 <br>
-<span class="Statement">X論理フォント名 (X LOGICAL FONT DESCRIPTION (XLFD))</span><br>
+<span class="Statement">X 論理フォント記述 (XLFD)</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#XLFD" name="XLFD">XLFD</a><br>
-XLFDはXのフォント名であり、フォントサイズや文字セットなどの情報を含んでいる。<br>
-名前はこのような書式になっている:<br>
+XLFD は X のフォント名であり、フォントサイズ、文字セットなどについての情報を含<br>
+んでいる。名前は以下の書式である:<br>
 <br>
 <span class="Statement">FOUNDRY-FAMILY-WEIGHT-SLANT-WIDTH-STYLE-PIXEL-POINT-X-Y-SPACE-AVE-CR-CE</span><br>
 <br>
-各フィールドの意味:<br>
+各フィールドは以下を意味する:<br>
 <br>
-- FOUNDRY:&nbsp;&nbsp;FOUNDRY フィールド。フォントを作成、提供した組織名。<br>
-- FAMILY:&nbsp;&nbsp; FAMILY_NAME フィールド。フォントファミリの名前(書体名)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(helvetica、gothic、times、など)<br>
-- WEIGHT:&nbsp;&nbsp; WEIGHT_NAME フィールド。文字の太さ。(light、medium、bold、など)<br>
-- SLANT:&nbsp;&nbsp;&nbsp;&nbsp;SLANT フィールド (文字の傾き)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r:&nbsp;&nbsp;Roman (ローマン体。正字体。傾きなし)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i:&nbsp;&nbsp;Italic (イタリック体)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o:&nbsp;&nbsp;Oblique (斜体)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ri: Reverse Italic (逆傾きのイタリック体)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ro: Reverse Oblique (逆傾きの斜体)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ot: Other (その他)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number: Scaled font (傾きの角度)<br>
-- WIDTH:&nbsp;&nbsp;&nbsp;&nbsp;SETWIDTH_NAME フィールド。文字幅。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(normal、condensed、narrow、double wide)<br>
-- STYLE:&nbsp;&nbsp;&nbsp;&nbsp;ADD_STYLE_NAME フィールド。フォントの追加情報。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Serif、Sans Serif、Informal、Decorated、など)<br>
-- PIXEL:&nbsp;&nbsp;&nbsp;&nbsp;PIXEL_SIZE フィールド。ピクセル単位の文字の高さ。<br>
-- POINT:&nbsp;&nbsp;&nbsp;&nbsp;POINT_SIZE フィールド。ポイント単位の文字の高さを10倍した値。<br>
-- X:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RESOLUTION_X フィールド。X軸方向の解像度(1インチあたりのドット数)<br>
-- Y:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RESOLUTION_Y フィールド。Y軸方向の解像度(1インチあたりのドット数)<br>
-- SPACE:&nbsp;&nbsp;&nbsp;&nbsp;SPACING フィールド。 (文字送り)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p:&nbsp;&nbsp;Proportional (プロポーショナル、可変幅)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m:&nbsp;&nbsp;Monospaced&nbsp;&nbsp; (モノスペース、固定幅)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c:&nbsp;&nbsp;CharCell&nbsp;&nbsp;&nbsp;&nbsp; (文字セル)<br>
-- AVE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AVERAGE_WIDTH フィールド。ピクセル単位の文字幅の平均値を10倍した値。<br>
-- CR:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CHARSET_REGISTRY フィールド。文字セットの名前。<br>
-- CE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CHARSET_ENCODING フィールド。文字セットの追加情報。JIS X 0208のよ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;うな文字セットは、このフィールドが0ならコードポイントはGLと同じ値<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を持つ。1ならGRと同じ。<br>
-<span class="Special">{訳注: jisx0208の場合、CHARSET_ENCODING=0なら7ビットJISコード、1ならEUC-JP、の</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">番号で、文字がフォントに収録されている。}</span><br>
+- FOUNDRY:&nbsp;&nbsp;FOUNDRY フィールド。フォントを作成した会社。<br>
+- FAMILY:&nbsp;&nbsp; FAMILY_NAME フィールド。基本のフォントファミリー名。(helvetica、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gothic、times など)<br>
+- WEIGHT:&nbsp;&nbsp; WEIGHT_NAME フィールド。文字の太さ。(light、medium、bold など)<br>
+- SLANT:&nbsp;&nbsp;&nbsp;&nbsp;SLANT フィールド。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r:&nbsp;&nbsp;ローマン (傾きなし)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i:&nbsp;&nbsp;イタリック<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o:&nbsp;&nbsp;オブリーク<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ri: 逆イタリック<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ro: 逆オブリーク<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ot: その他<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数値:&nbsp;&nbsp; スケーリングされたフォント<br>
+- WIDTH:&nbsp;&nbsp;&nbsp;&nbsp;SETWIDTH_NAME フィールド。文字の幅。(normal、condensed、narrow、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double wide)<br>
+- STYLE:&nbsp;&nbsp;&nbsp;&nbsp;ADD_STYLE_NAME フィールド。フォントを記述する追加情報。(Serif、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sans Serif、Informal、Decorated など)<br>
+- PIXEL:&nbsp;&nbsp;&nbsp;&nbsp;PIXEL_SIZE フィールド。ピクセル単位での文字の高さ。<br>
+- POINT:&nbsp;&nbsp;&nbsp;&nbsp;POINT_SIZE フィールド。ポイント単位での文字の高さの 10 倍。<br>
+- X:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RESOLUTION_X フィールド。X 解像度 (1 インチあたりのドット数)。<br>
+- Y:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RESOLUTION_Y フィールド。Y 解像度 (1 インチあたりのドット数)。<br>
+- SPACE:&nbsp;&nbsp;&nbsp;&nbsp;SPACING フィールド。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p:&nbsp;&nbsp;プロポーショナル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m:&nbsp;&nbsp;等幅<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c:&nbsp;&nbsp;文字セル<br>
+- AVE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AVERAGE_WIDTH フィールド。ピクセル単位での平均幅の 10 倍。<br>
+- CR:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CHARSET_REGISTRY フィールド。文字セットグループの名前。<br>
+- CE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CHARSET_ENCODING フィールド。文字セット名の残りの部分。JIS X 0208<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のようないくつかの文字セットでは、このフィールドが 0 の場合、コー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ドポイントは GL と同じ値を持ち、1 の場合は GR と同じ値を持つ。<br>
 <br>
-例えば、JIS X 0208に対応する16ドットのフォントは次のように書く:<br>
+例えば、JIS X 0208 に対応する 16 ドットフォントの場合、以下のように書かれる:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;-misc-fixed-medium-r-normal--16-110-100-100-c-160-jisx0208.1990-0<br>
 <br>
 <br>
 <span class="Statement">X フォントセット</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#fontset" name="fontset">fontset</a>&nbsp;<a class="Constant" href="mbyte.html#xfontset" name="xfontset">xfontset</a><br>
-シングルバイト文字セットは一般的に一つのフォントに関連付けられている。マルチバ<br>
-イト文字セットはほとんどの場合、複数のフォントの組合せを使用する。そして表示す<br>
-る文字に合ったフォントが選択されて使用される。そのようなフォントの集合をフォン<br>
-トセットと呼ぶ。<br>
+シングルバイトの文字セットは、通常 1 つのフォントに関連付けられている。マルチ<br>
+バイトの文字セットでは、フォントの組み合わせがしばしば使用される。これは、文字<br>
+のあるグループがあるフォントから使用され、別のグループが別のフォント (2 倍幅か<br>
+もしれない) から使用されることを意味する。このフォントの集まりはフォントセット<br>
+と呼ばれる。<br>
 <br>
-ロケールによって必要なフォントは異なる。X-Windowはロケールに必要な文字セットの<br>
-表を管理している。ロケールが必要とする全てのフォントをオプション&nbsp;<a class="Type" href="options.html#'guifontset'">'guifontset'</a><br>
-に設定しなければならない。<br>
+フォントセットでどのフォントが必要かは、現在のロケールに依存する。X windows<br>
+は、あるロケールにどの文字のグループが必要かの表を保持している。ロケールが必要<br>
+とする全てのフォントを&nbsp;<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;オプションに指定しなければならない。<br>
 <br>
-<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;オプションを設定すると、すべてのフォント名がフォントセット名とし<br>
-て扱われる。<a class="Identifier" href="syntax.html#:highlight">:highlight</a>&nbsp;コマンドの &quot;font&quot; 引数に使用されるものもある。<br>
+<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;オプションを設定すると、全てのフォント名がフォントセット名として<br>
+扱われることにもなる。<a class="Identifier" href="syntax.html#:highlight">:highlight</a>&nbsp;コマンドの &quot;font&quot; 引数に使用されるものも。<br>
 <br>
-<span class="Todo">Note</span>&nbsp;<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;の違いに注意すること。<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;では、コンマ区<br>
-切りの名前は代替名で、そのうちの1つが使用される。<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;では、文字列全体<br>
-が、コンマを含む1つのフォントセット名である。代替フォントセット名を指定するこ<br>
-とはできない。<br>
-この例は多くのX11システムで動作する:<br>
+<span class="Todo">Note</span>&nbsp;<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;の間の違いに注意:&nbsp;<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;では、コンマ区切り<br>
+の名前は代替の名前であり、そのうちの 1 つが使用される。<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;では、文字<br>
+列全体が、コンマを含めて 1 つのフォントセット名である。代替のフォントセット名<br>
+を指定することはできない。<br>
+この例は多くの X11 システムで動作する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set guifontset=-*-*-medium-r-normal--16-*-*-*-c-*-*-*</div>
 <br>
-フォントは現在のロケールと一致しなければならない。現在のロケールで使用されてい<br>
-る文字セットのフォントが含まれていない場合、<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;の設定は失敗する。<br>
+フォントは現在のロケールにマッチしなければならない。現在のロケールが使用する文<br>
+字セットのフォントが含まれていない場合、<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;の設定は失敗する。<br>
 <br>
-<span class="Todo">NOTE:</span>&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;が、ロケールとは違う文字セットに設定されていても、フォントセッ<br>
-トは常にロケールを使用する。そういう場合は&nbsp;<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;ではなく&nbsp;<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;と<br>
-<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;を使用する。<br>
+<span class="Todo">NOTE:</span>&nbsp;フォントセットは、<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;が異なる文字セットを使用するように設定され<br>
+ていても、常に現在のロケールを使用する。その状況では、<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;の代わりに<br>
+<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;を使用したいかもしれない。<br>
 <br>
 例:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">|charset| language&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;groups of characters&quot;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;GB2312&nbsp;&nbsp;&nbsp;&nbsp;簡体中国語&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ISO-8859-1 and GB 2312<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Big5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;繁体中国語&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ISO-8859-1 and Big5<br>
-&nbsp;&nbsp;&nbsp;&nbsp;CNS-11643 繁体中国語&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ISO-8859-1, CNS 11643-1 and CNS 11643-2<br>
-&nbsp;&nbsp;&nbsp;&nbsp;EUC-JP&nbsp;&nbsp;&nbsp;&nbsp;日本語&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JIS X 0201 and JIS X 0208<br>
-&nbsp;&nbsp;&nbsp;&nbsp;EUC-KR&nbsp;&nbsp;&nbsp;&nbsp;韓国語&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ISO-8859-1 and KS C 5601 (KS X 1001)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">|charset| 言語&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;文字のグループ&quot;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;GB2312&nbsp;&nbsp;&nbsp;&nbsp;中国語 (簡体字)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ISO-8859-1 および GB 2312<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Big5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中国語 (繁体字)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ISO-8859-1 および Big5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;CNS-11643 中国語 (繁体字)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ISO-8859-1、CNS 11643-1 および CNS 11643-2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;EUC-JP&nbsp;&nbsp;&nbsp;&nbsp;日本語&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JIS X 0201 および JIS X 0208<br>
+&nbsp;&nbsp;&nbsp;&nbsp;EUC-KR&nbsp;&nbsp;&nbsp;&nbsp;韓国語&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ISO-8859-1 および KS C 5601 (KS X 1001)<br>
 <br>
-xlsfontsコマンドを使ってフォントを検索できる。例えば、KS C 5601のフォントを探<br>
-すには:<br>
+xlsfonts コマンドを使用してフォントを検索できる。例えば、KS C 5601 用のフォン<br>
+トを検索している時:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;xlsfonts | grep ksc5601</div>
 <br>
-これは複雑で混乱しやすいことなので、分からないことはX-Windowのドキュメントで調<br>
-べること。<br>
+これは複雑で紛らわしい。何か分からないことがある場合は、X-Windows のドキュメン<br>
+トを参照するとよいかもしれない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#base_font_name_list" name="base_font_name_list">base_font_name_list</a><br>
-使用したいフォントの名前を見付けたらオプション&nbsp;<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;を設定する。設定は<br>
-フォントの名前をコンマで区切って指定する。<br>
+使用したいフォントの名前が見つかったら、<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;オプションを設定する必要<br>
+がある。フォント名を連結し、それらの間にコンマを置くことで、リストを指定する。<br>
 <br>
-例えば、ja_JP.eucJPロケールの場合、JIS X 0201とJIS X 0208が必要である。次のよ<br>
-うに文字セットを明示的に指定してフォントを設定する:<br>
+例えば、ja_JP.eucJP ロケールを使用する時は、JIS X 0201 および JIS X 0208 が必<br>
+要である。文字セットを明示的に指定するフォントのリストを与えることができる。以<br>
+下のように:<br>
 <br>
 <div class="helpExample">&nbsp;:set guifontset=-misc-fixed-medium-r-normal--14-130-75-75-c-140-jisx0208.1983-0,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\-misc-fixed-medium-r-normal--14-130-75-75-c-70-jisx0201.1976-0</div>
 <br>
-文字セットの名前を省略した場合、X-Windowが、ロケールに必要なフォントを選択す<br>
-る。例:<br>
+別の方法として、文字セット名を省略した基本フォント名リストを与え、X-Windows に<br>
+ロケールに必要なフォント文字を選択させることもできる。例えば:<br>
 <br>
 <div class="helpExample">&nbsp;:set guifontset=-misc-fixed-medium-r-normal--14-130-75-75-c-140,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\-misc-fixed-medium-r-normal--14-130-75-75-c-70</div>
 <br>
-基本となるフォントの名前を一つだけ指定して、利用可能なすべてのフォントの中から<br>
-選択させることもできる。例:<br>
+別の方法として、X-Windows が全ての使用可能なフォントから選択できるような単一の<br>
+基本フォント名を与えることもできる。例えば:<br>
 <br>
 <div class="helpExample">&nbsp;:set guifontset=-misc-fixed-medium-r-normal--14-*</div>
 <br>
-フォントの別名を指定することもできる。フォントディレクトリ(例えば<br>
-/usr/X11R6/lib/X11/fonts/)のファイルfonts.aliasを見ること。例:<br>
+別の方法として、別名を指定することもできる。フォントディレクトリ (例:<br>
+/usr/X11R6/lib/X11/fonts/) にある fonts.alias ファイルを参照。例えば:<br>
 <br>
 <div class="helpExample">&nbsp;:set guifontset=k14,r14</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#E253" name="E253">E253</a><br>
-<span class="Todo">Note</span>&nbsp;東アジアのフォントは、基本的には正四角形の範囲で表示される。ラテンフォン<br>
-トと東アジアのフォントを組み合わせた場合、東アジアのフォントはラテンフォントの<br>
-2倍の幅で表示される。<br>
+<span class="Todo">Note</span>&nbsp;東アジアのフォントでは、標準の文字セルは正方形であることに注意。ラテンフォ<br>
+ントと東アジアのフォントを混在させる時は、東アジアのフォントの幅はラテンフォン<br>
+トの幅の 2 倍であるべきである。<br>
 <br>
-<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;が空の場合、コマンド<a class="Identifier" href="syntax.html#:highlight">:highlight</a>の &quot;font&quot; 引数はフォントセットと<br>
-して解釈される。例えばこのように使用する:<br>
+<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;が空でない場合、<a class="Identifier" href="syntax.html#:highlight">:highlight</a>&nbsp;コマンドの &quot;font&quot; 引数もフォントセッ<br>
+トとして解釈される。例えば、ハイライトには以下を使用すべきである:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:hi Comment font=english_font,your_font</div>
-間違った &quot;font&quot; 引数を使用するとエラーメッセージが表示される。事前に<br>
-<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;を設定して確認すること。<br>
+間違った &quot;font&quot; 引数を使用した場合、エラーメッセージが表示される。<br>
+また、ハイライトグループのフォントを設定する前に、<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;を設定するよう<br>
+にすること。<br>
 <br>
 <br>
-<span class="Statement">リソースファイルを使う</span><br>
+<span class="Statement">リソースファイルを使用する</span><br>
 <br>
-<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;を設定する代わりにX11のリソースを設定すれば、Vimはそれを使用する。<br>
-これはXのリソースファイルの働きを知っている人向けである。<br>
+<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;を指定する代わりに、X11 リソースを設定して Vim にそれらを取り込ま<br>
+せることができる。これは X のリソースファイルがどのように動作するかを知ってい<br>
+る人だけのためのものである。<br>
 <br>
-Motifではファイル$HOME/.Xdefaultsにこの3行を追加する:<br>
+Motif では、$HOME/.Xdefaults ファイルに以下の 3 行を挿入する:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim.font:&nbsp;<a class="Identifier" href="mbyte.html#base_font_name_list">base_font_name_list</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim*fontSet:&nbsp;<a class="Identifier" href="mbyte.html#base_font_name_list">base_font_name_list</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim*fontList: your_language_font<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;Vim.font はテキストエリアの設定<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim*fontSet はメニューの設定<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim*fontList はメニューの設定(Motif GUI用)<br>
+<span class="Todo">Note:</span>&nbsp;Vim.font はテキスト領域用である。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim*fontSet はメニュー用である。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim*fontList はメニュー用である (Motif GUI の場合)<br>
 <br>
-例えば、14ドットの日本語フォントを使うには:<br>
+例えば、日本語および 14 ドットのフォントを使用している時は、<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim.font: -misc-fixed-medium-r-normal--14-*<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim*fontSet: -misc-fixed-medium-r-normal--14-*<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim*fontList: -misc-fixed-medium-r-normal--14-*</div>
 <br>
-もしくは:<br>
+または:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim*font: k14,r14<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim*fontSet: k14,r14<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim*fontList: k14,r14</div>
 <br>
-この設定をすぐに反映させるには<br>
+すぐに有効にするには、以下を実行しなければならない<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xrdb -merge ~/.Xdefaults</div>
 <br>
-もしくはXサーバーを停止して再起動する。<br>
+そうしないと、変更が有効になる前に X サーバーを停止して再起動しなければならな<br>
+い。<br>
 <br>
 <br>
-GTK+版のVimは.Xdefaultsを使わず~/.gtkrcの設定を使用する。初期設定は恐らくうま<br>
-く機能するが、メニューのフォントは変更した方がいいかもしれない。例:<br>
+GUI Vim の GTK+ 版は .Xdefaults を使用しない。代わりに ~/.gtkrc を使用するこ<br>
+と。デフォルトでたいていはうまく動作する。しかし、メニューについては変更する必<br>
+要があるかもしれない。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;style &quot;default&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
@@ -731,308 +738,317 @@ GTK+版のVimは.Xdefaultsを使わず~/.gtkrcの設定を使用する。初期�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;widget_class &quot;*&quot; style &quot;default&quot;</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-6.&nbsp;&nbsp;MS-Windowsのフォント (Fonts on MS-Windows)&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-fonts-MSwin" name="mbyte-fonts-MSwin">mbyte-fonts-MSwin</a><br>
+6.&nbsp;&nbsp;MS-Windows のフォント&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-fonts-MSwin" name="mbyte-fonts-MSwin">mbyte-fonts-MSwin</a><br>
 <br>
-最も簡単なのは、フォント選択ダイアロクを使ってフォントを選択して、試してみるこ<br>
-とである。メニューの &quot;Edit/Select Font...&quot; (編集/フォント設定)を使用する。ちょ<br>
-うどいいフォントを見付けたら、このコマンドでフォントの名前を確認する:<br>
+最も簡単なのは、フォントダイアログを使用してフォントを選択し、試してみることで<br>
+ある。これは &quot;Edit/Select Font...&quot; メニューにある。うまく動作するフォント名が<br>
+見つかったら、このコマンドを使用してその名前を見ることができる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set guifont</div>
 <br>
-そして、<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;を設定するコマンドを<a class="Identifier" href="gui.html#gvimrc">gvimrc</a>に追加する:<br>
+それから、<a class="Identifier" href="gui.html#gvimrc">gvimrc</a>&nbsp;ファイルに&nbsp;<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;を設定するコマンドを追加する:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set guifont=courier_new:h12</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-7.&nbsp;&nbsp;X11での入力 (Input on X11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-XIM" name="mbyte-XIM">mbyte-XIM</a><br>
+7.&nbsp;&nbsp;X11 での入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-XIM" name="mbyte-XIM">mbyte-XIM</a><br>
 <br>
-<span class="Statement">X INPUT METHOD (XIM) の基礎知識</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#XIM" name="XIM">XIM</a>&nbsp;<a class="Constant" href="mbyte.html#xim" name="xim">xim</a>&nbsp;<a class="Constant" href="mbyte.html#x-input-method" name="x-input-method">x-input-method</a><br>
+<span class="Statement">X インプットメソッド (XIM) の背景</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#XIM" name="XIM">XIM</a>&nbsp;<a class="Constant" href="mbyte.html#xim" name="xim">xim</a>&nbsp;<a class="Constant" href="mbyte.html#x-input-method" name="x-input-method">x-input-method</a><br>
 <br>
-XIMはXの国際化入力機構である。Xlibユニット型と<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>&nbsp;(Input-Method<br>
-server) 型の2種類がある。<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>型はCJK(日中韓)で使われるような複雑な入力<br>
-方式に適している。<br>
+XIM は X のための国際的な入力モジュールである。2 種類の構造、Xlib unit タイプ<br>
+および&nbsp;<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>&nbsp;(Input-Method server) タイプがある。<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>&nbsp;タイプは<br>
+CJK のような複雑な入力に適している。<br>
 <br>
-- インプットメソッドサーバー (IM-server)<br>
+- IM-server<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#IM-server" name="IM-server">IM-server</a><br>
-&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>型の入力方式では、FrontEndシステムかBackEndシステムのどちらかの方<br>
-&nbsp;&nbsp;法で入力イベントを処理する。FrontEndシステムでは、まず<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>が入力イベ<br>
-&nbsp;&nbsp;ントを取得し、そして入力の結果を<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>からアプリケーションへ渡す。<br>
-&nbsp;&nbsp;BackEndシステムではその逆の順番で処理される。MS-WindowsはBackEndシステムを採<br>
-&nbsp;&nbsp;用している。Xでは、ほとんどの<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>がFrontEndシステムを採用している。<br>
-&nbsp;&nbsp;BackEndシステムには通信のオーバーヘッドが大きく掛かるというデメリットはある<br>
-&nbsp;&nbsp;が、アプリケーションに制限を加えず、安全に同期することができる。<br>
+&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>&nbsp;タイプの入力構造では、入力イベントは 2 つの方法のどちらかで処理<br>
+&nbsp;&nbsp;される: FrontEnd システムおよび BackEnd システム。FrontEnd システムでは、入<br>
+&nbsp;&nbsp;力イベントはまず&nbsp;<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>&nbsp;に横取りされ、それから&nbsp;<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>&nbsp;がアプリケー<br>
+&nbsp;&nbsp;ションに入力の結果を渡す。一方、BackEnd システムは逆の順序で動作する。<br>
+&nbsp;&nbsp;MS-Windows は BackEnd システムを採用している。X では、ほとんどの&nbsp;<a class="Identifier" href="mbyte.html#IM-server">IM-server</a><br>
+&nbsp;&nbsp;は FrontEnd システムを採用している。BackEnd システムの欠点は通信のオーバー<br>
+&nbsp;&nbsp;ヘッドが大きいことであるが、アプリケーションに制限なく安全な同期を提供する。<br>
 <br>
-&nbsp;&nbsp;例えばxwnmoとkinput2という日本語インプットメソッドサーバーがあるが、両方とも<br>
-&nbsp;&nbsp;FrontEndシステムである。xwnmoはWnn(下記参照)と一緒に提供されている。kinput2<br>
-&nbsp;&nbsp;はここから入手できる (リンク切れのようだ):<br>
+&nbsp;&nbsp;例えば、日本語の&nbsp;<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>&nbsp;には xwnmo および kinput2 があり、どちらも<br>
+&nbsp;&nbsp;FrontEnd システムである。Xwnmo は Wnn (以下を参照) と一緒に配布されており、<br>
+&nbsp;&nbsp;kinput2 は以下で見つけられる (リンクは切れているようだ):<br>
 &nbsp;&nbsp;<span class="Constant">ftp://ftp.sra.co.jp/pub/x11/kinput2/</span><br>
 <br>
-&nbsp;&nbsp;中国語用には、&quot;xcin&quot; というよくできたXIMサーバーがあり、簡体中国語と繁体中国<br>
-&nbsp;&nbsp;語の両方を入力できる。適切な入力テーブルを作成すれば、他のロケールも受け付け<br>
-&nbsp;&nbsp;る。Xcinはここから入手できる (リンク切れのようだ):<br>
-&nbsp;&nbsp;<span class="Constant"><a href="http://cle.linux.org.tw/xcin/">http://cle.linux.org.tw/xcin/</a></span><br>
-&nbsp;&nbsp;他にはscim:&nbsp;<span class="Constant"><a href="https://www.freedesktop.org/wiki/Software/scim/">https://www.freedesktop.org/wiki/Software/scim/</a></span>&nbsp;&nbsp;と fcitx:<br>
+&nbsp;&nbsp;中国語には、&quot;xcin&quot; という素晴らしい XIM サーバーがあり、繁体字および簡体字の<br>
+&nbsp;&nbsp;中国語の文字の両方を入力できる。そして、正しい入力テーブルを作った場合、他の<br>
+&nbsp;&nbsp;ロケールも受け付けることができる。Xcin は以下で見つけられる (リンクは切れて<br>
+&nbsp;&nbsp;いるようだ):&nbsp;<span class="Constant"><a href="http://cle.linux.org.tw/xcin/">http://cle.linux.org.tw/xcin/</a></span><br>
+&nbsp;&nbsp;他には scim:&nbsp;<span class="Constant"><a href="https://www.freedesktop.org/wiki/Software/scim/">https://www.freedesktop.org/wiki/Software/scim/</a></span>&nbsp;および fcitx:<br>
 &nbsp;&nbsp;<span class="Constant"><a href="http://www.fcitx.org/">http://www.fcitx.org/</a></span>&nbsp;がある。<br>
 <br>
-- 変換サーバー (Conversion Server)<br>
+- 変換サーバー<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#conversion-server" name="conversion-server">conversion-server</a><br>
-&nbsp;&nbsp;いくつかのシステムではさらに、変換サーバーが必要である。ほとんどの日本語イン<br>
-&nbsp;&nbsp;プットメソッドサーバーは仮名漢字変換サーバーを必要とする。中国語の入力では、<br>
-&nbsp;&nbsp;入力方式に依存する。いくつかの方式では、PinYinやZhuYinからHanZiへの変換サー<br>
-&nbsp;&nbsp;バーが必要である。韓国語の入力では、Hanjaを入力するには、Hangul-Hanja変換サー<br>
-&nbsp;&nbsp;バーが必要である。<br>
+&nbsp;&nbsp;いくつかのシステムは追加のサーバーを必要とする: 変換サーバーである。日本語の<br>
+&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>&nbsp;のほとんどは、それ、かな漢字変換サーバーを必要とする。中国語の入<br>
+&nbsp;&nbsp;力では、入力の方法に依存し、いくつかの方法では、PinYin または ZhuYin から<br>
+&nbsp;&nbsp;HanZi への変換サーバーが必要である。韓国語の入力では、Hanja を入力したい場<br>
+&nbsp;&nbsp;合、Hangul-Hanja 変換サーバーが必要である。<br>
 <br>
-&nbsp;&nbsp;例えば、日本語の入力は2段階に分けられる。最初に平仮名を入力し、次に漢字へ変<br>
-&nbsp;&nbsp;換する。多くの漢字(JIS X 0208には6349文字が定義されている)と76文字の平仮名が<br>
-&nbsp;&nbsp;あるため、まず平仮名を入力し、必要なら、それを漢字や片仮名に変換する。仮名漢<br>
-&nbsp;&nbsp;字変換サーバーにはjserver(Wnnと一緒に提供されている。下記参照)やcannaなどが<br>
-&nbsp;&nbsp;ある。Cannaはここから入手できる:<br>
+&nbsp;&nbsp;例えば、日本語の入力処理は 2 つの段階に分けられる。まず、ひらがなを事前入力<br>
+&nbsp;&nbsp;し、次に、かな漢字変換を行う。漢字の文字は非常に多く (JIS X 0208 では 6349<br>
+&nbsp;&nbsp;の漢字が定義されている)、ひらがなの文字の数は 76 である。そこで、まず、ひら<br>
+&nbsp;&nbsp;がなで発音どおりにテキストを事前入力し、次に、必要な場合は、ひらがなを漢字ま<br>
+&nbsp;&nbsp;たはカタカナに変換する。かな漢字変換サーバーはいくつかある: jserver (Wnn と<br>
+&nbsp;&nbsp;一緒に配布されている、以下を参照) および canna。Canna は以下で見つけられる:<br>
 &nbsp;&nbsp;(リンク切れ) osdn.net/projects/canna/<br>
 <br>
-Wnn4.2というよくできた入力システムがある。Wnn4.2は以下のものを含んでいる。<br>
+良い入力システムがある: Wnn4.2。Wnn 4.2 は以下を含む、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;xwnmo (<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;jserver (日本語仮名漢字変換サーバー)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;cserver (中国語のPinYin、ZhuYinから簡体漢字への変換サーバー)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;tserver (中国語のPinYin、ZhuYinから繁体漢字への変換サーバー)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;kserver (Hangul-Hanja変換サーバー)<br>
-Wnn4.2は多くのシステムで動作し、インターネットのさまざまな場所で入手することが<br>
-できる。あなたのシステム用のRPMやportを使用すること。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;jserver (日本語かな漢字変換サーバー)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cserver (中国語 PinYin または ZhuYin から簡体字 HanZi への変換サーバー)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tserver (中国語 PinYin または ZhuYin から繁体字 HanZi への変換サーバー)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;kserver (Hangul-Hanja 変換サーバー)<br>
+いくつかのシステム用の Wnn 4.2 は、インターネット上の様々な場所で見つけられる。<br>
+システム用の RPM または port を使用すること。<br>
 <br>
 <br>
-- 入力スタイル (Input Style)<br>
+- 入力スタイル<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#xim-input-style" name="xim-input-style">xim-input-style</a><br>
-&nbsp;&nbsp;CJK(日中韓語)を入力するとき、4つの表示領域がある:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 入力途中の文字を表示する領域<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 現在の入力モードを表示する領域<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. 変換候補を表示する領域<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. その他のツールを表示する領域<br>
+&nbsp;&nbsp;CJK を入力する時は、4 つの領域がある:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 組み立てられている間の入力を表示する領域<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 現在有効な入力モードを表示する領域。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. 選択のための次の候補を表示する領域。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. 他のツールを表示する領域。<br>
 <br>
-&nbsp;&nbsp;3番目の表示領域は変換をするときに必要である。例えば、日本語の入力では、同じ<br>
-&nbsp;&nbsp;発音の漢字が複数あるので、同じ平仮名が複数の漢字に対応する。<br>
+&nbsp;&nbsp;3 番目の領域は変換する時に必要である。例えば、日本語の入力では、複数の漢字が<br>
+&nbsp;&nbsp;同じ発音を持つことがあるので、ひらがなの並びが別個の漢字の並びにマップされる<br>
+&nbsp;&nbsp;ことがある。<br>
 <br>
-&nbsp;&nbsp;1番目と2番目の表示領域はXの国際化入力でそれぞれ &quot;Preedit Area&quot;、&quot;Status Area&quot;<br>
-&nbsp;&nbsp;と定義されている。3番目と4番目の表示領域は定義されておらず、<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>に任<br>
-&nbsp;&nbsp;されている。国際化入力ではPreedit AreaとStatus Areaの組み合せで4つの入力スタ<br>
-&nbsp;&nbsp;イルが定義されている:&nbsp;<a class="Identifier" href="mbyte.html#OnTheSpot">OnTheSpot</a>&nbsp;<a class="Identifier" href="mbyte.html#OffTheSpot">OffTheSpot</a>&nbsp;<a class="Identifier" href="mbyte.html#OverTheSpot">OverTheSpot</a>&nbsp;<a class="Identifier" href="mbyte.html#Root">Root</a>。<br>
+&nbsp;&nbsp;1 番目および 2 番目の領域は、X の国際入力で、それぞれ &quot;Preedit Area&quot;、<br>
+&nbsp;&nbsp;&quot;Status Area&quot; という名前で定義されている。3 番目および 4 番目の領域は定義さ<br>
+&nbsp;&nbsp;れておらず、<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>&nbsp;によって管理されるように任されている。国際入力では、<br>
+&nbsp;&nbsp;Preedit Area および Status Area の組み合わせを使用して、4 つの入力スタイルが<br>
+&nbsp;&nbsp;定義されている:&nbsp;<a class="Identifier" href="mbyte.html#OnTheSpot">OnTheSpot</a>、<a class="Identifier" href="mbyte.html#OffTheSpot">OffTheSpot</a>、<a class="Identifier" href="mbyte.html#OverTheSpot">OverTheSpot</a>&nbsp;および&nbsp;<a class="Identifier" href="mbyte.html#Root">Root</a>。<br>
 <br>
-&nbsp;&nbsp;現在、GUI Vimは<a class="Identifier" href="mbyte.html#OverTheSpot">OverTheSpot</a>、<a class="Identifier" href="mbyte.html#OffTheSpot">OffTheSpot</a>、<a class="Identifier" href="mbyte.html#Root">Root</a>の3つのスタイルをサポート<br>
-&nbsp;&nbsp;している。<br>
-&nbsp;&nbsp;<a class="Identifier" href="various.html#+GUI_GTK">+GUI_GTK</a>&nbsp;機能付きでコンパイルされた場合は、GUI Vimは&nbsp;<a class="Identifier" href="mbyte.html#OnTheSpot">OnTheSpot</a>&nbsp;と<br>
-&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#OverTheSpot">OverTheSpot</a>&nbsp;の 2 つのスタイルをサポートする。<a class="Type" href="options.html#'imstyle'">'imstyle'</a>&nbsp;でスタイルを選択す<br>
-&nbsp;&nbsp;ることができる。<br>
+&nbsp;&nbsp;現在、GUI Vim は 3 つのスタイル、<a class="Identifier" href="mbyte.html#OverTheSpot">OverTheSpot</a>、<a class="Identifier" href="mbyte.html#OffTheSpot">OffTheSpot</a>&nbsp;および&nbsp;<a class="Identifier" href="mbyte.html#Root">Root</a><br>
+&nbsp;&nbsp;をサポートしている。<br>
+&nbsp;&nbsp;<a class="Identifier" href="various.html#+GUI_GTK">+GUI_GTK</a>&nbsp;機能付きでコンパイルされた時は、GUI Vim は 2 つのスタイル、<br>
+&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#OnTheSpot">OnTheSpot</a>&nbsp;および&nbsp;<a class="Identifier" href="mbyte.html#OverTheSpot">OverTheSpot</a>&nbsp;をサポートする。<a class="Type" href="options.html#'imstyle'">'imstyle'</a>&nbsp;オプションでスタ<br>
+&nbsp;&nbsp;イルを選択できる。<br>
 <br>
 *.&nbsp;&nbsp;on-the-spot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#OnTheSpot" name="OnTheSpot">OnTheSpot</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;Preedit AreaとStatus Areaはアプリケーション領域にクライアントアプリケー<br>
-&nbsp;&nbsp;&nbsp;&nbsp;ションによって表示される。クライアントアプリケーションはテキストを挿入する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;位置に未確定文字をすべて表示するように<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>から指示される。クライア<br>
-&nbsp;&nbsp;&nbsp;&nbsp;ントは、コールバック関数を登録して、未確定文字の入力中にインプットメソッド<br>
-&nbsp;&nbsp;&nbsp;&nbsp;から呼び出してもらう。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Preedit Area および Status Area は、クライアントアプリケーションによってア<br>
+&nbsp;&nbsp;&nbsp;&nbsp;プリケーションの領域内で実行される。クライアントアプリケーションは<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>&nbsp;によって、全てのプリエディットデータをテキストの挿入位置に表示<br>
+&nbsp;&nbsp;&nbsp;&nbsp;するように指示される。クライアントは、プリエディットの間にインプットメソッ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ドによって呼び出されるコールバックを登録する。<br>
 *.&nbsp;&nbsp;over-the-spot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#OverTheSpot" name="OverTheSpot">OverTheSpot</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;Status Areaはアプリケーション領域の固定位置に作成される。Vimの場合は、ス<br>
-&nbsp;&nbsp;&nbsp;&nbsp;テータスライン付近である。Preedit Areaはアプリケーションの入力している位置<br>
-&nbsp;&nbsp;&nbsp;&nbsp;に作成される。インプットメソッドは、テキストが挿入される位置にあるウィンド<br>
-&nbsp;&nbsp;&nbsp;&nbsp;ウに未確定文字を表示する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Status Area は、アプリケーションの領域内の固定の位置に作成され、Vim の場<br>
+&nbsp;&nbsp;&nbsp;&nbsp;合、その位置は追加のステータス行である。Preedit Area は、アプリケーション<br>
+&nbsp;&nbsp;&nbsp;&nbsp;の現在の入力位置に作られる。インプットメソッドは、テキストの挿入位置の真上<br>
+&nbsp;&nbsp;&nbsp;&nbsp;に出現させるウィンドウ内にプリエディットデータを表示する。<br>
 *.&nbsp;&nbsp;off-the-spot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#OffTheSpot" name="OffTheSpot">OffTheSpot</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;Preedit AreaとStatus Areaはアプリケーション領域に表示される。Vimの場合は、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;ステータスライン付近である。クライアントアプリケーションは表示ウィンドウを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;提供し、インプットメソッドが直接そこに未確定文字を表示する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Preedit Area および Status Area はアプリケーションの領域内で実行され、Vim<br>
+&nbsp;&nbsp;&nbsp;&nbsp;の場合、その領域は追加のステータス行である。クライアントアプリケーション<br>
+&nbsp;&nbsp;&nbsp;&nbsp;は、プリエディットデータのための表示ウィンドウをインプットメソッドに提供<br>
+&nbsp;&nbsp;&nbsp;&nbsp;し、インプットメソッドはそれらに直接表示する。<br>
 *.&nbsp;&nbsp;root-window&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#Root" name="Root">Root</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;Preedit AreaとStatus Areaはアプリケーションの外側に表示される。インプット<br>
-&nbsp;&nbsp;&nbsp;&nbsp;メソッドは別に用意した自分のウィンドウに未確定文字をすべて表示する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Preedit Area および Status Area はアプリケーションの外側にある。インプット<br>
+&nbsp;&nbsp;&nbsp;&nbsp;メソッドは、全てのプリエディットデータを、画面の別の領域の、インプットメ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ソッド固有のウィンドウ内に表示する。<br>
 <br>
 <br>
-<span class="Statement">XIMを使用する</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#multibyte-input" name="multibyte-input">multibyte-input</a>&nbsp;<a class="Constant" href="mbyte.html#E284" name="E284">E284</a>&nbsp;<a class="Constant" href="mbyte.html#E285" name="E285">E285</a>&nbsp;<a class="Constant" href="mbyte.html#E286" name="E286">E286</a>&nbsp;<a class="Constant" href="mbyte.html#E287" name="E287">E287</a><br>
+<span class="Statement">XIM を使用する</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#multibyte-input" name="multibyte-input">multibyte-input</a>&nbsp;<a class="Constant" href="mbyte.html#E284" name="E284">E284</a>&nbsp;<a class="Constant" href="mbyte.html#E285" name="E285">E285</a>&nbsp;<a class="Constant" href="mbyte.html#E286" name="E286">E286</a>&nbsp;<a class="Constant" href="mbyte.html#E287" name="E287">E287</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#E288" name="E288">E288</a>&nbsp;<a class="Constant" href="mbyte.html#E289" name="E289">E289</a><br>
 <br>
-<span class="Todo">Note</span>&nbsp;表示と入力は独立している。インプットメソッドがなくてもあなたの言語を見る<br>
-ことができる。しかし、表示方法とインプットメソッドが合わないと、テキストは間<br>
-違って表示される。<br>
+<span class="Todo">Note</span>&nbsp;表示と入力は独立していることに注意。その言語のインプットメソッドが無くて<br>
+も、その言語を見ることはできる。しかし、表示方法が入力方法にマッチしない時は、<br>
+テキストは間違って表示される。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;を設定しないとインプットメソッドを使用できない。従っ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;て、ラテン語のユーザーも、インプットメソッドを使用するなら、<a class="Type" href="options.html#'guifontset'">'guifontset'</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を設定しなければならない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;を指定しない限り、IM を使用することはできない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;したがって、ラテン系のユーザーは、IM を使用する場合、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;も使用しなければならない。<br>
 <br>
-あなたの言語を入力するには、その言語をサポートしているインプットメソッドサーバー<br>
-<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>を実行する。必要なら変換サーバー<a class="Identifier" href="mbyte.html#conversion-server">conversion-server</a>も実行する。<br>
+自分の言語を入力するには、その言語をサポートする&nbsp;<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>&nbsp;および、必要な場<br>
+合は&nbsp;<a class="Identifier" href="mbyte.html#conversion-server">conversion-server</a>&nbsp;を実行すべきである。<br>
 <br>
-次の3行を~/.Xdefaultsファイルに書き込む。これは<a class="Identifier" href="mbyte.html#XIM">XIM</a>を使用するすべてのXアプリ<br>
-ケーションに共通する設定である。すでに<a class="Identifier" href="mbyte.html#XIM">XIM</a>を使用している場合は、これを読み飛<br>
-ばすこと。<br>
+以下の 3 行を ~/.Xdefaults ファイルに入れるべきである。これらは&nbsp;<a class="Identifier" href="mbyte.html#XIM">XIM</a>&nbsp;を使用す<br>
+る全ての X アプリケーションに共通である。既に&nbsp;<a class="Identifier" href="mbyte.html#XIM">XIM</a>&nbsp;を使用している場合は、これ<br>
+は飛ばしてよい。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*international: True<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*.inputMethod: your_input_server_name<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*.preeditType: your_input_style</div>
 <br>
-input_server_name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; インプットサーバー<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>の名前。(<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>のマ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ニュアルを確認すること)。<br>
-your_input_style&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#OverTheSpot">OverTheSpot</a>、<a class="Identifier" href="mbyte.html#OffTheSpot">OffTheSpot</a>、<a class="Identifier" href="mbyte.html#Root">Root</a>のどれか。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="mbyte.html#xim-input-style">xim-input-style</a>を参照。<br>
+input_server_name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; は、<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>&nbsp;の名前である (<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>&nbsp;のマニュアル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を確認すること)。<br>
+your_input_style&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、<a class="Identifier" href="mbyte.html#OverTheSpot">OverTheSpot</a>、<a class="Identifier" href="mbyte.html#OffTheSpot">OffTheSpot</a>、<a class="Identifier" href="mbyte.html#Root">Root</a>&nbsp;のいずれかであ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<a class="Identifier" href="mbyte.html#xim-input-style">xim-input-style</a>&nbsp;も参照。<br>
 <br>
-X11R6を使用している場合、*internationalは必要ない。<br>
-また、*.inputMethodと*.preeditTypeの指定は任意。<br>
+*international は、X11R6 を使用している場合は必要ないかもしれない。<br>
+*.inputMethod および *.preeditType は、X11R6 を使用している場合はオプションで<br>
+ある。<br>
 <br>
-kinput2を<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>として使う場合の例:<br>
+例えば、<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>&nbsp;として kinput2 を使用している時は、<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*international: True<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*.inputMethod: kinput2<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*.preeditType: OverTheSpot</div>
 <br>
-<a class="Identifier" href="mbyte.html#OverTheSpot">OverTheSpot</a>を使用する場合、GUI Vimはノーマルモードでも常にインプットメソッド<br>
-サーバーに接続する。そのため &quot;f&quot; や &quot;r&quot; コマンドであなたの言語を入力することが<br>
-できる。しかし、他の入力スタイルの場合は、GUI Vimはノーマルモードのときにはイ<br>
-ンプットメソッドサーバーに接続しない。<br>
+<a class="Identifier" href="mbyte.html#OverTheSpot">OverTheSpot</a>&nbsp;を使用する時は、GUI Vim はノーマルモードでも常に IM Server に接<br>
+続するので、&quot;f&quot; および &quot;r&quot; のようなコマンドで自分の言語を入力できる。しかし、<br>
+他の 2 つの方法のいずれかを使用する時は、GUI Vim はノーマルモードでない場合に<br>
+だけ IM Server に接続する。<br>
 <br>
-インプットメソッドサーバーが<a class="Identifier" href="mbyte.html#OverTheSpot">OverTheSpot</a>をサポートしていない場合、&quot;f&quot; や &quot;r&quot;<br>
-などのノーマルモードコマンドであなたの言語を使用するには、ローカライズされた<br>
-xtermか、<a class="Identifier" href="mbyte.html#XIM">XIM</a>をサポートしたxtermを使用する。<br>
+IM Server が&nbsp;<a class="Identifier" href="mbyte.html#OverTheSpot">OverTheSpot</a>&nbsp;をサポートしておらず、&quot;f&quot; または &quot;r&quot; のようないくつ<br>
+かのノーマルモードのコマンドで自分の言語を使用したい場合は、ローカライズされた<br>
+xterm または&nbsp;<a class="Identifier" href="mbyte.html#XIM">XIM</a>&nbsp;をサポートする xterm を使用すべきである<br>
 <br>
-必要なら、環境変数XMODIFIERSを設定する:<br>
+必要な場合、XMODIFIERS 環境変数を設定できる:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sh:&nbsp;&nbsp;export XMODIFIERS=&quot;@im=input_server_name&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;csh: setenv XMODIFIERS &quot;@im=input_server_name&quot;<br>
 <br>
-インプットメソッドサーバーにkinput2を使用する場合のshでの設定例:<br>
+例えば、<a class="Identifier" href="mbyte.html#IM-server">IM-server</a>&nbsp;として kinput2 を使用し、sh を使用している時は、<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;export XMODIFIERS=&quot;@im=kinput2&quot;</div>
 <br>
 <br>
-<span class="Statement">XIMの制御</span><br>
+<span class="Statement">完全に制御された XIM</span><br>
 <br>
-MS-WindowsのIME(<a class="Identifier" href="mbyte.html#multibyte-ime">multibyte-ime</a>参照)のように、XIMを制御することができる。<br>
-この機能は現在GTK GUIでのみ利用可能。<br>
+MS-Windows の IME のように、XIM を完全に制御できる (<a class="Identifier" href="mbyte.html#multibyte-ime">multibyte-ime</a>&nbsp;を参照)。<br>
+これは現在、GTK GUI でのみ使用可能である。<br>
 <br>
-XIMを制御するには、使用しているインプットメソッドのトグルキーを、オプション<br>
-<a class="Type" href="options.html#'imactivatekey'">'imactivatekey'</a>&nbsp;に設定する必要がある。例えば、インプットメソッドサーバーに<br>
-kinput2 + cannaの組み合せを使用している場合、トグルキーは恐らくShift+Spaceなの<br>
-で、このように設定する:<br>
+完全に制御された XIM を使用する前に、1 つの設定が必要である。<a class="Type" href="options.html#'imactivatekey'">'imactivatekey'</a><br>
+オプションに、インプットメソッドの有効化に使用されるキーを設定する。例えば、IM<br>
+Server として kinput2 + canna を使用している時は、有効化キーはおそらく<br>
+Shift+Space である:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set imactivatekey=S-space</div>
 <br>
-設定の書式は&nbsp;<a class="Type" href="options.html#'imactivatekey'">'imactivatekey'</a>&nbsp;を参照。<br>
+書式については&nbsp;<a class="Type" href="options.html#'imactivatekey'">'imactivatekey'</a>&nbsp;を参照。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-8.&nbsp;&nbsp;MS-Windowsでの入力 (Input on MS-Windows)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-IME" name="mbyte-IME">mbyte-IME</a><br>
+8.&nbsp;&nbsp;MS-Windows での入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-IME" name="mbyte-IME">mbyte-IME</a><br>
 <br>
-(Windows IME support)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#multibyte-ime" name="multibyte-ime">multibyte-ime</a>&nbsp;<a class="Constant" href="mbyte.html#IME" name="IME">IME</a><br>
+(Windows IME サポート)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#multibyte-ime" name="multibyte-ime">multibyte-ime</a>&nbsp;<a class="Constant" href="mbyte.html#IME" name="IME">IME</a><br>
 <br>
-{WindowsのGUI環境で<a class="Identifier" href="various.html#+multi_byte_ime">+multi_byte_ime</a>が有効な場合のみ利用可能}<br>
+<span class="Special">{Vim の Windows GUI で、かつ&nbsp;</span><a class="Identifier" href="various.html#+multi_byte_ime">+multi_byte_ime</a><span class="Special">&nbsp;機能付きでコンパイルされた場合</span><br>
+<span class="Special">にのみ動作する}</span><br>
 <br>
-Windowsではマルチバイト文字の入力に Input Method Editor (IME) を使うことができ<br>
-る。IMEを使ったテキストの入力では、IMEの状態をオンにしたりオフにしたり、何度も<br>
-何度も切り替えなければならない。そうしないと、IMEの状態がオンのときには、キー<br>
-入力はすべてIMEに取られてしまうので、'j' や 'k' などほぼすべてのキーを、直接<br>
-Vimに入力することができない。<br>
+Windows でマルチバイト文字を入力するには、Input Method Editor (IME) を使用でき<br>
+る。テキストを編集する過程で、IME の状態 (on/off) を何度も何度も何度も切り替え<br>
+なければならない。状態が on の IME は全てのキー入力をフックしているので、'j'、<br>
+'k'、またはほとんど全てのキーを Vim に直接入力することはできない。<br>
 <br>
-<a class="Identifier" href="various.html#+multi_byte_ime">+multi_byte_ime</a>機能はそれを手助けし、IMEの状態を手動で切り替えなければならな<br>
-い頻度を減少させる。マルチバイトテキストを編集しているときでも、ノーマルモード<br>
-でIMEを使用する必要があることはほとんどない。そこで挿入モードを抜けるときに、<br>
-VimはIMEの最後の状態を記録してからIMEをオフにする。そして再度挿入モードに入っ<br>
-たときに、記録しておいたIMEの状態に自動的に設定する。<br>
+<a class="Identifier" href="various.html#+multi_byte_ime">+multi_byte_ime</a>&nbsp;機能はこれを助ける。IME の状態を手動で切り替えなければならな<br>
+い回数を減らす。ノーマルモードでは、マルチバイトのテキストを編集している時で<br>
+も、IME を使用する必要はほとんどない。そのため、挿入モードを抜ける時に、Vim は<br>
+IME の最後の状態を記憶し、IME をオフにする。挿入モードに再び入る時に、Vim は<br>
+IME の状態をその記憶した状態に自動的に設定する。<br>
 <br>
-これは挿入モードとノーマルモードの間だけでなく、コマンドラインや検索コマンドの<br>
-入力時や置換モードでも同じである。<br>
-オプション&nbsp;<a class="Type" href="options.html#'iminsert'">'iminsert'</a>、<a class="Type" href="options.html#'imsearch'">'imsearch'</a>、<a class="Type" href="options.html#'imcmdline'">'imcmdline'</a>&nbsp;を設定して、それぞれ別々に入力<br>
-方法を選択したり、無効にしたりできる。<br>
+これは挿入-ノーマルモードだけでなく、検索コマンドの入力および置換モードでも動<br>
+作する。<br>
+オプション&nbsp;<a class="Type" href="options.html#'iminsert'">'iminsert'</a>、<a class="Type" href="options.html#'imsearch'">'imsearch'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'imcmdline'">'imcmdline'</a>&nbsp;は、異なるインプットメソッ<br>
+ドを選択するか、または一時的にそれらを無効にするのに使用できる。<br>
 <br>
-Windows 9x および Windows NT 4.0 では&nbsp;<a class="Constant" href="mbyte.html#global-ime" name="global-ime">global-ime</a>&nbsp;があったが、これはサポートさ<br>
-れなくなった。Active Input Method Manager (Global IME) のドキュメントはまだこ<br>
-こにある:<br>
+Windows 9x および Windows NT 4.0 では&nbsp;<a class="Constant" href="mbyte.html#global-ime" name="global-ime">global-ime</a>&nbsp;があったが、これはもうサポー<br>
+トされていない。Active Input Method Manager (Global IME) のドキュメントは、ま<br>
+だここで見つけられる:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://msdn.microsoft.com/en-us/library/aa741221(v=VS.85).aspx">http://msdn.microsoft.com/en-us/library/aa741221(v=VS.85).aspx</a></span><br>
 <br>
-<span class="Todo">NOTE:</span>&nbsp;IMEを使用するには入力したい言語をシステムに追加する必要がある。正確な設<br>
-定方法はWindowsのバージョンによって違う。Windows XPの場合は:<br>
-1. コントロールパネルを開く<br>
-2. 地域と言語のオプションを開く<br>
-3. 言語タブを選択<br>
-4. [テキストサービスと入力言語]エリアの詳細ボタンをクリック<br>
-5. 追加ボタンをクリック<br>
+<span class="Todo">NOTE:</span>&nbsp;IME が動作するためには、システムに自分の言語の入力ロケールが追加されてい<br>
+ることを確認しなければならない。この正確な場所は、使用している Windows のバー<br>
+ジョンに依存する。例えば、私の Windows 2000 マシンでは:<br>
+1. コントロールパネル<br>
+2. 地域のオプション<br>
+3. 入力ロケールタブ<br>
+4. インストールされている入力ロケールの追加 -&gt; Chinese(PRC)<br>
+&nbsp;&nbsp; デフォルトは依然として English (United Stated) である<br>
 <br>
 <br>
-MS-Windows IME の互換性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#multibyte-ime-compatibility" name="multibyte-ime-compatibility">multibyte-ime-compatibility</a><br>
+MS-Windows IME 互換性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#multibyte-ime-compatibility" name="multibyte-ime-compatibility">multibyte-ime-compatibility</a><br>
 <br>
-Vim は Windows システム上のインプットメソッドを&nbsp;<span class="Comment">imm32.dll</span>&nbsp;(Input Method<br>
-Manager) を介して管理する。この実装は Windows 2000 時代に遡るため、最新のイン<br>
-プットメソッドと完全に互換性がない可能性がある。最新の入力メソッドの処理は<br>
-Text Services Framework (TSF) に移行しており、その動作は従来の IME インターフェ<br>
-イスと完全には一致しない可能性がある。IME と TSF の詳細については、Microsoft<br>
-のドキュメントウェブサイトを参照 (Microsoft ドキュメントの URL は頻繁に変更さ<br>
-れるため、リンクは省略している)。<br>
+Vim は Windows システムでのインプットメソッドを&nbsp;<span class="Comment">imm32.dll</span>&nbsp;(Input Method<br>
+Manager) を介して管理している。この実装は Windows 2000 の時代にさかのぼるもの<br>
+で、最新のインプットメソッドとは完全には互換でないかもしれない。最新のインプッ<br>
+トメソッドの処理は Text Services Framework (TSF) に移行しており、その動作は従<br>
+来の IME のインターフェイスと完全には一致しないかもしれない。IME および TSF に<br>
+ついての詳細は、Microsoft のドキュメントのウェブサイトを参照 (MS のドキュメン<br>
+トの URL はしばしば変わるため、リンクは省略している)。<br>
 <br>
-Windows の表示言語が CJK 言語に設定されている場合、Vim の起動時に誤ってインプッ<br>
-トメソッド (IM) をノーマルモードで有効にしてしまうことがある。この問題を回避す<br>
-るには、<a class="Identifier" href="gui.html#gvimrc">gvimrc</a>&nbsp;ファイルに以下の設定を追加してみて欲しい:<br>
+場合によっては、Windows の表示言語が CJK の言語に設定されている時に、Vim が起<br>
+動時にノーマルモードでインプットメソッド (IM) を誤って有効にすることがある。こ<br>
+の問題を回避するには、<a class="Identifier" href="gui.html#gvimrc">gvimrc</a>&nbsp;ファイルに以下の設定を追加してみること:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;autocmd VimEnter * set imdisable | set noimdisable</div>
 <br>
-これらの問題の診断または解決に進展があった場合は、フィードバックを歓迎する。<br>
+これらの問題の診断または解決に何か進展があった場合は、フィードバックを歓迎す<br>
+る。<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;IME の動作は、ベンダーによる実装の違いにより異なる場合がある。特定のイン<br>
-プットメソッドで問題が発生した場合は、別のインプットメソッドで試すことをお勧め<br>
-する。<br>
+<span class="Todo">Note:</span>&nbsp;IME の動作は、異なるベンダーによる実装の違いによって異なることがある。特<br>
+定のインプットメソッドで問題に遭遇した場合は、別のもので試すことを推奨する。<br>
 <br>
-Vim の&nbsp;<a class="Identifier" href="various.html#+multi_byte_ime">+multi_byte_ime</a>&nbsp;システムとの適切な統合には、インプットメソッドの状態<br>
-変化が Vim のソースコード内の&nbsp;<span class="Comment">ImmGetOpenStatus()</span>&nbsp;関数によって検出可能でなけ<br>
-ればならない。現在、多言語入力をサポートする一部のインプットメソッドでは、gVim<br>
-が捕捉できない内部状態の変化が発生する場合がある。<br>
+Vim の&nbsp;<a class="Identifier" href="various.html#+multi_byte_ime">+multi_byte_ime</a>&nbsp;システムと適切に統合するためには、インプットメソッド<br>
+の状態の変化が Vim のソースコード内の&nbsp;<span class="Comment">ImmGetOpenStatus()</span>&nbsp;関数で検出可能でな<br>
+ければならない。現在、多言語入力をサポートするいくつかのインプットメソッドは、<br>
+gVim が捕捉できない内部の状態変化を持つかもしれない。<br>
 <br>
 <br>
-IMEやXIMがオンのときのカーソルの色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#CursorIM" name="CursorIM">CursorIM</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;IMEの状態に応じてカーソルの色を変えることができる。通常、IMEの状態はデスク<br>
-&nbsp;&nbsp;&nbsp;&nbsp;トップの隅(やタスクバー)に表示されているが、これはあまり確認しやすくないの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;で、この機能が役に立つ。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;これはXIMでも同じように機能する。<br>
+IME または XIM が on の時のカーソルの色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#CursorIM" name="CursorIM">CursorIM</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;IME のためのちょっとかわいい機能がある。カーソルは色を変えることで IME の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;状態を示すことができる。通常、IME の状態はデスクトップ (またはタスクバー)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;の隅にある小さなアイコンで示されていた。IME の状態を確認するのは容易ではな<br>
+&nbsp;&nbsp;&nbsp;&nbsp;い。しかし、この機能はこれを助ける。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;XIM を使用する時も同じように動作する。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;ハイライトグループ CursorIM を設定して、IMEの状態がオンのときの色を選べる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;例えば、次の行を<a class="Identifier" href="gui.html#gvimrc">gvimrc</a>に追加する:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ハイライトグループ CursorIM を使用して、状態が on の時のカーソルの色を選択<br>
+&nbsp;&nbsp;&nbsp;&nbsp;できる。例えば、<a class="Identifier" href="gui.html#gvimrc">gvimrc</a>&nbsp;に以下の行を追加する:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if has('multi_byte_ime')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;highlight Cursor guifg=NONE guibg=Green<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;highlight CursorIM guifg=NONE guibg=Purple<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;これで、IMEがオフならカーソルは緑、オンなら紫になる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;IME が off の時のカーソルの色は緑である。そして、紫のカーソルは状態が on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;であることを示す。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-9. キーマップでの入力 (Input with a keymap)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-keymap" name="mbyte-keymap">mbyte-keymap</a><br>
+9. キーマップによる入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-keymap" name="mbyte-keymap">mbyte-keymap</a><br>
 <br>
-キーボードから入力できない文字がある場合にはオプション&nbsp;<a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;を使う。一つ以<br>
-上の(英語の)文字を入力することで、別の(非英語の)文字を入力することができる。こ<br>
-の機能はテキストを入力するときだけ作用する。Vimコマンドを入力するときには作用<br>
-しない。そのため、キーボードの設定を切り替える手間がない。<br>
-<span class="Special">{Vimが&nbsp;</span><a class="Identifier" href="various.html#+keymap">+keymap</a><span class="Special">&nbsp;機能付きでコンパイルされたときにのみ利用可能}</span><br>
+キーボードが、テキストに入力したい文字を生成しない時は、<a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;オプションを<br>
+使用できる。これは、1 つ以上の (英語の) 文字を別の (非英語の) 文字に変換する。<br>
+これはテキストをタイプする時だけ起こり、Vim のコマンドをタイプする時は起こらな<br>
+い。これにより、2 つのキーボード設定を切り替える必要がなくなる。<br>
+<span class="Special">{Vim が&nbsp;</span><a class="Identifier" href="various.html#+keymap">+keymap</a><span class="Special">&nbsp;機能付きでコンパイルされた場合にのみ使用可能}</span><br>
 <br>
-オプション&nbsp;<a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;に、使用したいキーマップファイルを指定する。ファイルの名前<br>
-は次の二つのうちのどちらか:<br>
+<a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;オプションの値は、使用するキーマップファイルを指定する。このファイル<br>
+の名前は以下の 2 つのうちの 1 つである:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;keymap/<span class="Special">{keymap}</span>_<span class="Special">{encoding}</span>.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;keymap/<span class="Special">{keymap}</span>.vim<br>
 <br>
-<span class="Special">{keymap}</span>はオプション&nbsp;<a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;に設定する値、<span class="Special">{encoding}</span>はオプション&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a><br>
-の値。<span class="Special">{encoding}</span>付きのファイル名が優先して使われる。<br>
+ここで、<span class="Special">{keymap}</span>&nbsp;は&nbsp;<a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;オプションの値であり、<span class="Special">{encoding}</span>&nbsp;は&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;オ<br>
+プションの値である。<span class="Special">{encoding}</span>&nbsp;を含むファイル名が最初に試される。<br>
 <br>
-キーマップファイルを探すために&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;が使われる。利用可能なすべてのキー<br>
-マップファイルを一覧するには、このようにする:<br>
+これらのファイルを見つけるために&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;が使用される。全ての使用可能な<br>
+キーマップファイルの概要を見るには、以下を使用する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:echo globpath(&amp;rtp, &quot;keymap/*.vim&quot;)</div>
 <br>
-挿入モードとコマンドラインモードでは、<span class="Special">CTRL-^</span>を使ってキーマップを使用するかどう<br>
-かを切り換えることができる。<a class="Identifier" href="insert.html#i_CTRL-^">i_CTRL-^</a>&nbsp;<a class="Identifier" href="cmdline.html#c_CTRL-^">c_CTRL-^</a><br>
-挿入モードでは、キーマップの状態はオプション&nbsp;<a class="Type" href="options.html#'iminsert'">'iminsert'</a>&nbsp;に記憶される。挿入モー<br>
-ドから抜けて、再び挿入モードに入ったときに、以前の状態が使われる。<a class="Identifier" href="motion.html#f">f</a>&nbsp;や&nbsp;<a class="Identifier" href="change.html#r">r</a><br>
-などの一つの文字を引数に取るコマンドでも同じ値が使われる。<br>
-コマンドラインモードでは、キーマップの状態は記憶されない。コマンドラインモード<br>
-に入るとまず、(ASCII文字の)Exコマンドを入力するはずだからである。<br>
-検索パターンの入力では、オプション&nbsp;<a class="Type" href="options.html#'imsearch'">'imsearch'</a>&nbsp;が使われる。<a class="Type" href="options.html#'iminsert'">'iminsert'</a>&nbsp;と設定を<br>
-共有するように設定することもできる。<br>
+挿入モードおよびコマンドラインモードでは、<span class="Special">CTRL-^</span>&nbsp;を使用して、キーボードマップ<br>
+を使用するかどうかを切り替えることができる。<a class="Identifier" href="insert.html#i_CTRL-^">i_CTRL-^</a>&nbsp;<a class="Identifier" href="cmdline.html#c_CTRL-^">c_CTRL-^</a><br>
+このフラグは、挿入モードについては&nbsp;<a class="Type" href="options.html#'iminsert'">'iminsert'</a>&nbsp;オプションで記憶される。挿入モー<br>
+ドを抜けて入る時は、前の値が使用される。<a class="Identifier" href="motion.html#f">f</a>&nbsp;および&nbsp;<a class="Identifier" href="change.html#r">r</a>&nbsp;のような、1 文字の引数<br>
+を取るコマンドにも同じ値が使用される。<br>
+コマンドラインモードでは、このフラグは記憶されない。最初に Ex コマンドをタイプ<br>
+することが期待されており、それは ASCII である。<br>
+検索パターンをタイプする時は、<a class="Type" href="options.html#'imsearch'">'imsearch'</a>&nbsp;オプションが使用される。これは<br>
+<a class="Type" href="options.html#'iminsert'">'iminsert'</a>&nbsp;と同じ値を使用するように設定できる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#lCursor" name="lCursor">lCursor</a><br>
-キーマップ(言語マップ)を使用中に、GUIカーソルの色を変えることができる。もし<br>
-も、非標準な背景色を使用していた場合にカーソルが見えなくなることがないように、<br>
-初期状態ではこの機能は無効になっている。次の例では、カーソルの色が明るくなるよ<br>
-うにしている:<br>
+言語マッピングが使用されている時は、GUI のカーソルに別の色を付けることができ<br>
+る。これは、標準でない背景色を使用している時にカーソルが見えなくなるのを避ける<br>
+ため、デフォルトでは無効になっている。ここに明るい色のカーソルを使用する例があ<br>
+る:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:highlight Cursor guifg=NONE guibg=Green<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:highlight lCursor guifg=NONE guibg=Cyan</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#keymap-file-format" name="keymap-file-format">keymap-file-format</a>&nbsp;<a class="Constant" href="mbyte.html#:loadk" name=":loadk">:loadk</a>&nbsp;<a class="Constant" href="mbyte.html#:loadkeymap" name=":loadkeymap">:loadkeymap</a>&nbsp;<a class="Constant" href="mbyte.html#E105" name="E105">E105</a>&nbsp;<a class="Constant" href="mbyte.html#E791" name="E791">E791</a><br>
-キーマップファイルはこのような構成になっている:<br>
+キーマップファイルはおおよそこのようになる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; Maintainer:&nbsp;&nbsp; name &lt;email@address&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; Last Changed: 2001 Jan 1</div>
@@ -1041,77 +1057,76 @@ IMEやXIMがオンのときのカーソルの色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loadkeymap<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; comment</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; コメント</div>
 <br>
-「&quot;」で始まる行はコメントなので無視される。空白行も無視される。マップを定義す<br>
-る行には役に立つコメントを書くことができる。<br>
+&quot; で始まる行はコメントであり、無視される。空行も無視される。マッピングのある行<br>
+は、有用なテキストの後にコメントがあってもよい。<br>
 <br>
-&quot;b:keymap_name&quot; にはステータスラインに表示される短い名前を設定できる。<a class="Type" href="options.html#'keymap'">'keymap'</a><br>
-の値は、言語の違いやキーボードやエンコーディングの違いを区別するために長くなり<br>
-がちだが、ステータスラインに表示できる文字には限りがあるので、この変数を使う。<br>
+&quot;b:keymap_name&quot; には短い名前を設定でき、それはステータス行に表示される。これ<br>
+は、<a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;の値よりも少ない場所を取るという考えである。<a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;の値は、異な<br>
+る言語、キーボードおよびエンコーディングを区別するために長くなるかもしれない。<br>
 <br>
-実際のマップは &quot;loadkeymap&quot; 以下に書く。上の例では、&quot;a&quot; は &quot;A&quot; に、&quot;b&quot; は &quot;B&quot;<br>
-にマップされる。このように、一番目のものが二番目にマップされる。そして、ファイ<br>
-ルの末尾まで同じように処理される。<br>
-このように設定したマップは、<a class="Identifier" href="map.html#:lnoremap">:lnoremap</a>に &quot;<span class="Special">&lt;buffer&gt;</span>&quot; を指定したバッファローカ<br>
-ルなマップとまったく同じである。<br>
-それはこのコマンドで確認できる:<br>
+実際のマッピングは &quot;loadkeymap&quot; 以下の行にある。例では、&quot;a&quot; は &quot;A&quot; に、&quot;b&quot; は<br>
+&quot;B&quot; にマップされる。したがって、最初の項目が 2 番目の項目にマップされる。これ<br>
+はファイルの終わりまで、各行に対して行われる。<br>
+これらの項目は、&quot;<span class="Special">&lt;buffer&gt;</span>&quot; を使用してマッピングをバッファローカルにした<br>
+<a class="Identifier" href="map.html#:lnoremap">:lnoremap</a>&nbsp;コマンドで使用できるものと完全に同じである。<br>
+このコマンドで結果を確認できる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:lmap</div>
-二つの項目は空白で区切る。マップに空白を含めるには、&quot;<span class="Special">&lt;Tab&gt;</span>&quot;、&quot;<span class="Special">&lt;Space&gt;</span>&quot; という<br>
-特別な表記を使う。二つの項目の文字の長さは、合わせて200バイトを超えてはいけな<br>
-い。<br>
+2 つの項目は空白で区切られていなければならない。項目の中に空白を含めることはで<br>
+きない。代わりに特別な名前 &quot;<span class="Special">&lt;Tab&gt;</span>&quot; および &quot;<span class="Special">&lt;Space&gt;</span>&quot; を使用すること。2 つの項目<br>
+を合わせた長さは 200 バイトを超えてはならない。<br>
 <br>
-一番目の項目に複数の文字を指定することができる。これはデッドキーのような作用を<br>
+最初のカラムに 2 つ以上の文字を置くことができる。これはデッドキーのように動作<br>
 する。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;á</div>
-クォートの入力があったとき、次に &quot;a&quot; が入力されるかどうかわからないので、Vimは<br>
-次の文字が入力されるまで待機する。シングルクォートを入力できるようにするには、<br>
-次の行も加える:<br>
+Vim は引用符の後の次の文字が本当に &quot;a&quot; であるかどうかを知らないので、次の文字<br>
+を待つ。単一引用符を挿入できるようにするには、この行も追加する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'</div>
-マップは<a class="Identifier" href="map.html#:lnoremap">:lnoremap</a>で定義されるので、結果のクォート文字は、他のマップの開始文<br>
-字としては扱われない。<br>
-<span class="Special">{訳注: &gt; シングルクォートを入力できるようにするには...</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">'timeout' も参照。}</span><br>
-&quot;accents&quot; キーマップはこれを使用する。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#keymap-accents" name="keymap-accents">keymap-accents</a><br>
+マッピングは&nbsp;<a class="Identifier" href="map.html#:lnoremap">:lnoremap</a>&nbsp;で定義されているので、結果の引用符は別の文字の開始に<br>
+は使用されない。<br>
+&quot;accents&quot; キーマップはこれを使用している。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#keymap-accents" name="keymap-accents">keymap-accents</a><br>
 <br>
-最初の列は&nbsp;<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>&nbsp;表記で書くこともできる:<br>
+最初のカラムは&nbsp;<a class="Identifier" href="intro.html#<>">&lt;&gt;</a>&nbsp;形式にすることもできる:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;C-c&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ctrl-C<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;A-c&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Alt-c<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;A-C&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Alt-C<br>
-<span class="Todo">Note:</span>&nbsp;Alt マッピングは機能しないことがある。それはキーボードや端末に依存する。<br>
+<span class="Todo">Note</span>&nbsp;キーボードおよび端末によっては、Alt のマッピングは動作しないかもしれない<br>
+ことに注意。<br>
 <br>
-二番目の項目に複数の文字を指定することもできるが、一般的ではない。しか<br>
-し、文字を指定するのにいろいろな方法を使用して構わない:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; literal character<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;char-97&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; decimal value<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;char-0x61&gt;&nbsp;&nbsp;&nbsp;&nbsp; hexadecimal value<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;char-0141&gt;&nbsp;&nbsp;&nbsp;&nbsp; octal value<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;Space&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; special key name</div>
+2 番目のカラムに 2 つ以上の文字を置くこともできるが、これは普通ではない。しか<br>
+し、様々な方法で文字を指定できる:<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; リテラル文字<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;char-97&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10 進数の値<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;char-0x61&gt;&nbsp;&nbsp;&nbsp;&nbsp; 16 進数の値<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;char-0141&gt;&nbsp;&nbsp;&nbsp;&nbsp; 8 進数の値<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;Space&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 特別なキーの名前</div>
 <br>
-文字は現在の&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;と同じエンコーディングであるものとして扱われる。<br>
-&quot;:scriptencoding&quot; でリテラル文字のエンコーディングを指定することができるが、<br>
-<span class="Special">&lt;char-&gt;</span>表記の文字には影響しない。なぜなら、キーマップファイルのエンコーディン<br>
-グが変換されるのであって、<span class="Special">&lt;char-&gt;</span>の結果の文字は変換されないからである。<br>
+文字は、<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;の現在の値でエンコードされていると見なされる。全ての文字が<br>
+リテラルで与えられている時は、&quot;:scriptencoding&quot; を使用できる。変換は結果の文字<br>
+ではなく、キーマップファイルに対して行われるので、<span class="Special">&lt;char-&gt;</span>&nbsp;の構文を使用する時<br>
+は、それは動作しない。<br>
 <br>
-&quot;loadkeymap&quot; 以下の行は&nbsp;<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;に &quot;C&quot; を設定した状態で解釈される。つまり、<br>
-行の継続は使用されない。バックスラッシュは特殊文字として扱われる。例:<br>
+&quot;loadkeymap&quot; の後の行は、<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;を &quot;C&quot; に設定して解釈される。これは、継続<br>
+行が使用されず、バックスラッシュがマッピングの中で特別な意味を持つことを意味す<br>
+る。例:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; a comment line<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; を x へマップ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \ を y へマップ</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; コメント行<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; を x にマップする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \ を y にマップする</div>
 <br>
-他の人にも便利なキーマップファイルを作成したら、Vimの配布物に含めるために、Vim<br>
-のメンテナーに提出することを検討していただきたい:<br>
+他の人にも役に立つキーマップファイルを書いた場合は、配布物に含めるために Vim<br>
+のメンテナーに提出することを検討すること:<br>
 &lt;maintainer@vim.org&gt;<br>
 <br>
 <br>
 <span class="Statement">ヘブライ語キーマップ</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#keymap-hebrew" name="keymap-hebrew">keymap-hebrew</a><br>
 <br>
-このファイルはUTF-8とCP1255のエンコーディングで利用可能な文字と、その文字を入<br>
-力するためのキーマップを説明している:<br>
+このファイルは、UTF-8 および CP1255 のエンコーディングで使用可能な文字、および<br>
+それらの文字を得るためのキーマップが何であるかを説明する:<br>
 <br>
-<span class="PreProc">glyph&nbsp;&nbsp; encoding&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; keymap</span><br>
-<span class="PreProc">Char UTF-8 cp1255&nbsp;&nbsp;hebrew&nbsp;&nbsp;hebrewp&nbsp;&nbsp;name</span><br>
+<span class="PreProc">字形&nbsp;&nbsp;&nbsp;&nbsp;エンコーディング&nbsp;&nbsp; キーマップ</span><br>
+<span class="PreProc">文字 UTF-8 cp1255&nbsp;&nbsp;hebrew&nbsp;&nbsp;hebrewp&nbsp;&nbsp;名前</span><br>
 א&nbsp;&nbsp;&nbsp;&nbsp;0x5d0&nbsp;&nbsp;0xe0&nbsp;&nbsp;&nbsp;&nbsp; t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;&nbsp;&nbsp;&nbsp; 'alef<br>
 ב&nbsp;&nbsp;&nbsp;&nbsp;0x5d1&nbsp;&nbsp;0xe1&nbsp;&nbsp;&nbsp;&nbsp; c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp; bet<br>
 ג&nbsp;&nbsp;&nbsp;&nbsp;0x5d2&nbsp;&nbsp;0xe2&nbsp;&nbsp;&nbsp;&nbsp; d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g&nbsp;&nbsp;&nbsp;&nbsp; gimel<br>
@@ -1140,7 +1155,7 @@ IMEやXIMがオンのときのカーソルの色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 ש&nbsp;&nbsp;&nbsp;&nbsp;0x5e9&nbsp;&nbsp;0xf9&nbsp;&nbsp;&nbsp;&nbsp; a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;&nbsp;&nbsp;&nbsp; shin<br>
 ת&nbsp;&nbsp;&nbsp;&nbsp;0x5ea&nbsp;&nbsp;0xfa&nbsp;&nbsp;&nbsp;&nbsp; ,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t&nbsp;&nbsp;&nbsp;&nbsp; tav<br>
 <br>
-Vowel marks and special punctuation:<br>
+母音記号および特別な句読点:<br>
 הְ&nbsp;&nbsp;&nbsp;&nbsp;0x5b0&nbsp;&nbsp;0xc0&nbsp;&nbsp;&nbsp;&nbsp; A:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A:&nbsp;&nbsp; sheva<br>
 הֱ&nbsp;&nbsp;&nbsp;&nbsp;0x5b1&nbsp;&nbsp;0xc1&nbsp;&nbsp;&nbsp;&nbsp; HE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HE&nbsp;&nbsp; hataf segol<br>
 הֲ&nbsp;&nbsp;&nbsp;&nbsp;0x5b2&nbsp;&nbsp;0xc2&nbsp;&nbsp;&nbsp;&nbsp; HA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HA&nbsp;&nbsp; hataf patah<br>
@@ -1164,11 +1179,11 @@ Vowel marks and special punctuation:<br>
 ױ&nbsp;&nbsp;&nbsp;&nbsp;0x5f1&nbsp;&nbsp;0xd5&nbsp;&nbsp;&nbsp;&nbsp; VY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VY&nbsp;&nbsp; vav-yod<br>
 ײ&nbsp;&nbsp;&nbsp;&nbsp;0x5f2&nbsp;&nbsp;0xd6&nbsp;&nbsp;&nbsp;&nbsp; YY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YY&nbsp;&nbsp; yod-yod<br>
 <br>
-The following are only available in UTF-8<br>
+以下は UTF-8 でのみ使用可能である<br>
 <br>
-Cantillation marks:<br>
-glyph<br>
-Char UTF-8 hebrew name<br>
+カンティレーション記号:<br>
+字形<br>
+文字 UTF-8 hebrew 名前<br>
 ב֑&nbsp;&nbsp;&nbsp;&nbsp;0x591&nbsp;&nbsp; C:&nbsp;&nbsp; etnahta<br>
 ב֒&nbsp;&nbsp;&nbsp;&nbsp;0x592&nbsp;&nbsp; Cs&nbsp;&nbsp; segol<br>
 ב֓&nbsp;&nbsp;&nbsp;&nbsp;0x593&nbsp;&nbsp; CS&nbsp;&nbsp; shalshelet<br>
@@ -1191,7 +1206,7 @@ Char UTF-8 hebrew name<br>
 ב֮&nbsp;&nbsp;&nbsp;&nbsp;0x5ae&nbsp;&nbsp; Cn&nbsp;&nbsp; zinor<br>
 ב֯&nbsp;&nbsp;&nbsp;&nbsp;0x5af&nbsp;&nbsp; CC&nbsp;&nbsp; masora circle<br>
 <br>
-Combining forms:<br>
+結合形:<br>
 ﬠ&nbsp;&nbsp;&nbsp;&nbsp;0xfb20&nbsp;&nbsp;X`&nbsp;&nbsp; Alternative `ayin<br>
 ﬡ&nbsp;&nbsp;&nbsp;&nbsp;0xfb21&nbsp;&nbsp;X'&nbsp;&nbsp; Alternative 'alef<br>
 ﬢ&nbsp;&nbsp;&nbsp;&nbsp;0xfb22&nbsp;&nbsp;X-d&nbsp;&nbsp;Alternative dalet<br>
@@ -1237,11 +1252,11 @@ Combining forms:<br>
 ﭏ&nbsp;&nbsp;&nbsp;&nbsp;0xfb4f&nbsp;&nbsp;Xal&nbsp;&nbsp;alef-lamed<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-10. imactivatefunc() を使用した入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-func" name="mbyte-func">mbyte-func</a><br>
+10.&nbsp;&nbsp;imactivatefunc() による入力&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-func" name="mbyte-func">mbyte-func</a><br>
 <br>
-Vim には&nbsp;<a class="Type" href="options.html#'imactivatefunc'">'imactivatefunc'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'imstatusfunc'">'imstatusfunc'</a>&nbsp;オプションがある。これらは外部<br>
-コマンドやその他の方法によって Vim からインプットメソッドを有効/無効にするのに<br>
-便利である。例として、fcitx は fcitx-remote コマンドを提供する:<br>
+Vim には&nbsp;<a class="Type" href="options.html#'imactivatefunc'">'imactivatefunc'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'imstatusfunc'">'imstatusfunc'</a>&nbsp;オプションがある。これらは、外<br>
+部コマンドも含め、任意の方法で Vim からインプットメソッドを有効化/無効化するの<br>
+に便利である。例えば、fcitx は fcitx-remote コマンドを提供している:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set iminsert=2<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set imsearch=2<br>
@@ -1261,188 +1276,182 @@ Vim には&nbsp;<a class="Type" href="options.html#'imactivatefunc'">'imactivate
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return system('fcitx-remote')[0] is# '2'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endfunction</div>
 <br>
-このスクリプトを使うことによって、Vim が&nbsp;<a class="Identifier" href="various.html#+xim">+xim</a>&nbsp;付きでコンパイルされていない場<br>
-合でも XIM を有効/無効にすることができる。<br>
+このスクリプトを使用すると、Vim が&nbsp;<a class="Identifier" href="various.html#+xim">+xim</a>&nbsp;付きでコンパイルされていない時でも、<br>
+Vim を介して XIM を有効化/無効化できる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-11. UTF-8を使う (Using UTF-8)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-utf8" name="mbyte-utf8">mbyte-utf8</a>&nbsp;<a class="Constant" href="mbyte.html#UTF-8" name="UTF-8">UTF-8</a>&nbsp;<a class="Constant" href="mbyte.html#utf-8" name="utf-8">utf-8</a>&nbsp;<a class="Constant" href="mbyte.html#utf8" name="utf8">utf8</a><br>
+11. UTF-8 を使用する&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-utf8" name="mbyte-utf8">mbyte-utf8</a>&nbsp;<a class="Constant" href="mbyte.html#UTF-8" name="UTF-8">UTF-8</a>&nbsp;<a class="Constant" href="mbyte.html#utf-8" name="utf-8">utf-8</a>&nbsp;<a class="Constant" href="mbyte.html#utf8" name="utf8">utf8</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#Unicode" name="Unicode">Unicode</a>&nbsp;<a class="Constant" href="mbyte.html#unicode" name="unicode">unicode</a><br>
-Unicodeは、他の文字セットをすべて含むように設計された。そのため、どんな言語の<br>
-テキストでもUnicodeを使って書くことができる(希少な言語を除く)。そして、他のエ<br>
-ンコーディングでは混在させることが不可能な言語でも、一つのファイルに混在させる<br>
-ことが可能である。<br>
+Unicode 文字セットは、他の文字セットの全ての文字を含むように設計された。した<br>
+がって、Unicode を使用して任意の言語でテキストを書くことができる (いくつかのま<br>
+れにしか使用されない言語は除く)。そして、たいていはこれらの言語を 1 つのファイ<br>
+ルに混在させることができ、これは他のエンコーディングでは不可能である。<br>
 <br>
-Unicodeにはいくつかのエンコード法がある。もっとも一般的なのは、1文字を 1 また<br>
-は複数バイトで表わすUTF-8であり、ASCII と後方互換性がある。MS-Windowsでは<br>
-UTF-16 も使われる(以前は UCS-2 と呼ばれていた)。こちらは 16 ビットを基本単位と<br>
-する。Vimはこれらのエンコーディングすべてをサポートしているが、Vim で Unicode<br>
-を使う場合、内部では常に UTF-8 が使われている。<br>
+Unicode はいくつかの方法でエンコードできる。最もよく使われているものは UTF-8<br>
+であり、各文字に 1 バイト以上を使用し、ASCII と後方互換性がある。MS-Windows で<br>
+は UTF-16 (以前は UCS-2) も使用されており、16 ビットのワードを使用する。Vim は<br>
+これらの全てのエンコーディングをサポートできるが、内部では常に UTF-8 を使用す<br>
+る。<br>
 <br>
-Vimは幅広くUTF-8をサポートしており、それは以下の環境で機能する:<br>
-- UTF-8サポートが有効になっているxterm<br>
-- Motif、GTK の GUI<br>
+Vim には包括的な UTF-8 サポートがある。以下でうまく動作する:<br>
+- UTF-8 サポートが有効な xterm<br>
+- Motif および GTK GUI<br>
 - MS-Windows GUI<br>
-- その他いくつかのプラットフォーム<br>
+- いくつかの他のプラットフォーム<br>
 <br>
-全角文字は&nbsp;<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;や&nbsp;<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;を使うと最もうまく表示することができ<br>
-る。<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;だけを設定している場合は、全角文字は通常の幅で描画され、足りない<br>
-幅が空白で埋められる。<span class="Todo">Note:</span>&nbsp;オプション&nbsp;<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;はGTK+ 2 GUIでは使用しな<br>
-い。<br>
+2 倍幅の文字がサポートされている。これは&nbsp;<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;または&nbsp;<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;で<br>
+最もよく動作する。<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;だけを使用している時は、幅の広い文字は通常の幅で描<br>
+画され、隙間を埋めるためにスペースが置かれる。<span class="Todo">Note</span>&nbsp;<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;オプションは<br>
+GTK+ 2 GUI ではもはや関係ないことに注意。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#bom-bytes" name="bom-bytes">bom-bytes</a><br>
-ファイルを読み込むとき、BOM (Byte Order Mark)があれば、そのUnicodeエンコーディ<br>
-ングを判別するのに使われる:<br>
+ファイルを読み込む時、Unicode のエンコーディングを認識するために BOM (Byte<br>
+Order Mark) を使用できる:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EF BB BF&nbsp;&nbsp;&nbsp;&nbsp; UTF-8<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FE FF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UTF-16 big endian<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FF FE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UTF-16 little endian<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00 00 FE FF&nbsp;&nbsp;UTF-32 big endian<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FF FE 00 00&nbsp;&nbsp;UTF-32 little endian<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FE FF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UTF-16 ビッグエンディアン<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FF FE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UTF-16 リトルエンディアン<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00 00 FE FF&nbsp;&nbsp;UTF-32 ビッグエンディアン<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FF FE 00 00&nbsp;&nbsp;UTF-32 リトルエンディアン<br>
 <br>
-UTF-8 が推奨されているエンコーディングである。UTF-16 と UTF-32 を区別するのは<br>
-難しい。Windows ではUTF-16 がしばしば使われる。UTF-32 はファイルフォーマットと<br>
-しては広く使われていない。<br>
+UTF-8 が推奨されるエンコーディングである。<span class="Todo">Note</span>&nbsp;utf-16 と utf-32 を区別するのは<br>
+難しいことに注意。Utf-16 は MS-Windows でしばしば使用され、utf-32 はファイル形<br>
+式としては普及していない。<br>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-combining" name="mbyte-combining">mbyte-combining</a>&nbsp;<a class="Constant" href="mbyte.html#mbyte-composing" name="mbyte-composing">mbyte-composing</a><br>
-合成文字や結合文字を使うと、先行文字の意味を変えることができる。結合文字は先行<br>
-文字に重ねて描画される。<br>
-デフォルトで2文字までの結合文字を扱うことができる。この値はオプション<br>
-<a class="Type" href="options.html#'maxcombine'">'maxcombine'</a>&nbsp;で変更できる。<br>
-テキストの編集中は、合成文字は先行文字の一部として扱われる。例えば、初期設定で<br>
-は、&quot;x&quot; は文字を削除するときに、連なる合成文字をいっぺんに削除する。オプション<br>
-<a class="Type" href="options.html#'delcombine'">'delcombine'</a>&nbsp;がオンのときには、'x' は1回に1文字の結合文字を削除して、最後に基<br>
-底文字を削除する。入力するときには、まず1文字目を入力して、そして合成文字を入<br>
-力する。すると、文字が合成される。&quot;r&quot; コマンドを使って結合文字を入力することは<br>
-できない。結合文字がさらに入力されるかどうか知ることができないからである。代わ<br>
-りに &quot;R&quot; を使う。<br>
-<span class="Special">{訳注: combining character 結合文字</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">composing character 合成文字</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">base character&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;基底文字</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">preceding character 先行文字？}</span><br>
+合成文字または結合文字は、その前の文字の意味を変えるために使用される。結合文字<br>
+は前の文字の上に描画される。<br>
+デフォルトでは、最大 2 つの結合文字を使用できる。これは&nbsp;<a class="Type" href="options.html#'maxcombine'">'maxcombine'</a>&nbsp;オプショ<br>
+ンで変更できる。<br>
+テキストを編集する時は、合成文字はたいてい前の文字の一部と見なされる。例えば、<br>
+&quot;x&quot; はデフォルトで 1 文字とそれに続く合成文字を削除する。<br>
+<a class="Type" href="options.html#'delcombine'">'delcombine'</a>&nbsp;オプションがオンの場合、'x' を押すと結合文字が 1 つずつ削除され、<br>
+それから基底文字が削除される。しかし、挿入する時は、最初の文字とそれに続く合成<br>
+文字を別々にタイプし、その後それらは結合される。&quot;r&quot; コマンドは、結合文字が来る<br>
+ことを知らないので、結合文字をタイプすることを許さない。代わりに &quot;R&quot; を使用す<br>
+ること。<br>
 <br>
-UTF-8として不正なバイト列はそれぞれ1バイトの文字として扱われ、<span class="Special">&lt;xx&gt;</span>と表示され<br>
-る。この &quot;xx&quot; はそのバイトの16進数である。<br>
+有効な UTF-8 のバイトシーケンスの一部でないバイトは、1 つの文字のように扱われ、<br>
+<span class="Special">&lt;xx&gt;</span>&nbsp;として表示される。ここで &quot;xx&quot; はそのバイトの 16 進数の値である。<br>
 <br>
-Overlong sequenceに対して特別な処理はされない。通常の文字と同じように表示され<br>
-る。Overlong sequenceはどんな検索パターンにもマッチしないかもしれない。<br>
-(Overlong sequenceとは、文字を表すために必要なバイトよりも多くのバイトでその文<br>
-字を表現しているバイト列のこと。) &quot;<span class="Special">&lt;00&gt;</span>&quot; と表示されているNUL(zero)は例外。<br>
-<span class="Special">{訳注: たぶん、&quot;&lt;00&gt;&quot; と表示されてるOverlong sequenceだけはたとえ</span><a class="Identifier" href="pattern.html#/\_.">/\_.</a><span class="Special">でもマッ</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">チしないということ。}</span><br>
+冗長なシーケンスは特別に扱われず、有効な文字のように表示される。しかし、検索パ<br>
+ターンは冗長なシーケンスにマッチしないかもしれない。(冗長なシーケンスとは、そ<br>
+の文字に必要なよりも多くのバイトが使用されているものである。) 例外は NUL (ゼロ)<br>
+で、&quot;<span class="Special">&lt;00&gt;</span>&quot; として表示される。<br>
 <br>
-ファイルやバッファには、Unicodeで表現できる範囲(31ビット)の文字をすべて書くこ<br>
-とができる。ただし、それを表示できるのは使用フォントがその文字を提供している場<br>
-合のみ。<br>
+ファイルおよびバッファでは、Unicode の文字の全範囲 (31 ビット) を使用できる。<br>
+しかし、表示は選択されたフォントに存在する文字に対してのみ動作する。<br>
 <br>
 便利なコマンド:<br>
-- &quot;ga&quot; はカーソル位置の文字のコードを10進数、16進数、8進数で表示する。合成文字<br>
-&nbsp;&nbsp;も表示される。(表示が途切れてしまった場合は、&quot;:messages&quot; を使う)。<br>
-- &quot;g8&quot; は文字のUTF-8コードを16進数で表示する。合成文字も表示される。<br>
-- &quot;:set encoding=utf-8 fileencodings=&quot; とすると、すべてのファイルでUTF-8を使う<br>
-&nbsp;&nbsp;ように強制できる。<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;を現在のロケールに合わせて設定し、<br>
-&nbsp;&nbsp;<a class="Type" href="options.html#'fileencodings'">'fileencodings'</a>&nbsp;によって自動的にファイルのエンコーディングを判定するように設<br>
-&nbsp;&nbsp;定するのがデフォルトである。<br>
+- &quot;ga&quot; はカーソルの下の文字の 10 進数、16 進数および 8 進数の値を表示する。合<br>
+&nbsp;&nbsp;成文字がある場合は、これらも表示される。(メッセージが切り詰められた場合は、<br>
+&nbsp;&nbsp;&quot;:messages&quot; を使用すること)。<br>
+- &quot;g8&quot; は UTF-8 の文字に使用されているバイトを、合成文字も含めて、16 進数とし<br>
+&nbsp;&nbsp;て表示する。<br>
+- &quot;:set encoding=utf-8 fileencodings=&quot; は全てのファイルに UTF-8 を使用すること<br>
+&nbsp;&nbsp;を強制する。デフォルトでは、<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;に現在のロケールを使用し、ファイルの<br>
+&nbsp;&nbsp;エンコーディングを自動的に検出するように&nbsp;<a class="Type" href="options.html#'fileencodings'">'fileencodings'</a>&nbsp;を設定する。<br>
 <br>
 <br>
-<span class="Statement">Vimを起動する</span><br>
+<span class="Statement">Vim を起動する</span><br>
 <br>
-ロケールがUTF-8の場合、Vimは自動的にUTF-8モードで起動する。<br>
+現在のロケールが UTF-8 エンコーディングの場合、Vim は自動的に UTF-8 モードで起<br>
+動する。<br>
 <br>
-UTF-8以外のロケールを使っている場合はこのようにする:<br>
+別のロケールを使用している場合:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set encoding=utf-8</div>
 <br>
-メニューに使われるフォントを変える必要があるかもしれない。残念ながら、これはい<br>
-つもうまくいくとは限らない。システムに依存する説明は下記、または&nbsp;<a class="Type" href="options.html#'langmenu'">'langmenu'</a>&nbsp;を<br>
-参照。<br>
+メニューに使用されるフォントも選択したいかもしれない。残念ながら、これは常に動<br>
+作するわけではない。以下のシステム固有の注意および&nbsp;<a class="Type" href="options.html#'langmenu'">'langmenu'</a>&nbsp;を参照。<br>
 <br>
 <br>
-X-WindowでUTF-8を使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#utf-8-in-xwindows" name="utf-8-in-xwindows">utf-8-in-xwindows</a><br>
+<span class="Statement">X-WINDOWS で UTF-8 を使用する</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#utf-8-in-xwindows" name="utf-8-in-xwindows">utf-8-in-xwindows</a><br>
 <br>
-<span class="Todo">Note:</span>&nbsp;この項はGTK+ 2 GUIには当てはまらない。<br>
+<span class="Todo">Note:</span>&nbsp;この節は GTK+ 2 GUI には適用されない。<br>
 <br>
-使用するフォントを選択する必要がある。全角文字を表示するにはさらに別のフォント<br>
-が必要。設定するには次の三つの方法がある:<br>
+使用するフォントを指定する必要がある。2 倍幅の文字には、ちょうど 2 倍の幅の別<br>
+のフォントが必要である。これを行うには 3 つの方法がある:<br>
 <br>
-1.&nbsp;<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;を設定して、<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;はVimに設定させる<br>
-2.&nbsp;<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;と&nbsp;<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;を設定する<br>
+1.&nbsp;<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;を設定し、Vim にマッチする&nbsp;<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;を探させる<br>
+2.&nbsp;<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'guifontwide'">'guifontwide'</a>&nbsp;を設定する<br>
 3.&nbsp;<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;を設定する<br>
 <br>
-詳細は各オプションの説明を参照。例:<br>
+詳細は各オプションのドキュメントを参照。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp; :set guifont=-misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1</div>
 <br>
-メニューで使用されるフォントも変更することができる。これはMotifでのみ機能する。<br>
-&quot;:hi Menu font=<span class="Special">{fontname}</span>&quot; コマンドを使って設定する。<a class="Identifier" href="syntax.html#:highlight">:highlight</a><br>
+メニューに使用されるフォントも設定したいかもしれない。これは Motif でのみ動作<br>
+する。これには &quot;:hi Menu font=<span class="Special">{fontname}</span>&quot; コマンドを使用する。<a class="Identifier" href="syntax.html#:highlight">:highlight</a><br>
 <br>
 <br>
-<span class="Statement">UTF-8を入力する</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#utf-8-typing" name="utf-8-typing">utf-8-typing</a><br>
+<span class="Statement">UTF-8 をタイプする</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#utf-8-typing" name="utf-8-typing">utf-8-typing</a><br>
 <br>
-X-Window を使っている場合は、UTF-8 エンコーディングをサポートしているインプッ<br>
-トメソッドを使用する。<br>
+X-Windows を使用している場合、UTF-8 エンコーディングをサポートするインプットメ<br>
+ソッドを見つけるべきである。<br>
 <br>
-システムがUTF-8の入力をサポートしていない場合でも、<a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;を使って入力するこ<br>
-とができる。ASCII文字を複数入力することでUTF-8の文字を入力するようなキーマップ<br>
-ファイルを作ることができる。<a class="Identifier" href="mbyte.html#mbyte-keymap">mbyte-keymap</a>を参照。<br>
+システムが UTF-8 のタイプのサポートを提供していない場合、<a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;機能を使用で<br>
+きる。これにより、UTF-8 の文字を ASCII 文字の並びとして定義するキーマップファ<br>
+イルを書くことができる。<a class="Identifier" href="mbyte.html#mbyte-keymap">mbyte-keymap</a>&nbsp;を参照。<br>
 <br>
-他にも、XIMを利用することができる言語に、ロケールを設定する方法がある。その場<br>
-合は、<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;をその言語に設定する。Vimは入力された文字を&nbsp;<a class="Type" href="options.html#'termencoding'">'termencoding'</a><br>
-から&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;へ変換する。<br>
+別の方法は、現在のロケールを、使用したい言語であり、かつ XIM が使用可能な言語<br>
+に設定することである。それから、<a class="Type" href="options.html#'termencoding'">'termencoding'</a>&nbsp;をその言語に設定すると、Vim は<br>
+タイプされた文字を&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;に変換してくれる。<br>
 <br>
-すべての方法が使えなくても、4文字の16進数で文字コードを直接入力することができ<br>
+他の全てが失敗した場合は、任意の文字を 4 つの 16 進数のバイトとしてタイプでき<br>
 る:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL-V u 1234</div>
 <br>
-&quot;1234&quot; は16進数として解釈される。正しく4文字を入力しなくてはいけない。必要であ<br>
-ればゼロを前置する。<br>
+&quot;1234&quot; は 16 進数として解釈される。4 文字をタイプしなければならず、必要な場合<br>
+は 0 を前に付ける。<br>
+<br>
 <br>
 <span class="Statement">コマンド引数</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#utf-8-char-arg" name="utf-8-char-arg">utf-8-char-arg</a><br>
 <br>
-<a class="Identifier" href="motion.html#f">f</a>、<a class="Identifier" href="motion.html#F">F</a>、<a class="Identifier" href="motion.html#t">t</a>、<a class="Identifier" href="change.html#r">r</a>のようなコマンドは一つの文字を引数に取る。UTF-8では一文字か<br>
-二文字の合成文字の場合がある。Vimは合成文字の入力かどうかを調べるために次の入<br>
-力を待ったりはしないため、合成文字は基底文字と同時に入力する必要がある。そのよ<br>
-うな文字は&nbsp;<a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;や<a class="Identifier" href="map.html#:lmap">:lmap</a>を使うと簡単に入力することができる。<br>
+<a class="Identifier" href="motion.html#f">f</a>、<a class="Identifier" href="motion.html#F">F</a>、<a class="Identifier" href="motion.html#t">t</a>&nbsp;および&nbsp;<a class="Identifier" href="change.html#r">r</a>&nbsp;のようなコマンドは 1 文字の引数を取る。UTF-8 では、こ<br>
+の引数は 1 つまたは 2 つの合成文字を含んでもよい。これらは基底文字と一緒に入力<br>
+される必要があり、Vim は次の文字がタイプされるのを待って、それが合成文字かどう<br>
+かを調べることはしない。<a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;または&nbsp;<a class="Identifier" href="map.html#:lmap">:lmap</a>&nbsp;を使用するのは、これらの文字を<br>
+タイプする良い方法である。<br>
 <br>
-行内検索をするコマンド(<a class="Identifier" href="motion.html#f">f</a>など)は合成文字を次のように処理する。非合成文字を検<br>
-索するときは、合成されている文字とされていない文字の両方がマッチする。合成文字<br>
-を検索するときは、合成文字だけがマッチする。すべての人が合成文字を入力できるわ<br>
-けではないので、このようになっている。<br>
-<span class="Special">{訳注: 例えば、か(U+304B) + 濁点(U+3099) という合成文字は &quot;fか&quot; でマッチする}</span><br>
+行内の文字を検索するコマンドは、合成文字を以下のように扱う。合成文字なしの文字<br>
+を検索する時は、合成文字ありまたはなしのテキスト内のマッチが見つかる。合成文字<br>
+ありの文字を検索する時は、その合成文字を持つマッチだけが見つかる。誰もが合成文<br>
+字をタイプできるわけではないので、このように実装された。<br>
 <br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-12. 主なオプション (Overview of options)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-options" name="mbyte-options">mbyte-options</a><br>
+12. オプションの概要&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="mbyte.html#mbyte-options" name="mbyte-options">mbyte-options</a><br>
 <br>
-これらのオプションはマルチバイトテキストのファイルの編集に関係する。詳細は<br>
-options.txtの説明を参照。<br>
+これらのオプションはマルチバイトのファイルの編集に関係する。詳細な情報は<br>
+options.txt のヘルプを確認すること。<br>
 <br>
-<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キーボード入力や表示に使われるエンコーディング。これは新規ファ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;イルのエンコーディングの初期設定でもある。<br>
+<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キーボードおよびディスプレイに使用されるエンコーディング。これ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;はファイルのデフォルトのエンコーディングでもある。<br>
 <br>
-<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>&nbsp;&nbsp;ファイルのエンコーディング。<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;と違う場合、ファイルの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;読み書き時にエンコーディングが変換される。<br>
+<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>&nbsp;&nbsp;ファイルのエンコーディング。それが&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;と異なる時は、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルを読み込むか、または書き込む時に変換が行われる。<br>
 <br>
-<a class="Type" href="options.html#'fileencodings'">'fileencodings'</a>&nbsp;ファイルに使うことができるエンコーディングのリスト。ファイルを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;開くとき、リストの先頭から順番に変換を試して、エラーが起きな<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;かった最初のものが&nbsp;<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>&nbsp;として使われる。<br>
+<a class="Type" href="options.html#'fileencodings'">'fileencodings'</a>&nbsp;ファイルの可能なエンコーディングのリスト。ファイルを開く時、こ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れらが試され、エラーを起こさない最初のものが&nbsp;<a class="Type" href="options.html#'fileencoding'">'fileencoding'</a>&nbsp;に<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用される。<br>
 <br>
-<a class="Type" href="options.html#'charconvert'">'charconvert'</a>&nbsp;&nbsp; あるエンコーディングから別のエンコーディングへファイルを変換す<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る式。<br>
+<a class="Type" href="options.html#'charconvert'">'charconvert'</a>&nbsp;&nbsp; ファイルをあるエンコーディングから別のエンコーディングに変換す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;るのに使用される式。<br>
 <br>
-<a class="Type" href="options.html#'formatoptions'">'formatoptions'</a>&nbsp;このオプションにフラグ 'm' を含めると、フォーマット時に、(文字<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のコードが256以上の)マルチバイト文字のところで改行することがで<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;きる。これは、どこでも改行することができる言語を編集するときに<br>
+<a class="Type" href="options.html#'formatoptions'">'formatoptions'</a>&nbsp;'m' フラグを含めると、256 以上のマルチバイト文字で整形が行を分<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;割するようになる。これは、文字の並びをどこでも分割できる言語に<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;便利である。<br>
 <br>
-<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;&nbsp;&nbsp;&nbsp;マルチバイトエンコーディングの文字に使うフォントのリスト。この<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;オプションが設定されていれば&nbsp;<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;の代わりに使用される。<br>
+<a class="Type" href="options.html#'guifontset'">'guifontset'</a>&nbsp;&nbsp;&nbsp;&nbsp;マルチバイトエンコーディングに使用されるフォント名のリスト。こ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のオプションが空でない時は、<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;を置き換える。<br>
 <br>
 <a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キーボードマッピングの名前を指定する。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 <br>
-マルチバイト機能は、特に以下の方々の貢献による:<br>
+マルチバイト機能に特に貢献した人:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chi-Deok Hwang &lt;hwang@mizi.co.kr&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SungHyun Nam &lt;goweol@gmail.com&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;K.Nagano &lt;nagano@atese.advantest.co.jp&gt;<br>
