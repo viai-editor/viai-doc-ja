@@ -9,144 +9,140 @@ helpname: 'filetype'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
-ファイル形式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#filetype" name="filetype">filetype</a>&nbsp;<a class="Constant" href="filetype.html#file-type" name="file-type">file-type</a><br>
+ファイルタイプ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#filetype" name="filetype">filetype</a>&nbsp;<a class="Constant" href="filetype.html#file-type" name="file-type">file-type</a><br>
 <br>
-1. ファイル形式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="filetype.html#filetypes">filetypes</a><br>
-2. ファイル形式別プラグイン&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="filetype.html#filetype-plugins">filetype-plugins</a><br>
-3. 標準で付属する形式別プラグインの解説&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="filetype.html#ftplugin-docs">ftplugin-docs</a><br>
+1. ファイルタイプ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="filetype.html#filetypes">filetypes</a><br>
+2. ファイルタイププラグイン&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="filetype.html#filetype-plugins">filetype-plugins</a><br>
+3. デフォルトのファイルタイププラグインのドキュメント。&nbsp;<a class="Identifier" href="filetype.html#ftplugin-docs">ftplugin-docs</a><br>
 <br>
-<a class="Identifier" href="autocmd.html">autocmd.txt</a>も参照。<br>
+<a class="Identifier" href="autocmd.html">autocmd.txt</a>&nbsp;も参照。<br>
 <br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-1. ファイル形式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#filetypes" name="filetypes">filetypes</a>&nbsp;<a class="Constant" href="filetype.html#file-types" name="file-types">file-types</a><br>
+1. ファイルタイプ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#filetypes" name="filetypes">filetypes</a>&nbsp;<a class="Constant" href="filetype.html#file-types" name="file-types">file-types</a><br>
 <br>
-Vimは編集しているファイルの形式を検出することができる。これはファイル名をチェ<br>
-ックしたり、場合によってはファイル内に特定のテキストがあるかを調べることで実現<br>
-されている。<br>
+Vim は編集されるファイルのタイプを検出できる。これはファイル名をチェックし、時<br>
+にはファイルの内容を特定のテキストについて調べることで行われる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#:filetype" name=":filetype">:filetype</a>&nbsp;<a class="Constant" href="filetype.html#:filet" name=":filet">:filet</a><br>
-ファイル形式の検出を有効化するには、vimrcファイルでこのコマンドを使用する:<br>
+ファイルタイプ検出を有効にするには、vimrc でこのコマンドを使う:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:filetype on</div>
-新しいファイルや既存のファイルを編集する際には必ず、Vimはファイルの形式を認識<br>
-し&nbsp;<a class="Type" href="options.html#'filetype'">'filetype'</a>&nbsp;オプションを設定しようと試みる。それが構文強調やオプションの設<br>
-定、その他を行うために使われるFileTypeイベントのきっかけとなる。<br>
+新規または既存のファイルが編集されるたびに、Vim はファイルのタイプを認識しよう<br>
+とし、<a class="Type" href="options.html#'filetype'">'filetype'</a>&nbsp;オプションを設定する。これは FileType イベントを発生させ、こ<br>
+のイベントは構文ハイライトの設定、オプションの設定などに使用できる。<br>
 <br>
-<span class="Todo">NOTE:</span>&nbsp;Vi互換とは全てのオプションがグローバルであることを意味するので、ファイル<br>
-形式識別と&nbsp;<a class="Type" href="options.html#'compatible'">'compatible'</a>&nbsp;は同時に使うことはできない。既に&nbsp;<a class="Type" href="options.html#'compatible'">'compatible'</a>を設定し<br>
-ている場合には、それを解除する必要がある。<br>
+<span class="Todo">NOTE:</span>&nbsp;Vi 互換であることはオプションがグローバルであることを意味するので、ファ<br>
+イルタイプと&nbsp;<a class="Type" href="options.html#'compatible'">'compatible'</a>&nbsp;は一緒にはうまく動作しない。まだそうしていない場合<br>
+は、<a class="Type" href="options.html#'compatible'">'compatible'</a>&nbsp;をリセットすることを推奨する。<br>
 <br>
-詳細: &quot;:filetype on&quot; コマンドは次のファイルのうち1つをロードする。<br>
+詳細: &quot;:filetype on&quot; コマンドは、これらのファイルのうちの 1 つを読み込む:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Amiga&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $VIMRUNTIME/filetype.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mac&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $VIMRUNTIME:filetype.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS-Windows&nbsp;&nbsp;$VIMRUNTIME\filetype.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$VIMRUNTIME/filetype.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VMS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $VIMRUNTIME/filetype.vim<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このファイルはBufNewFileとBufReadイベントに対する自動実行コマンドを定<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;義するVim scriptファイルである。ファイル形式がファイル名から決定できな<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い時には、ファイルの内容を検出するために$VIMRUNTIME/scripts.vimが使用<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GUIで使用しているとき、またはGUIを開始しようとしているときには、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="gui.html#menu.vim">menu.vim</a>&nbsp;も読み込まれる。これを避けるには&nbsp;<a class="Identifier" href="options.html#'go-M'">'go-M'</a>&nbsp;を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このファイルは、BufNewFile および BufRead イベントに対する自動コマンド<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を定義する Vim script である。ファイルタイプが名前で見つからない場合、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルの内容からそれを検出するために、ファイル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$VIMRUNTIME/scripts.vim が使用される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GUI が実行中であるか、またはすぐに開始する場合、<a class="Identifier" href="gui.html#menu.vim">menu.vim</a>&nbsp;スクリプト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;も読み込まれる。それを避けることについては&nbsp;<a class="Identifier" href="options.html#'go-M'">'go-M'</a>&nbsp;を参照。<br>
 <br>
-独自のファイルタイプを追加するには、下の<a class="Identifier" href="filetype.html#new-filetype">new-filetype</a>を参照。あるファイルタイ<br>
-プについてのヘルプを検索するには、ファイルタイプ名の前に &quot;ft-&quot; をつけ、さらに<br>
-必要に応じて &quot;-syntax&quot;, &quot;-indent&quot;, &quot;-plugin&quot; をつける。例:<br>
+自分のファイルタイプを追加するには、以下の&nbsp;<a class="Identifier" href="filetype.html#new-filetype">new-filetype</a>&nbsp;を参照。ファイルタイ<br>
+プに関するヘルプを検索するには、&quot;ft-&quot; を前に付け、必要に応じて &quot;-syntax&quot;、<br>
+&quot;-indent&quot; または &quot;-plugin&quot; を後ろに付ける。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:help ft-vim-indent<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:help ft-vim-syntax<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:help ft-man-plugin</div>
 <br>
-ファイル形式を自動的に検出できなかった場合や、間違った形式になってしまった場合<br>
-には、<a class="Type" href="options.html#'filetype'">'filetype'</a>&nbsp;オプションを手動で設定するか、ファイルにモード行(modeline)を<br>
-追加する選択肢がある。例として、IDLファイルに設定するにはこのコマンドを使うか:<br>
-<br>
+ファイルタイプが自動的に検出されない場合、または間違ったタイプを検出した場合、<br>
+<a class="Type" href="options.html#'filetype'">'filetype'</a>&nbsp;オプションを手動で設定するか、またはファイルにモードラインを追加す<br>
+ることができる。例、IDL ファイルの場合は以下のコマンドを使う:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set filetype=idl</div>
 <br>
-この<a class="Identifier" href="options.html#modeline">modeline</a>をファイルに追加する:<br>
+またはファイルにこの&nbsp;<a class="Identifier" href="options.html#modeline">modeline</a>&nbsp;を追加する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/* vim&#0058; set filetype=idl : */</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#:filetype-plugin-on" name=":filetype-plugin-on">:filetype-plugin-on</a><br>
-ファイル形式別プラグインのロードを有効化するには:<br>
+特定のファイルタイプに対するプラグインファイルの読み込みを、以下で有効にできる:<br>
+<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:filetype plugin on</div>
-まだファイル形式検出が有効になっていない時には、同時に有効化される。<br>
-これは実際には&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;にある &quot;ftplugin.vim&quot; をロードする。<br>
-結果的にファイルが編集される時に対応するプラグインファイルがロードされる(ただ<br>
-し検出したファイル形式に合致するプラグインファイルがあった時のみ)。<br>
-<a class="Identifier" href="usr_43.html#filetype-plugin">filetype-plugin</a><br>
+ファイルタイプ検出がまだオンにされていない場合、それもオンにされる。<br>
+これは実際には&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;内のファイル &quot;ftplugin.vim&quot; を読み込む。<br>
+その結果、ファイルが編集されたときに、そのプラグインファイルが読み込まれる (検<br>
+出されたファイルタイプに対するものがある場合)。<a class="Identifier" href="usr_43.html#filetype-plugin">filetype-plugin</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#:filetype-plugin-off" name=":filetype-plugin-off">:filetype-plugin-off</a><br>
-ファイル形式別プラグインを無効化するには:<br>
+以下でそれを再び無効にできる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:filetype plugin off</div>
-ファイル形式の検出自体は無効にならない。しかしながらファイル形式の検出を無効に<br>
-した場合には、プラグインもロードされなくなる。<br>
-これは実際には&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;にある &quot;ftplugof.vim&quot; をロードする。<br>
+そのとき、ファイルタイプ検出はオフにされない。しかし、ファイルタイプ検出をオフ<br>
+にした場合は、プラグインも読み込まれない。<br>
+これは実際には&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;内のファイル &quot;ftplugof.vim&quot; を読み込む。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#:filetype-indent-on" name=":filetype-indent-on">:filetype-indent-on</a><br>
-ファイル形式別インデントのロードを有効化するには:<br>
+特定のファイルタイプに対するインデントファイルの読み込みを、以下で有効にできる:<br>
+<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:filetype indent on</div>
-まだファイル形式検出が有効になっていない時には、同時に有効化される。<br>
-これは実際には&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;にある &quot;indent.vim&quot; をロードする。<br>
-結果的にファイルが編集される時に対応するインデントファイルがロードされる(ただ<br>
-し検出したファイル形式に合致するインデントファイルがあった時のみ)。<br>
-<a class="Identifier" href="usr_43.html#filetype-plugin">filetype-plugin</a><br>
+ファイルタイプ検出がまだオンにされていない場合、それもオンにされる。<br>
+これは実際には&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;内のファイル &quot;indent.vim&quot; を読み込む。<br>
+その結果、ファイルが編集されたときに、そのインデントファイルが読み込まれる (検<br>
+出されたファイルタイプに対するものがある場合)。<a class="Identifier" href="indent.html#indent-expression">indent-expression</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#:filetype-indent-off" name=":filetype-indent-off">:filetype-indent-off</a><br>
-ファイル形式別インデントを無効化するには:<br>
+以下でそれを再び無効にできる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:filetype indent off</div>
-ファイル形式の検出自体は無効にならない。しかしながらファイル形式の検出を無効に<br>
-した場合には、インデントファイルもロードされなくなる。<br>
-これは実際には&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;にある &quot;indoff.vim&quot; をロードする。<br>
-そうすると、これから開くファイルに対して自動インデントが無効になる。すでに開い<br>
-ているファイルに対しては何も変わらない。すでに開いているファイルに対して自動イ<br>
-ンデントを無効にするには&nbsp;<a class="Type" href="options.html#'autoindent'">'autoindent'</a>,&nbsp;<a class="Type" href="options.html#'cindent'">'cindent'</a>,&nbsp;<a class="Type" href="options.html#'smartindent'">'smartindent'</a>,&nbsp;<a class="Type" href="options.html#'indentexpr'">'indentexpr'</a><br>
-をオフにする。<br>
+そのとき、ファイルタイプ検出はオフにされない。しかし、ファイルタイプ検出をオフ<br>
+にした場合は、インデントファイルも読み込まれない。<br>
+これは実際には&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;内のファイル &quot;indoff.vim&quot; を読み込む。<br>
+これは、これから開くファイルに対する自動インデントを無効にする。すでに開かれて<br>
+いるファイルでは動作し続ける。開かれているファイルでインデントを無効にするに<br>
+は、<a class="Type" href="options.html#'autoindent'">'autoindent'</a>、<a class="Type" href="options.html#'cindent'">'cindent'</a>、<a class="Type" href="options.html#'smartindent'">'smartindent'</a>&nbsp;および/または&nbsp;<a class="Type" href="options.html#'indentexpr'">'indentexpr'</a>&nbsp;をリセッ<br>
+トする。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#:filetype-off" name=":filetype-off">:filetype-off</a><br>
-ファイル形式の検出を無効にするには、次のコマンドを使用する:<br>
+ファイルタイプ検出を無効にするには、このコマンドを使う:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:filetype off</div>
-これはプラグイン(&quot;plugin&quot;)とインデント(&quot;indent&quot;)のフラグを保持はするが、ファイ<br>
-ル形式は検出されなくなるので、次に &quot;:filetype on&quot; をするまではそれらは動作しな<br>
-くなる。<br>
+これは &quot;plugin&quot; および &quot;indent&quot; のフラグを保持するが、ファイルタイプが検出され<br>
+なくなるので、次の &quot;:filetype on&quot; まではそれらは動作しない。<br>
 <br>
 <br>
 概要:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#:filetype-overview" name=":filetype-overview">:filetype-overview</a><br>
 <br>
 <span class="PreProc">コマンド&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;検出&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プラグイン&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;インデント</span><br>
-:filetype on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有効&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変化なし&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変化なし<br>
-:filetype off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 無効&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変化なし&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変化なし<br>
-:filetype plugin on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 有効&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有効&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変化なし<br>
-:filetype plugin off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変化なし&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;無効&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変化なし<br>
-:filetype indent on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 有効&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変化なし&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有効<br>
-:filetype indent off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変化なし&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変化なし&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;無効<br>
-:filetype plugin indent on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有効&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有効&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有効<br>
-:filetype plugin indent off&nbsp;&nbsp;&nbsp;&nbsp; 変化なし&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;無効&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;無効<br>
+:filetype on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変更なし&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変更なし<br>
+:filetype off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 変更なし&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変更なし<br>
+:filetype plugin on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変更なし<br>
+:filetype plugin off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変更なし&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 変更なし<br>
+:filetype indent on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変更なし&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on<br>
+:filetype indent off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変更なし&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変更なし&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;off<br>
+:filetype plugin indent on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on<br>
+:filetype plugin indent off&nbsp;&nbsp;&nbsp;&nbsp; 変更なし&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; off<br>
 <br>
-現在の状態を知るには次のようにタイプする:<br>
+現在の状態を見るには、以下を入力する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:filetype</div>
-このような出力が得られる:<br>
+出力はおおよそこのようになる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filetype detection:ON&nbsp;&nbsp;plugin:ON&nbsp;&nbsp;indent:OFF</div>
 <br>
-ファイル形式は構文強調にも利用される。&quot;:syntax on&quot; コマンドが使用されると、ファ<br>
-イル形式検出もインストールされる。&quot;:syntax on&quot; の後に &quot;:filetype on&quot; を実行す<br>
-る必要はない。<br>
+ファイルタイプは構文ハイライトにも使用される。&quot;:syntax on&quot; コマンドが使用され<br>
+た場合、ファイルタイプ検出もインストールされる。&quot;:syntax on&quot; の後に<br>
+&quot;:filetype on&quot; を実行する必要はない。<br>
 <br>
-特定のファイル形式を無効にするには、自分のファイル形式ファイルに1行追加する。<br>
-<a class="Identifier" href="filetype.html#remove-filetype">remove-filetype</a>参照。<br>
+ファイルタイプの 1 つを無効にするには、自分のファイルタイプファイルに 1 行を追<br>
+加する、<a class="Identifier" href="filetype.html#remove-filetype">remove-filetype</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#filetype-detect" name="filetype-detect">filetype-detect</a><br>
-再びファイル検出を有効化するには:<br>
+ファイルタイプを再度検出するには:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:filetype detect</div>
-空のファイルから編集を始めて、ファイル形式を判定するのに充分なテキストをタイプ<br>
-してからコレを使用する。例えば、シェルスクリプトの中で &quot;#!/bin/csh&quot; を入力して<br>
-からということ。<br>
-&nbsp;&nbsp; ファイル形式検出が無効になっていた時には、引数 &quot;on&quot; が指定された時のように、<br>
-初めに有効化される。<br>
+空のファイルで開始し、ファイルタイプの検出を可能にするテキストを入力した場合<br>
+に、これを使う。例えば、シェルスクリプトでこれを入力したとき: &quot;#!/bin/csh&quot;。<br>
+&nbsp;&nbsp; ファイルタイプ検出がオフだった場合、&quot;on&quot; 引数が使用されたかのように、まずそ<br>
+&nbsp;&nbsp; れが有効にされる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#filetype-overrule" name="filetype-overrule">filetype-overrule</a><br>
-同じ拡張子が複数のファイル形式で使用されている時には、Vimはファイルがどのよう<br>
-な種類であるかを推測する。これは常に動作するわけではない。ある拡張子に対してど<br>
-のファイル形式を使うか明示的に指定するのに、幾つかのグローバル変数を使うことが<br>
-できる:<br>
+同じ拡張子が複数のファイルタイプに使用されている場合、Vim はそれがどの種類の<br>
+ファイルかを推測しようとする。これは常にうまくいくとは限らない。特定の拡張子に<br>
+使用されるファイルタイプを上書きするために、いくつかのグローバル変数を使用でき<br>
+る:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">ファイル名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;変数</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*.al&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:filetype_al<br>
@@ -200,69 +196,67 @@ Vimは編集しているファイルの形式を検出することができる�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*.v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; g:filetype_v<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*.w&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; g:filetype_w&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="syntax.html#ft-cweb-syntax">ft-cweb-syntax</a><br>
 <br>
-いくつかのファイル形式のグローバル変数はファイル形式を検知できなかったときのみ<br>
-使用される:<br>
+いくつかのファイルタイプでは、ファイルタイプが検出できなかった場合にのみ、グ<br>
+ローバル変数が使用される:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*.r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; g:filetype_r&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="syntax.html#ft-rexx-syntax">ft-rexx-syntax</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#filetype-ignore" name="filetype-ignore">filetype-ignore</a><br>
-特定のファイルが検査されないようにするには、g:ft_ignore_pat 変数を使う。この変<br>
-数はデフォルトで次のように設定されている。<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let g:ft_ignroe_pat = '\.\(Z\|gz\|bz2\|zip\|tgz\)$'</div>
-この設定は圧縮ファイルを検査しないようにしている。<br>
+特定のファイルが調べられるのを避けるために、g:ft_ignore_pat 変数が使用される。<br>
+デフォルト値はこのように設定される:<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let g:ft_ignore_pat = '\.\(Z\|gz\|bz2\|zip\|tgz\)$'</div>
+これは、圧縮されたファイルの内容は調べられないことを意味する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#new-filetype" name="new-filetype">new-filetype</a><br>
-使いたいファイル形式がVimに検出されない(存在しない)場合には、その形式を追加す<br>
-る4つの方法がある。どちらにせよファイル$VIMRUNTIME/filetype.vimは変更するべき<br>
-ではない。そのファイルは新しいVimをインストールする際に上書されるのだから。<br>
+使用したいファイルタイプがまだ検出されない場合、それを追加する方法は 4 つある。<br>
+いずれの方法でも、$VIMRUNTIME/filetype.vim ファイルは変更しないほうがよい。そ<br>
+れは Vim の新しいバージョンをインストールするときに上書きされる。<br>
 <br>
-A. デフォルトのファイルタイプの検査をくつがえす。<br>
-&nbsp;&nbsp; この方法はファイルタイプごとにファイルを作ることで機能する。不便な点は<br>
-&nbsp;&nbsp; ファイルがたくさんになってしまうこと。便利な点は適切なディレクトリにファ<br>
-&nbsp;&nbsp; イルを置くだけで機能すること。<br>
+A. すべてのデフォルトのファイルタイプチェックを上書きしたい場合。<br>
+&nbsp;&nbsp; これは、ファイルタイプごとに 1 つのファイルを書くことで動作する。欠点は、多<br>
+&nbsp;&nbsp; くのファイルが存在しうることである。利点は、このファイルを正しいディレクト<br>
+&nbsp;&nbsp; リに置くだけで動作させられることである。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ftdetect" name="ftdetect">ftdetect</a><br>
-&nbsp;&nbsp; 1. ユーザーランタイムディレクトリを作成する。通常は&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;オプション<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に記載される最初の項目を使えば良い。次にそのディレクトリに &quot;ftdetect&quot; と<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いうディレクトリを作成する。UNIXを例に挙げる:<br>
+&nbsp;&nbsp; 1. ユーザーランタイムディレクトリを作成する。通常は&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;オプショ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンの最初の項目を使用することになる。それから、その中にディレクトリ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;ftdetect&quot; を作成する。Unix での例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!mkdir ~/.vim<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!mkdir ~/.vim/ftdetect</div>
 <br>
-&nbsp;&nbsp; 2. ファイル形式を検出する自動実行コマンドを含むファイルを作成する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例:<br>
+&nbsp;&nbsp; 2. ファイルタイプを検出する自動コマンドを含むファイルを作成する。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;au BufRead,BufNewFile *.mine&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set filetype=mine</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>&nbsp;&quot;augroup&quot; コマンドは要らない。そのファイルを読み込むときに既に定<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;義されている。パターンに &quot;*&quot; を使いファイルの内容から判断することもで<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;きる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;そのファイルを例えば &quot;mine.vim&quot; という名前で先程の &quot;ftdetect&quot; ディレク<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;トリに保存する。UNIXを例に挙げる:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>&nbsp;&quot;augroup&quot; コマンドが無いことに注意、これはファイルを読み込むときに<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;すでに行われている。パターン &quot;*&quot; を使用し、それからファイルの内容をチェッ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;クしてそれを認識することもできる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このファイルを &quot;mine.vim&quot; として、ユーザーランタイムディレクトリ内の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;ftdetect&quot; ディレクトリに書き込む。例えば Unix の場合:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:w ~/.vim/ftdetect/mine.vim</div>
 <br>
-&nbsp;&nbsp; 3. 新しいファイル形式の検出を有効化するにはVimを再起動しなければならない。<br>
+&nbsp;&nbsp;&nbsp;3. 新しいファイルタイプ検出を使用するには、Vim を再起動しなければならない。<br>
 <br>
-&nbsp;&nbsp; &quot;ftdetect&quot; ディレクトリの中のファイルはデフォルトの検査のあとに使われるの<br>
-&nbsp;&nbsp; で、それ以前に決定したファイルタイプを変更することができる。しかしここで<br>
-&nbsp;&nbsp;&nbsp;<a class="Identifier" href="options.html#:setfiletype">:setfiletype</a>を使えば、それ以前に決定したファイルタイプをそのままにしてお<br>
-&nbsp;&nbsp; くこともできる。<br>
+&nbsp;&nbsp; &quot;ftdetect&quot; ディレクトリ内のファイルはすべてのデフォルトのチェックの後に使用<br>
+&nbsp;&nbsp; されるので、以前に検出されたファイルタイプを上書きできる。しかし、以前に検<br>
+&nbsp;&nbsp; 出されたファイルタイプを保持するために、<a class="Identifier" href="options.html#:setfiletype">:setfiletype</a>&nbsp;を使用することもでき<br>
+&nbsp;&nbsp; る。<br>
 <br>
-B. デフォルトのファイルタイプの検査の後にファイルタイプを決定する。<br>
+B. デフォルトのファイルタイプチェックの後に自分のファイルを検出したい場合。<br>
 <br>
-&nbsp;&nbsp; 上と同様。ただし、無条件に&nbsp;<a class="Type" href="options.html#'filetype'">'filetype'</a>&nbsp;を設定する代わりに、':setfiletype' を<br>
-&nbsp;&nbsp; 使う。これはファイルタイプがまだ認識されていないときだけ&nbsp;<a class="Type" href="options.html#'filetype'">'filetype'</a>&nbsp;を設定<br>
-&nbsp;&nbsp; する。次に例を示す。<br>
+&nbsp;&nbsp; これは上記の A のように動作するが、<a class="Type" href="options.html#'filetype'">'filetype'</a>&nbsp;を無条件に設定する代わりに<br>
+&nbsp;&nbsp; &quot;:setfiletype&quot; を使用する。これはまだファイルタイプが検出されていない場合に<br>
+&nbsp;&nbsp; のみ&nbsp;<a class="Type" href="options.html#'filetype'">'filetype'</a>&nbsp;を設定する。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;au BufRead,BufNewFile *.txt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setfiletype text</div>
 <br>
-&nbsp;&nbsp; すでに認識されたファイルタイプをコマンドから使うことができる。例えば、ファ<br>
-&nbsp;&nbsp; イルタイプが &quot;pascal&quot; だった時にファイルタイプを &quot;mypascal&quot; に設定するには:<br>
+&nbsp;&nbsp; コマンド内で、すでに検出されたファイルタイプを使用することもできる。例えば、<br>
+&nbsp;&nbsp; &quot;pascal&quot; が検出されたときにファイルタイプ &quot;mypascal&quot; を使用するには:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;au BufRead,BufNewFile *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if &amp;ft == 'pascal' | set ft=mypascal<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | endif</div>
 <br>
-C. ファイル形式が名前だけで検出できる場合。<br>
-&nbsp;&nbsp; 1. ユーザーランタイムディレクトリを作成する。通常は&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;オプション<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に記載される最初の項目を使えば良い。UNIXを例に挙げる:<br>
+C. ファイルタイプがファイル名で検出できる場合。<br>
+&nbsp;&nbsp; 1. ユーザーランタイムディレクトリを作成する。通常は&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;オプショ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンの最初の項目を使用することになる。Unix での例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!mkdir ~/.vim</div>
 <br>
-&nbsp;&nbsp; 2. ファイル形式を検出する自動実行コマンドを含むファイルを作成する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 独自の filetype ファイル<br>
+&nbsp;&nbsp; 2. ファイルタイプを検出する自動コマンドを含むファイルを作成する。例:<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; 自分のファイルタイプファイル<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if exists(&quot;did_load_filetypes&quot;)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finish<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif<br>
@@ -270,215 +264,216 @@ C. ファイル形式が名前だけで検出できる場合。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;au! BufRead,BufNewFile *.mine&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setfiletype mine<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;au! BufRead,BufNewFile *.xyz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setfiletype drawing<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;augroup END</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; このファイルを &quot;filetype.vim&quot; としてユーザーランタイムディレクトリに保存<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。UNIXを例にあげる:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; このファイルを &quot;filetype.vim&quot; としてユーザーランタイムディレクトリに書き<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;込む。例えば Unix の場合:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:w ~/.vim/filetype.vim</div>
 <br>
-&nbsp;&nbsp; 3. 新しいファイル形式の検出を有効化するためにVimを再起動する。<br>
+&nbsp;&nbsp;&nbsp;3. 新しいファイルタイプ検出を使用するには、Vim を再起動しなければならない。<br>
 <br>
-&nbsp;&nbsp; 作成したfiletype.vimはデフォルトのFileType自動実行コマンドがインストールさ<br>
-&nbsp;&nbsp; れる前に読み込まれる。そのため新しく作成した自動実行コマンドが先に適合し、<br>
-&nbsp;&nbsp; &quot;:setfiletype&quot; コマンドがこれ以後に他の自動実行コマンドにより&nbsp;<a class="Type" href="options.html#'filetype'">'filetype'</a>&nbsp;が<br>
-&nbsp;&nbsp; 設定されないことを保証する。<br>
+&nbsp;&nbsp; 自分の filetype.vim は、デフォルトの FileType 自動コマンドがインストールさ<br>
+&nbsp;&nbsp; れる前に読み込まれる。自分の自動コマンドが先にマッチし、&quot;:setfiletype&quot; コマ<br>
+&nbsp;&nbsp; ンドが、この後に他の自動コマンドが&nbsp;<a class="Type" href="options.html#'filetype'">'filetype'</a>&nbsp;を設定しないことを保証する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#new-filetype-scripts" name="new-filetype-scripts">new-filetype-scripts</a><br>
-D. ファイル形式がファイルの内容を調べる事によってのみ検出可能な場合。<br>
+D. ファイルタイプがファイルの内容を調べることでしか検出できない場合。<br>
 <br>
-&nbsp;&nbsp; 1. ユーザーランタイムディレクトリを作成する。通常は&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;オプション<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に記載される最初の項目を使えば良い。UNIXを例に挙げる:<br>
+&nbsp;&nbsp; 1. ユーザーランタイムディレクトリを作成する。通常は&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;オプショ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンの最初の項目を使用することになる。Unix での例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:!mkdir ~/.vim</div>
 <br>
-&nbsp;&nbsp; 2. ファイルの内容で形式を決定する Vim script を作成する。例:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if did_filetype()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; 既にファイル形式が決定している<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finish&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ..その時はこのチェックは行わない<br>
+&nbsp;&nbsp; 2. これを行うための Vim script ファイルを作成する。例:<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if did_filetype()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; ファイルタイプはすでに設定済み..<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finish&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ..これらのチェックは行わない<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if getline(1) =~ '^#!.*\&lt;mine\&gt;'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setfiletype mine<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elseif getline(1) =~? '\&lt;drawing\&gt;'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setfiletype drawing<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; より多くの例については$VIMRUNTIME/scripts.vimを参照。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このファイルを &quot;scripts.vim&quot; としてユーザーランタイムディレクトリに保存<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。UNIXを例に挙げる:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; さらなる例は $VIMRUNTIME/scripts.vim を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このファイルを &quot;scripts.vim&quot; としてユーザーランタイムディレクトリに書き<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;込む。例えば Unix の場合:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:w ~/.vim/scripts.vim</div>
 <br>
-&nbsp;&nbsp; 3. これだけで検出は正しく動作し、Vimを再起動する必要は無い。<br>
+&nbsp;&nbsp; 3. 検出はすぐに動作し、Vim を再起動する必要はない。<br>
 <br>
-&nbsp;&nbsp; 新しく作成したscripts.vimはデフォルトのファイル形式チェックの前に読み込まれ<br>
-&nbsp;&nbsp; るので、$VIMRUNTIME/scripts.vimに書かれたデフォルトの判定規則を上書きするこ<br>
-&nbsp;&nbsp; とができる。<br>
+&nbsp;&nbsp; 自分の scripts.vim はファイルタイプのデフォルトのチェックの前に読み込まれ<br>
+&nbsp;&nbsp; る。これは、自分のルールが $VIMRUNTIME/scripts.vim 内のデフォルトのルールを<br>
+&nbsp;&nbsp; 上書きすることを意味する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#remove-filetype" name="remove-filetype">remove-filetype</a><br>
-ファイル形式が誤って検出されたならば、(上を参考に)それを補正するfiletype.vimか<br>
-scripts.vimをインストールする。<a class="Type" href="options.html#'filetype'">'filetype'</a>&nbsp;に存在しない形式の名前を設定すれば、<br>
-それ以降の検出スクリプトで別の値が設定されてしまうのを避けることができる:<br>
+自分にとって間違ったファイルタイプが検出される場合、それを捕らえるために<br>
+filetype.vim または scripts.vim をインストールする (上記を参照)。後でいずれに<br>
+せよ設定されるのを避けるために、<a class="Type" href="options.html#'filetype'">'filetype'</a>&nbsp;を存在しない名前に設定できる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set filetype=ignored</div>
 <br>
-複数人で使用する環境を設定していて、個々のユーザーにはファイル形式を追加/削除<br>
-させたくないならば、ランタイムディレクトリに置いて全ユーザーが共有するように<br>
-filetype.vimとscripts.vimを書く必要がある。そのスクリプトを置くディレクトリに<br>
-は&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の示すうちのどれか1つを選択する。<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の中に設定を置<br>
-きたいディレクトリが見あたらなければ、<a class="Identifier" href="starting.html#system-vimrc">system-vimrc</a>内で正しく追加する必要があ<br>
-る。既に設定されているデフォルトのディレクトリを変更しないように注意。<br>
+多くのユーザーがいるシステムを設定していて、各ユーザーに同じファイルタイプを追<br>
+加/削除させたくない場合、全員に使用されるランタイムディレクトリに filetype.vim<br>
+および scripts.vim ファイルを書くことを検討すること。使用するディレクトリにつ<br>
+いては&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;を確認すること。それが無い場合、<a class="Identifier" href="starting.html#system-vimrc">system-vimrc</a>&nbsp;で<br>
+<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;を設定する。デフォルトのディレクトリを保持するよう注意すること!<br>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#autocmd-osfiletypes" name="autocmd-osfiletypes">autocmd-osfiletypes</a><br>
-<span class="Todo">NOTE:</span>&nbsp;RISC OS サポートが削除されたため、このコードは現在無効化されている。将来<br>
-これは&nbsp;<a class="Type" href="options.html#'filetype'">'filetype'</a>&nbsp;オプションを使用することになるだろう。<br>
+<span class="Todo">NOTE:</span>&nbsp;RISC OS の実装が削除されたので、このコードは現在無効になっている。将来、<br>
+これは&nbsp;<a class="Type" href="options.html#'filetype'">'filetype'</a>&nbsp;オプションを使用するようになる。<br>
 <br>
-ファイルと共に「形式」を記録できるオペレーティングシステム(OS)では、ファイルが<br>
-ある「形式」だった時にだけ実行される自動コマンドを設定することができる。<br>
+ファイルと一緒にファイルタイプを格納することをサポートするオペレーティングシス<br>
+テムでは、ファイルが特定のタイプの場合にのみ自動コマンドが実行されるべきである<br>
+ことを指定できる。<br>
 <br>
-実際の「形式」チェックはVimをどのプラットフォームで使用しているかに依存する;<br>
-詳細は使用しているシステムの解説書を参照のこと。<br>
+実際のタイプチェックは、どのプラットフォームで Vim を実行しているかに依存する。<br>
+詳細はシステムのドキュメントを参照。<br>
 <br>
-OSによる「形式」を利用するには自動実行コマンドの検出パターンの場所に、次の例に<br>
-示すように折カッコで囲んだ検出させたい「形式」のリストを書く:<br>
+自動コマンドで osfiletype チェックを使用するには、パターンの代わりに、マッチす<br>
+るタイプのリストを山括弧で囲んで置くべきである、このように:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:au BufRead *.html,&lt;&amp;faf;HTML&gt;&nbsp;&nbsp;runtime! syntax/html.vim</div>
 <br>
-これは以下に適合する:<br>
+これは以下にマッチする:<br>
 <br>
-- ファイル名が &quot;.html&quot; で終了するあらゆるファイル<br>
-- 「形式」が &quot;&amp;faf&quot; か &quot;HTML&quot; である全てのファイル。ただしここでいう「形式」と<br>
-&nbsp;&nbsp;はVimのバージョン(稼動しているOS)によって定義される。未知の形式は適合しない<br>
-&nbsp;&nbsp;とみなされる。<br>
+- 名前が &quot;.html&quot; で終わるすべてのファイル<br>
+- タイプが &quot;&amp;faf&quot; または &quot;HTML&quot; であるすべてのファイル、ここで、これらのタイプ<br>
+&nbsp;&nbsp;の意味はどのバージョンの Vim を使用しているかに依存する。<br>
+&nbsp;&nbsp;未知のタイプはマッチしないと見なされる。<br>
 <br>
-「形式」とパターンを同時に指定することもできる (そのような場合には、両方共マッ<br>
-チする必要がある):<br>
+タイプとパターンを同時に指定することもできる (この場合は両方がマッチしなければ<br>
+ならない):<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:au BufRead &lt;&amp;fff&gt;diff*</div>
 <br>
-これは「形式」が &quot;&amp;fff&quot; で名前が &quot;diff&quot; で始まるファイルに適合する。<br>
+これは、名前が &quot;diff&quot; で始まるタイプ &quot;&amp;fff&quot; のファイルにマッチする。<br>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#plugin-details" name="plugin-details">plugin-details</a><br>
-&quot;plugin&quot; ディレクトリは&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;オプションに示されているならば、どのディ<br>
-レクトリに置いても良い。そこに示された全てのディレクトリにあるプラグインが検索<br>
-され読み込まれる。例えば、次のコマンドを実行すると:<br>
+&quot;plugin&quot; ディレクトリは&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;オプション内のどのディレクトリにあっても<br>
+よい。これらのディレクトリはすべてプラグインが検索され、それらはすべて読み込ま<br>
+れる。例えば、このコマンドが:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set runtimepath</div>
 <br>
-次の内容が出力される:<br>
+この出力を生成する場合:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">runtimepath=/etc/vim,~/.vim,/usr/local/share/vim/vim82</span><br>
 <br>
-この時Vimは以下に示すディレクトリとそれ以下にある全てのプラグインを読み込む:<br>
+Vim はこれらのディレクトリおよびその下にあるすべてのプラグインを読み込む:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/etc/vim/plugin/&nbsp;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">~/.vim/plugin/&nbsp;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">/usr/local/share/vim/vim82/plugin/&nbsp;</span><br>
 <br>
-最後の1つは$VIMRUNTIMEが展開されたものであることに注意。<br>
+<span class="Todo">Note</span>&nbsp;最後のものは展開された $VIMRUNTIME の値であることに注意。<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;プラグインマネージャーや&nbsp;<a class="Identifier" href="repeat.html#packages">packages</a>&nbsp;を使っている場合、たくさんのディレク<br>
-トリが&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;に追加される。これらのプラグインはそれぞれに自分用のディ<br>
-レクトリが必要であり、~/.vim/plugin に直接置いてはいけない。<br>
+<span class="Todo">Note</span>&nbsp;プラグインマネージャーまたは&nbsp;<a class="Identifier" href="repeat.html#packages">packages</a>&nbsp;を使用する場合、多くのディレクト<br>
+リが&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;に追加されることに注意。これらのプラグインはそれぞれ独自の<br>
+ディレクトリを必要とする、それらを直接 ~/.vim/plugin に置かないこと。<br>
 <br>
-プラグインが読み込まれていないらしい場合はどうすれば良いのか? Vim起動時に<a class="Identifier" href="starting.html#-V">-V</a><br>
-引数を使用すれば何が起こっているか知ることができる:<br>
+プラグインが読み込まれていないように見える場合はどうするか?&nbsp;<a class="Identifier" href="starting.html#-V">-V</a>&nbsp;引数を使用す<br>
+ることで、Vim の起動時に何が起こるかを調べることができる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim -V2</div>
 <br>
-多くのメッセージが表示されるが、プラグインの読み込みの前には特定の記述がなされ<br>
-る。それは次のように始まる:<br>
+多くのメッセージが表示され、その中にプラグインの読み込みに関する記述がある。そ<br>
+れは以下で始まる:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Searching for &quot;plugin/**/*.vim&quot; in</span><br>
 <br>
-これを見ればVimがプラグインスクリプトをどこから探しているのかがわかる。<br>
+そこで Vim がプラグインスクリプトを探す場所を確認できる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-2. ファイル形式別プラグイン&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#filetype-plugins" name="filetype-plugins">filetype-plugins</a><br>
+2. ファイルタイププラグイン&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#filetype-plugins" name="filetype-plugins">filetype-plugins</a><br>
 <br>
-ファイル形式プラグインが有効になっていれば<a class="Identifier" href="filetype.html#:filetype-plugin-on">:filetype-plugin-on</a>、プラグイン読<br>
-込時にオプションが設定されキーマップが定義される。それらは全てバッファローカル<br>
-で、他のファイルに対しては決して作用しない。<br>
+ファイルタイププラグインの読み込みが有効にされているとき<br>
+<a class="Identifier" href="filetype.html#:filetype-plugin-on">:filetype-plugin-on</a>、オプションが設定され、マッピングが定義される。これらは<br>
+すべてバッファローカルであり、他のファイルには使用されない。<br>
 <br>
-ファイル形式により定義されるキーマップが自分で定義したキーマップの邪魔になるこ<br>
-ともあり得る。幾つかこれを回避する方法がある:<br>
-1. &quot;maplocalleader&quot; にキーマップの先頭に使用するキーシーケンスを設定する。例:<br>
+ファイルタイプに対するマッピングを定義すると、自分で定義したマッピングの邪魔に<br>
+なることがある。これを避けるにはいくつかの方法がある:<br>
+1. &quot;maplocalleader&quot; 変数を、マッピングの開始にしたいキーシーケンスに設定する。<br>
+&nbsp;&nbsp; 例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let maplocalleader = &quot;,&quot;</div>
-&nbsp;&nbsp;&nbsp;デフォルトのバックスラッシュ(\ 記号)に替えてコンマが全てのマップの始まりの<br>
-&nbsp;&nbsp; キーになる。<a class="Identifier" href="map.html#<LocalLeader>">&lt;LocalLeader&gt;</a>も参照。<br>
+&nbsp;&nbsp;&nbsp;そうすると、すべてのマッピングは、デフォルトであるバックスラッシュの代わり<br>
+&nbsp;&nbsp; にコンマで始まるようになる。<a class="Identifier" href="map.html#<LocalLeader>">&lt;LocalLeader&gt;</a>&nbsp;も参照。<br>
 <br>
-2. 独自のマップを定義する。例:<br>
+2. 自分のマッピングを定義する。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:map ,p &lt;Plug&gt;MailQuote</div>
-&nbsp;&nbsp;&nbsp;どのような機能が提供され、それにどのような文字列がキーマップされているのか、<br>
-&nbsp;&nbsp; プラグインファイルの説明をチェックする必要がある。<br>
-&nbsp;&nbsp; 独自のキーマップはプラグインが読み込まれる (つまりその形式のファイルが読み<br>
-&nbsp;&nbsp; 込まれる) 前に定義する必要がある。そうすればプラグインはデフォルトキーマッ<br>
-&nbsp;&nbsp; ピングのインストールを行わない。<br>
+&nbsp;&nbsp;&nbsp;提供される機能およびマップする文字列については、以下のプラグインファイルの<br>
+&nbsp;&nbsp; 説明を確認する必要がある。<br>
+&nbsp;&nbsp; プラグインが読み込まれる前 (そのタイプのファイルを編集する前) に、自分のマッ<br>
+&nbsp;&nbsp; ピングを定義する必要がある。そうするとプラグインはデフォルトのマッピングの<br>
+&nbsp;&nbsp; インストールをスキップする。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#no_mail_maps" name="no_mail_maps">no_mail_maps</a>&nbsp;<a class="Constant" href="filetype.html#g:no_mail_maps" name="g:no_mail_maps">g:no_mail_maps</a><br>
-3. 特定のファイル形式についてキーマップを無効化するならば、そのファイル形式名<br>
-&nbsp;&nbsp; を含むある変数を設定する。ファイル形式 &quot;mail&quot; のキーマップを無効にするには<br>
-&nbsp;&nbsp; 次のようにする:<br>
+3. ファイルタイプの名前を含む変数を設定することで、特定のファイルタイプに対す<br>
+&nbsp;&nbsp; るマッピングの定義を無効にする。&quot;mail&quot; ファイルタイプの場合、これは以下にな<br>
+&nbsp;&nbsp; る:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let no_mail_maps = 1</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#no_plugin_maps" name="no_plugin_maps">no_plugin_maps</a>&nbsp;<a class="Constant" href="filetype.html#g:no_plugin_maps" name="g:no_plugin_maps">g:no_plugin_maps</a><br>
-4. ファイル形式による全てのキーマップを無効化するには次の変数を設定する:<br>
+4. 変数を設定することで、すべてのファイルタイプに対するマッピングの定義を無効<br>
+&nbsp;&nbsp; にする:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let no_plugin_maps = 1</div>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ftplugin-overrule" name="ftplugin-overrule">ftplugin-overrule</a><br>
-グローバルな($VIMRUNTIMEにある、システムが提供する)ファイル形式プラグインが<br>
-キッチリ望むように動作しない場合には、これを変更する方法が3通りある:<br>
+グローバルファイルタイププラグインが望みどおりのことを正確に行わない場合、これ<br>
+を変更する方法は 3 つある:<br>
 <br>
-1. 設定を追加する。<br>
-&nbsp;&nbsp; 新しいファイル形式プラグインを作り、<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の始めのほうに置く。一例<br>
-&nbsp;&nbsp; として、UNIXではこのファイルを利用できる:<br>
+1. いくつかの設定を追加する。<br>
+&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の早い段階にあるディレクトリに、新しいファイルタイププラグイ<br>
+&nbsp;&nbsp; ンを作成しなければならない。例えば Unix では、このファイルを使用できる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim ~/.vim/ftplugin/fortran.vim</div>
-&nbsp;&nbsp;&nbsp; 追加したい設定やキーマップをこのファイルに記述する。グローバルプラグインは<br>
-&nbsp;&nbsp; これの後に読み込まれるので、ここで行った設定は上書される可能性がある。その<br>
-&nbsp;&nbsp; ような場合には以下の2つの方法のどちらかを利用する。<br>
+&nbsp;&nbsp;&nbsp; 追加したい設定およびマッピングを設定できる。<span class="Todo">Note</span>&nbsp;グローバルプラグインはこ<br>
+&nbsp;&nbsp; の後に読み込まれることに注意、それはここで行った設定を上書きするかもしれな<br>
+&nbsp;&nbsp; い。この場合は、以下の 2 つの方法のうちの 1 つを使用する必要がある。<br>
 <br>
-2. プラグインのコピーを作成し、そちらを変更する。<br>
-&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の始めのほうにそのプラグインのコピーを置く。一例として、UNIX<br>
-&nbsp;&nbsp; ではこのように行う:<br>
+2. プラグインのコピーを作成し、それを変更する。<br>
+&nbsp;&nbsp; そのコピーを&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の早い段階にあるディレクトリに置かなければならな<br>
+&nbsp;&nbsp; い。例えば Unix では、このようにできる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cp $VIMRUNTIME/ftplugin/fortran.vim ~/.vim/ftplugin/fortran.vim</div>
-&nbsp;&nbsp;&nbsp; そうすればコピーしたファイルを好きなように変更できる。これは変数<br>
-&nbsp;&nbsp; b:did_ftpluginが設定されていれば、グローバルプラグインは読み込まれない仕組<br>
-&nbsp;&nbsp; みになっていることによる。<br>
-&nbsp;&nbsp; この方法には、配布されるプラグインが改良された際に、再びコピーし同じように<br>
-&nbsp;&nbsp; 変更しなければならない、という短所がある。<br>
+&nbsp;&nbsp;&nbsp; それから、コピーしたファイルを好みに合わせて編集できる。b:did_ftplugin 変<br>
+&nbsp;&nbsp; 数が設定されるので、グローバルプラグインは読み込まれない。<br>
+&nbsp;&nbsp; この方法の欠点は、配布されているプラグインが改良されたときに、それを再びコ<br>
+&nbsp;&nbsp; ピーして変更しなければならないことである。<br>
 <br>
-3. グローバルプラグインの読み込み後に設定を上書きする。<br>
-&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の最後に、新しいファイル形式プラグインを作成する。一例として、<br>
-&nbsp;&nbsp; UNIXではこのファイルを利用できる:<br>
+3. グローバルプラグインを読み込んだ後に設定を上書きする。<br>
+&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>&nbsp;の終わりのほうにあるディレクトリに、新しいファイルタイププラ<br>
+&nbsp;&nbsp; グインを作成しなければならない。例えば Unix では、このファイルを使用できる:<br>
+<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim ~/.vim/after/ftplugin/fortran.vim</div>
-&nbsp;&nbsp;&nbsp; このファイルの中では、変更したい設定だけを変更できる。<br>
+&nbsp;&nbsp;&nbsp; このファイルでは、変更したい設定だけを変更できる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-3.&nbsp;&nbsp;標準で付属する形式別プラグインの解説&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ftplugin-docs" name="ftplugin-docs">ftplugin-docs</a><br>
+3.&nbsp;&nbsp;デフォルトのファイルタイププラグインのドキュメント。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ftplugin-docs" name="ftplugin-docs">ftplugin-docs</a><br>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#plugin_exec" name="plugin_exec">plugin_exec</a>&nbsp;<a class="Constant" href="filetype.html#g:plugin_exec" name="g:plugin_exec">g:plugin_exec</a><br>
-外部コマンドの実行を有効にする。これは歴史的に、例えば perl filetype プラグイ<br>
-ン (および他のいくつかのプラグイン) の検索パスを設定するために行われていた。セ<br>
-キュリティ上の理由から、デフォルトでは無効になっている:<br>
+外部コマンドの実行を有効にする。これは歴史的に、例えば perl ファイルタイププラ<br>
+グイン (およびいくつかの他のもの) で、検索パスを設定するために行われていた。<br>
+セキュリティ上の理由により、デフォルトでは無効になっている:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let g:plugin_exec = 1</div>
-特定のファイルタイプに対してのみ有効にすることも可能である:<br>
+特定のファイルタイプに対してのみこれを有効にすることもできる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let g:&lt;filetype&gt;_exec = 1</div>
-したがって、これを Ruby に対してのみ有効にするには、次の変数を設定する:<br>
+つまり、ruby に対してのみこれを有効にするには、以下の変数を設定する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let g:ruby_exec = 1</div>
 <br>
-グローバル&nbsp;<a class="Comment" href="filetype.html#plugin_exec">plugin_exec</a>&nbsp;と&nbsp;<span class="Comment">&lt;filetype&gt;_exec</span>&nbsp;固有の変数の両方が設定されている<br>
-場合は、ファイルタイプ固有の変数が優先される必要がある。<br>
+グローバルな&nbsp;<a class="Comment" href="filetype.html#plugin_exec">plugin_exec</a>&nbsp;および&nbsp;<span class="Comment">&lt;filetype&gt;_exec</span>&nbsp;の固有の変数の両方が設定さ<br>
+れている場合、ファイルタイプ固有の変数が優先されるべきである。<br>
 <br>
 <br>
 <span class="Statement">ASCIIDOC</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-asciidoc-plugin" name="ft-asciidoc-plugin">ft-asciidoc-plugin</a><br>
 <br>
-<a class="Identifier" href="fold.html#folding">folding</a>&nbsp;を有効にするには、これを使用する:<br>
+<a class="Identifier" href="fold.html#folding">folding</a>&nbsp;を有効にするには、以下を使う:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:asciidoc_folding = 1</div>
 <br>
-折り畳まれたヘッダーのネストを無効にするには、これを使用する:<br>
+折り畳まれたヘッダーの入れ子を無効にするには、以下を使う:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:asciidoc_foldnested = 0</div>
 <br>
-タイトルの下のすべてを折りたたむことを無効にするには、これを使用する:<br>
+タイトルの下のすべてを折り畳むことを無効にするには、以下を使う:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let asciidoc_fold_under_title = 0</div>
 <br>
 <br>
 <span class="Statement">ARDUINO</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-arduino-plugin" name="ft-arduino-plugin">ft-arduino-plugin</a><br>
 <br>
 デフォルトでは、Arduino IDE のデフォルト設定に従って、以下のオプションが設定さ<br>
-れている:<br>
+れる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2</div>
 <br>
@@ -489,197 +484,210 @@ OSによる「形式」を利用するには自動実行コマンドの検出パ
 <br>
 <span class="Statement">AWK</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-awk-plugin" name="ft-awk-plugin">ft-awk-plugin</a><br>
 <br>
-@include のような、GNU Awk 固有の機能のサポートは、以下の設定で有効にできる:<br>
+@include のような GNU Awk 固有の機能のサポートは、以下を設定することで有効にで<br>
+きる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let g:awk_is_gawk = 1</div>
 <br>
 <span class="Statement">BEANCOUNT</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-beancount-plugin" name="ft-beancount-plugin">ft-beancount-plugin</a><br>
 <br>
-Beancount のオムニ補完機能&nbsp;<a class="Identifier" href="insert.html#compl-omni">compl-omni</a>&nbsp;は、g:beancount_completion_enable で有<br>
-効にした場合、beancountcomplete.vim によって提供される。<br>
+Beancount のオムニ補完&nbsp;<a class="Identifier" href="insert.html#compl-omni">compl-omni</a>&nbsp;は、g:beancount_completion_enable で有効に<br>
+されている場合、beancountcomplete.vim によって提供される。<br>
 <br>
-アカウント名の自動入力を有効にするには、以下を設定する:<br>
+アカウント名の補完を有効にするには、以下を設定する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:beancount_completion_enable = 1</div>
 <br>
-<span class="Todo">Note:</span>&nbsp;これを有効にすると、Beancount が追加のプラグインファイルを読み込む可能性<br>
+<span class="Todo">Note:</span>&nbsp;これを有効にすると、beancount が追加のプラグインファイルを読み込む可能性<br>
 がある。信頼できるコードに対してのみ有効にすること。<br>
 <br>
 変数:<br>
 g:beancount_account_completion<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;アカウント名の補完パターン形式を指定する。&quot;default&quot; ま<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;たは &quot;chunks&quot; のいずれかを指定できる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;アカウント名の補完パターンの形式を指定する。&quot;default&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;または &quot;chunks&quot; のいずれかにできる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルト値: &quot;default&quot;<br>
 <br>
 g:beancount_completion_enable<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;アカウントに対してオムニ補完&nbsp;<a class="Identifier" href="insert.html#compl-omni">compl-omni</a>&nbsp;を有効にする。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;アカウントに対するオムニ補完&nbsp;<a class="Identifier" href="insert.html#compl-omni">compl-omni</a>&nbsp;を有効にす<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルト値: 0<br>
 <br>
 g:beancount_detailed_first<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;非ゼロの場合、階層のより下位にあるアカウントが補完候補<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;として先に表示される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0 以外の場合、階層のより下にあるアカウントが補完として<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初に一覧表示される。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルト値: 0<br>
 <br>
 g:beancount_separator_col<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;小数点区切り文字が配置されるカラム。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;小数点区切り文字が揃えられる桁。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルト値: 50<br>
 <br>
 b:beancount_root<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルート Beancount ファイルを設定する。これは、補完に必<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;要な値を取得するために使用される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;設定しない場合 (デフォルト)、現在のファイルが使用され<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルートの Beancount ファイルを設定する。これは補完のた<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;めの値を集めるために使用される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;設定されていない場合 (デフォルト)、現在のファイルが使<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用される。<br>
 <br>
 <br>
 コマンド:<br>
-:AlignCommodity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; アカウントと商品の間にスペースを追加することで、商品の<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;小数点がすべて g:beancount_separator_col で指定された<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カラムに収まるようにする。金額に小数点がない場合は、最<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下位桁の右側に仮想の小数点が配置される。<br>
+:AlignCommodity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; アカウントとコモディティの間に空白を追加し、コモディ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ティの小数点がすべて g:beancount_separator_col で指定<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;された桁に来るようにする。金額に小数点が無い場合、最下<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位の桁の右側にある仮想的な小数点が揃えられる。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このコマンドは範囲を指定して実行する。デフォルトでは現<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在の行が範囲となる。カーソルがその範囲内にあり、かつア<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カウント名の右側にある場合、カーソルは同じ文字の位置を<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;維持するように適切な量だけ右に移動する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このコマンドは範囲に対して動作し、デフォルトは現在行で<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ある。カーソルがたまたまその範囲内かつアカウント名の右<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;側にある場合、カーソルは同じ文字の上に留まるように、適<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;切な量だけ右に押し出される。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このスクリプトは、位置合わせにスペースを使用することを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前提としている。タブは認識しない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このスクリプトは整列に空白が使用されることを前提として<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いる。タブは理解しない。<br>
 <br>
-:GetContext&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bean-doctor のコンテキストを使用して、現在の行のコンテ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キストを表示する。<br>
+:GetContext&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bean-doctor context を使用して、現在行のコンテキストを<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表示する。<br>
 <br>
 <span class="Statement">CHANGELOG</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-changelog-plugin" name="ft-changelog-plugin">ft-changelog-plugin</a><br>
 <br>
-<span class="Special">{訳注: エントリ=日付ごとの区切り アイテム=日付内の項目}</span><br>
-<br>
-チェンジログファイルを簡単に扱うことを可能にする。いくつかの便利なコマンドや<br>
-マッピング、変数がある。<br>
+Changelog ファイルへの Changelog エントリの簡単な入力を可能にする。探索する価<br>
+値のあるいくつかのコマンド、マッピング、および変数がある:<br>
 <br>
 オプション:<br>
-<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;フォーマットを崩さないように空に設定される。<br>
-<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 標準的な値である78に設定される。<br>
-<a class="Type" href="options.html#'formatoptions'">'formatoptions'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; テキストを折り返すために 't' が加えられる。<br>
+<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;整形を乱さないように空にされる。<br>
+<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 標準である 78 に設定される。<br>
+<a class="Type" href="options.html#'formatoptions'">'formatoptions'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; テキストを挿入するときに折り返すために、't' フラグが追<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加される。<br>
 <br>
 コマンド:<br>
-NewChangelogEntry&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 適切にアイテムを追加する(以下参照)。<br>
+NewChangelogEntry&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 新しい Changelog エントリを賢い方法で追加する (以下を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参照)。<br>
 <br>
 ローカルマッピング:<br>
-<span class="Special">&lt;Leader&gt;</span>o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 上と同様に適切にアイテムを追加する(以下参照)。<br>
+<span class="Special">&lt;Leader&gt;</span>o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 同様に賢い方法で新しい Changelog エントリを開始する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(以下を参照)。<br>
 <br>
 グローバルマッピング:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE:</span>&nbsp;グローバルマッピングはあらかじめ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ftplugin/changelog.vim を実行することで有効になる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例えば<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE:</span>&nbsp;グローバルマッピングは、最初に<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ftplugin/changelog.vim ファイルを読み込むことでアクセ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スされる。例えば以下によって<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime ftplugin/changelog.vim</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; と&nbsp;<a class="Identifier" href="starting.html#.vimrc">.vimrc</a>&nbsp;に書くようにして。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{訳注: この例だと間違えてこのまま書いちゃいそう。}</span><br>
-<span class="Special">&lt;Leader&gt;</span>o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カレントディレクトリに &quot;ChangeLog&quot; というファイルがあ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れば開き、既に開かれていればバッファを切替える。そして<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上記のローカルマッピング<span class="Special">&lt;Leader&gt;</span>oと同じように働く。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="starting.html#.vimrc">.vimrc</a>&nbsp;内で。<br>
+<span class="Special">&lt;Leader&gt;</span>o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 現在のディレクトリに対して開かれた ChangeLog バッファ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に切り替えるか、または、現在のディレクトリに存在する場<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合は新しいバッファでそれを開く。それから、上記のローカ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルの&nbsp;<span class="Special">&lt;Leader&gt;</span>o と同じことを行う。<br>
 <br>
 変数:<br>
-g:changelog_timeformat&nbsp;&nbsp;非推奨。g:changelog_dateformatを使うこと。<br>
-g:changelog_dateformat&nbsp;&nbsp;エントリに入れる日付(と時間)の書式。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使えるフォーマットは&nbsp;<a class="Identifier" href="builtin.html#strftime()">strftime()</a>&nbsp;と同じ。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルトでは標準的に使われている &quot;%Y-%m-%d&quot; が設定<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;されている。<br>
-g:changelog_username&nbsp;&nbsp;&nbsp;&nbsp;ユーザーの名前とメールアドレス。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルトは環境変数とシステムファイルから推定され<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。まずカレントユーザーについての情報を得るために<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/etc/passwd を探す。そこの最初の区切りにユーザーの実<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名があることを期待している。次に環境変数の$NAMEを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;チェックする。最後にアドレスを得るために<span class="Comment">whoami</span>と<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment">hostname</span>を実行する。最終的に次のような値を決定す<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
+g:changelog_timeformat&nbsp;&nbsp;非推奨。代わりに g:changelog_dateformat を使用するこ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と。<br>
+g:changelog_dateformat&nbsp;&nbsp;ChangeLog エントリで使用される日付 (および時刻) の形<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式。受け付けられる形式は&nbsp;<a class="Identifier" href="builtin.html#strftime()">strftime()</a>&nbsp;関数に対するもの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と同じである。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルトは &quot;%Y-%m-%d&quot; であり、これは多くの ChangeLog<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;レイアウトの標準形式である。<br>
+g:changelog_username&nbsp;&nbsp;&nbsp;&nbsp;ユーザーの名前およびメールアドレス。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルトは環境変数およびシステムファイルから推測され<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。/etc/passwd で現在のユーザーのコメント部分を検索す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。これは、非公式に、最初の区切りのコンマまでユーザー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の本名を含む。それから $NAME 環境変数をチェックし、最<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;後に&nbsp;<span class="Comment">whoami</span>&nbsp;および&nbsp;<span class="Comment">hostname</span>&nbsp;を実行してメールアドレ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スを組み立てる。最終的な形式は以下である<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Full Name&nbsp;&nbsp;&lt;user@host&gt;</div>
 <br>
 g:changelog_new_date_format<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;エントリを作成するときの書式。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次の特別な文字が使える:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一つの '%' が入る<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上記で定義した日付<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上記で定義したユーザーの名前<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b:changelog_entry_prefix の結果<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作成後のカーソルの位置<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルトは &quot;%d&nbsp;&nbsp;%u\n\n\t* %p%c\n\n&quot;。これは次のよう<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;になる ( | はカーソルの位置を示している。しかし、行頭<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の | は行の始まりを表す)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しい日付エントリを作成するときに使用する形式。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以下の表は、文字列内の特殊なトークンを説明する:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;単一の '%' 文字を挿入する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上記の日付を挿入する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上記のユーザーを挿入する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b:changelog_entry_prefix の結果を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挿入する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;完了時にカーソルを置く場所<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルトは &quot;%d&nbsp;&nbsp;%u\n\n\t* %p%c\n\n&quot; であり、これは以<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下のようなものを生成する (| はカーソルが置かれる場所で<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;あるが、行頭にある場合は行の始まりを表す)<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|2003-01-14&nbsp;&nbsp;Full Name&nbsp;&nbsp;&lt;user@host&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* prefix|</div>
 <br>
 g:changelog_new_entry_format<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;アイテムを作成するときの書式。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次の特別な文字が使える:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b:changelog_entry_prefix の結果<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作成後のカーソルの位置<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルトは &quot;\t*\c&quot;。これは次のようになる<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しいエントリを作成するときに使用される形式。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以下の表は、文字列内の特殊なトークンを説明する:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b:changelog_entry_prefix の結果を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挿入する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;完了時にカーソルを置く場所<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルトは &quot;\t*%c&quot; であり、これは以下に似たものを生<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成する<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* prefix|</div>
 <br>
 g:changelog_date_entry_search<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日付エントリを探すための検索パターン。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:changelog_new_date_formatと同じ特別な文字が使え<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。デフォルトは '^/\s*%d\_s*%u' で、次のような行<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日付エントリを検索するときに使用する検索パターン。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:changelog_new_date_format で使用できるのと同じトーク<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンが、ここでも使用できる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルトは '^\s*%d\_s*%u' であり、これは以下の形式<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|2003-01-14&nbsp;&nbsp;Full Name&nbsp;&nbsp;&lt;user@host&gt;</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; を見つける。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; およびいくつかの似た形式にマッチする行を見つける。<br>
 <br>
 g:changelog_date_end_entry_search<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日付エントリの終端を探すための検索パターン。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:changelog_new_date_formatにおけるトークンと同じもの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が使用できる。デフォルトは '^\s*$' で、空白文字のみを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;含む行または完全な空行を検索する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日付エントリの終わりを検索するときに使用する検索パター<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ン。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g:changelog_new_date_format で使用できるのと同じトーク<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンが、ここでも使用できる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルトは '^\s*$' であり、これは空白のみを含むか、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;または完全に空である行を見つける。<br>
 <br>
 b:changelog_name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#b:changelog_name" name="b:changelog_name">b:changelog_name</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;チェンジログファイルの名前。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;既定値は 'ChangeLog'。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;探す ChangeLog ファイルの名前。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルトは 'ChangeLog' である。<br>
 <br>
 b:changelog_path<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントバッファに使うチェンジログのパス。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;既定では空文字列で、カレントバッファと同じディレクトリ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;から&nbsp;<a class="Identifier" href="filetype.html#b:changelog_name">b:changelog_name</a>&nbsp;という名前のファイルが検索され<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。それが見つからない場合は、カレントバッファの親<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ディレクトリを検索する。ファイルが見つかるか、それ以上<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上がれなくなるまで、再帰的にこれが繰り返される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在のバッファに使用する ChangeLog のパス。デフォルト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は空であり、したがって現在のバッファと同じディレクトリ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;で&nbsp;<a class="Identifier" href="filetype.html#b:changelog_name">b:changelog_name</a>&nbsp;という名前のファイルを探す。見つ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;からない場合、現在のバッファの親ディレクトリが検索され<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。これはファイルが見つかるか、または検索する親ディレ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;クトリが無くなるまで再帰的に続く。<br>
 <br>
 b:changelog_entry_prefix<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しいエントリのプリフィックスを生成するための関数の名<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前を指定する。関数は引数を取らず、プリフィックスの文字<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;列を返す。関数は空文字を返しても構わない。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルトでは ChangeLog のパスとカレントバッファのパ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スの間の最短パスが使用される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将来的には他の変数コンテキスト (例えば g:) でも指定で<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;きるようになる予定である。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しいエントリへのプリフィックスを生成するために呼ぶ関<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数の名前。この関数は引数を取らず、プリフィックスを含む<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文字列を返すべきである。空のプリフィックスを返しても問<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;題ない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルトは、ChangeLog のパス名と現在のバッファのパス<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名の間の最短パスを生成する。将来は、この変数に他の変数<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コンテキスト、例えば g: を使用することも可能になる予定<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;である。<br>
 <br>
-チェンジログエントリは適切な位置に挿入される。現在の日付とユーザーを得た後<br>
-に、その日付とユーザーのエントリをファイルから探し、見つかればその下にアイテ<br>
-ムを加える。なければ新しいエントリとアイテムをファイルの先頭に加える。<br>
+Changelog エントリは、追加されるテキストの量が最も少ない場所に挿入される。現在<br>
+の日付およびユーザーを把握した後、現在の日付およびユーザーで始まるエントリが<br>
+ファイル内で検索され、見つかった場合はその下に別の項目を追加する。見つからない<br>
+場合、新しいエントリおよび項目が Changelog の先頭に追加される。<br>
 <br>
 <br>
 <span class="Statement">FORTRAN</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-fortran-plugin" name="ft-fortran-plugin">ft-fortran-plugin</a><br>
 <br>
 オプション:<br>
-<a class="Type" href="options.html#'expandtab'">'expandtab'</a>&nbsp;&nbsp;&nbsp;&nbsp; .vimrc で fortran_have_tabs が指定されなければ、Fortran 標準<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に従ってタブ文字を避けるために有効にする。<br>
-<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;&nbsp;&nbsp;&nbsp; Fortran 標準に従って固定形式のソースでは 80 に、自由形式のソー<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スでは 132 に設定される。fortran_extended_line_length 変数を設<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定すると、固定形式のソースでは幅が 132 に増加する。<br>
-<a class="Type" href="options.html#'formatoptions'">'formatoptions'</a>&nbsp;コードとコメントを分けて、長い行を保持するように設定される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これにより&nbsp;<a class="Identifier" href="change.html#gq">gq</a>&nbsp;でコメントを整形できる。<br>
-fortran_have_tabs についての議論とソース形式の判定法については<br>
-<a class="Identifier" href="syntax.html#ft-fortran-syntax">ft-fortran-syntax</a>&nbsp;を参照。<br>
+<a class="Type" href="options.html#'expandtab'">'expandtab'</a>&nbsp;&nbsp;&nbsp;&nbsp; Fortran 標準が要求するようにタブを避けるため、ユーザーが<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.vimrc で fortran_have_tabs を設定していない限り、オンにされ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
+<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;&nbsp;&nbsp;&nbsp; 固定ソース形式では 80 に設定され、一方で自由ソース形式では 132<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に設定される。fortran_extended_line_length 変数を設定すると、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;固定ソース形式での幅が 132 に増える。<br>
+<a class="Type" href="options.html#'formatoptions'">'formatoptions'</a>&nbsp;コードおよびコメント行を折り返し、長い行を保持するように設定さ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れる。<a class="Identifier" href="change.html#gq">gq</a>&nbsp;でコメントを整形できる。<br>
+fortran_have_tabs、およびソース形式の検出に使用される方法についてのさらなる議<br>
+論は、<a class="Identifier" href="syntax.html#ft-fortran-syntax">ft-fortran-syntax</a>&nbsp;を参照。<br>
 <br>
 <br>
 <span class="Statement">FREEBASIC</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-freebasic-plugin" name="ft-freebasic-plugin">ft-freebasic-plugin</a><br>
 <br>
-このプラグインは、FreeBASIC 方言である &quot;fb&quot;, &quot;qb&quot;, &quot;fblite&quot;, &quot;deprecated&quot; の4<br>
-つをそれぞれ別の言語として扱うことを目的としている。<br>
+このプラグインは、4 つの FreeBASIC の方言 &quot;fb&quot;、&quot;qb&quot;、&quot;fblite&quot; および<br>
+&quot;deprecated&quot; を、別個の言語として扱うことを目指している。<br>
 <br>
-方言は、g:freebasic_forcelang、編集中のファイルの #lang ディレクティブ、または<br>
-$lang メタコマンドで見つかった最初の名前、または最終的に g:freebasic_lang に設<br>
-定される。これらのグローバル変数は、概念的には fbc オプションの -forcelang お<br>
-よび -lang に対応している。方言が明示的に指定されていない場合は、&quot;fb&quot; が使用さ<br>
-れる。<br>
+方言は、g:freebasic_forcelang、編集中のファイル内の任意の #lang ディレクティブ<br>
+または $lang メタコマンド、または最後に g:freebasic_lang で見つかった最初の名<br>
+前に設定される。これらのグローバル変数は、概念的には fbc のオプション<br>
+-forcelang および -lang に対応する。方言が明示的に指定されていない場合、&quot;fb&quot;<br>
+が使用される。<br>
 <br>
-例えば、方言のデフォルトを &quot;fblite&quot; に設定するが、#lang ディレクティブの上書き<br>
-を許可するには、次のコマンドを使用する:<br>
+例えば、方言をデフォルトで &quot;fblite&quot; に設定し、なおかつ任意の #lang ディレクティ<br>
+ブによる上書きを許可するには、以下のコマンドを使う:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:freebasic_lang = &quot;fblite&quot;</div>
 <br>
@@ -687,7 +695,7 @@ $lang メタコマンドで見つかった最初の名前、または最終的�
 <span class="Statement">GDSCRIPT</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-gdscript-plugin" name="ft-gdscript-plugin">ft-gdscript-plugin</a><br>
 <br>
 デフォルトでは、Godot の公式ドキュメントに基づいて、以下のオプションが設定され<br>
-ている:<br>
+る:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setlocal noexpandtab softtabstop=0 shiftwidth=0</div>
 <br>
@@ -698,37 +706,39 @@ $lang メタコマンドで見つかった最初の名前、または最終的�
 <br>
 <span class="Statement">GIT COMMIT</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-gitcommit-plugin" name="ft-gitcommit-plugin">ft-gitcommit-plugin</a><br>
 <br>
-現在のコミットの差分をプレビューウィンドウに表示する :DiffGitCached というコマ<br>
-ンドが提供されている。このコマンドを実行すると、その引数をつけて<br>
-&quot;git diff --cached&quot; が実行される。<br>
+1 つのコマンド :DiffGitCached が、現在のコミットの差分をプレビューウィンドウに<br>
+表示するために提供されている。これは &quot;git diff --cached&quot; に、コマンドに与えら<br>
+れた任意の引数を加えて呼ぶことと同等である。<br>
 <br>
-構文ハイライトに使用されるコミットメッセージの最初の行の長さは、<br>
-<span class="Comment">g:gitcommit_summary_length</span>&nbsp;で設定できる。デフォルトは 50 である。例:<br>
+構文ハイライトに使用される、コミットメッセージの最初の行の長さは、<br>
+<span class="Comment">g:gitcommit_summary_length</span>&nbsp;で設定できる。<br>
+デフォルトは 50 である。例:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:gitcommit_summary_length = 70</div>
 <br>
 <span class="Statement">GIT REBASE</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-gitrebase-plugin" name="ft-gitrebase-plugin">ft-gitrebase-plugin</a><br>
 <br>
-gitrebase ファイルタイプは、対話型の&nbsp;<span class="Comment">git rebase</span>&nbsp;を支援するために、以下のバッ<br>
+gitrebase ファイルタイプは、対話的な&nbsp;<span class="Comment">git rebase</span>&nbsp;を補助するために、以下のバッ<br>
 ファローカルなコマンドを定義する:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Drop&nbsp;&nbsp; &quot; このコミットを破棄する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Edit&nbsp;&nbsp; &quot; このコミットの編集をやめる<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Fixup&nbsp;&nbsp;&quot; 前のコミットにまとめる (ただし、メッセージは破棄する)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Pick&nbsp;&nbsp; &quot; このコミットを選択する (カーソルはオン)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Reword &quot; このコミットを選択するが、コミットメッセージを変更する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Squash &quot; このコミットを前のコミットにまとめる</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Edit&nbsp;&nbsp; &quot; このコミットを編集するために停止する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Fixup&nbsp;&nbsp;&quot; 前のものに squash する (ただしメッセージは破棄する)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Pick&nbsp;&nbsp; &quot; このコミット (カーソルがある) を pick する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Reword &quot; このコミットを pick するが、コミットメッセージを変更する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Squash &quot; このコミットを前のものに squash する</div>
 <br>
-さらに、以下のコマンドを使用して異なる選択肢を切り替えることができる:<br>
+さらに、以下のコマンドを使用して、異なる可能性の間を巡回できる:<br>
 <br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Cycle&nbsp;&nbsp;&quot; 前のコマンドを切り替える</div>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:Cycle&nbsp;&nbsp;&quot; 前述のコマンドの間を巡回する</div>
 <br>
-<span class="Comment">:Cycle</span>&nbsp;コマンドは、<span class="Special">CTRL-A</span>&nbsp;キーと&nbsp;<span class="Special">CTRL-X</span>&nbsp;キーにもマップされる。<br>
-詳細については&nbsp;<span class="Comment">git-rebase --help</span>&nbsp;を参照。<br>
+<span class="Comment">:Cycle</span>&nbsp;コマンドは&nbsp;<span class="Special">CTRL-A</span>&nbsp;および&nbsp;<span class="Special">CTRL-X</span>&nbsp;キーにもマップされている。<br>
+詳細は&nbsp;<span class="Comment">git-rebase --help</span>&nbsp;を参照。<br>
 <br>
 <span class="Statement">GLEAM</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-gleam-plugin" name="ft-gleam-plugin">ft-gleam-plugin</a><br>
 <br>
-デフォルトでは、推奨される gleam スタイルに以下のオプションが設定されている:<br>
+デフォルトでは、推奨される gleam スタイルのために、以下のオプションが設定され<br>
+る:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setlocal expandtab shiftwidth=2 softtabstop=2</div>
 <br>
@@ -739,7 +749,7 @@ gitrebase ファイルタイプは、対話型の&nbsp;<span class="Comment">git
 <span class="Statement">GO</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-go-plugin" name="ft-go-plugin">ft-go-plugin</a><br>
 <br>
 デフォルトでは、Golang の公式ドキュメントに基づいて、以下のオプションが設定さ<br>
-れている:<br>
+れる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setlocal noexpandtab softtabstop=0 shiftwidth=0</div>
 <br>
@@ -750,39 +760,39 @@ gitrebase ファイルタイプは、対話型の&nbsp;<span class="Comment">git
 <br>
 <span class="Statement">GPROF</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-gprof-plugin" name="ft-gprof-plugin">ft-gprof-plugin</a><br>
 <br>
-gprof ファイルタイププラグインは gprof のフラットプロファイルもしくはコールグ<br>
-ラフの関数エントリからコールグラフの関数の詳細へジャンプする&nbsp;<span class="Special">&lt;C-]&gt;</span>&nbsp;マッピング<br>
-を定義する。<br>
+gprof ファイルタイププラグインは、gprof のフラットプロファイル内の関数エントリ<br>
+から、またはコールグラフ内の関数エントリから、コールグラフ内のその関数の詳細へ<br>
+ジャンプするマッピング&nbsp;<span class="Special">&lt;C-]&gt;</span>&nbsp;を定義する。<br>
 <br>
-このマッピングを無効にするには:<br>
+このマッピングは以下で無効にできる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:no_gprof_maps = 1</div>
 <br>
 <br>
 <span class="Statement">HARE</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-hare" name="ft-hare">ft-hare</a><br>
 <br>
-このプラグインのテキストはかなり長いため、別ファイル&nbsp;<a class="Identifier" href="ft_hare.html">ft_hare.txt</a>&nbsp;に配置され<br>
-ている:&nbsp;<a class="Identifier" href="ft_hare.html">ft_hare.txt</a>。<br>
+このプラグインのテキストはかなり長いので、別のファイルに置かれている:<br>
+<a class="Identifier" href="ft_hare.html">ft_hare.txt</a>。<br>
 <br>
 <span class="Statement">HTML</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-html-plugin" name="ft-html-plugin">ft-html-plugin</a><br>
 <br>
-タグの折り畳みにはいくつかの難しさがある。多くの要素、例えば&nbsp;<span class="Comment">blockquote</span>&nbsp;は常<br>
-に開始タグと終了タグで区切られる。一方、一部の要素、例えば&nbsp;<a class="Comment" href="change.html#p">p</a>&nbsp;の終了タグは、<br>
-特定のコンテキストでは省略可能である。一方、空要素、例えば&nbsp;<span class="Comment">hr</span>&nbsp;には終了タグが<br>
-ない。省略可能な終了タグをサポートするためのルールはアドホックで複雑だが [0]、<br>
-スコープ内の要素に適用される。構文的に整形式性があると仮定すると、終了タグはス<br>
-コープ内 [1] およびファイルの先頭付近で発見可能な最も近い開始タグと関連付ける<br>
-ことができる。一方、不均衡なタグやインラインタグはすべて無視できる。構文ハイラ<br>
-イトが有効になっている場合、<a class="Identifier" href="fold.html#fold-expr">fold-expr</a>&nbsp;メソッドを用いたタグの折り畳みは以下で<br>
-有効にできる:<br>
+タグ折り畳みにはいくつかの困難がある。多くの要素、例えば&nbsp;<span class="Comment">blockquote</span>&nbsp;は、常に<br>
+開始タグおよび終了タグで区切られる。いくつかの要素、例えば&nbsp;<a class="Comment" href="change.html#p">p</a>&nbsp;の終了タグは、<br>
+特定のコンテキストで省略できる。空要素、例えば&nbsp;<span class="Comment">hr</span>&nbsp;は終了タグを持たない。省略<br>
+可能な終了タグをサポートするためのルールはその場しのぎで複雑であるが [0]、それ<br>
+らはスコープ内の要素に適用される。構文的な整形式性を仮定すると、終了タグは、ス<br>
+コープ内 [1] かつファイルの先頭に向かって発見できる、最も近いマッチする開始タ<br>
+グに関連付けることができ、一方で、すべての釣り合っていないタグおよびインライン<br>
+化されたタグは無視できる。構文ハイライトが有効な状態で、<a class="Identifier" href="fold.html#fold-expr">fold-expr</a>&nbsp;方式を使用<br>
+したタグ折り畳みは以下で有効にできる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:html_expr_folding = 1</div>
 <br>
-デフォルトでは、<a class="Identifier" href="autocmd.html#TextChanged">TextChanged</a>&nbsp;または&nbsp;<a class="Identifier" href="autocmd.html#InsertLeave">InsertLeave</a>&nbsp;イベントが発生するたびに、<br>
-タグの折り畳みが最初からやり直される。特に大きなファイルの場合、このような頻度<br>
-は望ましくない場合がある。この再計算は以下で無効にできる:<br>
+デフォルトでは、タグ折り畳みは&nbsp;<a class="Identifier" href="autocmd.html#TextChanged">TextChanged</a>&nbsp;または&nbsp;<a class="Identifier" href="autocmd.html#InsertLeave">InsertLeave</a>&nbsp;イベントが発<br>
+生するたびに、最初からやり直される。そのような頻度は、特に大きなファイルでは望<br>
+ましくない場合があり、この再計算は以下で無効にできる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:html_expr_folding_without_recomputation = 1<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doautocmd FileType</div>
 <br>
-再計算を強制するには、以下のようにする:<br>
+別の再計算を強制するには、以下を実行する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unlet! b:foldsmap<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;normal zx</div>
 <br>
@@ -791,82 +801,83 @@ gprof ファイルタイププラグインは gprof のフラットプロファ�
 <br>
 <span class="Statement">ICALENDAR</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-icalendar-plugin" name="ft-icalendar-plugin">ft-icalendar-plugin</a>&nbsp;<a class="Constant" href="filetype.html#g:icalendar_folding" name="g:icalendar_folding">g:icalendar_folding</a><br>
 <br>
-<a class="Identifier" href="fold.html#fold-expr">fold-expr</a>&nbsp;を使用して iCalendar コンポーネント (BEGIN: と END: のペア) の折り<br>
-畳みを有効にするには:<br>
+iCalendar コンポーネント (BEGIN: および END: のペア) の折り畳みを、<a class="Identifier" href="fold.html#fold-expr">fold-expr</a><br>
+を使用して以下で有効にできる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:icalendar_folding = 1</div>
 <br>
-VEVENT 内の VALARM のようなネストされたコンポーネントは、ネストされた折り畳み<br>
-を生成する。<br>
+VEVENT 内の VALARM のような入れ子のコンポーネントは、入れ子の折り畳みを生成す<br>
+る。<br>
 <br>
 <span class="Statement">IDRIS2</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-idris2-plugin" name="ft-idris2-plugin">ft-idris2-plugin</a><br>
 <br>
-デフォルトでは、以下のオプションが設定されている:<br>
+デフォルトでは、以下のオプションが設定される:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setlocal shiftwidth=2 tabstop=2 expandtab<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setlocal comments=s1:{-,mb:-,ex:-},:\|\|\|,:--<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setlocal commentstring=--\ %s<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setlocal wildignore+=*.ibc</div>
 <br>
-インデントにスペースではなくタブを使用するには、vimrc に以下の変数を設定する:<br>
+インデントに空白の代わりにタブを使用するには、vimrc で以下の変数を設定する:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:idris2#allow_tabchar = 1</div>
 <br>
 <span class="Statement">JAVA</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-java-plugin" name="ft-java-plugin">ft-java-plugin</a><br>
 <br>
-変数 &quot;g:ftplugin_java_source_path&quot; が定義され、その値が拡張子 &quot;.jar&quot; または<br>
-&quot;.zip&quot; のファイル名である場合の例:<br>
+変数 &quot;g:ftplugin_java_source_path&quot; が定義されていて、その値が拡張子が &quot;.jar&quot;<br>
+または &quot;.zip&quot; のいずれかであるファイル名であり、例えば:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:ftplugin_java_source_path = '/path/to/src.jar'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:ftplugin_java_source_path = '/path/to/src.zip'</div>
 <br>
-そして、<a class="Identifier" href="pi_zip.html#zip">zip</a>&nbsp;プラグインがすでに読み込まれている場合は、<a class="Identifier" href="editing.html#gf">gf</a>&nbsp;コマンドを使用し<br>
-てアーカイブを開き、<a class="Identifier" href="pattern.html#n">n</a>&nbsp;コマンドを使用して選択したタイプを検索し、<span class="Special">&lt;Return&gt;</span>&nbsp;キー<br>
-を使用してリストされたファイルを読み込むことができる。<br>
+かつ&nbsp;<a class="Identifier" href="pi_zip.html#zip">zip</a>&nbsp;プラグインがすでに読み込まれている場合は常に、<a class="Identifier" href="editing.html#gf">gf</a>&nbsp;コマンドを使用し<br>
+てアーカイブを開くことができ、<a class="Identifier" href="pattern.html#n">n</a>&nbsp;コマンドを使用して選択された型を探すことがで<br>
+き、<span class="Special">&lt;Return&gt;</span>&nbsp;キーを使用して一覧表示されたファイルを読み込むことができる。<br>
 <br>
-<span class="Todo">Note</span>&nbsp;Zip プラグインで読み込まれたバッファ内で &quot;gf&quot; コマンドを使用した場合の効<br>
-果は、Zip プラグインのバージョンによって異なることに注意。Jar タイプのアーカイ<br>
-ブをサポートしていない Zip プラグインのバージョンの場合は、対象の各 Jar アーカ<br>
-イブに対して &quot;.zip&quot; 拡張子のシンボリックリンクを作成し、今後はそのようなファイ<br>
-ルを変数に割り当てることを検討すること。<br>
+<span class="Todo">Note</span>&nbsp;Zip プラグインで読み込まれたバッファ内で &quot;gf&quot; コマンドを使用した効果は、<br>
+Zip プラグインのバージョンに依存することに注意。Jar 形式のアーカイブをサポート<br>
+していないバージョンの Zip プラグインでは、関心のある各 Jar アーカイブに対して<br>
+&quot;.zip&quot; 拡張子のシンボリックリンクを作成し、今後はそのようなファイルを変数に割<br>
+り当てることを検討すること。<br>
 <br>
-それ以外の場合、定義済み変数 &quot;g:ftplugin_java_source_path&quot; に対して、変数の値<br>
-を先頭に追加することで、<a class="Type" href="options.html#'path'">'path'</a>&nbsp;オプションのローカル値がさらに変更される。例:<br>
+そうでない場合、定義された変数 &quot;g:ftplugin_java_source_path&quot; に対して、<a class="Type" href="options.html#'path'">'path'</a><br>
+オプションのローカル値は、変数の値を前に付けることでさらに変更される。例えば:<br>
+<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:ftplugin_java_source_path = $JDK_SRC_PATH<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let &amp;l:path = g:ftplugin_java_source_path .. ',' .. &amp;l:path</div>
 <br>
-そして、&quot;gf&quot; コマンドを完全修飾型の上で使用することで、&quot;path&quot; からファイルを探<br>
-し、それを読み込もうと試みることができる。<br>
+そして &quot;gf&quot; コマンドを完全修飾型に対して使用して、&quot;path&quot; 内のファイルを探し、<br>
+それを読み込もうとすることができる。<br>
 <br>
-変数に新しい値を割り当てた後は、必ず、Java ファイルが読み込まれているバッファ<br>
-から&nbsp;<a class="Identifier" href="autocmd.html#FileType">FileType</a>&nbsp;イベントを手動でトリガーすること:<br>
+変数に新しい値を割り当てた後は毎回、Java ファイルが読み込まれたバッファから、<br>
+手動で&nbsp;<a class="Identifier" href="autocmd.html#FileType">FileType</a>&nbsp;イベントを発生させることを忘れないこと:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doautocmd FileType</div>
 <br>
-Markdown ドキュメントのコメントには、見た目上の理由から、コメントマーク (<span class="Comment">///</span>)<br>
-の後に垂直の先頭の空白が続くことがある。ただし、Markdown では、コードブロック<br>
-などを示すため、先頭の空白の水平の連続が重要になる。便利のよいように、<a class="Identifier" href="change.html#gq">gq</a>&nbsp;オ<br>
-ペレータに&nbsp;<a class="Type" href="options.html#'formatexpr'">'formatexpr'</a>&nbsp;機能が提供されている。&quot;g:java_ignore_javadoc&quot; も<br>
-&quot;g:java_ignore_markdown&quot; も定義されていない限り、Markdown コメントの再フォー<br>
-マットは、以下のようにしてオンデマンドで有効にできる:<br>
+Markdown のドキュメントコメントは、美的な理由で、コメント記号 (<span class="Comment">///</span>) に続く、<br>
+縦方向の先頭の空白の共通の連続を含むことがある。しかし、先頭の空白のいくつかの<br>
+横方向の連続は、コードブロックなどを表すので、Markdown では意味がある。便宜の<br>
+ために、<a class="Identifier" href="change.html#gq">gq</a>&nbsp;オペレータ用の&nbsp;<a class="Type" href="options.html#'formatexpr'">'formatexpr'</a>&nbsp;関数が提供されている。<br>
+&quot;g:java_ignore_javadoc&quot; も &quot;g:java_ignore_markdown&quot; も定義されていない限り、<br>
+Markdown コメントの再整形は、以下で必要に応じて有効にできる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setlocal formatexpr=g:javaformat#RemoveCommonMarkdownWhitespace()</div>
 <br>
-または、Vim バージョンが&nbsp;<span class="Comment">7.4.265</span>&nbsp;未満の場合は、以下のようにする:<br>
+または&nbsp;<span class="Comment">7.4.265</span>&nbsp;未満のバージョンの Vim では、以下で:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setlocal formatexpr=javaformat#RemoveCommonMarkdownWhitespace()</div>
 <br>
-この関数は、行の範囲を受け入れ、共通の垂直方向の先頭の空白を削除し、範囲内の行<br>
-を書き換える。作成者のレイアウトスタイルとコメントの内容に応じて、再フォーマッ<br>
-トのために選択する行は、コメント全体からコメントの一部までさまざまである。<br>
+この関数は行の範囲を受け付け、縦方向の先頭の空白の共通の連続を取り除き、範囲の<br>
+行を書き直す。作者のレイアウトスタイルおよびコメント内容によって、再整形のため<br>
+にどの行を選択するかは、コメント全体からその一部だけまで変わりうる。<br>
 <br>
-&quot;g:java_ignore_markdown&quot; または &quot;g:java_ignore_javadoc&quot; を削除した後で毎回<br>
-Markdown コメントの認識を有効にするには、<span class="Comment">8.2.1397</span>&nbsp;以降のバージョンの Vim で<br>
-は &quot;javaformat.vim&quot; を手動で再読込みすることを忘れないこと:<br>
+&quot;g:java_ignore_markdown&quot; または &quot;g:java_ignore_javadoc&quot; を削除した後に毎回<br>
+Markdown コメントの認識を有効にするには、<span class="Comment">8.2.1397</span>&nbsp;より大きいバージョンの Vim<br>
+では、&quot;javaformat.vim&quot; を手動で再度読み込むことを忘れないこと:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime autoload/javaformat.vim</div>
 <br>
 <span class="Statement">JSON-FORMAT</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-json-plugin" name="ft-json-plugin">ft-json-plugin</a><br>
 <br>
-JSON ファイルタイプは、JSON のフォーマッティング (<a class="Identifier" href="change.html#gq">gq</a>&nbsp;を使用) に&nbsp;<a class="Type" href="options.html#'formatexpr'">'formatexpr'</a><br>
-および &quot;json.FormatExpr()&quot; 関数を使用するように拡張できる。<br>
+JSON ファイルタイプは、json 整形 (<a class="Identifier" href="change.html#gq">gq</a>&nbsp;を使用) のために、<a class="Type" href="options.html#'formatexpr'">'formatexpr'</a>&nbsp;および<br>
+&quot;json.FormatExpr()&quot; 関数を使用するように拡張できる。<br>
 <br>
-次の行を $HOME/.vim/ftplugin/json.vim に追加する:<br>
+以下の行を $HOME/.vim/ftplugin/json.vim に追加する:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9script<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;import autoload 'dist/json.vim'<br>
@@ -874,304 +885,301 @@ JSON ファイルタイプは、JSON のフォーマッティング (<a class="I
 <br>
 <span class="Statement">LUA</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-lua-plugin" name="ft-lua-plugin">ft-lua-plugin</a>&nbsp;<a class="Constant" href="filetype.html#g:lua_folding" name="g:lua_folding">g:lua_folding</a><br>
 <br>
-<a class="Identifier" href="fold.html#fold-expr">fold-expr</a>&nbsp;を使用して Lua 関数の折り畳みを有効にするには:<br>
+<a class="Identifier" href="fold.html#fold-expr">fold-expr</a>&nbsp;を使用して、Lua 関数の折り畳みを以下で有効にできる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:lua_folding = 1</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#g:lua_version" name="g:lua_version">g:lua_version</a>&nbsp;<a class="Constant" href="filetype.html#g:lua_subversion" name="g:lua_subversion">g:lua_subversion</a><br>
-Lua ファイルタイプの&nbsp;<a class="Type" href="options.html#'includeexpr'">'includeexpr'</a>&nbsp;と&nbsp;<a class="Identifier" href="syntax.html#ft-lua-syntax">ft-lua-syntax</a>&nbsp;のハイライトは、グローバ<br>
-ル変数 &quot;g:lua_version&quot; と &quot;g:lua_subversion&quot; を使用して、使用する Lua のバー<br>
-ジョンを決定する (デフォルトは 5.3)。<br>
+Lua ファイルタイプの&nbsp;<a class="Type" href="options.html#'includeexpr'">'includeexpr'</a>&nbsp;および&nbsp;<a class="Identifier" href="syntax.html#ft-lua-syntax">ft-lua-syntax</a>&nbsp;のハイライトは、使用<br>
+する Lua のバージョンを決定するために、グローバル変数 &quot;g:lua_version&quot; および<br>
+&quot;g:lua_subversion&quot; を使用する (5.3 がデフォルト)<br>
 <br>
-例えば、Lua 5.1 を使用するには変数を以下のように設定する:<br>
+例えば、Lua 5.1 を使用するには、変数をこのように設定する:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:lua_version = 5<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:lua_subversion = 1</div>
 <br>
 <span class="Statement">LUAU</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-luau-plugin" name="ft-luau-plugin">ft-luau-plugin</a>&nbsp;<a class="Constant" href="filetype.html#g:luau_folding" name="g:luau_folding">g:luau_folding</a><br>
 <br>
-<a class="Identifier" href="fold.html#fold-expr">fold-expr</a>&nbsp;を使用した Luau のブロック構造の折り畳みを有効にするには:<br>
+<a class="Identifier" href="fold.html#fold-expr">fold-expr</a>&nbsp;を使用して、Luau のブロック構文の折り畳みを以下で有効にできる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:luau_folding = 1</div>
 <br>
 <span class="Statement">MAIL</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-mail-plugin" name="ft-mail-plugin">ft-mail-plugin</a><br>
 <br>
 オプション:<br>
-<a class="Type" href="options.html#'modeline'">'modeline'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;トロイの木馬の危険を避けるのと、「件名」に含まれる &quot;Vim:&quot; がエ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ラーメッセージの原因となる可能性を排除するために、モード行はオ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;フになる。<br>
-<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;&nbsp;&nbsp;&nbsp; 72に設定する。e-mailでは良く推奨される値。<br>
-<a class="Type" href="options.html#'formatoptions'">'formatoptions'</a>&nbsp;テキストを折返し、新しい行ではコメントリーダーを繰り返すように<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;設定。引用記号の &quot;&gt;&quot; が繰り返される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これにより<a class="Identifier" href="change.html#gq">gq</a>で引用文を整形できる。<br>
+<a class="Type" href="options.html#'modeline'">'modeline'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;トロイの木馬の危険を避けるため、および &quot;Vim:&quot; を含む Subject<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;行がエラーメッセージを引き起こすのを避けるために、オフにされ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
+<a class="Type" href="options.html#'textwidth'">'textwidth'</a>&nbsp;&nbsp;&nbsp;&nbsp; 72 に設定される。これは電子メールでしばしば推奨される。<br>
+<a class="Type" href="options.html#'formatoptions'">'formatoptions'</a>&nbsp;&nbsp;テキスト行を折り返し、新しい行でコメントリーダーを繰り返すよ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;うに設定され、引用のための先頭の &quot;&gt;&quot; が繰り返されるようになる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="change.html#gq">gq</a>&nbsp;で引用されたテキストを整形することもできる。<br>
 <br>
-ローカルキーマップ:<br>
-<span class="Special">&lt;LocalLeader&gt;</span>q&nbsp;&nbsp; or&nbsp;&nbsp; \MailQuote<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモードでは選択されたテキストを、ノーマルモードではカーソルの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置からファイル末端までのテキストを引用する。これは全ての行に &quot;&gt; &quot; が<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挿入されることを意味している。<br>
+ローカルマッピング:<br>
+<span class="Special">&lt;LocalLeader&gt;</span>q&nbsp;&nbsp; または&nbsp;&nbsp; \MailQuote<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ビジュアルモードで選択されたテキスト、またはノーマルモードではカーソル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置からファイルの終わりまでを引用する。これは各行に &quot;&gt; &quot; が挿入される<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ことを意味する。<br>
 <br>
 <span class="Statement">MAN</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-man-plugin" name="ft-man-plugin">ft-man-plugin</a>&nbsp;<a class="Constant" href="filetype.html#:Man" name=":Man">:Man</a>&nbsp;<a class="Constant" href="filetype.html#:ManReload" name=":ManReload">:ManReload</a>&nbsp;<a class="Constant" href="filetype.html#man.vim" name="man.vim">man.vim</a><br>
 <br>
-このプラグインはマニュアルページを洗練された方法で表示する。ユーザーマニュアル<br>
-の詳細な情報は&nbsp;<a class="Identifier" href="usr_12.html#find-manpage">find-manpage</a>&nbsp;も参照のこと。<br>
+このプラグインはマニュアルページを見やすく表示する。詳しい情報については、ユー<br>
+ザーマニュアルの&nbsp;<a class="Identifier" href="usr_12.html#find-manpage">find-manpage</a>&nbsp;を参照。<br>
 <br>
-マニュアルページが読み込まれる前に&nbsp;<a class="Identifier" href="filetype.html#:Man">:Man</a>&nbsp;を利用するには、起動&nbsp;<a class="Identifier" href="starting.html#vimrc">vimrc</a>&nbsp;ファイ<br>
-ルでこのスクリプトを読み込む必要がある:<br>
-<br>
+マニュアルページが読み込まれる前に&nbsp;<a class="Identifier" href="filetype.html#:Man">:Man</a>&nbsp;コマンドを使い始めるには、スタート<br>
+アップの&nbsp;<a class="Identifier" href="starting.html#vimrc">vimrc</a>&nbsp;ファイルからこのスクリプトを読み込む:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;runtime ftplugin/man.vim</div>
 <br>
 オプション:<br>
-<a class="Type" href="options.html#'iskeyword'">'iskeyword'</a>&nbsp;&nbsp;&nbsp;&nbsp; マニュアルページの名前の上で&nbsp;<span class="Special">CTRL-]</span>&nbsp;の利用をサポートするように<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;するために文字 '.' が追加される。<br>
+<a class="Type" href="options.html#'iskeyword'">'iskeyword'</a>&nbsp;&nbsp;&nbsp;&nbsp; マニュアルページ名の上で&nbsp;<span class="Special">CTRL-]</span>&nbsp;を使用できるようにするため<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に、'.' 文字が追加される。<br>
 <br>
 コマンド:<br>
-Man&nbsp;<span class="Special">{name}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>&nbsp;についてのマニュアルページを表示する。<br>
+Man&nbsp;<span class="Special">{name}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>&nbsp;のマニュアルページをウィンドウに表示する。<br>
 Man&nbsp;<span class="Special">{number}</span>&nbsp;<span class="Special">{name}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{number}</span>&nbsp;セクションの&nbsp;<span class="Special">{name}</span>&nbsp;についてのマニュアルページを表示<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。<br>
-ManReload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="filetype.html#:Man">:Man</a>&nbsp;の引数補完に使われる使用可能なマニュアルページのキャッ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{number}</span>&nbsp;セクションの&nbsp;<span class="Special">{name}</span>&nbsp;のマニュアルページを表示する。<br>
+ManReload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="filetype.html#:Man">:Man</a>&nbsp;の引数の補完に使用される、使用可能な man ページのキャッ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;シュを再読み込みする。<br>
 <br>
-グローバルキーマップ:<br>
-<span class="Special">&lt;Leader&gt;</span>K&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カーソル下の単語についてのマニュアルページを表示する。<br>
+グローバルマッピング:<br>
+<span class="Special">&lt;Leader&gt;</span>K&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カーソル下の単語のマニュアルページを表示する。<br>
 <span class="Special">&lt;Plug&gt;</span>ManPreGetPage<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同上、マッピングを使うことを可能にする:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同上、マッピングを使用できるようにする:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nmap &lt;F1&gt; &lt;Plug&gt;ManPreGetPage</div>
 <br>
-ローカルキーマップ:<br>
+ローカルマッピング:<br>
 <span class="Special">&lt;Plug&gt;</span>ManBS<br>
-<span class="Special">&lt;LocalLeader&gt;</span>h&nbsp;&nbsp;バッファからバックスペース&nbsp;<span class="Special">&lt;BS&gt;</span>&nbsp;文字をクリアする。<br>
-<span class="Special">CTRL-]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルの下の単語についてのマニュアルページへ移動する。<br>
-<span class="Special">CTRL-T</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;直前のマニュアルページへ戻る。<br>
+<span class="Special">&lt;LocalLeader&gt;</span>h&nbsp;&nbsp;バッファからバックスペース&nbsp;<span class="Special">&lt;BS&gt;</span>&nbsp;文字を消去する。<br>
+<span class="Special">CTRL-]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソル下の単語のマニュアルページにジャンプする。<br>
+<span class="Special">CTRL-T</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前のマニュアルページに戻る。<br>
 <br>
 マッピングは以下で無効にできる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:no_man_maps = 1</div>
 <br>
 水平の代わりに垂直分割を使用するには:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:ft_man_open_mode = 'vert'</div>
-新しいタブを使うには:<br>
+新しいタブを使用するには:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:ft_man_open_mode = 'tab'</div>
 <br>
-折り畳み&nbsp;<a class="Identifier" href="fold.html#folding">folding</a>&nbsp;を有効にするにはこの変数を使う:<br>
+<a class="Identifier" href="fold.html#folding">folding</a>&nbsp;を有効にするには、以下を使う:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:ft_man_folding_enable = 1</div>
-もしデフォルトの折り畳みが好みではないのなら、代わりに&nbsp;<a class="Identifier" href="autocmd.html#autocommand">autocommand</a>&nbsp;を使って<br>
-望んだ折り畳みスタイルを追加できる。例:<br>
+デフォルトの折り畳みが好みでない場合、代わりに&nbsp;<a class="Identifier" href="autocmd.html#autocommand">autocommand</a>&nbsp;を使用して、望み<br>
+の折り畳みスタイルを追加する。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;autocmd FileType man setlocal foldmethod=indent foldenable</div>
 <br>
-:Man&nbsp;<span class="Special">{number}</span>&nbsp;<span class="Special">{name}</span>&nbsp;が man&nbsp;<span class="Special">{number}</span>&nbsp;<span class="Special">{name}</span>&nbsp;のように振る舞い、ページが見つから<br>
-ない場合に man&nbsp;<span class="Special">{name}</span>&nbsp;を実行させたくなければ、これを使用する:<br>
+ページが見つからない場合に man&nbsp;<span class="Special">{name}</span>&nbsp;を実行しないことで、:Man&nbsp;<span class="Special">{number}</span>&nbsp;<span class="Special">{name}</span><br>
+を man&nbsp;<span class="Special">{number}</span>&nbsp;<span class="Special">{name}</span>&nbsp;のように動作させたい場合は、以下を使う:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:ft_man_no_sect_fallback = 1</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#g:ft_man_implementation" name="g:ft_man_implementation">g:ft_man_implementation</a><br>
-:Man コマンドの補完はシステムがどの man の実装を持っているかを推測しようとす<br>
-る。推測が間違っている場合は、g:ft_man_implementation を次のいずれかの値に設定<br>
-できる:<br>
+:Man コマンドの補完は、システムが man のどの実装を持っているかを推測しようとす<br>
+る。推測が間違っている場合、g:ft_man_implementation をこれらの値のいずれかに設<br>
+定できる:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'man-db'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://man-db.nongnu.org/">https://man-db.nongnu.org/</a></span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不明。マニュアルページの代わりにシェルコマンドの補完に<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;フォールバックする。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不明、man ページの代わりにシェルコマンドの補完にフォー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルバックする。<br>
 <br>
-<a class="Type" href="options.html#'keywordprg'">'keywordprg'</a>&nbsp;を設定して、<a class="Identifier" href="various.html#K">K</a>&nbsp;コマンドを Vim ウィンドウのマニュアルページにもで<br>
-きる:<br>
+<a class="Identifier" href="various.html#K">K</a>&nbsp;コマンドが Vim のウィンドウでマニュアルページを開くように、<a class="Type" href="options.html#'keywordprg'">'keywordprg'</a>&nbsp;も<br>
+設定したいかもしれない:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set keywordprg=:Man</div>
 <br>
 <br>
 <span class="Statement">MANPAGER</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#manpager.vim" name="manpager.vim">manpager.vim</a><br>
 <br>
-<a class="Identifier" href="filetype.html#:Man">:Man</a>&nbsp;コマンドを使うと、Vim をマンページにできる(その構文はマンページをハイラ<br>
-イト表示し、<span class="Special">CTRL-]</span>&nbsp;でヒットしたリンク先のマンページをたどる)。<br>
+<a class="Identifier" href="filetype.html#:Man">:Man</a>&nbsp;コマンドにより、Vim を manpager (man ページを構文ハイライトし、<span class="Special">CTRL-]</span><br>
+を押すとリンクされた man ページをたどる) にすることができる。<br>
 <br>
-bash, zsh, ksh もしくは dash の場合、設定ファイル (.bashrc, .zshrc, ...) に以<br>
-下の設定を追加する。<br>
+bash、zsh、ksh または dash の場合は、設定ファイル (.bashrc,.zshrc, ...) に追加<br>
+する<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;export MANPAGER=&quot;vim +MANPAGER --not-a-term -&quot;<br>
 <br>
-(t)csh の場合、設定ファイルに以下の設定を追加する。<br>
+(t)csh の場合は、設定ファイルに追加する<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setenv MANPAGER &quot;vim +MANPAGER --not-a-term -&quot;<br>
 <br>
-fish の場合、設定ファイルに以下の設定を追加する。<br>
+fish の場合は、設定ファイルに追加する<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set -x MANPAGER &quot;vim +MANPAGER --not-a-term -&quot;<br>
 <br>
-<span class="Todo">NOTE:</span>&nbsp;man の実装によっては、代わりに一時ファイルのパスを引数としてページャーに<br>
-渡すものもある。これには、OpenBSD、Alpine Linux、Void Linux などでデフォルトと<br>
-なっている mandoc のフロントエンドも含まれる。<br>
+<span class="Todo">NOTE:</span>&nbsp;いくつかの man 実装は、代わりに一時ファイルのパスを引数としてページャー<br>
+に渡す。これには mandoc のフロントエンドが含まれ、それは例えば OpenBSD、Alpine<br>
+Linux および Void Linux でのデフォルトである。<br>
 <br>
-その場合は、末尾のハイフン付き引数を削除し、MANPAGER 環境変数を<br>
-&quot;vim +MANPAGER --not-a-term&quot; に設定するように上記の行を修正する。<br>
+その場合は、上記の行を調整して、代わりに MANPAGER 環境変数を<br>
+&quot;vim +MANPAGER --not-a-term&quot; に設定し、最後のハイフンの引数を取り除く。<br>
 <br>
-両方の動作をサポートする 1 つの方法は、以下のようなラッパースクリプトを作成す<br>
-ることである:<br>
+両方の動作をサポートする方法は、以下のラッパースクリプトを作成することである:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#!/bin/sh<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim +MANPAGER --not-a-term &quot;${1:--}&quot;</div>
 <br>
-環境変数 MANPAGER にスクリプト名を指定することで、そのスクリプトを有効にできる<br>
-(PATH に含まれていない場合は、絶対パスを使用できる)。実行権限ビットが設定され<br>
-ていることを確認すること。<br>
+MANPAGER 環境変数をスクリプト名に設定することで、それを有効にできる (PATH 上に<br>
+無い場合は絶対パスを使用できる)。実行可能パーミッションビットが設定されている<br>
+ことを確認すること。<br>
 <br>
 <span class="Statement">MARKDOWN</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-markdown-plugin" name="ft-markdown-plugin">ft-markdown-plugin</a><br>
 <br>
-折り畳みを有効にするには、次のようにする:<br>
+折り畳みを有効にするには、以下を使う:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:markdown_folding = 1</div>
 <br>
-<a class="Type" href="options.html#'expandtab'">'expandtab'</a>&nbsp;はデフォルトで設定される。それを望まない場合は、次のようにする:<br>
+<a class="Type" href="options.html#'expandtab'">'expandtab'</a>&nbsp;はデフォルトで設定される。それを望まない場合は、以下を使う:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:markdown_recommended_style = 0</div>
 <br>
 <br>
 <span class="Statement">ORG</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-org-plugin" name="ft-org-plugin">ft-org-plugin</a><br>
 <br>
-折り畳みを有効にするには、これを使う:<br>
+折り畳みを有効にするには、以下を使う:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:org_folding = 1</div>
 <br>
 <br>
 <span class="Statement">PDF</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-pdf-plugin" name="ft-pdf-plugin">ft-pdf-plugin</a><br>
 <br>
-PDF ファイル内をジャンプするため、タグスタックをシミュレートする&nbsp;<span class="Special">&lt;C-]&gt;</span>&nbsp;と<span class="Special">&lt;C-T&gt;</span><br>
-という2つのマップが提供されている。次のものがタグとして扱われる:<br>
+PDF をナビゲートするためのタグスタックをシミュレートするために、2 つのマップ<br>
+<span class="Special">&lt;C-]&gt;</span>&nbsp;および&nbsp;<span class="Special">&lt;C-T&gt;</span>&nbsp;が提供されている。以下がタグとして扱われる:<br>
 <br>
-- &quot;startxref&quot; の後から xref テーブルまでのバイトオフセット<br>
-- トレイラー内の /Prev キーから前の xref テーブルへのバイトオフセット<br>
+- &quot;startxref&quot; の後の、xref テーブルへのバイトオフセット<br>
+- トレーラー内の /Prev キーの後の、以前の xref テーブルへのバイトオフセット<br>
 - xref テーブル内の &quot;0123456789 00000 n&quot; という形式の行<br>
-- PDF 内の任意の位置における &quot;1 0 R&quot; のようなオブジェクト参照<br>
+- PDF 内の任意の場所にある &quot;1 0 R&quot; のようなオブジェクト参照<br>
 <br>
-これらのマップは次のコマンドで無効化できる<br>
+これらのマップは以下で無効にできる<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let g:no_pdf_maps = 1</div>
 <br>
 <span class="Statement">PLSQL</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-plsql-plugin" name="ft-plsql-plugin">ft-plsql-plugin</a><br>
 <br>
-PL/SQL ファイルタイプでシンタックスの折り畳みを有効にするには、以下の変数を設<br>
-定する:<br>
+PL/SQL ファイルタイプで構文折り畳みを有効にするには、以下の変数を設定する:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let g:plsql_fold = 1</div>
 <br>
 <br>
 <span class="Statement">PYTHON</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-python-plugin" name="ft-python-plugin">ft-python-plugin</a>&nbsp;<a class="Constant" href="filetype.html#PEP8" name="PEP8">PEP8</a><br>
 <br>
-デフォルトでは、PEP8 に従って以下のオプションが設定されている:<br>
+デフォルトでは、PEP8 に従って、以下のオプションが設定される:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8</div>
 <br>
-この動作を無効にするには、あなたのvimrcに次の変数を設定する:<br>
+この動作を無効にするには、vimrc で以下の変数を設定する:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:python_recommended_style = 0</div>
 <br>
-Python のオムニ補完&nbsp;<a class="Identifier" href="insert.html#compl-omni">compl-omni</a>&nbsp;は、<a class="Identifier" href="various.html#+python">+python</a><a class="Identifier" href="pattern.html#/">/</a><a class="Identifier" href="various.html#+python3">+python3</a>&nbsp;インタプリタ機能付き<br>
-の Vim ビルド向けに、python3complete.vim (または pythoncomplete.vim) によって<br>
-提供される。<br>
-デフォルトでは、バッファ内の import / from ステートメントは検査されない。つま<br>
-り、バッファ内で定義されている名前 (クラス、関数、変数) の補完は機能するが、イ<br>
-ンポートされたモジュールのメンバーの補完は提供されない。<br>
+Python のオムニ補完&nbsp;<a class="Identifier" href="insert.html#compl-omni">compl-omni</a>&nbsp;は、<a class="Identifier" href="various.html#+python">+python</a><a class="Identifier" href="pattern.html#/">/</a><a class="Identifier" href="various.html#+python3">+python3</a>&nbsp;インタープリタ付きの<br>
+Vim ビルドに対して、python3complete.vim (または pythoncomplete.vim) によって提<br>
+供される。デフォルトでは、バッファ内で見つかった import / from 文は調べない。<br>
+これは、バッファ自体で定義された名前 (クラス、関数、変数) の補完は動作するが、<br>
+インポートされたモジュールのメンバーの補完は提供されないことを意味する。<br>
 <br>
-インポートされたモジュールメンバーの補完を有効にするには、以下を設定する:<br>
+インポートされたモジュールのメンバーの補完を有効にするには、以下を設定する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:pythoncomplete_allow_import = 1</div>
 <br>
-<span class="Todo">WARNING:</span>&nbsp;これを有効にすると、オムニ補完はバッファ内のインポート文を Python の<br>
-インポート機構を通して実行し、インポートされたモジュールのトップレベルコードを<br>
-実行する。信頼できるコードに対してのみこれを有効にすること。<br>
+<span class="Todo">WARNING:</span>&nbsp;これを有効にすると、オムニ補完はバッファ内で見つかった import 文を<br>
+Python のインポート機構を通じて実行し、それはインポートされたモジュールのトッ<br>
+プレベルのコードを実行する。信頼できるコードに対してのみこれを有効にすること。<br>
 <br>
 <span class="Statement">QF QUICKFIX</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#qf.vim" name="qf.vim">qf.vim</a>&nbsp;<a class="Constant" href="filetype.html#ft-qf-plugin" name="ft-qf-plugin">ft-qf-plugin</a><br>
 <br>
 &quot;qf&quot; ファイルタイプは quickfix ウィンドウに使用される。<a class="Identifier" href="quickfix.html#quickfix-window">quickfix-window</a>&nbsp;を参<br>
 照。<br>
 <br>
-quickfix ファイルタイププラグインは quickfix リストを生成したコマンドを<br>
-<a class="Identifier" href="windows.html#status-line">status-line</a>&nbsp;に表示するための設定を含む。この設定を無効にするには、以下のよう<br>
-に設定する:<br>
+quickfix ファイルタイププラグインには、quickfix リストを生成したコマンドを<br>
+<a class="Identifier" href="windows.html#status-line">status-line</a>&nbsp;に表示するための設定が含まれる。この設定を無効にするには、以下の<br>
+ように設定する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:let g:qf_disable_statusline = 1</div>
 <br>
 <br>
 <span class="Statement">R MARKDOWN</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-rmd-plugin" name="ft-rmd-plugin">ft-rmd-plugin</a><br>
 <br>
-デフォルトでは、ftplugin/html.vimは読み込まれない。読み込みたい場合は、以下を<br>
-あなたの&nbsp;<a class="Identifier" href="starting.html#vimrc">vimrc</a>&nbsp;に追加する:<br>
+デフォルトでは ftplugin/html.vim は読み込まれない。読み込みたい場合は、<a class="Identifier" href="starting.html#vimrc">vimrc</a><br>
+に以下を追加する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let rmd_include_html = 1</div>
 <br>
-<a class="Type" href="options.html#'formatexpr'">'formatexpr'</a>&nbsp;オプションは、Rコード用とMarkdownコード用の異なる値で動的に設定さ<br>
-れる。<a class="Type" href="options.html#'formatexpr'">'formatexpr'</a>&nbsp;が設定されていない方が良い場合は、以下をあなたの&nbsp;<a class="Identifier" href="starting.html#vimrc">vimrc</a>&nbsp;に<br>
-追加する:<br>
+<a class="Type" href="options.html#'formatexpr'">'formatexpr'</a>&nbsp;オプションは、R コードおよび Markdown コードに対して異なる値で動<br>
+的に設定される。<a class="Type" href="options.html#'formatexpr'">'formatexpr'</a>&nbsp;が設定されないほうが好ましい場合は、<a class="Identifier" href="starting.html#vimrc">vimrc</a>&nbsp;に以<br>
+下を追加する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let rmd_dynamic_comments = 0</div>
 <br>
 <br>
 <span class="Statement">R RESTRUCTURED TEXT</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-rrst-plugin" name="ft-rrst-plugin">ft-rrst-plugin</a><br>
 <br>
-<a class="Type" href="options.html#'formatexpr'">'formatexpr'</a>&nbsp;オプションは、Rコード用とreStructuredText用の異なる値で動的に設定<br>
-される。<a class="Type" href="options.html#'formatexpr'">'formatexpr'</a>&nbsp;が設定されていない方が良い場合は、以下をあなたの&nbsp;<a class="Identifier" href="starting.html#vimrc">vimrc</a><br>
-に追加する:<br>
+<a class="Type" href="options.html#'formatexpr'">'formatexpr'</a>&nbsp;オプションは、R コードおよび ReStructured テキストに対して異なる<br>
+値で動的に設定される。<a class="Type" href="options.html#'formatexpr'">'formatexpr'</a>&nbsp;が設定されないほうが好ましい場合は、<a class="Identifier" href="starting.html#vimrc">vimrc</a><br>
+に以下を追加する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let rrst_dynamic_comments = 0</div>
 <br>
 <br>
 <span class="Statement">RESTRUCTUREDTEXT</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-rst-plugin" name="ft-rst-plugin">ft-rst-plugin</a><br>
 <br>
-以下のフォーマット設定がオプションで利用可能である:<br>
+以下の整形設定がオプションで使用可能である:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setlocal expandtab shiftwidth=3 softtabstop=3 tabstop=8</div>
 <br>
-この機能を有効にするには、あなたのvimrcに次の変数を設定する:<br>
+この動作を有効にするには、vimrc で以下の変数を設定する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:rst_style = 1</div>
 <br>
 <br>
 <span class="Statement">RNOWEB</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-rnoweb-plugin" name="ft-rnoweb-plugin">ft-rnoweb-plugin</a><br>
 <br>
-<a class="Type" href="options.html#'formatexpr'">'formatexpr'</a>&nbsp;オプションは、R コードと LaTeX コードに対して異なる値で動的に設定<br>
-される。<a class="Type" href="options.html#'formatexpr'">'formatexpr'</a>&nbsp;を設定しないことを希望する場合は、<a class="Identifier" href="starting.html#vimrc">vimrc</a>&nbsp;に以下を追加す<br>
-る:<br>
+<a class="Type" href="options.html#'formatexpr'">'formatexpr'</a>&nbsp;オプションは、R コードおよび LaTeX コードに対して異なる値で動的に<br>
+設定される。<a class="Type" href="options.html#'formatexpr'">'formatexpr'</a>&nbsp;が設定されないほうが好ましい場合は、<a class="Identifier" href="starting.html#vimrc">vimrc</a>&nbsp;に以下を<br>
+追加する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let rnw_dynamic_comments = 0</div>
 <br>
 <br>
 <span class="Statement">RPM SPEC</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-spec-plugin" name="ft-spec-plugin">ft-spec-plugin</a><br>
 <br>
-このプラグインに関する説明は非常に多いので、別のファイル&nbsp;<a class="Identifier" href="pi_spec.html">pi_spec.txt</a>&nbsp;に記述<br>
-してある。<br>
+このプラグインのテキストはかなり長いので、別のファイルに置かれている:<br>
+<a class="Identifier" href="pi_spec.html">pi_spec.txt</a>。<br>
 <br>
 <br>
 <span class="Statement">RUST</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-rust" name="ft-rust">ft-rust</a><br>
 <br>
-このプラグインに関する説明は非常に多いので、別のファイル&nbsp;<a class="Identifier" href="ft_rust.html">ft_rust.txt</a>&nbsp;に記述<br>
-してある。<br>
+このプラグインのテキストはかなり長いので、別のファイルに置かれている:<br>
+<a class="Identifier" href="ft_rust.html">ft_rust.txt</a>。<br>
 <br>
 <br>
 <span class="Statement">SQL</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-sql" name="ft-sql">ft-sql</a><br>
 <br>
-このプラグインについての解説は長くなるので、別のファイルに分割してある:<br>
-<a class="Identifier" href="ft_sql.html">ft_sql.txt</a><br>
+このプラグインのテキストはかなり長いので、別のファイルに置かれている:<br>
+<a class="Identifier" href="ft_sql.html">ft_sql.txt</a>。<br>
 <br>
 <br>
 <span class="Statement">TEX</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-tex-plugin" name="ft-tex-plugin">ft-tex-plugin</a>&nbsp;<a class="Constant" href="filetype.html#g:tex_flavor" name="g:tex_flavor">g:tex_flavor</a><br>
 <br>
-*.tex ファイルの最初の行が次のような形なら<br>
+*.tex ファイルの最初の行が以下の形式の場合<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%&amp;&lt;format&gt;</div>
-ファイルタイプは次のどれかになる: plaintex (プレーン TeX), context (ConTeXt),<br>
-tex (LaTeX)。そうでなければ context か tex かを決定するためにファイル内から<br>
-キーワードを検索する。もしキーワードが見つからなければ既定値として plaintex に<br>
-なる。この既定値は、変数 g:tex_flavor を定義すれば変更することができる。次のど<br>
-れかのようにする:<br>
+これがファイルタイプを決定する:&nbsp;&nbsp;plaintex (plain TeX の場合)、context (ConTeXt<br>
+の場合)、または tex (LaTeX の場合)。そうでない場合、context または tex を選択<br>
+するために、ファイル内でキーワードが検索される。キーワードが見つからない場合、<br>
+デフォルトで plaintex になる。デフォルトは、変数 g:tex_flavor を、最もよく使用<br>
+する形式 (ファイルタイプではない) に定義することで変更できる。これらのいずれか<br>
+を使う:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:tex_flavor = &quot;plain&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:tex_flavor = &quot;context&quot;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:tex_flavor = &quot;latex&quot;</div>
-現在のところこれ以外のフォーマットは識別されない。<br>
+現在、他の形式は認識されない。<br>
 <br>
 <span class="Statement">TYPST</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-typst-plugin" name="ft-typst-plugin">ft-typst-plugin</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#g:typst_recommended_style" name="g:typst_recommended_style">g:typst_recommended_style</a><br>
 デフォルトでは、Typst ファイルタイププラグインは以下のオプションを有効にする:<br>
+<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setlocal expandtab shiftwidth=2 softtabstop=2</div>
 <br>
 これを無効にするには、以下の変数を設定する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:typst_recommended_style = 0</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#g:typst_conceal" name="g:typst_conceal">g:typst_conceal</a><br>
-<a class="Identifier" href="eval.html#TRUE">TRUE</a>&nbsp;の場合、Typst ファイルタイププラグインは&nbsp;<a class="Type" href="options.html#'conceallevel'">'conceallevel'</a>&nbsp;オプションを 2<br>
+<a class="Identifier" href="eval.html#TRUE">TRUE</a>&nbsp;のとき、Typst ファイルタイププラグインは&nbsp;<a class="Type" href="options.html#'conceallevel'">'conceallevel'</a>&nbsp;オプションを 2<br>
 に設定する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#g:typst_folding" name="g:typst_folding">g:typst_folding</a><br>
-<a class="Identifier" href="eval.html#TRUE">TRUE</a>&nbsp;の場合、Typst ファイルタイププラグインは見出しを折り畳む。(デフォルト:<br>
+<a class="Identifier" href="eval.html#TRUE">TRUE</a>&nbsp;のとき、Typst ファイルタイププラグインは見出しを折り畳む。(デフォルト:<br>
 <a class="Identifier" href="eval.html#FALSE">FALSE</a>)<br>
 <br>
 有効にするには:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:typst_folding = 1</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#g:typst_foldnested" name="g:typst_foldnested">g:typst_foldnested</a><br>
-<a class="Identifier" href="eval.html#TRUE">TRUE</a>&nbsp;の場合、Typst ファイルタイププラグインはネストされた見出しを親の下に折<br>
+<a class="Identifier" href="eval.html#TRUE">TRUE</a>&nbsp;のとき、Typst ファイルタイププラグインは入れ子の見出しをその親の下に折<br>
 り畳む。(デフォルト:&nbsp;<a class="Identifier" href="eval.html#TRUE">TRUE</a>)<br>
 <br>
 無効にするには:<br>
@@ -1181,20 +1189,19 @@ tex (LaTeX)。そうでなければ context か tex かを決定するために�
 <br>
 Vim ファイルタイププラグインは以下のマッピングを定義する:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前の関数の先頭に移動する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;]]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次の関数の先頭に移動する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;][&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前の関数の末尾に移動する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;[]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次の関数の末尾に移動する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;]&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次の (旧来の) コメントに移動する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;[&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前の (旧来の) コメントに移動する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前の関数の開始へ移動する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;]]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次の関数の開始へ移動する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;][&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前の関数の終わりへ移動する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次の関数の終わりへ移動する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;]&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次の (旧来の) コメントへ移動する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前の (旧来の) コメントへ移動する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;gf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソル下のファイルを編集する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-W</span>&nbsp;gf&nbsp;&nbsp; カーソル下のファイルを新しいタブページで編集する<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-W</span>&nbsp;f&nbsp;&nbsp;&nbsp;&nbsp;カーソル下のファイルを新しいウィンドウで編集する<br>
 <br>
 <br>
-このマッピングは以下のようにして無効化することができる:<br>
+マッピングは以下で無効にできる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:no_vim_maps = 1</div>
-<br>
 <br>
 <span class="Statement">YAML</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-yaml-plugin" name="ft-yaml-plugin">ft-yaml-plugin</a><br>
 デフォルトでは、YAML ファイルタイププラグインは以下のオプションを有効にする:<br>
@@ -1203,11 +1210,12 @@ Vim ファイルタイププラグインは以下のマッピングを定義す�
 これを無効にするには、以下の変数を設定する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:yaml_recommended_style = 0</div>
 <br>
+<br>
 <span class="Statement">ZIG</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-zig-plugin" name="ft-zig-plugin">ft-zig-plugin</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#g:zig_recommended_style" name="g:zig_recommended_style">g:zig_recommended_style</a><br>
-デフォルトでは、Zig の推奨スタイルに従って、以下のインデントオプションが設定さ<br>
-れている (<span class="Constant"><a href="https://ziglang.org/documentation/master/">https://ziglang.org/documentation/master/</a></span>):<br>
+デフォルトでは、Zig の推奨スタイル (<span class="Constant"><a href="https://ziglang.org/documentation/master/">https://ziglang.org/documentation/master/</a></span>)<br>
+に従って、以下のインデントオプションが設定される:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8</div>
 <br>
@@ -1216,24 +1224,24 @@ Vim ファイルタイププラグインは以下のマッピングを定義す�
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:zig_recommended_style = 0</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#g:zig_std_dir" name="g:zig_std_dir">g:zig_std_dir</a><br>
-Zig 標準ライブラリへのパス。Zig&nbsp;<a class="Identifier" href="usr_51.html#ftplugin">ftplugin</a>&nbsp;は&nbsp;<a class="Identifier" href="filetype.html#g:zig_std_dir">g:zig_std_dir</a>&nbsp;を読み取り、それ<br>
-を Zig ファイルの&nbsp;<a class="Type" href="options.html#'path'">'path'</a>&nbsp;に追加する。Zig 標準ライブラリが配置されている場所は、<br>
-システムとインストール方法によって異なる。<br>
+Zig 標準ライブラリへのパス。Zig の&nbsp;<a class="Identifier" href="usr_51.html#ftplugin">ftplugin</a>&nbsp;は&nbsp;<a class="Identifier" href="filetype.html#g:zig_std_dir">g:zig_std_dir</a>&nbsp;を読み、それ<br>
+を Zig ファイルに対する&nbsp;<a class="Type" href="options.html#'path'">'path'</a>&nbsp;に追加する。Zig 標準ライブラリがどこに置かれて<br>
+いるかは、システムおよびインストール方法に依存する。<br>
 <br>
-<span class="Comment">zig env</span>&nbsp;を使用すると&nbsp;<a class="Identifier" href="filetype.html#g:zig_std_dir">g:zig_std_dir</a>&nbsp;を自動的に設定できる:<br>
+<span class="Comment">zig env</span>&nbsp;を使用して、<a class="Identifier" href="filetype.html#g:zig_std_dir">g:zig_std_dir</a>&nbsp;を自動的に設定できる:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:zig_std_dir = json_decode(system('zig env'))['std_dir']</div>
 <br>
-例えば、これを FileType&nbsp;<a class="Identifier" href="autocmd.html#:autocmd">:autocmd</a>&nbsp;またはユーザー&nbsp;<a class="Identifier" href="usr_51.html#ftplugin">ftplugin</a>&nbsp;に配置して、Zig<br>
-ファイルが開かれたときにのみ読み込まれるようにできる。<br>
+これは、例えば FileType の&nbsp;<a class="Identifier" href="autocmd.html#:autocmd">:autocmd</a>&nbsp;またはユーザーの&nbsp;<a class="Identifier" href="usr_51.html#ftplugin">ftplugin</a>&nbsp;に置いて、<br>
+Zig ファイルが開かれたときにのみ読み込むようにできる。<br>
 <br>
 <br>
 <span class="Statement">ZIMBU</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="filetype.html#ft-zimbu-plugin" name="ft-zimbu-plugin">ft-zimbu-plugin</a><br>
 <br>
-Zimbu ファイルタイププラグインは、[[ および ]] で関数の先頭および末尾に移動す<br>
-るためのマッピングを定義する。<br>
+Zimbu ファイルタイププラグインは、[[ および ]] で関数の開始および終わりへ移動<br>
+するマッピングを定義する。<br>
 <br>
-このマッピングは以下のようにして無効化することができる:<br>
+マッピングは以下で無効にできる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let g:no_zimbu_maps = 1</div>
 <br>
 <br>
