@@ -1,4 +1,4 @@
-*viai.txt*	For ViAI バージョン 1.0.  Last change: 2026 Nov 24
+*viai.txt*	For ViAI バージョン 1.0.  Last change: 2026 Nov 27
 
 
 		  VIAI リファレンスマニュアル
@@ -21,8 +21,9 @@ ViAI (Vim Advanced Integrated、"vee-eye" と発音する) は、元 Vim メン�
 8. デフォルト値			|viai-defaults|
 9. 関数インターフェイス		|viai-functions|
 10. 追加機能			|viai-additional-features|
-11. ライセンス			|viai-license|
-12. スポンサー			|viai-sponsor|
+11. 言語インターフェイス	|viai-interfaces|
+12. ライセンス			|viai-license|
+13. スポンサー			|viai-sponsor|
 
 ==============================================================================
 1. 開発方針					*viai-policy*
@@ -36,7 +37,8 @@ ViAI (Vim Advanced Integrated、"vee-eye" と発音する) は、元 Vim メン�
 - ViAI は、Vim9 script を読み込むときに Vim が出すエラーを、スクリプトを実行せ
   ずに診断として表示できる唯一のエディタである。|:source-dryrun| を参照。
 - あなたの Vim の設定とプラグインは、そのまま ViAI で動作する。|viai-config|
-  を参照。
+  を参照。Python 3 以外の言語インターフェイスを使用するものは除く。
+  |viai-interfaces| を参照。
 - ViAI は、Vim との互換性をできる限り保ちながら、独自の機能を追加する。
 - Vim のパッチは、原則として ViAI に取り込まれる。取り込まれないものは次に列挙
   されている:
@@ -62,6 +64,9 @@ Vim 由来のヘルプファイルの中の以下の箇所は、ViAI につい�
 	|viai-bugs|	バグの報告方法と扱い方
 	|credits|	ViAI のメンテナー
 	|usr_90.txt|	ViAI のインストール方法
+	|if_lua.txt|	ViAI に付けてビルドできないインターフェイス、
+			|if_mzsch.txt|、|if_perl.txt|、|if_pyth.txt|、
+			|if_ruby.txt| および |if_tcl.txt| にもある
 
 Vim 由来のすべてのヘルプファイルでは、1 行目に ViAI のバージョンと Vim の
 "Last change" の日付があり、タイトルは作者なしで ViAI を名乗っている。
@@ -271,7 +276,17 @@ ViAI には、Vim にない以下の機能がある:
 	"mcp" チャネルモード。
 
 ==============================================================================
-11. ライセンス					*viai-license*
+11. 言語インターフェイス			*viai-interfaces*
+
+言語インターフェイスのうち、ViAI は Python 3 インターフェイス |python3| 付きで
+のみビルドできる: configure および MS-Windows 用の makefile は、Lua、MzScheme、
+Perl、Python 2、Ruby および Tcl インターフェイスを警告を出して無視する。
+|has()| は "lua"、"mzscheme"、"perl"、"python"、"ruby" および "tcl" に対して 0
+を返し、|:lua| などのそれらのコマンドはエラー E319 を出す。|:pyx| は常に
+Python 3 を使用する。
+
+==============================================================================
+12. ライセンス					*viai-license*
 
 最初の取り込み以降に ViAI で行われた変更は、Apache License 2.0 でライセンスさ
 れる。Vim から取り込まれたコードは、Vim のライセンスでライセンスされる。
@@ -290,7 +305,7 @@ ViAI のメンテナーに連絡するには、以下で issue を開くこと:
 	https://github.com/viai-editor/viai/issues
 
 ==============================================================================
-12. スポンサー					*viai-sponsor*
+13. スポンサー					*viai-sponsor*
 
 ViAI が役に立つと思ったら、GitHub Sponsors でそのメンテナーである Hirohito
 Higashi のスポンサーになることができる:
