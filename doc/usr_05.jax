@@ -574,25 +574,25 @@ Vim でのエラーを避けます、|viai-config| を参照してください�
 	:h vim9ls.txt
 
 ------------------------------------------------------------------------------
-viai.mcp パッケージの追加		*viaimcp-install* *package-viai.mcp*
+mcp.viai パッケージの追加		*mcp.viai-install* *package-mcp.viai*
 ------------------------------------------------------------------------------
 
-viai.mcp は、AI ツールに ViAI のヘルプおよび Vim script のチェックを提供する、
+mcp.viai は、AI ツールに ViAI のヘルプおよび Vim script のチェックを提供する、
 Model Context Protocol (MCP) のサーバーです。AI ツールはパッケージ内のコマンド
 でサーバーを起動し、したがって、そのためにパッケージが読み込まれる必要はありま
 せん。Claude Code の場合: >
-	claude mcp add viaimcp -- {runtime}/pack/dist/opt/viai.mcp/bin/viaimcp
+	claude mcp add mcpviai -- {runtime}/pack/dist/opt/mcp.viai/bin/mcpviai
 <{runtime} は ViAI での |$VIMRUNTIME| の値です。MS-Windows では、コマンドは
-bin\viaimcp.cmd です。サーバーは $PATH から "viai" を実行します。別の ViAI を
-実行するには、$VIAIMCP_VIM にその名前を設定してください。
+bin\mcpviai.cmd です。サーバーは $PATH から "viai" を実行します。別の ViAI を
+実行するには、$MCPVIAI_VIM にその名前を設定してください。
 
 そのヘルプを読むには、これらの行をあなたの vimrc ファイルに追加します: >
 	if has('viai')
-	  packadd! viai.mcp
+	  packadd! mcp.viai
 	endif
 <
 パッケージが読み込まれたら、それについては以下で読んでください: >
-	:h viaimcp.txt
+	:h mcpviai.txt
 
 ==============================================================================
 *05.6*	プラグインの追加				*add-plugin* *plugin*
