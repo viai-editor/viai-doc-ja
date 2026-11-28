@@ -11,10 +11,10 @@ helpname: 'viai'
 <br>
 ViAI と Vim の違い&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai" name="viai">viai</a>&nbsp;<a class="Constant" href="viai.html#ViAI" name="ViAI">ViAI</a><br>
 <br>
-ViAI (Vim Advanced Integrated、&quot;vee-eye&quot; と発音する) は、元 Vim メンテナーであ<br>
-る Hirohito Higashi (h-east) が開発している、Vim を改変したものである。このファ<br>
-イルでは ViAI の開発方針を説明し、ViAI が Vim と異なる箇所を列挙する。残りのド<br>
-キュメントは、Vim について述べている箇所も含めて、ViAI にも当てはまる。<br>
+ViAI (Vim Advanced Integrated、&quot;vee-eye&quot; と発音する) は Vim の改変版であり、元<br>
+Vim メンテナーである Hirohito Higashi (h-east) によって開発されている。このファ<br>
+イルは ViAI の開発方針を説明し、ViAI が Vim と異なる箇所を列挙する。その他のド<br>
+キュメントは、Vim に言及している箇所も含め、ViAI にも適用される。<br>
 <br>
 1. 開発方針&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="viai.html#viai-policy">viai-policy</a><br>
 2. プログラム&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="viai.html#viai-programs">viai-programs</a><br>
@@ -33,54 +33,52 @@ ViAI (Vim Advanced Integrated、&quot;vee-eye&quot; と発音する) は、元 V
 <span class="PreProc">==============================================================================</span><br>
 1. 開発方針&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-policy" name="viai-policy">viai-policy</a><br>
 <br>
-- ViAI は以下のプラグインを同梱し、それらをうまく動作させ続ける:<br>
+- ViAI には以下のプラグインが付属し、ViAI はそれらがうまく動作する状態を保つ:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lsp.vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LSP クライアント<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/h-east/lsp.vim">https://github.com/h-east/lsp.vim</a></span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9ls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim9 script の言語サーバー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim9ls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim9 script 用の言語サーバー<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/h-east/vim9ls">https://github.com/h-east/vim9ls</a></span><br>
-&nbsp;&nbsp;これらはオプションのパッケージである。<a class="Identifier" href="usr_05.html#package-lsp.vim">package-lsp.vim</a>&nbsp;を参照。<br>
-- ViAI は、Vim9 script を読み込むときに Vim が出すエラーを、スクリプトを実行せ<br>
-&nbsp;&nbsp;ずに診断として表示できる唯一のエディタである。<a class="Identifier" href="repeat.html#:source-dryrun">:source-dryrun</a>&nbsp;を参照。<br>
-- あなたの Vim の設定とプラグインは、そのまま ViAI で動作する。<a class="Identifier" href="viai.html#viai-config">viai-config</a><br>
-&nbsp;&nbsp;を参照。Python 3 以外の言語インターフェイスを使用するものは除く。<br>
+&nbsp;&nbsp;これらはオプションパッケージである。<a class="Identifier" href="usr_05.html#package-lsp.vim">package-lsp.vim</a>&nbsp;を参照。<br>
+- ViAI は、Vim9 script を読み込む時に Vim が出すエラーを、スクリプトを実行せず<br>
+&nbsp;&nbsp;に診断として表示できる唯一のエディタである。<a class="Identifier" href="repeat.html#:source-dryrun">:source-dryrun</a>&nbsp;を参照。<br>
+- Vim の設定およびプラグインは、そのまま ViAI で動作する。<a class="Identifier" href="viai.html#viai-config">viai-config</a>&nbsp;を参<br>
+&nbsp;&nbsp;照。ただし、Python 3 以外の言語インターフェイスを使用するものは除く。<br>
 &nbsp;&nbsp;<a class="Identifier" href="viai.html#viai-interfaces">viai-interfaces</a>&nbsp;を参照。<br>
-- ViAI は、Vim との互換性をできる限り保ちながら、独自の機能を追加する。<br>
-- Vim のパッチは、原則として ViAI に取り込まれる。取り込まれないものは次に列挙<br>
+- ViAI は、Vim との互換性を可能な限り保ちつつ、独自の機能を追加する。<br>
+- Vim のパッチは原則として ViAI に取り込まれる。取り込まれないものは以下に列挙<br>
 &nbsp;&nbsp;されている:<br>
 &nbsp;&nbsp;<span class="Constant"><a href="https://github.com/viai-editor/viai/blob/master/tools/vim-patch-not-imported.txt">https://github.com/viai-editor/viai/blob/master/tools/vim-patch-not-imported.txt</a></span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-ai-tools" name="viai-ai-tools">viai-ai-tools</a><br>
-<span class="PreProc">AI ツールの利用</span><br>
+<span class="PreProc">AI ツールの使用</span><br>
 <br>
-- AI ツールが仕様を提案することはあるが、それを練り上げて決定するのは人間であ<br>
-&nbsp;&nbsp;る。<br>
-- AI ツールが生成したコードは、コミットされる前に、その仕様と実装の両方につい<br>
-&nbsp;&nbsp;て、必ず人間がレビューする。<br>
+- AI ツールは仕様を提案してもよいが、人間がそれを詰め、決定する。<br>
+- AI ツールが生成したコードは、コミットされる前に、その仕様および実装の両方に<br>
+&nbsp;&nbsp;ついて、常に人間がレビューする。<br>
 <br>
-ViAI のすべての変更は、それがどのように書かれたかにかかわらず、メンテナーが責<br>
-任を負う。<br>
+どのように書かれたかに関係なく、ViAI の全ての変更の責任はメンテナーが負う。<br>
 <br>
-<span class="PreProc">Vim 由来のヘルプの変更</span><br>
+<span class="PreProc">Vim 由来のヘルプの変更点</span><br>
 <br>
-Vim 由来のヘルプファイルの中の以下の箇所は、ViAI についてのものである:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="intro.html#intro">intro</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ViAI とは何か、<a class="Identifier" href="index.html">help.txt</a>&nbsp;と&nbsp;<a class="Identifier" href="usr_01.html#01.1">01.1</a>&nbsp;にもある<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="intro.html#pronounce">pronounce</a>&nbsp;&nbsp;&nbsp;&nbsp; ViAI の発音と表記<br>
+Vim 由来のヘルプファイルの以下の箇所は ViAI についての記述である:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="intro.html#intro">intro</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ViAI とは何か、<a class="Identifier" href="index.html">help.txt</a>&nbsp;および&nbsp;<a class="Identifier" href="usr_01.html#01.1">01.1</a>&nbsp;にもある<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="intro.html#pronounce">pronounce</a>&nbsp;&nbsp;&nbsp;&nbsp; ViAI の読み方および書き方<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="intro.html#internet">internet</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ViAI が開発されている場所<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="intro.html#viai-bugs">viai-bugs</a>&nbsp;&nbsp;&nbsp;&nbsp; バグの報告方法と扱い方<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="intro.html#viai-bugs">viai-bugs</a>&nbsp;&nbsp;&nbsp;&nbsp; バグの報告および対応の方法<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="intro.html#credits">credits</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ViAI のメンテナー<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="usr_90.html">usr_90.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;ViAI のインストール方法<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_lua.html">if_lua.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;ViAI に付けてビルドできないインターフェイス、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_lua.html">if_lua.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;ViAI に組み込んでビルドできないインターフェイス、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_mzsch.html">if_mzsch.txt</a>、<a class="Identifier" href="if_perl.html">if_perl.txt</a>、<a class="Identifier" href="if_pyth.html">if_pyth.txt</a>、<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_ruby.html">if_ruby.txt</a>&nbsp;および&nbsp;<a class="Identifier" href="if_tcl.html">if_tcl.txt</a>&nbsp;にもある<br>
 <br>
-Vim 由来のすべてのヘルプファイルでは、1 行目に ViAI のバージョンと Vim の<br>
-&quot;Last change&quot; の日付があり、タイトルは作者なしで ViAI を名乗っている。<br>
+Vim 由来の全てのヘルプファイルでは、1 行目に ViAI のバージョンおよび Vim の<br>
+&quot;Last change&quot; の日付があり、タイトルは作者を記さずに ViAI の名前を挙げる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 2. プログラム&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-programs" name="viai-programs">viai-programs</a><br>
 <br>
 ViAI を Vim と並べてインストールできるように、プログラムには ViAI にちなんだ名<br>
-前が付けられている:<br>
+前が付いている:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ViAI</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; viai<br>
@@ -91,89 +89,92 @@ ViAI を Vim と並べてインストールできるように、プログラム�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vimdiff&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; viaidiff<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gvimdiff&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gviaidiff<br>
 <br>
-MS-Windows では、プログラムは &quot;viai.exe&quot; と &quot;gviai.exe&quot; である。DLL サポート付<br>
-きでビルドした場合は &quot;viai32.dll&quot; または &quot;viai64.dll&quot; を使う。GUI は外部コマン<br>
-ドを &quot;vimrun.exe&quot; の代わりに &quot;viairun.exe&quot; で実行する。<a class="Identifier" href="gui_w32.html#win32-vimrun">win32-vimrun</a>&nbsp;を参照。<br>
-エクスプローラーのコンテキストメニューの &quot;Edit with ViAI&quot; の項目と<br>
+MS-Windows では、プログラムは &quot;viai.exe&quot; および &quot;gviai.exe&quot; である。DLL サポー<br>
+ト付きでビルドされた時は、&quot;viai32.dll&quot; または &quot;viai64.dll&quot; を使用する。GUI は<br>
+外部コマンドを &quot;vimrun.exe&quot; の代わりに &quot;viairun.exe&quot; で実行する。<br>
+<a class="Identifier" href="gui_w32.html#win32-vimrun">win32-vimrun</a>&nbsp;を参照。<br>
+エクスプローラーのコンテキストメニューの &quot;Edit with ViAI&quot; の項目および<br>
 &quot;Open With...&quot; の項目は、Vim のものを置き換えないように、独自のレジストリエン<br>
-トリを使う。<a class="Identifier" href="gui_w32.html#win32-popup-menu">win32-popup-menu</a>&nbsp;を参照。GUI のウィンドウクラスは &quot;Vim&quot; の代わり<br>
-に &quot;ViAI&quot; である。OLE サーバーは独自のクラス ID を持つ &quot;ViAI.Application&quot; であ<br>
-る。<a class="Identifier" href="if_ole.html#ole-activation">ole-activation</a>&nbsp;を参照。インストールプログラムは &quot;viai.bat&quot;、<br>
-&quot;gviai.bat&quot;、&quot;eviai.bat&quot;、&quot;viaidiff.bat&quot;、&quot;gviaidiff.bat&quot; を作成し、スタートメ<br>
-ニューのフォルダーとアンインストールの項目に &quot;ViAI 1.0&quot; という名前を付ける。<br>
+トリを使用する。<a class="Identifier" href="gui_w32.html#win32-popup-menu">win32-popup-menu</a>&nbsp;を参照。GUI のウィンドウクラスは &quot;Vim&quot; の代<br>
+わりに &quot;ViAI&quot; である。OLE サーバーは独自のクラス ID を持つ &quot;ViAI.Application&quot;<br>
+である。<a class="Identifier" href="if_ole.html#ole-activation">ole-activation</a>&nbsp;を参照。インストールプログラムは &quot;viai.bat&quot;、<br>
+&quot;gviai.bat&quot;、&quot;eviai.bat&quot;、&quot;viaidiff.bat&quot; および &quot;gviaidiff.bat&quot; を作成し、ス<br>
+タートメニューのフォルダおよびアンインストール項目に &quot;ViAI 1.0&quot; という名前を付<br>
+ける。<br>
 <br>
-&quot;ex&quot;、&quot;view&quot;、&quot;gview&quot;、&quot;rview&quot;、&quot;rgview&quot;、&quot;eview&quot; はインストールされない。代わ<br>
-りに &quot;viai -e&quot;、&quot;viai -R&quot; などを使うこと。<a class="Identifier" href="starting.html#-e">-e</a>&nbsp;と&nbsp;<a class="Identifier" href="starting.html#-R">-R</a>&nbsp;を参照。<br>
+&quot;ex&quot;、&quot;view&quot;、&quot;gview&quot;、&quot;rview&quot;、&quot;rgview&quot; および &quot;eview&quot; はインストールされな<br>
+い。代わりに &quot;viai -e&quot;、&quot;viai -R&quot; などを使用する。<a class="Identifier" href="starting.html#-e">-e</a>&nbsp;および&nbsp;<a class="Identifier" href="starting.html#-R">-R</a>&nbsp;を参照。<br>
 <br>
-&quot;vimtutor&quot; プログラムはない。<a class="Identifier" href="pi_tutor.html#:Tutor">:Tutor</a>&nbsp;コマンドを使うこと。Unix では &quot;xxd&quot; もイ<br>
-ンストールされない。Vim の xxd プログラムを使うこと。<br>
+&quot;vimtutor&quot; プログラムは無い。<a class="Identifier" href="pi_tutor.html#:Tutor">:Tutor</a>&nbsp;コマンドを使用する。Unix では &quot;xxd&quot; もイ<br>
+ンストールされない。Vim の xxd プログラムを使用する。<br>
 <br>
-Unix では、man ページは &quot;viai.1&quot;、&quot;eviai.1&quot;、&quot;viaidiff.1&quot; としてインストールさ<br>
-れ、その他のプログラム用にはリンクが作られる。翻訳された man ページは、Vim に<br>
-ついて書かれているので、インストールされない。<br>
+Unix では、man ページは &quot;viai.1&quot;、&quot;eviai.1&quot; および &quot;viaidiff.1&quot; としてインス<br>
+トールされ、他のプログラム用のリンクが付く。翻訳された man ページは、Vim につ<br>
+いて記述しているため、インストールされない。<br>
 <br>
 デフォルトのクライアントサーバー名は &quot;GVIM&quot; の代わりに &quot;GVIAI&quot; である。<br>
-<a class="Identifier" href="remote.html#client-server-name">client-server-name</a>&nbsp;と&nbsp;<a class="Identifier" href="remote.html#{server}">{server}</a>&nbsp;を参照。<br>
+<a class="Identifier" href="remote.html#client-server-name">client-server-name</a>&nbsp;および&nbsp;<a class="Identifier" href="remote.html#{server}">{server}</a>&nbsp;を参照。<br>
 <br>
-ViAI は独自のロゴとアイコンを持つ。アイコンファイルには ViAI にちなんだ名前が<br>
-付けられている。例えば X11 用の &quot;viai32x32.xpm&quot; (<a class="Identifier" href="gui_x11.html#X11-icon">X11-icon</a>&nbsp;を参照) や、<br>
-MS-Windows のカスタムアイコン用の &quot;bitmaps/viai.ico&quot; (<a class="Identifier" href="os_win32.html#windows-icon">windows-icon</a>&nbsp;を参照)<br>
-である。Unix では、ロゴはスケーラブルアイコン<br>
+ViAI は独自のロゴおよびアイコンを持つ。アイコンファイルは ViAI にちなんだ名前<br>
+になっている。例えば、X11 用の &quot;viai32x32.xpm&quot; (<a class="Identifier" href="gui_x11.html#X11-icon">X11-icon</a>&nbsp;を参照) および<br>
+MS-Windows でのカスタムアイコン用の &quot;bitmaps/viai.ico&quot; (<a class="Identifier" href="os_win32.html#windows-icon">windows-icon</a>&nbsp;を参<br>
+照)。Unix では、ロゴはスケーラブルアイコン<br>
 &quot;/usr/local/share/icons/hicolor/scalable/apps/gviai.svg&quot; としてもインストール<br>
-される (デフォルトのプリフィックスを使っている場合)。<br>
+される (デフォルトプリフィックスを使用する場合)。<br>
 <br>
-GTK では、ウィンドウがインストールされた &quot;gviai.desktop&quot; ファイルとそのアイコ<br>
-ンに結び付くように、プログラム名は &quot;gvim&quot; の代わりに &quot;gviai&quot; である。GTK4 につ<br>
-いては&nbsp;<a class="Identifier" href="gui_x11.html#gui-gtk">gui-gtk</a>&nbsp;の &quot;--prg-name&quot; を参照。<br>
+GTK では、ウィンドウがインストールされた &quot;gviai.desktop&quot; ファイルおよびそのア<br>
+イコンに対応付けられるように、プログラム名は &quot;gvim&quot; の代わりに &quot;gviai&quot; である。<br>
+GTK4 については&nbsp;<a class="Identifier" href="gui_x11.html#gui-gtk">gui-gtk</a>&nbsp;の &quot;--prg-name&quot; を参照。<br>
 <br>
 ランタイムファイルは &quot;/usr/local/share/vim/vim92&quot; の代わりに<br>
 &quot;/usr/local/share/viai/viai10&quot; にインストールされる (デフォルトのプリフィック<br>
-スを使っている場合)。これが $VIMRUNTIME であり、$VIM は<br>
-&quot;/usr/local/share/viai&quot; である。<br>
+スを使用する場合)。これが $VIMRUNTIME であり、$VIM は &quot;/usr/local/share/viai&quot;<br>
+である。<br>
 <br>
 翻訳されたメッセージは &quot;vim.mo&quot; の代わりに &quot;viai.mo&quot; としてインストールされる。<br>
-<a class="Identifier" href="mlang.html#multilang-messages">multilang-messages</a>&nbsp;を参照。そのため ViAI は Vim の翻訳を表示せず、ViAI をイ<br>
+<a class="Identifier" href="mlang.html#multilang-messages">multilang-messages</a>&nbsp;を参照。そのため、ViAI は Vim の翻訳を表示せず、ViAI をイ<br>
 ンストールしてもそれらは置き換えられない。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 3. バージョン&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-version" name="viai-version">viai-version</a><br>
 <br>
-ViAI は 1.0 から始まる独自のバージョン番号と、独自のパッチ番号を持つ。イントロ<br>
-画面と&nbsp;<a class="Identifier" href="various.html#:version">:version</a>&nbsp;は、ViAI のバージョンと、ViAI のもとになった Vim のバージョ<br>
-ンを表示する。&quot;:version&quot; は ViAI のパッチを &quot;Included patches&quot; として、Vim の<br>
-パッチを &quot;Included Vim patches&quot; として列挙する。<br>
+ViAI は、1.0 から始まる独自のバージョン番号、および独自のパッチ番号を持つ。起<br>
+動画面および&nbsp;<a class="Identifier" href="various.html#:version">:version</a>&nbsp;は、ViAI のバージョン、および ViAI が基にしている Vim<br>
+のバージョンを表示する。&quot;:version&quot; は、ViAI のパッチを &quot;Included patches&quot; とし<br>
+て、Vim のパッチを &quot;Included Vim patches&quot; として一覧表示する。<br>
 <br>
-Vim 用に書かれたプラグインが動作し続けるように、<a class="Identifier" href="eval.html#v:version">v:version</a>、<a class="Identifier" href="eval.html#v:versionlong">v:versionlong</a>、<br>
-has(&quot;patch-9.2.1186&quot;) は Vim のバージョンを返す。<a class="Identifier" href="eval.html#v:viai_version">v:viai_version</a>&nbsp;と<br>
-<a class="Identifier" href="eval.html#v:viai_versionlong">v:viai_versionlong</a>&nbsp;は ViAI のバージョンを返す。ViAI かどうかを調べるには、<br>
-<a class="Identifier" href="builtin.html#has()">has()</a>&nbsp;に以下を指定する:<br>
+Vim 用に書かれたプラグインが動作し続けるように、<a class="Identifier" href="eval.html#v:version">v:version</a>、<a class="Identifier" href="eval.html#v:versionlong">v:versionlong</a><br>
+および has(&quot;patch-9.2.1186&quot;) は Vim のバージョンを返す。<a class="Identifier" href="eval.html#v:viai_version">v:viai_version</a>&nbsp;およ<br>
+び&nbsp;<a class="Identifier" href="eval.html#v:viai_versionlong">v:viai_versionlong</a>&nbsp;は ViAI のバージョンを返す。ViAI かどうかを確認するに<br>
+は、<a class="Identifier" href="builtin.html#has()">has()</a>&nbsp;に以下を指定する:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-feature" name="viai-feature">viai-feature</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;viai&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ViAI では真。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;viai-1.0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Identifier">ViAI バージョン 1.0</span>&nbsp;以降で真。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;viai-1.0.3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Identifier">ViAI バージョン 1.0</span>&nbsp;でパッチ 3 以降で真。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;viai-1.0.3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Identifier">ViAI バージョン 1.0</span>&nbsp;のパッチ 3 以降で真。<br>
 <br>
 例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if has(&quot;viai&quot;)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ViAI 専用の設定<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ViAI のみの設定<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif</div>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 4. ユーザー設定&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-config" name="viai-config">viai-config</a><br>
 <br>
-ViAI 自身のユーザー設定が存在しない限り、ViAI は Vim のユーザー設定を使う。こ<br>
-れは ViAI の起動時に一度だけ決定される。以下のいずれかが存在する場合は、ViAI<br>
-自身の設定が使われる:<br>
+ViAI は、ViAI 独自のユーザー設定が存在しない限り、Vim のユーザー設定を使用す<br>
+る。これは ViAI の起動時に 1 回だけ決定される。以下のいずれかが存在する時は、<br>
+ViAI 独自の設定が使用される:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Unix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MS-Windows</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~/.viairc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $HOME/_viairc<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~/.viai/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$HOME/viaifiles/<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$XDG_CONFIG_HOME/viai/<br>
 <br>
-~/.viai/、$HOME/viaifiles/、$XDG_CONFIG_HOME/viai/ はディレクトリであり、空で<br>
-もよい。$XDG_CONFIG_HOME が設定されていない場合は ~/.config/viai/ が使われる。<br>
+~/.viai/、$HOME/viaifiles/ および $XDG_CONFIG_HOME/viai/ はディレクトリであり、<br>
+空でもよい。$XDG_CONFIG_HOME が設定されていない時は ~/.config/viai/ が使用され<br>
+る。<br>
 <br>
-その場合、ViAI は Vim のファイルの代わりに自身のファイルを使い、Vim のユーザー<br>
-ファイルは一切使われない:<br>
+その場合、ViAI は Vim のファイルの代わりに独自のファイルを使用し、Vim のユー<br>
+ザーファイルは一切使用されない:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ViAI</span><br>
 Unix:<br>
@@ -192,61 +193,62 @@ MS-Windows:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$HOME/vimfiles/gvimrc&nbsp;&nbsp; $HOME/viaifiles/gvimrc<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$HOME/vimfiles/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $HOME/viaifiles/<br>
 <br>
-これらのディレクトリは&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>、<a class="Type" href="options.html#'packpath'">'packpath'</a>、<a class="Type" href="options.html#'viewdir'">'viewdir'</a>&nbsp;に使われる。<br>
-$XDG_CONFIG_HOME を使う規則は Vim と同じである。<a class="Identifier" href="starting.html#xdg-vimrc">xdg-vimrc</a>&nbsp;と&nbsp;<a class="Identifier" href="starting.html#xdg-runtime">xdg-runtime</a><br>
-を参照。<br>
+これらのディレクトリは&nbsp;<a class="Type" href="options.html#'runtimepath'">'runtimepath'</a>、<a class="Type" href="options.html#'packpath'">'packpath'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'viewdir'">'viewdir'</a>&nbsp;に使用され<br>
+る。$XDG_CONFIG_HOME を使用する規則は Vim と同じである。<a class="Identifier" href="starting.html#xdg-vimrc">xdg-vimrc</a>&nbsp;および<br>
+<a class="Identifier" href="starting.html#xdg-runtime">xdg-runtime</a>&nbsp;を参照。<br>
 <br>
 以下は Vim と同じである: $VIMINIT、$EXINIT、exrc ファイル、<a class="Type" href="options.html#'exrc'">'exrc'</a>&nbsp;オプションで<br>
-使われるローカル vimrc、システム vimrc。$VIM は ViAI 自身のディレクトリである<br>
-ことに注意。<a class="Identifier" href="viai.html#viai-programs">viai-programs</a>&nbsp;を参照。<br>
+使用されるローカル vimrc、およびシステム vimrc。<span class="Todo">Note</span>&nbsp;$VIM は ViAI 独自のディレ<br>
+クトリであることに注意。<a class="Identifier" href="viai.html#viai-programs">viai-programs</a>&nbsp;を参照。<br>
 <br>
 MS-Windows では、インストールプログラムはデフォルトでプラグイン用に<br>
-$HOME/vimfiles/ を作成するので、ViAI は Vim のユーザー設定を使い続ける。代わり<br>
-に $HOME/viaifiles/ を作成して、ViAI に自身のユーザー設定を使わせることもでき<br>
-る。<br>
+$HOME/vimfiles/ を作成するため、ViAI は Vim のユーザー設定を使用し続ける。ViAI<br>
+に独自のユーザー設定を使用させるために、代わりに $HOME/viaifiles/ を作成するこ<br>
+ともできる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 5. viminfo ファイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-viminfo" name="viai-viminfo">viai-viminfo</a><br>
 <br>
-ViAI は、Vim のユーザー設定を使う場合も、常に自身の viminfo ファイルを使う:<br>
+ViAI は、Vim のユーザー設定を使用する時も、常に独自の viminfo ファイルを使用す<br>
+る:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">Vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ViAI</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~/.viminfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~/.viaiinfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Unix)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$HOME/_viminfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$HOME/_viaiinfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (MS-Windows)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$VIM/_viminfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $VIM/_viaiinfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(MS-Windows、$HOME なし)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$VIM/_viminfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $VIM/_viaiinfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(MS-Windows、$HOME 無し)<br>
 <br>
-ViAI の viminfo ファイルがまだ存在しない場合、ViAI は代わりに Vim の viminfo<br>
-ファイルを読み込み、書き込む際にそれを ViAI の viminfo ファイルにマージする。<br>
-そのため、Vim の履歴やマークなどは初回に引き継がれる。Vim の viminfo ファイル<br>
-が書き込まれることはない。それは $HOME でのみ探されるので、$HOME が設定されて<br>
-いない場合は何も引き継がれない。<br>
+ViAI の viminfo ファイルがまだ存在しない時は、ViAI は代わりに Vim の viminfo<br>
+ファイルを読み込み、書き込む時にそれを ViAI の viminfo ファイルにマージする。<br>
+そのため、Vim の履歴、マークなどは最初の 1 回に引き継がれる。Vim の viminfo<br>
+ファイルは決して書き込まれない。それは $HOME でのみ探されるため、$HOME が設定<br>
+されていない時は何も引き継がれない。<br>
 <br>
 これは、viminfo ファイル名が&nbsp;<a class="Type" href="options.html#'viminfofile'">'viminfofile'</a>&nbsp;または&nbsp;<a class="Type" href="options.html#'viminfo'">'viminfo'</a>&nbsp;の &quot;n&quot; フラグで設<br>
-定されていない場合にのみ適用される。<br>
+定されていない時にのみ適用される。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 6. $VIM と $VIMRUNTIME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-vimruntime" name="viai-vimruntime">viai-vimruntime</a><br>
 <br>
-$VIMRUNTIME を使う Vim 用に書かれたプラグインが動作し続けるように、ViAI は Vim<br>
-と同じように&nbsp;<a class="Identifier" href="starting.html#$VIM">$VIM</a>&nbsp;と&nbsp;<a class="Identifier" href="starting.html#$VIMRUNTIME">$VIMRUNTIME</a>&nbsp;を使う。<br>
+Vim 用に書かれた、$VIMRUNTIME を使用するプラグインが動作し続けるように、ViAI<br>
+は Vim と同様に&nbsp;<a class="Identifier" href="starting.html#$VIM">$VIM</a>&nbsp;および&nbsp;<a class="Identifier" href="starting.html#$VIMRUNTIME">$VIMRUNTIME</a>&nbsp;を使用する。<br>
 <br>
-$VIM または $VIMRUNTIME が環境変数で設定されている場合、ViAI はそれを使う。そ<br>
-のため、例えばシェルの起動ファイルで Vim のために $VIMRUNTIME を設定すると、<br>
-ViAI も Vim のランタイムファイルを使う。それは Vim が起動される場所でのみ設定<br>
-すること。<br>
+$VIM または $VIMRUNTIME が環境に設定されている時は、ViAI はそれを使用する。そ<br>
+のため、例えばシェルの起動ファイルで Vim 用に $VIMRUNTIME を設定すると、ViAI<br>
+も Vim のランタイムファイルを使用する。それは Vim を起動する所でのみ設定するこ<br>
+と。<br>
 <br>
-ViAI が自身で $VIM または $VIMRUNTIME を設定した場合、そこで起動された Vim が<br>
-自身のランタイムファイルを使うように、それを端末ウィンドウで実行されるプログラ<br>
-ムには渡さない。それが環境変数から来た場合、<a class="Identifier" href="eval.html#:let-environment">:let-environment</a>&nbsp;で設定された場<br>
-合、または&nbsp;<a class="Identifier" href="terminal.html#term_start()">term_start()</a>&nbsp;の &quot;env&quot; 引数で与えられた場合は、渡される。その他の<br>
-子プロセス、例えば&nbsp;<a class="Identifier" href="various.html#:!">:!</a>、<a class="Identifier" href="builtin.html#system()">system()</a>、<a class="Identifier" href="channel.html#job_start()">job_start()</a>&nbsp;で起動されたものは、常にそ<br>
-れらを受け取る。<br>
+ViAI が $VIM または $VIMRUNTIME を自分で設定した時は、端末ウィンドウで実行され<br>
+るプログラムには、そこで起動された Vim が自身のランタイムファイルを使用するよ<br>
+うに、それを渡さない。それが環境から来た時、<a class="Identifier" href="eval.html#:let-environment">:let-environment</a>&nbsp;で設定された時、<br>
+または&nbsp;<a class="Identifier" href="terminal.html#term_start()">term_start()</a>&nbsp;の &quot;env&quot; 引数で与えられた時は、それは渡される。他の子プ<br>
+ロセス、例えば&nbsp;<a class="Identifier" href="various.html#:!">:!</a>、<a class="Identifier" href="builtin.html#system()">system()</a>&nbsp;および&nbsp;<a class="Identifier" href="channel.html#job_start()">job_start()</a>&nbsp;で起動されたものは、常に<br>
+それらを受け取る。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 7. エラー番号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-error-numbers" name="viai-error-numbers">viai-error-numbers</a><br>
 <br>
 ViAI が追加するエラーメッセージは E8000 から E8999 の番号を持つ。Vim からのエ<br>
-ラーメッセージは、その番号を保つ。<br>
+ラーメッセージは、その番号のままである。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 8. デフォルト値&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-defaults" name="viai-defaults">viai-defaults</a><br>
@@ -254,28 +256,28 @@ ViAI が追加するエラーメッセージは E8000 から E8999 の番号を�
 <span class="PreProc">==============================================================================</span><br>
 9. 関数インターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-functions" name="viai-functions">viai-functions</a><br>
 <br>
-バッファの全行が削除されたとき、<a class="Identifier" href="builtin.html#listener_add()">listener_add()</a>&nbsp;は残った空行を変更された行と<br>
-して報告する: &quot;added&quot; は Vim より 1 大きく、&quot;text&quot; はその行を保持する。<br>
+バッファの全ての行が削除された時、<a class="Identifier" href="builtin.html#listener_add()">listener_add()</a>&nbsp;は残った空行を変更されたも<br>
+のとして報告する: &quot;added&quot; は Vim より 1 多く、&quot;text&quot; はその行を保持する。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 10. 追加機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-additional-features" name="viai-additional-features">viai-additional-features</a><br>
 <br>
-ViAI には、Vim にない以下の機能がある:<br>
+ViAI は Vim に無い以下の機能を持つ:<br>
 <br>
 <a class="Identifier" href="repeat.html#:source-dryrun">:source-dryrun</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スクリプトを実行せずに読み込み、エラーがないかを調べる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;エラーを確認するために、スクリプトを実行せずに読み込む。<br>
 <br>
-<a class="Identifier" href="eval.html#v:viai_version">v:viai_version</a>&nbsp;と&nbsp;<a class="Identifier" href="eval.html#v:viai_versionlong">v:viai_versionlong</a><br>
+<a class="Identifier" href="eval.html#v:viai_version">v:viai_version</a>&nbsp;および&nbsp;<a class="Identifier" href="eval.html#v:viai_versionlong">v:viai_versionlong</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ViAI のバージョン。<a class="Identifier" href="viai.html#viai-version">viai-version</a>&nbsp;を参照。<br>
 <br>
 &quot;viai&quot; を指定した&nbsp;<a class="Identifier" href="builtin.html#has()">has()</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ViAI では真。<a class="Identifier" href="viai.html#viai-feature">viai-feature</a>&nbsp;を参照。<br>
 <br>
 <a class="Identifier" href="usr_05.html#package-lsp.vim">package-lsp.vim</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lsp.vim と vim9ls のパッケージ。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lsp.vim および vim9ls パッケージ。<br>
 <br>
 <a class="Identifier" href="usr_05.html#package-viai.mcp">package-viai.mcp</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;viai.mcp パッケージ。Model Context Protocol のサーバー。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Model Context Protocol のサーバーである viai.mcp パッケージ。<br>
 <br>
 <a class="Identifier" href="channel.html#model-context-protocol">model-context-protocol</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;mcp&quot; チャネルモード。<br>
@@ -293,18 +295,16 @@ Python 3 を使用する。<br>
 <span class="PreProc">==============================================================================</span><br>
 12. ライセンス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-license" name="viai-license">viai-license</a><br>
 <br>
-最初の取り込み以降に ViAI で行われた変更は、Apache License 2.0 でライセンスさ<br>
-れる。Vim から取り込まれたコードは、Vim のライセンスでライセンスされる。<br>
+最初の取り込みの後に ViAI で行われた変更は、Apache License 2.0 の下でライセン<br>
+スされる。Vim から取り込まれたコードは、Vim ライセンスの下でライセンスされる。<br>
 <a class="Identifier" href="uganda.html#license">license</a>&nbsp;を参照。<br>
 <br>
-ViAI は、Vim のライセンスの第 II 節に基づき、Vim を改変したものとして配布され<br>
-る:<br>
-- すべての変更を含むソースコードは、ViAI のリポジトリで入手できる (II.2.c):<br>
+ViAI は、Vim ライセンスのセクション II に基づいて Vim の改変版として配布される:<br>
+- 全ての変更を含むソースコードは ViAI のリポジトリで入手可能である (II.2.c):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/viai-editor/viai">https://github.com/viai-editor/viai</a></span><br>
-- 実行可能ファイルは、変更のソースコードなしで配布される (II.2.d)。変更はリポ<br>
-&nbsp;&nbsp;ジトリで入手可能なままである。<br>
--&nbsp;<a class="Identifier" href="various.html#:version">:version</a>&nbsp;とイントロ画面は、ViAI が Vim を改変したものであることを示す<br>
-&nbsp;&nbsp;(II.3)。<br>
+- 実行可能ファイルは、変更のソースコードなしで配布される (II.2.d)。変更は引き<br>
+&nbsp;&nbsp;続きリポジトリで入手可能である。<br>
+-&nbsp;<a class="Identifier" href="various.html#:version">:version</a>&nbsp;および起動画面は、ViAI が Vim の改変版であることを示す (II.3)。<br>
 <br>
 ViAI のメンテナーに連絡するには、以下で issue を開くこと:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/viai-editor/viai/issues">https://github.com/viai-editor/viai/issues</a></span><br>
@@ -312,12 +312,12 @@ ViAI のメンテナーに連絡するには、以下で issue を開くこと:<
 <span class="PreProc">==============================================================================</span><br>
 13. スポンサー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-sponsor" name="viai-sponsor">viai-sponsor</a><br>
 <br>
-ViAI が役に立つと思ったら、GitHub Sponsors でそのメンテナーである Hirohito<br>
+ViAI が役に立つと思った場合、GitHub Sponsors で、そのメンテナーである Hirohito<br>
 Higashi のスポンサーになることができる:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/sponsors/h-east">https://github.com/sponsors/h-east</a></span><br>
 <br>
-このお金はウガンダの子供たちには届かない。彼らを支援するには&nbsp;<a class="Identifier" href="uganda.html#uganda">uganda</a>&nbsp;を参照。<br>
-Vim のスポンサーになるには&nbsp;<a class="Identifier" href="sponsor.html#sponsor">sponsor</a>&nbsp;を参照。<br>
+このお金はウガンダの子供たちには届かない。彼らを助けるには、<a class="Identifier" href="uganda.html#uganda">uganda</a>&nbsp;を参照。<br>
+Vim のスポンサーになるには、<a class="Identifier" href="sponsor.html#sponsor">sponsor</a>&nbsp;を参照。<br>
 <br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>
