@@ -9,227 +9,227 @@ helpname: 'tagsrch'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
-タグと特別な検索&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tags-and-searches" name="tags-and-searches">tags-and-searches</a><br>
+タグと特殊な検索&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tags-and-searches" name="tags-and-searches">tags-and-searches</a><br>
 <br>
-初めにユーザーマニュアルのセクション<a class="Identifier" href="usr_29.html#29.1">29.1</a>を参照すること。<br>
+導入については、ユーザーマニュアルの&nbsp;<a class="Identifier" href="usr_29.html#29.1">29.1</a>&nbsp;節を参照。<br>
 <br>
 1. タグへのジャンプ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#tag-commands">tag-commands</a><br>
 2. タグスタック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#tag-stack">tag-stack</a><br>
 3. タグマッチリスト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#tag-matchlist">tag-matchlist</a><br>
-4. タグの詳細&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#tag-details">tag-details</a><br>
+4. タグ詳細&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#tag-details">tag-details</a><br>
 5. タグファイルの書式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#tags-file-format">tags-file-format</a><br>
-6. インクルードファイルの検索&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#include-search">include-search</a><br>
-7.&nbsp;<a class="Type" href="options.html#'tagfunc'">'tagfunc'</a>&nbsp;を使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#tag-function">tag-function</a><br>
+6. インクルードファイル検索&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#include-search">include-search</a><br>
+7.&nbsp;<a class="Type" href="options.html#'tagfunc'">'tagfunc'</a>&nbsp;の使用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#tag-function">tag-function</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 1. タグへのジャンプ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tag-commands" name="tag-commands">tag-commands</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tag" name="tag">tag</a>&nbsp;<a class="Constant" href="tagsrch.html#tags" name="tags">tags</a><br>
-タグとは &quot;tags&quot; ファイルに現われる識別子である。タグはラベルのようなものであ<br>
-り、そこにジャンプすることができる。例えば: Cのプログラムではそれぞれの関数名<br>
-をタグとして使うことができる。タグ機能を使う前には、ctagsのようなプログラムに<br>
-よって &quot;tags&quot; ファイルを生成しなければならない。<br>
+タグとは &quot;tags&quot; ファイルに現れる識別子である。それはジャンプできるラベルの一種<br>
+である。例えば: C プログラムでは各関数名をタグとして使用できる。タグコマンドを<br>
+使用する前に、&quot;tags&quot; ファイルを ctags のようなプログラムで生成しておかなければ<br>
+ならない。<br>
 <br>
-&quot;:tag&quot; コマンドはカーソルをタグ上に移動する。<span class="Special">CTRL-]</span>コマンドはカーソルの下にあ<br>
-るキーワードをタグとして使用する。もしカーソルがキーワード上になければ、カーソ<br>
-ル位置から右側で最初に現れるキーワードを使用する。<br>
+&quot;:tag&quot; コマンドを使うと、カーソルはタグの上に置かれる。<span class="Special">CTRL-]</span>&nbsp;コマンドを使う<br>
+と、カーソルが置かれているキーワードがタグとして使用される。カーソルがキーワー<br>
+ドの上にない場合、カーソルの右にある最初のキーワードが使用される。<br>
 <br>
-&quot;:tag&quot; コマンドはCプログラムでよく機能する。もし関数呼び出しを見つけた時にその<br>
-関数が何をするのか疑問に思ったら、カーソルを関数名の上に置いて<span class="Special">CTRL-]</span>を叩けばよ<br>
-い。これで関数定義に導いてもらえるだろう。簡単に戻る方法は<span class="Special">CTRL-T</span>コマンドを使う<br>
-ことである。後述するタグスタックについても読むとよい。<br>
+&quot;:tag&quot; コマンドは C プログラムに対して非常にうまく働く。関数の呼び出しを見て、<br>
+その関数が何をするのかを知りたいと思った場合、その関数名の中にカーソルを置いて<br>
+<span class="Special">CTRL-]</span>&nbsp;を押す。これで関数定義へ移動する。<br>
+簡単に戻る方法は&nbsp;<span class="Special">CTRL-T</span>&nbsp;コマンドである。以下のタグスタックについても読むこと。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:ta" name=":ta">:ta</a>&nbsp;<a class="Constant" href="tagsrch.html#:tag" name=":tag">:tag</a>&nbsp;<a class="Constant" href="tagsrch.html#E426" name="E426">E426</a>&nbsp;<a class="Constant" href="tagsrch.html#E429" name="E429">E429</a><br>
 :<span class="Special">[count]</span>ta[g][!]&nbsp;<span class="Special">{name}</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tagsファイル内の情報を用いて、<span class="Special">{name}</span>の定義へジャンプす<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<span class="Special">{name}</span>はタグスタックに積まれる。[!]については<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#tag-!">tag-!</a>を参照。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>は正規表現を使用できる。<a class="Identifier" href="tagsrch.html#tag-regexp">tag-regexp</a>を参照。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>に対してマッチするタグが複数ある場合、<span class="Special">[count]</span>番<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目のタグへジャンプする。<span class="Special">[count]</span>が指定されないときは最<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初のタグへジャンプする。他のマッチするタグへジャンプす<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;るには<a class="Identifier" href="tagsrch.html#tag-matchlist">tag-matchlist</a>を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タグファイルの情報を使用して、<span class="Special">{name}</span>&nbsp;の定義へジャンプ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。<span class="Special">{name}</span>&nbsp;をタグスタックに入れる。[!] については<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#tag-!">tag-!</a>&nbsp;を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>&nbsp;には正規表現パターンを指定できる。<a class="Identifier" href="tagsrch.html#tag-regexp">tag-regexp</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を参照。<span class="Special">{name}</span>&nbsp;にマッチするタグが複数ある場合、<span class="Special">[count]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;番目へジャンプする。<span class="Special">[count]</span>&nbsp;が省略された場合、最初のも<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のへジャンプする。他のマッチするタグへジャンプするには<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#tag-matchlist">tag-matchlist</a>&nbsp;を参照。<br>
 <br>
 g<span class="Special">&lt;LeftMouse&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#g<LeftMouse>" name="g&lt;LeftMouse&gt;">g&lt;LeftMouse&gt;</a><br>
 <span class="Special">&lt;C-LeftMouse&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#<C-LeftMouse>" name="&lt;C-LeftMouse&gt;">&lt;C-LeftMouse&gt;</a>&nbsp;<a class="Constant" href="tagsrch.html#CTRL-]" name="CTRL-]">CTRL-]</a><br>
-<span class="Special">CTRL-]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルの下のキーワードを定義している場所にジャンプす<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。&quot;:tag&nbsp;<span class="Special">{name}</span>&quot; と同様であるが、<span class="Special">{name}</span>はカーソルの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下、もしくは次に現われるキーワードである。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>に対してマッチするタグが複数ある場合、<span class="Special">[count]</span>番<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目のタグへジャンプする。<span class="Special">[count]</span>が指定されないときは最<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初のタグへジャンプする。他のマッチするタグへジャンプす<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;るには<a class="Identifier" href="tagsrch.html#tag-matchlist">tag-matchlist</a>を参照。<br>
+<span class="Special">CTRL-]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルの下のキーワードの定義へジャンプする。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:tag&nbsp;<span class="Special">{name}</span>&quot; と同じで、<span class="Special">{name}</span>&nbsp;はカーソルの下またはカー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ソルの後のキーワードである。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{name}</span>&nbsp;にマッチするタグが複数ある場合、<span class="Special">[count]</span>&nbsp;番目へ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ジャンプする。<span class="Special">[count]</span>&nbsp;が指定されない場合、最初のものへ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ジャンプする。他のマッチするタグへジャンプするには<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#tag-matchlist">tag-matchlist</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#v_CTRL-]" name="v_CTRL-]">v_CTRL-]</a><br>
-<span class="Special">{Visual}CTRL-]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:tag&nbsp;<span class="Special">{name}</span>&quot; と同様であるが、<span class="Special">{name}</span>はハイライトされて<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いるテキストである。<br>
+<span class="Special">{Visual}CTRL-]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:tag&nbsp;<span class="Special">{name}</span>&quot; と同じで、<span class="Special">{name}</span>&nbsp;はハイライトされたテキ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ストである。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#telnet-CTRL-]" name="telnet-CTRL-]">telnet-CTRL-]</a><br>
-<span class="Special">CTRL-]</span>はtelnetの標準エスケープキーである。タグにジャンプしようと<span class="Special">CTRL-]</span>を打つと、<br>
-代わりにtelnetのプロンプトが立ち上がるだろう。telnetのたいていのバージョンは、<br>
-標準エスケープキーを変更、もしくは使用不可能にできる。telnetのマニュアルを参照<br>
-すること。エスケープキーを使用不可能にするには 'telnet -E {ホスト名}'、エスケー<br>
-プ文字を他の文字にするには 'telnet -e {エスケープ文字} {ホスト名}' を使用する。<br>
-もし可能ならtelnetの代わりにsshを使うことで、この問題を回避できる。<br>
+<span class="Special">CTRL-]</span>&nbsp;は telnet のデフォルトのエスケープキーである。タグへジャンプするために<br>
+<span class="Special">CTRL-]</span>&nbsp;をタイプすると、代わりに telnet プロンプトが表示される。たいていのバー<br>
+ジョンの telnet では、デフォルトのエスケープキーを変更または無効化できる。<br>
+telnet の man ページを参照。'telnet -E&nbsp;<span class="Special">{Hostname}</span>' でエスケープ文字を無効にす<br>
+るか、または 'telnet -e&nbsp;<span class="Special">{EscapeCharacter}</span>&nbsp;<span class="Special">{Hostname}</span>' で別のエスケープ文字を指<br>
+定できる。可能な場合、この問題を避けるために &quot;telnet&quot; の代わりに &quot;ssh&quot; を使用<br>
+するようにすること。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tag-priority" name="tag-priority">tag-priority</a><br>
-タグのマッチが複数ある場合、以下の優先度が使われる:<br>
-1. &quot;FSC&quot;&nbsp;&nbsp;カレントファイル内の全一致するstaticタグ。<br>
-2. &quot;F C&quot;&nbsp;&nbsp;カレントファイル内の全一致するglobalタグ。<br>
-3. &quot;F&nbsp;&nbsp;&quot;&nbsp;&nbsp;別のファイル内の全一致するglobalタグ。<br>
-4. &quot;FS &quot;&nbsp;&nbsp;別のファイル内の全一致するstaticタグ。<br>
-5. &quot; SC&quot;&nbsp;&nbsp;カレントファイル内の大文字、小文字を無視した一致をするstaticタグ。<br>
-6. &quot;&nbsp;&nbsp;C&quot;&nbsp;&nbsp;カレントファイル内の大文字、小文字を無視した一致をするglobalタグ。<br>
-7. &quot;&nbsp;&nbsp; &quot;&nbsp;&nbsp;別のファイル内の大文字、小文字を無視した一致をするglobalタグ。<br>
-8. &quot; S &quot;&nbsp;&nbsp;別のファイル内の大文字、小文字を無視した一致をするstaticタグ。<br>
+1 つのタグに複数のマッチがある場合、この優先順位が使用される:<br>
+1. &quot;FSC&quot;&nbsp;&nbsp;カレントファイルに対する、完全にマッチする static タグ。<br>
+2. &quot;F C&quot;&nbsp;&nbsp;カレントファイルに対する、完全にマッチする global タグ。<br>
+3. &quot;F&nbsp;&nbsp;&quot;&nbsp;&nbsp;別のファイルに対する、完全にマッチする global タグ。<br>
+4. &quot;FS &quot;&nbsp;&nbsp;別のファイルに対する、完全にマッチする static タグ。<br>
+5. &quot; SC&quot;&nbsp;&nbsp;カレントファイルに対する、大文字小文字を無視してマッチする static タグ。<br>
+6. &quot;&nbsp;&nbsp;C&quot;&nbsp;&nbsp;カレントファイルに対する、大文字小文字を無視してマッチする global タグ。<br>
+7. &quot;&nbsp;&nbsp; &quot;&nbsp;&nbsp;別のファイルに対する、大文字小文字を無視してマッチする global タグ。<br>
+8. &quot; S &quot;&nbsp;&nbsp;別のファイルに対する、大文字小文字を無視してマッチする static タグ。<br>
 <br>
-カレントファイルが変わっても、優先度のリストはほとんどの場合変化しないので注意<br>
-すること。これは &quot;:tnext&quot; を使うときの混乱を避けるためである。優先度のリストは<br>
-&quot;:tag&nbsp;<span class="Special">{name}</span>&quot; を使ったときに変化する。<br>
+<span class="Todo">Note</span>&nbsp;カレントファイルが変わっても、&quot;:tnext&quot; を使用する時の混乱を避けるために、<br>
+優先順位リストはほとんど変更されないことに注意。&quot;:tag&nbsp;<span class="Special">{name}</span>&quot; を使用した時には<br>
+変更される。<br>
 <br>
-以下の場合は &quot;:tag &quot; で大文字小文字を無視した検索は行われない:<br>
--&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;followic&quot; で&nbsp;<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;オプションがオフの時<br>
--&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;followscs&quot; で&nbsp;<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;オプションがオフで&nbsp;<a class="Type" href="options.html#'smartcase'">'smartcase'</a>&nbsp;オプ<br>
-&nbsp;&nbsp;ションがオフであるか、パターンに大文字が含まれている時<br>
--&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;match&quot; である<br>
--&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;smart&quot; でパターンに大文字が含まれる時<br>
+大文字小文字を無視したマッチは、&quot;:tag&quot; コマンドでは以下の場合に見つからない:<br>
+-&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;followic&quot; で、<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;オプションがオフ<br>
+-&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;followscs&quot; で、<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;オプションがオフで、<a class="Type" href="options.html#'smartcase'">'smartcase'</a>&nbsp;オ<br>
+&nbsp;&nbsp;プションがオフであるか、またはパターンに大文字が含まれる。<br>
+-&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;match&quot;<br>
+-&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;smart&quot; で、パターンに大文字が含まれる。<br>
 <br>
-以下の場合は大文字小文字を無視した検索が行われる:<br>
-- パターンが使用される時 (&quot;/&quot; で始まる)<br>
-- &quot;:tselect&quot; の時<br>
--&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;followic&quot; で&nbsp;<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;がオンの時<br>
--&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;followscs&quot; で&nbsp;<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;がオン、または&nbsp;<a class="Type" href="options.html#'smartcase'">'smartcase'</a><br>
-&nbsp;&nbsp;オプションがオンでパターンに大文字が含まれていない時<br>
+大文字小文字を無視したマッチは以下の場合に見つかる:<br>
+- パターンが使用された時 (&quot;/&quot; で始まる)<br>
+- &quot;:tselect&quot; に対して<br>
+-&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;followic&quot; で、<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;がオンの時<br>
+-&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;followscs&quot; で、<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;がオンであるか、または&nbsp;<a class="Type" href="options.html#'smartcase'">'smartcase'</a><br>
+&nbsp;&nbsp;オプションがオンでパターンに大文字が含まれない時<br>
 -&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;ignore&quot; の時<br>
--&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;smart&quot; でパターンに大文字が含まれていない時<br>
+-&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;smart&quot; で、パターンに大文字が含まれない時<br>
 <br>
-<span class="Todo">Note</span>&nbsp;大文字小文字を無視したタグ検索はタグファイル内での二分探索を無効にし速度<br>
-の低下を引き起こす。これは大文字小文字を保持したままタグファイルを並び替える事<br>
-で回避できる。<a class="Type" href="options.html#'tagbsearch'">'tagbsearch'</a>&nbsp;オプションの説明を参照。<br>
+<span class="Todo">Note</span>&nbsp;大文字小文字を無視したタグ検索を使用すると、タグファイル内の二分探索が無<br>
+効になり、速度が低下することに注意。これはタグファイルを fold-case ソートする<br>
+ことで回避できる。説明については&nbsp;<a class="Type" href="options.html#'tagbsearch'">'tagbsearch'</a>&nbsp;オプションを参照。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 2. タグスタック&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tag-stack" name="tag-stack">tag-stack</a>&nbsp;<a class="Constant" href="tagsrch.html#tagstack" name="tagstack">tagstack</a>&nbsp;<a class="Constant" href="tagsrch.html#E425" name="E425">E425</a><br>
 <br>
-タグスタック上にはジャンプ先のタグと、どこから来たのかという情報が記憶される。<br>
-タグは&nbsp;<a class="Type" href="options.html#'tagstack'">'tagstack'</a>&nbsp;オプションが設定されているときにだけ積まれる。<br>
+タグスタックには、どのタグへ、どこからジャンプしたかが記憶される。<br>
+タグは&nbsp;<a class="Type" href="options.html#'tagstack'">'tagstack'</a>&nbsp;オプションが設定されている場合にのみスタックに積まれる。<br>
 <br>
 g<span class="Special">&lt;RightMouse&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#g<RightMouse>" name="g&lt;RightMouse&gt;">g&lt;RightMouse&gt;</a><br>
 <span class="Special">&lt;C-RightMouse&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#<C-RightMouse>" name="&lt;C-RightMouse&gt;">&lt;C-RightMouse&gt;</a>&nbsp;<a class="Constant" href="tagsrch.html#CTRL-T" name="CTRL-T">CTRL-T</a><br>
-<span class="Special">CTRL-T</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タグスタック中の<span class="Special">[count]</span>分だけ古いエントリにジャンプす<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る(デフォルトは1)。<br>
+<span class="Special">CTRL-T</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タグスタック内の&nbsp;<span class="Special">[count]</span>&nbsp;個古いエントリへジャンプする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(デフォルトは 1)。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:po" name=":po">:po</a>&nbsp;<a class="Constant" href="tagsrch.html#:pop" name=":pop">:pop</a>&nbsp;<a class="Constant" href="tagsrch.html#E555" name="E555">E555</a>&nbsp;<a class="Constant" href="tagsrch.html#E556" name="E556">E556</a><br>
-:<span class="Special">[count]</span>po[p][!]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タグスタック中の<span class="Special">[count]</span>分だけ古いエントリにジャンプす<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る(デフォルトは1)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[!]については<a class="Identifier" href="tagsrch.html#tag-!">tag-!</a>を参照。<br>
+:<span class="Special">[count]</span>po[p][!]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タグスタック内の&nbsp;<span class="Special">[count]</span>&nbsp;個古いエントリへジャンプする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(デフォルトは 1)。[!] については&nbsp;<a class="Identifier" href="tagsrch.html#tag-!">tag-!</a>&nbsp;を参照。<br>
 <br>
-:<span class="Special">[count]</span>ta[g][!]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タグスタック中の<span class="Special">[count]</span>分だけ新しいエントリにジャンプ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する(デフォルトは1)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[!]については<a class="Identifier" href="tagsrch.html#tag-!">tag-!</a>を参照。<br>
+:<span class="Special">[count]</span>ta[g][!]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タグスタック内の&nbsp;<span class="Special">[count]</span>&nbsp;個新しいエントリへジャンプす<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る (デフォルトは 1)。[!] については&nbsp;<a class="Identifier" href="tagsrch.html#tag-!">tag-!</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:tags" name=":tags">:tags</a><br>
-:tags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; タグスタックの内容を表示する。現在のエントリは '&gt;' で<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マークされる。<br>
+:tags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; タグスタックの内容を表示する。アクティブなエントリには<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&gt;' の印が付く。<br>
 <br>
-&quot;:tags&quot; の出力は以下のようになる:<br>
+&quot;:tags&quot; の出力はこのようになる:<br>
 <br>
 &nbsp;&nbsp; # TO tag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM line&nbsp;&nbsp;in file/text<br>
 &nbsp;&nbsp; 1&nbsp;&nbsp;1 main&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;harddisk2:text/vim/test<br>
 &nbsp;&gt; 2&nbsp;&nbsp;2 FuncA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 58&nbsp;&nbsp;i = FuncA(10);<br>
 &nbsp;&nbsp; 3&nbsp;&nbsp;1 FuncC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;357&nbsp;&nbsp;harddisk2:text/vim/src/amiga.c<br>
 <br>
-このリストはジャンプ先のタグとジャンプ前のカーソル位置を表示する。上から順に古<br>
-いタグが並び、一番下が最も新しいタグである。<br>
+この一覧は、ジャンプしたタグ、およびそのジャンプの前のカーソル位置を示す。古い<br>
+タグが上に、新しいタグが下にある。<br>
 <br>
-'&gt;' は現在のエントリを指している。これは次の &quot;:tag&quot; コマンドで使われるタグであ<br>
-る。<span class="Special">CTRL-T</span>と &quot;:pop&quot; コマンドは１つ上のタグを使う。<br>
+'&gt;' はアクティブなエントリを指す。これは次の &quot;:tag&quot; コマンドで使用されるタグで<br>
+ある。<span class="Special">CTRL-T</span>&nbsp;および &quot;:pop&quot; コマンドはアクティブなエントリの上の位置を使用する。<br>
 <br>
-&quot;TO&quot; の列にはマッチリスト中の現在のマッチ数を表示する。これは &quot;:pop&quot; や &quot;:tag&quot;<br>
-を使っても変化しないので注意すること。<br>
+&quot;TO&quot; の下にあるのは、マッチリスト内の現在のマッチの番号である。<span class="Todo">Note</span>&nbsp;これは<br>
+&quot;:pop&quot; または &quot;:tag&quot; を使用しても変わらないことに注意。<br>
 <br>
-行番号とファイル名は、タグコマンドを実行する前にいた位置に戻ることができるよう<br>
-に記憶される。行番号は行の削除や挿入が行われた時にも正しく維持される。ただし、<br>
-別のプログラム(例えば、Vimの別インスタンス)で編集した場合を除く。<br>
+行番号およびファイル名は、タグコマンドの前にいた場所へ戻れるように記憶される。<br>
+行を削除/挿入した場合も、行番号は正しい。ただし、それが別のプログラム (例: 別<br>
+の Vim のインスタンス) によって行われた場合は除く。<br>
 <br>
-ジャンプ前の位置がカレントファイル内であれば、&quot;file/text&quot; の列にその行が表示さ<br>
-れる。インデントは取り除かれ、長い行はウィンドウに収まるように切り詰められる。<br>
+カレントファイルについては、&quot;file/text&quot; カラムはその位置のテキストを表示する。<br>
+インデントは除去され、長い行はウィンドウに収まるように切り詰められる。<br>
 <br>
-前に使ったタグにジャンプするコマンドはいくつかある。例えば:<br>
+いくつかのコマンドで、以前に使用したタグへジャンプできる。いくつかの例:<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:pop&quot; or&nbsp;<span class="Special">CTRL-T</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ひとつ前に使われたタグにジャンプする。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{count}CTRL-T</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{count}</span>分だけ前のタグにジャンプする。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:tag&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在のエントリより新しいタグにジャンプする。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:0tag&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最後に使われたタグにジャンプする。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:pop&quot; または&nbsp;<span class="Special">CTRL-T</span>&nbsp;&nbsp;&nbsp;&nbsp;直前のタグの前の位置へ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{count}CTRL-T</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{count}</span>&nbsp;個古いタグの前の位置へ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:tag&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;より新しいタグへ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:0tag&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最後に使用したタグへ<br>
 <br>
-これらの最も明白な利用方法は、プログラムの関数呼び出しをあちこち拾い読みすると<br>
-きである。次のような呼び出し図を考える:<br>
+これを使用する最もわかりやすい方法は、プログラムのコールグラフを見て回っている<br>
+時である。以下のコールグラフを考える:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;main&nbsp;&nbsp;---&gt;&nbsp;&nbsp;FuncA&nbsp;&nbsp;---&gt;&nbsp;&nbsp;FuncC<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---&gt;&nbsp;&nbsp;FuncB<br>
 <br>
-(解説: mainはFuncAとFuncBを呼び出し、FuncAはFuncCを呼び出す)。<br>
-FuncAの呼び出し部分の上で<span class="Special">CTRL-]</span>を使うことによって、mainからFuncAに行くことがで<br>
-きる。同様に<span class="Special">CTRL-]</span>を使ってFuncCへ行くことができる。mainに戻るには<span class="Special">CTRL-T</span>を２回<br>
-使う。そこで<span class="Special">CTRL-]</span>を使ってFuncBに行くことができる。<br>
+(説明: main は FuncA および FuncB を呼び、FuncA は FuncC を呼ぶ)。<br>
+FuncA の呼び出しの上で&nbsp;<span class="Special">CTRL-]</span>&nbsp;を使用することで、main から FuncA へ移動できる。<br>
+それから&nbsp;<span class="Special">CTRL-]</span>&nbsp;で FuncC へ移動できる。ここで main へ戻りたい場合、<span class="Special">CTRL-T</span>&nbsp;を 2<br>
+回使用できる。それから&nbsp;<span class="Special">CTRL-]</span>&nbsp;で FuncB へ移動できる。<br>
 <br>
-&quot;:ta&nbsp;<span class="Special">{name}</span>&quot; や<span class="Special">CTRL-]</span>コマンドは、タグスタック上の現在の位置にタグを追加する。<br>
-もしスタックが満たされていた場合(スタックは20エントリまで保持できる)、最も古い<br>
-エントリが削除され、古いものから順にひとつずつ上に移動する(インデックス番号は1<br>
-ずつ減る)。もし最後に使われたエントリが一番下になかった場合、最後に使われたエ<br>
-ントリより下にあるものは削除される。つまり古いタグ経路は失われる。上のパラグラ<br>
-フの説明を実行したあとのタグスタックは次のような状態になる:<br>
+&quot;:ta&nbsp;<span class="Special">{name}</span>&quot; または&nbsp;<span class="Special">CTRL-]</span>&nbsp;コマンドを発行した場合、このタグはスタックの現在の<br>
+位置に挿入される。スタックがいっぱいだった場合 (最大 20 エントリ保持できる)、<br>
+最も古いエントリが削除され、より古いエントリが 1 つ上の位置へずれる (それらの<br>
+インデックス番号は 1 減る)。最後に使用したエントリが一番下になかった場合、最後<br>
+に使用したエントリより下のエントリは削除される。これは、コールグラフの古い分岐<br>
+が失われることを意味する。上で説明したコマンドの後では、タグスタックはこのよう<br>
+になる:<br>
 <br>
 &nbsp;&nbsp; # TO tag&nbsp;&nbsp;&nbsp;&nbsp; FROM line&nbsp;&nbsp;in file/text<br>
 &nbsp;&nbsp; 1&nbsp;&nbsp;1 main&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;harddisk2:text/vim/test<br>
 &nbsp;&nbsp; 2&nbsp;&nbsp;1 FuncB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;59&nbsp;&nbsp;harddisk2:text/vim/src/main.c<br>
 <br>
-<a class="Identifier" href="builtin.html#gettagstack()">gettagstack()</a>&nbsp;関数は、指定されたウィンドウのタグスタックを返す。<br>
-<a class="Identifier" href="builtin.html#settagstack()">settagstack()</a>&nbsp;関数は、ウィンドウのタグスタックを変更する。<br>
+<a class="Identifier" href="builtin.html#gettagstack()">gettagstack()</a>&nbsp;関数は指定されたウィンドウのタグスタックを返す。<br>
+<a class="Identifier" href="builtin.html#settagstack()">settagstack()</a>&nbsp;関数はウィンドウのタグスタックを変更する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tagstack-examples" name="tagstack-examples">tagstack-examples</a><br>
-ちょうど&nbsp;<a class="Comment" href="tagsrch.html#:tag">:tag</a>&nbsp;でタグスタックを書き込んだかの様に動く jumper#jump_to_tag 関数<br>
-をユーザー定義するなら:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ジャンプする前にジャンプ元の位置を保存する。<br>
+<a class="Comment" href="tagsrch.html#:tag">:tag</a>&nbsp;とまったく同じように、ただしユーザー定義の jumper#jump_to_tag 関数を使<br>
+用して、タグスタックに書き込む:<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ジャンプする前に、ジャンプ元を保存する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let tag = expand('&lt;cword&gt;')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let pos = [bufnr()] + getcurpos()[1:]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let item = {'bufnr': pos[0], 'from': pos, 'tagname': tag}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if jumper#jump_to_tag(tag)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ジャンプが成功だったら、前の位置をタグスタックに書き込む。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot; ジャンプ成功、前の位置をタグスタックに書き込む。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let winid = win_getid()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let stack = gettagstack(winid)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let stack['items'] = [item]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call settagstack(winid, stack, 't')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endif</div>
 <br>
-現在のタグスタックのインデックスを4にするには:<br>
+タグスタックの現在のインデックスを 4 に設定する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call settagstack(1005, {'curidx' : 4})</div>
 <br>
-新しいアイテムをタグスタック上にプッシュするなら:<br>
+新しい項目をタグスタックに積む:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let pos = [bufnr('myfile.txt'), 10, 1, 0]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let newtag = [{'tagname' : 'mytag', 'from' : pos}]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call settagstack(2, {'items' : newtag}, 'a')</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#E73" name="E73">E73</a><br>
-タグスタックを使おうとしたとき、タグスタックに何も入っていないとエラーが表示さ<br>
-れる。<br>
+タグスタックが何も含んでいない時にタグスタックを使用しようとすると、エラーメッ<br>
+セージが表示される。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 3. タグマッチリスト&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tag-matchlist" name="tag-matchlist">tag-matchlist</a>&nbsp;<a class="Constant" href="tagsrch.html#E427" name="E427">E427</a>&nbsp;<a class="Constant" href="tagsrch.html#E428" name="E428">E428</a><br>
 <br>
-以下のコマンドは複数のタグがマッチしたときに、タグの間を移動するために使うこと<br>
-ができる。これらのコマンドはタグスタックを変更せず、同じエントリを保つことに注<br>
-意すること。<br>
+マッチするタグが複数ある時、これらのコマンドでそれらの間をジャンプできる。<span class="Todo">Note</span><br>
+これらのコマンドはタグスタックを変更せず、同じエントリを保持することに注意。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:ts" name=":ts">:ts</a>&nbsp;<a class="Constant" href="tagsrch.html#:tselect" name=":tselect">:tselect</a><br>
-:ts[elect][!]&nbsp;<span class="Special">[name]</span>&nbsp;&nbsp;&nbsp;&nbsp;タグファイルの情報を用いて、<span class="Special">[name]</span>にマッチするタグをリ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;スト表示する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[name]</span>を省略した場合、タグスタック上の最後のタグが使わ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[!]に関しては<a class="Identifier" href="tagsrch.html#tag-!">tag-!</a>を参照。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初の列に '&gt;' があるものはリスト中の現在の位置を指し<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;示している(それがあるならば)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[name]</span>は正規表現を取り得る。<a class="Identifier" href="tagsrch.html#tag-regexp">tag-regexp</a>を参照。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リストに使われているプロパティは<a class="Identifier" href="tagsrch.html#tag-priority">tag-priority</a>を参照。<br>
+:ts[elect][!]&nbsp;<span class="Special">[name]</span>&nbsp;&nbsp;&nbsp;&nbsp;タグファイルの情報を使用して、<span class="Special">[name]</span>&nbsp;にマッチするタグ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を一覧表示する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[name]</span>&nbsp;が指定されない場合、タグスタックの最後のタグ名<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が使用される。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[!] については&nbsp;<a class="Identifier" href="tagsrch.html#tag-!">tag-!</a>&nbsp;を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初のカラムの '&gt;' で、一覧内の現在の位置が示される<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ある場合)。<span class="Special">[name]</span>&nbsp;には正規表現パターンを指定できる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#tag-regexp">tag-regexp</a>&nbsp;を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一覧表示で使用される優先順位については&nbsp;<a class="Identifier" href="tagsrch.html#tag-priority">tag-priority</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を参照。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;出力例:<br>
 <br>
 <br>
@@ -242,716 +242,711 @@ FuncAの呼び出し部分の上で<span class="Special">CTRL-]</span>を使う�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mch_delay(msec, ignoreinput)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type number and &lt;Enter&gt; (empty cancels):</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;pri&quot; については<a class="Identifier" href="tagsrch.html#tag-priority">tag-priority</a>を参照。この例は現在の<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルに依存しているため、&quot;:tselect xxx&quot; を使ったと<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;きには違う結果が得られることに注意すること。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;kind&quot; はタグファイルからタグの種類が得られる場合のみ、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;その情報を示す。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;info&quot; はタグファイルから得られる情報が表示される。こ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の情報はタグファイルを生成したプログラムに依存する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リストが長い場合には<a class="Identifier" href="message.html#more-prompt">more-prompt</a>が表示される。もしす<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;でに使いたいタグを見つけているのなら、'q' のあとに<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;nr&quot; の番号を入力すればよい。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;pri&quot; カラムについては&nbsp;<a class="Identifier" href="tagsrch.html#tag-priority">tag-priority</a>&nbsp;を参照。<span class="Todo">Note</span>&nbsp;こ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れはカレントファイルに依存するので、&quot;:tselect xxx&quot; を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用すると異なる結果になりうることに注意。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タグの種類がタグファイルに含まれていた場合、&quot;kind&quot; カ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ラムはその種類を示す。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;info&quot; カラムはタグファイル内で見つかった情報を表示す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。それはタグファイルを生成したプログラムに依存する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一覧が長い場合、<a class="Identifier" href="message.html#more-prompt">more-prompt</a>&nbsp;が表示されることがある。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用したいタグがすでに見えている場合、'q' をタイプして<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;番号を入力できる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:sts" name=":sts">:sts</a>&nbsp;<a class="Constant" href="tagsrch.html#:stselect" name=":stselect">:stselect</a><br>
-:sts[elect][!]&nbsp;<span class="Special">[name]</span>&nbsp;&nbsp; &quot;:tselect[!]&nbsp;<span class="Special">[name]</span>&quot; を実行し、ウィンドウを分割して選<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;択されたtagを表示する。<br>
+:sts[elect][!]&nbsp;<span class="Special">[name]</span>&nbsp;&nbsp; &quot;:tselect[!]&nbsp;<span class="Special">[name]</span>&quot; を実行し、選択したタグのためにウィ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンドウを分割する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#g]" name="g]">g]</a><br>
-g]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-]</span>と動作は似ているが、&quot;:tag&quot; の代わりに &quot;:tselect&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を用いる。<br>
+g]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-]</span>&nbsp;と同様だが、&quot;:tag&quot; の代わりに &quot;:tselect&quot; を使用<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#v_g]" name="v_g]">v_g]</a><br>
-<span class="Special">{Visual}</span>g]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;g]&quot; と同じ。ただし、選択されたテキストが検索に使われ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
+<span class="Special">{Visual}</span>g]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;g]&quot; と同じだが、ハイライトされたテキストを識別子とし<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;て使用する。<br>
+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:tj" name=":tj">:tj</a>&nbsp;<a class="Constant" href="tagsrch.html#:tjump" name=":tjump">:tjump</a><br>
-:tj[ump][!]&nbsp;<span class="Special">[name]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:tselect&quot; と動作は似ているが、適合するtagが１つだけの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ときには直接移動する。<br>
+:tj[ump][!]&nbsp;<span class="Special">[name]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:tselect&quot; と同様だが、マッチが 1 つだけの場合はタグへ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;直接ジャンプする。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:stj" name=":stj">:stj</a>&nbsp;<a class="Constant" href="tagsrch.html#:stjump" name=":stjump">:stjump</a><br>
-:stj[ump][!]&nbsp;<span class="Special">[name]</span>&nbsp;&nbsp;&nbsp;&nbsp; &quot;:tjump[!]&nbsp;<span class="Special">[name]</span>&quot; を実行し、ウィンドウを分割して選択<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;されたtagを表示する。<br>
+:stj[ump][!]&nbsp;<span class="Special">[name]</span>&nbsp;&nbsp;&nbsp;&nbsp; &quot;:tjump[!]&nbsp;<span class="Special">[name]</span>&quot; を実行し、選択したタグのためにウィ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンドウを分割する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#g_CTRL-]" name="g_CTRL-]">g_CTRL-]</a><br>
-g&nbsp;<span class="Special">CTRL-]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-]</span>と動作は似ているが、&quot;:tag&quot; の代わりに &quot;:tjump&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を用いる。<br>
+g&nbsp;<span class="Special">CTRL-]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">CTRL-]</span>&nbsp;と同様だが、&quot;:tag&quot; の代わりに &quot;:tjump&quot; を使用す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#v_g_CTRL-]" name="v_g_CTRL-]">v_g_CTRL-]</a><br>
-<span class="Special">{Visual}</span>g&nbsp;<span class="Special">CTRL-]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;g&nbsp;<span class="Special">CTRL-]</span>&quot; と同じ。ただし、選択されたテキストが検索に<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使われる。<br>
+<span class="Special">{Visual}</span>g&nbsp;<span class="Special">CTRL-]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;g&nbsp;<span class="Special">CTRL-]</span>&quot; と同じだが、ハイライトされたテキストを識別<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;子として使用する。<br>
+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:tn" name=":tn">:tn</a>&nbsp;<a class="Constant" href="tagsrch.html#:tnext" name=":tnext">:tnext</a><br>
-:<span class="Special">[count]</span>tn[ext][!]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;適合するtagのうち、<span class="Special">[count]</span>番目のtagに移動する。(省略時<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は1。)[!]に関しては<a class="Identifier" href="tagsrch.html#tag-!">tag-!</a>を参照。<br>
+:<span class="Special">[count]</span>tn[ext][!]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;個先のマッチするタグへジャンプする (デフォルト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は 1)。[!] については&nbsp;<a class="Identifier" href="tagsrch.html#tag-!">tag-!</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:tp" name=":tp">:tp</a>&nbsp;<a class="Constant" href="tagsrch.html#:tprevious" name=":tprevious">:tprevious</a><br>
-:<span class="Special">[count]</span>tp[revious][!]&nbsp;&nbsp;適合するtagのうち、<span class="Special">[count]</span>分だけ前のtagに移動する。(<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;省略時は1。)[!]に関しては<a class="Identifier" href="tagsrch.html#tag-!">tag-!</a>を参照。<br>
+:<span class="Special">[count]</span>tp[revious][!]&nbsp;&nbsp;<span class="Special">[count]</span>&nbsp;個前のマッチするタグへジャンプする (デフォルト<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は 1)。[!] については&nbsp;<a class="Identifier" href="tagsrch.html#tag-!">tag-!</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:tN" name=":tN">:tN</a>&nbsp;<a class="Constant" href="tagsrch.html#:tNext" name=":tNext">:tNext</a><br>
-:<span class="Special">[count]</span>tN[ext][!]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:tprevious&quot; と同様。<br>
+:<span class="Special">[count]</span>tN[ext][!]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:tprevious&quot; と同じ。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:tr" name=":tr">:tr</a>&nbsp;<a class="Constant" href="tagsrch.html#:trewind" name=":trewind">:trewind</a><br>
-:<span class="Special">[count]</span>tr[ewind][!]&nbsp;&nbsp;&nbsp;&nbsp;適合したtagのうち最初のtagに移動する。もし<span class="Special">[count]</span>が与<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;えられていたら、<span class="Special">[count]</span>番目のtagに移動する。[!]につい<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ては<a class="Identifier" href="tagsrch.html#tag-!">tag-!</a>を参照。<br>
+:<span class="Special">[count]</span>tr[ewind][!]&nbsp;&nbsp;&nbsp;&nbsp;最初のマッチするタグへジャンプする。<span class="Special">[count]</span>&nbsp;が指定され<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;た場合、<span class="Special">[count]</span>&nbsp;番目のマッチするタグへジャンプする。[!]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;については&nbsp;<a class="Identifier" href="tagsrch.html#tag-!">tag-!</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:tf" name=":tf">:tf</a>&nbsp;<a class="Constant" href="tagsrch.html#:tfirst" name=":tfirst">:tfirst</a><br>
 :<span class="Special">[count]</span>tf[irst][!]&nbsp;&nbsp;&nbsp;&nbsp; &quot;:trewind&quot; と同じ。<br>
+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:tl" name=":tl">:tl</a>&nbsp;<a class="Constant" href="tagsrch.html#:tlast" name=":tlast">:tlast</a><br>
-:tl[ast][!]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 適合したtagのうち最後のtagに移動する。[!]に関しては<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#tag-!">tag-!</a>を参照。<br>
+:tl[ast][!]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最後のマッチするタグへジャンプする。[!] については<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#tag-!">tag-!</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:lt" name=":lt">:lt</a>&nbsp;<a class="Constant" href="tagsrch.html#:ltag" name=":ltag">:ltag</a><br>
-:lt[ag][!]&nbsp;<span class="Special">[name]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; タグ[name]にジャンプし、マッチするタグ全てをカレント<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウの新しいlocationリストに追加する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[name]</span>は正規表現でもよい(<a class="Identifier" href="tagsrch.html#tag-regexp">tag-regexp</a>を参照)。<span class="Special">[name]</span>が<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定されないときはタグスタックにある最後のタグ名が使わ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れる。タグにマッチする行を特定するための検索パターンに<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は、特別な文字を全てエスケープするために &quot;\V&quot; がつけら<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れる(very nomagic)。マッチするタグを保持するlocationリ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ストはタグスタックとは独立している。[!]について<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は<a class="Identifier" href="tagsrch.html#tag-!">tag-!</a>を参照。<br>
+:lt[ag][!]&nbsp;<span class="Special">[name]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; タグ&nbsp;<span class="Special">[name]</span>&nbsp;へジャンプし、マッチするタグをカレントウィ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンドウの新しい location リストに追加する。<span class="Special">[name]</span>&nbsp;には<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正規表現パターンを指定できる。<a class="Identifier" href="tagsrch.html#tag-regexp">tag-regexp</a>&nbsp;を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">[name]</span>&nbsp;が指定されない場合、タグスタックの最後のタグ名<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が使用される。タグ行を見つけるための検索パターンには、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全ての特殊文字をエスケープするために &quot;\V&quot; が前置される<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(very nomagic)。マッチするタグを表示する location リス<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;トはタグスタックから独立している。[!] については<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#tag-!">tag-!</a>&nbsp;を参照。<br>
 <br>
-他にメッセージがないとき、Vimは今までに移動したtagとtagの数を表示する:<br>
+他のメッセージがない時、Vim はどのマッチするタグへジャンプしたか、およびマッチ<br>
+するタグの数を表示する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tag 1 of 3 or more</div>
-&quot; or more&quot; は、Vimがまだすべてのtagファイルを検索していないことを示すために用<br>
-いられる。&quot;:tnext&quot; を数回用いるか、&quot;:tlast&quot; を使用したとき、さらにtagが見つけ<br>
-られるだろう。<br>
+&quot; or more&quot; は、Vim がまだ全てのタグファイルを試していないことを示すために使用<br>
+される。&quot;:tnext&quot; を数回使用するか、または &quot;:tlast&quot; を使用すると、さらにマッチ<br>
+が見つかるかもしれない。<br>
 <br>
-他のメッセージがあったときや、現在の場所を知りたいときには次のコマンドで再び<br>
-表示することができる。(最後に行った移動と同じtagに移動する。):<br>
+他のメッセージのためにこのメッセージを見なかった時、または単に今どこにいるのか<br>
+を知りたい時、このコマンドでもう一度表示できる (そして前回と同じタグへジャンプ<br>
+する):<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:0tn</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tag-skip-file" name="tag-skip-file">tag-skip-file</a><br>
-マッチしたタグに対するファイルが見つからなかった場合、スキップされて次にマッチ<br>
-するタグが使われる。Vimはファイルがないことを通知する。もしリストの終端に達し<br>
-ていたならば、エラーメッセージが与えられる。<br>
+ファイルが存在しないマッチするタグが見つかった時、そのマッチはスキップされ、次<br>
+のマッチするタグが使用される。Vim はファイルが見つからないことを知らせるため<br>
+に、これを報告する。マッチのリストの最後に達した時、エラーメッセージが表示され<br>
+る。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tag-preview" name="tag-preview">tag-preview</a><br>
-タグマッチリストはプレビューウィンドウ内でも使用できる。そのコマンドは上記のも<br>
-のに似ているが、先頭に &quot;p&quot; がつく。<br>
-<span class="Special">{</span><a class="Identifier" href="various.html#+quickfix">+quickfix</a><span class="Special">が無効なときは利用できない}</span><br>
+タグマッチリストはプレビューウィンドウでも使用できる。コマンドは上記と同じで、<br>
+先頭に &quot;p&quot; が付く。<br>
+<span class="Special">{Vim が&nbsp;</span><a class="Identifier" href="various.html#+quickfix">+quickfix</a><span class="Special">&nbsp;機能なしでコンパイルされた時は使用できない}</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:pts" name=":pts">:pts</a>&nbsp;<a class="Constant" href="tagsrch.html#:ptselect" name=":ptselect">:ptselect</a><br>
-:pts[elect][!]&nbsp;<span class="Special">[name]</span>&nbsp;&nbsp; &quot;:tselect[!]&nbsp;<span class="Special">[name]</span>&quot; を実行し、&quot;Preview&quot; ウィンドウに<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しいタグを表示する。詳細は<a class="Identifier" href="windows.html#:ptag">:ptag</a>を参照すること。<br>
+:pts[elect][!]&nbsp;<span class="Special">[name]</span>&nbsp;&nbsp; &quot;:tselect[!]&nbsp;<span class="Special">[name]</span>&quot; を実行し、新しいタグを &quot;Preview&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウに表示する。詳しくは&nbsp;<a class="Identifier" href="windows.html#:ptag">:ptag</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:ptj" name=":ptj">:ptj</a>&nbsp;<a class="Constant" href="tagsrch.html#:ptjump" name=":ptjump">:ptjump</a><br>
-:ptj[ump][!]&nbsp;<span class="Special">[name]</span>&nbsp;&nbsp;&nbsp;&nbsp; &quot;:tjump[!]&nbsp;<span class="Special">[name]</span>&quot; を実行し、&quot;Preview&quot; ウィンドウに新<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;しいタグを表示する。詳細は<a class="Identifier" href="windows.html#:ptag">:ptag</a>を参照すること。<br>
+:ptj[ump][!]&nbsp;<span class="Special">[name]</span>&nbsp;&nbsp;&nbsp;&nbsp; &quot;:tjump[!]&nbsp;<span class="Special">[name]</span>&quot; を実行し、新しいタグを &quot;Preview&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ウィンドウに表示する。詳しくは&nbsp;<a class="Identifier" href="windows.html#:ptag">:ptag</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:ptn" name=":ptn">:ptn</a>&nbsp;<a class="Constant" href="tagsrch.html#:ptnext" name=":ptnext">:ptnext</a><br>
-:<span class="Special">[count]</span>ptn[ext][!]&nbsp;&nbsp;&nbsp;&nbsp; プレビューウィンドウで &quot;:tnext&quot; を実行する。<a class="Identifier" href="windows.html#:ptag">:ptag</a>を<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参照すること。<br>
+:<span class="Special">[count]</span>ptn[ext][!]&nbsp;&nbsp;&nbsp;&nbsp; プレビューウィンドウでの &quot;:tnext&quot;。<a class="Identifier" href="windows.html#:ptag">:ptag</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:ptp" name=":ptp">:ptp</a>&nbsp;<a class="Constant" href="tagsrch.html#:ptprevious" name=":ptprevious">:ptprevious</a><br>
-:<span class="Special">[count]</span>ptp[revious][!] プレビューウィンドウで &quot;:tprevious&quot; を実行する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="windows.html#:ptag">:ptag</a>を参照すること。<br>
+:<span class="Special">[count]</span>ptp[revious][!] プレビューウィンドウでの &quot;:tprevious&quot;。<a class="Identifier" href="windows.html#:ptag">:ptag</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:ptN" name=":ptN">:ptN</a>&nbsp;<a class="Constant" href="tagsrch.html#:ptNext" name=":ptNext">:ptNext</a><br>
 :<span class="Special">[count]</span>ptN[ext][!]&nbsp;&nbsp;&nbsp;&nbsp; &quot;:ptprevious&quot; と同じ。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:ptr" name=":ptr">:ptr</a>&nbsp;<a class="Constant" href="tagsrch.html#:ptrewind" name=":ptrewind">:ptrewind</a><br>
-:<span class="Special">[count]</span>ptr[ewind][!]&nbsp;&nbsp; プレビューウィンドウで &quot;:trewind&quot; を実行する。<a class="Identifier" href="windows.html#:ptag">:ptag</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を参照すること。<br>
+:<span class="Special">[count]</span>ptr[ewind][!]&nbsp;&nbsp; プレビューウィンドウでの &quot;:trewind&quot;。<a class="Identifier" href="windows.html#:ptag">:ptag</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:ptf" name=":ptf">:ptf</a>&nbsp;<a class="Constant" href="tagsrch.html#:ptfirst" name=":ptfirst">:ptfirst</a><br>
 :<span class="Special">[count]</span>ptf[irst][!]&nbsp;&nbsp;&nbsp;&nbsp;&quot;:ptrewind&quot; と同じ。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:ptl" name=":ptl">:ptl</a>&nbsp;<a class="Constant" href="tagsrch.html#:ptlast" name=":ptlast">:ptlast</a><br>
-:ptl[ast][!]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プレビューウィンドウで &quot;:tlast&quot; を実行する。<a class="Identifier" href="windows.html#:ptag">:ptag</a>を<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参照すること。<br>
+:ptl[ast][!]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プレビューウィンドウでの &quot;:tlast&quot;。<a class="Identifier" href="windows.html#:ptag">:ptag</a>&nbsp;を参照。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-4. タグの詳細&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tag-details" name="tag-details">tag-details</a><br>
+4. タグ詳細&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tag-details" name="tag-details">tag-details</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#static-tag" name="static-tag">static-tag</a><br>
-staticタグは特別なファイルのために定義されたタグである。Cプログラムではstatic<br>
-関数が当てはまる。<br>
+static タグとは、特定のファイルに対して定義されたタグである。C プログラムでは、<br>
+これは static 関数であろう。<br>
 <br>
-Viはタグにジャンプするときに現在の検索パターンを設定する。これはタグにジャンプ<br>
-したあとの &quot;n&quot; コマンドは、その前の検索パターンと同じ検索を行わないということ<br>
-である。Vimではこのようなバグとも考えられることはしない。もし古いViの振る舞い<br>
-を望むならば、<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;に 't' を設定する。<br>
+Vi では、タグへジャンプすると現在の検索パターンが設定される。これは、タグへジャ<br>
+ンプした後の &quot;n&quot; コマンドが、タグへジャンプする前と同じパターンを検索しないこ<br>
+とを意味する。我々はこれをバグだと考えているので、Vim はこれを行わない。本当に<br>
+昔の Vi の動作が欲しい場合、<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;に 't' フラグを設定する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tag-binary-search" name="tag-binary-search">tag-binary-search</a><br>
-Vimは希望のタグをすばやく見つけるために、タグファイル内で二分探索を行う<br>
-(<a class="Identifier" href="various.html#+tag_binary">+tag_binary</a>がコンパイル時に有効になっていれば)。しかしこれはタグファイルが<br>
-ASCIIコードでソートされている場合にのみ機能する。したがって、もし適合しないも<br>
-のが見つかった場合は、その他の方法として線形探索が行われる。もし線形探索のみを<br>
-利用したいならば、<a class="Type" href="options.html#'tagbsearch'">'tagbsearch'</a>&nbsp;オプションをリセットすればよい。そうでなければ:<br>
-タグファイルをソートすること!<br>
+Vim は目的のタグを素早く見つけるために、タグファイル内で二分探索を使用する (コ<br>
+ンパイル時に有効にされている場合&nbsp;<a class="Identifier" href="various.html#+tag_binary">+tag_binary</a>)。しかしこれは、タグファイルが<br>
+ASCII のバイト値でソートされている場合にのみ動作する。そのため、マッチが見つか<br>
+らなかった場合、線形探索でもう一度試す。線形探索だけが欲しい場合、<a class="Type" href="options.html#'tagbsearch'">'tagbsearch'</a><br>
+オプションをリセットする。あるいはもっと良いのは: タグファイルをソートすること!<br>
 <br>
-検索が明確な名前をもったタグでない場合は二分探索は利用できないことに注意するこ<br>
-と。これは大文字小文字を無視した検索や固定文字列で始まらない正規表現による検索<br>
-で発生する。そのときはタグ検索はかなり遅くなるだろう。先人はタグファイルを大文<br>
-字と小文字を区別せずにソートすることで回避できた。詳細は&nbsp;<a class="Type" href="options.html#'tagbsearch'">'tagbsearch'</a>&nbsp;を参照の<br>
-こと。<br>
+<span class="Todo">Note</span>&nbsp;特定の名前を持つタグを探していない時は、二分探索が無効になることに注意。<br>
+これは、大文字小文字を無視する時、および固定文字列で始まらない正規表現が使用さ<br>
+れた時に起こる。その場合、タグ検索はかなり遅くなることがある。前者はタグファイ<br>
+ルを case-fold ソートすることで回避できる。詳細は&nbsp;<a class="Type" href="options.html#'tagbsearch'">'tagbsearch'</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tag-regexp" name="tag-regexp">tag-regexp</a><br>
-&quot;:tag&quot; と &quot;:tselect&quot; コマンドは引数に正規表現を受け付ける。使用できる特殊文字<br>
-については<a class="Identifier" href="pattern.html#pattern">pattern</a>を参照すること。引数が '/' で始まる場合はパターンとして使わ<br>
-れる。もし引数が '/' で始まらなければ、完全なタグ名の文字列として扱われる。<br>
+&quot;:tag&quot; および &quot;:tselect&quot; コマンドは正規表現の引数を受け付ける。使用できる特殊<br>
+文字については&nbsp;<a class="Identifier" href="pattern.html#pattern">pattern</a>&nbsp;を参照。<br>
+引数が '/' で始まる時、それはパターンとして使用される。引数が '/' で始まらない<br>
+場合、それは完全なタグ名として文字どおりに解釈される。<br>
 例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;:tag main</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最も優先度の高い &quot;main&quot; というタグにジャンプする。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最も優先度が高い &quot;main&quot; タグへジャンプする。<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;:tag /^get</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 最も優先度の高い &quot;get&quot; で始まるタグにジャンプする。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;get&quot; で始まり、最も優先度が高いタグへジャンプする。<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;:tag /norm</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;norm&quot; を含むすべてのタグを列挙する。これは &quot;id_norm&quot; というタグも含ま<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れる。<br>
-もし引数と全く同じタグと、正規表現によってマッチしたタグがあった場合、引数と同<br>
-じタグが優先される。例えば、&quot;:tag /open&quot; は &quot;open_file&quot; や &quot;file_open&quot; よりも<br>
-前に &quot;open&quot; にマッチする。<br>
-正規表現を使うときは大文字・小文字は区別されない。大文字・小文字を区別したいな<br>
-ら正規表現の中で &quot;\C&quot; を使うこと。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;id_norm&quot; を含め、&quot;norm&quot; を含む全てのタグを一覧表示する。<br>
+引数が文字どおりに存在し、かつ正規表現として使用した時にもマッチする時、文字ど<br>
+おりのマッチの方が優先度が高い。例えば、&quot;:tag /open&quot; は &quot;open_file&quot; および<br>
+&quot;file_open&quot; より前に &quot;open&quot; にマッチする。<br>
+パターンを使用する時、大文字小文字は無視される。大文字小文字を区別してマッチさ<br>
+せたい場合、パターン内で &quot;\C&quot; を使用する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tag-!" name="tag-!">tag-!</a><br>
-タグが現在のファイル内にある場合、これは常に動作する。それ以外の場合、実行され<br>
-る動作は、現在のファイルが変更されたかどうか、コマンドに ! が追加されているか<br>
-どうかと、<a class="Type" href="options.html#'autowrite'">'autowrite'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'winfixbuf'">'winfixbuf'</a>&nbsp;オプションに依存する:<br>
+タグがカレントファイル内にある場合、これは常に動作する。そうでない場合、実行さ<br>
+れる動作は、カレントファイルが変更されているかどうか、コマンドに ! が付加され<br>
+ているかどうか、および&nbsp;<a class="Type" href="options.html#'autowrite'">'autowrite'</a>&nbsp;および&nbsp;<a class="Type" href="options.html#'winfixbuf'">'winfixbuf'</a>&nbsp;オプションに依存する:<br>
 <br>
-<span class="PreProc">タグが現在の&nbsp;&nbsp;ファイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;winfixbuf&nbsp;&nbsp; autowrite&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
-&nbsp;<span class="PreProc">ファイル内&nbsp;&nbsp; 変更あり&nbsp;&nbsp;!&nbsp;&nbsp; オプション&nbsp;&nbsp;オプション&nbsp;&nbsp;&nbsp;&nbsp;動作</span><br>
+&nbsp;&nbsp;<span class="PreProc">タグが&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイル&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;winfixbuf&nbsp;&nbsp; autowrite&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
+<span class="PreProc">カレントファイル内 変更 !&nbsp;&nbsp; オプション&nbsp;&nbsp;オプション&nbsp;&nbsp;&nbsp;&nbsp;動作</span><br>
 &nbsp;-----------------------------------------------------------------------------<br>
-&nbsp;&nbsp;&nbsp;&nbsp;yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; タグに行く<br>
-&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 対象ファイルを読み込み、タ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;グに行く<br>
-&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yes&nbsp;&nbsp;&nbsp;&nbsp; yes&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 現在のファイルを捨て、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;対象ファイルを読み込んでタ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;グに行く<br>
-&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yes&nbsp;&nbsp;&nbsp;&nbsp; no&nbsp;&nbsp;&nbsp;&nbsp; off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在のファイルを保存し、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;対象ファイルを読み込んでタ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;グに行く<br>
-&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yes&nbsp;&nbsp;&nbsp;&nbsp; no&nbsp;&nbsp;&nbsp;&nbsp; off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 失敗する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yes&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; タグに行く<br>
-&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp; on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 失敗する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yes&nbsp;&nbsp;&nbsp;&nbsp; no&nbsp;&nbsp;&nbsp;&nbsp; on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 失敗する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yes&nbsp;&nbsp;&nbsp;&nbsp; no&nbsp;&nbsp;&nbsp;&nbsp; on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;失敗する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yes&nbsp;&nbsp;&nbsp;&nbsp; no&nbsp;&nbsp;&nbsp;&nbsp; on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 失敗する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; タグへ移動<br>
+&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 他のファイルを読み込み、タグへ移動<br>
+&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yes&nbsp;&nbsp;&nbsp;&nbsp; yes&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; カレントファイルを破棄し、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;他のファイルを読み込み、タグへ移動<br>
+&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yes&nbsp;&nbsp;&nbsp;&nbsp; no&nbsp;&nbsp;&nbsp;&nbsp; off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カレントファイルを書き込み、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;他のファイルを読み込み、タグへ移動<br>
+&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yes&nbsp;&nbsp;&nbsp;&nbsp; no&nbsp;&nbsp;&nbsp;&nbsp; off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 失敗<br>
+&nbsp;&nbsp;&nbsp;&nbsp;yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yes&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; タグへ移動<br>
+&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp; on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 失敗<br>
+&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yes&nbsp;&nbsp;&nbsp;&nbsp; no&nbsp;&nbsp;&nbsp;&nbsp; on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 失敗<br>
+&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yes&nbsp;&nbsp;&nbsp;&nbsp; no&nbsp;&nbsp;&nbsp;&nbsp; on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;失敗<br>
+&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yes&nbsp;&nbsp;&nbsp;&nbsp; no&nbsp;&nbsp;&nbsp;&nbsp; on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 失敗<br>
 &nbsp;-----------------------------------------------------------------------------<br>
 <br>
-- タグが現在のファイル上にある場合は、コマンドはいつも機能する。<br>
-- タグが他のファイル上にあり、現在のファイルが変更されていないならば、対象とな<br>
-&nbsp;&nbsp;るファイルがバッファに読み込まれる。<br>
-- タグが他のファイル上にあり、現在のファイルが変更されていて、かつ!がコマンド<br>
-&nbsp;&nbsp;につけられている場合には、現在のファイルに対する変更は失われ、対象となるファ<br>
-&nbsp;&nbsp;イルがバッファに読み込まれる。<br>
-- タグが他のファイル上にあり、現在のファイルが変更されていて、かつ&nbsp;<a class="Type" href="options.html#'autowrite'">'autowrite'</a><br>
-&nbsp;&nbsp;オプションが設定されている場合には、現在のファイルは保存され、対象となるファ<br>
-&nbsp;&nbsp;イルがバッファに読み込まれる。<br>
-- タグが他のファイル上にあり、現在のファイルが変更されていて、かつ&nbsp;<a class="Type" href="options.html#'autowrite'">'autowrite'</a><br>
-&nbsp;&nbsp;オプションが設定されていない場合には、コマンドは失敗する。変更を保存したいな<br>
-&nbsp;&nbsp;らば &quot;:w&quot; コマンドを使用し、そのあとで &quot;:tag&quot; を引数なしで実行する。これはタ<br>
-&nbsp;&nbsp;グがスタック上に残っているためにうまく機能する。変更を失ってもよいのならば、<br>
-&nbsp;&nbsp;&quot;:tag!&quot; コマンドを使用できる。<br>
-- タグが他のファイル上にあり、ウィンドウに&nbsp;<a class="Type" href="options.html#'winfixbuf'">'winfixbuf'</a>&nbsp;が含まれている場合、コ<br>
-&nbsp;&nbsp;マンドは失敗する。タグが同じファイル内にある場合は、成功する可能性がある。<br>
+- タグがカレントファイル内にある場合、コマンドは常に動作する。<br>
+- タグが別のファイル内にあり、カレントファイルが変更されていない場合、別のファ<br>
+&nbsp;&nbsp;イルがカレントファイルになり、バッファに読み込まれる。<br>
+- タグが別のファイル内にあり、カレントファイルが変更されていて、コマンドに !<br>
+&nbsp;&nbsp;が付加されている場合、カレントファイルへの変更は失われ、別のファイルがカレン<br>
+&nbsp;&nbsp;トファイルになり、バッファに読み込まれる。<br>
+- タグが別のファイル内にあり、カレントファイルが変更されていて、<a class="Type" href="options.html#'autowrite'">'autowrite'</a>&nbsp;オ<br>
+&nbsp;&nbsp;プションがオンの場合、カレントファイルは書き込まれ、別のファイルがカレント<br>
+&nbsp;&nbsp;ファイルになり、バッファに読み込まれる。<br>
+- タグが別のファイル内にあり、カレントファイルが変更されていて、<a class="Type" href="options.html#'autowrite'">'autowrite'</a>&nbsp;オ<br>
+&nbsp;&nbsp;プションがオフの場合、コマンドは失敗する。変更を保存したい場合、&quot;:w&quot; コマン<br>
+&nbsp;&nbsp;ドを使用し、それから引数なしで &quot;:tag&quot; を使用する。これは、タグはいずれにせよ<br>
+&nbsp;&nbsp;スタックに積まれるので動作する。変更を捨てたい場合、&quot;:tag!&quot; コマンドを使用で<br>
+&nbsp;&nbsp;きる。<br>
+- タグが別のファイル内にあり、ウィンドウが&nbsp;<a class="Type" href="options.html#'winfixbuf'">'winfixbuf'</a>&nbsp;を含む場合、コマンドは<br>
+&nbsp;&nbsp;失敗する。タグが同じファイル内にある場合、それは成功するかもしれない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tag-security" name="tag-security">tag-security</a><br>
-Vimはセキュリティの都合上、いくつかのコマンドを禁止していることに注意すること。<br>
-これはちょうど現在のディレクトリにあるexrc/vimrcファイルに&nbsp;<a class="Type" href="options.html#'secure'">'secure'</a>&nbsp;オプション<br>
-が使われているのと同じように機能する。<a class="Identifier" href="starting.html#trojan-horse">trojan-horse</a>と<a class="Identifier" href="eval.html#sandbox">sandbox</a>を参照すること。<br>
-<span class="Special">{tagaddress}</span>がバッファを変更したとき、次のようなエラーメッセージが表示される:<br>
+<span class="Todo">Note</span>&nbsp;Vim はセキュリティ上の理由から、いくつかのコマンドを禁止していることに注<br>
+意。これは、カレントディレクトリにある exrc/vimrc ファイルに対して&nbsp;<a class="Type" href="options.html#'secure'">'secure'</a>&nbsp;オ<br>
+プションを使用するのと同じように動作する。<a class="Identifier" href="starting.html#trojan-horse">trojan-horse</a>&nbsp;および&nbsp;<a class="Identifier" href="eval.html#sandbox">sandbox</a>&nbsp;を参<br>
+照。<br>
+<span class="Special">{tagaddress}</span>&nbsp;がバッファを変更した時、警告メッセージが表示される:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;<span class="Todo">WARNING:</span>&nbsp;tag command changed a buffer!!!&quot;<br>
-将来のバージョンではバッファを変更することは不可能になるだろう。これらはすべて<br>
-セキュリティの理由である: 誰かが気づかれないように実行される厄介なコマンドをタ<br>
-グファイルに隠しているかもしれない。例えば:<br>
+将来のバージョンでは、バッファを変更することは不可能になる。これは全てセキュリ<br>
+ティ上の理由による: 誰かがタグファイルに悪意のあるコマンドを隠すかもしれず、そ<br>
+うでなければそれは気付かれないままになるだろう。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:$d|/tag-function-name/</div>
 <br>
-Viでは &quot;:tag&quot; コマンドによってタグを検索すると、最新の検索パターンを上書きする。<br>
-Vimでは&nbsp;<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;に 't' フラグが設定されていなければ、前の検索パターンは引<br>
-き続き記憶される。<br>
+Vi では、&quot;:tag&quot; コマンドはタグを検索する時に最後の検索パターンを設定する。Vim<br>
+ではこれは行われず、<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;に 't' フラグが含まれていない限り、以前の検索<br>
+パターンが記憶されたままになる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#emacs-tags" name="emacs-tags">emacs-tags</a>&nbsp;<a class="Constant" href="tagsrch.html#emacs_tags" name="emacs_tags">emacs_tags</a>&nbsp;<a class="Constant" href="tagsrch.html#E430" name="E430">E430</a><br>
-Emacsスタイルのタグファイルは、Vimのコンパイル時に<a class="Identifier" href="various.html#+emacs_tags">+emacs_tags</a>機能を有効にし<br>
-た場合にのみ使用できる。すまないが、Emacsタグファイルについての説明はここでは<br>
-しない。それは下位互換のためにのみ提供している :-)。<br>
+Emacs スタイルのタグファイルは、Vim が&nbsp;<a class="Identifier" href="various.html#+emacs_tags">+emacs_tags</a>&nbsp;機能を有効にしてコンパイ<br>
+ルされた場合にのみサポートされる。申し訳ないが、ここには Emacs のタグファイル<br>
+についての説明はない。後方互換性のためだけにサポートされている :-)。<br>
 <br>
-Emacs タグファイルの行は非常に長くなることがある。Vim は行の約510バイトまでし<br>
-か扱わない。行が無視されたかどうかは&nbsp;<a class="Type" href="options.html#'verbose'">'verbose'</a>&nbsp;を5以上にしていればわかる。<br>
-Emacs ではないタグファイルの行はどのような長さでもよい。<br>
+Emacs のタグファイルの行は非常に長くなることがある。Vim は約 510 バイトまでの<br>
+行しか扱わない。行が無視されているかどうかを見るには、<a class="Type" href="options.html#'verbose'">'verbose'</a>&nbsp;を 5 以上に設<br>
+定する。Emacs 以外のタグファイルの行は任意の長さにできる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tags-option" name="tags-option">tags-option</a><br>
-<a class="Type" href="options.html#'tags'">'tags'</a>&nbsp;オプションはファイル名のリストで構成される。これらのファイルからタグが<br>
-検索される。デフォルトの &quot;tags&quot; ファイルよりも、異なるtagsファイルがよく使われ<br>
-るだろう。共通のtagsファイルにもよくアクセスするだろう。<br>
+<a class="Type" href="options.html#'tags'">'tags'</a>&nbsp;オプションはファイル名のリストである。これらの各ファイルでタグが検索さ<br>
+れる。これは、デフォルトのファイル &quot;tags&quot; とは異なるタグファイルを使用するため<br>
+に使用できる。共通のタグファイルにアクセスするためにも使用できる。<br>
 <br>
-以下のようなときは、リストの次のファイルを使わない:<br>
-- 現在のバッファに対するstaticタグが見つかった場合。<br>
-- globalタグが見つかった場合。<br>
-これは大文字小文字が無視されるかどうかにも依存する。大文字小文字は以下の場合に<br>
-無視される:<br>
--&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;followic&quot; で&nbsp;<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;が設定されている<br>
--&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;ignore&quot; である<br>
--&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;smart&quot; でパターンに小文字だけが含まれている<br>
--&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;followscs&quot; で&nbsp;<a class="Type" href="options.html#'smartcase'">'smartcase'</a>&nbsp;が設定されておりパターンに小文字のみ<br>
-&nbsp;&nbsp;が含まれている<br>
-大文字小文字が無視されず、タグファイルが大文字小文字を除外したマッチのみとなる<br>
-場合、続くタグファイルは大文字小文字をマッチして検索される。大文字小文字をマッ<br>
-チしてタグファイルが見つからない場合、大文字小文字を除外してマッチした最初の結<br>
-果が使用される。もし大文字小文字が無視されグローバルのタグでマッチした、もしく<br>
-は大文字小文字を除外してマッチした場合、タグファイルの検索は行われず見付かった<br>
-そのファイルが使用される。<br>
+リスト内の次のファイルは、以下の場合には使用されない:<br>
+- カレントバッファに対する、マッチする static タグが見つかった。<br>
+- マッチする global タグが見つかった。<br>
+これは、大文字小文字が無視されるかどうかにも依存する。大文字小文字は以下の場合<br>
+に無視される:<br>
+-&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;followic&quot; で、<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;が設定されている<br>
+-&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;ignore&quot;<br>
+-&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;smart&quot; で、パターンが小文字のみを含む。<br>
+-&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;followscs&quot; で、<a class="Type" href="options.html#'smartcase'">'smartcase'</a>&nbsp;が設定されていて、パターンが小文字<br>
+&nbsp;&nbsp;のみを含む。<br>
+大文字小文字が無視されず、タグファイルに大文字小文字がマッチしないマッチしかな<br>
+い場合、次のタグファイルで大文字小文字がマッチするマッチが検索される。大文字小<br>
+文字がマッチするタグが見つからない場合、大文字小文字がマッチしない最初のマッチ<br>
+が使用される。大文字小文字が無視され、大文字小文字がマッチするかどうかにかかわ<br>
+らず、マッチする global タグが見つかった場合、それが使用され、それ以上タグファ<br>
+イルは検索されない。<br>
 <br>
-タグファイル名が &quot;./&quot; で始まるとき、'.' は現在のファイルのパスで置き換えられ<br>
-る。これにより、現在のファイルがあるディレクトリのtagsファイルを使用することが<br>
-できる(たとえ現在のディレクトリがどこであろうと)。&quot;./&quot; を使用する概念は、どの<br>
-タグファイルを最初に検索するかを決定することである: 現在のディレクトリにするか<br>
-(&quot;tags,./tags&quot;)、現在のファイルがあるディレクトリにするか(&quot;./tags,tags&quot;)であ<br>
-る。<br>
+タグファイル名が &quot;./&quot; で始まる時、'.' はカレントファイルのパスに置き換えられ<br>
+る。これにより、カレントファイルがあるディレクトリにあるタグファイルを使用でき<br>
+る (カレントディレクトリがどこであっても)。&quot;./&quot; を使用する考え方は、どのタグ<br>
+ファイルを最初に検索するかを定義できるということである: カレントディレクトリ内<br>
+(&quot;tags,./tags&quot;) またはカレントファイルのディレクトリ内 (&quot;./tags,tags&quot;)。<br>
 <br>
-例:<br>
+例えば:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set tags=./tags,tags,/home/user/commontags</div>
 <br>
-この例では、現在のファイルがあるディレクトリの &quot;tags&quot; ファイルがまず検索され<br>
-る。次に現在のディレクトリにある &quot;tags&quot; ファイルが検索される。もしまだ見つから<br>
-なければ、&quot;/home/user/commontags&quot; が検索される。<br>
+この例では、タグはまずカレントファイルがあるディレクトリのファイル &quot;tags&quot; で検<br>
+索される。次にカレントディレクトリの &quot;tags&quot; ファイル。そこで見つからない場合、<br>
+ファイル &quot;/home/user/commontags&quot; でタグが検索される。<br>
 <br>
-これは&nbsp;<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;に 'd' フラグを含めることでVi互換のようにすることができる。<br>
-&quot;./tags&quot; は現在のファイルがあるディレクトリのtagsファイルではなく、現在のディ<br>
-レクトリのtagsファイルを意味するようになる。<br>
+これは、Vi 互換にするために、<a class="Type" href="options.html#'cpoptions'">'cpoptions'</a>&nbsp;に 'd' フラグを含めることでオフにでき<br>
+る。そうすると &quot;./tags&quot; は、カレントファイルがあるディレクトリのタグファイルで<br>
+はなく、カレントディレクトリのタグファイルになる。<br>
 <br>
-コンマの代わりにスペースを使用してもよい。文字列オプションに含めるためにはスペー<br>
-スの前にバックスラッシュが必要となる:<br>
+コンマの代わりにスペースを使用してもよい。その場合、スペースを文字列オプション<br>
+に含めるためにバックスラッシュが必要になる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set tags=tags\ /home/user/commontags</div>
 <br>
-ファイル名にスペースを含めるにはバックスラッシュを３つ並べる。コンマをファイル<br>
-名に使用する場合にはバックスラッシュを２つ並べる。例えば:<br>
+ファイル名にスペースを含めるには、3 つのバックスラッシュを使用する。ファイル名<br>
+にコンマを含めるには、2 つのバックスラッシュを使用する。例えば、以下を使用する:<br>
+<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set tags=tag\\\ file,/home/user/common\\,tags</div>
 <br>
-&quot;tag file&quot; と &quot;/home/user/common,tags&quot; というファイルが指定できる。<a class="Type" href="options.html#'tags'">'tags'</a>&nbsp;オプ<br>
-ションは &quot;tag\ file,/home/user/common\,tags&quot; という値を持つだろう。<br>
+ファイル &quot;tag file&quot; および &quot;/home/user/common,tags&quot; のために。<a class="Type" href="options.html#'tags'">'tags'</a>&nbsp;オプショ<br>
+ンは &quot;tag\ file,/home/user/common\,tags&quot; という値になる。<br>
 <br>
-<a class="Type" href="options.html#'tagrelative'">'tagrelative'</a>&nbsp;オプションをオンにし(デフォルト)、他のディレクトリでタグファイル<br>
-を使用すると、タグファイル内に記述されたファイル名はタグファイルがあるディレク<br>
-トリを基準として相対パスになる。<br>
+<a class="Type" href="options.html#'tagrelative'">'tagrelative'</a>&nbsp;オプションがオン (これがデフォルトである) で、別のディレクトリに<br>
+あるタグファイルを使用する場合、そのタグファイル内のファイル名は、そのタグファ<br>
+イルがあるディレクトリからの相対パスになる。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 5. タグファイルの書式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tags-file-format" name="tags-file-format">tags-file-format</a>&nbsp;<a class="Constant" href="tagsrch.html#E431" name="E431">E431</a><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#ctags" name="ctags">ctags</a><br>
-tagsファイルは &quot;ctags&quot; のような外部コマンドによって生成される。それはそれぞれ<br>
-の関数へのタグを含んでいる。&quot;ctags&quot; のあるバージョンでは &quot;#defined&quot; マクロや<br>
-typedef、enumなどに対してもタグを作ることができる。<br>
+タグファイルは外部コマンド、例えば &quot;ctags&quot; で作成できる。それは各関数に対する<br>
+タグを含む。&quot;ctags&quot; のいくつかのバージョンは、各 &quot;#defined&quot; マクロ、typedef、<br>
+enum などに対してもタグを作成する。<br>
 <br>
-tagsファイルを生成するプログラム:<br>
-ctags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ほとんどのUnixシステムにある。C言語のみ対応し、基本的<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;な機能を提供する。<br>
-universal ctags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exuberant ctags をベースにメンテナンスされているバー<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ジョンの ctags。<span class="Constant"><a href="https://ctags.io">https://ctags.io</a></span>&nbsp;を参照。<br>
+タグファイルを生成するいくつかのプログラム:<br>
+ctags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ほとんどの Unix システムで見つかるもの。C のみをサポー<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;トする。基本的な作業のみを行う。<br>
+universal ctags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exuberant ctags をベースとした、メンテナンスされている<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ctags のバージョン。<span class="Constant"><a href="https://ctags.io">https://ctags.io</a></span>&nbsp;を参照。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#Exuberant_ctags" name="Exuberant_ctags">Exuberant_ctags</a><br>
-exuberant ctags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; これはとてもよいものだ。C言語、C++、Java、Fortran、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eiffel、そしてその他に対応している。多くの項目にタグを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生成することができる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://ctags.sourceforge.net">http://ctags.sourceforge.net</a></span>&nbsp;を参照。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2009年から新しいバージョンが出ていない。<br>
-etags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Emacsに連携する。多言語に対応している。<br>
+exuberant ctags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; これはとても良いものだ。C、C++、Java、Fortran、Eiffel、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;およびその他で動作する。多くの項目に対してタグを生成で<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;きる。<span class="Constant"><a href="http://ctags.sourceforge.net">http://ctags.sourceforge.net</a></span>&nbsp;を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2009 年以降、新しいバージョンはない。<br>
+etags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Emacs に関連するもの。多くの言語をサポートする。<br>
 <a class="Identifier" href="helphelp.html#:helptags">:helptags</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vim の&nbsp;<a class="Identifier" href="helphelp.html#help">help</a>&nbsp;ファイル用<br>
-ptags.py&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Python 用、Python で書かれている。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PythonのソースディレクトリTools/scripts/ptags.pyにある。<br>
-ptags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Perl 用、Perl で書かれている。以下で見つかる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://metacpan.org/pod/Vim::Tag">https://metacpan.org/pod/Vim::Tag</a></span><br>
-gnatxref&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ada用。<span class="Constant"><a href="http://www.gnuada.org/">http://www.gnuada.org/</a></span>&nbsp;を参照。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gnatxrefはgnatパッケージの一部である。<br>
+ptags.py&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Python 用、Python 製。Python のソースディレクトリの<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tools/scripts/ptags.py にある。<br>
+ptags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Perl 用、Perl 製。これは<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://metacpan.org/pod/Vim::Tag">https://metacpan.org/pod/Vim::Tag</a></span>&nbsp;で見つけられる<br>
+gnatxref&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ada 用。<span class="Constant"><a href="http://www.gnuada.org/">http://www.gnuada.org/</a></span>&nbsp;を参照。gnatxref は<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gnat パッケージの一部である。<br>
 <br>
 <br>
-tags ファイルは次の 2 つの形式のどれかで構成されなければならない:<br>
+タグファイルの行は、これら 2 つの形式のどちらかでなければならない:<br>
 <br>
 1.&nbsp;&nbsp;<span class="Special">{tagname}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{TAB}</span>&nbsp;<span class="Special">{tagfile}</span>&nbsp;<span class="Special">{TAB}</span>&nbsp;<span class="Special">{tagaddress}</span><br>
 2.&nbsp;&nbsp;<span class="Special">{tagname}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{TAB}</span>&nbsp;<span class="Special">{tagfile}</span>&nbsp;<span class="Special">{TAB}</span>&nbsp;<span class="Special">{tagaddress}</span>&nbsp;<span class="Special">{term}</span>&nbsp;<span class="Special">{field}</span>&nbsp;..<br>
 <br>
-以前には古い形式がサポートされていた、<a class="Identifier" href="tagsrch.html#tag-old-static">tag-old-static</a>&nbsp;を参照。<br>
+以前は古い形式がサポートされていた。<a class="Identifier" href="tagsrch.html#tag-old-static">tag-old-static</a>&nbsp;を参照。<br>
 <br>
-最初の形式は通常のタグで、Viで完全に互換性がある。伝統的なctagsによってのみ作<br>
-られる形式である。これはしばしばグローバルな関数や他のファイルを参照する場合に<br>
-使用される。<br>
+1 つ目の形式は通常のタグで、Vi と完全に互換性がある。これは従来の ctags の実装<br>
+が生成する唯一の形式である。これは、global な関数で、他のファイルからも参照さ<br>
+れるものに対してよく使用される。<br>
 <br>
-タグファイルの行は<span class="Special">&lt;NL&gt;</span>または<span class="Special">&lt;CR&gt;&lt;NL&gt;</span>で終わる。Macintoshでは<span class="Special">&lt;CR&gt;</span>も機能する。<br>
-<span class="Special">&lt;CR&gt;</span>と<span class="Special">&lt;NL&gt;</span>は行内に決して現れない。<br>
+タグファイルの行は&nbsp;<span class="Special">&lt;NL&gt;</span>&nbsp;または&nbsp;<span class="Special">&lt;CR&gt;&lt;NL&gt;</span>&nbsp;で終わることができる。Macintosh では<br>
+<span class="Special">&lt;CR&gt;</span>&nbsp;も動作する。<span class="Special">&lt;CR&gt;</span>&nbsp;および&nbsp;<span class="Special">&lt;NL&gt;</span>&nbsp;文字は、決して行の中に現れることはできない。<br>
 <br>
-2番目の形式は新しい。各行の末尾にある任意的なフィールドに追加の情報を含む。こ<br>
-れは以前のViとも互換性がある。新しいバージョンのctagsにのみサポートされている<br>
-(Universal ctags や Exuberant ctags など)。<br>
+2 つ目の形式は新しい。これは、各行の末尾のオプションのフィールドに追加の情報を<br>
+含む。これは Vi と後方互換性がある。これは新しいバージョンの ctags (Universal<br>
+ctags または Exuberant ctags など) でのみサポートされている。<br>
 <br>
-<span class="Special">{tagname}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 識別子。普通は関数名であるが、どんな識別子でも構わない。<span class="Special">&lt;Tab&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を含めることはできない。<br>
-<span class="Special">{TAB}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1文字の<span class="Special">&lt;Tab&gt;</span>。&nbsp;<span class="Todo">Note:</span>&nbsp;以前のバージョンではここでどんな空白文字<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;も許可していた。これは<span class="Special">{tagfile}</span>内にスペースを許可するために放<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;棄された。<br>
-<span class="Special">{tagfile}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{tagname}</span>の定義を含むファイル名。絶対パスでも相対パスでも構わ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ない。環境変数やワイルドカードを含んでもよい(ワイルドカードの<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用方法はあいまいだが)。<span class="Special">&lt;Tab&gt;</span>を含むことはできない。<br>
+<span class="Special">{tagname}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 識別子。通常は関数名だが、任意の識別子にできる。<span class="Special">&lt;Tab&gt;</span>&nbsp;を含むこ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;とはできない。<br>
+<span class="Special">{TAB}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 つの&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;文字。<span class="Todo">Note:</span>&nbsp;以前のバージョンではここに任意の空白<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を許していた。これは&nbsp;<span class="Special">{tagfile}</span>&nbsp;にスペースを含められるようにす<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;るために廃止された。<br>
+<span class="Special">{tagfile}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{tagname}</span>&nbsp;の定義を含むファイル。絶対パスまたは相対パスを持つこ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;とができる。環境変数およびワイルドカードを含んでもよい (ただ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;し、ワイルドカードの使用は疑わしい)。<span class="Special">&lt;Tab&gt;</span>&nbsp;を含むことはできな<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#E1576" name="E1576">E1576</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="MissingTag">'tagsesure'</span>&nbsp;が解除されていない限り、ネットワークプロトコルを介<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;してリモートファイルを使用すること (例:&nbsp;<span class="Constant"><a href="http://remote/file.txt">http://remote/file.txt</a></span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を使用すること) は許可されていない。<br>
-<span class="Special">{tagaddress}</span>&nbsp;&nbsp;&nbsp;&nbsp;カーソルをタグ上に移動するExコマンド。制限(<a class="Identifier" href="tagsrch.html#tag-security">tag-security</a>を参<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;照)はあるが、どんなExコマンドでも使用可能である。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posixでは主に使われる行番号と検索コマンドのみ許可する。<br>
-<span class="Special">{term}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&quot; セミコロンとダブルクォートの2文字。これはViによってコメント<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;とみなされ、続く文字列は無視される。以前のViとの互換性を保つた<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;めにある。これは続くフィールドを無視する。例:<br>
-<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;APP&nbsp;&nbsp;&nbsp;&nbsp; file&nbsp;&nbsp;&nbsp;&nbsp;/^static int APP;$/;&quot;&nbsp;&nbsp; v</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{tagaddress}</span>&nbsp;が行番号または検索パターンではない場合、<span class="Special">{term}</span>&nbsp;は<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|;&quot; でなければならない。ここで、バーはコマンドを終了させる(バー<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を除く)。そして ;&quot; はViに残りの行を無視させるために使われる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ネットワークプロトコル経由でリモートファイルを使用すること (例:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="http://remote/file.txt">http://remote/file.txt</a></span>&nbsp;を使用) は、<a class="Type" href="options.html#'tagsecure'">'tagsecure'</a>&nbsp;がリセットされ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ていない限り許されない。<br>
+<span class="Special">{tagaddress}</span>&nbsp;&nbsp;&nbsp;&nbsp;タグの位置にカーソルを置く Ex コマンド。任意の Ex コマンドにで<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;きるが、制限が適用される (<a class="Identifier" href="tagsrch.html#tag-security">tag-security</a>&nbsp;を参照)。Posix では行<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;番号および検索コマンドのみが許されており、それらが主に使用され<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
+<span class="Special">{term}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&quot; セミコロンおよびダブルクォートの 2 文字。これは Vi によって<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コメントの開始として解釈され、以下が無視されることになる。これ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は Vi との後方互換性のためで、Vi は以下のフィールドを無視する。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例:<br>
+<div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;APP&nbsp;&nbsp;&nbsp;&nbsp; file&nbsp;&nbsp;&nbsp;&nbsp;/^static int APP;$/;&quot;&nbsp;&nbsp; v</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{tagaddress}</span>&nbsp;が行番号または検索パターンでない場合、<span class="Special">{term}</span>&nbsp;は<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|;&quot; でなければならない。ここでバーはコマンドを終了させ (バーは<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;含まない)、;&quot; は Vi に行の残りを無視させるために使用される。例:<br>
+<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;APP&nbsp;&nbsp;&nbsp;&nbsp; file.c&nbsp;&nbsp;call cursor(3, 4)|;&quot;&nbsp;&nbsp;&nbsp;&nbsp;v</div>
 <br>
-<span class="Special">{field}</span>&nbsp;..&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;任意のフィールドのリスト。各フィールドは次の書式を持つ:<br>
+<span class="Special">{field}</span>&nbsp;..&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;オプションのフィールドのリスト。各フィールドは以下の形式を持つ:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">&lt;Tab&gt;{fieldname}</span>:<span class="Special">{value}</span><br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{fieldname}</span>はフィールドの識別子であり、アルファベットのみ使用<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可能である[a-zA-Z]。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{value}</span>は任意の文字列であるが、<span class="Special">&lt;Tab&gt;</span>は使用できない。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以下の特殊文字が使用できる:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;\t&quot; は<span class="Special">&lt;Tab&gt;</span>を表す<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;\r&quot; は<span class="Special">&lt;CR&gt;</span>を表す<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;\n&quot; は<span class="Special">&lt;NL&gt;</span>を表す<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;\\&quot; は\を表す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{fieldname}</span>&nbsp;はフィールドを識別し、アルファベット文字&nbsp;<span class="Special">[a-zA-Z]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;のみを含むことができる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{value}</span>&nbsp;は任意の文字列だが、<span class="Special">&lt;Tab&gt;</span>&nbsp;を含むことはできない。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これらの文字は特別である:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;\t&quot; は&nbsp;<span class="Special">&lt;Tab&gt;</span>&nbsp;を表す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;\r&quot; は&nbsp;<span class="Special">&lt;CR&gt;</span>&nbsp;を表す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;\n&quot; は&nbsp;<span class="Special">&lt;NL&gt;</span>&nbsp;を表す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;\\&quot; は 1 つの '\' 文字を表す<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;':' を持たないフィールドがある。これはタグの一種である。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;kind:&quot; を先頭につけたものとして扱われる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上記の例では、これは &quot;kind:v&quot; (通常は変数) だった。生成される<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kinds については ctags のドキュメントを参照。ctags では<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;':' を持たないフィールドが 1 つある。これはタグの種類である。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これは &quot;kind:&quot; が前置されているかのように扱われる。上の例では、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これは &quot;kind:v&quot; (一般的には変数) であった。ctags が生成する種<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;類については ctags のドキュメントを参照。ctags では<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Comment">ctags --list-kinds</span>&nbsp;を使用できる。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;現在Vimが認識できるその他のフィールドは &quot;file:&quot; (値はなし)だけ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;である。これはstaticタグに使われる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vim が現在認識する他の唯一のフィールドは &quot;file:&quot; (空の値を持つ)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;である。これは static タグに使用される。<br>
 <br>
 <br>
-tagsファイルの先頭行には、<br>
+タグファイルの最初の行には、以下で始まる行を含むことができる<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!_TAG_<br>
-で始まる行を含めることができる。<br>
-これらは極稀な &quot;!&quot; で始まるタグを除けば先頭行にソートされる。Vimは2つのタグを<br>
-認識する。1つはファイルがソートされているかどうかを示す行で、この行が見つかっ<br>
-た場合には、Vimはtagsファイルに対して二分探索を使用する:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">!_TAG_FILE_SORTED&lt;TAB&gt;1&lt;TAB&gt;{anything}</span><br>
+これらは最初の行にソートされ、&quot;!&quot; で始まるまれなタグだけがそれらより前にソート<br>
+されうる。Vim は 2 つの項目を認識する。1 つ目は、ファイルがソートされているか<br>
+どうかを示す行である。この行が見つかった時、Vim はタグファイルに対して二分探索<br>
+を使用する:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">!_TAG_FILE_SORTED&lt;Tab&gt;1&lt;Tab&gt;{anything}</span><br>
 <br>
-大文字小文字を無視する設定の時、線形探索を避けるためにタグファイルは大文字小文<br>
-字を区別せずにソートされることがある。(<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;がセットされかつ&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a><br>
-が &quot;followic&quot; の時、または&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;ignore&quot; の時に大文字小文字は無視され<br>
-る。) 詳細は&nbsp;<a class="Type" href="options.html#'tagbsearch'">'tagbsearch'</a>&nbsp;を参照のこと。<br>
-その時、値として '2' が使われる:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">!_TAG_FILE_SORTED&lt;TAB&gt;2&lt;TAB&gt;{anything}</span><br>
+大文字小文字が無視される時に線形探索を避けるために、タグファイルは case-fold<br>
+ソートされていてもよい。(大文字小文字は、<a class="Type" href="options.html#'ignorecase'">'ignorecase'</a>&nbsp;が設定されていて<br>
+<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;followic&quot; の時、または&nbsp;<a class="Type" href="options.html#'tagcase'">'tagcase'</a>&nbsp;が &quot;ignore&quot; の時に無視される。)<br>
+詳細は&nbsp;<a class="Type" href="options.html#'tagbsearch'">'tagbsearch'</a>&nbsp;を参照。その場合は値 '2' を使用すること:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">!_TAG_FILE_SORTED&lt;Tab&gt;2&lt;Tab&gt;{anything}</span><br>
 <br>
-Vimが認識するもう1つのタグはタグファイルのエンコーディングを指定するものである:<br>
+Vim が認識するもう 1 つのタグは、タグファイルのエンコーディングである:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">!_TAG_FILE_ENCODING&lt;Tab&gt;utf-8&lt;Tab&gt;{anything}</span><br>
-ここで &quot;utf-8&quot; はタグのエンコーディングである。Vimはタグを検索するときに検索す<br>
-るタグを&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;からタグファイルのエンコーディングに変換する。そして、タグ<br>
-をリストするときに元に戻す。変換が失敗したときは元のままのタグが使われる。<br>
+ここで &quot;utf-8&quot; はタグに使用されるエンコーディングである。その場合、Vim は検索<br>
+されるタグを&nbsp;<a class="Type" href="options.html#'encoding'">'encoding'</a>&nbsp;からタグファイルのエンコーディングへ変換する。そしてタ<br>
+グを一覧表示する時は逆が起こる。変換に失敗した時、変換されていないタグが使用さ<br>
+れる。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tag-search" name="tag-search">tag-search</a><br>
-コマンドはどんなExコマンドでも使用可能であるが、検索コマンドがよく使われるであ<br>
-ろう。<br>
-例:<br>
+コマンドは任意の Ex コマンドにできるが、多くの場合は検索コマンドである。例:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">tag1&nbsp;&nbsp;&nbsp;&nbsp;file1&nbsp;&nbsp; /^main(argc, argv)/</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="PreProc">tag2&nbsp;&nbsp;&nbsp;&nbsp;file2&nbsp;&nbsp; 108</span><br>
 <br>
-コマンドは常に&nbsp;<a class="Type" href="options.html#'magic'">'magic'</a>&nbsp;がセットされない状態で実行される。検索パターンで使用で<br>
-きる特殊文字は &quot;^&quot; (行頭) と &quot;$&quot; (<span class="Special">&lt;EOL&gt;</span>) だけである。<a class="Identifier" href="pattern.html#pattern">pattern</a>を参照すること。<br>
-<span class="Todo">Note</span>&nbsp;検索文字列中のバックスラッシュの前にはバックスラッシュをつけなければなら<br>
-ないことに注意すること。これは以前のViと互換性がある。<br>
+コマンドは常に&nbsp;<a class="Type" href="options.html#'magic'">'magic'</a>&nbsp;が設定されていない状態で実行される。検索パターン内の特<br>
+殊文字は &quot;^&quot; (行頭) および &quot;$&quot; (<span class="Special">&lt;EOL&gt;</span>) だけである。<br>
+<a class="Identifier" href="pattern.html#pattern">pattern</a>&nbsp;を参照。<span class="Todo">Note</span>&nbsp;検索テキスト内の各バックスラッシュの前にバックスラッシュ<br>
+を置かなければならないことに注意。これは Vi との後方互換性のためである。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#E434" name="E434">E434</a>&nbsp;<a class="Constant" href="tagsrch.html#E435" name="E435">E435</a><br>
-もしコマンドが普通の検索コマンド (&quot;/&quot; か &quot;?&quot; で始まり、終わる) であるならば、<br>
-いくつかの特別な扱いをされる:<br>
-- 検索はファイルの1行目から開始する。<br>
-&nbsp;&nbsp;検索方向は &quot;/&quot; で前方、&quot;?&quot; で後方となる。<br>
-&nbsp;&nbsp;<span class="Todo">Note</span>&nbsp;<a class="Type" href="options.html#'wrapscan'">'wrapscan'</a>&nbsp;は問題にならず、いつもファイル全体を検索することに注意。<br>
-- 検索が失敗した場合は、大文字小文字を無視してもう一度検索する。それも失敗した<br>
-&nbsp;&nbsp;場合には次の検索が行われる:<br>
+コマンドが通常の検索コマンドである (それが &quot;/&quot; または &quot;?&quot; で始まり、終わる) 場<br>
+合、いくつかの特別な処理が行われる:<br>
+- 検索はファイルの 1 行目から開始する。<br>
+&nbsp;&nbsp;検索の方向は &quot;/&quot; では前方、&quot;?&quot; では後方である。<br>
+&nbsp;&nbsp;<span class="Todo">Note</span>&nbsp;<a class="Type" href="options.html#'wrapscan'">'wrapscan'</a>&nbsp;は関係なく、常にファイル全体が検索されることに注意。<br>
+- 検索が失敗した場合、大文字小文字を無視してもう一度試す。それも失敗した場合、<br>
+&nbsp;&nbsp;以下に対して検索が行われる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;^tagname[ \t]*(&quot;</div>
-&nbsp;&nbsp;&nbsp;(タグの先頭に '^'、末尾に &quot;[ \t]*(&quot; が追加される)。関数名の検索の場合には、<br>
-&nbsp;&nbsp;これはカラム0の位置にある関数名を見つけるだろう。関数の引数がtagsファイルを<br>
-&nbsp;&nbsp;作成したときから変更になったときなどに役立つだろう。この検索でも見つからない<br>
-&nbsp;&nbsp;場合にはさらに次の検索が行われる:<br>
+&nbsp;&nbsp;&nbsp;(タグの前に '^' が付けられ、後ろに &quot;[ \t]*(&quot; が付け加えられたもの)。関数名<br>
+&nbsp;&nbsp;を使用する時、これは関数名が 0 カラム目にある時にその関数名を見つける。これ<br>
+&nbsp;&nbsp;は、タグファイルが作られてから関数の引数が変更された時に役立つ。この検索も<br>
+&nbsp;&nbsp;失敗した場合、以下で別の検索が行われる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;^[#a-zA-Z_].*\&lt;tagname[ \t]*(&quot;</div>
-&nbsp;&nbsp;&nbsp;この意味は: '#' もしくは識別子で始まり、空白文字と '(' が続くタグを含む行で<br>
-&nbsp;&nbsp;ある。これは型が先頭にあるマクロ名や関数名を見つけるだろう。<br>
+&nbsp;&nbsp;&nbsp;これの意味: '#' または識別子で始まり、空白および '(' が後に続くタグを含む<br>
+&nbsp;&nbsp;行。これは、マクロ名および型が前置された関数名を見つける。<br>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tag-old-static" name="tag-old-static">tag-old-static</a><br>
-旧式のフォーマットは 2019 年 3 月 (patch 8.1.1092) までサポートされていた:<br>
+2019年3月 (patch 8.1.1092) まで、時代遅れの形式がサポートされていた:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="Special">{tagfile}</span>:<span class="Special">{tagname}</span>&nbsp;<span class="Special">{TAB}</span>&nbsp;<span class="Special">{tagfile}</span>&nbsp;<span class="Special">{TAB}</span>&nbsp;<span class="Special">{tagaddress}</span><br>
 <br>
-この形式は static タグにのみ使用できる。現在では廃れており、2 番目の形式に置き<br>
-換えられている。これは Elvis 1.x と古いバージョンの Vim、それといくつかのバー<br>
-ジョンの ctags によってのみサポートされている。static タグはローカル関数によく<br>
-用いられ、<span class="Special">{tagfile}</span>&nbsp;内のみ参照する。static タグでは 2 つの&nbsp;<span class="Special">{tagfile}</span>&nbsp;は正確に<br>
-一致していなければならないことに注意すること。static タグがどのように使われる<br>
-かについては&nbsp;<a class="Identifier" href="tagsrch.html#tags-option">tags-option</a>&nbsp;を参照すること。<br>
+この形式は static タグ専用である。これは現在は廃止されており、2 つ目の形式に置<br>
+き換えられている。これは Elvis 1.x、古いバージョンの Vim、およびいくつかのバー<br>
+ジョンの ctags でのみサポートされている。static タグは、ローカルな関数で、ファ<br>
+イル&nbsp;<span class="Special">{tagfile}</span>&nbsp;内でのみ参照されるものに対してよく使用される。<span class="Todo">Note</span>&nbsp;static タグ<br>
+では、2 つの&nbsp;<span class="Special">{tagfile}</span>&nbsp;が完全に同じでなければならないことに注意。static タグが<br>
+どのように使用されるかについては、以下の&nbsp;<a class="Identifier" href="tagsrch.html#tags-option">tags-option</a>&nbsp;も参照。<br>
 <br>
-新しいバージョンの Vim に更新するときに、2 番目の形式をサポートする ctags に更<br>
-新できるべきでもあるので、このサポートは削除された。<br>
+新しいバージョンの Vim に更新できる時は、2 つ目の形式をサポートする ctags にも<br>
+更新できるはずなので、サポートは削除された。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-6. インクルードファイルの検索&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#include-search" name="include-search">include-search</a>&nbsp;<a class="Constant" href="tagsrch.html#definition-search" name="definition-search">definition-search</a><br>
+6. インクルードファイル検索&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#include-search" name="include-search">include-search</a>&nbsp;<a class="Constant" href="tagsrch.html#definition-search" name="definition-search">definition-search</a><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#E387" name="E387">E387</a>&nbsp;<a class="Constant" href="tagsrch.html#E388" name="E388">E388</a>&nbsp;<a class="Constant" href="tagsrch.html#E389" name="E389">E389</a><br>
 <br>
-これらのコマンドは対象となる文字列を現在のファイルと、遭遇するすべてのインクルー<br>
-ドファイルを再帰的に探す。これは変数や関数、マクロの定義を探すのに利用できる。<br>
-現在のバッファに対してだけ検索をしたいのならば、<a class="Identifier" href="pattern.html#pattern-searches">pattern-searches</a>に列挙されて<br>
-いるコマンドを使うとよい。<br>
+これらのコマンドは、カレントファイル、および見つかった全てのインクルードされた<br>
+ファイル (再帰的に) から文字列を探す。これは、変数、関数、またはマクロの定義を<br>
+見つけるために使用できる。カレントバッファ内でのみ検索したい場合、<br>
+<a class="Identifier" href="pattern.html#pattern-searches">pattern-searches</a>&nbsp;に挙げられているコマンドを使用する。<br>
 <br>
-これらのコマンドは、コンパイル時に<a class="Identifier" href="various.html#+find_in_path">+find_in_path</a>機能を使用不可にした場合には<br>
-利用できない。<br>
+これらのコマンドは、<a class="Identifier" href="various.html#+find_in_path">+find_in_path</a>&nbsp;機能がコンパイル時に無効にされた場合は使用<br>
+できない。<br>
 <br>
-他のファイルをインクルードする行に遭遇すると、現在のバッファを続けて検索する前<br>
-にインクルードファイルを検索する。インクルードファイルによってインクルードされ<br>
-るファイルも同様に検索される。インクルードファイルが見つからなかった場合は黙っ<br>
-て無視する。見つからなかったファイルを知りたいときは<a class="Identifier" href="tagsrch.html#:checkpath">:checkpath</a>コマンドを使う。<br>
-たぶん&nbsp;<a class="Type" href="options.html#'path'">'path'</a>&nbsp;オプションが正しく設定されていないのだろう。<span class="Todo">Note:</span>&nbsp;インクルード<br>
-ファイルはファイルが検索され、そのファイルを編集中のバッファが存在しても対象に<br>
-ならない。バッファにある行は、現在のファイルにのみ適用される。<br>
+別のファイルをインクルードする行が見つかった時、カレントバッファでの検索を続け<br>
+る前に、そのファイルが検索される。インクルードされたファイルによってインクルー<br>
+ドされたファイルも検索される。インクルードファイルが見つからなかった時、それは<br>
+黙って無視される。どのファイルが見つからなかったのかを調べるには&nbsp;<a class="Identifier" href="tagsrch.html#:checkpath">:checkpath</a><br>
+コマンドを使用する。おそらく&nbsp;<a class="Type" href="options.html#'path'">'path'</a>&nbsp;オプションが正しく設定されていない。<span class="Todo">Note:</span><br>
+検索されるのはインクルードされたファイルであり、そのファイルを編集しているかも<br>
+しれないバッファではない。カレントファイルについてのみ、バッファ内の行が使用さ<br>
+れる。<br>
 <br>
-検索文字列は任意のキーワードや定義されたマクロが指定できる。キーワードの場合は<br>
-マッチするものを見つける。定義されたマクロの場合は&nbsp;<a class="Type" href="options.html#'define'">'define'</a>&nbsp;オプションにマッチ<br>
-する行だけが見つけられる。デフォルトはCプログラム用の &quot;^#\s*define&quot; である。他<br>
-の言語の場合はおそらく変更したいだろう。C++用の例は&nbsp;<a class="Type" href="options.html#'define'">'define'</a>&nbsp;を参照。その文字<br>
-列に改行を含めることはできない。一行内にマッチするものだけが見つかる。<br>
+文字列は任意のキーワードまたは定義されたマクロにできる。キーワードについては、<br>
+任意のマッチが見つかる。定義されたマクロについては、<a class="Type" href="options.html#'define'">'define'</a>&nbsp;オプションにマッ<br>
+チする行だけが見つかる。デフォルトは &quot;^#\s*define&quot; で、これは C プログラム用で<br>
+ある。他の言語では、おそらくこれを変更したいだろう。C++ 用の例については<br>
+<a class="Type" href="options.html#'define'">'define'</a>&nbsp;を参照。文字列は行末を含むことはできず、1 行内のマッチだけが見つかる。<br>
 <br>
-定義されたマクロが見つかった場合、行末がバックスラッシュのときは次の行も表示す<br>
-る。<br>
+定義されたマクロに対するマッチが見つかった時、行がバックスラッシュで終わってい<br>
+る場合、行の表示は次の行に続く。<br>
 <br>
-&quot;[&quot; で始まるコマンドは現在のファイルの先頭から検索を開始する。&quot;]&quot; で始まるコマ<br>
-ンドは現在のカーソル位置から検索を開始する。<br>
+&quot;[&quot; で始まるコマンドは、カレントファイルの先頭から検索を開始する。&quot;]&quot; で始まる<br>
+コマンドは、現在のカーソル位置から開始する。<br>
 <br>
-<a class="Type" href="options.html#'include'">'include'</a>&nbsp;オプションは他のファイルをインクルードする行を定義する。デフォルトは<br>
-Cプログラム用の &quot;\^#\s*include&quot; である。<span class="Todo">Note:</span>&nbsp;VimはCの構文を認識しない。もし<br>
-<a class="Type" href="options.html#'include'">'include'</a>&nbsp;オプションにマッチする行が &quot;#ifdef/#endif&quot; の間やコメント行であって<br>
-も、とにかく検索される。<a class="Type" href="options.html#'isfname'">'isfname'</a>&nbsp;オプションはマッチパターンに続くファイル名を<br>
-認識するために使用される。<br>
+<a class="Type" href="options.html#'include'">'include'</a>&nbsp;オプションは、別のファイルをインクルードする行を定義するために使用さ<br>
+れる。デフォルトは &quot;\^#\s*include&quot; で、これは C プログラム用である。<span class="Todo">Note:</span>&nbsp;Vim<br>
+は C の構文を認識しない。<a class="Type" href="options.html#'include'">'include'</a>&nbsp;オプションが &quot;#ifdef/#endif&quot; の中またはコメ<br>
+ントの中の行にマッチした場合、それはいずれにせよ検索される。<a class="Type" href="options.html#'isfname'">'isfname'</a>&nbsp;オプショ<br>
+ンは、マッチしたパターンの後に来るファイル名を認識するために使用される。<br>
 <br>
-<a class="Type" href="options.html#'path'">'path'</a>&nbsp;オプションは絶対パスを持たないインクルードファイルを探すためのディレク<br>
-トリを指定する。<br>
+<a class="Type" href="options.html#'path'">'path'</a>&nbsp;オプションは、絶対パスを持たないインクルードファイルのディレクトリを見<br>
+つけるために使用される。<br>
 <br>
-<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;オプションは単一行を表示するコマンド、もしくは行にジャンプするコマ<br>
-ンドで使用される。これはコメントの開始パターンを定義する。それらの行は [!] を<br>
-使用しない限り検索において無視される。ひとつの例外: 行が &quot;^# *define&quot; というパ<br>
-ターンにマッチしたとき、コメントであるとはみなされない。<br>
+<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;オプションは、1 行を表示するか、または 1 行へジャンプするコマンドに<br>
+使用される。これはコメントを開始しうるパターンを定義する。それらの行は、[!] が<br>
+使用されない限り、検索では無視される。1 つの例外: 行がパターン &quot;^# *define&quot; に<br>
+マッチする時、それはコメントとは見なされない。<br>
 <br>
-もしマッチしたリストを表示して、その中からジャンプ先を選択したいならば、マッピ<br>
-ングが利用できる。例:<br>
+マッチを一覧表示し、それからジャンプ先を 1 つ選択したい場合、それを行うマッピ<br>
+ングを使用できる。ここに例を示す:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;:map &lt;F4&gt; [I:let nr = input(&quot;Which one: &quot;)&lt;Bar&gt;exe &quot;normal &quot; .. nr .. &quot;[\t&quot;&lt;CR&gt;</div>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#[i" name="[i">[i</a><br>
-[i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルの下にあるキーワードを含む１行を表示する。検索<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;はファイルの先頭から開始する。コメントとみなせる行は無<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;視される(<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;オプションを参照すること)。数字が<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;与えられた場合は、先頭から指定した個数目にマッチした行<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を表示する。この場合はコメント行は無視されない。<br>
+[i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルの下のキーワードを含む最初の行を表示する。検索<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;はファイルの先頭から開始する。コメントのように見える行<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は無視される (<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;オプションを参照)。count が指<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定された場合、count 番目のマッチする行が表示され、コメ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ント行は無視されない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#]i" name="]i">]i</a><br>
-]i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[i&quot; と同様だが、検索が現在のカーソル位置から開始され<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
+]i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[i&quot; と同様だが、現在のカーソル位置から開始する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:is" name=":is">:is</a>&nbsp;<a class="Constant" href="tagsrch.html#:isearch" name=":isearch">:isearch</a><br>
 :<span class="Special">[range]</span>is[earch][!]&nbsp;<span class="Special">[count]</span>&nbsp;[/]pattern[/]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[i&quot; や &quot;]i&quot; と同様だが、<span class="Special">[range]</span>で指定された範囲から検<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;索する(デフォルト: ファイル全体)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/]と[!]については<a class="Identifier" href="tagsrch.html#:search-args">:search-args</a>を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[i&quot; および &quot;]i&quot; と同様だが、<span class="Special">[range]</span>&nbsp;の行で検索する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(デフォルト: ファイル全体)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/] および [!] については&nbsp;<a class="Identifier" href="tagsrch.html#:search-args">:search-args</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#[I" name="[I">[I</a><br>
-[I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルの下にあるキーワードを含む行をすべて表示する。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;結果にはファイル名と行番号が表示される。検索はファイル<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の先頭から開始される。<br>
+[I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルの下のキーワードを含む全ての行を表示する。見つ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;かった行に対してファイル名および行番号が表示される。検<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;索はファイルの先頭から開始する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#]I" name="]I">]I</a><br>
-]I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[I&quot; と同様だが、検索が現在のカーソル位置から開始され<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
+]I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[I&quot; と同様だが、現在のカーソル位置から開始する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:il" name=":il">:il</a>&nbsp;<a class="Constant" href="tagsrch.html#:ilist" name=":ilist">:ilist</a><br>
 :<span class="Special">[range]</span>il[ist][!] [/]pattern[/]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[I&quot; や &quot;]I&quot; と同様だが、<span class="Special">[range]</span>で指定された範囲から検<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;索する(デフォルト: ファイル全体)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/]と[!]については<a class="Identifier" href="tagsrch.html#:search-args">:search-args</a>を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[I&quot; および &quot;]I&quot; と同様だが、<span class="Special">[range]</span>&nbsp;の行で検索する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(デフォルト: ファイル全体)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/] および [!] については&nbsp;<a class="Identifier" href="tagsrch.html#:search-args">:search-args</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#[_CTRL-I" name="[_CTRL-I">[_CTRL-I</a><br>
-[&nbsp;<span class="Special">CTRL-I</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルの下にあるキーワードを含む最初の１行にジャンプ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。検索はファイルの先頭から開始する。コメントとみな<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;せる行は無視される (<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;オプションを参照するこ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;と)。数字が与えられた場合は、先頭から指定した個数目に<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マッチした行にジャンプする。この場合はコメント行は無視<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;されない。<br>
+[&nbsp;<span class="Special">CTRL-I</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルの下のキーワードを含む最初の行へジャンプする。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;検索はファイルの先頭から開始する。コメントのように見え<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る行は無視される (<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;オプションを参照)。count<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;が指定された場合、count 番目のマッチする行へジャンプ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;し、コメント行は無視されない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#]_CTRL-I" name="]_CTRL-I">]_CTRL-I</a><br>
-]&nbsp;<span class="Special">CTRL-I</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[&nbsp;<span class="Special">CTRL-I</span>&quot; と同様だが、検索が現在のカーソル位置から開<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;始される。<br>
+]&nbsp;<span class="Special">CTRL-I</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[&nbsp;<span class="Special">CTRL-I</span>&quot; と同様だが、現在のカーソル位置から開始する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:ij" name=":ij">:ij</a>&nbsp;<a class="Constant" href="tagsrch.html#:ijump" name=":ijump">:ijump</a><br>
 :<span class="Special">[range]</span>ij[ump][!]&nbsp;<span class="Special">[count]</span>&nbsp;[/]pattern[/]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[&nbsp;<span class="Special">CTRL-I</span>&quot; や &quot;]&nbsp;<span class="Special">CTRL-I</span>&quot; と同様だが、<span class="Special">[range]</span>で指定され<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;た範囲から検索する(デフォルト: ファイル全体)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/]と[!]については<a class="Identifier" href="tagsrch.html#:search-args">:search-args</a>を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[&nbsp;<span class="Special">CTRL-I</span>&quot; および &quot;]&nbsp;<span class="Special">CTRL-I</span>&quot; と同様だが、<span class="Special">[range]</span>&nbsp;の行<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;で検索する (デフォルト: ファイル全体)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/] および [!] については&nbsp;<a class="Identifier" href="tagsrch.html#:search-args">:search-args</a>&nbsp;を参照。<br>
 <br>
 <span class="Special">CTRL-W</span>&nbsp;<span class="Special">CTRL-I</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#CTRL-W_CTRL-I" name="CTRL-W_CTRL-I">CTRL-W_CTRL-I</a>&nbsp;<a class="Constant" href="tagsrch.html#CTRL-W_i" name="CTRL-W_i">CTRL-W_i</a><br>
-<span class="Special">CTRL-W</span>&nbsp;i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しいウィンドウを開き、カーソルの下にあったキーワード<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を含む最初の１行に移動する。検索はファイルの先頭から開<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;始する。コメントとみなせる行は無視される(<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;オ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プションを参照すること)。数字が与えられた場合は、先頭<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;から指定した個数目にマッチした行にジャンプする。この場<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合はコメント行は無視されない。<br>
+<span class="Special">CTRL-W</span>&nbsp;i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しいウィンドウを開き、カーソルの下のキーワードを含む<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初の行にカーソルを置く。検索はファイルの先頭から開始<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。コメント行のように見える行は無視される<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;オプションを参照)。count が指定された場合、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count 番目のマッチする行へジャンプし、コメント行は無視<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;されない。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:isp" name=":isp">:isp</a>&nbsp;<a class="Constant" href="tagsrch.html#:isplit" name=":isplit">:isplit</a><br>
 :<span class="Special">[range]</span>isp[lit][!]&nbsp;<span class="Special">[count]</span>&nbsp;[/]pattern[/]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;<span class="Special">CTRL-W</span>&nbsp;i&quot; や &quot;<span class="Special">CTRL-W</span>&nbsp;i&quot; と同様だが、<span class="Special">[range]</span>で指定され<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;た範囲から検索する(デフォルト: ファイル全体)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/]と[!]については<a class="Identifier" href="tagsrch.html#:search-args">:search-args</a>を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;<span class="Special">CTRL-W</span>&nbsp;i&quot; および &quot;<span class="Special">CTRL-W</span>&nbsp;i&quot; と同様だが、<span class="Special">[range]</span>&nbsp;の行<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;で検索する (デフォルト: ファイル全体)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/] および [!] については&nbsp;<a class="Identifier" href="tagsrch.html#:search-args">:search-args</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#[d" name="[d">[d</a><br>
-[d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルの下にあるマクロを含む最初のマクロ定義を表示す<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。検索はファイルの先頭から開始する。数字が与えられた<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;場合は、先頭から指定した個数目にマッチした行を表示する。<br>
+[d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルの下のマクロを含む最初のマクロ定義を表示する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;検索はファイルの先頭から開始する。count が指定された場<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合、count 番目のマッチする行が表示される。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#]d" name="]d">]d</a><br>
-]d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[d&quot; と同様だが、検索が現在のカーソル位置から開始され<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
+]d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[d&quot; と同様だが、現在のカーソル位置から開始する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:ds" name=":ds">:ds</a>&nbsp;<a class="Constant" href="tagsrch.html#:dsearch" name=":dsearch">:dsearch</a><br>
 :<span class="Special">[range]</span>ds[earch][!]&nbsp;<span class="Special">[count]</span>&nbsp;[/]string[/]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[d&quot; や &quot;]d&quot; と同様だが、<span class="Special">[range]</span>で指定された範囲から検<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;索する(デフォルト: ファイル全体)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/]と[!]については<a class="Identifier" href="tagsrch.html#:search-args">:search-args</a>を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[d&quot; および &quot;]d&quot; と同様だが、<span class="Special">[range]</span>&nbsp;の行で検索する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(デフォルト: ファイル全体)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/] および [!] については&nbsp;<a class="Identifier" href="tagsrch.html#:search-args">:search-args</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#[D" name="[D">[D</a><br>
-[D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルの下にあるマクロを含むすべてのマクロ定義を表示<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する。結果にはファイル名と行番号が表示される。検索はファ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;イルの先頭から開始される。<br>
+[D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルの下のマクロを含む全てのマクロ定義を表示する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;見つかった行に対してファイル名および行番号が表示され<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。検索はファイルの先頭から開始する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#]D" name="]D">]D</a><br>
-]D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[D&quot; と同様だが、検索が現在のカーソル位置から開始され<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
+]D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[D&quot; と同様だが、現在のカーソル位置から開始する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:dli" name=":dli">:dli</a>&nbsp;<a class="Constant" href="tagsrch.html#:dlist" name=":dlist">:dlist</a><br>
 :<span class="Special">[range]</span>dli[st][!] [/]string[/]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="tagsrch.html#[D">[D</a>&nbsp;や&nbsp;<a class="Comment" href="tagsrch.html#]D">]D</a>&nbsp;と同様だが、<span class="Special">[range]</span>&nbsp;で指定された範囲から<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;検索する (デフォルト: ファイル全体)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/] と [!] については&nbsp;<a class="Identifier" href="tagsrch.html#:search-args">:search-args</a>&nbsp;を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Comment" href="tagsrch.html#[D">[D</a>&nbsp;および&nbsp;<a class="Comment" href="tagsrch.html#]D">]D</a>&nbsp;と同様だが、<span class="Special">[range]</span>&nbsp;の行で検索する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(デフォルト: ファイル全体)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/] および [!] については&nbsp;<a class="Identifier" href="tagsrch.html#:search-args">:search-args</a>&nbsp;を参照。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;旧来の Vim script では、<a class="Comment" href="change.html#:dl">:dl</a>&nbsp;は&nbsp;<a class="Comment" href="tagsrch.html#:dlist">:dlist</a>&nbsp;ではな<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;く、<a class="Comment" href="change.html#:delete">:delete</a>&nbsp;に&nbsp;<a class="Comment" href="motion.html#l">l</a>&nbsp;フラグを付けたように動作するが、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では&nbsp;<a class="Comment" href="change.html#:dl">:dl</a>&nbsp;は&nbsp;<a class="Comment" href="tagsrch.html#:dlist">:dlist</a>&nbsp;のように動作する。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;く、&quot;l&quot; フラグ付きの&nbsp;<a class="Comment" href="change.html#:delete">:delete</a>&nbsp;のように動作するが、一<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;方&nbsp;<a class="Identifier" href="vim9.html#Vim9">Vim9</a>&nbsp;script では&nbsp;<a class="Comment" href="change.html#:dl">:dl</a>&nbsp;は&nbsp;<a class="Comment" href="tagsrch.html#:dlist">:dlist</a>&nbsp;のように動作す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#[_CTRL-D" name="[_CTRL-D">[_CTRL-D</a><br>
-[&nbsp;<span class="Special">CTRL-D</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルの下にあるキーワードを含む最初のマクロ定義にジャ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンプする。検索はファイルの先頭から開始する。数字が与え<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;られた場合は、先頭から指定した個数目にマッチした行にジャ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンプする。<br>
+[&nbsp;<span class="Special">CTRL-D</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カーソルの下のキーワードを含む最初のマクロ定義へジャン<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プする。検索はファイルの先頭から開始する。count が指定<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;された場合、count 番目のマッチする行へジャンプする。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#]_CTRL-D" name="]_CTRL-D">]_CTRL-D</a><br>
-]&nbsp;<span class="Special">CTRL-D</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[&nbsp;<span class="Special">CTRL-D</span>&quot; と同様だが、検索が現在のカーソル位置から開<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;始される。<br>
+]&nbsp;<span class="Special">CTRL-D</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[&nbsp;<span class="Special">CTRL-D</span>&quot; と同様だが、現在のカーソル位置から開始する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:dj" name=":dj">:dj</a>&nbsp;<a class="Constant" href="tagsrch.html#:djump" name=":djump">:djump</a><br>
 :<span class="Special">[range]</span>dj[ump][!]&nbsp;<span class="Special">[count]</span>&nbsp;[/]string[/]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[&nbsp;<span class="Special">CTRL-D</span>&quot; や &quot;]&nbsp;<span class="Special">CTRL-D</span>&quot; と同様だが、<span class="Special">[range]</span>で指定され<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;た範囲から検索する(デフォルト: ファイル全体)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/]と[!]については<a class="Identifier" href="tagsrch.html#:search-args">:search-args</a>を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[&nbsp;<span class="Special">CTRL-D</span>&quot; および &quot;]&nbsp;<span class="Special">CTRL-D</span>&quot; と同様だが、<span class="Special">[range]</span>&nbsp;の行<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;で検索する (デフォルト: ファイル全体)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/] および [!] については&nbsp;<a class="Identifier" href="tagsrch.html#:search-args">:search-args</a>&nbsp;を参照。<br>
 <br>
 <span class="Special">CTRL-W</span>&nbsp;<span class="Special">CTRL-D</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#CTRL-W_CTRL-D" name="CTRL-W_CTRL-D">CTRL-W_CTRL-D</a>&nbsp;<a class="Constant" href="tagsrch.html#CTRL-W_d" name="CTRL-W_d">CTRL-W_d</a><br>
-<span class="Special">CTRL-W</span>&nbsp;d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しいウィンドウを開き、カーソルの下にあったキーワード<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を含む最初のマクロ定義に移動する。検索はファイルの先頭<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;から開始する。数字が与えられた場合は、先頭から指定した<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;個数目にマッチした行にジャンプする。<br>
+<span class="Special">CTRL-W</span>&nbsp;d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新しいウィンドウを開き、カーソルの下のキーワードを含む<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初のマクロ定義行にカーソルを置く。検索はファイルの先<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;頭から開始する。count が指定された場合、count 番目の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マッチする行へジャンプする。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:dsp" name=":dsp">:dsp</a>&nbsp;<a class="Constant" href="tagsrch.html#:dsplit" name=":dsplit">:dsplit</a><br>
 :<span class="Special">[range]</span>dsp[lit][!]&nbsp;<span class="Special">[count]</span>&nbsp;[/]string[/]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;<span class="Special">CTRL-W</span>&nbsp;d&quot; と同様だが、<span class="Special">[range]</span>で指定された範囲から検索<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;する(デフォルト: ファイル全体)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/]と[!]については<a class="Identifier" href="tagsrch.html#:search-args">:search-args</a>を参照。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;<span class="Special">CTRL-W</span>&nbsp;d&quot; と同様だが、<span class="Special">[range]</span>&nbsp;の行で検索する (デフォ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルト: ファイル全体)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/] および [!] については&nbsp;<a class="Identifier" href="tagsrch.html#:search-args">:search-args</a>&nbsp;を参照。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:che" name=":che">:che</a>&nbsp;<a class="Constant" href="tagsrch.html#:chec" name=":chec">:chec</a>&nbsp;<a class="Constant" href="tagsrch.html#:check" name=":check">:check</a>&nbsp;<a class="Constant" href="tagsrch.html#:checkpath" name=":checkpath">:checkpath</a><br>
-:che[ckpath]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルが見つからないすべてのインクルードファイル名を<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リスト表示する。<br>
+:che[ckpath]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;見つからなかった全てのインクルードされたファイルを一覧<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表示する。<br>
 <br>
-:che[ckpath]!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; すべてのインクルードファイル名をリスト表示する。<br>
+:che[ckpath]!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 全てのインクルードされたファイルを一覧表示する。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#:search-args" name=":search-args">:search-args</a><br>
-上記コマンドに共通の引数:<br>
-[!]&nbsp;&nbsp;&nbsp;&nbsp; 使用した場合は、コメントとみなせる行に対しても検索をする。使用しなかっ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;た場合は&nbsp;<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;によってコメントとみなされる行やCコメント (&quot;//&quot; の<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;後ろか /* */ の間)にあるものは無視される。コメントとみなされた行が、途<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中からコメントでなくなるようなときは見逃すかもしれないことに注意。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;また、コメント行であっても、(<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;によって)認識されないでとにか<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;くマッチするかもしれない。例:<br>
+上記のコマンドの共通の引数:<br>
+[!]&nbsp;&nbsp;&nbsp;&nbsp; 含まれている場合、コメントとして認識される行の中のマッチを見つける。含<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;まれていない場合、行がコメントとして認識される (<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;に従って)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;か、またはマッチが C のコメント内 (&quot;//&quot; の後、または /* */ の中) にあ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る時、マッチは無視される。<span class="Todo">Note</span>&nbsp;行がコメントとして認識されても、コメン<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;トが行の途中で終わる場合、マッチが見逃されることがあることに注意。ま<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;た、行がコメントであっても、それが (<a class="Type" href="options.html#'comments'">'comments'</a>&nbsp;に従って) 認識されない<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;場合、それでもその行の中でマッチが見つかることがある。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* comment<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; foobar */</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;foobar&quot; に対する検索はマッチする。これは行がコメントとして認識されな<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;いためである(たとえ構文強調表示が認識したとしても)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;マクロ定義はたいていコメントと誤認されることはないので、&quot;:dlist&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;や &quot;:dsearch&quot;、&quot;:djump&quot; に[!]を使用することは大差がない。<br>
-[/]&nbsp;&nbsp;&nbsp;&nbsp; パターンは '/' で囲むことができる。'/' なしの場合、&quot;\&lt;pattern\&gt;&quot; とい<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;うパターンを使うことによって、完全な語だけがマッチする。2つ目の '/' の<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;後にだけ、'|' を使うことによって次のコマンドを追加できる。例:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;foobar&quot; に対するマッチが見つかる。なぜならこの行はコメントとして認識<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;されないからである (構文ハイライトはそれを認識するが)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note:</span>&nbsp;マクロ定義はほとんどの場合コメントのようには見えないので、[!] は<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;:dlist&quot;、&quot;:dsearch&quot; および &quot;:djump&quot; に対しては違いを生まない。<br>
+[/]&nbsp;&nbsp;&nbsp;&nbsp; パターンは '/' で囲むことができる。'/' がない場合、パターン<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;\&lt;pattern\&gt;&quot; を使用して、単語全体のみがマッチする。2 つ目の '/' の後<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;でのみ、'|' で次のコマンドを付け加えることができる。例:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:isearch /string/ | echo &quot;the last one&quot;</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;:djump&quot;, &quot;:dsplit&quot;, &quot;:dlist&quot;, &quot;:dsearch&quot; コマンドではパターンは検索パ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ターンとしてではなく文字通りに使われる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;:djump&quot;、&quot;:dsplit&quot;、&quot;:dlist&quot; および &quot;:dsearch&quot; コマンドでは、パターン<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は検索パターンとしてではなく、文字どおりの文字列として使用される。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-7.&nbsp;<a class="Type" href="options.html#'tagfunc'">'tagfunc'</a>&nbsp;を使う&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tag-function" name="tag-function">tag-function</a><br>
+7.&nbsp;<a class="Type" href="options.html#'tagfunc'">'tagfunc'</a>&nbsp;の使用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#tag-function" name="tag-function">tag-function</a><br>
 <br>
-<a class="Identifier" href="tagsrch.html#:tag">:tag</a>、<a class="Identifier" href="tagsrch.html#:tselect">:tselect</a>&nbsp;のようなコマンド、<a class="Identifier" href="tagsrch.html#CTRL-]">CTRL-]</a>&nbsp;のようなノーマルモードのタグコマ<br>
-ンド、および&nbsp;<a class="Identifier" href="builtin.html#taglist()">taglist()</a>&nbsp;関数に使用されるタグのリストを生成する関数を Vim に提<br>
-供することができる。<br>
+タグのリストを生成する関数を Vim に提供できる。そのリストは&nbsp;<a class="Identifier" href="tagsrch.html#:tag">:tag</a>、<a class="Identifier" href="tagsrch.html#:tselect">:tselect</a><br>
+のようなコマンド、<a class="Identifier" href="tagsrch.html#CTRL-]">CTRL-]</a>&nbsp;のようなノーマルモードのタグコマンド、および<br>
+<a class="Identifier" href="builtin.html#taglist()">taglist()</a>&nbsp;関数に使用される。<br>
 <br>
-タグリストの生成に使用される関数は、<a class="Type" href="options.html#'tagfunc'">'tagfunc'</a>&nbsp;オプションを設定することによって<br>
-指定される。関数は3つの引数で呼び出される:<br>
-&nbsp;&nbsp; pattern&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タグ検索中に使用されたタグ識別子もしくはパターン。<br>
-&nbsp;&nbsp; flags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数の挙動を制御するためのフラグを含む文字列。<br>
+タグリストの生成に使用される関数は、<a class="Type" href="options.html#'tagfunc'">'tagfunc'</a>&nbsp;オプションを設定することで指定す<br>
+る。関数は 3 つの引数で呼ばれる:<br>
+&nbsp;&nbsp; pattern&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タグ検索中に使用されたタグの識別子またはパターン。<br>
+&nbsp;&nbsp; flags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;関数の動作を制御するフラグを含む文字列。<br>
 &nbsp;&nbsp; info&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 以下のエントリを含む辞書:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buf_ffname&nbsp;&nbsp;&nbsp;&nbsp;F優先順位のために使用できる完全ファイル名。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;user_data&nbsp;&nbsp;&nbsp;&nbsp; カスタムデータ文字列。以前の tagfunc によっ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;てタグスタックに格納されている場合。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buf_ffname&nbsp;&nbsp;&nbsp;&nbsp;優先順位に使用できる完全なファイル名。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;user_data&nbsp;&nbsp;&nbsp;&nbsp; 以前に tagfunc によってタグスタックに格納さ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;れている場合、カスタムデータの文字列。<br>
 <br>
-<span class="Todo">Note</span>&nbsp;旧来の関数では使用時に引数名の前に &quot;a:&quot; を追加する必要がある。<br>
+<span class="Todo">Note</span>&nbsp;旧来の関数では、引数名を使用する時に &quot;a:&quot; を前に付ける必要があることに注<br>
+意。<br>
 <br>
-現在、タグ関数には最大3つのフラグを渡すことができる:<br>
-&nbsp;&nbsp;'c'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; この関数は、処理中の通常のコマンドによって呼び出された。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ニーモニック: タグ関数は、カーソルの周りのコンテキストを使用<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;して、タグリストを生成するためのより良い作業を実行できる。)<br>
-&nbsp;&nbsp;'i'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 挿入モードで、ユーザーはタグを補完していた (<a class="Identifier" href="insert.html#i_CTRL-X_CTRL-]">i_CTRL-X_CTRL-]</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;もしくは&nbsp;<a class="Type" href="options.html#'complete'">'complete'</a>&nbsp;が &quot;<a class="Comment" href="motion.html#t">t</a>&quot; または &quot;<a class="Comment" href="vimindex.html#]">]</a>&quot; を含む場合)。<br>
-&nbsp;&nbsp;'r'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tagfunc の最初の引数は、<a class="Identifier" href="pattern.html#pattern">pattern</a>&nbsp;(<a class="Identifier" href="tagsrch.html#tag-regexp">tag-regexp</a>&nbsp;を参照) として<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解釈され、使用時には:<br>
+現在、最大 3 つのフラグがタグ関数に渡されうる:<br>
+&nbsp;&nbsp;'c'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 処理中のノーマルコマンドによって関数が呼び出された (覚え方: タ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;グ関数は、タグリストの生成をより良く行うためにカーソル周辺のコ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンテキストを使用できる。)<br>
+&nbsp;&nbsp;'i'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 挿入モードで、ユーザーがタグを補完していた (<a class="Identifier" href="insert.html#i_CTRL-X_CTRL-]">i_CTRL-X_CTRL-]</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を使用して、または&nbsp;<a class="Type" href="options.html#'complete'">'complete'</a>&nbsp;が &quot;<a class="Comment" href="motion.html#t">t</a>&quot; または &quot;<a class="Comment" href="vimindex.html#]">]</a>&quot; を含む)。<br>
+&nbsp;&nbsp;'r'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tagfunc の最初の引数は&nbsp;<a class="Identifier" href="pattern.html#pattern">pattern</a>&nbsp;として解釈されるべきである<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="Identifier" href="tagsrch.html#tag-regexp">tag-regexp</a>&nbsp;を参照)。例えば以下を使用した時:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:tag /pat</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; また挿入モードの補完時にも提供される。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このフラグが存在しない場合、引数は常に文字通りの完全なタグ名と<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;して扱われる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 挿入モードで補完している時にも与えられる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;このフラグが存在しない場合、引数は通常、完全なタグ名として文字<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;どおりに解釈される。<br>
 <br>
-<span class="Todo">Note</span>&nbsp;<a class="Type" href="options.html#'tagfunc'">'tagfunc'</a>&nbsp;が設定されている場合、<a class="Identifier" href="tagsrch.html#tag-priority">tag-priority</a>&nbsp;に記述されているタグの優先<br>
-順位は適用されない。代わりに、優先順位は、関数によって返されるリスト内の要素の<br>
-順序とまったく同じである。<br>
+<span class="Todo">Note</span>&nbsp;<a class="Type" href="options.html#'tagfunc'">'tagfunc'</a>&nbsp;が設定されている時、<a class="Identifier" href="tagsrch.html#tag-priority">tag-priority</a>&nbsp;で説明されたタグの優先順位は<br>
+適用されないことに注意。その代わり、優先順位は関数が返すリストの要素の順序のと<br>
+おりになる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#E987" name="E987">E987</a><br>
-関数は辞書エントリのリストを返すべきである。各辞書は少なくとも次のエントリを含<br>
-み、各値は文字列でなければならない:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タグ名。<br>
+関数は辞書エントリのリストを返すべきである。各辞書は少なくとも以下のエントリを<br>
+含まなければならず、各値は文字列でなければならない:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タグの名前。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filename&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タグが定義されているファイルの名前。カレントディレクト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リからの相対パスか、フルパスのどちらかである。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cmd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ファイル内でタグの位置を特定するために使用される Ex コ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マンドである。これには、tags ファイル<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="Identifier" href="tagsrch.html#tags-file-format">tags-file-format</a>&nbsp;を参照) と同様に、行番号、検索パ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ターン、またはその他の任意の Ex コマンドを指定できる。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;検索パターンは &quot;/&quot; または &quot;?&quot; で始まり、終わらなければ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ならない。無効な値を指定すると、<a class="Identifier" href="tagsrch.html#E987">E987</a>&nbsp;エラーが発生す<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る。<br>
-<span class="Todo">Note</span>&nbsp;フォーマットは&nbsp;<a class="Identifier" href="builtin.html#taglist()">taglist()</a>&nbsp;のものと似ており、これにより、結果を生成するた<br>
-めにその出力を使用することが可能になる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;リからの相対パス、または完全なパスのどちらかである。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cmd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ファイル内でタグを見つけるために使用される Ex コマン<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ド。これは行番号、検索パターン、またはその他の任意の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ex コマンドにでき、タグファイルと同様である<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="Identifier" href="tagsrch.html#tags-file-format">tags-file-format</a>&nbsp;を参照)。検索パターンは &quot;/&quot; または<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;?&quot; で始まり、終わらなければならない。無効な値は<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="tagsrch.html#E987">E987</a>&nbsp;になる。<br>
+<span class="Todo">Note</span>&nbsp;この形式は&nbsp;<a class="Identifier" href="builtin.html#taglist()">taglist()</a>&nbsp;のそれと似ており、その出力を使用して結果を生成でき<br>
+ることに注意。<br>
 以下のフィールドはオプションである:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kind&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;タグの種類。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;user_data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オペレーション間でタグの曖昧さを解消するために使用でき<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;る、タグスタックに格納されたカスタムデータの文字列。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;user_data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 操作間でタグを区別するために使用できる、タグスタックに<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格納されたカスタムデータの文字列。<br>
 <br>
-関数がリストの代わりに、<a class="Identifier" href="eval.html#v:null">v:null</a>&nbsp;を返した場合、標準のタグ検索が代わりに実行さ<br>
-れる。<br>
+関数がリストの代わりに&nbsp;<a class="Identifier" href="eval.html#v:null">v:null</a>&nbsp;を返した場合、代わりに標準のタグ検索が実行され<br>
+る。<br>
 <br>
-タグスタックを&nbsp;<a class="Type" href="options.html#'tagfunc'">'tagfunc'</a>&nbsp;の内部から変更することはできない。&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#E986" name="E986">E986</a><br>
-<a class="Type" href="options.html#'tagfunc'">'tagfunc'</a>&nbsp;の内部からウィンドウを閉じたり変更したりすることはできない。&nbsp;<a class="Constant" href="tagsrch.html#E1299" name="E1299">E1299</a><br>
+<a class="Type" href="options.html#'tagfunc'">'tagfunc'</a>&nbsp;の中からタグスタックを変更することは許されない。&nbsp;&nbsp;<a class="Constant" href="tagsrch.html#E986" name="E986">E986</a><br>
+<a class="Type" href="options.html#'tagfunc'">'tagfunc'</a>&nbsp;の中からウィンドウを閉じるか、またはウィンドウを変更することは許され<br>
+ない。<br>
+<a class="Constant" href="tagsrch.html#E1299" name="E1299">E1299</a><br>
 <br>
-以下は、<a class="Type" href="options.html#'tagfunc'">'tagfunc'</a>&nbsp;に使用される関数の仮定の例である。結果(ファイル名の逆順のタ<br>
-グのリスト)を生成するために&nbsp;<a class="Identifier" href="builtin.html#taglist()">taglist()</a>&nbsp;の出力を使用している。<br>
+以下は&nbsp;<a class="Type" href="options.html#'tagfunc'">'tagfunc'</a>&nbsp;に使用される関数の仮想的な例である。これは&nbsp;<a class="Identifier" href="builtin.html#taglist()">taglist()</a>&nbsp;の出力<br>
+を使用して結果を生成する: ファイル名の逆順のタグのリスト。<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">function</span>&nbsp;CompareFilenames<span class="Special">(</span><span class="Normal">item1</span>,&nbsp;<span class="Normal">item2</span><span class="Special">)</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">let</span>&nbsp;<span class="Normal">f1</span>&nbsp;<span class="Statement">=</span>&nbsp;<span class="Identifier">a:</span><span class="Normal">item1</span>[<span class="Constant">'filename'</span>]<br>
@@ -967,7 +962,7 @@ Cプログラム用の &quot;\^#\s*include&quot; である。<span class="Todo">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">endfunc</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Statement">set</span>&nbsp;<span class="PreProc">tagfunc</span><span class="Statement">=</span>TagFunc<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;<a class="Identifier" href="builtin.html#taglist()">taglist()</a>&nbsp;を実行すると、<a class="Type" href="options.html#'tagfunc'">'tagfunc'</a>&nbsp;関数は再帰的に呼び出されない。<br>
+<span class="Todo">Note:</span>&nbsp;<a class="Identifier" href="builtin.html#taglist()">taglist()</a>&nbsp;を実行する時、<a class="Type" href="options.html#'tagfunc'">'tagfunc'</a>&nbsp;関数は再帰的に呼ばれない。<br>
 <br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>

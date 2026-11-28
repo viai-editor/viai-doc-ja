@@ -1447,8 +1447,8 @@ autoload/javacomplete.vim となる。<br>
 <br>
 <span class="Statement">C</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="insert.html#ft-c-omni" name="ft-c-omni">ft-c-omni</a><br>
 <br>
-C のソースでオムニ補完を行うには tags ファイルが必要である。補完に必要な付加情<br>
-報を出力するため、Universal/Exuberant ctags を使うとよい。次のサイトからダウン<br>
+C のソースでオムニ補完を行うにはタグファイルが必要である。補完に必要な付加情報<br>
+を出力するため、Universal/Exuberant ctags を使うとよい。次のサイトからダウン<br>
 ロードできる:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Universal Ctags:&nbsp;<span class="Constant"><a href="https://ctags.io">https://ctags.io</a></span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exuberant Ctags:&nbsp;<span class="Constant"><a href="http://ctags.sourceforge.net">http://ctags.sourceforge.net</a></span><br>
@@ -1463,14 +1463,14 @@ MS-Windows 用の exe ファイルは次のサイトからダウンロードで�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/universal-ctags/ctags-win32">https://github.com/universal-ctags/ctags-win32</a></span><br>
 <br>
 システム関数を補完するには、次のような方法がある。ctags を使って全システムヘッ<br>
-ダーファイルの tags ファイルを作る:<br>
+ダーファイルのタグファイルを作る:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;% ctags -R -f ~/.vim/systags /usr/include /usr/local/include</div>
-そして .vimrc で&nbsp;<a class="Type" href="options.html#'tags'">'tags'</a>&nbsp;オプションにこの tags ファイルを追加する:<br>
+そして .vimrc で&nbsp;<a class="Type" href="options.html#'tags'">'tags'</a>&nbsp;オプションにこのタグファイルを追加する:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set tags+=~/.vim/systags</div>
 <br>
-カーソル前の単語が &quot;.&quot; や &quot;-&gt;&quot; を含まないとき、<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-O</span>&nbsp;を押すと tags<br>
-ファイルから直接補完される。これはすべての識別子、関数名に対して有効である。<br>
-tags ファイルに含まれないローカル変数名を補完するには&nbsp;<span class="Special">CTRL-P</span>&nbsp;を使うしかない。<br>
+カーソル前の単語が &quot;.&quot; や &quot;-&gt;&quot; を含まないとき、<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-O</span>&nbsp;を押すとタグファ<br>
+イルから直接補完される。これはすべての識別子、関数名に対して有効である。<br>
+タグファイルに含まれないローカル変数名を補完するには&nbsp;<span class="Special">CTRL-P</span>&nbsp;を使うしかない。<br>
 <br>
 カーソル前の単語が &quot;.&quot; または &quot;-&gt;&quot; を含むとき、<span class="Special">CTRL-X</span>&nbsp;<span class="Special">CTRL-O</span>&nbsp;を押すと、変数の<br>
 型が推測され、その型のメンバが推測される。よって、その変数に対して有効なメンバ<br>
@@ -1571,9 +1571,9 @@ Mozilla Firefox である。これら2つのアプリケーションは市場の
 <br>
 <span class="Statement">PHP</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="insert.html#ft-php-omni" name="ft-php-omni">ft-php-omni</a><br>
 <br>
-PHP コードの補完を行うには tags ファイルが必要である。外部ファイルに書かれた情<br>
-報の補完と、クラスを意識した補完のためである。Universal/Exuberant ctags 5.5.4<br>
-以降を使うこと。次のサイトで入手できる:<br>
+PHP コードの補完を行うにはタグファイルが必要である。外部ファイルに書かれた情報<br>
+の補完と、クラスを意識した補完のためである。Universal/Exuberant ctags 5.5.4 以<br>
+降を使うこと。次のサイトで入手できる:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Universal Ctags:&nbsp;<span class="Constant"><a href="https://ctags.io">https://ctags.io</a></span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exuberant Ctags:&nbsp;<span class="Constant"><a href="http://ctags.sourceforge.net">http://ctags.sourceforge.net</a></span><br>
@@ -1581,17 +1581,17 @@ PHP コードの補完を行うには tags ファイルが必要である。外�
 オムニ補完で以下のものが補完できる:<br>
 <br>
 - $ の後の変数名<br>
-&nbsp;&nbsp;- 変数がオブジェクトとして宣言されており、&quot;-&gt;&quot; がつく場合、tags ファイルがあ<br>
+&nbsp;&nbsp;- 変数がオブジェクトとして宣言されており、&quot;-&gt;&quot; がつく場合、タグファイルがあ<br>
 &nbsp;&nbsp;&nbsp;&nbsp;ればクラス名が表示される。<br>
 &nbsp;&nbsp;- &quot;-&gt;&quot; の後ではそのクラスの関数名と変数名だけが候補に現れる。クラスの位置と<br>
-&nbsp;&nbsp;&nbsp;&nbsp;内容を特定するためには tags ファイルが必要になる。PHP は強い型付けの言語で<br>
-&nbsp;&nbsp;&nbsp;&nbsp;はないため、クラス宣言に @var タグをつけるとよい :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;内容を特定するためにはタグファイルが必要になる。PHP は強い型付けの言語では<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ないため、クラス宣言に @var タグをつけるとよい :<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* @var $myVar myClass */<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$myVar-&gt;</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;しかし @var タグをつけても、myClass の内容を認識するには tags ファイルが必<br>
-&nbsp;&nbsp;&nbsp;&nbsp;要になる。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;しかし @var タグをつけても、myClass の内容を認識するにはタグファイルが必要<br>
+&nbsp;&nbsp;&nbsp;&nbsp;になる。<br>
 <br>
 - 追加情報つきの関数名<br>
 &nbsp;&nbsp;- 組み込み関数の場合には、とりうる引数のリストと、| の後に関数の戻り値の型情<br>
