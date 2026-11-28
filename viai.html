@@ -3,7 +3,7 @@ layout: viai-doc
 helpname: 'viai'
 ---
 <div id='vimCodeElement'>
-<a class="Constant" href="viai.html" name="viai.txt">viai.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Nov 24<br>
+<a class="Constant" href="viai.html" name="viai.txt">viai.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;<span class="Identifier">ViAI バージョン 1.0.</span>&nbsp;&nbsp;Last change: 2026 Nov 27<br>
 <br>
 <br>
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
@@ -26,8 +26,9 @@ ViAI (Vim Advanced Integrated、&quot;vee-eye&quot; と発音する) は、元 V
 8. デフォルト値&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="viai.html#viai-defaults">viai-defaults</a><br>
 9. 関数インターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="viai.html#viai-functions">viai-functions</a><br>
 10. 追加機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="viai.html#viai-additional-features">viai-additional-features</a><br>
-11. ライセンス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="viai.html#viai-license">viai-license</a><br>
-12. スポンサー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="viai.html#viai-sponsor">viai-sponsor</a><br>
+11. 言語インターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="viai.html#viai-interfaces">viai-interfaces</a><br>
+12. ライセンス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="viai.html#viai-license">viai-license</a><br>
+13. スポンサー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="viai.html#viai-sponsor">viai-sponsor</a><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
 1. 開発方針&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-policy" name="viai-policy">viai-policy</a><br>
@@ -41,7 +42,8 @@ ViAI (Vim Advanced Integrated、&quot;vee-eye&quot; と発音する) は、元 V
 - ViAI は、Vim9 script を読み込むときに Vim が出すエラーを、スクリプトを実行せ<br>
 &nbsp;&nbsp;ずに診断として表示できる唯一のエディタである。<a class="Identifier" href="repeat.html#:source-dryrun">:source-dryrun</a>&nbsp;を参照。<br>
 - あなたの Vim の設定とプラグインは、そのまま ViAI で動作する。<a class="Identifier" href="viai.html#viai-config">viai-config</a><br>
-&nbsp;&nbsp;を参照。<br>
+&nbsp;&nbsp;を参照。Python 3 以外の言語インターフェイスを使用するものは除く。<br>
+&nbsp;&nbsp;<a class="Identifier" href="viai.html#viai-interfaces">viai-interfaces</a>&nbsp;を参照。<br>
 - ViAI は、Vim との互換性をできる限り保ちながら、独自の機能を追加する。<br>
 - Vim のパッチは、原則として ViAI に取り込まれる。取り込まれないものは次に列挙<br>
 &nbsp;&nbsp;されている:<br>
@@ -67,6 +69,9 @@ Vim 由来のヘルプファイルの中の以下の箇所は、ViAI につい�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="intro.html#viai-bugs">viai-bugs</a>&nbsp;&nbsp;&nbsp;&nbsp; バグの報告方法と扱い方<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="intro.html#credits">credits</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ViAI のメンテナー<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="usr_90.html">usr_90.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;ViAI のインストール方法<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_lua.html">if_lua.txt</a>&nbsp;&nbsp;&nbsp;&nbsp;ViAI に付けてビルドできないインターフェイス、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_mzsch.html">if_mzsch.txt</a>、<a class="Identifier" href="if_perl.html">if_perl.txt</a>、<a class="Identifier" href="if_pyth.html">if_pyth.txt</a>、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Identifier" href="if_ruby.html">if_ruby.txt</a>&nbsp;および&nbsp;<a class="Identifier" href="if_tcl.html">if_tcl.txt</a>&nbsp;にもある<br>
 <br>
 Vim 由来のすべてのヘルプファイルでは、1 行目に ViAI のバージョンと Vim の<br>
 &quot;Last change&quot; の日付があり、タイトルは作者なしで ViAI を名乗っている。<br>
@@ -276,7 +281,17 @@ ViAI には、Vim にない以下の機能がある:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;mcp&quot; チャネルモード。<br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-11. ライセンス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-license" name="viai-license">viai-license</a><br>
+11. 言語インターフェイス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-interfaces" name="viai-interfaces">viai-interfaces</a><br>
+<br>
+言語インターフェイスのうち、ViAI は Python 3 インターフェイス&nbsp;<a class="Identifier" href="if_pyth.html#python3">python3</a>&nbsp;付きで<br>
+のみビルドできる: configure および MS-Windows 用の makefile は、Lua、MzScheme、<br>
+Perl、Python 2、Ruby および Tcl インターフェイスを警告を出して無視する。<br>
+<a class="Identifier" href="builtin.html#has()">has()</a>&nbsp;は &quot;lua&quot;、&quot;mzscheme&quot;、&quot;perl&quot;、&quot;python&quot;、&quot;ruby&quot; および &quot;tcl&quot; に対して 0<br>
+を返し、<a class="Identifier" href="if_lua.html#:lua">:lua</a>&nbsp;などのそれらのコマンドはエラー E319 を出す。<a class="Identifier" href="if_pyth.html#:pyx">:pyx</a>&nbsp;は常に<br>
+Python 3 を使用する。<br>
+<br>
+<span class="PreProc">==============================================================================</span><br>
+12. ライセンス&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-license" name="viai-license">viai-license</a><br>
 <br>
 最初の取り込み以降に ViAI で行われた変更は、Apache License 2.0 でライセンスさ<br>
 れる。Vim から取り込まれたコードは、Vim のライセンスでライセンスされる。<br>
@@ -295,7 +310,7 @@ ViAI のメンテナーに連絡するには、以下で issue を開くこと:<
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Constant"><a href="https://github.com/viai-editor/viai/issues">https://github.com/viai-editor/viai/issues</a></span><br>
 <br>
 <span class="PreProc">==============================================================================</span><br>
-12. スポンサー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-sponsor" name="viai-sponsor">viai-sponsor</a><br>
+13. スポンサー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="viai.html#viai-sponsor" name="viai-sponsor">viai-sponsor</a><br>
 <br>
 ViAI が役に立つと思ったら、GitHub Sponsors でそのメンテナーである Hirohito<br>
 Higashi のスポンサーになることができる:<br>
