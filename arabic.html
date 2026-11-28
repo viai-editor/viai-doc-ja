@@ -9,16 +9,16 @@ helpname: 'arabic'
 <span class="Identifier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIAI リファレンスマニュアル</span><br>
 <br>
 <br>
-アラビア語サポート (オプション &amp; マッピング)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="arabic.html#Arabic" name="Arabic">Arabic</a><br>
+Vim 用アラビア語サポート (オプションとマッピング)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="arabic.html#Arabic" name="Arabic">Arabic</a><br>
 <br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="arabic.html#E800" name="E800">E800</a><br>
-right-to-left (右横書き) とアラビア語マッピングを使用するには、Vim を<br>
-<a class="Identifier" href="various.html#+arabic">+arabic</a>&nbsp;機能付きでコンパイルする必要があります。<br>
+右から左およびアラビア語マッピングのサポートを使用するには、Vim を&nbsp;<a class="Identifier" href="various.html#+arabic">+arabic</a><br>
+機能付きでコンパイルする必要がある。<br>
 <br>
-これらの機能は Nadim Shaikli &lt;nadim-at-arabeyes.org&gt; によって作成されました。<br>
+これらの機能は Nadim Shaikli &lt;nadim-at-arabeyes.org&gt; によって作成された<br>
 <br>
-このファイルは GUI の Vim で以下の設定をして表示するのが最適です:<br>
+このファイルは、Vim の GUI でこれらの設定で表示するのが最もよい:<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set encoding=utf-8<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set arabicshape</div>
@@ -26,250 +26,254 @@ right-to-left (右横書き) とアラビア語マッピングを使用するに
 <br>
 はじめに<br>
 <span class="PreProc">--------</span><br>
-アラビア語はいくつかの特殊な機能を必要とする言語です。文字は右から左へ向かうの<br>
-でスクリーン上でもそのように表示する必要があります (つまり右から左へ表示す<br>
-る)。アラビア語は文字変形 (shaping) も必要とします。文字を書く位置によって同じ<br>
-文字でも別の字形になります (単語の最初、中、最後、または単独で書くかで変わ<br>
-る)。アラビア語は二種類の文字合成も必要とします。場合によっては、一つの文字に<br>
-他の文字を最大二つまで重ねる (合成、composing) か、二つの文字を一つの文字に置<br>
-換する (結合、combining) かします。<br>
-アラビア語を適切に表示するには ISO-8859-6 (U+0600-U+06FF) のフォントに加えて<br>
-Presentation Form-B (U+FE70-U+FEFF) のフォントも必要です。これらはいわゆる<br>
-ISO-10646-1 フォントのサブセットです。<br>
+アラビア語は、いくつかの特別な機能が必要とされる、かなり要求の多い言語である。<br>
+文字は右から左に向かい、画面上でもそのように (つまり右から左に) 表示されるべき<br>
+である。<br>
+アラビア語はまた、文字のシェーピングを必要とする。これは、同じ文字が単語内での<br>
+相対的な位置 (語頭、語中、語末、または独立形) に基づいて異なる視覚的な形を持つ<br>
+ことを意味する。アラビア語はまた、2 つの異なる結合の形式、および、特定の場合<br>
+に、最大 2 つの文字を別の文字の上に重ねる (合成) か、または実際に 2 つの文字を<br>
+1 つに置き換える (結合) 能力を必要とする。最後に、アラビア語を正しく表示するに<br>
+は、ISO-8859-6 (U+0600-U+06FF) フォントだけでなく、Presentation Form-B<br>
+(U+FE70-U+FEFF) フォントも必要になり、そのどちらもいわゆる ISO-10646-1 フォン<br>
+ト内のサブセットである。<br>
 <br>
-コマンド、プロンプト、ヘルプファイルはアラビア語にはなりません。したがってユー<br>
-ザーインターフェイスは標準の Vi インターフェイスのままです。<br>
+コマンド、プロンプト、およびヘルプファイルはアラビア語ではないので、ユーザーイ<br>
+ンターフェイスは標準の Vi インターフェイスのままである。<br>
 <br>
 <br>
 特徴<br>
-<span class="PreProc">-----</span><br>
-o&nbsp;&nbsp;left-to-right ファイルの編集はオリジナルの Vim と変わりません。<br>
+----<br>
+o&nbsp;&nbsp;元の Vim のように左から右のファイルを編集することは変わっていない。<br>
 <br>
-o&nbsp;&nbsp;right-to-left ウィンドウでのファイルの表示と編集。表示方向はウィンドウ単位<br>
-&nbsp;&nbsp; なので、同じファイルを right-to-left と left-to-right で同時に表示できま<br>
-&nbsp;&nbsp; す。<br>
+o&nbsp;&nbsp;右から左のウィンドウでのファイルの表示および編集。ファイルの向きはウィンド<br>
+&nbsp;&nbsp; ウごとなので、同じファイルを右から左モードおよび左から右モードで同時に表示<br>
+&nbsp;&nbsp; することが可能である。<br>
 <br>
-o&nbsp;&nbsp;right-to-left のための特殊な端末を必要としない。<br>
-&nbsp;&nbsp; right-to-left の機能はハードウェアに依存していません。必要なのはアラビア語<br>
-&nbsp;&nbsp; フォントだけです。<br>
+o&nbsp;&nbsp;右から左の機能を持つ特別な端末は必要ない。<br>
+&nbsp;&nbsp; 右から左の変更は完全にハードウェアに依存しない。<br>
+&nbsp;&nbsp; アラビア語フォントだけが必要である。<br>
 <br>
-o&nbsp;&nbsp;オリジナルの Vim との互換性。ほとんどの機能は right-to-left モードでも機能<br>
-&nbsp;&nbsp; します (バグになりやすい)<br>
+o&nbsp;&nbsp;元の Vim と互換性がある。ほとんど全ての機能が右から左モードで動作する (バグ<br>
+&nbsp;&nbsp; がある可能性がある)。<br>
 <br>
-o&nbsp;&nbsp;キーボードマッピングと反転挿入モード (reverse insert mode) を一つのコマンド<br>
-&nbsp;&nbsp; で切り替える。<br>
+o&nbsp;&nbsp;1 つのコマンドを使用したキーボードマッピングおよび逆挿入モードの変更。<br>
 <br>
-o&nbsp;&nbsp;アラビア語サポートを一つのコマンドで切り替える。<br>
+o&nbsp;&nbsp;1 つのコマンドによる完全なアラビア語サポートの切り替え。<br>
 <br>
-o&nbsp;&nbsp;アラビア語モードでは数字は左から右へ入力されます。その後で数字以外の文字を<br>
-&nbsp;&nbsp; 入力すると、その文字は数字の一番左側に挿入されます。<br>
+o&nbsp;&nbsp;アラビア語モードでは、数字は左から右に入力される。数字でない文字を入力する<br>
+&nbsp;&nbsp; と、その文字は最後の数字のすぐ左に挿入される。<br>
 <br>
-o&nbsp;&nbsp;反転挿入モードでのコマンドラインのアラビア語キーマッピング。<br>
+o&nbsp;&nbsp;逆挿入モードでのコマンドライン上のアラビア語キーマッピング。<br>
 <br>
-o&nbsp;&nbsp;正式な双方向機能は Vim を双方向対応端末エミュレータ上で実行すれば利用可能で<br>
-&nbsp;&nbsp; す。<br>
+o&nbsp;&nbsp;Vim が Bidi 対応の端末エミュレータ内で起動された場合、適切な双方向機能が可<br>
+&nbsp;&nbsp; 能である。<br>
 <br>
 <br>
 アラビア語フォント&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="arabic.html#arabicfonts" name="arabicfonts">arabicfonts</a><br>
 <span class="PreProc">------------------</span><br>
 <br>
-Vim は固定幅フォントを使います。アラビア語には ISO-8859-6 と Presentation<br>
-Form-B のフォントが必要です (Form-B 無しではアラビア語は使用できない)。フォン<br>
-トを探す際にはいわゆる 'ISO-10646-1' フォントを探してください。インターネット<br>
-を検索するか&nbsp;<span class="Constant">www.arabeyes.org</span>&nbsp;を見て必要なアラビア語フォントを手に入れてくださ<br>
-い。<br>
+Vim は等幅フォントを必要とし、それは世の中にたくさんある。<br>
+アラビア語は ISO-8859-6 および Presentation Form-B フォントを必要とする<br>
+(Form-B が無いと、アラビア語は _使用できない_)。ユーザーがいわゆる<br>
+'ISO-10646-1' フォントを探すことを強く推奨する。<br>
+必要なアラビア語フォントの入手先に関するさらなる情報については、インターネット<br>
+で検索するか、または&nbsp;<span class="Constant">www.arabeyes.org</span>&nbsp;を確認すること。<br>
 <br>
 <br>
-フォントのインストール<br>
-<span class="PreProc">----------------------</span><br>
+フォントインストール<br>
+<span class="PreProc">--------------------</span><br>
 <br>
-o&nbsp;&nbsp;X ウィンドウシステム (Unix/Linux) でのフォントのインストール<br>
+o&nbsp;&nbsp;X Window システム (Unix/Linux) 用のフォントのインストール<br>
 <br>
-&nbsp;&nbsp; システムによって違いますが、アラビア語フォントのファイルを適当なディレクト<br>
-&nbsp;&nbsp; リにコピーします。そのアラビア語フォントをコピーしたディレクトリに移動して<br>
-&nbsp;&nbsp; 次のコマンドを実行します:<br>
+&nbsp;&nbsp; システムに応じて、your_ARABIC_FONT ファイルを好きなディレクトリにコピーす<br>
+&nbsp;&nbsp; る。アラビア語フォントを含むディレクトリに移動し、以下のコマンドを実行する:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp; %&nbsp;&nbsp;mkfontdir<br>
 &nbsp;&nbsp;&nbsp;&nbsp; %&nbsp;&nbsp;xset +fp path_name_of_arabic_fonts_directory<br>
 <br>
 <br>
-使用方法<br>
-<span class="PreProc">--------</span><br>
-実際に Vim でアラビア語を使用する前に、しなければならない設定がいくつかありま<br>
-す。<br>
+使い方<br>
+<span class="PreProc">------</span><br>
+Vim 内で実際にアラビア語を使用する前に、いくつかの設定を考慮し、実行する必要が<br>
+ある。<br>
 <br>
-o&nbsp;&nbsp;アラビア語フォントを設定する<br>
+o&nbsp;&nbsp;アラビア語フォントの設定<br>
 <br>
-&nbsp;&nbsp; +&nbsp;&nbsp;Vim GUI で&nbsp;<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;をアラビア語フォントに設定します。Vim ウィンドウで<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次のように入力します。<br>
+&nbsp;&nbsp; +&nbsp;&nbsp;Vim GUI では、<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;を your_ARABIC_FONT に設定する。これは Vim ウィ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ンドウで以下のコマンドを入力することで行う。<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set guifont=your_ARABIC_FONT</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE:</span>&nbsp;'your_ARABIC_FONT' の部分には Linux/Unix システムで使用されている<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;実際のフォント名を入れてください。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE:</span>&nbsp;文字列 'your_ARABIC_FONT' は、Linux/Unix システムで使われるものに<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;似た完全なフォント名を表すために使われる。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(例: -misc-fixed-medium-r-normal--20-200-75-75-c-100-iso10646-1)<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;の設定を .vimrc ファイルに書くこともできます。言い換えると、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;':set guifont=your_ARABIC_FONT' を .vimrc ファイルに書くことができます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同じ上記の結果を得るために、<a class="Type" href="options.html#'guifont'">'guifont'</a>&nbsp;の set コマンドを .vimrc ファイル<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に追加することができる。言い換えると、':set guifont=your_ARABIC_FONT' を<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.vimrc ファイルに含めることができる。<br>
 <br>
-&nbsp;&nbsp; +&nbsp;&nbsp;X ウィンドウ環境では、'-fn your_ARABIC_FONT' を Vim の起動引数に指定する<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;方法もあります。<br>
+&nbsp;&nbsp; +&nbsp;&nbsp;X Window 環境では、'-fn your_ARABIC_FONT' オプションで Vim を起動するこ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ともできる。<br>
 <br>
-o&nbsp;&nbsp;適切なエンコーディングを設定する<br>
-&nbsp;&nbsp; アラビア語に適したエンコーディングを設定するには次のコマンドを .vimrc ファ<br>
-&nbsp;&nbsp; イルに追加します。<br>
+o&nbsp;&nbsp;適切な文字エンコーディングの設定<br>
+&nbsp;&nbsp; 正しいアラビア語エンコーディングを有効にするには、以下のコマンドを<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set encoding=utf-8</div>
 <br>
-&nbsp;&nbsp; (このコマンドを Vim ウィンドウで直接実行しないでください)<br>
-&nbsp;&nbsp; 簡単に言えば ':set encoding=utf-8' を .vimrc ファイルに書くだけです。<br>
+&nbsp;&nbsp; .vimrc ファイルに追加する必要がある (Vim ウィンドウに手動でコマンドを入力す<br>
+&nbsp;&nbsp; ることは強く推奨されない)。要するに、':set encoding=utf-8' を .vimrc ファイ<br>
+&nbsp;&nbsp; ルに含めること。<br>
 <br>
-&nbsp;&nbsp; アラビア語を UTF-8 以外のエンコーディングで使用すると次の警告メッセージが表<br>
-&nbsp;&nbsp; 示されます。<br>
+&nbsp;&nbsp; UTF-8 無しでアラビア語を使用しようとすると、以下の警告メッセージになる、<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="arabic.html#W17" name="W17">W17</a>&nbsp;<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp; Arabic requires UTF-8, do ':set encoding=utf-8'</div>
 <br>
-o&nbsp;&nbsp;アラビア語設定の有効化 [近道]<br>
+o&nbsp;&nbsp;アラビア語設定を有効にする [ショートカット]<br>
 <br>
-&nbsp;&nbsp; 手っ取り早く設定するには、コマンドラインから次のようにして Vim を起動する<br>
-&nbsp;&nbsp; か、<br>
+&nbsp;&nbsp; 物事を単純化および効率化するために、コマンドラインオプションで Vim を起動す<br>
+&nbsp;&nbsp; るか、<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp; % vim -A my_utf8_arabic_file ...<br>
 <br>
-&nbsp;&nbsp; または Vim の中で次のコマンドを実行して&nbsp;<a class="Type" href="options.html#'arabic'">'arabic'</a>&nbsp;を有効にします<br>
+&nbsp;&nbsp; または Vim 内で以下のコマンドによって&nbsp;<a class="Type" href="options.html#'arabic'">'arabic'</a>&nbsp;を有効にすることができる<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set arabic</div>
 <br>
-&nbsp;&nbsp; これが最も簡単な方法です。<a class="Type" href="options.html#'termbidi'">'termbidi'</a>&nbsp;が有効化されていなければ、次の設定が実<br>
-&nbsp;&nbsp; 行されます:<br>
+&nbsp;&nbsp; 上記の 2 つの可能な起動方法は、ユーザーが進めるよう指示される好ましい方法で<br>
+&nbsp;&nbsp; ある。<a class="Type" href="options.html#'termbidi'">'termbidi'</a>&nbsp;設定が有効になっていない限り、どちらのコマンドオプションも<br>
+&nbsp;&nbsp; 以下を行う:<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp; 1. 適切なキーマップを設定する<br>
-&nbsp;&nbsp;&nbsp;&nbsp; 2. 合成文字を一度で削除できるようにする<br>
-&nbsp;&nbsp;&nbsp;&nbsp; 3. rightleft モードを有効にする<br>
-&nbsp;&nbsp;&nbsp;&nbsp; 4. rightleftcmd モードを有効にする (コマンドラインに作用する)<br>
-&nbsp;&nbsp;&nbsp;&nbsp; 5. arabicshape モードを有効にする (表示文字を変更する)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 2. 単一の結合ペア文字の削除を有効にする<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 3. rightleft&nbsp;&nbsp;&nbsp;&nbsp;モードを有効にする<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 4. rightleftcmd モードを有効にする (コマンドラインに影響する)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 5. arabicshape&nbsp;&nbsp;モードを有効にする (視覚的な文字の変更を行う)<br>
 <br>
-&nbsp;&nbsp; .vimrc ファイルに ':set arabic' を書いておくこともできます。<br>
+&nbsp;&nbsp; また、コマンドを .vimrc ファイルに追加して、単に ':set arabic' をそれに含め<br>
+&nbsp;&nbsp; てもよい。<br>
 <br>
-&nbsp;&nbsp; 次のコマンドでアラビア語サポートを無効化できます<br>
+&nbsp;&nbsp; 以下によってアラビア語サポートを無効にすることもできる<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set noarabic</div>
 <br>
-&nbsp;&nbsp; コマンドによって有効にされた設定がすべてリセットされます。他のバッファに影<br>
-&nbsp;&nbsp; 響があるようなグローバル設定は変更されません。<br>
-&nbsp;&nbsp; 簡単に言えば&nbsp;<a class="Type" href="options.html#'noarabic'">'noarabic'</a>&nbsp;コマンドによって次の設定が実行されます:<br>
+&nbsp;&nbsp; これは、グローバル設定は他の開いている可能性のあるバッファに影響することが<br>
+&nbsp;&nbsp; あるので、それには触れずに、コマンドが有効にしたもの全てをリセットする。<br>
+&nbsp;&nbsp; 要するに、<a class="Type" href="options.html#'noarabic'">'noarabic'</a>&nbsp;コマンドは、<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp; 1. キーマップ切替をリセットする<br>
-&nbsp;&nbsp;&nbsp;&nbsp; 2. 合成文字を一度で削除できる機能を無効化にする<br>
-&nbsp;&nbsp;&nbsp;&nbsp; 3. rightleft モードを無効化する<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 1. 代替キーマップにリセットする<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 2. 単一の結合ペア文字の削除を無効にする<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 3. rightleft モードを無効にする<br>
 <br>
-&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE:</span>&nbsp;<a class="Type" href="options.html#'arabic'">'arabic'</a>&nbsp;コマンドは&nbsp;<a class="Type" href="options.html#'termbidi'">'termbidi'</a>&nbsp;を見て端末が双方向テキスト<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(bi-directional, bidi) をサポートしているかどうかを考慮します (例えば<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;mlterm&quot; がサポートしています)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'termbidi'">'termbidi'</a>&nbsp;が利用できる場合は、rightleft のサポートが優れているそちら<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の使用をお勧めします。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'termbidi'">'termbidi'</a>&nbsp;が有効な場合は&nbsp;<a class="Type" href="options.html#'arabic'">'arabic'</a>&nbsp;はキーマップのみ設定します。<br>
+&nbsp;&nbsp;&nbsp;<span class="Todo">NOTE:</span>&nbsp;<a class="Type" href="options.html#'arabic'">'arabic'</a>&nbsp;コマンドは、端末からの外部の双方向 (bidi) サポートの可能性の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ために&nbsp;<a class="Type" href="options.html#'termbidi'">'termbidi'</a>&nbsp;を考慮する (例えば &quot;mlterm&quot; はそのようなサポートを<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 提供している)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'termbidi'">'termbidi'</a>&nbsp;は、使用可能な場合、rightleft サポートより優れており、その<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 提供のレベルのためにそのサポートが好ましい。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'termbidi'">'termbidi'</a>&nbsp;が有効な場合、<a class="Type" href="options.html#'arabic'">'arabic'</a>&nbsp;はキーマップだけを設定する。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'termbidi'">'termbidi'</a>&nbsp;を設定する際の垂直分割ウィンドウの分離線には &quot;l&quot; や &quot;𝖨&quot; と<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; いった LTR の垂直分割記号が使えます。また、文字色を前景色に変更するこ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; とで隠すこともできます:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'termbidi'">'termbidi'</a>&nbsp;を設定している間の垂直ウィンドウの分離のために、&quot;l&quot; または<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;𝖨&quot; のような LTR の垂直区切りを使用してもよい。それはまた、その色を前<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 景色に変更することで隠すこともできる:<br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set fillchars=vert:l<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:hi VertSplit ctermbg=White</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>&nbsp;これは本来の解決策ではなく回避策です。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="Todo">Note</span>&nbsp;これは回避策であり、適切な解決策ではないことに注意。<br>
 <br>
-&nbsp;&nbsp; もし、冗長で明示的な方法が好きで、<a class="Type" href="options.html#'arabic'">'arabic'</a>&nbsp;コマンドを使って近道をしたくない<br>
-&nbsp;&nbsp; という場合は、以下の説明を読んでください (':set arabic' を使用する方はこの<br>
-&nbsp;&nbsp; 節は飛ばして構いません)。<br>
+&nbsp;&nbsp; 一方、冗長かつ明示的にしたく、<a class="Type" href="options.html#'arabic'">'arabic'</a>&nbsp;ショートカットコマンドを使用しないこ<br>
+&nbsp;&nbsp; とを選ぶ場合、必要なものは以下である (つまり、':set arabic' を使用する場合、<br>
+&nbsp;&nbsp; この節は飛ばしてよい) -<br>
 <br>
 &nbsp;&nbsp; +&nbsp;&nbsp;アラビア語キーマッピングの有効化<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;アラビア語キーマップを有効可するには (つまり English/Latin キーボードを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;標準のアラビア語キーボードのようにするには)、<a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;オプションを<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;arabic&quot; に設定します。Vim ウィンドウで次のように入力します<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;アラビア語キーマップを有効にする (つまり、英語/ラテン文字のキーボードを<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;標準のアラビア語キーボードのような見た目と操作感にマップし直す) には、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;オプションを &quot;arabic&quot; に設定する。これは<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set keymap=arabic</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;設定コマンドを .vimrc ファイルに書くこともできます。言い換えれ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ば、.vimrc ファイルに ':set keymap=arabic' を含めることができます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を Vim ウィンドウで入力することで行う。また、<a class="Type" href="options.html#'keymap'">'keymap'</a>&nbsp;の set コマンド<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を .vimrc ファイルに追加することもできる。言い換えると、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;':set keymap=arabic' を .vimrc ファイルに含めることができる。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;アラビア語のキーマッピングとデフォルト (English) のキーマッピングを切り<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;替えるには、挿入モード (または追加/置換モード) で '<span class="Special">CTRL-^</span>' キーを押しま<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。コマンドラインのモード表示の隣に &quot;Arabic&quot; の文字列が表示され<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(例: -- INSERT Arabic --)、それが現在のキーマップを示します。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;キーマッピングをアラビア語とデフォルトマッピング (英語) の間でトグルする<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(または切り替える) には、ユーザーは挿入 (または追加/置換) モードの間に<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'<span class="Special">CTRL-^</span>' キーを押すことが推奨される。コマンドラインは、現在のキーマップ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を示す &quot;Arabic&quot; という文字列を挿入モードの隣に表示する (例: -- INSERT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arabic --) ことで、現在のマッピングを表示する。<br>
 <br>
-&nbsp;&nbsp; +&nbsp;&nbsp;合成文字の削除<br>
+&nbsp;&nbsp; +&nbsp;&nbsp;アラビア語の結合ペア文字の削除<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初期設定では&nbsp;<a class="Type" href="options.html#'delcombine'">'delcombine'</a>&nbsp;オプションは無効化されています。このオプション<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は LAM_ALEF (LAA) 合成文字内の ALEF を削除し、LAM だけを残すことを可能に<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;します (つまり合成文字を解除して元の字形に戻す。これは harakat とその合<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成字形にも関係する)。このオプションを有効化するには Vim ウィンドウで次の<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ように入力します<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルトでは、Vim は&nbsp;<a class="Type" href="options.html#'delcombine'">'delcombine'</a>&nbsp;オプションが無効になっている。このオ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プションは、LAM_ALEF (LAA) 結合文字の中の ALEF を削除し、かつ LAM を残す<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ことを可能にする (つまり、結合文字をその本来の 2 文字の形として扱うよう<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;に戻る -- これは harakat およびその結合形にも当てはまる)。このオプション<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;は<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set delcombine</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'delcombine'">'delcombine'</a>&nbsp;の設定コマンドを .vimrc ファイルに書くこともできます。言い<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;換えれば、.vimrc ファイルに ':set delcombine' を含めることができます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を私たちの Vim ウィンドウで入力することで有効にできる。また、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Type" href="options.html#'delcombine'">'delcombine'</a>&nbsp;の set コマンドを .vimrc ファイルに追加することもできる。言<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;い換えると、':set delcombine' を .vimrc ファイルに含めることができる。<br>
 <br>
-&nbsp;&nbsp; +&nbsp;&nbsp;アラビア語 right-to-left モード<br>
+&nbsp;&nbsp; +&nbsp;&nbsp;アラビア語右から左モード<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初期設定では Vim は left-to-right モードで起動します。<a class="Type" href="options.html#'rightleft'">'rightleft'</a>&nbsp;を設定<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;することでウィンドウの方向を変更できます。使用方法は次のとおり。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;デフォルトでは、Vim は左から右モードで起動する。<a class="Type" href="options.html#'rightleft'">'rightleft'</a>&nbsp;はウィンドウ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の向きを変更できるようにするコマンドであり、それは以下によって行うことが<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;できる、<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- left-to-right モードと right-to-left モードの切り替えは ':set<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rightleft' と ':set norightleft' でできます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 左から右モードと右から左モードの間の切り替えは、':set rightleft' およ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;び ':set norightleft' によって行う。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- left-to-right モードでは、':set rl' コマンドを実行します<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a class="Type" href="options.html#'rl'">'rl'</a>&nbsp;は rightleft の省略形)。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 左から右モードの間に、コマンドラインで ':set rl' を入力する (<a class="Type" href="options.html#'rl'">'rl'</a>&nbsp;は<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rightleft の短縮形である)。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Vim を起動したときに常に right-to-left モードにしたい場合は '.vimrc'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルに ':set rl' を書いてください。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Vim を常に右から左モードで起動するには、':set rl' の行を '.vimrc' ファ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;イルに入れる。<br>
 <br>
-&nbsp;&nbsp; +&nbsp;&nbsp;アラビア語 right-to-left コマンドラインモード<br>
+&nbsp;&nbsp; +&nbsp;&nbsp;アラビア語右から左コマンドラインモード<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;特定のコマンドでは right-to-left モードで編集ができます。現在対応してい<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;るのは検索コマンドだけです。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;特定のコマンドでは、編集を右から左モードで行うことができる。現在、これは<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;検索コマンドにのみ適用できる。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;動作は&nbsp;<a class="Type" href="options.html#'rightleftcmd'">'rightleftcmd'</a>&nbsp;オプションで変更できます。初期設定は &quot;search&quot; で、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これは&nbsp;<a class="Type" href="options.html#'rightleft'">'rightleft'</a>&nbsp;がオンになっているウィンドウで検索コマンドを使うと<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;right-left モードでの編集になります。これを無効化するには次のようにしま<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これは&nbsp;<a class="Type" href="options.html#'rightleftcmd'">'rightleftcmd'</a>&nbsp;オプションで制御される。デフォルトは &quot;search&quot; で、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;これは&nbsp;<a class="Type" href="options.html#'rightleft'">'rightleft'</a>&nbsp;が設定されたウィンドウでは、検索コマンドを右左モード<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;で編集することを意味する。この動作を無効にするには、<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set rightleftcmd=</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;再び検索コマンドでの right-left 編集を有効化するには次のようにします。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;検索コマンドの右左編集を再び有効にするには、<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set rightleftcmd&amp;</div>
 <br>
-&nbsp;&nbsp; +&nbsp;&nbsp;アラビア語字形モード<br>
+&nbsp;&nbsp; +&nbsp;&nbsp;アラビア語シェーピングモード<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;アラビア語は視覚字形変更 (shaping(文字変形), composing(合成),<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;combining(結合)) を必要としますが、それを有効にするには&nbsp;<a class="Type" href="options.html#'arabicshape'">'arabicshape'</a>&nbsp;を<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;設定します。Vim ウィンドウで次のコマンドを実行します。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;アラビア語が要求する、必要な視覚的な文字の変更 (シェーピング、合成、結合)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を有効にするには、<a class="Type" href="options.html#'arabicshape'">'arabicshape'</a>&nbsp;コマンドを有効にする。これは<br>
 <br>
 <div class="helpExample">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:set arabicshape</div>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.vimrc ファイルで&nbsp;<a class="Type" href="options.html#'arabicshape'">'arabicshape'</a>&nbsp;を設定することもできます。その場合は<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;':set arabicshape' を .vimrc ファイルに書きます。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を私たちの Vim ウィンドウで入力することで行う。また、<a class="Type" href="options.html#'arabicshape'">'arabicshape'</a>&nbsp;の<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set コマンドを .vimrc ファイルに追加することもできる。言い換えると、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;':set arabicshape' を .vimrc ファイルに含めることができる。<br>
 <br>
 <br>
-Keymap/Keyboard&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="arabic.html#arabickeymap" name="arabickeymap">arabickeymap</a><br>
-<span class="PreProc">---------------</span><br>
+キーマップ/キーボード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="Constant" href="arabic.html#arabickeymap" name="arabickeymap">arabickeymap</a><br>
+<span class="PreProc">---------------------</span><br>
 <br>
-Vim で使用する文字エンコーディングは標準の UTF-8 です。<br>
-他のエンコーディングの使用は推奨されていません。<br>
+Vim で使用される文字/字のエンコーディングは標準の UTF-8 である。<br>
+他のエンコーディングを使用すること、または試みることさえ、広く推奨されない。<br>
 <br>
-<span class="Todo">Note:</span>&nbsp;UTF-8 はあらゆるものを含むエンコーディングで、アラビア語において唯一サ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ポートされている (そして推奨されている) エンコーディングです (他のプロプ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ライエタリなエンコーディングは非推奨であり使うべきではありません)。<br>
+<span class="Todo">Note:</span>&nbsp;UTF-8 は全てを包括するエンコーディングであり、そのため、アラビア語に関し<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;て唯一サポートされる (および推奨される) エンコーディングである (他の全て<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;の独自エンコーディングは推奨されず、嫌われるべきである)。<br>
 <br>
 o&nbsp;&nbsp;キーボード<br>
 <br>
-&nbsp;&nbsp; +&nbsp;&nbsp;挿入モードと置換モードでは&nbsp;<span class="Special">CTRL-^</span>&nbsp;でアラビア語モードとラテン語モードが切<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;り替わります。<br>
+&nbsp;&nbsp; +&nbsp;&nbsp;挿入/置換モードの&nbsp;<span class="Special">CTRL-^</span>&nbsp;は、アラビア語/ラテン文字モードを切り替える<br>
 <br>
-&nbsp;&nbsp; +&nbsp;&nbsp;キーボードマッピングはマイクロソフトのアラビア語キーマップに基づいていま<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;す (アラビア語圏のデファクトスタンダードです):<br>
+&nbsp;&nbsp; +&nbsp;&nbsp;キーボードマッピングは Microsoft のアラビア語キーマップ (アラブ世界にお<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ける事実上の標準) に基づいている:<br>
 <br>
 &nbsp;&nbsp;+---------------------------------------------------------------------+<br>
 &nbsp;&nbsp;|!&nbsp;&nbsp; |@&nbsp;&nbsp; |#&nbsp;&nbsp; |$&nbsp;&nbsp; |%&nbsp;&nbsp; |^&nbsp;&nbsp; |&amp;&nbsp;&nbsp; |*&nbsp;&nbsp; |(&nbsp;&nbsp; |)&nbsp;&nbsp; |_&nbsp;&nbsp; |+&nbsp;&nbsp; ||&nbsp;&nbsp; |~  ّ |<br>
@@ -286,28 +290,29 @@ o&nbsp;&nbsp;キーボード<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +-------------------------------------------------+<br>
 <br>
 制限<br>
-<span class="PreProc">-----</span><br>
+----<br>
 <br>
-o&nbsp;&nbsp;Vim の GUI では Bi-directionality (双方向性) は正しくサポートされていません<br>
-&nbsp;&nbsp; (つまりアラビア語とラテン語を同じ行に書いたときに正しく表示されません)。<br>
+o&nbsp;&nbsp;GUI 形式の Vim は、現在、双方向性 (つまり、同じ行の中でアラビア語およびラテ<br>
+&nbsp;&nbsp; ン文字の両方が混在したものを見る能力) をサポートしていない。<br>
 <br>
 <br>
 既知のバグ<br>
 <span class="PreProc">----------</span><br>
 <br>
-既知の小さなバグが一つあります。<br>
+既知の小さなバグが 1 つある。<br>
 <br>
-&nbsp;1. LAM (U+0644) のうしろに haraka (例: Fatha (U+064E)) を入力して、そして<br>
-&nbsp;&nbsp;&nbsp;&nbsp;ALEF (U+0627) を入力したとき、文字が正しく結合されません。これは二つの文字<br>
-&nbsp;&nbsp;&nbsp;&nbsp;に挟まれた haraka が正しく表示されないために起こります。<br>
+&nbsp;1. LAM (U+0644) の後に haraka (例: Fatha (U+064E)) を挿入し、それから ALEF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(U+0627) を挿入した場合、挟まれた haraka のために適切な結合が行われず、正<br>
+&nbsp;&nbsp;&nbsp;&nbsp;しく表示されないものになる。<br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;WORK-AROUND: LAM と ALEF の間に harakats を置かないでください。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 一般に、harakats と LAM+ALEF の結合文字が正しく表示されること<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; は期待できません (二つの文字のうしろに入力したとしてもです)。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; これは表示上の問題なので、ファイルを保存するときには正しい情<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 報が書き込まれます。情報は失われません。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;回避策: LAM と ALEF の組み合わせの間に harakat を含めないこと。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一般に、harakat および LAM+ALEF 結合文字に関して (両方の文字の後に<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入力されたものでさえ)、正しい視覚的表現を見ることを期待しないこと。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指摘された問題は厳密に視覚的なものであり、つまり、そのようなファイ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ルを保存すると、全ての適切な情報/エンコーディングが含まれる - 何も<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;失われない。<br>
 <br>
-他に既知のバグはありません。<br>
+他に既知のバグは存在しない。<br>
 <br>
 &nbsp;vim:tw=78:ts=8:noet:ft=help:norl:<br>
 </div>
