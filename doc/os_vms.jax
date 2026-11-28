@@ -5,35 +5,35 @@
 
 
 							*VMS* *vms*
-このファイルにはVMS版のVimについての詳細が書かれている。
-この情報へはVimのコマンドプロンプトから:help VMSとキー入力することで辿り着くこ
-とができる。
+このファイルには VMS 版 Vim の特記事項が含まれている。
+Vim のコマンドプロンプトで :help VMS と入力すると、この情報ファイルにたどり着
+ける。
 
  1. はじめに		|vms-started|
- 2. ファイル入手	|vms-download|
+ 2. ファイルのダウンロード	|vms-download|
  3. コンパイル		|vms-compiling|
- 4. 問題点		|vms-problems|
- 5. 配置(インストール)	|vms-deploy|
- 6. 実践利用		|vms-usage|
- 7. GUIモードの論点	|vms-gui|
- 8. 利用時の覚書	|vms-notes|
- 9. VMS関連の変更点	|vms-changes|
+ 4. 問題		|vms-problems|
+ 5. 配置		|vms-deploy|
+ 6. 実用的な使い方	|vms-usage|
+ 7. GUI モードの質問	|vms-gui|
+ 8. 役に立つメモ	|vms-notes|
+ 9. VMS 関連の変更	|vms-changes|
 10. 著者		|vms-authors|
 
 ==============================================================================
 
 1. はじめに						*vms-started*
 
-Vim(Vi IMproved)はVi互換のテキストエディタで、人類にとって既知のほとんど全ての
-オペレーティングシステム(以下OS)で動作する。現在ではOpenVMS上でも文字ベース及
-びX/Motif環境でVimを使用することができる。Vimの全機能が利用可能で、他のOS上の
-Vimと完全な互換性がある。
+Vim (Vi IMproved) は、人類に知られているほぼ全てのオペレーティングシステムで動
+作する Vi 互換のテキストエディタである。今や OpenVMS でも、キャラクター環境ま
+たは X/Motif 環境で Vim を使用しよう。全ての機能を備えており、他のオペレーティ
+ングシステムの Vim と完全に互換である。
 
 ==============================================================================
 
 2. ファイルのダウンロード				*vms-download*
 
-ViAI のソースコードは ViAI のリポジトリからダウンロードすることができる:
+ViAI のソースコードは ViAI リポジトリからダウンロードできる:
 	https://github.com/viai-editor/viai/archive/refs/heads/master.zip
 または git を使用する: >
 	git clone https://github.com/viai-editor/viai.git
@@ -46,56 +46,57 @@ ViAI のソースコードは ViAI のリポジトリからダウンロードす
 
 ==============================================================================
 
-4. 問題点						*vms-problems*
+4. 問題							*vms-problems*
 
-コードはDEC Cコンパイラを用いて、Alpha, VAX, IA64, X86_64 プラットフォームの
-Open VMSバージョン 6.2 から 9.2 でテストされた。それらでは大きな問題もなく動作
-するだろう。利用しているシステムにインクルードライブラリがない場合は、
-OS_VMS_CONF.H ファイルで調整できる。
+コードは、DEC C コンパイラにより、Alpha、VAX、IA64 および X86_64 プラットフォー
+ム上の Open VMS 6.2 - 9.2 でテストされている。大きな問題なく動作するはずであ
+る。システムにいくつかのインクルードライブラリが無い場合、OS_VMS_CONF.H ファイ
+ルで調整できる。
 
-Vimを+perlや+python、その他のオプションを追加して構築するならば、まず始めに
-OpenVMS版のPerlやPythonを入手する必要がある。それらのライブラリを構築しインス
-トールしファイルOS_VMS.MMS内の適切な箇所を変更する。Vimの方には何の問題もない
-だろう。
++perl、+python などのオプション付きで Vim をビルドすることにした場合、まず
+Perl および Python の OpenVMS ディストリビューションをダウンロードする必要があ
+る。ライブラリをビルドおよび配置し、MAKE_VMS.MMS ファイルの該当する行を変更す
+る。Vim 側からの問題は無いはずである。
 
-GTK, XPM のライブラリパスも MAKE_VMS.MMS で設定される。
+また、GTK、XPM ライブラリのパスも MAKE_VMS.MMS で設定する必要がある
 
-NOTE: VAXではDEC Cコンパイラを使えば問題ない。VAXCコンパイラはプリプロセッサー
-命令の構文にANSI C非互換な部分がある。従ってプリプロセッサー部分をVAXCコンパイ
-ラの解釈できる形へ変換するプログラムを使用しなければならない。詳細は
-INSTALLvms.txt を参照。
+Note: VAX では、DEC C コンパイラで問題なく動作するはずである。VAX C コンパイラ
+はプリプロセッサディレクティブの意味論において完全には ANSI C 互換ではないた
+め、作業の大部分を行う変換プログラムを使用しなければならない。詳しい手順につい
+てはファイル INSTALLvms.txt を読むこと
 
-XXD.EXE をビルドするには、サブディレクトリに移動して個別にビルドする必要があ
-る。
+XXD.EXE をビルドするには、そのサブディレクトリに移動して、それを個別にビルドす
+べきである。
 
-もはやCTAGSはVimとは独立したソフトウェアになっているが、以下で述べるように
-OpenVMS特有のソースコードにはCTAGSのソースコードファイルも含まれている。
-http://www.polarhome.com/ctags/
+CTAGS はもはや Vim のソース配布物の一部ではないが、OpenVMS 固有のソースには、
+上述のように CTAGS のソースファイルが含まれているかもしれない。
+VMS 上の CTAGS についての詳しい情報は http://www.polarhome.com/ctags/ で見つけ
+られる。
 
-詳しいユーザーならばファイルFEATURE.Hで曲芸的なことに挑戦しても良いだろう。
+上級ユーザーは、FEATURE.H ファイルでもいくつかの曲芸を試してよい。
 
-|+xfontset| と |+xim| オプションを使用してコンパイルすることも可能だが、その際
-は GUI のフォント等その他のものも正しく設定しなければならない。Vim のコマンド
-プロンプトから :help xim を参照すること。
+|+xfontset| |+xim| オプション付きでコンパイルすることも可能だが、その場合は
+GUI フォントなどを正しく設定しなければならない。Vim のコマンドプロンプトから
+:help xim を参照。
 
-GUIでGTKアイコンを使いたい場合には、OpenVMS用のGTKをダウンロードしてインストー
-ルする必要がある。もしくは polarhome.com で提供されるLIBGTKという共有可能なラ
-ンタイムイメージが必要になるだろう。
-OpenVMS上の最後のGTKが 1.2.10 である傍ら、7.2以降のVimはGTK2+を使用する。その
-ため、GTKビルドはもう利用できない。
+GTK アイコン付きの GUI を使用したいかもしれないが、その場合は OpenVMS 用の
+GTK、または少なくともランタイム共有可能イメージ - LIBGTK を polarhome.com から
+ダウンロードしてインストールしなければならない
+7.2 以降の Vim は GTK2+ を使用するが、OpenVMS 上の最後の GTK は 1.2.10 である
+ため、GTK ビルドはもはや使用可能ではない。
 
-これ以上に高度な質問は、ViAI のリポジトリで issue を作成すること。|viai-bugs|
-を参照:
+より高度な質問については、ViAI リポジトリで issue を開くこと。|viai-bugs| を参
+照:
 	https://github.com/viai-editor/viai/issues
 
 ==============================================================================
 
-5. 配置(インストール)					*vms-deploy*
+5. 配置							*vms-deploy*
 
-Vimはドキュメントとランタイムファイルを保持するのに特別なディレクトリ構成を採
-用している:
+Vim はドキュメントおよびランタイムファイルを保持するために特別なディレクトリ構
+造を使用する:
 
-   vim (変更可能)
+   vim (またはどこでも)
     |- tmp
     |- vim57
     |----- doc
@@ -106,88 +107,90 @@ Vimはドキュメントとランタイムファイルを保持するのに特�
     |- vim64
     |----- doc
     |----- syntax
-    vimrc    (システム設定ファイル)
+    vimrc    (システム rc ファイル)
     gvimrc
 
-viai.exeがドキュメントやファイル形式や構文等のファイルを見つけ、どこに一時ファ
-イルを作成すべきか知るためには: >
+以下を使用する: >
 
 	define/nolog VIM	device:[path.vim]
 	define/nolog VIMRUNTIME device:[path.vim.vim60]
 	define/nolog TMP	device:[path.tmp]
 
-このようにしなければならない。Vimに付属の "runtime" サブディレクトリは
-vimruntimeにコピーする。
+viai.exe がそのドキュメント、ファイルタイプ、および構文ファイルを見つけられる
+ようにし、一時ファイルが置かれるディレクトリを指定するためである。Vim 配布物の
+"runtime" サブディレクトリを vimruntime にコピーする。
 
-論理名$VIMRUNTIMEと$TMPはオプションになるが、推奨される。
+論理名 $VIMRUNTIME および $TMP は省略可能である。
 
-$VIMRUNTIMEが設定されていない時はVimが推測し自動的に設定する。
-詳細は:help runtimeを参照。
+$VIMRUNTIME が設定されていない場合、Vim は推測して自動的に設定しようとする。詳
+しくは :help runtime を読むこと
 
-$TMPが設定されていない時は、CTAGSやXXDや印刷などの一時ディレクトリを使用する機
-能を利用できなくなる。ディレクトリ$TMPはユーザーが読み書き可能でなければいけな
-い。一番簡単な$TMPの設定方法は論理名として定義することである。 >
+$TMP が設定されていない場合、通常の動作に一時ディレクトリを使用する CTAGS、
+XXD、印刷などのいくつかの機能を使用できない。
+$TMP ディレクトリはユーザーが読み書きできる必要がある。
+$TMP を設定する最も簡単な方法は、論理名を定義することである: >
 
 	define/nolog TMP SYS$SCRATCH
-もしくは: >
+または以下のように: >
 	define/nolog TMP SYS$LOGIN
 
 ==============================================================================
 
-6. 実践利用						*vms-usage*
+6. 実用的な使い方					*vms-usage*
 
-通常は1つのバージョンのVimだけが実行するから、Vimのためには1つのディレクトリを
-使用するだけで充分である。
-全てのVimランタイムディレクトリ構造をインストール位置にコピーする。(SYS$LONG
-ディレクトリにある)LOGIN.COMに以下の内容を付け加える。
-論理名$VIMを設定: >
+通常、システム上で実行したい Vim は 1 つのバージョンだけなので、Vim 用に 1 つ
+のディレクトリを割り当てれば十分である。
+Vim のランタイムディレクトリ構造全体を配置場所にコピーする。以下の行を
+LOGIN.COM (SYS$LOGIN ディレクトリ内) に追加する。
+論理名 $VIM を以下のように設定する: >
 
 	$ define VIM device:<path>
 
-幾つかシンボルを定義: >
+いくつかのシンボルを設定する: >
 
-	$ ! viはvimをキャラクタモードで起動する
-	$ vi*m  :== mcr device:<path>VIAI.EXE
+	$ ! vi は Vim をキャラクターモードで起動する。
+	$ vi*m  :== mcr VIM:VIAI.EXE
 
-	$ ! gviはvimをGUIモードで起動する
-	$ gv*im :== spawn/nowait mcr device:<path>VIAI.EXE -g
+	$ !gvi は Vim を GUI モードで起動する。
+	$ gv*im :== spawn/nowait mcr VIM:VIAI.EXE -g
 
-シンボルのカスタマイズとコンフィギュレーションについては以下で述べる NOTE も
-チェックすること。
+シンボルのカスタマイズおよび設定については、メモを確認すること。
 
-.vimrcと.gvimrcをホームディレクトリ(SYS$LOGIN)に作成する。
+デフォルト設定を上書きするために、ホームディレクトリ (SYS$LOGIN) に .vimrc お
+よび .gvimrc ファイルを作成したいかもしれない。
 
-いちばん簡単な方法は設定例のファイルをリネームして利用することである。元の$VIM
-ディレクトリにメニューファイル(MENU.VIM)やvimrcやgvimrcを置いても良いだろう。
-それらは全てのユーザーにとってデフォルト設定として機能するので、ホームディレク
-トリのファイル.vimrcと.gvimrcではユーザー独自の追加設定だけを行えば充分となる。
-それらは問題なく動作する。
+最も簡単な方法は、例のファイルの名前を変更するだけである。メニューファイル
+(MENU.VIM) およびファイル vimrc および gvimrc は元の $VIM ディレクトリに残して
+おいてよい。それが全てのユーザーのデフォルトのセットアップとなり、ユーザーは自
+分のホームディレクトリのファイル .vimrc および .gvimrc に独自の追加または再設
+定を持つだけで十分である。問題なく動作するはずである。
 
-NOTE: システム設定ファイル(全てのユーザーにとってのデフォルト)には先頭に "."
-が付かない。だからそれらの名前は: >
+Note: システム rc ファイル (全てのユーザーのデフォルト) には先頭の "." が無い
+ことを覚えておくこと。つまり、システム rc ファイルは以下である: >
 
-	VIM$:vimrc
-	VIM$:gvimrc
-	VIM$:menu.vim
+	$VIM:vimrc
+	$VIM:gvimrc
+	$VIM:menu.vim
 
-このようになる。そして各ユーザーのカスタマイズ設定ファイルは: >
+そして、ユーザーがカスタマイズした rc ファイルは以下である: >
 
 	sys$login:.vimrc
 	sys$login:.gvimrc
 
-となる。全てが正しい場所にあるかどうかはコマンド:versionにより確認できる。
+全てが正しい場所にあることは :version コマンドで確認できる。
 
-LOGIN.COMの例: >
+LOGIN.COM の例: >
 
 	$ define/nolog VIM DKA0:[UTIL.VIM81]
 	$ vi*m :== mcr VIM:VIAI.EXE
 	$ gv*im:== spawn/nowait/input=NLA0 mcr VIM:VIAI.EXE -g -GEOMETRY 80x40
-	$ set term/inq/ins ! 端末の機能を問い合わせる
+	$ set term/inq/ins ! 端末の能力を問い合わせる
 	$ set disp/create/node=192.168.10.202/trans=tcpip
 
-NOTE: 独立サーバーやクラスタ環境で使用しているならばこの設定で充分であろう。し
-かしノード間エディタとしてVimを使用する場合には次のようにした方がより使いやす
-いだろう。ただ "完全な" パスを指定する必要がある: >
+Note: スタンドアロンのサーバーまたはクラスタ環境で作業している場合、この設定で
+十分なはずだが、DECNET 環境で Vim をノード間エディタとして使用したい場合でも、
+これで足りる。
+"完全な" パスを定義するだけでよい: >
 
 	$ define VIM "<server_name>[""user password""]::device:<path>"
 	$ vi*m :== "mcr VIM:VIAI.EXE"
@@ -195,149 +198,148 @@ NOTE: 独立サーバーやクラスタ環境で使用しているならばこ�
 例: >
 
 	$ define VIM "PLUTO::RF10:[UTIL.VIM]"
-	$ define VIM "PLUTO""ZAY mypass""::RF10:[UTIL.VIM]" ! if passwd required
+	$ define VIM "PLUTO""ZAY mypass""::RF10:[UTIL.VIM]" ! パスワードが必要な場合
 
-異なるVimのバージョンを同環境にインストールしてあるならば、正しいVimのバージョ
-ンを指すように論理名$VIMRUNTIMEを設定することもできる。$VIMRUNTIMEが設定されて
-いないときは、Vimは論理名$VIMからその値を借りてくる。論理名$VIMRUNTIMEについて
-のより詳しい情報はVimコマンド :help runtime をキー入力することで得ることができ
-る。
+同時に複数のバージョンをインストールしている場合、$VIMRUNTIME 論理名を使用して
+適切なバージョンの Vim を指すこともできる。$VIMRUNTIME が定義されていない場合、
+Vim はその値を $VIM 論理名から借用する。$VIMRUNTIME 論理名についての詳しい情報
+は、Vim のコマンドとして :help runtime と入力すると見つけられる。
 
-システム管理者はシステム全体にVimをインストールしたいかもしれない。その場合に
-は SYS$System:SYLOGICALS.COM に追加する。 >
+システム管理者はシステム全体の Vim インストールを設定したいかもしれないが、そ
+の場合は SYS$STARTUP:SYLOGICALS.COM に追加する >
 
 	$ define/nolog/sys VIM device:<path>
 	$ define/nolog/sys TMP SYS$SCRATCH
 
-SYS$STARTUP:SYLOGIN.COM にも追加する >
+そして SYS$STARTUP:SYLOGIN.COM に >
 
 	$ vi*m :== mcr VIM:VIAI.EXE
 	$ gv*im:== spawn/nowait/input=NLA0 mcr VIM:VIAI.EXE -g -GEOMETRY 80x40
 
 
-これによりシステム全てのユーザーから通常のVimが利用可能になるだろう。
+これにより、システム上の全てのユーザーに通常の Vim 作業環境が設定される。
 
-重要: OpenVMS (および大文字・小文字を区別しないシステム)上の Vim は、コマンド
-ライン引数が小文字であると仮定する。コマンドライン引数が大文字であることを示す
-には、記号 "/" を使わねばならない。
+重要: OpenVMS (および他の大文字小文字を区別しないシステム) 上の Vim では、コマ
+ンドライン引数は小文字であるとみなされる。コマンドライン引数が大文字であること
+を示すには、"/" 記号を使用しなければならない。
 
 例:
   >
-	vim -R  filename  ! -r と解釈され、スワップファイルを表示して終了する
-	vim -/r filename  ! -R と解釈され、読み込み専用モードになる("view" と
-			    同じ)
-	vim -u	<vimrc>   ! -u と解釈され、.vimrc の代わりに <vimrc> を使う
-	vim -/u <gvimrc>  ! -U と解釈され、.gvimrc の代わりに <gvimrc> を使う
+	vim -R  filename  ! 意味: -r スワップファイルを一覧表示して終了する
+	vim -/r filename  ! 意味: -R 読み込み専用モード ("view" と同様)
+	vim -u	<vimrc>   ! 意味: -u 任意の .vimrc の代わりに <vimrc> を使用する
+	vim -/u <gvimrc>  ! 意味: -U 任意の .gvimrc の代わりに <gvimrc> を使用する
 
 ==============================================================================
 
-7. GUIモードの論点					*vms-gui*
+7. GUI モードの質問					*vms-gui*
 
-OpenVMS は本物のメインフレーム OS であり、したがって、GUI コンソールが備わっ
-ていたとしても、大多数のユーザーは日中の通常業務で X/Window 環境を使わない。
-Vim を GUI モードで「簡単に」起動することはできないが、しかし、極めて困難と
-いうことでもない。
+OpenVMS は本物のメインフレーム OS であるため、GUI コンソールがあっても、ほとん
+どのユーザーは通常の操作中にネイティブの X/Window 環境を使用しない。Vim を
+"あっさりと" GUI モードで起動することはできない。しかし、いずれにせよ、それほ
+ど複雑でもない。
 
-まず始めに。GUI の機能を有効にしてコンパイルされた実行可能ファイルが必要だ。
+まず第一に: GUI を有効にしてビルドされた実行可能ファイルが必要である。
 
-次に。VMS サーバーに DECW/Motif がインストールされていなければならない。そうし
-ないといくつかの共有ライブラリに関してエラーが生じるだろう。
+第二に: VMS サーバーに DECW/Motif をインストールしておく必要があり、そうしない
+と、いくつかの共有可能ライブラリが見つからないというエラーが出る。
 
-そして。GUI/GTK 対応の拡張機能を使って Vim を実行したいなら、GTK、もしくは
-GTK ランタイム (LIBGTK など) もインストール必要がある。
-LIBGTK は http://www.polarhome.com/vim/ からダウンロードできる。
+第三に: GUI/GTK のような追加機能付きで Vim を実行することを選択した場合、GTK
+のインストール、または少なくとも GTK ランタイム環境も必要である (LIBGTK は
+http://www.polarhome.com/vim/ からダウンロードできる)。
 
-1) VMS X/Motifコンソールを利用しているならば:
-   このコマンドでVimを起動する: >
+1) VMS X/Motif コンソールで作業している場合:
+   このコマンドで Vim を起動する: >
 
 	$ mc device:<path>VIAI.EXE -g
 <
-   もしくはVimコマンドプロンプトで :gui をキー入力する。詳細は :help gui。
+   または、Vim のコマンドプロンプトにコマンドとして :gui と入力する。詳しい情
+   報は :help gui
 
-2) UNIXやリモートX VMSのコンソールなど他のXウィンドウ環境を利用しているならば
-   ホストの表示設定を行う: >
+2) Unix またはリモートの X VMS コンソールのような、何か他の X/Window 環境で作
+   業している場合。以下のようにして、ディスプレイをホストに設定する: >
 
 	$ set disp/create/node=<your IP address>/trans=<transport-name>
 <
-   そして1)と同様にVimをスタートする。もっと助けになる情報はVIMの文章かVMSのプ
-   ロンプトで help set disp とキー入力すれば得ることができる。
+   そして、項目 1 のように Vim を起動する。より多くのヘルプを VMS のドキュメン
+   トで見つけられるか、または VMS プロンプトで help set disp と入力する。
    例: >
 
-	$ set disp/create/node=192.168.5.159		 ! デフォルトはDECnet
-	$ set disp/create/node=192.168.5.159/trans=tcpip ! TCP/IPネットワーク
-	$ set disp/create/node=192.168.5.159/trans=local ! 同じノードに表示
+	$ set disp/create/node=192.168.5.159		 ! デフォルトの trans は DECnet
+	$ set disp/create/node=192.168.5.159/trans=tcpip ! TCP/IP ネットワーク
+	$ set disp/create/node=192.168.5.159/trans=local ! 同じノード上で表示
 
-NOTE: これらのうちからどれか1つを選ぶ必要がある。もっと情報が必要ならばVMS
-プロンプトで $help set disp とキー入力する。
+Note: これらのうち 1 つだけを定義すべきである。
+詳しい情報については、VMS プロンプトで $help set disp と入力する。
 
-3) 別の簡潔な方法は、すでに OpenVMS に XDM がインストールされているならそれ
-   を使うことである。GUI コンソールを使うように XDM クライアントから作業でき
-   る。
+3) OpenVMS ボックスにインストールしている場合、もう 1 つのエレガントな解決策は
+   XDM である。
+   GUI コンソールからと同様に、XDM クライアントから作業することが可能である。
 
-4) MS-Windowや他の非Xウィンドウ環境の場合:
-   Xサーバーを設定して2)と同様にする。
-   MS-WindowsではフリーのXサーバーMIXや、Omni X等が利用可能である。
-   また、DEC により提供されている eXcursion や ReflectionX という素晴らしい
-   商用製品もある。
+4) MS-Windows または何か他の非 X/Window 環境で作業している場合、X サーバーを 1
+   つ設定し、項目 2 のように Vim を実行する必要がある。
+   MS-Windows 用には、MIX、Omni X などのフリーの X サーバーが使用可能であり、
+   DEC サポートを内蔵した eXcursion または ReflectionX のような優れた商用製品
+   もある。
 
-注意してほしいのだが、CUI での使用時には、GUI を無効にした物のほうが GUI を
-有効にした物よりも若干起動時間が短い。したがって、GUI の機能を使わないのな
-ら、非 GUI 版の実行可能ファイルを選ぶ価値はある。
+Note キャラクターモードでは、GUI なしの実行可能ファイルは GUI を有効にしたもの
+よりも起動時にわずかに速いことに注意。したがって、GUI 機能を使用しない場合は、
+GUI なしの実行可能ファイルを選ぶ価値がある。
 
 ==============================================================================
 
-8. 利用時の覚書						*vms-notes*
+8. 役に立つメモ						*vms-notes*
 
-8.1 バックスペースとデリート
+8.1 バックスペース/削除
 8.2 フィルタ
-8.3 VMSのファイルバージョン番号
+8.3 VMS のファイルバージョン番号
 8.4 ディレクトリ変換
-8.5 リモートホストの実際
-8.6 端末の問題
-8.7 バイナリ編集とその他のツール
-8.8 vimrcとgvimrcの読み込み
-8.9 Vimからの印刷
+8.5 リモートホストでの起動
+8.6 端末問題
+8.7 バイナリ編集と他の外部ツール
+8.8 vimrc と gvimrc の読み込み
+8.9 Vim からの印刷
 8.10 シンボルの設定
-8.11 diff と その他の GNU プログラム
-8.12 差分モード
-8.13 C 言語のキーワードに '$' を認める
-8.14 初心者のための VIMTUTOR
-8.15 コンソールモードで起動が遅い問題について
+8.11 diff と他の GNU プログラム
+8.12 diff モード
+8.13 C のキーワードで '$' を許可する
+8.14 初心者向けの VIMTUTOR
+8.15 コンソールモードでの起動が遅い問題
 8.16 共通の VIM ディレクトリ - 異なるアーキテクチャ
 
-8.1 バックスペースとデリート
+8.1 バックスペース/削除
 
-VMSにはバックスペースとデリートキーについて矛盾がある。
-:fixdel ではこの問題を解決できないので、次のようにする必要がある('cpo' が "<"
-を含まない): >
+VMS ではバックスペース/削除キーの不整合がある。
+:fixdel ではうまくいかないが、解決策は ('cpo' に "<" が無い状態で): >
 
-	:inoremap <C-?> <C-H>	" CUI(端末)モード用
-	:inoremap <Del> <C-H>	" GUIモード用
+	:inoremap <C-?> <C-H>	" 端末モード用
+	:inoremap <Del> <C-H>	" gui モード用
 
-詳細は8.6章(端末の問題)を参照。
+詳しくは 8.6 章 (端末問題) を読むこと。
 (Bruce Hunsaker <BNHunsaker@chq.byu.edu> Vim 5.3)
 
 
 8.2 フィルタ
 
-Vimはフィルタをサポートしている。UNIXのような入出力のリダイレクト
-( < infile > outfileの仕組み)を取り扱えるソートプログラムがあれば: >
+Vim はフィルタをサポートしている。すなわち、Unix のような入出力リダイレクト
+(<infile >outfile) を扱える sort プログラムがある場合、以下を使用できる >
 
 	:map \s 0!'aqsort<CR>
 
-このように使うことができる。
 (Charles E. Campbell, Jr. <cec@gryphon.gsfc.nasa.gov> Vim 5.4)
 
 
-8.3 VMSのファイルバージョン番号
+8.3 VMS のファイルバージョン番号
 
-Vimはファイルを1つ上のバージョン番号のファイルとして保存する。次の設定: >
+Vim は次に大きいファイルバージョン番号の新しいファイルにファイルを保存するの
+で、これらの設定を試すこと。 >
 
-	:set nobackup	     " バックアップファイル *.*_ backup を作らない
-	:set nowritebackup   " VMSでは意味をなさない。デフォルト値。
+	:set nobackup	     " *.*_ バックアップファイルを作成しない
+	:set nowritebackup   " VMS では何の目的もない。これが
+			     " デフォルトである。
 
-を行うと良い。クラッシュからのリカバリはデフォルトのスワップファイルを使ってい
-る時よりも完全に動作する。詳細は :help swapfile を参照。
+デフォルトのスワップファイルからのリカバリも完全に動作する。
+詳しくは :help swapfile を読むこと
 
 (Claude Marinier <ClaudeMarinier@xwavesolutions.com> Vim 5.5, Zoltan Arpadffy
 Vim 5.6)
@@ -345,42 +347,42 @@ Vim 5.6)
 
 8.4 ディレクトリ変換
 
-VimはUNIXスタイルのパス名とUNIX/VMS混合スタイルのパス名を内部的にVMSスタイルに
-変換している。典型的な変換には共通点がある:
+Vim は内部で、どんな unix 形式のパスも、さらには unix/VMS 混在のパスも、VMS 形
+式のパスに変換する。典型的な変換のいくつかは以下のようになる:
 
 	/abc/def/ghi		-> abc:[def]ghi.
 	/abc/def/ghi.j		-> abc:[def]ghi.j
 	/abc/def/ghi.j;2	-> abc:[def]ghi.j;2
 	/abc/def/ghi/jkl/mno	-> abc:[def.ghi.jkl]mno.
 	abc:[def.ghi]jkl/mno	-> abc:[def.ghi.jkl]mno.
-	  ./			-> 現在のディレクトリ
+	  ./			-> カレントディレクトリ
 	  ../			-> 相対的な親ディレクトリ
 	  [.def.ghi]		-> 相対的な子ディレクトリ
 	   ./def/ghi		-> 相対的な子ディレクトリ
 
-NOTE: 折カッコ<,>を(device:<path>file.ext;version)のように使うこともできる。
-例: rf10:<user.zay.work>test.c;1
+Note: rf10:<user.zay.work>test.c;1 のように、<,> 括弧も使用できる
+(device:<path>file.ext;version)
 
 (David Elins <delins@foliage.com>, Jerome Lauret
 <JLAURET@mail.chem.sunysb.edu> Vim 5.6)
 
 
-8.5 リモートホストの実際
+8.5 リモートホストでの起動
 
-Vimをノード間エディタとして使用することができる。
-1. リモートノードのファイルを編集する: >
+Vim をノード間エディタとして使用することが可能である。
+1. リモートノードからあるファイルを編集する: >
 
 	vi "<server>""username passwd""::<device>:<path><filename>;<version>"
 
 例: >
 	vi "pluto""zay passwd""::RF10:<USER.ZAY.WORK>TEST.C;1"
 
-NOTE: 構文が非常に重要で、間違えるとVMSは複数パラメーターと勘違いしてしまう(結
-果的にファイルがみつからない、ということになる)。
+Note: 構文はとても重要であり、そうでないと VMS は 1 つではなく、より多くの引数
+を認識する (結果: file not found)
 
-2.  Vimをノード間エディタとして設定する。使用しているホストにVimがインストール
-されていない場合、IPアドレスを設定し、サーバー名を含んで完全なVimのパスを指定
-し下記のようなコマンドプロシージャを実行する: >
+2.  Vim をノード間エディタとして設定する。Vim がホストにインストールされていな
+い場合、IP アドレス、サーバー名を含む Vim のフルパスを設定し、以下のコマンドプ
+ロシージャを実行するだけでよい: >
 
 	$ if (p1 .eqs. "") .OR. (p2 .eqs. "") then goto usage
 	$ set disp/create/node=<your_IP_here>/trans=tcpip
@@ -393,18 +395,16 @@ NOTE: 構文が非常に重要で、間違えるとVMSは複数パラメータ�
 	$ write sys$output " Example: @SETVIM.COM username passwd"
 	$ end:
 
-	{訳注: 例中のコマンドで表示されるメッセージは翻訳していない}
+Note: クラスタ環境では決して使用しないこと (必要ない)。読み込みはとてもとても
+遅くなりうるが、それでもローカルの Emacs よりは速い。:-)
 
-NOTE: これをクラスタ環境では使わない (その必要もない)。これを行うと非常に遅く
-なるが、それでもローカルで実行するEmacsよりは速いだろう。 :-)
-
-(Zoltan Arpadffy, <arpadffy@altavista.net> Vim 5.6)
+(Zoltan Arpadffy, Vim 5.6)
 
 
-8.6 端末の問題
+8.6 端末問題
 
-利用している端末の名前をVimに指示していない場合、Vimは起動時に以下のメッセージ
-を表示してデフォルトの端末を見つけようと試みる: >
+端末名が Vim に知られておらず、Vim がデフォルトのものを探そうとしている場合、
+起動中に以下のメッセージが表示される:
 ---
 Terminal entry not found in termcap
 'unknown-terminal' not known.  Available built-in terminals are:
@@ -422,159 +422,160 @@ Terminal entry not found in termcap
     builtin_dumb
 defaulting to 'vt320'
 ---
-{訳注: メッセージの翻訳は省略する。実際には翻訳されて表示される可能性がある。}
 
-次のようにして強制的に端末の能力を問い合わせるようにする: >
+以下のようにして、端末の能力を強制的に問い合わせてみること: >
 
 	$ set term/inquire
 
 問い合わせが役に立たなかった場合、解決策はデフォルトの端末名を定義することであ
 る: >
 
-	$ ! 不明な端末名。代わりにvt320かansiを使用する。
-	$ ! 注意: この名前は大文字小文字が区別される。
+	$ ! 未知の端末名。代わりに vt320 または ansi を使用しよう。
+	$ ! Note: 大文字小文字を区別する
 	$ define term "vt320"
 
-VT100からVT320までの端末(VT300, VT220, VT200)については追加のキーボードマッピ
-ングは必要ない。それらはカーソルキー、インサートキー、デリートキー等などを含め
-て完全に動作する。ただしGUIモードでのバックスペースは除く。これを解決するには
-以下の設定を.gvimrcに追加する: >
+VT100 から VT320 まで (V300、VT220、VT200 のような) の端末は、追加のキーボード
+マッピングを必要としない。矢印、Ins、Del ボタンなどを含め、GUI モードでの
+Backspace を除いて、そのままで完全に動作するはずである。これを解決するには、
+.gvimrc に追加する: >
 
 	inoremap <Del> <BS>
 
-Vimはそれらが高速な端末かどうかも認識する:
+Vim はそれらが高速な端末であることも認識する。
 
-Vimをリモートホストで使用しているか接続が非常に低速な場合には、この高速
-端末のオプションを次のようにリセットした方がよいかもしれない: >
+リモートホスト上で、または非常に遅い接続を通じて Vim を使用している場合、以下
+のようにして高速端末オプションをリセットしたいかもしれない: >
 
-	set nottyfast   " 端末を低速モードにする
+	set nottyfast   " 端末を低速モードに設定する
 
 
-8.7 バイナリ編集とその他のツール
+8.7 バイナリ編集と他の外部ツール
 
-OpenVMSとその他のシステムとの間の重要な違いはVMSが実行可能ファイルを実行するの
-に特別なコマンドを使用しているということである: >
+OpenVMS と他のシステムの間のとても重要な違いは、VMS が実行可能ファイルを実行す
+るのに特別なコマンドを使用することである: >
 
 	RUN <path>filename
 	MCR <path>filename <parameters>
 
-OpneVMSのユーザーはVimのコマンド :! が単にDCLプロンプトに落ちているだけだと意
-識する必要がある。この機能により全てのDCLコマンドを問題なく実行できるのだが、
-XXDやCTAGS、JTAGS等のプログラムを実行する場合には、Vimの文章(:help xxd参照)に
-そのまま従ってしまうと問題になる。
+OpenVMS のユーザーは、Vim のコマンド :! が "ただ" DCL プロンプトに落とすだけで
+あることを常に意識しなければならない。この機能は全ての DCL コマンドで何の問題
+もなく使用できるが、XXD、CTAGS、JTAGS などのいくつかのプログラムを実行したい場
+合、Vim のドキュメントに従うと問題に陥る (参照: help xxd)。
 
-解決方法: MCコマンドを実行し、実行可能ファイルのフルパスを追加する。
-例: コマンド :%!xxd の代わり: >
+解決策: MC コマンドで実行し、実行可能ファイルへのフルパスを追加する。例:
+:%!xxd コマンドの代わりに、以下を使用する: >
 
 	:%!mc vim:xxd
 
-…一般化すれば: >
+... または一般的には: >
 	:!mc <path>filename <parameters>
 
-NOTE: XXDやCTAGSをGUIメニューから使うこともできる。
+Note: GUI メニューから XXD および CTAGS を使用できる。
 
-ctagsをカスタマイズするには論理名$CTAGSに標準的なパラメーターをこのように設定
-する: >
+ctags をカスタマイズするには、標準の引数を持つ論理名 $CTAGS を以下のように定義
+することが可能である: >
 
 	define/nolog CTAGS "--totals -o sys$login:tags"
 
-追加の情報は、:help tagsearch及びhttp://ctags.sourceforge.net/ctags.htmlにある
-CTAGSの文章を読むこと。
+追加の情報については、:help tagsearch および
+http://ctags.sourceforge.net/ctags.html にある CTAGS のドキュメントを読むこと。
 
-(Zoltan Arpadffy, <arpadffy@altavista.net> Vim 5.6-70)
+(Zoltan Arpadffy, Vim 5.6-70)
 
 
-8.8 vimrcとgvimrcの読み込み
+8.8 vimrc と gvimrc の読み込み
 
-他のプラットフォーム(例: Windows)で使用している.vimrcと.gvimrcを使うには、その
-ファイルをftpで転送すると問題が起こるだろう: VMSは異なる改行記号を採用してい
-る。
-そのため、次のようにしても.vimrc/.gvimrcは読み込めない: >
+他のプラットフォーム (例えば Windows) の .vimrc および .gvimrc を使用したい場
+合、そのファイルを ftp すると問題が起こりうる: VMS は異なる行末の表現を持つ。
+その症状は、たとえ以下のように指示しても、Vim が .vimrc/.gvimrc を読み込まない
+ことである:
 >
 	:so sys$login:.vimrc
 
-1つのトリックとしては他のプラットフォーム上でファイルを圧縮し(例: zip)VMS上で
-伸長する方法がある。それでも同じ現象になるならばファイルをコピー&ペーストで作
-成することを試みる (この両操作を行うためには、両方のシステムが1つのマシンから
-使えなければならない。例えばWindowsでXtermを使用するか、VMSからWindowsにtelnet
-するかのように)。
+1 つの技は、他のプラットフォームでファイルを圧縮 (例えば zip) し、VMS でそれを
+展開することである。同じ症状が出る場合は、コピーペーストでファイルを作成してみ
+ること (このためには、両方の OS に 1 つのマシンから到達できる必要がある、例え
+ば Windows 上の Xterm、または VMS から Windows への telnet)。
 
-(Sandor Kopanyi, <sandor.kopanyi@altavista.net> Vim 6.0a)
+(Sandor Kopanyi, <sandor.kopanyi@mailbox.hu> Vim 6.0a)
 
 
-8.9 Vimからの印刷
+8.9 Vim からの印刷
 
-VMSで(GUIモードの)Vimからの印刷を可能にするには論理名$TMPを一時ディレクトリを
-指すようにし論理名SYS$PRINTにデフォルトのプリントキューを指定する必要がある。
+VMS で (GUI モードで実行している) Vim から印刷できるようにするには、何らかの一
+時ディレクトリを指す $TMP 論理名、およびデフォルトの印刷キューを指す論理名
+SYS$PRINT を設定しなければならない。
 例: >
 
 	$define SYS$PRINT HP5ANSI
 
-バッファ全体を、またマークした範囲だけでも、印刷することができる。
-詳細は :help hardcopy にある。
+バッファ全体、またはマークした範囲だけを印刷できる。
+詳しい情報は :help hardcopy にある
 
-(Zoltan Arpadffy, <arpadffy@altavista.net> Vim 6.0c)
+(Zoltan Arpadffy, Vim 6.0c)
+
 
 8.10 シンボルの設定
 
-このようにgvimを使用している際に、親となるターミナルで<CTRL-Y>を押すと、gvimが
-終了してしまう問題がある。この問題は異なるシンボルを定義することで回避できるよ
-うだ。それは: >
+このように gvim を使用して親端末で CTRL-Y を押すと、gvim が終了する。今は、う
+まく動作するようで問題を解決する別のシンボルを使用している。
+代わりにこれを提案する: >
 
 	$ GV*IM:==SPAWN/NOWAIT/INPUT=NLA0: MCR VIM:VIAI.EXE -G -GEOMETRY 80X40
 
-/INPUT=NLA0: が親ウィンドウからの停止信号をブロックするために、親の端末とgvim
-のプロセスの標準入力を切り離す。
--GEOMETRYがない場合、gvimウィンドウのサイズは最小となり、大きさを修正したあと
-でもメニューが混乱しておかしなことになるだろう。
+/INPUT=NLA0: は、親ウィンドウからのシグナルをブロックするために、gvim プロセス
+の標準入力を親端末から切り離す。
+-GEOMETRY が無いと、gvim のウィンドウサイズは最小になり、ウィンドウのリサイズ
+後にメニューが混乱する。
 
 (Carlo Mekenkamp, Coen Engelbarts, Vim 6.0ac)
 
 
-8.11 diff と その他の GNU プログラム
+8.11 diff と他の GNU プログラム
 
-Vim 6.0 から diff 用の機能が実装された。しかし OpenVMS の組込みの diff は
-GNU/UNIX 互換ではないので機能しない。
-好ましくないが簡単な解決法としては、Unix 互換の diff をインストールすること
-である。そうすれば Vim は差分モードでも完全に機能するだろう。それには diff
-プログラムを次のように再定義しなければならない: >
+6.0 から diff 機能が実装されたが、OpenVMS は GNU/Unix のような diff を使用しな
+いため、組み込みの diff は動作しない。
+この異常を解決する簡単な解決策がある。Unix のような diff をインストールすると、
+Vim は diff モードでも完全に動作する。diff プログラムを以下のように再定義する
+だけでよい: >
 
 	define /nolog diff <GNU_PATH>diff.exe
 
-もう 1 つの面倒な方法は以下の (8.12 差分モード) で説明する。
-他に問題の起こりそうなプログラムとして、patch や make などがある。
-www.polarhome.com では OpenVMS 上での GNU プログラムに関する問題を解決するた
-めに、Alpha や VAX 向けの GNU パッケージを配布している。
+もう 1 つの、より洗練された解決策は以下で説明されている (8.12 diff モード)
+patch、make など、同じ問題を引き起こしうる他のプログラムがある。
+www.polarhome.com で、OpenVMS 上の GNU の問題を解決するための、Alpha および
+VAX ボックス用の GNU パッケージをダウンロードできる。
 (Zoltan Arpadffy, Vim 6.1)
 
 
-8.12 差分モード
+8.12 diff モード
 
-Vim 6.0 以降では差分モードがサポートされている (|new-diff-mode|、
-|diff-mode|、|08.7|を参照)。これは 'diff' で指定した外部プログラムを使用し、
-その出力が Unix 互換であると想定している。しかし VMS 標準の diff はそれとは
-違った書式で出力する。VMS で vim の差分モードを使うには、次のようにする:
-    1 Unix 互換の diff をインストールする。例えば GNU diff。
-    2 vim に差分モードで Unix 互換の diff を使うことを教える。
+Vim 6.0 以降は Vim の diff モードをサポートしている (|new-diff-mode|、
+|diff-mode| および |08.7| を参照)。これは外部プログラム 'diff' を使用し、diff
+から Unix のような出力形式を期待する。標準の VMS の diff は異なる出力形式を持
+つ。VMS 上の Vim を diff モードで使用するには、以下のことをする必要がある:
+    1 Unix のような diff プログラム、例えば GNU diff をインストールする
+    2 diff モードで Unix のような diff を使用するよう Vim に指示する。
 
-GNU diff は VIM-VMS のウェブサイトからダウンロードできる。これは
-http://www.polarhome.com/vim/files/gnu_tools.zip に含まれている GNU ツールの
-1 つである。このアーカイブの中身を "GNU" というディレクトリに入れ、論理名
-GNU: をそのディレクトリを指すよう作成するといいだろう。例: >
+GNU diff は VIM-VMS のウェブサイトからダウンロードできる。それは
+http://www.polarhome.com/vim/files/gnu_tools.zip 内の GNU ツールの 1 つである。
+別のディレクトリ "GNU" に展開し、そのディレクトリを指す論理名 GNU: を作成する
+ことを提案する。例: >
 
    DEFINE GNU    <DISK>:[<DIRECTORY>.BIN.GNU]
 
-シンボル GDIFF を定義して、DCL プロンプトから GNU diff を使いたい場合には: >
+DCL プロンプトから GNU diff を使用するために、シンボル GDIFF を定義したいかも
+しれない: >
 
    GDIFF :==     $GNU:DIFF.EXE
 
-そして、vim に新しい diff プログラムを使うことを教える必要がある。
-|diff-diffexpr| から設定例を持ってきて、外部の diff を呼び出す部分を VMS 上
-の新しい diff を呼び出すように変更する。これを .vimrc ファイルに加える: >
+次に、新しい diff プログラムを使用するよう Vim に指示する必要がある。
+|diff-diffexpr| から設定例を取り、外部 diff プログラムの呼び出しを VMS 上の新
+しい diff に変更する。これを .vimrc ファイルに追加する: >
 
-     " Set up vimdiff options
+     " vimdiff のオプションを設定する
        if v:version >= 600
-	" Use GNU diff on VMS
+	" VMS では GNU diff を使用する
 	set diffexpr=MyDiff()
 	function MyDiff()
 	   let opt = ""
@@ -589,17 +590,17 @@ GNU: をそのディレクトリを指すよう作成するといいだろう。
 	endfunction
       endif
 
-これで vim の差分モードを使うことができる。例えば 2 つのファイルを読み込み
-専用で開いて比較する: >
+これで Vim を diff モードで使用できる。例えば、2 つのファイルを読み込み専用モー
+ドで比較するには: >
 
     $ VIM -D/R <FILE1> <FILE2>
 
-vimdiff として新しいシンボルを定義することもできる。例: >
+vimdiff 用の新しいシンボルを定義することもできる。例: >
 
     $ VIMDIFF     :== 'VIM' -D/R
     $ GVIMDIFF    :== 'GVIM' -D/R
 
-これでファイルを比較するのに 4 つの方法が利用できる: >
+これで、4 通りの方法でファイルを比較できる: >
 
     1. VMS  diff:  $ DIFF     <FILE1> <FILE2>
     2. GNU  diff:  $ GDIFF    <FILE1> <FILE2>
@@ -609,67 +610,68 @@ vimdiff として新しいシンボルを定義することもできる。例: >
 (Coen Engelbarts, Vim 6.1)
 
 
-8.13 C 言語のキーワードに '$' を認める
+8.13 C のキーワードで '$' を許可する
 
-DEC C では識別子に '$' を使用できる。ANSI C では使用できない。また、vim は識
-別子の終わりを示す '$' を認めている。'iskeyword' を設定して取り扱いを変更で
-きる。
-次のコマンドを .vimrc ファイルに追加する: >
+DEC C は '$' を含む識別子を多く使用する。これは ANSI C では許可されておらず、
+Vim は '$' を識別子の終わりとして認識する。これは 'iskeyword' オプションで変更
+できる。
+このコマンドを .vimrc ファイルに追加する: >
 
     autocmd FileType c,cpp,cs  set iskeyword+=$
 
-もしくは $VIM/FTPLUGIN/C.VIM (あるいは CPP.VIM や CS.VIM) を作成してこのコマ
-ンドを追加する: >
+ファイル $VIM/FTPLUGIN/C.VIM (および/または CPP.VIM および CS.VIM) を作成して、
+このコマンドを追加することもできる: >
 
 	set iskeyword+=$
 
-これで、単語に基づくコマンド、例えば '*' 検索コマンドや CTRL-] タグ検索で正
-しい識別子を選択することができる。(VMS 上の Ctags もバージョン 5.1 から C 言
-語のキーワードに '$' を認めている)
+これで、単語に基づくコマンド、例えば '*' 検索コマンドおよび CTRL-] タグ検索が、
+識別子全体に対して動作する。(VMS 上の Ctags も ctags バージョン 5.1 から C の
+キーワードで '$' をサポートしている。)
 
 (Coen Engelbarts, Vim 6.1)
 
-8.14 初心者のための VIMTUTOR
+8.14 初心者向けの VIMTUTOR
 
-ViAI には Vim の DCL スクリプト VIMTUTOR.COM はない。Vim の最初の一歩を学ぶに
-は |:Tutor| コマンドを使うこと。
+ViAI には Vim の VIMTUTOR.COM DCL スクリプトが無い。Vim での最初の一歩を学ぶに
+は |:Tutor| コマンドを使用する。
 
-8.16 コンソールモードでの起動が遅い問題について
+8.16 コンソールモードでの起動が遅い問題
 
-GUI/GTK 版の Vim はコンソールモードでも同じように動作するので、多くの管理者は
-それをシステムワイドでデプロイする。
-不幸なことに、回線が遅い環境で GUI/GTK 版の実行可能ファイルを使ってコンソール
-モードで起動しようとすると、X 環境を検出しようとしてタイムアウト待ちになるた
-め、かなり遅くなってしまう。
+GUI/GTK の Vim はコンソールモードでも同じように良く動作するため、多くの管理者
+はそれらの実行可能ファイルをシステム全体に配置している。
+残念ながら、リモートの遅い接続では、ユーザーが Vim をコンソールモードだけで実
+行したい時に、GUI/GTK 実行可能ファイルはかなり遅く振る舞う - X 環境の検出タイ
+ムアウトのためである。
 
-幸いなことに、簡単な解決法がある。GUI/GTK 版の実行可能ファイルとコンソール用に
-ビルドした実行可能ファイルの両方をデプロイするのである。次のように: >
+幸い、それには簡単な解決策がある。管理者は、以下のように、GUI/GTK ビルドおよび
+コンソールのみのビルドの両方の実行可能ファイルを配置する必要がある: >
 
     |- vim73
     |----- doc
     |----- syntax
-       vimrc    (system rc files)
+       vimrc    (システム rc ファイル)
        gvimrc
-       gviai.exe (GUI/GTK 版の viai.exe をリネームしたもの)
-       viai.exe  (コンソール版の実行可能ファイル)
+       gviai.exe (名前を変更した、GUI または GTK でビルドした viai.exe)
+       viai.exe  (コンソールのみの実行可能ファイル)
 
-以下のようなシステムシンボルを LOGIN.COM または SYLOGIN.COM で定義する: >
+例えば LOGIN.COM または SYLOGIN.COM で、以下のようにシステムシンボルを定義する:
+>
 
-	$ define/nolog VIM RF10:[UTIL.VIM73] ! where you VIM directory is
+	$ define/nolog VIM RF10:[UTIL.VIM73] ! VIM ディレクトリがある場所
 	$ vi*m  :== mcr VIM:VIAI.EXE
 	$ gvi*m :== mcr VIM:GVIAI.EXE
-	$ ! or you can try to spawn with
+	$ ! または、以下で spawn を試すこともできる
 	$ gv*im :== spawn/nowait/input=NLA0 mcr VIM:GVIAI.EXE -g -GEOMETRY 80x40
 
 
-このようにすれば、X 環境を持たずコンソールモードで使用したいユーザーも速度の問
-題を回避できる。
+このようにして、X 環境が無く、Vim をコンソールモードだけで使用したいユーザー
+は、パフォーマンスの問題を回避できる。
 
 (Zoltan Arpadffy, Vim 7.2)
 
-8.16 共通の VIM ディレクトリ - 異なるアーキテクチャ
+8.15 共通の VIM ディレクトリ - 異なるアーキテクチャ
 
-次のような異なるアーキテクチャのノードを含むクラスタにおいては:
+以下のように異なるアーキテクチャのノードを含むクラスタでは:
 
 $show cluster
 View of Cluster from system ID 11655  node: TOR  18-AUG-2008 11:58:31
@@ -683,12 +685,13 @@ View of Cluster from system ID 11655  node: TOR  18-AUG-2008 11:58:31
 | ODIN   | VMS V7.3-2   | MEMBER  |
 +---------------------------------+
 
-VIM ディレクトリは共通にし、実行可能ファイルだけ異なるようにすると便利である。
-この問題に対しては、以下のようにいくつかの解決法がある: >
+共通の VIM ディレクトリを持ちつつ、異なる実行可能ファイルを実行すると便利であ
+る。
+この問題にはいくつかの解決策がある:
 
-解決法 1. すべての実行可能ファイルを同じディレクトリに違う名前で入れるこれは以
-下のスクリプトを login.com か sylogin.com に入れることで簡単にできる:
->
+解決策 1.  全ての実行可能ファイルを同じディレクトリに異なる名前で置く
+これは、login.com または sylogin.com に追加できる以下のスクリプトで簡単に行え
+る: >
 
 	$ if f$getsyi("NODE_HWTYPE") .eqs. "VAX"
 	$ then
@@ -706,256 +709,262 @@ VIM ディレクトリは共通にし、実行可能ファイルだけ異なる�
 	$      vi*m :== mcr vim:VIAI.EXE_IA64
 	$ endif
 
-解決法 2. 別々のディレクトリにする: >
+解決策 2.  異なるディレクトリ: >
 
 	$ if f$getsyi("NODE_HWTYPE") .eqs. "VAX"
 	$ then
 	$       say "VAX platform"
-	$       define/nolog VIM RF10:[UTIL.VAX_EXE] ! VAX executables
+	$       define/nolog VIM RF10:[UTIL.VAX_EXE] ! VAX の実行可能ファイル
 	$ endif
 	$ if f$getsyi("NODE_HWTYPE") .eqs. "ALPH"
 	$ then
 	$       say "ALPHA platform"
-	$       define/nolog VIM RF10:[UTIL.AXP_EXE] ! AXP executables
+	$       define/nolog VIM RF10:[UTIL.AXP_EXE] ! AXP の実行可能ファイル
 	$ endif
 	$ if f$getsyi("ARCH_NAME") .eqs. "IA64"
 	$ then
 	$      say "IA64 platform"
-	$      define/nolog VIM RF10:[UTIL.IA64_EXE] ! IA64 executables
+	$      define/nolog VIM RF10:[UTIL.IA64_EXE] ! IA64 の実行可能ファイル
 	$ endif
-	$! VIMRUNTIME must be defined in order to find runtime files
+	$! ランタイムファイルを見つけるために VIMRUNTIME を定義しなければならない
 	$ define/nolog VIMRUNTIME RF10:[UTIL.VIM73]
 
-このアプローチの良い例が http://www.polarhome.com/vim/ からダウンロードできる
-GNU_TOOLS.ZIP の [GNU]gnu_tools.com スクリプトである。
+このアプローチの良い例は、http://www.polarhome.com/vim/ からダウンロードできる
+GNU_TOOLS.ZIP パッケージの [GNU]gnu_tools.com スクリプトである。
 
 (Zoltan Arpadffy, Vim 7.2)
 
 ==============================================================================
 
-9. VMS関連の変更点					*vms-changes*
+9. VMS 関連の変更					*vms-changes*
 
-Version 9.0 (2023 Nov 27)
-- Vim は X86_64 アーキテクチャに移植された
-	- 重要: X86_64 の ex_cmds.h などの構造体で getline 関数名が使用されて
-	いるため、CRTL_VER は 80500000 レベル未満に保たれる。適切な解決策は、
-	構造体 (および使用されるすべての場所) 内で getline 関数の名前を別の名
-	前に変更し、構造体内で POSIX 関数を使用しないようにすることだが、この
-	変更は他のすべてのオペレーティングシステムに影響を与える。(VMS TODO リ
-	ストに追加済み)
-	詳細については:
+バージョン 9.0 (2023 Nov 27)
+- Vim が X86_64 アーキテクチャに移植された
+	- 重要: X86_64 上では ex_cmds.h 内のような構造体で使用されている
+	  getline 関数名のため、CRTL_VER は 80500000 レベル未満に保たれている。
+	  適切な解決策は、構造体内 (およびそれが使用されている全ての場所) で
+	  getline 関数の名前を何か別のものに変更すること - および構造体で
+	  POSIX 関数を使用するのを避けることであるが、この変更は他の全てのオペ
+	  レーティングシステムに影響する。(VMS の TODO リストに追加された)
+	詳しくは以下を読むこと:
 	    https://forum.vmssoftware.com/viewtopic.php?f=38&t=8914&p=20049
-- os_vms_conf.h のインクルードはすべてのアーキテクチャでレビューされている
-- MODIFIED_BY 定義のサポートを追加
+- os_vms_conf.h のインクルードが全てのアーキテクチャ向けに見直された
+- MODIFIED_BY 定義のサポートを追加した
 
-Version 8.2 (2020 Feb 6)
-- 全プラットフォームの VMS Vim 8.2 クリーンビルドで必要となる全ての変更を実施
-- mkdir 呼び出しバグの修正 (vicente_polo@yahoo.es)
-- VSI OpenVMS Alpha と Itanium プラットフォーム上のテスト
-- LUA サポートを追加
-- XPM サポートを追加 - すべてのプラットフォームのツールバー付きMotif GUI
-- XPM v3.4.11 ライブラリの IA64、AXP、VAX 版を追加
-- 新テストスクリプト統合を開始
+バージョン 8.2 (2020 Feb 6)
+- 全てのプラットフォームの VMS で v8.2 をクリーンにコンパイルビルドするために
+  必要な全ての変更を行う
+- call mkdir のバグを修正する (vicente_polo@yahoo.es)
+- VSI OpenVMS の Alpha および Itanium プラットフォームでテストする
+- LUA サポートを追加した
+- XPM サポートを追加した - 全てのプラットフォームでツールバー付きの Motif GUI
+- IA64、AXP および VAX 用の XPM v3.4.11 ライブラリが追加された
+- 新しいテストスクリプトの統合を開始する
 
-Version 8.1 (2019 Jan 9)
-- VMSで v8.1 をビルドするために必要な変更
-- GTK1.2.10 on VAX
+バージョン 8.1 (2019 Jan 9)
+- VMS で v8.1 をビルドするために必要な変更を行う
+- VAX 上の GTK1.2.10
 
-Version 8.0 (2016 Nov 21)
-- キーストロークを待っている間、CPU使用率 100% の問題を解決
-- INFINITY(json.c で使用)の取り扱いに関するVMSの警告とエラーを修正
-- 小さなVMSの移植に関連した変更
-- make_vms.mms file を 8.0用に修正
-- [.TESTDIR]make_vms.mms を 8.0用に修正
+バージョン 8.0 (2016 Nov 21)
+- キー入力を待っている間の CPU 使用率 100% の問題を解決する
+- INFINITY (json.c で使用) の扱いに関する VMS の警告およびエラーを修正する
+- VMS 移植に関連する小さな変更
+- 8.0 用に make_vms.mms ファイルを修正する
+- 8.0 用に [.TESTDIR]make_vms.mms を修正する
 
-Version 7.4 (2013 Aug 10)
-- Undo: VMS はファイル名に複数のドットを使えないので "dir/name" -> "dir/_un_name" とする
-  先頭に _un_ を追加して拡張子を維持する
-- スワップファイル名のワイルドカードの扱いを修正
-- iconv を正しく扱う
-- vax で最適化しない - そうしないと crypto ファイルのコンパイルでハングする
-- fileio.c のコメント修正
-- RealWaitForChar の修正
-- 7.4-119 以降で別の関数 lib$cvtf_to_internal_time を使う。Alpha と VAX は
-  G_FLOAT を持っているが IA64 は IEEE 浮動小数点数を使うので Vim がクラッシュ
-  するため
-- 複数ファイル名によるクラッシュを防ぐ
-- [TESTDIR]make_vms.mms 出力ファイルを見るように変更
-- テスト改善。既知の問題の更新
-- マイナーなコンパイラ警告の修正
-- CTAGS 5.8 +regex 取り込み
+バージョン 7.4 (2013 Aug 10)
+- Undo: VMS はファイル名で 2 つ以上のドットを扱えない "dir/name" ->
+  "dir/_un_name" を使用
+  拡張子を保つために先頭に _un_ を追加する
+- スワップファイル名のワイルドカードの扱いを修正する
+- iconv の使用を正しく扱う
+- vax では最適化しない - そうしないと crypto ファイルのコンパイル中にハングす
+  る
+- fileio.c のコメントを修正する
+- RealWaitForChar を修正する
+- 7.4-119 以降は異なる関数 lib$cvtf_to_internal_time を使用する。Alpha および
+  VAX は G_FLOAT を持つが IA64 は IEEE float を使用するためで、そうしないと
+  Vim がクラッシュする
+- 混在したファイル名によって引き起こされるクラッシュを防ぐ
+- 出力ファイルを見るために [TESTDIR]make_vms.mms を変更した
+- テストを改善し、既知の問題を更新する
+- 小さなコンパイラ警告を修正した
+- CTAGS 5.8 +regex を同梱した
 
-Version 7.3 (2010 Aug 15)
-- CTAGS 5.8 の取り込み
-- VMS コンパイル警告の修正 - VAX の浮動小数点数オーバーフローの警告を直した
-- ファイルパス補完の修正 - ファイル名とシェルコマンドにおいて余計な文字がエス
-  ケープされていた
-- 以下のプラグインが VMS の runtime に追加された:
+バージョン 7.3 (2010 Aug 15)
+- CTAGS 5.8 を同梱した
+- VMS のコンパイル警告を修正した - VAX 上の浮動小数点オーバーフロー警告を修正
+  した
+- ファイルパス補完を修正した - ファイル名およびシェルコマンドで多すぎる文字が
+  エスケープされていた
+- 以下のプラグインが VMS ランタイムに同梱された:
 	genutils 2.4, multiselect 2.2, multvals 3.1, selectbuf 4.3,
 	bufexplorer 7.1.7, taglist 4.5
-- vimrc の小さな変更 (VMS runtime 内のみ)
-- make_vms.mms - HUGE がデフォルト
-- [TESTDIR]make_vms.mms にできるだけ多くのテストを含めた
-- test30 と test54 を VMS 用に修正した
-- VMS ポートで FLOAT 機能を有効にした
+- vimrc の小さな変更 (VMS ランタイムのみ)
+- make_vms.mms - HUGE モデルがデフォルト
+- [TESTDIR]make_vms.mms は可能な限り多くのテストを含む
+- VMS 用に test30 および test54 を変更する
+- VMS 移植で FLOAT 機能を有効にする
 - os_vms.txt を更新した
 
-Version 7.2 (2008 Aug 9)
-- VCF ファイルの書き込みを修正
-- CTAGS 5.7 を含めた
-- make_vms.mms を修正 (VAX で構文エラーになっていた)
+バージョン 7.2 (2008 Aug 9)
+- VCF ファイルの書き込みを修正した
+- CTAGS 5.7 を同梱した
+- make_vms.mms を修正した (VAX で構文エラーが出ていた)
 
-Version 7.1 (2007 Jun 15)
-- TAGS ファイルをメニューから作成
+バージョン 7.1 (2007 Jun 15)
+- メニューから TAGS ファイルを作成する
 
-Version 7 (2006 May 8)
-- 低レベルの文字入力を改良 (コンソールモードにのみ影響する)
-- プラグインのバグを修正
-- CTAGS 5.6 を含めた
+バージョン 7 (2006 May 8)
+- 低レベルの文字入力を改善した (コンソールモードのみに影響する)
+- プラグインのバグを修正した
+- CTAGS 5.6 を同梱した
 
-{訳注: 翻訳対象から除外}
+バージョン 6.4 (2005 Oct 15)
+- IA64 上での GTKLIB および Vim のビルド
+- 端末モードでの色
+- 端末モードでの構文ハイライト
+- 書き込みの問題を修正した (余分な CR)
+- 端末モードでの ESC および ESC シーケンスの認識
+- 新しい MMS バージョンをサポートするために make ファイルを変更した
+- パス内の環境変数の展開を修正した
+- 印刷の問題を修正した
+- 大文字小文字を区別しない引数についてのヘルプテキストを追加した
 
-Version 6.4 (2005 Oct 15)
-- GTKLIB and Vim build on IA64
-- colors in terminal mode
-- syntax highlighting in terminal mode
-- write problem fixed (extra CR)
-- ESC and ESC sequence recognition in terminal mode
-- make file changed to support new MMS version
-- env variable expansion in path corrected
-- printing problems corrected
-- help text added for case insensitive arguments
+バージョン 6.3 (2004 May 10)
+- vms_read 関数を改善した
+- CTAGS v5.5.4 を同梱した
+- ドキュメントを修正および更新した
 
-Version 6.3 (2004 May 10)
-- Improved vms_read function
-- CTAGS v5.5.4 included
-- Documentation corrected and updated
+バージョン 6.2 (2003 May 7)
+- VMS システムコールの結果を修正した
+- 低レベルの文字入力を書き直した
+- タグおよび quickfix の扱いの修正
+- 最初の GTK ビルド
+- make ファイルの変更
+    - GTK 機能を追加した
+    - OLD_VMS の定義
+    - OpenVMS バージョン 6.2 またはそれ以前
+- ドキュメントを GTK 機能で更新した
+- CTAGS v5.5 を同梱した
+- VMS の VIM チュートリアルを作成した
 
-Version 6.2 (2003 May 7)
-- Corrected VMS system call results
-- Low level character input is rewritten
-- Correction in tag and quickfix handling
-- First GTK build
-- Make file changes
-    - GTK feature added
-    - Define for OLD_VMS
-    - OpenVMS version 6.2 or older
-- Documentation updated with GTK features
-- CTAGS v5.5 included
-- VMS VIM tutor created
+バージョン 6.1 (2002 Mar 25)
+- TCL の init_tcl() の問題を修正した
+- CTAGS v5.4 を同梱した
+- OpenVMS 用の GNU ツールのバイナリ
+- make ファイルの変更
+    - PERL、PYTHON および TCL のサポートを改善した
+    - InstallVMS.txt にビルドの HOWTO の詳しい説明がある
+- VMS/Unix のファイルの扱いを書き直した
+- 小さなキャストおよびバグの修正
 
-Version 6.1 (2002 Mar 25)
-- TCL init_tcl() problem fixed
-- CTAGS v5.4 included
-- GNU tools binaries for OpenVMS
-- Make file changes
-    - PERL, PYTHON and TCL support improved
-    - InstallVMS.txt has a detailed description HOWTO build
-- VMS/Unix file handling rewritten
-- Minor casting and bug fixes
+バージョン 6.0 (2001 Sep 28)
+- Unix および VMS のコードがマージされた
+	- "本当に" VMS に関連するコードを分離した
+	- 可能な全ての Unix の機能を取り込んだ
+	- 設定ファイルを単純化または削除した
+	- makefile MAKE_VMS.MMS を見直した
+- メニューの変更 (印刷、CTAGS および XXD の使用を修正した)
+- 可変 RMS レコード形式の扱いの異常を修正した
+- syntax、ftplugin などのファイルの読み込みを修正した
+- expand_wildcards および expandpath 関数を、より一般的に動作するように変更し
+  た
+- OS_VMS_FILTER.COM を作成した - DECC->VAXC プリプロセッサディレクティブ変換ス
+  クリプト。
+- コードの VAXC および新しい DECC コンパイラとの互換性を改善した
+- quickfix の引数を変更した:
+	- DECC に合うように errormessage 形式
+	- VMS システムに合うように search、make および他のコマンド
+- Vim および CTAGS 用の MMS make ファイルを更新し、名前を変更した。
+- CTAGS は Vim のソース配布物から削除されたが、OpenVMS のバイナリ配布物には残
+  る。
+- ビルド/設定の手順を単純化した
+- INSTALLvms.txt を作成した - VMS での詳しいコンパイル手順。
+- テストスクリプトを更新した。
 
-Version 6.0 (2001 Sep 28)
-- Unix and VMS code has been merged
-	- separated "really" VMS related code
-	- included all possible Unix functionality
-	- simplified or deleted the configuration files
-	- makefile MAKE_VMS.MMS reviewed
-- menu changes (fixed printing, CTAGS and XXD usage)
-- fixed variable RMS record format handling anomaly
-- corrected syntax, ftplugin etc files load
-- changed expand_wildcards and expandpath functions to work more general
-- created OS_VMS_FILTER.COM - DECC->VAXC pre-processor directive convert
-  script.
-- Improved code's VAXC and new DECC compilers compatibility
-- changed quickfix parameters:
-	- errormessage format to suite DECC
-	- search, make and other commands to suite VMS system
-- updated and renamed MMS make files for Vim and CTAGS.
-- CTAGS has been removed from source distribution of Vim but it will remain
-  in OpenVMS binary distributions.
-- simplified build/configuration procedure
-- created INSTALLvms.txt - detailed compiling instructions under VMS.
-- updated test scripts.
+バージョン 5.8 (2001 Jun 1)
+- OS_VMS.TXT を新しい機能で更新した。
+- 他の小さな修正。
+- ドキュメントを更新した
+- このバージョンは、これまでの他のどの OpenVMS バージョンよりもずっと多くテス
+  トされた
 
-Version 5.8 (2001 Jun 1)
-- OS_VMS.TXT updated with new features.
-- other minor fixes.
-- documentation updated
-- this version had been tested much more than any other OpenVMS version
-  earlier
+バージョン 5.7 (2000 Jun 24)
+- 配布物に新しい CTAGS v5.0
+- ドキュメントを更新した
 
-Version 5.7 (2000 Jun 24)
-- New CTAGS v5.0 in distribution
-- Documentation updated
+バージョン 5.6 (2000 Jan 17)
+- VMS のファイル名に関連する変更:
+	- バージョンの扱い (全てを開き、新しいバージョンに保存する)
+	- 構文のためのファイル拡張子のマッチを修正した (バージョンの問題)
+	- ディレクトリ定義で <,> 文字およびパスワードを扱う
+	- パスワード付きのノード間/リモートの起動および編集を扱う
+	- OpenVMS のファイルは今後、大文字小文字を区別せずに扱われる
+	- expand("%:.") など、パスに関連する関数の応答を修正した
+	(一言で言えば: 内部での VMS ディレクトリの扱い)
+- version コマンド
+	- (+,-) 情報データを修正した
+	- コンパイラおよび OS のバージョンを追加した
+	- ユーザーおよびホストの情報を追加した
+	- $VIM および $VIMRUNTIME 論理名を解決する
+- VMS 移植は Unix、Win32 および OS/2 とともに MAX_FEAT (最大機能) クラブに入っ
+  ている。
+	- farsi、rightleft などの機能を有効にした
+	- undo レベルを 1000 まで上げた
+- OS_VMS.MMS ファイルを更新した。
+	- 最大機能 ON がデフォルト
+	- Vim は +perl、+python および +tcl 機能付きでコンパイル可能である。
+	- MMK 互換性を改善した
+- 開発中に Vim をテストするための makefile である MAKEFILE_VMS.MMS を作成した。
+- DEC 端末 VT320 を定義した
+	- VT3*0、VT2*0 および VT1*0 の互換性 - ANSI 端末まで後方互換、ただしカ
+	  ラー機能を持つ VT340 以降は除く。
+	- VT320 が OpenVMS のデフォルト端末
+	- これらの新しい端末は高速な tty でもある (OpenVMS のデフォルト)。
+	- dec_mouse ttym を許可した
+- ファイル vimrc および gvimrc を VMS 固有の提案で更新した。
+- OS_VMS.TXT を新しい機能で更新した。
 
-Version 5.6 (2000 Jan 17)
-- VMS filename related changes:
-	- version handling (open everything, save to new version)
-	- correct file extension matching for syntax (version problem)
-	- handle <,> characters and passwords in directory definition
-	- handle internode/remote invocation and editing with passwords
-	- OpenVMS files will be treated case insensitive from now
-	- corrected response of expand("%:.") etc path related functions
-	(in one word: VMS directory handling internally)
-- version command
-	- corrected (+,-) information data
-	- added compiler and OS version
-	- added user and host information
-	- resolving $VIM and $VIMRUNTIME logicals
-- VMS port is in MAX_FEAT (maximum features) club with Unix, Win32 and OS/2.
-	- enabled farsi, rightleft etc. features
-	- undo level raised up to 1000
-- Updated OS_VMS.MMS file.
-	- maximum features ON is default
-	- Vim is compilable with +perl, +python and +tcl features.
-	- improved MMK compatibility
-- Created MAKEFILE_VMS.MMS, makefile for testing Vim during development.
-- Defined DEC terminal VT320
-	- compatibility for VT3*0, VT2*0 and VT1*0 - ANSI terminals
-	  backwards, but not VT340 and newer with colour capability.
-	- VT320 is default terminal for OpenVMS
-	- these new terminals are also fast ttys (default for OpenVMS).
-	- allowed dec_mouse ttym
-- Updated files vimrc and gvimrc with VMS specific suggestions.
-- OS_VMS.TXT updated with new features.
+バージョン 5.5 (1999 Dec 3)
+- ポップアップメニュー行のクラッシュを修正した。
+- バージョン番号付きのフルファイル名を扱う。
+- ディレクトリの扱い (CD コマンドなど)
+- VMS から Unix、およびその逆のファイル名変換を修正した。
+- ワイルドカード展開の応答を修正する
+- このバージョンから VMS でもリカバリが動作する。
+- 端末およびシグナルの扱いを改善した。
+- OS_VMS.TXT を改善した
 
-Version 5.5 (1999 Dec 3)
-- Popup menu line crash corrected.
-- Handle full file names with version numbers.
-- Directory handling (CD command etc.)
-- Corrected file name conversion VMS to Unix and v.v.
-- Correct response of expand wildcards
-- Recovery is working from this version under VMS as well.
-- Improved terminal and signal handing.
-- Improved OS_VMS.TXT
+バージョン 5.4 (1999 Sep 9)
+- カットアンドペーストの不一致を修正した。
+- 開く時および保存時の Motif のディレクトリを修正した。
 
-Version 5.4 (1999 Sep 9)
-- Cut and paste mismatch corrected.
-- Motif directories during open and save are corrected.
+バージョン 5.3 (1998 Oct 12)
+- コードの小さな変更
+- +GUI オプション付きの標準配布物
 
-Version 5.3 (1998 Oct 12)
-- Minor changes in the code
-- Standard distribution with +GUI option
+バージョン 5.1 (1998 Apr 21)
+- コードの構文および DEC C の変更
+- /doc サブディレクトリの問題を修正する
+- OS_VMS.MMS を改善する
 
-Version 5.1 (1998 Apr 21)
-- Syntax and DEC C changes in the code
-- Fixing problems with the /doc subdirectory
-- Improve OS_VMS.MMS
-
-Version 4.5 (1996 Dec 16)
-- First VMS port by Henk Elbers <henk@xs4all.nl>
+バージョン 4.5 (1996 Dec 16)
+- Henk Elbers <henk@xs4all.nl> による最初の VMS 移植
 
 ==============================================================================
 
 10. 著者						*vms-authors*
 
-Vim の OpenVMSの文章とコンパイル済みバイナリは以下がメンテナンスしている:
+Vim の OpenVMS ドキュメントおよび実行可能ファイルは以下によってメンテナンスさ
+れている:
 Zoltan Arpadffy <zoltan.arpadffy@gmail.com>
-OpenVMS Vim page: http://www.polarhome.com/vim/
+OpenVMS Vim ページ: http://www.polarhome.com/vim/
 
-この文章には、初期の著者や貢献者の書いた部分や記述が含まれている:
+このドキュメントは、OS_VMS.TXT の以前の著者および貢献者による部分および所見を
+使用している:
 	Charles E. Campbell, Jr. <cec@gryphon.gsfc.nasa.gov>
 	Bruce Hunsaker <BNHunsaker@chq.byu.edu>
-	Sandor Kopanyi <sandor.kopanyi@altavista.net>
+	Sandor Kopanyi <sandor.kopanyi@mailbox.hu>
 
  vim:tw=78:ts=8:noet:ft=help:norl:
